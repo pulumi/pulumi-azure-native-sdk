@@ -257,12 +257,12 @@ const (
 	NetworkTypeEnumMirrored    = NetworkTypeEnum("Mirrored")
 )
 
-// Operating system type that the gallery image uses [Windows, Linux]
+// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
 type OperatingSystemTypes string
 
 const (
-	OperatingSystemTypesWindows = OperatingSystemTypes("Windows")
 	OperatingSystemTypesLinux   = OperatingSystemTypes("Linux")
+	OperatingSystemTypesWindows = OperatingSystemTypes("Windows")
 )
 
 func (OperatingSystemTypes) ElementType() reflect.Type {
@@ -610,6 +610,14 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
+
+// Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
+type SecurityTypes string
+
+const (
+	SecurityTypesTrustedLaunch  = SecurityTypes("TrustedLaunch")
+	SecurityTypesConfidentialVM = SecurityTypes("ConfidentialVM")
+)
 
 // Customer Intent for Software Assurance Benefit.
 type SoftwareAssuranceIntent string

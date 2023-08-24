@@ -100,6 +100,9 @@ func NewViewByScope(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20230301:ViewByScope"),
 		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230801:ViewByScope"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ViewByScope

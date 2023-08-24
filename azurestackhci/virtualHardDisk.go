@@ -67,6 +67,9 @@ func NewVirtualHardDisk(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:VirtualHardDisk"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230701preview:VirtualHardDisk"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualHardDisk

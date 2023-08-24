@@ -109,6 +109,9 @@ func NewIpGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230401:IpGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230501:IpGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource IpGroup

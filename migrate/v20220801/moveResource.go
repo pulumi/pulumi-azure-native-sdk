@@ -51,6 +51,9 @@ func NewMoveResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20210801:MoveResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230801:MoveResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource MoveResource

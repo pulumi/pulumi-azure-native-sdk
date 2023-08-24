@@ -2007,6 +2007,134 @@ func (o GalleryOSDiskImageResponsePtrOutput) SizeInMB() pulumi.Float64PtrOutput 
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Defines the status of a guest agent installation.
+type GuestAgentInstallStatusResponse struct {
+	// The hybrid machine agent full version.
+	AgentVersion string `pulumi:"agentVersion"`
+	// Details about the error state.
+	ErrorDetails []ErrorDetailResponse `pulumi:"errorDetails"`
+	// The time of the last status change.
+	LastStatusChange string `pulumi:"lastStatusChange"`
+	// The installation status of the hybrid machine agent installation.
+	Status string `pulumi:"status"`
+	// Specifies the VM's unique SMBIOS ID.
+	VmUuid string `pulumi:"vmUuid"`
+}
+
+// Defines the status of a guest agent installation.
+type GuestAgentInstallStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (GuestAgentInstallStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestAgentInstallStatusResponse)(nil)).Elem()
+}
+
+func (o GuestAgentInstallStatusResponseOutput) ToGuestAgentInstallStatusResponseOutput() GuestAgentInstallStatusResponseOutput {
+	return o
+}
+
+func (o GuestAgentInstallStatusResponseOutput) ToGuestAgentInstallStatusResponseOutputWithContext(ctx context.Context) GuestAgentInstallStatusResponseOutput {
+	return o
+}
+
+// The hybrid machine agent full version.
+func (o GuestAgentInstallStatusResponseOutput) AgentVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestAgentInstallStatusResponse) string { return v.AgentVersion }).(pulumi.StringOutput)
+}
+
+// Details about the error state.
+func (o GuestAgentInstallStatusResponseOutput) ErrorDetails() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v GuestAgentInstallStatusResponse) []ErrorDetailResponse { return v.ErrorDetails }).(ErrorDetailResponseArrayOutput)
+}
+
+// The time of the last status change.
+func (o GuestAgentInstallStatusResponseOutput) LastStatusChange() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestAgentInstallStatusResponse) string { return v.LastStatusChange }).(pulumi.StringOutput)
+}
+
+// The installation status of the hybrid machine agent installation.
+func (o GuestAgentInstallStatusResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestAgentInstallStatusResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Specifies the VM's unique SMBIOS ID.
+func (o GuestAgentInstallStatusResponseOutput) VmUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestAgentInstallStatusResponse) string { return v.VmUuid }).(pulumi.StringOutput)
+}
+
+type GuestAgentInstallStatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GuestAgentInstallStatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestAgentInstallStatusResponse)(nil)).Elem()
+}
+
+func (o GuestAgentInstallStatusResponsePtrOutput) ToGuestAgentInstallStatusResponsePtrOutput() GuestAgentInstallStatusResponsePtrOutput {
+	return o
+}
+
+func (o GuestAgentInstallStatusResponsePtrOutput) ToGuestAgentInstallStatusResponsePtrOutputWithContext(ctx context.Context) GuestAgentInstallStatusResponsePtrOutput {
+	return o
+}
+
+func (o GuestAgentInstallStatusResponsePtrOutput) Elem() GuestAgentInstallStatusResponseOutput {
+	return o.ApplyT(func(v *GuestAgentInstallStatusResponse) GuestAgentInstallStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GuestAgentInstallStatusResponse
+		return ret
+	}).(GuestAgentInstallStatusResponseOutput)
+}
+
+// The hybrid machine agent full version.
+func (o GuestAgentInstallStatusResponsePtrOutput) AgentVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestAgentInstallStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AgentVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Details about the error state.
+func (o GuestAgentInstallStatusResponsePtrOutput) ErrorDetails() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v *GuestAgentInstallStatusResponse) []ErrorDetailResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorDetails
+	}).(ErrorDetailResponseArrayOutput)
+}
+
+// The time of the last status change.
+func (o GuestAgentInstallStatusResponsePtrOutput) LastStatusChange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestAgentInstallStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastStatusChange
+	}).(pulumi.StringPtrOutput)
+}
+
+// The installation status of the hybrid machine agent installation.
+func (o GuestAgentInstallStatusResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestAgentInstallStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the VM's unique SMBIOS ID.
+func (o GuestAgentInstallStatusResponsePtrOutput) VmUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestAgentInstallStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VmUuid
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the resource properties.
 type GuestAgentProfileResponse struct {
 	// The hybrid machine agent full version.
@@ -3711,6 +3839,80 @@ func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Instance view status.
+type InstanceViewStatusResponse struct {
+	// The status code.
+	Code *string `pulumi:"code"`
+	// The short localizable label for the status.
+	DisplayStatus *string `pulumi:"displayStatus"`
+	// The level code.
+	Level *string `pulumi:"level"`
+	// The detailed status message, including for alerts and error messages.
+	Message *string `pulumi:"message"`
+	// The time of the status.
+	Time *string `pulumi:"time"`
+}
+
+// Instance view status.
+type InstanceViewStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceViewStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceViewStatusResponse)(nil)).Elem()
+}
+
+func (o InstanceViewStatusResponseOutput) ToInstanceViewStatusResponseOutput() InstanceViewStatusResponseOutput {
+	return o
+}
+
+func (o InstanceViewStatusResponseOutput) ToInstanceViewStatusResponseOutputWithContext(ctx context.Context) InstanceViewStatusResponseOutput {
+	return o
+}
+
+// The status code.
+func (o InstanceViewStatusResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceViewStatusResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// The short localizable label for the status.
+func (o InstanceViewStatusResponseOutput) DisplayStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceViewStatusResponse) *string { return v.DisplayStatus }).(pulumi.StringPtrOutput)
+}
+
+// The level code.
+func (o InstanceViewStatusResponseOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceViewStatusResponse) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// The detailed status message, including for alerts and error messages.
+func (o InstanceViewStatusResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceViewStatusResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// The time of the status.
+func (o InstanceViewStatusResponseOutput) Time() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceViewStatusResponse) *string { return v.Time }).(pulumi.StringPtrOutput)
+}
+
+type InstanceViewStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceViewStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceViewStatusResponse)(nil)).Elem()
+}
+
+func (o InstanceViewStatusResponseArrayOutput) ToInstanceViewStatusResponseArrayOutput() InstanceViewStatusResponseArrayOutput {
+	return o
+}
+
+func (o InstanceViewStatusResponseArrayOutput) ToInstanceViewStatusResponseArrayOutputWithContext(ctx context.Context) InstanceViewStatusResponseArrayOutput {
+	return o
+}
+
+func (o InstanceViewStatusResponseArrayOutput) Index(i pulumi.IntInput) InstanceViewStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceViewStatusResponse {
+		return vs[0].([]InstanceViewStatusResponse)[vs[1].(int)]
+	}).(InstanceViewStatusResponseOutput)
+}
+
 type InterfaceDNSSettings struct {
 	// List of DNS server IP Addresses for the interface
 	DnsServers []string `pulumi:"dnsServers"`
@@ -4840,6 +5042,368 @@ func (o SoftwareAssurancePropertiesResponsePtrOutput) SoftwareAssuranceStatus() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// SSH configuration for Linux based VMs running on Azure
+type SshConfiguration struct {
+	// The list of SSH public keys used to authenticate with linux based VMs.
+	PublicKeys []SshPublicKey `pulumi:"publicKeys"`
+}
+
+// SshConfigurationInput is an input type that accepts SshConfigurationArgs and SshConfigurationOutput values.
+// You can construct a concrete instance of `SshConfigurationInput` via:
+//
+//	SshConfigurationArgs{...}
+type SshConfigurationInput interface {
+	pulumi.Input
+
+	ToSshConfigurationOutput() SshConfigurationOutput
+	ToSshConfigurationOutputWithContext(context.Context) SshConfigurationOutput
+}
+
+// SSH configuration for Linux based VMs running on Azure
+type SshConfigurationArgs struct {
+	// The list of SSH public keys used to authenticate with linux based VMs.
+	PublicKeys SshPublicKeyArrayInput `pulumi:"publicKeys"`
+}
+
+func (SshConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshConfiguration)(nil)).Elem()
+}
+
+func (i SshConfigurationArgs) ToSshConfigurationOutput() SshConfigurationOutput {
+	return i.ToSshConfigurationOutputWithContext(context.Background())
+}
+
+func (i SshConfigurationArgs) ToSshConfigurationOutputWithContext(ctx context.Context) SshConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshConfigurationOutput)
+}
+
+func (i SshConfigurationArgs) ToSshConfigurationPtrOutput() SshConfigurationPtrOutput {
+	return i.ToSshConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i SshConfigurationArgs) ToSshConfigurationPtrOutputWithContext(ctx context.Context) SshConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshConfigurationOutput).ToSshConfigurationPtrOutputWithContext(ctx)
+}
+
+// SshConfigurationPtrInput is an input type that accepts SshConfigurationArgs, SshConfigurationPtr and SshConfigurationPtrOutput values.
+// You can construct a concrete instance of `SshConfigurationPtrInput` via:
+//
+//	        SshConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SshConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToSshConfigurationPtrOutput() SshConfigurationPtrOutput
+	ToSshConfigurationPtrOutputWithContext(context.Context) SshConfigurationPtrOutput
+}
+
+type sshConfigurationPtrType SshConfigurationArgs
+
+func SshConfigurationPtr(v *SshConfigurationArgs) SshConfigurationPtrInput {
+	return (*sshConfigurationPtrType)(v)
+}
+
+func (*sshConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SshConfiguration)(nil)).Elem()
+}
+
+func (i *sshConfigurationPtrType) ToSshConfigurationPtrOutput() SshConfigurationPtrOutput {
+	return i.ToSshConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *sshConfigurationPtrType) ToSshConfigurationPtrOutputWithContext(ctx context.Context) SshConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshConfigurationPtrOutput)
+}
+
+// SSH configuration for Linux based VMs running on Azure
+type SshConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SshConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshConfiguration)(nil)).Elem()
+}
+
+func (o SshConfigurationOutput) ToSshConfigurationOutput() SshConfigurationOutput {
+	return o
+}
+
+func (o SshConfigurationOutput) ToSshConfigurationOutputWithContext(ctx context.Context) SshConfigurationOutput {
+	return o
+}
+
+func (o SshConfigurationOutput) ToSshConfigurationPtrOutput() SshConfigurationPtrOutput {
+	return o.ToSshConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o SshConfigurationOutput) ToSshConfigurationPtrOutputWithContext(ctx context.Context) SshConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SshConfiguration) *SshConfiguration {
+		return &v
+	}).(SshConfigurationPtrOutput)
+}
+
+// The list of SSH public keys used to authenticate with linux based VMs.
+func (o SshConfigurationOutput) PublicKeys() SshPublicKeyArrayOutput {
+	return o.ApplyT(func(v SshConfiguration) []SshPublicKey { return v.PublicKeys }).(SshPublicKeyArrayOutput)
+}
+
+type SshConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (SshConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SshConfiguration)(nil)).Elem()
+}
+
+func (o SshConfigurationPtrOutput) ToSshConfigurationPtrOutput() SshConfigurationPtrOutput {
+	return o
+}
+
+func (o SshConfigurationPtrOutput) ToSshConfigurationPtrOutputWithContext(ctx context.Context) SshConfigurationPtrOutput {
+	return o
+}
+
+func (o SshConfigurationPtrOutput) Elem() SshConfigurationOutput {
+	return o.ApplyT(func(v *SshConfiguration) SshConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret SshConfiguration
+		return ret
+	}).(SshConfigurationOutput)
+}
+
+// The list of SSH public keys used to authenticate with linux based VMs.
+func (o SshConfigurationPtrOutput) PublicKeys() SshPublicKeyArrayOutput {
+	return o.ApplyT(func(v *SshConfiguration) []SshPublicKey {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKeys
+	}).(SshPublicKeyArrayOutput)
+}
+
+// SSH configuration for Linux based VMs running on Azure
+type SshConfigurationResponse struct {
+	// The list of SSH public keys used to authenticate with linux based VMs.
+	PublicKeys []SshPublicKeyResponse `pulumi:"publicKeys"`
+}
+
+// SSH configuration for Linux based VMs running on Azure
+type SshConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (SshConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshConfigurationResponse)(nil)).Elem()
+}
+
+func (o SshConfigurationResponseOutput) ToSshConfigurationResponseOutput() SshConfigurationResponseOutput {
+	return o
+}
+
+func (o SshConfigurationResponseOutput) ToSshConfigurationResponseOutputWithContext(ctx context.Context) SshConfigurationResponseOutput {
+	return o
+}
+
+// The list of SSH public keys used to authenticate with linux based VMs.
+func (o SshConfigurationResponseOutput) PublicKeys() SshPublicKeyResponseArrayOutput {
+	return o.ApplyT(func(v SshConfigurationResponse) []SshPublicKeyResponse { return v.PublicKeys }).(SshPublicKeyResponseArrayOutput)
+}
+
+type SshConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SshConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SshConfigurationResponse)(nil)).Elem()
+}
+
+func (o SshConfigurationResponsePtrOutput) ToSshConfigurationResponsePtrOutput() SshConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SshConfigurationResponsePtrOutput) ToSshConfigurationResponsePtrOutputWithContext(ctx context.Context) SshConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SshConfigurationResponsePtrOutput) Elem() SshConfigurationResponseOutput {
+	return o.ApplyT(func(v *SshConfigurationResponse) SshConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SshConfigurationResponse
+		return ret
+	}).(SshConfigurationResponseOutput)
+}
+
+// The list of SSH public keys used to authenticate with linux based VMs.
+func (o SshConfigurationResponsePtrOutput) PublicKeys() SshPublicKeyResponseArrayOutput {
+	return o.ApplyT(func(v *SshConfigurationResponse) []SshPublicKeyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKeys
+	}).(SshPublicKeyResponseArrayOutput)
+}
+
+// Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+type SshPublicKey struct {
+	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+	KeyData *string `pulumi:"keyData"`
+	// Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+	Path *string `pulumi:"path"`
+}
+
+// SshPublicKeyInput is an input type that accepts SshPublicKeyArgs and SshPublicKeyOutput values.
+// You can construct a concrete instance of `SshPublicKeyInput` via:
+//
+//	SshPublicKeyArgs{...}
+type SshPublicKeyInput interface {
+	pulumi.Input
+
+	ToSshPublicKeyOutput() SshPublicKeyOutput
+	ToSshPublicKeyOutputWithContext(context.Context) SshPublicKeyOutput
+}
+
+// Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+type SshPublicKeyArgs struct {
+	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+	KeyData pulumi.StringPtrInput `pulumi:"keyData"`
+	// Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (SshPublicKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshPublicKey)(nil)).Elem()
+}
+
+func (i SshPublicKeyArgs) ToSshPublicKeyOutput() SshPublicKeyOutput {
+	return i.ToSshPublicKeyOutputWithContext(context.Background())
+}
+
+func (i SshPublicKeyArgs) ToSshPublicKeyOutputWithContext(ctx context.Context) SshPublicKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyOutput)
+}
+
+// SshPublicKeyArrayInput is an input type that accepts SshPublicKeyArray and SshPublicKeyArrayOutput values.
+// You can construct a concrete instance of `SshPublicKeyArrayInput` via:
+//
+//	SshPublicKeyArray{ SshPublicKeyArgs{...} }
+type SshPublicKeyArrayInput interface {
+	pulumi.Input
+
+	ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput
+	ToSshPublicKeyArrayOutputWithContext(context.Context) SshPublicKeyArrayOutput
+}
+
+type SshPublicKeyArray []SshPublicKeyInput
+
+func (SshPublicKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SshPublicKey)(nil)).Elem()
+}
+
+func (i SshPublicKeyArray) ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput {
+	return i.ToSshPublicKeyArrayOutputWithContext(context.Background())
+}
+
+func (i SshPublicKeyArray) ToSshPublicKeyArrayOutputWithContext(ctx context.Context) SshPublicKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyArrayOutput)
+}
+
+// Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+type SshPublicKeyOutput struct{ *pulumi.OutputState }
+
+func (SshPublicKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshPublicKey)(nil)).Elem()
+}
+
+func (o SshPublicKeyOutput) ToSshPublicKeyOutput() SshPublicKeyOutput {
+	return o
+}
+
+func (o SshPublicKeyOutput) ToSshPublicKeyOutputWithContext(ctx context.Context) SshPublicKeyOutput {
+	return o
+}
+
+// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+func (o SshPublicKeyOutput) KeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SshPublicKey) *string { return v.KeyData }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+func (o SshPublicKeyOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SshPublicKey) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type SshPublicKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (SshPublicKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SshPublicKey)(nil)).Elem()
+}
+
+func (o SshPublicKeyArrayOutput) ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput {
+	return o
+}
+
+func (o SshPublicKeyArrayOutput) ToSshPublicKeyArrayOutputWithContext(ctx context.Context) SshPublicKeyArrayOutput {
+	return o
+}
+
+func (o SshPublicKeyArrayOutput) Index(i pulumi.IntInput) SshPublicKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SshPublicKey {
+		return vs[0].([]SshPublicKey)[vs[1].(int)]
+	}).(SshPublicKeyOutput)
+}
+
+// Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+type SshPublicKeyResponse struct {
+	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+	KeyData *string `pulumi:"keyData"`
+	// Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+	Path *string `pulumi:"path"`
+}
+
+// Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+type SshPublicKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (SshPublicKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshPublicKeyResponse)(nil)).Elem()
+}
+
+func (o SshPublicKeyResponseOutput) ToSshPublicKeyResponseOutput() SshPublicKeyResponseOutput {
+	return o
+}
+
+func (o SshPublicKeyResponseOutput) ToSshPublicKeyResponseOutputWithContext(ctx context.Context) SshPublicKeyResponseOutput {
+	return o
+}
+
+// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+func (o SshPublicKeyResponseOutput) KeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SshPublicKeyResponse) *string { return v.KeyData }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+func (o SshPublicKeyResponseOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SshPublicKeyResponse) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type SshPublicKeyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SshPublicKeyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SshPublicKeyResponse)(nil)).Elem()
+}
+
+func (o SshPublicKeyResponseArrayOutput) ToSshPublicKeyResponseArrayOutput() SshPublicKeyResponseArrayOutput {
+	return o
+}
+
+func (o SshPublicKeyResponseArrayOutput) ToSshPublicKeyResponseArrayOutputWithContext(ctx context.Context) SshPublicKeyResponseArrayOutput {
+	return o
+}
+
+func (o SshPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) SshPublicKeyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SshPublicKeyResponse {
+		return vs[0].([]SshPublicKeyResponse)[vs[1].(int)]
+	}).(SshPublicKeyResponseOutput)
+}
+
 // Progress representation of the update run steps.
 type Step struct {
 	// More detailed description of the step.
@@ -5632,6 +6196,3654 @@ func (o VirtualHardDiskStatusResponseProvisioningStatusPtrOutput) Status() pulum
 		}
 		return v.Status
 	}).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesDataDisks struct {
+	// Resource ID of the data disk
+	Id *string `pulumi:"id"`
+}
+
+// VirtualMachineInstancePropertiesDataDisksInput is an input type that accepts VirtualMachineInstancePropertiesDataDisksArgs and VirtualMachineInstancePropertiesDataDisksOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesDataDisksInput` via:
+//
+//	VirtualMachineInstancePropertiesDataDisksArgs{...}
+type VirtualMachineInstancePropertiesDataDisksInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesDataDisksOutput() VirtualMachineInstancePropertiesDataDisksOutput
+	ToVirtualMachineInstancePropertiesDataDisksOutputWithContext(context.Context) VirtualMachineInstancePropertiesDataDisksOutput
+}
+
+type VirtualMachineInstancePropertiesDataDisksArgs struct {
+	// Resource ID of the data disk
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (VirtualMachineInstancePropertiesDataDisksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesDataDisks)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesDataDisksArgs) ToVirtualMachineInstancePropertiesDataDisksOutput() VirtualMachineInstancePropertiesDataDisksOutput {
+	return i.ToVirtualMachineInstancePropertiesDataDisksOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesDataDisksArgs) ToVirtualMachineInstancePropertiesDataDisksOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesDataDisksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesDataDisksOutput)
+}
+
+// VirtualMachineInstancePropertiesDataDisksArrayInput is an input type that accepts VirtualMachineInstancePropertiesDataDisksArray and VirtualMachineInstancePropertiesDataDisksArrayOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesDataDisksArrayInput` via:
+//
+//	VirtualMachineInstancePropertiesDataDisksArray{ VirtualMachineInstancePropertiesDataDisksArgs{...} }
+type VirtualMachineInstancePropertiesDataDisksArrayInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesDataDisksArrayOutput() VirtualMachineInstancePropertiesDataDisksArrayOutput
+	ToVirtualMachineInstancePropertiesDataDisksArrayOutputWithContext(context.Context) VirtualMachineInstancePropertiesDataDisksArrayOutput
+}
+
+type VirtualMachineInstancePropertiesDataDisksArray []VirtualMachineInstancePropertiesDataDisksInput
+
+func (VirtualMachineInstancePropertiesDataDisksArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineInstancePropertiesDataDisks)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesDataDisksArray) ToVirtualMachineInstancePropertiesDataDisksArrayOutput() VirtualMachineInstancePropertiesDataDisksArrayOutput {
+	return i.ToVirtualMachineInstancePropertiesDataDisksArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesDataDisksArray) ToVirtualMachineInstancePropertiesDataDisksArrayOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesDataDisksArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesDataDisksArrayOutput)
+}
+
+type VirtualMachineInstancePropertiesDataDisksOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesDataDisksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesDataDisks)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesDataDisksOutput) ToVirtualMachineInstancePropertiesDataDisksOutput() VirtualMachineInstancePropertiesDataDisksOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesDataDisksOutput) ToVirtualMachineInstancePropertiesDataDisksOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesDataDisksOutput {
+	return o
+}
+
+// Resource ID of the data disk
+func (o VirtualMachineInstancePropertiesDataDisksOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesDataDisks) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesDataDisksArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesDataDisksArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineInstancePropertiesDataDisks)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesDataDisksArrayOutput) ToVirtualMachineInstancePropertiesDataDisksArrayOutput() VirtualMachineInstancePropertiesDataDisksArrayOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesDataDisksArrayOutput) ToVirtualMachineInstancePropertiesDataDisksArrayOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesDataDisksArrayOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesDataDisksArrayOutput) Index(i pulumi.IntInput) VirtualMachineInstancePropertiesDataDisksOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineInstancePropertiesDataDisks {
+		return vs[0].([]VirtualMachineInstancePropertiesDataDisks)[vs[1].(int)]
+	}).(VirtualMachineInstancePropertiesDataDisksOutput)
+}
+
+type VirtualMachineInstancePropertiesDynamicMemoryConfig struct {
+	MaximumMemoryMB *float64 `pulumi:"maximumMemoryMB"`
+	MinimumMemoryMB *float64 `pulumi:"minimumMemoryMB"`
+	// Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000.
+	TargetMemoryBuffer *int `pulumi:"targetMemoryBuffer"`
+}
+
+// VirtualMachineInstancePropertiesDynamicMemoryConfigInput is an input type that accepts VirtualMachineInstancePropertiesDynamicMemoryConfigArgs and VirtualMachineInstancePropertiesDynamicMemoryConfigOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesDynamicMemoryConfigInput` via:
+//
+//	VirtualMachineInstancePropertiesDynamicMemoryConfigArgs{...}
+type VirtualMachineInstancePropertiesDynamicMemoryConfigInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesDynamicMemoryConfigOutput() VirtualMachineInstancePropertiesDynamicMemoryConfigOutput
+	ToVirtualMachineInstancePropertiesDynamicMemoryConfigOutputWithContext(context.Context) VirtualMachineInstancePropertiesDynamicMemoryConfigOutput
+}
+
+type VirtualMachineInstancePropertiesDynamicMemoryConfigArgs struct {
+	MaximumMemoryMB pulumi.Float64PtrInput `pulumi:"maximumMemoryMB"`
+	MinimumMemoryMB pulumi.Float64PtrInput `pulumi:"minimumMemoryMB"`
+	// Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000.
+	TargetMemoryBuffer pulumi.IntPtrInput `pulumi:"targetMemoryBuffer"`
+}
+
+func (VirtualMachineInstancePropertiesDynamicMemoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesDynamicMemoryConfig)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesDynamicMemoryConfigArgs) ToVirtualMachineInstancePropertiesDynamicMemoryConfigOutput() VirtualMachineInstancePropertiesDynamicMemoryConfigOutput {
+	return i.ToVirtualMachineInstancePropertiesDynamicMemoryConfigOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesDynamicMemoryConfigArgs) ToVirtualMachineInstancePropertiesDynamicMemoryConfigOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesDynamicMemoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesDynamicMemoryConfigOutput)
+}
+
+func (i VirtualMachineInstancePropertiesDynamicMemoryConfigArgs) ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput() VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput {
+	return i.ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesDynamicMemoryConfigArgs) ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesDynamicMemoryConfigOutput).ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineInstancePropertiesDynamicMemoryConfigPtrInput is an input type that accepts VirtualMachineInstancePropertiesDynamicMemoryConfigArgs, VirtualMachineInstancePropertiesDynamicMemoryConfigPtr and VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesDynamicMemoryConfigPtrInput` via:
+//
+//	        VirtualMachineInstancePropertiesDynamicMemoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineInstancePropertiesDynamicMemoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput() VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput
+	ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutputWithContext(context.Context) VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput
+}
+
+type virtualMachineInstancePropertiesDynamicMemoryConfigPtrType VirtualMachineInstancePropertiesDynamicMemoryConfigArgs
+
+func VirtualMachineInstancePropertiesDynamicMemoryConfigPtr(v *VirtualMachineInstancePropertiesDynamicMemoryConfigArgs) VirtualMachineInstancePropertiesDynamicMemoryConfigPtrInput {
+	return (*virtualMachineInstancePropertiesDynamicMemoryConfigPtrType)(v)
+}
+
+func (*virtualMachineInstancePropertiesDynamicMemoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesDynamicMemoryConfig)(nil)).Elem()
+}
+
+func (i *virtualMachineInstancePropertiesDynamicMemoryConfigPtrType) ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput() VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput {
+	return i.ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineInstancePropertiesDynamicMemoryConfigPtrType) ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesDynamicMemoryConfigOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesDynamicMemoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesDynamicMemoryConfig)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigOutput) ToVirtualMachineInstancePropertiesDynamicMemoryConfigOutput() VirtualMachineInstancePropertiesDynamicMemoryConfigOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigOutput) ToVirtualMachineInstancePropertiesDynamicMemoryConfigOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesDynamicMemoryConfigOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigOutput) ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput() VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput {
+	return o.ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigOutput) ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesDynamicMemoryConfig) *VirtualMachineInstancePropertiesDynamicMemoryConfig {
+		return &v
+	}).(VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigOutput) MaximumMemoryMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesDynamicMemoryConfig) *float64 { return v.MaximumMemoryMB }).(pulumi.Float64PtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigOutput) MinimumMemoryMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesDynamicMemoryConfig) *float64 { return v.MinimumMemoryMB }).(pulumi.Float64PtrOutput)
+}
+
+// Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000.
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigOutput) TargetMemoryBuffer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesDynamicMemoryConfig) *int { return v.TargetMemoryBuffer }).(pulumi.IntPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesDynamicMemoryConfig)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput) ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput() VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput) ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput) Elem() VirtualMachineInstancePropertiesDynamicMemoryConfigOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesDynamicMemoryConfig) VirtualMachineInstancePropertiesDynamicMemoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesDynamicMemoryConfig
+		return ret
+	}).(VirtualMachineInstancePropertiesDynamicMemoryConfigOutput)
+}
+
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput) MaximumMemoryMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesDynamicMemoryConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumMemoryMB
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput) MinimumMemoryMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesDynamicMemoryConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumMemoryMB
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000.
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput) TargetMemoryBuffer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesDynamicMemoryConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetMemoryBuffer
+	}).(pulumi.IntPtrOutput)
+}
+
+// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
+type VirtualMachineInstancePropertiesHardwareProfile struct {
+	DynamicMemoryConfig *VirtualMachineInstancePropertiesDynamicMemoryConfig `pulumi:"dynamicMemoryConfig"`
+	// RAM in MB for the virtual machine instance
+	MemoryMB *float64 `pulumi:"memoryMB"`
+	// number of processors for the virtual machine instance
+	Processors *int    `pulumi:"processors"`
+	VmSize     *string `pulumi:"vmSize"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesHardwareProfile
+func (val *VirtualMachineInstancePropertiesHardwareProfile) Defaults() *VirtualMachineInstancePropertiesHardwareProfile {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.VmSize == nil {
+		vmSize_ := "Default"
+		tmp.VmSize = &vmSize_
+	}
+	return &tmp
+}
+
+// VirtualMachineInstancePropertiesHardwareProfileInput is an input type that accepts VirtualMachineInstancePropertiesHardwareProfileArgs and VirtualMachineInstancePropertiesHardwareProfileOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesHardwareProfileInput` via:
+//
+//	VirtualMachineInstancePropertiesHardwareProfileArgs{...}
+type VirtualMachineInstancePropertiesHardwareProfileInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesHardwareProfileOutput() VirtualMachineInstancePropertiesHardwareProfileOutput
+	ToVirtualMachineInstancePropertiesHardwareProfileOutputWithContext(context.Context) VirtualMachineInstancePropertiesHardwareProfileOutput
+}
+
+// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
+type VirtualMachineInstancePropertiesHardwareProfileArgs struct {
+	DynamicMemoryConfig VirtualMachineInstancePropertiesDynamicMemoryConfigPtrInput `pulumi:"dynamicMemoryConfig"`
+	// RAM in MB for the virtual machine instance
+	MemoryMB pulumi.Float64PtrInput `pulumi:"memoryMB"`
+	// number of processors for the virtual machine instance
+	Processors pulumi.IntPtrInput    `pulumi:"processors"`
+	VmSize     pulumi.StringPtrInput `pulumi:"vmSize"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesHardwareProfileArgs
+func (val *VirtualMachineInstancePropertiesHardwareProfileArgs) Defaults() *VirtualMachineInstancePropertiesHardwareProfileArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.VmSize == nil {
+		tmp.VmSize = pulumi.StringPtr("Default")
+	}
+	return &tmp
+}
+func (VirtualMachineInstancePropertiesHardwareProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesHardwareProfile)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesHardwareProfileArgs) ToVirtualMachineInstancePropertiesHardwareProfileOutput() VirtualMachineInstancePropertiesHardwareProfileOutput {
+	return i.ToVirtualMachineInstancePropertiesHardwareProfileOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesHardwareProfileArgs) ToVirtualMachineInstancePropertiesHardwareProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesHardwareProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesHardwareProfileOutput)
+}
+
+func (i VirtualMachineInstancePropertiesHardwareProfileArgs) ToVirtualMachineInstancePropertiesHardwareProfilePtrOutput() VirtualMachineInstancePropertiesHardwareProfilePtrOutput {
+	return i.ToVirtualMachineInstancePropertiesHardwareProfilePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesHardwareProfileArgs) ToVirtualMachineInstancePropertiesHardwareProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesHardwareProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesHardwareProfileOutput).ToVirtualMachineInstancePropertiesHardwareProfilePtrOutputWithContext(ctx)
+}
+
+// VirtualMachineInstancePropertiesHardwareProfilePtrInput is an input type that accepts VirtualMachineInstancePropertiesHardwareProfileArgs, VirtualMachineInstancePropertiesHardwareProfilePtr and VirtualMachineInstancePropertiesHardwareProfilePtrOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesHardwareProfilePtrInput` via:
+//
+//	        VirtualMachineInstancePropertiesHardwareProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineInstancePropertiesHardwareProfilePtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesHardwareProfilePtrOutput() VirtualMachineInstancePropertiesHardwareProfilePtrOutput
+	ToVirtualMachineInstancePropertiesHardwareProfilePtrOutputWithContext(context.Context) VirtualMachineInstancePropertiesHardwareProfilePtrOutput
+}
+
+type virtualMachineInstancePropertiesHardwareProfilePtrType VirtualMachineInstancePropertiesHardwareProfileArgs
+
+func VirtualMachineInstancePropertiesHardwareProfilePtr(v *VirtualMachineInstancePropertiesHardwareProfileArgs) VirtualMachineInstancePropertiesHardwareProfilePtrInput {
+	return (*virtualMachineInstancePropertiesHardwareProfilePtrType)(v)
+}
+
+func (*virtualMachineInstancePropertiesHardwareProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesHardwareProfile)(nil)).Elem()
+}
+
+func (i *virtualMachineInstancePropertiesHardwareProfilePtrType) ToVirtualMachineInstancePropertiesHardwareProfilePtrOutput() VirtualMachineInstancePropertiesHardwareProfilePtrOutput {
+	return i.ToVirtualMachineInstancePropertiesHardwareProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineInstancePropertiesHardwareProfilePtrType) ToVirtualMachineInstancePropertiesHardwareProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesHardwareProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesHardwareProfilePtrOutput)
+}
+
+// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
+type VirtualMachineInstancePropertiesHardwareProfileOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesHardwareProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesHardwareProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesHardwareProfileOutput) ToVirtualMachineInstancePropertiesHardwareProfileOutput() VirtualMachineInstancePropertiesHardwareProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesHardwareProfileOutput) ToVirtualMachineInstancePropertiesHardwareProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesHardwareProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesHardwareProfileOutput) ToVirtualMachineInstancePropertiesHardwareProfilePtrOutput() VirtualMachineInstancePropertiesHardwareProfilePtrOutput {
+	return o.ToVirtualMachineInstancePropertiesHardwareProfilePtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineInstancePropertiesHardwareProfileOutput) ToVirtualMachineInstancePropertiesHardwareProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesHardwareProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesHardwareProfile) *VirtualMachineInstancePropertiesHardwareProfile {
+		return &v
+	}).(VirtualMachineInstancePropertiesHardwareProfilePtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesHardwareProfileOutput) DynamicMemoryConfig() VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesHardwareProfile) *VirtualMachineInstancePropertiesDynamicMemoryConfig {
+		return v.DynamicMemoryConfig
+	}).(VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput)
+}
+
+// RAM in MB for the virtual machine instance
+func (o VirtualMachineInstancePropertiesHardwareProfileOutput) MemoryMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesHardwareProfile) *float64 { return v.MemoryMB }).(pulumi.Float64PtrOutput)
+}
+
+// number of processors for the virtual machine instance
+func (o VirtualMachineInstancePropertiesHardwareProfileOutput) Processors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesHardwareProfile) *int { return v.Processors }).(pulumi.IntPtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesHardwareProfileOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesHardwareProfile) *string { return v.VmSize }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesHardwareProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesHardwareProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesHardwareProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesHardwareProfilePtrOutput) ToVirtualMachineInstancePropertiesHardwareProfilePtrOutput() VirtualMachineInstancePropertiesHardwareProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesHardwareProfilePtrOutput) ToVirtualMachineInstancePropertiesHardwareProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesHardwareProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesHardwareProfilePtrOutput) Elem() VirtualMachineInstancePropertiesHardwareProfileOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesHardwareProfile) VirtualMachineInstancePropertiesHardwareProfile {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesHardwareProfile
+		return ret
+	}).(VirtualMachineInstancePropertiesHardwareProfileOutput)
+}
+
+func (o VirtualMachineInstancePropertiesHardwareProfilePtrOutput) DynamicMemoryConfig() VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesHardwareProfile) *VirtualMachineInstancePropertiesDynamicMemoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DynamicMemoryConfig
+	}).(VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput)
+}
+
+// RAM in MB for the virtual machine instance
+func (o VirtualMachineInstancePropertiesHardwareProfilePtrOutput) MemoryMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesHardwareProfile) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryMB
+	}).(pulumi.Float64PtrOutput)
+}
+
+// number of processors for the virtual machine instance
+func (o VirtualMachineInstancePropertiesHardwareProfilePtrOutput) Processors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesHardwareProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Processors
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesHardwareProfilePtrOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesHardwareProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Which Image to use for the virtual machine instance
+type VirtualMachineInstancePropertiesImageReference struct {
+	// Resource ID of the image
+	Id *string `pulumi:"id"`
+}
+
+// VirtualMachineInstancePropertiesImageReferenceInput is an input type that accepts VirtualMachineInstancePropertiesImageReferenceArgs and VirtualMachineInstancePropertiesImageReferenceOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesImageReferenceInput` via:
+//
+//	VirtualMachineInstancePropertiesImageReferenceArgs{...}
+type VirtualMachineInstancePropertiesImageReferenceInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesImageReferenceOutput() VirtualMachineInstancePropertiesImageReferenceOutput
+	ToVirtualMachineInstancePropertiesImageReferenceOutputWithContext(context.Context) VirtualMachineInstancePropertiesImageReferenceOutput
+}
+
+// Which Image to use for the virtual machine instance
+type VirtualMachineInstancePropertiesImageReferenceArgs struct {
+	// Resource ID of the image
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (VirtualMachineInstancePropertiesImageReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesImageReference)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesImageReferenceArgs) ToVirtualMachineInstancePropertiesImageReferenceOutput() VirtualMachineInstancePropertiesImageReferenceOutput {
+	return i.ToVirtualMachineInstancePropertiesImageReferenceOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesImageReferenceArgs) ToVirtualMachineInstancePropertiesImageReferenceOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesImageReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesImageReferenceOutput)
+}
+
+func (i VirtualMachineInstancePropertiesImageReferenceArgs) ToVirtualMachineInstancePropertiesImageReferencePtrOutput() VirtualMachineInstancePropertiesImageReferencePtrOutput {
+	return i.ToVirtualMachineInstancePropertiesImageReferencePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesImageReferenceArgs) ToVirtualMachineInstancePropertiesImageReferencePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesImageReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesImageReferenceOutput).ToVirtualMachineInstancePropertiesImageReferencePtrOutputWithContext(ctx)
+}
+
+// VirtualMachineInstancePropertiesImageReferencePtrInput is an input type that accepts VirtualMachineInstancePropertiesImageReferenceArgs, VirtualMachineInstancePropertiesImageReferencePtr and VirtualMachineInstancePropertiesImageReferencePtrOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesImageReferencePtrInput` via:
+//
+//	        VirtualMachineInstancePropertiesImageReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineInstancePropertiesImageReferencePtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesImageReferencePtrOutput() VirtualMachineInstancePropertiesImageReferencePtrOutput
+	ToVirtualMachineInstancePropertiesImageReferencePtrOutputWithContext(context.Context) VirtualMachineInstancePropertiesImageReferencePtrOutput
+}
+
+type virtualMachineInstancePropertiesImageReferencePtrType VirtualMachineInstancePropertiesImageReferenceArgs
+
+func VirtualMachineInstancePropertiesImageReferencePtr(v *VirtualMachineInstancePropertiesImageReferenceArgs) VirtualMachineInstancePropertiesImageReferencePtrInput {
+	return (*virtualMachineInstancePropertiesImageReferencePtrType)(v)
+}
+
+func (*virtualMachineInstancePropertiesImageReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesImageReference)(nil)).Elem()
+}
+
+func (i *virtualMachineInstancePropertiesImageReferencePtrType) ToVirtualMachineInstancePropertiesImageReferencePtrOutput() VirtualMachineInstancePropertiesImageReferencePtrOutput {
+	return i.ToVirtualMachineInstancePropertiesImageReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineInstancePropertiesImageReferencePtrType) ToVirtualMachineInstancePropertiesImageReferencePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesImageReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesImageReferencePtrOutput)
+}
+
+// Which Image to use for the virtual machine instance
+type VirtualMachineInstancePropertiesImageReferenceOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesImageReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesImageReference)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesImageReferenceOutput) ToVirtualMachineInstancePropertiesImageReferenceOutput() VirtualMachineInstancePropertiesImageReferenceOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesImageReferenceOutput) ToVirtualMachineInstancePropertiesImageReferenceOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesImageReferenceOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesImageReferenceOutput) ToVirtualMachineInstancePropertiesImageReferencePtrOutput() VirtualMachineInstancePropertiesImageReferencePtrOutput {
+	return o.ToVirtualMachineInstancePropertiesImageReferencePtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineInstancePropertiesImageReferenceOutput) ToVirtualMachineInstancePropertiesImageReferencePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesImageReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesImageReference) *VirtualMachineInstancePropertiesImageReference {
+		return &v
+	}).(VirtualMachineInstancePropertiesImageReferencePtrOutput)
+}
+
+// Resource ID of the image
+func (o VirtualMachineInstancePropertiesImageReferenceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesImageReference) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesImageReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesImageReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesImageReference)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesImageReferencePtrOutput) ToVirtualMachineInstancePropertiesImageReferencePtrOutput() VirtualMachineInstancePropertiesImageReferencePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesImageReferencePtrOutput) ToVirtualMachineInstancePropertiesImageReferencePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesImageReferencePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesImageReferencePtrOutput) Elem() VirtualMachineInstancePropertiesImageReferenceOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesImageReference) VirtualMachineInstancePropertiesImageReference {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesImageReference
+		return ret
+	}).(VirtualMachineInstancePropertiesImageReferenceOutput)
+}
+
+// Resource ID of the image
+func (o VirtualMachineInstancePropertiesImageReferencePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesImageReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// LinuxConfiguration - linux specific configuration values for the virtual machine instance
+type VirtualMachineInstancePropertiesLinuxConfiguration struct {
+	// DisablePasswordAuthentication - whether password authentication should be disabled
+	DisablePasswordAuthentication *bool `pulumi:"disablePasswordAuthentication"`
+	// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+	ProvisionVMAgent *bool `pulumi:"provisionVMAgent"`
+	// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+	ProvisionVMConfigAgent *bool `pulumi:"provisionVMConfigAgent"`
+	// Specifies the ssh key configuration for a Linux OS.
+	Ssh *SshConfiguration `pulumi:"ssh"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesLinuxConfiguration
+func (val *VirtualMachineInstancePropertiesLinuxConfiguration) Defaults() *VirtualMachineInstancePropertiesLinuxConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ProvisionVMAgent == nil {
+		provisionVMAgent_ := true
+		tmp.ProvisionVMAgent = &provisionVMAgent_
+	}
+	if tmp.ProvisionVMConfigAgent == nil {
+		provisionVMConfigAgent_ := true
+		tmp.ProvisionVMConfigAgent = &provisionVMConfigAgent_
+	}
+	return &tmp
+}
+
+// VirtualMachineInstancePropertiesLinuxConfigurationInput is an input type that accepts VirtualMachineInstancePropertiesLinuxConfigurationArgs and VirtualMachineInstancePropertiesLinuxConfigurationOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesLinuxConfigurationInput` via:
+//
+//	VirtualMachineInstancePropertiesLinuxConfigurationArgs{...}
+type VirtualMachineInstancePropertiesLinuxConfigurationInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesLinuxConfigurationOutput() VirtualMachineInstancePropertiesLinuxConfigurationOutput
+	ToVirtualMachineInstancePropertiesLinuxConfigurationOutputWithContext(context.Context) VirtualMachineInstancePropertiesLinuxConfigurationOutput
+}
+
+// LinuxConfiguration - linux specific configuration values for the virtual machine instance
+type VirtualMachineInstancePropertiesLinuxConfigurationArgs struct {
+	// DisablePasswordAuthentication - whether password authentication should be disabled
+	DisablePasswordAuthentication pulumi.BoolPtrInput `pulumi:"disablePasswordAuthentication"`
+	// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+	ProvisionVMAgent pulumi.BoolPtrInput `pulumi:"provisionVMAgent"`
+	// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+	ProvisionVMConfigAgent pulumi.BoolPtrInput `pulumi:"provisionVMConfigAgent"`
+	// Specifies the ssh key configuration for a Linux OS.
+	Ssh SshConfigurationPtrInput `pulumi:"ssh"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesLinuxConfigurationArgs
+func (val *VirtualMachineInstancePropertiesLinuxConfigurationArgs) Defaults() *VirtualMachineInstancePropertiesLinuxConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ProvisionVMAgent == nil {
+		tmp.ProvisionVMAgent = pulumi.BoolPtr(true)
+	}
+	if tmp.ProvisionVMConfigAgent == nil {
+		tmp.ProvisionVMConfigAgent = pulumi.BoolPtr(true)
+	}
+	return &tmp
+}
+func (VirtualMachineInstancePropertiesLinuxConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesLinuxConfiguration)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesLinuxConfigurationArgs) ToVirtualMachineInstancePropertiesLinuxConfigurationOutput() VirtualMachineInstancePropertiesLinuxConfigurationOutput {
+	return i.ToVirtualMachineInstancePropertiesLinuxConfigurationOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesLinuxConfigurationArgs) ToVirtualMachineInstancePropertiesLinuxConfigurationOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesLinuxConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesLinuxConfigurationOutput)
+}
+
+func (i VirtualMachineInstancePropertiesLinuxConfigurationArgs) ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutput() VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput {
+	return i.ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesLinuxConfigurationArgs) ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesLinuxConfigurationOutput).ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineInstancePropertiesLinuxConfigurationPtrInput is an input type that accepts VirtualMachineInstancePropertiesLinuxConfigurationArgs, VirtualMachineInstancePropertiesLinuxConfigurationPtr and VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesLinuxConfigurationPtrInput` via:
+//
+//	        VirtualMachineInstancePropertiesLinuxConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineInstancePropertiesLinuxConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutput() VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput
+	ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutputWithContext(context.Context) VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput
+}
+
+type virtualMachineInstancePropertiesLinuxConfigurationPtrType VirtualMachineInstancePropertiesLinuxConfigurationArgs
+
+func VirtualMachineInstancePropertiesLinuxConfigurationPtr(v *VirtualMachineInstancePropertiesLinuxConfigurationArgs) VirtualMachineInstancePropertiesLinuxConfigurationPtrInput {
+	return (*virtualMachineInstancePropertiesLinuxConfigurationPtrType)(v)
+}
+
+func (*virtualMachineInstancePropertiesLinuxConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesLinuxConfiguration)(nil)).Elem()
+}
+
+func (i *virtualMachineInstancePropertiesLinuxConfigurationPtrType) ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutput() VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput {
+	return i.ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineInstancePropertiesLinuxConfigurationPtrType) ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput)
+}
+
+// LinuxConfiguration - linux specific configuration values for the virtual machine instance
+type VirtualMachineInstancePropertiesLinuxConfigurationOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesLinuxConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesLinuxConfiguration)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesLinuxConfigurationOutput) ToVirtualMachineInstancePropertiesLinuxConfigurationOutput() VirtualMachineInstancePropertiesLinuxConfigurationOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesLinuxConfigurationOutput) ToVirtualMachineInstancePropertiesLinuxConfigurationOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesLinuxConfigurationOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesLinuxConfigurationOutput) ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutput() VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput {
+	return o.ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineInstancePropertiesLinuxConfigurationOutput) ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesLinuxConfiguration) *VirtualMachineInstancePropertiesLinuxConfiguration {
+		return &v
+	}).(VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput)
+}
+
+// DisablePasswordAuthentication - whether password authentication should be disabled
+func (o VirtualMachineInstancePropertiesLinuxConfigurationOutput) DisablePasswordAuthentication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesLinuxConfiguration) *bool {
+		return v.DisablePasswordAuthentication
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+func (o VirtualMachineInstancePropertiesLinuxConfigurationOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesLinuxConfiguration) *bool { return v.ProvisionVMAgent }).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+func (o VirtualMachineInstancePropertiesLinuxConfigurationOutput) ProvisionVMConfigAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesLinuxConfiguration) *bool { return v.ProvisionVMConfigAgent }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the ssh key configuration for a Linux OS.
+func (o VirtualMachineInstancePropertiesLinuxConfigurationOutput) Ssh() SshConfigurationPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesLinuxConfiguration) *SshConfiguration { return v.Ssh }).(SshConfigurationPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesLinuxConfiguration)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput) ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutput() VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput) ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput) Elem() VirtualMachineInstancePropertiesLinuxConfigurationOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesLinuxConfiguration) VirtualMachineInstancePropertiesLinuxConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesLinuxConfiguration
+		return ret
+	}).(VirtualMachineInstancePropertiesLinuxConfigurationOutput)
+}
+
+// DisablePasswordAuthentication - whether password authentication should be disabled
+func (o VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput) DisablePasswordAuthentication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesLinuxConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePasswordAuthentication
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+func (o VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesLinuxConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionVMAgent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+func (o VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput) ProvisionVMConfigAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesLinuxConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionVMConfigAgent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the ssh key configuration for a Linux OS.
+func (o VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput) Ssh() SshConfigurationPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesLinuxConfiguration) *SshConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Ssh
+	}).(SshConfigurationPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesNetworkInterfaces struct {
+	// ID - Resource Id of the network interface
+	Id *string `pulumi:"id"`
+}
+
+// VirtualMachineInstancePropertiesNetworkInterfacesInput is an input type that accepts VirtualMachineInstancePropertiesNetworkInterfacesArgs and VirtualMachineInstancePropertiesNetworkInterfacesOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesNetworkInterfacesInput` via:
+//
+//	VirtualMachineInstancePropertiesNetworkInterfacesArgs{...}
+type VirtualMachineInstancePropertiesNetworkInterfacesInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesNetworkInterfacesOutput() VirtualMachineInstancePropertiesNetworkInterfacesOutput
+	ToVirtualMachineInstancePropertiesNetworkInterfacesOutputWithContext(context.Context) VirtualMachineInstancePropertiesNetworkInterfacesOutput
+}
+
+type VirtualMachineInstancePropertiesNetworkInterfacesArgs struct {
+	// ID - Resource Id of the network interface
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (VirtualMachineInstancePropertiesNetworkInterfacesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesNetworkInterfaces)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesNetworkInterfacesArgs) ToVirtualMachineInstancePropertiesNetworkInterfacesOutput() VirtualMachineInstancePropertiesNetworkInterfacesOutput {
+	return i.ToVirtualMachineInstancePropertiesNetworkInterfacesOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesNetworkInterfacesArgs) ToVirtualMachineInstancePropertiesNetworkInterfacesOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesNetworkInterfacesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesNetworkInterfacesOutput)
+}
+
+// VirtualMachineInstancePropertiesNetworkInterfacesArrayInput is an input type that accepts VirtualMachineInstancePropertiesNetworkInterfacesArray and VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesNetworkInterfacesArrayInput` via:
+//
+//	VirtualMachineInstancePropertiesNetworkInterfacesArray{ VirtualMachineInstancePropertiesNetworkInterfacesArgs{...} }
+type VirtualMachineInstancePropertiesNetworkInterfacesArrayInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesNetworkInterfacesArrayOutput() VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput
+	ToVirtualMachineInstancePropertiesNetworkInterfacesArrayOutputWithContext(context.Context) VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput
+}
+
+type VirtualMachineInstancePropertiesNetworkInterfacesArray []VirtualMachineInstancePropertiesNetworkInterfacesInput
+
+func (VirtualMachineInstancePropertiesNetworkInterfacesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineInstancePropertiesNetworkInterfaces)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesNetworkInterfacesArray) ToVirtualMachineInstancePropertiesNetworkInterfacesArrayOutput() VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput {
+	return i.ToVirtualMachineInstancePropertiesNetworkInterfacesArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesNetworkInterfacesArray) ToVirtualMachineInstancePropertiesNetworkInterfacesArrayOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput)
+}
+
+type VirtualMachineInstancePropertiesNetworkInterfacesOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesNetworkInterfacesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesNetworkInterfaces)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesNetworkInterfacesOutput) ToVirtualMachineInstancePropertiesNetworkInterfacesOutput() VirtualMachineInstancePropertiesNetworkInterfacesOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesNetworkInterfacesOutput) ToVirtualMachineInstancePropertiesNetworkInterfacesOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesNetworkInterfacesOutput {
+	return o
+}
+
+// ID - Resource Id of the network interface
+func (o VirtualMachineInstancePropertiesNetworkInterfacesOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesNetworkInterfaces) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineInstancePropertiesNetworkInterfaces)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput) ToVirtualMachineInstancePropertiesNetworkInterfacesArrayOutput() VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput) ToVirtualMachineInstancePropertiesNetworkInterfacesArrayOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput) Index(i pulumi.IntInput) VirtualMachineInstancePropertiesNetworkInterfacesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineInstancePropertiesNetworkInterfaces {
+		return vs[0].([]VirtualMachineInstancePropertiesNetworkInterfaces)[vs[1].(int)]
+	}).(VirtualMachineInstancePropertiesNetworkInterfacesOutput)
+}
+
+// NetworkProfile - describes the network configuration the virtual machine instance
+type VirtualMachineInstancePropertiesNetworkProfile struct {
+	// NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
+	NetworkInterfaces []VirtualMachineInstancePropertiesNetworkInterfaces `pulumi:"networkInterfaces"`
+}
+
+// VirtualMachineInstancePropertiesNetworkProfileInput is an input type that accepts VirtualMachineInstancePropertiesNetworkProfileArgs and VirtualMachineInstancePropertiesNetworkProfileOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesNetworkProfileInput` via:
+//
+//	VirtualMachineInstancePropertiesNetworkProfileArgs{...}
+type VirtualMachineInstancePropertiesNetworkProfileInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesNetworkProfileOutput() VirtualMachineInstancePropertiesNetworkProfileOutput
+	ToVirtualMachineInstancePropertiesNetworkProfileOutputWithContext(context.Context) VirtualMachineInstancePropertiesNetworkProfileOutput
+}
+
+// NetworkProfile - describes the network configuration the virtual machine instance
+type VirtualMachineInstancePropertiesNetworkProfileArgs struct {
+	// NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
+	NetworkInterfaces VirtualMachineInstancePropertiesNetworkInterfacesArrayInput `pulumi:"networkInterfaces"`
+}
+
+func (VirtualMachineInstancePropertiesNetworkProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesNetworkProfile)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesNetworkProfileArgs) ToVirtualMachineInstancePropertiesNetworkProfileOutput() VirtualMachineInstancePropertiesNetworkProfileOutput {
+	return i.ToVirtualMachineInstancePropertiesNetworkProfileOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesNetworkProfileArgs) ToVirtualMachineInstancePropertiesNetworkProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesNetworkProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesNetworkProfileOutput)
+}
+
+func (i VirtualMachineInstancePropertiesNetworkProfileArgs) ToVirtualMachineInstancePropertiesNetworkProfilePtrOutput() VirtualMachineInstancePropertiesNetworkProfilePtrOutput {
+	return i.ToVirtualMachineInstancePropertiesNetworkProfilePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesNetworkProfileArgs) ToVirtualMachineInstancePropertiesNetworkProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesNetworkProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesNetworkProfileOutput).ToVirtualMachineInstancePropertiesNetworkProfilePtrOutputWithContext(ctx)
+}
+
+// VirtualMachineInstancePropertiesNetworkProfilePtrInput is an input type that accepts VirtualMachineInstancePropertiesNetworkProfileArgs, VirtualMachineInstancePropertiesNetworkProfilePtr and VirtualMachineInstancePropertiesNetworkProfilePtrOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesNetworkProfilePtrInput` via:
+//
+//	        VirtualMachineInstancePropertiesNetworkProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineInstancePropertiesNetworkProfilePtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesNetworkProfilePtrOutput() VirtualMachineInstancePropertiesNetworkProfilePtrOutput
+	ToVirtualMachineInstancePropertiesNetworkProfilePtrOutputWithContext(context.Context) VirtualMachineInstancePropertiesNetworkProfilePtrOutput
+}
+
+type virtualMachineInstancePropertiesNetworkProfilePtrType VirtualMachineInstancePropertiesNetworkProfileArgs
+
+func VirtualMachineInstancePropertiesNetworkProfilePtr(v *VirtualMachineInstancePropertiesNetworkProfileArgs) VirtualMachineInstancePropertiesNetworkProfilePtrInput {
+	return (*virtualMachineInstancePropertiesNetworkProfilePtrType)(v)
+}
+
+func (*virtualMachineInstancePropertiesNetworkProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesNetworkProfile)(nil)).Elem()
+}
+
+func (i *virtualMachineInstancePropertiesNetworkProfilePtrType) ToVirtualMachineInstancePropertiesNetworkProfilePtrOutput() VirtualMachineInstancePropertiesNetworkProfilePtrOutput {
+	return i.ToVirtualMachineInstancePropertiesNetworkProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineInstancePropertiesNetworkProfilePtrType) ToVirtualMachineInstancePropertiesNetworkProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesNetworkProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesNetworkProfilePtrOutput)
+}
+
+// NetworkProfile - describes the network configuration the virtual machine instance
+type VirtualMachineInstancePropertiesNetworkProfileOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesNetworkProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesNetworkProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesNetworkProfileOutput) ToVirtualMachineInstancePropertiesNetworkProfileOutput() VirtualMachineInstancePropertiesNetworkProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesNetworkProfileOutput) ToVirtualMachineInstancePropertiesNetworkProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesNetworkProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesNetworkProfileOutput) ToVirtualMachineInstancePropertiesNetworkProfilePtrOutput() VirtualMachineInstancePropertiesNetworkProfilePtrOutput {
+	return o.ToVirtualMachineInstancePropertiesNetworkProfilePtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineInstancePropertiesNetworkProfileOutput) ToVirtualMachineInstancePropertiesNetworkProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesNetworkProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesNetworkProfile) *VirtualMachineInstancePropertiesNetworkProfile {
+		return &v
+	}).(VirtualMachineInstancePropertiesNetworkProfilePtrOutput)
+}
+
+// NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
+func (o VirtualMachineInstancePropertiesNetworkProfileOutput) NetworkInterfaces() VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesNetworkProfile) []VirtualMachineInstancePropertiesNetworkInterfaces {
+		return v.NetworkInterfaces
+	}).(VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput)
+}
+
+type VirtualMachineInstancePropertiesNetworkProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesNetworkProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesNetworkProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesNetworkProfilePtrOutput) ToVirtualMachineInstancePropertiesNetworkProfilePtrOutput() VirtualMachineInstancePropertiesNetworkProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesNetworkProfilePtrOutput) ToVirtualMachineInstancePropertiesNetworkProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesNetworkProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesNetworkProfilePtrOutput) Elem() VirtualMachineInstancePropertiesNetworkProfileOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesNetworkProfile) VirtualMachineInstancePropertiesNetworkProfile {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesNetworkProfile
+		return ret
+	}).(VirtualMachineInstancePropertiesNetworkProfileOutput)
+}
+
+// NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
+func (o VirtualMachineInstancePropertiesNetworkProfilePtrOutput) NetworkInterfaces() VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesNetworkProfile) []VirtualMachineInstancePropertiesNetworkInterfaces {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput)
+}
+
+// VHD to attach as OS disk
+type VirtualMachineInstancePropertiesOsDisk struct {
+	// Resource ID of the OS disk
+	Id *string `pulumi:"id"`
+	// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
+	OsType *OperatingSystemTypes `pulumi:"osType"`
+}
+
+// VirtualMachineInstancePropertiesOsDiskInput is an input type that accepts VirtualMachineInstancePropertiesOsDiskArgs and VirtualMachineInstancePropertiesOsDiskOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesOsDiskInput` via:
+//
+//	VirtualMachineInstancePropertiesOsDiskArgs{...}
+type VirtualMachineInstancePropertiesOsDiskInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesOsDiskOutput() VirtualMachineInstancePropertiesOsDiskOutput
+	ToVirtualMachineInstancePropertiesOsDiskOutputWithContext(context.Context) VirtualMachineInstancePropertiesOsDiskOutput
+}
+
+// VHD to attach as OS disk
+type VirtualMachineInstancePropertiesOsDiskArgs struct {
+	// Resource ID of the OS disk
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
+	OsType OperatingSystemTypesPtrInput `pulumi:"osType"`
+}
+
+func (VirtualMachineInstancePropertiesOsDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesOsDisk)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesOsDiskArgs) ToVirtualMachineInstancePropertiesOsDiskOutput() VirtualMachineInstancePropertiesOsDiskOutput {
+	return i.ToVirtualMachineInstancePropertiesOsDiskOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesOsDiskArgs) ToVirtualMachineInstancePropertiesOsDiskOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesOsDiskOutput)
+}
+
+func (i VirtualMachineInstancePropertiesOsDiskArgs) ToVirtualMachineInstancePropertiesOsDiskPtrOutput() VirtualMachineInstancePropertiesOsDiskPtrOutput {
+	return i.ToVirtualMachineInstancePropertiesOsDiskPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesOsDiskArgs) ToVirtualMachineInstancePropertiesOsDiskPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesOsDiskOutput).ToVirtualMachineInstancePropertiesOsDiskPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineInstancePropertiesOsDiskPtrInput is an input type that accepts VirtualMachineInstancePropertiesOsDiskArgs, VirtualMachineInstancePropertiesOsDiskPtr and VirtualMachineInstancePropertiesOsDiskPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesOsDiskPtrInput` via:
+//
+//	        VirtualMachineInstancePropertiesOsDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineInstancePropertiesOsDiskPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesOsDiskPtrOutput() VirtualMachineInstancePropertiesOsDiskPtrOutput
+	ToVirtualMachineInstancePropertiesOsDiskPtrOutputWithContext(context.Context) VirtualMachineInstancePropertiesOsDiskPtrOutput
+}
+
+type virtualMachineInstancePropertiesOsDiskPtrType VirtualMachineInstancePropertiesOsDiskArgs
+
+func VirtualMachineInstancePropertiesOsDiskPtr(v *VirtualMachineInstancePropertiesOsDiskArgs) VirtualMachineInstancePropertiesOsDiskPtrInput {
+	return (*virtualMachineInstancePropertiesOsDiskPtrType)(v)
+}
+
+func (*virtualMachineInstancePropertiesOsDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesOsDisk)(nil)).Elem()
+}
+
+func (i *virtualMachineInstancePropertiesOsDiskPtrType) ToVirtualMachineInstancePropertiesOsDiskPtrOutput() VirtualMachineInstancePropertiesOsDiskPtrOutput {
+	return i.ToVirtualMachineInstancePropertiesOsDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineInstancePropertiesOsDiskPtrType) ToVirtualMachineInstancePropertiesOsDiskPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesOsDiskPtrOutput)
+}
+
+// VHD to attach as OS disk
+type VirtualMachineInstancePropertiesOsDiskOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesOsDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesOsDisk)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesOsDiskOutput) ToVirtualMachineInstancePropertiesOsDiskOutput() VirtualMachineInstancePropertiesOsDiskOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesOsDiskOutput) ToVirtualMachineInstancePropertiesOsDiskOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsDiskOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesOsDiskOutput) ToVirtualMachineInstancePropertiesOsDiskPtrOutput() VirtualMachineInstancePropertiesOsDiskPtrOutput {
+	return o.ToVirtualMachineInstancePropertiesOsDiskPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineInstancePropertiesOsDiskOutput) ToVirtualMachineInstancePropertiesOsDiskPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesOsDisk) *VirtualMachineInstancePropertiesOsDisk {
+		return &v
+	}).(VirtualMachineInstancePropertiesOsDiskPtrOutput)
+}
+
+// Resource ID of the OS disk
+func (o VirtualMachineInstancePropertiesOsDiskOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesOsDisk) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
+func (o VirtualMachineInstancePropertiesOsDiskOutput) OsType() OperatingSystemTypesPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesOsDisk) *OperatingSystemTypes { return v.OsType }).(OperatingSystemTypesPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesOsDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesOsDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesOsDisk)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesOsDiskPtrOutput) ToVirtualMachineInstancePropertiesOsDiskPtrOutput() VirtualMachineInstancePropertiesOsDiskPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesOsDiskPtrOutput) ToVirtualMachineInstancePropertiesOsDiskPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsDiskPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesOsDiskPtrOutput) Elem() VirtualMachineInstancePropertiesOsDiskOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesOsDisk) VirtualMachineInstancePropertiesOsDisk {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesOsDisk
+		return ret
+	}).(VirtualMachineInstancePropertiesOsDiskOutput)
+}
+
+// Resource ID of the OS disk
+func (o VirtualMachineInstancePropertiesOsDiskPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesOsDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
+func (o VirtualMachineInstancePropertiesOsDiskPtrOutput) OsType() OperatingSystemTypesPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesOsDisk) *OperatingSystemTypes {
+		if v == nil {
+			return nil
+		}
+		return v.OsType
+	}).(OperatingSystemTypesPtrOutput)
+}
+
+// OsProfile - describes the configuration of the operating system and sets login data
+type VirtualMachineInstancePropertiesOsProfile struct {
+	// AdminPassword - admin password
+	AdminPassword *string `pulumi:"adminPassword"`
+	// AdminUsername - admin username
+	AdminUsername *string `pulumi:"adminUsername"`
+	// ComputerName - name of the compute
+	ComputerName *string `pulumi:"computerName"`
+	// LinuxConfiguration - linux specific configuration values for the virtual machine instance
+	LinuxConfiguration *VirtualMachineInstancePropertiesLinuxConfiguration `pulumi:"linuxConfiguration"`
+	// Windows Configuration for the virtual machine instance
+	WindowsConfiguration *VirtualMachineInstancePropertiesWindowsConfiguration `pulumi:"windowsConfiguration"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesOsProfile
+func (val *VirtualMachineInstancePropertiesOsProfile) Defaults() *VirtualMachineInstancePropertiesOsProfile {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.LinuxConfiguration = tmp.LinuxConfiguration.Defaults()
+
+	tmp.WindowsConfiguration = tmp.WindowsConfiguration.Defaults()
+
+	return &tmp
+}
+
+// VirtualMachineInstancePropertiesOsProfileInput is an input type that accepts VirtualMachineInstancePropertiesOsProfileArgs and VirtualMachineInstancePropertiesOsProfileOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesOsProfileInput` via:
+//
+//	VirtualMachineInstancePropertiesOsProfileArgs{...}
+type VirtualMachineInstancePropertiesOsProfileInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesOsProfileOutput() VirtualMachineInstancePropertiesOsProfileOutput
+	ToVirtualMachineInstancePropertiesOsProfileOutputWithContext(context.Context) VirtualMachineInstancePropertiesOsProfileOutput
+}
+
+// OsProfile - describes the configuration of the operating system and sets login data
+type VirtualMachineInstancePropertiesOsProfileArgs struct {
+	// AdminPassword - admin password
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// AdminUsername - admin username
+	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
+	// ComputerName - name of the compute
+	ComputerName pulumi.StringPtrInput `pulumi:"computerName"`
+	// LinuxConfiguration - linux specific configuration values for the virtual machine instance
+	LinuxConfiguration VirtualMachineInstancePropertiesLinuxConfigurationPtrInput `pulumi:"linuxConfiguration"`
+	// Windows Configuration for the virtual machine instance
+	WindowsConfiguration VirtualMachineInstancePropertiesWindowsConfigurationPtrInput `pulumi:"windowsConfiguration"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesOsProfileArgs
+func (val *VirtualMachineInstancePropertiesOsProfileArgs) Defaults() *VirtualMachineInstancePropertiesOsProfileArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (VirtualMachineInstancePropertiesOsProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesOsProfile)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesOsProfileArgs) ToVirtualMachineInstancePropertiesOsProfileOutput() VirtualMachineInstancePropertiesOsProfileOutput {
+	return i.ToVirtualMachineInstancePropertiesOsProfileOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesOsProfileArgs) ToVirtualMachineInstancePropertiesOsProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesOsProfileOutput)
+}
+
+func (i VirtualMachineInstancePropertiesOsProfileArgs) ToVirtualMachineInstancePropertiesOsProfilePtrOutput() VirtualMachineInstancePropertiesOsProfilePtrOutput {
+	return i.ToVirtualMachineInstancePropertiesOsProfilePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesOsProfileArgs) ToVirtualMachineInstancePropertiesOsProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesOsProfileOutput).ToVirtualMachineInstancePropertiesOsProfilePtrOutputWithContext(ctx)
+}
+
+// VirtualMachineInstancePropertiesOsProfilePtrInput is an input type that accepts VirtualMachineInstancePropertiesOsProfileArgs, VirtualMachineInstancePropertiesOsProfilePtr and VirtualMachineInstancePropertiesOsProfilePtrOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesOsProfilePtrInput` via:
+//
+//	        VirtualMachineInstancePropertiesOsProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineInstancePropertiesOsProfilePtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesOsProfilePtrOutput() VirtualMachineInstancePropertiesOsProfilePtrOutput
+	ToVirtualMachineInstancePropertiesOsProfilePtrOutputWithContext(context.Context) VirtualMachineInstancePropertiesOsProfilePtrOutput
+}
+
+type virtualMachineInstancePropertiesOsProfilePtrType VirtualMachineInstancePropertiesOsProfileArgs
+
+func VirtualMachineInstancePropertiesOsProfilePtr(v *VirtualMachineInstancePropertiesOsProfileArgs) VirtualMachineInstancePropertiesOsProfilePtrInput {
+	return (*virtualMachineInstancePropertiesOsProfilePtrType)(v)
+}
+
+func (*virtualMachineInstancePropertiesOsProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesOsProfile)(nil)).Elem()
+}
+
+func (i *virtualMachineInstancePropertiesOsProfilePtrType) ToVirtualMachineInstancePropertiesOsProfilePtrOutput() VirtualMachineInstancePropertiesOsProfilePtrOutput {
+	return i.ToVirtualMachineInstancePropertiesOsProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineInstancePropertiesOsProfilePtrType) ToVirtualMachineInstancePropertiesOsProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesOsProfilePtrOutput)
+}
+
+// OsProfile - describes the configuration of the operating system and sets login data
+type VirtualMachineInstancePropertiesOsProfileOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesOsProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesOsProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesOsProfileOutput) ToVirtualMachineInstancePropertiesOsProfileOutput() VirtualMachineInstancePropertiesOsProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesOsProfileOutput) ToVirtualMachineInstancePropertiesOsProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesOsProfileOutput) ToVirtualMachineInstancePropertiesOsProfilePtrOutput() VirtualMachineInstancePropertiesOsProfilePtrOutput {
+	return o.ToVirtualMachineInstancePropertiesOsProfilePtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineInstancePropertiesOsProfileOutput) ToVirtualMachineInstancePropertiesOsProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesOsProfile) *VirtualMachineInstancePropertiesOsProfile {
+		return &v
+	}).(VirtualMachineInstancePropertiesOsProfilePtrOutput)
+}
+
+// AdminPassword - admin password
+func (o VirtualMachineInstancePropertiesOsProfileOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesOsProfile) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
+}
+
+// AdminUsername - admin username
+func (o VirtualMachineInstancePropertiesOsProfileOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesOsProfile) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
+}
+
+// ComputerName - name of the compute
+func (o VirtualMachineInstancePropertiesOsProfileOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesOsProfile) *string { return v.ComputerName }).(pulumi.StringPtrOutput)
+}
+
+// LinuxConfiguration - linux specific configuration values for the virtual machine instance
+func (o VirtualMachineInstancePropertiesOsProfileOutput) LinuxConfiguration() VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesOsProfile) *VirtualMachineInstancePropertiesLinuxConfiguration {
+		return v.LinuxConfiguration
+	}).(VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput)
+}
+
+// Windows Configuration for the virtual machine instance
+func (o VirtualMachineInstancePropertiesOsProfileOutput) WindowsConfiguration() VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesOsProfile) *VirtualMachineInstancePropertiesWindowsConfiguration {
+		return v.WindowsConfiguration
+	}).(VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesOsProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesOsProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesOsProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesOsProfilePtrOutput) ToVirtualMachineInstancePropertiesOsProfilePtrOutput() VirtualMachineInstancePropertiesOsProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesOsProfilePtrOutput) ToVirtualMachineInstancePropertiesOsProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesOsProfilePtrOutput) Elem() VirtualMachineInstancePropertiesOsProfileOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesOsProfile) VirtualMachineInstancePropertiesOsProfile {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesOsProfile
+		return ret
+	}).(VirtualMachineInstancePropertiesOsProfileOutput)
+}
+
+// AdminPassword - admin password
+func (o VirtualMachineInstancePropertiesOsProfilePtrOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesOsProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// AdminUsername - admin username
+func (o VirtualMachineInstancePropertiesOsProfilePtrOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesOsProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// ComputerName - name of the compute
+func (o VirtualMachineInstancePropertiesOsProfilePtrOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesOsProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// LinuxConfiguration - linux specific configuration values for the virtual machine instance
+func (o VirtualMachineInstancePropertiesOsProfilePtrOutput) LinuxConfiguration() VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesOsProfile) *VirtualMachineInstancePropertiesLinuxConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.LinuxConfiguration
+	}).(VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput)
+}
+
+// Windows Configuration for the virtual machine instance
+func (o VirtualMachineInstancePropertiesOsProfilePtrOutput) WindowsConfiguration() VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesOsProfile) *VirtualMachineInstancePropertiesWindowsConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.WindowsConfiguration
+	}).(VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseDataDisks struct {
+	// Resource ID of the data disk
+	Id *string `pulumi:"id"`
+}
+
+type VirtualMachineInstancePropertiesResponseDataDisksOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseDataDisksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseDataDisks)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseDataDisksOutput) ToVirtualMachineInstancePropertiesResponseDataDisksOutput() VirtualMachineInstancePropertiesResponseDataDisksOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseDataDisksOutput) ToVirtualMachineInstancePropertiesResponseDataDisksOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseDataDisksOutput {
+	return o
+}
+
+// Resource ID of the data disk
+func (o VirtualMachineInstancePropertiesResponseDataDisksOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseDataDisks) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseDataDisksArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseDataDisksArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineInstancePropertiesResponseDataDisks)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseDataDisksArrayOutput) ToVirtualMachineInstancePropertiesResponseDataDisksArrayOutput() VirtualMachineInstancePropertiesResponseDataDisksArrayOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseDataDisksArrayOutput) ToVirtualMachineInstancePropertiesResponseDataDisksArrayOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseDataDisksArrayOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseDataDisksArrayOutput) Index(i pulumi.IntInput) VirtualMachineInstancePropertiesResponseDataDisksOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineInstancePropertiesResponseDataDisks {
+		return vs[0].([]VirtualMachineInstancePropertiesResponseDataDisks)[vs[1].(int)]
+	}).(VirtualMachineInstancePropertiesResponseDataDisksOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseDynamicMemoryConfig struct {
+	MaximumMemoryMB *float64 `pulumi:"maximumMemoryMB"`
+	MinimumMemoryMB *float64 `pulumi:"minimumMemoryMB"`
+	// Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000.
+	TargetMemoryBuffer *int `pulumi:"targetMemoryBuffer"`
+}
+
+type VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseDynamicMemoryConfig)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput) ToVirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput() VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput) ToVirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput) MaximumMemoryMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseDynamicMemoryConfig) *float64 { return v.MaximumMemoryMB }).(pulumi.Float64PtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput) MinimumMemoryMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseDynamicMemoryConfig) *float64 { return v.MinimumMemoryMB }).(pulumi.Float64PtrOutput)
+}
+
+// Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000.
+func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput) TargetMemoryBuffer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseDynamicMemoryConfig) *int { return v.TargetMemoryBuffer }).(pulumi.IntPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesResponseDynamicMemoryConfig)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput) ToVirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput() VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput) ToVirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput) Elem() VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseDynamicMemoryConfig) VirtualMachineInstancePropertiesResponseDynamicMemoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesResponseDynamicMemoryConfig
+		return ret
+	}).(VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput)
+}
+
+func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput) MaximumMemoryMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseDynamicMemoryConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumMemoryMB
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput) MinimumMemoryMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseDynamicMemoryConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumMemoryMB
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000.
+func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput) TargetMemoryBuffer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseDynamicMemoryConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetMemoryBuffer
+	}).(pulumi.IntPtrOutput)
+}
+
+// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
+type VirtualMachineInstancePropertiesResponseHardwareProfile struct {
+	DynamicMemoryConfig *VirtualMachineInstancePropertiesResponseDynamicMemoryConfig `pulumi:"dynamicMemoryConfig"`
+	// RAM in MB for the virtual machine instance
+	MemoryMB *float64 `pulumi:"memoryMB"`
+	// number of processors for the virtual machine instance
+	Processors *int    `pulumi:"processors"`
+	VmSize     *string `pulumi:"vmSize"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesResponseHardwareProfile
+func (val *VirtualMachineInstancePropertiesResponseHardwareProfile) Defaults() *VirtualMachineInstancePropertiesResponseHardwareProfile {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.VmSize == nil {
+		vmSize_ := "Default"
+		tmp.VmSize = &vmSize_
+	}
+	return &tmp
+}
+
+// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
+type VirtualMachineInstancePropertiesResponseHardwareProfileOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseHardwareProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseHardwareProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseHardwareProfileOutput) ToVirtualMachineInstancePropertiesResponseHardwareProfileOutput() VirtualMachineInstancePropertiesResponseHardwareProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseHardwareProfileOutput) ToVirtualMachineInstancePropertiesResponseHardwareProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseHardwareProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseHardwareProfileOutput) DynamicMemoryConfig() VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseHardwareProfile) *VirtualMachineInstancePropertiesResponseDynamicMemoryConfig {
+		return v.DynamicMemoryConfig
+	}).(VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput)
+}
+
+// RAM in MB for the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseHardwareProfileOutput) MemoryMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseHardwareProfile) *float64 { return v.MemoryMB }).(pulumi.Float64PtrOutput)
+}
+
+// number of processors for the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseHardwareProfileOutput) Processors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseHardwareProfile) *int { return v.Processors }).(pulumi.IntPtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesResponseHardwareProfileOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseHardwareProfile) *string { return v.VmSize }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesResponseHardwareProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput() VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseHardwareProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput) Elem() VirtualMachineInstancePropertiesResponseHardwareProfileOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseHardwareProfile) VirtualMachineInstancePropertiesResponseHardwareProfile {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesResponseHardwareProfile
+		return ret
+	}).(VirtualMachineInstancePropertiesResponseHardwareProfileOutput)
+}
+
+func (o VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput) DynamicMemoryConfig() VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseHardwareProfile) *VirtualMachineInstancePropertiesResponseDynamicMemoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DynamicMemoryConfig
+	}).(VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput)
+}
+
+// RAM in MB for the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput) MemoryMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseHardwareProfile) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryMB
+	}).(pulumi.Float64PtrOutput)
+}
+
+// number of processors for the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput) Processors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseHardwareProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Processors
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseHardwareProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Which Image to use for the virtual machine instance
+type VirtualMachineInstancePropertiesResponseImageReference struct {
+	// Resource ID of the image
+	Id *string `pulumi:"id"`
+}
+
+// Which Image to use for the virtual machine instance
+type VirtualMachineInstancePropertiesResponseImageReferenceOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseImageReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseImageReference)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseImageReferenceOutput) ToVirtualMachineInstancePropertiesResponseImageReferenceOutput() VirtualMachineInstancePropertiesResponseImageReferenceOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseImageReferenceOutput) ToVirtualMachineInstancePropertiesResponseImageReferenceOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseImageReferenceOutput {
+	return o
+}
+
+// Resource ID of the image
+func (o VirtualMachineInstancePropertiesResponseImageReferenceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseImageReference) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseImageReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseImageReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesResponseImageReference)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseImageReferencePtrOutput) ToVirtualMachineInstancePropertiesResponseImageReferencePtrOutput() VirtualMachineInstancePropertiesResponseImageReferencePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseImageReferencePtrOutput) ToVirtualMachineInstancePropertiesResponseImageReferencePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseImageReferencePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseImageReferencePtrOutput) Elem() VirtualMachineInstancePropertiesResponseImageReferenceOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseImageReference) VirtualMachineInstancePropertiesResponseImageReference {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesResponseImageReference
+		return ret
+	}).(VirtualMachineInstancePropertiesResponseImageReferenceOutput)
+}
+
+// Resource ID of the image
+func (o VirtualMachineInstancePropertiesResponseImageReferencePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseImageReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// LinuxConfiguration - linux specific configuration values for the virtual machine instance
+type VirtualMachineInstancePropertiesResponseLinuxConfiguration struct {
+	// DisablePasswordAuthentication - whether password authentication should be disabled
+	DisablePasswordAuthentication *bool `pulumi:"disablePasswordAuthentication"`
+	// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+	ProvisionVMAgent *bool `pulumi:"provisionVMAgent"`
+	// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+	ProvisionVMConfigAgent *bool `pulumi:"provisionVMConfigAgent"`
+	// Specifies the ssh key configuration for a Linux OS.
+	Ssh *SshConfigurationResponse `pulumi:"ssh"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesResponseLinuxConfiguration
+func (val *VirtualMachineInstancePropertiesResponseLinuxConfiguration) Defaults() *VirtualMachineInstancePropertiesResponseLinuxConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ProvisionVMAgent == nil {
+		provisionVMAgent_ := true
+		tmp.ProvisionVMAgent = &provisionVMAgent_
+	}
+	if tmp.ProvisionVMConfigAgent == nil {
+		provisionVMConfigAgent_ := true
+		tmp.ProvisionVMConfigAgent = &provisionVMConfigAgent_
+	}
+	return &tmp
+}
+
+// LinuxConfiguration - linux specific configuration values for the virtual machine instance
+type VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseLinuxConfiguration)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput) ToVirtualMachineInstancePropertiesResponseLinuxConfigurationOutput() VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput) ToVirtualMachineInstancePropertiesResponseLinuxConfigurationOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput {
+	return o
+}
+
+// DisablePasswordAuthentication - whether password authentication should be disabled
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput) DisablePasswordAuthentication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseLinuxConfiguration) *bool {
+		return v.DisablePasswordAuthentication
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseLinuxConfiguration) *bool { return v.ProvisionVMAgent }).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput) ProvisionVMConfigAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseLinuxConfiguration) *bool {
+		return v.ProvisionVMConfigAgent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the ssh key configuration for a Linux OS.
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput) Ssh() SshConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseLinuxConfiguration) *SshConfigurationResponse {
+		return v.Ssh
+	}).(SshConfigurationResponsePtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesResponseLinuxConfiguration)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput) ToVirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput() VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput) ToVirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput) Elem() VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseLinuxConfiguration) VirtualMachineInstancePropertiesResponseLinuxConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesResponseLinuxConfiguration
+		return ret
+	}).(VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput)
+}
+
+// DisablePasswordAuthentication - whether password authentication should be disabled
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput) DisablePasswordAuthentication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseLinuxConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePasswordAuthentication
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseLinuxConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionVMAgent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput) ProvisionVMConfigAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseLinuxConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionVMConfigAgent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the ssh key configuration for a Linux OS.
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput) Ssh() SshConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseLinuxConfiguration) *SshConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Ssh
+	}).(SshConfigurationResponsePtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseNetworkInterfaces struct {
+	// ID - Resource Id of the network interface
+	Id *string `pulumi:"id"`
+}
+
+type VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseNetworkInterfaces)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput) ToVirtualMachineInstancePropertiesResponseNetworkInterfacesOutput() VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput) ToVirtualMachineInstancePropertiesResponseNetworkInterfacesOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput {
+	return o
+}
+
+// ID - Resource Id of the network interface
+func (o VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseNetworkInterfaces) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineInstancePropertiesResponseNetworkInterfaces)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput) ToVirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput() VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput) ToVirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput) Index(i pulumi.IntInput) VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineInstancePropertiesResponseNetworkInterfaces {
+		return vs[0].([]VirtualMachineInstancePropertiesResponseNetworkInterfaces)[vs[1].(int)]
+	}).(VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput)
+}
+
+// NetworkProfile - describes the network configuration the virtual machine instance
+type VirtualMachineInstancePropertiesResponseNetworkProfile struct {
+	// NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
+	NetworkInterfaces []VirtualMachineInstancePropertiesResponseNetworkInterfaces `pulumi:"networkInterfaces"`
+}
+
+// NetworkProfile - describes the network configuration the virtual machine instance
+type VirtualMachineInstancePropertiesResponseNetworkProfileOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseNetworkProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseNetworkProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseNetworkProfileOutput) ToVirtualMachineInstancePropertiesResponseNetworkProfileOutput() VirtualMachineInstancePropertiesResponseNetworkProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseNetworkProfileOutput) ToVirtualMachineInstancePropertiesResponseNetworkProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseNetworkProfileOutput {
+	return o
+}
+
+// NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseNetworkProfileOutput) NetworkInterfaces() VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseNetworkProfile) []VirtualMachineInstancePropertiesResponseNetworkInterfaces {
+		return v.NetworkInterfaces
+	}).(VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesResponseNetworkProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput() VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseNetworkProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput) Elem() VirtualMachineInstancePropertiesResponseNetworkProfileOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseNetworkProfile) VirtualMachineInstancePropertiesResponseNetworkProfile {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesResponseNetworkProfile
+		return ret
+	}).(VirtualMachineInstancePropertiesResponseNetworkProfileOutput)
+}
+
+// NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput) NetworkInterfaces() VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseNetworkProfile) []VirtualMachineInstancePropertiesResponseNetworkInterfaces {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput)
+}
+
+// VHD to attach as OS disk
+type VirtualMachineInstancePropertiesResponseOsDisk struct {
+	// Resource ID of the OS disk
+	Id *string `pulumi:"id"`
+	// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
+	OsType *string `pulumi:"osType"`
+}
+
+// VHD to attach as OS disk
+type VirtualMachineInstancePropertiesResponseOsDiskOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseOsDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseOsDisk)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseOsDiskOutput) ToVirtualMachineInstancePropertiesResponseOsDiskOutput() VirtualMachineInstancePropertiesResponseOsDiskOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseOsDiskOutput) ToVirtualMachineInstancePropertiesResponseOsDiskOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseOsDiskOutput {
+	return o
+}
+
+// Resource ID of the OS disk
+func (o VirtualMachineInstancePropertiesResponseOsDiskOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseOsDisk) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
+func (o VirtualMachineInstancePropertiesResponseOsDiskOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseOsDisk) *string { return v.OsType }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseOsDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseOsDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesResponseOsDisk)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseOsDiskPtrOutput) ToVirtualMachineInstancePropertiesResponseOsDiskPtrOutput() VirtualMachineInstancePropertiesResponseOsDiskPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseOsDiskPtrOutput) ToVirtualMachineInstancePropertiesResponseOsDiskPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseOsDiskPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseOsDiskPtrOutput) Elem() VirtualMachineInstancePropertiesResponseOsDiskOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseOsDisk) VirtualMachineInstancePropertiesResponseOsDisk {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesResponseOsDisk
+		return ret
+	}).(VirtualMachineInstancePropertiesResponseOsDiskOutput)
+}
+
+// Resource ID of the OS disk
+func (o VirtualMachineInstancePropertiesResponseOsDiskPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseOsDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
+func (o VirtualMachineInstancePropertiesResponseOsDiskPtrOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseOsDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// OsProfile - describes the configuration of the operating system and sets login data
+type VirtualMachineInstancePropertiesResponseOsProfile struct {
+	// AdminUsername - admin username
+	AdminUsername *string `pulumi:"adminUsername"`
+	// ComputerName - name of the compute
+	ComputerName *string `pulumi:"computerName"`
+	// LinuxConfiguration - linux specific configuration values for the virtual machine instance
+	LinuxConfiguration *VirtualMachineInstancePropertiesResponseLinuxConfiguration `pulumi:"linuxConfiguration"`
+	// Windows Configuration for the virtual machine instance
+	WindowsConfiguration *VirtualMachineInstancePropertiesResponseWindowsConfiguration `pulumi:"windowsConfiguration"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesResponseOsProfile
+func (val *VirtualMachineInstancePropertiesResponseOsProfile) Defaults() *VirtualMachineInstancePropertiesResponseOsProfile {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.LinuxConfiguration = tmp.LinuxConfiguration.Defaults()
+
+	tmp.WindowsConfiguration = tmp.WindowsConfiguration.Defaults()
+
+	return &tmp
+}
+
+// OsProfile - describes the configuration of the operating system and sets login data
+type VirtualMachineInstancePropertiesResponseOsProfileOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseOsProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseOsProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseOsProfileOutput) ToVirtualMachineInstancePropertiesResponseOsProfileOutput() VirtualMachineInstancePropertiesResponseOsProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseOsProfileOutput) ToVirtualMachineInstancePropertiesResponseOsProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseOsProfileOutput {
+	return o
+}
+
+// AdminUsername - admin username
+func (o VirtualMachineInstancePropertiesResponseOsProfileOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseOsProfile) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
+}
+
+// ComputerName - name of the compute
+func (o VirtualMachineInstancePropertiesResponseOsProfileOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseOsProfile) *string { return v.ComputerName }).(pulumi.StringPtrOutput)
+}
+
+// LinuxConfiguration - linux specific configuration values for the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseOsProfileOutput) LinuxConfiguration() VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseOsProfile) *VirtualMachineInstancePropertiesResponseLinuxConfiguration {
+		return v.LinuxConfiguration
+	}).(VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput)
+}
+
+// Windows Configuration for the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseOsProfileOutput) WindowsConfiguration() VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseOsProfile) *VirtualMachineInstancePropertiesResponseWindowsConfiguration {
+		return v.WindowsConfiguration
+	}).(VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseOsProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseOsProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesResponseOsProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseOsProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseOsProfilePtrOutput() VirtualMachineInstancePropertiesResponseOsProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseOsProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseOsProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseOsProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseOsProfilePtrOutput) Elem() VirtualMachineInstancePropertiesResponseOsProfileOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseOsProfile) VirtualMachineInstancePropertiesResponseOsProfile {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesResponseOsProfile
+		return ret
+	}).(VirtualMachineInstancePropertiesResponseOsProfileOutput)
+}
+
+// AdminUsername - admin username
+func (o VirtualMachineInstancePropertiesResponseOsProfilePtrOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseOsProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// ComputerName - name of the compute
+func (o VirtualMachineInstancePropertiesResponseOsProfilePtrOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseOsProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// LinuxConfiguration - linux specific configuration values for the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseOsProfilePtrOutput) LinuxConfiguration() VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseOsProfile) *VirtualMachineInstancePropertiesResponseLinuxConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.LinuxConfiguration
+	}).(VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput)
+}
+
+// Windows Configuration for the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseOsProfilePtrOutput) WindowsConfiguration() VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseOsProfile) *VirtualMachineInstancePropertiesResponseWindowsConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.WindowsConfiguration
+	}).(VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput)
+}
+
+// SecurityProfile - Specifies the security settings for the virtual machine instance.
+type VirtualMachineInstancePropertiesResponseSecurityProfile struct {
+	EnableTPM *bool `pulumi:"enableTPM"`
+	// Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
+	SecurityType *string                                               `pulumi:"securityType"`
+	UefiSettings *VirtualMachineInstancePropertiesResponseUefiSettings `pulumi:"uefiSettings"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesResponseSecurityProfile
+func (val *VirtualMachineInstancePropertiesResponseSecurityProfile) Defaults() *VirtualMachineInstancePropertiesResponseSecurityProfile {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableTPM == nil {
+		enableTPM_ := false
+		tmp.EnableTPM = &enableTPM_
+	}
+	tmp.UefiSettings = tmp.UefiSettings.Defaults()
+
+	return &tmp
+}
+
+// SecurityProfile - Specifies the security settings for the virtual machine instance.
+type VirtualMachineInstancePropertiesResponseSecurityProfileOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseSecurityProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseSecurityProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseSecurityProfileOutput) ToVirtualMachineInstancePropertiesResponseSecurityProfileOutput() VirtualMachineInstancePropertiesResponseSecurityProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseSecurityProfileOutput) ToVirtualMachineInstancePropertiesResponseSecurityProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseSecurityProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseSecurityProfileOutput) EnableTPM() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseSecurityProfile) *bool { return v.EnableTPM }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
+func (o VirtualMachineInstancePropertiesResponseSecurityProfileOutput) SecurityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseSecurityProfile) *string { return v.SecurityType }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesResponseSecurityProfileOutput) UefiSettings() VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseSecurityProfile) *VirtualMachineInstancePropertiesResponseUefiSettings {
+		return v.UefiSettings
+	}).(VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesResponseSecurityProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput() VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseSecurityProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput) Elem() VirtualMachineInstancePropertiesResponseSecurityProfileOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseSecurityProfile) VirtualMachineInstancePropertiesResponseSecurityProfile {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesResponseSecurityProfile
+		return ret
+	}).(VirtualMachineInstancePropertiesResponseSecurityProfileOutput)
+}
+
+func (o VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput) EnableTPM() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseSecurityProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableTPM
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
+func (o VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput) SecurityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseSecurityProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput) UefiSettings() VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseSecurityProfile) *VirtualMachineInstancePropertiesResponseUefiSettings {
+		if v == nil {
+			return nil
+		}
+		return v.UefiSettings
+	}).(VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput)
+}
+
+// StorageProfile - contains information about the disks and storage information for the virtual machine instance
+type VirtualMachineInstancePropertiesResponseStorageProfile struct {
+	// adds data disks to the virtual machine instance
+	DataDisks []VirtualMachineInstancePropertiesResponseDataDisks `pulumi:"dataDisks"`
+	// Which Image to use for the virtual machine instance
+	ImageReference *VirtualMachineInstancePropertiesResponseImageReference `pulumi:"imageReference"`
+	// VHD to attach as OS disk
+	OsDisk *VirtualMachineInstancePropertiesResponseOsDisk `pulumi:"osDisk"`
+	// Id of the storage container that hosts the VM configuration file
+	VmConfigStoragePathId *string `pulumi:"vmConfigStoragePathId"`
+}
+
+// StorageProfile - contains information about the disks and storage information for the virtual machine instance
+type VirtualMachineInstancePropertiesResponseStorageProfileOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseStorageProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseStorageProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseStorageProfileOutput) ToVirtualMachineInstancePropertiesResponseStorageProfileOutput() VirtualMachineInstancePropertiesResponseStorageProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseStorageProfileOutput) ToVirtualMachineInstancePropertiesResponseStorageProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseStorageProfileOutput {
+	return o
+}
+
+// adds data disks to the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseStorageProfileOutput) DataDisks() VirtualMachineInstancePropertiesResponseDataDisksArrayOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseStorageProfile) []VirtualMachineInstancePropertiesResponseDataDisks {
+		return v.DataDisks
+	}).(VirtualMachineInstancePropertiesResponseDataDisksArrayOutput)
+}
+
+// Which Image to use for the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseStorageProfileOutput) ImageReference() VirtualMachineInstancePropertiesResponseImageReferencePtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseStorageProfile) *VirtualMachineInstancePropertiesResponseImageReference {
+		return v.ImageReference
+	}).(VirtualMachineInstancePropertiesResponseImageReferencePtrOutput)
+}
+
+// VHD to attach as OS disk
+func (o VirtualMachineInstancePropertiesResponseStorageProfileOutput) OsDisk() VirtualMachineInstancePropertiesResponseOsDiskPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseStorageProfile) *VirtualMachineInstancePropertiesResponseOsDisk {
+		return v.OsDisk
+	}).(VirtualMachineInstancePropertiesResponseOsDiskPtrOutput)
+}
+
+// Id of the storage container that hosts the VM configuration file
+func (o VirtualMachineInstancePropertiesResponseStorageProfileOutput) VmConfigStoragePathId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseStorageProfile) *string { return v.VmConfigStoragePathId }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesResponseStorageProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseStorageProfilePtrOutput() VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseStorageProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput) Elem() VirtualMachineInstancePropertiesResponseStorageProfileOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseStorageProfile) VirtualMachineInstancePropertiesResponseStorageProfile {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesResponseStorageProfile
+		return ret
+	}).(VirtualMachineInstancePropertiesResponseStorageProfileOutput)
+}
+
+// adds data disks to the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput) DataDisks() VirtualMachineInstancePropertiesResponseDataDisksArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseStorageProfile) []VirtualMachineInstancePropertiesResponseDataDisks {
+		if v == nil {
+			return nil
+		}
+		return v.DataDisks
+	}).(VirtualMachineInstancePropertiesResponseDataDisksArrayOutput)
+}
+
+// Which Image to use for the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput) ImageReference() VirtualMachineInstancePropertiesResponseImageReferencePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseStorageProfile) *VirtualMachineInstancePropertiesResponseImageReference {
+		if v == nil {
+			return nil
+		}
+		return v.ImageReference
+	}).(VirtualMachineInstancePropertiesResponseImageReferencePtrOutput)
+}
+
+// VHD to attach as OS disk
+func (o VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput) OsDisk() VirtualMachineInstancePropertiesResponseOsDiskPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseStorageProfile) *VirtualMachineInstancePropertiesResponseOsDisk {
+		if v == nil {
+			return nil
+		}
+		return v.OsDisk
+	}).(VirtualMachineInstancePropertiesResponseOsDiskPtrOutput)
+}
+
+// Id of the storage container that hosts the VM configuration file
+func (o VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput) VmConfigStoragePathId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseStorageProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmConfigStoragePathId
+	}).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseUefiSettings struct {
+	// Specifies whether secure boot should be enabled on the virtual machine instance.
+	SecureBootEnabled *bool `pulumi:"secureBootEnabled"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesResponseUefiSettings
+func (val *VirtualMachineInstancePropertiesResponseUefiSettings) Defaults() *VirtualMachineInstancePropertiesResponseUefiSettings {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SecureBootEnabled == nil {
+		secureBootEnabled_ := false
+		tmp.SecureBootEnabled = &secureBootEnabled_
+	}
+	return &tmp
+}
+
+type VirtualMachineInstancePropertiesResponseUefiSettingsOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseUefiSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseUefiSettings)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseUefiSettingsOutput) ToVirtualMachineInstancePropertiesResponseUefiSettingsOutput() VirtualMachineInstancePropertiesResponseUefiSettingsOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseUefiSettingsOutput) ToVirtualMachineInstancePropertiesResponseUefiSettingsOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseUefiSettingsOutput {
+	return o
+}
+
+// Specifies whether secure boot should be enabled on the virtual machine instance.
+func (o VirtualMachineInstancePropertiesResponseUefiSettingsOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseUefiSettings) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesResponseUefiSettings)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput) ToVirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput() VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput) ToVirtualMachineInstancePropertiesResponseUefiSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput) Elem() VirtualMachineInstancePropertiesResponseUefiSettingsOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseUefiSettings) VirtualMachineInstancePropertiesResponseUefiSettings {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesResponseUefiSettings
+		return ret
+	}).(VirtualMachineInstancePropertiesResponseUefiSettingsOutput)
+}
+
+// Specifies whether secure boot should be enabled on the virtual machine instance.
+func (o VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseUefiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecureBootEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Windows Configuration for the virtual machine instance
+type VirtualMachineInstancePropertiesResponseWindowsConfiguration struct {
+	// Whether to EnableAutomaticUpdates on the machine
+	EnableAutomaticUpdates *bool `pulumi:"enableAutomaticUpdates"`
+	// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+	ProvisionVMAgent *bool `pulumi:"provisionVMAgent"`
+	// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+	ProvisionVMConfigAgent *bool `pulumi:"provisionVMConfigAgent"`
+	// Specifies the ssh key configuration for Windows OS.
+	Ssh *SshConfigurationResponse `pulumi:"ssh"`
+	// TimeZone for the virtual machine instance
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesResponseWindowsConfiguration
+func (val *VirtualMachineInstancePropertiesResponseWindowsConfiguration) Defaults() *VirtualMachineInstancePropertiesResponseWindowsConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ProvisionVMAgent == nil {
+		provisionVMAgent_ := true
+		tmp.ProvisionVMAgent = &provisionVMAgent_
+	}
+	if tmp.ProvisionVMConfigAgent == nil {
+		provisionVMConfigAgent_ := true
+		tmp.ProvisionVMConfigAgent = &provisionVMConfigAgent_
+	}
+	return &tmp
+}
+
+// Windows Configuration for the virtual machine instance
+type VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseWindowsConfiguration)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput) ToVirtualMachineInstancePropertiesResponseWindowsConfigurationOutput() VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput) ToVirtualMachineInstancePropertiesResponseWindowsConfigurationOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput {
+	return o
+}
+
+// Whether to EnableAutomaticUpdates on the machine
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput) EnableAutomaticUpdates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseWindowsConfiguration) *bool {
+		return v.EnableAutomaticUpdates
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseWindowsConfiguration) *bool { return v.ProvisionVMAgent }).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput) ProvisionVMConfigAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseWindowsConfiguration) *bool {
+		return v.ProvisionVMConfigAgent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the ssh key configuration for Windows OS.
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput) Ssh() SshConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseWindowsConfiguration) *SshConfigurationResponse {
+		return v.Ssh
+	}).(SshConfigurationResponsePtrOutput)
+}
+
+// TimeZone for the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseWindowsConfiguration) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesResponseWindowsConfiguration)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput) ToVirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput() VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput) ToVirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput) Elem() VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseWindowsConfiguration) VirtualMachineInstancePropertiesResponseWindowsConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesResponseWindowsConfiguration
+		return ret
+	}).(VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput)
+}
+
+// Whether to EnableAutomaticUpdates on the machine
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput) EnableAutomaticUpdates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseWindowsConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutomaticUpdates
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseWindowsConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionVMAgent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput) ProvisionVMConfigAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseWindowsConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionVMConfigAgent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the ssh key configuration for Windows OS.
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput) Ssh() SshConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseWindowsConfiguration) *SshConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Ssh
+	}).(SshConfigurationResponsePtrOutput)
+}
+
+// TimeZone for the virtual machine instance
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesResponseWindowsConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityProfile - Specifies the security settings for the virtual machine instance.
+type VirtualMachineInstancePropertiesSecurityProfile struct {
+	EnableTPM *bool `pulumi:"enableTPM"`
+	// Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
+	SecurityType *string                                       `pulumi:"securityType"`
+	UefiSettings *VirtualMachineInstancePropertiesUefiSettings `pulumi:"uefiSettings"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesSecurityProfile
+func (val *VirtualMachineInstancePropertiesSecurityProfile) Defaults() *VirtualMachineInstancePropertiesSecurityProfile {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableTPM == nil {
+		enableTPM_ := false
+		tmp.EnableTPM = &enableTPM_
+	}
+	tmp.UefiSettings = tmp.UefiSettings.Defaults()
+
+	return &tmp
+}
+
+// VirtualMachineInstancePropertiesSecurityProfileInput is an input type that accepts VirtualMachineInstancePropertiesSecurityProfileArgs and VirtualMachineInstancePropertiesSecurityProfileOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesSecurityProfileInput` via:
+//
+//	VirtualMachineInstancePropertiesSecurityProfileArgs{...}
+type VirtualMachineInstancePropertiesSecurityProfileInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesSecurityProfileOutput() VirtualMachineInstancePropertiesSecurityProfileOutput
+	ToVirtualMachineInstancePropertiesSecurityProfileOutputWithContext(context.Context) VirtualMachineInstancePropertiesSecurityProfileOutput
+}
+
+// SecurityProfile - Specifies the security settings for the virtual machine instance.
+type VirtualMachineInstancePropertiesSecurityProfileArgs struct {
+	EnableTPM pulumi.BoolPtrInput `pulumi:"enableTPM"`
+	// Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
+	SecurityType pulumi.StringPtrInput                                `pulumi:"securityType"`
+	UefiSettings VirtualMachineInstancePropertiesUefiSettingsPtrInput `pulumi:"uefiSettings"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesSecurityProfileArgs
+func (val *VirtualMachineInstancePropertiesSecurityProfileArgs) Defaults() *VirtualMachineInstancePropertiesSecurityProfileArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableTPM == nil {
+		tmp.EnableTPM = pulumi.BoolPtr(false)
+	}
+
+	return &tmp
+}
+func (VirtualMachineInstancePropertiesSecurityProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesSecurityProfile)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesSecurityProfileArgs) ToVirtualMachineInstancePropertiesSecurityProfileOutput() VirtualMachineInstancePropertiesSecurityProfileOutput {
+	return i.ToVirtualMachineInstancePropertiesSecurityProfileOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesSecurityProfileArgs) ToVirtualMachineInstancePropertiesSecurityProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesSecurityProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesSecurityProfileOutput)
+}
+
+func (i VirtualMachineInstancePropertiesSecurityProfileArgs) ToVirtualMachineInstancePropertiesSecurityProfilePtrOutput() VirtualMachineInstancePropertiesSecurityProfilePtrOutput {
+	return i.ToVirtualMachineInstancePropertiesSecurityProfilePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesSecurityProfileArgs) ToVirtualMachineInstancePropertiesSecurityProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesSecurityProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesSecurityProfileOutput).ToVirtualMachineInstancePropertiesSecurityProfilePtrOutputWithContext(ctx)
+}
+
+// VirtualMachineInstancePropertiesSecurityProfilePtrInput is an input type that accepts VirtualMachineInstancePropertiesSecurityProfileArgs, VirtualMachineInstancePropertiesSecurityProfilePtr and VirtualMachineInstancePropertiesSecurityProfilePtrOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesSecurityProfilePtrInput` via:
+//
+//	        VirtualMachineInstancePropertiesSecurityProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineInstancePropertiesSecurityProfilePtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesSecurityProfilePtrOutput() VirtualMachineInstancePropertiesSecurityProfilePtrOutput
+	ToVirtualMachineInstancePropertiesSecurityProfilePtrOutputWithContext(context.Context) VirtualMachineInstancePropertiesSecurityProfilePtrOutput
+}
+
+type virtualMachineInstancePropertiesSecurityProfilePtrType VirtualMachineInstancePropertiesSecurityProfileArgs
+
+func VirtualMachineInstancePropertiesSecurityProfilePtr(v *VirtualMachineInstancePropertiesSecurityProfileArgs) VirtualMachineInstancePropertiesSecurityProfilePtrInput {
+	return (*virtualMachineInstancePropertiesSecurityProfilePtrType)(v)
+}
+
+func (*virtualMachineInstancePropertiesSecurityProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesSecurityProfile)(nil)).Elem()
+}
+
+func (i *virtualMachineInstancePropertiesSecurityProfilePtrType) ToVirtualMachineInstancePropertiesSecurityProfilePtrOutput() VirtualMachineInstancePropertiesSecurityProfilePtrOutput {
+	return i.ToVirtualMachineInstancePropertiesSecurityProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineInstancePropertiesSecurityProfilePtrType) ToVirtualMachineInstancePropertiesSecurityProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesSecurityProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesSecurityProfilePtrOutput)
+}
+
+// SecurityProfile - Specifies the security settings for the virtual machine instance.
+type VirtualMachineInstancePropertiesSecurityProfileOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesSecurityProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesSecurityProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesSecurityProfileOutput) ToVirtualMachineInstancePropertiesSecurityProfileOutput() VirtualMachineInstancePropertiesSecurityProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesSecurityProfileOutput) ToVirtualMachineInstancePropertiesSecurityProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesSecurityProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesSecurityProfileOutput) ToVirtualMachineInstancePropertiesSecurityProfilePtrOutput() VirtualMachineInstancePropertiesSecurityProfilePtrOutput {
+	return o.ToVirtualMachineInstancePropertiesSecurityProfilePtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineInstancePropertiesSecurityProfileOutput) ToVirtualMachineInstancePropertiesSecurityProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesSecurityProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesSecurityProfile) *VirtualMachineInstancePropertiesSecurityProfile {
+		return &v
+	}).(VirtualMachineInstancePropertiesSecurityProfilePtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesSecurityProfileOutput) EnableTPM() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesSecurityProfile) *bool { return v.EnableTPM }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
+func (o VirtualMachineInstancePropertiesSecurityProfileOutput) SecurityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesSecurityProfile) *string { return v.SecurityType }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesSecurityProfileOutput) UefiSettings() VirtualMachineInstancePropertiesUefiSettingsPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesSecurityProfile) *VirtualMachineInstancePropertiesUefiSettings {
+		return v.UefiSettings
+	}).(VirtualMachineInstancePropertiesUefiSettingsPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesSecurityProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesSecurityProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesSecurityProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesSecurityProfilePtrOutput) ToVirtualMachineInstancePropertiesSecurityProfilePtrOutput() VirtualMachineInstancePropertiesSecurityProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesSecurityProfilePtrOutput) ToVirtualMachineInstancePropertiesSecurityProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesSecurityProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesSecurityProfilePtrOutput) Elem() VirtualMachineInstancePropertiesSecurityProfileOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesSecurityProfile) VirtualMachineInstancePropertiesSecurityProfile {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesSecurityProfile
+		return ret
+	}).(VirtualMachineInstancePropertiesSecurityProfileOutput)
+}
+
+func (o VirtualMachineInstancePropertiesSecurityProfilePtrOutput) EnableTPM() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesSecurityProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableTPM
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
+func (o VirtualMachineInstancePropertiesSecurityProfilePtrOutput) SecurityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesSecurityProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesSecurityProfilePtrOutput) UefiSettings() VirtualMachineInstancePropertiesUefiSettingsPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesSecurityProfile) *VirtualMachineInstancePropertiesUefiSettings {
+		if v == nil {
+			return nil
+		}
+		return v.UefiSettings
+	}).(VirtualMachineInstancePropertiesUefiSettingsPtrOutput)
+}
+
+// StorageProfile - contains information about the disks and storage information for the virtual machine instance
+type VirtualMachineInstancePropertiesStorageProfile struct {
+	// adds data disks to the virtual machine instance
+	DataDisks []VirtualMachineInstancePropertiesDataDisks `pulumi:"dataDisks"`
+	// Which Image to use for the virtual machine instance
+	ImageReference *VirtualMachineInstancePropertiesImageReference `pulumi:"imageReference"`
+	// VHD to attach as OS disk
+	OsDisk *VirtualMachineInstancePropertiesOsDisk `pulumi:"osDisk"`
+	// Id of the storage container that hosts the VM configuration file
+	VmConfigStoragePathId *string `pulumi:"vmConfigStoragePathId"`
+}
+
+// VirtualMachineInstancePropertiesStorageProfileInput is an input type that accepts VirtualMachineInstancePropertiesStorageProfileArgs and VirtualMachineInstancePropertiesStorageProfileOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesStorageProfileInput` via:
+//
+//	VirtualMachineInstancePropertiesStorageProfileArgs{...}
+type VirtualMachineInstancePropertiesStorageProfileInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesStorageProfileOutput() VirtualMachineInstancePropertiesStorageProfileOutput
+	ToVirtualMachineInstancePropertiesStorageProfileOutputWithContext(context.Context) VirtualMachineInstancePropertiesStorageProfileOutput
+}
+
+// StorageProfile - contains information about the disks and storage information for the virtual machine instance
+type VirtualMachineInstancePropertiesStorageProfileArgs struct {
+	// adds data disks to the virtual machine instance
+	DataDisks VirtualMachineInstancePropertiesDataDisksArrayInput `pulumi:"dataDisks"`
+	// Which Image to use for the virtual machine instance
+	ImageReference VirtualMachineInstancePropertiesImageReferencePtrInput `pulumi:"imageReference"`
+	// VHD to attach as OS disk
+	OsDisk VirtualMachineInstancePropertiesOsDiskPtrInput `pulumi:"osDisk"`
+	// Id of the storage container that hosts the VM configuration file
+	VmConfigStoragePathId pulumi.StringPtrInput `pulumi:"vmConfigStoragePathId"`
+}
+
+func (VirtualMachineInstancePropertiesStorageProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesStorageProfile)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesStorageProfileArgs) ToVirtualMachineInstancePropertiesStorageProfileOutput() VirtualMachineInstancePropertiesStorageProfileOutput {
+	return i.ToVirtualMachineInstancePropertiesStorageProfileOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesStorageProfileArgs) ToVirtualMachineInstancePropertiesStorageProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesStorageProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesStorageProfileOutput)
+}
+
+func (i VirtualMachineInstancePropertiesStorageProfileArgs) ToVirtualMachineInstancePropertiesStorageProfilePtrOutput() VirtualMachineInstancePropertiesStorageProfilePtrOutput {
+	return i.ToVirtualMachineInstancePropertiesStorageProfilePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesStorageProfileArgs) ToVirtualMachineInstancePropertiesStorageProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesStorageProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesStorageProfileOutput).ToVirtualMachineInstancePropertiesStorageProfilePtrOutputWithContext(ctx)
+}
+
+// VirtualMachineInstancePropertiesStorageProfilePtrInput is an input type that accepts VirtualMachineInstancePropertiesStorageProfileArgs, VirtualMachineInstancePropertiesStorageProfilePtr and VirtualMachineInstancePropertiesStorageProfilePtrOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesStorageProfilePtrInput` via:
+//
+//	        VirtualMachineInstancePropertiesStorageProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineInstancePropertiesStorageProfilePtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesStorageProfilePtrOutput() VirtualMachineInstancePropertiesStorageProfilePtrOutput
+	ToVirtualMachineInstancePropertiesStorageProfilePtrOutputWithContext(context.Context) VirtualMachineInstancePropertiesStorageProfilePtrOutput
+}
+
+type virtualMachineInstancePropertiesStorageProfilePtrType VirtualMachineInstancePropertiesStorageProfileArgs
+
+func VirtualMachineInstancePropertiesStorageProfilePtr(v *VirtualMachineInstancePropertiesStorageProfileArgs) VirtualMachineInstancePropertiesStorageProfilePtrInput {
+	return (*virtualMachineInstancePropertiesStorageProfilePtrType)(v)
+}
+
+func (*virtualMachineInstancePropertiesStorageProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesStorageProfile)(nil)).Elem()
+}
+
+func (i *virtualMachineInstancePropertiesStorageProfilePtrType) ToVirtualMachineInstancePropertiesStorageProfilePtrOutput() VirtualMachineInstancePropertiesStorageProfilePtrOutput {
+	return i.ToVirtualMachineInstancePropertiesStorageProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineInstancePropertiesStorageProfilePtrType) ToVirtualMachineInstancePropertiesStorageProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesStorageProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesStorageProfilePtrOutput)
+}
+
+// StorageProfile - contains information about the disks and storage information for the virtual machine instance
+type VirtualMachineInstancePropertiesStorageProfileOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesStorageProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesStorageProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesStorageProfileOutput) ToVirtualMachineInstancePropertiesStorageProfileOutput() VirtualMachineInstancePropertiesStorageProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesStorageProfileOutput) ToVirtualMachineInstancePropertiesStorageProfileOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesStorageProfileOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesStorageProfileOutput) ToVirtualMachineInstancePropertiesStorageProfilePtrOutput() VirtualMachineInstancePropertiesStorageProfilePtrOutput {
+	return o.ToVirtualMachineInstancePropertiesStorageProfilePtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineInstancePropertiesStorageProfileOutput) ToVirtualMachineInstancePropertiesStorageProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesStorageProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesStorageProfile) *VirtualMachineInstancePropertiesStorageProfile {
+		return &v
+	}).(VirtualMachineInstancePropertiesStorageProfilePtrOutput)
+}
+
+// adds data disks to the virtual machine instance
+func (o VirtualMachineInstancePropertiesStorageProfileOutput) DataDisks() VirtualMachineInstancePropertiesDataDisksArrayOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesStorageProfile) []VirtualMachineInstancePropertiesDataDisks {
+		return v.DataDisks
+	}).(VirtualMachineInstancePropertiesDataDisksArrayOutput)
+}
+
+// Which Image to use for the virtual machine instance
+func (o VirtualMachineInstancePropertiesStorageProfileOutput) ImageReference() VirtualMachineInstancePropertiesImageReferencePtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesStorageProfile) *VirtualMachineInstancePropertiesImageReference {
+		return v.ImageReference
+	}).(VirtualMachineInstancePropertiesImageReferencePtrOutput)
+}
+
+// VHD to attach as OS disk
+func (o VirtualMachineInstancePropertiesStorageProfileOutput) OsDisk() VirtualMachineInstancePropertiesOsDiskPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesStorageProfile) *VirtualMachineInstancePropertiesOsDisk {
+		return v.OsDisk
+	}).(VirtualMachineInstancePropertiesOsDiskPtrOutput)
+}
+
+// Id of the storage container that hosts the VM configuration file
+func (o VirtualMachineInstancePropertiesStorageProfileOutput) VmConfigStoragePathId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesStorageProfile) *string { return v.VmConfigStoragePathId }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesStorageProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesStorageProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesStorageProfile)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesStorageProfilePtrOutput) ToVirtualMachineInstancePropertiesStorageProfilePtrOutput() VirtualMachineInstancePropertiesStorageProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesStorageProfilePtrOutput) ToVirtualMachineInstancePropertiesStorageProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesStorageProfilePtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesStorageProfilePtrOutput) Elem() VirtualMachineInstancePropertiesStorageProfileOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesStorageProfile) VirtualMachineInstancePropertiesStorageProfile {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesStorageProfile
+		return ret
+	}).(VirtualMachineInstancePropertiesStorageProfileOutput)
+}
+
+// adds data disks to the virtual machine instance
+func (o VirtualMachineInstancePropertiesStorageProfilePtrOutput) DataDisks() VirtualMachineInstancePropertiesDataDisksArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesStorageProfile) []VirtualMachineInstancePropertiesDataDisks {
+		if v == nil {
+			return nil
+		}
+		return v.DataDisks
+	}).(VirtualMachineInstancePropertiesDataDisksArrayOutput)
+}
+
+// Which Image to use for the virtual machine instance
+func (o VirtualMachineInstancePropertiesStorageProfilePtrOutput) ImageReference() VirtualMachineInstancePropertiesImageReferencePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesStorageProfile) *VirtualMachineInstancePropertiesImageReference {
+		if v == nil {
+			return nil
+		}
+		return v.ImageReference
+	}).(VirtualMachineInstancePropertiesImageReferencePtrOutput)
+}
+
+// VHD to attach as OS disk
+func (o VirtualMachineInstancePropertiesStorageProfilePtrOutput) OsDisk() VirtualMachineInstancePropertiesOsDiskPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesStorageProfile) *VirtualMachineInstancePropertiesOsDisk {
+		if v == nil {
+			return nil
+		}
+		return v.OsDisk
+	}).(VirtualMachineInstancePropertiesOsDiskPtrOutput)
+}
+
+// Id of the storage container that hosts the VM configuration file
+func (o VirtualMachineInstancePropertiesStorageProfilePtrOutput) VmConfigStoragePathId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesStorageProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmConfigStoragePathId
+	}).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesUefiSettings struct {
+	// Specifies whether secure boot should be enabled on the virtual machine instance.
+	SecureBootEnabled *bool `pulumi:"secureBootEnabled"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesUefiSettings
+func (val *VirtualMachineInstancePropertiesUefiSettings) Defaults() *VirtualMachineInstancePropertiesUefiSettings {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SecureBootEnabled == nil {
+		secureBootEnabled_ := false
+		tmp.SecureBootEnabled = &secureBootEnabled_
+	}
+	return &tmp
+}
+
+// VirtualMachineInstancePropertiesUefiSettingsInput is an input type that accepts VirtualMachineInstancePropertiesUefiSettingsArgs and VirtualMachineInstancePropertiesUefiSettingsOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesUefiSettingsInput` via:
+//
+//	VirtualMachineInstancePropertiesUefiSettingsArgs{...}
+type VirtualMachineInstancePropertiesUefiSettingsInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesUefiSettingsOutput() VirtualMachineInstancePropertiesUefiSettingsOutput
+	ToVirtualMachineInstancePropertiesUefiSettingsOutputWithContext(context.Context) VirtualMachineInstancePropertiesUefiSettingsOutput
+}
+
+type VirtualMachineInstancePropertiesUefiSettingsArgs struct {
+	// Specifies whether secure boot should be enabled on the virtual machine instance.
+	SecureBootEnabled pulumi.BoolPtrInput `pulumi:"secureBootEnabled"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesUefiSettingsArgs
+func (val *VirtualMachineInstancePropertiesUefiSettingsArgs) Defaults() *VirtualMachineInstancePropertiesUefiSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SecureBootEnabled == nil {
+		tmp.SecureBootEnabled = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (VirtualMachineInstancePropertiesUefiSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesUefiSettings)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesUefiSettingsArgs) ToVirtualMachineInstancePropertiesUefiSettingsOutput() VirtualMachineInstancePropertiesUefiSettingsOutput {
+	return i.ToVirtualMachineInstancePropertiesUefiSettingsOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesUefiSettingsArgs) ToVirtualMachineInstancePropertiesUefiSettingsOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesUefiSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesUefiSettingsOutput)
+}
+
+func (i VirtualMachineInstancePropertiesUefiSettingsArgs) ToVirtualMachineInstancePropertiesUefiSettingsPtrOutput() VirtualMachineInstancePropertiesUefiSettingsPtrOutput {
+	return i.ToVirtualMachineInstancePropertiesUefiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesUefiSettingsArgs) ToVirtualMachineInstancePropertiesUefiSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesUefiSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesUefiSettingsOutput).ToVirtualMachineInstancePropertiesUefiSettingsPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineInstancePropertiesUefiSettingsPtrInput is an input type that accepts VirtualMachineInstancePropertiesUefiSettingsArgs, VirtualMachineInstancePropertiesUefiSettingsPtr and VirtualMachineInstancePropertiesUefiSettingsPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesUefiSettingsPtrInput` via:
+//
+//	        VirtualMachineInstancePropertiesUefiSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineInstancePropertiesUefiSettingsPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesUefiSettingsPtrOutput() VirtualMachineInstancePropertiesUefiSettingsPtrOutput
+	ToVirtualMachineInstancePropertiesUefiSettingsPtrOutputWithContext(context.Context) VirtualMachineInstancePropertiesUefiSettingsPtrOutput
+}
+
+type virtualMachineInstancePropertiesUefiSettingsPtrType VirtualMachineInstancePropertiesUefiSettingsArgs
+
+func VirtualMachineInstancePropertiesUefiSettingsPtr(v *VirtualMachineInstancePropertiesUefiSettingsArgs) VirtualMachineInstancePropertiesUefiSettingsPtrInput {
+	return (*virtualMachineInstancePropertiesUefiSettingsPtrType)(v)
+}
+
+func (*virtualMachineInstancePropertiesUefiSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesUefiSettings)(nil)).Elem()
+}
+
+func (i *virtualMachineInstancePropertiesUefiSettingsPtrType) ToVirtualMachineInstancePropertiesUefiSettingsPtrOutput() VirtualMachineInstancePropertiesUefiSettingsPtrOutput {
+	return i.ToVirtualMachineInstancePropertiesUefiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineInstancePropertiesUefiSettingsPtrType) ToVirtualMachineInstancePropertiesUefiSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesUefiSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesUefiSettingsPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesUefiSettingsOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesUefiSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesUefiSettings)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesUefiSettingsOutput) ToVirtualMachineInstancePropertiesUefiSettingsOutput() VirtualMachineInstancePropertiesUefiSettingsOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesUefiSettingsOutput) ToVirtualMachineInstancePropertiesUefiSettingsOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesUefiSettingsOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesUefiSettingsOutput) ToVirtualMachineInstancePropertiesUefiSettingsPtrOutput() VirtualMachineInstancePropertiesUefiSettingsPtrOutput {
+	return o.ToVirtualMachineInstancePropertiesUefiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineInstancePropertiesUefiSettingsOutput) ToVirtualMachineInstancePropertiesUefiSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesUefiSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesUefiSettings) *VirtualMachineInstancePropertiesUefiSettings {
+		return &v
+	}).(VirtualMachineInstancePropertiesUefiSettingsPtrOutput)
+}
+
+// Specifies whether secure boot should be enabled on the virtual machine instance.
+func (o VirtualMachineInstancePropertiesUefiSettingsOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesUefiSettings) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesUefiSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesUefiSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesUefiSettings)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesUefiSettingsPtrOutput) ToVirtualMachineInstancePropertiesUefiSettingsPtrOutput() VirtualMachineInstancePropertiesUefiSettingsPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesUefiSettingsPtrOutput) ToVirtualMachineInstancePropertiesUefiSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesUefiSettingsPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesUefiSettingsPtrOutput) Elem() VirtualMachineInstancePropertiesUefiSettingsOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesUefiSettings) VirtualMachineInstancePropertiesUefiSettings {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesUefiSettings
+		return ret
+	}).(VirtualMachineInstancePropertiesUefiSettingsOutput)
+}
+
+// Specifies whether secure boot should be enabled on the virtual machine instance.
+func (o VirtualMachineInstancePropertiesUefiSettingsPtrOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesUefiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecureBootEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Windows Configuration for the virtual machine instance
+type VirtualMachineInstancePropertiesWindowsConfiguration struct {
+	// Whether to EnableAutomaticUpdates on the machine
+	EnableAutomaticUpdates *bool `pulumi:"enableAutomaticUpdates"`
+	// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+	ProvisionVMAgent *bool `pulumi:"provisionVMAgent"`
+	// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+	ProvisionVMConfigAgent *bool `pulumi:"provisionVMConfigAgent"`
+	// Specifies the ssh key configuration for Windows OS.
+	Ssh *SshConfiguration `pulumi:"ssh"`
+	// TimeZone for the virtual machine instance
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesWindowsConfiguration
+func (val *VirtualMachineInstancePropertiesWindowsConfiguration) Defaults() *VirtualMachineInstancePropertiesWindowsConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ProvisionVMAgent == nil {
+		provisionVMAgent_ := true
+		tmp.ProvisionVMAgent = &provisionVMAgent_
+	}
+	if tmp.ProvisionVMConfigAgent == nil {
+		provisionVMConfigAgent_ := true
+		tmp.ProvisionVMConfigAgent = &provisionVMConfigAgent_
+	}
+	return &tmp
+}
+
+// VirtualMachineInstancePropertiesWindowsConfigurationInput is an input type that accepts VirtualMachineInstancePropertiesWindowsConfigurationArgs and VirtualMachineInstancePropertiesWindowsConfigurationOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesWindowsConfigurationInput` via:
+//
+//	VirtualMachineInstancePropertiesWindowsConfigurationArgs{...}
+type VirtualMachineInstancePropertiesWindowsConfigurationInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesWindowsConfigurationOutput() VirtualMachineInstancePropertiesWindowsConfigurationOutput
+	ToVirtualMachineInstancePropertiesWindowsConfigurationOutputWithContext(context.Context) VirtualMachineInstancePropertiesWindowsConfigurationOutput
+}
+
+// Windows Configuration for the virtual machine instance
+type VirtualMachineInstancePropertiesWindowsConfigurationArgs struct {
+	// Whether to EnableAutomaticUpdates on the machine
+	EnableAutomaticUpdates pulumi.BoolPtrInput `pulumi:"enableAutomaticUpdates"`
+	// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+	ProvisionVMAgent pulumi.BoolPtrInput `pulumi:"provisionVMAgent"`
+	// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+	ProvisionVMConfigAgent pulumi.BoolPtrInput `pulumi:"provisionVMConfigAgent"`
+	// Specifies the ssh key configuration for Windows OS.
+	Ssh SshConfigurationPtrInput `pulumi:"ssh"`
+	// TimeZone for the virtual machine instance
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+// Defaults sets the appropriate defaults for VirtualMachineInstancePropertiesWindowsConfigurationArgs
+func (val *VirtualMachineInstancePropertiesWindowsConfigurationArgs) Defaults() *VirtualMachineInstancePropertiesWindowsConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ProvisionVMAgent == nil {
+		tmp.ProvisionVMAgent = pulumi.BoolPtr(true)
+	}
+	if tmp.ProvisionVMConfigAgent == nil {
+		tmp.ProvisionVMConfigAgent = pulumi.BoolPtr(true)
+	}
+	return &tmp
+}
+func (VirtualMachineInstancePropertiesWindowsConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesWindowsConfiguration)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesWindowsConfigurationArgs) ToVirtualMachineInstancePropertiesWindowsConfigurationOutput() VirtualMachineInstancePropertiesWindowsConfigurationOutput {
+	return i.ToVirtualMachineInstancePropertiesWindowsConfigurationOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesWindowsConfigurationArgs) ToVirtualMachineInstancePropertiesWindowsConfigurationOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesWindowsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesWindowsConfigurationOutput)
+}
+
+func (i VirtualMachineInstancePropertiesWindowsConfigurationArgs) ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutput() VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput {
+	return i.ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesWindowsConfigurationArgs) ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesWindowsConfigurationOutput).ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineInstancePropertiesWindowsConfigurationPtrInput is an input type that accepts VirtualMachineInstancePropertiesWindowsConfigurationArgs, VirtualMachineInstancePropertiesWindowsConfigurationPtr and VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesWindowsConfigurationPtrInput` via:
+//
+//	        VirtualMachineInstancePropertiesWindowsConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineInstancePropertiesWindowsConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutput() VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput
+	ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutputWithContext(context.Context) VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput
+}
+
+type virtualMachineInstancePropertiesWindowsConfigurationPtrType VirtualMachineInstancePropertiesWindowsConfigurationArgs
+
+func VirtualMachineInstancePropertiesWindowsConfigurationPtr(v *VirtualMachineInstancePropertiesWindowsConfigurationArgs) VirtualMachineInstancePropertiesWindowsConfigurationPtrInput {
+	return (*virtualMachineInstancePropertiesWindowsConfigurationPtrType)(v)
+}
+
+func (*virtualMachineInstancePropertiesWindowsConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesWindowsConfiguration)(nil)).Elem()
+}
+
+func (i *virtualMachineInstancePropertiesWindowsConfigurationPtrType) ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutput() VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput {
+	return i.ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineInstancePropertiesWindowsConfigurationPtrType) ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput)
+}
+
+// Windows Configuration for the virtual machine instance
+type VirtualMachineInstancePropertiesWindowsConfigurationOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesWindowsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesWindowsConfiguration)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesWindowsConfigurationOutput) ToVirtualMachineInstancePropertiesWindowsConfigurationOutput() VirtualMachineInstancePropertiesWindowsConfigurationOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesWindowsConfigurationOutput) ToVirtualMachineInstancePropertiesWindowsConfigurationOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesWindowsConfigurationOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesWindowsConfigurationOutput) ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutput() VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput {
+	return o.ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineInstancePropertiesWindowsConfigurationOutput) ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesWindowsConfiguration) *VirtualMachineInstancePropertiesWindowsConfiguration {
+		return &v
+	}).(VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput)
+}
+
+// Whether to EnableAutomaticUpdates on the machine
+func (o VirtualMachineInstancePropertiesWindowsConfigurationOutput) EnableAutomaticUpdates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesWindowsConfiguration) *bool { return v.EnableAutomaticUpdates }).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+func (o VirtualMachineInstancePropertiesWindowsConfigurationOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesWindowsConfiguration) *bool { return v.ProvisionVMAgent }).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+func (o VirtualMachineInstancePropertiesWindowsConfigurationOutput) ProvisionVMConfigAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesWindowsConfiguration) *bool { return v.ProvisionVMConfigAgent }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the ssh key configuration for Windows OS.
+func (o VirtualMachineInstancePropertiesWindowsConfigurationOutput) Ssh() SshConfigurationPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesWindowsConfiguration) *SshConfiguration { return v.Ssh }).(SshConfigurationPtrOutput)
+}
+
+// TimeZone for the virtual machine instance
+func (o VirtualMachineInstancePropertiesWindowsConfigurationOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesWindowsConfiguration) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstancePropertiesWindowsConfiguration)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput) ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutput() VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput) ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput) Elem() VirtualMachineInstancePropertiesWindowsConfigurationOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesWindowsConfiguration) VirtualMachineInstancePropertiesWindowsConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstancePropertiesWindowsConfiguration
+		return ret
+	}).(VirtualMachineInstancePropertiesWindowsConfigurationOutput)
+}
+
+// Whether to EnableAutomaticUpdates on the machine
+func (o VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput) EnableAutomaticUpdates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesWindowsConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutomaticUpdates
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
+func (o VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesWindowsConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionVMAgent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
+func (o VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput) ProvisionVMConfigAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesWindowsConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionVMConfigAgent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the ssh key configuration for Windows OS.
+func (o VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput) Ssh() SshConfigurationPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesWindowsConfiguration) *SshConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Ssh
+	}).(SshConfigurationPtrOutput)
+}
+
+// TimeZone for the virtual machine instance
+func (o VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstancePropertiesWindowsConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The observed state of virtual machine instances
+type VirtualMachineInstanceStatusResponse struct {
+	// VirtualMachine provisioning error code
+	ErrorCode *string `pulumi:"errorCode"`
+	// Descriptive error message
+	ErrorMessage *string `pulumi:"errorMessage"`
+	// The power state of the virtual machine instance
+	PowerState         *string                                                 `pulumi:"powerState"`
+	ProvisioningStatus *VirtualMachineInstanceStatusResponseProvisioningStatus `pulumi:"provisioningStatus"`
+}
+
+// The observed state of virtual machine instances
+type VirtualMachineInstanceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstanceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstanceStatusResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineInstanceStatusResponseOutput) ToVirtualMachineInstanceStatusResponseOutput() VirtualMachineInstanceStatusResponseOutput {
+	return o
+}
+
+func (o VirtualMachineInstanceStatusResponseOutput) ToVirtualMachineInstanceStatusResponseOutputWithContext(ctx context.Context) VirtualMachineInstanceStatusResponseOutput {
+	return o
+}
+
+// VirtualMachine provisioning error code
+func (o VirtualMachineInstanceStatusResponseOutput) ErrorCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstanceStatusResponse) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
+}
+
+// Descriptive error message
+func (o VirtualMachineInstanceStatusResponseOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstanceStatusResponse) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+// The power state of the virtual machine instance
+func (o VirtualMachineInstanceStatusResponseOutput) PowerState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstanceStatusResponse) *string { return v.PowerState }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineInstanceStatusResponseOutput) ProvisioningStatus() VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstanceStatusResponse) *VirtualMachineInstanceStatusResponseProvisioningStatus {
+		return v.ProvisioningStatus
+	}).(VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput)
+}
+
+type VirtualMachineInstanceStatusResponseProvisioningStatus struct {
+	// The ID of the operation performed on the virtual machine instance
+	OperationId *string `pulumi:"operationId"`
+	// The status of the operation performed on the virtual machine instance [Succeeded, Failed, InProgress]
+	Status *string `pulumi:"status"`
+}
+
+type VirtualMachineInstanceStatusResponseProvisioningStatusOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstanceStatusResponseProvisioningStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstanceStatusResponseProvisioningStatus)(nil)).Elem()
+}
+
+func (o VirtualMachineInstanceStatusResponseProvisioningStatusOutput) ToVirtualMachineInstanceStatusResponseProvisioningStatusOutput() VirtualMachineInstanceStatusResponseProvisioningStatusOutput {
+	return o
+}
+
+func (o VirtualMachineInstanceStatusResponseProvisioningStatusOutput) ToVirtualMachineInstanceStatusResponseProvisioningStatusOutputWithContext(ctx context.Context) VirtualMachineInstanceStatusResponseProvisioningStatusOutput {
+	return o
+}
+
+// The ID of the operation performed on the virtual machine instance
+func (o VirtualMachineInstanceStatusResponseProvisioningStatusOutput) OperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstanceStatusResponseProvisioningStatus) *string { return v.OperationId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the operation performed on the virtual machine instance [Succeeded, Failed, InProgress]
+func (o VirtualMachineInstanceStatusResponseProvisioningStatusOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstanceStatusResponseProvisioningStatus) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineInstanceStatusResponseProvisioningStatus)(nil)).Elem()
+}
+
+func (o VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput) ToVirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput() VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput) ToVirtualMachineInstanceStatusResponseProvisioningStatusPtrOutputWithContext(ctx context.Context) VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput {
+	return o
+}
+
+func (o VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput) Elem() VirtualMachineInstanceStatusResponseProvisioningStatusOutput {
+	return o.ApplyT(func(v *VirtualMachineInstanceStatusResponseProvisioningStatus) VirtualMachineInstanceStatusResponseProvisioningStatus {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineInstanceStatusResponseProvisioningStatus
+		return ret
+	}).(VirtualMachineInstanceStatusResponseProvisioningStatusOutput)
+}
+
+// The ID of the operation performed on the virtual machine instance
+func (o VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput) OperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstanceStatusResponseProvisioningStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The status of the operation performed on the virtual machine instance [Succeeded, Failed, InProgress]
+func (o VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstanceStatusResponseProvisioningStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// The instance view of a virtual machine.
+type VirtualMachineInstanceViewResponse struct {
+	// The VM Config Agent running on the virtual machine.
+	VmAgent *VirtualMachineVMConfigAgentInstanceViewResponse `pulumi:"vmAgent"`
+}
+
+// The instance view of a virtual machine.
+type VirtualMachineInstanceViewResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstanceViewResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstanceViewResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineInstanceViewResponseOutput) ToVirtualMachineInstanceViewResponseOutput() VirtualMachineInstanceViewResponseOutput {
+	return o
+}
+
+func (o VirtualMachineInstanceViewResponseOutput) ToVirtualMachineInstanceViewResponseOutputWithContext(ctx context.Context) VirtualMachineInstanceViewResponseOutput {
+	return o
+}
+
+// The VM Config Agent running on the virtual machine.
+func (o VirtualMachineInstanceViewResponseOutput) VmAgent() VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstanceViewResponse) *VirtualMachineVMConfigAgentInstanceViewResponse {
+		return v.VmAgent
+	}).(VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput)
 }
 
 type VirtualMachinePropertiesDataDisks struct {
@@ -9723,6 +13935,85 @@ func (o VirtualMachineStatusResponseProvisioningStatusPtrOutput) Status() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The instance view of the VM Config Agent running on the virtual machine.
+type VirtualMachineVMConfigAgentInstanceViewResponse struct {
+	// The resource status information.
+	Statuses []InstanceViewStatusResponse `pulumi:"statuses"`
+	// The VM Config Agent full version.
+	VmVMConfigAgentVersion *string `pulumi:"vmVMConfigAgentVersion"`
+}
+
+// The instance view of the VM Config Agent running on the virtual machine.
+type VirtualMachineVMConfigAgentInstanceViewResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineVMConfigAgentInstanceViewResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineVMConfigAgentInstanceViewResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineVMConfigAgentInstanceViewResponseOutput) ToVirtualMachineVMConfigAgentInstanceViewResponseOutput() VirtualMachineVMConfigAgentInstanceViewResponseOutput {
+	return o
+}
+
+func (o VirtualMachineVMConfigAgentInstanceViewResponseOutput) ToVirtualMachineVMConfigAgentInstanceViewResponseOutputWithContext(ctx context.Context) VirtualMachineVMConfigAgentInstanceViewResponseOutput {
+	return o
+}
+
+// The resource status information.
+func (o VirtualMachineVMConfigAgentInstanceViewResponseOutput) Statuses() InstanceViewStatusResponseArrayOutput {
+	return o.ApplyT(func(v VirtualMachineVMConfigAgentInstanceViewResponse) []InstanceViewStatusResponse {
+		return v.Statuses
+	}).(InstanceViewStatusResponseArrayOutput)
+}
+
+// The VM Config Agent full version.
+func (o VirtualMachineVMConfigAgentInstanceViewResponseOutput) VmVMConfigAgentVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineVMConfigAgentInstanceViewResponse) *string { return v.VmVMConfigAgentVersion }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineVMConfigAgentInstanceViewResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput) ToVirtualMachineVMConfigAgentInstanceViewResponsePtrOutput() VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput) ToVirtualMachineVMConfigAgentInstanceViewResponsePtrOutputWithContext(ctx context.Context) VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput) Elem() VirtualMachineVMConfigAgentInstanceViewResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineVMConfigAgentInstanceViewResponse) VirtualMachineVMConfigAgentInstanceViewResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineVMConfigAgentInstanceViewResponse
+		return ret
+	}).(VirtualMachineVMConfigAgentInstanceViewResponseOutput)
+}
+
+// The resource status information.
+func (o VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput) Statuses() InstanceViewStatusResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineVMConfigAgentInstanceViewResponse) []InstanceViewStatusResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Statuses
+	}).(InstanceViewStatusResponseArrayOutput)
+}
+
+// The VM Config Agent full version.
+func (o VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput) VmVMConfigAgentVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineVMConfigAgentInstanceViewResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmVMConfigAgentVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
 type VirtualNetworkPropertiesDhcpOptions struct {
 	// The list of DNS servers IP addresses.
@@ -10978,6 +15269,8 @@ func init() {
 	pulumi.RegisterOutputType(GalleryImageVersionStorageProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(GalleryOSDiskImageResponseOutput{})
 	pulumi.RegisterOutputType(GalleryOSDiskImageResponsePtrOutput{})
+	pulumi.RegisterOutputType(GuestAgentInstallStatusResponseOutput{})
+	pulumi.RegisterOutputType(GuestAgentInstallStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(GuestAgentProfileResponseOutput{})
 	pulumi.RegisterOutputType(GuestAgentProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(GuestCredentialOutput{})
@@ -11010,6 +15303,8 @@ func init() {
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(InstanceViewStatusResponseOutput{})
+	pulumi.RegisterOutputType(InstanceViewStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsPtrOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsResponseOutput{})
@@ -11034,6 +15329,14 @@ func init() {
 	pulumi.RegisterOutputType(SoftwareAssurancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SoftwareAssurancePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SoftwareAssurancePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(SshConfigurationOutput{})
+	pulumi.RegisterOutputType(SshConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(SshConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(SshConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SshPublicKeyOutput{})
+	pulumi.RegisterOutputType(SshPublicKeyArrayOutput{})
+	pulumi.RegisterOutputType(SshPublicKeyResponseOutput{})
+	pulumi.RegisterOutputType(SshPublicKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(StepOutput{})
 	pulumi.RegisterOutputType(StepArrayOutput{})
 	pulumi.RegisterOutputType(StepResponseOutput{})
@@ -11051,6 +15354,62 @@ func init() {
 	pulumi.RegisterOutputType(VirtualHardDiskStatusResponseOutput{})
 	pulumi.RegisterOutputType(VirtualHardDiskStatusResponseProvisioningStatusOutput{})
 	pulumi.RegisterOutputType(VirtualHardDiskStatusResponseProvisioningStatusPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesDataDisksOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesDataDisksArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesDynamicMemoryConfigOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesHardwareProfileOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesHardwareProfilePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesImageReferenceOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesImageReferencePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesLinuxConfigurationOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesNetworkInterfacesOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesNetworkProfileOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesNetworkProfilePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesOsDiskOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesOsDiskPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesOsProfileOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesOsProfilePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseDataDisksOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseDataDisksArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseHardwareProfileOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseImageReferenceOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseImageReferencePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseNetworkProfileOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseOsDiskOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseOsDiskPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseOsProfileOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseOsProfilePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseSecurityProfileOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseStorageProfileOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseUefiSettingsOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesSecurityProfileOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesSecurityProfilePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesStorageProfileOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesStorageProfilePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesUefiSettingsOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesUefiSettingsPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesWindowsConfigurationOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstanceStatusResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstanceStatusResponseProvisioningStatusOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstanceViewResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesDataDisksOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesDataDisksArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesDynamicMemoryConfigOutput{})
@@ -11122,6 +15481,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineStatusResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineStatusResponseProvisioningStatusOutput{})
 	pulumi.RegisterOutputType(VirtualMachineStatusResponseProvisioningStatusPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineVMConfigAgentInstanceViewResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPropertiesDhcpOptionsOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPropertiesDhcpOptionsPtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPropertiesIpConfigurationReferencesOutput{})

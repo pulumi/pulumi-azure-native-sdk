@@ -131,6 +131,12 @@ func NewIotHubResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devices/v20221115preview:IotHubResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:devices/v20230630:IotHubResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices/v20230630preview:IotHubResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource IotHubResource

@@ -178,6 +178,9 @@ func NewConnectionMonitor(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230401:ConnectionMonitor"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230501:ConnectionMonitor"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ConnectionMonitor

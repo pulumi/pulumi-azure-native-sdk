@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Backup{}
 	case "azure-native:netapp:BackupPolicy":
 		r = &BackupPolicy{}
+	case "azure-native:netapp:BackupVault":
+		r = &BackupVault{}
 	case "azure-native:netapp:Pool":
 		r = &Pool{}
 	case "azure-native:netapp:Snapshot":

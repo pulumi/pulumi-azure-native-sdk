@@ -12,9 +12,9 @@ import (
 
 // The Data Collection Rule and Endpoint used for ingestion by default.
 type AzureMonitorWorkspaceResponseDefaultIngestionSettings struct {
-	// The Azure resource Id of the default data collection endpoint for this workspace.
+	// The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
 	DataCollectionEndpointResourceId string `pulumi:"dataCollectionEndpointResourceId"`
-	// The Azure resource Id of the default data collection rule for this workspace.
+	// The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
 	DataCollectionRuleResourceId string `pulumi:"dataCollectionRuleResourceId"`
 }
 
@@ -33,29 +33,29 @@ func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) ToAzureMoni
 	return o
 }
 
-// The Azure resource Id of the default data collection endpoint for this workspace.
+// The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
 func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) DataCollectionEndpointResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureMonitorWorkspaceResponseDefaultIngestionSettings) string {
 		return v.DataCollectionEndpointResourceId
 	}).(pulumi.StringOutput)
 }
 
-// The Azure resource Id of the default data collection rule for this workspace.
+// The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
 func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) DataCollectionRuleResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureMonitorWorkspaceResponseDefaultIngestionSettings) string {
 		return v.DataCollectionRuleResourceId
 	}).(pulumi.StringOutput)
 }
 
-// Information about metrics for the Azure Monitor workspace
+// Properties related to the metrics container in the Azure Monitor Workspace
 type AzureMonitorWorkspaceResponseMetrics struct {
 	// An internal identifier for the metrics container. Only to be used by the system
 	InternalId string `pulumi:"internalId"`
-	// The Prometheus query endpoint for the workspace
+	// The Prometheus query endpoint for the Azure Monitor Workspace
 	PrometheusQueryEndpoint string `pulumi:"prometheusQueryEndpoint"`
 }
 
-// Information about metrics for the Azure Monitor workspace
+// Properties related to the metrics container in the Azure Monitor Workspace
 type AzureMonitorWorkspaceResponseMetricsOutput struct{ *pulumi.OutputState }
 
 func (AzureMonitorWorkspaceResponseMetricsOutput) ElementType() reflect.Type {
@@ -75,7 +75,7 @@ func (o AzureMonitorWorkspaceResponseMetricsOutput) InternalId() pulumi.StringOu
 	return o.ApplyT(func(v AzureMonitorWorkspaceResponseMetrics) string { return v.InternalId }).(pulumi.StringOutput)
 }
 
-// The Prometheus query endpoint for the workspace
+// The Prometheus query endpoint for the Azure Monitor Workspace
 func (o AzureMonitorWorkspaceResponseMetricsOutput) PrometheusQueryEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureMonitorWorkspaceResponseMetrics) string { return v.PrometheusQueryEndpoint }).(pulumi.StringOutput)
 }

@@ -55,6 +55,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hdinsight/v20230415preview:PrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20230815preview:PrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateEndpointConnection

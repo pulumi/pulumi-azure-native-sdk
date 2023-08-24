@@ -56,6 +56,9 @@ func NewMoveCollection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20210801:MoveCollection"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230801:MoveCollection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource MoveCollection

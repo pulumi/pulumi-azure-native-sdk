@@ -1272,206 +1272,6 @@ func (o BackupVaultResponseOutput) StorageSettings() StorageSettingResponseArray
 	return o.ApplyT(func(v BackupVaultResponse) []StorageSettingResponse { return v.StorageSettings }).(StorageSettingResponseArrayOutput)
 }
 
-// Properties which are specific to datasource/datasourceSets
-type BaseResourceProperties struct {
-	// Type of the specific object - used for deserializing
-	ObjectType string `pulumi:"objectType"`
-}
-
-// BaseResourcePropertiesInput is an input type that accepts BaseResourcePropertiesArgs and BaseResourcePropertiesOutput values.
-// You can construct a concrete instance of `BaseResourcePropertiesInput` via:
-//
-//	BaseResourcePropertiesArgs{...}
-type BaseResourcePropertiesInput interface {
-	pulumi.Input
-
-	ToBaseResourcePropertiesOutput() BaseResourcePropertiesOutput
-	ToBaseResourcePropertiesOutputWithContext(context.Context) BaseResourcePropertiesOutput
-}
-
-// Properties which are specific to datasource/datasourceSets
-type BaseResourcePropertiesArgs struct {
-	// Type of the specific object - used for deserializing
-	ObjectType pulumi.StringInput `pulumi:"objectType"`
-}
-
-func (BaseResourcePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BaseResourceProperties)(nil)).Elem()
-}
-
-func (i BaseResourcePropertiesArgs) ToBaseResourcePropertiesOutput() BaseResourcePropertiesOutput {
-	return i.ToBaseResourcePropertiesOutputWithContext(context.Background())
-}
-
-func (i BaseResourcePropertiesArgs) ToBaseResourcePropertiesOutputWithContext(ctx context.Context) BaseResourcePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BaseResourcePropertiesOutput)
-}
-
-func (i BaseResourcePropertiesArgs) ToBaseResourcePropertiesPtrOutput() BaseResourcePropertiesPtrOutput {
-	return i.ToBaseResourcePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i BaseResourcePropertiesArgs) ToBaseResourcePropertiesPtrOutputWithContext(ctx context.Context) BaseResourcePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BaseResourcePropertiesOutput).ToBaseResourcePropertiesPtrOutputWithContext(ctx)
-}
-
-// BaseResourcePropertiesPtrInput is an input type that accepts BaseResourcePropertiesArgs, BaseResourcePropertiesPtr and BaseResourcePropertiesPtrOutput values.
-// You can construct a concrete instance of `BaseResourcePropertiesPtrInput` via:
-//
-//	        BaseResourcePropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type BaseResourcePropertiesPtrInput interface {
-	pulumi.Input
-
-	ToBaseResourcePropertiesPtrOutput() BaseResourcePropertiesPtrOutput
-	ToBaseResourcePropertiesPtrOutputWithContext(context.Context) BaseResourcePropertiesPtrOutput
-}
-
-type baseResourcePropertiesPtrType BaseResourcePropertiesArgs
-
-func BaseResourcePropertiesPtr(v *BaseResourcePropertiesArgs) BaseResourcePropertiesPtrInput {
-	return (*baseResourcePropertiesPtrType)(v)
-}
-
-func (*baseResourcePropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BaseResourceProperties)(nil)).Elem()
-}
-
-func (i *baseResourcePropertiesPtrType) ToBaseResourcePropertiesPtrOutput() BaseResourcePropertiesPtrOutput {
-	return i.ToBaseResourcePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *baseResourcePropertiesPtrType) ToBaseResourcePropertiesPtrOutputWithContext(ctx context.Context) BaseResourcePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BaseResourcePropertiesPtrOutput)
-}
-
-// Properties which are specific to datasource/datasourceSets
-type BaseResourcePropertiesOutput struct{ *pulumi.OutputState }
-
-func (BaseResourcePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BaseResourceProperties)(nil)).Elem()
-}
-
-func (o BaseResourcePropertiesOutput) ToBaseResourcePropertiesOutput() BaseResourcePropertiesOutput {
-	return o
-}
-
-func (o BaseResourcePropertiesOutput) ToBaseResourcePropertiesOutputWithContext(ctx context.Context) BaseResourcePropertiesOutput {
-	return o
-}
-
-func (o BaseResourcePropertiesOutput) ToBaseResourcePropertiesPtrOutput() BaseResourcePropertiesPtrOutput {
-	return o.ToBaseResourcePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o BaseResourcePropertiesOutput) ToBaseResourcePropertiesPtrOutputWithContext(ctx context.Context) BaseResourcePropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BaseResourceProperties) *BaseResourceProperties {
-		return &v
-	}).(BaseResourcePropertiesPtrOutput)
-}
-
-// Type of the specific object - used for deserializing
-func (o BaseResourcePropertiesOutput) ObjectType() pulumi.StringOutput {
-	return o.ApplyT(func(v BaseResourceProperties) string { return v.ObjectType }).(pulumi.StringOutput)
-}
-
-type BaseResourcePropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (BaseResourcePropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BaseResourceProperties)(nil)).Elem()
-}
-
-func (o BaseResourcePropertiesPtrOutput) ToBaseResourcePropertiesPtrOutput() BaseResourcePropertiesPtrOutput {
-	return o
-}
-
-func (o BaseResourcePropertiesPtrOutput) ToBaseResourcePropertiesPtrOutputWithContext(ctx context.Context) BaseResourcePropertiesPtrOutput {
-	return o
-}
-
-func (o BaseResourcePropertiesPtrOutput) Elem() BaseResourcePropertiesOutput {
-	return o.ApplyT(func(v *BaseResourceProperties) BaseResourceProperties {
-		if v != nil {
-			return *v
-		}
-		var ret BaseResourceProperties
-		return ret
-	}).(BaseResourcePropertiesOutput)
-}
-
-// Type of the specific object - used for deserializing
-func (o BaseResourcePropertiesPtrOutput) ObjectType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BaseResourceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ObjectType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Properties which are specific to datasource/datasourceSets
-type BaseResourcePropertiesResponse struct {
-	// Type of the specific object - used for deserializing
-	ObjectType string `pulumi:"objectType"`
-}
-
-// Properties which are specific to datasource/datasourceSets
-type BaseResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (BaseResourcePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BaseResourcePropertiesResponse)(nil)).Elem()
-}
-
-func (o BaseResourcePropertiesResponseOutput) ToBaseResourcePropertiesResponseOutput() BaseResourcePropertiesResponseOutput {
-	return o
-}
-
-func (o BaseResourcePropertiesResponseOutput) ToBaseResourcePropertiesResponseOutputWithContext(ctx context.Context) BaseResourcePropertiesResponseOutput {
-	return o
-}
-
-// Type of the specific object - used for deserializing
-func (o BaseResourcePropertiesResponseOutput) ObjectType() pulumi.StringOutput {
-	return o.ApplyT(func(v BaseResourcePropertiesResponse) string { return v.ObjectType }).(pulumi.StringOutput)
-}
-
-type BaseResourcePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BaseResourcePropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BaseResourcePropertiesResponse)(nil)).Elem()
-}
-
-func (o BaseResourcePropertiesResponsePtrOutput) ToBaseResourcePropertiesResponsePtrOutput() BaseResourcePropertiesResponsePtrOutput {
-	return o
-}
-
-func (o BaseResourcePropertiesResponsePtrOutput) ToBaseResourcePropertiesResponsePtrOutputWithContext(ctx context.Context) BaseResourcePropertiesResponsePtrOutput {
-	return o
-}
-
-func (o BaseResourcePropertiesResponsePtrOutput) Elem() BaseResourcePropertiesResponseOutput {
-	return o.ApplyT(func(v *BaseResourcePropertiesResponse) BaseResourcePropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BaseResourcePropertiesResponse
-		return ret
-	}).(BaseResourcePropertiesResponseOutput)
-}
-
-// Type of the specific object - used for deserializing
-func (o BaseResourcePropertiesResponsePtrOutput) ObjectType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BaseResourcePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ObjectType
-	}).(pulumi.StringPtrOutput)
-}
-
 // Parameters to be used during configuration of backup of blobs
 type BlobBackupDatasourceParameters struct {
 	// List of containers to be backed up during configuration of backup of blobs
@@ -1946,7 +1746,7 @@ type Datasource struct {
 	// Unique identifier of the resource in the context of parent.
 	ResourceName *string `pulumi:"resourceName"`
 	// Properties specific to data source
-	ResourceProperties *BaseResourceProperties `pulumi:"resourceProperties"`
+	ResourceProperties *DefaultResourceProperties `pulumi:"resourceProperties"`
 	// Resource Type of Datasource.
 	ResourceType *string `pulumi:"resourceType"`
 	// Uri of the resource.
@@ -1977,7 +1777,7 @@ type DatasourceArgs struct {
 	// Unique identifier of the resource in the context of parent.
 	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
 	// Properties specific to data source
-	ResourceProperties BaseResourcePropertiesPtrInput `pulumi:"resourceProperties"`
+	ResourceProperties DefaultResourcePropertiesPtrInput `pulumi:"resourceProperties"`
 	// Resource Type of Datasource.
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 	// Uri of the resource.
@@ -2088,8 +1888,8 @@ func (o DatasourceOutput) ResourceName() pulumi.StringPtrOutput {
 }
 
 // Properties specific to data source
-func (o DatasourceOutput) ResourceProperties() BaseResourcePropertiesPtrOutput {
-	return o.ApplyT(func(v Datasource) *BaseResourceProperties { return v.ResourceProperties }).(BaseResourcePropertiesPtrOutput)
+func (o DatasourceOutput) ResourceProperties() DefaultResourcePropertiesPtrOutput {
+	return o.ApplyT(func(v Datasource) *DefaultResourceProperties { return v.ResourceProperties }).(DefaultResourcePropertiesPtrOutput)
 }
 
 // Resource Type of Datasource.
@@ -2177,13 +1977,13 @@ func (o DatasourcePtrOutput) ResourceName() pulumi.StringPtrOutput {
 }
 
 // Properties specific to data source
-func (o DatasourcePtrOutput) ResourceProperties() BaseResourcePropertiesPtrOutput {
-	return o.ApplyT(func(v *Datasource) *BaseResourceProperties {
+func (o DatasourcePtrOutput) ResourceProperties() DefaultResourcePropertiesPtrOutput {
+	return o.ApplyT(func(v *Datasource) *DefaultResourceProperties {
 		if v == nil {
 			return nil
 		}
 		return v.ResourceProperties
-	}).(BaseResourcePropertiesPtrOutput)
+	}).(DefaultResourcePropertiesPtrOutput)
 }
 
 // Resource Type of Datasource.
@@ -2219,7 +2019,7 @@ type DatasourceResponse struct {
 	// Unique identifier of the resource in the context of parent.
 	ResourceName *string `pulumi:"resourceName"`
 	// Properties specific to data source
-	ResourceProperties *BaseResourcePropertiesResponse `pulumi:"resourceProperties"`
+	ResourceProperties *DefaultResourcePropertiesResponse `pulumi:"resourceProperties"`
 	// Resource Type of Datasource.
 	ResourceType *string `pulumi:"resourceType"`
 	// Uri of the resource.
@@ -2267,8 +2067,8 @@ func (o DatasourceResponseOutput) ResourceName() pulumi.StringPtrOutput {
 }
 
 // Properties specific to data source
-func (o DatasourceResponseOutput) ResourceProperties() BaseResourcePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v DatasourceResponse) *BaseResourcePropertiesResponse { return v.ResourceProperties }).(BaseResourcePropertiesResponsePtrOutput)
+func (o DatasourceResponseOutput) ResourceProperties() DefaultResourcePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DatasourceResponse) *DefaultResourcePropertiesResponse { return v.ResourceProperties }).(DefaultResourcePropertiesResponsePtrOutput)
 }
 
 // Resource Type of Datasource.
@@ -2294,7 +2094,7 @@ type DatasourceSet struct {
 	// Unique identifier of the resource in the context of parent.
 	ResourceName *string `pulumi:"resourceName"`
 	// Properties specific to data source set
-	ResourceProperties *BaseResourceProperties `pulumi:"resourceProperties"`
+	ResourceProperties *DefaultResourceProperties `pulumi:"resourceProperties"`
 	// Resource Type of Datasource.
 	ResourceType *string `pulumi:"resourceType"`
 	// Uri of the resource.
@@ -2325,7 +2125,7 @@ type DatasourceSetArgs struct {
 	// Unique identifier of the resource in the context of parent.
 	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
 	// Properties specific to data source set
-	ResourceProperties BaseResourcePropertiesPtrInput `pulumi:"resourceProperties"`
+	ResourceProperties DefaultResourcePropertiesPtrInput `pulumi:"resourceProperties"`
 	// Resource Type of Datasource.
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 	// Uri of the resource.
@@ -2436,8 +2236,8 @@ func (o DatasourceSetOutput) ResourceName() pulumi.StringPtrOutput {
 }
 
 // Properties specific to data source set
-func (o DatasourceSetOutput) ResourceProperties() BaseResourcePropertiesPtrOutput {
-	return o.ApplyT(func(v DatasourceSet) *BaseResourceProperties { return v.ResourceProperties }).(BaseResourcePropertiesPtrOutput)
+func (o DatasourceSetOutput) ResourceProperties() DefaultResourcePropertiesPtrOutput {
+	return o.ApplyT(func(v DatasourceSet) *DefaultResourceProperties { return v.ResourceProperties }).(DefaultResourcePropertiesPtrOutput)
 }
 
 // Resource Type of Datasource.
@@ -2525,13 +2325,13 @@ func (o DatasourceSetPtrOutput) ResourceName() pulumi.StringPtrOutput {
 }
 
 // Properties specific to data source set
-func (o DatasourceSetPtrOutput) ResourceProperties() BaseResourcePropertiesPtrOutput {
-	return o.ApplyT(func(v *DatasourceSet) *BaseResourceProperties {
+func (o DatasourceSetPtrOutput) ResourceProperties() DefaultResourcePropertiesPtrOutput {
+	return o.ApplyT(func(v *DatasourceSet) *DefaultResourceProperties {
 		if v == nil {
 			return nil
 		}
 		return v.ResourceProperties
-	}).(BaseResourcePropertiesPtrOutput)
+	}).(DefaultResourcePropertiesPtrOutput)
 }
 
 // Resource Type of Datasource.
@@ -2567,7 +2367,7 @@ type DatasourceSetResponse struct {
 	// Unique identifier of the resource in the context of parent.
 	ResourceName *string `pulumi:"resourceName"`
 	// Properties specific to data source set
-	ResourceProperties *BaseResourcePropertiesResponse `pulumi:"resourceProperties"`
+	ResourceProperties *DefaultResourcePropertiesResponse `pulumi:"resourceProperties"`
 	// Resource Type of Datasource.
 	ResourceType *string `pulumi:"resourceType"`
 	// Uri of the resource.
@@ -2615,8 +2415,8 @@ func (o DatasourceSetResponseOutput) ResourceName() pulumi.StringPtrOutput {
 }
 
 // Properties specific to data source set
-func (o DatasourceSetResponseOutput) ResourceProperties() BaseResourcePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v DatasourceSetResponse) *BaseResourcePropertiesResponse { return v.ResourceProperties }).(BaseResourcePropertiesResponsePtrOutput)
+func (o DatasourceSetResponseOutput) ResourceProperties() DefaultResourcePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DatasourceSetResponse) *DefaultResourcePropertiesResponse { return v.ResourceProperties }).(DefaultResourcePropertiesResponsePtrOutput)
 }
 
 // Resource Type of Datasource.
@@ -2704,13 +2504,13 @@ func (o DatasourceSetResponsePtrOutput) ResourceName() pulumi.StringPtrOutput {
 }
 
 // Properties specific to data source set
-func (o DatasourceSetResponsePtrOutput) ResourceProperties() BaseResourcePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *DatasourceSetResponse) *BaseResourcePropertiesResponse {
+func (o DatasourceSetResponsePtrOutput) ResourceProperties() DefaultResourcePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *DatasourceSetResponse) *DefaultResourcePropertiesResponse {
 		if v == nil {
 			return nil
 		}
 		return v.ResourceProperties
-	}).(BaseResourcePropertiesResponsePtrOutput)
+	}).(DefaultResourcePropertiesResponsePtrOutput)
 }
 
 // Resource Type of Datasource.
@@ -2747,6 +2547,213 @@ type DayResponse struct {
 	Date *int `pulumi:"date"`
 	// Whether Date is last date of month
 	IsLast *bool `pulumi:"isLast"`
+}
+
+// Default source properties
+type DefaultResourceProperties struct {
+	// Type of the specific object - used for deserializing
+	// Expected value is 'DefaultResourceProperties'.
+	ObjectType string `pulumi:"objectType"`
+}
+
+// DefaultResourcePropertiesInput is an input type that accepts DefaultResourcePropertiesArgs and DefaultResourcePropertiesOutput values.
+// You can construct a concrete instance of `DefaultResourcePropertiesInput` via:
+//
+//	DefaultResourcePropertiesArgs{...}
+type DefaultResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToDefaultResourcePropertiesOutput() DefaultResourcePropertiesOutput
+	ToDefaultResourcePropertiesOutputWithContext(context.Context) DefaultResourcePropertiesOutput
+}
+
+// Default source properties
+type DefaultResourcePropertiesArgs struct {
+	// Type of the specific object - used for deserializing
+	// Expected value is 'DefaultResourceProperties'.
+	ObjectType pulumi.StringInput `pulumi:"objectType"`
+}
+
+func (DefaultResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultResourceProperties)(nil)).Elem()
+}
+
+func (i DefaultResourcePropertiesArgs) ToDefaultResourcePropertiesOutput() DefaultResourcePropertiesOutput {
+	return i.ToDefaultResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i DefaultResourcePropertiesArgs) ToDefaultResourcePropertiesOutputWithContext(ctx context.Context) DefaultResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultResourcePropertiesOutput)
+}
+
+func (i DefaultResourcePropertiesArgs) ToDefaultResourcePropertiesPtrOutput() DefaultResourcePropertiesPtrOutput {
+	return i.ToDefaultResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultResourcePropertiesArgs) ToDefaultResourcePropertiesPtrOutputWithContext(ctx context.Context) DefaultResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultResourcePropertiesOutput).ToDefaultResourcePropertiesPtrOutputWithContext(ctx)
+}
+
+// DefaultResourcePropertiesPtrInput is an input type that accepts DefaultResourcePropertiesArgs, DefaultResourcePropertiesPtr and DefaultResourcePropertiesPtrOutput values.
+// You can construct a concrete instance of `DefaultResourcePropertiesPtrInput` via:
+//
+//	        DefaultResourcePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultResourcePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDefaultResourcePropertiesPtrOutput() DefaultResourcePropertiesPtrOutput
+	ToDefaultResourcePropertiesPtrOutputWithContext(context.Context) DefaultResourcePropertiesPtrOutput
+}
+
+type defaultResourcePropertiesPtrType DefaultResourcePropertiesArgs
+
+func DefaultResourcePropertiesPtr(v *DefaultResourcePropertiesArgs) DefaultResourcePropertiesPtrInput {
+	return (*defaultResourcePropertiesPtrType)(v)
+}
+
+func (*defaultResourcePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultResourceProperties)(nil)).Elem()
+}
+
+func (i *defaultResourcePropertiesPtrType) ToDefaultResourcePropertiesPtrOutput() DefaultResourcePropertiesPtrOutput {
+	return i.ToDefaultResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultResourcePropertiesPtrType) ToDefaultResourcePropertiesPtrOutputWithContext(ctx context.Context) DefaultResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultResourcePropertiesPtrOutput)
+}
+
+// Default source properties
+type DefaultResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (DefaultResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultResourceProperties)(nil)).Elem()
+}
+
+func (o DefaultResourcePropertiesOutput) ToDefaultResourcePropertiesOutput() DefaultResourcePropertiesOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesOutput) ToDefaultResourcePropertiesOutputWithContext(ctx context.Context) DefaultResourcePropertiesOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesOutput) ToDefaultResourcePropertiesPtrOutput() DefaultResourcePropertiesPtrOutput {
+	return o.ToDefaultResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultResourcePropertiesOutput) ToDefaultResourcePropertiesPtrOutputWithContext(ctx context.Context) DefaultResourcePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultResourceProperties) *DefaultResourceProperties {
+		return &v
+	}).(DefaultResourcePropertiesPtrOutput)
+}
+
+// Type of the specific object - used for deserializing
+// Expected value is 'DefaultResourceProperties'.
+func (o DefaultResourcePropertiesOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultResourceProperties) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+type DefaultResourcePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultResourcePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultResourceProperties)(nil)).Elem()
+}
+
+func (o DefaultResourcePropertiesPtrOutput) ToDefaultResourcePropertiesPtrOutput() DefaultResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesPtrOutput) ToDefaultResourcePropertiesPtrOutputWithContext(ctx context.Context) DefaultResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesPtrOutput) Elem() DefaultResourcePropertiesOutput {
+	return o.ApplyT(func(v *DefaultResourceProperties) DefaultResourceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultResourceProperties
+		return ret
+	}).(DefaultResourcePropertiesOutput)
+}
+
+// Type of the specific object - used for deserializing
+// Expected value is 'DefaultResourceProperties'.
+func (o DefaultResourcePropertiesPtrOutput) ObjectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ObjectType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Default source properties
+type DefaultResourcePropertiesResponse struct {
+	// Type of the specific object - used for deserializing
+	// Expected value is 'DefaultResourceProperties'.
+	ObjectType string `pulumi:"objectType"`
+}
+
+// Default source properties
+type DefaultResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DefaultResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o DefaultResourcePropertiesResponseOutput) ToDefaultResourcePropertiesResponseOutput() DefaultResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesResponseOutput) ToDefaultResourcePropertiesResponseOutputWithContext(ctx context.Context) DefaultResourcePropertiesResponseOutput {
+	return o
+}
+
+// Type of the specific object - used for deserializing
+// Expected value is 'DefaultResourceProperties'.
+func (o DefaultResourcePropertiesResponseOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultResourcePropertiesResponse) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+type DefaultResourcePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultResourcePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o DefaultResourcePropertiesResponsePtrOutput) ToDefaultResourcePropertiesResponsePtrOutput() DefaultResourcePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesResponsePtrOutput) ToDefaultResourcePropertiesResponsePtrOutputWithContext(ctx context.Context) DefaultResourcePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesResponsePtrOutput) Elem() DefaultResourcePropertiesResponseOutput {
+	return o.ApplyT(func(v *DefaultResourcePropertiesResponse) DefaultResourcePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultResourcePropertiesResponse
+		return ret
+	}).(DefaultResourcePropertiesResponseOutput)
+}
+
+// Type of the specific object - used for deserializing
+// Expected value is 'DefaultResourceProperties'.
+func (o DefaultResourcePropertiesResponsePtrOutput) ObjectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultResourcePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ObjectType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Identity details
@@ -6820,10 +6827,6 @@ func init() {
 	pulumi.RegisterOutputType(BackupPolicyResponseOutput{})
 	pulumi.RegisterOutputType(BackupVaultTypeOutput{})
 	pulumi.RegisterOutputType(BackupVaultResponseOutput{})
-	pulumi.RegisterOutputType(BaseResourcePropertiesOutput{})
-	pulumi.RegisterOutputType(BaseResourcePropertiesPtrOutput{})
-	pulumi.RegisterOutputType(BaseResourcePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(BaseResourcePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(CrossRegionRestoreSettingsOutput{})
 	pulumi.RegisterOutputType(CrossRegionRestoreSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CrossRegionRestoreSettingsResponseOutput{})
@@ -6839,6 +6842,10 @@ func init() {
 	pulumi.RegisterOutputType(DatasourceSetPtrOutput{})
 	pulumi.RegisterOutputType(DatasourceSetResponseOutput{})
 	pulumi.RegisterOutputType(DatasourceSetResponsePtrOutput{})
+	pulumi.RegisterOutputType(DefaultResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(DefaultResourcePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DefaultResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DefaultResourcePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(DppIdentityDetailsOutput{})
 	pulumi.RegisterOutputType(DppIdentityDetailsPtrOutput{})
 	pulumi.RegisterOutputType(DppIdentityDetailsResponseOutput{})

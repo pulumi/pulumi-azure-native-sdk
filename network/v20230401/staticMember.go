@@ -78,6 +78,9 @@ func NewStaticMember(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230201:StaticMember"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230501:StaticMember"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource StaticMember

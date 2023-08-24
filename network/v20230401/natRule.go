@@ -90,6 +90,9 @@ func NewNatRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230201:NatRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230501:NatRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource NatRule

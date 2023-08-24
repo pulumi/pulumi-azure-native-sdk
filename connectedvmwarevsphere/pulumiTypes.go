@@ -1651,6 +1651,435 @@ func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies the vCenter infrastructure specific settings for the virtual machine.
+type InfrastructureProfile struct {
+	// Firmware type
+	FirmwareType *string `pulumi:"firmwareType"`
+	// Gets or sets the inventory Item ID for the virtual machine.
+	InventoryItemId *string `pulumi:"inventoryItemId"`
+	// Gets or sets the SMBIOS UUID of the vm.
+	SmbiosUuid *string `pulumi:"smbiosUuid"`
+	// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
+	TemplateId *string `pulumi:"templateId"`
+	// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
+	VCenterId *string `pulumi:"vCenterId"`
+}
+
+// InfrastructureProfileInput is an input type that accepts InfrastructureProfileArgs and InfrastructureProfileOutput values.
+// You can construct a concrete instance of `InfrastructureProfileInput` via:
+//
+//	InfrastructureProfileArgs{...}
+type InfrastructureProfileInput interface {
+	pulumi.Input
+
+	ToInfrastructureProfileOutput() InfrastructureProfileOutput
+	ToInfrastructureProfileOutputWithContext(context.Context) InfrastructureProfileOutput
+}
+
+// Specifies the vCenter infrastructure specific settings for the virtual machine.
+type InfrastructureProfileArgs struct {
+	// Firmware type
+	FirmwareType pulumi.StringPtrInput `pulumi:"firmwareType"`
+	// Gets or sets the inventory Item ID for the virtual machine.
+	InventoryItemId pulumi.StringPtrInput `pulumi:"inventoryItemId"`
+	// Gets or sets the SMBIOS UUID of the vm.
+	SmbiosUuid pulumi.StringPtrInput `pulumi:"smbiosUuid"`
+	// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
+	TemplateId pulumi.StringPtrInput `pulumi:"templateId"`
+	// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
+	VCenterId pulumi.StringPtrInput `pulumi:"vCenterId"`
+}
+
+func (InfrastructureProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureProfile)(nil)).Elem()
+}
+
+func (i InfrastructureProfileArgs) ToInfrastructureProfileOutput() InfrastructureProfileOutput {
+	return i.ToInfrastructureProfileOutputWithContext(context.Background())
+}
+
+func (i InfrastructureProfileArgs) ToInfrastructureProfileOutputWithContext(ctx context.Context) InfrastructureProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureProfileOutput)
+}
+
+func (i InfrastructureProfileArgs) ToInfrastructureProfilePtrOutput() InfrastructureProfilePtrOutput {
+	return i.ToInfrastructureProfilePtrOutputWithContext(context.Background())
+}
+
+func (i InfrastructureProfileArgs) ToInfrastructureProfilePtrOutputWithContext(ctx context.Context) InfrastructureProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureProfileOutput).ToInfrastructureProfilePtrOutputWithContext(ctx)
+}
+
+// InfrastructureProfilePtrInput is an input type that accepts InfrastructureProfileArgs, InfrastructureProfilePtr and InfrastructureProfilePtrOutput values.
+// You can construct a concrete instance of `InfrastructureProfilePtrInput` via:
+//
+//	        InfrastructureProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type InfrastructureProfilePtrInput interface {
+	pulumi.Input
+
+	ToInfrastructureProfilePtrOutput() InfrastructureProfilePtrOutput
+	ToInfrastructureProfilePtrOutputWithContext(context.Context) InfrastructureProfilePtrOutput
+}
+
+type infrastructureProfilePtrType InfrastructureProfileArgs
+
+func InfrastructureProfilePtr(v *InfrastructureProfileArgs) InfrastructureProfilePtrInput {
+	return (*infrastructureProfilePtrType)(v)
+}
+
+func (*infrastructureProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureProfile)(nil)).Elem()
+}
+
+func (i *infrastructureProfilePtrType) ToInfrastructureProfilePtrOutput() InfrastructureProfilePtrOutput {
+	return i.ToInfrastructureProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *infrastructureProfilePtrType) ToInfrastructureProfilePtrOutputWithContext(ctx context.Context) InfrastructureProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureProfilePtrOutput)
+}
+
+// Specifies the vCenter infrastructure specific settings for the virtual machine.
+type InfrastructureProfileOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureProfile)(nil)).Elem()
+}
+
+func (o InfrastructureProfileOutput) ToInfrastructureProfileOutput() InfrastructureProfileOutput {
+	return o
+}
+
+func (o InfrastructureProfileOutput) ToInfrastructureProfileOutputWithContext(ctx context.Context) InfrastructureProfileOutput {
+	return o
+}
+
+func (o InfrastructureProfileOutput) ToInfrastructureProfilePtrOutput() InfrastructureProfilePtrOutput {
+	return o.ToInfrastructureProfilePtrOutputWithContext(context.Background())
+}
+
+func (o InfrastructureProfileOutput) ToInfrastructureProfilePtrOutputWithContext(ctx context.Context) InfrastructureProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InfrastructureProfile) *InfrastructureProfile {
+		return &v
+	}).(InfrastructureProfilePtrOutput)
+}
+
+// Firmware type
+func (o InfrastructureProfileOutput) FirmwareType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *string { return v.FirmwareType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the inventory Item ID for the virtual machine.
+func (o InfrastructureProfileOutput) InventoryItemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *string { return v.InventoryItemId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SMBIOS UUID of the vm.
+func (o InfrastructureProfileOutput) SmbiosUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *string { return v.SmbiosUuid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
+func (o InfrastructureProfileOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *string { return v.TemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
+func (o InfrastructureProfileOutput) VCenterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *string { return v.VCenterId }).(pulumi.StringPtrOutput)
+}
+
+type InfrastructureProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureProfile)(nil)).Elem()
+}
+
+func (o InfrastructureProfilePtrOutput) ToInfrastructureProfilePtrOutput() InfrastructureProfilePtrOutput {
+	return o
+}
+
+func (o InfrastructureProfilePtrOutput) ToInfrastructureProfilePtrOutputWithContext(ctx context.Context) InfrastructureProfilePtrOutput {
+	return o
+}
+
+func (o InfrastructureProfilePtrOutput) Elem() InfrastructureProfileOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) InfrastructureProfile {
+		if v != nil {
+			return *v
+		}
+		var ret InfrastructureProfile
+		return ret
+	}).(InfrastructureProfileOutput)
+}
+
+// Firmware type
+func (o InfrastructureProfilePtrOutput) FirmwareType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirmwareType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the inventory Item ID for the virtual machine.
+func (o InfrastructureProfilePtrOutput) InventoryItemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InventoryItemId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SMBIOS UUID of the vm.
+func (o InfrastructureProfilePtrOutput) SmbiosUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmbiosUuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
+func (o InfrastructureProfilePtrOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
+func (o InfrastructureProfilePtrOutput) VCenterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VCenterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the vCenter infrastructure specific settings for the virtual machine.
+type InfrastructureProfileResponse struct {
+	// Gets the name of the corresponding resource in Kubernetes.
+	CustomResourceName string `pulumi:"customResourceName"`
+	// Firmware type
+	FirmwareType *string `pulumi:"firmwareType"`
+	// Gets or sets the folder path of the vm.
+	FolderPath string `pulumi:"folderPath"`
+	// Gets or sets the instance uuid of the vm.
+	InstanceUuid string `pulumi:"instanceUuid"`
+	// Gets or sets the inventory Item ID for the virtual machine.
+	InventoryItemId *string `pulumi:"inventoryItemId"`
+	// Gets or sets the vCenter Managed Object name for the virtual machine.
+	MoName string `pulumi:"moName"`
+	// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine.
+	MoRefId string `pulumi:"moRefId"`
+	// Gets or sets the SMBIOS UUID of the vm.
+	SmbiosUuid *string `pulumi:"smbiosUuid"`
+	// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
+	TemplateId *string `pulumi:"templateId"`
+	// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
+	VCenterId *string `pulumi:"vCenterId"`
+}
+
+// Specifies the vCenter infrastructure specific settings for the virtual machine.
+type InfrastructureProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureProfileResponse)(nil)).Elem()
+}
+
+func (o InfrastructureProfileResponseOutput) ToInfrastructureProfileResponseOutput() InfrastructureProfileResponseOutput {
+	return o
+}
+
+func (o InfrastructureProfileResponseOutput) ToInfrastructureProfileResponseOutputWithContext(ctx context.Context) InfrastructureProfileResponseOutput {
+	return o
+}
+
+// Gets the name of the corresponding resource in Kubernetes.
+func (o InfrastructureProfileResponseOutput) CustomResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) string { return v.CustomResourceName }).(pulumi.StringOutput)
+}
+
+// Firmware type
+func (o InfrastructureProfileResponseOutput) FirmwareType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *string { return v.FirmwareType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the folder path of the vm.
+func (o InfrastructureProfileResponseOutput) FolderPath() pulumi.StringOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) string { return v.FolderPath }).(pulumi.StringOutput)
+}
+
+// Gets or sets the instance uuid of the vm.
+func (o InfrastructureProfileResponseOutput) InstanceUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) string { return v.InstanceUuid }).(pulumi.StringOutput)
+}
+
+// Gets or sets the inventory Item ID for the virtual machine.
+func (o InfrastructureProfileResponseOutput) InventoryItemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *string { return v.InventoryItemId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the vCenter Managed Object name for the virtual machine.
+func (o InfrastructureProfileResponseOutput) MoName() pulumi.StringOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) string { return v.MoName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine.
+func (o InfrastructureProfileResponseOutput) MoRefId() pulumi.StringOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) string { return v.MoRefId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SMBIOS UUID of the vm.
+func (o InfrastructureProfileResponseOutput) SmbiosUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *string { return v.SmbiosUuid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
+func (o InfrastructureProfileResponseOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *string { return v.TemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
+func (o InfrastructureProfileResponseOutput) VCenterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *string { return v.VCenterId }).(pulumi.StringPtrOutput)
+}
+
+type InfrastructureProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureProfileResponse)(nil)).Elem()
+}
+
+func (o InfrastructureProfileResponsePtrOutput) ToInfrastructureProfileResponsePtrOutput() InfrastructureProfileResponsePtrOutput {
+	return o
+}
+
+func (o InfrastructureProfileResponsePtrOutput) ToInfrastructureProfileResponsePtrOutputWithContext(ctx context.Context) InfrastructureProfileResponsePtrOutput {
+	return o
+}
+
+func (o InfrastructureProfileResponsePtrOutput) Elem() InfrastructureProfileResponseOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) InfrastructureProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InfrastructureProfileResponse
+		return ret
+	}).(InfrastructureProfileResponseOutput)
+}
+
+// Gets the name of the corresponding resource in Kubernetes.
+func (o InfrastructureProfileResponsePtrOutput) CustomResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CustomResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Firmware type
+func (o InfrastructureProfileResponsePtrOutput) FirmwareType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirmwareType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the folder path of the vm.
+func (o InfrastructureProfileResponsePtrOutput) FolderPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FolderPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the instance uuid of the vm.
+func (o InfrastructureProfileResponsePtrOutput) InstanceUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceUuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the inventory Item ID for the virtual machine.
+func (o InfrastructureProfileResponsePtrOutput) InventoryItemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InventoryItemId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the vCenter Managed Object name for the virtual machine.
+func (o InfrastructureProfileResponsePtrOutput) MoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MoName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine.
+func (o InfrastructureProfileResponsePtrOutput) MoRefId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MoRefId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SMBIOS UUID of the vm.
+func (o InfrastructureProfileResponsePtrOutput) SmbiosUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmbiosUuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
+func (o InfrastructureProfileResponsePtrOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
+func (o InfrastructureProfileResponsePtrOutput) VCenterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VCenterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Instance view status.
 type MachineExtensionInstanceViewResponseStatus struct {
 	// The status code.
@@ -3062,6 +3491,401 @@ func (o OsProfilePtrOutput) WindowsConfiguration() OsProfileWindowsConfiguration
 		}
 		return v.WindowsConfiguration
 	}).(OsProfileWindowsConfigurationPtrOutput)
+}
+
+// Specifies the operating system settings for the virtual machine.
+type OsProfileForVMInstance struct {
+	// Sets administrator password.
+	AdminPassword *string `pulumi:"adminPassword"`
+	// Gets or sets administrator username.
+	AdminUsername *string `pulumi:"adminUsername"`
+	// Gets or sets computer name.
+	ComputerName *string `pulumi:"computerName"`
+	// Gets or sets the guestId.
+	GuestId *string `pulumi:"guestId"`
+	// Gets or sets the type of the os.
+	OsType *string `pulumi:"osType"`
+}
+
+// OsProfileForVMInstanceInput is an input type that accepts OsProfileForVMInstanceArgs and OsProfileForVMInstanceOutput values.
+// You can construct a concrete instance of `OsProfileForVMInstanceInput` via:
+//
+//	OsProfileForVMInstanceArgs{...}
+type OsProfileForVMInstanceInput interface {
+	pulumi.Input
+
+	ToOsProfileForVMInstanceOutput() OsProfileForVMInstanceOutput
+	ToOsProfileForVMInstanceOutputWithContext(context.Context) OsProfileForVMInstanceOutput
+}
+
+// Specifies the operating system settings for the virtual machine.
+type OsProfileForVMInstanceArgs struct {
+	// Sets administrator password.
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// Gets or sets administrator username.
+	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
+	// Gets or sets computer name.
+	ComputerName pulumi.StringPtrInput `pulumi:"computerName"`
+	// Gets or sets the guestId.
+	GuestId pulumi.StringPtrInput `pulumi:"guestId"`
+	// Gets or sets the type of the os.
+	OsType pulumi.StringPtrInput `pulumi:"osType"`
+}
+
+func (OsProfileForVMInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProfileForVMInstance)(nil)).Elem()
+}
+
+func (i OsProfileForVMInstanceArgs) ToOsProfileForVMInstanceOutput() OsProfileForVMInstanceOutput {
+	return i.ToOsProfileForVMInstanceOutputWithContext(context.Background())
+}
+
+func (i OsProfileForVMInstanceArgs) ToOsProfileForVMInstanceOutputWithContext(ctx context.Context) OsProfileForVMInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsProfileForVMInstanceOutput)
+}
+
+func (i OsProfileForVMInstanceArgs) ToOsProfileForVMInstancePtrOutput() OsProfileForVMInstancePtrOutput {
+	return i.ToOsProfileForVMInstancePtrOutputWithContext(context.Background())
+}
+
+func (i OsProfileForVMInstanceArgs) ToOsProfileForVMInstancePtrOutputWithContext(ctx context.Context) OsProfileForVMInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsProfileForVMInstanceOutput).ToOsProfileForVMInstancePtrOutputWithContext(ctx)
+}
+
+// OsProfileForVMInstancePtrInput is an input type that accepts OsProfileForVMInstanceArgs, OsProfileForVMInstancePtr and OsProfileForVMInstancePtrOutput values.
+// You can construct a concrete instance of `OsProfileForVMInstancePtrInput` via:
+//
+//	        OsProfileForVMInstanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type OsProfileForVMInstancePtrInput interface {
+	pulumi.Input
+
+	ToOsProfileForVMInstancePtrOutput() OsProfileForVMInstancePtrOutput
+	ToOsProfileForVMInstancePtrOutputWithContext(context.Context) OsProfileForVMInstancePtrOutput
+}
+
+type osProfileForVMInstancePtrType OsProfileForVMInstanceArgs
+
+func OsProfileForVMInstancePtr(v *OsProfileForVMInstanceArgs) OsProfileForVMInstancePtrInput {
+	return (*osProfileForVMInstancePtrType)(v)
+}
+
+func (*osProfileForVMInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProfileForVMInstance)(nil)).Elem()
+}
+
+func (i *osProfileForVMInstancePtrType) ToOsProfileForVMInstancePtrOutput() OsProfileForVMInstancePtrOutput {
+	return i.ToOsProfileForVMInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *osProfileForVMInstancePtrType) ToOsProfileForVMInstancePtrOutputWithContext(ctx context.Context) OsProfileForVMInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsProfileForVMInstancePtrOutput)
+}
+
+// Specifies the operating system settings for the virtual machine.
+type OsProfileForVMInstanceOutput struct{ *pulumi.OutputState }
+
+func (OsProfileForVMInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProfileForVMInstance)(nil)).Elem()
+}
+
+func (o OsProfileForVMInstanceOutput) ToOsProfileForVMInstanceOutput() OsProfileForVMInstanceOutput {
+	return o
+}
+
+func (o OsProfileForVMInstanceOutput) ToOsProfileForVMInstanceOutputWithContext(ctx context.Context) OsProfileForVMInstanceOutput {
+	return o
+}
+
+func (o OsProfileForVMInstanceOutput) ToOsProfileForVMInstancePtrOutput() OsProfileForVMInstancePtrOutput {
+	return o.ToOsProfileForVMInstancePtrOutputWithContext(context.Background())
+}
+
+func (o OsProfileForVMInstanceOutput) ToOsProfileForVMInstancePtrOutputWithContext(ctx context.Context) OsProfileForVMInstancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsProfileForVMInstance) *OsProfileForVMInstance {
+		return &v
+	}).(OsProfileForVMInstancePtrOutput)
+}
+
+// Sets administrator password.
+func (o OsProfileForVMInstanceOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileForVMInstance) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets administrator username.
+func (o OsProfileForVMInstanceOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileForVMInstance) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets computer name.
+func (o OsProfileForVMInstanceOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileForVMInstance) *string { return v.ComputerName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the guestId.
+func (o OsProfileForVMInstanceOutput) GuestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileForVMInstance) *string { return v.GuestId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the type of the os.
+func (o OsProfileForVMInstanceOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileForVMInstance) *string { return v.OsType }).(pulumi.StringPtrOutput)
+}
+
+type OsProfileForVMInstancePtrOutput struct{ *pulumi.OutputState }
+
+func (OsProfileForVMInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProfileForVMInstance)(nil)).Elem()
+}
+
+func (o OsProfileForVMInstancePtrOutput) ToOsProfileForVMInstancePtrOutput() OsProfileForVMInstancePtrOutput {
+	return o
+}
+
+func (o OsProfileForVMInstancePtrOutput) ToOsProfileForVMInstancePtrOutputWithContext(ctx context.Context) OsProfileForVMInstancePtrOutput {
+	return o
+}
+
+func (o OsProfileForVMInstancePtrOutput) Elem() OsProfileForVMInstanceOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstance) OsProfileForVMInstance {
+		if v != nil {
+			return *v
+		}
+		var ret OsProfileForVMInstance
+		return ret
+	}).(OsProfileForVMInstanceOutput)
+}
+
+// Sets administrator password.
+func (o OsProfileForVMInstancePtrOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets administrator username.
+func (o OsProfileForVMInstancePtrOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets computer name.
+func (o OsProfileForVMInstancePtrOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the guestId.
+func (o OsProfileForVMInstancePtrOutput) GuestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GuestId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the type of the os.
+func (o OsProfileForVMInstancePtrOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the operating system settings for the virtual machine.
+type OsProfileForVMInstanceResponse struct {
+	// Gets or sets administrator username.
+	AdminUsername *string `pulumi:"adminUsername"`
+	// Gets or sets computer name.
+	ComputerName *string `pulumi:"computerName"`
+	// Gets or sets the guestId.
+	GuestId *string `pulumi:"guestId"`
+	// Gets or sets os sku.
+	OsSku string `pulumi:"osSku"`
+	// Gets or sets the type of the os.
+	OsType *string `pulumi:"osType"`
+	// Gets or sets the current running status of VMware Tools running in the guest operating system.
+	ToolsRunningStatus string `pulumi:"toolsRunningStatus"`
+	// Gets or sets the current version of VMware Tools.
+	ToolsVersion string `pulumi:"toolsVersion"`
+	// Gets or sets the current version status of VMware Tools installed in the guest operating system.
+	ToolsVersionStatus string `pulumi:"toolsVersionStatus"`
+}
+
+// Specifies the operating system settings for the virtual machine.
+type OsProfileForVMInstanceResponseOutput struct{ *pulumi.OutputState }
+
+func (OsProfileForVMInstanceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProfileForVMInstanceResponse)(nil)).Elem()
+}
+
+func (o OsProfileForVMInstanceResponseOutput) ToOsProfileForVMInstanceResponseOutput() OsProfileForVMInstanceResponseOutput {
+	return o
+}
+
+func (o OsProfileForVMInstanceResponseOutput) ToOsProfileForVMInstanceResponseOutputWithContext(ctx context.Context) OsProfileForVMInstanceResponseOutput {
+	return o
+}
+
+// Gets or sets administrator username.
+func (o OsProfileForVMInstanceResponseOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileForVMInstanceResponse) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets computer name.
+func (o OsProfileForVMInstanceResponseOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileForVMInstanceResponse) *string { return v.ComputerName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the guestId.
+func (o OsProfileForVMInstanceResponseOutput) GuestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileForVMInstanceResponse) *string { return v.GuestId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets os sku.
+func (o OsProfileForVMInstanceResponseOutput) OsSku() pulumi.StringOutput {
+	return o.ApplyT(func(v OsProfileForVMInstanceResponse) string { return v.OsSku }).(pulumi.StringOutput)
+}
+
+// Gets or sets the type of the os.
+func (o OsProfileForVMInstanceResponseOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileForVMInstanceResponse) *string { return v.OsType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the current running status of VMware Tools running in the guest operating system.
+func (o OsProfileForVMInstanceResponseOutput) ToolsRunningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v OsProfileForVMInstanceResponse) string { return v.ToolsRunningStatus }).(pulumi.StringOutput)
+}
+
+// Gets or sets the current version of VMware Tools.
+func (o OsProfileForVMInstanceResponseOutput) ToolsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v OsProfileForVMInstanceResponse) string { return v.ToolsVersion }).(pulumi.StringOutput)
+}
+
+// Gets or sets the current version status of VMware Tools installed in the guest operating system.
+func (o OsProfileForVMInstanceResponseOutput) ToolsVersionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v OsProfileForVMInstanceResponse) string { return v.ToolsVersionStatus }).(pulumi.StringOutput)
+}
+
+type OsProfileForVMInstanceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OsProfileForVMInstanceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProfileForVMInstanceResponse)(nil)).Elem()
+}
+
+func (o OsProfileForVMInstanceResponsePtrOutput) ToOsProfileForVMInstanceResponsePtrOutput() OsProfileForVMInstanceResponsePtrOutput {
+	return o
+}
+
+func (o OsProfileForVMInstanceResponsePtrOutput) ToOsProfileForVMInstanceResponsePtrOutputWithContext(ctx context.Context) OsProfileForVMInstanceResponsePtrOutput {
+	return o
+}
+
+func (o OsProfileForVMInstanceResponsePtrOutput) Elem() OsProfileForVMInstanceResponseOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) OsProfileForVMInstanceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OsProfileForVMInstanceResponse
+		return ret
+	}).(OsProfileForVMInstanceResponseOutput)
+}
+
+// Gets or sets administrator username.
+func (o OsProfileForVMInstanceResponsePtrOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets computer name.
+func (o OsProfileForVMInstanceResponsePtrOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the guestId.
+func (o OsProfileForVMInstanceResponsePtrOutput) GuestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GuestId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets os sku.
+func (o OsProfileForVMInstanceResponsePtrOutput) OsSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OsSku
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the type of the os.
+func (o OsProfileForVMInstanceResponsePtrOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the current running status of VMware Tools running in the guest operating system.
+func (o OsProfileForVMInstanceResponsePtrOutput) ToolsRunningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ToolsRunningStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the current version of VMware Tools.
+func (o OsProfileForVMInstanceResponsePtrOutput) ToolsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ToolsVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the current version status of VMware Tools installed in the guest operating system.
+func (o OsProfileForVMInstanceResponsePtrOutput) ToolsVersionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ToolsVersionStatus
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies the linux configuration for update management.
@@ -5427,6 +6251,10 @@ func init() {
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureProfileOutput{})
+	pulumi.RegisterOutputType(InfrastructureProfilePtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureProfileResponseOutput{})
+	pulumi.RegisterOutputType(InfrastructureProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewResponseStatusOutput{})
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewResponseStatusPtrOutput{})
 	pulumi.RegisterOutputType(MachineExtensionPropertiesResponseInstanceViewOutput{})
@@ -5447,6 +6275,10 @@ func init() {
 	pulumi.RegisterOutputType(NicIPSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(OsProfileOutput{})
 	pulumi.RegisterOutputType(OsProfilePtrOutput{})
+	pulumi.RegisterOutputType(OsProfileForVMInstanceOutput{})
+	pulumi.RegisterOutputType(OsProfileForVMInstancePtrOutput{})
+	pulumi.RegisterOutputType(OsProfileForVMInstanceResponseOutput{})
+	pulumi.RegisterOutputType(OsProfileForVMInstanceResponsePtrOutput{})
 	pulumi.RegisterOutputType(OsProfileLinuxConfigurationOutput{})
 	pulumi.RegisterOutputType(OsProfileLinuxConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(OsProfileResponseOutput{})

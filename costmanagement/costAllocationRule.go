@@ -38,6 +38,9 @@ func NewCostAllocationRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20200301preview:CostAllocationRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230801:CostAllocationRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource CostAllocationRule

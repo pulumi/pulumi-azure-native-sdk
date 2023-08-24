@@ -59,6 +59,9 @@ func NewTagAtScope(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:resources/v20220901:TagAtScope"),
 		},
+		{
+			Type: pulumi.String("azure-native:resources/v20230701:TagAtScope"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource TagAtScope

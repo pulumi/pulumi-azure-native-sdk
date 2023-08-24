@@ -54,6 +54,9 @@ func NewHybridIdentityMetadatum(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20220110preview:HybridIdentityMetadatum"),
 		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20230301preview:HybridIdentityMetadatum"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource HybridIdentityMetadatum

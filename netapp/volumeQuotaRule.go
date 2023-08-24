@@ -71,6 +71,9 @@ func NewVolumeQuotaRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:netapp/v20221101:VolumeQuotaRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20221101preview:VolumeQuotaRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VolumeQuotaRule

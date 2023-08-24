@@ -39,8 +39,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ResourcePool{}
 	case "azure-native:connectedvmwarevsphere:VCenter":
 		r = &VCenter{}
+	case "azure-native:connectedvmwarevsphere:VMInstanceGuestAgent":
+		r = &VMInstanceGuestAgent{}
 	case "azure-native:connectedvmwarevsphere:VirtualMachine":
 		r = &VirtualMachine{}
+	case "azure-native:connectedvmwarevsphere:VirtualMachineInstance":
+		r = &VirtualMachineInstance{}
 	case "azure-native:connectedvmwarevsphere:VirtualMachineTemplate":
 		r = &VirtualMachineTemplate{}
 	case "azure-native:connectedvmwarevsphere:VirtualNetwork":

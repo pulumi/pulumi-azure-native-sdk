@@ -93,6 +93,9 @@ func NewPrivateDnsZoneGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230401:PrivateDnsZoneGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230501:PrivateDnsZoneGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PrivateDnsZoneGroup

@@ -119,6 +119,9 @@ func NewAdminRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230401:AdminRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230501:AdminRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource AdminRule

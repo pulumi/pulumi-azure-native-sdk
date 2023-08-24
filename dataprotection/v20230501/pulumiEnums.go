@@ -84,6 +84,13 @@ const (
 	MonthSeptember = Month("September")
 )
 
+// Type of the specific object - used for deserializing
+type ResourcePropertiesObjectType string
+
+const (
+	ResourcePropertiesObjectTypeDefaultResourceProperties = ResourcePropertiesObjectType("DefaultResourceProperties")
+)
+
 // Gets or sets the type of secret store
 type SecretStoreType string
 

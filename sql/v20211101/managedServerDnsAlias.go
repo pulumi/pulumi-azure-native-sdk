@@ -60,6 +60,9 @@ func NewManagedServerDnsAlias(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20221101preview:ManagedServerDnsAlias"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230201preview:ManagedServerDnsAlias"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ManagedServerDnsAlias

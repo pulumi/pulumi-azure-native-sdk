@@ -78,6 +78,15 @@ const (
 	AuthenticationTypeGcpCredentials = AuthenticationType("gcpCredentials")
 )
 
+// AutoDiscovery states.
+type AutoDiscovery string
+
+const (
+	AutoDiscoveryDisabled      = AutoDiscovery("Disabled")
+	AutoDiscoveryEnabled       = AutoDiscovery("Enabled")
+	AutoDiscoveryNotApplicable = AutoDiscovery("NotApplicable")
+)
+
 // Whether or not to automatically install Azure Arc (hybrid compute) agents on machines
 type AutoProvision string
 
@@ -116,6 +125,27 @@ type DataSource string
 const (
 	// Devices twin data
 	DataSourceTwinData = DataSource("TwinData")
+)
+
+// The provisioning state of the resource.
+//
+// Pending - Provisioning pending.
+// Failed - Provisioning failed.
+// Succeeded - Successful provisioning.
+// Canceled - Provisioning canceled.
+// PendingDeletion - Deletion pending.
+// DeletionSuccess - Deletion successful.
+// DeletionFailure - Deletion failure.
+type DevOpsProvisioningState string
+
+const (
+	DevOpsProvisioningStateSucceeded       = DevOpsProvisioningState("Succeeded")
+	DevOpsProvisioningStateFailed          = DevOpsProvisioningState("Failed")
+	DevOpsProvisioningStateCanceled        = DevOpsProvisioningState("Canceled")
+	DevOpsProvisioningStatePending         = DevOpsProvisioningState("Pending")
+	DevOpsProvisioningStatePendingDeletion = DevOpsProvisioningState("PendingDeletion")
+	DevOpsProvisioningStateDeletionSuccess = DevOpsProvisioningState("DeletionSuccess")
+	DevOpsProvisioningStateDeletionFailure = DevOpsProvisioningState("DeletionFailure")
 )
 
 // The type of the environment data.

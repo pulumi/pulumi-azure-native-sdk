@@ -72,6 +72,9 @@ func NewHost(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20220715preview:Host"),
 		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20230301preview:Host"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Host

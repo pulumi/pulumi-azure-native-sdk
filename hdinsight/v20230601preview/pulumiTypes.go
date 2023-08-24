@@ -7006,7 +7006,7 @@ func (o SecretsProfileResponsePtrOutput) Secrets() SecretReferenceResponseArrayO
 // The metastore specification for Spark cluster.
 type SparkMetastoreSpec struct {
 	// The database name.
-	DbName *string `pulumi:"dbName"`
+	DbName string `pulumi:"dbName"`
 	// The secret name which contains the database user password.
 	DbPasswordSecretName string `pulumi:"dbPasswordSecretName"`
 	// The database server host.
@@ -7033,7 +7033,7 @@ type SparkMetastoreSpecInput interface {
 // The metastore specification for Spark cluster.
 type SparkMetastoreSpecArgs struct {
 	// The database name.
-	DbName pulumi.StringPtrInput `pulumi:"dbName"`
+	DbName pulumi.StringInput `pulumi:"dbName"`
 	// The secret name which contains the database user password.
 	DbPasswordSecretName pulumi.StringInput `pulumi:"dbPasswordSecretName"`
 	// The database server host.
@@ -7125,8 +7125,8 @@ func (o SparkMetastoreSpecOutput) ToSparkMetastoreSpecPtrOutputWithContext(ctx c
 }
 
 // The database name.
-func (o SparkMetastoreSpecOutput) DbName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkMetastoreSpec) *string { return v.DbName }).(pulumi.StringPtrOutput)
+func (o SparkMetastoreSpecOutput) DbName() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkMetastoreSpec) string { return v.DbName }).(pulumi.StringOutput)
 }
 
 // The secret name which contains the database user password.
@@ -7184,7 +7184,7 @@ func (o SparkMetastoreSpecPtrOutput) DbName() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.DbName
+		return &v.DbName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7241,7 +7241,7 @@ func (o SparkMetastoreSpecPtrOutput) ThriftUrl() pulumi.StringPtrOutput {
 // The metastore specification for Spark cluster.
 type SparkMetastoreSpecResponse struct {
 	// The database name.
-	DbName *string `pulumi:"dbName"`
+	DbName string `pulumi:"dbName"`
 	// The secret name which contains the database user password.
 	DbPasswordSecretName string `pulumi:"dbPasswordSecretName"`
 	// The database server host.
@@ -7270,8 +7270,8 @@ func (o SparkMetastoreSpecResponseOutput) ToSparkMetastoreSpecResponseOutputWith
 }
 
 // The database name.
-func (o SparkMetastoreSpecResponseOutput) DbName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkMetastoreSpecResponse) *string { return v.DbName }).(pulumi.StringPtrOutput)
+func (o SparkMetastoreSpecResponseOutput) DbName() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkMetastoreSpecResponse) string { return v.DbName }).(pulumi.StringOutput)
 }
 
 // The secret name which contains the database user password.
@@ -7329,7 +7329,7 @@ func (o SparkMetastoreSpecResponsePtrOutput) DbName() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.DbName
+		return &v.DbName
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -66,6 +66,9 @@ func NewJob(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20230501:Job"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20230502preview:Job"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Job

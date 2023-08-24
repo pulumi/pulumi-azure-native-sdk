@@ -197,6 +197,9 @@ func NewPacketCapture(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230401:PacketCapture"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230501:PacketCapture"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource PacketCapture

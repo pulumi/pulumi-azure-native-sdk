@@ -55,6 +55,9 @@ func NewCacheRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20230601preview:CacheRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20230701:CacheRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource CacheRule

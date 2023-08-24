@@ -141,6 +141,9 @@ func NewExpressRouteGateway(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230401:ExpressRouteGateway"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230501:ExpressRouteGateway"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ExpressRouteGateway

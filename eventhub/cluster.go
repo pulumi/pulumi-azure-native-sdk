@@ -66,6 +66,9 @@ func NewCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventhub/v20221001preview:Cluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventhub/v20230101preview:Cluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Cluster

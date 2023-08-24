@@ -69,6 +69,9 @@ func NewDeploymentAtScope(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:resources/v20220901:DeploymentAtScope"),
 		},
+		{
+			Type: pulumi.String("azure-native:resources/v20230701:DeploymentAtScope"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DeploymentAtScope

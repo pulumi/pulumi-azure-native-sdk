@@ -61,6 +61,9 @@ func NewInventoryItem(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20220110preview:InventoryItem"),
 		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20230301preview:InventoryItem"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource InventoryItem

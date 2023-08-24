@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specific Azure Monitor workspace
+// Returns the specified Azure Monitor Workspace
 // Azure REST API version: 2023-04-03.
 func LookupAzureMonitorWorkspace(ctx *pulumi.Context, args *LookupAzureMonitorWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupAzureMonitorWorkspaceResult, error) {
 	var rv LookupAzureMonitorWorkspaceResult
@@ -22,7 +22,7 @@ func LookupAzureMonitorWorkspace(ctx *pulumi.Context, args *LookupAzureMonitorWo
 }
 
 type LookupAzureMonitorWorkspaceArgs struct {
-	// The name of the Azure Monitor workspace.  The name is case insensitive
+	// The name of the Azure Monitor Workspace. The name is case insensitive
 	AzureMonitorWorkspaceName string `pulumi:"azureMonitorWorkspaceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -30,7 +30,7 @@ type LookupAzureMonitorWorkspaceArgs struct {
 
 // An Azure Monitor Workspace definition
 type LookupAzureMonitorWorkspaceResult struct {
-	// The immutable ID of the Azure Monitor workspace. This property is read-only.
+	// The immutable Id of the Azure Monitor Workspace. This property is read-only.
 	AccountId string `pulumi:"accountId"`
 	// The Data Collection Rule and Endpoint used for ingestion by default.
 	DefaultIngestionSettings AzureMonitorWorkspaceResponseDefaultIngestionSettings `pulumi:"defaultIngestionSettings"`
@@ -40,15 +40,15 @@ type LookupAzureMonitorWorkspaceResult struct {
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Information about metrics for the Azure Monitor workspace
+	// Properties related to the metrics container in the Azure Monitor Workspace
 	Metrics AzureMonitorWorkspaceResponseMetrics `pulumi:"metrics"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of private endpoint connections
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
-	// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
+	// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Gets or sets allow or disallow public network access to workspace
+	// Gets or sets allow or disallow public network access to Azure Monitor Workspace
 	PublicNetworkAccess string `pulumi:"publicNetworkAccess"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -72,7 +72,7 @@ func LookupAzureMonitorWorkspaceOutput(ctx *pulumi.Context, args LookupAzureMoni
 }
 
 type LookupAzureMonitorWorkspaceOutputArgs struct {
-	// The name of the Azure Monitor workspace.  The name is case insensitive
+	// The name of the Azure Monitor Workspace. The name is case insensitive
 	AzureMonitorWorkspaceName pulumi.StringInput `pulumi:"azureMonitorWorkspaceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -97,7 +97,7 @@ func (o LookupAzureMonitorWorkspaceResultOutput) ToLookupAzureMonitorWorkspaceRe
 	return o
 }
 
-// The immutable ID of the Azure Monitor workspace. This property is read-only.
+// The immutable Id of the Azure Monitor Workspace. This property is read-only.
 func (o LookupAzureMonitorWorkspaceResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -124,7 +124,7 @@ func (o LookupAzureMonitorWorkspaceResultOutput) Location() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Information about metrics for the Azure Monitor workspace
+// Properties related to the metrics container in the Azure Monitor Workspace
 func (o LookupAzureMonitorWorkspaceResultOutput) Metrics() AzureMonitorWorkspaceResponseMetricsOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) AzureMonitorWorkspaceResponseMetrics { return v.Metrics }).(AzureMonitorWorkspaceResponseMetricsOutput)
 }
@@ -141,12 +141,12 @@ func (o LookupAzureMonitorWorkspaceResultOutput) PrivateEndpointConnections() Pr
 	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
-// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
+// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
 func (o LookupAzureMonitorWorkspaceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Gets or sets allow or disallow public network access to workspace
+// Gets or sets allow or disallow public network access to Azure Monitor Workspace
 func (o LookupAzureMonitorWorkspaceResultOutput) PublicNetworkAccess() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.PublicNetworkAccess }).(pulumi.StringOutput)
 }

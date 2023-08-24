@@ -75,6 +75,9 @@ func NewDeploymentAtManagementGroupScope(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:resources/v20220901:DeploymentAtManagementGroupScope"),
 		},
+		{
+			Type: pulumi.String("azure-native:resources/v20230701:DeploymentAtManagementGroupScope"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource DeploymentAtManagementGroupScope

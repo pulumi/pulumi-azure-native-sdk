@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VirtualHardDisk{}
 	case "azure-native:azurestackhci:VirtualMachine":
 		r = &VirtualMachine{}
+	case "azure-native:azurestackhci:VirtualMachineInstance":
+		r = &VirtualMachineInstance{}
 	case "azure-native:azurestackhci:VirtualNetwork":
 		r = &VirtualNetwork{}
 	default:

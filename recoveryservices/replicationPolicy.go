@@ -109,6 +109,9 @@ func NewReplicationPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230401:ReplicationPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20230601:ReplicationPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ReplicationPolicy

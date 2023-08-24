@@ -68,6 +68,9 @@ func NewEnterprisePrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cache/v20230301preview:EnterprisePrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:cache/v20230701:EnterprisePrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource EnterprisePrivateEndpointConnection

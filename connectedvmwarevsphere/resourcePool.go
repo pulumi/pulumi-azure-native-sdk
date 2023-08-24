@@ -90,6 +90,9 @@ func NewResourcePool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20220715preview:ResourcePool"),
 		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20230301preview:ResourcePool"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ResourcePool

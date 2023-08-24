@@ -133,6 +133,9 @@ func NewVpnServerConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230401:VpnServerConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230501:VpnServerConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VpnServerConfiguration

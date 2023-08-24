@@ -54,6 +54,9 @@ func NewCredentialSet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20230601preview:CredentialSet"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20230701:CredentialSet"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource CredentialSet

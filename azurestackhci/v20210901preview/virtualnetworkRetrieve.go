@@ -70,6 +70,12 @@ func NewVirtualnetworkRetrieve(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:virtualnetworkRetrieve"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230701preview:VirtualnetworkRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230701preview:virtualnetworkRetrieve"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualnetworkRetrieve

@@ -94,6 +94,9 @@ func NewEncryptionProtector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20221101preview:EncryptionProtector"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230201preview:EncryptionProtector"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource EncryptionProtector

@@ -71,6 +71,9 @@ func NewOrchestratorInstanceServiceDetails(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:delegatednetwork/v20230518preview:OrchestratorInstanceServiceDetails"),
 		},
+		{
+			Type: pulumi.String("azure-native:delegatednetwork/v20230627preview:OrchestratorInstanceServiceDetails"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource OrchestratorInstanceServiceDetails
