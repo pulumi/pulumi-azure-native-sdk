@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Keys for endpoint authentication.
 // Azure REST API version: 2023-04-01.
 func ListBatchEndpointKeys(ctx *pulumi.Context, args *ListBatchEndpointKeysArgs, opts ...pulumi.InvokeOption) (*ListBatchEndpointKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListBatchEndpointKeysResult
 	err := ctx.Invoke("azure-native:machinelearningservices:listBatchEndpointKeys", args, &rv, opts...)
 	if err != nil {

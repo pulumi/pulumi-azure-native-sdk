@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the properties of a Managed CCF app.
 func LookupManagedCCF(ctx *pulumi.Context, args *LookupManagedCCFArgs, opts ...pulumi.InvokeOption) (*LookupManagedCCFResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedCCFResult
 	err := ctx.Invoke("azure-native:confidentialledger/v20230126preview:getManagedCCF", args, &rv, opts...)
 	if err != nil {

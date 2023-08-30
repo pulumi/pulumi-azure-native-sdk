@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Graph resource under an existing Azure Cosmos DB database account with the provided name.
 // Azure REST API version: 2023-03-15-preview.
 func LookupGraphResourceGraph(ctx *pulumi.Context, args *LookupGraphResourceGraphArgs, opts ...pulumi.InvokeOption) (*LookupGraphResourceGraphResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGraphResourceGraphResult
 	err := ctx.Invoke("azure-native:documentdb:getGraphResourceGraph", args, &rv, opts...)
 	if err != nil {

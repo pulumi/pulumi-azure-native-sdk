@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the credential identified by credential name.
 func LookupCredential(ctx *pulumi.Context, args *LookupCredentialArgs, opts ...pulumi.InvokeOption) (*LookupCredentialResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCredentialResult
 	err := ctx.Invoke("azure-native:automation/v20220808:getCredential", args, &rv, opts...)
 	if err != nil {

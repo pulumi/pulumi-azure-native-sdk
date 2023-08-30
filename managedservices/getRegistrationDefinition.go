@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the registration definition details.
 // Azure REST API version: 2022-10-01.
 func LookupRegistrationDefinition(ctx *pulumi.Context, args *LookupRegistrationDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupRegistrationDefinitionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistrationDefinitionResult
 	err := ctx.Invoke("azure-native:managedservices:getRegistrationDefinition", args, &rv, opts...)
 	if err != nil {

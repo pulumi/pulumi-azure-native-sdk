@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a specific trigger by name.
 // Azure REST API version: 2022-03-01.
 func LookupFileEventTrigger(ctx *pulumi.Context, args *LookupFileEventTriggerArgs, opts ...pulumi.InvokeOption) (*LookupFileEventTriggerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFileEventTriggerResult
 	err := ctx.Invoke("azure-native:databoxedge:getFileEventTrigger", args, &rv, opts...)
 	if err != nil {

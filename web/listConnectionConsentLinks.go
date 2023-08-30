@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the consent links of a connection
 // Azure REST API version: 2016-06-01.
 func ListConnectionConsentLinks(ctx *pulumi.Context, args *ListConnectionConsentLinksArgs, opts ...pulumi.InvokeOption) (*ListConnectionConsentLinksResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConnectionConsentLinksResult
 	err := ctx.Invoke("azure-native:web:listConnectionConsentLinks", args, &rv, opts...)
 	if err != nil {

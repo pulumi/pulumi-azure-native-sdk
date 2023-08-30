@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the Azure AD B2C tenant resource.
 func LookupB2CTenant(ctx *pulumi.Context, args *LookupB2CTenantArgs, opts ...pulumi.InvokeOption) (*LookupB2CTenantResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupB2CTenantResult
 	err := ctx.Invoke("azure-native:azureactivedirectory/v20230118preview:getB2CTenant", args, &rv, opts...)
 	if err != nil {

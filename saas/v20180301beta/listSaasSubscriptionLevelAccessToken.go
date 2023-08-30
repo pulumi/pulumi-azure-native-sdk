@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the ISV access token for a specified Subscription Level SaaS.
 func ListSaasSubscriptionLevelAccessToken(ctx *pulumi.Context, args *ListSaasSubscriptionLevelAccessTokenArgs, opts ...pulumi.InvokeOption) (*ListSaasSubscriptionLevelAccessTokenResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSaasSubscriptionLevelAccessTokenResult
 	err := ctx.Invoke("azure-native:saas/v20180301beta:listSaasSubscriptionLevelAccessToken", args, &rv, opts...)
 	if err != nil {

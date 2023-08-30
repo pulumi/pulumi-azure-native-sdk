@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List of elastic traffic filters in the account
 // Azure REST API version: 2023-06-01.
 func ListlistAssociatedTrafficFilter(ctx *pulumi.Context, args *ListlistAssociatedTrafficFilterArgs, opts ...pulumi.InvokeOption) (*ListlistAssociatedTrafficFilterResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListlistAssociatedTrafficFilterResult
 	err := ctx.Invoke("azure-native:elastic:listlistAssociatedTrafficFilter", args, &rv, opts...)
 	if err != nil {

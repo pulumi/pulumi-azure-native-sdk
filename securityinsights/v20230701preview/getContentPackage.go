@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an installed packages by its id.
 func LookupContentPackage(ctx *pulumi.Context, args *LookupContentPackageArgs, opts ...pulumi.InvokeOption) (*LookupContentPackageResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContentPackageResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230701preview:getContentPackage", args, &rv, opts...)
 	if err != nil {

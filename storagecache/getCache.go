@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a cache.
 // Azure REST API version: 2023-05-01.
 func LookupCache(ctx *pulumi.Context, args *LookupCacheArgs, opts ...pulumi.InvokeOption) (*LookupCacheResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCacheResult
 	err := ctx.Invoke("azure-native:storagecache:getCache", args, &rv, opts...)
 	if err != nil {

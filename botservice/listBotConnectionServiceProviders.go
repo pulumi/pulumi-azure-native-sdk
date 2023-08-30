@@ -4,12 +4,14 @@
 package botservice
 
 import (
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the available Service Providers for creating Connection Settings
 // Azure REST API version: 2022-09-15.
 func ListBotConnectionServiceProviders(ctx *pulumi.Context, args *ListBotConnectionServiceProvidersArgs, opts ...pulumi.InvokeOption) (*ListBotConnectionServiceProvidersResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListBotConnectionServiceProvidersResult
 	err := ctx.Invoke("azure-native:botservice:listBotConnectionServiceProviders", args, &rv, opts...)
 	if err != nil {

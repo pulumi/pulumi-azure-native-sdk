@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,6 +79,7 @@ func NewADLSGen2StorageAccountDataSet(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource ADLSGen2StorageAccountDataSet
 	err := ctx.RegisterResource("azure-native:datashare/v20201001preview:ADLSGen2StorageAccountDataSet", name, args, &resource, opts...)
 	if err != nil {

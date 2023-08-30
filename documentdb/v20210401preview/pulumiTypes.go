@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 type ApiProperties struct {
 	// Describes the ServerVersion of an a MongoDB account.
@@ -502,7 +505,7 @@ func (val *DefaultRequestDatabaseAccountCreateUpdateProperties) Defaults() *Defa
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CreateMode) {
+	if utilities.IsZero(tmp.CreateMode) {
 		tmp.CreateMode = "Default"
 	}
 	return &tmp
@@ -1498,7 +1501,7 @@ func (val *RestoreReqeustDatabaseAccountCreateUpdateProperties) Defaults() *Rest
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.CreateMode) {
+	if utilities.IsZero(tmp.CreateMode) {
 		tmp.CreateMode = "Default"
 	}
 	return &tmp

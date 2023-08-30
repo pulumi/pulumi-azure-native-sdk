@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a shared access policy by name from an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
 // Azure REST API version: 2022-04-30-preview.
 func ListIotHubResourceKeysForKeyName(ctx *pulumi.Context, args *ListIotHubResourceKeysForKeyNameArgs, opts ...pulumi.InvokeOption) (*ListIotHubResourceKeysForKeyNameResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListIotHubResourceKeysForKeyNameResult
 	err := ctx.Invoke("azure-native:devices:listIotHubResourceKeysForKeyName", args, &rv, opts...)
 	if err != nil {

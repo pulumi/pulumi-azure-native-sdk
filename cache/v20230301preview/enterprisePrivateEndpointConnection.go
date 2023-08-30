@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,6 +73,7 @@ func NewEnterprisePrivateEndpointConnection(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource EnterprisePrivateEndpointConnection
 	err := ctx.RegisterResource("azure-native:cache/v20230301preview:EnterprisePrivateEndpointConnection", name, args, &resource, opts...)
 	if err != nil {

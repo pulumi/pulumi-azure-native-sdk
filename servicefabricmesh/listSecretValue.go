@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the decrypted value of the specified named value of the secret resource. This is a privileged operation.
 // Azure REST API version: 2018-09-01-preview.
 func ListSecretValue(ctx *pulumi.Context, args *ListSecretValueArgs, opts ...pulumi.InvokeOption) (*ListSecretValueResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSecretValueResult
 	err := ctx.Invoke("azure-native:servicefabricmesh:listSecretValue", args, &rv, opts...)
 	if err != nil {

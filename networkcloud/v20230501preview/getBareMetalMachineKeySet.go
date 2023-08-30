@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get bare metal machine key set of the provided cluster.
 func LookupBareMetalMachineKeySet(ctx *pulumi.Context, args *LookupBareMetalMachineKeySetArgs, opts ...pulumi.InvokeOption) (*LookupBareMetalMachineKeySetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBareMetalMachineKeySetResult
 	err := ctx.Invoke("azure-native:networkcloud/v20230501preview:getBareMetalMachineKeySet", args, &rv, opts...)
 	if err != nil {

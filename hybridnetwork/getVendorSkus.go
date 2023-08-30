@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified sku.
 // Azure REST API version: 2022-01-01-preview.
 func LookupVendorSkus(ctx *pulumi.Context, args *LookupVendorSkusArgs, opts ...pulumi.InvokeOption) (*LookupVendorSkusResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVendorSkusResult
 	err := ctx.Invoke("azure-native:hybridnetwork:getVendorSkus", args, &rv, opts...)
 	if err != nil {

@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 type AccessPolicy struct {
 	// Expiry time of the access policy
@@ -9770,7 +9773,7 @@ func (val *NetworkRuleSet) Defaults() *NetworkRuleSet {
 		bypass_ := "AzureServices"
 		tmp.Bypass = &bypass_
 	}
-	if isZero(tmp.DefaultAction) {
+	if utilities.IsZero(tmp.DefaultAction) {
 		tmp.DefaultAction = DefaultAction("Allow")
 	}
 	return &tmp
@@ -10016,7 +10019,7 @@ func (val *NetworkRuleSetResponse) Defaults() *NetworkRuleSetResponse {
 		bypass_ := "AzureServices"
 		tmp.Bypass = &bypass_
 	}
-	if isZero(tmp.DefaultAction) {
+	if utilities.IsZero(tmp.DefaultAction) {
 		tmp.DefaultAction = "Allow"
 	}
 	return &tmp
@@ -11916,7 +11919,7 @@ func (val *SasPolicy) Defaults() *SasPolicy {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExpirationAction) {
+	if utilities.IsZero(tmp.ExpirationAction) {
 		tmp.ExpirationAction = "Log"
 	}
 	return &tmp
@@ -12098,7 +12101,7 @@ func (val *SasPolicyResponse) Defaults() *SasPolicyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ExpirationAction) {
+	if utilities.IsZero(tmp.ExpirationAction) {
 		tmp.ExpirationAction = "Log"
 	}
 	return &tmp

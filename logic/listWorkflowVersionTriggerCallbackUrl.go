@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the callback url for a trigger of a workflow version.
 // Azure REST API version: 2019-05-01.
 func ListWorkflowVersionTriggerCallbackUrl(ctx *pulumi.Context, args *ListWorkflowVersionTriggerCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListWorkflowVersionTriggerCallbackUrlResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkflowVersionTriggerCallbackUrlResult
 	err := ctx.Invoke("azure-native:logic:listWorkflowVersionTriggerCallbackUrl", args, &rv, opts...)
 	if err != nil {

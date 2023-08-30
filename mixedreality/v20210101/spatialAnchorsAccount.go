@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,6 +70,7 @@ func NewSpatialAnchorsAccount(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource SpatialAnchorsAccount
 	err := ctx.RegisterResource("azure-native:mixedreality/v20210101:SpatialAnchorsAccount", name, args, &resource, opts...)
 	if err != nil {

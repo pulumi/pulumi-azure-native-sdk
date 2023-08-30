@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the storage task properties
 func LookupStorageTask(ctx *pulumi.Context, args *LookupStorageTaskArgs, opts ...pulumi.InvokeOption) (*LookupStorageTaskResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageTaskResult
 	err := ctx.Invoke("azure-native:storagetasks/v20230101:getStorageTask", args, &rv, opts...)
 	if err != nil {

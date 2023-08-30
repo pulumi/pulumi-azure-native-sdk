@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,6 +64,7 @@ func NewWorkspaceProduct(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource WorkspaceProduct
 	err := ctx.RegisterResource("azure-native:apimanagement/v20230301preview:WorkspaceProduct", name, args, &resource, opts...)
 	if err != nil {

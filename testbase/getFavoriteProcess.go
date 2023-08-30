@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a favorite process for a Test Base Package.
 // Azure REST API version: 2022-04-01-preview.
 func LookupFavoriteProcess(ctx *pulumi.Context, args *LookupFavoriteProcessArgs, opts ...pulumi.InvokeOption) (*LookupFavoriteProcessResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFavoriteProcessResult
 	err := ctx.Invoke("azure-native:testbase:getFavoriteProcess", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,6 +77,7 @@ func NewOrchestratorInstanceServiceDetails(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource OrchestratorInstanceServiceDetails
 	err := ctx.RegisterResource("azure-native:delegatednetwork/v20210315:OrchestratorInstanceServiceDetails", name, args, &resource, opts...)
 	if err != nil {

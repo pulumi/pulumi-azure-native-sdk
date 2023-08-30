@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Network Device resource details.
 func LookupNetworkDevice(ctx *pulumi.Context, args *LookupNetworkDeviceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkDeviceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkDeviceResult
 	err := ctx.Invoke("azure-native:managednetworkfabric/v20230615:getNetworkDevice", args, &rv, opts...)
 	if err != nil {

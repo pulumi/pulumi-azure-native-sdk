@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Cloud HSM Cluster
 // Azure REST API version: 2022-08-31-preview.
 func LookupCloudHsmCluster(ctx *pulumi.Context, args *LookupCloudHsmClusterArgs, opts ...pulumi.InvokeOption) (*LookupCloudHsmClusterResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudHsmClusterResult
 	err := ctx.Invoke("azure-native:hardwaresecuritymodules:getCloudHsmCluster", args, &rv, opts...)
 	if err != nil {

@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Identity properties of the AKS cluster agentpool MSI
 type AksClusterProfileResponseAksClusterAgentPoolIdentityProfile struct {
@@ -2681,7 +2684,7 @@ func (val *ClusterPrometheusProfile) Defaults() *ClusterPrometheusProfile {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if utilities.IsZero(tmp.Enabled) {
 		tmp.Enabled = false
 	}
 	return &tmp
@@ -2844,7 +2847,7 @@ func (val *ClusterPrometheusProfileResponse) Defaults() *ClusterPrometheusProfil
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if utilities.IsZero(tmp.Enabled) {
 		tmp.Enabled = false
 	}
 	return &tmp

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List new plans notifications
 func ListPrivateStoreNewPlansNotifications(ctx *pulumi.Context, args *ListPrivateStoreNewPlansNotificationsArgs, opts ...pulumi.InvokeOption) (*ListPrivateStoreNewPlansNotificationsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListPrivateStoreNewPlansNotificationsResult
 	err := ctx.Invoke("azure-native:marketplace/v20211201:listPrivateStoreNewPlansNotifications", args, &rv, opts...)
 	if err != nil {

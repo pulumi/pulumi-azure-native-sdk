@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
 // Azure REST API version: 2022-09-01-preview.
 func LookupProduct(ctx *pulumi.Context, args *LookupProductArgs, opts ...pulumi.InvokeOption) (*LookupProductResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProductResult
 	err := ctx.Invoke("azure-native:azuresphere:getProduct", args, &rv, opts...)
 	if err != nil {

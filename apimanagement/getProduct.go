@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the product specified by its identifier.
 // Azure REST API version: 2022-08-01.
 func LookupProduct(ctx *pulumi.Context, args *LookupProductArgs, opts ...pulumi.InvokeOption) (*LookupProductResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProductResult
 	err := ctx.Invoke("azure-native:apimanagement:getProduct", args, &rv, opts...)
 	if err != nil {

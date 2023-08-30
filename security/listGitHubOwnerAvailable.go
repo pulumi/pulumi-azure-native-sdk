@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List of RP resources which supports pagination.
 // Azure REST API version: 2023-09-01-preview.
 func ListGitHubOwnerAvailable(ctx *pulumi.Context, args *ListGitHubOwnerAvailableArgs, opts ...pulumi.InvokeOption) (*ListGitHubOwnerAvailableResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListGitHubOwnerAvailableResult
 	err := ctx.Invoke("azure-native:security:listGitHubOwnerAvailable", args, &rv, opts...)
 	if err != nil {

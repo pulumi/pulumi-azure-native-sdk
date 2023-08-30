@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation returns properties of a SyncSet.
 func LookupSyncSet(ctx *pulumi.Context, args *LookupSyncSetArgs, opts ...pulumi.InvokeOption) (*LookupSyncSetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSyncSetResult
 	err := ctx.Invoke("azure-native:redhatopenshift/v20230401:getSyncSet", args, &rv, opts...)
 	if err != nil {

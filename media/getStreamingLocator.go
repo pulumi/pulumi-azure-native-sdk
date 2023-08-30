@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the details of a Streaming Locator in the Media Services account
 // Azure REST API version: 2023-01-01.
 func LookupStreamingLocator(ctx *pulumi.Context, args *LookupStreamingLocatorArgs, opts ...pulumi.InvokeOption) (*LookupStreamingLocatorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStreamingLocatorResult
 	err := ctx.Invoke("azure-native:media:getStreamingLocator", args, &rv, opts...)
 	if err != nil {

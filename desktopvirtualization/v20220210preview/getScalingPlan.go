@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a scaling plan.
 func LookupScalingPlan(ctx *pulumi.Context, args *LookupScalingPlanArgs, opts ...pulumi.InvokeOption) (*LookupScalingPlanResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScalingPlanResult
 	err := ctx.Invoke("azure-native:desktopvirtualization/v20220210preview:getScalingPlan", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This operation retrieves a single variable value; given its name,  management group it was created at and the variable it's created for.
 func LookupVariableValueAtManagementGroup(ctx *pulumi.Context, args *LookupVariableValueAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupVariableValueAtManagementGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVariableValueAtManagementGroupResult
 	err := ctx.Invoke("azure-native:authorization/v20220801preview:getVariableValueAtManagementGroup", args, &rv, opts...)
 	if err != nil {

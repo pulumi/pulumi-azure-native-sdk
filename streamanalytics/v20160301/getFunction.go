@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details about the specified function.
 func LookupFunction(ctx *pulumi.Context, args *LookupFunctionArgs, opts ...pulumi.InvokeOption) (*LookupFunctionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFunctionResult
 	err := ctx.Invoke("azure-native:streamanalytics/v20160301:getFunction", args, &rv, opts...)
 	if err != nil {

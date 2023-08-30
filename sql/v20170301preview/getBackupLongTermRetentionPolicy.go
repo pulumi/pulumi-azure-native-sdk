@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a database's long term retention policy.
 func LookupBackupLongTermRetentionPolicy(ctx *pulumi.Context, args *LookupBackupLongTermRetentionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackupLongTermRetentionPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupLongTermRetentionPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20170301preview:getBackupLongTermRetentionPolicy", args, &rv, opts...)
 	if err != nil {

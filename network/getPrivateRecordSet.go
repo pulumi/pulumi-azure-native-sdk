@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a record set.
 // Azure REST API version: 2020-06-01.
 func LookupPrivateRecordSet(ctx *pulumi.Context, args *LookupPrivateRecordSetArgs, opts ...pulumi.InvokeOption) (*LookupPrivateRecordSetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateRecordSetResult
 	err := ctx.Invoke("azure-native:network:getPrivateRecordSet", args, &rv, opts...)
 	if err != nil {

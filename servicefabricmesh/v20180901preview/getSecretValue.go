@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the information about the specified named secret value resources. The information does not include the actual value of the secret.
 func LookupSecretValue(ctx *pulumi.Context, args *LookupSecretValueArgs, opts ...pulumi.InvokeOption) (*LookupSecretValueResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretValueResult
 	err := ctx.Invoke("azure-native:servicefabricmesh/v20180901preview:getSecretValue", args, &rv, opts...)
 	if err != nil {

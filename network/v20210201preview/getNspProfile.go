@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified NSP profile.
 func LookupNspProfile(ctx *pulumi.Context, args *LookupNspProfileArgs, opts ...pulumi.InvokeOption) (*LookupNspProfileResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNspProfileResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:getNspProfile", args, &rv, opts...)
 	if err != nil {

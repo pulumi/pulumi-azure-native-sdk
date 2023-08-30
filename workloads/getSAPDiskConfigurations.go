@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the SAP Disk Configuration Layout prod/non-prod SAP System.
 // Azure REST API version: 2023-04-01.
 func GetSAPDiskConfigurations(ctx *pulumi.Context, args *GetSAPDiskConfigurationsArgs, opts ...pulumi.InvokeOption) (*GetSAPDiskConfigurationsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSAPDiskConfigurationsResult
 	err := ctx.Invoke("azure-native:workloads:getSAPDiskConfigurations", args, &rv, opts...)
 	if err != nil {

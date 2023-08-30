@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A FluidRelay Server.
 // Azure REST API version: 2022-06-01.
 func LookupFluidRelayServer(ctx *pulumi.Context, args *LookupFluidRelayServerArgs, opts ...pulumi.InvokeOption) (*LookupFluidRelayServerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFluidRelayServerResult
 	err := ctx.Invoke("azure-native:fluidrelay:getFluidRelayServer", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves details of this L3 Isolation Domain.
 // Azure REST API version: 2023-02-01-preview.
 func LookupL3IsolationDomain(ctx *pulumi.Context, args *LookupL3IsolationDomainArgs, opts ...pulumi.InvokeOption) (*LookupL3IsolationDomainResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupL3IsolationDomainResult
 	err := ctx.Invoke("azure-native:managednetworkfabric:getL3IsolationDomain", args, &rv, opts...)
 	if err != nil {

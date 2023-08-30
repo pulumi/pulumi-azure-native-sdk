@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the existing immutability policy along with the corresponding ETag in response headers and body.
 // Azure REST API version: 2022-09-01.
 func LookupBlobContainerImmutabilityPolicy(ctx *pulumi.Context, args *LookupBlobContainerImmutabilityPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBlobContainerImmutabilityPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBlobContainerImmutabilityPolicyResult
 	err := ctx.Invoke("azure-native:storage:getBlobContainerImmutabilityPolicy", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Method that gets called when list of partitions is requested.
 // Azure REST API version: 2022-04-04-preview.
 func ListEnergyServicePartitions(ctx *pulumi.Context, args *ListEnergyServicePartitionsArgs, opts ...pulumi.InvokeOption) (*ListEnergyServicePartitionsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEnergyServicePartitionsResult
 	err := ctx.Invoke("azure-native:openenergyplatform:listEnergyServicePartitions", args, &rv, opts...)
 	if err != nil {

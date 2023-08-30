@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a template byt its identifier.
 // Azure REST API version: 2023-06-01-preview.
 func LookupContentTemplate(ctx *pulumi.Context, args *LookupContentTemplateArgs, opts ...pulumi.InvokeOption) (*LookupContentTemplateResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContentTemplateResult
 	err := ctx.Invoke("azure-native:securityinsights:getContentTemplate", args, &rv, opts...)
 	if err != nil {

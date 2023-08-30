@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a role assignment for the caller on a billing account. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement.
 // Azure REST API version: 2019-10-01-preview.
 func LookupBillingRoleAssignmentByBillingAccount(ctx *pulumi.Context, args *LookupBillingRoleAssignmentByBillingAccountArgs, opts ...pulumi.InvokeOption) (*LookupBillingRoleAssignmentByBillingAccountResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBillingRoleAssignmentByBillingAccountResult
 	err := ctx.Invoke("azure-native:billing:getBillingRoleAssignmentByBillingAccount", args, &rv, opts...)
 	if err != nil {

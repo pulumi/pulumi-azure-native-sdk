@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of a storage account’s Table service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
 // Azure REST API version: 2022-09-01.
 func LookupTableServiceProperties(ctx *pulumi.Context, args *LookupTableServicePropertiesArgs, opts ...pulumi.InvokeOption) (*LookupTableServicePropertiesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTableServicePropertiesResult
 	err := ctx.Invoke("azure-native:storage:getTableServiceProperties", args, &rv, opts...)
 	if err != nil {

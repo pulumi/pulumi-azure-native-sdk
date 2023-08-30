@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Tables under an existing Azure Cosmos DB database account with the provided name.
 func LookupTableResourceTable(ctx *pulumi.Context, args *LookupTableResourceTableArgs, opts ...pulumi.InvokeOption) (*LookupTableResourceTableResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTableResourceTableResult
 	err := ctx.Invoke("azure-native:documentdb/v20230415:getTableResourceTable", args, &rv, opts...)
 	if err != nil {

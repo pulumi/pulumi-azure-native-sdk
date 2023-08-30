@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Primary and secondary connection strings to the queue.
 // Azure REST API version: 2022-01-01-preview.
 func ListQueueKeys(ctx *pulumi.Context, args *ListQueueKeysArgs, opts ...pulumi.InvokeOption) (*ListQueueKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListQueueKeysResult
 	err := ctx.Invoke("azure-native:servicebus:listQueueKeys", args, &rv, opts...)
 	if err != nil {

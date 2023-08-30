@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 func LookupDisasterRecoveryConfig(ctx *pulumi.Context, args *LookupDisasterRecoveryConfigArgs, opts ...pulumi.InvokeOption) (*LookupDisasterRecoveryConfigResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDisasterRecoveryConfigResult
 	err := ctx.Invoke("azure-native:servicebus/v20221001preview:getDisasterRecoveryConfig", args, &rv, opts...)
 	if err != nil {

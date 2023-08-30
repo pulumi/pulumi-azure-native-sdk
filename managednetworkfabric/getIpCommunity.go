@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements an IP Community GET method.
 // Azure REST API version: 2023-02-01-preview.
 func LookupIpCommunity(ctx *pulumi.Context, args *LookupIpCommunityArgs, opts ...pulumi.InvokeOption) (*LookupIpCommunityResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIpCommunityResult
 	err := ctx.Invoke("azure-native:managednetworkfabric:getIpCommunity", args, &rv, opts...)
 	if err != nil {

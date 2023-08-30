@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Storage Mover resource.
 func LookupStorageMover(ctx *pulumi.Context, args *LookupStorageMoverArgs, opts ...pulumi.InvokeOption) (*LookupStorageMoverResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageMoverResult
 	err := ctx.Invoke("azure-native:storagemover/v20230701preview:getStorageMover", args, &rv, opts...)
 	if err != nil {

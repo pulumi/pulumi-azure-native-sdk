@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get metadata information on an assessment type in a specific subscription
 func LookupAssessmentsMetadataSubscription(ctx *pulumi.Context, args *LookupAssessmentsMetadataSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentsMetadataSubscriptionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssessmentsMetadataSubscriptionResult
 	err := ctx.Invoke("azure-native:security/v20190101preview:getAssessmentsMetadataSubscription", args, &rv, opts...)
 	if err != nil {

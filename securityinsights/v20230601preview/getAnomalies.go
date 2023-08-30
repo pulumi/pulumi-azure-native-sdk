@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a setting.
 func LookupAnomalies(ctx *pulumi.Context, args *LookupAnomaliesArgs, opts ...pulumi.InvokeOption) (*LookupAnomaliesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnomaliesResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230601preview:getAnomalies", args, &rv, opts...)
 	if err != nil {

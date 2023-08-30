@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get specific Data Connector resource by DataConnectorName.
 // Azure REST API version: 2023-06-01-preview.
 func LookupDataConnector(ctx *pulumi.Context, args *LookupDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupDataConnectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataConnectorResult
 	err := ctx.Invoke("azure-native:agfoodplatform:getDataConnector", args, &rv, opts...)
 	if err != nil {

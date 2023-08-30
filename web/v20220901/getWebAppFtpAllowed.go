@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Returns whether FTP is allowed on the site or not.
 func LookupWebAppFtpAllowed(ctx *pulumi.Context, args *LookupWebAppFtpAllowedArgs, opts ...pulumi.InvokeOption) (*LookupWebAppFtpAllowedResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppFtpAllowedResult
 	err := ctx.Invoke("azure-native:web/v20220901:getWebAppFtpAllowed", args, &rv, opts...)
 	if err != nil {

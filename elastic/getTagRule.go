@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Capture logs and metrics of Azure resources based on ARM tags.
 // Azure REST API version: 2023-06-01.
 func LookupTagRule(ctx *pulumi.Context, args *LookupTagRuleArgs, opts ...pulumi.InvokeOption) (*LookupTagRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagRuleResult
 	err := ctx.Invoke("azure-native:elastic:getTagRule", args, &rv, opts...)
 	if err != nil {

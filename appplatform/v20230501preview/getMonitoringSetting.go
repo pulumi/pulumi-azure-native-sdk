@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the Monitoring Setting and its properties.
 func LookupMonitoringSetting(ctx *pulumi.Context, args *LookupMonitoringSettingArgs, opts ...pulumi.InvokeOption) (*LookupMonitoringSettingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitoringSettingResult
 	err := ctx.Invoke("azure-native:appplatform/v20230501preview:getMonitoringSetting", args, &rv, opts...)
 	if err != nil {

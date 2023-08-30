@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a setting.
 func LookupIPSyncer(ctx *pulumi.Context, args *LookupIPSyncerArgs, opts ...pulumi.InvokeOption) (*LookupIPSyncerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIPSyncerResult
 	err := ctx.Invoke("azure-native:securityinsights/v20190101preview:getIPSyncer", args, &rv, opts...)
 	if err != nil {

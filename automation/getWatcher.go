@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the watcher identified by watcher name.
 // Azure REST API version: 2020-01-13-preview.
 func LookupWatcher(ctx *pulumi.Context, args *LookupWatcherArgs, opts ...pulumi.InvokeOption) (*LookupWatcherResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWatcherResult
 	err := ctx.Invoke("azure-native:automation:getWatcher", args, &rv, opts...)
 	if err != nil {

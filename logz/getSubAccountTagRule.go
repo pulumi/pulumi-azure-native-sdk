@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Capture logs and metrics of Azure resources based on ARM tags.
 // Azure REST API version: 2022-01-01-preview.
 func LookupSubAccountTagRule(ctx *pulumi.Context, args *LookupSubAccountTagRuleArgs, opts ...pulumi.InvokeOption) (*LookupSubAccountTagRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSubAccountTagRuleResult
 	err := ctx.Invoke("azure-native:logz:getSubAccountTagRule", args, &rv, opts...)
 	if err != nil {

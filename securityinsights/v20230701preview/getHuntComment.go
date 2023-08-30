@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a hunt comment
 func LookupHuntComment(ctx *pulumi.Context, args *LookupHuntCommentArgs, opts ...pulumi.InvokeOption) (*LookupHuntCommentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHuntCommentResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230701preview:getHuntComment", args, &rv, opts...)
 	if err != nil {

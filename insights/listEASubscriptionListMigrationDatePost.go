@@ -4,12 +4,14 @@
 package insights
 
 import (
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // list date to migrate to new pricing model.
 // Azure REST API version: 2017-10-01.
 func ListEASubscriptionListMigrationDatePost(ctx *pulumi.Context, args *ListEASubscriptionListMigrationDatePostArgs, opts ...pulumi.InvokeOption) (*ListEASubscriptionListMigrationDatePostResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEASubscriptionListMigrationDatePostResult
 	err := ctx.Invoke("azure-native:insights:listEASubscriptionListMigrationDatePost", args, &rv, opts...)
 	if err != nil {

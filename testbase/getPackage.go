@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Test Base Package.
 // Azure REST API version: 2022-04-01-preview.
 func LookupPackage(ctx *pulumi.Context, args *LookupPackageArgs, opts ...pulumi.InvokeOption) (*LookupPackageResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPackageResult
 	err := ctx.Invoke("azure-native:testbase:getPackage", args, &rv, opts...)
 	if err != nil {

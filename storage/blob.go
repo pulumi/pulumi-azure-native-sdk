@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,6 +51,7 @@ func NewBlob(ctx *pulumi.Context,
 	if args.Type == nil {
 		args.Type = BlobType("Block")
 	}
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Blob
 	err := ctx.RegisterResource("azure-native:storage:Blob", name, args, &resource, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets entity type (profile or interaction) image upload URL.
 // Azure REST API version: 2017-04-26.
 func GetImageUploadUrlForEntityType(ctx *pulumi.Context, args *GetImageUploadUrlForEntityTypeArgs, opts ...pulumi.InvokeOption) (*GetImageUploadUrlForEntityTypeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetImageUploadUrlForEntityTypeResult
 	err := ctx.Invoke("azure-native:customerinsights:getImageUploadUrlForEntityType", args, &rv, opts...)
 	if err != nil {

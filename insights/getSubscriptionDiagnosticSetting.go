@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the active subscription diagnostic settings for the specified resource.
 // Azure REST API version: 2021-05-01-preview.
 func LookupSubscriptionDiagnosticSetting(ctx *pulumi.Context, args *LookupSubscriptionDiagnosticSettingArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionDiagnosticSettingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSubscriptionDiagnosticSettingResult
 	err := ctx.Invoke("azure-native:insights:getSubscriptionDiagnosticSetting", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a server vulnerability assessments setting of the requested kind, that is set on the subscription
 func LookupAzureServersSetting(ctx *pulumi.Context, args *LookupAzureServersSettingArgs, opts ...pulumi.InvokeOption) (*LookupAzureServersSettingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureServersSettingResult
 	err := ctx.Invoke("azure-native:security/v20230501:getAzureServersSetting", args, &rv, opts...)
 	if err != nil {

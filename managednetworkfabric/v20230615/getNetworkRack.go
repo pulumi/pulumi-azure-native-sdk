@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Network Rack resource details.
 func LookupNetworkRack(ctx *pulumi.Context, args *LookupNetworkRackArgs, opts ...pulumi.InvokeOption) (*LookupNetworkRackResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkRackResult
 	err := ctx.Invoke("azure-native:managednetworkfabric/v20230615:getNetworkRack", args, &rv, opts...)
 	if err != nil {

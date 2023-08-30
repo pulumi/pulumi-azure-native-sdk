@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the modernize project.
 // Azure REST API version: 2022-05-01-preview.
 func LookupModernizeProject(ctx *pulumi.Context, args *LookupModernizeProjectArgs, opts ...pulumi.InvokeOption) (*LookupModernizeProjectResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupModernizeProjectResult
 	err := ctx.Invoke("azure-native:migrate:getModernizeProject", args, &rv, opts...)
 	if err != nil {

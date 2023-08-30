@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Capability resource that extends a Target resource.
 // Azure REST API version: 2023-04-15-preview.
 func LookupCapability(ctx *pulumi.Context, args *LookupCapabilityArgs, opts ...pulumi.InvokeOption) (*LookupCapabilityResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCapabilityResult
 	err := ctx.Invoke("azure-native:chaos:getCapability", args, &rv, opts...)
 	if err != nil {

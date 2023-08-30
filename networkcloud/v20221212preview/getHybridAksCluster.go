@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the additional details related to the provided Hybrid AKS provisioned cluster.
 func LookupHybridAksCluster(ctx *pulumi.Context, args *LookupHybridAksClusterArgs, opts ...pulumi.InvokeOption) (*LookupHybridAksClusterResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridAksClusterResult
 	err := ctx.Invoke("azure-native:networkcloud/v20221212preview:getHybridAksCluster", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the GraphQL API Resolver specified by its identifier.
 func LookupGraphQLApiResolver(ctx *pulumi.Context, args *LookupGraphQLApiResolverArgs, opts ...pulumi.InvokeOption) (*LookupGraphQLApiResolverResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGraphQLApiResolverResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getGraphQLApiResolver", args, &rv, opts...)
 	if err != nil {

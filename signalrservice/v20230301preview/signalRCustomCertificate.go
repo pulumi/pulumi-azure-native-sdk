@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,6 +69,7 @@ func NewSignalRCustomCertificate(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource SignalRCustomCertificate
 	err := ctx.RegisterResource("azure-native:signalrservice/v20230301preview:SignalRCustomCertificate", name, args, &resource, opts...)
 	if err != nil {

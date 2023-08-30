@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Test Base Package.
 func LookupPackage(ctx *pulumi.Context, args *LookupPackageArgs, opts ...pulumi.InvokeOption) (*LookupPackageResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPackageResult
 	err := ctx.Invoke("azure-native:testbase/v20220401preview:getPackage", args, &rv, opts...)
 	if err != nil {

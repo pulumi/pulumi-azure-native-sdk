@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Dev Box definition
 func LookupDevBoxDefinition(ctx *pulumi.Context, args *LookupDevBoxDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupDevBoxDefinitionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDevBoxDefinitionResult
 	err := ctx.Invoke("azure-native:devcenter/v20221111preview:getDevBoxDefinition", args, &rv, opts...)
 	if err != nil {

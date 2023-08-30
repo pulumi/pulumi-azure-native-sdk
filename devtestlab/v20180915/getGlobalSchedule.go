@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get schedule.
 func LookupGlobalSchedule(ctx *pulumi.Context, args *LookupGlobalScheduleArgs, opts ...pulumi.InvokeOption) (*LookupGlobalScheduleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalScheduleResult
 	err := ctx.Invoke("azure-native:devtestlab/v20180915:getGlobalSchedule", args, &rv, opts...)
 	if err != nil {

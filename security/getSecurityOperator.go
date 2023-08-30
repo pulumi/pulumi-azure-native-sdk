@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a specific security operator for the requested scope.
 // Azure REST API version: 2023-01-01-preview.
 func LookupSecurityOperator(ctx *pulumi.Context, args *LookupSecurityOperatorArgs, opts ...pulumi.InvokeOption) (*LookupSecurityOperatorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityOperatorResult
 	err := ctx.Invoke("azure-native:security:getSecurityOperator", args, &rv, opts...)
 	if err != nil {

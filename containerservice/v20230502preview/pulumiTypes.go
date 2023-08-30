@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
 type AbsoluteMonthlySchedule struct {
@@ -6250,7 +6253,7 @@ func (val *MaintenanceWindow) Defaults() *MaintenanceWindow {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DurationHours) {
+	if utilities.IsZero(tmp.DurationHours) {
 		tmp.DurationHours = 24
 	}
 	return &tmp
@@ -6508,7 +6511,7 @@ func (val *MaintenanceWindowResponse) Defaults() *MaintenanceWindowResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DurationHours) {
+	if utilities.IsZero(tmp.DurationHours) {
 		tmp.DurationHours = 24
 	}
 	return &tmp
@@ -18476,13 +18479,13 @@ func (val *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler) Default
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ControlledValues) {
+	if utilities.IsZero(tmp.ControlledValues) {
 		tmp.ControlledValues = "RequestsAndLimits"
 	}
-	if isZero(tmp.Enabled) {
+	if utilities.IsZero(tmp.Enabled) {
 		tmp.Enabled = false
 	}
-	if isZero(tmp.UpdateMode) {
+	if utilities.IsZero(tmp.UpdateMode) {
 		tmp.UpdateMode = "Off"
 	}
 	return &tmp
@@ -18686,13 +18689,13 @@ func (val *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse)
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ControlledValues) {
+	if utilities.IsZero(tmp.ControlledValues) {
 		tmp.ControlledValues = "RequestsAndLimits"
 	}
-	if isZero(tmp.Enabled) {
+	if utilities.IsZero(tmp.Enabled) {
 		tmp.Enabled = false
 	}
-	if isZero(tmp.UpdateMode) {
+	if utilities.IsZero(tmp.UpdateMode) {
 		tmp.UpdateMode = "Off"
 	}
 	return &tmp

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -178,6 +179,7 @@ func NewRouteFilter(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource RouteFilter
 	err := ctx.RegisterResource("azure-native:network:RouteFilter", name, args, &resource, opts...)
 	if err != nil {

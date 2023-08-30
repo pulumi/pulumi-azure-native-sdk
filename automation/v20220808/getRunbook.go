@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the runbook identified by runbook name.
 func LookupRunbook(ctx *pulumi.Context, args *LookupRunbookArgs, opts ...pulumi.InvokeOption) (*LookupRunbookResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRunbookResult
 	err := ctx.Invoke("azure-native:automation/v20220808:getRunbook", args, &rv, opts...)
 	if err != nil {

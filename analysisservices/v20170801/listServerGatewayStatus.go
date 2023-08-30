@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Return the gateway status of the specified Analysis Services server instance.
 func ListServerGatewayStatus(ctx *pulumi.Context, args *ListServerGatewayStatusArgs, opts ...pulumi.InvokeOption) (*ListServerGatewayStatusResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListServerGatewayStatusResult
 	err := ctx.Invoke("azure-native:analysisservices/v20170801:listServerGatewayStatus", args, &rv, opts...)
 	if err != nil {

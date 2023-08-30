@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Outbound Rule Basic Resource for the managed network of a machine learning workspace.
 func LookupManagedNetworkSettingsRule(ctx *pulumi.Context, args *LookupManagedNetworkSettingsRuleArgs, opts ...pulumi.InvokeOption) (*LookupManagedNetworkSettingsRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedNetworkSettingsRuleResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20230601preview:getManagedNetworkSettingsRule", args, &rv, opts...)
 	if err != nil {

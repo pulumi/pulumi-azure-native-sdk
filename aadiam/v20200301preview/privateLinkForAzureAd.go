@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,6 +64,7 @@ func NewPrivateLinkForAzureAd(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource PrivateLinkForAzureAd
 	err := ctx.RegisterResource("azure-native:aadiam/v20200301preview:PrivateLinkForAzureAd", name, args, &resource, opts...)
 	if err != nil {

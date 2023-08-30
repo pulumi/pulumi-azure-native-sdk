@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the alert rule.
 func LookupThreatIntelligenceAlertRule(ctx *pulumi.Context, args *LookupThreatIntelligenceAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupThreatIntelligenceAlertRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupThreatIntelligenceAlertRuleResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230701preview:getThreatIntelligenceAlertRule", args, &rv, opts...)
 	if err != nil {

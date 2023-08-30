@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a disaster recovery configuration.
 // Azure REST API version: 2014-04-01.
 func LookupDisasterRecoveryConfiguration(ctx *pulumi.Context, args *LookupDisasterRecoveryConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDisasterRecoveryConfigurationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDisasterRecoveryConfigurationResult
 	err := ctx.Invoke("azure-native:sql:getDisasterRecoveryConfiguration", args, &rv, opts...)
 	if err != nil {

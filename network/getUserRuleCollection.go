@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a network manager security user configuration rule collection.
 // Azure REST API version: 2022-04-01-preview.
 func LookupUserRuleCollection(ctx *pulumi.Context, args *LookupUserRuleCollectionArgs, opts ...pulumi.InvokeOption) (*LookupUserRuleCollectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserRuleCollectionResult
 	err := ctx.Invoke("azure-native:network:getUserRuleCollection", args, &rv, opts...)
 	if err != nil {

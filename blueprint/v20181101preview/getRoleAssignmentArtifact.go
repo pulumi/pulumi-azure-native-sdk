@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a blueprint artifact.
 func LookupRoleAssignmentArtifact(ctx *pulumi.Context, args *LookupRoleAssignmentArtifactArgs, opts ...pulumi.InvokeOption) (*LookupRoleAssignmentArtifactResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleAssignmentArtifactResult
 	err := ctx.Invoke("azure-native:blueprint/v20181101preview:getRoleAssignmentArtifact", args, &rv, opts...)
 	if err != nil {

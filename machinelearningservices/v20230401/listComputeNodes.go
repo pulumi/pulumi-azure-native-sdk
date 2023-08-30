@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the details (e.g IP address, port etc) of all the compute nodes in the compute.
 func ListComputeNodes(ctx *pulumi.Context, args *ListComputeNodesArgs, opts ...pulumi.InvokeOption) (*ListComputeNodesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListComputeNodesResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20230401:listComputeNodes", args, &rv, opts...)
 	if err != nil {

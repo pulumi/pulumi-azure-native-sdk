@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,6 +95,7 @@ func NewVirtualmachineRetrieve(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource VirtualmachineRetrieve
 	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:VirtualmachineRetrieve", name, args, &resource, opts...)
 	if err != nil {

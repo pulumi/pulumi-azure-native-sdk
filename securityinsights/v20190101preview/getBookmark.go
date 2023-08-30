@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a bookmark.
 func LookupBookmark(ctx *pulumi.Context, args *LookupBookmarkArgs, opts ...pulumi.InvokeOption) (*LookupBookmarkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBookmarkResult
 	err := ctx.Invoke("azure-native:securityinsights/v20190101preview:getBookmark", args, &rv, opts...)
 	if err != nil {

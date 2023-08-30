@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the metadata of a privateLinkServicesForEDMUpload resource.
 func LookupPrivateLinkServicesForEDMUpload(ctx *pulumi.Context, args *LookupPrivateLinkServicesForEDMUploadArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServicesForEDMUploadResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkServicesForEDMUploadResult
 	err := ctx.Invoke("azure-native:m365securityandcompliance/v20210325preview:getPrivateLinkServicesForEDMUpload", args, &rv, opts...)
 	if err != nil {

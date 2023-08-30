@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the details of specified NVA connection.
 // Azure REST API version: 2023-02-01.
 func LookupNetworkVirtualApplianceConnection(ctx *pulumi.Context, args *LookupNetworkVirtualApplianceConnectionArgs, opts ...pulumi.InvokeOption) (*LookupNetworkVirtualApplianceConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkVirtualApplianceConnectionResult
 	err := ctx.Invoke("azure-native:network:getNetworkVirtualApplianceConnection", args, &rv, opts...)
 	if err != nil {

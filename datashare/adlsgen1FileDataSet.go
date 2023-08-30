@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,6 +90,7 @@ func NewADLSGen1FileDataSet(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource ADLSGen1FileDataSet
 	err := ctx.RegisterResource("azure-native:datashare:ADLSGen1FileDataSet", name, args, &resource, opts...)
 	if err != nil {

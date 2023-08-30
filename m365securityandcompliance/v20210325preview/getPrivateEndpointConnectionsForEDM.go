@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified private endpoint connection associated with the service.
 func LookupPrivateEndpointConnectionsForEDM(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionsForEDMArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionsForEDMResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionsForEDMResult
 	err := ctx.Invoke("azure-native:m365securityandcompliance/v20210325preview:getPrivateEndpointConnectionsForEDM", args, &rv, opts...)
 	if err != nil {

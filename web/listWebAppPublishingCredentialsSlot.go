@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Gets the Git/FTP publishing credentials of an app.
 // Azure REST API version: 2022-09-01.
 func ListWebAppPublishingCredentialsSlot(ctx *pulumi.Context, args *ListWebAppPublishingCredentialsSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppPublishingCredentialsSlotResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppPublishingCredentialsSlotResult
 	err := ctx.Invoke("azure-native:web:listWebAppPublishingCredentialsSlot", args, &rv, opts...)
 	if err != nil {

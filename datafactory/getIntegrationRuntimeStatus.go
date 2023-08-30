@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets detailed status information for an integration runtime.
 // Azure REST API version: 2018-06-01.
 func GetIntegrationRuntimeStatus(ctx *pulumi.Context, args *GetIntegrationRuntimeStatusArgs, opts ...pulumi.InvokeOption) (*GetIntegrationRuntimeStatusResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetIntegrationRuntimeStatusResult
 	err := ctx.Invoke("azure-native:datafactory:getIntegrationRuntimeStatus", args, &rv, opts...)
 	if err != nil {

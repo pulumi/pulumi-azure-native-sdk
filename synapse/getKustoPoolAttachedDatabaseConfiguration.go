@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns an attached database configuration.
 // Azure REST API version: 2021-06-01-preview.
 func LookupKustoPoolAttachedDatabaseConfiguration(ctx *pulumi.Context, args *LookupKustoPoolAttachedDatabaseConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupKustoPoolAttachedDatabaseConfigurationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKustoPoolAttachedDatabaseConfigurationResult
 	err := ctx.Invoke("azure-native:synapse:getKustoPoolAttachedDatabaseConfiguration", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Generate credentials for publishing SKU images.
 func ListVendorSkusCredential(ctx *pulumi.Context, args *ListVendorSkusCredentialArgs, opts ...pulumi.InvokeOption) (*ListVendorSkusCredentialResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListVendorSkusCredentialResult
 	err := ctx.Invoke("azure-native:hybridnetwork/v20220101preview:listVendorSkusCredential", args, &rv, opts...)
 	if err != nil {

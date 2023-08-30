@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetBillingHubServiceUsage(ctx *pulumi.Context, args *GetBillingHubServiceUsageArgs, opts ...pulumi.InvokeOption) (*GetBillingHubServiceUsageResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetBillingHubServiceUsageResult
 	err := ctx.Invoke("azure-native:testbase/v20220401preview:getBillingHubServiceUsage", args, &rv, opts...)
 	if err != nil {

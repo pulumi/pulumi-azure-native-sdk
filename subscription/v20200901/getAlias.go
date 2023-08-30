@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Alias Subscription.
 func LookupAlias(ctx *pulumi.Context, args *LookupAliasArgs, opts ...pulumi.InvokeOption) (*LookupAliasResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAliasResult
 	err := ctx.Invoke("azure-native:subscription/v20200901:getAlias", args, &rv, opts...)
 	if err != nil {

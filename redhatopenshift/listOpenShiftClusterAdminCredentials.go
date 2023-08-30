@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation returns the admin kubeconfig.
 // Azure REST API version: 2022-09-04.
 func ListOpenShiftClusterAdminCredentials(ctx *pulumi.Context, args *ListOpenShiftClusterAdminCredentialsArgs, opts ...pulumi.InvokeOption) (*ListOpenShiftClusterAdminCredentialsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListOpenShiftClusterAdminCredentialsResult
 	err := ctx.Invoke("azure-native:redhatopenshift:listOpenShiftClusterAdminCredentials", args, &rv, opts...)
 	if err != nil {

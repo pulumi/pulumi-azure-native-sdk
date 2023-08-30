@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get regional availability information for each size category configured under a lab account
 // Azure REST API version: 2018-10-15.
 func GetLabAccountRegionalAvailability(ctx *pulumi.Context, args *GetLabAccountRegionalAvailabilityArgs, opts ...pulumi.InvokeOption) (*GetLabAccountRegionalAvailabilityResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetLabAccountRegionalAvailabilityResult
 	err := ctx.Invoke("azure-native:labservices:getLabAccountRegionalAvailability", args, &rv, opts...)
 	if err != nil {

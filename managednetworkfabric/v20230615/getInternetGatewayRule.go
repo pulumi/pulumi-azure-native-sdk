@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an Internet Gateway Rule resource.
 func LookupInternetGatewayRule(ctx *pulumi.Context, args *LookupInternetGatewayRuleArgs, opts ...pulumi.InvokeOption) (*LookupInternetGatewayRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInternetGatewayRuleResult
 	err := ctx.Invoke("azure-native:managednetworkfabric/v20230615:getInternetGatewayRule", args, &rv, opts...)
 	if err != nil {

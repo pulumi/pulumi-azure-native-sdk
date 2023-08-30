@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the description for the specified WCF relay.
 // Azure REST API version: 2021-11-01.
 func LookupWCFRelay(ctx *pulumi.Context, args *LookupWCFRelayArgs, opts ...pulumi.InvokeOption) (*LookupWCFRelayResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWCFRelayResult
 	err := ctx.Invoke("azure-native:relay:getWCFRelay", args, &rv, opts...)
 	if err != nil {

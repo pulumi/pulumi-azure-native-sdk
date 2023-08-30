@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the policy configuration at the API Operation level.
 // Azure REST API version: 2022-09-01-preview.
 func LookupWorkspaceApiOperationPolicy(ctx *pulumi.Context, args *LookupWorkspaceApiOperationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceApiOperationPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceApiOperationPolicyResult
 	err := ctx.Invoke("azure-native:apimanagement:getWorkspaceApiOperationPolicy", args, &rv, opts...)
 	if err != nil {

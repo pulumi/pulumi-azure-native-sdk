@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List all effective connectivity configurations applied on a virtual network.
 func ListNetworkManagerEffectiveConnectivityConfigurations(ctx *pulumi.Context, args *ListNetworkManagerEffectiveConnectivityConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListNetworkManagerEffectiveConnectivityConfigurationsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListNetworkManagerEffectiveConnectivityConfigurationsResult
 	err := ctx.Invoke("azure-native:network/v20220201preview:listNetworkManagerEffectiveConnectivityConfigurations", args, &rv, opts...)
 	if err != nil {

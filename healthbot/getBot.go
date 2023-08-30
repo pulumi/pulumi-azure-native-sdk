@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a HealthBot.
 // Azure REST API version: 2023-05-01.
 func LookupBot(ctx *pulumi.Context, args *LookupBotArgs, opts ...pulumi.InvokeOption) (*LookupBotResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBotResult
 	err := ctx.Invoke("azure-native:healthbot:getBot", args, &rv, opts...)
 	if err != nil {

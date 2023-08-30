@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List of the EngagementFabric channel descriptions
 // Azure REST API version: 2018-09-01-preview.
 func ListAccountChannelTypes(ctx *pulumi.Context, args *ListAccountChannelTypesArgs, opts ...pulumi.InvokeOption) (*ListAccountChannelTypesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccountChannelTypesResult
 	err := ctx.Invoke("azure-native:engagementfabric:listAccountChannelTypes", args, &rv, opts...)
 	if err != nil {

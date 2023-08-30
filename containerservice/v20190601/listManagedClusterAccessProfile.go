@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name.
 func ListManagedClusterAccessProfile(ctx *pulumi.Context, args *ListManagedClusterAccessProfileArgs, opts ...pulumi.InvokeOption) (*ListManagedClusterAccessProfileResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListManagedClusterAccessProfileResult
 	err := ctx.Invoke("azure-native:containerservice/v20190601:listManagedClusterAccessProfile", args, &rv, opts...)
 	if err != nil {

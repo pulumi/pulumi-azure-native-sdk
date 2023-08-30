@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets storagecontainers by resource name
 func LookupStoragecontainerRetrieve(ctx *pulumi.Context, args *LookupStoragecontainerRetrieveArgs, opts ...pulumi.InvokeOption) (*LookupStoragecontainerRetrieveResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStoragecontainerRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getStoragecontainerRetrieve", args, &rv, opts...)
 	if err != nil {

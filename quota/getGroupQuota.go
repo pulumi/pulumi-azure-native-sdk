@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the GroupQuotas for the name passed. It will return the GroupQuotas properties only. The details on groupQuota can be access from the groupQuota APIs.
 // Azure REST API version: 2023-06-01-preview.
 func LookupGroupQuota(ctx *pulumi.Context, args *LookupGroupQuotaArgs, opts ...pulumi.InvokeOption) (*LookupGroupQuotaResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupQuotaResult
 	err := ctx.Invoke("azure-native:quota:getGroupQuota", args, &rv, opts...)
 	if err != nil {

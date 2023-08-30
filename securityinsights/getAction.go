@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the action of alert rule.
 // Azure REST API version: 2023-02-01.
 func LookupAction(ctx *pulumi.Context, args *LookupActionArgs, opts ...pulumi.InvokeOption) (*LookupActionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActionResult
 	err := ctx.Invoke("azure-native:securityinsights:getAction", args, &rv, opts...)
 	if err != nil {

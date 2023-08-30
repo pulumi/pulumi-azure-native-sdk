@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,6 +55,7 @@ func NewAutoScaleVCore(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource AutoScaleVCore
 	err := ctx.RegisterResource("azure-native:powerbidedicated/v20210101:AutoScaleVCore", name, args, &resource, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The files resource is a nested, proxy-only resource representing a file stored under the project resource. This method retrieves information about a file.
 func LookupFile(ctx *pulumi.Context, args *LookupFileArgs, opts ...pulumi.InvokeOption) (*LookupFileResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFileResult
 	err := ctx.Invoke("azure-native:datamigration/v20220330preview:getFile", args, &rv, opts...)
 	if err != nil {

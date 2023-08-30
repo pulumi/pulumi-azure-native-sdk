@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified private endpoint connection associated with the workspace.
 func LookupWorkspacePrivateEndpointConnection(ctx *pulumi.Context, args *LookupWorkspacePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWorkspacePrivateEndpointConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspacePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:healthcareapis/v20230228:getWorkspacePrivateEndpointConnection", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Shows the provisioning status of Network Fabric Controller.
 func LookupNetworkFabricController(ctx *pulumi.Context, args *LookupNetworkFabricControllerArgs, opts ...pulumi.InvokeOption) (*LookupNetworkFabricControllerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkFabricControllerResult
 	err := ctx.Invoke("azure-native:managednetworkfabric/v20230615:getNetworkFabricController", args, &rv, opts...)
 	if err != nil {
@@ -93,7 +95,7 @@ func (val *LookupNetworkFabricControllerResult) Defaults() *LookupNetworkFabricC
 		nfcSku_ := "Standard"
 		tmp.NfcSku = &nfcSku_
 	}
-	if isZero(tmp.WorkloadManagementNetwork) {
+	if utilities.IsZero(tmp.WorkloadManagementNetwork) {
 		tmp.WorkloadManagementNetwork = true
 	}
 	return &tmp

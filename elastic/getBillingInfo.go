@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Marketplace Subscription and Organization details to which resource gets billed into.
 // Azure REST API version: 2023-07-01-preview.
 func GetBillingInfo(ctx *pulumi.Context, args *GetBillingInfoArgs, opts ...pulumi.InvokeOption) (*GetBillingInfoResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetBillingInfoResult
 	err := ctx.Invoke("azure-native:elastic:getBillingInfo", args, &rv, opts...)
 	if err != nil {

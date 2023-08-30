@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the automation keys for an account.
 // Azure REST API version: 2022-08-08.
 func ListKeyByAutomationAccount(ctx *pulumi.Context, args *ListKeyByAutomationAccountArgs, opts ...pulumi.InvokeOption) (*ListKeyByAutomationAccountResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListKeyByAutomationAccountResult
 	err := ctx.Invoke("azure-native:automation:listKeyByAutomationAccount", args, &rv, opts...)
 	if err != nil {

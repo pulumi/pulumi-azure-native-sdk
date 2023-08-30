@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Primary and secondary connection strings to the hybrid connection.
 // Azure REST API version: 2021-11-01.
 func ListHybridConnectionKeys(ctx *pulumi.Context, args *ListHybridConnectionKeysArgs, opts ...pulumi.InvokeOption) (*ListHybridConnectionKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListHybridConnectionKeysResult
 	err := ctx.Invoke("azure-native:relay:listHybridConnectionKeys", args, &rv, opts...)
 	if err != nil {

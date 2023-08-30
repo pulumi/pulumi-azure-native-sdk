@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists devices for catalog.
 // Azure REST API version: 2022-09-01-preview.
 func ListCatalogDevices(ctx *pulumi.Context, args *ListCatalogDevicesArgs, opts ...pulumi.InvokeOption) (*ListCatalogDevicesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListCatalogDevicesResult
 	err := ctx.Invoke("azure-native:azuresphere:listCatalogDevices", args, &rv, opts...)
 	if err != nil {

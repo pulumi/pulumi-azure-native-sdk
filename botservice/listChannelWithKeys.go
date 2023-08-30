@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists a Channel registration for a Bot Service including secrets
 // Azure REST API version: 2022-09-15.
 func ListChannelWithKeys(ctx *pulumi.Context, args *ListChannelWithKeysArgs, opts ...pulumi.InvokeOption) (*ListChannelWithKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListChannelWithKeysResult
 	err := ctx.Invoke("azure-native:botservice:listChannelWithKeys", args, &rv, opts...)
 	if err != nil {

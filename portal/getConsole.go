@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the console for the user.
 // Azure REST API version: 2018-10-01.
 func LookupConsole(ctx *pulumi.Context, args *LookupConsoleArgs, opts ...pulumi.InvokeOption) (*LookupConsoleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConsoleResult
 	err := ctx.Invoke("azure-native:portal:getConsole", args, &rv, opts...)
 	if err != nil {

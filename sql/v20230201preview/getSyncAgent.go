@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a sync agent.
 func LookupSyncAgent(ctx *pulumi.Context, args *LookupSyncAgentArgs, opts ...pulumi.InvokeOption) (*LookupSyncAgentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSyncAgentResult
 	err := ctx.Invoke("azure-native:sql/v20230201preview:getSyncAgent", args, &rv, opts...)
 	if err != nil {

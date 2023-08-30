@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a network connection resource
 // Azure REST API version: 2023-04-01.
 func LookupNetworkConnection(ctx *pulumi.Context, args *LookupNetworkConnectionArgs, opts ...pulumi.InvokeOption) (*LookupNetworkConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkConnectionResult
 	err := ctx.Invoke("azure-native:devcenter:getNetworkConnection", args, &rv, opts...)
 	if err != nil {

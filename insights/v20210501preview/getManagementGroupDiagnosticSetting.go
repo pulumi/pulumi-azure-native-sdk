@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the active management group diagnostic settings for the specified resource.
 func LookupManagementGroupDiagnosticSetting(ctx *pulumi.Context, args *LookupManagementGroupDiagnosticSettingArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupDiagnosticSettingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementGroupDiagnosticSettingResult
 	err := ctx.Invoke("azure-native:insights/v20210501preview:getManagementGroupDiagnosticSetting", args, &rv, opts...)
 	if err != nil {

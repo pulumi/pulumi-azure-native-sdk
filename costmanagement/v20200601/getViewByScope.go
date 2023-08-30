@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the view for the defined scope by view name.
 func LookupViewByScope(ctx *pulumi.Context, args *LookupViewByScopeArgs, opts ...pulumi.InvokeOption) (*LookupViewByScopeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupViewByScopeResult
 	err := ctx.Invoke("azure-native:costmanagement/v20200601:getViewByScope", args, &rv, opts...)
 	if err != nil {

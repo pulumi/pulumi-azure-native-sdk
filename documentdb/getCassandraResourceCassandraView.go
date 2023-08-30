@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Cassandra view under an existing Azure Cosmos DB database account.
 // Azure REST API version: 2023-03-15-preview.
 func LookupCassandraResourceCassandraView(ctx *pulumi.Context, args *LookupCassandraResourceCassandraViewArgs, opts ...pulumi.InvokeOption) (*LookupCassandraResourceCassandraViewResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCassandraResourceCassandraViewResult
 	err := ctx.Invoke("azure-native:documentdb:getCassandraResourceCassandraView", args, &rv, opts...)
 	if err != nil {

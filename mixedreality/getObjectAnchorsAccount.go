@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve an Object Anchors Account.
 // Azure REST API version: 2021-03-01-preview.
 func LookupObjectAnchorsAccount(ctx *pulumi.Context, args *LookupObjectAnchorsAccountArgs, opts ...pulumi.InvokeOption) (*LookupObjectAnchorsAccountResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupObjectAnchorsAccountResult
 	err := ctx.Invoke("azure-native:mixedreality:getObjectAnchorsAccount", args, &rv, opts...)
 	if err != nil {

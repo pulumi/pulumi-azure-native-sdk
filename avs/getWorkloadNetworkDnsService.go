@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NSX DNS Service
 // Azure REST API version: 2022-05-01.
 func LookupWorkloadNetworkDnsService(ctx *pulumi.Context, args *LookupWorkloadNetworkDnsServiceArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkDnsServiceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadNetworkDnsServiceResult
 	err := ctx.Invoke("azure-native:avs:getWorkloadNetworkDnsService", args, &rv, opts...)
 	if err != nil {

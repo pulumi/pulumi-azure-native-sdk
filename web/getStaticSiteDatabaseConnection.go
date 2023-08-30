@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Static Site Database Connection resource.
 // Azure REST API version: 2022-09-01.
 func LookupStaticSiteDatabaseConnection(ctx *pulumi.Context, args *LookupStaticSiteDatabaseConnectionArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteDatabaseConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteDatabaseConnectionResult
 	err := ctx.Invoke("azure-native:web:getStaticSiteDatabaseConnection", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a live output.
 // Azure REST API version: 2022-11-01.
 func LookupLiveOutput(ctx *pulumi.Context, args *LookupLiveOutputArgs, opts ...pulumi.InvokeOption) (*LookupLiveOutputResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLiveOutputResult
 	err := ctx.Invoke("azure-native:media:getLiveOutput", args, &rv, opts...)
 	if err != nil {

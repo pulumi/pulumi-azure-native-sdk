@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the event source with the specified name in the specified environment.
 func LookupEventHubEventSource(ctx *pulumi.Context, args *LookupEventHubEventSourceArgs, opts ...pulumi.InvokeOption) (*LookupEventHubEventSourceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEventHubEventSourceResult
 	err := ctx.Invoke("azure-native:timeseriesinsights/v20210630preview:getEventHubEventSource", args, &rv, opts...)
 	if err != nil {

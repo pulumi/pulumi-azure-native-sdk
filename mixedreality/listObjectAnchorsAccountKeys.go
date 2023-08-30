@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List Both of the 2 Keys of an object anchors Account
 // Azure REST API version: 2021-03-01-preview.
 func ListObjectAnchorsAccountKeys(ctx *pulumi.Context, args *ListObjectAnchorsAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListObjectAnchorsAccountKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListObjectAnchorsAccountKeysResult
 	err := ctx.Invoke("azure-native:mixedreality:listObjectAnchorsAccountKeys", args, &rv, opts...)
 	if err != nil {

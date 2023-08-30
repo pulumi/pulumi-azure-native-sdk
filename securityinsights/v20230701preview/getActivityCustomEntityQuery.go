@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an entity query.
 func LookupActivityCustomEntityQuery(ctx *pulumi.Context, args *LookupActivityCustomEntityQueryArgs, opts ...pulumi.InvokeOption) (*LookupActivityCustomEntityQueryResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActivityCustomEntityQueryResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230701preview:getActivityCustomEntityQuery", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the properties of the provided cluster manager.
 // Azure REST API version: 2023-05-01-preview.
 func LookupClusterManager(ctx *pulumi.Context, args *LookupClusterManagerArgs, opts ...pulumi.InvokeOption) (*LookupClusterManagerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterManagerResult
 	err := ctx.Invoke("azure-native:networkcloud:getClusterManager", args, &rv, opts...)
 	if err != nil {

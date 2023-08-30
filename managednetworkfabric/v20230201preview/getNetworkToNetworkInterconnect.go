@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements NetworkToNetworkInterconnects GET method.
 func LookupNetworkToNetworkInterconnect(ctx *pulumi.Context, args *LookupNetworkToNetworkInterconnectArgs, opts ...pulumi.InvokeOption) (*LookupNetworkToNetworkInterconnectResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkToNetworkInterconnectResult
 	err := ctx.Invoke("azure-native:managednetworkfabric/v20230201preview:getNetworkToNetworkInterconnect", args, &rv, opts...)
 	if err != nil {

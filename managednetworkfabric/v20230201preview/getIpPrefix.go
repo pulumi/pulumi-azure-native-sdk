@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements IP Prefix GET method.
 func LookupIpPrefix(ctx *pulumi.Context, args *LookupIpPrefixArgs, opts ...pulumi.InvokeOption) (*LookupIpPrefixResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIpPrefixResult
 	err := ctx.Invoke("azure-native:managednetworkfabric/v20230201preview:getIpPrefix", args, &rv, opts...)
 	if err != nil {
