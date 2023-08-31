@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,6 +52,7 @@ func NewDataManager(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource DataManager
 	err := ctx.RegisterResource("azure-native:hybriddata/v20190601:DataManager", name, args, &resource, opts...)
 	if err != nil {

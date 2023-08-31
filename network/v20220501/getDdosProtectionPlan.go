@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified DDoS protection plan.
 func LookupDdosProtectionPlan(ctx *pulumi.Context, args *LookupDdosProtectionPlanArgs, opts ...pulumi.InvokeOption) (*LookupDdosProtectionPlanResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDdosProtectionPlanResult
 	err := ctx.Invoke("azure-native:network/v20220501:getDdosProtectionPlan", args, &rv, opts...)
 	if err != nil {

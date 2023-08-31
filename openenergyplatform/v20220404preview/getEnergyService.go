@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns oep resource for a given name.
 func LookupEnergyService(ctx *pulumi.Context, args *LookupEnergyServiceArgs, opts ...pulumi.InvokeOption) (*LookupEnergyServiceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnergyServiceResult
 	err := ctx.Invoke("azure-native:openenergyplatform/v20220404preview:getEnergyService", args, &rv, opts...)
 	if err != nil {

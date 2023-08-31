@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -170,6 +171,7 @@ func NewSnapshot(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Snapshot
 	err := ctx.RegisterResource("azure-native:containerservice/v20230702preview:Snapshot", name, args, &resource, opts...)
 	if err != nil {

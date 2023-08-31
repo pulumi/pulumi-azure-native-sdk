@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Notification Hub Resource.
 // Azure REST API version: 2023-01-01-preview.
 func LookupNotificationHub(ctx *pulumi.Context, args *LookupNotificationHubArgs, opts ...pulumi.InvokeOption) (*LookupNotificationHubResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotificationHubResult
 	err := ctx.Invoke("azure-native:notificationhubs:getNotificationHub", args, &rv, opts...)
 	if err != nil {

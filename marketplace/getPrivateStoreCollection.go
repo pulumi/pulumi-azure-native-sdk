@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets private store collection
 // Azure REST API version: 2023-01-01.
 func LookupPrivateStoreCollection(ctx *pulumi.Context, args *LookupPrivateStoreCollectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateStoreCollectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateStoreCollectionResult
 	err := ctx.Invoke("azure-native:marketplace:getPrivateStoreCollection", args, &rv, opts...)
 	if err != nil {

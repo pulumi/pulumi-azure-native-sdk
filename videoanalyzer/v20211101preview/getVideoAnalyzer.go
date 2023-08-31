@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the details of the specified Video Analyzer account
 func LookupVideoAnalyzer(ctx *pulumi.Context, args *LookupVideoAnalyzerArgs, opts ...pulumi.InvokeOption) (*LookupVideoAnalyzerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVideoAnalyzerResult
 	err := ctx.Invoke("azure-native:videoanalyzer/v20211101preview:getVideoAnalyzer", args, &rv, opts...)
 	if err != nil {

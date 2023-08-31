@@ -4,11 +4,13 @@
 package v20210201preview
 
 import (
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get IoT Defender Settings
 func LookupDefenderSetting(ctx *pulumi.Context, args *LookupDefenderSettingArgs, opts ...pulumi.InvokeOption) (*LookupDefenderSettingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDefenderSettingResult
 	err := ctx.Invoke("azure-native:iotsecurity/v20210201preview:getDefenderSetting", args, &rv, opts...)
 	if err != nil {

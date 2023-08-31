@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the current status of IDPS signatures for the relevant policy
 func ListFirewallPolicyIdpsSignature(ctx *pulumi.Context, args *ListFirewallPolicyIdpsSignatureArgs, opts ...pulumi.InvokeOption) (*ListFirewallPolicyIdpsSignatureResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListFirewallPolicyIdpsSignatureResult
 	err := ctx.Invoke("azure-native:network/v20210801:listFirewallPolicyIdpsSignature", args, &rv, opts...)
 	if err != nil {

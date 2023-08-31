@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the user credentials of a Fleet.
 // Azure REST API version: 2023-03-15-preview.
 func ListFleetCredentials(ctx *pulumi.Context, args *ListFleetCredentialsArgs, opts ...pulumi.InvokeOption) (*ListFleetCredentialsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListFleetCredentialsResult
 	err := ctx.Invoke("azure-native:containerservice:listFleetCredentials", args, &rv, opts...)
 	if err != nil {

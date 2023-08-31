@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Site REST Resource.
 // Azure REST API version: 2020-07-07.
 func LookupHyperVSite(ctx *pulumi.Context, args *LookupHyperVSiteArgs, opts ...pulumi.InvokeOption) (*LookupHyperVSiteResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHyperVSiteResult
 	err := ctx.Invoke("azure-native:offazure:getHyperVSite", args, &rv, opts...)
 	if err != nil {

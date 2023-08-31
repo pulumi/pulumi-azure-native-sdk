@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Get ManagedNetworkPeeringPolicies operation gets a Managed Network Peering Policy resource, specified by the  resource group, Managed Network name, and peering policy name
 func LookupManagedNetworkPeeringPolicy(ctx *pulumi.Context, args *LookupManagedNetworkPeeringPolicyArgs, opts ...pulumi.InvokeOption) (*LookupManagedNetworkPeeringPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedNetworkPeeringPolicyResult
 	err := ctx.Invoke("azure-native:managednetwork/v20190601preview:getManagedNetworkPeeringPolicy", args, &rv, opts...)
 	if err != nil {

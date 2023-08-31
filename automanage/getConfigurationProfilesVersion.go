@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information about a configuration profile version
 // Azure REST API version: 2022-05-04.
 func LookupConfigurationProfilesVersion(ctx *pulumi.Context, args *LookupConfigurationProfilesVersionArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfilesVersionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationProfilesVersionResult
 	err := ctx.Invoke("azure-native:automanage:getConfigurationProfilesVersion", args, &rv, opts...)
 	if err != nil {

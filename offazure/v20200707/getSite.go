@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Site REST Resource.
 func LookupSite(ctx *pulumi.Context, args *LookupSiteArgs, opts ...pulumi.InvokeOption) (*LookupSiteResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSiteResult
 	err := ctx.Invoke("azure-native:offazure/v20200707:getSite", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get environment.
 // Azure REST API version: 2018-09-15.
 func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentResult
 	err := ctx.Invoke("azure-native:devtestlab:getEnvironment", args, &rv, opts...)
 	if err != nil {

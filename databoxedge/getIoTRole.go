@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific role by name.
 // Azure REST API version: 2022-03-01.
 func LookupIoTRole(ctx *pulumi.Context, args *LookupIoTRoleArgs, opts ...pulumi.InvokeOption) (*LookupIoTRoleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIoTRoleResult
 	err := ctx.Invoke("azure-native:databoxedge:getIoTRole", args, &rv, opts...)
 	if err != nil {

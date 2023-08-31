@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the specified tap configuration on a network interface.
 func LookupNetworkInterfaceTapConfiguration(ctx *pulumi.Context, args *LookupNetworkInterfaceTapConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupNetworkInterfaceTapConfigurationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkInterfaceTapConfigurationResult
 	err := ctx.Invoke("azure-native:network/v20230501:getNetworkInterfaceTapConfiguration", args, &rv, opts...)
 	if err != nil {

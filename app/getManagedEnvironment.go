@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the properties of a Managed Environment used to host container apps.
 // Azure REST API version: 2022-10-01.
 func LookupManagedEnvironment(ctx *pulumi.Context, args *LookupManagedEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupManagedEnvironmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedEnvironmentResult
 	err := ctx.Invoke("azure-native:app:getManagedEnvironment", args, &rv, opts...)
 	if err != nil {

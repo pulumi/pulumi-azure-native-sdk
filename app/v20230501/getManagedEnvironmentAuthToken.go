@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Checks if resource name is available.
 func GetManagedEnvironmentAuthToken(ctx *pulumi.Context, args *GetManagedEnvironmentAuthTokenArgs, opts ...pulumi.InvokeOption) (*GetManagedEnvironmentAuthTokenResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetManagedEnvironmentAuthTokenResult
 	err := ctx.Invoke("azure-native:app/v20230501:getManagedEnvironmentAuthToken", args, &rv, opts...)
 	if err != nil {

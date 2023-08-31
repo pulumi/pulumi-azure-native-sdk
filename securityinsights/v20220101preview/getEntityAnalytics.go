@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a setting.
 func LookupEntityAnalytics(ctx *pulumi.Context, args *LookupEntityAnalyticsArgs, opts ...pulumi.InvokeOption) (*LookupEntityAnalyticsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEntityAnalyticsResult
 	err := ctx.Invoke("azure-native:securityinsights/v20220101preview:getEntityAnalytics", args, &rv, opts...)
 	if err != nil {

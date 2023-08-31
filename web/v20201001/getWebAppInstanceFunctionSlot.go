@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get function information by its ID for web site, or a deployment slot.
 func LookupWebAppInstanceFunctionSlot(ctx *pulumi.Context, args *LookupWebAppInstanceFunctionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppInstanceFunctionSlotResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppInstanceFunctionSlotResult
 	err := ctx.Invoke("azure-native:web/v20201001:getWebAppInstanceFunctionSlot", args, &rv, opts...)
 	if err != nil {

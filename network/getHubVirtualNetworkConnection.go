@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the details of a HubVirtualNetworkConnection.
 // Azure REST API version: 2023-02-01.
 func LookupHubVirtualNetworkConnection(ctx *pulumi.Context, args *LookupHubVirtualNetworkConnectionArgs, opts ...pulumi.InvokeOption) (*LookupHubVirtualNetworkConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHubVirtualNetworkConnectionResult
 	err := ctx.Invoke("azure-native:network:getHubVirtualNetworkConnection", args, &rv, opts...)
 	if err != nil {

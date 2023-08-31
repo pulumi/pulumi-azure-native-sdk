@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -121,6 +122,7 @@ func NewResource(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Resource
 	err := ctx.RegisterResource("azure-native:resources/v20220901:Resource", name, args, &resource, opts...)
 	if err != nil {

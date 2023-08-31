@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // DC Access code in the case of Self Managed Shipping.
 func ListOrderDCAccessCode(ctx *pulumi.Context, args *ListOrderDCAccessCodeArgs, opts ...pulumi.InvokeOption) (*ListOrderDCAccessCodeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListOrderDCAccessCodeResult
 	err := ctx.Invoke("azure-native:databoxedge/v20230701:listOrderDCAccessCode", args, &rv, opts...)
 	if err != nil {

@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Encryption settings
 type AccountEncryption struct {
@@ -4909,7 +4912,7 @@ func (val *VolumeGroupVolumeProperties) Defaults() *VolumeGroupVolumeProperties 
 		unixPermissions_ := "0770"
 		tmp.UnixPermissions = &unixPermissions_
 	}
-	if isZero(tmp.UsageThreshold) {
+	if utilities.IsZero(tmp.UsageThreshold) {
 		tmp.UsageThreshold = 107374182400.0
 	}
 	return &tmp
@@ -5479,7 +5482,7 @@ func (val *VolumeGroupVolumePropertiesResponse) Defaults() *VolumeGroupVolumePro
 		encryptionKeySource_ := "Microsoft.NetApp"
 		tmp.EncryptionKeySource = &encryptionKeySource_
 	}
-	if isZero(tmp.FileAccessLogs) {
+	if utilities.IsZero(tmp.FileAccessLogs) {
 		tmp.FileAccessLogs = "Disabled"
 	}
 	if tmp.IsDefaultQuotaEnabled == nil {
@@ -5522,7 +5525,7 @@ func (val *VolumeGroupVolumePropertiesResponse) Defaults() *VolumeGroupVolumePro
 		unixPermissions_ := "0770"
 		tmp.UnixPermissions = &unixPermissions_
 	}
-	if isZero(tmp.UsageThreshold) {
+	if utilities.IsZero(tmp.UsageThreshold) {
 		tmp.UsageThreshold = 107374182400.0
 	}
 	return &tmp

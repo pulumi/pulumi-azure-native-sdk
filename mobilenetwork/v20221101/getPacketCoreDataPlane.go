@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified packet core data plane.
 func LookupPacketCoreDataPlane(ctx *pulumi.Context, args *LookupPacketCoreDataPlaneArgs, opts ...pulumi.InvokeOption) (*LookupPacketCoreDataPlaneResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPacketCoreDataPlaneResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20221101:getPacketCoreDataPlane", args, &rv, opts...)
 	if err != nil {

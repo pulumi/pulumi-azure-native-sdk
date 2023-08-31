@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the details of an API release.
 func LookupApiRelease(ctx *pulumi.Context, args *LookupApiReleaseArgs, opts ...pulumi.InvokeOption) (*LookupApiReleaseResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiReleaseResult
 	err := ctx.Invoke("azure-native:apimanagement/v20230301preview:getApiRelease", args, &rv, opts...)
 	if err != nil {

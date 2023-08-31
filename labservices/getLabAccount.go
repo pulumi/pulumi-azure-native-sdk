@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get lab account
 // Azure REST API version: 2018-10-15.
 func LookupLabAccount(ctx *pulumi.Context, args *LookupLabAccountArgs, opts ...pulumi.InvokeOption) (*LookupLabAccountResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLabAccountResult
 	err := ctx.Invoke("azure-native:labservices:getLabAccount", args, &rv, opts...)
 	if err != nil {

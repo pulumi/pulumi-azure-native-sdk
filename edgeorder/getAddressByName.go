@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified address.
 // Azure REST API version: 2021-12-01.
 func LookupAddressByName(ctx *pulumi.Context, args *LookupAddressByNameArgs, opts ...pulumi.InvokeOption) (*LookupAddressByNameResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAddressByNameResult
 	err := ctx.Invoke("azure-native:edgeorder:getAddressByName", args, &rv, opts...)
 	if err != nil {

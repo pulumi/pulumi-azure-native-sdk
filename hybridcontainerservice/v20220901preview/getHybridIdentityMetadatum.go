@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the hybrid identity metadata proxy resource.
 func LookupHybridIdentityMetadatum(ctx *pulumi.Context, args *LookupHybridIdentityMetadatumArgs, opts ...pulumi.InvokeOption) (*LookupHybridIdentityMetadatumResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridIdentityMetadatumResult
 	err := ctx.Invoke("azure-native:hybridcontainerservice/v20220901preview:getHybridIdentityMetadatum", args, &rv, opts...)
 	if err != nil {

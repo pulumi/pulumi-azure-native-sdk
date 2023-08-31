@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets guest diagnostics association settings.
 // Azure REST API version: 2018-06-01-preview.
 func LookupGuestDiagnosticsSettingsAssociation(ctx *pulumi.Context, args *LookupGuestDiagnosticsSettingsAssociationArgs, opts ...pulumi.InvokeOption) (*LookupGuestDiagnosticsSettingsAssociationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestDiagnosticsSettingsAssociationResult
 	err := ctx.Invoke("azure-native:insights:getGuestDiagnosticsSettingsAssociation", args, &rv, opts...)
 	if err != nil {

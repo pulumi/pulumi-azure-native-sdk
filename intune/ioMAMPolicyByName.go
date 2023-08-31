@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -101,6 +102,7 @@ func NewIoMAMPolicyByName(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource IoMAMPolicyByName
 	err := ctx.RegisterResource("azure-native:intune:IoMAMPolicyByName", name, args, &resource, opts...)
 	if err != nil {

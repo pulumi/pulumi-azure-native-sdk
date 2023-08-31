@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a datasource instance.
 func LookupDataSource(ctx *pulumi.Context, args *LookupDataSourceArgs, opts ...pulumi.InvokeOption) (*LookupDataSourceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataSourceResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20151101preview:getDataSource", args, &rv, opts...)
 	if err != nil {

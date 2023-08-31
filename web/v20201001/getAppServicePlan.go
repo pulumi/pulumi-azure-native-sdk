@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an App Service plan.
 func LookupAppServicePlan(ctx *pulumi.Context, args *LookupAppServicePlanArgs, opts ...pulumi.InvokeOption) (*LookupAppServicePlanResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServicePlanResult
 	err := ctx.Invoke("azure-native:web/v20201001:getAppServicePlan", args, &rv, opts...)
 	if err != nil {

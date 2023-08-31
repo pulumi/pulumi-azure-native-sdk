@@ -4,11 +4,13 @@
 package v20230615preview
 
 import (
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
 func GetOrganizationElasticToAzureSubscriptionMapping(ctx *pulumi.Context, args *GetOrganizationElasticToAzureSubscriptionMappingArgs, opts ...pulumi.InvokeOption) (*GetOrganizationElasticToAzureSubscriptionMappingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetOrganizationElasticToAzureSubscriptionMappingResult
 	err := ctx.Invoke("azure-native:elastic/v20230615preview:getOrganizationElasticToAzureSubscriptionMapping", args, &rv, opts...)
 	if err != nil {

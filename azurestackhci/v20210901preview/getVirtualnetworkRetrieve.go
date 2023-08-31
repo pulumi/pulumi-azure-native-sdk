@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The virtual network resource definition.
 func LookupVirtualnetworkRetrieve(ctx *pulumi.Context, args *LookupVirtualnetworkRetrieveArgs, opts ...pulumi.InvokeOption) (*LookupVirtualnetworkRetrieveResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualnetworkRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getVirtualnetworkRetrieve", args, &rv, opts...)
 	if err != nil {

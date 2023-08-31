@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the product specified by its identifier.
 func LookupProduct(ctx *pulumi.Context, args *LookupProductArgs, opts ...pulumi.InvokeOption) (*LookupProductResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProductResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220901preview:getProduct", args, &rv, opts...)
 	if err != nil {

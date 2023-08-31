@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the metadata of a privateLinkServicesForMIPPolicySync resource.
 func LookupPrivateLinkServicesForMIPPolicySync(ctx *pulumi.Context, args *LookupPrivateLinkServicesForMIPPolicySyncArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServicesForMIPPolicySyncResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkServicesForMIPPolicySyncResult
 	err := ctx.Invoke("azure-native:securityandcompliance/v20210308:getPrivateLinkServicesForMIPPolicySync", args, &rv, opts...)
 	if err != nil {

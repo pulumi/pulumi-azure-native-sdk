@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Azure Firewall.
 func LookupAzureFirewall(ctx *pulumi.Context, args *LookupAzureFirewallArgs, opts ...pulumi.InvokeOption) (*LookupAzureFirewallResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureFirewallResult
 	err := ctx.Invoke("azure-native:network/v20230201:getAzureFirewall", args, &rv, opts...)
 	if err != nil {

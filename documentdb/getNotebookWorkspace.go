@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the notebook workspace for a Cosmos DB account.
 // Azure REST API version: 2023-04-15.
 func LookupNotebookWorkspace(ctx *pulumi.Context, args *LookupNotebookWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupNotebookWorkspaceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotebookWorkspaceResult
 	err := ctx.Invoke("azure-native:documentdb:getNotebookWorkspace", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the certificate resource.
 // Azure REST API version: 2023-05-01-preview.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateResult
 	err := ctx.Invoke("azure-native:appplatform:getCertificate", args, &rv, opts...)
 	if err != nil {

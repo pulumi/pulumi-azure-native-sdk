@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the container registries resource.
 func LookupContainerRegistry(ctx *pulumi.Context, args *LookupContainerRegistryArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistryResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRegistryResult
 	err := ctx.Invoke("azure-native:appplatform/v20230501preview:getContainerRegistry", args, &rv, opts...)
 	if err != nil {

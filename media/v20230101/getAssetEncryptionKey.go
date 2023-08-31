@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Asset storage encryption keys used to decrypt content created by version 2 of the Media Services API
 func GetAssetEncryptionKey(ctx *pulumi.Context, args *GetAssetEncryptionKeyArgs, opts ...pulumi.InvokeOption) (*GetAssetEncryptionKeyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetAssetEncryptionKeyResult
 	err := ctx.Invoke("azure-native:media/v20230101:getAssetEncryptionKey", args, &rv, opts...)
 	if err != nil {

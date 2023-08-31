@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the Diagnostic for an API specified by its identifier.
 // Azure REST API version: 2022-08-01.
 func LookupApiDiagnostic(ctx *pulumi.Context, args *LookupApiDiagnosticArgs, opts ...pulumi.InvokeOption) (*LookupApiDiagnosticResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiDiagnosticResult
 	err := ctx.Invoke("azure-native:apimanagement:getApiDiagnostic", args, &rv, opts...)
 	if err != nil {

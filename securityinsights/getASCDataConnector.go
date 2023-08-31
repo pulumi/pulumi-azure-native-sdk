@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a data connector.
 // Azure REST API version: 2023-02-01.
 func LookupASCDataConnector(ctx *pulumi.Context, args *LookupASCDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupASCDataConnectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupASCDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights:getASCDataConnector", args, &rv, opts...)
 	if err != nil {

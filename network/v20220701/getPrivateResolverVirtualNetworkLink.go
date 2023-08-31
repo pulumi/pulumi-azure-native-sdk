@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets properties of a virtual network link to a DNS forwarding ruleset.
 func LookupPrivateResolverVirtualNetworkLink(ctx *pulumi.Context, args *LookupPrivateResolverVirtualNetworkLinkArgs, opts ...pulumi.InvokeOption) (*LookupPrivateResolverVirtualNetworkLinkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateResolverVirtualNetworkLinkResult
 	err := ctx.Invoke("azure-native:network/v20220701:getPrivateResolverVirtualNetworkLink", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a deployment.
 func LookupDeployment(ctx *pulumi.Context, args *LookupDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeploymentResult
 	err := ctx.Invoke("azure-native:resources/v20230701:getDeployment", args, &rv, opts...)
 	if err != nil {

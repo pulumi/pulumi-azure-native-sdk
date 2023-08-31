@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of an event subscription of a namespace topic.
 // Azure REST API version: 2023-06-01-preview.
 func LookupNamespaceTopicEventSubscription(ctx *pulumi.Context, args *LookupNamespaceTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceTopicEventSubscriptionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceTopicEventSubscriptionResult
 	err := ctx.Invoke("azure-native:eventgrid:getNamespaceTopicEventSubscription", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a CommunicationsGateway
 func LookupCommunicationsGateway(ctx *pulumi.Context, args *LookupCommunicationsGatewayArgs, opts ...pulumi.InvokeOption) (*LookupCommunicationsGatewayResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCommunicationsGatewayResult
 	err := ctx.Invoke("azure-native:voiceservices/v20230403:getCommunicationsGateway", args, &rv, opts...)
 	if err != nil {

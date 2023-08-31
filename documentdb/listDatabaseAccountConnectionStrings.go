@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the connection strings for the specified Azure Cosmos DB database account.
 // Azure REST API version: 2023-04-15.
 func ListDatabaseAccountConnectionStrings(ctx *pulumi.Context, args *ListDatabaseAccountConnectionStringsArgs, opts ...pulumi.InvokeOption) (*ListDatabaseAccountConnectionStringsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDatabaseAccountConnectionStringsResult
 	err := ctx.Invoke("azure-native:documentdb:listDatabaseAccountConnectionStrings", args, &rv, opts...)
 	if err != nil {

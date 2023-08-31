@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the Workspace resource associated with the given name.
 // Azure REST API version: 2022-01-10-preview.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:quantum:getWorkspace", args, &rv, opts...)
 	if err != nil {

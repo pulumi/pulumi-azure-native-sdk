@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information about a guest configuration assignment for VMSS
 func LookupGuestConfigurationAssignmentsVMSS(ctx *pulumi.Context, args *LookupGuestConfigurationAssignmentsVMSSArgs, opts ...pulumi.InvokeOption) (*LookupGuestConfigurationAssignmentsVMSSResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestConfigurationAssignmentsVMSSResult
 	err := ctx.Invoke("azure-native:guestconfiguration/v20220125:getGuestConfigurationAssignmentsVMSS", args, &rv, opts...)
 	if err != nil {

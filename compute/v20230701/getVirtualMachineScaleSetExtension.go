@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation to get the extension.
 func LookupVirtualMachineScaleSetExtension(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetExtensionArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetExtensionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineScaleSetExtensionResult
 	err := ctx.Invoke("azure-native:compute/v20230701:getVirtualMachineScaleSetExtension", args, &rv, opts...)
 	if err != nil {

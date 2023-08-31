@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List of elastic traffic filters in the account
 func ListAllTrafficFilter(ctx *pulumi.Context, args *ListAllTrafficFilterArgs, opts ...pulumi.InvokeOption) (*ListAllTrafficFilterResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAllTrafficFilterResult
 	err := ctx.Invoke("azure-native:elastic/v20230615preview:listAllTrafficFilter", args, &rv, opts...)
 	if err != nil {

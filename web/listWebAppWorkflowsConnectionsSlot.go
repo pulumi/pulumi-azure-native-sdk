@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workflow properties definition.
 // Azure REST API version: 2022-09-01.
 func ListWebAppWorkflowsConnectionsSlot(ctx *pulumi.Context, args *ListWebAppWorkflowsConnectionsSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppWorkflowsConnectionsSlotResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppWorkflowsConnectionsSlotResult
 	err := ctx.Invoke("azure-native:web:listWebAppWorkflowsConnectionsSlot", args, &rv, opts...)
 	if err != nil {

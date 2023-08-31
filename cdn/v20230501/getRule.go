@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing delivery rule within a rule set.
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleResult
 	err := ctx.Invoke("azure-native:cdn/v20230501:getRule", args, &rv, opts...)
 	if err != nil {

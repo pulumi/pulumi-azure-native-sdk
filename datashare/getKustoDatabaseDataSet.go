@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a DataSet in a share
 // Azure REST API version: 2021-08-01.
 func LookupKustoDatabaseDataSet(ctx *pulumi.Context, args *LookupKustoDatabaseDataSetArgs, opts ...pulumi.InvokeOption) (*LookupKustoDatabaseDataSetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKustoDatabaseDataSetResult
 	err := ctx.Invoke("azure-native:datashare:getKustoDatabaseDataSet", args, &rv, opts...)
 	if err != nil {

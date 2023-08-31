@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get single access review definition
 // Azure REST API version: 2021-12-01-preview.
 func LookupScopeAccessReviewScheduleDefinitionById(ctx *pulumi.Context, args *LookupScopeAccessReviewScheduleDefinitionByIdArgs, opts ...pulumi.InvokeOption) (*LookupScopeAccessReviewScheduleDefinitionByIdResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScopeAccessReviewScheduleDefinitionByIdResult
 	err := ctx.Invoke("azure-native:authorization:getScopeAccessReviewScheduleDefinitionById", args, &rv, opts...)
 	if err != nil {

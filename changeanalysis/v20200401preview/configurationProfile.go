@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ func NewConfigurationProfile(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource ConfigurationProfile
 	err := ctx.RegisterResource("azure-native:changeanalysis/v20200401preview:ConfigurationProfile", name, args, &resource, opts...)
 	if err != nil {

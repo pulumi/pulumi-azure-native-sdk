@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified machine learning workspace.
 // Azure REST API version: 2019-10-01.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceResult
 	err := ctx.Invoke("azure-native:machinelearning:getWorkspace", args, &rv, opts...)
 	if err != nil {

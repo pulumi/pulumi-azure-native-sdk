@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -86,6 +87,7 @@ func NewNamedValue(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource NamedValue
 	err := ctx.RegisterResource("azure-native:apimanagement/v20220801:NamedValue", name, args, &resource, opts...)
 	if err != nil {

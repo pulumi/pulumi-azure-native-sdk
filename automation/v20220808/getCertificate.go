@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the certificate identified by certificate name.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateResult
 	err := ctx.Invoke("azure-native:automation/v20220808:getCertificate", args, &rv, opts...)
 	if err != nil {

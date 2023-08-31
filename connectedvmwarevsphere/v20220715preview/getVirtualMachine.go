@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements virtual machine GET method.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20220715preview:getVirtualMachine", args, &rv, opts...)
 	if err != nil {

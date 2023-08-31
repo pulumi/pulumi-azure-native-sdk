@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Network Virtual Appliance.
 // Azure REST API version: 2023-02-01.
 func LookupNetworkVirtualAppliance(ctx *pulumi.Context, args *LookupNetworkVirtualApplianceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkVirtualApplianceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkVirtualApplianceResult
 	err := ctx.Invoke("azure-native:network:getNetworkVirtualAppliance", args, &rv, opts...)
 	if err != nil {

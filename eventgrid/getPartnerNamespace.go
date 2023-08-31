@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of a partner namespace.
 // Azure REST API version: 2022-06-15.
 func LookupPartnerNamespace(ctx *pulumi.Context, args *LookupPartnerNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupPartnerNamespaceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerNamespaceResult
 	err := ctx.Invoke("azure-native:eventgrid:getPartnerNamespace", args, &rv, opts...)
 	if err != nil {

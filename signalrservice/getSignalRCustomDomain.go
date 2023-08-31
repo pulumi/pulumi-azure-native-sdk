@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a custom domain.
 // Azure REST API version: 2023-02-01.
 func LookupSignalRCustomDomain(ctx *pulumi.Context, args *LookupSignalRCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupSignalRCustomDomainResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSignalRCustomDomainResult
 	err := ctx.Invoke("azure-native:signalrservice:getSignalRCustomDomain", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a flow log resource by name.
 func LookupFlowLog(ctx *pulumi.Context, args *LookupFlowLogArgs, opts ...pulumi.InvokeOption) (*LookupFlowLogResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFlowLogResult
 	err := ctx.Invoke("azure-native:network/v20230201:getFlowLog", args, &rv, opts...)
 	if err != nil {

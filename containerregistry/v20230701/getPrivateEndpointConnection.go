@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the specified private endpoint connection associated with the container registry.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:containerregistry/v20230701:getPrivateEndpointConnection", args, &rv, opts...)
 	if err != nil {

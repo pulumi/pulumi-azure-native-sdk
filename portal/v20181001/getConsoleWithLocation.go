@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the console for the user.
 func LookupConsoleWithLocation(ctx *pulumi.Context, args *LookupConsoleWithLocationArgs, opts ...pulumi.InvokeOption) (*LookupConsoleWithLocationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConsoleWithLocationResult
 	err := ctx.Invoke("azure-native:portal/v20181001:getConsoleWithLocation", args, &rv, opts...)
 	if err != nil {

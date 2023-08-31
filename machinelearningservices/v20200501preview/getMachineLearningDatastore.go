@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Datastore by name.
 func LookupMachineLearningDatastore(ctx *pulumi.Context, args *LookupMachineLearningDatastoreArgs, opts ...pulumi.InvokeOption) (*LookupMachineLearningDatastoreResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineLearningDatastoreResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200501preview:getMachineLearningDatastore", args, &rv, opts...)
 	if err != nil {

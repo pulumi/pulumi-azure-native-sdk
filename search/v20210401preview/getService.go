@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the search service with the given name in the given resource group.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure-native:search/v20210401preview:getService", args, &rv, opts...)
 	if err != nil {

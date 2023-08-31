@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of a partner destination.
 func LookupPartnerDestination(ctx *pulumi.Context, args *LookupPartnerDestinationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerDestinationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerDestinationResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211015preview:getPartnerDestination", args, &rv, opts...)
 	if err != nil {

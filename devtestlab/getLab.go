@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get lab.
 // Azure REST API version: 2018-09-15.
 func LookupLab(ctx *pulumi.Context, args *LookupLabArgs, opts ...pulumi.InvokeOption) (*LookupLabResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLabResult
 	err := ctx.Invoke("azure-native:devtestlab:getLab", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Gets the details of the user provided function app registered with a static site build
 func LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuild(ctx *pulumi.Context, args *LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult
 	err := ctx.Invoke("azure-native:web/v20220901:getStaticSiteUserProvidedFunctionAppForStaticSiteBuild", args, &rv, opts...)
 	if err != nil {

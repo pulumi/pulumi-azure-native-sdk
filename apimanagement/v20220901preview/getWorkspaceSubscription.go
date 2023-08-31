@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Subscription entity.
 func LookupWorkspaceSubscription(ctx *pulumi.Context, args *LookupWorkspaceSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceSubscriptionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceSubscriptionResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220901preview:getWorkspaceSubscription", args, &rv, opts...)
 	if err != nil {

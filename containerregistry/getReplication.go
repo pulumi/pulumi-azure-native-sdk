@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified replication.
 // Azure REST API version: 2022-12-01.
 func LookupReplication(ctx *pulumi.Context, args *LookupReplicationArgs, opts ...pulumi.InvokeOption) (*LookupReplicationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicationResult
 	err := ctx.Invoke("azure-native:containerregistry:getReplication", args, &rv, opts...)
 	if err != nil {

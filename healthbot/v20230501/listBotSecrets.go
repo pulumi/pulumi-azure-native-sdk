@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List all secrets of a HealthBot.
 func ListBotSecrets(ctx *pulumi.Context, args *ListBotSecretsArgs, opts ...pulumi.InvokeOption) (*ListBotSecretsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListBotSecretsResult
 	err := ctx.Invoke("azure-native:healthbot/v20230501:listBotSecrets", args, &rv, opts...)
 	if err != nil {

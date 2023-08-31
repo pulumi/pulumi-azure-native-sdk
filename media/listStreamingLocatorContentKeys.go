@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List Content Keys used by this Streaming Locator
 // Azure REST API version: 2023-01-01.
 func ListStreamingLocatorContentKeys(ctx *pulumi.Context, args *ListStreamingLocatorContentKeysArgs, opts ...pulumi.InvokeOption) (*ListStreamingLocatorContentKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListStreamingLocatorContentKeysResult
 	err := ctx.Invoke("azure-native:media:listStreamingLocatorContentKeys", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the managed OpenShift cluster with a specified resource group and name.
 // Azure REST API version: 2019-10-27-preview.
 func LookupOpenShiftManagedCluster(ctx *pulumi.Context, args *LookupOpenShiftManagedClusterArgs, opts ...pulumi.InvokeOption) (*LookupOpenShiftManagedClusterResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenShiftManagedClusterResult
 	err := ctx.Invoke("azure-native:containerservice:getOpenShiftManagedCluster", args, &rv, opts...)
 	if err != nil {

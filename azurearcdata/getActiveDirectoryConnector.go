@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves an Active Directory connector resource
 // Azure REST API version: 2023-01-15-preview.
 func LookupActiveDirectoryConnector(ctx *pulumi.Context, args *LookupActiveDirectoryConnectorArgs, opts ...pulumi.InvokeOption) (*LookupActiveDirectoryConnectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActiveDirectoryConnectorResult
 	err := ctx.Invoke("azure-native:azurearcdata:getActiveDirectoryConnector", args, &rv, opts...)
 	if err != nil {

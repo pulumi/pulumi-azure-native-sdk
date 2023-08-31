@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Service Fabric node type of a given managed cluster.
 func LookupNodeType(ctx *pulumi.Context, args *LookupNodeTypeArgs, opts ...pulumi.InvokeOption) (*LookupNodeTypeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNodeTypeResult
 	err := ctx.Invoke("azure-native:servicefabric/v20230301preview:getNodeType", args, &rv, opts...)
 	if err != nil {

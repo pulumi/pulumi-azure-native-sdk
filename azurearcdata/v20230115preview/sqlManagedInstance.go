@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,6 +75,7 @@ func NewSqlManagedInstance(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource SqlManagedInstance
 	err := ctx.RegisterResource("azure-native:azurearcdata/v20230115preview:SqlManagedInstance", name, args, &resource, opts...)
 	if err != nil {

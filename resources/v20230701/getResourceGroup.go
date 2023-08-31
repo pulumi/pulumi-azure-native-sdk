@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a resource group.
 func LookupResourceGroup(ctx *pulumi.Context, args *LookupResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupResourceGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourceGroupResult
 	err := ctx.Invoke("azure-native:resources/v20230701:getResourceGroup", args, &rv, opts...)
 	if err != nil {

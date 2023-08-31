@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a description for the specified queue.
 // Azure REST API version: 2022-01-01-preview.
 func LookupQueue(ctx *pulumi.Context, args *LookupQueueArgs, opts ...pulumi.InvokeOption) (*LookupQueueResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueueResult
 	err := ctx.Invoke("azure-native:servicebus:getQueue", args, &rv, opts...)
 	if err != nil {

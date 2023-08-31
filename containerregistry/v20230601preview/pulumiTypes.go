@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // The activation properties of the connected registry.
 type ActivationPropertiesResponse struct {
@@ -3288,7 +3291,7 @@ func (val *NetworkRuleSet) Defaults() *NetworkRuleSet {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultAction) {
+	if utilities.IsZero(tmp.DefaultAction) {
 		tmp.DefaultAction = "Allow"
 	}
 	return &tmp
@@ -3470,7 +3473,7 @@ func (val *NetworkRuleSetResponse) Defaults() *NetworkRuleSetResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DefaultAction) {
+	if utilities.IsZero(tmp.DefaultAction) {
 		tmp.DefaultAction = "Allow"
 	}
 	return &tmp
@@ -4747,7 +4750,7 @@ func (val *PipelineSourceTriggerProperties) Defaults() *PipelineSourceTriggerPro
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if utilities.IsZero(tmp.Status) {
 		tmp.Status = "Enabled"
 	}
 	return &tmp
@@ -4907,7 +4910,7 @@ func (val *PipelineSourceTriggerPropertiesResponse) Defaults() *PipelineSourceTr
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if utilities.IsZero(tmp.Status) {
 		tmp.Status = "Enabled"
 	}
 	return &tmp

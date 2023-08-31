@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified mobile network site.
 // Azure REST API version: 2023-06-01.
 func LookupSite(ctx *pulumi.Context, args *LookupSiteArgs, opts ...pulumi.InvokeOption) (*LookupSiteResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSiteResult
 	err := ctx.Invoke("azure-native:mobilenetwork:getSite", args, &rv, opts...)
 	if err != nil {

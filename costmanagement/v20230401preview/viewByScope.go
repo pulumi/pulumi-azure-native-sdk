@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,6 +106,7 @@ func NewViewByScope(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource ViewByScope
 	err := ctx.RegisterResource("azure-native:costmanagement/v20230401preview:ViewByScope", name, args, &resource, opts...)
 	if err != nil {

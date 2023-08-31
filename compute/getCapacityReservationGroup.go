@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation that retrieves information about a capacity reservation group.
 // Azure REST API version: 2023-03-01.
 func LookupCapacityReservationGroup(ctx *pulumi.Context, args *LookupCapacityReservationGroupArgs, opts ...pulumi.InvokeOption) (*LookupCapacityReservationGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCapacityReservationGroupResult
 	err := ctx.Invoke("azure-native:compute:getCapacityReservationGroup", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an authorization rule for a namespace by rule name.
 // Azure REST API version: 2022-01-01-preview.
 func LookupNamespaceAuthorizationRule(ctx *pulumi.Context, args *LookupNamespaceAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceAuthorizationRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceAuthorizationRuleResult
 	err := ctx.Invoke("azure-native:servicebus:getNamespaceAuthorizationRule", args, &rv, opts...)
 	if err != nil {

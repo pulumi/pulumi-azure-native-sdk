@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the managed instance's Start/Stop schedule.
 func LookupStartStopManagedInstanceSchedule(ctx *pulumi.Context, args *LookupStartStopManagedInstanceScheduleArgs, opts ...pulumi.InvokeOption) (*LookupStartStopManagedInstanceScheduleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStartStopManagedInstanceScheduleResult
 	err := ctx.Invoke("azure-native:sql/v20230201preview:getStartStopManagedInstanceSchedule", args, &rv, opts...)
 	if err != nil {

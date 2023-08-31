@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,6 +90,7 @@ func NewSecurityAdminConfiguration(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource SecurityAdminConfiguration
 	err := ctx.RegisterResource("azure-native:network/v20210501preview:SecurityAdminConfiguration", name, args, &resource, opts...)
 	if err != nil {

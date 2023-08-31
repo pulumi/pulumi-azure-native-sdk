@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This operation retrieves a list of routes the virtual network gateway is advertising to the specified peer.
 // Azure REST API version: 2023-02-01.
 func GetVirtualNetworkGatewayAdvertisedRoutes(ctx *pulumi.Context, args *GetVirtualNetworkGatewayAdvertisedRoutesArgs, opts ...pulumi.InvokeOption) (*GetVirtualNetworkGatewayAdvertisedRoutesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetVirtualNetworkGatewayAdvertisedRoutesResult
 	err := ctx.Invoke("azure-native:network:getVirtualNetworkGatewayAdvertisedRoutes", args, &rv, opts...)
 	if err != nil {

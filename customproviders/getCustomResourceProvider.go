@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the custom resource provider manifest.
 // Azure REST API version: 2018-09-01-preview.
 func LookupCustomResourceProvider(ctx *pulumi.Context, args *LookupCustomResourceProviderArgs, opts ...pulumi.InvokeOption) (*LookupCustomResourceProviderResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomResourceProviderResult
 	err := ctx.Invoke("azure-native:customproviders:getCustomResourceProvider", args, &rv, opts...)
 	if err != nil {

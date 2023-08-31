@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List synchronizations of a share
 func ListShareSynchronizations(ctx *pulumi.Context, args *ListShareSynchronizationsArgs, opts ...pulumi.InvokeOption) (*ListShareSynchronizationsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListShareSynchronizationsResult
 	err := ctx.Invoke("azure-native:datashare/v20210801:listShareSynchronizations", args, &rv, opts...)
 	if err != nil {

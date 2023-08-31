@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a watchlist, without its watchlist items.
 func LookupWatchlist(ctx *pulumi.Context, args *LookupWatchlistArgs, opts ...pulumi.InvokeOption) (*LookupWatchlistResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWatchlistResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201:getWatchlist", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the details of the specified volume
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:netapp/v20221101preview:getVolume", args, &rv, opts...)
 	if err != nil {
@@ -186,7 +188,7 @@ func (val *LookupVolumeResult) Defaults() *LookupVolumeResult {
 		encryptionKeySource_ := "Microsoft.NetApp"
 		tmp.EncryptionKeySource = &encryptionKeySource_
 	}
-	if isZero(tmp.FileAccessLogs) {
+	if utilities.IsZero(tmp.FileAccessLogs) {
 		tmp.FileAccessLogs = "Disabled"
 	}
 	if tmp.IsDefaultQuotaEnabled == nil {
@@ -229,7 +231,7 @@ func (val *LookupVolumeResult) Defaults() *LookupVolumeResult {
 		unixPermissions_ := "0770"
 		tmp.UnixPermissions = &unixPermissions_
 	}
-	if isZero(tmp.UsageThreshold) {
+	if utilities.IsZero(tmp.UsageThreshold) {
 		tmp.UsageThreshold = 107374182400.0
 	}
 	return &tmp

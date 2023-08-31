@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the setting from the given scope by name.
 func LookupTagInheritanceSetting(ctx *pulumi.Context, args *LookupTagInheritanceSettingArgs, opts ...pulumi.InvokeOption) (*LookupTagInheritanceSettingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagInheritanceSettingResult
 	err := ctx.Invoke("azure-native:costmanagement/v20230801:getTagInheritanceSetting", args, &rv, opts...)
 	if err != nil {

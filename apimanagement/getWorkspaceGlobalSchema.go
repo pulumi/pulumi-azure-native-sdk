@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the Schema specified by its identifier.
 // Azure REST API version: 2022-09-01-preview.
 func LookupWorkspaceGlobalSchema(ctx *pulumi.Context, args *LookupWorkspaceGlobalSchemaArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceGlobalSchemaResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceGlobalSchemaResult
 	err := ctx.Invoke("azure-native:apimanagement:getWorkspaceGlobalSchema", args, &rv, opts...)
 	if err != nil {

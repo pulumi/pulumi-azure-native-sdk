@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // An identity that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID.
 type AccessPolicyEntry struct {

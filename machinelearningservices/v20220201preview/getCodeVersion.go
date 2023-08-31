@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 func LookupCodeVersion(ctx *pulumi.Context, args *LookupCodeVersionArgs, opts ...pulumi.InvokeOption) (*LookupCodeVersionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCodeVersionResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20220201preview:getCodeVersion", args, &rv, opts...)
 	if err != nil {

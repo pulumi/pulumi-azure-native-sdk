@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,6 +82,7 @@ func NewMyWorkbook(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource MyWorkbook
 	err := ctx.RegisterResource("azure-native:insights:MyWorkbook", name, args, &resource, opts...)
 	if err != nil {

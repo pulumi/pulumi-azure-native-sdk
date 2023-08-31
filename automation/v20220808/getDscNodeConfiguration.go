@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the Dsc node configurations by node configuration.
 func LookupDscNodeConfiguration(ctx *pulumi.Context, args *LookupDscNodeConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDscNodeConfigurationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDscNodeConfigurationResult
 	err := ctx.Invoke("azure-native:automation/v20220808:getDscNodeConfiguration", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Hybrid AKS virtual network
 func LookupVirtualNetworkRetrieve(ctx *pulumi.Context, args *LookupVirtualNetworkRetrieveArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkRetrieveResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualNetworkRetrieveResult
 	err := ctx.Invoke("azure-native:hybridcontainerservice/v20220901preview:getVirtualNetworkRetrieve", args, &rv, opts...)
 	if err != nil {

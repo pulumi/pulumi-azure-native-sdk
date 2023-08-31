@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the specified Backup under Backup Vault.
 func LookupBackup(ctx *pulumi.Context, args *LookupBackupArgs, opts ...pulumi.InvokeOption) (*LookupBackupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupResult
 	err := ctx.Invoke("azure-native:netapp/v20221101preview:getBackup", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,6 +90,7 @@ func NewIntegrationAccountAgreement(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource IntegrationAccountAgreement
 	err := ctx.RegisterResource("azure-native:logic/v20190501:IntegrationAccountAgreement", name, args, &resource, opts...)
 	if err != nil {

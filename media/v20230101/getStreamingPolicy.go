@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the details of a Streaming Policy in the Media Services account
 func LookupStreamingPolicy(ctx *pulumi.Context, args *LookupStreamingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupStreamingPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStreamingPolicyResult
 	err := ctx.Invoke("azure-native:media/v20230101:getStreamingPolicy", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an availability group listener.
 // Azure REST API version: 2022-02-01.
 func LookupAvailabilityGroupListener(ctx *pulumi.Context, args *LookupAvailabilityGroupListenerArgs, opts ...pulumi.InvokeOption) (*LookupAvailabilityGroupListenerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAvailabilityGroupListenerResult
 	err := ctx.Invoke("azure-native:sqlvirtualmachine:getAvailabilityGroupListener", args, &rv, opts...)
 	if err != nil {

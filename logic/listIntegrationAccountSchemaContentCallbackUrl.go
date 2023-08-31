@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the content callback url.
 // Azure REST API version: 2019-05-01.
 func ListIntegrationAccountSchemaContentCallbackUrl(ctx *pulumi.Context, args *ListIntegrationAccountSchemaContentCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListIntegrationAccountSchemaContentCallbackUrlResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListIntegrationAccountSchemaContentCallbackUrlResult
 	err := ctx.Invoke("azure-native:logic:listIntegrationAccountSchemaContentCallbackUrl", args, &rv, opts...)
 	if err != nil {

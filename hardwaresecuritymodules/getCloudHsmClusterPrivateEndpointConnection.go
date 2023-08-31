@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the private endpoint connection for the Cloud Hsm Cluster.
 // Azure REST API version: 2022-08-31-preview.
 func LookupCloudHsmClusterPrivateEndpointConnection(ctx *pulumi.Context, args *LookupCloudHsmClusterPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupCloudHsmClusterPrivateEndpointConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudHsmClusterPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:hardwaresecuritymodules:getCloudHsmClusterPrivateEndpointConnection", args, &rv, opts...)
 	if err != nil {

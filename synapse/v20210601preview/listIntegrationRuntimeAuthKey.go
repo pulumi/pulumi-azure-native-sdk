@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List authentication keys in an integration runtime
 func ListIntegrationRuntimeAuthKey(ctx *pulumi.Context, args *ListIntegrationRuntimeAuthKeyArgs, opts ...pulumi.InvokeOption) (*ListIntegrationRuntimeAuthKeyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListIntegrationRuntimeAuthKeyResult
 	err := ctx.Invoke("azure-native:synapse/v20210601preview:listIntegrationRuntimeAuthKey", args, &rv, opts...)
 	if err != nil {

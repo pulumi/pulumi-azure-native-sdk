@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets all linked storage account of a specific data source type associated with the specified workspace.
 func LookupLinkedStorageAccount(ctx *pulumi.Context, args *LookupLinkedStorageAccountArgs, opts ...pulumi.InvokeOption) (*LookupLinkedStorageAccountResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLinkedStorageAccountResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20200801:getLinkedStorageAccount", args, &rv, opts...)
 	if err != nil {

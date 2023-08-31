@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a specific offer.
 func LookupPrivateStoreCollectionOffer(ctx *pulumi.Context, args *LookupPrivateStoreCollectionOfferArgs, opts ...pulumi.InvokeOption) (*LookupPrivateStoreCollectionOfferResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateStoreCollectionOfferResult
 	err := ctx.Invoke("azure-native:marketplace/v20230101:getPrivateStoreCollectionOffer", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 func LookupRoute(ctx *pulumi.Context, args *LookupRouteArgs, opts ...pulumi.InvokeOption) (*LookupRouteResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouteResult
 	err := ctx.Invoke("azure-native:cdn/v20200901:getRoute", args, &rv, opts...)
 	if err != nil {

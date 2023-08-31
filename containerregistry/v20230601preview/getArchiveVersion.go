@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the archive version.
 func LookupArchiveVersion(ctx *pulumi.Context, args *LookupArchiveVersionArgs, opts ...pulumi.InvokeOption) (*LookupArchiveVersionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupArchiveVersionResult
 	err := ctx.Invoke("azure-native:containerregistry/v20230601preview:getArchiveVersion", args, &rv, opts...)
 	if err != nil {

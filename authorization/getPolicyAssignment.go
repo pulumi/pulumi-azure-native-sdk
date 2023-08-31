@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This operation retrieves a single policy assignment, given its name and the scope it was created at.
 // Azure REST API version: 2022-06-01.
 func LookupPolicyAssignment(ctx *pulumi.Context, args *LookupPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupPolicyAssignmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyAssignmentResult
 	err := ctx.Invoke("azure-native:authorization:getPolicyAssignment", args, &rv, opts...)
 	if err != nil {

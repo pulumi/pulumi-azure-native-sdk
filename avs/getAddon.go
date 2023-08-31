@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An addon resource
 // Azure REST API version: 2022-05-01.
 func LookupAddon(ctx *pulumi.Context, args *LookupAddonArgs, opts ...pulumi.InvokeOption) (*LookupAddonResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAddonResult
 	err := ctx.Invoke("azure-native:avs:getAddon", args, &rv, opts...)
 	if err != nil {

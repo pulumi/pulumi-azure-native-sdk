@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List of RP resources which supports pagination.
 func ListAzureDevOpsOrgAvailable(ctx *pulumi.Context, args *ListAzureDevOpsOrgAvailableArgs, opts ...pulumi.InvokeOption) (*ListAzureDevOpsOrgAvailableResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAzureDevOpsOrgAvailableResult
 	err := ctx.Invoke("azure-native:security/v20230901preview:listAzureDevOpsOrgAvailable", args, &rv, opts...)
 	if err != nil {

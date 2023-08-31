@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,6 +63,7 @@ func NewSenderUsername(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource SenderUsername
 	err := ctx.RegisterResource("azure-native:communication/v20230401preview:SenderUsername", name, args, &resource, opts...)
 	if err != nil {

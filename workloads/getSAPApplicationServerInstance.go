@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.
 // Azure REST API version: 2023-04-01.
 func LookupSAPApplicationServerInstance(ctx *pulumi.Context, args *LookupSAPApplicationServerInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPApplicationServerInstanceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSAPApplicationServerInstanceResult
 	err := ctx.Invoke("azure-native:workloads:getSAPApplicationServerInstance", args, &rv, opts...)
 	if err != nil {

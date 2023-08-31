@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the download URL of the test execution console log file.
 func GetTestResultConsoleLogDownloadURL(ctx *pulumi.Context, args *GetTestResultConsoleLogDownloadURLArgs, opts ...pulumi.InvokeOption) (*GetTestResultConsoleLogDownloadURLResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetTestResultConsoleLogDownloadURLResult
 	err := ctx.Invoke("azure-native:testbase/v20220401preview:getTestResultConsoleLogDownloadURL", args, &rv, opts...)
 	if err != nil {

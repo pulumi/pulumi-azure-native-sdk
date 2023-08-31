@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the details of a virtual wan vpn gateway.
 func LookupVpnGateway(ctx *pulumi.Context, args *LookupVpnGatewayArgs, opts ...pulumi.InvokeOption) (*LookupVpnGatewayResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVpnGatewayResult
 	err := ctx.Invoke("azure-native:network/v20230401:getVpnGateway", args, &rv, opts...)
 	if err != nil {

@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 type AliasPathMetadataResponse struct {
 	// The attributes of the token that the alias path is referring to.

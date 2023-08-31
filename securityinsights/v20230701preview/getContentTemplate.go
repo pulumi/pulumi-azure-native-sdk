@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a template byt its identifier.
 func LookupContentTemplate(ctx *pulumi.Context, args *LookupContentTemplateArgs, opts ...pulumi.InvokeOption) (*LookupContentTemplateResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContentTemplateResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230701preview:getContentTemplate", args, &rv, opts...)
 	if err != nil {

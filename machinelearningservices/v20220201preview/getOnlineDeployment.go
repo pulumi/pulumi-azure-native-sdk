@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupOnlineDeployment(ctx *pulumi.Context, args *LookupOnlineDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupOnlineDeploymentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOnlineDeploymentResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20220201preview:getOnlineDeployment", args, &rv, opts...)
 	if err != nil {

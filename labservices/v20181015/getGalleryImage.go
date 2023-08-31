@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get gallery image
 func LookupGalleryImage(ctx *pulumi.Context, args *LookupGalleryImageArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGalleryImageResult
 	err := ctx.Invoke("azure-native:labservices/v20181015:getGalleryImage", args, &rv, opts...)
 	if err != nil {

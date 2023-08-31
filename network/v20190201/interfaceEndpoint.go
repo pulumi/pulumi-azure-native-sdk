@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -145,6 +146,7 @@ func NewInterfaceEndpoint(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource InterfaceEndpoint
 	err := ctx.RegisterResource("azure-native:network/v20190201:InterfaceEndpoint", name, args, &resource, opts...)
 	if err != nil {

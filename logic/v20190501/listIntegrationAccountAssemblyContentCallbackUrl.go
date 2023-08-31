@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the content callback url for an integration account assembly.
 func ListIntegrationAccountAssemblyContentCallbackUrl(ctx *pulumi.Context, args *ListIntegrationAccountAssemblyContentCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListIntegrationAccountAssemblyContentCallbackUrlResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListIntegrationAccountAssemblyContentCallbackUrlResult
 	err := ctx.Invoke("azure-native:logic/v20190501:listIntegrationAccountAssemblyContentCallbackUrl", args, &rv, opts...)
 	if err != nil {

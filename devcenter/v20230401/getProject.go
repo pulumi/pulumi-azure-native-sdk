@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific project.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult
 	err := ctx.Invoke("azure-native:devcenter/v20230401:getProject", args, &rv, opts...)
 	if err != nil {

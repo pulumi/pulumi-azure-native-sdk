@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Response of a list operation.
 func ListMonitoredResource(ctx *pulumi.Context, args *ListMonitoredResourceArgs, opts ...pulumi.InvokeOption) (*ListMonitoredResourceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListMonitoredResourceResult
 	err := ctx.Invoke("azure-native:elastic/v20230601:listMonitoredResource", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements VirtualMachineTemplate GET method.
 // Azure REST API version: 2022-05-21-preview.
 func LookupVirtualMachineTemplate(ctx *pulumi.Context, args *LookupVirtualMachineTemplateArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineTemplateResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineTemplateResult
 	err := ctx.Invoke("azure-native:scvmm:getVirtualMachineTemplate", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the shared scheduled action from the given scope by name.
 // Azure REST API version: 2023-03-01.
 func LookupScheduledActionByScope(ctx *pulumi.Context, args *LookupScheduledActionByScopeArgs, opts ...pulumi.InvokeOption) (*LookupScheduledActionByScopeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScheduledActionByScopeResult
 	err := ctx.Invoke("azure-native:costmanagement:getScheduledActionByScope", args, &rv, opts...)
 	if err != nil {

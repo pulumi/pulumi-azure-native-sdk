@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an integration account map.
 // Azure REST API version: 2019-05-01.
 func LookupIntegrationAccountMap(ctx *pulumi.Context, args *LookupIntegrationAccountMapArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountMapResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationAccountMapResult
 	err := ctx.Invoke("azure-native:logic:getIntegrationAccountMap", args, &rv, opts...)
 	if err != nil {

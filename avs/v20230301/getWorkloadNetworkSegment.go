@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NSX Segment
 func LookupWorkloadNetworkSegment(ctx *pulumi.Context, args *LookupWorkloadNetworkSegmentArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkSegmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadNetworkSegmentResult
 	err := ctx.Invoke("azure-native:avs/v20230301:getWorkloadNetworkSegment", args, &rv, opts...)
 	if err != nil {

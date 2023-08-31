@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the report for a resource group under a subscription by report name.
 func LookupReportByResourceGroupName(ctx *pulumi.Context, args *LookupReportByResourceGroupNameArgs, opts ...pulumi.InvokeOption) (*LookupReportByResourceGroupNameResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReportByResourceGroupNameResult
 	err := ctx.Invoke("azure-native:costmanagement/v20180801preview:getReportByResourceGroupName", args, &rv, opts...)
 	if err != nil {

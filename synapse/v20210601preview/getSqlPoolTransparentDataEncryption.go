@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a SQL pool's transparent data encryption configuration.
 func LookupSqlPoolTransparentDataEncryption(ctx *pulumi.Context, args *LookupSqlPoolTransparentDataEncryptionArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolTransparentDataEncryptionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlPoolTransparentDataEncryptionResult
 	err := ctx.Invoke("azure-native:synapse/v20210601preview:getSqlPoolTransparentDataEncryption", args, &rv, opts...)
 	if err != nil {

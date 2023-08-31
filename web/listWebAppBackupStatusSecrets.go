@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Gets status of a web app backup that may be in progress, including secrets associated with the backup, such as the Azure Storage SAS URL. Also can be used to update the SAS URL for the backup if a new URL is passed in the request body.
 // Azure REST API version: 2022-09-01.
 func ListWebAppBackupStatusSecrets(ctx *pulumi.Context, args *ListWebAppBackupStatusSecretsArgs, opts ...pulumi.InvokeOption) (*ListWebAppBackupStatusSecretsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppBackupStatusSecretsResult
 	err := ctx.Invoke("azure-native:web:listWebAppBackupStatusSecrets", args.Defaults(), &rv, opts...)
 	if err != nil {

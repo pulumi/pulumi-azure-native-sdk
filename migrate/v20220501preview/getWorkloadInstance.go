@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the workload instance.
 func LookupWorkloadInstance(ctx *pulumi.Context, args *LookupWorkloadInstanceArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadInstanceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadInstanceResult
 	err := ctx.Invoke("azure-native:migrate/v20220501preview:getWorkloadInstance", args, &rv, opts...)
 	if err != nil {

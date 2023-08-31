@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List the two keys used to publish to a topic.
 // Azure REST API version: 2022-06-15.
 func ListTopicSharedAccessKeys(ctx *pulumi.Context, args *ListTopicSharedAccessKeysArgs, opts ...pulumi.InvokeOption) (*ListTopicSharedAccessKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListTopicSharedAccessKeysResult
 	err := ctx.Invoke("azure-native:eventgrid:listTopicSharedAccessKeys", args, &rv, opts...)
 	if err != nil {

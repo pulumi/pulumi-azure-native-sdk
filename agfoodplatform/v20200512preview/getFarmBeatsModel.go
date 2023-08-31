@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get FarmBeats resource.
 func LookupFarmBeatsModel(ctx *pulumi.Context, args *LookupFarmBeatsModelArgs, opts ...pulumi.InvokeOption) (*LookupFarmBeatsModelResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFarmBeatsModelResult
 	err := ctx.Invoke("azure-native:agfoodplatform/v20200512preview:getFarmBeatsModel", args, &rv, opts...)
 	if err != nil {

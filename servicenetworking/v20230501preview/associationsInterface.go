@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,6 +59,7 @@ func NewAssociationsInterface(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource AssociationsInterface
 	err := ctx.RegisterResource("azure-native:servicenetworking/v20230501preview:AssociationsInterface", name, args, &resource, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about a dedicated host.
 func LookupDedicatedHost(ctx *pulumi.Context, args *LookupDedicatedHostArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHostResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDedicatedHostResult
 	err := ctx.Invoke("azure-native:compute/v20230301:getDedicatedHost", args, &rv, opts...)
 	if err != nil {

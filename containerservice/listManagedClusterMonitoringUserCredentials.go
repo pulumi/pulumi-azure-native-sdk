@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The list credential result response.
 // Azure REST API version: 2023-04-01.
 func ListManagedClusterMonitoringUserCredentials(ctx *pulumi.Context, args *ListManagedClusterMonitoringUserCredentialsArgs, opts ...pulumi.InvokeOption) (*ListManagedClusterMonitoringUserCredentialsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListManagedClusterMonitoringUserCredentialsResult
 	err := ctx.Invoke("azure-native:containerservice:listManagedClusterMonitoringUserCredentials", args, &rv, opts...)
 	if err != nil {

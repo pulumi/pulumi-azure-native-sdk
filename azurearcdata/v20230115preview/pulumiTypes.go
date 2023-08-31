@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // DNS server details
 type ActiveDirectoryConnectorDNSDetails struct {
@@ -2530,7 +2533,7 @@ func (val *FailoverGroupSpec) Defaults() *FailoverGroupSpec {
 		partnerSyncMode_ := "async"
 		tmp.PartnerSyncMode = &partnerSyncMode_
 	}
-	if isZero(tmp.Role) {
+	if utilities.IsZero(tmp.Role) {
 		tmp.Role = "primary"
 	}
 	return &tmp
@@ -2669,7 +2672,7 @@ func (val *FailoverGroupSpecResponse) Defaults() *FailoverGroupSpecResponse {
 		partnerSyncMode_ := "async"
 		tmp.PartnerSyncMode = &partnerSyncMode_
 	}
-	if isZero(tmp.Role) {
+	if utilities.IsZero(tmp.Role) {
 		tmp.Role = "primary"
 	}
 	return &tmp

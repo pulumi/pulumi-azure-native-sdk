@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the logging configuration of an app.
 func LookupWebAppDiagnosticLogsConfiguration(ctx *pulumi.Context, args *LookupWebAppDiagnosticLogsConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDiagnosticLogsConfigurationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppDiagnosticLogsConfigurationResult
 	err := ctx.Invoke("azure-native:web/v20201001:getWebAppDiagnosticLogsConfiguration", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,6 +72,7 @@ func NewPeerAsn(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource PeerAsn
 	err := ctx.RegisterResource("azure-native:peering:PeerAsn", name, args, &resource, opts...)
 	if err != nil {

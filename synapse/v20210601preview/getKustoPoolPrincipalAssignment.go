@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Kusto pool principalAssignment.
 func LookupKustoPoolPrincipalAssignment(ctx *pulumi.Context, args *LookupKustoPoolPrincipalAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupKustoPoolPrincipalAssignmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKustoPoolPrincipalAssignmentResult
 	err := ctx.Invoke("azure-native:synapse/v20210601preview:getKustoPoolPrincipalAssignment", args, &rv, opts...)
 	if err != nil {

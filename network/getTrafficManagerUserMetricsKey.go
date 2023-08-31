@@ -4,12 +4,14 @@
 package network
 
 import (
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the subscription-level key used for Real User Metrics collection.
 // Azure REST API version: 2022-04-01.
 func LookupTrafficManagerUserMetricsKey(ctx *pulumi.Context, args *LookupTrafficManagerUserMetricsKeyArgs, opts ...pulumi.InvokeOption) (*LookupTrafficManagerUserMetricsKeyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTrafficManagerUserMetricsKeyResult
 	err := ctx.Invoke("azure-native:network:getTrafficManagerUserMetricsKey", args, &rv, opts...)
 	if err != nil {

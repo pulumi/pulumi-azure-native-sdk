@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List the two keys used to publish to a partner namespace.
 func ListPartnerNamespaceSharedAccessKeys(ctx *pulumi.Context, args *ListPartnerNamespaceSharedAccessKeysArgs, opts ...pulumi.InvokeOption) (*ListPartnerNamespaceSharedAccessKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListPartnerNamespaceSharedAccessKeysResult
 	err := ctx.Invoke("azure-native:eventgrid/v20230601preview:listPartnerNamespaceSharedAccessKeys", args, &rv, opts...)
 	if err != nil {

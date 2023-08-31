@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the details of a Content Key Policy in the Media Services account
 // Azure REST API version: 2023-01-01.
 func LookupContentKeyPolicy(ctx *pulumi.Context, args *LookupContentKeyPolicyArgs, opts ...pulumi.InvokeOption) (*LookupContentKeyPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContentKeyPolicyResult
 	err := ctx.Invoke("azure-native:media:getContentKeyPolicy", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,6 +68,7 @@ func NewRegistryEnvironmentVersion(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource RegistryEnvironmentVersion
 	err := ctx.RegisterResource("azure-native:machinelearningservices:RegistryEnvironmentVersion", name, args, &resource, opts...)
 	if err != nil {

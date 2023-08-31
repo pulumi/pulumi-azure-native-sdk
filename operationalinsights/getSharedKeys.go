@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the shared keys for a workspace.
 // Azure REST API version: 2020-08-01.
 func GetSharedKeys(ctx *pulumi.Context, args *GetSharedKeysArgs, opts ...pulumi.InvokeOption) (*GetSharedKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSharedKeysResult
 	err := ctx.Invoke("azure-native:operationalinsights:getSharedKeys", args, &rv, opts...)
 	if err != nil {

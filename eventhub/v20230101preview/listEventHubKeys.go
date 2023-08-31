@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the ACS and SAS connection strings for the Event Hub.
 func ListEventHubKeys(ctx *pulumi.Context, args *ListEventHubKeysArgs, opts ...pulumi.InvokeOption) (*ListEventHubKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEventHubKeysResult
 	err := ctx.Invoke("azure-native:eventhub/v20230101preview:listEventHubKeys", args, &rv, opts...)
 	if err != nil {

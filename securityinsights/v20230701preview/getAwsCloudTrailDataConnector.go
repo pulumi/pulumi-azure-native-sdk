@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a data connector.
 func LookupAwsCloudTrailDataConnector(ctx *pulumi.Context, args *LookupAwsCloudTrailDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAwsCloudTrailDataConnectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAwsCloudTrailDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230701preview:getAwsCloudTrailDataConnector", args, &rv, opts...)
 	if err != nil {

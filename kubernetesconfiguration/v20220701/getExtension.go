@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets Kubernetes Cluster Extension.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExtensionResult
 	err := ctx.Invoke("azure-native:kubernetesconfiguration/v20220701:getExtension", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a specific pipeline topology by name. If a topology with that name has been previously created, the call will return the JSON representation of that topology.
 func LookupPipelineTopology(ctx *pulumi.Context, args *LookupPipelineTopologyArgs, opts ...pulumi.InvokeOption) (*LookupPipelineTopologyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineTopologyResult
 	err := ctx.Invoke("azure-native:videoanalyzer/v20211101preview:getPipelineTopology", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a specific Application Insights web test definition.
 func LookupWebTest(ctx *pulumi.Context, args *LookupWebTestArgs, opts ...pulumi.InvokeOption) (*LookupWebTestResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebTestResult
 	err := ctx.Invoke("azure-native:insights/v20201005preview:getWebTest", args, &rv, opts...)
 	if err != nil {
@@ -87,7 +89,7 @@ func (val *LookupWebTestResult) Defaults() *LookupWebTestResult {
 		timeout_ := 30
 		tmp.Timeout = &timeout_
 	}
-	if isZero(tmp.WebTestKind) {
+	if utilities.IsZero(tmp.WebTestKind) {
 		tmp.WebTestKind = "ping"
 	}
 	return &tmp

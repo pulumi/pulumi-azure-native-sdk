@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements ExternalNetworks GET method.
 func LookupExternalNetwork(ctx *pulumi.Context, args *LookupExternalNetworkArgs, opts ...pulumi.InvokeOption) (*LookupExternalNetworkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExternalNetworkResult
 	err := ctx.Invoke("azure-native:managednetworkfabric/v20230615:getExternalNetwork", args, &rv, opts...)
 	if err != nil {

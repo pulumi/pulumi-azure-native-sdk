@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Prediction in the hub.
 // Azure REST API version: 2017-04-26.
 func LookupPrediction(ctx *pulumi.Context, args *LookupPredictionArgs, opts ...pulumi.InvokeOption) (*LookupPredictionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPredictionResult
 	err := ctx.Invoke("azure-native:customerinsights:getPrediction", args, &rv, opts...)
 	if err != nil {

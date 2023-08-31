@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Cassandra keyspaces under an existing Azure Cosmos DB database account with the provided name.
 // Azure REST API version: 2023-04-15.
 func LookupCassandraResourceCassandraKeyspace(ctx *pulumi.Context, args *LookupCassandraResourceCassandraKeyspaceArgs, opts ...pulumi.InvokeOption) (*LookupCassandraResourceCassandraKeyspaceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCassandraResourceCassandraKeyspaceResult
 	err := ctx.Invoke("azure-native:documentdb:getCassandraResourceCassandraKeyspace", args, &rv, opts...)
 	if err != nil {

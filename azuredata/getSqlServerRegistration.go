@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a SQL Server registration.
 // Azure REST API version: 2019-07-24-preview.
 func LookupSqlServerRegistration(ctx *pulumi.Context, args *LookupSqlServerRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerRegistrationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlServerRegistrationResult
 	err := ctx.Invoke("azure-native:azuredata:getSqlServerRegistration", args, &rv, opts...)
 	if err != nil {

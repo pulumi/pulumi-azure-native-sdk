@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get service fabric.
 // Azure REST API version: 2018-09-15.
 func LookupServiceFabric(ctx *pulumi.Context, args *LookupServiceFabricArgs, opts ...pulumi.InvokeOption) (*LookupServiceFabricResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceFabricResult
 	err := ctx.Invoke("azure-native:devtestlab:getServiceFabric", args, &rv, opts...)
 	if err != nil {

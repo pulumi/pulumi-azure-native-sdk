@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a trigger's event subscription status.
 func GetTriggerEventSubscriptionStatus(ctx *pulumi.Context, args *GetTriggerEventSubscriptionStatusArgs, opts ...pulumi.InvokeOption) (*GetTriggerEventSubscriptionStatusResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetTriggerEventSubscriptionStatusResult
 	err := ctx.Invoke("azure-native:datafactory/v20180601:getTriggerEventSubscriptionStatus", args, &rv, opts...)
 	if err != nil {

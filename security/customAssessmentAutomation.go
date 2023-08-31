@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,6 +55,7 @@ func NewCustomAssessmentAutomation(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource CustomAssessmentAutomation
 	err := ctx.RegisterResource("azure-native:security:CustomAssessmentAutomation", name, args, &resource, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a specific standard assignment for the requested scope by resourceId
 // Azure REST API version: 2021-08-01-preview.
 func LookupAssignment(ctx *pulumi.Context, args *LookupAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupAssignmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssignmentResult
 	err := ctx.Invoke("azure-native:security:getAssignment", args, &rv, opts...)
 	if err != nil {

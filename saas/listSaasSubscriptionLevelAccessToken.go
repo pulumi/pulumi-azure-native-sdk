@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the ISV access token for a specified Subscription Level SaaS.
 // Azure REST API version: 2018-03-01-beta.
 func ListSaasSubscriptionLevelAccessToken(ctx *pulumi.Context, args *ListSaasSubscriptionLevelAccessTokenArgs, opts ...pulumi.InvokeOption) (*ListSaasSubscriptionLevelAccessTokenResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSaasSubscriptionLevelAccessTokenResult
 	err := ctx.Invoke("azure-native:saas:listSaasSubscriptionLevelAccessToken", args, &rv, opts...)
 	if err != nil {

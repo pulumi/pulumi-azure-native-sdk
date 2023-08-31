@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List disk images available for custom image creation.
 // Azure REST API version: 2018-09-15.
 func ListLabVhds(ctx *pulumi.Context, args *ListLabVhdsArgs, opts ...pulumi.InvokeOption) (*ListLabVhdsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListLabVhdsResult
 	err := ctx.Invoke("azure-native:devtestlab:listLabVhds", args, &rv, opts...)
 	if err != nil {

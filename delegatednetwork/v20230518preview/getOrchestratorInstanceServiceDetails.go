@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details about the orchestrator instance.
 func LookupOrchestratorInstanceServiceDetails(ctx *pulumi.Context, args *LookupOrchestratorInstanceServiceDetailsArgs, opts ...pulumi.InvokeOption) (*LookupOrchestratorInstanceServiceDetailsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrchestratorInstanceServiceDetailsResult
 	err := ctx.Invoke("azure-native:delegatednetwork/v20230518preview:getOrchestratorInstanceServiceDetails", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,6 +60,7 @@ func NewB2CTenant(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource B2CTenant
 	err := ctx.RegisterResource("azure-native:azureactivedirectory/v20230118preview:B2CTenant", name, args, &resource, opts...)
 	if err != nil {

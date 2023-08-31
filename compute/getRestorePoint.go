@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation to get the restore point.
 // Azure REST API version: 2023-03-01.
 func LookupRestorePoint(ctx *pulumi.Context, args *LookupRestorePointArgs, opts ...pulumi.InvokeOption) (*LookupRestorePointResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRestorePointResult
 	err := ctx.Invoke("azure-native:compute:getRestorePoint", args, &rv, opts...)
 	if err != nil {

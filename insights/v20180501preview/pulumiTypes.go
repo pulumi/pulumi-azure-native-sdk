@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Static definitions of the ProactiveDetection configuration rule (same values for all components).
 type ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions struct {

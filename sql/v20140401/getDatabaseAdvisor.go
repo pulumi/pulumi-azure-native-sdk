@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns details of a Database Advisor.
 func LookupDatabaseAdvisor(ctx *pulumi.Context, args *LookupDatabaseAdvisorArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseAdvisorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseAdvisorResult
 	err := ctx.Invoke("azure-native:sql/v20140401:getDatabaseAdvisor", args, &rv, opts...)
 	if err != nil {

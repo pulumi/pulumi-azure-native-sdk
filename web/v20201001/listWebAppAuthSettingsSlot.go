@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Authentication/Authorization settings of an app.
 func ListWebAppAuthSettingsSlot(ctx *pulumi.Context, args *ListWebAppAuthSettingsSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppAuthSettingsSlotResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppAuthSettingsSlotResult
 	err := ctx.Invoke("azure-native:web/v20201001:listWebAppAuthSettingsSlot", args, &rv, opts...)
 	if err != nil {

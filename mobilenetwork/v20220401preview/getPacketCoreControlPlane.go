@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified packet core control plane.
 func LookupPacketCoreControlPlane(ctx *pulumi.Context, args *LookupPacketCoreControlPlaneArgs, opts ...pulumi.InvokeOption) (*LookupPacketCoreControlPlaneResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPacketCoreControlPlaneResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220401preview:getPacketCoreControlPlane", args, &rv, opts...)
 	if err != nil {

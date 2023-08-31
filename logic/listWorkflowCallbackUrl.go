@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the workflow callback Url.
 // Azure REST API version: 2019-05-01.
 func ListWorkflowCallbackUrl(ctx *pulumi.Context, args *ListWorkflowCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListWorkflowCallbackUrlResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkflowCallbackUrlResult
 	err := ctx.Invoke("azure-native:logic:listWorkflowCallbackUrl", args, &rv, opts...)
 	if err != nil {

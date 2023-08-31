@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get track ingest heartbeat events telemetry of a live event.
 func GetLiveEventTrackIngestHeartbeats(ctx *pulumi.Context, args *GetLiveEventTrackIngestHeartbeatsArgs, opts ...pulumi.InvokeOption) (*GetLiveEventTrackIngestHeartbeatsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetLiveEventTrackIngestHeartbeatsResult
 	err := ctx.Invoke("azure-native:media/v20221101:getLiveEventTrackIngestHeartbeats", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Volume
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:containerstorage/v20230701preview:getVolume", args, &rv, opts...)
 	if err != nil {

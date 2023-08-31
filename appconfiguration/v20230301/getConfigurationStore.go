@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified configuration store.
 func LookupConfigurationStore(ctx *pulumi.Context, args *LookupConfigurationStoreArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationStoreResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationStoreResult
 	err := ctx.Invoke("azure-native:appconfiguration/v20230301:getConfigurationStore", args, &rv, opts...)
 	if err != nil {

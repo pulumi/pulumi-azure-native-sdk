@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment with the given Id.
 func LookupSqlResourceSqlRoleAssignment(ctx *pulumi.Context, args *LookupSqlResourceSqlRoleAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlRoleAssignmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlResourceSqlRoleAssignmentResult
 	err := ctx.Invoke("azure-native:documentdb/v20230415:getSqlResourceSqlRoleAssignment", args, &rv, opts...)
 	if err != nil {

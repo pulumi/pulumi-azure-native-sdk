@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Container App SourceControl.
 func LookupContainerAppsSourceControl(ctx *pulumi.Context, args *LookupContainerAppsSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupContainerAppsSourceControlResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerAppsSourceControlResult
 	err := ctx.Invoke("azure-native:app/v20230401preview:getContainerAppsSourceControl", args, &rv, opts...)
 	if err != nil {

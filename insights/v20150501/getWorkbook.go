@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a single workbook by its resourceName.
 func LookupWorkbook(ctx *pulumi.Context, args *LookupWorkbookArgs, opts ...pulumi.InvokeOption) (*LookupWorkbookResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkbookResult
 	err := ctx.Invoke("azure-native:insights/v20150501:getWorkbook", args, &rv, opts...)
 	if err != nil {
@@ -65,7 +67,7 @@ func (val *LookupWorkbookResult) Defaults() *LookupWorkbookResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SharedTypeKind) {
+	if utilities.IsZero(tmp.SharedTypeKind) {
 		tmp.SharedTypeKind = "shared"
 	}
 	return &tmp

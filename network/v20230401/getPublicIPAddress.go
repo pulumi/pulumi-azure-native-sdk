@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified public IP address in a specified resource group.
 func LookupPublicIPAddress(ctx *pulumi.Context, args *LookupPublicIPAddressArgs, opts ...pulumi.InvokeOption) (*LookupPublicIPAddressResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPublicIPAddressResult
 	err := ctx.Invoke("azure-native:network/v20230401:getPublicIPAddress", args, &rv, opts...)
 	if err != nil {

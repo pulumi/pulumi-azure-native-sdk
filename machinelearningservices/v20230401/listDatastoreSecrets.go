@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Base definition for datastore secrets.
 func ListDatastoreSecrets(ctx *pulumi.Context, args *ListDatastoreSecretsArgs, opts ...pulumi.InvokeOption) (*ListDatastoreSecretsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDatastoreSecretsResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20230401:listDatastoreSecrets", args, &rv, opts...)
 	if err != nil {

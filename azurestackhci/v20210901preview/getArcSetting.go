@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get ArcSetting resource details of HCI Cluster.
 func LookupArcSetting(ctx *pulumi.Context, args *LookupArcSettingArgs, opts ...pulumi.InvokeOption) (*LookupArcSettingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupArcSettingResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getArcSetting", args, &rv, opts...)
 	if err != nil {

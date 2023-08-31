@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Traffic Controller Frontend
 func LookupFrontendsInterface(ctx *pulumi.Context, args *LookupFrontendsInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupFrontendsInterfaceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFrontendsInterfaceResult
 	err := ctx.Invoke("azure-native:servicenetworking/v20221001preview:getFrontendsInterface", args, &rv, opts...)
 	if err != nil {

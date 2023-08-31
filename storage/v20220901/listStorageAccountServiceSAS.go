@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List service SAS credentials of a specific resource.
 func ListStorageAccountServiceSAS(ctx *pulumi.Context, args *ListStorageAccountServiceSASArgs, opts ...pulumi.InvokeOption) (*ListStorageAccountServiceSASResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListStorageAccountServiceSASResult
 	err := ctx.Invoke("azure-native:storage/v20220901:listStorageAccountServiceSAS", args, &rv, opts...)
 	if err != nil {

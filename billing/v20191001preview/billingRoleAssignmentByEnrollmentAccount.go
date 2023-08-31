@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,6 +61,7 @@ func NewBillingRoleAssignmentByEnrollmentAccount(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource BillingRoleAssignmentByEnrollmentAccount
 	err := ctx.RegisterResource("azure-native:billing/v20191001preview:BillingRoleAssignmentByEnrollmentAccount", name, args, &resource, opts...)
 	if err != nil {

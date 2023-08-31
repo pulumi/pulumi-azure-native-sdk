@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the status of Attestation Provider.
 func LookupAttestationProvider(ctx *pulumi.Context, args *LookupAttestationProviderArgs, opts ...pulumi.InvokeOption) (*LookupAttestationProviderResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttestationProviderResult
 	err := ctx.Invoke("azure-native:attestation/v20210601:getAttestationProvider", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a azureADMetrics instance with a given name.
 func LookupAzureADMetric(ctx *pulumi.Context, args *LookupAzureADMetricArgs, opts ...pulumi.InvokeOption) (*LookupAzureADMetricResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureADMetricResult
 	err := ctx.Invoke("azure-native:aadiam/v20200701preview:getAzureADMetric", args, &rv, opts...)
 	if err != nil {

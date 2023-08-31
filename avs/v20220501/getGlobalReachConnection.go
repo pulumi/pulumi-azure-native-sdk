@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A global reach connection resource
 func LookupGlobalReachConnection(ctx *pulumi.Context, args *LookupGlobalReachConnectionArgs, opts ...pulumi.InvokeOption) (*LookupGlobalReachConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalReachConnectionResult
 	err := ctx.Invoke("azure-native:avs/v20220501:getGlobalReachConnection", args, &rv, opts...)
 	if err != nil {

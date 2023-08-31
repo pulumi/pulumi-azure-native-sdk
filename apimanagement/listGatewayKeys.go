@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves gateway keys.
 // Azure REST API version: 2022-08-01.
 func ListGatewayKeys(ctx *pulumi.Context, args *ListGatewayKeysArgs, opts ...pulumi.InvokeOption) (*ListGatewayKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListGatewayKeysResult
 	err := ctx.Invoke("azure-native:apimanagement:listGatewayKeys", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An HCX Enterprise Site resource
 // Azure REST API version: 2022-05-01.
 func LookupHcxEnterpriseSite(ctx *pulumi.Context, args *LookupHcxEnterpriseSiteArgs, opts ...pulumi.InvokeOption) (*LookupHcxEnterpriseSiteResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHcxEnterpriseSiteResult
 	err := ctx.Invoke("azure-native:avs:getHcxEnterpriseSite", args, &rv, opts...)
 	if err != nil {

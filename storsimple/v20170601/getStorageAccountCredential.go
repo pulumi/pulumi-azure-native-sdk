@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified storage account credential name.
 func LookupStorageAccountCredential(ctx *pulumi.Context, args *LookupStorageAccountCredentialArgs, opts ...pulumi.InvokeOption) (*LookupStorageAccountCredentialResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageAccountCredentialResult
 	err := ctx.Invoke("azure-native:storsimple/v20170601:getStorageAccountCredential", args, &rv, opts...)
 	if err != nil {

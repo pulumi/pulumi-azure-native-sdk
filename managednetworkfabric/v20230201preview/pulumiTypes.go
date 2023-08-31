@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Access Control List condition model.
 type AccessControlListConditionProperties struct {
@@ -3850,7 +3853,7 @@ func (val *Layer2Configuration) Defaults() *Layer2Configuration {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if utilities.IsZero(tmp.Mtu) {
 		tmp.Mtu = 1500
 	}
 	return &tmp
@@ -4034,7 +4037,7 @@ func (val *Layer2ConfigurationResponse) Defaults() *Layer2ConfigurationResponse 
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Mtu) {
+	if utilities.IsZero(tmp.Mtu) {
 		tmp.Mtu = 1500
 	}
 	return &tmp

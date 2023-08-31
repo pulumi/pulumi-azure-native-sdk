@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the Cache specified by its identifier.
 func LookupCache(ctx *pulumi.Context, args *LookupCacheArgs, opts ...pulumi.InvokeOption) (*LookupCacheResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCacheResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getCache", args, &rv, opts...)
 	if err != nil {

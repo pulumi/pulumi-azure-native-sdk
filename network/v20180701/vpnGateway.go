@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -152,6 +153,7 @@ func NewVpnGateway(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource VpnGateway
 	err := ctx.RegisterResource("azure-native:network/v20180701:VpnGateway", name, args, &resource, opts...)
 	if err != nil {

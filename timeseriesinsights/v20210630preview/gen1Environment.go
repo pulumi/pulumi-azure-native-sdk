@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,6 +90,7 @@ func NewGen1Environment(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Gen1Environment
 	err := ctx.RegisterResource("azure-native:timeseriesinsights/v20210630preview:Gen1Environment", name, args, &resource, opts...)
 	if err != nil {

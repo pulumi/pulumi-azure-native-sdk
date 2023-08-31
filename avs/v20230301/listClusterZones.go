@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List of all zones and associated hosts for a cluster
 func ListClusterZones(ctx *pulumi.Context, args *ListClusterZonesArgs, opts ...pulumi.InvokeOption) (*ListClusterZonesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListClusterZonesResult
 	err := ctx.Invoke("azure-native:avs/v20230301:listClusterZones", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns an Application Insights component.
 // Azure REST API version: 2020-02-02.
 func LookupComponent(ctx *pulumi.Context, args *LookupComponentArgs, opts ...pulumi.InvokeOption) (*LookupComponentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupComponentResult
 	err := ctx.Invoke("azure-native:insights:getComponent", args, &rv, opts...)
 	if err != nil {
@@ -100,7 +102,7 @@ func (val *LookupComponentResult) Defaults() *LookupComponentResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ApplicationType) {
+	if utilities.IsZero(tmp.ApplicationType) {
 		tmp.ApplicationType = "web"
 	}
 	if tmp.FlowType == nil {

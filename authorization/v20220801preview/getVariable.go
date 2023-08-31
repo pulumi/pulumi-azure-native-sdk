@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This operation retrieves a single variable, given its name and the subscription it was created at.
 func LookupVariable(ctx *pulumi.Context, args *LookupVariableArgs, opts ...pulumi.InvokeOption) (*LookupVariableResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVariableResult
 	err := ctx.Invoke("azure-native:authorization/v20220801preview:getVariable", args, &rv, opts...)
 	if err != nil {

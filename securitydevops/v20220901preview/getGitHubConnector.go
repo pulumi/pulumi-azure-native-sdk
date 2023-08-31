@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
 func LookupGitHubConnector(ctx *pulumi.Context, args *LookupGitHubConnectorArgs, opts ...pulumi.InvokeOption) (*LookupGitHubConnectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGitHubConnectorResult
 	err := ctx.Invoke("azure-native:securitydevops/v20220901preview:getGitHubConnector", args, &rv, opts...)
 	if err != nil {

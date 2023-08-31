@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Disk pool.
 func LookupDiskPool(ctx *pulumi.Context, args *LookupDiskPoolArgs, opts ...pulumi.InvokeOption) (*LookupDiskPoolResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiskPoolResult
 	err := ctx.Invoke("azure-native:storagepool/v20200315preview:getDiskPool", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a user rule.
 func LookupDefaultUserRule(ctx *pulumi.Context, args *LookupDefaultUserRuleArgs, opts ...pulumi.InvokeOption) (*LookupDefaultUserRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDefaultUserRuleResult
 	err := ctx.Invoke("azure-native:network/v20210501preview:getDefaultUserRule", args, &rv, opts...)
 	if err != nil {

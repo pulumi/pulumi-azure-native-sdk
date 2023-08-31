@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
 // Azure REST API version: 2023-04-01.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:containerservice:getPrivateEndpointConnection", args, &rv, opts...)
 	if err != nil {

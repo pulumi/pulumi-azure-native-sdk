@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The set of available keys for this server.
 func GetFluidRelayServerKeys(ctx *pulumi.Context, args *GetFluidRelayServerKeysArgs, opts ...pulumi.InvokeOption) (*GetFluidRelayServerKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetFluidRelayServerKeysResult
 	err := ctx.Invoke("azure-native:fluidrelay/v20210615preview:getFluidRelayServerKeys", args, &rv, opts...)
 	if err != nil {

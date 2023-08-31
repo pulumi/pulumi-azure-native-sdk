@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified container registry.
 // Azure REST API version: 2022-12-01.
 func LookupRegistry(ctx *pulumi.Context, args *LookupRegistryArgs, opts ...pulumi.InvokeOption) (*LookupRegistryResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistryResult
 	err := ctx.Invoke("azure-native:containerregistry:getRegistry", args, &rv, opts...)
 	if err != nil {

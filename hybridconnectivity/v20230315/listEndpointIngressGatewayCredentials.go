@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the ingress gateway endpoint credentials
 func ListEndpointIngressGatewayCredentials(ctx *pulumi.Context, args *ListEndpointIngressGatewayCredentialsArgs, opts ...pulumi.InvokeOption) (*ListEndpointIngressGatewayCredentialsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEndpointIngressGatewayCredentialsResult
 	err := ctx.Invoke("azure-native:hybridconnectivity/v20230315:listEndpointIngressGatewayCredentials", args, &rv, opts...)
 	if err != nil {

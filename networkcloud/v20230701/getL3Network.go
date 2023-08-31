@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of the provided layer 3 (L3) network.
 func LookupL3Network(ctx *pulumi.Context, args *LookupL3NetworkArgs, opts ...pulumi.InvokeOption) (*LookupL3NetworkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupL3NetworkResult
 	err := ctx.Invoke("azure-native:networkcloud/v20230701:getL3Network", args, &rv, opts...)
 	if err != nil {

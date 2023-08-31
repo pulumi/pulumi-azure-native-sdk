@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the metadata of a privateLinkServicesForO365ManagementActivityAPI resource.
 // Azure REST API version: 2021-03-25-preview.
 func LookupPrivateLinkServicesForO365ManagementActivityAPI(ctx *pulumi.Context, args *LookupPrivateLinkServicesForO365ManagementActivityAPIArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServicesForO365ManagementActivityAPIResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkServicesForO365ManagementActivityAPIResult
 	err := ctx.Invoke("azure-native:m365securityandcompliance:getPrivateLinkServicesForO365ManagementActivityAPI", args, &rv, opts...)
 	if err != nil {

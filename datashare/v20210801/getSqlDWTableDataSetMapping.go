@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a DataSetMapping in a shareSubscription
 func LookupSqlDWTableDataSetMapping(ctx *pulumi.Context, args *LookupSqlDWTableDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupSqlDWTableDataSetMappingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlDWTableDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20210801:getSqlDWTableDataSetMapping", args, &rv, opts...)
 	if err != nil {

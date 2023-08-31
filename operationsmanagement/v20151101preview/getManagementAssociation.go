@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the user ManagementAssociation.
 func LookupManagementAssociation(ctx *pulumi.Context, args *LookupManagementAssociationArgs, opts ...pulumi.InvokeOption) (*LookupManagementAssociationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementAssociationResult
 	err := ctx.Invoke("azure-native:operationsmanagement/v20151101preview:getManagementAssociation", args, &rv, opts...)
 	if err != nil {

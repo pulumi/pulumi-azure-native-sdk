@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
 type VirtualNetworkEncryptionResponse struct {

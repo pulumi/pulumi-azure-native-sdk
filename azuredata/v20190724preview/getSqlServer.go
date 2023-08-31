@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a SQL Server.
 func LookupSqlServer(ctx *pulumi.Context, args *LookupSqlServerArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlServerResult
 	err := ctx.Invoke("azure-native:azuredata/v20190724preview:getSqlServer", args, &rv, opts...)
 	if err != nil {

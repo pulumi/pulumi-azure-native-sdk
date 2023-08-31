@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified NSP access rule by name.
 // Azure REST API version: 2021-02-01-preview.
 func LookupNspAccessRule(ctx *pulumi.Context, args *LookupNspAccessRuleArgs, opts ...pulumi.InvokeOption) (*LookupNspAccessRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNspAccessRuleResult
 	err := ctx.Invoke("azure-native:network:getNspAccessRule", args, &rv, opts...)
 	if err != nil {

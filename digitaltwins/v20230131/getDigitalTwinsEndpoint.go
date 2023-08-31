@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get DigitalTwinsInstances Endpoint.
 func LookupDigitalTwinsEndpoint(ctx *pulumi.Context, args *LookupDigitalTwinsEndpointArgs, opts ...pulumi.InvokeOption) (*LookupDigitalTwinsEndpointResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDigitalTwinsEndpointResult
 	err := ctx.Invoke("azure-native:digitaltwins/v20230131:getDigitalTwinsEndpoint", args, &rv, opts...)
 	if err != nil {

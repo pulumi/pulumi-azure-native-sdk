@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetMonitorDefaultKey(ctx *pulumi.Context, args *GetMonitorDefaultKeyArgs, opts ...pulumi.InvokeOption) (*GetMonitorDefaultKeyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetMonitorDefaultKeyResult
 	err := ctx.Invoke("azure-native:datadog/v20220601:getMonitorDefaultKey", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Policies for protecting resources using Just-in-Time access control for the subscription, location
 func LookupJitNetworkAccessPolicy(ctx *pulumi.Context, args *LookupJitNetworkAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupJitNetworkAccessPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJitNetworkAccessPolicyResult
 	err := ctx.Invoke("azure-native:security/v20200101:getJitNetworkAccessPolicy", args, &rv, opts...)
 	if err != nil {

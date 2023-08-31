@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns Azure Stack Activation Key.
 // Azure REST API version: 2022-06-01.
 func GetRegistrationActivationKey(ctx *pulumi.Context, args *GetRegistrationActivationKeyArgs, opts ...pulumi.InvokeOption) (*GetRegistrationActivationKeyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetRegistrationActivationKeyResult
 	err := ctx.Invoke("azure-native:azurestack:getRegistrationActivationKey", args, &rv, opts...)
 	if err != nil {

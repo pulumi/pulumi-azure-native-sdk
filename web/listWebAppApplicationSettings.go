@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Gets the application settings of an app.
 // Azure REST API version: 2022-09-01.
 func ListWebAppApplicationSettings(ctx *pulumi.Context, args *ListWebAppApplicationSettingsArgs, opts ...pulumi.InvokeOption) (*ListWebAppApplicationSettingsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppApplicationSettingsResult
 	err := ctx.Invoke("azure-native:web:listWebAppApplicationSettings", args, &rv, opts...)
 	if err != nil {

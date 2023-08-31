@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a cloud connector definition
 // Azure REST API version: 2019-03-01-preview.
 func LookupCloudConnector(ctx *pulumi.Context, args *LookupCloudConnectorArgs, opts ...pulumi.InvokeOption) (*LookupCloudConnectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudConnectorResult
 	err := ctx.Invoke("azure-native:costmanagement:getCloudConnector", args, &rv, opts...)
 	if err != nil {

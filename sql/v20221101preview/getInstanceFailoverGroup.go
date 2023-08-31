@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a failover group.
 func LookupInstanceFailoverGroup(ctx *pulumi.Context, args *LookupInstanceFailoverGroupArgs, opts ...pulumi.InvokeOption) (*LookupInstanceFailoverGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceFailoverGroupResult
 	err := ctx.Invoke("azure-native:sql/v20221101preview:getInstanceFailoverGroup", args, &rv, opts...)
 	if err != nil {

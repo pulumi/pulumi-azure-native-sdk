@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets properties of a DNS resolver.
 // Azure REST API version: 2022-07-01.
 func LookupDnsResolver(ctx *pulumi.Context, args *LookupDnsResolverArgs, opts ...pulumi.InvokeOption) (*LookupDnsResolverResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDnsResolverResult
 	err := ctx.Invoke("azure-native:network:getDnsResolver", args, &rv, opts...)
 	if err != nil {

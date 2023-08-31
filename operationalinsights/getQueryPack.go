@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a Log Analytics QueryPack.
 // Azure REST API version: 2019-09-01.
 func LookupQueryPack(ctx *pulumi.Context, args *LookupQueryPackArgs, opts ...pulumi.InvokeOption) (*LookupQueryPackResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueryPackResult
 	err := ctx.Invoke("azure-native:operationalinsights:getQueryPack", args, &rv, opts...)
 	if err != nil {

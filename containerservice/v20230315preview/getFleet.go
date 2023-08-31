@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Fleet.
 func LookupFleet(ctx *pulumi.Context, args *LookupFleetArgs, opts ...pulumi.InvokeOption) (*LookupFleetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFleetResult
 	err := ctx.Invoke("azure-native:containerservice/v20230315preview:getFleet", args, &rv, opts...)
 	if err != nil {

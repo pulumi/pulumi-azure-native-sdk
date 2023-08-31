@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this function to get an Azure authentication token for the current login context.
 func GetClientToken(ctx *pulumi.Context, args *GetClientTokenArgs, opts ...pulumi.InvokeOption) (*GetClientTokenResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetClientTokenResult
 	err := ctx.Invoke("azure-native:authorization:getClientToken", args, &rv, opts...)
 	if err != nil {

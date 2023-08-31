@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified DICOM Service.
 // Azure REST API version: 2023-02-28.
 func LookupDicomService(ctx *pulumi.Context, args *LookupDicomServiceArgs, opts ...pulumi.InvokeOption) (*LookupDicomServiceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDicomServiceResult
 	err := ctx.Invoke("azure-native:healthcareapis:getDicomService", args, &rv, opts...)
 	if err != nil {

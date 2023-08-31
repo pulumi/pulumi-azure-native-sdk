@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a data connector.
 func LookupOfficePowerBIDataConnector(ctx *pulumi.Context, args *LookupOfficePowerBIDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOfficePowerBIDataConnectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOfficePowerBIDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230601preview:getOfficePowerBIDataConnector", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Metadata.
 func LookupMetadata(ctx *pulumi.Context, args *LookupMetadataArgs, opts ...pulumi.InvokeOption) (*LookupMetadataResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetadataResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201preview:getMetadata", args, &rv, opts...)
 	if err != nil {

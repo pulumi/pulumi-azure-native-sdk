@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified network function resource.
 // Azure REST API version: 2022-01-01-preview.
 func LookupNetworkFunction(ctx *pulumi.Context, args *LookupNetworkFunctionArgs, opts ...pulumi.InvokeOption) (*LookupNetworkFunctionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkFunctionResult
 	err := ctx.Invoke("azure-native:hybridnetwork:getNetworkFunction", args, &rv, opts...)
 	if err != nil {

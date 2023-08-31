@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Gets the Azure storage account configurations of an app.
 // Azure REST API version: 2022-09-01.
 func ListWebAppAzureStorageAccountsSlot(ctx *pulumi.Context, args *ListWebAppAzureStorageAccountsSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppAzureStorageAccountsSlotResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppAzureStorageAccountsSlotResult
 	err := ctx.Invoke("azure-native:web:listWebAppAzureStorageAccountsSlot", args, &rv, opts...)
 	if err != nil {

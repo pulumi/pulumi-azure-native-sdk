@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get tag associated with the API.
 // Azure REST API version: 2022-08-01.
 func LookupTagByApi(ctx *pulumi.Context, args *LookupTagByApiArgs, opts ...pulumi.InvokeOption) (*LookupTagByApiResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagByApiResult
 	err := ctx.Invoke("azure-native:apimanagement:getTagByApi", args, &rv, opts...)
 	if err != nil {

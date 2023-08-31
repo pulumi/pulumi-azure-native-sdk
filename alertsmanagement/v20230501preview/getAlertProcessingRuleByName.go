@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an alert processing rule by name.
 func LookupAlertProcessingRuleByName(ctx *pulumi.Context, args *LookupAlertProcessingRuleByNameArgs, opts ...pulumi.InvokeOption) (*LookupAlertProcessingRuleByNameResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertProcessingRuleByNameResult
 	err := ctx.Invoke("azure-native:alertsmanagement/v20230501preview:getAlertProcessingRuleByName", args, &rv, opts...)
 	if err != nil {

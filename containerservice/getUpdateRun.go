@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a UpdateRun
 // Azure REST API version: 2023-03-15-preview.
 func LookupUpdateRun(ctx *pulumi.Context, args *LookupUpdateRunArgs, opts ...pulumi.InvokeOption) (*LookupUpdateRunResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUpdateRunResult
 	err := ctx.Invoke("azure-native:containerservice:getUpdateRun", args, &rv, opts...)
 	if err != nil {

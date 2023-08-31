@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of the provided default CNI network.
 // Azure REST API version: 2022-12-12-preview.
 func LookupDefaultCniNetwork(ctx *pulumi.Context, args *LookupDefaultCniNetworkArgs, opts ...pulumi.InvokeOption) (*LookupDefaultCniNetworkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDefaultCniNetworkResult
 	err := ctx.Invoke("azure-native:networkcloud:getDefaultCniNetwork", args, &rv, opts...)
 	if err != nil {

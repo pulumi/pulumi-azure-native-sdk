@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Gets a private endpoint connection
 // Azure REST API version: 2022-09-01.
 func LookupAppServiceEnvironmentPrivateEndpointConnection(ctx *pulumi.Context, args *LookupAppServiceEnvironmentPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceEnvironmentPrivateEndpointConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServiceEnvironmentPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:web:getAppServiceEnvironmentPrivateEndpointConnection", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an integration account agreement.
 // Azure REST API version: 2019-05-01.
 func LookupIntegrationAccountAgreement(ctx *pulumi.Context, args *LookupIntegrationAccountAgreementArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountAgreementResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationAccountAgreementResult
 	err := ctx.Invoke("azure-native:logic:getIntegrationAccountAgreement", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of a namespace topic.
 func LookupNamespaceTopic(ctx *pulumi.Context, args *LookupNamespaceTopicArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceTopicResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceTopicResult
 	err := ctx.Invoke("azure-native:eventgrid/v20230601preview:getNamespaceTopic", args, &rv, opts...)
 	if err != nil {

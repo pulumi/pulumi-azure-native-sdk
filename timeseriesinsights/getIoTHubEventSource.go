@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the event source with the specified name in the specified environment.
 // Azure REST API version: 2020-05-15.
 func LookupIoTHubEventSource(ctx *pulumi.Context, args *LookupIoTHubEventSourceArgs, opts ...pulumi.InvokeOption) (*LookupIoTHubEventSourceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIoTHubEventSourceResult
 	err := ctx.Invoke("azure-native:timeseriesinsights:getIoTHubEventSource", args, &rv, opts...)
 	if err != nil {

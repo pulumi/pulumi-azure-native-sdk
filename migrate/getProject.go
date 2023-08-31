@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the project with the specified name.
 // Azure REST API version: 2019-10-01.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult
 	err := ctx.Invoke("azure-native:migrate:getProject", args, &rv, opts...)
 	if err != nil {

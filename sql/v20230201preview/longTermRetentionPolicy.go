@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -92,6 +93,7 @@ func NewLongTermRetentionPolicy(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource LongTermRetentionPolicy
 	err := ctx.RegisterResource("azure-native:sql/v20230201preview:LongTermRetentionPolicy", name, args, &resource, opts...)
 	if err != nil {

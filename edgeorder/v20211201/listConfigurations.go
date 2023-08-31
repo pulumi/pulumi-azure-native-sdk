@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This method provides the list of configurations for the given product family, product line and product under subscription.
 func ListConfigurations(ctx *pulumi.Context, args *ListConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListConfigurationsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConfigurationsResult
 	err := ctx.Invoke("azure-native:edgeorder/v20211201:listConfigurations", args, &rv, opts...)
 	if err != nil {

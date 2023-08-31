@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List all the media edge policies associated with the Media Services account.
 func ListMediaServiceEdgePolicies(ctx *pulumi.Context, args *ListMediaServiceEdgePoliciesArgs, opts ...pulumi.InvokeOption) (*ListMediaServiceEdgePoliciesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListMediaServiceEdgePoliciesResult
 	err := ctx.Invoke("azure-native:media/v20230101:listMediaServiceEdgePolicies", args, &rv, opts...)
 	if err != nil {

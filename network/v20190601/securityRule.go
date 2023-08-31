@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -222,6 +223,7 @@ func NewSecurityRule(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource SecurityRule
 	err := ctx.RegisterResource("azure-native:network/v20190601:SecurityRule", name, args, &resource, opts...)
 	if err != nil {

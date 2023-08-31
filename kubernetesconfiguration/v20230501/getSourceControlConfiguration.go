@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of the Source Control Configuration.
 func LookupSourceControlConfiguration(ctx *pulumi.Context, args *LookupSourceControlConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlConfigurationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSourceControlConfigurationResult
 	err := ctx.Invoke("azure-native:kubernetesconfiguration/v20230501:getSourceControlConfiguration", args, &rv, opts...)
 	if err != nil {

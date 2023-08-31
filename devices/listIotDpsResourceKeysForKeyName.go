@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List primary and secondary keys for a specific key name
 // Azure REST API version: 2022-12-12.
 func ListIotDpsResourceKeysForKeyName(ctx *pulumi.Context, args *ListIotDpsResourceKeysForKeyNameArgs, opts ...pulumi.InvokeOption) (*ListIotDpsResourceKeysForKeyNameResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListIotDpsResourceKeysForKeyNameResult
 	err := ctx.Invoke("azure-native:devices:listIotDpsResourceKeysForKeyName", args, &rv, opts...)
 	if err != nil {

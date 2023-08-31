@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Deployment Stack with a given name.
 func LookupDeploymentStackAtManagementGroup(ctx *pulumi.Context, args *LookupDeploymentStackAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentStackAtManagementGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeploymentStackAtManagementGroupResult
 	err := ctx.Invoke("azure-native:resources/v20220801preview:getDeploymentStackAtManagementGroup", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -108,6 +109,7 @@ func NewFluxConfiguration(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource FluxConfiguration
 	err := ctx.RegisterResource("azure-native:kubernetesconfiguration/v20220101preview:FluxConfiguration", name, args, &resource, opts...)
 	if err != nil {

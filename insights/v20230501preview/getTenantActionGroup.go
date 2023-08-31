@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a tenant action group.
 func LookupTenantActionGroup(ctx *pulumi.Context, args *LookupTenantActionGroupArgs, opts ...pulumi.InvokeOption) (*LookupTenantActionGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTenantActionGroupResult
 	err := ctx.Invoke("azure-native:insights/v20230501preview:getTenantActionGroup", args, &rv, opts...)
 	if err != nil {
@@ -61,7 +63,7 @@ func (val *LookupTenantActionGroupResult) Defaults() *LookupTenantActionGroupRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if utilities.IsZero(tmp.Enabled) {
 		tmp.Enabled = true
 	}
 	return &tmp

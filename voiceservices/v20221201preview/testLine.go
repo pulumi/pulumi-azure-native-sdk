@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,6 +65,7 @@ func NewTestLine(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource TestLine
 	err := ctx.RegisterResource("azure-native:voiceservices/v20221201preview:TestLine", name, args, &resource, opts...)
 	if err != nil {

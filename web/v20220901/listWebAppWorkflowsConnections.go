@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workflow properties definition.
 func ListWebAppWorkflowsConnections(ctx *pulumi.Context, args *ListWebAppWorkflowsConnectionsArgs, opts ...pulumi.InvokeOption) (*ListWebAppWorkflowsConnectionsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppWorkflowsConnectionsResult
 	err := ctx.Invoke("azure-native:web/v20220901:listWebAppWorkflowsConnections", args, &rv, opts...)
 	if err != nil {

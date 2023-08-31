@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the workspace vNet Peering.
 func LookupVNetPeering(ctx *pulumi.Context, args *LookupVNetPeeringArgs, opts ...pulumi.InvokeOption) (*LookupVNetPeeringResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVNetPeeringResult
 	err := ctx.Invoke("azure-native:databricks/v20230201:getVNetPeering", args, &rv, opts...)
 	if err != nil {

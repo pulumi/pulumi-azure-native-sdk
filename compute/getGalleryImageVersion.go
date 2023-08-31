@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about a gallery image version.
 // Azure REST API version: 2022-03-03.
 func LookupGalleryImageVersion(ctx *pulumi.Context, args *LookupGalleryImageVersionArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageVersionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGalleryImageVersionResult
 	err := ctx.Invoke("azure-native:compute:getGalleryImageVersion", args, &rv, opts...)
 	if err != nil {

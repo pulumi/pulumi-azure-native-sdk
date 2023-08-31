@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
 // Azure REST API version: 2022-10-01.
 func LookupContainerAppsAuthConfig(ctx *pulumi.Context, args *LookupContainerAppsAuthConfigArgs, opts ...pulumi.InvokeOption) (*LookupContainerAppsAuthConfigResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerAppsAuthConfigResult
 	err := ctx.Invoke("azure-native:app:getContainerAppsAuthConfig", args, &rv, opts...)
 	if err != nil {

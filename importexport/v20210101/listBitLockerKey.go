@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the BitLocker Keys for all drives in the specified job.
 func ListBitLockerKey(ctx *pulumi.Context, args *ListBitLockerKeyArgs, opts ...pulumi.InvokeOption) (*ListBitLockerKeyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListBitLockerKeyResult
 	err := ctx.Invoke("azure-native:importexport/v20210101:listBitLockerKey", args, &rv, opts...)
 	if err != nil {

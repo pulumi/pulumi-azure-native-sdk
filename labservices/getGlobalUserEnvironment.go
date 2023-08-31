@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the virtual machine details
 // Azure REST API version: 2018-10-15.
 func GetGlobalUserEnvironment(ctx *pulumi.Context, args *GetGlobalUserEnvironmentArgs, opts ...pulumi.InvokeOption) (*GetGlobalUserEnvironmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetGlobalUserEnvironmentResult
 	err := ctx.Invoke("azure-native:labservices:getGlobalUserEnvironment", args, &rv, opts...)
 	if err != nil {

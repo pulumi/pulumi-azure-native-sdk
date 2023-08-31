@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an event subscription.
 // Azure REST API version: 2022-06-15.
 func LookupSystemTopicEventSubscription(ctx *pulumi.Context, args *LookupSystemTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupSystemTopicEventSubscriptionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSystemTopicEventSubscriptionResult
 	err := ctx.Invoke("azure-native:eventgrid:getSystemTopicEventSubscription", args, &rv, opts...)
 	if err != nil {

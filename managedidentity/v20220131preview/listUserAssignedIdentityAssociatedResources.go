@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the associated resources for this identity.
 func ListUserAssignedIdentityAssociatedResources(ctx *pulumi.Context, args *ListUserAssignedIdentityAssociatedResourcesArgs, opts ...pulumi.InvokeOption) (*ListUserAssignedIdentityAssociatedResourcesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListUserAssignedIdentityAssociatedResourcesResult
 	err := ctx.Invoke("azure-native:managedidentity/v20220131preview:listUserAssignedIdentityAssociatedResources", args, &rv, opts...)
 	if err != nil {

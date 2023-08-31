@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the PUT rollout request body.
 func LookupRollout(ctx *pulumi.Context, args *LookupRolloutArgs, opts ...pulumi.InvokeOption) (*LookupRolloutResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRolloutResult
 	err := ctx.Invoke("azure-native:deploymentmanager/v20191101preview:getRollout", args, &rv, opts...)
 	if err != nil {

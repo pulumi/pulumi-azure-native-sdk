@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get details about a blockchain member.
 // Azure REST API version: 2018-06-01-preview.
 func LookupBlockchainMember(ctx *pulumi.Context, args *LookupBlockchainMemberArgs, opts ...pulumi.InvokeOption) (*LookupBlockchainMemberResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBlockchainMemberResult
 	err := ctx.Invoke("azure-native:blockchain:getBlockchainMember", args, &rv, opts...)
 	if err != nil {

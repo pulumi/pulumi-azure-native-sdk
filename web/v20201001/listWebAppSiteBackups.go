@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets existing backups of an app.
 func ListWebAppSiteBackups(ctx *pulumi.Context, args *ListWebAppSiteBackupsArgs, opts ...pulumi.InvokeOption) (*ListWebAppSiteBackupsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppSiteBackupsResult
 	err := ctx.Invoke("azure-native:web/v20201001:listWebAppSiteBackups", args, &rv, opts...)
 	if err != nil {

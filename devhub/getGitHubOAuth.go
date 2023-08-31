@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // URL used to authorize the Developer Hub GitHub App
 // Azure REST API version: 2022-10-11-preview.
 func GetGitHubOAuth(ctx *pulumi.Context, args *GetGitHubOAuthArgs, opts ...pulumi.InvokeOption) (*GetGitHubOAuthResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetGitHubOAuthResult
 	err := ctx.Invoke("azure-native:devhub:getGitHubOAuth", args, &rv, opts...)
 	if err != nil {

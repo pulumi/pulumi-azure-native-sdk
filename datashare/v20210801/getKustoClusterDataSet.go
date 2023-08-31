@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a DataSet in a share
 func LookupKustoClusterDataSet(ctx *pulumi.Context, args *LookupKustoClusterDataSetArgs, opts ...pulumi.InvokeOption) (*LookupKustoClusterDataSetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKustoClusterDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20210801:getKustoClusterDataSet", args, &rv, opts...)
 	if err != nil {

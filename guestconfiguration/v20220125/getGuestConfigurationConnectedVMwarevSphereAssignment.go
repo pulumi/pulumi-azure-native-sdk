@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information about a guest configuration assignment
 func LookupGuestConfigurationConnectedVMwarevSphereAssignment(ctx *pulumi.Context, args *LookupGuestConfigurationConnectedVMwarevSphereAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult
 	err := ctx.Invoke("azure-native:guestconfiguration/v20220125:getGuestConfigurationConnectedVMwarevSphereAssignment", args, &rv, opts...)
 	if err != nil {

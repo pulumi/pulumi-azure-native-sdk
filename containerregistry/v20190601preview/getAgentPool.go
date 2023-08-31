@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the detailed information for a given agent pool.
 func LookupAgentPool(ctx *pulumi.Context, args *LookupAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupAgentPoolResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAgentPoolResult
 	err := ctx.Invoke("azure-native:containerregistry/v20190601preview:getAgentPool", args, &rv, opts...)
 	if err != nil {

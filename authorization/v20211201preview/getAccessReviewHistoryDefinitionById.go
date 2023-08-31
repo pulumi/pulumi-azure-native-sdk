@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get access review history definition by definition Id
 func LookupAccessReviewHistoryDefinitionById(ctx *pulumi.Context, args *LookupAccessReviewHistoryDefinitionByIdArgs, opts ...pulumi.InvokeOption) (*LookupAccessReviewHistoryDefinitionByIdResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessReviewHistoryDefinitionByIdResult
 	err := ctx.Invoke("azure-native:authorization/v20211201preview:getAccessReviewHistoryDefinitionById", args, &rv, opts...)
 	if err != nil {

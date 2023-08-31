@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for List all apps that are assigned to a hostname.
 // Azure REST API version: 2022-09-01.
 func ListSiteIdentifiersAssignedToHostName(ctx *pulumi.Context, args *ListSiteIdentifiersAssignedToHostNameArgs, opts ...pulumi.InvokeOption) (*ListSiteIdentifiersAssignedToHostNameResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSiteIdentifiersAssignedToHostNameResult
 	err := ctx.Invoke("azure-native:web:listSiteIdentifiersAssignedToHostName", args, &rv, opts...)
 	if err != nil {

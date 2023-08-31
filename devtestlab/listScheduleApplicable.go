@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists all applicable schedules
 // Azure REST API version: 2018-09-15.
 func ListScheduleApplicable(ctx *pulumi.Context, args *ListScheduleApplicableArgs, opts ...pulumi.InvokeOption) (*ListScheduleApplicableResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListScheduleApplicableResult
 	err := ctx.Invoke("azure-native:devtestlab:listScheduleApplicable", args, &rv, opts...)
 	if err != nil {

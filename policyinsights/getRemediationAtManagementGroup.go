@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing remediation at management group scope.
 // Azure REST API version: 2021-10-01.
 func LookupRemediationAtManagementGroup(ctx *pulumi.Context, args *LookupRemediationAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupRemediationAtManagementGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRemediationAtManagementGroupResult
 	err := ctx.Invoke("azure-native:policyinsights:getRemediationAtManagementGroup", args, &rv, opts...)
 	if err != nil {

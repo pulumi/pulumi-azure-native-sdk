@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines binding between a resource and role
 // Azure REST API version: 2023-05-02-preview.
 func LookupTrustedAccessRoleBinding(ctx *pulumi.Context, args *LookupTrustedAccessRoleBindingArgs, opts ...pulumi.InvokeOption) (*LookupTrustedAccessRoleBindingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTrustedAccessRoleBindingResult
 	err := ctx.Invoke("azure-native:containerservice:getTrustedAccessRoleBinding", args, &rv, opts...)
 	if err != nil {

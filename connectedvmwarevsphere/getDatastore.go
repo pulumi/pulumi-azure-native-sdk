@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements datastore GET method.
 // Azure REST API version: 2022-07-15-preview.
 func LookupDatastore(ctx *pulumi.Context, args *LookupDatastoreArgs, opts ...pulumi.InvokeOption) (*LookupDatastoreResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatastoreResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getDatastore", args, &rv, opts...)
 	if err != nil {

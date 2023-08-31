@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an outbound rule from the managed network of a machine learning workspace.
 // Azure REST API version: 2023-04-01-preview.
 func LookupManagedNetworkSettingsRule(ctx *pulumi.Context, args *LookupManagedNetworkSettingsRuleArgs, opts ...pulumi.InvokeOption) (*LookupManagedNetworkSettingsRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedNetworkSettingsRuleResult
 	err := ctx.Invoke("azure-native:machinelearningservices:getManagedNetworkSettingsRule", args, &rv, opts...)
 	if err != nil {

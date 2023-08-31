@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an environment type.
 func LookupEnvironmentType(ctx *pulumi.Context, args *LookupEnvironmentTypeArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentTypeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentTypeResult
 	err := ctx.Invoke("azure-native:devcenter/v20230401:getEnvironmentType", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a buildpack binding by name.
 func LookupBuildpackBinding(ctx *pulumi.Context, args *LookupBuildpackBindingArgs, opts ...pulumi.InvokeOption) (*LookupBuildpackBindingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBuildpackBindingResult
 	err := ctx.Invoke("azure-native:appplatform/v20230501preview:getBuildpackBinding", args, &rv, opts...)
 	if err != nil {

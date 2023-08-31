@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Single-Sign-On token for the API Management Service which is valid for 5 Minutes.
 // Azure REST API version: 2022-08-01.
 func GetApiManagementServiceSsoToken(ctx *pulumi.Context, args *GetApiManagementServiceSsoTokenArgs, opts ...pulumi.InvokeOption) (*GetApiManagementServiceSsoTokenResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetApiManagementServiceSsoTokenResult
 	err := ctx.Invoke("azure-native:apimanagement:getApiManagementServiceSsoToken", args, &rv, opts...)
 	if err != nil {

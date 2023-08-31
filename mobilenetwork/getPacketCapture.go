@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified packet capture session.
 // Azure REST API version: 2023-06-01.
 func LookupPacketCapture(ctx *pulumi.Context, args *LookupPacketCaptureArgs, opts ...pulumi.InvokeOption) (*LookupPacketCaptureResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPacketCaptureResult
 	err := ctx.Invoke("azure-native:mobilenetwork:getPacketCapture", args, &rv, opts...)
 	if err != nil {

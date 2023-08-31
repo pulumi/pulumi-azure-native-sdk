@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a workspace manager assignment
 func LookupWorkspaceManagerAssignment(ctx *pulumi.Context, args *LookupWorkspaceManagerAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceManagerAssignmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceManagerAssignmentResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230701preview:getWorkspaceManagerAssignment", args, &rv, opts...)
 	if err != nil {

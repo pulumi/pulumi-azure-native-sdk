@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ func NewGuestConfigurationAssignmentsVMSS(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource GuestConfigurationAssignmentsVMSS
 	err := ctx.RegisterResource("azure-native:guestconfiguration/v20220125:GuestConfigurationAssignmentsVMSS", name, args, &resource, opts...)
 	if err != nil {

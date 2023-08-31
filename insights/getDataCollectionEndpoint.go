@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of ARM tracked top level resource.
 // Azure REST API version: 2022-06-01.
 func LookupDataCollectionEndpoint(ctx *pulumi.Context, args *LookupDataCollectionEndpointArgs, opts ...pulumi.InvokeOption) (*LookupDataCollectionEndpointResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataCollectionEndpointResult
 	err := ctx.Invoke("azure-native:insights:getDataCollectionEndpoint", args, &rv, opts...)
 	if err != nil {

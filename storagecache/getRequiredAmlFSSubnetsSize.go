@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the number of available IP addresses needed for the AML file system information provided.
 // Azure REST API version: 2023-05-01.
 func GetRequiredAmlFSSubnetsSize(ctx *pulumi.Context, args *GetRequiredAmlFSSubnetsSizeArgs, opts ...pulumi.InvokeOption) (*GetRequiredAmlFSSubnetsSizeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetRequiredAmlFSSubnetsSizeResult
 	err := ctx.Invoke("azure-native:storagecache:getRequiredAmlFSSubnetsSize", args, &rv, opts...)
 	if err != nil {

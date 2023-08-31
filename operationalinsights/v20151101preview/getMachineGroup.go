@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified machine group as it existed during the specified time interval.
 func LookupMachineGroup(ctx *pulumi.Context, args *LookupMachineGroupArgs, opts ...pulumi.InvokeOption) (*LookupMachineGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineGroupResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20151101preview:getMachineGroup", args, &rv, opts...)
 	if err != nil {

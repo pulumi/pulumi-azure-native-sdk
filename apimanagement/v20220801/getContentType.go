@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the developer portal's content type. Content types describe content items' properties, validation rules, and constraints.
 func LookupContentType(ctx *pulumi.Context, args *LookupContentTypeArgs, opts ...pulumi.InvokeOption) (*LookupContentTypeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContentTypeResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getContentType", args, &rv, opts...)
 	if err != nil {

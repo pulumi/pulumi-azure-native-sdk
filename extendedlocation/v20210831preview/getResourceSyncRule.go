@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the resourceSyncRule with a specified resource group, subscription id Custom Location resource name and Resource Sync Rule name.
 func LookupResourceSyncRule(ctx *pulumi.Context, args *LookupResourceSyncRuleArgs, opts ...pulumi.InvokeOption) (*LookupResourceSyncRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourceSyncRuleResult
 	err := ctx.Invoke("azure-native:extendedlocation/v20210831preview:getResourceSyncRule", args, &rv, opts...)
 	if err != nil {

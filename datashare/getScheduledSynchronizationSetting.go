@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a synchronizationSetting in a share
 // Azure REST API version: 2021-08-01.
 func LookupScheduledSynchronizationSetting(ctx *pulumi.Context, args *LookupScheduledSynchronizationSettingArgs, opts ...pulumi.InvokeOption) (*LookupScheduledSynchronizationSettingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScheduledSynchronizationSettingResult
 	err := ctx.Invoke("azure-native:datashare:getScheduledSynchronizationSetting", args, &rv, opts...)
 	if err != nil {

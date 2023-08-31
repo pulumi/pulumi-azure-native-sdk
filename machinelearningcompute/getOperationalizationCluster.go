@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the operationalization cluster resource view. Note that the credentials are not returned by this call. Call ListKeys to get them.
 // Azure REST API version: 2017-08-01-preview.
 func LookupOperationalizationCluster(ctx *pulumi.Context, args *LookupOperationalizationClusterArgs, opts ...pulumi.InvokeOption) (*LookupOperationalizationClusterResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOperationalizationClusterResult
 	err := ctx.Invoke("azure-native:machinelearningcompute:getOperationalizationCluster", args, &rv, opts...)
 	if err != nil {

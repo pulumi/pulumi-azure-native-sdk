@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -110,6 +111,7 @@ func NewManagedDatabaseSensitivityLabel(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource ManagedDatabaseSensitivityLabel
 	err := ctx.RegisterResource("azure-native:sql/v20211101:ManagedDatabaseSensitivityLabel", name, args, &resource, opts...)
 	if err != nil {

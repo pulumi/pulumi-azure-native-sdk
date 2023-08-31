@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the gateway settings for the specified cluster.
 func GetClusterGatewaySettings(ctx *pulumi.Context, args *GetClusterGatewaySettingsArgs, opts ...pulumi.InvokeOption) (*GetClusterGatewaySettingsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetClusterGatewaySettingsResult
 	err := ctx.Invoke("azure-native:hdinsight/v20230415preview:getClusterGatewaySettings", args, &rv, opts...)
 	if err != nil {

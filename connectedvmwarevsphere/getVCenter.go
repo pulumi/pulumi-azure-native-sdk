@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements vCenter GET method.
 // Azure REST API version: 2022-07-15-preview.
 func LookupVCenter(ctx *pulumi.Context, args *LookupVCenterArgs, opts ...pulumi.InvokeOption) (*LookupVCenterResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVCenterResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getVCenter", args, &rv, opts...)
 	if err != nil {

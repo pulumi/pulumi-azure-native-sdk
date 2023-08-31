@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get build service agent pool.
 // Azure REST API version: 2023-05-01-preview.
 func LookupBuildServiceAgentPool(ctx *pulumi.Context, args *LookupBuildServiceAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupBuildServiceAgentPoolResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBuildServiceAgentPoolResult
 	err := ctx.Invoke("azure-native:appplatform:getBuildServiceAgentPool", args, &rv, opts...)
 	if err != nil {

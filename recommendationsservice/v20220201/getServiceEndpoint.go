@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns ServiceEndpoint resources for a given name.
 func LookupServiceEndpoint(ctx *pulumi.Context, args *LookupServiceEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServiceEndpointResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceEndpointResult
 	err := ctx.Invoke("azure-native:recommendationsservice/v20220201:getServiceEndpoint", args, &rv, opts...)
 	if err != nil {

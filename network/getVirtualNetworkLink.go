@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a virtual network link to the specified Private DNS zone.
 // Azure REST API version: 2020-06-01.
 func LookupVirtualNetworkLink(ctx *pulumi.Context, args *LookupVirtualNetworkLinkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkLinkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualNetworkLinkResult
 	err := ctx.Invoke("azure-native:network:getVirtualNetworkLink", args, &rv, opts...)
 	if err != nil {
