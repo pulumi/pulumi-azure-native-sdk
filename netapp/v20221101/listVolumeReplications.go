@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List all replications for a specified volume
 func ListVolumeReplications(ctx *pulumi.Context, args *ListVolumeReplicationsArgs, opts ...pulumi.InvokeOption) (*ListVolumeReplicationsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListVolumeReplicationsResult
 	err := ctx.Invoke("azure-native:netapp/v20221101:listVolumeReplications", args, &rv, opts...)
 	if err != nil {

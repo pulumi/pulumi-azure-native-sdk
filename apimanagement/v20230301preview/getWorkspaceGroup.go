@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the group specified by its identifier.
 func LookupWorkspaceGroup(ctx *pulumi.Context, args *LookupWorkspaceGroupArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceGroupResult
 	err := ctx.Invoke("azure-native:apimanagement/v20230301preview:getWorkspaceGroup", args, &rv, opts...)
 	if err != nil {

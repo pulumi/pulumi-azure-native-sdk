@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the provider registration details.
 func LookupProviderRegistration(ctx *pulumi.Context, args *LookupProviderRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupProviderRegistrationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProviderRegistrationResult
 	err := ctx.Invoke("azure-native:providerhub/v20210901preview:getProviderRegistration", args, &rv, opts...)
 	if err != nil {

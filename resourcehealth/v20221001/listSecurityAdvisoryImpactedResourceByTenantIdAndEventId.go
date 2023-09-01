@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists impacted resources in the tenant by an event (Security Advisory).
 func ListSecurityAdvisoryImpactedResourceByTenantIdAndEventId(ctx *pulumi.Context, args *ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs, opts ...pulumi.InvokeOption) (*ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult
 	err := ctx.Invoke("azure-native:resourcehealth/v20221001:listSecurityAdvisoryImpactedResourceByTenantIdAndEventId", args, &rv, opts...)
 	if err != nil {

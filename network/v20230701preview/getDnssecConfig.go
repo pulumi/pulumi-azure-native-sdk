@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the DNSSEC configuration.
 func LookupDnssecConfig(ctx *pulumi.Context, args *LookupDnssecConfigArgs, opts ...pulumi.InvokeOption) (*LookupDnssecConfigResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDnssecConfigResult
 	err := ctx.Invoke("azure-native:network/v20230701preview:getDnssecConfig", args, &rv, opts...)
 	if err != nil {

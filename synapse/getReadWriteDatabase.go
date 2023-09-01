@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a database.
 // Azure REST API version: 2021-06-01-preview.
 func LookupReadWriteDatabase(ctx *pulumi.Context, args *LookupReadWriteDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadWriteDatabaseResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReadWriteDatabaseResult
 	err := ctx.Invoke("azure-native:synapse:getReadWriteDatabase", args, &rv, opts...)
 	if err != nil {

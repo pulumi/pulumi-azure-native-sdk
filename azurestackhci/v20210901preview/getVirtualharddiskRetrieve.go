@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets virtualharddisks by resource name
 func LookupVirtualharddiskRetrieve(ctx *pulumi.Context, args *LookupVirtualharddiskRetrieveArgs, opts ...pulumi.InvokeOption) (*LookupVirtualharddiskRetrieveResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualharddiskRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getVirtualharddiskRetrieve", args, &rv, opts...)
 	if err != nil {

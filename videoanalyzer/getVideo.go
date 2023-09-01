@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves an existing video resource with the given name.
 // Azure REST API version: 2021-11-01-preview.
 func LookupVideo(ctx *pulumi.Context, args *LookupVideoArgs, opts ...pulumi.InvokeOption) (*LookupVideoResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVideoResult
 	err := ctx.Invoke("azure-native:videoanalyzer:getVideo", args, &rv, opts...)
 	if err != nil {

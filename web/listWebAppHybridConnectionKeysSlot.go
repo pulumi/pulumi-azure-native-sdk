@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the send key name and value for a Hybrid Connection.
 // Azure REST API version: 2018-11-01.
 func ListWebAppHybridConnectionKeysSlot(ctx *pulumi.Context, args *ListWebAppHybridConnectionKeysSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppHybridConnectionKeysSlotResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppHybridConnectionKeysSlotResult
 	err := ctx.Invoke("azure-native:web:listWebAppHybridConnectionKeysSlot", args, &rv, opts...)
 	if err != nil {

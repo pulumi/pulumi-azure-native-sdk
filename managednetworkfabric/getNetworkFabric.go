@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Network Fabric resource details.
 // Azure REST API version: 2023-02-01-preview.
 func LookupNetworkFabric(ctx *pulumi.Context, args *LookupNetworkFabricArgs, opts ...pulumi.InvokeOption) (*LookupNetworkFabricResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkFabricResult
 	err := ctx.Invoke("azure-native:managednetworkfabric:getNetworkFabric", args, &rv, opts...)
 	if err != nil {

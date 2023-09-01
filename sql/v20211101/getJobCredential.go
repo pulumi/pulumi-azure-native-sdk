@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a jobs credential.
 func LookupJobCredential(ctx *pulumi.Context, args *LookupJobCredentialArgs, opts ...pulumi.InvokeOption) (*LookupJobCredentialResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobCredentialResult
 	err := ctx.Invoke("azure-native:sql/v20211101:getJobCredential", args, &rv, opts...)
 	if err != nil {

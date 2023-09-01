@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an Agent resource.
 // Azure REST API version: 2023-03-01.
 func LookupAgent(ctx *pulumi.Context, args *LookupAgentArgs, opts ...pulumi.InvokeOption) (*LookupAgentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAgentResult
 	err := ctx.Invoke("azure-native:storagemover:getAgent", args, &rv, opts...)
 	if err != nil {

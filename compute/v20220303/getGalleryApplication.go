@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about a gallery Application Definition.
 func LookupGalleryApplication(ctx *pulumi.Context, args *LookupGalleryApplicationArgs, opts ...pulumi.InvokeOption) (*LookupGalleryApplicationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGalleryApplicationResult
 	err := ctx.Invoke("azure-native:compute/v20220303:getGalleryApplication", args, &rv, opts...)
 	if err != nil {

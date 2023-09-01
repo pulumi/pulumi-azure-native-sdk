@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The EngagementFabric channel
 // Azure REST API version: 2018-09-01-preview.
 func LookupChannel(ctx *pulumi.Context, args *LookupChannelArgs, opts ...pulumi.InvokeOption) (*LookupChannelResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupChannelResult
 	err := ctx.Invoke("azure-native:engagementfabric:getChannel", args, &rv, opts...)
 	if err != nil {

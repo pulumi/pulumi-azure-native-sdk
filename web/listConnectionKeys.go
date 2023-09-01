@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists connection keys.
 // Azure REST API version: 2015-08-01-preview.
 func ListConnectionKeys(ctx *pulumi.Context, args *ListConnectionKeysArgs, opts ...pulumi.InvokeOption) (*ListConnectionKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConnectionKeysResult
 	err := ctx.Invoke("azure-native:web:listConnectionKeys", args, &rv, opts...)
 	if err != nil {

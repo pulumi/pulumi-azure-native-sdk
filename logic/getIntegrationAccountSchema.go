@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an integration account schema.
 // Azure REST API version: 2019-05-01.
 func LookupIntegrationAccountSchema(ctx *pulumi.Context, args *LookupIntegrationAccountSchemaArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountSchemaResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationAccountSchemaResult
 	err := ctx.Invoke("azure-native:logic:getIntegrationAccountSchema", args, &rv, opts...)
 	if err != nil {

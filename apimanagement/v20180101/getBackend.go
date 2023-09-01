@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the backend specified by its identifier.
 func LookupBackend(ctx *pulumi.Context, args *LookupBackendArgs, opts ...pulumi.InvokeOption) (*LookupBackendResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackendResult
 	err := ctx.Invoke("azure-native:apimanagement/v20180101:getBackend", args, &rv, opts...)
 	if err != nil {

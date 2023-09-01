@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get current user settings for current signed in user. This operation returns settings for the user's cloud shell preferences including preferred location, storage profile, shell type, font and size settings.
 // Azure REST API version: 2018-10-01.
 func LookupUserSettingsWithLocation(ctx *pulumi.Context, args *LookupUserSettingsWithLocationArgs, opts ...pulumi.InvokeOption) (*LookupUserSettingsWithLocationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserSettingsWithLocationResult
 	err := ctx.Invoke("azure-native:portal:getUserSettingsWithLocation", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified nat gateway in a specified resource group.
 // Azure REST API version: 2023-02-01.
 func LookupNatGateway(ctx *pulumi.Context, args *LookupNatGatewayArgs, opts ...pulumi.InvokeOption) (*LookupNatGatewayResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNatGatewayResult
 	err := ctx.Invoke("azure-native:network:getNatGateway", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,6 +79,7 @@ func NewModelContainer(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource ModelContainer
 	err := ctx.RegisterResource("azure-native:machinelearningservices/v20230401:ModelContainer", name, args, &resource, opts...)
 	if err != nil {

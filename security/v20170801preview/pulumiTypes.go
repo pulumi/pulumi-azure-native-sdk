@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Recommendation configuration
 type RecommendationConfigurationProperties struct {
@@ -24,7 +27,7 @@ func (val *RecommendationConfigurationProperties) Defaults() *RecommendationConf
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if utilities.IsZero(tmp.Status) {
 		tmp.Status = "Enabled"
 	}
 	return &tmp
@@ -157,7 +160,7 @@ func (val *RecommendationConfigurationPropertiesResponse) Defaults() *Recommenda
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Status) {
+	if utilities.IsZero(tmp.Status) {
 		tmp.Status = "Enabled"
 	}
 	return &tmp

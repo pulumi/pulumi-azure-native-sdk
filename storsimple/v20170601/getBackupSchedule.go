@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified backup schedule name.
 func LookupBackupSchedule(ctx *pulumi.Context, args *LookupBackupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupBackupScheduleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupScheduleResult
 	err := ctx.Invoke("azure-native:storsimple/v20170601:getBackupSchedule", args, &rv, opts...)
 	if err != nil {

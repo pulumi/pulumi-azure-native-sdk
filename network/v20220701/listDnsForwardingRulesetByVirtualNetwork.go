@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists DNS forwarding ruleset resource IDs attached to a virtual network.
 func ListDnsForwardingRulesetByVirtualNetwork(ctx *pulumi.Context, args *ListDnsForwardingRulesetByVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*ListDnsForwardingRulesetByVirtualNetworkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDnsForwardingRulesetByVirtualNetworkResult
 	err := ctx.Invoke("azure-native:network/v20220701:listDnsForwardingRulesetByVirtualNetwork", args, &rv, opts...)
 	if err != nil {

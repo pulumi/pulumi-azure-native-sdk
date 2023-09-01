@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an read-write access token for application insights diagnostic service data.
 // Azure REST API version: 2021-03-03-preview.
 func GetDiagnosticServiceTokenReadWrite(ctx *pulumi.Context, args *GetDiagnosticServiceTokenReadWriteArgs, opts ...pulumi.InvokeOption) (*GetDiagnosticServiceTokenReadWriteResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetDiagnosticServiceTokenReadWriteResult
 	err := ctx.Invoke("azure-native:insights:getDiagnosticServiceTokenReadWrite", args, &rv, opts...)
 	if err != nil {

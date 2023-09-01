@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get metrics configuration of the provided cluster.
 func LookupMetricsConfiguration(ctx *pulumi.Context, args *LookupMetricsConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupMetricsConfigurationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetricsConfigurationResult
 	err := ctx.Invoke("azure-native:networkcloud/v20230701:getMetricsConfiguration", args, &rv, opts...)
 	if err != nil {

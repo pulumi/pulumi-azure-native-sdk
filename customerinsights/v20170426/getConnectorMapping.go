@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a connector mapping in the connector.
 func LookupConnectorMapping(ctx *pulumi.Context, args *LookupConnectorMappingArgs, opts ...pulumi.InvokeOption) (*LookupConnectorMappingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorMappingResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170426:getConnectorMapping", args, &rv, opts...)
 	if err != nil {

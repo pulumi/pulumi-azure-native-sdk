@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a credential.
 func LookupCredentialOperation(ctx *pulumi.Context, args *LookupCredentialOperationArgs, opts ...pulumi.InvokeOption) (*LookupCredentialOperationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCredentialOperationResult
 	err := ctx.Invoke("azure-native:datafactory/v20180601:getCredentialOperation", args, &rv, opts...)
 	if err != nil {

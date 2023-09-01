@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,6 +64,7 @@ func NewServerAdministrator(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource ServerAdministrator
 	err := ctx.RegisterResource("azure-native:dbformysql/v20180601privatepreview:ServerAdministrator", name, args, &resource, opts...)
 	if err != nil {

@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Action that need to performed.
 type AccessControlListAction struct {
@@ -2144,7 +2147,7 @@ func (val *BfdConfigurationResponse) Defaults() *BfdConfigurationResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.AdministrativeState) {
+	if utilities.IsZero(tmp.AdministrativeState) {
 		tmp.AdministrativeState = "Disabled"
 	}
 	if tmp.IntervalInMilliSeconds == nil {

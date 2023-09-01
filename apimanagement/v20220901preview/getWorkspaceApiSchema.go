@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the schema configuration at the API level.
 func LookupWorkspaceApiSchema(ctx *pulumi.Context, args *LookupWorkspaceApiSchemaArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceApiSchemaResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceApiSchemaResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220901preview:getWorkspaceApiSchema", args, &rv, opts...)
 	if err != nil {

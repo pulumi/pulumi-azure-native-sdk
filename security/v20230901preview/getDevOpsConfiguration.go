@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // DevOps Configuration resource.
 func LookupDevOpsConfiguration(ctx *pulumi.Context, args *LookupDevOpsConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDevOpsConfigurationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDevOpsConfigurationResult
 	err := ctx.Invoke("azure-native:security/v20230901preview:getDevOpsConfiguration", args, &rv, opts...)
 	if err != nil {

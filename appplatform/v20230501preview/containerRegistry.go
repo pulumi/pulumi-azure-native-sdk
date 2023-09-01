@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,8 +43,12 @@ func NewContainerRegistry(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform:ContainerRegistry"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230701preview:ContainerRegistry"),
+		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource ContainerRegistry
 	err := ctx.RegisterResource("azure-native:appplatform/v20230501preview:ContainerRegistry", name, args, &resource, opts...)
 	if err != nil {

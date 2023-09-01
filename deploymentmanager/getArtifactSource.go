@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The resource that defines the source location where the artifacts are located.
 // Azure REST API version: 2019-11-01-preview.
 func LookupArtifactSource(ctx *pulumi.Context, args *LookupArtifactSourceArgs, opts ...pulumi.InvokeOption) (*LookupArtifactSourceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupArtifactSourceResult
 	err := ctx.Invoke("azure-native:deploymentmanager:getArtifactSource", args, &rv, opts...)
 	if err != nil {

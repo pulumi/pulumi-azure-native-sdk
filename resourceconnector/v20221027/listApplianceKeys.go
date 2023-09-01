@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the cluster customer credentials for the dedicated appliance.
 func ListApplianceKeys(ctx *pulumi.Context, args *ListApplianceKeysArgs, opts ...pulumi.InvokeOption) (*ListApplianceKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListApplianceKeysResult
 	err := ctx.Invoke("azure-native:resourceconnector/v20221027:listApplianceKeys", args, &rv, opts...)
 	if err != nil {

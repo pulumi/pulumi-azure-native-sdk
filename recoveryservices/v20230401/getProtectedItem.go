@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
 // call the GetItemOperationResult API.
 func LookupProtectedItem(ctx *pulumi.Context, args *LookupProtectedItemArgs, opts ...pulumi.InvokeOption) (*LookupProtectedItemResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProtectedItemResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20230401:getProtectedItem", args, &rv, opts...)
 	if err != nil {

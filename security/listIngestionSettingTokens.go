@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the token that is used for correlating ingested telemetry with the resources in the subscription.
 // Azure REST API version: 2021-01-15-preview.
 func ListIngestionSettingTokens(ctx *pulumi.Context, args *ListIngestionSettingTokensArgs, opts ...pulumi.InvokeOption) (*ListIngestionSettingTokensResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListIngestionSettingTokensResult
 	err := ctx.Invoke("azure-native:security:listIngestionSettingTokens", args, &rv, opts...)
 	if err != nil {

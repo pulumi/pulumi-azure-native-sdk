@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves details of this Network Packet Broker.
 func LookupNetworkPacketBroker(ctx *pulumi.Context, args *LookupNetworkPacketBrokerArgs, opts ...pulumi.InvokeOption) (*LookupNetworkPacketBrokerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkPacketBrokerResult
 	err := ctx.Invoke("azure-native:managednetworkfabric/v20230615:getNetworkPacketBroker", args, &rv, opts...)
 	if err != nil {

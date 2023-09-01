@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements IP Extended Community GET method.
 // Azure REST API version: 2023-02-01-preview.
 func LookupIpExtendedCommunity(ctx *pulumi.Context, args *LookupIpExtendedCommunityArgs, opts ...pulumi.InvokeOption) (*LookupIpExtendedCommunityResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIpExtendedCommunityResult
 	err := ctx.Invoke("azure-native:managednetworkfabric:getIpExtendedCommunity", args, &rv, opts...)
 	if err != nil {

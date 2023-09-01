@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Auth setting for basic auth.
 type AcceleratorBasicAuthSetting struct {
@@ -18457,7 +18460,7 @@ func (val *Probe) Defaults() *Probe {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableProbe) {
+	if utilities.IsZero(tmp.DisableProbe) {
 		tmp.DisableProbe = false
 	}
 	return &tmp
@@ -18734,7 +18737,7 @@ func (val *ProbeResponse) Defaults() *ProbeResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DisableProbe) {
+	if utilities.IsZero(tmp.DisableProbe) {
 		tmp.DisableProbe = false
 	}
 	return &tmp

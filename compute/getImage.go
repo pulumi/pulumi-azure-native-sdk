@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an image.
 // Azure REST API version: 2023-03-01.
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupImageResult
 	err := ctx.Invoke("azure-native:compute:getImage", args, &rv, opts...)
 	if err != nil {

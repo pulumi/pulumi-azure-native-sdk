@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get disk.
 // Azure REST API version: 2018-09-15.
 func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.InvokeOption) (*LookupDiskResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiskResult
 	err := ctx.Invoke("azure-native:devtestlab:getDisk", args, &rv, opts...)
 	if err != nil {

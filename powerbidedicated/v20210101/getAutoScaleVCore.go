@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details about the specified auto scale v-core.
 func LookupAutoScaleVCore(ctx *pulumi.Context, args *LookupAutoScaleVCoreArgs, opts ...pulumi.InvokeOption) (*LookupAutoScaleVCoreResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutoScaleVCoreResult
 	err := ctx.Invoke("azure-native:powerbidedicated/v20210101:getAutoScaleVCore", args, &rv, opts...)
 	if err != nil {

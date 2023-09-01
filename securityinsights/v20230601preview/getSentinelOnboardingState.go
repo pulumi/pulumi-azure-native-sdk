@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Sentinel onboarding state
 func LookupSentinelOnboardingState(ctx *pulumi.Context, args *LookupSentinelOnboardingStateArgs, opts ...pulumi.InvokeOption) (*LookupSentinelOnboardingStateResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSentinelOnboardingStateResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230601preview:getSentinelOnboardingState", args, &rv, opts...)
 	if err != nil {

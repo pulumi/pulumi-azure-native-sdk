@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a catalog
 func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.InvokeOption) (*LookupCatalogResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCatalogResult
 	err := ctx.Invoke("azure-native:devcenter/v20230401:getCatalog", args, &rv, opts...)
 	if err != nil {

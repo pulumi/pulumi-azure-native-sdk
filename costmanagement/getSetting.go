@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the current value for a specific setting.
 // Azure REST API version: 2019-11-01.
 func LookupSetting(ctx *pulumi.Context, args *LookupSettingArgs, opts ...pulumi.InvokeOption) (*LookupSettingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSettingResult
 	err := ctx.Invoke("azure-native:costmanagement:getSetting", args, &rv, opts...)
 	if err != nil {

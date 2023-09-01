@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a partner registration with the specified parameters.
 // Azure REST API version: 2022-06-15.
 func LookupPartnerRegistration(ctx *pulumi.Context, args *LookupPartnerRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerRegistrationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerRegistrationResult
 	err := ctx.Invoke("azure-native:eventgrid:getPartnerRegistration", args, &rv, opts...)
 	if err != nil {

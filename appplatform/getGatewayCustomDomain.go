@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the Spring Cloud Gateway custom domain.
 // Azure REST API version: 2023-05-01-preview.
 func LookupGatewayCustomDomain(ctx *pulumi.Context, args *LookupGatewayCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupGatewayCustomDomainResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewayCustomDomainResult
 	err := ctx.Invoke("azure-native:appplatform:getGatewayCustomDomain", args, &rv, opts...)
 	if err != nil {

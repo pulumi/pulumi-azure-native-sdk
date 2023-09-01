@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Kusto pool database principalAssignment.
 // Azure REST API version: 2021-06-01-preview.
 func LookupKustoPoolDatabasePrincipalAssignment(ctx *pulumi.Context, args *LookupKustoPoolDatabasePrincipalAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupKustoPoolDatabasePrincipalAssignmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKustoPoolDatabasePrincipalAssignmentResult
 	err := ctx.Invoke("azure-native:synapse:getKustoPoolDatabasePrincipalAssignment", args, &rv, opts...)
 	if err != nil {

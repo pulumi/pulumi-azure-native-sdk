@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the download URL of a package.
 func GetPackageDownloadURL(ctx *pulumi.Context, args *GetPackageDownloadURLArgs, opts ...pulumi.InvokeOption) (*GetPackageDownloadURLResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetPackageDownloadURLResult
 	err := ctx.Invoke("azure-native:testbase/v20220401preview:getPackageDownloadURL", args, &rv, opts...)
 	if err != nil {

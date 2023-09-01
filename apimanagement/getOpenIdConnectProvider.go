@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets specific OpenID Connect Provider without secrets.
 // Azure REST API version: 2022-08-01.
 func LookupOpenIdConnectProvider(ctx *pulumi.Context, args *LookupOpenIdConnectProviderArgs, opts ...pulumi.InvokeOption) (*LookupOpenIdConnectProviderResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenIdConnectProviderResult
 	err := ctx.Invoke("azure-native:apimanagement:getOpenIdConnectProvider", args, &rv, opts...)
 	if err != nil {

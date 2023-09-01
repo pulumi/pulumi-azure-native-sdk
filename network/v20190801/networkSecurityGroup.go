@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -196,6 +197,7 @@ func NewNetworkSecurityGroup(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource NetworkSecurityGroup
 	err := ctx.RegisterResource("azure-native:network/v20190801:NetworkSecurityGroup", name, args, &resource, opts...)
 	if err != nil {

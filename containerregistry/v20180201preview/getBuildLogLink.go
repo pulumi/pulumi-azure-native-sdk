@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a link to download the build logs.
 func GetBuildLogLink(ctx *pulumi.Context, args *GetBuildLogLinkArgs, opts ...pulumi.InvokeOption) (*GetBuildLogLinkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetBuildLogLinkResult
 	err := ctx.Invoke("azure-native:containerregistry/v20180201preview:getBuildLogLink", args, &rv, opts...)
 	if err != nil {

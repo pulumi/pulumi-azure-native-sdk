@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details about the specified dnc controller.
 func LookupControllerDetails(ctx *pulumi.Context, args *LookupControllerDetailsArgs, opts ...pulumi.InvokeOption) (*LookupControllerDetailsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupControllerDetailsResult
 	err := ctx.Invoke("azure-native:delegatednetwork/v20210315:getControllerDetails", args, &rv, opts...)
 	if err != nil {

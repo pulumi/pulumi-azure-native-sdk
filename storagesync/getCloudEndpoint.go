@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a given CloudEndpoint.
 // Azure REST API version: 2022-06-01.
 func LookupCloudEndpoint(ctx *pulumi.Context, args *LookupCloudEndpointArgs, opts ...pulumi.InvokeOption) (*LookupCloudEndpointResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudEndpointResult
 	err := ctx.Invoke("azure-native:storagesync:getCloudEndpoint", args, &rv, opts...)
 	if err != nil {

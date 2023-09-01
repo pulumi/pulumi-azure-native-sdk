@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the detailed information about a linked server of a redis cache (requires Premium SKU).
 // Azure REST API version: 2023-04-01.
 func LookupLinkedServer(ctx *pulumi.Context, args *LookupLinkedServerArgs, opts ...pulumi.InvokeOption) (*LookupLinkedServerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLinkedServerResult
 	err := ctx.Invoke("azure-native:cache:getLinkedServer", args, &rv, opts...)
 	if err != nil {

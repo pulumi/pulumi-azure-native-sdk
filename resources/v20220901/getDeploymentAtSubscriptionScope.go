@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a deployment.
 func LookupDeploymentAtSubscriptionScope(ctx *pulumi.Context, args *LookupDeploymentAtSubscriptionScopeArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentAtSubscriptionScopeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeploymentAtSubscriptionScopeResult
 	err := ctx.Invoke("azure-native:resources/v20220901:getDeploymentAtSubscriptionScope", args, &rv, opts...)
 	if err != nil {

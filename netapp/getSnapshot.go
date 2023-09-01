@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get details of the specified snapshot
 // Azure REST API version: 2022-11-01.
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnapshotResult
 	err := ctx.Invoke("azure-native:netapp:getSnapshot", args, &rv, opts...)
 	if err != nil {

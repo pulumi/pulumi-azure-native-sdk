@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns whether or not the canonical support plan of type {type} is enabled for the subscription.
 func LookupSupportPlanType(ctx *pulumi.Context, args *LookupSupportPlanTypeArgs, opts ...pulumi.InvokeOption) (*LookupSupportPlanTypeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSupportPlanTypeResult
 	err := ctx.Invoke("azure-native:addons/v20180301:getSupportPlanType", args, &rv, opts...)
 	if err != nil {

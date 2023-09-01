@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details about the service to the resource.
 func LookupServiceConfiguration(ctx *pulumi.Context, args *LookupServiceConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupServiceConfigurationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceConfigurationResult
 	err := ctx.Invoke("azure-native:hybridconnectivity/v20230315:getServiceConfiguration", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the details of a Track in the Asset
 // Azure REST API version: 2023-01-01.
 func LookupTrack(ctx *pulumi.Context, args *LookupTrackArgs, opts ...pulumi.InvokeOption) (*LookupTrackResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTrackResult
 	err := ctx.Invoke("azure-native:media:getTrack", args, &rv, opts...)
 	if err != nil {

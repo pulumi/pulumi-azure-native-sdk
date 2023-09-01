@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a list of language extensions that can run within KQL queries.
 func ListKustoPoolLanguageExtensions(ctx *pulumi.Context, args *ListKustoPoolLanguageExtensionsArgs, opts ...pulumi.InvokeOption) (*ListKustoPoolLanguageExtensionsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListKustoPoolLanguageExtensionsResult
 	err := ctx.Invoke("azure-native:synapse/v20210601preview:listKustoPoolLanguageExtensions", args, &rv, opts...)
 	if err != nil {

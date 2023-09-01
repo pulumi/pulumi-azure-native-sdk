@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the Database Migration Service
 func LookupSqlMigrationService(ctx *pulumi.Context, args *LookupSqlMigrationServiceArgs, opts ...pulumi.InvokeOption) (*LookupSqlMigrationServiceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlMigrationServiceResult
 	err := ctx.Invoke("azure-native:datamigration/v20220330preview:getSqlMigrationService", args, &rv, opts...)
 	if err != nil {

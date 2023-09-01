@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List Both of the 2 Keys of a Remote Rendering Account
 func ListRemoteRenderingAccountKeys(ctx *pulumi.Context, args *ListRemoteRenderingAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListRemoteRenderingAccountKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListRemoteRenderingAccountKeysResult
 	err := ctx.Invoke("azure-native:mixedreality/v20210301preview:listRemoteRenderingAccountKeys", args, &rv, opts...)
 	if err != nil {

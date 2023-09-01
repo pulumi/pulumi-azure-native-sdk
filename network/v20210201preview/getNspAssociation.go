@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified NSP association by name.
 func LookupNspAssociation(ctx *pulumi.Context, args *LookupNspAssociationArgs, opts ...pulumi.InvokeOption) (*LookupNspAssociationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNspAssociationResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:getNspAssociation", args, &rv, opts...)
 	if err != nil {

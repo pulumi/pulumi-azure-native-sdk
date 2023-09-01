@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A vSphere Distributed Resource Scheduler (DRS) placement policy
 // Azure REST API version: 2022-05-01.
 func LookupPlacementPolicy(ctx *pulumi.Context, args *LookupPlacementPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPlacementPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPlacementPolicyResult
 	err := ctx.Invoke("azure-native:avs:getPlacementPolicy", args, &rv, opts...)
 	if err != nil {

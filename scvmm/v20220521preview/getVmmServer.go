@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements VMMServer GET method.
 func LookupVmmServer(ctx *pulumi.Context, args *LookupVmmServerArgs, opts ...pulumi.InvokeOption) (*LookupVmmServerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVmmServerResult
 	err := ctx.Invoke("azure-native:scvmm/v20220521preview:getVmmServer", args, &rv, opts...)
 	if err != nil {

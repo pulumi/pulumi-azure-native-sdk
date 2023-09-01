@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a job agent.
 func LookupJobAgent(ctx *pulumi.Context, args *LookupJobAgentArgs, opts ...pulumi.InvokeOption) (*LookupJobAgentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobAgentResult
 	err := ctx.Invoke("azure-native:sql/v20211101:getJobAgent", args, &rv, opts...)
 	if err != nil {

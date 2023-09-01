@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ func NewEnterpriseChannel(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource EnterpriseChannel
 	err := ctx.RegisterResource("azure-native:botservice/v20180712:EnterpriseChannel", name, args, &resource, opts...)
 	if err != nil {

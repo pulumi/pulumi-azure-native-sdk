@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the reference data set with the specified name in the specified environment.
 // Azure REST API version: 2020-05-15.
 func LookupReferenceDataSet(ctx *pulumi.Context, args *LookupReferenceDataSetArgs, opts ...pulumi.InvokeOption) (*LookupReferenceDataSetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReferenceDataSetResult
 	err := ctx.Invoke("azure-native:timeseriesinsights:getReferenceDataSet", args, &rv, opts...)
 	if err != nil {

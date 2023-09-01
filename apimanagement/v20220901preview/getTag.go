@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the tag specified by its identifier.
 func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOption) (*LookupTagResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220901preview:getTag", args, &rv, opts...)
 	if err != nil {

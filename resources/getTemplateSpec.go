@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Template Spec with a given name.
 // Azure REST API version: 2022-02-01.
 func LookupTemplateSpec(ctx *pulumi.Context, args *LookupTemplateSpecArgs, opts ...pulumi.InvokeOption) (*LookupTemplateSpecResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTemplateSpecResult
 	err := ctx.Invoke("azure-native:resources:getTemplateSpec", args, &rv, opts...)
 	if err != nil {

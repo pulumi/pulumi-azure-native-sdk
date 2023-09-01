@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ func NewInstanceDetails(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource InstanceDetails
 	err := ctx.RegisterResource("azure-native:dynamics365fraudprotection/v20210201preview:InstanceDetails", name, args, &resource, opts...)
 	if err != nil {

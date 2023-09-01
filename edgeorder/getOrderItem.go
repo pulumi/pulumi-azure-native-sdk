@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an order item.
 // Azure REST API version: 2022-05-01-preview.
 func LookupOrderItem(ctx *pulumi.Context, args *LookupOrderItemArgs, opts ...pulumi.InvokeOption) (*LookupOrderItemResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrderItemResult
 	err := ctx.Invoke("azure-native:edgeorder:getOrderItem", args, &rv, opts...)
 	if err != nil {

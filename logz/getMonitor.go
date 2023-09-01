@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure REST API version: 2022-01-01-preview.
 func LookupMonitor(ctx *pulumi.Context, args *LookupMonitorArgs, opts ...pulumi.InvokeOption) (*LookupMonitorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitorResult
 	err := ctx.Invoke("azure-native:logz:getMonitor", args, &rv, opts...)
 	if err != nil {

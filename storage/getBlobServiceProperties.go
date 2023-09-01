@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
 // Azure REST API version: 2022-09-01.
 func LookupBlobServiceProperties(ctx *pulumi.Context, args *LookupBlobServicePropertiesArgs, opts ...pulumi.InvokeOption) (*LookupBlobServicePropertiesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBlobServicePropertiesResult
 	err := ctx.Invoke("azure-native:storage:getBlobServiceProperties", args, &rv, opts...)
 	if err != nil {

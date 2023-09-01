@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the requested ExpressRoutePort resource.
 // Azure REST API version: 2023-02-01.
 func LookupExpressRoutePort(ctx *pulumi.Context, args *LookupExpressRoutePortArgs, opts ...pulumi.InvokeOption) (*LookupExpressRoutePortResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExpressRoutePortResult
 	err := ctx.Invoke("azure-native:network:getExpressRoutePort", args, &rv, opts...)
 	if err != nil {

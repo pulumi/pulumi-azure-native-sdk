@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Hybrid AKS provisioned cluster
 // Azure REST API version: 2022-09-01-preview.
 func LookupProvisionedCluster(ctx *pulumi.Context, args *LookupProvisionedClusterArgs, opts ...pulumi.InvokeOption) (*LookupProvisionedClusterResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProvisionedClusterResult
 	err := ctx.Invoke("azure-native:hybridcontainerservice:getProvisionedCluster", args, &rv, opts...)
 	if err != nil {

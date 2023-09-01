@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Trigger in a shareSubscription
 // Azure REST API version: 2021-08-01.
 func LookupScheduledTrigger(ctx *pulumi.Context, args *LookupScheduledTriggerArgs, opts ...pulumi.InvokeOption) (*LookupScheduledTriggerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScheduledTriggerResult
 	err := ctx.Invoke("azure-native:datashare:getScheduledTrigger", args, &rv, opts...)
 	if err != nil {

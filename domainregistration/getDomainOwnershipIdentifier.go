@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Get ownership identifier for domain
 // Azure REST API version: 2022-09-01.
 func LookupDomainOwnershipIdentifier(ctx *pulumi.Context, args *LookupDomainOwnershipIdentifierArgs, opts ...pulumi.InvokeOption) (*LookupDomainOwnershipIdentifierResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainOwnershipIdentifierResult
 	err := ctx.Invoke("azure-native:domainregistration:getDomainOwnershipIdentifier", args, &rv, opts...)
 	if err != nil {

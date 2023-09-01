@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NSX Public IP Block
 func LookupWorkloadNetworkPublicIP(ctx *pulumi.Context, args *LookupWorkloadNetworkPublicIPArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkPublicIPResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadNetworkPublicIPResult
 	err := ctx.Invoke("azure-native:avs/v20220501:getWorkloadNetworkPublicIP", args, &rv, opts...)
 	if err != nil {

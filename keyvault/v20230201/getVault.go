@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Azure key vault.
 func LookupVault(ctx *pulumi.Context, args *LookupVaultArgs, opts ...pulumi.InvokeOption) (*LookupVaultResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVaultResult
 	err := ctx.Invoke("azure-native:keyvault/v20230201:getVault", args, &rv, opts...)
 	if err != nil {

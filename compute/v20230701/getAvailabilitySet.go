@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about an availability set.
 func LookupAvailabilitySet(ctx *pulumi.Context, args *LookupAvailabilitySetArgs, opts ...pulumi.InvokeOption) (*LookupAvailabilitySetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAvailabilitySetResult
 	err := ctx.Invoke("azure-native:compute/v20230701:getAvailabilitySet", args, &rv, opts...)
 	if err != nil {

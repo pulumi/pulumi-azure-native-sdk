@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of an Azure Site Recovery fabric.
 // Azure REST API version: 2023-04-01.
 func LookupReplicationFabric(ctx *pulumi.Context, args *LookupReplicationFabricArgs, opts ...pulumi.InvokeOption) (*LookupReplicationFabricResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicationFabricResult
 	err := ctx.Invoke("azure-native:recoveryservices:getReplicationFabric", args, &rv, opts...)
 	if err != nil {

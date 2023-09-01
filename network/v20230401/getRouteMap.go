@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the details of a RouteMap.
 func LookupRouteMap(ctx *pulumi.Context, args *LookupRouteMapArgs, opts ...pulumi.InvokeOption) (*LookupRouteMapResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouteMapResult
 	err := ctx.Invoke("azure-native:network/v20230401:getRouteMap", args, &rv, opts...)
 	if err != nil {

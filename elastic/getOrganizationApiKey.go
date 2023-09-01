@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
 // Azure REST API version: 2023-06-01.
 func GetOrganizationApiKey(ctx *pulumi.Context, args *GetOrganizationApiKeyArgs, opts ...pulumi.InvokeOption) (*GetOrganizationApiKeyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetOrganizationApiKeyResult
 	err := ctx.Invoke("azure-native:elastic:getOrganizationApiKey", args, &rv, opts...)
 	if err != nil {

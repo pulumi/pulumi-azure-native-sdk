@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets properties of a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 func LookupProviderInstance(ctx *pulumi.Context, args *LookupProviderInstanceArgs, opts ...pulumi.InvokeOption) (*LookupProviderInstanceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProviderInstanceResult
 	err := ctx.Invoke("azure-native:workloads/v20230401:getProviderInstance", args, &rv, opts...)
 	if err != nil {

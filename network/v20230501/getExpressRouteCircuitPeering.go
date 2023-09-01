@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified peering for the express route circuit.
 func LookupExpressRouteCircuitPeering(ctx *pulumi.Context, args *LookupExpressRouteCircuitPeeringArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitPeeringResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExpressRouteCircuitPeeringResult
 	err := ctx.Invoke("azure-native:network/v20230501:getExpressRouteCircuitPeering", args, &rv, opts...)
 	if err != nil {

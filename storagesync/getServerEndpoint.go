@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a ServerEndpoint.
 // Azure REST API version: 2022-06-01.
 func LookupServerEndpoint(ctx *pulumi.Context, args *LookupServerEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServerEndpointResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerEndpointResult
 	err := ctx.Invoke("azure-native:storagesync:getServerEndpoint", args, &rv, opts...)
 	if err != nil {

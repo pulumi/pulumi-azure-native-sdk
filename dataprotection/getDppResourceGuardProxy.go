@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ResourceGuardProxyBaseResource object, used for response and request bodies for ResourceGuardProxy APIs
 // Azure REST API version: 2023-01-01.
 func LookupDppResourceGuardProxy(ctx *pulumi.Context, args *LookupDppResourceGuardProxyArgs, opts ...pulumi.InvokeOption) (*LookupDppResourceGuardProxyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDppResourceGuardProxyResult
 	err := ctx.Invoke("azure-native:dataprotection:getDppResourceGuardProxy", args, &rv, opts...)
 	if err != nil {

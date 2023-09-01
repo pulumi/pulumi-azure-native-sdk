@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the detailed information for a given pipeline run.
 func LookupPipelineRun(ctx *pulumi.Context, args *LookupPipelineRunArgs, opts ...pulumi.InvokeOption) (*LookupPipelineRunResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineRunResult
 	err := ctx.Invoke("azure-native:containerregistry/v20230101preview:getPipelineRun", args, &rv, opts...)
 	if err != nil {

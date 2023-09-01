@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List labs for the user.
 // Azure REST API version: 2018-10-15.
 func ListGlobalUserLabs(ctx *pulumi.Context, args *ListGlobalUserLabsArgs, opts ...pulumi.InvokeOption) (*ListGlobalUserLabsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListGlobalUserLabsResult
 	err := ctx.Invoke("azure-native:labservices:listGlobalUserLabs", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific addon by name.
 func LookupIoTAddon(ctx *pulumi.Context, args *LookupIoTAddonArgs, opts ...pulumi.InvokeOption) (*LookupIoTAddonResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIoTAddonResult
 	err := ctx.Invoke("azure-native:databoxedge/v20230701:getIoTAddon", args, &rv, opts...)
 	if err != nil {

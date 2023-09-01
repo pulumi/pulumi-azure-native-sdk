@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Get the named hostname binding for an app (or deployment slot, if specified).
 // Azure REST API version: 2022-09-01.
 func LookupWebAppHostNameBindingSlot(ctx *pulumi.Context, args *LookupWebAppHostNameBindingSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppHostNameBindingSlotResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppHostNameBindingSlotResult
 	err := ctx.Invoke("azure-native:web:getWebAppHostNameBindingSlot", args, &rv, opts...)
 	if err != nil {

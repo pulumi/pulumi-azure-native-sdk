@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified express route circuit.
 func LookupExpressRouteCircuit(ctx *pulumi.Context, args *LookupExpressRouteCircuitArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExpressRouteCircuitResult
 	err := ctx.Invoke("azure-native:network/v20190601:getExpressRouteCircuit", args, &rv, opts...)
 	if err != nil {

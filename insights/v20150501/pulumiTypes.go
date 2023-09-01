@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // A set of properties that can be defined in the context of a specific item type. Each type may have its own properties.
 type ApplicationInsightsComponentAnalyticsItemProperties struct {

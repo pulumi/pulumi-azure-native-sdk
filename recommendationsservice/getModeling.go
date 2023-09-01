@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns Modeling resources for a given name.
 // Azure REST API version: 2022-02-01.
 func LookupModeling(ctx *pulumi.Context, args *LookupModelingArgs, opts ...pulumi.InvokeOption) (*LookupModelingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupModelingResult
 	err := ctx.Invoke("azure-native:recommendationsservice:getModeling", args, &rv, opts...)
 	if err != nil {

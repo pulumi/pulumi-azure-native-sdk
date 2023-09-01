@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the information about the volume resource with the given name. The information include the description and other properties of the volume.
 // Azure REST API version: 2018-09-01-preview.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:servicefabricmesh:getVolume", args, &rv, opts...)
 	if err != nil {

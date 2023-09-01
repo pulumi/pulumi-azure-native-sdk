@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // [Deprecated] Get a Private Atlas resource.
 // Azure REST API version: 2020-02-01-preview.
 func LookupPrivateAtlase(ctx *pulumi.Context, args *LookupPrivateAtlaseArgs, opts ...pulumi.InvokeOption) (*LookupPrivateAtlaseResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateAtlaseResult
 	err := ctx.Invoke("azure-native:maps:getPrivateAtlase", args, &rv, opts...)
 	if err != nil {

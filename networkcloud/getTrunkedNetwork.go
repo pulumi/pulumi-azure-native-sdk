@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of the provided trunked network.
 // Azure REST API version: 2023-05-01-preview.
 func LookupTrunkedNetwork(ctx *pulumi.Context, args *LookupTrunkedNetworkArgs, opts ...pulumi.InvokeOption) (*LookupTrunkedNetworkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTrunkedNetworkResult
 	err := ctx.Invoke("azure-native:networkcloud:getTrunkedNetwork", args, &rv, opts...)
 	if err != nil {

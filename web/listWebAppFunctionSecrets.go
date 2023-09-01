@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Get function secrets for a function in a web site, or a deployment slot.
 // Azure REST API version: 2022-09-01.
 func ListWebAppFunctionSecrets(ctx *pulumi.Context, args *ListWebAppFunctionSecretsArgs, opts ...pulumi.InvokeOption) (*ListWebAppFunctionSecretsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppFunctionSecretsResult
 	err := ctx.Invoke("azure-native:web:listWebAppFunctionSecrets", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the list of currently active sessions on the Bastion.
 // Azure REST API version: 2023-02-01.
 func GetActiveSessions(ctx *pulumi.Context, args *GetActiveSessionsArgs, opts ...pulumi.InvokeOption) (*GetActiveSessionsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetActiveSessionsResult
 	err := ctx.Invoke("azure-native:network:getActiveSessions", args, &rv, opts...)
 	if err != nil {

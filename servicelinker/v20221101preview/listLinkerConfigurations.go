@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // list source configurations for a Linker.
 func ListLinkerConfigurations(ctx *pulumi.Context, args *ListLinkerConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListLinkerConfigurationsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListLinkerConfigurationsResult
 	err := ctx.Invoke("azure-native:servicelinker/v20221101preview:listLinkerConfigurations", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List all the subscriptions in the private store context
 func ListPrivateStoreSubscriptionsContext(ctx *pulumi.Context, args *ListPrivateStoreSubscriptionsContextArgs, opts ...pulumi.InvokeOption) (*ListPrivateStoreSubscriptionsContextResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListPrivateStoreSubscriptionsContextResult
 	err := ctx.Invoke("azure-native:marketplace/v20220301:listPrivateStoreSubscriptionsContext", args, &rv, opts...)
 	if err != nil {

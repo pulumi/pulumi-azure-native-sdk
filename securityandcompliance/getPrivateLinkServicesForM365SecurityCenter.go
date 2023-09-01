@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the metadata of a privateLinkServicesForM365SecurityCenter resource.
 // Azure REST API version: 2021-03-08.
 func LookupPrivateLinkServicesForM365SecurityCenter(ctx *pulumi.Context, args *LookupPrivateLinkServicesForM365SecurityCenterArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServicesForM365SecurityCenterResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkServicesForM365SecurityCenterResult
 	err := ctx.Invoke("azure-native:securityandcompliance:getPrivateLinkServicesForM365SecurityCenter", args, &rv, opts...)
 	if err != nil {

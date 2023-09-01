@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Container App.
 // Azure REST API version: 2022-10-01.
 func LookupContainerApp(ctx *pulumi.Context, args *LookupContainerAppArgs, opts ...pulumi.InvokeOption) (*LookupContainerAppResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerAppResult
 	err := ctx.Invoke("azure-native:app:getContainerApp", args, &rv, opts...)
 	if err != nil {

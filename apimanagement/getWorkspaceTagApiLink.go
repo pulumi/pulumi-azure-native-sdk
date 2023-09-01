@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the API link for the tag.
 // Azure REST API version: 2022-09-01-preview.
 func LookupWorkspaceTagApiLink(ctx *pulumi.Context, args *LookupWorkspaceTagApiLinkArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceTagApiLinkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceTagApiLinkResult
 	err := ctx.Invoke("azure-native:apimanagement:getWorkspaceTagApiLink", args, &rv, opts...)
 	if err != nil {

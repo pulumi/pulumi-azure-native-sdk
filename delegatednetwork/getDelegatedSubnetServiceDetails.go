@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details about the specified dnc DelegatedSubnet Link.
 // Azure REST API version: 2021-03-15.
 func LookupDelegatedSubnetServiceDetails(ctx *pulumi.Context, args *LookupDelegatedSubnetServiceDetailsArgs, opts ...pulumi.InvokeOption) (*LookupDelegatedSubnetServiceDetailsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDelegatedSubnetServiceDetailsResult
 	err := ctx.Invoke("azure-native:delegatednetwork:getDelegatedSubnetServiceDetails", args, &rv, opts...)
 	if err != nil {

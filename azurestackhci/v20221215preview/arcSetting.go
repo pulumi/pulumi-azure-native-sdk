@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,8 +106,12 @@ func NewArcSetting(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230301:ArcSetting"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230601:ArcSetting"),
+		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource ArcSetting
 	err := ctx.RegisterResource("azure-native:azurestackhci/v20221215preview:ArcSetting", name, args, &resource, opts...)
 	if err != nil {

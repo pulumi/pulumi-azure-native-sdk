@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a file test result for the matching test
 func GetTestResultFile(ctx *pulumi.Context, args *GetTestResultFileArgs, opts ...pulumi.InvokeOption) (*GetTestResultFileResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetTestResultFileResult
 	err := ctx.Invoke("azure-native:insights/v20200210preview:getTestResultFile", args, &rv, opts...)
 	if err != nil {

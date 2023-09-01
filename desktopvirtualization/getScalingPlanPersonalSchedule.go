@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a ScalingPlanPersonalSchedule.
 // Azure REST API version: 2023-07-07-preview.
 func LookupScalingPlanPersonalSchedule(ctx *pulumi.Context, args *LookupScalingPlanPersonalScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScalingPlanPersonalScheduleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScalingPlanPersonalScheduleResult
 	err := ctx.Invoke("azure-native:desktopvirtualization:getScalingPlanPersonalSchedule", args, &rv, opts...)
 	if err != nil {

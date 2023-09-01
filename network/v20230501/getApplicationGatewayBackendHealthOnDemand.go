@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the backend health for given combination of backend pool and http setting of the specified application gateway in a resource group.
 func GetApplicationGatewayBackendHealthOnDemand(ctx *pulumi.Context, args *GetApplicationGatewayBackendHealthOnDemandArgs, opts ...pulumi.InvokeOption) (*GetApplicationGatewayBackendHealthOnDemandResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetApplicationGatewayBackendHealthOnDemandResult
 	err := ctx.Invoke("azure-native:network/v20230501:getApplicationGatewayBackendHealthOnDemand", args, &rv, opts...)
 	if err != nil {

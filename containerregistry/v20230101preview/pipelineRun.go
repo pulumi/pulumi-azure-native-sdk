@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,8 +73,12 @@ func NewPipelineRun(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20230601preview:PipelineRun"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20230801preview:PipelineRun"),
+		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource PipelineRun
 	err := ctx.RegisterResource("azure-native:containerregistry/v20230101preview:PipelineRun", name, args, &resource, opts...)
 	if err != nil {

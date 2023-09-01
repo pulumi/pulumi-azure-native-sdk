@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the supported optimization types for the current profile. A user can create an endpoint with an optimization type from the listed values.
 func GetProfileSupportedOptimizationTypes(ctx *pulumi.Context, args *GetProfileSupportedOptimizationTypesArgs, opts ...pulumi.InvokeOption) (*GetProfileSupportedOptimizationTypesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetProfileSupportedOptimizationTypesResult
 	err := ctx.Invoke("azure-native:cdn/v20230501:getProfileSupportedOptimizationTypes", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Custom domain analysis.
 // Azure REST API version: 2022-10-01.
 func ListContainerAppCustomHostNameAnalysis(ctx *pulumi.Context, args *ListContainerAppCustomHostNameAnalysisArgs, opts ...pulumi.InvokeOption) (*ListContainerAppCustomHostNameAnalysisResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListContainerAppCustomHostNameAnalysisResult
 	err := ctx.Invoke("azure-native:app:listContainerAppCustomHostNameAnalysis", args, &rv, opts...)
 	if err != nil {

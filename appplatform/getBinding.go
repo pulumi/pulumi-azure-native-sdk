@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Binding and its properties.
 // Azure REST API version: 2023-05-01-preview.
 func LookupBinding(ctx *pulumi.Context, args *LookupBindingArgs, opts ...pulumi.InvokeOption) (*LookupBindingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBindingResult
 	err := ctx.Invoke("azure-native:appplatform:getBinding", args, &rv, opts...)
 	if err != nil {

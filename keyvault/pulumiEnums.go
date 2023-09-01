@@ -264,12 +264,14 @@ const (
 	KeyPermissionsSetrotationpolicy = KeyPermissions("setrotationpolicy")
 )
 
-// The type of action.
+// The type of the action.
 type KeyRotationPolicyActionType string
 
 const (
-	KeyRotationPolicyActionTypeRotate = KeyRotationPolicyActionType("rotate")
-	KeyRotationPolicyActionTypeNotify = KeyRotationPolicyActionType("notify")
+	// Rotate the key based on the key policy. Key Vault only. Managed HSM uses camelCase 'rotate' instead.
+	KeyRotationPolicyActionTypeRotate = KeyRotationPolicyActionType("Rotate")
+	// Trigger Event Grid events. Defaults to 30 days before expiry. Key Vault only.
+	KeyRotationPolicyActionTypeNotify = KeyRotationPolicyActionType("Notify")
 )
 
 func (KeyRotationPolicyActionType) ElementType() reflect.Type {

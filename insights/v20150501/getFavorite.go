@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a single favorite by its FavoriteId, defined within an Application Insights component.
 func LookupFavorite(ctx *pulumi.Context, args *LookupFavoriteArgs, opts ...pulumi.InvokeOption) (*LookupFavoriteResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFavoriteResult
 	err := ctx.Invoke("azure-native:insights/v20150501:getFavorite", args, &rv, opts...)
 	if err != nil {

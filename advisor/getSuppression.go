@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Obtains the details of a suppression.
 // Azure REST API version: 2023-01-01.
 func LookupSuppression(ctx *pulumi.Context, args *LookupSuppressionArgs, opts ...pulumi.InvokeOption) (*LookupSuppressionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSuppressionResult
 	err := ctx.Invoke("azure-native:advisor:getSuppression", args, &rv, opts...)
 	if err != nil {

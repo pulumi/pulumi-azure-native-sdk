@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a database.
 func LookupReadWriteDatabase(ctx *pulumi.Context, args *LookupReadWriteDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadWriteDatabaseResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReadWriteDatabaseResult
 	err := ctx.Invoke("azure-native:kusto/v20230502:getReadWriteDatabase", args, &rv, opts...)
 	if err != nil {

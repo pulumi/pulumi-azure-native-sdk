@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a DataSetMapping in a shareSubscription
 func LookupBlobStorageAccountDataSetMapping(ctx *pulumi.Context, args *LookupBlobStorageAccountDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupBlobStorageAccountDataSetMappingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBlobStorageAccountDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20201001preview:getBlobStorageAccountDataSetMapping", args, &rv, opts...)
 	if err != nil {

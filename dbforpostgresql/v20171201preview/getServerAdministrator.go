@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a AAD server administrator.
 func LookupServerAdministrator(ctx *pulumi.Context, args *LookupServerAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupServerAdministratorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerAdministratorResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20171201preview:getServerAdministrator", args, &rv, opts...)
 	if err != nil {

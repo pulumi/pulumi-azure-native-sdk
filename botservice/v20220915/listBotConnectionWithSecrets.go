@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Connection Setting registration for a Bot Service
 func ListBotConnectionWithSecrets(ctx *pulumi.Context, args *ListBotConnectionWithSecretsArgs, opts ...pulumi.InvokeOption) (*ListBotConnectionWithSecretsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListBotConnectionWithSecretsResult
 	err := ctx.Invoke("azure-native:botservice/v20220915:listBotConnectionWithSecrets", args, &rv, opts...)
 	if err != nil {

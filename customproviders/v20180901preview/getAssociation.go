@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an association.
 func LookupAssociation(ctx *pulumi.Context, args *LookupAssociationArgs, opts ...pulumi.InvokeOption) (*LookupAssociationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssociationResult
 	err := ctx.Invoke("azure-native:customproviders/v20180901preview:getAssociation", args, &rv, opts...)
 	if err != nil {

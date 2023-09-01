@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the properties of the specified volume name.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult
 	err := ctx.Invoke("azure-native:storsimple/v20170601:getVolume", args, &rv, opts...)
 	if err != nil {

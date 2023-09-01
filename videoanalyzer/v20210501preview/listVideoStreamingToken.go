@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Generates a streaming token used for authenticating video playback.
 func ListVideoStreamingToken(ctx *pulumi.Context, args *ListVideoStreamingTokenArgs, opts ...pulumi.InvokeOption) (*ListVideoStreamingTokenResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListVideoStreamingTokenResult
 	err := ctx.Invoke("azure-native:videoanalyzer/v20210501preview:listVideoStreamingToken", args, &rv, opts...)
 	if err != nil {

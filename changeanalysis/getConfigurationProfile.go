@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A profile object that contains change analysis configuration, such as notification settings, for this subscription
 // Azure REST API version: 2020-04-01-preview.
 func LookupConfigurationProfile(ctx *pulumi.Context, args *LookupConfigurationProfileArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfileResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationProfileResult
 	err := ctx.Invoke("azure-native:changeanalysis:getConfigurationProfile", args, &rv, opts...)
 	if err != nil {

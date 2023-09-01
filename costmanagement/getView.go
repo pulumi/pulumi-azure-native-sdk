@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the view by view name.
 // Azure REST API version: 2023-03-01.
 func LookupView(ctx *pulumi.Context, args *LookupViewArgs, opts ...pulumi.InvokeOption) (*LookupViewResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupViewResult
 	err := ctx.Invoke("azure-native:costmanagement:getView", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the log profile.
 // Azure REST API version: 2016-03-01.
 func LookupLogProfile(ctx *pulumi.Context, args *LookupLogProfileArgs, opts ...pulumi.InvokeOption) (*LookupLogProfileResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogProfileResult
 	err := ctx.Invoke("azure-native:insights:getLogProfile", args, &rv, opts...)
 	if err != nil {

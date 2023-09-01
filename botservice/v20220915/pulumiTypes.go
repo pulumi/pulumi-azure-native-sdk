@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // AcsChat channel definition
 type AcsChatChannel struct {
@@ -4313,7 +4316,7 @@ func (val *WebChatSite) Defaults() *WebChatSite {
 		isWebChatSpeechEnabled_ := false
 		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
 	}
-	if isZero(tmp.IsWebchatPreviewEnabled) {
+	if utilities.IsZero(tmp.IsWebchatPreviewEnabled) {
 		tmp.IsWebchatPreviewEnabled = false
 	}
 	return &tmp
@@ -4371,7 +4374,7 @@ func (val *WebChatSiteResponse) Defaults() *WebChatSiteResponse {
 		isWebChatSpeechEnabled_ := false
 		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
 	}
-	if isZero(tmp.IsWebchatPreviewEnabled) {
+	if utilities.IsZero(tmp.IsWebchatPreviewEnabled) {
 		tmp.IsWebchatPreviewEnabled = false
 	}
 	return &tmp

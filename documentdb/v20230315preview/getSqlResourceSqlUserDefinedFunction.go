@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
 func LookupSqlResourceSqlUserDefinedFunction(ctx *pulumi.Context, args *LookupSqlResourceSqlUserDefinedFunctionArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlUserDefinedFunctionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlResourceSqlUserDefinedFunctionResult
 	err := ctx.Invoke("azure-native:documentdb/v20230315preview:getSqlResourceSqlUserDefinedFunction", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Response of a list operation.
 // Azure REST API version: 2023-06-01.
 func ListVMHost(ctx *pulumi.Context, args *ListVMHostArgs, opts ...pulumi.InvokeOption) (*ListVMHostResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListVMHostResult
 	err := ctx.Invoke("azure-native:elastic:listVMHost", args, &rv, opts...)
 	if err != nil {

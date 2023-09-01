@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Settings about where we should store your security data and logs. If the result is empty, it means that no custom-workspace configuration was set
 func LookupWorkspaceSetting(ctx *pulumi.Context, args *LookupWorkspaceSettingArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceSettingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceSettingResult
 	err := ctx.Invoke("azure-native:security/v20170801preview:getWorkspaceSetting", args, &rv, opts...)
 	if err != nil {

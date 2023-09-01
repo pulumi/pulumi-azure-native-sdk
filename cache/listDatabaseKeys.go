@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the access keys for the RedisEnterprise database.
 // Azure REST API version: 2023-03-01-preview.
 func ListDatabaseKeys(ctx *pulumi.Context, args *ListDatabaseKeysArgs, opts ...pulumi.InvokeOption) (*ListDatabaseKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDatabaseKeysResult
 	err := ctx.Invoke("azure-native:cache:listDatabaseKeys", args, &rv, opts...)
 	if err != nil {

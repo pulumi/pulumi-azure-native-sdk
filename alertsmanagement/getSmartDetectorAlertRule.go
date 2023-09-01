@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a specific Smart Detector alert rule.
 // Azure REST API version: 2021-04-01.
 func LookupSmartDetectorAlertRule(ctx *pulumi.Context, args *LookupSmartDetectorAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupSmartDetectorAlertRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSmartDetectorAlertRuleResult
 	err := ctx.Invoke("azure-native:alertsmanagement:getSmartDetectorAlertRule", args, &rv, opts...)
 	if err != nil {

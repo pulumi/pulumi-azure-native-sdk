@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Service Fabric managed application type version resource created or in the process of being created in the Service Fabric managed application type name resource.
 func LookupManagedClusterApplicationTypeVersion(ctx *pulumi.Context, args *LookupManagedClusterApplicationTypeVersionArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterApplicationTypeVersionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedClusterApplicationTypeVersionResult
 	err := ctx.Invoke("azure-native:servicefabric/v20230301preview:getManagedClusterApplicationTypeVersion", args, &rv, opts...)
 	if err != nil {

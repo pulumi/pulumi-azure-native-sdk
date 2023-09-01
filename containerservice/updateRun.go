@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,8 +57,12 @@ func NewUpdateRun(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230315preview:UpdateRun"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230615preview:UpdateRun"),
+		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource UpdateRun
 	err := ctx.RegisterResource("azure-native:containerservice:UpdateRun", name, args, &resource, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the detailed information for a given task run.
 func LookupTaskRun(ctx *pulumi.Context, args *LookupTaskRunArgs, opts ...pulumi.InvokeOption) (*LookupTaskRunResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTaskRunResult
 	err := ctx.Invoke("azure-native:containerregistry/v20190601preview:getTaskRun", args, &rv, opts...)
 	if err != nil {

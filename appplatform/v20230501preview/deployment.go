@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -92,8 +93,12 @@ func NewDeployment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230301preview:Deployment"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230701preview:Deployment"),
+		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Deployment
 	err := ctx.RegisterResource("azure-native:appplatform/v20230501preview:Deployment", name, args, &resource, opts...)
 	if err != nil {

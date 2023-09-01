@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve a Prometheus rule group definition.
 // Azure REST API version: 2023-03-01.
 func LookupPrometheusRuleGroup(ctx *pulumi.Context, args *LookupPrometheusRuleGroupArgs, opts ...pulumi.InvokeOption) (*LookupPrometheusRuleGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrometheusRuleGroupResult
 	err := ctx.Invoke("azure-native:alertsmanagement:getPrometheusRuleGroup", args, &rv, opts...)
 	if err != nil {

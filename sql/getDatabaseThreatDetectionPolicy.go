@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a database's threat detection policy.
 // Azure REST API version: 2014-04-01.
 func LookupDatabaseThreatDetectionPolicy(ctx *pulumi.Context, args *LookupDatabaseThreatDetectionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseThreatDetectionPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseThreatDetectionPolicyResult
 	err := ctx.Invoke("azure-native:sql:getDatabaseThreatDetectionPolicy", args, &rv, opts...)
 	if err != nil {

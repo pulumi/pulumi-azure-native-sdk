@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a storage insight instance.
 // Azure REST API version: 2020-08-01.
 func LookupStorageInsightConfig(ctx *pulumi.Context, args *LookupStorageInsightConfigArgs, opts ...pulumi.InvokeOption) (*LookupStorageInsightConfigResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageInsightConfigResult
 	err := ctx.Invoke("azure-native:operationalinsights:getStorageInsightConfig", args, &rv, opts...)
 	if err != nil {

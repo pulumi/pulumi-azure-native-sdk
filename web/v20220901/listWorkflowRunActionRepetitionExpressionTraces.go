@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists a workflow run expression trace.
 func ListWorkflowRunActionRepetitionExpressionTraces(ctx *pulumi.Context, args *ListWorkflowRunActionRepetitionExpressionTracesArgs, opts ...pulumi.InvokeOption) (*ListWorkflowRunActionRepetitionExpressionTracesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkflowRunActionRepetitionExpressionTracesResult
 	err := ctx.Invoke("azure-native:web/v20220901:listWorkflowRunActionRepetitionExpressionTraces", args, &rv, opts...)
 	if err != nil {

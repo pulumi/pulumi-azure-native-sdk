@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a host pool.
 // Azure REST API version: 2022-09-09.
 func LookupHostPool(ctx *pulumi.Context, args *LookupHostPoolArgs, opts ...pulumi.InvokeOption) (*LookupHostPoolResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHostPoolResult
 	err := ctx.Invoke("azure-native:desktopvirtualization:getHostPool", args, &rv, opts...)
 	if err != nil {

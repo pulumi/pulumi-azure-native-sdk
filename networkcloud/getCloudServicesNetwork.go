@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of the provided cloud services network.
 // Azure REST API version: 2023-05-01-preview.
 func LookupCloudServicesNetwork(ctx *pulumi.Context, args *LookupCloudServicesNetworkArgs, opts ...pulumi.InvokeOption) (*LookupCloudServicesNetworkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudServicesNetworkResult
 	err := ctx.Invoke("azure-native:networkcloud:getCloudServicesNetwork", args, &rv, opts...)
 	if err != nil {

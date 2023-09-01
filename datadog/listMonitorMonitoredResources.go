@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Response of a list operation.
 // Azure REST API version: 2022-06-01.
 func ListMonitorMonitoredResources(ctx *pulumi.Context, args *ListMonitorMonitoredResourcesArgs, opts ...pulumi.InvokeOption) (*ListMonitorMonitoredResourcesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListMonitorMonitoredResourcesResult
 	err := ctx.Invoke("azure-native:datadog:listMonitorMonitoredResources", args, &rv, opts...)
 	if err != nil {

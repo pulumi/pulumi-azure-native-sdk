@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the details of a RouteTable.
 func LookupHubRouteTable(ctx *pulumi.Context, args *LookupHubRouteTableArgs, opts ...pulumi.InvokeOption) (*LookupHubRouteTableResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHubRouteTableResult
 	err := ctx.Invoke("azure-native:network/v20230501:getHubRouteTable", args, &rv, opts...)
 	if err != nil {

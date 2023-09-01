@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func ListWorkspaceConnectionSecrets(ctx *pulumi.Context, args *ListWorkspaceConnectionSecretsArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceConnectionSecretsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkspaceConnectionSecretsResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20230601preview:listWorkspaceConnectionSecrets", args, &rv, opts...)
 	if err != nil {

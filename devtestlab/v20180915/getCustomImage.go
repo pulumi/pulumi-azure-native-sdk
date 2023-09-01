@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get custom image.
 func LookupCustomImage(ctx *pulumi.Context, args *LookupCustomImageArgs, opts ...pulumi.InvokeOption) (*LookupCustomImageResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomImageResult
 	err := ctx.Invoke("azure-native:devtestlab/v20180915:getCustomImage", args, &rv, opts...)
 	if err != nil {

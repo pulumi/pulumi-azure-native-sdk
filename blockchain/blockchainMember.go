@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,6 +73,7 @@ func NewBlockchainMember(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource BlockchainMember
 	err := ctx.RegisterResource("azure-native:blockchain:BlockchainMember", name, args, &resource, opts...)
 	if err != nil {

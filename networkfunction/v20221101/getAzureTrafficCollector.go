@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Azure Traffic Collector in a specified resource group
 func LookupAzureTrafficCollector(ctx *pulumi.Context, args *LookupAzureTrafficCollectorArgs, opts ...pulumi.InvokeOption) (*LookupAzureTrafficCollectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureTrafficCollectorResult
 	err := ctx.Invoke("azure-native:networkfunction/v20221101:getAzureTrafficCollector", args, &rv, opts...)
 	if err != nil {

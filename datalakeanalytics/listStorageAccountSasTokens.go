@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the SAS token associated with the specified Data Lake Analytics and Azure Storage account and container combination.
 // Azure REST API version: 2019-11-01-preview.
 func ListStorageAccountSasTokens(ctx *pulumi.Context, args *ListStorageAccountSasTokensArgs, opts ...pulumi.InvokeOption) (*ListStorageAccountSasTokensResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListStorageAccountSasTokensResult
 	err := ctx.Invoke("azure-native:datalakeanalytics:listStorageAccountSasTokens", args, &rv, opts...)
 	if err != nil {

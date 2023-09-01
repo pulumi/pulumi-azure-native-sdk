@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the API specified by its identifier.
 func LookupWorkspaceApi(ctx *pulumi.Context, args *LookupWorkspaceApiArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceApiResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceApiResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220901preview:getWorkspaceApi", args, &rv, opts...)
 	if err != nil {

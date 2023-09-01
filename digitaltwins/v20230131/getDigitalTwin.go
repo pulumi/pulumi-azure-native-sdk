@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get DigitalTwinsInstances resource.
 func LookupDigitalTwin(ctx *pulumi.Context, args *LookupDigitalTwinArgs, opts ...pulumi.InvokeOption) (*LookupDigitalTwinResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDigitalTwinResult
 	err := ctx.Invoke("azure-native:digitaltwins/v20230131:getDigitalTwin", args, &rv, opts...)
 	if err != nil {

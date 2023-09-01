@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // The policy used to clean up unused versions. When the policy is not specified explicitly, the default unused application versions to keep will be 3.
 type ApplicationTypeVersionsCleanupPolicy struct {

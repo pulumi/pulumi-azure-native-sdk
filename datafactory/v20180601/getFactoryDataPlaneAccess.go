@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Data Plane access.
 func GetFactoryDataPlaneAccess(ctx *pulumi.Context, args *GetFactoryDataPlaneAccessArgs, opts ...pulumi.InvokeOption) (*GetFactoryDataPlaneAccessResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetFactoryDataPlaneAccessResult
 	err := ctx.Invoke("azure-native:datafactory/v20180601:getFactoryDataPlaneAccess", args, &rv, opts...)
 	if err != nil {

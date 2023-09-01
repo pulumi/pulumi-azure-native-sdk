@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an integration account certificate.
 func LookupIntegrationAccountCertificate(ctx *pulumi.Context, args *LookupIntegrationAccountCertificateArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountCertificateResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationAccountCertificateResult
 	err := ctx.Invoke("azure-native:logic/v20190501:getIntegrationAccountCertificate", args, &rv, opts...)
 	if err != nil {

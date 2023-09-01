@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 type UserApiKeyResponsePropertiesResponse struct {
 	// The User Api Key Generated based on GenerateApiKey flag. This is applicable for non-Portal clients only.

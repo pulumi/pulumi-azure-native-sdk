@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Transform.
 // Azure REST API version: 2022-07-01.
 func LookupTransform(ctx *pulumi.Context, args *LookupTransformArgs, opts ...pulumi.InvokeOption) (*LookupTransformResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTransformResult
 	err := ctx.Invoke("azure-native:media:getTransform", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get on-premise IoT sensor
 func LookupOnPremiseSensor(ctx *pulumi.Context, args *LookupOnPremiseSensorArgs, opts ...pulumi.InvokeOption) (*LookupOnPremiseSensorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOnPremiseSensorResult
 	err := ctx.Invoke("azure-native:iotsecurity/v20210201preview:getOnPremiseSensor", args, &rv, opts...)
 	if err != nil {

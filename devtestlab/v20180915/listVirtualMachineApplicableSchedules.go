@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the applicable start/stop schedules, if any.
 func ListVirtualMachineApplicableSchedules(ctx *pulumi.Context, args *ListVirtualMachineApplicableSchedulesArgs, opts ...pulumi.InvokeOption) (*ListVirtualMachineApplicableSchedulesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListVirtualMachineApplicableSchedulesResult
 	err := ctx.Invoke("azure-native:devtestlab/v20180915:listVirtualMachineApplicableSchedules", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure REST API version: 2023-01-15.
 func GetRecoveryPointAccessToken(ctx *pulumi.Context, args *GetRecoveryPointAccessTokenArgs, opts ...pulumi.InvokeOption) (*GetRecoveryPointAccessTokenResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetRecoveryPointAccessTokenResult
 	err := ctx.Invoke("azure-native:recoveryservices:getRecoveryPointAccessToken", args, &rv, opts...)
 	if err != nil {

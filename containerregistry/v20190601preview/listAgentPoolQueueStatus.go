@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the count of queued runs for a given agent pool.
 func ListAgentPoolQueueStatus(ctx *pulumi.Context, args *ListAgentPoolQueueStatusArgs, opts ...pulumi.InvokeOption) (*ListAgentPoolQueueStatusResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAgentPoolQueueStatusResult
 	err := ctx.Invoke("azure-native:containerregistry/v20190601preview:listAgentPoolQueueStatus", args, &rv, opts...)
 	if err != nil {

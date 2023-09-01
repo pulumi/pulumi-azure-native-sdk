@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of a system topic.
 func LookupSystemTopic(ctx *pulumi.Context, args *LookupSystemTopicArgs, opts ...pulumi.InvokeOption) (*LookupSystemTopicResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSystemTopicResult
 	err := ctx.Invoke("azure-native:eventgrid/v20230601preview:getSystemTopic", args, &rv, opts...)
 	if err != nil {

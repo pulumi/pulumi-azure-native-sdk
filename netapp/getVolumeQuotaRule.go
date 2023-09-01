@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get details of the specified quota rule
 // Azure REST API version: 2022-11-01.
 func LookupVolumeQuotaRule(ctx *pulumi.Context, args *LookupVolumeQuotaRuleArgs, opts ...pulumi.InvokeOption) (*LookupVolumeQuotaRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeQuotaRuleResult
 	err := ctx.Invoke("azure-native:netapp:getVolumeQuotaRule", args, &rv, opts...)
 	if err != nil {

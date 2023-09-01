@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The list of the EngagementFabric account keys
 // Azure REST API version: 2018-09-01-preview.
 func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListAccountKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccountKeysResult
 	err := ctx.Invoke("azure-native:engagementfabric:listAccountKeys", args, &rv, opts...)
 	if err != nil {

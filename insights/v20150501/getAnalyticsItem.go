@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific Analytics Items defined within an Application Insights component.
 func LookupAnalyticsItem(ctx *pulumi.Context, args *LookupAnalyticsItemArgs, opts ...pulumi.InvokeOption) (*LookupAnalyticsItemResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnalyticsItemResult
 	err := ctx.Invoke("azure-native:insights/v20150501:getAnalyticsItem", args, &rv, opts...)
 	if err != nil {

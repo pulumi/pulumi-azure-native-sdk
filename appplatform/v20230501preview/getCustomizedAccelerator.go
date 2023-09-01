@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the customized accelerator.
 func LookupCustomizedAccelerator(ctx *pulumi.Context, args *LookupCustomizedAcceleratorArgs, opts ...pulumi.InvokeOption) (*LookupCustomizedAcceleratorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomizedAcceleratorResult
 	err := ctx.Invoke("azure-native:appplatform/v20230501preview:getCustomizedAccelerator", args, &rv, opts...)
 	if err != nil {

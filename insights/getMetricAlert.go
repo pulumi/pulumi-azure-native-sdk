@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve an alert rule definition.
 // Azure REST API version: 2018-03-01.
 func LookupMetricAlert(ctx *pulumi.Context, args *LookupMetricAlertArgs, opts ...pulumi.InvokeOption) (*LookupMetricAlertResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetricAlertResult
 	err := ctx.Invoke("azure-native:insights:getMetricAlert", args, &rv, opts...)
 	if err != nil {

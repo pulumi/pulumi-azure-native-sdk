@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details about the specified input.
 // Azure REST API version: 2020-03-01.
 func LookupInput(ctx *pulumi.Context, args *LookupInputArgs, opts ...pulumi.InvokeOption) (*LookupInputResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInputResult
 	err := ctx.Invoke("azure-native:streamanalytics:getInput", args, &rv, opts...)
 	if err != nil {

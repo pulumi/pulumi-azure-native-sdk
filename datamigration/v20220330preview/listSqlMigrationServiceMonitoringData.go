@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the registered Integration Runtime nodes and their monitoring data for a given Database Migration Service.
 func ListSqlMigrationServiceMonitoringData(ctx *pulumi.Context, args *ListSqlMigrationServiceMonitoringDataArgs, opts ...pulumi.InvokeOption) (*ListSqlMigrationServiceMonitoringDataResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSqlMigrationServiceMonitoringDataResult
 	err := ctx.Invoke("azure-native:datamigration/v20220330preview:listSqlMigrationServiceMonitoringData", args, &rv, opts...)
 	if err != nil {

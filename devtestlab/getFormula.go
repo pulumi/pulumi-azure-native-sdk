@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get formula.
 // Azure REST API version: 2018-09-15.
 func LookupFormula(ctx *pulumi.Context, args *LookupFormulaArgs, opts ...pulumi.InvokeOption) (*LookupFormulaResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFormulaResult
 	err := ctx.Invoke("azure-native:devtestlab:getFormula", args, &rv, opts...)
 	if err != nil {

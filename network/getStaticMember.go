@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified static member.
 // Azure REST API version: 2023-02-01.
 func LookupStaticMember(ctx *pulumi.Context, args *LookupStaticMemberArgs, opts ...pulumi.InvokeOption) (*LookupStaticMemberResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticMemberResult
 	err := ctx.Invoke("azure-native:network:getStaticMember", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the subscriptionId along with its provisioning state for being associated with the GroupQuotasEntity.
 func LookupGroupQuotaSubscription(ctx *pulumi.Context, args *LookupGroupQuotaSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupGroupQuotaSubscriptionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupQuotaSubscriptionResult
 	err := ctx.Invoke("azure-native:quota/v20230601preview:getGroupQuotaSubscription", args, &rv, opts...)
 	if err != nil {

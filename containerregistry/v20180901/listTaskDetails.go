@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a task with extended information that includes all secrets.
 func ListTaskDetails(ctx *pulumi.Context, args *ListTaskDetailsArgs, opts ...pulumi.InvokeOption) (*ListTaskDetailsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListTaskDetailsResult
 	err := ctx.Invoke("azure-native:containerregistry/v20180901:listTaskDetails", args, &rv, opts...)
 	if err != nil {

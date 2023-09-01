@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Subscription keys.
 func ListWorkspaceSubscriptionSecrets(ctx *pulumi.Context, args *ListWorkspaceSubscriptionSecretsArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceSubscriptionSecretsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkspaceSubscriptionSecretsResult
 	err := ctx.Invoke("azure-native:apimanagement/v20230301preview:listWorkspaceSubscriptionSecrets", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists connection details for the underlying container resources of an Azure Dev Spaces Controller.
 func ListControllerConnectionDetails(ctx *pulumi.Context, args *ListControllerConnectionDetailsArgs, opts ...pulumi.InvokeOption) (*ListControllerConnectionDetailsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListControllerConnectionDetailsResult
 	err := ctx.Invoke("azure-native:devspaces/v20190401:listControllerConnectionDetails", args, &rv, opts...)
 	if err != nil {

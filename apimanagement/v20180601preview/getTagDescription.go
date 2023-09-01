@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Tag description in scope of API
 func LookupTagDescription(ctx *pulumi.Context, args *LookupTagDescriptionArgs, opts ...pulumi.InvokeOption) (*LookupTagDescriptionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagDescriptionResult
 	err := ctx.Invoke("azure-native:apimanagement/v20180601preview:getTagDescription", args, &rv, opts...)
 	if err != nil {

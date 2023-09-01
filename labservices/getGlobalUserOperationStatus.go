@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the status of long running operation
 // Azure REST API version: 2018-10-15.
 func GetGlobalUserOperationStatus(ctx *pulumi.Context, args *GetGlobalUserOperationStatusArgs, opts ...pulumi.InvokeOption) (*GetGlobalUserOperationStatusResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetGlobalUserOperationStatusResult
 	err := ctx.Invoke("azure-native:labservices:getGlobalUserOperationStatus", args, &rv, opts...)
 	if err != nil {

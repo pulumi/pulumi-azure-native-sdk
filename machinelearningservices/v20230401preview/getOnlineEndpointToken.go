@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Service Token
 func GetOnlineEndpointToken(ctx *pulumi.Context, args *GetOnlineEndpointTokenArgs, opts ...pulumi.InvokeOption) (*GetOnlineEndpointTokenResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetOnlineEndpointTokenResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20230401preview:getOnlineEndpointToken", args, &rv, opts...)
 	if err != nil {

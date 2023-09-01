@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the kafka configuration for the account
 // Azure REST API version: 2021-12-01.
 func LookupKafkaConfiguration(ctx *pulumi.Context, args *LookupKafkaConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupKafkaConfigurationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKafkaConfigurationResult
 	err := ctx.Invoke("azure-native:purview:getKafkaConfiguration", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 func LookupAFDCustomDomain(ctx *pulumi.Context, args *LookupAFDCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupAFDCustomDomainResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAFDCustomDomainResult
 	err := ctx.Invoke("azure-native:cdn/v20230501:getAFDCustomDomain", args, &rv, opts...)
 	if err != nil {

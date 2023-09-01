@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets properties of a specified share.
 func LookupFileShare(ctx *pulumi.Context, args *LookupFileShareArgs, opts ...pulumi.InvokeOption) (*LookupFileShareResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFileShareResult
 	err := ctx.Invoke("azure-native:storage/v20230101:getFileShare", args, &rv, opts...)
 	if err != nil {

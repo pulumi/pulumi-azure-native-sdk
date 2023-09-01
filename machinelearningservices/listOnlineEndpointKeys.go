@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Keys for endpoint authentication.
 // Azure REST API version: 2023-04-01.
 func ListOnlineEndpointKeys(ctx *pulumi.Context, args *ListOnlineEndpointKeysArgs, opts ...pulumi.InvokeOption) (*ListOnlineEndpointKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListOnlineEndpointKeysResult
 	err := ctx.Invoke("azure-native:machinelearningservices:listOnlineEndpointKeys", args, &rv, opts...)
 	if err != nil {

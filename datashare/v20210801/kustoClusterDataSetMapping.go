@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,6 +81,7 @@ func NewKustoClusterDataSetMapping(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource KustoClusterDataSetMapping
 	err := ctx.RegisterResource("azure-native:datashare/v20210801:KustoClusterDataSetMapping", name, args, &resource, opts...)
 	if err != nil {

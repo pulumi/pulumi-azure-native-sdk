@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the authorization access policy specified by its identifier.
 // Azure REST API version: 2022-08-01.
 func LookupAuthorizationAccessPolicy(ctx *pulumi.Context, args *LookupAuthorizationAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationAccessPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthorizationAccessPolicyResult
 	err := ctx.Invoke("azure-native:apimanagement:getAuthorizationAccessPolicy", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the workload deployment.
 func LookupWorkloadDeployment(ctx *pulumi.Context, args *LookupWorkloadDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadDeploymentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadDeploymentResult
 	err := ctx.Invoke("azure-native:migrate/v20220501preview:getWorkloadDeployment", args, &rv, opts...)
 	if err != nil {

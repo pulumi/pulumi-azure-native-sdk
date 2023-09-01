@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the budget for the scope by budget name.
 func LookupBudget(ctx *pulumi.Context, args *LookupBudgetArgs, opts ...pulumi.InvokeOption) (*LookupBudgetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBudgetResult
 	err := ctx.Invoke("azure-native:costmanagement/v20230401preview:getBudget", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a RedisEnterprise cluster
 func LookupRedisEnterprise(ctx *pulumi.Context, args *LookupRedisEnterpriseArgs, opts ...pulumi.InvokeOption) (*LookupRedisEnterpriseResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRedisEnterpriseResult
 	err := ctx.Invoke("azure-native:cache/v20201001preview:getRedisEnterprise", args, &rv, opts...)
 	if err != nil {

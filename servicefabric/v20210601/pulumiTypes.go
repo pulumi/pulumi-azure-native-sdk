@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Defines a delta health policy used to evaluate the health of an application or one of its child entities when upgrading the cluster.
 type ApplicationDeltaHealthPolicy struct {

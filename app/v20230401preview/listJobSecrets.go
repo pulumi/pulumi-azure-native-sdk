@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Container Apps Job Secrets Collection ARM resource.
 func ListJobSecrets(ctx *pulumi.Context, args *ListJobSecretsArgs, opts ...pulumi.InvokeOption) (*ListJobSecretsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListJobSecretsResult
 	err := ctx.Invoke("azure-native:app/v20230401preview:listJobSecrets", args, &rv, opts...)
 	if err != nil {

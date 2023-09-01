@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists active connectivity configurations in a network manager.
 func ListActiveConnectivityConfigurations(ctx *pulumi.Context, args *ListActiveConnectivityConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListActiveConnectivityConfigurationsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListActiveConnectivityConfigurationsResult
 	err := ctx.Invoke("azure-native:network/v20210501preview:listActiveConnectivityConfigurations", args, &rv, opts...)
 	if err != nil {

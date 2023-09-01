@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List all entities (Management Groups, Subscriptions, etc.) for the authenticated user.
 func GetEntity(ctx *pulumi.Context, args *GetEntityArgs, opts ...pulumi.InvokeOption) (*GetEntityResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetEntityResult
 	err := ctx.Invoke("azure-native:management/v20210401:getEntity", args, &rv, opts...)
 	if err != nil {

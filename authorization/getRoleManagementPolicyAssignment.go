@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the specified role management policy assignment for a resource scope
 // Azure REST API version: 2020-10-01.
 func LookupRoleManagementPolicyAssignment(ctx *pulumi.Context, args *LookupRoleManagementPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupRoleManagementPolicyAssignmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleManagementPolicyAssignmentResult
 	err := ctx.Invoke("azure-native:authorization:getRoleManagementPolicyAssignment", args, &rv, opts...)
 	if err != nil {

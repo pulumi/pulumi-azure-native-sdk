@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List the two keys used to publish to a domain.
 // Azure REST API version: 2022-06-15.
 func ListDomainSharedAccessKeys(ctx *pulumi.Context, args *ListDomainSharedAccessKeysArgs, opts ...pulumi.InvokeOption) (*ListDomainSharedAccessKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDomainSharedAccessKeysResult
 	err := ctx.Invoke("azure-native:eventgrid:listDomainSharedAccessKeys", args, &rv, opts...)
 	if err != nil {

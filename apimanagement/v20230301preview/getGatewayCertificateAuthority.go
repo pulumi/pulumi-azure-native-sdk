@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get assigned Gateway Certificate Authority details.
 func LookupGatewayCertificateAuthority(ctx *pulumi.Context, args *LookupGatewayCertificateAuthorityArgs, opts ...pulumi.InvokeOption) (*LookupGatewayCertificateAuthorityResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewayCertificateAuthorityResult
 	err := ctx.Invoke("azure-native:apimanagement/v20230301preview:getGatewayCertificateAuthority", args, &rv, opts...)
 	if err != nil {

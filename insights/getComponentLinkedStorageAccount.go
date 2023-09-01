@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the current linked storage settings for an Application Insights component.
 // Azure REST API version: 2020-03-01-preview.
 func LookupComponentLinkedStorageAccount(ctx *pulumi.Context, args *LookupComponentLinkedStorageAccountArgs, opts ...pulumi.InvokeOption) (*LookupComponentLinkedStorageAccountResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupComponentLinkedStorageAccountResult
 	err := ctx.Invoke("azure-native:insights:getComponentLinkedStorageAccount", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Front Door with the specified Front Door name under the specified subscription and resource group.
 func LookupFrontDoor(ctx *pulumi.Context, args *LookupFrontDoorArgs, opts ...pulumi.InvokeOption) (*LookupFrontDoorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFrontDoorResult
 	err := ctx.Invoke("azure-native:network/v20210601:getFrontDoor", args, &rv, opts...)
 	if err != nil {

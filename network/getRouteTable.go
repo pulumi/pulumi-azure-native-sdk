@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified route table.
 // Azure REST API version: 2023-02-01.
 func LookupRouteTable(ctx *pulumi.Context, args *LookupRouteTableArgs, opts ...pulumi.InvokeOption) (*LookupRouteTableResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouteTableResult
 	err := ctx.Invoke("azure-native:network:getRouteTable", args, &rv, opts...)
 	if err != nil {

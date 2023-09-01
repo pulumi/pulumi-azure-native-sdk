@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the configured settings for a serial port
 // Azure REST API version: 2018-05-01.
 func LookupSerialPort(ctx *pulumi.Context, args *LookupSerialPortArgs, opts ...pulumi.InvokeOption) (*LookupSerialPortResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSerialPortResult
 	err := ctx.Invoke("azure-native:serialconsole:getSerialPort", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing peering with the specified name under the given subscription and resource group.
 func LookupPeering(ctx *pulumi.Context, args *LookupPeeringArgs, opts ...pulumi.InvokeOption) (*LookupPeeringResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPeeringResult
 	err := ctx.Invoke("azure-native:peering/v20221001:getPeering", args, &rv, opts...)
 	if err != nil {

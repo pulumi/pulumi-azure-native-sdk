@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List SAS credentials of a storage account.
 func ListStorageAccountSAS(ctx *pulumi.Context, args *ListStorageAccountSASArgs, opts ...pulumi.InvokeOption) (*ListStorageAccountSASResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListStorageAccountSASResult
 	err := ctx.Invoke("azure-native:storage/v20230101:listStorageAccountSAS", args, &rv, opts...)
 	if err != nil {

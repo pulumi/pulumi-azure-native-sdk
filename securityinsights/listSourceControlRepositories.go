@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a list of repositories metadata.
 // Azure REST API version: 2023-06-01-preview.
 func ListSourceControlRepositories(ctx *pulumi.Context, args *ListSourceControlRepositoriesArgs, opts ...pulumi.InvokeOption) (*ListSourceControlRepositoriesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSourceControlRepositoriesResult
 	err := ctx.Invoke("azure-native:securityinsights:listSourceControlRepositories", args, &rv, opts...)
 	if err != nil {

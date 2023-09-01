@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.
 // Azure REST API version: 2023-03-01-preview.
 func GetmanagedAzResiliencyStatus(ctx *pulumi.Context, args *GetmanagedAzResiliencyStatusArgs, opts ...pulumi.InvokeOption) (*GetmanagedAzResiliencyStatusResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetmanagedAzResiliencyStatusResult
 	err := ctx.Invoke("azure-native:servicefabric:getmanagedAzResiliencyStatus", args, &rv, opts...)
 	if err != nil {

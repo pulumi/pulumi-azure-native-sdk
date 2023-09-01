@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the identity.
 func LookupUserAssignedIdentity(ctx *pulumi.Context, args *LookupUserAssignedIdentityArgs, opts ...pulumi.InvokeOption) (*LookupUserAssignedIdentityResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserAssignedIdentityResult
 	err := ctx.Invoke("azure-native:managedidentity/v20230131:getUserAssignedIdentity", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a Cognitive Services commitment plan specified by the parameters.
 func LookupSharedCommitmentPlan(ctx *pulumi.Context, args *LookupSharedCommitmentPlanArgs, opts ...pulumi.InvokeOption) (*LookupSharedCommitmentPlanResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSharedCommitmentPlanResult
 	err := ctx.Invoke("azure-native:cognitiveservices/v20230501:getSharedCommitmentPlan", args, &rv, opts...)
 	if err != nil {

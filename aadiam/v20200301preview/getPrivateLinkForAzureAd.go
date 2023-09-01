@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a private link policy with a given name.
 func LookupPrivateLinkForAzureAd(ctx *pulumi.Context, args *LookupPrivateLinkForAzureAdArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkForAzureAdResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkForAzureAdResult
 	err := ctx.Invoke("azure-native:aadiam/v20200301preview:getPrivateLinkForAzureAd", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get all delivery attributes for an event subscription.
 func GetEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *GetEventSubscriptionDeliveryAttributesArgs, opts ...pulumi.InvokeOption) (*GetEventSubscriptionDeliveryAttributesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetEventSubscriptionDeliveryAttributesResult
 	err := ctx.Invoke("azure-native:eventgrid/v20220615:getEventSubscriptionDeliveryAttributes", args, &rv, opts...)
 	if err != nil {

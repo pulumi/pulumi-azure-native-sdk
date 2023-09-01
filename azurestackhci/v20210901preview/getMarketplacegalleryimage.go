@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets marketplacegalleryimages by resource name
 func LookupMarketplacegalleryimage(ctx *pulumi.Context, args *LookupMarketplacegalleryimageArgs, opts ...pulumi.InvokeOption) (*LookupMarketplacegalleryimageResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMarketplacegalleryimageResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getMarketplacegalleryimage", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the application accelerator.
 // Azure REST API version: 2023-05-01-preview.
 func LookupApplicationAccelerator(ctx *pulumi.Context, args *LookupApplicationAcceleratorArgs, opts ...pulumi.InvokeOption) (*LookupApplicationAcceleratorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationAcceleratorResult
 	err := ctx.Invoke("azure-native:appplatform:getApplicationAccelerator", args, &rv, opts...)
 	if err != nil {

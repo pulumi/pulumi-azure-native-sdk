@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get configuration assignment for resource..
 func LookupConfigurationAssignmentsForResourceGroup(ctx *pulumi.Context, args *LookupConfigurationAssignmentsForResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationAssignmentsForResourceGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationAssignmentsForResourceGroupResult
 	err := ctx.Invoke("azure-native:maintenance/v20230401:getConfigurationAssignmentsForResourceGroup", args, &rv, opts...)
 	if err != nil {

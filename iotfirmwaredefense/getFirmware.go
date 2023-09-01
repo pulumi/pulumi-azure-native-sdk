@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get firmware.
 // Azure REST API version: 2023-02-08-preview.
 func LookupFirmware(ctx *pulumi.Context, args *LookupFirmwareArgs, opts ...pulumi.InvokeOption) (*LookupFirmwareResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirmwareResult
 	err := ctx.Invoke("azure-native:iotfirmwaredefense:getFirmware", args, &rv, opts...)
 	if err != nil {

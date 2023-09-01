@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List mongo cluster connection strings. This includes the default connection string using SCRAM-SHA-256, as well as other connection strings supported by the cluster.
 func ListMongoClusterConnectionStrings(ctx *pulumi.Context, args *ListMongoClusterConnectionStringsArgs, opts ...pulumi.InvokeOption) (*ListMongoClusterConnectionStringsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListMongoClusterConnectionStringsResult
 	err := ctx.Invoke("azure-native:documentdb/v20230315preview:listMongoClusterConnectionStrings", args, &rv, opts...)
 	if err != nil {

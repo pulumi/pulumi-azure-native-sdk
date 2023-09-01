@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Describes the horizontal auto scaling mechanism that adds or removes replicas (containers or container groups).
 type AddRemoveReplicaScalingMechanism struct {

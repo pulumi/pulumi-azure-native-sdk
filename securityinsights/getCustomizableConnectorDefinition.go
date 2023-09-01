@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a data connector definition.
 // Azure REST API version: 2023-07-01-preview.
 func LookupCustomizableConnectorDefinition(ctx *pulumi.Context, args *LookupCustomizableConnectorDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupCustomizableConnectorDefinitionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomizableConnectorDefinitionResult
 	err := ctx.Invoke("azure-native:securityinsights:getCustomizableConnectorDefinition", args, &rv, opts...)
 	if err != nil {

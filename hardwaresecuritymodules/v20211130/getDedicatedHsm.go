@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Azure dedicated HSM.
 func LookupDedicatedHsm(ctx *pulumi.Context, args *LookupDedicatedHsmArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHsmResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDedicatedHsmResult
 	err := ctx.Invoke("azure-native:hardwaresecuritymodules/v20211130:getDedicatedHsm", args, &rv, opts...)
 	if err != nil {

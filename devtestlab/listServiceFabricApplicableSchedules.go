@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the applicable start/stop schedules, if any.
 // Azure REST API version: 2018-09-15.
 func ListServiceFabricApplicableSchedules(ctx *pulumi.Context, args *ListServiceFabricApplicableSchedulesArgs, opts ...pulumi.InvokeOption) (*ListServiceFabricApplicableSchedulesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListServiceFabricApplicableSchedulesResult
 	err := ctx.Invoke("azure-native:devtestlab:listServiceFabricApplicableSchedules", args, &rv, opts...)
 	if err != nil {

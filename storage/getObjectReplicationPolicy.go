@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the object replication policy of the storage account by policy ID.
 // Azure REST API version: 2022-09-01.
 func LookupObjectReplicationPolicy(ctx *pulumi.Context, args *LookupObjectReplicationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupObjectReplicationPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupObjectReplicationPolicyResult
 	err := ctx.Invoke("azure-native:storage:getObjectReplicationPolicy", args, &rv, opts...)
 	if err != nil {

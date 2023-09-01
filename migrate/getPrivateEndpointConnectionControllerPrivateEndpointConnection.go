@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the private endpoint with the specified name.
 // Azure REST API version: 2020-05-01.
 func LookupPrivateEndpointConnectionControllerPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:migrate:getPrivateEndpointConnectionControllerPrivateEndpointConnection", args, &rv, opts...)
 	if err != nil {

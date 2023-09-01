@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the recommended SAP Availability Zone Pair Details for your region.
 // Azure REST API version: 2023-04-01.
 func GetSAPAvailabilityZoneDetails(ctx *pulumi.Context, args *GetSAPAvailabilityZoneDetailsArgs, opts ...pulumi.InvokeOption) (*GetSAPAvailabilityZoneDetailsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSAPAvailabilityZoneDetailsResult
 	err := ctx.Invoke("azure-native:workloads:getSAPAvailabilityZoneDetails", args, &rv, opts...)
 	if err != nil {

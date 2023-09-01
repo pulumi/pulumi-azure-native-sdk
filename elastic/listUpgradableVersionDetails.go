@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Stack Versions that this version can upgrade to
 // Azure REST API version: 2023-06-01.
 func ListUpgradableVersionDetails(ctx *pulumi.Context, args *ListUpgradableVersionDetailsArgs, opts ...pulumi.InvokeOption) (*ListUpgradableVersionDetailsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListUpgradableVersionDetailsResult
 	err := ctx.Invoke("azure-native:elastic:listUpgradableVersionDetails", args, &rv, opts...)
 	if err != nil {

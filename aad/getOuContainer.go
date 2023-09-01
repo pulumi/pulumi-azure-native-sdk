@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get OuContainer in DomainService instance.
 // Azure REST API version: 2022-12-01.
 func LookupOuContainer(ctx *pulumi.Context, args *LookupOuContainerArgs, opts ...pulumi.InvokeOption) (*LookupOuContainerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOuContainerResult
 	err := ctx.Invoke("azure-native:aad:getOuContainer", args, &rv, opts...)
 	if err != nil {

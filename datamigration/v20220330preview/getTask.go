@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The GET method retrieves information about a task.
 func LookupTask(ctx *pulumi.Context, args *LookupTaskArgs, opts ...pulumi.InvokeOption) (*LookupTaskResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTaskResult
 	err := ctx.Invoke("azure-native:datamigration/v20220330preview:getTask", args, &rv, opts...)
 	if err != nil {

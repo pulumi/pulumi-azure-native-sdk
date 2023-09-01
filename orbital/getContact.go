@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified contact in a specified resource group.
 // Azure REST API version: 2022-11-01.
 func LookupContact(ctx *pulumi.Context, args *LookupContactArgs, opts ...pulumi.InvokeOption) (*LookupContactResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContactResult
 	err := ctx.Invoke("azure-native:orbital:getContact", args, &rv, opts...)
 	if err != nil {

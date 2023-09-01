@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Shared Access Authorization Token for the User.
 // Azure REST API version: 2022-08-01.
 func GetUserSharedAccessToken(ctx *pulumi.Context, args *GetUserSharedAccessTokenArgs, opts ...pulumi.InvokeOption) (*GetUserSharedAccessTokenResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetUserSharedAccessTokenResult
 	err := ctx.Invoke("azure-native:apimanagement:getUserSharedAccessToken", args.Defaults(), &rv, opts...)
 	if err != nil {
@@ -40,7 +42,7 @@ func (val *GetUserSharedAccessTokenArgs) Defaults() *GetUserSharedAccessTokenArg
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KeyType) {
+	if utilities.IsZero(tmp.KeyType) {
 		tmp.KeyType = KeyType("primary")
 	}
 	return &tmp

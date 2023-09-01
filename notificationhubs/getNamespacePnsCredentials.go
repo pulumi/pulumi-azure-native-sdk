@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 // PNS credentials.
 // Azure REST API version: 2023-01-01-preview.
 func GetNamespacePnsCredentials(ctx *pulumi.Context, args *GetNamespacePnsCredentialsArgs, opts ...pulumi.InvokeOption) (*GetNamespacePnsCredentialsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetNamespacePnsCredentialsResult
 	err := ctx.Invoke("azure-native:notificationhubs:getNamespacePnsCredentials", args, &rv, opts...)
 	if err != nil {

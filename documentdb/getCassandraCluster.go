@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the properties of a managed Cassandra cluster.
 // Azure REST API version: 2023-04-15.
 func LookupCassandraCluster(ctx *pulumi.Context, args *LookupCassandraClusterArgs, opts ...pulumi.InvokeOption) (*LookupCassandraClusterResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCassandraClusterResult
 	err := ctx.Invoke("azure-native:documentdb:getCassandraCluster", args, &rv, opts...)
 	if err != nil {

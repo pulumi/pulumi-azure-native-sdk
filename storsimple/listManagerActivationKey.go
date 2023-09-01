@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the activation key of the manager.
 // Azure REST API version: 2017-06-01.
 func ListManagerActivationKey(ctx *pulumi.Context, args *ListManagerActivationKeyArgs, opts ...pulumi.InvokeOption) (*ListManagerActivationKeyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListManagerActivationKeyResult
 	err := ctx.Invoke("azure-native:storsimple:listManagerActivationKey", args, &rv, opts...)
 	if err != nil {

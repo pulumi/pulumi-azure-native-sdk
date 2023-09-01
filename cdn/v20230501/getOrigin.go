@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing origin within an endpoint.
 func LookupOrigin(ctx *pulumi.Context, args *LookupOriginArgs, opts ...pulumi.InvokeOption) (*LookupOriginResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOriginResult
 	err := ctx.Invoke("azure-native:cdn/v20230501:getOrigin", args, &rv, opts...)
 	if err != nil {

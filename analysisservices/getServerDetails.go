@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details about the specified Analysis Services server.
 // Azure REST API version: 2017-08-01.
 func LookupServerDetails(ctx *pulumi.Context, args *LookupServerDetailsArgs, opts ...pulumi.InvokeOption) (*LookupServerDetailsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerDetailsResult
 	err := ctx.Invoke("azure-native:analysisservices:getServerDetails", args, &rv, opts...)
 	if err != nil {

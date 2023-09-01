@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Big Data pool.
 func LookupBigDataPool(ctx *pulumi.Context, args *LookupBigDataPoolArgs, opts ...pulumi.InvokeOption) (*LookupBigDataPoolResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBigDataPoolResult
 	err := ctx.Invoke("azure-native:synapse/v20210601preview:getBigDataPool", args, &rv, opts...)
 	if err != nil {

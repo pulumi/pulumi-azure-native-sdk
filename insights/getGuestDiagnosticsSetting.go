@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets guest diagnostics settings.
 // Azure REST API version: 2018-06-01-preview.
 func LookupGuestDiagnosticsSetting(ctx *pulumi.Context, args *LookupGuestDiagnosticsSettingArgs, opts ...pulumi.InvokeOption) (*LookupGuestDiagnosticsSettingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestDiagnosticsSettingResult
 	err := ctx.Invoke("azure-native:insights:getGuestDiagnosticsSetting", args, &rv, opts...)
 	if err != nil {

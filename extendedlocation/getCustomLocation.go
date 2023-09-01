@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the customLocation with a specified resource group and name.
 // Azure REST API version: 2021-08-15.
 func LookupCustomLocation(ctx *pulumi.Context, args *LookupCustomLocationArgs, opts ...pulumi.InvokeOption) (*LookupCustomLocationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomLocationResult
 	err := ctx.Invoke("azure-native:extendedlocation:getCustomLocation", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Service Fabric managed application resource created or in the process of being created in the Service Fabric cluster resource.
 func LookupManagedClusterApplication(ctx *pulumi.Context, args *LookupManagedClusterApplicationArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterApplicationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedClusterApplicationResult
 	err := ctx.Invoke("azure-native:servicefabric/v20230301preview:getManagedClusterApplication", args, &rv, opts...)
 	if err != nil {

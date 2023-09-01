@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a data connector.
 func LookupMicrosoftPurviewInformationProtectionDataConnector(ctx *pulumi.Context, args *LookupMicrosoftPurviewInformationProtectionDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMicrosoftPurviewInformationProtectionDataConnectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMicrosoftPurviewInformationProtectionDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230701preview:getMicrosoftPurviewInformationProtectionDataConnector", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the endpoint access credentials to the resource.
 // Azure REST API version: 2023-03-15.
 func ListEndpointCredentials(ctx *pulumi.Context, args *ListEndpointCredentialsArgs, opts ...pulumi.InvokeOption) (*ListEndpointCredentialsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEndpointCredentialsResult
 	err := ctx.Invoke("azure-native:hybridconnectivity:listEndpointCredentials", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,6 +62,7 @@ func NewMoveCollection(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource MoveCollection
 	err := ctx.RegisterResource("azure-native:migrate/v20220801:MoveCollection", name, args, &resource, opts...)
 	if err != nil {

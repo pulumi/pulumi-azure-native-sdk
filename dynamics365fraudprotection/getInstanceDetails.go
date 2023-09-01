@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details about the specified instances.
 // Azure REST API version: 2021-02-01-preview.
 func LookupInstanceDetails(ctx *pulumi.Context, args *LookupInstanceDetailsArgs, opts ...pulumi.InvokeOption) (*LookupInstanceDetailsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceDetailsResult
 	err := ctx.Invoke("azure-native:dynamics365fraudprotection:getInstanceDetails", args, &rv, opts...)
 	if err != nil {

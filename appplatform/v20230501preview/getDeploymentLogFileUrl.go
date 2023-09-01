@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get deployment log file URL
 func GetDeploymentLogFileUrl(ctx *pulumi.Context, args *GetDeploymentLogFileUrlArgs, opts ...pulumi.InvokeOption) (*GetDeploymentLogFileUrlResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetDeploymentLogFileUrlResult
 	err := ctx.Invoke("azure-native:appplatform/v20230501preview:getDeploymentLogFileUrl", args, &rv, opts...)
 	if err != nil {

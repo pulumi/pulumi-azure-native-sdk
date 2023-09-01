@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the ProactiveDetection configuration for this configuration id.
 // Azure REST API version: 2018-05-01-preview.
 func LookupProactiveDetectionConfiguration(ctx *pulumi.Context, args *LookupProactiveDetectionConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupProactiveDetectionConfigurationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProactiveDetectionConfigurationResult
 	err := ctx.Invoke("azure-native:insights:getProactiveDetectionConfiguration", args, &rv, opts...)
 	if err != nil {

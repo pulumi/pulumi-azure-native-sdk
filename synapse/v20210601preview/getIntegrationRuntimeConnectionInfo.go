@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get connection info for an integration runtime
 func GetIntegrationRuntimeConnectionInfo(ctx *pulumi.Context, args *GetIntegrationRuntimeConnectionInfoArgs, opts ...pulumi.InvokeOption) (*GetIntegrationRuntimeConnectionInfoResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetIntegrationRuntimeConnectionInfoResult
 	err := ctx.Invoke("azure-native:synapse/v20210601preview:getIntegrationRuntimeConnectionInfo", args, &rv, opts...)
 	if err != nil {

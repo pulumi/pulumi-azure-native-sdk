@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Hybrid AKS storage space object
 func LookupStorageSpaceRetrieve(ctx *pulumi.Context, args *LookupStorageSpaceRetrieveArgs, opts ...pulumi.InvokeOption) (*LookupStorageSpaceRetrieveResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageSpaceRetrieveResult
 	err := ctx.Invoke("azure-native:hybridcontainerservice/v20220901preview:getStorageSpaceRetrieve", args, &rv, opts...)
 	if err != nil {

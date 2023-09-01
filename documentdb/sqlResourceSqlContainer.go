@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -150,6 +151,7 @@ func NewSqlResourceSqlContainer(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource SqlResourceSqlContainer
 	err := ctx.RegisterResource("azure-native:documentdb:SqlResourceSqlContainer", name, args, &resource, opts...)
 	if err != nil {

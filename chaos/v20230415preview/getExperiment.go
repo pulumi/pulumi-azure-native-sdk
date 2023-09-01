@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Experiment resource.
 func LookupExperiment(ctx *pulumi.Context, args *LookupExperimentArgs, opts ...pulumi.InvokeOption) (*LookupExperimentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExperimentResult
 	err := ctx.Invoke("azure-native:chaos/v20230415preview:getExperiment", args, &rv, opts...)
 	if err != nil {

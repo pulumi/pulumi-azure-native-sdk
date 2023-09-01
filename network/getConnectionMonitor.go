@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a connection monitor by name.
 // Azure REST API version: 2023-02-01.
 func LookupConnectionMonitor(ctx *pulumi.Context, args *LookupConnectionMonitorArgs, opts ...pulumi.InvokeOption) (*LookupConnectionMonitorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionMonitorResult
 	err := ctx.Invoke("azure-native:network:getConnectionMonitor", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified diagnostics package.
 func LookupDiagnosticsPackage(ctx *pulumi.Context, args *LookupDiagnosticsPackageArgs, opts ...pulumi.InvokeOption) (*LookupDiagnosticsPackageResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiagnosticsPackageResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20230601:getDiagnosticsPackage", args, &rv, opts...)
 	if err != nil {

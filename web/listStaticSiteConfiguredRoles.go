@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Lists the roles configured for the static site.
 // Azure REST API version: 2022-09-01.
 func ListStaticSiteConfiguredRoles(ctx *pulumi.Context, args *ListStaticSiteConfiguredRolesArgs, opts ...pulumi.InvokeOption) (*ListStaticSiteConfiguredRolesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListStaticSiteConfiguredRolesResult
 	err := ctx.Invoke("azure-native:web:listStaticSiteConfiguredRoles", args, &rv, opts...)
 	if err != nil {
