@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List the device groups for the catalog.
 func ListCatalogDeviceGroups(ctx *pulumi.Context, args *ListCatalogDeviceGroupsArgs, opts ...pulumi.InvokeOption) (*ListCatalogDeviceGroupsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListCatalogDeviceGroupsResult
 	err := ctx.Invoke("azure-native:azuresphere/v20220901preview:listCatalogDeviceGroups", args, &rv, opts...)
 	if err != nil {

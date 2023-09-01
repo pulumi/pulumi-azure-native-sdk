@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 func LookupEnvironmentContainer(ctx *pulumi.Context, args *LookupEnvironmentContainerArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentContainerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentContainerResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20230601preview:getEnvironmentContainer", args, &rv, opts...)
 	if err != nil {

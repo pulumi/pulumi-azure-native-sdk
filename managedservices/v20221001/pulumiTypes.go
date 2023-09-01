@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // The Azure Active Directory principal identifier and Azure built-in role that describes the access the principal will receive on the delegated resource in the managed tenant.
 type Authorization struct {
@@ -611,7 +614,7 @@ func (val *JustInTimeAccessPolicy) Defaults() *JustInTimeAccessPolicy {
 		maximumActivationDuration_ := "PT8H"
 		tmp.MaximumActivationDuration = &maximumActivationDuration_
 	}
-	if isZero(tmp.MultiFactorAuthProvider) {
+	if utilities.IsZero(tmp.MultiFactorAuthProvider) {
 		tmp.MultiFactorAuthProvider = "None"
 	}
 	return &tmp
@@ -819,7 +822,7 @@ func (val *JustInTimeAccessPolicyResponse) Defaults() *JustInTimeAccessPolicyRes
 		maximumActivationDuration_ := "PT8H"
 		tmp.MaximumActivationDuration = &maximumActivationDuration_
 	}
-	if isZero(tmp.MultiFactorAuthProvider) {
+	if utilities.IsZero(tmp.MultiFactorAuthProvider) {
 		tmp.MultiFactorAuthProvider = "None"
 	}
 	return &tmp

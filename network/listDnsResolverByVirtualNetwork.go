@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists DNS resolver resource IDs linked to a virtual network.
 // Azure REST API version: 2022-07-01.
 func ListDnsResolverByVirtualNetwork(ctx *pulumi.Context, args *ListDnsResolverByVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*ListDnsResolverByVirtualNetworkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDnsResolverByVirtualNetworkResult
 	err := ctx.Invoke("azure-native:network:listDnsResolverByVirtualNetwork", args, &rv, opts...)
 	if err != nil {

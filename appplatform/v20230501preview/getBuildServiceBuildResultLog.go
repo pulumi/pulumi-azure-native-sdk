@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a KPack build result log download URL.
 func GetBuildServiceBuildResultLog(ctx *pulumi.Context, args *GetBuildServiceBuildResultLogArgs, opts ...pulumi.InvokeOption) (*GetBuildServiceBuildResultLogResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetBuildServiceBuildResultLogResult
 	err := ctx.Invoke("azure-native:appplatform/v20230501preview:getBuildServiceBuildResultLog", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists policy resources that reference the policy fragment.
 func ListPolicyFragmentReferences(ctx *pulumi.Context, args *ListPolicyFragmentReferencesArgs, opts ...pulumi.InvokeOption) (*ListPolicyFragmentReferencesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListPolicyFragmentReferencesResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220901preview:listPolicyFragmentReferences", args, &rv, opts...)
 	if err != nil {

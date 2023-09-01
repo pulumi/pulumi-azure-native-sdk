@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns Intune iOS policies.
 // Azure REST API version: 2015-01-14-preview.
 func LookupIoMAMPolicyByName(ctx *pulumi.Context, args *LookupIoMAMPolicyByNameArgs, opts ...pulumi.InvokeOption) (*LookupIoMAMPolicyByNameResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIoMAMPolicyByNameResult
 	err := ctx.Invoke("azure-native:intune:getIoMAMPolicyByName", args, &rv, opts...)
 	if err != nil {
@@ -102,7 +104,7 @@ func (val *LookupIoMAMPolicyByNameResult) Defaults() *LookupIoMAMPolicyByNameRes
 		fileSharingSaveAs_ := "allow"
 		tmp.FileSharingSaveAs = &fileSharingSaveAs_
 	}
-	if isZero(tmp.GroupStatus) {
+	if utilities.IsZero(tmp.GroupStatus) {
 		tmp.GroupStatus = "notTargeted"
 	}
 	if tmp.ManagedBrowser == nil {

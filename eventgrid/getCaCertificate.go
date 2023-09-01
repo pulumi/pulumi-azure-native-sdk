@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of a CA certificate.
 // Azure REST API version: 2023-06-01-preview.
 func LookupCaCertificate(ctx *pulumi.Context, args *LookupCaCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCaCertificateResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCaCertificateResult
 	err := ctx.Invoke("azure-native:eventgrid:getCaCertificate", args, &rv, opts...)
 	if err != nil {

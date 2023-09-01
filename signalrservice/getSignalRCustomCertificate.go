@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a custom certificate.
 // Azure REST API version: 2023-02-01.
 func LookupSignalRCustomCertificate(ctx *pulumi.Context, args *LookupSignalRCustomCertificateArgs, opts ...pulumi.InvokeOption) (*LookupSignalRCustomCertificateResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSignalRCustomCertificateResult
 	err := ctx.Invoke("azure-native:signalrservice:getSignalRCustomCertificate", args, &rv, opts...)
 	if err != nil {

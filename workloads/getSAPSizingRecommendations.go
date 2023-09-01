@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get SAP sizing recommendations by providing input SAPS for application tier and memory required for database tier
 // Azure REST API version: 2023-04-01.
 func GetSAPSizingRecommendations(ctx *pulumi.Context, args *GetSAPSizingRecommendationsArgs, opts ...pulumi.InvokeOption) (*GetSAPSizingRecommendationsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSAPSizingRecommendationsResult
 	err := ctx.Invoke("azure-native:workloads:getSAPSizingRecommendations", args, &rv, opts...)
 	if err != nil {

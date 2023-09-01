@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the IDs of all provisioned SIMs in a mobile network
 func ListMobileNetworkSimIds(ctx *pulumi.Context, args *ListMobileNetworkSimIdsArgs, opts ...pulumi.InvokeOption) (*ListMobileNetworkSimIdsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListMobileNetworkSimIdsResult
 	err := ctx.Invoke("azure-native:mobilenetwork/v20220401preview:listMobileNetworkSimIds", args, &rv, opts...)
 	if err != nil {

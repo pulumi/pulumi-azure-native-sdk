@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a catalog
 // Azure REST API version: 2023-04-01.
 func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.InvokeOption) (*LookupCatalogResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCatalogResult
 	err := ctx.Invoke("azure-native:devcenter:getCatalog", args, &rv, opts...)
 	if err != nil {

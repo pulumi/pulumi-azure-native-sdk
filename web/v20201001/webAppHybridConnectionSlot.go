@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -106,6 +107,7 @@ func NewWebAppHybridConnectionSlot(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource WebAppHybridConnectionSlot
 	err := ctx.RegisterResource("azure-native:web/v20201001:WebAppHybridConnectionSlot", name, args, &resource, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets configuration values for Single Pane Of Glass for SAP monitor for the specified subscription, resource group, and resource name.
 // Azure REST API version: 2023-04-01.
 func LookupSapLandscapeMonitor(ctx *pulumi.Context, args *LookupSapLandscapeMonitorArgs, opts ...pulumi.InvokeOption) (*LookupSapLandscapeMonitorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSapLandscapeMonitorResult
 	err := ctx.Invoke("azure-native:workloads:getSapLandscapeMonitor", args, &rv, opts...)
 	if err != nil {

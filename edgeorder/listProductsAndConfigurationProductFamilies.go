@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List product families for the given subscription.
 // Azure REST API version: 2022-05-01-preview.
 func ListProductsAndConfigurationProductFamilies(ctx *pulumi.Context, args *ListProductsAndConfigurationProductFamiliesArgs, opts ...pulumi.InvokeOption) (*ListProductsAndConfigurationProductFamiliesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListProductsAndConfigurationProductFamiliesResult
 	err := ctx.Invoke("azure-native:edgeorder:listProductsAndConfigurationProductFamilies", args, &rv, opts...)
 	if err != nil {

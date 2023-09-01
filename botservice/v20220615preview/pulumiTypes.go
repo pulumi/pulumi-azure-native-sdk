@@ -3,6 +3,12 @@
 
 package v20220615preview
 
+import (
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+)
+
+var _ = utilities.GetEnvOrDefault
+
 // Extra Parameters specific to each Service Provider
 type ServiceProviderParameterResponse struct {
 	// Default Name for the Service Provider

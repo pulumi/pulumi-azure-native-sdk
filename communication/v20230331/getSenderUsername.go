@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a valid sender username for a domains resource.
 func LookupSenderUsername(ctx *pulumi.Context, args *LookupSenderUsernameArgs, opts ...pulumi.InvokeOption) (*LookupSenderUsernameResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSenderUsernameResult
 	err := ctx.Invoke("azure-native:communication/v20230331:getSenderUsername", args, &rv, opts...)
 	if err != nil {

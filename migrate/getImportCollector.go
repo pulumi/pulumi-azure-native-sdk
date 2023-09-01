@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Import collector.
 // Azure REST API version: 2019-10-01.
 func LookupImportCollector(ctx *pulumi.Context, args *LookupImportCollectorArgs, opts ...pulumi.InvokeOption) (*LookupImportCollectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupImportCollectorResult
 	err := ctx.Invoke("azure-native:migrate:getImportCollector", args, &rv, opts...)
 	if err != nil {

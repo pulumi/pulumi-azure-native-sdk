@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetMarketplaceImageSasTokenSASToken(ctx *pulumi.Context, args *GetMarketplaceImageSasTokenSASTokenArgs, opts ...pulumi.InvokeOption) (*GetMarketplaceImageSasTokenSASTokenResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetMarketplaceImageSasTokenSASTokenResult
 	err := ctx.Invoke("azure-native:databoxedge/v20230101preview:getMarketplaceImageSasTokenSASToken", args, &rv, opts...)
 	if err != nil {

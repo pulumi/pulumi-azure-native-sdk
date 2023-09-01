@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get details of the specified capacity pool
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPoolResult
 	err := ctx.Invoke("azure-native:netapp/v20221101:getPool", args, &rv, opts...)
 	if err != nil {
@@ -83,7 +85,7 @@ func (val *LookupPoolResult) Defaults() *LookupPoolResult {
 		qosType_ := "Auto"
 		tmp.QosType = &qosType_
 	}
-	if isZero(tmp.Size) {
+	if utilities.IsZero(tmp.Size) {
 		tmp.Size = 4398046511104.0
 	}
 	return &tmp

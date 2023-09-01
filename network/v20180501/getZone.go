@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.
 func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.InvokeOption) (*LookupZoneResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneResult
 	err := ctx.Invoke("azure-native:network/v20180501:getZone", args, &rv, opts...)
 	if err != nil {

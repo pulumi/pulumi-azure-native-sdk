@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupBatchDeployment(ctx *pulumi.Context, args *LookupBatchDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupBatchDeploymentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBatchDeploymentResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20220201preview:getBatchDeployment", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the secrets of the workload deployment.
 func GetWorkloadDeploymentSecretConfigurations(ctx *pulumi.Context, args *GetWorkloadDeploymentSecretConfigurationsArgs, opts ...pulumi.InvokeOption) (*GetWorkloadDeploymentSecretConfigurationsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetWorkloadDeploymentSecretConfigurationsResult
 	err := ctx.Invoke("azure-native:migrate/v20220501preview:getWorkloadDeploymentSecretConfigurations", args, &rv, opts...)
 	if err != nil {

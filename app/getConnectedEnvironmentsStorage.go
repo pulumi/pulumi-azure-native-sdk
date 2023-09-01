@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get storage for a connectedEnvironment.
 // Azure REST API version: 2022-10-01.
 func LookupConnectedEnvironmentsStorage(ctx *pulumi.Context, args *LookupConnectedEnvironmentsStorageArgs, opts ...pulumi.InvokeOption) (*LookupConnectedEnvironmentsStorageResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectedEnvironmentsStorageResult
 	err := ctx.Invoke("azure-native:app:getConnectedEnvironmentsStorage", args, &rv, opts...)
 	if err != nil {

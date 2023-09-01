@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements HybridIdentityMetadata GET method.
 // Azure REST API version: 2022-05-21-preview.
 func LookupHybridIdentityMetadata(ctx *pulumi.Context, args *LookupHybridIdentityMetadataArgs, opts ...pulumi.InvokeOption) (*LookupHybridIdentityMetadataResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridIdentityMetadataResult
 	err := ctx.Invoke("azure-native:scvmm:getHybridIdentityMetadata", args, &rv, opts...)
 	if err != nil {

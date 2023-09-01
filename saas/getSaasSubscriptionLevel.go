@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified Subscription Level SaaS.
 // Azure REST API version: 2018-03-01-beta.
 func LookupSaasSubscriptionLevel(ctx *pulumi.Context, args *LookupSaasSubscriptionLevelArgs, opts ...pulumi.InvokeOption) (*LookupSaasSubscriptionLevelResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSaasSubscriptionLevelResult
 	err := ctx.Invoke("azure-native:saas:getSaasSubscriptionLevel", args, &rv, opts...)
 	if err != nil {

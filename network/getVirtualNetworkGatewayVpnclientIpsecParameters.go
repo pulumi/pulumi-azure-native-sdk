@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Get VpnclientIpsecParameters operation retrieves information about the vpnclient ipsec policy for P2S client of virtual network gateway in the specified resource group through Network resource provider.
 // Azure REST API version: 2023-02-01.
 func GetVirtualNetworkGatewayVpnclientIpsecParameters(ctx *pulumi.Context, args *GetVirtualNetworkGatewayVpnclientIpsecParametersArgs, opts ...pulumi.InvokeOption) (*GetVirtualNetworkGatewayVpnclientIpsecParametersResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetVirtualNetworkGatewayVpnclientIpsecParametersResult
 	err := ctx.Invoke("azure-native:network:getVirtualNetworkGatewayVpnclientIpsecParameters", args, &rv, opts...)
 	if err != nil {

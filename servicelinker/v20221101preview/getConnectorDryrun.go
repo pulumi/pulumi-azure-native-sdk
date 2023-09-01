@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // get a dryrun job
 func LookupConnectorDryrun(ctx *pulumi.Context, args *LookupConnectorDryrunArgs, opts ...pulumi.InvokeOption) (*LookupConnectorDryrunResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorDryrunResult
 	err := ctx.Invoke("azure-native:servicelinker/v20221101preview:getConnectorDryrun", args, &rv, opts...)
 	if err != nil {

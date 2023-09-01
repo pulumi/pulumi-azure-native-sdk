@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of an event channel.
 func LookupEventChannel(ctx *pulumi.Context, args *LookupEventChannelArgs, opts ...pulumi.InvokeOption) (*LookupEventChannelResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEventChannelResult
 	err := ctx.Invoke("azure-native:eventgrid/v20211015preview:getEventChannel", args, &rv, opts...)
 	if err != nil {

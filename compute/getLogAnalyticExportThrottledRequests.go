@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Export logs that show total throttled Api requests for this subscription in the given time window.
 // Azure REST API version: 2023-03-01.
 func GetLogAnalyticExportThrottledRequests(ctx *pulumi.Context, args *GetLogAnalyticExportThrottledRequestsArgs, opts ...pulumi.InvokeOption) (*GetLogAnalyticExportThrottledRequestsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetLogAnalyticExportThrottledRequestsResult
 	err := ctx.Invoke("azure-native:compute:getLogAnalyticExportThrottledRequests", args, &rv, opts...)
 	if err != nil {

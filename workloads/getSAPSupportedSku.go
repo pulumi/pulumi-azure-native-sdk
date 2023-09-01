@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a list of SAP supported SKUs for ASCS, Application and Database tier.
 // Azure REST API version: 2023-04-01.
 func GetSAPSupportedSku(ctx *pulumi.Context, args *GetSAPSupportedSkuArgs, opts ...pulumi.InvokeOption) (*GetSAPSupportedSkuResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSAPSupportedSkuResult
 	err := ctx.Invoke("azure-native:workloads:getSAPSupportedSku", args, &rv, opts...)
 	if err != nil {

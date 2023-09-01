@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a TestLine
 func LookupTestLine(ctx *pulumi.Context, args *LookupTestLineArgs, opts ...pulumi.InvokeOption) (*LookupTestLineResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTestLineResult
 	err := ctx.Invoke("azure-native:voiceservices/v20230403:getTestLine", args, &rv, opts...)
 	if err != nil {

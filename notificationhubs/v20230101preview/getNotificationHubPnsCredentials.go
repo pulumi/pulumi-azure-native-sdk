@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of a NotificationHub PNS Credentials. This is a response of the POST requests that return namespace or hubs
 // PNS credentials.
 func GetNotificationHubPnsCredentials(ctx *pulumi.Context, args *GetNotificationHubPnsCredentialsArgs, opts ...pulumi.InvokeOption) (*GetNotificationHubPnsCredentialsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetNotificationHubPnsCredentialsResult
 	err := ctx.Invoke("azure-native:notificationhubs/v20230101preview:getNotificationHubPnsCredentials", args, &rv, opts...)
 	if err != nil {

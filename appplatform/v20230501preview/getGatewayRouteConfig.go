@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the Spring Cloud Gateway route configs.
 func LookupGatewayRouteConfig(ctx *pulumi.Context, args *LookupGatewayRouteConfigArgs, opts ...pulumi.InvokeOption) (*LookupGatewayRouteConfigResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewayRouteConfigResult
 	err := ctx.Invoke("azure-native:appplatform/v20230501preview:getGatewayRouteConfig", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,6 +58,7 @@ func NewAccessPolicyAssignment(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource AccessPolicyAssignment
 	err := ctx.RegisterResource("azure-native:cache/v20230501preview:AccessPolicyAssignment", name, args, &resource, opts...)
 	if err != nil {

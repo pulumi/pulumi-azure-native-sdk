@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified commitmentPlans associated with the Cognitive Services account.
 // Azure REST API version: 2023-05-01.
 func LookupCommitmentPlan(ctx *pulumi.Context, args *LookupCommitmentPlanArgs, opts ...pulumi.InvokeOption) (*LookupCommitmentPlanResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCommitmentPlanResult
 	err := ctx.Invoke("azure-native:cognitiveservices:getCommitmentPlan", args, &rv, opts...)
 	if err != nil {

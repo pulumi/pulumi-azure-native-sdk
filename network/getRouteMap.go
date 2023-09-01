@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the details of a RouteMap.
 // Azure REST API version: 2023-02-01.
 func LookupRouteMap(ctx *pulumi.Context, args *LookupRouteMapArgs, opts ...pulumi.InvokeOption) (*LookupRouteMapResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouteMapResult
 	err := ctx.Invoke("azure-native:network:getRouteMap", args, &rv, opts...)
 	if err != nil {

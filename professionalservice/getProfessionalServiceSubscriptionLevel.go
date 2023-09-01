@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified Subscription Level ProfessionalService.
 // Azure REST API version: 2023-07-01-preview.
 func LookupProfessionalServiceSubscriptionLevel(ctx *pulumi.Context, args *LookupProfessionalServiceSubscriptionLevelArgs, opts ...pulumi.InvokeOption) (*LookupProfessionalServiceSubscriptionLevelResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProfessionalServiceSubscriptionLevelResult
 	err := ctx.Invoke("azure-native:professionalservice:getProfessionalServiceSubscriptionLevel", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists secret keys.
 // Azure REST API version: 2015-02-01-preview.
 func ListWorkflowAccessKeySecretKeys(ctx *pulumi.Context, args *ListWorkflowAccessKeySecretKeysArgs, opts ...pulumi.InvokeOption) (*ListWorkflowAccessKeySecretKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkflowAccessKeySecretKeysResult
 	err := ctx.Invoke("azure-native:logic:listWorkflowAccessKeySecretKeys", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Kusto cluster database script.
 func LookupScript(ctx *pulumi.Context, args *LookupScriptArgs, opts ...pulumi.InvokeOption) (*LookupScriptResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScriptResult
 	err := ctx.Invoke("azure-native:kusto/v20210827:getScript", args, &rv, opts...)
 	if err != nil {

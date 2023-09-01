@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists devices for catalog.
 func ListCatalogDevices(ctx *pulumi.Context, args *ListCatalogDevicesArgs, opts ...pulumi.InvokeOption) (*ListCatalogDevicesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListCatalogDevicesResult
 	err := ctx.Invoke("azure-native:azuresphere/v20220901preview:listCatalogDevices", args, &rv, opts...)
 	if err != nil {

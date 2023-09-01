@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get available cached server name for fast provisioning
 func GetGetCachedServerNameExecute(ctx *pulumi.Context, args *GetGetCachedServerNameExecuteArgs, opts ...pulumi.InvokeOption) (*GetGetCachedServerNameExecuteResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetGetCachedServerNameExecuteResult
 	err := ctx.Invoke("azure-native:dbforpostgresql/v20220308privatepreview:getGetCachedServerNameExecute", args, &rv, opts...)
 	if err != nil {

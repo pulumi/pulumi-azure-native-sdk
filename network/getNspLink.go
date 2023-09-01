@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified NSP link resource.
 // Azure REST API version: 2021-02-01-preview.
 func LookupNspLink(ctx *pulumi.Context, args *LookupNspLinkArgs, opts ...pulumi.InvokeOption) (*LookupNspLinkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNspLinkResult
 	err := ctx.Invoke("azure-native:network:getNspLink", args, &rv, opts...)
 	if err != nil {

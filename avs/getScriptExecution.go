@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An instance of a script executed by a user - custom or AVS
 // Azure REST API version: 2022-05-01.
 func LookupScriptExecution(ctx *pulumi.Context, args *LookupScriptExecutionArgs, opts ...pulumi.InvokeOption) (*LookupScriptExecutionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScriptExecutionResult
 	err := ctx.Invoke("azure-native:avs:getScriptExecution", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
 // Azure REST API version: 2022-03-30-preview.
 func ListSqlMigrationServiceAuthKeys(ctx *pulumi.Context, args *ListSqlMigrationServiceAuthKeysArgs, opts ...pulumi.InvokeOption) (*ListSqlMigrationServiceAuthKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSqlMigrationServiceAuthKeysResult
 	err := ctx.Invoke("azure-native:datamigration:listSqlMigrationServiceAuthKeys", args, &rv, opts...)
 	if err != nil {

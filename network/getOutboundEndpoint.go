@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets properties of an outbound endpoint for a DNS resolver.
 // Azure REST API version: 2022-07-01.
 func LookupOutboundEndpoint(ctx *pulumi.Context, args *LookupOutboundEndpointArgs, opts ...pulumi.InvokeOption) (*LookupOutboundEndpointResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOutboundEndpointResult
 	err := ctx.Invoke("azure-native:network:getOutboundEndpoint", args, &rv, opts...)
 	if err != nil {

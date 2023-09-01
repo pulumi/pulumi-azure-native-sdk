@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a single graph query by its resourceName.
 // Azure REST API version: 2020-04-01-preview.
 func LookupGraphQuery(ctx *pulumi.Context, args *LookupGraphQueryArgs, opts ...pulumi.InvokeOption) (*LookupGraphQueryResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGraphQueryResult
 	err := ctx.Invoke("azure-native:resourcegraph:getGraphQuery", args, &rv, opts...)
 	if err != nil {

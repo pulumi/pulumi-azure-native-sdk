@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a list of database principals of the given Kusto cluster and database.
 func ListDatabasePrincipals(ctx *pulumi.Context, args *ListDatabasePrincipalsArgs, opts ...pulumi.InvokeOption) (*ListDatabasePrincipalsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDatabasePrincipalsResult
 	err := ctx.Invoke("azure-native:kusto/v20221229:listDatabasePrincipals", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about an SSH public key.
 func LookupSshPublicKey(ctx *pulumi.Context, args *LookupSshPublicKeyArgs, opts ...pulumi.InvokeOption) (*LookupSshPublicKeyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSshPublicKeyResult
 	err := ctx.Invoke("azure-native:compute/v20230301:getSshPublicKey", args, &rv, opts...)
 	if err != nil {

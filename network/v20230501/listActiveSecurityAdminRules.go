@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists active security admin rules in a network manager.
 func ListActiveSecurityAdminRules(ctx *pulumi.Context, args *ListActiveSecurityAdminRulesArgs, opts ...pulumi.InvokeOption) (*ListActiveSecurityAdminRulesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListActiveSecurityAdminRulesResult
 	err := ctx.Invoke("azure-native:network/v20230501:listActiveSecurityAdminRules", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the properties of an Experiment
 // Azure REST API version: 2019-11-01.
 func LookupExperiment(ctx *pulumi.Context, args *LookupExperimentArgs, opts ...pulumi.InvokeOption) (*LookupExperimentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExperimentResult
 	err := ctx.Invoke("azure-native:network:getExperiment", args, &rv, opts...)
 	if err != nil {

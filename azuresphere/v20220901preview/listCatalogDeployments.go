@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists deployments for catalog.
 func ListCatalogDeployments(ctx *pulumi.Context, args *ListCatalogDeploymentsArgs, opts ...pulumi.InvokeOption) (*ListCatalogDeploymentsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListCatalogDeploymentsResult
 	err := ctx.Invoke("azure-native:azuresphere/v20220901preview:listCatalogDeployments", args, &rv, opts...)
 	if err != nil {

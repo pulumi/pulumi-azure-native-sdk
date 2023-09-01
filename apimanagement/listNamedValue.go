@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the secret of the named value specified by its identifier.
 // Azure REST API version: 2022-08-01.
 func ListNamedValue(ctx *pulumi.Context, args *ListNamedValueArgs, opts ...pulumi.InvokeOption) (*ListNamedValueResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListNamedValueResult
 	err := ctx.Invoke("azure-native:apimanagement:listNamedValue", args, &rv, opts...)
 	if err != nil {

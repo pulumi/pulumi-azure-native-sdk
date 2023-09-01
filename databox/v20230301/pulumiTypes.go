@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Credential details of the account.
 type AccountCredentialDetailsResponse struct {
@@ -1529,7 +1532,7 @@ func (val *KeyEncryptionKey) Defaults() *KeyEncryptionKey {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KekType) {
+	if utilities.IsZero(tmp.KekType) {
 		tmp.KekType = "MicrosoftManaged"
 	}
 	return &tmp
@@ -1553,7 +1556,7 @@ func (val *KeyEncryptionKeyResponse) Defaults() *KeyEncryptionKeyResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.KekType) {
+	if utilities.IsZero(tmp.KekType) {
 		tmp.KekType = "MicrosoftManaged"
 	}
 	return &tmp
@@ -1589,7 +1592,7 @@ func (val *ManagedDiskDetails) Defaults() *ManagedDiskDetails {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataAccountType) {
+	if utilities.IsZero(tmp.DataAccountType) {
 		tmp.DataAccountType = "StorageAccount"
 	}
 	return &tmp
@@ -1612,7 +1615,7 @@ func (val *ManagedDiskDetailsResponse) Defaults() *ManagedDiskDetailsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataAccountType) {
+	if utilities.IsZero(tmp.DataAccountType) {
 		tmp.DataAccountType = "StorageAccount"
 	}
 	return &tmp
@@ -1632,7 +1635,7 @@ func (val *NotificationPreference) Defaults() *NotificationPreference {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SendNotification) {
+	if utilities.IsZero(tmp.SendNotification) {
 		tmp.SendNotification = true
 	}
 	return &tmp
@@ -1652,7 +1655,7 @@ func (val *NotificationPreferenceResponse) Defaults() *NotificationPreferenceRes
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.SendNotification) {
+	if utilities.IsZero(tmp.SendNotification) {
 		tmp.SendNotification = true
 	}
 	return &tmp
@@ -2322,7 +2325,7 @@ func (val *StorageAccountDetails) Defaults() *StorageAccountDetails {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataAccountType) {
+	if utilities.IsZero(tmp.DataAccountType) {
 		tmp.DataAccountType = "StorageAccount"
 	}
 	return &tmp
@@ -2343,7 +2346,7 @@ func (val *StorageAccountDetailsResponse) Defaults() *StorageAccountDetailsRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataAccountType) {
+	if utilities.IsZero(tmp.DataAccountType) {
 		tmp.DataAccountType = "StorageAccount"
 	}
 	return &tmp
@@ -2426,7 +2429,7 @@ func (val *TransferAllDetails) Defaults() *TransferAllDetails {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataAccountType) {
+	if utilities.IsZero(tmp.DataAccountType) {
 		tmp.DataAccountType = "StorageAccount"
 	}
 	return &tmp
@@ -2448,7 +2451,7 @@ func (val *TransferAllDetailsResponse) Defaults() *TransferAllDetailsResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataAccountType) {
+	if utilities.IsZero(tmp.DataAccountType) {
 		tmp.DataAccountType = "StorageAccount"
 	}
 	return &tmp
@@ -2586,7 +2589,7 @@ func (val *TransferFilterDetails) Defaults() *TransferFilterDetails {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataAccountType) {
+	if utilities.IsZero(tmp.DataAccountType) {
 		tmp.DataAccountType = "StorageAccount"
 	}
 	return &tmp
@@ -2610,7 +2613,7 @@ func (val *TransferFilterDetailsResponse) Defaults() *TransferFilterDetailsRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.DataAccountType) {
+	if utilities.IsZero(tmp.DataAccountType) {
 		tmp.DataAccountType = "StorageAccount"
 	}
 	return &tmp

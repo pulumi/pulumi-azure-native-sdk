@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -92,6 +93,7 @@ func NewWebAppSlotConfigurationNames(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource WebAppSlotConfigurationNames
 	err := ctx.RegisterResource("azure-native:web/v20201001:WebAppSlotConfigurationNames", name, args, &resource, opts...)
 	if err != nil {

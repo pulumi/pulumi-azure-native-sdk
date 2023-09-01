@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a blueprint artifact.
 func LookupTemplateArtifact(ctx *pulumi.Context, args *LookupTemplateArtifactArgs, opts ...pulumi.InvokeOption) (*LookupTemplateArtifactResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTemplateArtifactResult
 	err := ctx.Invoke("azure-native:blueprint/v20181101preview:getTemplateArtifact", args, &rv, opts...)
 	if err != nil {

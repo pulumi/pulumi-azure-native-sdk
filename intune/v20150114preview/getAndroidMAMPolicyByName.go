@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns AndroidMAMPolicy with given name.
 func LookupAndroidMAMPolicyByName(ctx *pulumi.Context, args *LookupAndroidMAMPolicyByNameArgs, opts ...pulumi.InvokeOption) (*LookupAndroidMAMPolicyByNameResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAndroidMAMPolicyByNameResult
 	err := ctx.Invoke("azure-native:intune/v20150114preview:getAndroidMAMPolicyByName", args, &rv, opts...)
 	if err != nil {
@@ -101,7 +103,7 @@ func (val *LookupAndroidMAMPolicyByNameResult) Defaults() *LookupAndroidMAMPolic
 		fileSharingSaveAs_ := "allow"
 		tmp.FileSharingSaveAs = &fileSharingSaveAs_
 	}
-	if isZero(tmp.GroupStatus) {
+	if utilities.IsZero(tmp.GroupStatus) {
 		tmp.GroupStatus = "notTargeted"
 	}
 	if tmp.ManagedBrowser == nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 func LookupLabelingJob(ctx *pulumi.Context, args *LookupLabelingJobArgs, opts ...pulumi.InvokeOption) (*LookupLabelingJobResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLabelingJobResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20210301preview:getLabelingJob", args, &rv, opts...)
 	if err != nil {

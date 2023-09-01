@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Metadata.
 // Azure REST API version: 2023-02-01.
 func LookupMetadata(ctx *pulumi.Context, args *LookupMetadataArgs, opts ...pulumi.InvokeOption) (*LookupMetadataResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetadataResult
 	err := ctx.Invoke("azure-native:securityinsights:getMetadata", args, &rv, opts...)
 	if err != nil {

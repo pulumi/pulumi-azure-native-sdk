@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Data Lake Analytics compute policy.
 // Azure REST API version: 2019-11-01-preview.
 func LookupComputePolicy(ctx *pulumi.Context, args *LookupComputePolicyArgs, opts ...pulumi.InvokeOption) (*LookupComputePolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupComputePolicyResult
 	err := ctx.Invoke("azure-native:datalakeanalytics:getComputePolicy", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a share
 // Azure REST API version: 2021-08-01.
 func LookupShare(ctx *pulumi.Context, args *LookupShareArgs, opts ...pulumi.InvokeOption) (*LookupShareResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupShareResult
 	err := ctx.Invoke("azure-native:datashare:getShare", args, &rv, opts...)
 	if err != nil {

@@ -3,6 +3,12 @@
 
 package v20190505preview
 
+import (
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+)
+
+var _ = utilities.GetEnvOrDefault
+
 // Action rule with action group configuration
 type ActionGroup struct {
 	// Action group to trigger if action rule matches

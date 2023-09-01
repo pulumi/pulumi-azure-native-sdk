@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a DataSetMapping in a shareSubscription
 func LookupADLSGen2StorageAccountDataSetMapping(ctx *pulumi.Context, args *LookupADLSGen2StorageAccountDataSetMappingArgs, opts ...pulumi.InvokeOption) (*LookupADLSGen2StorageAccountDataSetMappingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupADLSGen2StorageAccountDataSetMappingResult
 	err := ctx.Invoke("azure-native:datashare/v20201001preview:getADLSGen2StorageAccountDataSetMapping", args, &rv, opts...)
 	if err != nil {

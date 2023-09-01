@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an activity log alert.
 func LookupActivityLogAlert(ctx *pulumi.Context, args *LookupActivityLogAlertArgs, opts ...pulumi.InvokeOption) (*LookupActivityLogAlertResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActivityLogAlertResult
 	err := ctx.Invoke("azure-native:insights/v20170401:getActivityLogAlert", args, &rv, opts...)
 	if err != nil {

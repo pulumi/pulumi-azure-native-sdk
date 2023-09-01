@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get baseboard management controller key set of the provided cluster.
 func LookupBmcKeySet(ctx *pulumi.Context, args *LookupBmcKeySetArgs, opts ...pulumi.InvokeOption) (*LookupBmcKeySetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBmcKeySetResult
 	err := ctx.Invoke("azure-native:networkcloud/v20230501preview:getBmcKeySet", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Redis cache (resource description).
 func LookupRedis(ctx *pulumi.Context, args *LookupRedisArgs, opts ...pulumi.InvokeOption) (*LookupRedisResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRedisResult
 	err := ctx.Invoke("azure-native:cache/v20230401:getRedis", args, &rv, opts...)
 	if err != nil {

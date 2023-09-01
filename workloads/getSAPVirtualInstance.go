@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Virtual Instance for SAP solutions resource
 // Azure REST API version: 2023-04-01.
 func LookupSAPVirtualInstance(ctx *pulumi.Context, args *LookupSAPVirtualInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPVirtualInstanceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSAPVirtualInstanceResult
 	err := ctx.Invoke("azure-native:workloads:getSAPVirtualInstance", args, &rv, opts...)
 	if err != nil {

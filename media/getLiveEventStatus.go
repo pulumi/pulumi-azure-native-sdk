@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets status telemetry of a live event.
 // Azure REST API version: 2022-11-01.
 func GetLiveEventStatus(ctx *pulumi.Context, args *GetLiveEventStatusArgs, opts ...pulumi.InvokeOption) (*GetLiveEventStatusResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetLiveEventStatusResult
 	err := ctx.Invoke("azure-native:media:getLiveEventStatus", args, &rv, opts...)
 	if err != nil {

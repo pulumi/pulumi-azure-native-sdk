@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a BotService Channel registration specified by the parameters.
 // Azure REST API version: 2022-09-15.
 func LookupChannel(ctx *pulumi.Context, args *LookupChannelArgs, opts ...pulumi.InvokeOption) (*LookupChannelResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupChannelResult
 	err := ctx.Invoke("azure-native:botservice:getChannel", args, &rv, opts...)
 	if err != nil {

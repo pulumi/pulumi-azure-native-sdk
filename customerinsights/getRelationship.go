@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified relationship.
 // Azure REST API version: 2017-04-26.
 func LookupRelationship(ctx *pulumi.Context, args *LookupRelationshipArgs, opts ...pulumi.InvokeOption) (*LookupRelationshipResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRelationshipResult
 	err := ctx.Invoke("azure-native:customerinsights:getRelationship", args, &rv, opts...)
 	if err != nil {

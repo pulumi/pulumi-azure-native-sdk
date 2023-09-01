@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This operation retrieves a list of routes the virtual network gateway has learned, including routes learned from BGP peers.
 // Azure REST API version: 2023-02-01.
 func GetVirtualNetworkGatewayLearnedRoutes(ctx *pulumi.Context, args *GetVirtualNetworkGatewayLearnedRoutesArgs, opts ...pulumi.InvokeOption) (*GetVirtualNetworkGatewayLearnedRoutesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetVirtualNetworkGatewayLearnedRoutesResult
 	err := ctx.Invoke("azure-native:network:getVirtualNetworkGatewayLearnedRoutes", args, &rv, opts...)
 	if err != nil {

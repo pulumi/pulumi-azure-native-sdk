@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Create new debug credentials for gateway.
 func ListGatewayDebugCredentials(ctx *pulumi.Context, args *ListGatewayDebugCredentialsArgs, opts ...pulumi.InvokeOption) (*ListGatewayDebugCredentialsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListGatewayDebugCredentialsResult
 	err := ctx.Invoke("azure-native:apimanagement/v20230301preview:listGatewayDebugCredentials", args, &rv, opts...)
 	if err != nil {

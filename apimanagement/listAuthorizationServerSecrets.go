@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the client secret details of the authorization server.
 // Azure REST API version: 2022-08-01.
 func ListAuthorizationServerSecrets(ctx *pulumi.Context, args *ListAuthorizationServerSecretsArgs, opts ...pulumi.InvokeOption) (*ListAuthorizationServerSecretsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAuthorizationServerSecretsResult
 	err := ctx.Invoke("azure-native:apimanagement:listAuthorizationServerSecrets", args, &rv, opts...)
 	if err != nil {

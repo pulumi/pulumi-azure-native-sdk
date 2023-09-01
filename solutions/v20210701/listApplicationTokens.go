@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List tokens for application.
 func ListApplicationTokens(ctx *pulumi.Context, args *ListApplicationTokensArgs, opts ...pulumi.InvokeOption) (*ListApplicationTokensResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListApplicationTokensResult
 	err := ctx.Invoke("azure-native:solutions/v20210701:listApplicationTokens", args, &rv, opts...)
 	if err != nil {

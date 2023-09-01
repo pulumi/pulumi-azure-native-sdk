@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List of all active elastic deployments.
 func ListConnectedPartnerResource(ctx *pulumi.Context, args *ListConnectedPartnerResourceArgs, opts ...pulumi.InvokeOption) (*ListConnectedPartnerResourceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConnectedPartnerResourceResult
 	err := ctx.Invoke("azure-native:elastic/v20230701preview:listConnectedPartnerResource", args, &rv, opts...)
 	if err != nil {

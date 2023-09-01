@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get DataManagerForAgriculture resource.
 func LookupDataManagerForAgricultureResource(ctx *pulumi.Context, args *LookupDataManagerForAgricultureResourceArgs, opts ...pulumi.InvokeOption) (*LookupDataManagerForAgricultureResourceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataManagerForAgricultureResourceResult
 	err := ctx.Invoke("azure-native:agfoodplatform/v20230601preview:getDataManagerForAgricultureResource", args, &rv, opts...)
 	if err != nil {

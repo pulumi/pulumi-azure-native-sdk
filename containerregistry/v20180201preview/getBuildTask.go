@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the properties of a specified build task.
 func LookupBuildTask(ctx *pulumi.Context, args *LookupBuildTaskArgs, opts ...pulumi.InvokeOption) (*LookupBuildTaskResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBuildTaskResult
 	err := ctx.Invoke("azure-native:containerregistry/v20180201preview:getBuildTask", args, &rv, opts...)
 	if err != nil {

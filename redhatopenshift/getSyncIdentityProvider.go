@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation returns properties of a SyncIdentityProvider.
 // Azure REST API version: 2022-09-04.
 func LookupSyncIdentityProvider(ctx *pulumi.Context, args *LookupSyncIdentityProviderArgs, opts ...pulumi.InvokeOption) (*LookupSyncIdentityProviderResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSyncIdentityProviderResult
 	err := ctx.Invoke("azure-native:redhatopenshift:getSyncIdentityProvider", args, &rv, opts...)
 	if err != nil {

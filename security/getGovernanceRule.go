@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a specific governance rule for the requested scope by ruleId
 // Azure REST API version: 2022-01-01-preview.
 func LookupGovernanceRule(ctx *pulumi.Context, args *LookupGovernanceRuleArgs, opts ...pulumi.InvokeOption) (*LookupGovernanceRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGovernanceRuleResult
 	err := ctx.Invoke("azure-native:security:getGovernanceRule", args, &rv, opts...)
 	if err != nil {

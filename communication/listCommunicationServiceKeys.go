@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the access keys of the CommunicationService resource.
 // Azure REST API version: 2023-03-31.
 func ListCommunicationServiceKeys(ctx *pulumi.Context, args *ListCommunicationServiceKeysArgs, opts ...pulumi.InvokeOption) (*ListCommunicationServiceKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListCommunicationServiceKeysResult
 	err := ctx.Invoke("azure-native:communication:listCommunicationServiceKeys", args, &rv, opts...)
 	if err != nil {

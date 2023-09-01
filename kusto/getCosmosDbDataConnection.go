@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a data connection.
 // Azure REST API version: 2022-12-29.
 func LookupCosmosDbDataConnection(ctx *pulumi.Context, args *LookupCosmosDbDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupCosmosDbDataConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCosmosDbDataConnectionResult
 	err := ctx.Invoke("azure-native:kusto:getCosmosDbDataConnection", args, &rv, opts...)
 	if err != nil {

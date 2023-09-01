@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the sku details for the given resource type and sku name.
 func LookupSkusNestedResourceTypeThird(ctx *pulumi.Context, args *LookupSkusNestedResourceTypeThirdArgs, opts ...pulumi.InvokeOption) (*LookupSkusNestedResourceTypeThirdResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSkusNestedResourceTypeThirdResult
 	err := ctx.Invoke("azure-native:providerhub/v20210901preview:getSkusNestedResourceTypeThird", args, &rv, opts...)
 	if err != nil {

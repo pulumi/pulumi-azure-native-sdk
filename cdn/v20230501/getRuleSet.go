@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 func LookupRuleSet(ctx *pulumi.Context, args *LookupRuleSetArgs, opts ...pulumi.InvokeOption) (*LookupRuleSetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleSetResult
 	err := ctx.Invoke("azure-native:cdn/v20230501:getRuleSet", args, &rv, opts...)
 	if err != nil {

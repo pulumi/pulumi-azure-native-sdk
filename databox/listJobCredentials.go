@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This method gets the unencrypted secrets related to the job.
 // Azure REST API version: 2022-12-01.
 func ListJobCredentials(ctx *pulumi.Context, args *ListJobCredentialsArgs, opts ...pulumi.InvokeOption) (*ListJobCredentialsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListJobCredentialsResult
 	err := ctx.Invoke("azure-native:databox:listJobCredentials", args, &rv, opts...)
 	if err != nil {

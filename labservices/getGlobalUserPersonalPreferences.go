@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get personal preferences for a user
 // Azure REST API version: 2018-10-15.
 func GetGlobalUserPersonalPreferences(ctx *pulumi.Context, args *GetGlobalUserPersonalPreferencesArgs, opts ...pulumi.InvokeOption) (*GetGlobalUserPersonalPreferencesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetGlobalUserPersonalPreferencesResult
 	err := ctx.Invoke("azure-native:labservices:getGlobalUserPersonalPreferences", args, &rv, opts...)
 	if err != nil {

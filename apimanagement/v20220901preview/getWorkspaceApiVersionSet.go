@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the Api Version Set specified by its identifier.
 func LookupWorkspaceApiVersionSet(ctx *pulumi.Context, args *LookupWorkspaceApiVersionSetArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceApiVersionSetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceApiVersionSetResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220901preview:getWorkspaceApiVersionSet", args, &rv, opts...)
 	if err != nil {

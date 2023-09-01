@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of a permission binding.
 // Azure REST API version: 2023-06-01-preview.
 func LookupPermissionBinding(ctx *pulumi.Context, args *LookupPermissionBindingArgs, opts ...pulumi.InvokeOption) (*LookupPermissionBindingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPermissionBindingResult
 	err := ctx.Invoke("azure-native:eventgrid:getPermissionBinding", args, &rv, opts...)
 	if err != nil {

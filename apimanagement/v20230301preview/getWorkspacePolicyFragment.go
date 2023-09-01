@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a policy fragment.
 func LookupWorkspacePolicyFragment(ctx *pulumi.Context, args *LookupWorkspacePolicyFragmentArgs, opts ...pulumi.InvokeOption) (*LookupWorkspacePolicyFragmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspacePolicyFragmentResult
 	err := ctx.Invoke("azure-native:apimanagement/v20230301preview:getWorkspacePolicyFragment", args, &rv, opts...)
 	if err != nil {

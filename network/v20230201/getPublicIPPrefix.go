@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified public IP prefix in a specified resource group.
 func LookupPublicIPPrefix(ctx *pulumi.Context, args *LookupPublicIPPrefixArgs, opts ...pulumi.InvokeOption) (*LookupPublicIPPrefixResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPublicIPPrefixResult
 	err := ctx.Invoke("azure-native:network/v20230201:getPublicIPPrefix", args, &rv, opts...)
 	if err != nil {

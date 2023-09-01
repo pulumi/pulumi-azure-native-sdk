@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements Route Policy GET method.
 func LookupRoutePolicy(ctx *pulumi.Context, args *LookupRoutePolicyArgs, opts ...pulumi.InvokeOption) (*LookupRoutePolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoutePolicyResult
 	err := ctx.Invoke("azure-native:managednetworkfabric/v20230201preview:getRoutePolicy", args, &rv, opts...)
 	if err != nil {

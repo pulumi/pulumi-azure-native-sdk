@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Certificate used for Custom Domain bindings of Container Apps in a Managed Environment
 func LookupConnectedEnvironmentsCertificate(ctx *pulumi.Context, args *LookupConnectedEnvironmentsCertificateArgs, opts ...pulumi.InvokeOption) (*LookupConnectedEnvironmentsCertificateResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectedEnvironmentsCertificateResult
 	err := ctx.Invoke("azure-native:app/v20221001:getConnectedEnvironmentsCertificate", args, &rv, opts...)
 	if err != nil {

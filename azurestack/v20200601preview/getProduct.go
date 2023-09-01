@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified product.
 func GetProduct(ctx *pulumi.Context, args *GetProductArgs, opts ...pulumi.InvokeOption) (*GetProductResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetProductResult
 	err := ctx.Invoke("azure-native:azurestack/v20200601preview:getProduct", args, &rv, opts...)
 	if err != nil {

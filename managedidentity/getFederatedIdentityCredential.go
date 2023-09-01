@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the federated identity credential.
 // Azure REST API version: 2023-01-31.
 func LookupFederatedIdentityCredential(ctx *pulumi.Context, args *LookupFederatedIdentityCredentialArgs, opts ...pulumi.InvokeOption) (*LookupFederatedIdentityCredentialResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFederatedIdentityCredentialResult
 	err := ctx.Invoke("azure-native:managedidentity:getFederatedIdentityCredential", args, &rv, opts...)
 	if err != nil {

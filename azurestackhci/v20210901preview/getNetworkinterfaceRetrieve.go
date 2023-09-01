@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets network interfaces by resource name
 func LookupNetworkinterfaceRetrieve(ctx *pulumi.Context, args *LookupNetworkinterfaceRetrieveArgs, opts ...pulumi.InvokeOption) (*LookupNetworkinterfaceRetrieveResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkinterfaceRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getNetworkinterfaceRetrieve", args, &rv, opts...)
 	if err != nil {

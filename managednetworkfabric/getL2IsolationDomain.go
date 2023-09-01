@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements L2 Isolation Domain GET method.
 // Azure REST API version: 2023-02-01-preview.
 func LookupL2IsolationDomain(ctx *pulumi.Context, args *LookupL2IsolationDomainArgs, opts ...pulumi.InvokeOption) (*LookupL2IsolationDomainResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupL2IsolationDomainResult
 	err := ctx.Invoke("azure-native:managednetworkfabric:getL2IsolationDomain", args, &rv, opts...)
 	if err != nil {

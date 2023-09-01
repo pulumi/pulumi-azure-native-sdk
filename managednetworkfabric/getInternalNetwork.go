@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a InternalNetworks.
 // Azure REST API version: 2023-02-01-preview.
 func LookupInternalNetwork(ctx *pulumi.Context, args *LookupInternalNetworkArgs, opts ...pulumi.InvokeOption) (*LookupInternalNetworkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInternalNetworkResult
 	err := ctx.Invoke("azure-native:managednetworkfabric:getInternalNetwork", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the properties of the specified connected cluster, including name, identity, properties, and additional cluster details.
 // Azure REST API version: 2022-05-01-preview.
 func LookupConnectedCluster(ctx *pulumi.Context, args *LookupConnectedClusterArgs, opts ...pulumi.InvokeOption) (*LookupConnectedClusterResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectedClusterResult
 	err := ctx.Invoke("azure-native:kubernetes:getConnectedCluster", args, &rv, opts...)
 	if err != nil {

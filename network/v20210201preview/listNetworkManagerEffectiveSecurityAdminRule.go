@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List all effective security admin rules applied on a virtual network.
 func ListNetworkManagerEffectiveSecurityAdminRule(ctx *pulumi.Context, args *ListNetworkManagerEffectiveSecurityAdminRuleArgs, opts ...pulumi.InvokeOption) (*ListNetworkManagerEffectiveSecurityAdminRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListNetworkManagerEffectiveSecurityAdminRuleResult
 	err := ctx.Invoke("azure-native:network/v20210201preview:listNetworkManagerEffectiveSecurityAdminRule", args, &rv, opts...)
 	if err != nil {

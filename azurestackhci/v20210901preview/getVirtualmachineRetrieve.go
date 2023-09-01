@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets virtual machines by resource name
 func LookupVirtualmachineRetrieve(ctx *pulumi.Context, args *LookupVirtualmachineRetrieveArgs, opts ...pulumi.InvokeOption) (*LookupVirtualmachineRetrieveResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualmachineRetrieveResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20210901preview:getVirtualmachineRetrieve", args, &rv, opts...)
 	if err != nil {

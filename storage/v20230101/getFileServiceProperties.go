@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
 func LookupFileServiceProperties(ctx *pulumi.Context, args *LookupFileServicePropertiesArgs, opts ...pulumi.InvokeOption) (*LookupFileServicePropertiesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFileServicePropertiesResult
 	err := ctx.Invoke("azure-native:storage/v20230101:getFileServiceProperties", args, &rv, opts...)
 	if err != nil {

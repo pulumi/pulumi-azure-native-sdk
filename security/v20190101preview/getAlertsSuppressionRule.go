@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
 func LookupAlertsSuppressionRule(ctx *pulumi.Context, args *LookupAlertsSuppressionRuleArgs, opts ...pulumi.InvokeOption) (*LookupAlertsSuppressionRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertsSuppressionRuleResult
 	err := ctx.Invoke("azure-native:security/v20190101preview:getAlertsSuppressionRule", args, &rv, opts...)
 	if err != nil {

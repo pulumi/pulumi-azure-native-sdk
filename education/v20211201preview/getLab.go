@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the details for a specific lab associated with the provided billing account name, billing profile name, and invoice section name.
 func LookupLab(ctx *pulumi.Context, args *LookupLabArgs, opts ...pulumi.InvokeOption) (*LookupLabResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLabResult
 	err := ctx.Invoke("azure-native:education/v20211201preview:getLab", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the secret validation key of the DelegationSettings.
 // Azure REST API version: 2021-08-01.
 func ListDelegationSettingSecrets(ctx *pulumi.Context, args *ListDelegationSettingSecretsArgs, opts ...pulumi.InvokeOption) (*ListDelegationSettingSecretsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDelegationSettingSecretsResult
 	err := ctx.Invoke("azure-native:apimanagement:listDelegationSettingSecrets", args, &rv, opts...)
 	if err != nil {

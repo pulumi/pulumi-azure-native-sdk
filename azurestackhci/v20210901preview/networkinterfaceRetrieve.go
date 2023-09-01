@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,6 +81,7 @@ func NewNetworkinterfaceRetrieve(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource NetworkinterfaceRetrieve
 	err := ctx.RegisterResource("azure-native:azurestackhci/v20210901preview:NetworkinterfaceRetrieve", name, args, &resource, opts...)
 	if err != nil {

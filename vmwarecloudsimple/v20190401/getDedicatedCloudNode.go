@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns dedicated cloud node
 func LookupDedicatedCloudNode(ctx *pulumi.Context, args *LookupDedicatedCloudNodeArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedCloudNodeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDedicatedCloudNodeResult
 	err := ctx.Invoke("azure-native:vmwarecloudsimple/v20190401:getDedicatedCloudNode", args, &rv, opts...)
 	if err != nil {

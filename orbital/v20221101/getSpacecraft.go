@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified spacecraft in a specified resource group.
 func LookupSpacecraft(ctx *pulumi.Context, args *LookupSpacecraftArgs, opts ...pulumi.InvokeOption) (*LookupSpacecraftResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpacecraftResult
 	err := ctx.Invoke("azure-native:orbital/v20221101:getSpacecraft", args, &rv, opts...)
 	if err != nil {

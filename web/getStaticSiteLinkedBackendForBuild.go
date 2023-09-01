@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Static Site Linked Backend ARM resource.
 // Azure REST API version: 2022-09-01.
 func LookupStaticSiteLinkedBackendForBuild(ctx *pulumi.Context, args *LookupStaticSiteLinkedBackendForBuildArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteLinkedBackendForBuildResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteLinkedBackendForBuildResult
 	err := ctx.Invoke("azure-native:web:getStaticSiteLinkedBackendForBuild", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Method that gets called when list of partitions is requested.
 func ListEnergyServicePartitions(ctx *pulumi.Context, args *ListEnergyServicePartitionsArgs, opts ...pulumi.InvokeOption) (*ListEnergyServicePartitionsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEnergyServicePartitionsResult
 	err := ctx.Invoke("azure-native:openenergyplatform/v20220404preview:listEnergyServicePartitions", args, &rv, opts...)
 	if err != nil {

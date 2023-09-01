@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns list of available contacts. A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.
 func ListSpacecraftAvailableContacts(ctx *pulumi.Context, args *ListSpacecraftAvailableContactsArgs, opts ...pulumi.InvokeOption) (*ListSpacecraftAvailableContactsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSpacecraftAvailableContactsResult
 	err := ctx.Invoke("azure-native:orbital/v20221101:listSpacecraftAvailableContacts", args, &rv, opts...)
 	if err != nil {

@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Information about the guest configuration assignment.
 type AssignmentInfoResponse struct {
@@ -664,10 +667,10 @@ func (val *ConfigurationSettingResponse) Defaults() *ConfigurationSettingRespons
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ConfigurationModeFrequencyMins) {
+	if utilities.IsZero(tmp.ConfigurationModeFrequencyMins) {
 		tmp.ConfigurationModeFrequencyMins = 15.0
 	}
-	if isZero(tmp.RefreshFrequencyMins) {
+	if utilities.IsZero(tmp.RefreshFrequencyMins) {
 		tmp.RefreshFrequencyMins = 30.0
 	}
 	return &tmp

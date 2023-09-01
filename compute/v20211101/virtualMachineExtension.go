@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -129,6 +130,7 @@ func NewVirtualMachineExtension(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource VirtualMachineExtension
 	err := ctx.RegisterResource("azure-native:compute/v20211101:VirtualMachineExtension", name, args, &resource, opts...)
 	if err != nil {

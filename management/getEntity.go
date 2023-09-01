@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // Azure REST API version: 2021-04-01.
 func GetEntity(ctx *pulumi.Context, args *GetEntityArgs, opts ...pulumi.InvokeOption) (*GetEntityResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetEntityResult
 	err := ctx.Invoke("azure-native:management:getEntity", args, &rv, opts...)
 	if err != nil {

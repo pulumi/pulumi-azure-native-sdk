@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the product link for the tag.
 func LookupWorkspaceTagProductLink(ctx *pulumi.Context, args *LookupWorkspaceTagProductLinkArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceTagProductLinkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceTagProductLinkResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220901preview:getWorkspaceTagProductLink", args, &rv, opts...)
 	if err != nil {

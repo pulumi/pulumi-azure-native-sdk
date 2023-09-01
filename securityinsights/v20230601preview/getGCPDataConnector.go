@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a data connector.
 func LookupGCPDataConnector(ctx *pulumi.Context, args *LookupGCPDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupGCPDataConnectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGCPDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230601preview:getGCPDataConnector", args, &rv, opts...)
 	if err != nil {

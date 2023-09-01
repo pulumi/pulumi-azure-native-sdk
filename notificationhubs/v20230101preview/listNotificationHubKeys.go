@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Response for the POST request that returns Namespace or NotificationHub access keys (connection strings).
 func ListNotificationHubKeys(ctx *pulumi.Context, args *ListNotificationHubKeysArgs, opts ...pulumi.InvokeOption) (*ListNotificationHubKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListNotificationHubKeysResult
 	err := ctx.Invoke("azure-native:notificationhubs/v20230101preview:listNotificationHubKeys", args, &rv, opts...)
 	if err != nil {

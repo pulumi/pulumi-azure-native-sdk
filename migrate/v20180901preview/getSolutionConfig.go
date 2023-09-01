@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing the config for the solution in the migrate project.
 func GetSolutionConfig(ctx *pulumi.Context, args *GetSolutionConfigArgs, opts ...pulumi.InvokeOption) (*GetSolutionConfigResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSolutionConfigResult
 	err := ctx.Invoke("azure-native:migrate/v20180901preview:getSolutionConfig", args, &rv, opts...)
 	if err != nil {

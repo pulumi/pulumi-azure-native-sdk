@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about an azure ad administrator.
 func LookupAzureADAdministrator(ctx *pulumi.Context, args *LookupAzureADAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupAzureADAdministratorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureADAdministratorResult
 	err := ctx.Invoke("azure-native:dbformysql/v20220101:getAzureADAdministrator", args, &rv, opts...)
 	if err != nil {

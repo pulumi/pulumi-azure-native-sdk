@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves details of this Network Tap.
 func LookupNetworkTap(ctx *pulumi.Context, args *LookupNetworkTapArgs, opts ...pulumi.InvokeOption) (*LookupNetworkTapResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkTapResult
 	err := ctx.Invoke("azure-native:managednetworkfabric/v20230615:getNetworkTap", args, &rv, opts...)
 	if err != nil {

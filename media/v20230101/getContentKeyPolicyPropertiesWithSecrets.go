@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Content Key Policy including secret values
 func GetContentKeyPolicyPropertiesWithSecrets(ctx *pulumi.Context, args *GetContentKeyPolicyPropertiesWithSecretsArgs, opts ...pulumi.InvokeOption) (*GetContentKeyPolicyPropertiesWithSecretsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetContentKeyPolicyPropertiesWithSecretsResult
 	err := ctx.Invoke("azure-native:media/v20230101:getContentKeyPolicyPropertiesWithSecrets", args, &rv, opts...)
 	if err != nil {

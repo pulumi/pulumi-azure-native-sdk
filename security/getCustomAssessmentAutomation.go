@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a single custom assessment automation by name for the provided subscription and resource group.
 // Azure REST API version: 2021-07-01-preview.
 func LookupCustomAssessmentAutomation(ctx *pulumi.Context, args *LookupCustomAssessmentAutomationArgs, opts ...pulumi.InvokeOption) (*LookupCustomAssessmentAutomationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomAssessmentAutomationResult
 	err := ctx.Invoke("azure-native:security:getCustomAssessmentAutomation", args, &rv, opts...)
 	if err != nil {

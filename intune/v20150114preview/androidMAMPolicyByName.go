@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -100,6 +101,7 @@ func NewAndroidMAMPolicyByName(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource AndroidMAMPolicyByName
 	err := ctx.RegisterResource("azure-native:intune/v20150114preview:AndroidMAMPolicyByName", name, args, &resource, opts...)
 	if err != nil {

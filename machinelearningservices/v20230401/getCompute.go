@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets compute definition by its name. Any secrets (storage keys, service credentials, etc) are not returned - use 'keys' nested resource to get them.
 func LookupCompute(ctx *pulumi.Context, args *LookupComputeArgs, opts ...pulumi.InvokeOption) (*LookupComputeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupComputeResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20230401:getCompute", args, &rv, opts...)
 	if err != nil {

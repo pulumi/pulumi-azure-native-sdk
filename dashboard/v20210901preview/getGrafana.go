@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The grafana resource type.
 func LookupGrafana(ctx *pulumi.Context, args *LookupGrafanaArgs, opts ...pulumi.InvokeOption) (*LookupGrafanaResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGrafanaResult
 	err := ctx.Invoke("azure-native:dashboard/v20210901preview:getGrafana", args, &rv, opts...)
 	if err != nil {

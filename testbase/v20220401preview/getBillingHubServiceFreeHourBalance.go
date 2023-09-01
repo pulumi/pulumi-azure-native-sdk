@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetBillingHubServiceFreeHourBalance(ctx *pulumi.Context, args *GetBillingHubServiceFreeHourBalanceArgs, opts ...pulumi.InvokeOption) (*GetBillingHubServiceFreeHourBalanceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetBillingHubServiceFreeHourBalanceResult
 	err := ctx.Invoke("azure-native:testbase/v20220401preview:getBillingHubServiceFreeHourBalance", args, &rv, opts...)
 	if err != nil {

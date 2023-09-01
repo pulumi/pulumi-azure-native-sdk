@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a source control byt its identifier.
 // Azure REST API version: 2023-05-01-preview.
 func LookupSourceControl(ctx *pulumi.Context, args *LookupSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSourceControlResult
 	err := ctx.Invoke("azure-native:securityinsights:getSourceControl", args, &rv, opts...)
 	if err != nil {

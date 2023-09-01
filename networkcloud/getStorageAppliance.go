@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of the provided storage appliance.
 // Azure REST API version: 2023-05-01-preview.
 func LookupStorageAppliance(ctx *pulumi.Context, args *LookupStorageApplianceArgs, opts ...pulumi.InvokeOption) (*LookupStorageApplianceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageApplianceResult
 	err := ctx.Invoke("azure-native:networkcloud:getStorageAppliance", args, &rv, opts...)
 	if err != nil {

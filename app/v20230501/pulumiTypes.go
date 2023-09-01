@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // The configuration settings of the Allowed Audiences validation flow.
 type AllowedAudiencesValidation struct {
@@ -14254,7 +14257,7 @@ func (val *JobConfiguration) Defaults() *JobConfiguration {
 	tmp := *val
 	tmp.EventTriggerConfig = tmp.EventTriggerConfig.Defaults()
 
-	if isZero(tmp.TriggerType) {
+	if utilities.IsZero(tmp.TriggerType) {
 		tmp.TriggerType = "Manual"
 	}
 	return &tmp
@@ -14910,7 +14913,7 @@ func (val *JobConfigurationResponse) Defaults() *JobConfigurationResponse {
 	tmp := *val
 	tmp.EventTriggerConfig = tmp.EventTriggerConfig.Defaults()
 
-	if isZero(tmp.TriggerType) {
+	if utilities.IsZero(tmp.TriggerType) {
 		tmp.TriggerType = "Manual"
 	}
 	return &tmp

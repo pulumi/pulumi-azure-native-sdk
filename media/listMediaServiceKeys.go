@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the keys for a Media Service.
 // Azure REST API version: 2015-10-01.
 func ListMediaServiceKeys(ctx *pulumi.Context, args *ListMediaServiceKeysArgs, opts ...pulumi.InvokeOption) (*ListMediaServiceKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListMediaServiceKeysResult
 	err := ctx.Invoke("azure-native:media:listMediaServiceKeys", args, &rv, opts...)
 	if err != nil {

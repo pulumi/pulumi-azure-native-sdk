@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 // call the GetItemOperationResult API.
 // Azure REST API version: 2023-04-01.
 func LookupProtectionIntent(ctx *pulumi.Context, args *LookupProtectionIntentArgs, opts ...pulumi.InvokeOption) (*LookupProtectionIntentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProtectionIntentResult
 	err := ctx.Invoke("azure-native:recoveryservices:getProtectionIntent", args, &rv, opts...)
 	if err != nil {

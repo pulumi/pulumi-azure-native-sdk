@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements GuestAgent GET method.
 // Azure REST API version: 2023-03-01-preview.
 func LookupVMInstanceGuestAgent(ctx *pulumi.Context, args *LookupVMInstanceGuestAgentArgs, opts ...pulumi.InvokeOption) (*LookupVMInstanceGuestAgentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVMInstanceGuestAgentResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getVMInstanceGuestAgent", args, &rv, opts...)
 	if err != nil {

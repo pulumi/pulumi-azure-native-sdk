@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a data connector.
 func LookupIoTDataConnector(ctx *pulumi.Context, args *LookupIoTDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupIoTDataConnectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIoTDataConnectorResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230601preview:getIoTDataConnector", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,6 +54,7 @@ func NewPrivateStoreOffer(ctx *pulumi.Context,
 	if args.PrivateStoreId == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateStoreId'")
 	}
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource PrivateStoreOffer
 	err := ctx.RegisterResource("azure-native:marketplace/v20200101:PrivateStoreOffer", name, args, &resource, opts...)
 	if err != nil {

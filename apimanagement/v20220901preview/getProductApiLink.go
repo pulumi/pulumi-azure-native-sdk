@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the API link for the product.
 func LookupProductApiLink(ctx *pulumi.Context, args *LookupProductApiLinkArgs, opts ...pulumi.InvokeOption) (*LookupProductApiLinkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProductApiLinkResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220901preview:getProductApiLink", args, &rv, opts...)
 	if err != nil {

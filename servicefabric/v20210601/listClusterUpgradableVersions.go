@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // If a target is not provided, it will get the minimum and maximum versions available from the current cluster version. If a target is given, it will provide the required path to get from the current cluster version to the target version.
 func ListClusterUpgradableVersions(ctx *pulumi.Context, args *ListClusterUpgradableVersionsArgs, opts ...pulumi.InvokeOption) (*ListClusterUpgradableVersionsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListClusterUpgradableVersionsResult
 	err := ctx.Invoke("azure-native:servicefabric/v20210601:listClusterUpgradableVersions", args, &rv, opts...)
 	if err != nil {

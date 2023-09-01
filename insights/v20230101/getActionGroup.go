@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an action group.
 func LookupActionGroup(ctx *pulumi.Context, args *LookupActionGroupArgs, opts ...pulumi.InvokeOption) (*LookupActionGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActionGroupResult
 	err := ctx.Invoke("azure-native:insights/v20230101:getActionGroup", args, &rv, opts...)
 	if err != nil {
@@ -73,7 +75,7 @@ func (val *LookupActionGroupResult) Defaults() *LookupActionGroupResult {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Enabled) {
+	if utilities.IsZero(tmp.Enabled) {
 		tmp.Enabled = true
 	}
 	return &tmp

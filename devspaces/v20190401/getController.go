@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties for an Azure Dev Spaces Controller.
 func LookupController(ctx *pulumi.Context, args *LookupControllerArgs, opts ...pulumi.InvokeOption) (*LookupControllerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupControllerResult
 	err := ctx.Invoke("azure-native:devspaces/v20190401:getController", args, &rv, opts...)
 	if err != nil {

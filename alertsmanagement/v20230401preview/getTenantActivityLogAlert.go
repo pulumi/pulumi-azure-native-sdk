@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Tenant Activity Log Alert rule.
 func LookupTenantActivityLogAlert(ctx *pulumi.Context, args *LookupTenantActivityLogAlertArgs, opts ...pulumi.InvokeOption) (*LookupTenantActivityLogAlertResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTenantActivityLogAlertResult
 	err := ctx.Invoke("azure-native:alertsmanagement/v20230401preview:getTenantActivityLogAlert", args, &rv, opts...)
 	if err != nil {

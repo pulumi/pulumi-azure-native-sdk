@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The properties of deployment in Elastic cloud corresponding to the Elastic monitor resource.
 // Azure REST API version: 2023-06-01.
 func ListDeploymentInfo(ctx *pulumi.Context, args *ListDeploymentInfoArgs, opts ...pulumi.InvokeOption) (*ListDeploymentInfoResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDeploymentInfoResult
 	err := ctx.Invoke("azure-native:elastic:listDeploymentInfo", args, &rv, opts...)
 	if err != nil {

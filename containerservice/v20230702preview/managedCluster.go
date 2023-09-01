@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -327,6 +328,7 @@ func NewManagedCluster(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource ManagedCluster
 	err := ctx.RegisterResource("azure-native:containerservice/v20230702preview:ManagedCluster", name, args, &resource, opts...)
 	if err != nil {

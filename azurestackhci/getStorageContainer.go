@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a storage container
 // Azure REST API version: 2022-12-15-preview.
 func LookupStorageContainer(ctx *pulumi.Context, args *LookupStorageContainerArgs, opts ...pulumi.InvokeOption) (*LookupStorageContainerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageContainerResult
 	err := ctx.Invoke("azure-native:azurestackhci:getStorageContainer", args, &rv, opts...)
 	if err != nil {
