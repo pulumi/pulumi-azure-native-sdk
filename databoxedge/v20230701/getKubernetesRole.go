@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific role by name.
 func LookupKubernetesRole(ctx *pulumi.Context, args *LookupKubernetesRoleArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesRoleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesRoleResult
 	err := ctx.Invoke("azure-native:databoxedge/v20230701:getKubernetesRole", args, &rv, opts...)
 	if err != nil {

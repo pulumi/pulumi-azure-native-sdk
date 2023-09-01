@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Response of a list VM Host Update Operation.
 func ListSubAccountVMHosts(ctx *pulumi.Context, args *ListSubAccountVMHostsArgs, opts ...pulumi.InvokeOption) (*ListSubAccountVMHostsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSubAccountVMHostsResult
 	err := ctx.Invoke("azure-native:logz/v20220101preview:listSubAccountVMHosts", args, &rv, opts...)
 	if err != nil {

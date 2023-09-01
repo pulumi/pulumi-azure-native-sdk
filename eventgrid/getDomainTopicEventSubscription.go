@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of a nested event subscription for a domain topic.
 // Azure REST API version: 2022-06-15.
 func LookupDomainTopicEventSubscription(ctx *pulumi.Context, args *LookupDomainTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupDomainTopicEventSubscriptionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainTopicEventSubscriptionResult
 	err := ctx.Invoke("azure-native:eventgrid:getDomainTopicEventSubscription", args, &rv, opts...)
 	if err != nil {

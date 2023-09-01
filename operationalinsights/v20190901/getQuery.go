@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific Log Analytics Query defined within a Log Analytics QueryPack.
 func LookupQuery(ctx *pulumi.Context, args *LookupQueryArgs, opts ...pulumi.InvokeOption) (*LookupQueryResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueryResult
 	err := ctx.Invoke("azure-native:operationalinsights/v20190901:getQuery", args, &rv, opts...)
 	if err != nil {

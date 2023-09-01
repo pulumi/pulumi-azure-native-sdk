@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a document processor for a given name.
 // Azure REST API version: 2022-09-15-preview.
 func LookupDocumentProcessor(ctx *pulumi.Context, args *LookupDocumentProcessorArgs, opts ...pulumi.InvokeOption) (*LookupDocumentProcessorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDocumentProcessorResult
 	err := ctx.Invoke("azure-native:syntex:getDocumentProcessor", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get private endpoint connection properties
 // Azure REST API version: 2022-12-12.
 func LookupIotDpsResourcePrivateEndpointConnection(ctx *pulumi.Context, args *LookupIotDpsResourcePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupIotDpsResourcePrivateEndpointConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIotDpsResourcePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:devices:getIotDpsResourcePrivateEndpointConnection", args, &rv, opts...)
 	if err != nil {

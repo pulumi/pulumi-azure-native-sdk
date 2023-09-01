@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
 // Azure REST API version: 2022-10-01.
 func LookupConnectionMonitorTest(ctx *pulumi.Context, args *LookupConnectionMonitorTestArgs, opts ...pulumi.InvokeOption) (*LookupConnectionMonitorTestResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionMonitorTestResult
 	err := ctx.Invoke("azure-native:peering:getConnectionMonitorTest", args, &rv, opts...)
 	if err != nil {

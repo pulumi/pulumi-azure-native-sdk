@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a KPI in the hub.
 func LookupKpi(ctx *pulumi.Context, args *LookupKpiArgs, opts ...pulumi.InvokeOption) (*LookupKpiResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKpiResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170426:getKpi", args, &rv, opts...)
 	if err != nil {

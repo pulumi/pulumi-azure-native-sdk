@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get exposure control feature for specific factory.
 func GetExposureControlFeatureValueByFactory(ctx *pulumi.Context, args *GetExposureControlFeatureValueByFactoryArgs, opts ...pulumi.InvokeOption) (*GetExposureControlFeatureValueByFactoryResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetExposureControlFeatureValueByFactoryResult
 	err := ctx.Invoke("azure-native:datafactory/v20180601:getExposureControlFeatureValueByFactory", args, &rv, opts...)
 	if err != nil {

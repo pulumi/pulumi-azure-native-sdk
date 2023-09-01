@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the preview information of a vendor sku.
 func LookupVendorSkuPreview(ctx *pulumi.Context, args *LookupVendorSkuPreviewArgs, opts ...pulumi.InvokeOption) (*LookupVendorSkuPreviewResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVendorSkuPreviewResult
 	err := ctx.Invoke("azure-native:hybridnetwork/v20220101preview:getVendorSkuPreview", args, &rv, opts...)
 	if err != nil {

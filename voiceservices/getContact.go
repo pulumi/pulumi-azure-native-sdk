@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Contact
 // Azure REST API version: 2022-12-01-preview.
 func LookupContact(ctx *pulumi.Context, args *LookupContactArgs, opts ...pulumi.InvokeOption) (*LookupContactResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContactResult
 	err := ctx.Invoke("azure-native:voiceservices:getContact", args, &rv, opts...)
 	if err != nil {

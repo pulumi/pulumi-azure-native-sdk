@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified FirewallPolicyRuleGroup.
 // Azure REST API version: 2020-04-01.
 func LookupFirewallPolicyRuleGroup(ctx *pulumi.Context, args *LookupFirewallPolicyRuleGroupArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyRuleGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallPolicyRuleGroupResult
 	err := ctx.Invoke("azure-native:network:getFirewallPolicyRuleGroup", args, &rv, opts...)
 	if err != nil {

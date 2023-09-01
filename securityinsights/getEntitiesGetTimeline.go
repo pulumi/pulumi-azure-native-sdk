@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Timeline for an entity.
 // Azure REST API version: 2023-06-01-preview.
 func GetEntitiesGetTimeline(ctx *pulumi.Context, args *GetEntitiesGetTimelineArgs, opts ...pulumi.InvokeOption) (*GetEntitiesGetTimelineResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetEntitiesGetTimelineResult
 	err := ctx.Invoke("azure-native:securityinsights:getEntitiesGetTimeline", args, &rv, opts...)
 	if err != nil {

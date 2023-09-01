@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the SAP Database Instance resource.
 // Azure REST API version: 2023-04-01.
 func LookupSAPDatabaseInstance(ctx *pulumi.Context, args *LookupSAPDatabaseInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPDatabaseInstanceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSAPDatabaseInstanceResult
 	err := ctx.Invoke("azure-native:workloads:getSAPDatabaseInstance", args, &rv, opts...)
 	if err != nil {

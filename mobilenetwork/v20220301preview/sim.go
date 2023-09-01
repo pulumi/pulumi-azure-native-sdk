@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,6 +69,7 @@ func NewSim(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Sim
 	err := ctx.RegisterResource("azure-native:mobilenetwork/v20220301preview:Sim", name, args, &resource, opts...)
 	if err != nil {

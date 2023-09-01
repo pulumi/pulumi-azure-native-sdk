@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the properties of a Confidential Ledger.
 func LookupLedger(ctx *pulumi.Context, args *LookupLedgerArgs, opts ...pulumi.InvokeOption) (*LookupLedgerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLedgerResult
 	err := ctx.Invoke("azure-native:confidentialledger/v20230126preview:getLedger", args, &rv, opts...)
 	if err != nil {

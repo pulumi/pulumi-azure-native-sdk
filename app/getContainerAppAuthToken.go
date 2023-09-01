@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Container App Auth Token.
 // Azure REST API version: 2022-10-01.
 func GetContainerAppAuthToken(ctx *pulumi.Context, args *GetContainerAppAuthTokenArgs, opts ...pulumi.InvokeOption) (*GetContainerAppAuthTokenResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetContainerAppAuthTokenResult
 	err := ctx.Invoke("azure-native:app:getContainerAppAuthToken", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details from a list of feature names.
 func ListFeatureAccount(ctx *pulumi.Context, args *ListFeatureAccountArgs, opts ...pulumi.InvokeOption) (*ListFeatureAccountResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListFeatureAccountResult
 	err := ctx.Invoke("azure-native:purview/v20211201:listFeatureAccount", args, &rv, opts...)
 	if err != nil {

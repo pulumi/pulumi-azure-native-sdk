@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Log Analytics workspace table.
 // Azure REST API version: 2022-10-01.
 func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.InvokeOption) (*LookupTableResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTableResult
 	err := ctx.Invoke("azure-native:operationalinsights:getTable", args, &rv, opts...)
 	if err != nil {

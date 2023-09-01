@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 // Azure REST API version: 2021-03-01-preview.
 func LookupEnvironmentSpecificationVersion(ctx *pulumi.Context, args *LookupEnvironmentSpecificationVersionArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentSpecificationVersionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentSpecificationVersionResult
 	err := ctx.Invoke("azure-native:machinelearningservices:getEnvironmentSpecificationVersion", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the running status of the Network Device.
 func GetNetworkDeviceStatus(ctx *pulumi.Context, args *GetNetworkDeviceStatusArgs, opts ...pulumi.InvokeOption) (*GetNetworkDeviceStatusResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkDeviceStatusResult
 	err := ctx.Invoke("azure-native:managednetworkfabric/v20230201preview:getNetworkDeviceStatus", args, &rv, opts...)
 	if err != nil {

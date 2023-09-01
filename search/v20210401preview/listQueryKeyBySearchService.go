@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the list of query API keys for the given Azure Cognitive Search service.
 func ListQueryKeyBySearchService(ctx *pulumi.Context, args *ListQueryKeyBySearchServiceArgs, opts ...pulumi.InvokeOption) (*ListQueryKeyBySearchServiceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListQueryKeyBySearchServiceResult
 	err := ctx.Invoke("azure-native:search/v20210401preview:listQueryKeyBySearchService", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Neighbor Group.
 func LookupNeighborGroup(ctx *pulumi.Context, args *LookupNeighborGroupArgs, opts ...pulumi.InvokeOption) (*LookupNeighborGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNeighborGroupResult
 	err := ctx.Invoke("azure-native:managednetworkfabric/v20230615:getNeighborGroup", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a EnterpriseKnowledgeGraph service specified by the parameters.
 // Azure REST API version: 2018-12-03.
 func LookupEnterpriseKnowledgeGraph(ctx *pulumi.Context, args *LookupEnterpriseKnowledgeGraphArgs, opts ...pulumi.InvokeOption) (*LookupEnterpriseKnowledgeGraphResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnterpriseKnowledgeGraphResult
 	err := ctx.Invoke("azure-native:enterpriseknowledgegraph:getEnterpriseKnowledgeGraph", args, &rv, opts...)
 	if err != nil {

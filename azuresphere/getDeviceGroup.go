@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 // Azure REST API version: 2022-09-01-preview.
 func LookupDeviceGroup(ctx *pulumi.Context, args *LookupDeviceGroupArgs, opts ...pulumi.InvokeOption) (*LookupDeviceGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeviceGroupResult
 	err := ctx.Invoke("azure-native:azuresphere:getDeviceGroup", args, &rv, opts...)
 	if err != nil {

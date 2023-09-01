@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information about a configuration profile assignment
 func LookupConfigurationProfileHCRPAssignment(ctx *pulumi.Context, args *LookupConfigurationProfileHCRPAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfileHCRPAssignmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationProfileHCRPAssignmentResult
 	err := ctx.Invoke("azure-native:automanage/v20220504:getConfigurationProfileHCRPAssignment", args, &rv, opts...)
 	if err != nil {

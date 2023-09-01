@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists active connectivity configurations in a network manager.
 // Azure REST API version: 2023-02-01.
 func ListActiveConnectivityConfigurations(ctx *pulumi.Context, args *ListActiveConnectivityConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListActiveConnectivityConfigurationsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListActiveConnectivityConfigurationsResult
 	err := ctx.Invoke("azure-native:network:listActiveConnectivityConfigurations", args, &rv, opts...)
 	if err != nil {

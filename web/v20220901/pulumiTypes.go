@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Information about the formal API definition for the app.
 type ApiDefinitionInfo struct {
@@ -4373,16 +4376,16 @@ func (val *BackupSchedule) Defaults() *BackupSchedule {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.FrequencyInterval) {
+	if utilities.IsZero(tmp.FrequencyInterval) {
 		tmp.FrequencyInterval = 7
 	}
-	if isZero(tmp.FrequencyUnit) {
+	if utilities.IsZero(tmp.FrequencyUnit) {
 		tmp.FrequencyUnit = FrequencyUnit("Day")
 	}
-	if isZero(tmp.KeepAtLeastOneBackup) {
+	if utilities.IsZero(tmp.KeepAtLeastOneBackup) {
 		tmp.KeepAtLeastOneBackup = true
 	}
-	if isZero(tmp.RetentionPeriodInDays) {
+	if utilities.IsZero(tmp.RetentionPeriodInDays) {
 		tmp.RetentionPeriodInDays = 30
 	}
 	return &tmp
@@ -4632,16 +4635,16 @@ func (val *BackupScheduleResponse) Defaults() *BackupScheduleResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.FrequencyInterval) {
+	if utilities.IsZero(tmp.FrequencyInterval) {
 		tmp.FrequencyInterval = 7
 	}
-	if isZero(tmp.FrequencyUnit) {
+	if utilities.IsZero(tmp.FrequencyUnit) {
 		tmp.FrequencyUnit = "Day"
 	}
-	if isZero(tmp.KeepAtLeastOneBackup) {
+	if utilities.IsZero(tmp.KeepAtLeastOneBackup) {
 		tmp.KeepAtLeastOneBackup = true
 	}
-	if isZero(tmp.RetentionPeriodInDays) {
+	if utilities.IsZero(tmp.RetentionPeriodInDays) {
 		tmp.RetentionPeriodInDays = 30
 	}
 	return &tmp

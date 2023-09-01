@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ func NewGuestAgent(ctx *pulumi.Context,
 	if args.ResourceUri == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceUri'")
 	}
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource GuestAgent
 	err := ctx.RegisterResource("azure-native:azurestackhci/v20230701preview:GuestAgent", name, args, &resource, opts...)
 	if err != nil {

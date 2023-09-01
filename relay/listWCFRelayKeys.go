@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Primary and secondary connection strings to the WCF relay.
 // Azure REST API version: 2021-11-01.
 func ListWCFRelayKeys(ctx *pulumi.Context, args *ListWCFRelayKeysArgs, opts ...pulumi.InvokeOption) (*ListWCFRelayKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWCFRelayKeysResult
 	err := ctx.Invoke("azure-native:relay:listWCFRelayKeys", args, &rv, opts...)
 	if err != nil {

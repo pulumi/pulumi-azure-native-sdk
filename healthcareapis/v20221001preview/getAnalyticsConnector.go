@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified Analytics Connector.
 func LookupAnalyticsConnector(ctx *pulumi.Context, args *LookupAnalyticsConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAnalyticsConnectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnalyticsConnectorResult
 	err := ctx.Invoke("azure-native:healthcareapis/v20221001preview:getAnalyticsConnector", args, &rv, opts...)
 	if err != nil {

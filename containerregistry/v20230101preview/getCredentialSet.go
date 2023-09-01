@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified credential set resource.
 func LookupCredentialSet(ctx *pulumi.Context, args *LookupCredentialSetArgs, opts ...pulumi.InvokeOption) (*LookupCredentialSetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCredentialSetResult
 	err := ctx.Invoke("azure-native:containerregistry/v20230101preview:getCredentialSet", args, &rv, opts...)
 	if err != nil {

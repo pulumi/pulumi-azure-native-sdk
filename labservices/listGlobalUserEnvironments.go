@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List Environments for the user
 // Azure REST API version: 2018-10-15.
 func ListGlobalUserEnvironments(ctx *pulumi.Context, args *ListGlobalUserEnvironmentsArgs, opts ...pulumi.InvokeOption) (*ListGlobalUserEnvironmentsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListGlobalUserEnvironmentsResult
 	err := ctx.Invoke("azure-native:labservices:listGlobalUserEnvironments", args, &rv, opts...)
 	if err != nil {

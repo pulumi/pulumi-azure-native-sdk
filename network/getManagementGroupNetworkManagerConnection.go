@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a specified connection created by this management group.
 // Azure REST API version: 2023-02-01.
 func LookupManagementGroupNetworkManagerConnection(ctx *pulumi.Context, args *LookupManagementGroupNetworkManagerConnectionArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupNetworkManagerConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementGroupNetworkManagerConnectionResult
 	err := ctx.Invoke("azure-native:network:getManagementGroupNetworkManagerConnection", args, &rv, opts...)
 	if err != nil {

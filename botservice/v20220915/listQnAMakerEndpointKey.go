@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the QnA Maker endpoint keys
 func ListQnAMakerEndpointKey(ctx *pulumi.Context, args *ListQnAMakerEndpointKeyArgs, opts ...pulumi.InvokeOption) (*ListQnAMakerEndpointKeyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListQnAMakerEndpointKeyResult
 	err := ctx.Invoke("azure-native:botservice/v20220915:listQnAMakerEndpointKey", args, &rv, opts...)
 	if err != nil {

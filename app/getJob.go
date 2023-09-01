@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Container App Job
 // Azure REST API version: 2023-04-01-preview.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobResult
 	err := ctx.Invoke("azure-native:app:getJob", args, &rv, opts...)
 	if err != nil {

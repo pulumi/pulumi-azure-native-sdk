@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the specified trigger for the specified image template resource
 // Azure REST API version: 2022-07-01.
 func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.InvokeOption) (*LookupTriggerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTriggerResult
 	err := ctx.Invoke("azure-native:virtualmachineimages:getTrigger", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an integration runtime
 // Azure REST API version: 2021-06-01.
 func LookupIntegrationRuntime(ctx *pulumi.Context, args *LookupIntegrationRuntimeArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationRuntimeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationRuntimeResult
 	err := ctx.Invoke("azure-native:synapse:getIntegrationRuntime", args, &rv, opts...)
 	if err != nil {

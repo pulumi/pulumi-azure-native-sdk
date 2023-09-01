@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -88,8 +89,12 @@ func NewManagedClusterApplicationTypeVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20230301preview:ManagedClusterApplicationTypeVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20230701preview:ManagedClusterApplicationTypeVersion"),
+		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource ManagedClusterApplicationTypeVersion
 	err := ctx.RegisterResource("azure-native:servicefabric:ManagedClusterApplicationTypeVersion", name, args, &resource, opts...)
 	if err != nil {

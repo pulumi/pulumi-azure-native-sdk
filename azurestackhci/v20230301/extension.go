@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -98,8 +99,12 @@ func NewExtension(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230201:Extension"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230601:Extension"),
+		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Extension
 	err := ctx.RegisterResource("azure-native:azurestackhci/v20230301:Extension", name, args, &resource, opts...)
 	if err != nil {

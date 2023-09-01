@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the list of users of a static site.
 func ListStaticSiteUsers(ctx *pulumi.Context, args *ListStaticSiteUsersArgs, opts ...pulumi.InvokeOption) (*ListStaticSiteUsersResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListStaticSiteUsersResult
 	err := ctx.Invoke("azure-native:web/v20201001:listStaticSiteUsers", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists storage container URLs with shared access signatures (SAS) for uploading and downloading Asset content. The signatures are derived from the storage account keys.
 func ListAssetContainerSas(ctx *pulumi.Context, args *ListAssetContainerSasArgs, opts ...pulumi.InvokeOption) (*ListAssetContainerSasResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAssetContainerSasResult
 	err := ctx.Invoke("azure-native:media/v20230101:listAssetContainerSas", args, &rv, opts...)
 	if err != nil {

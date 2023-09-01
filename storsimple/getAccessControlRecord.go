@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the properties of the specified access control record name.
 // Azure REST API version: 2017-06-01.
 func LookupAccessControlRecord(ctx *pulumi.Context, args *LookupAccessControlRecordArgs, opts ...pulumi.InvokeOption) (*LookupAccessControlRecordResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessControlRecordResult
 	err := ctx.Invoke("azure-native:storsimple:getAccessControlRecord", args, &rv, opts...)
 	if err != nil {

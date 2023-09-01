@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A paginated list of FeaturesetJob entities.
 // Azure REST API version: 2023-04-01-preview.
 func ListFeaturesetVersionMaterializationJobs(ctx *pulumi.Context, args *ListFeaturesetVersionMaterializationJobsArgs, opts ...pulumi.InvokeOption) (*ListFeaturesetVersionMaterializationJobsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListFeaturesetVersionMaterializationJobsResult
 	err := ctx.Invoke("azure-native:machinelearningservices:listFeaturesetVersionMaterializationJobs", args, &rv, opts...)
 	if err != nil {

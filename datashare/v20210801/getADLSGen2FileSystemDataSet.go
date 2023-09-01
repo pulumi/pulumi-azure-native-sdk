@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a DataSet in a share
 func LookupADLSGen2FileSystemDataSet(ctx *pulumi.Context, args *LookupADLSGen2FileSystemDataSetArgs, opts ...pulumi.InvokeOption) (*LookupADLSGen2FileSystemDataSetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupADLSGen2FileSystemDataSetResult
 	err := ctx.Invoke("azure-native:datashare/v20210801:getADLSGen2FileSystemDataSet", args, &rv, opts...)
 	if err != nil {

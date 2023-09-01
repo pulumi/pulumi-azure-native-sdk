@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the extended properties of a product.
 func ListProductDetails(ctx *pulumi.Context, args *ListProductDetailsArgs, opts ...pulumi.InvokeOption) (*ListProductDetailsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListProductDetailsResult
 	err := ctx.Invoke("azure-native:azurestack/v20220601:listProductDetails", args, &rv, opts...)
 	if err != nil {

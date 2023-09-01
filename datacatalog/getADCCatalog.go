@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Get Azure Data Catalog Service operation retrieves a json representation of the data catalog.
 // Azure REST API version: 2016-03-30.
 func LookupADCCatalog(ctx *pulumi.Context, args *LookupADCCatalogArgs, opts ...pulumi.InvokeOption) (*LookupADCCatalogResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupADCCatalogResult
 	err := ctx.Invoke("azure-native:datacatalog:getADCCatalog", args, &rv, opts...)
 	if err != nil {

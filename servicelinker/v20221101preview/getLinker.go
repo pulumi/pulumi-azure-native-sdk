@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns Linker resource for a given name.
 func LookupLinker(ctx *pulumi.Context, args *LookupLinkerArgs, opts ...pulumi.InvokeOption) (*LookupLinkerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLinkerResult
 	err := ctx.Invoke("azure-native:servicelinker/v20221101preview:getLinker", args, &rv, opts...)
 	if err != nil {

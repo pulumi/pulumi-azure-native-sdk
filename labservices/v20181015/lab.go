@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,6 +61,7 @@ func NewLab(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Lab
 	err := ctx.RegisterResource("azure-native:labservices/v20181015:Lab", name, args, &resource, opts...)
 	if err != nil {

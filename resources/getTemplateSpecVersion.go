@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Template Spec version from a specific Template Spec.
 // Azure REST API version: 2022-02-01.
 func LookupTemplateSpecVersion(ctx *pulumi.Context, args *LookupTemplateSpecVersionArgs, opts ...pulumi.InvokeOption) (*LookupTemplateSpecVersionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTemplateSpecVersionResult
 	err := ctx.Invoke("azure-native:resources:getTemplateSpecVersion", args, &rv, opts...)
 	if err != nil {

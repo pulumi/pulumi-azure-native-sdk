@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a list of databases that are owned by this cluster and were followed by another cluster.
 // Azure REST API version: 2022-12-29.
 func ListClusterFollowerDatabases(ctx *pulumi.Context, args *ListClusterFollowerDatabasesArgs, opts ...pulumi.InvokeOption) (*ListClusterFollowerDatabasesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListClusterFollowerDatabasesResult
 	err := ctx.Invoke("azure-native:kusto:listClusterFollowerDatabases", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets all deployments for a remediation at subscription scope.
 func ListRemediationDeploymentsAtSubscription(ctx *pulumi.Context, args *ListRemediationDeploymentsAtSubscriptionArgs, opts ...pulumi.InvokeOption) (*ListRemediationDeploymentsAtSubscriptionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListRemediationDeploymentsAtSubscriptionResult
 	err := ctx.Invoke("azure-native:policyinsights/v20211001:listRemediationDeploymentsAtSubscription", args, &rv, opts...)
 	if err != nil {

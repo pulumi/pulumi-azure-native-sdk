@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified saved search for a given workspace.
 // Azure REST API version: 2020-08-01.
 func LookupSavedSearch(ctx *pulumi.Context, args *LookupSavedSearchArgs, opts ...pulumi.InvokeOption) (*LookupSavedSearchResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSavedSearchResult
 	err := ctx.Invoke("azure-native:operationalinsights:getSavedSearch", args, &rv, opts...)
 	if err != nil {

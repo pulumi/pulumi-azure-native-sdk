@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Information about an asset associated with the web service.
 type AssetItem struct {
@@ -3938,7 +3941,7 @@ func (val *ServiceInputOutputSpecification) Defaults() *ServiceInputOutputSpecif
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if utilities.IsZero(tmp.Type) {
 		tmp.Type = "object"
 	}
 	return &tmp
@@ -4158,7 +4161,7 @@ func (val *ServiceInputOutputSpecificationResponse) Defaults() *ServiceInputOutp
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if utilities.IsZero(tmp.Type) {
 		tmp.Type = "object"
 	}
 	return &tmp
@@ -4757,7 +4760,7 @@ func (val *TableSpecification) Defaults() *TableSpecification {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if utilities.IsZero(tmp.Type) {
 		tmp.Type = "object"
 	}
 	return &tmp
@@ -4916,7 +4919,7 @@ func (val *TableSpecificationResponse) Defaults() *TableSpecificationResponse {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.Type) {
+	if utilities.IsZero(tmp.Type) {
 		tmp.Type = "object"
 	}
 	return &tmp

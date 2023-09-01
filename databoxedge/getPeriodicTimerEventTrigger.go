@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a specific trigger by name.
 // Azure REST API version: 2022-03-01.
 func LookupPeriodicTimerEventTrigger(ctx *pulumi.Context, args *LookupPeriodicTimerEventTriggerArgs, opts ...pulumi.InvokeOption) (*LookupPeriodicTimerEventTriggerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPeriodicTimerEventTriggerResult
 	err := ctx.Invoke("azure-native:databoxedge:getPeriodicTimerEventTrigger", args, &rv, opts...)
 	if err != nil {

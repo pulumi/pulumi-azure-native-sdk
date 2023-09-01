@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified Iot Connector FHIR destination.
 // Azure REST API version: 2023-02-28.
 func LookupIotConnectorFhirDestination(ctx *pulumi.Context, args *LookupIotConnectorFhirDestinationArgs, opts ...pulumi.InvokeOption) (*LookupIotConnectorFhirDestinationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIotConnectorFhirDestinationResult
 	err := ctx.Invoke("azure-native:healthcareapis:getIotConnectorFhirDestination", args, &rv, opts...)
 	if err != nil {

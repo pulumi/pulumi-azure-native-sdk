@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the notification hubs associated with a namespace.
 func LookupNotificationHub(ctx *pulumi.Context, args *LookupNotificationHubArgs, opts ...pulumi.InvokeOption) (*LookupNotificationHubResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotificationHubResult
 	err := ctx.Invoke("azure-native:notificationhubs/v20170401:getNotificationHub", args, &rv, opts...)
 	if err != nil {

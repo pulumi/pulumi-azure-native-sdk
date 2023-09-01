@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Post to List of Network Manager Deployment Status.
 func ListNetworkManagerDeploymentStatus(ctx *pulumi.Context, args *ListNetworkManagerDeploymentStatusArgs, opts ...pulumi.InvokeOption) (*ListNetworkManagerDeploymentStatusResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListNetworkManagerDeploymentStatusResult
 	err := ctx.Invoke("azure-native:network/v20230501:listNetworkManagerDeploymentStatus", args, &rv, opts...)
 	if err != nil {

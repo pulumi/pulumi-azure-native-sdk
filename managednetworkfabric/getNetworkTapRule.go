@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Network Tap Rule resource details.
 // Azure REST API version: 2023-06-15.
 func LookupNetworkTapRule(ctx *pulumi.Context, args *LookupNetworkTapRuleArgs, opts ...pulumi.InvokeOption) (*LookupNetworkTapRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkTapRuleResult
 	err := ctx.Invoke("azure-native:managednetworkfabric:getNetworkTapRule", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Dapr Component.
 func LookupDaprComponent(ctx *pulumi.Context, args *LookupDaprComponentArgs, opts ...pulumi.InvokeOption) (*LookupDaprComponentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDaprComponentResult
 	err := ctx.Invoke("azure-native:app/v20230401preview:getDaprComponent", args, &rv, opts...)
 	if err != nil {

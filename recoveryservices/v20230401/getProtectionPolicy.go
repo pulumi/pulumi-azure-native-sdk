@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides the details of the backup policies associated to Recovery Services Vault. This is an asynchronous
 // operation. Status of the operation can be fetched using GetPolicyOperationResult API.
 func LookupProtectionPolicy(ctx *pulumi.Context, args *LookupProtectionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupProtectionPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProtectionPolicyResult
 	err := ctx.Invoke("azure-native:recoveryservices/v20230401:getProtectionPolicy", args, &rv, opts...)
 	if err != nil {

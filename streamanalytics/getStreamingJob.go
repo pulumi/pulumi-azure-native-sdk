@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details about the specified streaming job.
 // Azure REST API version: 2020-03-01.
 func LookupStreamingJob(ctx *pulumi.Context, args *LookupStreamingJobArgs, opts ...pulumi.InvokeOption) (*LookupStreamingJobResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStreamingJobResult
 	err := ctx.Invoke("azure-native:streamanalytics:getStreamingJob", args, &rv, opts...)
 	if err != nil {

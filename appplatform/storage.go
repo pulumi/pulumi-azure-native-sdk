@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,8 +71,12 @@ func NewStorage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230501preview:Storage"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230701preview:Storage"),
+		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Storage
 	err := ctx.RegisterResource("azure-native:appplatform:Storage", name, args, &resource, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the properties of a lab Schedule.
 // Azure REST API version: 2022-08-01.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScheduleResult
 	err := ctx.Invoke("azure-native:labservices:getSchedule", args, &rv, opts...)
 	if err != nil {

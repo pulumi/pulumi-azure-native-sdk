@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a hunt, without relations and comments.
 func LookupHunt(ctx *pulumi.Context, args *LookupHuntArgs, opts ...pulumi.InvokeOption) (*LookupHuntResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHuntResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230601preview:getHunt", args, &rv, opts...)
 	if err != nil {

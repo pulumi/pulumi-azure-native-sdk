@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,6 +79,7 @@ func NewVirtualMachineSchedule(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource VirtualMachineSchedule
 	err := ctx.RegisterResource("azure-native:devtestlab/v20180915:VirtualMachineSchedule", name, args, &resource, opts...)
 	if err != nil {

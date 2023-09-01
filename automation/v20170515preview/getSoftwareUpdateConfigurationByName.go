@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a single software update configuration by name.
 func LookupSoftwareUpdateConfigurationByName(ctx *pulumi.Context, args *LookupSoftwareUpdateConfigurationByNameArgs, opts ...pulumi.InvokeOption) (*LookupSoftwareUpdateConfigurationByNameResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSoftwareUpdateConfigurationByNameResult
 	err := ctx.Invoke("azure-native:automation/v20170515preview:getSoftwareUpdateConfigurationByName", args, &rv, opts...)
 	if err != nil {

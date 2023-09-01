@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get details of the specified subvolume
 // Azure REST API version: 2022-11-01.
 func GetSubvolumeMetadata(ctx *pulumi.Context, args *GetSubvolumeMetadataArgs, opts ...pulumi.InvokeOption) (*GetSubvolumeMetadataResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSubvolumeMetadataResult
 	err := ctx.Invoke("azure-native:netapp:getSubvolumeMetadata", args, &rv, opts...)
 	if err != nil {

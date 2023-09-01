@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a database's blob auditing policy.
 // Azure REST API version: 2021-11-01.
 func LookupDatabaseBlobAuditingPolicy(ctx *pulumi.Context, args *LookupDatabaseBlobAuditingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseBlobAuditingPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseBlobAuditingPolicyResult
 	err := ctx.Invoke("azure-native:sql:getDatabaseBlobAuditingPolicy", args, &rv, opts...)
 	if err != nil {

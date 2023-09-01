@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the details for a specific student in the specified lab by student alias
 func LookupStudent(ctx *pulumi.Context, args *LookupStudentArgs, opts ...pulumi.InvokeOption) (*LookupStudentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStudentResult
 	err := ctx.Invoke("azure-native:education/v20211201preview:getStudent", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a workspace manager member
 // Azure REST API version: 2023-06-01-preview.
 func LookupWorkspaceManagerMember(ctx *pulumi.Context, args *LookupWorkspaceManagerMemberArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceManagerMemberResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceManagerMemberResult
 	err := ctx.Invoke("azure-native:securityinsights:getWorkspaceManagerMember", args, &rv, opts...)
 	if err != nil {

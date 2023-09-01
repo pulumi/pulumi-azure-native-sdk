@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,6 +65,7 @@ func NewPrometheusRuleGroup(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource PrometheusRuleGroup
 	err := ctx.RegisterResource("azure-native:alertsmanagement/v20230301:PrometheusRuleGroup", name, args, &resource, opts...)
 	if err != nil {

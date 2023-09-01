@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets training results.
 func GetPredictionTrainingResults(ctx *pulumi.Context, args *GetPredictionTrainingResultsArgs, opts ...pulumi.InvokeOption) (*GetPredictionTrainingResultsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetPredictionTrainingResultsResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170426:getPredictionTrainingResults", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the Application Configuration Service and its properties.
 // Azure REST API version: 2023-05-01-preview.
 func LookupConfigurationService(ctx *pulumi.Context, args *LookupConfigurationServiceArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationServiceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationServiceResult
 	err := ctx.Invoke("azure-native:appplatform:getConfigurationService", args, &rv, opts...)
 	if err != nil {

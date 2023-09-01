@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a server's blob auditing policy.
 func LookupServerBlobAuditingPolicy(ctx *pulumi.Context, args *LookupServerBlobAuditingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServerBlobAuditingPolicyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerBlobAuditingPolicyResult
 	err := ctx.Invoke("azure-native:sql/v20211101:getServerBlobAuditingPolicy", args, &rv, opts...)
 	if err != nil {

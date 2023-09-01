@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Get function keys for a function in a web site, or a deployment slot.
 // Azure REST API version: 2022-09-01.
 func ListWebAppFunctionKeysSlot(ctx *pulumi.Context, args *ListWebAppFunctionKeysSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppFunctionKeysSlotResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppFunctionKeysSlotResult
 	err := ctx.Invoke("azure-native:web:listWebAppFunctionKeysSlot", args, &rv, opts...)
 	if err != nil {

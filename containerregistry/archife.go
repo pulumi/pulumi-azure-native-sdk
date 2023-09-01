@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,8 +53,12 @@ func NewArchife(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20230601preview:Archife"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20230801preview:Archife"),
+		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Archife
 	err := ctx.RegisterResource("azure-native:containerregistry:Archife", name, args, &resource, opts...)
 	if err != nil {

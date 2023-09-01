@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the private scheduled action by name.
 func LookupScheduledAction(ctx *pulumi.Context, args *LookupScheduledActionArgs, opts ...pulumi.InvokeOption) (*LookupScheduledActionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScheduledActionResult
 	err := ctx.Invoke("azure-native:costmanagement/v20230401preview:getScheduledAction", args, &rv, opts...)
 	if err != nil {

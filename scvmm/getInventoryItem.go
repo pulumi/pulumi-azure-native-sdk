@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Shows an inventory item.
 // Azure REST API version: 2022-05-21-preview.
 func LookupInventoryItem(ctx *pulumi.Context, args *LookupInventoryItemArgs, opts ...pulumi.InvokeOption) (*LookupInventoryItemResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInventoryItemResult
 	err := ctx.Invoke("azure-native:scvmm:getInventoryItem", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified vendor.
 // Azure REST API version: 2022-01-01-preview.
 func LookupVendor(ctx *pulumi.Context, args *LookupVendorArgs, opts ...pulumi.InvokeOption) (*LookupVendorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVendorResult
 	err := ctx.Invoke("azure-native:hybridnetwork:getVendor", args, &rv, opts...)
 	if err != nil {

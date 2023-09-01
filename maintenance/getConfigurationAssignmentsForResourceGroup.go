@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get configuration assignment for resource..
 // Azure REST API version: 2023-04-01.
 func LookupConfigurationAssignmentsForResourceGroup(ctx *pulumi.Context, args *LookupConfigurationAssignmentsForResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationAssignmentsForResourceGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationAssignmentsForResourceGroupResult
 	err := ctx.Invoke("azure-native:maintenance:getConfigurationAssignmentsForResourceGroup", args, &rv, opts...)
 	if err != nil {

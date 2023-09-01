@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the metadata of a privateLinkServicesForSCCPowershell resource.
 // Azure REST API version: 2021-03-08.
 func LookupPrivateLinkServicesForSCCPowershell(ctx *pulumi.Context, args *LookupPrivateLinkServicesForSCCPowershellArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServicesForSCCPowershellResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkServicesForSCCPowershellResult
 	err := ctx.Invoke("azure-native:securityandcompliance:getPrivateLinkServicesForSCCPowershell", args, &rv, opts...)
 	if err != nil {

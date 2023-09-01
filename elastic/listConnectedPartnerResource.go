@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // Azure REST API version: 2023-07-01-preview.
 func ListConnectedPartnerResource(ctx *pulumi.Context, args *ListConnectedPartnerResourceArgs, opts ...pulumi.InvokeOption) (*ListConnectedPartnerResourceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConnectedPartnerResourceResult
 	err := ctx.Invoke("azure-native:elastic:listConnectedPartnerResource", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Response of a list VM Host Update Operation.
 func ListMonitorVMHosts(ctx *pulumi.Context, args *ListMonitorVMHostsArgs, opts ...pulumi.InvokeOption) (*ListMonitorVMHostsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListMonitorVMHostsResult
 	err := ctx.Invoke("azure-native:logz/v20220101preview:listMonitorVMHosts", args, &rv, opts...)
 	if err != nil {

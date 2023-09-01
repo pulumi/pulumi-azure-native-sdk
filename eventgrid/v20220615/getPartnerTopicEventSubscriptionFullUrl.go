@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the full endpoint URL for an event subscription of a partner topic.
 func GetPartnerTopicEventSubscriptionFullUrl(ctx *pulumi.Context, args *GetPartnerTopicEventSubscriptionFullUrlArgs, opts ...pulumi.InvokeOption) (*GetPartnerTopicEventSubscriptionFullUrlResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetPartnerTopicEventSubscriptionFullUrlResult
 	err := ctx.Invoke("azure-native:eventgrid/v20220615:getPartnerTopicEventSubscriptionFullUrl", args, &rv, opts...)
 	if err != nil {

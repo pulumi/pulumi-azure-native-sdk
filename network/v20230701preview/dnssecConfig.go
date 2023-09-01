@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ func NewDnssecConfig(ctx *pulumi.Context,
 	if args.ZoneName == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneName'")
 	}
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource DnssecConfig
 	err := ctx.RegisterResource("azure-native:network/v20230701preview:DnssecConfig", name, args, &resource, opts...)
 	if err != nil {

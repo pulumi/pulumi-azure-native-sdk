@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the details of the specified Video Analyzer account
 // Azure REST API version: 2021-11-01-preview.
 func LookupVideoAnalyzer(ctx *pulumi.Context, args *LookupVideoAnalyzerArgs, opts ...pulumi.InvokeOption) (*LookupVideoAnalyzerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVideoAnalyzerResult
 	err := ctx.Invoke("azure-native:videoanalyzer:getVideoAnalyzer", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the sas url to get the connection health detail of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.
 // Azure REST API version: 2023-02-01.
 func GetP2sVpnGatewayP2sVpnConnectionHealthDetailed(ctx *pulumi.Context, args *GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs, opts ...pulumi.InvokeOption) (*GetP2sVpnGatewayP2sVpnConnectionHealthDetailedResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetP2sVpnGatewayP2sVpnConnectionHealthDetailedResult
 	err := ctx.Invoke("azure-native:network:getP2sVpnGatewayP2sVpnConnectionHealthDetailed", args, &rv, opts...)
 	if err != nil {

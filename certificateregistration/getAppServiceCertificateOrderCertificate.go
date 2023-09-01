@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Get the certificate associated with a certificate order.
 // Azure REST API version: 2022-09-01.
 func LookupAppServiceCertificateOrderCertificate(ctx *pulumi.Context, args *LookupAppServiceCertificateOrderCertificateArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceCertificateOrderCertificateResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServiceCertificateOrderCertificateResult
 	err := ctx.Invoke("azure-native:certificateregistration:getAppServiceCertificateOrderCertificate", args, &rv, opts...)
 	if err != nil {

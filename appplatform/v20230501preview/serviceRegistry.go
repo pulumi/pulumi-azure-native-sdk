@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,8 +70,12 @@ func NewServiceRegistry(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230301preview:ServiceRegistry"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230701preview:ServiceRegistry"),
+		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource ServiceRegistry
 	err := ctx.RegisterResource("azure-native:appplatform/v20230501preview:ServiceRegistry", name, args, &resource, opts...)
 	if err != nil {

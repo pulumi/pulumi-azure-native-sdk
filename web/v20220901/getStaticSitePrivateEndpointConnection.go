@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Gets a private endpoint connection
 func LookupStaticSitePrivateEndpointConnection(ctx *pulumi.Context, args *LookupStaticSitePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupStaticSitePrivateEndpointConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSitePrivateEndpointConnectionResult
 	err := ctx.Invoke("azure-native:web/v20220901:getStaticSitePrivateEndpointConnection", args, &rv, opts...)
 	if err != nil {

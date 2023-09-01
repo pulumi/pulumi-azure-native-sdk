@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified subnet by virtual network and resource group.
 func LookupSubnet(ctx *pulumi.Context, args *LookupSubnetArgs, opts ...pulumi.InvokeOption) (*LookupSubnetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSubnetResult
 	err := ctx.Invoke("azure-native:network/v20230501:getSubnet", args, &rv, opts...)
 	if err != nil {

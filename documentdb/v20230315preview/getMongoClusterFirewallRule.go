@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a mongo cluster firewall rule.
 func LookupMongoClusterFirewallRule(ctx *pulumi.Context, args *LookupMongoClusterFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupMongoClusterFirewallRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMongoClusterFirewallRuleResult
 	err := ctx.Invoke("azure-native:documentdb/v20230315preview:getMongoClusterFirewallRule", args, &rv, opts...)
 	if err != nil {

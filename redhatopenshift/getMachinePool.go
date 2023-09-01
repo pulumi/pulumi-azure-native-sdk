@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation returns properties of a MachinePool.
 // Azure REST API version: 2022-09-04.
 func LookupMachinePool(ctx *pulumi.Context, args *LookupMachinePoolArgs, opts ...pulumi.InvokeOption) (*LookupMachinePoolResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachinePoolResult
 	err := ctx.Invoke("azure-native:redhatopenshift:getMachinePool", args, &rv, opts...)
 	if err != nil {

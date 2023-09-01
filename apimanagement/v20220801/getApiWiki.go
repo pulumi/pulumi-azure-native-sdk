@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the Wiki for an API specified by its identifier.
 func LookupApiWiki(ctx *pulumi.Context, args *LookupApiWikiArgs, opts ...pulumi.InvokeOption) (*LookupApiWikiResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiWikiResult
 	err := ctx.Invoke("azure-native:apimanagement/v20220801:getApiWiki", args, &rv, opts...)
 	if err != nil {

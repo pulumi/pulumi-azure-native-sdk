@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // HDInsight MapReduce activity type.
 type HDInsightMapReduceActivity struct {
@@ -9205,12 +9208,20 @@ func (o PipelineElapsedTimeMetricPolicyResponsePtrOutput) Duration() pulumi.AnyO
 
 // PipelineExternalComputeScale properties for managed integration runtime.
 type PipelineExternalComputeScaleProperties struct {
+	// Number of the the external nodes, which should be greater than 0 and less than 11.
+	NumberOfExternalNodes *int `pulumi:"numberOfExternalNodes"`
+	// Number of the pipeline nodes, which should be greater than 0 and less than 11.
+	NumberOfPipelineNodes *int `pulumi:"numberOfPipelineNodes"`
 	// Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
 	TimeToLive *int `pulumi:"timeToLive"`
 }
 
 // PipelineExternalComputeScale properties for managed integration runtime.
 type PipelineExternalComputeScalePropertiesResponse struct {
+	// Number of the the external nodes, which should be greater than 0 and less than 11.
+	NumberOfExternalNodes *int `pulumi:"numberOfExternalNodes"`
+	// Number of the pipeline nodes, which should be greater than 0 and less than 11.
+	NumberOfPipelineNodes *int `pulumi:"numberOfPipelineNodes"`
 	// Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
 	TimeToLive *int `pulumi:"timeToLive"`
 }
@@ -13940,6 +13951,8 @@ type SelfHostedIntegrationRuntime struct {
 	Description *string `pulumi:"description"`
 	// The base definition of a linked integration runtime.
 	LinkedInfo interface{} `pulumi:"linkedInfo"`
+	// An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
+	SelfContainedInteractiveAuthoringEnabled *bool `pulumi:"selfContainedInteractiveAuthoringEnabled"`
 	// The type of integration runtime.
 	// Expected value is 'SelfHosted'.
 	Type string `pulumi:"type"`
@@ -13991,6 +14004,8 @@ type SelfHostedIntegrationRuntimeResponse struct {
 	Description *string `pulumi:"description"`
 	// The base definition of a linked integration runtime.
 	LinkedInfo interface{} `pulumi:"linkedInfo"`
+	// An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
+	SelfContainedInteractiveAuthoringEnabled *bool `pulumi:"selfContainedInteractiveAuthoringEnabled"`
 	// The type of integration runtime.
 	// Expected value is 'SelfHosted'.
 	Type string `pulumi:"type"`
@@ -14022,6 +14037,8 @@ type SelfHostedIntegrationRuntimeStatusResponse struct {
 	PushedVersion string `pulumi:"pushedVersion"`
 	// The date at which the integration runtime will be scheduled to update, in ISO8601 format.
 	ScheduledUpdateDate string `pulumi:"scheduledUpdateDate"`
+	// An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
+	SelfContainedInteractiveAuthoringEnabled bool `pulumi:"selfContainedInteractiveAuthoringEnabled"`
 	// The URLs for the services used in integration runtime backend service.
 	ServiceUrls []string `pulumi:"serviceUrls"`
 	// The state of integration runtime.

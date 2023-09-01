@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific addon by name.
 // Azure REST API version: 2022-03-01.
 func LookupArcAddon(ctx *pulumi.Context, args *LookupArcAddonArgs, opts ...pulumi.InvokeOption) (*LookupArcAddonResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupArcAddonResult
 	err := ctx.Invoke("azure-native:databoxedge:getArcAddon", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Fetches the managed proxy details
 func ListEndpointManagedProxyDetails(ctx *pulumi.Context, args *ListEndpointManagedProxyDetailsArgs, opts ...pulumi.InvokeOption) (*ListEndpointManagedProxyDetailsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEndpointManagedProxyDetailsResult
 	err := ctx.Invoke("azure-native:hybridconnectivity/v20230315:listEndpointManagedProxyDetails", args, &rv, opts...)
 	if err != nil {

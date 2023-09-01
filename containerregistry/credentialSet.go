@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,8 +59,12 @@ func NewCredentialSet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20230701:CredentialSet"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20230801preview:CredentialSet"),
+		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource CredentialSet
 	err := ctx.RegisterResource("azure-native:containerregistry:CredentialSet", name, args, &resource, opts...)
 	if err != nil {

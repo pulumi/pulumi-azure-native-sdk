@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get all delivery attributes for an event subscription for topic.
 // Azure REST API version: 2022-06-15.
 func GetTopicEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *GetTopicEventSubscriptionDeliveryAttributesArgs, opts ...pulumi.InvokeOption) (*GetTopicEventSubscriptionDeliveryAttributesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetTopicEventSubscriptionDeliveryAttributesResult
 	err := ctx.Invoke("azure-native:eventgrid:getTopicEventSubscriptionDeliveryAttributes", args, &rv, opts...)
 	if err != nil {

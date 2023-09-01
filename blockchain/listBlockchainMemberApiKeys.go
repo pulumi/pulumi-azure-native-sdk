@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the API keys for a blockchain member.
 // Azure REST API version: 2018-06-01-preview.
 func ListBlockchainMemberApiKeys(ctx *pulumi.Context, args *ListBlockchainMemberApiKeysArgs, opts ...pulumi.InvokeOption) (*ListBlockchainMemberApiKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListBlockchainMemberApiKeysResult
 	err := ctx.Invoke("azure-native:blockchain:listBlockchainMemberApiKeys", args, &rv, opts...)
 	if err != nil {

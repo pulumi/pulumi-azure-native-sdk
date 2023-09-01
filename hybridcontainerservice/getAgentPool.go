@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the agent pool in the Hybrid AKS provisioned cluster
 // Azure REST API version: 2022-09-01-preview.
 func LookupAgentPool(ctx *pulumi.Context, args *LookupAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupAgentPoolResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAgentPoolResult
 	err := ctx.Invoke("azure-native:hybridcontainerservice:getAgentPool", args, &rv, opts...)
 	if err != nil {

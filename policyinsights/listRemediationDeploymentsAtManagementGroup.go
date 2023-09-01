@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets all deployments for a remediation at management group scope.
 // Azure REST API version: 2021-10-01.
 func ListRemediationDeploymentsAtManagementGroup(ctx *pulumi.Context, args *ListRemediationDeploymentsAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*ListRemediationDeploymentsAtManagementGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListRemediationDeploymentsAtManagementGroupResult
 	err := ctx.Invoke("azure-native:policyinsights:listRemediationDeploymentsAtManagementGroup", args, &rv, opts...)
 	if err != nil {

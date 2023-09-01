@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 // Azure REST API version: 2023-04-01.
 func LookupModelContainer(ctx *pulumi.Context, args *LookupModelContainerArgs, opts ...pulumi.InvokeOption) (*LookupModelContainerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupModelContainerResult
 	err := ctx.Invoke("azure-native:machinelearningservices:getModelContainer", args, &rv, opts...)
 	if err != nil {

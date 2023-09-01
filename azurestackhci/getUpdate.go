@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get specified Update
 // Azure REST API version: 2023-03-01.
 func LookupUpdate(ctx *pulumi.Context, args *LookupUpdateArgs, opts ...pulumi.InvokeOption) (*LookupUpdateResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUpdateResult
 	err := ctx.Invoke("azure-native:azurestackhci:getUpdate", args, &rv, opts...)
 	if err != nil {

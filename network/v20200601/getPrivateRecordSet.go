@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a record set.
 func LookupPrivateRecordSet(ctx *pulumi.Context, args *LookupPrivateRecordSetArgs, opts ...pulumi.InvokeOption) (*LookupPrivateRecordSetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateRecordSetResult
 	err := ctx.Invoke("azure-native:network/v20200601:getPrivateRecordSet", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified address.
 func LookupAddressByName(ctx *pulumi.Context, args *LookupAddressByNameArgs, opts ...pulumi.InvokeOption) (*LookupAddressByNameResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAddressByNameResult
 	err := ctx.Invoke("azure-native:edgeorder/v20211201:getAddressByName", args, &rv, opts...)
 	if err != nil {

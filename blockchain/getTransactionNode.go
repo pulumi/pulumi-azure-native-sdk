@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the details of the transaction node.
 // Azure REST API version: 2018-06-01-preview.
 func LookupTransactionNode(ctx *pulumi.Context, args *LookupTransactionNodeArgs, opts ...pulumi.InvokeOption) (*LookupTransactionNodeResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTransactionNodeResult
 	err := ctx.Invoke("azure-native:blockchain:getTransactionNode", args, &rv, opts...)
 	if err != nil {

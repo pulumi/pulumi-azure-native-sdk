@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified volume container name.
 // Azure REST API version: 2017-06-01.
 func LookupVolumeContainer(ctx *pulumi.Context, args *LookupVolumeContainerArgs, opts ...pulumi.InvokeOption) (*LookupVolumeContainerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeContainerResult
 	err := ctx.Invoke("azure-native:storsimple:getVolumeContainer", args, &rv, opts...)
 	if err != nil {

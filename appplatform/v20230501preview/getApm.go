@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the APM by name.
 func LookupApm(ctx *pulumi.Context, args *LookupApmArgs, opts ...pulumi.InvokeOption) (*LookupApmResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApmResult
 	err := ctx.Invoke("azure-native:appplatform/v20230501preview:getApm", args, &rv, opts...)
 	if err != nil {

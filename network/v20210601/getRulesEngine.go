@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Rules Engine Configuration with the specified name within the specified Front Door.
 func LookupRulesEngine(ctx *pulumi.Context, args *LookupRulesEngineArgs, opts ...pulumi.InvokeOption) (*LookupRulesEngineResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRulesEngineResult
 	err := ctx.Invoke("azure-native:network/v20210601:getRulesEngine", args, &rv, opts...)
 	if err != nil {

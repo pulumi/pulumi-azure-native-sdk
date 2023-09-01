@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Azure Active Directory Partner Client Authentication
 type AzureADPartnerClientAuthentication struct {
@@ -27,7 +30,7 @@ func (val *AzureADPartnerClientAuthentication) Defaults() *AzureADPartnerClientA
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientAuthenticationType) {
+	if utilities.IsZero(tmp.ClientAuthenticationType) {
 		tmp.ClientAuthenticationType = "AzureAD"
 	}
 	return &tmp
@@ -232,7 +235,7 @@ func (val *AzureADPartnerClientAuthenticationResponse) Defaults() *AzureADPartne
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.ClientAuthenticationType) {
+	if utilities.IsZero(tmp.ClientAuthenticationType) {
 		tmp.ClientAuthenticationType = "AzureAD"
 	}
 	return &tmp
@@ -11126,7 +11129,7 @@ func (val *WebhookPartnerDestinationInfo) Defaults() *WebhookPartnerDestinationI
 	tmp := *val
 	tmp.ClientAuthentication = tmp.ClientAuthentication.Defaults()
 
-	if isZero(tmp.EndpointType) {
+	if utilities.IsZero(tmp.EndpointType) {
 		tmp.EndpointType = "WebHook"
 	}
 	return &tmp
@@ -11458,7 +11461,7 @@ func (val *WebhookPartnerDestinationInfoResponse) Defaults() *WebhookPartnerDest
 	tmp := *val
 	tmp.ClientAuthentication = tmp.ClientAuthentication.Defaults()
 
-	if isZero(tmp.EndpointType) {
+	if utilities.IsZero(tmp.EndpointType) {
 		tmp.EndpointType = "WebHook"
 	}
 	return &tmp

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List effective virtual networks in a network manager.
 func ListEffectiveVirtualNetworkByNetworkManager(ctx *pulumi.Context, args *ListEffectiveVirtualNetworkByNetworkManagerArgs, opts ...pulumi.InvokeOption) (*ListEffectiveVirtualNetworkByNetworkManagerResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEffectiveVirtualNetworkByNetworkManagerResult
 	err := ctx.Invoke("azure-native:network/v20220401preview:listEffectiveVirtualNetworkByNetworkManager", args, &rv, opts...)
 	if err != nil {

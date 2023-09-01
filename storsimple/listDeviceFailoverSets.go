@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns all failover sets for a given device and their eligibility for participating in a failover. A failover set refers to a set of volume containers that need to be failed-over as a single unit to maintain data integrity.
 // Azure REST API version: 2017-06-01.
 func ListDeviceFailoverSets(ctx *pulumi.Context, args *ListDeviceFailoverSetsArgs, opts ...pulumi.InvokeOption) (*ListDeviceFailoverSetsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDeviceFailoverSetsResult
 	err := ctx.Invoke("azure-native:storsimple:listDeviceFailoverSets", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an Azure BareMetal Storage instance for the specified subscription, resource group, and instance name.
 func LookupAzureBareMetalStorageInstance(ctx *pulumi.Context, args *LookupAzureBareMetalStorageInstanceArgs, opts ...pulumi.InvokeOption) (*LookupAzureBareMetalStorageInstanceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureBareMetalStorageInstanceResult
 	err := ctx.Invoke("azure-native:baremetalinfrastructure/v20230406:getAzureBareMetalStorageInstance", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List keys of a notebook.
 // Azure REST API version: 2023-04-01.
 func ListWorkspaceNotebookKeys(ctx *pulumi.Context, args *ListWorkspaceNotebookKeysArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceNotebookKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkspaceNotebookKeysResult
 	err := ctx.Invoke("azure-native:machinelearningservices:listWorkspaceNotebookKeys", args, &rv, opts...)
 	if err != nil {

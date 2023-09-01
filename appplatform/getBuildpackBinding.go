@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a buildpack binding by name.
 // Azure REST API version: 2023-05-01-preview.
 func LookupBuildpackBinding(ctx *pulumi.Context, args *LookupBuildpackBindingArgs, opts ...pulumi.InvokeOption) (*LookupBuildpackBindingResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBuildpackBindingResult
 	err := ctx.Invoke("azure-native:appplatform:getBuildpackBinding", args, &rv, opts...)
 	if err != nil {

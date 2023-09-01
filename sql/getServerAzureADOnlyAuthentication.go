@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific Azure Active Directory only authentication property.
 // Azure REST API version: 2021-11-01.
 func LookupServerAzureADOnlyAuthentication(ctx *pulumi.Context, args *LookupServerAzureADOnlyAuthenticationArgs, opts ...pulumi.InvokeOption) (*LookupServerAzureADOnlyAuthenticationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerAzureADOnlyAuthenticationResult
 	err := ctx.Invoke("azure-native:sql:getServerAzureADOnlyAuthentication", args, &rv, opts...)
 	if err != nil {

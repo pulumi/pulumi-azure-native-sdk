@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the archive version.
 // Azure REST API version: 2023-06-01-preview.
 func LookupArchiveVersion(ctx *pulumi.Context, args *LookupArchiveVersionArgs, opts ...pulumi.InvokeOption) (*LookupArchiveVersionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupArchiveVersionResult
 	err := ctx.Invoke("azure-native:containerregistry:getArchiveVersion", args, &rv, opts...)
 	if err != nil {

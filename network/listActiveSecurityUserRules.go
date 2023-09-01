@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists Active Security User Rules in a network manager.
 // Azure REST API version: 2022-04-01-preview.
 func ListActiveSecurityUserRules(ctx *pulumi.Context, args *ListActiveSecurityUserRulesArgs, opts ...pulumi.InvokeOption) (*ListActiveSecurityUserRulesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListActiveSecurityUserRulesResult
 	err := ctx.Invoke("azure-native:network:listActiveSecurityUserRules", args, &rv, opts...)
 	if err != nil {

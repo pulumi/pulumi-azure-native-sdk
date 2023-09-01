@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets secrets related to Machine Learning compute (storage keys, service credentials, etc).
 func ListComputeKeys(ctx *pulumi.Context, args *ListComputeKeysArgs, opts ...pulumi.InvokeOption) (*ListComputeKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListComputeKeysResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20230601preview:listComputeKeys", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an invitation in a share
 // Azure REST API version: 2021-08-01.
 func LookupInvitation(ctx *pulumi.Context, args *LookupInvitationArgs, opts ...pulumi.InvokeOption) (*LookupInvitationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInvitationResult
 	err := ctx.Invoke("azure-native:datashare:getInvitation", args, &rv, opts...)
 	if err != nil {

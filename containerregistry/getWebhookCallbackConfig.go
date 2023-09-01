@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the configuration of service URI and custom headers for the webhook.
 // Azure REST API version: 2022-12-01.
 func GetWebhookCallbackConfig(ctx *pulumi.Context, args *GetWebhookCallbackConfigArgs, opts ...pulumi.InvokeOption) (*GetWebhookCallbackConfigResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetWebhookCallbackConfigResult
 	err := ctx.Invoke("azure-native:containerregistry:getWebhookCallbackConfig", args, &rv, opts...)
 	if err != nil {

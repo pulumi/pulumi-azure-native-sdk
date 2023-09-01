@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets properties of a live event.
 // Azure REST API version: 2022-11-01.
 func LookupLiveEvent(ctx *pulumi.Context, args *LookupLiveEventArgs, opts ...pulumi.InvokeOption) (*LookupLiveEventResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLiveEventResult
 	err := ctx.Invoke("azure-native:media:getLiveEvent", args, &rv, opts...)
 	if err != nil {

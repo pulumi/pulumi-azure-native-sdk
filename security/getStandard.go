@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a specific security standard for the requested scope
 // Azure REST API version: 2021-08-01-preview.
 func LookupStandard(ctx *pulumi.Context, args *LookupStandardArgs, opts ...pulumi.InvokeOption) (*LookupStandardResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStandardResult
 	err := ctx.Invoke("azure-native:security:getStandard", args, &rv, opts...)
 	if err != nil {

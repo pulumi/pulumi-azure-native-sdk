@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the replica and its properties.
 // Azure REST API version: 2023-03-01-preview.
 func LookupSignalRReplica(ctx *pulumi.Context, args *LookupSignalRReplicaArgs, opts ...pulumi.InvokeOption) (*LookupSignalRReplicaResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSignalRReplicaResult
 	err := ctx.Invoke("azure-native:signalrservice:getSignalRReplica", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A managed cluster snapshot resource.
 // Azure REST API version: 2023-05-02-preview.
 func LookupManagedClusterSnapshot(ctx *pulumi.Context, args *LookupManagedClusterSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterSnapshotResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedClusterSnapshotResult
 	err := ctx.Invoke("azure-native:containerservice:getManagedClusterSnapshot", args, &rv, opts...)
 	if err != nil {

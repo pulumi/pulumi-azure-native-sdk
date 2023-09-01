@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Dapr component Secrets Collection for ListSecrets Action.
 func ListDaprComponentSecrets(ctx *pulumi.Context, args *ListDaprComponentSecretsArgs, opts ...pulumi.InvokeOption) (*ListDaprComponentSecretsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDaprComponentSecretsResult
 	err := ctx.Invoke("azure-native:app/v20221001:listDaprComponentSecrets", args, &rv, opts...)
 	if err != nil {

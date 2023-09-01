@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation to get the export for the defined scope by export name.
 // Azure REST API version: 2023-03-01.
 func LookupExport(ctx *pulumi.Context, args *LookupExportArgs, opts ...pulumi.InvokeOption) (*LookupExportResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExportResult
 	err := ctx.Invoke("azure-native:costmanagement:getExport", args, &rv, opts...)
 	if err != nil {

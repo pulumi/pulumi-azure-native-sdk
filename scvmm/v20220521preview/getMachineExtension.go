@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation to get the extension.
 func LookupMachineExtension(ctx *pulumi.Context, args *LookupMachineExtensionArgs, opts ...pulumi.InvokeOption) (*LookupMachineExtensionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineExtensionResult
 	err := ctx.Invoke("azure-native:scvmm/v20220521preview:getMachineExtension", args, &rv, opts...)
 	if err != nil {

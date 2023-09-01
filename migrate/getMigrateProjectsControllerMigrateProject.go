@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information related to a specific migrate project. Returns a json object of type 'migrateProject' as specified in the models section.
 // Azure REST API version: 2020-05-01.
 func LookupMigrateProjectsControllerMigrateProject(ctx *pulumi.Context, args *LookupMigrateProjectsControllerMigrateProjectArgs, opts ...pulumi.InvokeOption) (*LookupMigrateProjectsControllerMigrateProjectResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMigrateProjectsControllerMigrateProjectResult
 	err := ctx.Invoke("azure-native:migrate:getMigrateProjectsControllerMigrateProject", args, &rv, opts...)
 	if err != nil {

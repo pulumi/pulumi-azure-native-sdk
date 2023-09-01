@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List allowed upgrade plans for application.
 func ListApplicationAllowedUpgradePlans(ctx *pulumi.Context, args *ListApplicationAllowedUpgradePlansArgs, opts ...pulumi.InvokeOption) (*ListApplicationAllowedUpgradePlansResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListApplicationAllowedUpgradePlansResult
 	err := ctx.Invoke("azure-native:solutions/v20210701:listApplicationAllowedUpgradePlans", args, &rv, opts...)
 	if err != nil {

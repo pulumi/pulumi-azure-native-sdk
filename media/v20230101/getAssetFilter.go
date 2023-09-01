@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the details of an Asset Filter associated with the specified Asset.
 func LookupAssetFilter(ctx *pulumi.Context, args *LookupAssetFilterArgs, opts ...pulumi.InvokeOption) (*LookupAssetFilterResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssetFilterResult
 	err := ctx.Invoke("azure-native:media/v20230101:getAssetFilter", args, &rv, opts...)
 	if err != nil {

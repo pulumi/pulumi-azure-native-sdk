@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,6 +62,7 @@ func NewVendorSkus(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource VendorSkus
 	err := ctx.RegisterResource("azure-native:hybridnetwork/v20220101preview:VendorSkus", name, args, &resource, opts...)
 	if err != nil {

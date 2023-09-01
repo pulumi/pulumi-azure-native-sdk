@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List deployments that are using the builder.
 // Azure REST API version: 2023-05-01-preview.
 func ListBuildServiceBuilderDeployments(ctx *pulumi.Context, args *ListBuildServiceBuilderDeploymentsArgs, opts ...pulumi.InvokeOption) (*ListBuildServiceBuilderDeploymentsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListBuildServiceBuilderDeploymentsResult
 	err := ctx.Invoke("azure-native:appplatform:listBuildServiceBuilderDeployments", args, &rv, opts...)
 	if err != nil {

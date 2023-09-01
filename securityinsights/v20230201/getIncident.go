@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a given incident.
 func LookupIncident(ctx *pulumi.Context, args *LookupIncidentArgs, opts ...pulumi.InvokeOption) (*LookupIncidentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIncidentResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230201:getIncident", args, &rv, opts...)
 	if err != nil {

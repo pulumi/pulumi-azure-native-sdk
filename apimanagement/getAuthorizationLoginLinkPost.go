@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets authorization login links.
 // Azure REST API version: 2022-08-01.
 func GetAuthorizationLoginLinkPost(ctx *pulumi.Context, args *GetAuthorizationLoginLinkPostArgs, opts ...pulumi.InvokeOption) (*GetAuthorizationLoginLinkPostResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetAuthorizationLoginLinkPostResult
 	err := ctx.Invoke("azure-native:apimanagement:getAuthorizationLoginLinkPost", args, &rv, opts...)
 	if err != nil {

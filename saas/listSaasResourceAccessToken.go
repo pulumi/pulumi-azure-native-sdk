@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the ISV access token for a SaaS resource.
 // Azure REST API version: 2018-03-01-beta.
 func ListSaasResourceAccessToken(ctx *pulumi.Context, args *ListSaasResourceAccessTokenArgs, opts ...pulumi.InvokeOption) (*ListSaasResourceAccessTokenResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSaasResourceAccessTokenResult
 	err := ctx.Invoke("azure-native:saas:listSaasResourceAccessToken", args, &rv, opts...)
 	if err != nil {

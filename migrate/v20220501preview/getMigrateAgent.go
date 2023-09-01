@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the modernizeProject agent.
 func LookupMigrateAgent(ctx *pulumi.Context, args *LookupMigrateAgentArgs, opts ...pulumi.InvokeOption) (*LookupMigrateAgentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMigrateAgentResult
 	err := ctx.Invoke("azure-native:migrate/v20220501preview:getMigrateAgent", args, &rv, opts...)
 	if err != nil {

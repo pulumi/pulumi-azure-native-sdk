@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements HybridIdentityMetadata GET method.
 func LookupHybridIdentityMetadatum(ctx *pulumi.Context, args *LookupHybridIdentityMetadatumArgs, opts ...pulumi.InvokeOption) (*LookupHybridIdentityMetadatumResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridIdentityMetadatumResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere/v20230301preview:getHybridIdentityMetadatum", args, &rv, opts...)
 	if err != nil {

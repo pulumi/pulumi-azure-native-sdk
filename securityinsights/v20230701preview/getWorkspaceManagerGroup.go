@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a workspace manager group
 func LookupWorkspaceManagerGroup(ctx *pulumi.Context, args *LookupWorkspaceManagerGroupArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceManagerGroupResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceManagerGroupResult
 	err := ctx.Invoke("azure-native:securityinsights/v20230701preview:getWorkspaceManagerGroup", args, &rv, opts...)
 	if err != nil {

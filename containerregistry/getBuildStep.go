@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the build step for a build task.
 // Azure REST API version: 2018-02-01-preview.
 func LookupBuildStep(ctx *pulumi.Context, args *LookupBuildStepArgs, opts ...pulumi.InvokeOption) (*LookupBuildStepResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBuildStepResult
 	err := ctx.Invoke("azure-native:containerregistry:getBuildStep", args, &rv, opts...)
 	if err != nil {

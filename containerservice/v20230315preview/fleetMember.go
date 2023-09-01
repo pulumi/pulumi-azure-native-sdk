@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,8 +61,12 @@ func NewFleetMember(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20220902preview:FleetMember"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230615preview:FleetMember"),
+		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource FleetMember
 	err := ctx.RegisterResource("azure-native:containerservice/v20230315preview:FleetMember", name, args, &resource, opts...)
 	if err != nil {

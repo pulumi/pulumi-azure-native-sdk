@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get specified scope connection created by this Network Manager.
 // Azure REST API version: 2023-02-01.
 func LookupScopeConnection(ctx *pulumi.Context, args *LookupScopeConnectionArgs, opts ...pulumi.InvokeOption) (*LookupScopeConnectionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScopeConnectionResult
 	err := ctx.Invoke("azure-native:network:getScopeConnection", args, &rv, opts...)
 	if err != nil {

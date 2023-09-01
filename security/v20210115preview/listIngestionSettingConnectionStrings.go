@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Connection strings for ingesting security scan logs and data.
 func ListIngestionSettingConnectionStrings(ctx *pulumi.Context, args *ListIngestionSettingConnectionStringsArgs, opts ...pulumi.InvokeOption) (*ListIngestionSettingConnectionStringsResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListIngestionSettingConnectionStringsResult
 	err := ctx.Invoke("azure-native:security/v20210115preview:listIngestionSettingConnectionStrings", args, &rv, opts...)
 	if err != nil {

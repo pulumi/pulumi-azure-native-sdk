@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a workspace key
 func LookupKey(ctx *pulumi.Context, args *LookupKeyArgs, opts ...pulumi.InvokeOption) (*LookupKeyResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeyResult
 	err := ctx.Invoke("azure-native:synapse/v20210601preview:getKey", args, &rv, opts...)
 	if err != nil {

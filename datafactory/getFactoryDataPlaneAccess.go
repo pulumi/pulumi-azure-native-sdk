@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Data Plane access.
 // Azure REST API version: 2018-06-01.
 func GetFactoryDataPlaneAccess(ctx *pulumi.Context, args *GetFactoryDataPlaneAccessArgs, opts ...pulumi.InvokeOption) (*GetFactoryDataPlaneAccessResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetFactoryDataPlaneAccessResult
 	err := ctx.Invoke("azure-native:datafactory:getFactoryDataPlaneAccess", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the primary and secondary connection strings for the Namespace.
 // Azure REST API version: 2022-10-01-preview.
 func ListDisasterRecoveryConfigKeys(ctx *pulumi.Context, args *ListDisasterRecoveryConfigKeysArgs, opts ...pulumi.InvokeOption) (*ListDisasterRecoveryConfigKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDisasterRecoveryConfigKeysResult
 	err := ctx.Invoke("azure-native:eventhub:listDisasterRecoveryConfigKeys", args, &rv, opts...)
 	if err != nil {

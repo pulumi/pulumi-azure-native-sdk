@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the sensitivity label of a given column
 // Azure REST API version: 2021-11-01.
 func LookupSensitivityLabel(ctx *pulumi.Context, args *LookupSensitivityLabelArgs, opts ...pulumi.InvokeOption) (*LookupSensitivityLabelResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSensitivityLabelResult
 	err := ctx.Invoke("azure-native:sql:getSensitivityLabel", args, &rv, opts...)
 	if err != nil {

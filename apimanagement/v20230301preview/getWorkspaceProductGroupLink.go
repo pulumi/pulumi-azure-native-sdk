@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the group link for the product.
 func LookupWorkspaceProductGroupLink(ctx *pulumi.Context, args *LookupWorkspaceProductGroupLinkArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceProductGroupLinkResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceProductGroupLinkResult
 	err := ctx.Invoke("azure-native:apimanagement/v20230301preview:getWorkspaceProductGroupLink", args, &rv, opts...)
 	if err != nil {

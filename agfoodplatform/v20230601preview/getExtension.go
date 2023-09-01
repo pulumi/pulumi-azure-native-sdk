@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get installed extension details by extension id.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExtensionResult
 	err := ctx.Invoke("azure-native:agfoodplatform/v20230601preview:getExtension", args, &rv, opts...)
 	if err != nil {

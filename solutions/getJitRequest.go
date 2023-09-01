@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the JIT request.
 // Azure REST API version: 2021-07-01.
 func LookupJitRequest(ctx *pulumi.Context, args *LookupJitRequestArgs, opts ...pulumi.InvokeOption) (*LookupJitRequestResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJitRequestResult
 	err := ctx.Invoke("azure-native:solutions:getJitRequest", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the connection info for the notebook workspace
 func ListNotebookWorkspaceConnectionInfo(ctx *pulumi.Context, args *ListNotebookWorkspaceConnectionInfoArgs, opts ...pulumi.InvokeOption) (*ListNotebookWorkspaceConnectionInfoResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListNotebookWorkspaceConnectionInfoResult
 	err := ctx.Invoke("azure-native:documentdb/v20230415:listNotebookWorkspaceConnectionInfo", args, &rv, opts...)
 	if err != nil {

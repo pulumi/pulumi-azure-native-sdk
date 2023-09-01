@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Data Lake Store trusted identity provider.
 // Azure REST API version: 2016-11-01.
 func LookupTrustedIdProvider(ctx *pulumi.Context, args *LookupTrustedIdProviderArgs, opts ...pulumi.InvokeOption) (*LookupTrustedIdProviderResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTrustedIdProviderResult
 	err := ctx.Invoke("azure-native:datalakestore:getTrustedIdProvider", args, &rv, opts...)
 	if err != nil {

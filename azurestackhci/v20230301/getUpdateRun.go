@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the Update run for a specified update
 func LookupUpdateRun(ctx *pulumi.Context, args *LookupUpdateRunArgs, opts ...pulumi.InvokeOption) (*LookupUpdateRunResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUpdateRunResult
 	err := ctx.Invoke("azure-native:azurestackhci/v20230301:getUpdateRun", args, &rv, opts...)
 	if err != nil {

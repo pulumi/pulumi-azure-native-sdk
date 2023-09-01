@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the replica and its properties.
 // Azure REST API version: 2023-03-01-preview.
 func LookupWebPubSubReplica(ctx *pulumi.Context, args *LookupWebPubSubReplicaArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubReplicaResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebPubSubReplicaResult
 	err := ctx.Invoke("azure-native:webpubsub:getWebPubSubReplica", args, &rv, opts...)
 	if err != nil {

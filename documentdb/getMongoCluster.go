@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a mongo cluster.
 // Azure REST API version: 2023-03-15-preview.
 func LookupMongoCluster(ctx *pulumi.Context, args *LookupMongoClusterArgs, opts ...pulumi.InvokeOption) (*LookupMongoClusterResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMongoClusterResult
 	err := ctx.Invoke("azure-native:documentdb:getMongoCluster", args, &rv, opts...)
 	if err != nil {

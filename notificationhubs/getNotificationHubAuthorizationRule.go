@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Response for POST requests that return single SharedAccessAuthorizationRule.
 // Azure REST API version: 2023-01-01-preview.
 func LookupNotificationHubAuthorizationRule(ctx *pulumi.Context, args *LookupNotificationHubAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNotificationHubAuthorizationRuleResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotificationHubAuthorizationRuleResult
 	err := ctx.Invoke("azure-native:notificationhubs:getNotificationHubAuthorizationRule", args, &rv, opts...)
 	if err != nil {

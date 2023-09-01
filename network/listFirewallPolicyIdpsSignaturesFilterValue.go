@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the current filter values for the signatures overrides
 // Azure REST API version: 2023-02-01.
 func ListFirewallPolicyIdpsSignaturesFilterValue(ctx *pulumi.Context, args *ListFirewallPolicyIdpsSignaturesFilterValueArgs, opts ...pulumi.InvokeOption) (*ListFirewallPolicyIdpsSignaturesFilterValueResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListFirewallPolicyIdpsSignaturesFilterValueResult
 	err := ctx.Invoke("azure-native:network:listFirewallPolicyIdpsSignaturesFilterValue", args, &rv, opts...)
 	if err != nil {

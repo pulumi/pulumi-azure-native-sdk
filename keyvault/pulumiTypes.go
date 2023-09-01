@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // An identity that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID.
 type AccessPolicyEntry struct {
@@ -205,7 +208,7 @@ func (o AccessPolicyEntryResponseArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type Action struct {
-	// The type of action.
+	// The type of the action.
 	Type *KeyRotationPolicyActionType `pulumi:"type"`
 }
 
@@ -221,7 +224,7 @@ type ActionInput interface {
 }
 
 type ActionArgs struct {
-	// The type of action.
+	// The type of the action.
 	Type KeyRotationPolicyActionTypePtrInput `pulumi:"type"`
 }
 
@@ -302,7 +305,7 @@ func (o ActionOutput) ToActionPtrOutputWithContext(ctx context.Context) ActionPt
 	}).(ActionPtrOutput)
 }
 
-// The type of action.
+// The type of the action.
 func (o ActionOutput) Type() KeyRotationPolicyActionTypePtrOutput {
 	return o.ApplyT(func(v Action) *KeyRotationPolicyActionType { return v.Type }).(KeyRotationPolicyActionTypePtrOutput)
 }
@@ -331,7 +334,7 @@ func (o ActionPtrOutput) Elem() ActionOutput {
 	}).(ActionOutput)
 }
 
-// The type of action.
+// The type of the action.
 func (o ActionPtrOutput) Type() KeyRotationPolicyActionTypePtrOutput {
 	return o.ApplyT(func(v *Action) *KeyRotationPolicyActionType {
 		if v == nil {
@@ -342,7 +345,7 @@ func (o ActionPtrOutput) Type() KeyRotationPolicyActionTypePtrOutput {
 }
 
 type ActionResponse struct {
-	// The type of action.
+	// The type of the action.
 	Type *string `pulumi:"type"`
 }
 
@@ -360,7 +363,7 @@ func (o ActionResponseOutput) ToActionResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The type of action.
+// The type of the action.
 func (o ActionResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -389,7 +392,7 @@ func (o ActionResponsePtrOutput) Elem() ActionResponseOutput {
 	}).(ActionResponseOutput)
 }
 
-// The type of action.
+// The type of the action.
 func (o ActionResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionResponse) *string {
 		if v == nil {

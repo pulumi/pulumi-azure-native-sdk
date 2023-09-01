@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified profile.
 func LookupProfile(ctx *pulumi.Context, args *LookupProfileArgs, opts ...pulumi.InvokeOption) (*LookupProfileResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProfileResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170426:getProfile", args, &rv, opts...)
 	if err != nil {

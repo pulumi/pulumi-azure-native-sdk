@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get notification channel.
 func LookupNotificationChannel(ctx *pulumi.Context, args *LookupNotificationChannelArgs, opts ...pulumi.InvokeOption) (*LookupNotificationChannelResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotificationChannelResult
 	err := ctx.Invoke("azure-native:devtestlab/v20180915:getNotificationChannel", args, &rv, opts...)
 	if err != nil {

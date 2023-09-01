@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists all the keys associated with this workspace. This includes keys for the storage account, app insights and password for container registry
 func ListWorkspaceKeys(ctx *pulumi.Context, args *ListWorkspaceKeysArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceKeysResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkspaceKeysResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20200901preview:listWorkspaceKeys", args, &rv, opts...)
 	if err != nil {

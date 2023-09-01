@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about the model of a security automation.
 // Azure REST API version: 2019-01-01-preview.
 func LookupAutomation(ctx *pulumi.Context, args *LookupAutomationArgs, opts ...pulumi.InvokeOption) (*LookupAutomationResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutomationResult
 	err := ctx.Invoke("azure-native:security:getAutomation", args, &rv, opts...)
 	if err != nil {

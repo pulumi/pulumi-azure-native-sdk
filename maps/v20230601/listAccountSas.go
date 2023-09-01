@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,6 +17,7 @@ import (
 // 1. Create or have an existing User Assigned Managed Identity in the same Azure region as the account.
 // 2. Create or update an Azure Map account with the same Azure region as the User Assigned Managed Identity is placed.
 func ListAccountSas(ctx *pulumi.Context, args *ListAccountSasArgs, opts ...pulumi.InvokeOption) (*ListAccountSasResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccountSasResult
 	err := ctx.Invoke("azure-native:maps/v20230601:listAccountSas", args.Defaults(), &rv, opts...)
 	if err != nil {
@@ -49,7 +51,7 @@ func (val *ListAccountSasArgs) Defaults() *ListAccountSasArgs {
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.MaxRatePerSecond) {
+	if utilities.IsZero(tmp.MaxRatePerSecond) {
 		tmp.MaxRatePerSecond = 500
 	}
 	return &tmp

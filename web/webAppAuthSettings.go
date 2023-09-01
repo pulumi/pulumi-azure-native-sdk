@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -213,6 +214,7 @@ func NewWebAppAuthSettings(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource WebAppAuthSettings
 	err := ctx.RegisterResource("azure-native:web:WebAppAuthSettings", name, args, &resource, opts...)
 	if err != nil {

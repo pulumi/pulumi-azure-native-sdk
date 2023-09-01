@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a server encryption protector.
 // Azure REST API version: 2021-11-01.
 func LookupEncryptionProtector(ctx *pulumi.Context, args *LookupEncryptionProtectorArgs, opts ...pulumi.InvokeOption) (*LookupEncryptionProtectorResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEncryptionProtectorResult
 	err := ctx.Invoke("azure-native:sql:getEncryptionProtector", args, &rv, opts...)
 	if err != nil {

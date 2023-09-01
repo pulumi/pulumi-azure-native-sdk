@@ -4,11 +4,13 @@
 package authorization
 
 import (
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this function to access the current configuration of the native Azure provider.
 func GetClientConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientConfigResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetClientConfigResult
 	err := ctx.Invoke("azure-native:authorization:getClientConfig", nil, &rv, opts...)
 	if err != nil {

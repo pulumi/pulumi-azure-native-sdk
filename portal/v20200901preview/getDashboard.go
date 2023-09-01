@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Dashboard.
 func LookupDashboard(ctx *pulumi.Context, args *LookupDashboardArgs, opts ...pulumi.InvokeOption) (*LookupDashboardResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDashboardResult
 	err := ctx.Invoke("azure-native:portal/v20200901preview:getDashboard", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Fleet resource which contains multiple Kubernetes clusters as its members.
 func LookupFleet(ctx *pulumi.Context, args *LookupFleetArgs, opts ...pulumi.InvokeOption) (*LookupFleetResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFleetResult
 	err := ctx.Invoke("azure-native:containerservice/v20220702preview:getFleet", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets data image upload URL.
 func GetImageUploadUrlForData(ctx *pulumi.Context, args *GetImageUploadUrlForDataArgs, opts ...pulumi.InvokeOption) (*GetImageUploadUrlForDataResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetImageUploadUrlForDataResult
 	err := ctx.Invoke("azure-native:customerinsights/v20170426:getImageUploadUrlForData", args, &rv, opts...)
 	if err != nil {

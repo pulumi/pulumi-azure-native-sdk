@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,6 +60,7 @@ func NewMultipleActivationKey(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource MultipleActivationKey
 	err := ctx.RegisterResource("azure-native:windowsesu/v20190916preview:MultipleActivationKey", name, args, &resource, opts...)
 	if err != nil {

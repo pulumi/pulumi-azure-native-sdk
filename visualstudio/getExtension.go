@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of an extension associated with a Visual Studio Team Services account resource.
 // Azure REST API version: 2017-11-01-preview.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExtensionResult
 	err := ctx.Invoke("azure-native:visualstudio:getExtension", args, &rv, opts...)
 	if err != nil {

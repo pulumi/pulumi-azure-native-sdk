@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a KPack build.
 func LookupBuildServiceBuild(ctx *pulumi.Context, args *LookupBuildServiceBuildArgs, opts ...pulumi.InvokeOption) (*LookupBuildServiceBuildResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBuildServiceBuildResult
 	err := ctx.Invoke("azure-native:appplatform/v20230501preview:getBuildServiceBuild", args, &rv, opts...)
 	if err != nil {

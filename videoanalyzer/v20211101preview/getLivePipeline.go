@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a specific live pipeline by name. If a live pipeline with that name has been previously created, the call will return the JSON representation of that instance.
 func LookupLivePipeline(ctx *pulumi.Context, args *LookupLivePipelineArgs, opts ...pulumi.InvokeOption) (*LookupLivePipelineResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLivePipelineResult
 	err := ctx.Invoke("azure-native:videoanalyzer/v20211101preview:getLivePipeline", args, &rv, opts...)
 	if err != nil {

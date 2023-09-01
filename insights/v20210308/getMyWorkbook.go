@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a single private workbook by its resourceName.
 func LookupMyWorkbook(ctx *pulumi.Context, args *LookupMyWorkbookArgs, opts ...pulumi.InvokeOption) (*LookupMyWorkbookResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMyWorkbookResult
 	err := ctx.Invoke("azure-native:insights/v20210308:getMyWorkbook", args, &rv, opts...)
 	if err != nil {

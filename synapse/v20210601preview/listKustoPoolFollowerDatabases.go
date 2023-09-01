@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a list of databases that are owned by this Kusto Pool and were followed by another Kusto Pool.
 func ListKustoPoolFollowerDatabases(ctx *pulumi.Context, args *ListKustoPoolFollowerDatabasesArgs, opts ...pulumi.InvokeOption) (*ListKustoPoolFollowerDatabasesResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListKustoPoolFollowerDatabasesResult
 	err := ctx.Invoke("azure-native:synapse/v20210601preview:listKustoPoolFollowerDatabases", args, &rv, opts...)
 	if err != nil {

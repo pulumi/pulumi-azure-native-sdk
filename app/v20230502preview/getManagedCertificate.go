@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Managed certificates used for Custom Domain bindings of Container Apps in a Managed Environment
 func LookupManagedCertificate(ctx *pulumi.Context, args *LookupManagedCertificateArgs, opts ...pulumi.InvokeOption) (*LookupManagedCertificateResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedCertificateResult
 	err := ctx.Invoke("azure-native:app/v20230502preview:getManagedCertificate", args, &rv, opts...)
 	if err != nil {

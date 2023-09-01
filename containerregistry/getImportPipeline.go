@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the import pipeline.
 // Azure REST API version: 2023-01-01-preview.
 func LookupImportPipeline(ctx *pulumi.Context, args *LookupImportPipelineArgs, opts ...pulumi.InvokeOption) (*LookupImportPipelineResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupImportPipelineResult
 	err := ctx.Invoke("azure-native:containerregistry:getImportPipeline", args, &rv, opts...)
 	if err != nil {

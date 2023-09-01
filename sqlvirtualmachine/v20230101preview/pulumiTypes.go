@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = utilities.GetEnvOrDefault
 
 // Enable AAD authentication for SQL VM.
 type AADAuthenticationSettings struct {
@@ -6514,7 +6517,7 @@ func (val *TroubleshootingStatusResponse) Defaults() *TroubleshootingStatusRespo
 		return nil
 	}
 	tmp := *val
-	if isZero(tmp.TroubleshootingScenario) {
+	if utilities.IsZero(tmp.TroubleshootingScenario) {
 		tmp.TroubleshootingScenario = "UnhealthyReplica"
 	}
 	return &tmp

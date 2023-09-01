@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the authorization provider specified by its identifier.
 // Azure REST API version: 2022-08-01.
 func LookupAuthorizationProvider(ctx *pulumi.Context, args *LookupAuthorizationProviderArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationProviderResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthorizationProviderResult
 	err := ctx.Invoke("azure-native:apimanagement:getAuthorizationProvider", args, &rv, opts...)
 	if err != nil {

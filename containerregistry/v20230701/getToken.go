@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified token.
 func LookupToken(ctx *pulumi.Context, args *LookupTokenArgs, opts ...pulumi.InvokeOption) (*LookupTokenResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTokenResult
 	err := ctx.Invoke("azure-native:containerregistry/v20230701:getToken", args, &rv, opts...)
 	if err != nil {

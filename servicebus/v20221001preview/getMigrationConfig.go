@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves Migration Config
 func LookupMigrationConfig(ctx *pulumi.Context, args *LookupMigrationConfigArgs, opts ...pulumi.InvokeOption) (*LookupMigrationConfigResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMigrationConfigResult
 	err := ctx.Invoke("azure-native:servicebus/v20221001preview:getMigrationConfig", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements resourcePool GET method.
 // Azure REST API version: 2022-07-15-preview.
 func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts ...pulumi.InvokeOption) (*LookupResourcePoolResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourcePoolResult
 	err := ctx.Invoke("azure-native:connectedvmwarevsphere:getResourcePool", args, &rv, opts...)
 	if err != nil {

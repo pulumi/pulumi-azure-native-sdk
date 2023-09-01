@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Service by name.
 func LookupAKSService(ctx *pulumi.Context, args *LookupAKSServiceArgs, opts ...pulumi.InvokeOption) (*LookupAKSServiceResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAKSServiceResult
 	err := ctx.Invoke("azure-native:machinelearningservices/v20210401:getAKSService", args, &rv, opts...)
 	if err != nil {

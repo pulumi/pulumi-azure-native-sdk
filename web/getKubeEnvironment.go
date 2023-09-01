@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Get the properties of a Kubernetes Environment.
 // Azure REST API version: 2022-09-01.
 func LookupKubeEnvironment(ctx *pulumi.Context, args *LookupKubeEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupKubeEnvironmentResult, error) {
+	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubeEnvironmentResult
 	err := ctx.Invoke("azure-native:web:getKubeEnvironment", args, &rv, opts...)
 	if err != nil {
