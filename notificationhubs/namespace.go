@@ -59,6 +59,9 @@ func NewNamespace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:notificationhubs/v20230101preview:Namespace"),
 		},
+		{
+			Type: pulumi.String("azure-native:notificationhubs/v20230901:Namespace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

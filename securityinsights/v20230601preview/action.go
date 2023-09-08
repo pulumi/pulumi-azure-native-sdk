@@ -128,6 +128,9 @@ func NewAction(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230701preview:Action"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:Action"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

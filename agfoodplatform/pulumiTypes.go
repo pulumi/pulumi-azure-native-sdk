@@ -1307,6 +1307,8 @@ type SolutionProperties struct {
 	OfferId string `pulumi:"offerId"`
 	// SaaS application Plan Id.
 	PlanId string `pulumi:"planId"`
+	// Role Assignment Id.
+	RoleAssignmentId *string `pulumi:"roleAssignmentId"`
 	// SaaS subscriptionId of the installed SaaS application.
 	SaasSubscriptionId string `pulumi:"saasSubscriptionId"`
 	// SaaS subscription name of the installed SaaS application.
@@ -1334,6 +1336,8 @@ type SolutionPropertiesArgs struct {
 	OfferId pulumi.StringInput `pulumi:"offerId"`
 	// SaaS application Plan Id.
 	PlanId pulumi.StringInput `pulumi:"planId"`
+	// Role Assignment Id.
+	RoleAssignmentId pulumi.StringPtrInput `pulumi:"roleAssignmentId"`
 	// SaaS subscriptionId of the installed SaaS application.
 	SaasSubscriptionId pulumi.StringInput `pulumi:"saasSubscriptionId"`
 	// SaaS subscription name of the installed SaaS application.
@@ -1435,6 +1439,11 @@ func (o SolutionPropertiesOutput) PlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v SolutionProperties) string { return v.PlanId }).(pulumi.StringOutput)
 }
 
+// Role Assignment Id.
+func (o SolutionPropertiesOutput) RoleAssignmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SolutionProperties) *string { return v.RoleAssignmentId }).(pulumi.StringPtrOutput)
+}
+
 // SaaS subscriptionId of the installed SaaS application.
 func (o SolutionPropertiesOutput) SaasSubscriptionId() pulumi.StringOutput {
 	return o.ApplyT(func(v SolutionProperties) string { return v.SaasSubscriptionId }).(pulumi.StringOutput)
@@ -1504,6 +1513,16 @@ func (o SolutionPropertiesPtrOutput) PlanId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Role Assignment Id.
+func (o SolutionPropertiesPtrOutput) RoleAssignmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SolutionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleAssignmentId
+	}).(pulumi.StringPtrOutput)
+}
+
 // SaaS subscriptionId of the installed SaaS application.
 func (o SolutionPropertiesPtrOutput) SaasSubscriptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SolutionProperties) *string {
@@ -1544,6 +1563,8 @@ type SolutionPropertiesResponse struct {
 	PartnerId string `pulumi:"partnerId"`
 	// SaaS application Plan Id.
 	PlanId string `pulumi:"planId"`
+	// Role Assignment Id.
+	RoleAssignmentId *string `pulumi:"roleAssignmentId"`
 	// SaaS subscriptionId of the installed SaaS application.
 	SaasSubscriptionId string `pulumi:"saasSubscriptionId"`
 	// SaaS subscription name of the installed SaaS application.
@@ -1585,6 +1606,11 @@ func (o SolutionPropertiesResponseOutput) PartnerId() pulumi.StringOutput {
 // SaaS application Plan Id.
 func (o SolutionPropertiesResponseOutput) PlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v SolutionPropertiesResponse) string { return v.PlanId }).(pulumi.StringOutput)
+}
+
+// Role Assignment Id.
+func (o SolutionPropertiesResponseOutput) RoleAssignmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SolutionPropertiesResponse) *string { return v.RoleAssignmentId }).(pulumi.StringPtrOutput)
 }
 
 // SaaS subscriptionId of the installed SaaS application.

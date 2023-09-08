@@ -13,6 +13,136 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Error contract returned when some exception occurs in Rest API.
+type HealthErrorDetailsResponse struct {
+	// Gets the appliance name.
+	ApplianceName string `pulumi:"applianceName"`
+	// Gets the error name.
+	Code string `pulumi:"code"`
+	// Gets discovery scope for which             error is encountered.
+	DiscoveryScope string `pulumi:"discoveryScope"`
+	// Gets the error ID.
+	Id float64 `pulumi:"id"`
+	// Gets the error message.
+	Message string `pulumi:"message"`
+	// Gets the message parameters.
+	MessageParameters map[string]string `pulumi:"messageParameters"`
+	// Gets the possible causes of error.
+	PossibleCauses string `pulumi:"possibleCauses"`
+	// Gets the recommended action to resolve error.
+	RecommendedAction string `pulumi:"recommendedAction"`
+	// Gets run as account id used while performing discovery             of entity.
+	RunAsAccountId string `pulumi:"runAsAccountId"`
+	// Gets the error severity.
+	Severity string `pulumi:"severity"`
+	// Gets the error source.
+	Source string `pulumi:"source"`
+	// Gets the error summary message.
+	SummaryMessage string `pulumi:"summaryMessage"`
+	// Gets the time stamp when the error was updated.
+	UpdatedTimeStamp string `pulumi:"updatedTimeStamp"`
+}
+
+// Error contract returned when some exception occurs in Rest API.
+type HealthErrorDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (HealthErrorDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthErrorDetailsResponse)(nil)).Elem()
+}
+
+func (o HealthErrorDetailsResponseOutput) ToHealthErrorDetailsResponseOutput() HealthErrorDetailsResponseOutput {
+	return o
+}
+
+func (o HealthErrorDetailsResponseOutput) ToHealthErrorDetailsResponseOutputWithContext(ctx context.Context) HealthErrorDetailsResponseOutput {
+	return o
+}
+
+// Gets the appliance name.
+func (o HealthErrorDetailsResponseOutput) ApplianceName() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthErrorDetailsResponse) string { return v.ApplianceName }).(pulumi.StringOutput)
+}
+
+// Gets the error name.
+func (o HealthErrorDetailsResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthErrorDetailsResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Gets discovery scope for which             error is encountered.
+func (o HealthErrorDetailsResponseOutput) DiscoveryScope() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthErrorDetailsResponse) string { return v.DiscoveryScope }).(pulumi.StringOutput)
+}
+
+// Gets the error ID.
+func (o HealthErrorDetailsResponseOutput) Id() pulumi.Float64Output {
+	return o.ApplyT(func(v HealthErrorDetailsResponse) float64 { return v.Id }).(pulumi.Float64Output)
+}
+
+// Gets the error message.
+func (o HealthErrorDetailsResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthErrorDetailsResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Gets the message parameters.
+func (o HealthErrorDetailsResponseOutput) MessageParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HealthErrorDetailsResponse) map[string]string { return v.MessageParameters }).(pulumi.StringMapOutput)
+}
+
+// Gets the possible causes of error.
+func (o HealthErrorDetailsResponseOutput) PossibleCauses() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthErrorDetailsResponse) string { return v.PossibleCauses }).(pulumi.StringOutput)
+}
+
+// Gets the recommended action to resolve error.
+func (o HealthErrorDetailsResponseOutput) RecommendedAction() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthErrorDetailsResponse) string { return v.RecommendedAction }).(pulumi.StringOutput)
+}
+
+// Gets run as account id used while performing discovery             of entity.
+func (o HealthErrorDetailsResponseOutput) RunAsAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthErrorDetailsResponse) string { return v.RunAsAccountId }).(pulumi.StringOutput)
+}
+
+// Gets the error severity.
+func (o HealthErrorDetailsResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthErrorDetailsResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Gets the error source.
+func (o HealthErrorDetailsResponseOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthErrorDetailsResponse) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// Gets the error summary message.
+func (o HealthErrorDetailsResponseOutput) SummaryMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthErrorDetailsResponse) string { return v.SummaryMessage }).(pulumi.StringOutput)
+}
+
+// Gets the time stamp when the error was updated.
+func (o HealthErrorDetailsResponseOutput) UpdatedTimeStamp() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthErrorDetailsResponse) string { return v.UpdatedTimeStamp }).(pulumi.StringOutput)
+}
+
+type HealthErrorDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HealthErrorDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HealthErrorDetailsResponse)(nil)).Elem()
+}
+
+func (o HealthErrorDetailsResponseArrayOutput) ToHealthErrorDetailsResponseArrayOutput() HealthErrorDetailsResponseArrayOutput {
+	return o
+}
+
+func (o HealthErrorDetailsResponseArrayOutput) ToHealthErrorDetailsResponseArrayOutputWithContext(ctx context.Context) HealthErrorDetailsResponseArrayOutput {
+	return o
+}
+
+func (o HealthErrorDetailsResponseArrayOutput) Index(i pulumi.IntInput) HealthErrorDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HealthErrorDetailsResponse {
+		return vs[0].([]HealthErrorDetailsResponse)[vs[1].(int)]
+	}).(HealthErrorDetailsResponseOutput)
+}
+
 type PrivateEndpointConnectionPropertiesResponse struct {
 	PrivateEndpoint                   ResourceIdResponse                         `pulumi:"privateEndpoint"`
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
@@ -47,12 +177,292 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) ProvisioningState() p
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-type PrivateLinkServiceConnectionStateResponse struct {
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	Description     *string `pulumi:"description"`
-	Status          *string `pulumi:"status"`
+// REST model used to encapsulate Private Link properties for tracked resources.
+type PrivateEndpointConnectionResponse struct {
+	// array of group ids
+	GroupIds []string `pulumi:"groupIds"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// private endpoints
+	PrivateEndpoint ResourceIdResponse `pulumi:"privateEndpoint"`
+	// private endpoints connection state
+	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	// provisioning state enum
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
+// REST model used to encapsulate Private Link properties for tracked resources.
+type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutput() PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+// array of group ids
+func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// private endpoints
+func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() ResourceIdResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) ResourceIdResponse { return v.PrivateEndpoint }).(ResourceIdResponseOutput)
+}
+
+// private endpoints connection state
+func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
+}
+
+// provisioning state enum
+func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutput() PrivateEndpointConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
+		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
+	}).(PrivateEndpointConnectionResponseOutput)
+}
+
+// Service Connection State
+type PrivateLinkServiceConnectionState struct {
+	// actions required
+	ActionsRequired *string `pulumi:"actionsRequired"`
+	// description string
+	Description *string `pulumi:"description"`
+	// state status
+	Status *string `pulumi:"status"`
+}
+
+// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
+// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
+//
+//	PrivateLinkServiceConnectionStateArgs{...}
+type PrivateLinkServiceConnectionStateInput interface {
+	pulumi.Input
+
+	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
+	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
+}
+
+// Service Connection State
+type PrivateLinkServiceConnectionStateArgs struct {
+	// actions required
+	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
+	// description string
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// state status
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
+	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput).ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx)
+}
+
+// PrivateLinkServiceConnectionStatePtrInput is an input type that accepts PrivateLinkServiceConnectionStateArgs, PrivateLinkServiceConnectionStatePtr and PrivateLinkServiceConnectionStatePtrOutput values.
+// You can construct a concrete instance of `PrivateLinkServiceConnectionStatePtrInput` via:
+//
+//	        PrivateLinkServiceConnectionStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateLinkServiceConnectionStatePtrInput interface {
+	pulumi.Input
+
+	ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput
+	ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Context) PrivateLinkServiceConnectionStatePtrOutput
+}
+
+type privateLinkServiceConnectionStatePtrType PrivateLinkServiceConnectionStateArgs
+
+func PrivateLinkServiceConnectionStatePtr(v *PrivateLinkServiceConnectionStateArgs) PrivateLinkServiceConnectionStatePtrInput {
+	return (*privateLinkServiceConnectionStatePtrType)(v)
+}
+
+func (*privateLinkServiceConnectionStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
+}
+
+func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePtrOutput)
+}
+
+// Service Connection State
+type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkServiceConnectionState) *PrivateLinkServiceConnectionState {
+		return &v
+	}).(PrivateLinkServiceConnectionStatePtrOutput)
+}
+
+// actions required
+func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
+}
+
+// description string
+func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// state status
+func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type PrivateLinkServiceConnectionStatePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateLinkServiceConnectionStateOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) PrivateLinkServiceConnectionState {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateLinkServiceConnectionState
+		return ret
+	}).(PrivateLinkServiceConnectionStateOutput)
+}
+
+// actions required
+func (o PrivateLinkServiceConnectionStatePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionsRequired
+	}).(pulumi.StringPtrOutput)
+}
+
+// description string
+func (o PrivateLinkServiceConnectionStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// state status
+func (o PrivateLinkServiceConnectionStatePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service Connection State
+type PrivateLinkServiceConnectionStateResponse struct {
+	// actions required
+	ActionsRequired *string `pulumi:"actionsRequired"`
+	// description string
+	Description *string `pulumi:"description"`
+	// state status
+	Status *string `pulumi:"status"`
+}
+
+// Service Connection State
 type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
@@ -67,14 +477,17 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 	return o
 }
 
+// actions required
 func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
 }
 
+// description string
 func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// state status
 func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -103,6 +516,7 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Elem() PrivateLinkSe
 	}).(PrivateLinkServiceConnectionStateResponseOutput)
 }
 
+// actions required
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
 		if v == nil {
@@ -112,6 +526,7 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ActionsRequired() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// description string
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
 		if v == nil {
@@ -121,6 +536,7 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Description() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// state status
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
 		if v == nil {
@@ -130,10 +546,13 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// PrivateEndpointModelsResourceId
 type ResourceIdResponse struct {
+	// id name
 	Id string `pulumi:"id"`
 }
 
+// PrivateEndpointModelsResourceId
 type ResourceIdResponseOutput struct{ *pulumi.OutputState }
 
 func (ResourceIdResponseOutput) ElementType() reflect.Type {
@@ -148,15 +567,16 @@ func (o ResourceIdResponseOutput) ToResourceIdResponseOutputWithContext(ctx cont
 	return o
 }
 
+// id name
 func (o ResourceIdResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Class for site agent properties.
 type SiteAgentProperties struct {
-	// Key vault ARM Id.
+	// Gets or sets the key vault ARM Id.
 	KeyVaultId *string `pulumi:"keyVaultId"`
-	// Key vault URI.
+	// Gets or sets the key vault URI.
 	KeyVaultUri *string `pulumi:"keyVaultUri"`
 }
 
@@ -173,9 +593,9 @@ type SiteAgentPropertiesInput interface {
 
 // Class for site agent properties.
 type SiteAgentPropertiesArgs struct {
-	// Key vault ARM Id.
+	// Gets or sets the key vault ARM Id.
 	KeyVaultId pulumi.StringPtrInput `pulumi:"keyVaultId"`
-	// Key vault URI.
+	// Gets or sets the key vault URI.
 	KeyVaultUri pulumi.StringPtrInput `pulumi:"keyVaultUri"`
 }
 
@@ -257,12 +677,12 @@ func (o SiteAgentPropertiesOutput) ToSiteAgentPropertiesPtrOutputWithContext(ctx
 	}).(SiteAgentPropertiesPtrOutput)
 }
 
-// Key vault ARM Id.
+// Gets or sets the key vault ARM Id.
 func (o SiteAgentPropertiesOutput) KeyVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteAgentProperties) *string { return v.KeyVaultId }).(pulumi.StringPtrOutput)
 }
 
-// Key vault URI.
+// Gets or sets the key vault URI.
 func (o SiteAgentPropertiesOutput) KeyVaultUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteAgentProperties) *string { return v.KeyVaultUri }).(pulumi.StringPtrOutput)
 }
@@ -291,7 +711,7 @@ func (o SiteAgentPropertiesPtrOutput) Elem() SiteAgentPropertiesOutput {
 	}).(SiteAgentPropertiesOutput)
 }
 
-// Key vault ARM Id.
+// Gets or sets the key vault ARM Id.
 func (o SiteAgentPropertiesPtrOutput) KeyVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteAgentProperties) *string {
 		if v == nil {
@@ -301,7 +721,7 @@ func (o SiteAgentPropertiesPtrOutput) KeyVaultId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Key vault URI.
+// Gets or sets the key vault URI.
 func (o SiteAgentPropertiesPtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteAgentProperties) *string {
 		if v == nil {
@@ -313,15 +733,15 @@ func (o SiteAgentPropertiesPtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
 
 // Class for site agent properties.
 type SiteAgentPropertiesResponse struct {
-	// ID of the agent.
+	// Gets the ID of the agent.
 	Id string `pulumi:"id"`
-	// Key vault ARM Id.
+	// Gets or sets the key vault ARM Id.
 	KeyVaultId *string `pulumi:"keyVaultId"`
-	// Key vault URI.
+	// Gets or sets the key vault URI.
 	KeyVaultUri *string `pulumi:"keyVaultUri"`
-	// Last heartbeat time of the agent in UTC.
+	// Gets the last heartbeat time of the agent in UTC.
 	LastHeartBeatUtc string `pulumi:"lastHeartBeatUtc"`
-	// Version of the agent.
+	// Gets the version of the agent.
 	Version string `pulumi:"version"`
 }
 
@@ -340,27 +760,27 @@ func (o SiteAgentPropertiesResponseOutput) ToSiteAgentPropertiesResponseOutputWi
 	return o
 }
 
-// ID of the agent.
+// Gets the ID of the agent.
 func (o SiteAgentPropertiesResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v SiteAgentPropertiesResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Key vault ARM Id.
+// Gets or sets the key vault ARM Id.
 func (o SiteAgentPropertiesResponseOutput) KeyVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteAgentPropertiesResponse) *string { return v.KeyVaultId }).(pulumi.StringPtrOutput)
 }
 
-// Key vault URI.
+// Gets or sets the key vault URI.
 func (o SiteAgentPropertiesResponseOutput) KeyVaultUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteAgentPropertiesResponse) *string { return v.KeyVaultUri }).(pulumi.StringPtrOutput)
 }
 
-// Last heartbeat time of the agent in UTC.
+// Gets the last heartbeat time of the agent in UTC.
 func (o SiteAgentPropertiesResponseOutput) LastHeartBeatUtc() pulumi.StringOutput {
 	return o.ApplyT(func(v SiteAgentPropertiesResponse) string { return v.LastHeartBeatUtc }).(pulumi.StringOutput)
 }
 
-// Version of the agent.
+// Gets the version of the agent.
 func (o SiteAgentPropertiesResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v SiteAgentPropertiesResponse) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -389,7 +809,7 @@ func (o SiteAgentPropertiesResponsePtrOutput) Elem() SiteAgentPropertiesResponse
 	}).(SiteAgentPropertiesResponseOutput)
 }
 
-// ID of the agent.
+// Gets the ID of the agent.
 func (o SiteAgentPropertiesResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteAgentPropertiesResponse) *string {
 		if v == nil {
@@ -399,7 +819,7 @@ func (o SiteAgentPropertiesResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Key vault ARM Id.
+// Gets or sets the key vault ARM Id.
 func (o SiteAgentPropertiesResponsePtrOutput) KeyVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteAgentPropertiesResponse) *string {
 		if v == nil {
@@ -409,7 +829,7 @@ func (o SiteAgentPropertiesResponsePtrOutput) KeyVaultId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Key vault URI.
+// Gets or sets the key vault URI.
 func (o SiteAgentPropertiesResponsePtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteAgentPropertiesResponse) *string {
 		if v == nil {
@@ -419,7 +839,7 @@ func (o SiteAgentPropertiesResponsePtrOutput) KeyVaultUri() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Last heartbeat time of the agent in UTC.
+// Gets the last heartbeat time of the agent in UTC.
 func (o SiteAgentPropertiesResponsePtrOutput) LastHeartBeatUtc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteAgentPropertiesResponse) *string {
 		if v == nil {
@@ -429,7 +849,7 @@ func (o SiteAgentPropertiesResponsePtrOutput) LastHeartBeatUtc() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Version of the agent.
+// Gets the version of the agent.
 func (o SiteAgentPropertiesResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteAgentPropertiesResponse) *string {
 		if v == nil {
@@ -437,6 +857,309 @@ func (o SiteAgentPropertiesResponsePtrOutput) Version() pulumi.StringPtrOutput {
 		}
 		return &v.Version
 	}).(pulumi.StringPtrOutput)
+}
+
+// Class for site appliance properties.
+type SiteApplianceProperties struct {
+	// Gets or sets the on-premises agent details.
+	AgentDetails *SiteAgentProperties `pulumi:"agentDetails"`
+	// Gets or sets the Appliance Name.
+	ApplianceName *string `pulumi:"applianceName"`
+	//  Gets or sets the service principal identity details used by agent for  communication              to the service.
+	ServicePrincipalIdentityDetails *SiteSpnProperties `pulumi:"servicePrincipalIdentityDetails"`
+}
+
+// SiteAppliancePropertiesInput is an input type that accepts SiteAppliancePropertiesArgs and SiteAppliancePropertiesOutput values.
+// You can construct a concrete instance of `SiteAppliancePropertiesInput` via:
+//
+//	SiteAppliancePropertiesArgs{...}
+type SiteAppliancePropertiesInput interface {
+	pulumi.Input
+
+	ToSiteAppliancePropertiesOutput() SiteAppliancePropertiesOutput
+	ToSiteAppliancePropertiesOutputWithContext(context.Context) SiteAppliancePropertiesOutput
+}
+
+// Class for site appliance properties.
+type SiteAppliancePropertiesArgs struct {
+	// Gets or sets the on-premises agent details.
+	AgentDetails SiteAgentPropertiesPtrInput `pulumi:"agentDetails"`
+	// Gets or sets the Appliance Name.
+	ApplianceName pulumi.StringPtrInput `pulumi:"applianceName"`
+	//  Gets or sets the service principal identity details used by agent for  communication              to the service.
+	ServicePrincipalIdentityDetails SiteSpnPropertiesPtrInput `pulumi:"servicePrincipalIdentityDetails"`
+}
+
+func (SiteAppliancePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteApplianceProperties)(nil)).Elem()
+}
+
+func (i SiteAppliancePropertiesArgs) ToSiteAppliancePropertiesOutput() SiteAppliancePropertiesOutput {
+	return i.ToSiteAppliancePropertiesOutputWithContext(context.Background())
+}
+
+func (i SiteAppliancePropertiesArgs) ToSiteAppliancePropertiesOutputWithContext(ctx context.Context) SiteAppliancePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteAppliancePropertiesOutput)
+}
+
+// SiteAppliancePropertiesArrayInput is an input type that accepts SiteAppliancePropertiesArray and SiteAppliancePropertiesArrayOutput values.
+// You can construct a concrete instance of `SiteAppliancePropertiesArrayInput` via:
+//
+//	SiteAppliancePropertiesArray{ SiteAppliancePropertiesArgs{...} }
+type SiteAppliancePropertiesArrayInput interface {
+	pulumi.Input
+
+	ToSiteAppliancePropertiesArrayOutput() SiteAppliancePropertiesArrayOutput
+	ToSiteAppliancePropertiesArrayOutputWithContext(context.Context) SiteAppliancePropertiesArrayOutput
+}
+
+type SiteAppliancePropertiesArray []SiteAppliancePropertiesInput
+
+func (SiteAppliancePropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SiteApplianceProperties)(nil)).Elem()
+}
+
+func (i SiteAppliancePropertiesArray) ToSiteAppliancePropertiesArrayOutput() SiteAppliancePropertiesArrayOutput {
+	return i.ToSiteAppliancePropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i SiteAppliancePropertiesArray) ToSiteAppliancePropertiesArrayOutputWithContext(ctx context.Context) SiteAppliancePropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteAppliancePropertiesArrayOutput)
+}
+
+// Class for site appliance properties.
+type SiteAppliancePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SiteAppliancePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteApplianceProperties)(nil)).Elem()
+}
+
+func (o SiteAppliancePropertiesOutput) ToSiteAppliancePropertiesOutput() SiteAppliancePropertiesOutput {
+	return o
+}
+
+func (o SiteAppliancePropertiesOutput) ToSiteAppliancePropertiesOutputWithContext(ctx context.Context) SiteAppliancePropertiesOutput {
+	return o
+}
+
+// Gets or sets the on-premises agent details.
+func (o SiteAppliancePropertiesOutput) AgentDetails() SiteAgentPropertiesPtrOutput {
+	return o.ApplyT(func(v SiteApplianceProperties) *SiteAgentProperties { return v.AgentDetails }).(SiteAgentPropertiesPtrOutput)
+}
+
+// Gets or sets the Appliance Name.
+func (o SiteAppliancePropertiesOutput) ApplianceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteApplianceProperties) *string { return v.ApplianceName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the service principal identity details used by agent for  communication              to the service.
+func (o SiteAppliancePropertiesOutput) ServicePrincipalIdentityDetails() SiteSpnPropertiesPtrOutput {
+	return o.ApplyT(func(v SiteApplianceProperties) *SiteSpnProperties { return v.ServicePrincipalIdentityDetails }).(SiteSpnPropertiesPtrOutput)
+}
+
+type SiteAppliancePropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (SiteAppliancePropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SiteApplianceProperties)(nil)).Elem()
+}
+
+func (o SiteAppliancePropertiesArrayOutput) ToSiteAppliancePropertiesArrayOutput() SiteAppliancePropertiesArrayOutput {
+	return o
+}
+
+func (o SiteAppliancePropertiesArrayOutput) ToSiteAppliancePropertiesArrayOutputWithContext(ctx context.Context) SiteAppliancePropertiesArrayOutput {
+	return o
+}
+
+func (o SiteAppliancePropertiesArrayOutput) Index(i pulumi.IntInput) SiteAppliancePropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SiteApplianceProperties {
+		return vs[0].([]SiteApplianceProperties)[vs[1].(int)]
+	}).(SiteAppliancePropertiesOutput)
+}
+
+// Class for site appliance properties.
+type SiteAppliancePropertiesResponse struct {
+	// Gets or sets the on-premises agent details.
+	AgentDetails *SiteAgentPropertiesResponse `pulumi:"agentDetails"`
+	// Gets or sets the Appliance Name.
+	ApplianceName *string `pulumi:"applianceName"`
+	//  Gets or sets the service principal identity details used by agent for  communication              to the service.
+	ServicePrincipalIdentityDetails *SiteSpnPropertiesResponse `pulumi:"servicePrincipalIdentityDetails"`
+}
+
+// Class for site appliance properties.
+type SiteAppliancePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SiteAppliancePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteAppliancePropertiesResponse)(nil)).Elem()
+}
+
+func (o SiteAppliancePropertiesResponseOutput) ToSiteAppliancePropertiesResponseOutput() SiteAppliancePropertiesResponseOutput {
+	return o
+}
+
+func (o SiteAppliancePropertiesResponseOutput) ToSiteAppliancePropertiesResponseOutputWithContext(ctx context.Context) SiteAppliancePropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the on-premises agent details.
+func (o SiteAppliancePropertiesResponseOutput) AgentDetails() SiteAgentPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SiteAppliancePropertiesResponse) *SiteAgentPropertiesResponse { return v.AgentDetails }).(SiteAgentPropertiesResponsePtrOutput)
+}
+
+// Gets or sets the Appliance Name.
+func (o SiteAppliancePropertiesResponseOutput) ApplianceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteAppliancePropertiesResponse) *string { return v.ApplianceName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the service principal identity details used by agent for  communication              to the service.
+func (o SiteAppliancePropertiesResponseOutput) ServicePrincipalIdentityDetails() SiteSpnPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SiteAppliancePropertiesResponse) *SiteSpnPropertiesResponse {
+		return v.ServicePrincipalIdentityDetails
+	}).(SiteSpnPropertiesResponsePtrOutput)
+}
+
+type SiteAppliancePropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SiteAppliancePropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SiteAppliancePropertiesResponse)(nil)).Elem()
+}
+
+func (o SiteAppliancePropertiesResponseArrayOutput) ToSiteAppliancePropertiesResponseArrayOutput() SiteAppliancePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o SiteAppliancePropertiesResponseArrayOutput) ToSiteAppliancePropertiesResponseArrayOutputWithContext(ctx context.Context) SiteAppliancePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o SiteAppliancePropertiesResponseArrayOutput) Index(i pulumi.IntInput) SiteAppliancePropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SiteAppliancePropertiesResponse {
+		return vs[0].([]SiteAppliancePropertiesResponse)[vs[1].(int)]
+	}).(SiteAppliancePropertiesResponseOutput)
+}
+
+// The properties of ServerSiteResource.
+type SiteHealthSummaryResponse struct {
+	// Gets or sets the count of affected objects.
+	AffectedObjectsCount *float64 `pulumi:"affectedObjectsCount"`
+	// Gets the affected resource type.
+	AffectedResourceType string `pulumi:"affectedResourceType"`
+	// Gets or sets the affected resources.
+	AffectedResources []string `pulumi:"affectedResources"`
+	// Gets the appliance name.
+	ApplianceName string `pulumi:"applianceName"`
+	// Gets the error code.
+	ErrorCode string `pulumi:"errorCode"`
+	// Gets the error Id.
+	ErrorId float64 `pulumi:"errorId"`
+	// Gets the error message.
+	ErrorMessage string `pulumi:"errorMessage"`
+	// Gets or sets sources of the exception.
+	FabricLayoutUpdateSources []string `pulumi:"fabricLayoutUpdateSources"`
+	// Gets or sets the hit count of the error.
+	HitCount *float64 `pulumi:"hitCount"`
+	// Gets the remediation guidance.
+	RemediationGuidance string `pulumi:"remediationGuidance"`
+	// Gets the severity of error.
+	Severity string `pulumi:"severity"`
+	// Gets the summary message.
+	SummaryMessage string `pulumi:"summaryMessage"`
+}
+
+// The properties of ServerSiteResource.
+type SiteHealthSummaryResponseOutput struct{ *pulumi.OutputState }
+
+func (SiteHealthSummaryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteHealthSummaryResponse)(nil)).Elem()
+}
+
+func (o SiteHealthSummaryResponseOutput) ToSiteHealthSummaryResponseOutput() SiteHealthSummaryResponseOutput {
+	return o
+}
+
+func (o SiteHealthSummaryResponseOutput) ToSiteHealthSummaryResponseOutputWithContext(ctx context.Context) SiteHealthSummaryResponseOutput {
+	return o
+}
+
+// Gets or sets the count of affected objects.
+func (o SiteHealthSummaryResponseOutput) AffectedObjectsCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SiteHealthSummaryResponse) *float64 { return v.AffectedObjectsCount }).(pulumi.Float64PtrOutput)
+}
+
+// Gets the affected resource type.
+func (o SiteHealthSummaryResponseOutput) AffectedResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v SiteHealthSummaryResponse) string { return v.AffectedResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the affected resources.
+func (o SiteHealthSummaryResponseOutput) AffectedResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SiteHealthSummaryResponse) []string { return v.AffectedResources }).(pulumi.StringArrayOutput)
+}
+
+// Gets the appliance name.
+func (o SiteHealthSummaryResponseOutput) ApplianceName() pulumi.StringOutput {
+	return o.ApplyT(func(v SiteHealthSummaryResponse) string { return v.ApplianceName }).(pulumi.StringOutput)
+}
+
+// Gets the error code.
+func (o SiteHealthSummaryResponseOutput) ErrorCode() pulumi.StringOutput {
+	return o.ApplyT(func(v SiteHealthSummaryResponse) string { return v.ErrorCode }).(pulumi.StringOutput)
+}
+
+// Gets the error Id.
+func (o SiteHealthSummaryResponseOutput) ErrorId() pulumi.Float64Output {
+	return o.ApplyT(func(v SiteHealthSummaryResponse) float64 { return v.ErrorId }).(pulumi.Float64Output)
+}
+
+// Gets the error message.
+func (o SiteHealthSummaryResponseOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v SiteHealthSummaryResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// Gets or sets sources of the exception.
+func (o SiteHealthSummaryResponseOutput) FabricLayoutUpdateSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SiteHealthSummaryResponse) []string { return v.FabricLayoutUpdateSources }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the hit count of the error.
+func (o SiteHealthSummaryResponseOutput) HitCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SiteHealthSummaryResponse) *float64 { return v.HitCount }).(pulumi.Float64PtrOutput)
+}
+
+// Gets the remediation guidance.
+func (o SiteHealthSummaryResponseOutput) RemediationGuidance() pulumi.StringOutput {
+	return o.ApplyT(func(v SiteHealthSummaryResponse) string { return v.RemediationGuidance }).(pulumi.StringOutput)
+}
+
+// Gets the severity of error.
+func (o SiteHealthSummaryResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v SiteHealthSummaryResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Gets the summary message.
+func (o SiteHealthSummaryResponseOutput) SummaryMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v SiteHealthSummaryResponse) string { return v.SummaryMessage }).(pulumi.StringOutput)
+}
+
+type SiteHealthSummaryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SiteHealthSummaryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SiteHealthSummaryResponse)(nil)).Elem()
+}
+
+func (o SiteHealthSummaryResponseArrayOutput) ToSiteHealthSummaryResponseArrayOutput() SiteHealthSummaryResponseArrayOutput {
+	return o
+}
+
+func (o SiteHealthSummaryResponseArrayOutput) ToSiteHealthSummaryResponseArrayOutputWithContext(ctx context.Context) SiteHealthSummaryResponseArrayOutput {
+	return o
+}
+
+func (o SiteHealthSummaryResponseArrayOutput) Index(i pulumi.IntInput) SiteHealthSummaryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SiteHealthSummaryResponse {
+		return vs[0].([]SiteHealthSummaryResponse)[vs[1].(int)]
+	}).(SiteHealthSummaryResponseOutput)
 }
 
 // Class for site properties.
@@ -692,17 +1415,29 @@ func (o SitePropertiesResponseOutput) ServicePrincipalIdentityDetails() SiteSpnP
 
 // Class for site properties.
 type SiteSpnProperties struct {
-	// AAD Authority URL which was used to request the token for the service principal.
+	// Gets or sets the AAD Authority URL which was used to request the token for
+	// the
+	//             service principal.
 	AadAuthority *string `pulumi:"aadAuthority"`
-	// Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+	// Gets or sets the application/client Id for the service principal with which
+	// the
+	//             on-premise management/data plane components would communicate
+	// with our Azure
+	//             services.
 	ApplicationId *string `pulumi:"applicationId"`
-	// Intended audience for the service principal.
+	// Gets or sets the intended audience for the service principal.
 	Audience *string `pulumi:"audience"`
-	// Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+	// Gets or sets the object Id of the service principal with which the on-premise
+	//
+	//            management/data plane components would communicate with our Azure
+	// services.
 	ObjectId *string `pulumi:"objectId"`
-	// Raw certificate data for building certificate expiry flows.
+	// Gets or sets the raw certificate data for building certificate expiry flows.
 	RawCertData *string `pulumi:"rawCertData"`
-	// Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+	// Gets or sets the tenant Id for the service principal with which the
+	// on-premise
+	//             management/data plane components would communicate with
+	// our Azure services.
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -719,17 +1454,29 @@ type SiteSpnPropertiesInput interface {
 
 // Class for site properties.
 type SiteSpnPropertiesArgs struct {
-	// AAD Authority URL which was used to request the token for the service principal.
+	// Gets or sets the AAD Authority URL which was used to request the token for
+	// the
+	//             service principal.
 	AadAuthority pulumi.StringPtrInput `pulumi:"aadAuthority"`
-	// Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+	// Gets or sets the application/client Id for the service principal with which
+	// the
+	//             on-premise management/data plane components would communicate
+	// with our Azure
+	//             services.
 	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
-	// Intended audience for the service principal.
+	// Gets or sets the intended audience for the service principal.
 	Audience pulumi.StringPtrInput `pulumi:"audience"`
-	// Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+	// Gets or sets the object Id of the service principal with which the on-premise
+	//
+	//            management/data plane components would communicate with our Azure
+	// services.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
-	// Raw certificate data for building certificate expiry flows.
+	// Gets or sets the raw certificate data for building certificate expiry flows.
 	RawCertData pulumi.StringPtrInput `pulumi:"rawCertData"`
-	// Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+	// Gets or sets the tenant Id for the service principal with which the
+	// on-premise
+	//             management/data plane components would communicate with
+	// our Azure services.
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 
@@ -811,32 +1558,51 @@ func (o SiteSpnPropertiesOutput) ToSiteSpnPropertiesPtrOutputWithContext(ctx con
 	}).(SiteSpnPropertiesPtrOutput)
 }
 
-// AAD Authority URL which was used to request the token for the service principal.
+// Gets or sets the AAD Authority URL which was used to request the token for
+// the
+//
+//	service principal.
 func (o SiteSpnPropertiesOutput) AadAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteSpnProperties) *string { return v.AadAuthority }).(pulumi.StringPtrOutput)
 }
 
-// Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+// Gets or sets the application/client Id for the service principal with which
+// the
+//
+//	on-premise management/data plane components would communicate
+//
+// with our Azure
+//
+//	services.
 func (o SiteSpnPropertiesOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteSpnProperties) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
 }
 
-// Intended audience for the service principal.
+// Gets or sets the intended audience for the service principal.
 func (o SiteSpnPropertiesOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteSpnProperties) *string { return v.Audience }).(pulumi.StringPtrOutput)
 }
 
-// Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+// Gets or sets the object Id of the service principal with which the on-premise
+//
+//	management/data plane components would communicate with our Azure
+//
+// services.
 func (o SiteSpnPropertiesOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteSpnProperties) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
-// Raw certificate data for building certificate expiry flows.
+// Gets or sets the raw certificate data for building certificate expiry flows.
 func (o SiteSpnPropertiesOutput) RawCertData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteSpnProperties) *string { return v.RawCertData }).(pulumi.StringPtrOutput)
 }
 
-// Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+// Gets or sets the tenant Id for the service principal with which the
+// on-premise
+//
+//	management/data plane components would communicate with
+//
+// our Azure services.
 func (o SiteSpnPropertiesOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteSpnProperties) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
@@ -865,7 +1631,10 @@ func (o SiteSpnPropertiesPtrOutput) Elem() SiteSpnPropertiesOutput {
 	}).(SiteSpnPropertiesOutput)
 }
 
-// AAD Authority URL which was used to request the token for the service principal.
+// Gets or sets the AAD Authority URL which was used to request the token for
+// the
+//
+//	service principal.
 func (o SiteSpnPropertiesPtrOutput) AadAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteSpnProperties) *string {
 		if v == nil {
@@ -875,7 +1644,14 @@ func (o SiteSpnPropertiesPtrOutput) AadAuthority() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+// Gets or sets the application/client Id for the service principal with which
+// the
+//
+//	on-premise management/data plane components would communicate
+//
+// with our Azure
+//
+//	services.
 func (o SiteSpnPropertiesPtrOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteSpnProperties) *string {
 		if v == nil {
@@ -885,7 +1661,7 @@ func (o SiteSpnPropertiesPtrOutput) ApplicationId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Intended audience for the service principal.
+// Gets or sets the intended audience for the service principal.
 func (o SiteSpnPropertiesPtrOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteSpnProperties) *string {
 		if v == nil {
@@ -895,7 +1671,11 @@ func (o SiteSpnPropertiesPtrOutput) Audience() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+// Gets or sets the object Id of the service principal with which the on-premise
+//
+//	management/data plane components would communicate with our Azure
+//
+// services.
 func (o SiteSpnPropertiesPtrOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteSpnProperties) *string {
 		if v == nil {
@@ -905,7 +1685,7 @@ func (o SiteSpnPropertiesPtrOutput) ObjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Raw certificate data for building certificate expiry flows.
+// Gets or sets the raw certificate data for building certificate expiry flows.
 func (o SiteSpnPropertiesPtrOutput) RawCertData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteSpnProperties) *string {
 		if v == nil {
@@ -915,7 +1695,12 @@ func (o SiteSpnPropertiesPtrOutput) RawCertData() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+// Gets or sets the tenant Id for the service principal with which the
+// on-premise
+//
+//	management/data plane components would communicate with
+//
+// our Azure services.
 func (o SiteSpnPropertiesPtrOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteSpnProperties) *string {
 		if v == nil {
@@ -927,17 +1712,29 @@ func (o SiteSpnPropertiesPtrOutput) TenantId() pulumi.StringPtrOutput {
 
 // Class for site properties.
 type SiteSpnPropertiesResponse struct {
-	// AAD Authority URL which was used to request the token for the service principal.
+	// Gets or sets the AAD Authority URL which was used to request the token for
+	// the
+	//             service principal.
 	AadAuthority *string `pulumi:"aadAuthority"`
-	// Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+	// Gets or sets the application/client Id for the service principal with which
+	// the
+	//             on-premise management/data plane components would communicate
+	// with our Azure
+	//             services.
 	ApplicationId *string `pulumi:"applicationId"`
-	// Intended audience for the service principal.
+	// Gets or sets the intended audience for the service principal.
 	Audience *string `pulumi:"audience"`
-	// Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+	// Gets or sets the object Id of the service principal with which the on-premise
+	//
+	//            management/data plane components would communicate with our Azure
+	// services.
 	ObjectId *string `pulumi:"objectId"`
-	// Raw certificate data for building certificate expiry flows.
+	// Gets or sets the raw certificate data for building certificate expiry flows.
 	RawCertData *string `pulumi:"rawCertData"`
-	// Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+	// Gets or sets the tenant Id for the service principal with which the
+	// on-premise
+	//             management/data plane components would communicate with
+	// our Azure services.
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -956,32 +1753,51 @@ func (o SiteSpnPropertiesResponseOutput) ToSiteSpnPropertiesResponseOutputWithCo
 	return o
 }
 
-// AAD Authority URL which was used to request the token for the service principal.
+// Gets or sets the AAD Authority URL which was used to request the token for
+// the
+//
+//	service principal.
 func (o SiteSpnPropertiesResponseOutput) AadAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteSpnPropertiesResponse) *string { return v.AadAuthority }).(pulumi.StringPtrOutput)
 }
 
-// Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+// Gets or sets the application/client Id for the service principal with which
+// the
+//
+//	on-premise management/data plane components would communicate
+//
+// with our Azure
+//
+//	services.
 func (o SiteSpnPropertiesResponseOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteSpnPropertiesResponse) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
 }
 
-// Intended audience for the service principal.
+// Gets or sets the intended audience for the service principal.
 func (o SiteSpnPropertiesResponseOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteSpnPropertiesResponse) *string { return v.Audience }).(pulumi.StringPtrOutput)
 }
 
-// Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+// Gets or sets the object Id of the service principal with which the on-premise
+//
+//	management/data plane components would communicate with our Azure
+//
+// services.
 func (o SiteSpnPropertiesResponseOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteSpnPropertiesResponse) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
-// Raw certificate data for building certificate expiry flows.
+// Gets or sets the raw certificate data for building certificate expiry flows.
 func (o SiteSpnPropertiesResponseOutput) RawCertData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteSpnPropertiesResponse) *string { return v.RawCertData }).(pulumi.StringPtrOutput)
 }
 
-// Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+// Gets or sets the tenant Id for the service principal with which the
+// on-premise
+//
+//	management/data plane components would communicate with
+//
+// our Azure services.
 func (o SiteSpnPropertiesResponseOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteSpnPropertiesResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
@@ -1010,7 +1826,10 @@ func (o SiteSpnPropertiesResponsePtrOutput) Elem() SiteSpnPropertiesResponseOutp
 	}).(SiteSpnPropertiesResponseOutput)
 }
 
-// AAD Authority URL which was used to request the token for the service principal.
+// Gets or sets the AAD Authority URL which was used to request the token for
+// the
+//
+//	service principal.
 func (o SiteSpnPropertiesResponsePtrOutput) AadAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteSpnPropertiesResponse) *string {
 		if v == nil {
@@ -1020,7 +1839,14 @@ func (o SiteSpnPropertiesResponsePtrOutput) AadAuthority() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+// Gets or sets the application/client Id for the service principal with which
+// the
+//
+//	on-premise management/data plane components would communicate
+//
+// with our Azure
+//
+//	services.
 func (o SiteSpnPropertiesResponsePtrOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteSpnPropertiesResponse) *string {
 		if v == nil {
@@ -1030,7 +1856,7 @@ func (o SiteSpnPropertiesResponsePtrOutput) ApplicationId() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Intended audience for the service principal.
+// Gets or sets the intended audience for the service principal.
 func (o SiteSpnPropertiesResponsePtrOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteSpnPropertiesResponse) *string {
 		if v == nil {
@@ -1040,7 +1866,11 @@ func (o SiteSpnPropertiesResponsePtrOutput) Audience() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+// Gets or sets the object Id of the service principal with which the on-premise
+//
+//	management/data plane components would communicate with our Azure
+//
+// services.
 func (o SiteSpnPropertiesResponsePtrOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteSpnPropertiesResponse) *string {
 		if v == nil {
@@ -1050,7 +1880,7 @@ func (o SiteSpnPropertiesResponsePtrOutput) ObjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Raw certificate data for building certificate expiry flows.
+// Gets or sets the raw certificate data for building certificate expiry flows.
 func (o SiteSpnPropertiesResponsePtrOutput) RawCertData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteSpnPropertiesResponse) *string {
 		if v == nil {
@@ -1060,7 +1890,12 @@ func (o SiteSpnPropertiesResponsePtrOutput) RawCertData() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
+// Gets or sets the tenant Id for the service principal with which the
+// on-premise
+//
+//	management/data plane components would communicate with
+//
+// our Azure services.
 func (o SiteSpnPropertiesResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteSpnPropertiesResponse) *string {
 		if v == nil {
@@ -1078,7 +1913,7 @@ type SystemDataResponse struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// The type of identity that created the resource.
 	CreatedByType *string `pulumi:"createdByType"`
-	// The type of identity that last modified the resource.
+	// The timestamp of resource last modification (UTC)
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// The identity that last modified the resource.
 	LastModifiedBy *string `pulumi:"lastModifiedBy"`
@@ -1116,7 +1951,7 @@ func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that last modified the resource.
+// The timestamp of resource last modification (UTC)
 func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
 }
@@ -1132,7 +1967,13 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(HealthErrorDetailsResponseOutput{})
+	pulumi.RegisterOutputType(HealthErrorDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdResponseOutput{})
@@ -1140,6 +1981,12 @@ func init() {
 	pulumi.RegisterOutputType(SiteAgentPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SiteAgentPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SiteAgentPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(SiteAppliancePropertiesOutput{})
+	pulumi.RegisterOutputType(SiteAppliancePropertiesArrayOutput{})
+	pulumi.RegisterOutputType(SiteAppliancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SiteAppliancePropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(SiteHealthSummaryResponseOutput{})
+	pulumi.RegisterOutputType(SiteHealthSummaryResponseArrayOutput{})
 	pulumi.RegisterOutputType(SitePropertiesOutput{})
 	pulumi.RegisterOutputType(SitePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SitePropertiesResponseOutput{})

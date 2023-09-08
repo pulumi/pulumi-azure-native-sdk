@@ -66,6 +66,9 @@ func NewWorkspaceManagerAssignment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230601preview:WorkspaceManagerAssignment"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:WorkspaceManagerAssignment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
