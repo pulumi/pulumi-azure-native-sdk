@@ -59,6 +59,9 @@ func NewNotificationHub(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:notificationhubs/v20230101preview:NotificationHub"),
 		},
+		{
+			Type: pulumi.String("azure-native:notificationhubs/v20230901:NotificationHub"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

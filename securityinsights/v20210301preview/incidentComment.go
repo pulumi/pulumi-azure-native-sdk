@@ -132,6 +132,9 @@ func NewIncidentComment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230701preview:IncidentComment"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:IncidentComment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

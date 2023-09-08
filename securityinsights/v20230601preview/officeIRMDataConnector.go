@@ -129,6 +129,9 @@ func NewOfficeIRMDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230701preview:OfficeIRMDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:OfficeIRMDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

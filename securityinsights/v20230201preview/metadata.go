@@ -144,6 +144,9 @@ func NewMetadata(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230701preview:Metadata"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:Metadata"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

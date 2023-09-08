@@ -61,6 +61,9 @@ func NewCustomizableConnectorDefinition(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights:CustomizableConnectorDefinition"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:CustomizableConnectorDefinition"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
