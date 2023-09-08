@@ -23,10 +23,36 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:offazure:HyperVSite":
 		r = &HyperVSite{}
+	case "azure-native:offazure:HypervClusterControllerCluster":
+		r = &HypervClusterControllerCluster{}
+	case "azure-native:offazure:HypervHostController":
+		r = &HypervHostController{}
+	case "azure-native:offazure:HypervSitesController":
+		r = &HypervSitesController{}
+	case "azure-native:offazure:ImportSitesController":
+		r = &ImportSitesController{}
+	case "azure-native:offazure:MasterSitesController":
+		r = &MasterSitesController{}
 	case "azure-native:offazure:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:offazure:PrivateEndpointConnectionController":
+		r = &PrivateEndpointConnectionController{}
+	case "azure-native:offazure:ServerSitesController":
+		r = &ServerSitesController{}
 	case "azure-native:offazure:Site":
 		r = &Site{}
+	case "azure-native:offazure:SitesController":
+		r = &SitesController{}
+	case "azure-native:offazure:SqlDiscoverySiteDataSourceController":
+		r = &SqlDiscoverySiteDataSourceController{}
+	case "azure-native:offazure:SqlSitesController":
+		r = &SqlSitesController{}
+	case "azure-native:offazure:VcenterController":
+		r = &VcenterController{}
+	case "azure-native:offazure:WebAppDiscoverySiteDataSourcesController":
+		r = &WebAppDiscoverySiteDataSourcesController{}
+	case "azure-native:offazure:WebAppSitesController":
+		r = &WebAppSitesController{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

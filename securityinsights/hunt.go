@@ -81,6 +81,9 @@ func NewHunt(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230701preview:Hunt"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:Hunt"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
