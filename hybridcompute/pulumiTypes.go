@@ -651,6 +651,59 @@ func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResp
 	}).(ErrorDetailResponseOutput)
 }
 
+// ESU key
+type EsuKeyResponse struct {
+	// The current status of the license profile key.
+	LicenseStatus *string `pulumi:"licenseStatus"`
+	// SKU number.
+	Sku *string `pulumi:"sku"`
+}
+
+// ESU key
+type EsuKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (EsuKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EsuKeyResponse)(nil)).Elem()
+}
+
+func (o EsuKeyResponseOutput) ToEsuKeyResponseOutput() EsuKeyResponseOutput {
+	return o
+}
+
+func (o EsuKeyResponseOutput) ToEsuKeyResponseOutputWithContext(ctx context.Context) EsuKeyResponseOutput {
+	return o
+}
+
+// The current status of the license profile key.
+func (o EsuKeyResponseOutput) LicenseStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EsuKeyResponse) *string { return v.LicenseStatus }).(pulumi.StringPtrOutput)
+}
+
+// SKU number.
+func (o EsuKeyResponseOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EsuKeyResponse) *string { return v.Sku }).(pulumi.StringPtrOutput)
+}
+
+type EsuKeyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EsuKeyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EsuKeyResponse)(nil)).Elem()
+}
+
+func (o EsuKeyResponseArrayOutput) ToEsuKeyResponseArrayOutput() EsuKeyResponseArrayOutput {
+	return o
+}
+
+func (o EsuKeyResponseArrayOutput) ToEsuKeyResponseArrayOutputWithContext(ctx context.Context) EsuKeyResponseArrayOutput {
+	return o
+}
+
+func (o EsuKeyResponseArrayOutput) Index(i pulumi.IntInput) EsuKeyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EsuKeyResponse {
+		return vs[0].([]EsuKeyResponse)[vs[1].(int)]
+	}).(EsuKeyResponseOutput)
+}
+
 // Properties that define a Azure Arc PrivateLinkScope resource.
 type HybridComputePrivateLinkScopeProperties struct {
 	// Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
@@ -1067,6 +1120,384 @@ func (o IdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
 // The identity type.
 func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the properties of a License.
+type LicenseDetails struct {
+	// Describes the edition of the license. The values are either Standard or Datacenter.
+	Edition *string `pulumi:"edition"`
+	// Describes the number of processors.
+	Processors *int `pulumi:"processors"`
+	// Describes the state of the license.
+	State *string `pulumi:"state"`
+	// Describes the license target server.
+	Target *string `pulumi:"target"`
+	// Describes the license core type (pCore or vCore).
+	Type *string `pulumi:"type"`
+}
+
+// LicenseDetailsInput is an input type that accepts LicenseDetailsArgs and LicenseDetailsOutput values.
+// You can construct a concrete instance of `LicenseDetailsInput` via:
+//
+//	LicenseDetailsArgs{...}
+type LicenseDetailsInput interface {
+	pulumi.Input
+
+	ToLicenseDetailsOutput() LicenseDetailsOutput
+	ToLicenseDetailsOutputWithContext(context.Context) LicenseDetailsOutput
+}
+
+// Describes the properties of a License.
+type LicenseDetailsArgs struct {
+	// Describes the edition of the license. The values are either Standard or Datacenter.
+	Edition pulumi.StringPtrInput `pulumi:"edition"`
+	// Describes the number of processors.
+	Processors pulumi.IntPtrInput `pulumi:"processors"`
+	// Describes the state of the license.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Describes the license target server.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// Describes the license core type (pCore or vCore).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (LicenseDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseDetails)(nil)).Elem()
+}
+
+func (i LicenseDetailsArgs) ToLicenseDetailsOutput() LicenseDetailsOutput {
+	return i.ToLicenseDetailsOutputWithContext(context.Background())
+}
+
+func (i LicenseDetailsArgs) ToLicenseDetailsOutputWithContext(ctx context.Context) LicenseDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseDetailsOutput)
+}
+
+func (i LicenseDetailsArgs) ToLicenseDetailsPtrOutput() LicenseDetailsPtrOutput {
+	return i.ToLicenseDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i LicenseDetailsArgs) ToLicenseDetailsPtrOutputWithContext(ctx context.Context) LicenseDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseDetailsOutput).ToLicenseDetailsPtrOutputWithContext(ctx)
+}
+
+// LicenseDetailsPtrInput is an input type that accepts LicenseDetailsArgs, LicenseDetailsPtr and LicenseDetailsPtrOutput values.
+// You can construct a concrete instance of `LicenseDetailsPtrInput` via:
+//
+//	        LicenseDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LicenseDetailsPtrInput interface {
+	pulumi.Input
+
+	ToLicenseDetailsPtrOutput() LicenseDetailsPtrOutput
+	ToLicenseDetailsPtrOutputWithContext(context.Context) LicenseDetailsPtrOutput
+}
+
+type licenseDetailsPtrType LicenseDetailsArgs
+
+func LicenseDetailsPtr(v *LicenseDetailsArgs) LicenseDetailsPtrInput {
+	return (*licenseDetailsPtrType)(v)
+}
+
+func (*licenseDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseDetails)(nil)).Elem()
+}
+
+func (i *licenseDetailsPtrType) ToLicenseDetailsPtrOutput() LicenseDetailsPtrOutput {
+	return i.ToLicenseDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *licenseDetailsPtrType) ToLicenseDetailsPtrOutputWithContext(ctx context.Context) LicenseDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseDetailsPtrOutput)
+}
+
+// Describes the properties of a License.
+type LicenseDetailsOutput struct{ *pulumi.OutputState }
+
+func (LicenseDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseDetails)(nil)).Elem()
+}
+
+func (o LicenseDetailsOutput) ToLicenseDetailsOutput() LicenseDetailsOutput {
+	return o
+}
+
+func (o LicenseDetailsOutput) ToLicenseDetailsOutputWithContext(ctx context.Context) LicenseDetailsOutput {
+	return o
+}
+
+func (o LicenseDetailsOutput) ToLicenseDetailsPtrOutput() LicenseDetailsPtrOutput {
+	return o.ToLicenseDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o LicenseDetailsOutput) ToLicenseDetailsPtrOutputWithContext(ctx context.Context) LicenseDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseDetails) *LicenseDetails {
+		return &v
+	}).(LicenseDetailsPtrOutput)
+}
+
+// Describes the edition of the license. The values are either Standard or Datacenter.
+func (o LicenseDetailsOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LicenseDetails) *string { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+// Describes the number of processors.
+func (o LicenseDetailsOutput) Processors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseDetails) *int { return v.Processors }).(pulumi.IntPtrOutput)
+}
+
+// Describes the state of the license.
+func (o LicenseDetailsOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LicenseDetails) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Describes the license target server.
+func (o LicenseDetailsOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LicenseDetails) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// Describes the license core type (pCore or vCore).
+func (o LicenseDetailsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LicenseDetails) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type LicenseDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (LicenseDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseDetails)(nil)).Elem()
+}
+
+func (o LicenseDetailsPtrOutput) ToLicenseDetailsPtrOutput() LicenseDetailsPtrOutput {
+	return o
+}
+
+func (o LicenseDetailsPtrOutput) ToLicenseDetailsPtrOutputWithContext(ctx context.Context) LicenseDetailsPtrOutput {
+	return o
+}
+
+func (o LicenseDetailsPtrOutput) Elem() LicenseDetailsOutput {
+	return o.ApplyT(func(v *LicenseDetails) LicenseDetails {
+		if v != nil {
+			return *v
+		}
+		var ret LicenseDetails
+		return ret
+	}).(LicenseDetailsOutput)
+}
+
+// Describes the edition of the license. The values are either Standard or Datacenter.
+func (o LicenseDetailsPtrOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Edition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the number of processors.
+func (o LicenseDetailsPtrOutput) Processors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseDetails) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Processors
+	}).(pulumi.IntPtrOutput)
+}
+
+// Describes the state of the license.
+func (o LicenseDetailsPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the license target server.
+func (o LicenseDetailsPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the license core type (pCore or vCore).
+func (o LicenseDetailsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the properties of a License.
+type LicenseDetailsResponse struct {
+	// Describes the number of assigned licenses.
+	AssignedLicenses int `pulumi:"assignedLicenses"`
+	// Describes the edition of the license. The values are either Standard or Datacenter.
+	Edition *string `pulumi:"edition"`
+	// Describes the immutable id.
+	ImmutableId string `pulumi:"immutableId"`
+	// Describes the number of processors.
+	Processors *int `pulumi:"processors"`
+	// Describes the state of the license.
+	State *string `pulumi:"state"`
+	// Describes the license target server.
+	Target *string `pulumi:"target"`
+	// Describes the license core type (pCore or vCore).
+	Type *string `pulumi:"type"`
+}
+
+// Describes the properties of a License.
+type LicenseDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (LicenseDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseDetailsResponse)(nil)).Elem()
+}
+
+func (o LicenseDetailsResponseOutput) ToLicenseDetailsResponseOutput() LicenseDetailsResponseOutput {
+	return o
+}
+
+func (o LicenseDetailsResponseOutput) ToLicenseDetailsResponseOutputWithContext(ctx context.Context) LicenseDetailsResponseOutput {
+	return o
+}
+
+// Describes the number of assigned licenses.
+func (o LicenseDetailsResponseOutput) AssignedLicenses() pulumi.IntOutput {
+	return o.ApplyT(func(v LicenseDetailsResponse) int { return v.AssignedLicenses }).(pulumi.IntOutput)
+}
+
+// Describes the edition of the license. The values are either Standard or Datacenter.
+func (o LicenseDetailsResponseOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LicenseDetailsResponse) *string { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+// Describes the immutable id.
+func (o LicenseDetailsResponseOutput) ImmutableId() pulumi.StringOutput {
+	return o.ApplyT(func(v LicenseDetailsResponse) string { return v.ImmutableId }).(pulumi.StringOutput)
+}
+
+// Describes the number of processors.
+func (o LicenseDetailsResponseOutput) Processors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseDetailsResponse) *int { return v.Processors }).(pulumi.IntPtrOutput)
+}
+
+// Describes the state of the license.
+func (o LicenseDetailsResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LicenseDetailsResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Describes the license target server.
+func (o LicenseDetailsResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LicenseDetailsResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// Describes the license core type (pCore or vCore).
+func (o LicenseDetailsResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LicenseDetailsResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type LicenseDetailsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LicenseDetailsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseDetailsResponse)(nil)).Elem()
+}
+
+func (o LicenseDetailsResponsePtrOutput) ToLicenseDetailsResponsePtrOutput() LicenseDetailsResponsePtrOutput {
+	return o
+}
+
+func (o LicenseDetailsResponsePtrOutput) ToLicenseDetailsResponsePtrOutputWithContext(ctx context.Context) LicenseDetailsResponsePtrOutput {
+	return o
+}
+
+func (o LicenseDetailsResponsePtrOutput) Elem() LicenseDetailsResponseOutput {
+	return o.ApplyT(func(v *LicenseDetailsResponse) LicenseDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LicenseDetailsResponse
+		return ret
+	}).(LicenseDetailsResponseOutput)
+}
+
+// Describes the number of assigned licenses.
+func (o LicenseDetailsResponsePtrOutput) AssignedLicenses() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseDetailsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.AssignedLicenses
+	}).(pulumi.IntPtrOutput)
+}
+
+// Describes the edition of the license. The values are either Standard or Datacenter.
+func (o LicenseDetailsResponsePtrOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Edition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the immutable id.
+func (o LicenseDetailsResponsePtrOutput) ImmutableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImmutableId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the number of processors.
+func (o LicenseDetailsResponsePtrOutput) Processors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseDetailsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Processors
+	}).(pulumi.IntPtrOutput)
+}
+
+// Describes the state of the license.
+func (o LicenseDetailsResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the license target server.
+func (o LicenseDetailsResponsePtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the license core type (pCore or vCore).
+func (o LicenseDetailsResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseDetailsResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -4315,6 +4746,8 @@ func init() {
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
+	pulumi.RegisterOutputType(EsuKeyResponseOutput{})
+	pulumi.RegisterOutputType(EsuKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(HybridComputePrivateLinkScopePropertiesOutput{})
 	pulumi.RegisterOutputType(HybridComputePrivateLinkScopePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(HybridComputePrivateLinkScopePropertiesResponseOutput{})
@@ -4322,6 +4755,10 @@ func init() {
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(LicenseDetailsOutput{})
+	pulumi.RegisterOutputType(LicenseDetailsPtrOutput{})
+	pulumi.RegisterOutputType(LicenseDetailsResponseOutput{})
+	pulumi.RegisterOutputType(LicenseDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(LocationDataOutput{})
 	pulumi.RegisterOutputType(LocationDataPtrOutput{})
 	pulumi.RegisterOutputType(LocationDataResponseOutput{})
