@@ -63,6 +63,9 @@ func NewMachineExtension(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:scvmm:MachineExtension"),
 		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20230401preview:MachineExtension"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

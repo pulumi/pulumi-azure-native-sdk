@@ -187,6 +187,70 @@ func (o CheckpointResponseOutput) ParentCheckpointID() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CheckpointResponse) *string { return v.ParentCheckpointID }).(pulumi.StringPtrOutput)
 }
 
+type CheckpointResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CheckpointResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CheckpointResponse)(nil)).Elem()
+}
+
+func (o CheckpointResponsePtrOutput) ToCheckpointResponsePtrOutput() CheckpointResponsePtrOutput {
+	return o
+}
+
+func (o CheckpointResponsePtrOutput) ToCheckpointResponsePtrOutputWithContext(ctx context.Context) CheckpointResponsePtrOutput {
+	return o
+}
+
+func (o CheckpointResponsePtrOutput) Elem() CheckpointResponseOutput {
+	return o.ApplyT(func(v *CheckpointResponse) CheckpointResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CheckpointResponse
+		return ret
+	}).(CheckpointResponseOutput)
+}
+
+// Gets ID of the checkpoint.
+func (o CheckpointResponsePtrOutput) CheckpointID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CheckpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckpointID
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets description of the checkpoint.
+func (o CheckpointResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CheckpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets name of the checkpoint.
+func (o CheckpointResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CheckpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets ID of parent of the checkpoint.
+func (o CheckpointResponsePtrOutput) ParentCheckpointID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CheckpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ParentCheckpointID
+	}).(pulumi.StringPtrOutput)
+}
+
 type CheckpointResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (CheckpointResponseArrayOutput) ElementType() reflect.Type {
@@ -1057,7 +1121,7 @@ func (o GuestCredentialPtrOutput) Username() pulumi.StringPtrOutput {
 // Username / Password Credentials to connect to guest.
 type GuestCredentialResponse struct {
 	// Gets or sets username to connect with the guest.
-	Username *string `pulumi:"username"`
+	Username string `pulumi:"username"`
 }
 
 // Username / Password Credentials to connect to guest.
@@ -1076,8 +1140,8 @@ func (o GuestCredentialResponseOutput) ToGuestCredentialResponseOutputWithContex
 }
 
 // Gets or sets username to connect with the guest.
-func (o GuestCredentialResponseOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GuestCredentialResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
+func (o GuestCredentialResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestCredentialResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
 type GuestCredentialResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1110,7 +1174,7 @@ func (o GuestCredentialResponsePtrOutput) Username() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Username
+		return &v.Username
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1961,6 +2025,547 @@ func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the vmmServer infrastructure specific settings for the virtual machine instance.
+type InfrastructureProfile struct {
+	// Gets or sets the bios guid for the vm.
+	BiosGuid *string `pulumi:"biosGuid"`
+	// Type of checkpoint supported for the vm.
+	CheckpointType *string `pulumi:"checkpointType"`
+	// Checkpoints in the vm.
+	Checkpoints []Checkpoint `pulumi:"checkpoints"`
+	// ARM Id of the cloud resource to use for deploying the vm.
+	CloudId *string `pulumi:"cloudId"`
+	// Gets or sets the generation for the vm.
+	Generation *int `pulumi:"generation"`
+	// Gets or sets the inventory Item ID for the resource.
+	InventoryItemId *string `pulumi:"inventoryItemId"`
+	// ARM Id of the template resource to use for deploying the vm.
+	TemplateId *string `pulumi:"templateId"`
+	// Unique ID of the virtual machine.
+	Uuid *string `pulumi:"uuid"`
+	// VMName is the name of VM on the SCVMM server.
+	VmName *string `pulumi:"vmName"`
+	// ARM Id of the vmmServer resource in which this resource resides.
+	VmmServerId *string `pulumi:"vmmServerId"`
+}
+
+// InfrastructureProfileInput is an input type that accepts InfrastructureProfileArgs and InfrastructureProfileOutput values.
+// You can construct a concrete instance of `InfrastructureProfileInput` via:
+//
+//	InfrastructureProfileArgs{...}
+type InfrastructureProfileInput interface {
+	pulumi.Input
+
+	ToInfrastructureProfileOutput() InfrastructureProfileOutput
+	ToInfrastructureProfileOutputWithContext(context.Context) InfrastructureProfileOutput
+}
+
+// Specifies the vmmServer infrastructure specific settings for the virtual machine instance.
+type InfrastructureProfileArgs struct {
+	// Gets or sets the bios guid for the vm.
+	BiosGuid pulumi.StringPtrInput `pulumi:"biosGuid"`
+	// Type of checkpoint supported for the vm.
+	CheckpointType pulumi.StringPtrInput `pulumi:"checkpointType"`
+	// Checkpoints in the vm.
+	Checkpoints CheckpointArrayInput `pulumi:"checkpoints"`
+	// ARM Id of the cloud resource to use for deploying the vm.
+	CloudId pulumi.StringPtrInput `pulumi:"cloudId"`
+	// Gets or sets the generation for the vm.
+	Generation pulumi.IntPtrInput `pulumi:"generation"`
+	// Gets or sets the inventory Item ID for the resource.
+	InventoryItemId pulumi.StringPtrInput `pulumi:"inventoryItemId"`
+	// ARM Id of the template resource to use for deploying the vm.
+	TemplateId pulumi.StringPtrInput `pulumi:"templateId"`
+	// Unique ID of the virtual machine.
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	// VMName is the name of VM on the SCVMM server.
+	VmName pulumi.StringPtrInput `pulumi:"vmName"`
+	// ARM Id of the vmmServer resource in which this resource resides.
+	VmmServerId pulumi.StringPtrInput `pulumi:"vmmServerId"`
+}
+
+func (InfrastructureProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureProfile)(nil)).Elem()
+}
+
+func (i InfrastructureProfileArgs) ToInfrastructureProfileOutput() InfrastructureProfileOutput {
+	return i.ToInfrastructureProfileOutputWithContext(context.Background())
+}
+
+func (i InfrastructureProfileArgs) ToInfrastructureProfileOutputWithContext(ctx context.Context) InfrastructureProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureProfileOutput)
+}
+
+func (i InfrastructureProfileArgs) ToInfrastructureProfilePtrOutput() InfrastructureProfilePtrOutput {
+	return i.ToInfrastructureProfilePtrOutputWithContext(context.Background())
+}
+
+func (i InfrastructureProfileArgs) ToInfrastructureProfilePtrOutputWithContext(ctx context.Context) InfrastructureProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureProfileOutput).ToInfrastructureProfilePtrOutputWithContext(ctx)
+}
+
+// InfrastructureProfilePtrInput is an input type that accepts InfrastructureProfileArgs, InfrastructureProfilePtr and InfrastructureProfilePtrOutput values.
+// You can construct a concrete instance of `InfrastructureProfilePtrInput` via:
+//
+//	        InfrastructureProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type InfrastructureProfilePtrInput interface {
+	pulumi.Input
+
+	ToInfrastructureProfilePtrOutput() InfrastructureProfilePtrOutput
+	ToInfrastructureProfilePtrOutputWithContext(context.Context) InfrastructureProfilePtrOutput
+}
+
+type infrastructureProfilePtrType InfrastructureProfileArgs
+
+func InfrastructureProfilePtr(v *InfrastructureProfileArgs) InfrastructureProfilePtrInput {
+	return (*infrastructureProfilePtrType)(v)
+}
+
+func (*infrastructureProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureProfile)(nil)).Elem()
+}
+
+func (i *infrastructureProfilePtrType) ToInfrastructureProfilePtrOutput() InfrastructureProfilePtrOutput {
+	return i.ToInfrastructureProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *infrastructureProfilePtrType) ToInfrastructureProfilePtrOutputWithContext(ctx context.Context) InfrastructureProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureProfilePtrOutput)
+}
+
+// Specifies the vmmServer infrastructure specific settings for the virtual machine instance.
+type InfrastructureProfileOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureProfile)(nil)).Elem()
+}
+
+func (o InfrastructureProfileOutput) ToInfrastructureProfileOutput() InfrastructureProfileOutput {
+	return o
+}
+
+func (o InfrastructureProfileOutput) ToInfrastructureProfileOutputWithContext(ctx context.Context) InfrastructureProfileOutput {
+	return o
+}
+
+func (o InfrastructureProfileOutput) ToInfrastructureProfilePtrOutput() InfrastructureProfilePtrOutput {
+	return o.ToInfrastructureProfilePtrOutputWithContext(context.Background())
+}
+
+func (o InfrastructureProfileOutput) ToInfrastructureProfilePtrOutputWithContext(ctx context.Context) InfrastructureProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InfrastructureProfile) *InfrastructureProfile {
+		return &v
+	}).(InfrastructureProfilePtrOutput)
+}
+
+// Gets or sets the bios guid for the vm.
+func (o InfrastructureProfileOutput) BiosGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *string { return v.BiosGuid }).(pulumi.StringPtrOutput)
+}
+
+// Type of checkpoint supported for the vm.
+func (o InfrastructureProfileOutput) CheckpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *string { return v.CheckpointType }).(pulumi.StringPtrOutput)
+}
+
+// Checkpoints in the vm.
+func (o InfrastructureProfileOutput) Checkpoints() CheckpointArrayOutput {
+	return o.ApplyT(func(v InfrastructureProfile) []Checkpoint { return v.Checkpoints }).(CheckpointArrayOutput)
+}
+
+// ARM Id of the cloud resource to use for deploying the vm.
+func (o InfrastructureProfileOutput) CloudId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *string { return v.CloudId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the generation for the vm.
+func (o InfrastructureProfileOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *int { return v.Generation }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the inventory Item ID for the resource.
+func (o InfrastructureProfileOutput) InventoryItemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *string { return v.InventoryItemId }).(pulumi.StringPtrOutput)
+}
+
+// ARM Id of the template resource to use for deploying the vm.
+func (o InfrastructureProfileOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *string { return v.TemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Unique ID of the virtual machine.
+func (o InfrastructureProfileOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+// VMName is the name of VM on the SCVMM server.
+func (o InfrastructureProfileOutput) VmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *string { return v.VmName }).(pulumi.StringPtrOutput)
+}
+
+// ARM Id of the vmmServer resource in which this resource resides.
+func (o InfrastructureProfileOutput) VmmServerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfile) *string { return v.VmmServerId }).(pulumi.StringPtrOutput)
+}
+
+type InfrastructureProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureProfile)(nil)).Elem()
+}
+
+func (o InfrastructureProfilePtrOutput) ToInfrastructureProfilePtrOutput() InfrastructureProfilePtrOutput {
+	return o
+}
+
+func (o InfrastructureProfilePtrOutput) ToInfrastructureProfilePtrOutputWithContext(ctx context.Context) InfrastructureProfilePtrOutput {
+	return o
+}
+
+func (o InfrastructureProfilePtrOutput) Elem() InfrastructureProfileOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) InfrastructureProfile {
+		if v != nil {
+			return *v
+		}
+		var ret InfrastructureProfile
+		return ret
+	}).(InfrastructureProfileOutput)
+}
+
+// Gets or sets the bios guid for the vm.
+func (o InfrastructureProfilePtrOutput) BiosGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BiosGuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of checkpoint supported for the vm.
+func (o InfrastructureProfilePtrOutput) CheckpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Checkpoints in the vm.
+func (o InfrastructureProfilePtrOutput) Checkpoints() CheckpointArrayOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) []Checkpoint {
+		if v == nil {
+			return nil
+		}
+		return v.Checkpoints
+	}).(CheckpointArrayOutput)
+}
+
+// ARM Id of the cloud resource to use for deploying the vm.
+func (o InfrastructureProfilePtrOutput) CloudId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the generation for the vm.
+func (o InfrastructureProfilePtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the inventory Item ID for the resource.
+func (o InfrastructureProfilePtrOutput) InventoryItemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InventoryItemId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM Id of the template resource to use for deploying the vm.
+func (o InfrastructureProfilePtrOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique ID of the virtual machine.
+func (o InfrastructureProfilePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// VMName is the name of VM on the SCVMM server.
+func (o InfrastructureProfilePtrOutput) VmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmName
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM Id of the vmmServer resource in which this resource resides.
+func (o InfrastructureProfilePtrOutput) VmmServerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmmServerId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the vmmServer infrastructure specific settings for the virtual machine instance.
+type InfrastructureProfileResponse struct {
+	// Gets or sets the bios guid for the vm.
+	BiosGuid *string `pulumi:"biosGuid"`
+	// Type of checkpoint supported for the vm.
+	CheckpointType *string `pulumi:"checkpointType"`
+	// Checkpoints in the vm.
+	Checkpoints []CheckpointResponse `pulumi:"checkpoints"`
+	// ARM Id of the cloud resource to use for deploying the vm.
+	CloudId *string `pulumi:"cloudId"`
+	// Gets or sets the generation for the vm.
+	Generation *int `pulumi:"generation"`
+	// Gets or sets the inventory Item ID for the resource.
+	InventoryItemId *string `pulumi:"inventoryItemId"`
+	// Last restored checkpoint in the vm.
+	LastRestoredVMCheckpoint CheckpointResponse `pulumi:"lastRestoredVMCheckpoint"`
+	// ARM Id of the template resource to use for deploying the vm.
+	TemplateId *string `pulumi:"templateId"`
+	// Unique ID of the virtual machine.
+	Uuid *string `pulumi:"uuid"`
+	// VMName is the name of VM on the SCVMM server.
+	VmName *string `pulumi:"vmName"`
+	// ARM Id of the vmmServer resource in which this resource resides.
+	VmmServerId *string `pulumi:"vmmServerId"`
+}
+
+// Specifies the vmmServer infrastructure specific settings for the virtual machine instance.
+type InfrastructureProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureProfileResponse)(nil)).Elem()
+}
+
+func (o InfrastructureProfileResponseOutput) ToInfrastructureProfileResponseOutput() InfrastructureProfileResponseOutput {
+	return o
+}
+
+func (o InfrastructureProfileResponseOutput) ToInfrastructureProfileResponseOutputWithContext(ctx context.Context) InfrastructureProfileResponseOutput {
+	return o
+}
+
+// Gets or sets the bios guid for the vm.
+func (o InfrastructureProfileResponseOutput) BiosGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *string { return v.BiosGuid }).(pulumi.StringPtrOutput)
+}
+
+// Type of checkpoint supported for the vm.
+func (o InfrastructureProfileResponseOutput) CheckpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *string { return v.CheckpointType }).(pulumi.StringPtrOutput)
+}
+
+// Checkpoints in the vm.
+func (o InfrastructureProfileResponseOutput) Checkpoints() CheckpointResponseArrayOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) []CheckpointResponse { return v.Checkpoints }).(CheckpointResponseArrayOutput)
+}
+
+// ARM Id of the cloud resource to use for deploying the vm.
+func (o InfrastructureProfileResponseOutput) CloudId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *string { return v.CloudId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the generation for the vm.
+func (o InfrastructureProfileResponseOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *int { return v.Generation }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the inventory Item ID for the resource.
+func (o InfrastructureProfileResponseOutput) InventoryItemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *string { return v.InventoryItemId }).(pulumi.StringPtrOutput)
+}
+
+// Last restored checkpoint in the vm.
+func (o InfrastructureProfileResponseOutput) LastRestoredVMCheckpoint() CheckpointResponseOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) CheckpointResponse { return v.LastRestoredVMCheckpoint }).(CheckpointResponseOutput)
+}
+
+// ARM Id of the template resource to use for deploying the vm.
+func (o InfrastructureProfileResponseOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *string { return v.TemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Unique ID of the virtual machine.
+func (o InfrastructureProfileResponseOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+// VMName is the name of VM on the SCVMM server.
+func (o InfrastructureProfileResponseOutput) VmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *string { return v.VmName }).(pulumi.StringPtrOutput)
+}
+
+// ARM Id of the vmmServer resource in which this resource resides.
+func (o InfrastructureProfileResponseOutput) VmmServerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureProfileResponse) *string { return v.VmmServerId }).(pulumi.StringPtrOutput)
+}
+
+type InfrastructureProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureProfileResponse)(nil)).Elem()
+}
+
+func (o InfrastructureProfileResponsePtrOutput) ToInfrastructureProfileResponsePtrOutput() InfrastructureProfileResponsePtrOutput {
+	return o
+}
+
+func (o InfrastructureProfileResponsePtrOutput) ToInfrastructureProfileResponsePtrOutputWithContext(ctx context.Context) InfrastructureProfileResponsePtrOutput {
+	return o
+}
+
+func (o InfrastructureProfileResponsePtrOutput) Elem() InfrastructureProfileResponseOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) InfrastructureProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InfrastructureProfileResponse
+		return ret
+	}).(InfrastructureProfileResponseOutput)
+}
+
+// Gets or sets the bios guid for the vm.
+func (o InfrastructureProfileResponsePtrOutput) BiosGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BiosGuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of checkpoint supported for the vm.
+func (o InfrastructureProfileResponsePtrOutput) CheckpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Checkpoints in the vm.
+func (o InfrastructureProfileResponsePtrOutput) Checkpoints() CheckpointResponseArrayOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) []CheckpointResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Checkpoints
+	}).(CheckpointResponseArrayOutput)
+}
+
+// ARM Id of the cloud resource to use for deploying the vm.
+func (o InfrastructureProfileResponsePtrOutput) CloudId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the generation for the vm.
+func (o InfrastructureProfileResponsePtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the inventory Item ID for the resource.
+func (o InfrastructureProfileResponsePtrOutput) InventoryItemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InventoryItemId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last restored checkpoint in the vm.
+func (o InfrastructureProfileResponsePtrOutput) LastRestoredVMCheckpoint() CheckpointResponsePtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *CheckpointResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LastRestoredVMCheckpoint
+	}).(CheckpointResponsePtrOutput)
+}
+
+// ARM Id of the template resource to use for deploying the vm.
+func (o InfrastructureProfileResponsePtrOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique ID of the virtual machine.
+func (o InfrastructureProfileResponsePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// VMName is the name of VM on the SCVMM server.
+func (o InfrastructureProfileResponsePtrOutput) VmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmName
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM Id of the vmmServer resource in which this resource resides.
+func (o InfrastructureProfileResponsePtrOutput) VmmServerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmmServerId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2831,6 +3436,276 @@ func (o OsProfilePtrOutput) ComputerName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ComputerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the resource properties.
+type OsProfileForVMInstance struct {
+	// Admin password of the virtual machine.
+	AdminPassword *string `pulumi:"adminPassword"`
+	// Gets or sets computer name.
+	ComputerName *string `pulumi:"computerName"`
+}
+
+// OsProfileForVMInstanceInput is an input type that accepts OsProfileForVMInstanceArgs and OsProfileForVMInstanceOutput values.
+// You can construct a concrete instance of `OsProfileForVMInstanceInput` via:
+//
+//	OsProfileForVMInstanceArgs{...}
+type OsProfileForVMInstanceInput interface {
+	pulumi.Input
+
+	ToOsProfileForVMInstanceOutput() OsProfileForVMInstanceOutput
+	ToOsProfileForVMInstanceOutputWithContext(context.Context) OsProfileForVMInstanceOutput
+}
+
+// Defines the resource properties.
+type OsProfileForVMInstanceArgs struct {
+	// Admin password of the virtual machine.
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// Gets or sets computer name.
+	ComputerName pulumi.StringPtrInput `pulumi:"computerName"`
+}
+
+func (OsProfileForVMInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProfileForVMInstance)(nil)).Elem()
+}
+
+func (i OsProfileForVMInstanceArgs) ToOsProfileForVMInstanceOutput() OsProfileForVMInstanceOutput {
+	return i.ToOsProfileForVMInstanceOutputWithContext(context.Background())
+}
+
+func (i OsProfileForVMInstanceArgs) ToOsProfileForVMInstanceOutputWithContext(ctx context.Context) OsProfileForVMInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsProfileForVMInstanceOutput)
+}
+
+func (i OsProfileForVMInstanceArgs) ToOsProfileForVMInstancePtrOutput() OsProfileForVMInstancePtrOutput {
+	return i.ToOsProfileForVMInstancePtrOutputWithContext(context.Background())
+}
+
+func (i OsProfileForVMInstanceArgs) ToOsProfileForVMInstancePtrOutputWithContext(ctx context.Context) OsProfileForVMInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsProfileForVMInstanceOutput).ToOsProfileForVMInstancePtrOutputWithContext(ctx)
+}
+
+// OsProfileForVMInstancePtrInput is an input type that accepts OsProfileForVMInstanceArgs, OsProfileForVMInstancePtr and OsProfileForVMInstancePtrOutput values.
+// You can construct a concrete instance of `OsProfileForVMInstancePtrInput` via:
+//
+//	        OsProfileForVMInstanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type OsProfileForVMInstancePtrInput interface {
+	pulumi.Input
+
+	ToOsProfileForVMInstancePtrOutput() OsProfileForVMInstancePtrOutput
+	ToOsProfileForVMInstancePtrOutputWithContext(context.Context) OsProfileForVMInstancePtrOutput
+}
+
+type osProfileForVMInstancePtrType OsProfileForVMInstanceArgs
+
+func OsProfileForVMInstancePtr(v *OsProfileForVMInstanceArgs) OsProfileForVMInstancePtrInput {
+	return (*osProfileForVMInstancePtrType)(v)
+}
+
+func (*osProfileForVMInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProfileForVMInstance)(nil)).Elem()
+}
+
+func (i *osProfileForVMInstancePtrType) ToOsProfileForVMInstancePtrOutput() OsProfileForVMInstancePtrOutput {
+	return i.ToOsProfileForVMInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *osProfileForVMInstancePtrType) ToOsProfileForVMInstancePtrOutputWithContext(ctx context.Context) OsProfileForVMInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsProfileForVMInstancePtrOutput)
+}
+
+// Defines the resource properties.
+type OsProfileForVMInstanceOutput struct{ *pulumi.OutputState }
+
+func (OsProfileForVMInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProfileForVMInstance)(nil)).Elem()
+}
+
+func (o OsProfileForVMInstanceOutput) ToOsProfileForVMInstanceOutput() OsProfileForVMInstanceOutput {
+	return o
+}
+
+func (o OsProfileForVMInstanceOutput) ToOsProfileForVMInstanceOutputWithContext(ctx context.Context) OsProfileForVMInstanceOutput {
+	return o
+}
+
+func (o OsProfileForVMInstanceOutput) ToOsProfileForVMInstancePtrOutput() OsProfileForVMInstancePtrOutput {
+	return o.ToOsProfileForVMInstancePtrOutputWithContext(context.Background())
+}
+
+func (o OsProfileForVMInstanceOutput) ToOsProfileForVMInstancePtrOutputWithContext(ctx context.Context) OsProfileForVMInstancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsProfileForVMInstance) *OsProfileForVMInstance {
+		return &v
+	}).(OsProfileForVMInstancePtrOutput)
+}
+
+// Admin password of the virtual machine.
+func (o OsProfileForVMInstanceOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileForVMInstance) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets computer name.
+func (o OsProfileForVMInstanceOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileForVMInstance) *string { return v.ComputerName }).(pulumi.StringPtrOutput)
+}
+
+type OsProfileForVMInstancePtrOutput struct{ *pulumi.OutputState }
+
+func (OsProfileForVMInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProfileForVMInstance)(nil)).Elem()
+}
+
+func (o OsProfileForVMInstancePtrOutput) ToOsProfileForVMInstancePtrOutput() OsProfileForVMInstancePtrOutput {
+	return o
+}
+
+func (o OsProfileForVMInstancePtrOutput) ToOsProfileForVMInstancePtrOutputWithContext(ctx context.Context) OsProfileForVMInstancePtrOutput {
+	return o
+}
+
+func (o OsProfileForVMInstancePtrOutput) Elem() OsProfileForVMInstanceOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstance) OsProfileForVMInstance {
+		if v != nil {
+			return *v
+		}
+		var ret OsProfileForVMInstance
+		return ret
+	}).(OsProfileForVMInstanceOutput)
+}
+
+// Admin password of the virtual machine.
+func (o OsProfileForVMInstancePtrOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets computer name.
+func (o OsProfileForVMInstancePtrOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the resource properties.
+type OsProfileForVMInstanceResponse struct {
+	// Gets or sets computer name.
+	ComputerName *string `pulumi:"computerName"`
+	// Gets or sets os sku.
+	OsSku string `pulumi:"osSku"`
+	// Gets or sets the type of the os.
+	OsType string `pulumi:"osType"`
+	// Gets os version.
+	OsVersion string `pulumi:"osVersion"`
+}
+
+// Defines the resource properties.
+type OsProfileForVMInstanceResponseOutput struct{ *pulumi.OutputState }
+
+func (OsProfileForVMInstanceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProfileForVMInstanceResponse)(nil)).Elem()
+}
+
+func (o OsProfileForVMInstanceResponseOutput) ToOsProfileForVMInstanceResponseOutput() OsProfileForVMInstanceResponseOutput {
+	return o
+}
+
+func (o OsProfileForVMInstanceResponseOutput) ToOsProfileForVMInstanceResponseOutputWithContext(ctx context.Context) OsProfileForVMInstanceResponseOutput {
+	return o
+}
+
+// Gets or sets computer name.
+func (o OsProfileForVMInstanceResponseOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProfileForVMInstanceResponse) *string { return v.ComputerName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets os sku.
+func (o OsProfileForVMInstanceResponseOutput) OsSku() pulumi.StringOutput {
+	return o.ApplyT(func(v OsProfileForVMInstanceResponse) string { return v.OsSku }).(pulumi.StringOutput)
+}
+
+// Gets or sets the type of the os.
+func (o OsProfileForVMInstanceResponseOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v OsProfileForVMInstanceResponse) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+// Gets os version.
+func (o OsProfileForVMInstanceResponseOutput) OsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v OsProfileForVMInstanceResponse) string { return v.OsVersion }).(pulumi.StringOutput)
+}
+
+type OsProfileForVMInstanceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OsProfileForVMInstanceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProfileForVMInstanceResponse)(nil)).Elem()
+}
+
+func (o OsProfileForVMInstanceResponsePtrOutput) ToOsProfileForVMInstanceResponsePtrOutput() OsProfileForVMInstanceResponsePtrOutput {
+	return o
+}
+
+func (o OsProfileForVMInstanceResponsePtrOutput) ToOsProfileForVMInstanceResponsePtrOutputWithContext(ctx context.Context) OsProfileForVMInstanceResponsePtrOutput {
+	return o
+}
+
+func (o OsProfileForVMInstanceResponsePtrOutput) Elem() OsProfileForVMInstanceResponseOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) OsProfileForVMInstanceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OsProfileForVMInstanceResponse
+		return ret
+	}).(OsProfileForVMInstanceResponseOutput)
+}
+
+// Gets or sets computer name.
+func (o OsProfileForVMInstanceResponsePtrOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets os sku.
+func (o OsProfileForVMInstanceResponsePtrOutput) OsSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OsSku
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the type of the os.
+func (o OsProfileForVMInstanceResponsePtrOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets os version.
+func (o OsProfileForVMInstanceResponsePtrOutput) OsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OsVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4044,6 +4919,168 @@ func (o VirtualDiskResponseArrayOutput) Index(i pulumi.IntInput) VirtualDiskResp
 }
 
 // Availability Set model
+type VirtualMachineInstancePropertiesAvailabilitySets struct {
+	// Gets the ARM Id of the microsoft.scvmm/availabilitySets resource.
+	Id *string `pulumi:"id"`
+	// Gets or sets the name of the availability set.
+	Name *string `pulumi:"name"`
+}
+
+// VirtualMachineInstancePropertiesAvailabilitySetsInput is an input type that accepts VirtualMachineInstancePropertiesAvailabilitySetsArgs and VirtualMachineInstancePropertiesAvailabilitySetsOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesAvailabilitySetsInput` via:
+//
+//	VirtualMachineInstancePropertiesAvailabilitySetsArgs{...}
+type VirtualMachineInstancePropertiesAvailabilitySetsInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesAvailabilitySetsOutput() VirtualMachineInstancePropertiesAvailabilitySetsOutput
+	ToVirtualMachineInstancePropertiesAvailabilitySetsOutputWithContext(context.Context) VirtualMachineInstancePropertiesAvailabilitySetsOutput
+}
+
+// Availability Set model
+type VirtualMachineInstancePropertiesAvailabilitySetsArgs struct {
+	// Gets the ARM Id of the microsoft.scvmm/availabilitySets resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Gets or sets the name of the availability set.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (VirtualMachineInstancePropertiesAvailabilitySetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesAvailabilitySets)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesAvailabilitySetsArgs) ToVirtualMachineInstancePropertiesAvailabilitySetsOutput() VirtualMachineInstancePropertiesAvailabilitySetsOutput {
+	return i.ToVirtualMachineInstancePropertiesAvailabilitySetsOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesAvailabilitySetsArgs) ToVirtualMachineInstancePropertiesAvailabilitySetsOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesAvailabilitySetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesAvailabilitySetsOutput)
+}
+
+// VirtualMachineInstancePropertiesAvailabilitySetsArrayInput is an input type that accepts VirtualMachineInstancePropertiesAvailabilitySetsArray and VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput values.
+// You can construct a concrete instance of `VirtualMachineInstancePropertiesAvailabilitySetsArrayInput` via:
+//
+//	VirtualMachineInstancePropertiesAvailabilitySetsArray{ VirtualMachineInstancePropertiesAvailabilitySetsArgs{...} }
+type VirtualMachineInstancePropertiesAvailabilitySetsArrayInput interface {
+	pulumi.Input
+
+	ToVirtualMachineInstancePropertiesAvailabilitySetsArrayOutput() VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput
+	ToVirtualMachineInstancePropertiesAvailabilitySetsArrayOutputWithContext(context.Context) VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput
+}
+
+type VirtualMachineInstancePropertiesAvailabilitySetsArray []VirtualMachineInstancePropertiesAvailabilitySetsInput
+
+func (VirtualMachineInstancePropertiesAvailabilitySetsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineInstancePropertiesAvailabilitySets)(nil)).Elem()
+}
+
+func (i VirtualMachineInstancePropertiesAvailabilitySetsArray) ToVirtualMachineInstancePropertiesAvailabilitySetsArrayOutput() VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput {
+	return i.ToVirtualMachineInstancePropertiesAvailabilitySetsArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineInstancePropertiesAvailabilitySetsArray) ToVirtualMachineInstancePropertiesAvailabilitySetsArrayOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput)
+}
+
+// Availability Set model
+type VirtualMachineInstancePropertiesAvailabilitySetsOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesAvailabilitySetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesAvailabilitySets)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesAvailabilitySetsOutput) ToVirtualMachineInstancePropertiesAvailabilitySetsOutput() VirtualMachineInstancePropertiesAvailabilitySetsOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesAvailabilitySetsOutput) ToVirtualMachineInstancePropertiesAvailabilitySetsOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesAvailabilitySetsOutput {
+	return o
+}
+
+// Gets the ARM Id of the microsoft.scvmm/availabilitySets resource.
+func (o VirtualMachineInstancePropertiesAvailabilitySetsOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesAvailabilitySets) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the name of the availability set.
+func (o VirtualMachineInstancePropertiesAvailabilitySetsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesAvailabilitySets) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineInstancePropertiesAvailabilitySets)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput) ToVirtualMachineInstancePropertiesAvailabilitySetsArrayOutput() VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput) ToVirtualMachineInstancePropertiesAvailabilitySetsArrayOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput) Index(i pulumi.IntInput) VirtualMachineInstancePropertiesAvailabilitySetsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineInstancePropertiesAvailabilitySets {
+		return vs[0].([]VirtualMachineInstancePropertiesAvailabilitySets)[vs[1].(int)]
+	}).(VirtualMachineInstancePropertiesAvailabilitySetsOutput)
+}
+
+// Availability Set model
+type VirtualMachineInstancePropertiesResponseAvailabilitySets struct {
+	// Gets the ARM Id of the microsoft.scvmm/availabilitySets resource.
+	Id *string `pulumi:"id"`
+	// Gets or sets the name of the availability set.
+	Name *string `pulumi:"name"`
+}
+
+// Availability Set model
+type VirtualMachineInstancePropertiesResponseAvailabilitySetsOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseAvailabilitySetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineInstancePropertiesResponseAvailabilitySets)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseAvailabilitySetsOutput) ToVirtualMachineInstancePropertiesResponseAvailabilitySetsOutput() VirtualMachineInstancePropertiesResponseAvailabilitySetsOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseAvailabilitySetsOutput) ToVirtualMachineInstancePropertiesResponseAvailabilitySetsOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseAvailabilitySetsOutput {
+	return o
+}
+
+// Gets the ARM Id of the microsoft.scvmm/availabilitySets resource.
+func (o VirtualMachineInstancePropertiesResponseAvailabilitySetsOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseAvailabilitySets) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the name of the availability set.
+func (o VirtualMachineInstancePropertiesResponseAvailabilitySetsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseAvailabilitySets) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineInstancePropertiesResponseAvailabilitySets)(nil)).Elem()
+}
+
+func (o VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput) ToVirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput() VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput) ToVirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput {
+	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput) Index(i pulumi.IntInput) VirtualMachineInstancePropertiesResponseAvailabilitySetsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineInstancePropertiesResponseAvailabilitySets {
+		return vs[0].([]VirtualMachineInstancePropertiesResponseAvailabilitySets)[vs[1].(int)]
+	}).(VirtualMachineInstancePropertiesResponseAvailabilitySetsOutput)
+}
+
+// Availability Set model
 type VirtualMachinePropertiesAvailabilitySets struct {
 	// Gets the ARM Id of the microsoft.scvmm/availabilitySets resource.
 	Id *string `pulumi:"id"`
@@ -4209,6 +5246,7 @@ func init() {
 	pulumi.RegisterOutputType(CheckpointOutput{})
 	pulumi.RegisterOutputType(CheckpointArrayOutput{})
 	pulumi.RegisterOutputType(CheckpointResponseOutput{})
+	pulumi.RegisterOutputType(CheckpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(CheckpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(CloudCapacityResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
@@ -4239,6 +5277,10 @@ func init() {
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureProfileOutput{})
+	pulumi.RegisterOutputType(InfrastructureProfilePtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureProfileResponseOutput{})
+	pulumi.RegisterOutputType(InfrastructureProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewResponseStatusOutput{})
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewResponseStatusPtrOutput{})
 	pulumi.RegisterOutputType(MachineExtensionPropertiesResponseInstanceViewOutput{})
@@ -4253,6 +5295,10 @@ func init() {
 	pulumi.RegisterOutputType(NetworkProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(OsProfileOutput{})
 	pulumi.RegisterOutputType(OsProfilePtrOutput{})
+	pulumi.RegisterOutputType(OsProfileForVMInstanceOutput{})
+	pulumi.RegisterOutputType(OsProfileForVMInstancePtrOutput{})
+	pulumi.RegisterOutputType(OsProfileForVMInstanceResponseOutput{})
+	pulumi.RegisterOutputType(OsProfileForVMInstanceResponsePtrOutput{})
 	pulumi.RegisterOutputType(OsProfileResponseOutput{})
 	pulumi.RegisterOutputType(OsProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(StorageProfileOutput{})
@@ -4274,6 +5320,10 @@ func init() {
 	pulumi.RegisterOutputType(VirtualDiskArrayOutput{})
 	pulumi.RegisterOutputType(VirtualDiskResponseOutput{})
 	pulumi.RegisterOutputType(VirtualDiskResponseArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesAvailabilitySetsOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesAvailabilitySetsArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseAvailabilitySetsOutput{})
+	pulumi.RegisterOutputType(VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesAvailabilitySetsOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesAvailabilitySetsArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseAvailabilitySetsOutput{})

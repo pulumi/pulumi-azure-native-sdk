@@ -18,6 +18,45 @@ const (
 	AssessmentModeTypesAutomaticByPlatform = AssessmentModeTypes("AutomaticByPlatform")
 )
 
+// Describes the license core type (pCore or vCore).
+type LicenseCoreType string
+
+const (
+	LicenseCoreTypePCore = LicenseCoreType("pCore")
+	LicenseCoreTypeVCore = LicenseCoreType("vCore")
+)
+
+// Describes the edition of the license. The values are either Standard or Datacenter.
+type LicenseEdition string
+
+const (
+	LicenseEditionStandard   = LicenseEdition("Standard")
+	LicenseEditionDatacenter = LicenseEdition("Datacenter")
+)
+
+// Describes the state of the license.
+type LicenseStateEnum string
+
+const (
+	LicenseStateEnumActivated   = LicenseStateEnum("Activated")
+	LicenseStateEnumDeactivated = LicenseStateEnum("Deactivated")
+)
+
+// Describes the license target server.
+type LicenseTarget string
+
+const (
+	LicenseTarget_Windows_Server_2012    = LicenseTarget("Windows Server 2012")
+	LicenseTarget_Windows_Server_2012_R2 = LicenseTarget("Windows Server 2012 R2")
+)
+
+// The type of the license resource.
+type LicenseType string
+
+const (
+	LicenseTypeESU = LicenseType("ESU")
+)
+
 // Specifies the patch mode.
 type PatchModeTypes string
 
