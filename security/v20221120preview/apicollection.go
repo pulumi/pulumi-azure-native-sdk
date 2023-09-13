@@ -43,6 +43,9 @@ func NewAPICollection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:security:APICollection"),
 		},
+		{
+			Type: pulumi.String("azure-native:security/v20231115:APICollection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

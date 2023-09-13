@@ -50,6 +50,9 @@ func NewHybridIdentityMetadata(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:scvmm/v20220521preview:HybridIdentityMetadata"),
 		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20230401preview:HybridIdentityMetadata"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

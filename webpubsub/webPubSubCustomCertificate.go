@@ -65,6 +65,9 @@ func NewWebPubSubCustomCertificate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20230601preview:WebPubSubCustomCertificate"),
 		},
+		{
+			Type: pulumi.String("azure-native:webpubsub/v20230801preview:WebPubSubCustomCertificate"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -113,6 +113,9 @@ func NewSnapshotPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:netapp/v20221101:SnapshotPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20230501:SnapshotPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

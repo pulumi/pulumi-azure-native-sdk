@@ -79,6 +79,9 @@ func NewApiPortal(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230701preview:ApiPortal"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20230901preview:ApiPortal"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

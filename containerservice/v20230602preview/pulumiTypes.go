@@ -5433,6 +5433,8 @@ func (o IstioCertificateAuthorityResponsePtrOutput) Plugin() IstioPluginCertific
 
 // Istio components configuration.
 type IstioComponents struct {
+	// Istio egress gateways.
+	EgressGateways []IstioEgressGateway `pulumi:"egressGateways"`
 	// Istio ingress gateways.
 	IngressGateways []IstioIngressGateway `pulumi:"ingressGateways"`
 }
@@ -5450,6 +5452,8 @@ type IstioComponentsInput interface {
 
 // Istio components configuration.
 type IstioComponentsArgs struct {
+	// Istio egress gateways.
+	EgressGateways IstioEgressGatewayArrayInput `pulumi:"egressGateways"`
 	// Istio ingress gateways.
 	IngressGateways IstioIngressGatewayArrayInput `pulumi:"ingressGateways"`
 }
@@ -5532,6 +5536,11 @@ func (o IstioComponentsOutput) ToIstioComponentsPtrOutputWithContext(ctx context
 	}).(IstioComponentsPtrOutput)
 }
 
+// Istio egress gateways.
+func (o IstioComponentsOutput) EgressGateways() IstioEgressGatewayArrayOutput {
+	return o.ApplyT(func(v IstioComponents) []IstioEgressGateway { return v.EgressGateways }).(IstioEgressGatewayArrayOutput)
+}
+
 // Istio ingress gateways.
 func (o IstioComponentsOutput) IngressGateways() IstioIngressGatewayArrayOutput {
 	return o.ApplyT(func(v IstioComponents) []IstioIngressGateway { return v.IngressGateways }).(IstioIngressGatewayArrayOutput)
@@ -5561,6 +5570,16 @@ func (o IstioComponentsPtrOutput) Elem() IstioComponentsOutput {
 	}).(IstioComponentsOutput)
 }
 
+// Istio egress gateways.
+func (o IstioComponentsPtrOutput) EgressGateways() IstioEgressGatewayArrayOutput {
+	return o.ApplyT(func(v *IstioComponents) []IstioEgressGateway {
+		if v == nil {
+			return nil
+		}
+		return v.EgressGateways
+	}).(IstioEgressGatewayArrayOutput)
+}
+
 // Istio ingress gateways.
 func (o IstioComponentsPtrOutput) IngressGateways() IstioIngressGatewayArrayOutput {
 	return o.ApplyT(func(v *IstioComponents) []IstioIngressGateway {
@@ -5573,6 +5592,8 @@ func (o IstioComponentsPtrOutput) IngressGateways() IstioIngressGatewayArrayOutp
 
 // Istio components configuration.
 type IstioComponentsResponse struct {
+	// Istio egress gateways.
+	EgressGateways []IstioEgressGatewayResponse `pulumi:"egressGateways"`
 	// Istio ingress gateways.
 	IngressGateways []IstioIngressGatewayResponse `pulumi:"ingressGateways"`
 }
@@ -5590,6 +5611,11 @@ func (o IstioComponentsResponseOutput) ToIstioComponentsResponseOutput() IstioCo
 
 func (o IstioComponentsResponseOutput) ToIstioComponentsResponseOutputWithContext(ctx context.Context) IstioComponentsResponseOutput {
 	return o
+}
+
+// Istio egress gateways.
+func (o IstioComponentsResponseOutput) EgressGateways() IstioEgressGatewayResponseArrayOutput {
+	return o.ApplyT(func(v IstioComponentsResponse) []IstioEgressGatewayResponse { return v.EgressGateways }).(IstioEgressGatewayResponseArrayOutput)
 }
 
 // Istio ingress gateways.
@@ -5621,6 +5647,16 @@ func (o IstioComponentsResponsePtrOutput) Elem() IstioComponentsResponseOutput {
 	}).(IstioComponentsResponseOutput)
 }
 
+// Istio egress gateways.
+func (o IstioComponentsResponsePtrOutput) EgressGateways() IstioEgressGatewayResponseArrayOutput {
+	return o.ApplyT(func(v *IstioComponentsResponse) []IstioEgressGatewayResponse {
+		if v == nil {
+			return nil
+		}
+		return v.EgressGateways
+	}).(IstioEgressGatewayResponseArrayOutput)
+}
+
 // Istio ingress gateways.
 func (o IstioComponentsResponsePtrOutput) IngressGateways() IstioIngressGatewayResponseArrayOutput {
 	return o.ApplyT(func(v *IstioComponentsResponse) []IstioIngressGatewayResponse {
@@ -5629,6 +5665,168 @@ func (o IstioComponentsResponsePtrOutput) IngressGateways() IstioIngressGatewayR
 		}
 		return v.IngressGateways
 	}).(IstioIngressGatewayResponseArrayOutput)
+}
+
+// Istio egress gateway configuration.
+type IstioEgressGateway struct {
+	// Whether to enable the egress gateway.
+	Enabled bool `pulumi:"enabled"`
+	// NodeSelector for scheduling the egress gateway.
+	NodeSelector map[string]string `pulumi:"nodeSelector"`
+}
+
+// IstioEgressGatewayInput is an input type that accepts IstioEgressGatewayArgs and IstioEgressGatewayOutput values.
+// You can construct a concrete instance of `IstioEgressGatewayInput` via:
+//
+//	IstioEgressGatewayArgs{...}
+type IstioEgressGatewayInput interface {
+	pulumi.Input
+
+	ToIstioEgressGatewayOutput() IstioEgressGatewayOutput
+	ToIstioEgressGatewayOutputWithContext(context.Context) IstioEgressGatewayOutput
+}
+
+// Istio egress gateway configuration.
+type IstioEgressGatewayArgs struct {
+	// Whether to enable the egress gateway.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// NodeSelector for scheduling the egress gateway.
+	NodeSelector pulumi.StringMapInput `pulumi:"nodeSelector"`
+}
+
+func (IstioEgressGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IstioEgressGateway)(nil)).Elem()
+}
+
+func (i IstioEgressGatewayArgs) ToIstioEgressGatewayOutput() IstioEgressGatewayOutput {
+	return i.ToIstioEgressGatewayOutputWithContext(context.Background())
+}
+
+func (i IstioEgressGatewayArgs) ToIstioEgressGatewayOutputWithContext(ctx context.Context) IstioEgressGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IstioEgressGatewayOutput)
+}
+
+// IstioEgressGatewayArrayInput is an input type that accepts IstioEgressGatewayArray and IstioEgressGatewayArrayOutput values.
+// You can construct a concrete instance of `IstioEgressGatewayArrayInput` via:
+//
+//	IstioEgressGatewayArray{ IstioEgressGatewayArgs{...} }
+type IstioEgressGatewayArrayInput interface {
+	pulumi.Input
+
+	ToIstioEgressGatewayArrayOutput() IstioEgressGatewayArrayOutput
+	ToIstioEgressGatewayArrayOutputWithContext(context.Context) IstioEgressGatewayArrayOutput
+}
+
+type IstioEgressGatewayArray []IstioEgressGatewayInput
+
+func (IstioEgressGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IstioEgressGateway)(nil)).Elem()
+}
+
+func (i IstioEgressGatewayArray) ToIstioEgressGatewayArrayOutput() IstioEgressGatewayArrayOutput {
+	return i.ToIstioEgressGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i IstioEgressGatewayArray) ToIstioEgressGatewayArrayOutputWithContext(ctx context.Context) IstioEgressGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IstioEgressGatewayArrayOutput)
+}
+
+// Istio egress gateway configuration.
+type IstioEgressGatewayOutput struct{ *pulumi.OutputState }
+
+func (IstioEgressGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IstioEgressGateway)(nil)).Elem()
+}
+
+func (o IstioEgressGatewayOutput) ToIstioEgressGatewayOutput() IstioEgressGatewayOutput {
+	return o
+}
+
+func (o IstioEgressGatewayOutput) ToIstioEgressGatewayOutputWithContext(ctx context.Context) IstioEgressGatewayOutput {
+	return o
+}
+
+// Whether to enable the egress gateway.
+func (o IstioEgressGatewayOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v IstioEgressGateway) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// NodeSelector for scheduling the egress gateway.
+func (o IstioEgressGatewayOutput) NodeSelector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v IstioEgressGateway) map[string]string { return v.NodeSelector }).(pulumi.StringMapOutput)
+}
+
+type IstioEgressGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (IstioEgressGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IstioEgressGateway)(nil)).Elem()
+}
+
+func (o IstioEgressGatewayArrayOutput) ToIstioEgressGatewayArrayOutput() IstioEgressGatewayArrayOutput {
+	return o
+}
+
+func (o IstioEgressGatewayArrayOutput) ToIstioEgressGatewayArrayOutputWithContext(ctx context.Context) IstioEgressGatewayArrayOutput {
+	return o
+}
+
+func (o IstioEgressGatewayArrayOutput) Index(i pulumi.IntInput) IstioEgressGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IstioEgressGateway {
+		return vs[0].([]IstioEgressGateway)[vs[1].(int)]
+	}).(IstioEgressGatewayOutput)
+}
+
+// Istio egress gateway configuration.
+type IstioEgressGatewayResponse struct {
+	// Whether to enable the egress gateway.
+	Enabled bool `pulumi:"enabled"`
+	// NodeSelector for scheduling the egress gateway.
+	NodeSelector map[string]string `pulumi:"nodeSelector"`
+}
+
+// Istio egress gateway configuration.
+type IstioEgressGatewayResponseOutput struct{ *pulumi.OutputState }
+
+func (IstioEgressGatewayResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IstioEgressGatewayResponse)(nil)).Elem()
+}
+
+func (o IstioEgressGatewayResponseOutput) ToIstioEgressGatewayResponseOutput() IstioEgressGatewayResponseOutput {
+	return o
+}
+
+func (o IstioEgressGatewayResponseOutput) ToIstioEgressGatewayResponseOutputWithContext(ctx context.Context) IstioEgressGatewayResponseOutput {
+	return o
+}
+
+// Whether to enable the egress gateway.
+func (o IstioEgressGatewayResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v IstioEgressGatewayResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// NodeSelector for scheduling the egress gateway.
+func (o IstioEgressGatewayResponseOutput) NodeSelector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v IstioEgressGatewayResponse) map[string]string { return v.NodeSelector }).(pulumi.StringMapOutput)
+}
+
+type IstioEgressGatewayResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IstioEgressGatewayResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IstioEgressGatewayResponse)(nil)).Elem()
+}
+
+func (o IstioEgressGatewayResponseArrayOutput) ToIstioEgressGatewayResponseArrayOutput() IstioEgressGatewayResponseArrayOutput {
+	return o
+}
+
+func (o IstioEgressGatewayResponseArrayOutput) ToIstioEgressGatewayResponseArrayOutputWithContext(ctx context.Context) IstioEgressGatewayResponseArrayOutput {
+	return o
+}
+
+func (o IstioEgressGatewayResponseArrayOutput) Index(i pulumi.IntInput) IstioEgressGatewayResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IstioEgressGatewayResponse {
+		return vs[0].([]IstioEgressGatewayResponse)[vs[1].(int)]
+	}).(IstioEgressGatewayResponseOutput)
 }
 
 // Istio ingress gateway configuration. For now, we support up to one external ingress gateway named `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
@@ -24862,6 +25060,10 @@ func init() {
 	pulumi.RegisterOutputType(IstioComponentsPtrOutput{})
 	pulumi.RegisterOutputType(IstioComponentsResponseOutput{})
 	pulumi.RegisterOutputType(IstioComponentsResponsePtrOutput{})
+	pulumi.RegisterOutputType(IstioEgressGatewayOutput{})
+	pulumi.RegisterOutputType(IstioEgressGatewayArrayOutput{})
+	pulumi.RegisterOutputType(IstioEgressGatewayResponseOutput{})
+	pulumi.RegisterOutputType(IstioEgressGatewayResponseArrayOutput{})
 	pulumi.RegisterOutputType(IstioIngressGatewayOutput{})
 	pulumi.RegisterOutputType(IstioIngressGatewayArrayOutput{})
 	pulumi.RegisterOutputType(IstioIngressGatewayResponseOutput{})

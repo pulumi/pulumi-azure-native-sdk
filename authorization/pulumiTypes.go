@@ -1757,6 +1757,8 @@ type ParameterDefinitionsValue struct {
 	DefaultValue interface{} `pulumi:"defaultValue"`
 	// General metadata for the parameter.
 	Metadata *ParameterDefinitionsValueMetadata `pulumi:"metadata"`
+	// Provides validation of parameter inputs during assignment using a self-defined JSON schema. This property is only supported for object-type parameters and follows the Json.NET Schema 2019-09 implementation. You can learn more about using schemas at https://json-schema.org/ and test draft schemas at https://www.jsonschemavalidator.net/.
+	Schema interface{} `pulumi:"schema"`
 	// The data type of the parameter.
 	Type *string `pulumi:"type"`
 }
@@ -1780,6 +1782,8 @@ type ParameterDefinitionsValueArgs struct {
 	DefaultValue pulumi.Input `pulumi:"defaultValue"`
 	// General metadata for the parameter.
 	Metadata ParameterDefinitionsValueMetadataPtrInput `pulumi:"metadata"`
+	// Provides validation of parameter inputs during assignment using a self-defined JSON schema. This property is only supported for object-type parameters and follows the Json.NET Schema 2019-09 implementation. You can learn more about using schemas at https://json-schema.org/ and test draft schemas at https://www.jsonschemavalidator.net/.
+	Schema pulumi.Input `pulumi:"schema"`
 	// The data type of the parameter.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -1849,6 +1853,11 @@ func (o ParameterDefinitionsValueOutput) DefaultValue() pulumi.AnyOutput {
 // General metadata for the parameter.
 func (o ParameterDefinitionsValueOutput) Metadata() ParameterDefinitionsValueMetadataPtrOutput {
 	return o.ApplyT(func(v ParameterDefinitionsValue) *ParameterDefinitionsValueMetadata { return v.Metadata }).(ParameterDefinitionsValueMetadataPtrOutput)
+}
+
+// Provides validation of parameter inputs during assignment using a self-defined JSON schema. This property is only supported for object-type parameters and follows the Json.NET Schema 2019-09 implementation. You can learn more about using schemas at https://json-schema.org/ and test draft schemas at https://www.jsonschemavalidator.net/.
+func (o ParameterDefinitionsValueOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v ParameterDefinitionsValue) interface{} { return v.Schema }).(pulumi.AnyOutput)
 }
 
 // The data type of the parameter.
@@ -2081,6 +2090,8 @@ type ParameterDefinitionsValueResponse struct {
 	DefaultValue interface{} `pulumi:"defaultValue"`
 	// General metadata for the parameter.
 	Metadata *ParameterDefinitionsValueResponseMetadata `pulumi:"metadata"`
+	// Provides validation of parameter inputs during assignment using a self-defined JSON schema. This property is only supported for object-type parameters and follows the Json.NET Schema 2019-09 implementation. You can learn more about using schemas at https://json-schema.org/ and test draft schemas at https://www.jsonschemavalidator.net/.
+	Schema interface{} `pulumi:"schema"`
 	// The data type of the parameter.
 	Type *string `pulumi:"type"`
 }
@@ -2115,6 +2126,11 @@ func (o ParameterDefinitionsValueResponseOutput) Metadata() ParameterDefinitions
 	return o.ApplyT(func(v ParameterDefinitionsValueResponse) *ParameterDefinitionsValueResponseMetadata {
 		return v.Metadata
 	}).(ParameterDefinitionsValueResponseMetadataPtrOutput)
+}
+
+// Provides validation of parameter inputs during assignment using a self-defined JSON schema. This property is only supported for object-type parameters and follows the Json.NET Schema 2019-09 implementation. You can learn more about using schemas at https://json-schema.org/ and test draft schemas at https://www.jsonschemavalidator.net/.
+func (o ParameterDefinitionsValueResponseOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v ParameterDefinitionsValueResponse) interface{} { return v.Schema }).(pulumi.AnyOutput)
 }
 
 // The data type of the parameter.
@@ -3335,6 +3351,273 @@ func (o PolicyDefinitionReferenceResponseArrayOutput) Index(i pulumi.IntInput) P
 	}).(PolicyDefinitionReferenceResponseOutput)
 }
 
+// The ID of the policy definition version.
+type PolicyDefinitionVersionResponse struct {
+	// The policy definition description.
+	Description *string `pulumi:"description"`
+	// The display name of the policy definition.
+	DisplayName *string `pulumi:"displayName"`
+	// The ID of the policy definition version.
+	Id string `pulumi:"id"`
+	// The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
+	Metadata interface{} `pulumi:"metadata"`
+	// The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
+	Mode *string `pulumi:"mode"`
+	// The name of the policy definition version.
+	Name string `pulumi:"name"`
+	// The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
+	Parameters map[string]ParameterDefinitionsValueResponse `pulumi:"parameters"`
+	// The policy rule.
+	PolicyRule interface{} `pulumi:"policyRule"`
+	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+	PolicyType *string `pulumi:"policyType"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource (Microsoft.Authorization/policyDefinitions/versions).
+	Type string `pulumi:"type"`
+	// The policy definition version in #.#.# format.
+	Version *string `pulumi:"version"`
+}
+
+// Defaults sets the appropriate defaults for PolicyDefinitionVersionResponse
+func (val *PolicyDefinitionVersionResponse) Defaults() *PolicyDefinitionVersionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "Indexed"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+// The ID of the policy definition version.
+type PolicyDefinitionVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicyDefinitionVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyDefinitionVersionResponse)(nil)).Elem()
+}
+
+func (o PolicyDefinitionVersionResponseOutput) ToPolicyDefinitionVersionResponseOutput() PolicyDefinitionVersionResponseOutput {
+	return o
+}
+
+func (o PolicyDefinitionVersionResponseOutput) ToPolicyDefinitionVersionResponseOutputWithContext(ctx context.Context) PolicyDefinitionVersionResponseOutput {
+	return o
+}
+
+// The policy definition description.
+func (o PolicyDefinitionVersionResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDefinitionVersionResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the policy definition.
+func (o PolicyDefinitionVersionResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDefinitionVersionResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the policy definition version.
+func (o PolicyDefinitionVersionResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyDefinitionVersionResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
+func (o PolicyDefinitionVersionResponseOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v PolicyDefinitionVersionResponse) interface{} { return v.Metadata }).(pulumi.AnyOutput)
+}
+
+// The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
+func (o PolicyDefinitionVersionResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDefinitionVersionResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The name of the policy definition version.
+func (o PolicyDefinitionVersionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyDefinitionVersionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
+func (o PolicyDefinitionVersionResponseOutput) Parameters() ParameterDefinitionsValueResponseMapOutput {
+	return o.ApplyT(func(v PolicyDefinitionVersionResponse) map[string]ParameterDefinitionsValueResponse {
+		return v.Parameters
+	}).(ParameterDefinitionsValueResponseMapOutput)
+}
+
+// The policy rule.
+func (o PolicyDefinitionVersionResponseOutput) PolicyRule() pulumi.AnyOutput {
+	return o.ApplyT(func(v PolicyDefinitionVersionResponse) interface{} { return v.PolicyRule }).(pulumi.AnyOutput)
+}
+
+// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+func (o PolicyDefinitionVersionResponseOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDefinitionVersionResponse) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
+}
+
+// The system metadata relating to this resource.
+func (o PolicyDefinitionVersionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PolicyDefinitionVersionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource (Microsoft.Authorization/policyDefinitions/versions).
+func (o PolicyDefinitionVersionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyDefinitionVersionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The policy definition version in #.#.# format.
+func (o PolicyDefinitionVersionResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDefinitionVersionResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type PolicyDefinitionVersionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyDefinitionVersionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyDefinitionVersionResponse)(nil)).Elem()
+}
+
+func (o PolicyDefinitionVersionResponseArrayOutput) ToPolicyDefinitionVersionResponseArrayOutput() PolicyDefinitionVersionResponseArrayOutput {
+	return o
+}
+
+func (o PolicyDefinitionVersionResponseArrayOutput) ToPolicyDefinitionVersionResponseArrayOutputWithContext(ctx context.Context) PolicyDefinitionVersionResponseArrayOutput {
+	return o
+}
+
+func (o PolicyDefinitionVersionResponseArrayOutput) Index(i pulumi.IntInput) PolicyDefinitionVersionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyDefinitionVersionResponse {
+		return vs[0].([]PolicyDefinitionVersionResponse)[vs[1].(int)]
+	}).(PolicyDefinitionVersionResponseOutput)
+}
+
+// The policy set definition version.
+type PolicySetDefinitionVersionResponse struct {
+	// The policy set definition description.
+	Description *string `pulumi:"description"`
+	// The display name of the policy set definition.
+	DisplayName *string `pulumi:"displayName"`
+	// The ID of the policy set definition version.
+	Id string `pulumi:"id"`
+	// The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
+	Metadata interface{} `pulumi:"metadata"`
+	// The name of the policy set definition version.
+	Name string `pulumi:"name"`
+	// The policy set definition parameters that can be used in policy definition references.
+	Parameters map[string]ParameterDefinitionsValueResponse `pulumi:"parameters"`
+	// The metadata describing groups of policy definition references within the policy set definition.
+	PolicyDefinitionGroups []PolicyDefinitionGroupResponse `pulumi:"policyDefinitionGroups"`
+	// An array of policy definition references.
+	PolicyDefinitions []PolicyDefinitionReferenceResponse `pulumi:"policyDefinitions"`
+	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+	PolicyType *string `pulumi:"policyType"`
+	// The system metadata relating to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource (Microsoft.Authorization/policySetDefinitions/versions).
+	Type string `pulumi:"type"`
+	// The policy set definition version in #.#.# format.
+	Version *string `pulumi:"version"`
+}
+
+// The policy set definition version.
+type PolicySetDefinitionVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicySetDefinitionVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicySetDefinitionVersionResponse)(nil)).Elem()
+}
+
+func (o PolicySetDefinitionVersionResponseOutput) ToPolicySetDefinitionVersionResponseOutput() PolicySetDefinitionVersionResponseOutput {
+	return o
+}
+
+func (o PolicySetDefinitionVersionResponseOutput) ToPolicySetDefinitionVersionResponseOutputWithContext(ctx context.Context) PolicySetDefinitionVersionResponseOutput {
+	return o
+}
+
+// The policy set definition description.
+func (o PolicySetDefinitionVersionResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the policy set definition.
+func (o PolicySetDefinitionVersionResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the policy set definition version.
+func (o PolicySetDefinitionVersionResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
+func (o PolicySetDefinitionVersionResponseOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) interface{} { return v.Metadata }).(pulumi.AnyOutput)
+}
+
+// The name of the policy set definition version.
+func (o PolicySetDefinitionVersionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The policy set definition parameters that can be used in policy definition references.
+func (o PolicySetDefinitionVersionResponseOutput) Parameters() ParameterDefinitionsValueResponseMapOutput {
+	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) map[string]ParameterDefinitionsValueResponse {
+		return v.Parameters
+	}).(ParameterDefinitionsValueResponseMapOutput)
+}
+
+// The metadata describing groups of policy definition references within the policy set definition.
+func (o PolicySetDefinitionVersionResponseOutput) PolicyDefinitionGroups() PolicyDefinitionGroupResponseArrayOutput {
+	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) []PolicyDefinitionGroupResponse {
+		return v.PolicyDefinitionGroups
+	}).(PolicyDefinitionGroupResponseArrayOutput)
+}
+
+// An array of policy definition references.
+func (o PolicySetDefinitionVersionResponseOutput) PolicyDefinitions() PolicyDefinitionReferenceResponseArrayOutput {
+	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) []PolicyDefinitionReferenceResponse {
+		return v.PolicyDefinitions
+	}).(PolicyDefinitionReferenceResponseArrayOutput)
+}
+
+// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+func (o PolicySetDefinitionVersionResponseOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
+}
+
+// The system metadata relating to this resource.
+func (o PolicySetDefinitionVersionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource (Microsoft.Authorization/policySetDefinitions/versions).
+func (o PolicySetDefinitionVersionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The policy set definition version in #.#.# format.
+func (o PolicySetDefinitionVersionResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type PolicySetDefinitionVersionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicySetDefinitionVersionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicySetDefinitionVersionResponse)(nil)).Elem()
+}
+
+func (o PolicySetDefinitionVersionResponseArrayOutput) ToPolicySetDefinitionVersionResponseArrayOutput() PolicySetDefinitionVersionResponseArrayOutput {
+	return o
+}
+
+func (o PolicySetDefinitionVersionResponseArrayOutput) ToPolicySetDefinitionVersionResponseArrayOutputWithContext(ctx context.Context) PolicySetDefinitionVersionResponseArrayOutput {
+	return o
+}
+
+func (o PolicySetDefinitionVersionResponseArrayOutput) Index(i pulumi.IntInput) PolicySetDefinitionVersionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicySetDefinitionVersionResponse {
+		return vs[0].([]PolicySetDefinitionVersionResponse)[vs[1].(int)]
+	}).(PolicySetDefinitionVersionResponseOutput)
+}
+
 // The variable column.
 type PolicyVariableColumn struct {
 	// The name of this policy variable column.
@@ -4549,6 +4832,10 @@ func init() {
 	pulumi.RegisterOutputType(PolicyDefinitionReferenceArrayOutput{})
 	pulumi.RegisterOutputType(PolicyDefinitionReferenceResponseOutput{})
 	pulumi.RegisterOutputType(PolicyDefinitionReferenceResponseArrayOutput{})
+	pulumi.RegisterOutputType(PolicyDefinitionVersionResponseOutput{})
+	pulumi.RegisterOutputType(PolicyDefinitionVersionResponseArrayOutput{})
+	pulumi.RegisterOutputType(PolicySetDefinitionVersionResponseOutput{})
+	pulumi.RegisterOutputType(PolicySetDefinitionVersionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PolicyVariableColumnOutput{})
 	pulumi.RegisterOutputType(PolicyVariableColumnArrayOutput{})
 	pulumi.RegisterOutputType(PolicyVariableColumnResponseOutput{})
