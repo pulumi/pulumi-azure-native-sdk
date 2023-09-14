@@ -33,8 +33,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InventoryItem{}
 	case "azure-native:scvmm:MachineExtension":
 		r = &MachineExtension{}
+	case "azure-native:scvmm:VMInstanceGuestAgent":
+		r = &VMInstanceGuestAgent{}
 	case "azure-native:scvmm:VirtualMachine":
 		r = &VirtualMachine{}
+	case "azure-native:scvmm:VirtualMachineInstance":
+		r = &VirtualMachineInstance{}
 	case "azure-native:scvmm:VirtualMachineTemplate":
 		r = &VirtualMachineTemplate{}
 	case "azure-native:scvmm:VirtualNetwork":
