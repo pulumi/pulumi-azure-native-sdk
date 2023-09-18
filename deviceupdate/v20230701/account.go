@@ -120,6 +120,7 @@ type accountArgs struct {
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// List of private endpoint connections associated with the account.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
 	// Whether or not public network access is allowed for the account.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
@@ -142,6 +143,7 @@ type AccountArgs struct {
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// List of private endpoint connections associated with the account.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
 	// Whether or not public network access is allowed for the account.
 	PublicNetworkAccess pulumi.StringPtrInput

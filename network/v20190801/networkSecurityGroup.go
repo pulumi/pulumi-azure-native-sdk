@@ -231,6 +231,7 @@ func (NetworkSecurityGroupState) ElementType() reflect.Type {
 
 type networkSecurityGroupArgs struct {
 	// The default security rules of network security group.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	DefaultSecurityRules []SecurityRule `pulumi:"defaultSecurityRules"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
@@ -243,6 +244,7 @@ type networkSecurityGroupArgs struct {
 	// The resource GUID property of the network security group resource.
 	ResourceGuid *string `pulumi:"resourceGuid"`
 	// A collection of security rules of the network security group.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	SecurityRules []SecurityRule `pulumi:"securityRules"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -251,6 +253,7 @@ type networkSecurityGroupArgs struct {
 // The set of arguments for constructing a NetworkSecurityGroup resource.
 type NetworkSecurityGroupArgs struct {
 	// The default security rules of network security group.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	DefaultSecurityRules SecurityRuleArrayInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
@@ -263,6 +266,7 @@ type NetworkSecurityGroupArgs struct {
 	// The resource GUID property of the network security group resource.
 	ResourceGuid pulumi.StringPtrInput
 	// A collection of security rules of the network security group.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	SecurityRules SecurityRuleArrayInput
 	// Resource tags.
 	Tags pulumi.StringMapInput

@@ -101,6 +101,7 @@ type cloudHsmClusterArgs struct {
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// List of private endpoint connection resources
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections []PrivateEndpointConnection `pulumi:"privateEndpointConnections"`
 	// The Cloud HSM Cluster's provisioningState
 	ProvisioningState *string `pulumi:"provisioningState"`
@@ -127,6 +128,7 @@ type CloudHsmClusterArgs struct {
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// List of private endpoint connection resources
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections PrivateEndpointConnectionArrayInput
 	// The Cloud HSM Cluster's provisioningState
 	ProvisioningState pulumi.StringPtrInput

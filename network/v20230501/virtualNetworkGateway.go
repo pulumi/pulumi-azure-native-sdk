@@ -304,6 +304,7 @@ type virtualNetworkGatewayArgs struct {
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// NatRules for virtual network gateway.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	NatRules []VirtualNetworkGatewayNatRuleType `pulumi:"natRules"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -364,6 +365,7 @@ type VirtualNetworkGatewayArgs struct {
 	// Resource location.
 	Location pulumi.StringPtrInput
 	// NatRules for virtual network gateway.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	NatRules VirtualNetworkGatewayNatRuleTypeArrayInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput

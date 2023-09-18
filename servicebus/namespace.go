@@ -153,6 +153,7 @@ type namespaceArgs struct {
 	// The namespace name.
 	NamespaceName *string `pulumi:"namespaceName"`
 	// List of private endpoint connections.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
@@ -183,6 +184,7 @@ type NamespaceArgs struct {
 	// The namespace name.
 	NamespaceName pulumi.StringPtrInput
 	// List of private endpoint connections.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess pulumi.StringPtrInput
