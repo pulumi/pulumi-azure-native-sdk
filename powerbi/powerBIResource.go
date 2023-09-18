@@ -86,6 +86,7 @@ type powerBIResourceArgs struct {
 	// Specifies the location of the resource.
 	Location *string `pulumi:"location"`
 	// Specifies the private endpoint connections of the resource.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -102,6 +103,7 @@ type PowerBIResourceArgs struct {
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrInput
 	// Specifies the private endpoint connections of the resource.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput

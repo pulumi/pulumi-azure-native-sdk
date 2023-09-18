@@ -114,6 +114,7 @@ type digitalTwinArgs struct {
 	// The resource location.
 	Location *string `pulumi:"location"`
 	// The private endpoint connections.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
 	// Public network access for the DigitalTwinsInstance.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
@@ -132,6 +133,7 @@ type DigitalTwinArgs struct {
 	// The resource location.
 	Location pulumi.StringPtrInput
 	// The private endpoint connections.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
 	// Public network access for the DigitalTwinsInstance.
 	PublicNetworkAccess pulumi.StringPtrInput

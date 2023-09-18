@@ -187,6 +187,7 @@ type serviceEndpointPolicyArgs struct {
 	// The resource GUID property of the service endpoint policy resource.
 	ResourceGuid *string `pulumi:"resourceGuid"`
 	// A collection of service endpoint policy definitions of the service endpoint policy.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	ServiceEndpointPolicyDefinitions []ServiceEndpointPolicyDefinitionType `pulumi:"serviceEndpointPolicyDefinitions"`
 	// The name of the service endpoint policy.
 	ServiceEndpointPolicyName *string `pulumi:"serviceEndpointPolicyName"`
@@ -207,6 +208,7 @@ type ServiceEndpointPolicyArgs struct {
 	// The resource GUID property of the service endpoint policy resource.
 	ResourceGuid pulumi.StringPtrInput
 	// A collection of service endpoint policy definitions of the service endpoint policy.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	ServiceEndpointPolicyDefinitions ServiceEndpointPolicyDefinitionTypeArrayInput
 	// The name of the service endpoint policy.
 	ServiceEndpointPolicyName pulumi.StringPtrInput

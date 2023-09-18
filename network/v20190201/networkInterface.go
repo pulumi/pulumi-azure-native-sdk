@@ -273,6 +273,7 @@ type networkInterfaceArgs struct {
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// A list of TapConfigurations of the network interface.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	TapConfigurations []NetworkInterfaceTapConfiguration `pulumi:"tapConfigurations"`
 }
 
@@ -307,6 +308,7 @@ type NetworkInterfaceArgs struct {
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// A list of TapConfigurations of the network interface.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	TapConfigurations NetworkInterfaceTapConfigurationArrayInput
 }
 

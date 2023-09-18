@@ -224,6 +224,7 @@ type routeFilterArgs struct {
 	// The name of the route filter.
 	RouteFilterName *string `pulumi:"routeFilterName"`
 	// Collection of RouteFilterRules contained within a route filter.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	Rules []RouteFilterRule `pulumi:"rules"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -244,6 +245,7 @@ type RouteFilterArgs struct {
 	// The name of the route filter.
 	RouteFilterName pulumi.StringPtrInput
 	// Collection of RouteFilterRules contained within a route filter.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	Rules RouteFilterRuleArrayInput
 	// Resource tags.
 	Tags pulumi.StringMapInput

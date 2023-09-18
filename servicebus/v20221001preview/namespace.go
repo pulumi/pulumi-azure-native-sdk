@@ -156,6 +156,7 @@ type namespaceArgs struct {
 	// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
 	PremiumMessagingPartitions *int `pulumi:"premiumMessagingPartitions"`
 	// List of private endpoint connections.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
@@ -188,6 +189,7 @@ type NamespaceArgs struct {
 	// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
 	PremiumMessagingPartitions pulumi.IntPtrInput
 	// List of private endpoint connections.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess pulumi.StringPtrInput

@@ -97,6 +97,7 @@ type azureTrafficCollectorArgs struct {
 	// Azure Traffic Collector name
 	AzureTrafficCollectorName *string `pulumi:"azureTrafficCollectorName"`
 	// Collector Policies for Azure Traffic Collector.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	CollectorPolicies []CollectorPolicy `pulumi:"collectorPolicies"`
 	// Resource location.
 	Location *string `pulumi:"location"`
@@ -111,6 +112,7 @@ type AzureTrafficCollectorArgs struct {
 	// Azure Traffic Collector name
 	AzureTrafficCollectorName pulumi.StringPtrInput
 	// Collector Policies for Azure Traffic Collector.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	CollectorPolicies CollectorPolicyArrayInput
 	// Resource location.
 	Location pulumi.StringPtrInput

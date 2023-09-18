@@ -189,6 +189,7 @@ type vpnGatewayArgs struct {
 	// Local network gateway's BGP speaker settings.
 	BgpSettings *BgpSettings `pulumi:"bgpSettings"`
 	// list of all vpn connections to the gateway.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	Connections []VpnConnectionType `pulumi:"connections"`
 	// The name of the gateway.
 	GatewayName *string `pulumi:"gatewayName"`
@@ -211,6 +212,7 @@ type VpnGatewayArgs struct {
 	// Local network gateway's BGP speaker settings.
 	BgpSettings BgpSettingsPtrInput
 	// list of all vpn connections to the gateway.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	Connections VpnConnectionTypeArrayInput
 	// The name of the gateway.
 	GatewayName pulumi.StringPtrInput

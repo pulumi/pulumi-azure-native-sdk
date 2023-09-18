@@ -229,6 +229,7 @@ type virtualHubArgs struct {
 	// The name of the VirtualHub.
 	VirtualHubName *string `pulumi:"virtualHubName"`
 	// List of all virtual hub route table v2s associated with this VirtualHub.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	VirtualHubRouteTableV2s []VirtualHubRouteTableV2 `pulumi:"virtualHubRouteTableV2s"`
 	// List of all vnet connections with this VirtualHub.
 	VirtualNetworkConnections []HubVirtualNetworkConnection `pulumi:"virtualNetworkConnections"`
@@ -267,6 +268,7 @@ type VirtualHubArgs struct {
 	// The name of the VirtualHub.
 	VirtualHubName pulumi.StringPtrInput
 	// List of all virtual hub route table v2s associated with this VirtualHub.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	VirtualHubRouteTableV2s VirtualHubRouteTableV2ArrayInput
 	// List of all vnet connections with this VirtualHub.
 	VirtualNetworkConnections HubVirtualNetworkConnectionArrayInput
