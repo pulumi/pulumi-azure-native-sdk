@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The authentication mode for the Batch account.
@@ -82,6 +83,12 @@ func (o AuthenticationModeOutput) ToAuthenticationModePtrOutputWithContext(ctx c
 	}).(AuthenticationModePtrOutput)
 }
 
+func (o AuthenticationModeOutput) ToOutput(ctx context.Context) pulumix.Output[AuthenticationMode] {
+	return pulumix.Output[AuthenticationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthenticationModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o AuthenticationModePtrOutput) ToAuthenticationModePtrOutput() Authenticat
 
 func (o AuthenticationModePtrOutput) ToAuthenticationModePtrOutputWithContext(ctx context.Context) AuthenticationModePtrOutput {
 	return o
+}
+
+func (o AuthenticationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationMode] {
+	return pulumix.Output[*AuthenticationMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthenticationModePtrOutput) Elem() AuthenticationModeOutput {
@@ -179,6 +192,12 @@ func (in *authenticationModePtr) ToAuthenticationModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationModePtrOutput)
 }
 
+func (in *authenticationModePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationMode] {
+	return pulumix.Output[*AuthenticationMode]{
+		OutputState: in.ToAuthenticationModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuthenticationModeArrayInput is an input type that accepts AuthenticationModeArray and AuthenticationModeArrayOutput values.
 // You can construct a concrete instance of `AuthenticationModeArrayInput` via:
 //
@@ -204,6 +223,12 @@ func (i AuthenticationModeArray) ToAuthenticationModeArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationModeArrayOutput)
 }
 
+func (i AuthenticationModeArray) ToOutput(ctx context.Context) pulumix.Output[[]AuthenticationMode] {
+	return pulumix.Output[[]AuthenticationMode]{
+		OutputState: i.ToAuthenticationModeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthenticationModeArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthenticationModeArrayOutput) ElementType() reflect.Type {
@@ -216,6 +241,12 @@ func (o AuthenticationModeArrayOutput) ToAuthenticationModeArrayOutput() Authent
 
 func (o AuthenticationModeArrayOutput) ToAuthenticationModeArrayOutputWithContext(ctx context.Context) AuthenticationModeArrayOutput {
 	return o
+}
+
+func (o AuthenticationModeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuthenticationMode] {
+	return pulumix.Output[[]AuthenticationMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthenticationModeArrayOutput) Index(i pulumi.IntInput) AuthenticationModeOutput {
@@ -294,6 +325,12 @@ func (o AutoStorageAuthenticationModeOutput) ToAutoStorageAuthenticationModePtrO
 	}).(AutoStorageAuthenticationModePtrOutput)
 }
 
+func (o AutoStorageAuthenticationModeOutput) ToOutput(ctx context.Context) pulumix.Output[AutoStorageAuthenticationMode] {
+	return pulumix.Output[AutoStorageAuthenticationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoStorageAuthenticationModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -327,6 +364,12 @@ func (o AutoStorageAuthenticationModePtrOutput) ToAutoStorageAuthenticationModeP
 
 func (o AutoStorageAuthenticationModePtrOutput) ToAutoStorageAuthenticationModePtrOutputWithContext(ctx context.Context) AutoStorageAuthenticationModePtrOutput {
 	return o
+}
+
+func (o AutoStorageAuthenticationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoStorageAuthenticationMode] {
+	return pulumix.Output[*AutoStorageAuthenticationMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoStorageAuthenticationModePtrOutput) Elem() AutoStorageAuthenticationModeOutput {
@@ -389,6 +432,12 @@ func (in *autoStorageAuthenticationModePtr) ToAutoStorageAuthenticationModePtrOu
 
 func (in *autoStorageAuthenticationModePtr) ToAutoStorageAuthenticationModePtrOutputWithContext(ctx context.Context) AutoStorageAuthenticationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoStorageAuthenticationModePtrOutput)
+}
+
+func (in *autoStorageAuthenticationModePtr) ToOutput(ctx context.Context) pulumix.Output[*AutoStorageAuthenticationMode] {
+	return pulumix.Output[*AutoStorageAuthenticationMode]{
+		OutputState: in.ToAutoStorageAuthenticationModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of the key source.
@@ -461,6 +510,12 @@ func (o KeySourceOutput) ToKeySourcePtrOutputWithContext(ctx context.Context) Ke
 	}).(KeySourcePtrOutput)
 }
 
+func (o KeySourceOutput) ToOutput(ctx context.Context) pulumix.Output[KeySource] {
+	return pulumix.Output[KeySource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeySourceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -494,6 +549,12 @@ func (o KeySourcePtrOutput) ToKeySourcePtrOutput() KeySourcePtrOutput {
 
 func (o KeySourcePtrOutput) ToKeySourcePtrOutputWithContext(ctx context.Context) KeySourcePtrOutput {
 	return o
+}
+
+func (o KeySourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
+	return pulumix.Output[*KeySource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeySourcePtrOutput) Elem() KeySourceOutput {
@@ -556,6 +617,12 @@ func (in *keySourcePtr) ToKeySourcePtrOutput() KeySourcePtrOutput {
 
 func (in *keySourcePtr) ToKeySourcePtrOutputWithContext(ctx context.Context) KeySourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeySourcePtrOutput)
+}
+
+func (in *keySourcePtr) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
+	return pulumix.Output[*KeySource]{
+		OutputState: in.ToKeySourcePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Azure Active Directory. If the mode is UserSubscription, clients must use Azure Active Directory. The default is BatchService.
@@ -628,6 +695,12 @@ func (o PoolAllocationModeOutput) ToPoolAllocationModePtrOutputWithContext(ctx c
 	}).(PoolAllocationModePtrOutput)
 }
 
+func (o PoolAllocationModeOutput) ToOutput(ctx context.Context) pulumix.Output[PoolAllocationMode] {
+	return pulumix.Output[PoolAllocationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PoolAllocationModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -661,6 +734,12 @@ func (o PoolAllocationModePtrOutput) ToPoolAllocationModePtrOutput() PoolAllocat
 
 func (o PoolAllocationModePtrOutput) ToPoolAllocationModePtrOutputWithContext(ctx context.Context) PoolAllocationModePtrOutput {
 	return o
+}
+
+func (o PoolAllocationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PoolAllocationMode] {
+	return pulumix.Output[*PoolAllocationMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PoolAllocationModePtrOutput) Elem() PoolAllocationModeOutput {
@@ -723,6 +802,12 @@ func (in *poolAllocationModePtr) ToPoolAllocationModePtrOutput() PoolAllocationM
 
 func (in *poolAllocationModePtr) ToPoolAllocationModePtrOutputWithContext(ctx context.Context) PoolAllocationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PoolAllocationModePtrOutput)
+}
+
+func (in *poolAllocationModePtr) ToOutput(ctx context.Context) pulumix.Output[*PoolAllocationMode] {
+	return pulumix.Output[*PoolAllocationMode]{
+		OutputState: in.ToPoolAllocationModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // If not specified, the default value is 'enabled'.
@@ -795,6 +880,12 @@ func (o PublicNetworkAccessTypeOutput) ToPublicNetworkAccessTypePtrOutputWithCon
 	}).(PublicNetworkAccessTypePtrOutput)
 }
 
+func (o PublicNetworkAccessTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PublicNetworkAccessType] {
+	return pulumix.Output[PublicNetworkAccessType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PublicNetworkAccessTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -828,6 +919,12 @@ func (o PublicNetworkAccessTypePtrOutput) ToPublicNetworkAccessTypePtrOutput() P
 
 func (o PublicNetworkAccessTypePtrOutput) ToPublicNetworkAccessTypePtrOutputWithContext(ctx context.Context) PublicNetworkAccessTypePtrOutput {
 	return o
+}
+
+func (o PublicNetworkAccessTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
+	return pulumix.Output[*PublicNetworkAccessType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PublicNetworkAccessTypePtrOutput) Elem() PublicNetworkAccessTypeOutput {
@@ -890,6 +987,12 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutput() Publi
 
 func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithContext(ctx context.Context) PublicNetworkAccessTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
+}
+
+func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
+	return pulumix.Output[*PublicNetworkAccessType]{
+		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of identity used for the Batch account.
@@ -964,6 +1067,12 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
+func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
+	return pulumix.Output[ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -997,6 +1106,12 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -1059,6 +1174,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+}
+
+func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

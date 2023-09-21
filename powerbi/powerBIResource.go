@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2020-06-01. Prior API version in Azure Native 1.x: 2020-06-01
@@ -136,6 +137,12 @@ func (i *PowerBIResource) ToPowerBIResourceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PowerBIResourceOutput)
 }
 
+func (i *PowerBIResource) ToOutput(ctx context.Context) pulumix.Output[*PowerBIResource] {
+	return pulumix.Output[*PowerBIResource]{
+		OutputState: i.ToPowerBIResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PowerBIResourceOutput struct{ *pulumi.OutputState }
 
 func (PowerBIResourceOutput) ElementType() reflect.Type {
@@ -148,6 +155,12 @@ func (o PowerBIResourceOutput) ToPowerBIResourceOutput() PowerBIResourceOutput {
 
 func (o PowerBIResourceOutput) ToPowerBIResourceOutputWithContext(ctx context.Context) PowerBIResourceOutput {
 	return o
+}
+
+func (o PowerBIResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*PowerBIResource] {
+	return pulumix.Output[*PowerBIResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the location of the resource.

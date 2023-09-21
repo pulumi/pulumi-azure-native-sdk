@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Virtual machine guest diagnostics settings resource.
@@ -141,6 +142,12 @@ func (i *GuestDiagnosticsSetting) ToGuestDiagnosticsSettingOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(GuestDiagnosticsSettingOutput)
 }
 
+func (i *GuestDiagnosticsSetting) ToOutput(ctx context.Context) pulumix.Output[*GuestDiagnosticsSetting] {
+	return pulumix.Output[*GuestDiagnosticsSetting]{
+		OutputState: i.ToGuestDiagnosticsSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GuestDiagnosticsSettingOutput struct{ *pulumi.OutputState }
 
 func (GuestDiagnosticsSettingOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o GuestDiagnosticsSettingOutput) ToGuestDiagnosticsSettingOutput() GuestDi
 
 func (o GuestDiagnosticsSettingOutput) ToGuestDiagnosticsSettingOutputWithContext(ctx context.Context) GuestDiagnosticsSettingOutput {
 	return o
+}
+
+func (o GuestDiagnosticsSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestDiagnosticsSetting] {
+	return pulumix.Output[*GuestDiagnosticsSetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the array of data source object which are configured to collect and send data

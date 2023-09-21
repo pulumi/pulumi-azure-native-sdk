@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified DICOM Service.
@@ -105,6 +106,12 @@ func (o LookupDicomServiceResultOutput) ToLookupDicomServiceResultOutput() Looku
 
 func (o LookupDicomServiceResultOutput) ToLookupDicomServiceResultOutputWithContext(ctx context.Context) LookupDicomServiceResultOutput {
 	return o
+}
+
+func (o LookupDicomServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDicomServiceResult] {
+	return pulumix.Output[LookupDicomServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Dicom Service authentication configuration.

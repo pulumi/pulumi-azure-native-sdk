@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get available cached server name for fast provisioning
@@ -84,6 +85,12 @@ func (o GetGetCachedServerNameExecuteResultOutput) ToGetGetCachedServerNameExecu
 
 func (o GetGetCachedServerNameExecuteResultOutput) ToGetGetCachedServerNameExecuteResultOutputWithContext(ctx context.Context) GetGetCachedServerNameExecuteResultOutput {
 	return o
+}
+
+func (o GetGetCachedServerNameExecuteResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGetCachedServerNameExecuteResult] {
+	return pulumix.Output[GetGetCachedServerNameExecuteResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of available cached server

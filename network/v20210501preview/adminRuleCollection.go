@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines the rule collection.
@@ -182,6 +183,12 @@ func (i *AdminRuleCollection) ToAdminRuleCollectionOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AdminRuleCollectionOutput)
 }
 
+func (i *AdminRuleCollection) ToOutput(ctx context.Context) pulumix.Output[*AdminRuleCollection] {
+	return pulumix.Output[*AdminRuleCollection]{
+		OutputState: i.ToAdminRuleCollectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AdminRuleCollectionOutput struct{ *pulumi.OutputState }
 
 func (AdminRuleCollectionOutput) ElementType() reflect.Type {
@@ -194,6 +201,12 @@ func (o AdminRuleCollectionOutput) ToAdminRuleCollectionOutput() AdminRuleCollec
 
 func (o AdminRuleCollectionOutput) ToAdminRuleCollectionOutputWithContext(ctx context.Context) AdminRuleCollectionOutput {
 	return o
+}
+
+func (o AdminRuleCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[*AdminRuleCollection] {
+	return pulumix.Output[*AdminRuleCollection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Groups for configuration

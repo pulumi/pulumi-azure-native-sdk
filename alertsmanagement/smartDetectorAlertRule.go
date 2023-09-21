@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The alert rule information
@@ -196,6 +197,12 @@ func (i *SmartDetectorAlertRule) ToSmartDetectorAlertRuleOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SmartDetectorAlertRuleOutput)
 }
 
+func (i *SmartDetectorAlertRule) ToOutput(ctx context.Context) pulumix.Output[*SmartDetectorAlertRule] {
+	return pulumix.Output[*SmartDetectorAlertRule]{
+		OutputState: i.ToSmartDetectorAlertRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SmartDetectorAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (SmartDetectorAlertRuleOutput) ElementType() reflect.Type {
@@ -208,6 +215,12 @@ func (o SmartDetectorAlertRuleOutput) ToSmartDetectorAlertRuleOutput() SmartDete
 
 func (o SmartDetectorAlertRuleOutput) ToSmartDetectorAlertRuleOutputWithContext(ctx context.Context) SmartDetectorAlertRuleOutput {
 	return o
+}
+
+func (o SmartDetectorAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*SmartDetectorAlertRule] {
+	return pulumix.Output[*SmartDetectorAlertRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alert rule actions.

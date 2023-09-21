@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List storage account keys of a workspace.
@@ -70,6 +71,12 @@ func (o ListWorkspaceStorageAccountKeysResultOutput) ToListWorkspaceStorageAccou
 
 func (o ListWorkspaceStorageAccountKeysResultOutput) ToListWorkspaceStorageAccountKeysResultOutputWithContext(ctx context.Context) ListWorkspaceStorageAccountKeysResultOutput {
 	return o
+}
+
+func (o ListWorkspaceStorageAccountKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWorkspaceStorageAccountKeysResult] {
+	return pulumix.Output[ListWorkspaceStorageAccountKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListWorkspaceStorageAccountKeysResultOutput) UserStorageKey() pulumi.StringOutput {

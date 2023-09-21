@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Bot channel resource definition
@@ -168,6 +169,12 @@ func (i *Channel) ToChannelOutputWithContext(ctx context.Context) ChannelOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ChannelOutput)
 }
 
+func (i *Channel) ToOutput(ctx context.Context) pulumix.Output[*Channel] {
+	return pulumix.Output[*Channel]{
+		OutputState: i.ToChannelOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ChannelOutput struct{ *pulumi.OutputState }
 
 func (ChannelOutput) ElementType() reflect.Type {
@@ -180,6 +187,12 @@ func (o ChannelOutput) ToChannelOutput() ChannelOutput {
 
 func (o ChannelOutput) ToChannelOutputWithContext(ctx context.Context) ChannelOutput {
 	return o
+}
+
+func (o ChannelOutput) ToOutput(ctx context.Context) pulumix.Output[*Channel] {
+	return pulumix.Output[*Channel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Entity Tag.

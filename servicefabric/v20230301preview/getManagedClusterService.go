@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Service Fabric service resource created or in the process of being created in the Service Fabric managed application resource.
@@ -92,6 +93,12 @@ func (o LookupManagedClusterServiceResultOutput) ToLookupManagedClusterServiceRe
 
 func (o LookupManagedClusterServiceResultOutput) ToLookupManagedClusterServiceResultOutputWithContext(ctx context.Context) LookupManagedClusterServiceResultOutput {
 	return o
+}
+
+func (o LookupManagedClusterServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedClusterServiceResult] {
+	return pulumix.Output[LookupManagedClusterServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure resource identifier.

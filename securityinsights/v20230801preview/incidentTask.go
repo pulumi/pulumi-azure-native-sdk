@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type IncidentTask struct {
@@ -183,6 +184,12 @@ func (i *IncidentTask) ToIncidentTaskOutputWithContext(ctx context.Context) Inci
 	return pulumi.ToOutputWithContext(ctx, i).(IncidentTaskOutput)
 }
 
+func (i *IncidentTask) ToOutput(ctx context.Context) pulumix.Output[*IncidentTask] {
+	return pulumix.Output[*IncidentTask]{
+		OutputState: i.ToIncidentTaskOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IncidentTaskOutput struct{ *pulumi.OutputState }
 
 func (IncidentTaskOutput) ElementType() reflect.Type {
@@ -195,6 +202,12 @@ func (o IncidentTaskOutput) ToIncidentTaskOutput() IncidentTaskOutput {
 
 func (o IncidentTaskOutput) ToIncidentTaskOutputWithContext(ctx context.Context) IncidentTaskOutput {
 	return o
+}
+
+func (o IncidentTaskOutput) ToOutput(ctx context.Context) pulumix.Output[*IncidentTask] {
+	return pulumix.Output[*IncidentTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Information on the client (user or application) that made some action

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A failover group resource.
@@ -128,6 +129,12 @@ func (i *FailoverGroup) ToFailoverGroupOutputWithContext(ctx context.Context) Fa
 	return pulumi.ToOutputWithContext(ctx, i).(FailoverGroupOutput)
 }
 
+func (i *FailoverGroup) ToOutput(ctx context.Context) pulumix.Output[*FailoverGroup] {
+	return pulumix.Output[*FailoverGroup]{
+		OutputState: i.ToFailoverGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FailoverGroupOutput struct{ *pulumi.OutputState }
 
 func (FailoverGroupOutput) ElementType() reflect.Type {
@@ -140,6 +147,12 @@ func (o FailoverGroupOutput) ToFailoverGroupOutput() FailoverGroupOutput {
 
 func (o FailoverGroupOutput) ToFailoverGroupOutputWithContext(ctx context.Context) FailoverGroupOutput {
 	return o
+}
+
+func (o FailoverGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*FailoverGroup] {
+	return pulumix.Output[*FailoverGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

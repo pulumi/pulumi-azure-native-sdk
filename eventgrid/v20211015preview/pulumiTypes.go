@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -82,6 +83,12 @@ func (i EventChannelDestinationArgs) ToEventChannelDestinationOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(EventChannelDestinationOutput)
 }
 
+func (i EventChannelDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[EventChannelDestination] {
+	return pulumix.Output[EventChannelDestination]{
+		OutputState: i.ToEventChannelDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EventChannelDestinationArgs) ToEventChannelDestinationPtrOutput() EventChannelDestinationPtrOutput {
 	return i.ToEventChannelDestinationPtrOutputWithContext(context.Background())
 }
@@ -123,6 +130,12 @@ func (i *eventChannelDestinationPtrType) ToEventChannelDestinationPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(EventChannelDestinationPtrOutput)
 }
 
+func (i *eventChannelDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*EventChannelDestination] {
+	return pulumix.Output[*EventChannelDestination]{
+		OutputState: i.ToEventChannelDestinationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties of the destination of an event channel.
 type EventChannelDestinationOutput struct{ *pulumi.OutputState }
 
@@ -146,6 +159,12 @@ func (o EventChannelDestinationOutput) ToEventChannelDestinationPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventChannelDestination) *EventChannelDestination {
 		return &v
 	}).(EventChannelDestinationPtrOutput)
+}
+
+func (o EventChannelDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[EventChannelDestination] {
+	return pulumix.Output[EventChannelDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure subscription ID of the customer creating the event channel. The partner topic
@@ -177,6 +196,12 @@ func (o EventChannelDestinationPtrOutput) ToEventChannelDestinationPtrOutput() E
 
 func (o EventChannelDestinationPtrOutput) ToEventChannelDestinationPtrOutputWithContext(ctx context.Context) EventChannelDestinationPtrOutput {
 	return o
+}
+
+func (o EventChannelDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EventChannelDestination] {
+	return pulumix.Output[*EventChannelDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EventChannelDestinationPtrOutput) Elem() EventChannelDestinationOutput {
@@ -248,6 +273,12 @@ func (o EventChannelDestinationResponseOutput) ToEventChannelDestinationResponse
 	return o
 }
 
+func (o EventChannelDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EventChannelDestinationResponse] {
+	return pulumix.Output[EventChannelDestinationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Azure subscription ID of the customer creating the event channel. The partner topic
 // associated with the event channel will be created under this Azure subscription.
 func (o EventChannelDestinationResponseOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
@@ -277,6 +308,12 @@ func (o EventChannelDestinationResponsePtrOutput) ToEventChannelDestinationRespo
 
 func (o EventChannelDestinationResponsePtrOutput) ToEventChannelDestinationResponsePtrOutputWithContext(ctx context.Context) EventChannelDestinationResponsePtrOutput {
 	return o
+}
+
+func (o EventChannelDestinationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EventChannelDestinationResponse] {
+	return pulumix.Output[*EventChannelDestinationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EventChannelDestinationResponsePtrOutput) Elem() EventChannelDestinationResponseOutput {
@@ -384,6 +421,12 @@ func (i EventChannelFilterArgs) ToEventChannelFilterOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EventChannelFilterOutput)
 }
 
+func (i EventChannelFilterArgs) ToOutput(ctx context.Context) pulumix.Output[EventChannelFilter] {
+	return pulumix.Output[EventChannelFilter]{
+		OutputState: i.ToEventChannelFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EventChannelFilterArgs) ToEventChannelFilterPtrOutput() EventChannelFilterPtrOutput {
 	return i.ToEventChannelFilterPtrOutputWithContext(context.Background())
 }
@@ -425,6 +468,12 @@ func (i *eventChannelFilterPtrType) ToEventChannelFilterPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(EventChannelFilterPtrOutput)
 }
 
+func (i *eventChannelFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*EventChannelFilter] {
+	return pulumix.Output[*EventChannelFilter]{
+		OutputState: i.ToEventChannelFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Filter for the Event Channel.
 type EventChannelFilterOutput struct{ *pulumi.OutputState }
 
@@ -450,6 +499,12 @@ func (o EventChannelFilterOutput) ToEventChannelFilterPtrOutputWithContext(ctx c
 	}).(EventChannelFilterPtrOutput)
 }
 
+func (o EventChannelFilterOutput) ToOutput(ctx context.Context) pulumix.Output[EventChannelFilter] {
+	return pulumix.Output[EventChannelFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
 // An array of advanced filters that are used for filtering event channels.
 func (o EventChannelFilterOutput) AdvancedFilters() pulumi.ArrayOutput {
 	return o.ApplyT(func(v EventChannelFilter) []interface{} { return v.AdvancedFilters }).(pulumi.ArrayOutput)
@@ -472,6 +527,12 @@ func (o EventChannelFilterPtrOutput) ToEventChannelFilterPtrOutput() EventChanne
 
 func (o EventChannelFilterPtrOutput) ToEventChannelFilterPtrOutputWithContext(ctx context.Context) EventChannelFilterPtrOutput {
 	return o
+}
+
+func (o EventChannelFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EventChannelFilter] {
+	return pulumix.Output[*EventChannelFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EventChannelFilterPtrOutput) Elem() EventChannelFilterOutput {
@@ -540,6 +601,12 @@ func (o EventChannelFilterResponseOutput) ToEventChannelFilterResponseOutputWith
 	return o
 }
 
+func (o EventChannelFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EventChannelFilterResponse] {
+	return pulumix.Output[EventChannelFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // An array of advanced filters that are used for filtering event channels.
 func (o EventChannelFilterResponseOutput) AdvancedFilters() pulumi.ArrayOutput {
 	return o.ApplyT(func(v EventChannelFilterResponse) []interface{} { return v.AdvancedFilters }).(pulumi.ArrayOutput)
@@ -562,6 +629,12 @@ func (o EventChannelFilterResponsePtrOutput) ToEventChannelFilterResponsePtrOutp
 
 func (o EventChannelFilterResponsePtrOutput) ToEventChannelFilterResponsePtrOutputWithContext(ctx context.Context) EventChannelFilterResponsePtrOutput {
 	return o
+}
+
+func (o EventChannelFilterResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EventChannelFilterResponse] {
+	return pulumix.Output[*EventChannelFilterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EventChannelFilterResponsePtrOutput) Elem() EventChannelFilterResponseOutput {
@@ -631,6 +704,12 @@ func (i EventChannelSourceArgs) ToEventChannelSourceOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EventChannelSourceOutput)
 }
 
+func (i EventChannelSourceArgs) ToOutput(ctx context.Context) pulumix.Output[EventChannelSource] {
+	return pulumix.Output[EventChannelSource]{
+		OutputState: i.ToEventChannelSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EventChannelSourceArgs) ToEventChannelSourcePtrOutput() EventChannelSourcePtrOutput {
 	return i.ToEventChannelSourcePtrOutputWithContext(context.Background())
 }
@@ -672,6 +751,12 @@ func (i *eventChannelSourcePtrType) ToEventChannelSourcePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(EventChannelSourcePtrOutput)
 }
 
+func (i *eventChannelSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*EventChannelSource] {
+	return pulumix.Output[*EventChannelSource]{
+		OutputState: i.ToEventChannelSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties of the source of an event channel.
 type EventChannelSourceOutput struct{ *pulumi.OutputState }
 
@@ -697,6 +782,12 @@ func (o EventChannelSourceOutput) ToEventChannelSourcePtrOutputWithContext(ctx c
 	}).(EventChannelSourcePtrOutput)
 }
 
+func (o EventChannelSourceOutput) ToOutput(ctx context.Context) pulumix.Output[EventChannelSource] {
+	return pulumix.Output[EventChannelSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identifier of the resource that's the source of the events.
 // This represents a unique resource in the partner's resource model.
 func (o EventChannelSourceOutput) Source() pulumi.StringPtrOutput {
@@ -715,6 +806,12 @@ func (o EventChannelSourcePtrOutput) ToEventChannelSourcePtrOutput() EventChanne
 
 func (o EventChannelSourcePtrOutput) ToEventChannelSourcePtrOutputWithContext(ctx context.Context) EventChannelSourcePtrOutput {
 	return o
+}
+
+func (o EventChannelSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EventChannelSource] {
+	return pulumix.Output[*EventChannelSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EventChannelSourcePtrOutput) Elem() EventChannelSourceOutput {
@@ -760,6 +857,12 @@ func (o EventChannelSourceResponseOutput) ToEventChannelSourceResponseOutputWith
 	return o
 }
 
+func (o EventChannelSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EventChannelSourceResponse] {
+	return pulumix.Output[EventChannelSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identifier of the resource that's the source of the events.
 // This represents a unique resource in the partner's resource model.
 func (o EventChannelSourceResponseOutput) Source() pulumi.StringPtrOutput {
@@ -778,6 +881,12 @@ func (o EventChannelSourceResponsePtrOutput) ToEventChannelSourceResponsePtrOutp
 
 func (o EventChannelSourceResponsePtrOutput) ToEventChannelSourceResponsePtrOutputWithContext(ctx context.Context) EventChannelSourceResponsePtrOutput {
 	return o
+}
+
+func (o EventChannelSourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EventChannelSourceResponse] {
+	return pulumix.Output[*EventChannelSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EventChannelSourceResponsePtrOutput) Elem() EventChannelSourceResponseOutput {
@@ -1218,6 +1327,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

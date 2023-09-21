@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a synchronizationSetting in a share
@@ -99,6 +100,12 @@ func (o LookupScheduledSynchronizationSettingResultOutput) ToLookupScheduledSync
 
 func (o LookupScheduledSynchronizationSettingResultOutput) ToLookupScheduledSynchronizationSettingResultOutputWithContext(ctx context.Context) LookupScheduledSynchronizationSettingResultOutput {
 	return o
+}
+
+func (o LookupScheduledSynchronizationSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScheduledSynchronizationSettingResult] {
+	return pulumix.Output[LookupScheduledSynchronizationSettingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time at which the synchronization setting was created.

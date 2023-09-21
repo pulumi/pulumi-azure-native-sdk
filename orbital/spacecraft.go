@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Customer creates a spacecraft resource to schedule a contact.
@@ -168,6 +169,12 @@ func (i *Spacecraft) ToSpacecraftOutputWithContext(ctx context.Context) Spacecra
 	return pulumi.ToOutputWithContext(ctx, i).(SpacecraftOutput)
 }
 
+func (i *Spacecraft) ToOutput(ctx context.Context) pulumix.Output[*Spacecraft] {
+	return pulumix.Output[*Spacecraft]{
+		OutputState: i.ToSpacecraftOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SpacecraftOutput struct{ *pulumi.OutputState }
 
 func (SpacecraftOutput) ElementType() reflect.Type {
@@ -180,6 +187,12 @@ func (o SpacecraftOutput) ToSpacecraftOutput() SpacecraftOutput {
 
 func (o SpacecraftOutput) ToSpacecraftOutputWithContext(ctx context.Context) SpacecraftOutput {
 	return o
+}
+
+func (o SpacecraftOutput) ToOutput(ctx context.Context) pulumix.Output[*Spacecraft] {
+	return pulumix.Output[*Spacecraft]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Immutable list of Spacecraft links.

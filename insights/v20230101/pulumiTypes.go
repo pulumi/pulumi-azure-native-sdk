@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -80,6 +81,12 @@ func (i ArmRoleReceiverArgs) ToArmRoleReceiverOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ArmRoleReceiverOutput)
 }
 
+func (i ArmRoleReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[ArmRoleReceiver] {
+	return pulumix.Output[ArmRoleReceiver]{
+		OutputState: i.ToArmRoleReceiverOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ArmRoleReceiverArrayInput is an input type that accepts ArmRoleReceiverArray and ArmRoleReceiverArrayOutput values.
 // You can construct a concrete instance of `ArmRoleReceiverArrayInput` via:
 //
@@ -105,6 +112,12 @@ func (i ArmRoleReceiverArray) ToArmRoleReceiverArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ArmRoleReceiverArrayOutput)
 }
 
+func (i ArmRoleReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]ArmRoleReceiver] {
+	return pulumix.Output[[]ArmRoleReceiver]{
+		OutputState: i.ToArmRoleReceiverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An arm role receiver.
 type ArmRoleReceiverOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o ArmRoleReceiverOutput) ToArmRoleReceiverOutput() ArmRoleReceiverOutput {
 
 func (o ArmRoleReceiverOutput) ToArmRoleReceiverOutputWithContext(ctx context.Context) ArmRoleReceiverOutput {
 	return o
+}
+
+func (o ArmRoleReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[ArmRoleReceiver] {
+	return pulumix.Output[ArmRoleReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the arm role receiver. Names must be unique across all receivers within an action group.
@@ -147,6 +166,12 @@ func (o ArmRoleReceiverArrayOutput) ToArmRoleReceiverArrayOutput() ArmRoleReceiv
 
 func (o ArmRoleReceiverArrayOutput) ToArmRoleReceiverArrayOutputWithContext(ctx context.Context) ArmRoleReceiverArrayOutput {
 	return o
+}
+
+func (o ArmRoleReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ArmRoleReceiver] {
+	return pulumix.Output[[]ArmRoleReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ArmRoleReceiverArrayOutput) Index(i pulumi.IntInput) ArmRoleReceiverOutput {
@@ -193,6 +218,12 @@ func (o ArmRoleReceiverResponseOutput) ToArmRoleReceiverResponseOutputWithContex
 	return o
 }
 
+func (o ArmRoleReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ArmRoleReceiverResponse] {
+	return pulumix.Output[ArmRoleReceiverResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the arm role receiver. Names must be unique across all receivers within an action group.
 func (o ArmRoleReceiverResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ArmRoleReceiverResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -220,6 +251,12 @@ func (o ArmRoleReceiverResponseArrayOutput) ToArmRoleReceiverResponseArrayOutput
 
 func (o ArmRoleReceiverResponseArrayOutput) ToArmRoleReceiverResponseArrayOutputWithContext(ctx context.Context) ArmRoleReceiverResponseArrayOutput {
 	return o
+}
+
+func (o ArmRoleReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ArmRoleReceiverResponse] {
+	return pulumix.Output[[]ArmRoleReceiverResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ArmRoleReceiverResponseArrayOutput) Index(i pulumi.IntInput) ArmRoleReceiverResponseOutput {
@@ -311,6 +348,12 @@ func (i AutomationRunbookReceiverArgs) ToAutomationRunbookReceiverOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationRunbookReceiverOutput)
 }
 
+func (i AutomationRunbookReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[AutomationRunbookReceiver] {
+	return pulumix.Output[AutomationRunbookReceiver]{
+		OutputState: i.ToAutomationRunbookReceiverOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutomationRunbookReceiverArrayInput is an input type that accepts AutomationRunbookReceiverArray and AutomationRunbookReceiverArrayOutput values.
 // You can construct a concrete instance of `AutomationRunbookReceiverArrayInput` via:
 //
@@ -336,6 +379,12 @@ func (i AutomationRunbookReceiverArray) ToAutomationRunbookReceiverArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationRunbookReceiverArrayOutput)
 }
 
+func (i AutomationRunbookReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]AutomationRunbookReceiver] {
+	return pulumix.Output[[]AutomationRunbookReceiver]{
+		OutputState: i.ToAutomationRunbookReceiverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Azure Automation Runbook notification receiver.
 type AutomationRunbookReceiverOutput struct{ *pulumi.OutputState }
 
@@ -349,6 +398,12 @@ func (o AutomationRunbookReceiverOutput) ToAutomationRunbookReceiverOutput() Aut
 
 func (o AutomationRunbookReceiverOutput) ToAutomationRunbookReceiverOutputWithContext(ctx context.Context) AutomationRunbookReceiverOutput {
 	return o
+}
+
+func (o AutomationRunbookReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRunbookReceiver] {
+	return pulumix.Output[AutomationRunbookReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Azure automation account Id which holds this runbook and authenticate to Azure resource.
@@ -398,6 +453,12 @@ func (o AutomationRunbookReceiverArrayOutput) ToAutomationRunbookReceiverArrayOu
 
 func (o AutomationRunbookReceiverArrayOutput) ToAutomationRunbookReceiverArrayOutputWithContext(ctx context.Context) AutomationRunbookReceiverArrayOutput {
 	return o
+}
+
+func (o AutomationRunbookReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationRunbookReceiver] {
+	return pulumix.Output[[]AutomationRunbookReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutomationRunbookReceiverArrayOutput) Index(i pulumi.IntInput) AutomationRunbookReceiverOutput {
@@ -452,6 +513,12 @@ func (o AutomationRunbookReceiverResponseOutput) ToAutomationRunbookReceiverResp
 	return o
 }
 
+func (o AutomationRunbookReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRunbookReceiverResponse] {
+	return pulumix.Output[AutomationRunbookReceiverResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Azure automation account Id which holds this runbook and authenticate to Azure resource.
 func (o AutomationRunbookReceiverResponseOutput) AutomationAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v AutomationRunbookReceiverResponse) string { return v.AutomationAccountId }).(pulumi.StringOutput)
@@ -501,6 +568,12 @@ func (o AutomationRunbookReceiverResponseArrayOutput) ToAutomationRunbookReceive
 	return o
 }
 
+func (o AutomationRunbookReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationRunbookReceiverResponse] {
+	return pulumix.Output[[]AutomationRunbookReceiverResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutomationRunbookReceiverResponseArrayOutput) Index(i pulumi.IntInput) AutomationRunbookReceiverResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutomationRunbookReceiverResponse {
 		return vs[0].([]AutomationRunbookReceiverResponse)[vs[1].(int)]
@@ -546,6 +619,12 @@ func (i AzureAppPushReceiverArgs) ToAzureAppPushReceiverOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AzureAppPushReceiverOutput)
 }
 
+func (i AzureAppPushReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[AzureAppPushReceiver] {
+	return pulumix.Output[AzureAppPushReceiver]{
+		OutputState: i.ToAzureAppPushReceiverOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AzureAppPushReceiverArrayInput is an input type that accepts AzureAppPushReceiverArray and AzureAppPushReceiverArrayOutput values.
 // You can construct a concrete instance of `AzureAppPushReceiverArrayInput` via:
 //
@@ -571,6 +650,12 @@ func (i AzureAppPushReceiverArray) ToAzureAppPushReceiverArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AzureAppPushReceiverArrayOutput)
 }
 
+func (i AzureAppPushReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]AzureAppPushReceiver] {
+	return pulumix.Output[[]AzureAppPushReceiver]{
+		OutputState: i.ToAzureAppPushReceiverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Azure mobile App push notification receiver.
 type AzureAppPushReceiverOutput struct{ *pulumi.OutputState }
 
@@ -584,6 +669,12 @@ func (o AzureAppPushReceiverOutput) ToAzureAppPushReceiverOutput() AzureAppPushR
 
 func (o AzureAppPushReceiverOutput) ToAzureAppPushReceiverOutputWithContext(ctx context.Context) AzureAppPushReceiverOutput {
 	return o
+}
+
+func (o AzureAppPushReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[AzureAppPushReceiver] {
+	return pulumix.Output[AzureAppPushReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The email address registered for the Azure mobile app.
@@ -608,6 +699,12 @@ func (o AzureAppPushReceiverArrayOutput) ToAzureAppPushReceiverArrayOutput() Azu
 
 func (o AzureAppPushReceiverArrayOutput) ToAzureAppPushReceiverArrayOutputWithContext(ctx context.Context) AzureAppPushReceiverArrayOutput {
 	return o
+}
+
+func (o AzureAppPushReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureAppPushReceiver] {
+	return pulumix.Output[[]AzureAppPushReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureAppPushReceiverArrayOutput) Index(i pulumi.IntInput) AzureAppPushReceiverOutput {
@@ -639,6 +736,12 @@ func (o AzureAppPushReceiverResponseOutput) ToAzureAppPushReceiverResponseOutput
 	return o
 }
 
+func (o AzureAppPushReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureAppPushReceiverResponse] {
+	return pulumix.Output[AzureAppPushReceiverResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The email address registered for the Azure mobile app.
 func (o AzureAppPushReceiverResponseOutput) EmailAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureAppPushReceiverResponse) string { return v.EmailAddress }).(pulumi.StringOutput)
@@ -661,6 +764,12 @@ func (o AzureAppPushReceiverResponseArrayOutput) ToAzureAppPushReceiverResponseA
 
 func (o AzureAppPushReceiverResponseArrayOutput) ToAzureAppPushReceiverResponseArrayOutputWithContext(ctx context.Context) AzureAppPushReceiverResponseArrayOutput {
 	return o
+}
+
+func (o AzureAppPushReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureAppPushReceiverResponse] {
+	return pulumix.Output[[]AzureAppPushReceiverResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureAppPushReceiverResponseArrayOutput) Index(i pulumi.IntInput) AzureAppPushReceiverResponseOutput {
@@ -744,6 +853,12 @@ func (i AzureFunctionReceiverArgs) ToAzureFunctionReceiverOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AzureFunctionReceiverOutput)
 }
 
+func (i AzureFunctionReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[AzureFunctionReceiver] {
+	return pulumix.Output[AzureFunctionReceiver]{
+		OutputState: i.ToAzureFunctionReceiverOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AzureFunctionReceiverArrayInput is an input type that accepts AzureFunctionReceiverArray and AzureFunctionReceiverArrayOutput values.
 // You can construct a concrete instance of `AzureFunctionReceiverArrayInput` via:
 //
@@ -769,6 +884,12 @@ func (i AzureFunctionReceiverArray) ToAzureFunctionReceiverArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AzureFunctionReceiverArrayOutput)
 }
 
+func (i AzureFunctionReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]AzureFunctionReceiver] {
+	return pulumix.Output[[]AzureFunctionReceiver]{
+		OutputState: i.ToAzureFunctionReceiverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An azure function receiver.
 type AzureFunctionReceiverOutput struct{ *pulumi.OutputState }
 
@@ -782,6 +903,12 @@ func (o AzureFunctionReceiverOutput) ToAzureFunctionReceiverOutput() AzureFuncti
 
 func (o AzureFunctionReceiverOutput) ToAzureFunctionReceiverOutputWithContext(ctx context.Context) AzureFunctionReceiverOutput {
 	return o
+}
+
+func (o AzureFunctionReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[AzureFunctionReceiver] {
+	return pulumix.Output[AzureFunctionReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The azure resource id of the function app.
@@ -821,6 +948,12 @@ func (o AzureFunctionReceiverArrayOutput) ToAzureFunctionReceiverArrayOutput() A
 
 func (o AzureFunctionReceiverArrayOutput) ToAzureFunctionReceiverArrayOutputWithContext(ctx context.Context) AzureFunctionReceiverArrayOutput {
 	return o
+}
+
+func (o AzureFunctionReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureFunctionReceiver] {
+	return pulumix.Output[[]AzureFunctionReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureFunctionReceiverArrayOutput) Index(i pulumi.IntInput) AzureFunctionReceiverOutput {
@@ -871,6 +1004,12 @@ func (o AzureFunctionReceiverResponseOutput) ToAzureFunctionReceiverResponseOutp
 	return o
 }
 
+func (o AzureFunctionReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureFunctionReceiverResponse] {
+	return pulumix.Output[AzureFunctionReceiverResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The azure resource id of the function app.
 func (o AzureFunctionReceiverResponseOutput) FunctionAppResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureFunctionReceiverResponse) string { return v.FunctionAppResourceId }).(pulumi.StringOutput)
@@ -908,6 +1047,12 @@ func (o AzureFunctionReceiverResponseArrayOutput) ToAzureFunctionReceiverRespons
 
 func (o AzureFunctionReceiverResponseArrayOutput) ToAzureFunctionReceiverResponseArrayOutputWithContext(ctx context.Context) AzureFunctionReceiverResponseArrayOutput {
 	return o
+}
+
+func (o AzureFunctionReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureFunctionReceiverResponse] {
+	return pulumix.Output[[]AzureFunctionReceiverResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureFunctionReceiverResponseArrayOutput) Index(i pulumi.IntInput) AzureFunctionReceiverResponseOutput {
@@ -983,6 +1128,12 @@ func (i EmailReceiverArgs) ToEmailReceiverOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(EmailReceiverOutput)
 }
 
+func (i EmailReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[EmailReceiver] {
+	return pulumix.Output[EmailReceiver]{
+		OutputState: i.ToEmailReceiverOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EmailReceiverArrayInput is an input type that accepts EmailReceiverArray and EmailReceiverArrayOutput values.
 // You can construct a concrete instance of `EmailReceiverArrayInput` via:
 //
@@ -1008,6 +1159,12 @@ func (i EmailReceiverArray) ToEmailReceiverArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EmailReceiverArrayOutput)
 }
 
+func (i EmailReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]EmailReceiver] {
+	return pulumix.Output[[]EmailReceiver]{
+		OutputState: i.ToEmailReceiverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An email receiver.
 type EmailReceiverOutput struct{ *pulumi.OutputState }
 
@@ -1021,6 +1178,12 @@ func (o EmailReceiverOutput) ToEmailReceiverOutput() EmailReceiverOutput {
 
 func (o EmailReceiverOutput) ToEmailReceiverOutputWithContext(ctx context.Context) EmailReceiverOutput {
 	return o
+}
+
+func (o EmailReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[EmailReceiver] {
+	return pulumix.Output[EmailReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The email address of this receiver.
@@ -1050,6 +1213,12 @@ func (o EmailReceiverArrayOutput) ToEmailReceiverArrayOutput() EmailReceiverArra
 
 func (o EmailReceiverArrayOutput) ToEmailReceiverArrayOutputWithContext(ctx context.Context) EmailReceiverArrayOutput {
 	return o
+}
+
+func (o EmailReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EmailReceiver] {
+	return pulumix.Output[[]EmailReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EmailReceiverArrayOutput) Index(i pulumi.IntInput) EmailReceiverOutput {
@@ -1098,6 +1267,12 @@ func (o EmailReceiverResponseOutput) ToEmailReceiverResponseOutputWithContext(ct
 	return o
 }
 
+func (o EmailReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EmailReceiverResponse] {
+	return pulumix.Output[EmailReceiverResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The email address of this receiver.
 func (o EmailReceiverResponseOutput) EmailAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v EmailReceiverResponse) string { return v.EmailAddress }).(pulumi.StringOutput)
@@ -1130,6 +1305,12 @@ func (o EmailReceiverResponseArrayOutput) ToEmailReceiverResponseArrayOutput() E
 
 func (o EmailReceiverResponseArrayOutput) ToEmailReceiverResponseArrayOutputWithContext(ctx context.Context) EmailReceiverResponseArrayOutput {
 	return o
+}
+
+func (o EmailReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EmailReceiverResponse] {
+	return pulumix.Output[[]EmailReceiverResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EmailReceiverResponseArrayOutput) Index(i pulumi.IntInput) EmailReceiverResponseOutput {
@@ -1217,6 +1398,12 @@ func (i EventHubReceiverArgs) ToEventHubReceiverOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubReceiverOutput)
 }
 
+func (i EventHubReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[EventHubReceiver] {
+	return pulumix.Output[EventHubReceiver]{
+		OutputState: i.ToEventHubReceiverOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EventHubReceiverArrayInput is an input type that accepts EventHubReceiverArray and EventHubReceiverArrayOutput values.
 // You can construct a concrete instance of `EventHubReceiverArrayInput` via:
 //
@@ -1242,6 +1429,12 @@ func (i EventHubReceiverArray) ToEventHubReceiverArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubReceiverArrayOutput)
 }
 
+func (i EventHubReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]EventHubReceiver] {
+	return pulumix.Output[[]EventHubReceiver]{
+		OutputState: i.ToEventHubReceiverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An Event hub receiver.
 type EventHubReceiverOutput struct{ *pulumi.OutputState }
 
@@ -1255,6 +1448,12 @@ func (o EventHubReceiverOutput) ToEventHubReceiverOutput() EventHubReceiverOutpu
 
 func (o EventHubReceiverOutput) ToEventHubReceiverOutputWithContext(ctx context.Context) EventHubReceiverOutput {
 	return o
+}
+
+func (o EventHubReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[EventHubReceiver] {
+	return pulumix.Output[EventHubReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the specific Event Hub queue
@@ -1299,6 +1498,12 @@ func (o EventHubReceiverArrayOutput) ToEventHubReceiverArrayOutput() EventHubRec
 
 func (o EventHubReceiverArrayOutput) ToEventHubReceiverArrayOutputWithContext(ctx context.Context) EventHubReceiverArrayOutput {
 	return o
+}
+
+func (o EventHubReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EventHubReceiver] {
+	return pulumix.Output[[]EventHubReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EventHubReceiverArrayOutput) Index(i pulumi.IntInput) EventHubReceiverOutput {
@@ -1351,6 +1556,12 @@ func (o EventHubReceiverResponseOutput) ToEventHubReceiverResponseOutputWithCont
 	return o
 }
 
+func (o EventHubReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EventHubReceiverResponse] {
+	return pulumix.Output[EventHubReceiverResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the specific Event Hub queue
 func (o EventHubReceiverResponseOutput) EventHubName() pulumi.StringOutput {
 	return o.ApplyT(func(v EventHubReceiverResponse) string { return v.EventHubName }).(pulumi.StringOutput)
@@ -1393,6 +1604,12 @@ func (o EventHubReceiverResponseArrayOutput) ToEventHubReceiverResponseArrayOutp
 
 func (o EventHubReceiverResponseArrayOutput) ToEventHubReceiverResponseArrayOutputWithContext(ctx context.Context) EventHubReceiverResponseArrayOutput {
 	return o
+}
+
+func (o EventHubReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EventHubReceiverResponse] {
+	return pulumix.Output[[]EventHubReceiverResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EventHubReceiverResponseArrayOutput) Index(i pulumi.IntInput) EventHubReceiverResponseOutput {
@@ -1452,6 +1669,12 @@ func (i ItsmReceiverArgs) ToItsmReceiverOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(ItsmReceiverOutput)
 }
 
+func (i ItsmReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[ItsmReceiver] {
+	return pulumix.Output[ItsmReceiver]{
+		OutputState: i.ToItsmReceiverOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ItsmReceiverArrayInput is an input type that accepts ItsmReceiverArray and ItsmReceiverArrayOutput values.
 // You can construct a concrete instance of `ItsmReceiverArrayInput` via:
 //
@@ -1477,6 +1700,12 @@ func (i ItsmReceiverArray) ToItsmReceiverArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ItsmReceiverArrayOutput)
 }
 
+func (i ItsmReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]ItsmReceiver] {
+	return pulumix.Output[[]ItsmReceiver]{
+		OutputState: i.ToItsmReceiverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An Itsm receiver.
 type ItsmReceiverOutput struct{ *pulumi.OutputState }
 
@@ -1490,6 +1719,12 @@ func (o ItsmReceiverOutput) ToItsmReceiverOutput() ItsmReceiverOutput {
 
 func (o ItsmReceiverOutput) ToItsmReceiverOutputWithContext(ctx context.Context) ItsmReceiverOutput {
 	return o
+}
+
+func (o ItsmReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[ItsmReceiver] {
+	return pulumix.Output[ItsmReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identification of ITSM connection among multiple defined in above workspace.
@@ -1531,6 +1766,12 @@ func (o ItsmReceiverArrayOutput) ToItsmReceiverArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o ItsmReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ItsmReceiver] {
+	return pulumix.Output[[]ItsmReceiver]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ItsmReceiverArrayOutput) Index(i pulumi.IntInput) ItsmReceiverOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ItsmReceiver {
 		return vs[0].([]ItsmReceiver)[vs[1].(int)]
@@ -1564,6 +1805,12 @@ func (o ItsmReceiverResponseOutput) ToItsmReceiverResponseOutput() ItsmReceiverR
 
 func (o ItsmReceiverResponseOutput) ToItsmReceiverResponseOutputWithContext(ctx context.Context) ItsmReceiverResponseOutput {
 	return o
+}
+
+func (o ItsmReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ItsmReceiverResponse] {
+	return pulumix.Output[ItsmReceiverResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identification of ITSM connection among multiple defined in above workspace.
@@ -1603,6 +1850,12 @@ func (o ItsmReceiverResponseArrayOutput) ToItsmReceiverResponseArrayOutput() Its
 
 func (o ItsmReceiverResponseArrayOutput) ToItsmReceiverResponseArrayOutputWithContext(ctx context.Context) ItsmReceiverResponseArrayOutput {
 	return o
+}
+
+func (o ItsmReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ItsmReceiverResponse] {
+	return pulumix.Output[[]ItsmReceiverResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ItsmReceiverResponseArrayOutput) Index(i pulumi.IntInput) ItsmReceiverResponseOutput {
@@ -1682,6 +1935,12 @@ func (i LogicAppReceiverArgs) ToLogicAppReceiverOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(LogicAppReceiverOutput)
 }
 
+func (i LogicAppReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[LogicAppReceiver] {
+	return pulumix.Output[LogicAppReceiver]{
+		OutputState: i.ToLogicAppReceiverOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LogicAppReceiverArrayInput is an input type that accepts LogicAppReceiverArray and LogicAppReceiverArrayOutput values.
 // You can construct a concrete instance of `LogicAppReceiverArrayInput` via:
 //
@@ -1707,6 +1966,12 @@ func (i LogicAppReceiverArray) ToLogicAppReceiverArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(LogicAppReceiverArrayOutput)
 }
 
+func (i LogicAppReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]LogicAppReceiver] {
+	return pulumix.Output[[]LogicAppReceiver]{
+		OutputState: i.ToLogicAppReceiverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A logic app receiver.
 type LogicAppReceiverOutput struct{ *pulumi.OutputState }
 
@@ -1720,6 +1985,12 @@ func (o LogicAppReceiverOutput) ToLogicAppReceiverOutput() LogicAppReceiverOutpu
 
 func (o LogicAppReceiverOutput) ToLogicAppReceiverOutputWithContext(ctx context.Context) LogicAppReceiverOutput {
 	return o
+}
+
+func (o LogicAppReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[LogicAppReceiver] {
+	return pulumix.Output[LogicAppReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The callback url where http request sent to.
@@ -1754,6 +2025,12 @@ func (o LogicAppReceiverArrayOutput) ToLogicAppReceiverArrayOutput() LogicAppRec
 
 func (o LogicAppReceiverArrayOutput) ToLogicAppReceiverArrayOutputWithContext(ctx context.Context) LogicAppReceiverArrayOutput {
 	return o
+}
+
+func (o LogicAppReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LogicAppReceiver] {
+	return pulumix.Output[[]LogicAppReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogicAppReceiverArrayOutput) Index(i pulumi.IntInput) LogicAppReceiverOutput {
@@ -1802,6 +2079,12 @@ func (o LogicAppReceiverResponseOutput) ToLogicAppReceiverResponseOutputWithCont
 	return o
 }
 
+func (o LogicAppReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogicAppReceiverResponse] {
+	return pulumix.Output[LogicAppReceiverResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The callback url where http request sent to.
 func (o LogicAppReceiverResponseOutput) CallbackUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LogicAppReceiverResponse) string { return v.CallbackUrl }).(pulumi.StringOutput)
@@ -1834,6 +2117,12 @@ func (o LogicAppReceiverResponseArrayOutput) ToLogicAppReceiverResponseArrayOutp
 
 func (o LogicAppReceiverResponseArrayOutput) ToLogicAppReceiverResponseArrayOutputWithContext(ctx context.Context) LogicAppReceiverResponseArrayOutput {
 	return o
+}
+
+func (o LogicAppReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LogicAppReceiverResponse] {
+	return pulumix.Output[[]LogicAppReceiverResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogicAppReceiverResponseArrayOutput) Index(i pulumi.IntInput) LogicAppReceiverResponseOutput {
@@ -1885,6 +2174,12 @@ func (i SmsReceiverArgs) ToSmsReceiverOutputWithContext(ctx context.Context) Sms
 	return pulumi.ToOutputWithContext(ctx, i).(SmsReceiverOutput)
 }
 
+func (i SmsReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[SmsReceiver] {
+	return pulumix.Output[SmsReceiver]{
+		OutputState: i.ToSmsReceiverOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SmsReceiverArrayInput is an input type that accepts SmsReceiverArray and SmsReceiverArrayOutput values.
 // You can construct a concrete instance of `SmsReceiverArrayInput` via:
 //
@@ -1910,6 +2205,12 @@ func (i SmsReceiverArray) ToSmsReceiverArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SmsReceiverArrayOutput)
 }
 
+func (i SmsReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]SmsReceiver] {
+	return pulumix.Output[[]SmsReceiver]{
+		OutputState: i.ToSmsReceiverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An SMS receiver.
 type SmsReceiverOutput struct{ *pulumi.OutputState }
 
@@ -1923,6 +2224,12 @@ func (o SmsReceiverOutput) ToSmsReceiverOutput() SmsReceiverOutput {
 
 func (o SmsReceiverOutput) ToSmsReceiverOutputWithContext(ctx context.Context) SmsReceiverOutput {
 	return o
+}
+
+func (o SmsReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[SmsReceiver] {
+	return pulumix.Output[SmsReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The country code of the SMS receiver.
@@ -1952,6 +2259,12 @@ func (o SmsReceiverArrayOutput) ToSmsReceiverArrayOutput() SmsReceiverArrayOutpu
 
 func (o SmsReceiverArrayOutput) ToSmsReceiverArrayOutputWithContext(ctx context.Context) SmsReceiverArrayOutput {
 	return o
+}
+
+func (o SmsReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SmsReceiver] {
+	return pulumix.Output[[]SmsReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SmsReceiverArrayOutput) Index(i pulumi.IntInput) SmsReceiverOutput {
@@ -1987,6 +2300,12 @@ func (o SmsReceiverResponseOutput) ToSmsReceiverResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o SmsReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SmsReceiverResponse] {
+	return pulumix.Output[SmsReceiverResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The country code of the SMS receiver.
 func (o SmsReceiverResponseOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v SmsReceiverResponse) string { return v.CountryCode }).(pulumi.StringOutput)
@@ -2019,6 +2338,12 @@ func (o SmsReceiverResponseArrayOutput) ToSmsReceiverResponseArrayOutput() SmsRe
 
 func (o SmsReceiverResponseArrayOutput) ToSmsReceiverResponseArrayOutputWithContext(ctx context.Context) SmsReceiverResponseArrayOutput {
 	return o
+}
+
+func (o SmsReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SmsReceiverResponse] {
+	return pulumix.Output[[]SmsReceiverResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SmsReceiverResponseArrayOutput) Index(i pulumi.IntInput) SmsReceiverResponseOutput {
@@ -2070,6 +2395,12 @@ func (i VoiceReceiverArgs) ToVoiceReceiverOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(VoiceReceiverOutput)
 }
 
+func (i VoiceReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[VoiceReceiver] {
+	return pulumix.Output[VoiceReceiver]{
+		OutputState: i.ToVoiceReceiverOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VoiceReceiverArrayInput is an input type that accepts VoiceReceiverArray and VoiceReceiverArrayOutput values.
 // You can construct a concrete instance of `VoiceReceiverArrayInput` via:
 //
@@ -2095,6 +2426,12 @@ func (i VoiceReceiverArray) ToVoiceReceiverArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VoiceReceiverArrayOutput)
 }
 
+func (i VoiceReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]VoiceReceiver] {
+	return pulumix.Output[[]VoiceReceiver]{
+		OutputState: i.ToVoiceReceiverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A voice receiver.
 type VoiceReceiverOutput struct{ *pulumi.OutputState }
 
@@ -2108,6 +2445,12 @@ func (o VoiceReceiverOutput) ToVoiceReceiverOutput() VoiceReceiverOutput {
 
 func (o VoiceReceiverOutput) ToVoiceReceiverOutputWithContext(ctx context.Context) VoiceReceiverOutput {
 	return o
+}
+
+func (o VoiceReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[VoiceReceiver] {
+	return pulumix.Output[VoiceReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The country code of the voice receiver.
@@ -2137,6 +2480,12 @@ func (o VoiceReceiverArrayOutput) ToVoiceReceiverArrayOutput() VoiceReceiverArra
 
 func (o VoiceReceiverArrayOutput) ToVoiceReceiverArrayOutputWithContext(ctx context.Context) VoiceReceiverArrayOutput {
 	return o
+}
+
+func (o VoiceReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VoiceReceiver] {
+	return pulumix.Output[[]VoiceReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VoiceReceiverArrayOutput) Index(i pulumi.IntInput) VoiceReceiverOutput {
@@ -2170,6 +2519,12 @@ func (o VoiceReceiverResponseOutput) ToVoiceReceiverResponseOutputWithContext(ct
 	return o
 }
 
+func (o VoiceReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VoiceReceiverResponse] {
+	return pulumix.Output[VoiceReceiverResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The country code of the voice receiver.
 func (o VoiceReceiverResponseOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v VoiceReceiverResponse) string { return v.CountryCode }).(pulumi.StringOutput)
@@ -2197,6 +2552,12 @@ func (o VoiceReceiverResponseArrayOutput) ToVoiceReceiverResponseArrayOutput() V
 
 func (o VoiceReceiverResponseArrayOutput) ToVoiceReceiverResponseArrayOutputWithContext(ctx context.Context) VoiceReceiverResponseArrayOutput {
 	return o
+}
+
+func (o VoiceReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VoiceReceiverResponse] {
+	return pulumix.Output[[]VoiceReceiverResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VoiceReceiverResponseArrayOutput) Index(i pulumi.IntInput) VoiceReceiverResponseOutput {
@@ -2295,6 +2656,12 @@ func (i WebhookReceiverArgs) ToWebhookReceiverOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookReceiverOutput)
 }
 
+func (i WebhookReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[WebhookReceiver] {
+	return pulumix.Output[WebhookReceiver]{
+		OutputState: i.ToWebhookReceiverOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WebhookReceiverArrayInput is an input type that accepts WebhookReceiverArray and WebhookReceiverArrayOutput values.
 // You can construct a concrete instance of `WebhookReceiverArrayInput` via:
 //
@@ -2320,6 +2687,12 @@ func (i WebhookReceiverArray) ToWebhookReceiverArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookReceiverArrayOutput)
 }
 
+func (i WebhookReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]WebhookReceiver] {
+	return pulumix.Output[[]WebhookReceiver]{
+		OutputState: i.ToWebhookReceiverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A webhook receiver.
 type WebhookReceiverOutput struct{ *pulumi.OutputState }
 
@@ -2333,6 +2706,12 @@ func (o WebhookReceiverOutput) ToWebhookReceiverOutput() WebhookReceiverOutput {
 
 func (o WebhookReceiverOutput) ToWebhookReceiverOutputWithContext(ctx context.Context) WebhookReceiverOutput {
 	return o
+}
+
+func (o WebhookReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookReceiver] {
+	return pulumix.Output[WebhookReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates the identifier uri for aad auth.
@@ -2382,6 +2761,12 @@ func (o WebhookReceiverArrayOutput) ToWebhookReceiverArrayOutput() WebhookReceiv
 
 func (o WebhookReceiverArrayOutput) ToWebhookReceiverArrayOutputWithContext(ctx context.Context) WebhookReceiverArrayOutput {
 	return o
+}
+
+func (o WebhookReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WebhookReceiver] {
+	return pulumix.Output[[]WebhookReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebhookReceiverArrayOutput) Index(i pulumi.IntInput) WebhookReceiverOutput {
@@ -2440,6 +2825,12 @@ func (o WebhookReceiverResponseOutput) ToWebhookReceiverResponseOutputWithContex
 	return o
 }
 
+func (o WebhookReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookReceiverResponse] {
+	return pulumix.Output[WebhookReceiverResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates the identifier uri for aad auth.
 func (o WebhookReceiverResponseOutput) IdentifierUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookReceiverResponse) *string { return v.IdentifierUri }).(pulumi.StringPtrOutput)
@@ -2487,6 +2878,12 @@ func (o WebhookReceiverResponseArrayOutput) ToWebhookReceiverResponseArrayOutput
 
 func (o WebhookReceiverResponseArrayOutput) ToWebhookReceiverResponseArrayOutputWithContext(ctx context.Context) WebhookReceiverResponseArrayOutput {
 	return o
+}
+
+func (o WebhookReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WebhookReceiverResponse] {
+	return pulumix.Output[[]WebhookReceiverResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebhookReceiverResponseArrayOutput) Index(i pulumi.IntInput) WebhookReceiverResponseOutput {

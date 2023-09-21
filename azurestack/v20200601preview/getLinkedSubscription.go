@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the properties of a Linked Subscription resource.
@@ -100,6 +101,12 @@ func (o LookupLinkedSubscriptionResultOutput) ToLookupLinkedSubscriptionResultOu
 
 func (o LookupLinkedSubscriptionResultOutput) ToLookupLinkedSubscriptionResultOutputWithContext(ctx context.Context) LookupLinkedSubscriptionResultOutput {
 	return o
+}
+
+func (o LookupLinkedSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLinkedSubscriptionResult] {
+	return pulumix.Output[LookupLinkedSubscriptionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status of the remote management connection of the Azure Stack device.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Workspace definition.
@@ -218,6 +219,12 @@ func (i *Workspace) ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceO
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceOutput)
 }
 
+func (i *Workspace) ToOutput(ctx context.Context) pulumix.Output[*Workspace] {
+	return pulumix.Output[*Workspace]{
+		OutputState: i.ToWorkspaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceOutput) ElementType() reflect.Type {
@@ -230,6 +237,12 @@ func (o WorkspaceOutput) ToWorkspaceOutput() WorkspaceOutput {
 
 func (o WorkspaceOutput) ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput {
 	return o
+}
+
+func (o WorkspaceOutput) ToOutput(ctx context.Context) pulumix.Output[*Workspace] {
+	return pulumix.Output[*Workspace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of applicationGroup resource Ids.

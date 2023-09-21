@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The storage container resource definition.
@@ -144,6 +145,12 @@ func (i *StorageContainer) ToStorageContainerOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(StorageContainerOutput)
 }
 
+func (i *StorageContainer) ToOutput(ctx context.Context) pulumix.Output[*StorageContainer] {
+	return pulumix.Output[*StorageContainer]{
+		OutputState: i.ToStorageContainerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StorageContainerOutput struct{ *pulumi.OutputState }
 
 func (StorageContainerOutput) ElementType() reflect.Type {
@@ -156,6 +163,12 @@ func (o StorageContainerOutput) ToStorageContainerOutput() StorageContainerOutpu
 
 func (o StorageContainerOutput) ToStorageContainerOutputWithContext(ctx context.Context) StorageContainerOutput {
 	return o
+}
+
+func (o StorageContainerOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageContainer] {
+	return pulumix.Output[*StorageContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The extendedLocation of the resource.

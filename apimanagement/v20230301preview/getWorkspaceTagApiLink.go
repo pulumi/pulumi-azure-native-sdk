@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the API link for the tag.
@@ -90,6 +91,12 @@ func (o LookupWorkspaceTagApiLinkResultOutput) ToLookupWorkspaceTagApiLinkResult
 
 func (o LookupWorkspaceTagApiLinkResultOutput) ToLookupWorkspaceTagApiLinkResultOutputWithContext(ctx context.Context) LookupWorkspaceTagApiLinkResultOutput {
 	return o
+}
+
+func (o LookupWorkspaceTagApiLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceTagApiLinkResult] {
+	return pulumix.Output[LookupWorkspaceTagApiLinkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Full resource Id of an API.

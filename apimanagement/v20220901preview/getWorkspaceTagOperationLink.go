@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the operation link for the tag.
@@ -90,6 +91,12 @@ func (o LookupWorkspaceTagOperationLinkResultOutput) ToLookupWorkspaceTagOperati
 
 func (o LookupWorkspaceTagOperationLinkResultOutput) ToLookupWorkspaceTagOperationLinkResultOutputWithContext(ctx context.Context) LookupWorkspaceTagOperationLinkResultOutput {
 	return o
+}
+
+func (o LookupWorkspaceTagOperationLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceTagOperationLinkResult] {
+	return pulumix.Output[LookupWorkspaceTagOperationLinkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

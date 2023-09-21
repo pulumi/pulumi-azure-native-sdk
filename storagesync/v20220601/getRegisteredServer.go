@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a given registered server.
@@ -128,6 +129,12 @@ func (o LookupRegisteredServerResultOutput) ToLookupRegisteredServerResultOutput
 
 func (o LookupRegisteredServerResultOutput) ToLookupRegisteredServerResultOutputWithContext(ctx context.Context) LookupRegisteredServerResultOutput {
 	return o
+}
+
+func (o LookupRegisteredServerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegisteredServerResult] {
+	return pulumix.Output[LookupRegisteredServerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Registered Server Agent Version

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified bandwidth schedule.
@@ -91,6 +92,12 @@ func (o LookupBandwidthScheduleResultOutput) ToLookupBandwidthScheduleResultOutp
 
 func (o LookupBandwidthScheduleResultOutput) ToLookupBandwidthScheduleResultOutputWithContext(ctx context.Context) LookupBandwidthScheduleResultOutput {
 	return o
+}
+
+func (o LookupBandwidthScheduleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBandwidthScheduleResult] {
+	return pulumix.Output[LookupBandwidthScheduleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The days of the week when this schedule is applicable.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List the authorization keys associated with this account.
@@ -75,6 +76,12 @@ func (o ListAccountKeysResultOutput) ToListAccountKeysResultOutput() ListAccount
 
 func (o ListAccountKeysResultOutput) ToListAccountKeysResultOutputWithContext(ctx context.Context) ListAccountKeysResultOutput {
 	return o
+}
+
+func (o ListAccountKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListAccountKeysResult] {
+	return pulumix.Output[ListAccountKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the primary connection string.

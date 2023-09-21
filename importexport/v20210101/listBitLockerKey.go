@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the BitLocker Keys for all drives in the specified job.
@@ -72,6 +73,12 @@ func (o ListBitLockerKeyResultOutput) ToListBitLockerKeyResultOutput() ListBitLo
 
 func (o ListBitLockerKeyResultOutput) ToListBitLockerKeyResultOutputWithContext(ctx context.Context) ListBitLockerKeyResultOutput {
 	return o
+}
+
+func (o ListBitLockerKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListBitLockerKeyResult] {
+	return pulumix.Output[ListBitLockerKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // drive status

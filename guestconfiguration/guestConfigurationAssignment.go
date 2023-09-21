@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Guest configuration assignment is an association between a machine and guest configuration.
@@ -146,6 +147,12 @@ func (i *GuestConfigurationAssignment) ToGuestConfigurationAssignmentOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(GuestConfigurationAssignmentOutput)
 }
 
+func (i *GuestConfigurationAssignment) ToOutput(ctx context.Context) pulumix.Output[*GuestConfigurationAssignment] {
+	return pulumix.Output[*GuestConfigurationAssignment]{
+		OutputState: i.ToGuestConfigurationAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GuestConfigurationAssignmentOutput struct{ *pulumi.OutputState }
 
 func (GuestConfigurationAssignmentOutput) ElementType() reflect.Type {
@@ -158,6 +165,12 @@ func (o GuestConfigurationAssignmentOutput) ToGuestConfigurationAssignmentOutput
 
 func (o GuestConfigurationAssignmentOutput) ToGuestConfigurationAssignmentOutputWithContext(ctx context.Context) GuestConfigurationAssignmentOutput {
 	return o
+}
+
+func (o GuestConfigurationAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestConfigurationAssignment] {
+	return pulumix.Output[*GuestConfigurationAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Region where the VM is located.

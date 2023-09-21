@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List configurations for the given product family, product line and product for the given subscription.
@@ -78,6 +79,12 @@ func (o ListProductsAndConfigurationsResultOutput) ToListProductsAndConfiguratio
 
 func (o ListProductsAndConfigurationsResultOutput) ToListProductsAndConfigurationsResultOutputWithContext(ctx context.Context) ListProductsAndConfigurationsResultOutput {
 	return o
+}
+
+func (o ListProductsAndConfigurationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListProductsAndConfigurationsResult] {
+	return pulumix.Output[ListProductsAndConfigurationsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Link for the next set of configurations.

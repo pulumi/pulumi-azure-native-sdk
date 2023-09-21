@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets properties of a SAP monitor for the specified subscription, resource group, and resource name.
@@ -97,6 +98,12 @@ func (o LookupSapMonitorResultOutput) ToLookupSapMonitorResultOutput() LookupSap
 
 func (o LookupSapMonitorResultOutput) ToLookupSapMonitorResultOutputWithContext(ctx context.Context) LookupSapMonitorResultOutput {
 	return o
+}
+
+func (o LookupSapMonitorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSapMonitorResult] {
+	return pulumix.Output[LookupSapMonitorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value indicating whether to send analytics to Microsoft

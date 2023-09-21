@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource for OuContainer.
@@ -167,6 +168,12 @@ func (i *OuContainer) ToOuContainerOutputWithContext(ctx context.Context) OuCont
 	return pulumi.ToOutputWithContext(ctx, i).(OuContainerOutput)
 }
 
+func (i *OuContainer) ToOutput(ctx context.Context) pulumix.Output[*OuContainer] {
+	return pulumix.Output[*OuContainer]{
+		OutputState: i.ToOuContainerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OuContainerOutput struct{ *pulumi.OutputState }
 
 func (OuContainerOutput) ElementType() reflect.Type {
@@ -179,6 +186,12 @@ func (o OuContainerOutput) ToOuContainerOutput() OuContainerOutput {
 
 func (o OuContainerOutput) ToOuContainerOutputWithContext(ctx context.Context) OuContainerOutput {
 	return o
+}
+
+func (o OuContainerOutput) ToOutput(ctx context.Context) pulumix.Output[*OuContainer] {
+	return pulumix.Output[*OuContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of container accounts

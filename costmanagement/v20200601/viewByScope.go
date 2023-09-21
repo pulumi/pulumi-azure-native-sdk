@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // States and configurations of Cost Analysis.
@@ -214,6 +215,12 @@ func (i *ViewByScope) ToViewByScopeOutputWithContext(ctx context.Context) ViewBy
 	return pulumi.ToOutputWithContext(ctx, i).(ViewByScopeOutput)
 }
 
+func (i *ViewByScope) ToOutput(ctx context.Context) pulumix.Output[*ViewByScope] {
+	return pulumix.Output[*ViewByScope]{
+		OutputState: i.ToViewByScopeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ViewByScopeOutput struct{ *pulumi.OutputState }
 
 func (ViewByScopeOutput) ElementType() reflect.Type {
@@ -226,6 +233,12 @@ func (o ViewByScopeOutput) ToViewByScopeOutput() ViewByScopeOutput {
 
 func (o ViewByScopeOutput) ToViewByScopeOutputWithContext(ctx context.Context) ViewByScopeOutput {
 	return o
+}
+
+func (o ViewByScopeOutput) ToOutput(ctx context.Context) pulumix.Output[*ViewByScope] {
+	return pulumix.Output[*ViewByScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Show costs accumulated over time.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Asset Filter.
@@ -158,6 +159,12 @@ func (i *AssetFilter) ToAssetFilterOutputWithContext(ctx context.Context) AssetF
 	return pulumi.ToOutputWithContext(ctx, i).(AssetFilterOutput)
 }
 
+func (i *AssetFilter) ToOutput(ctx context.Context) pulumix.Output[*AssetFilter] {
+	return pulumix.Output[*AssetFilter]{
+		OutputState: i.ToAssetFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AssetFilterOutput struct{ *pulumi.OutputState }
 
 func (AssetFilterOutput) ElementType() reflect.Type {
@@ -170,6 +177,12 @@ func (o AssetFilterOutput) ToAssetFilterOutput() AssetFilterOutput {
 
 func (o AssetFilterOutput) ToAssetFilterOutputWithContext(ctx context.Context) AssetFilterOutput {
 	return o
+}
+
+func (o AssetFilterOutput) ToOutput(ctx context.Context) pulumix.Output[*AssetFilter] {
+	return pulumix.Output[*AssetFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The first quality.

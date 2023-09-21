@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An application security group in a resource group.
@@ -244,6 +245,12 @@ func (i *ApplicationSecurityGroup) ToApplicationSecurityGroupOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSecurityGroupOutput)
 }
 
+func (i *ApplicationSecurityGroup) ToOutput(ctx context.Context) pulumix.Output[*ApplicationSecurityGroup] {
+	return pulumix.Output[*ApplicationSecurityGroup]{
+		OutputState: i.ToApplicationSecurityGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationSecurityGroupOutput struct{ *pulumi.OutputState }
 
 func (ApplicationSecurityGroupOutput) ElementType() reflect.Type {
@@ -256,6 +263,12 @@ func (o ApplicationSecurityGroupOutput) ToApplicationSecurityGroupOutput() Appli
 
 func (o ApplicationSecurityGroupOutput) ToApplicationSecurityGroupOutputWithContext(ctx context.Context) ApplicationSecurityGroupOutput {
 	return o
+}
+
+func (o ApplicationSecurityGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationSecurityGroup] {
+	return pulumix.Output[*ApplicationSecurityGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A unique read-only string that changes whenever the resource is updated.

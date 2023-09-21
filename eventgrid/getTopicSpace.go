@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of a topic space.
@@ -93,6 +94,12 @@ func (o LookupTopicSpaceResultOutput) ToLookupTopicSpaceResultOutput() LookupTop
 
 func (o LookupTopicSpaceResultOutput) ToLookupTopicSpaceResultOutputWithContext(ctx context.Context) LookupTopicSpaceResultOutput {
 	return o
+}
+
+func (o LookupTopicSpaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTopicSpaceResult] {
+	return pulumix.Output[LookupTopicSpaceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description for the Topic Space resource.

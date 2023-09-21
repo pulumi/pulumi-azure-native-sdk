@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of a permission binding.
@@ -94,6 +95,12 @@ func (o LookupPermissionBindingResultOutput) ToLookupPermissionBindingResultOutp
 
 func (o LookupPermissionBindingResultOutput) ToLookupPermissionBindingResultOutputWithContext(ctx context.Context) LookupPermissionBindingResultOutput {
 	return o
+}
+
+func (o LookupPermissionBindingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPermissionBindingResult] {
+	return pulumix.Output[LookupPermissionBindingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the client group resource that the permission is bound to.

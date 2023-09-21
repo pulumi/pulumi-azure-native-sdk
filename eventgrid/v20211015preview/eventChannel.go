@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Event Channel.
@@ -166,6 +167,12 @@ func (i *EventChannel) ToEventChannelOutputWithContext(ctx context.Context) Even
 	return pulumi.ToOutputWithContext(ctx, i).(EventChannelOutput)
 }
 
+func (i *EventChannel) ToOutput(ctx context.Context) pulumix.Output[*EventChannel] {
+	return pulumix.Output[*EventChannel]{
+		OutputState: i.ToEventChannelOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EventChannelOutput struct{ *pulumi.OutputState }
 
 func (EventChannelOutput) ElementType() reflect.Type {
@@ -178,6 +185,12 @@ func (o EventChannelOutput) ToEventChannelOutput() EventChannelOutput {
 
 func (o EventChannelOutput) ToEventChannelOutputWithContext(ctx context.Context) EventChannelOutput {
 	return o
+}
+
+func (o EventChannelOutput) ToOutput(ctx context.Context) pulumix.Output[*EventChannel] {
+	return pulumix.Output[*EventChannel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents the destination of an event channel.

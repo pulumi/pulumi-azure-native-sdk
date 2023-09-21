@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -38,6 +39,12 @@ func (o DeleteCertificateErrorResponseOutput) ToDeleteCertificateErrorResponseOu
 
 func (o DeleteCertificateErrorResponseOutput) ToDeleteCertificateErrorResponseOutputWithContext(ctx context.Context) DeleteCertificateErrorResponseOutput {
 	return o
+}
+
+func (o DeleteCertificateErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeleteCertificateErrorResponse] {
+	return pulumix.Output[DeleteCertificateErrorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
@@ -72,6 +79,12 @@ func (o DeleteCertificateErrorResponseArrayOutput) ToDeleteCertificateErrorRespo
 
 func (o DeleteCertificateErrorResponseArrayOutput) ToDeleteCertificateErrorResponseArrayOutputWithContext(ctx context.Context) DeleteCertificateErrorResponseArrayOutput {
 	return o
+}
+
+func (o DeleteCertificateErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeleteCertificateErrorResponse] {
+	return pulumix.Output[[]DeleteCertificateErrorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeleteCertificateErrorResponseArrayOutput) Index(i pulumi.IntInput) DeleteCertificateErrorResponseOutput {

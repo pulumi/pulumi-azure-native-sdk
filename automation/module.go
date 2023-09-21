@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the module type.
@@ -172,6 +173,12 @@ func (i *Module) ToModuleOutputWithContext(ctx context.Context) ModuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ModuleOutput)
 }
 
+func (i *Module) ToOutput(ctx context.Context) pulumix.Output[*Module] {
+	return pulumix.Output[*Module]{
+		OutputState: i.ToModuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ModuleOutput struct{ *pulumi.OutputState }
 
 func (ModuleOutput) ElementType() reflect.Type {
@@ -184,6 +191,12 @@ func (o ModuleOutput) ToModuleOutput() ModuleOutput {
 
 func (o ModuleOutput) ToModuleOutputWithContext(ctx context.Context) ModuleOutput {
 	return o
+}
+
+func (o ModuleOutput) ToOutput(ctx context.Context) pulumix.Output[*Module] {
+	return pulumix.Output[*Module]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the activity count of the module.

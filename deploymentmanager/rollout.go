@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines the PUT rollout request body.
@@ -166,6 +167,12 @@ func (i *Rollout) ToRolloutOutputWithContext(ctx context.Context) RolloutOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RolloutOutput)
 }
 
+func (i *Rollout) ToOutput(ctx context.Context) pulumix.Output[*Rollout] {
+	return pulumix.Output[*Rollout]{
+		OutputState: i.ToRolloutOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RolloutOutput struct{ *pulumi.OutputState }
 
 func (RolloutOutput) ElementType() reflect.Type {
@@ -178,6 +185,12 @@ func (o RolloutOutput) ToRolloutOutput() RolloutOutput {
 
 func (o RolloutOutput) ToRolloutOutputWithContext(ctx context.Context) RolloutOutput {
 	return o
+}
+
+func (o RolloutOutput) ToOutput(ctx context.Context) pulumix.Output[*Rollout] {
+	return pulumix.Output[*Rollout]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The reference to the artifact source resource Id where the payload is located.

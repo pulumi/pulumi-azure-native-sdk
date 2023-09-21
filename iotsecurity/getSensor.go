@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get IoT sensor
@@ -99,6 +100,12 @@ func (o LookupSensorResultOutput) ToLookupSensorResultOutput() LookupSensorResul
 
 func (o LookupSensorResultOutput) ToLookupSensorResultOutputWithContext(ctx context.Context) LookupSensorResultOutput {
 	return o
+}
+
+func (o LookupSensorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSensorResult] {
+	return pulumix.Output[LookupSensorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Last connectivity time of the IoT sensor

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // IoT sensor model
@@ -142,6 +143,12 @@ func (i *Sensor) ToSensorOutputWithContext(ctx context.Context) SensorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SensorOutput)
 }
 
+func (i *Sensor) ToOutput(ctx context.Context) pulumix.Output[*Sensor] {
+	return pulumix.Output[*Sensor]{
+		OutputState: i.ToSensorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SensorOutput struct{ *pulumi.OutputState }
 
 func (SensorOutput) ElementType() reflect.Type {
@@ -154,6 +161,12 @@ func (o SensorOutput) ToSensorOutput() SensorOutput {
 
 func (o SensorOutput) ToSensorOutputWithContext(ctx context.Context) SensorOutput {
 	return o
+}
+
+func (o SensorOutput) ToOutput(ctx context.Context) pulumix.Output[*Sensor] {
+	return pulumix.Output[*Sensor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Last connectivity time of the IoT sensor

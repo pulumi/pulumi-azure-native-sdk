@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the APM by name.
@@ -84,6 +85,12 @@ func (o LookupApmResultOutput) ToLookupApmResultOutput() LookupApmResultOutput {
 
 func (o LookupApmResultOutput) ToLookupApmResultOutputWithContext(ctx context.Context) LookupApmResultOutput {
 	return o
+}
+
+func (o LookupApmResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApmResult] {
+	return pulumix.Output[LookupApmResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

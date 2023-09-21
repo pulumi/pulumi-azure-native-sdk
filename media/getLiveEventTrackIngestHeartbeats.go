@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get track ingest heartbeat events telemetry of a live event.
@@ -77,6 +78,12 @@ func (o GetLiveEventTrackIngestHeartbeatsResultOutput) ToGetLiveEventTrackIngest
 
 func (o GetLiveEventTrackIngestHeartbeatsResultOutput) ToGetLiveEventTrackIngestHeartbeatsResultOutputWithContext(ctx context.Context) GetLiveEventTrackIngestHeartbeatsResultOutput {
 	return o
+}
+
+func (o GetLiveEventTrackIngestHeartbeatsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLiveEventTrackIngestHeartbeatsResult] {
+	return pulumix.Output[GetLiveEventTrackIngestHeartbeatsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The result of the get live event track events.

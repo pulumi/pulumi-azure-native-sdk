@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Single item in a List or Get AuthorizationRule operation
@@ -141,6 +142,12 @@ func (i *HybridConnectionAuthorizationRule) ToHybridConnectionAuthorizationRuleO
 	return pulumi.ToOutputWithContext(ctx, i).(HybridConnectionAuthorizationRuleOutput)
 }
 
+func (i *HybridConnectionAuthorizationRule) ToOutput(ctx context.Context) pulumix.Output[*HybridConnectionAuthorizationRule] {
+	return pulumix.Output[*HybridConnectionAuthorizationRule]{
+		OutputState: i.ToHybridConnectionAuthorizationRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HybridConnectionAuthorizationRuleOutput struct{ *pulumi.OutputState }
 
 func (HybridConnectionAuthorizationRuleOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o HybridConnectionAuthorizationRuleOutput) ToHybridConnectionAuthorization
 
 func (o HybridConnectionAuthorizationRuleOutput) ToHybridConnectionAuthorizationRuleOutputWithContext(ctx context.Context) HybridConnectionAuthorizationRuleOutput {
 	return o
+}
+
+func (o HybridConnectionAuthorizationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridConnectionAuthorizationRule] {
+	return pulumix.Output[*HybridConnectionAuthorizationRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The geo-location where the resource lives

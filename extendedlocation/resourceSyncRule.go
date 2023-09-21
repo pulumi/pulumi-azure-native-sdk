@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource Sync Rules definition.
@@ -150,6 +151,12 @@ func (i *ResourceSyncRule) ToResourceSyncRuleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSyncRuleOutput)
 }
 
+func (i *ResourceSyncRule) ToOutput(ctx context.Context) pulumix.Output[*ResourceSyncRule] {
+	return pulumix.Output[*ResourceSyncRule]{
+		OutputState: i.ToResourceSyncRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceSyncRuleOutput struct{ *pulumi.OutputState }
 
 func (ResourceSyncRuleOutput) ElementType() reflect.Type {
@@ -162,6 +169,12 @@ func (o ResourceSyncRuleOutput) ToResourceSyncRuleOutput() ResourceSyncRuleOutpu
 
 func (o ResourceSyncRuleOutput) ToResourceSyncRuleOutputWithContext(ctx context.Context) ResourceSyncRuleOutput {
 	return o
+}
+
+func (o ResourceSyncRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSyncRule] {
+	return pulumix.Output[*ResourceSyncRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The geo-location where the resource lives

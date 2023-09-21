@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the modernizeProject agent.
@@ -90,6 +91,12 @@ func (o LookupMigrateAgentResultOutput) ToLookupMigrateAgentResultOutput() Looku
 
 func (o LookupMigrateAgentResultOutput) ToLookupMigrateAgentResultOutputWithContext(ctx context.Context) LookupMigrateAgentResultOutput {
 	return o
+}
+
+func (o LookupMigrateAgentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMigrateAgentResult] {
+	return pulumix.Output[LookupMigrateAgentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the Id of the resource.

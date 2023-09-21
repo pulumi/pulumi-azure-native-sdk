@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i ProtocolCustomSettingsFormatArgs) ToProtocolCustomSettingsFormatOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ProtocolCustomSettingsFormatOutput)
 }
 
+func (i ProtocolCustomSettingsFormatArgs) ToOutput(ctx context.Context) pulumix.Output[ProtocolCustomSettingsFormat] {
+	return pulumix.Output[ProtocolCustomSettingsFormat]{
+		OutputState: i.ToProtocolCustomSettingsFormatOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProtocolCustomSettingsFormatArrayInput is an input type that accepts ProtocolCustomSettingsFormatArray and ProtocolCustomSettingsFormatArrayOutput values.
 // You can construct a concrete instance of `ProtocolCustomSettingsFormatArrayInput` via:
 //
@@ -85,6 +92,12 @@ func (i ProtocolCustomSettingsFormatArray) ToProtocolCustomSettingsFormatArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ProtocolCustomSettingsFormatArrayOutput)
 }
 
+func (i ProtocolCustomSettingsFormatArray) ToOutput(ctx context.Context) pulumix.Output[[]ProtocolCustomSettingsFormat] {
+	return pulumix.Output[[]ProtocolCustomSettingsFormat]{
+		OutputState: i.ToProtocolCustomSettingsFormatArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DDoS custom policy properties.
 type ProtocolCustomSettingsFormatOutput struct{ *pulumi.OutputState }
 
@@ -98,6 +111,12 @@ func (o ProtocolCustomSettingsFormatOutput) ToProtocolCustomSettingsFormatOutput
 
 func (o ProtocolCustomSettingsFormatOutput) ToProtocolCustomSettingsFormatOutputWithContext(ctx context.Context) ProtocolCustomSettingsFormatOutput {
 	return o
+}
+
+func (o ProtocolCustomSettingsFormatOutput) ToOutput(ctx context.Context) pulumix.Output[ProtocolCustomSettingsFormat] {
+	return pulumix.Output[ProtocolCustomSettingsFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The protocol for which the DDoS protection policy is being customized.
@@ -134,6 +153,12 @@ func (o ProtocolCustomSettingsFormatArrayOutput) ToProtocolCustomSettingsFormatA
 	return o
 }
 
+func (o ProtocolCustomSettingsFormatArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProtocolCustomSettingsFormat] {
+	return pulumix.Output[[]ProtocolCustomSettingsFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProtocolCustomSettingsFormatArrayOutput) Index(i pulumi.IntInput) ProtocolCustomSettingsFormatOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProtocolCustomSettingsFormat {
 		return vs[0].([]ProtocolCustomSettingsFormat)[vs[1].(int)]
@@ -165,6 +190,12 @@ func (o ProtocolCustomSettingsFormatResponseOutput) ToProtocolCustomSettingsForm
 
 func (o ProtocolCustomSettingsFormatResponseOutput) ToProtocolCustomSettingsFormatResponseOutputWithContext(ctx context.Context) ProtocolCustomSettingsFormatResponseOutput {
 	return o
+}
+
+func (o ProtocolCustomSettingsFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProtocolCustomSettingsFormatResponse] {
+	return pulumix.Output[ProtocolCustomSettingsFormatResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The protocol for which the DDoS protection policy is being customized.
@@ -201,6 +232,12 @@ func (o ProtocolCustomSettingsFormatResponseArrayOutput) ToProtocolCustomSetting
 	return o
 }
 
+func (o ProtocolCustomSettingsFormatResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProtocolCustomSettingsFormatResponse] {
+	return pulumix.Output[[]ProtocolCustomSettingsFormatResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProtocolCustomSettingsFormatResponseArrayOutput) Index(i pulumi.IntInput) ProtocolCustomSettingsFormatResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProtocolCustomSettingsFormatResponse {
 		return vs[0].([]ProtocolCustomSettingsFormatResponse)[vs[1].(int)]
@@ -228,6 +265,12 @@ func (o SubResourceResponseOutput) ToSubResourceResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o SubResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubResourceResponse] {
+	return pulumix.Output[SubResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID.
 func (o SubResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -245,6 +288,12 @@ func (o SubResourceResponseArrayOutput) ToSubResourceResponseArrayOutput() SubRe
 
 func (o SubResourceResponseArrayOutput) ToSubResourceResponseArrayOutputWithContext(ctx context.Context) SubResourceResponseArrayOutput {
 	return o
+}
+
+func (o SubResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubResourceResponse] {
+	return pulumix.Output[[]SubResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubResourceResponseArrayOutput) Index(i pulumi.IntInput) SubResourceResponseOutput {

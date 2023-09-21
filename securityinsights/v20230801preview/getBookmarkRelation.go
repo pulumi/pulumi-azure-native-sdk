@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a bookmark relation.
@@ -96,6 +97,12 @@ func (o LookupBookmarkRelationResultOutput) ToLookupBookmarkRelationResultOutput
 
 func (o LookupBookmarkRelationResultOutput) ToLookupBookmarkRelationResultOutputWithContext(ctx context.Context) LookupBookmarkRelationResultOutput {
 	return o
+}
+
+func (o LookupBookmarkRelationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBookmarkRelationResult] {
+	return pulumix.Output[LookupBookmarkRelationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Etag of the azure resource

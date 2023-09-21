@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Network function resource response.
@@ -177,6 +178,12 @@ func (i *NetworkFunction) ToNetworkFunctionOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionOutput)
 }
 
+func (i *NetworkFunction) ToOutput(ctx context.Context) pulumix.Output[*NetworkFunction] {
+	return pulumix.Output[*NetworkFunction]{
+		OutputState: i.ToNetworkFunctionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkFunctionOutput struct{ *pulumi.OutputState }
 
 func (NetworkFunctionOutput) ElementType() reflect.Type {
@@ -189,6 +196,12 @@ func (o NetworkFunctionOutput) ToNetworkFunctionOutput() NetworkFunctionOutput {
 
 func (o NetworkFunctionOutput) ToNetworkFunctionOutputWithContext(ctx context.Context) NetworkFunctionOutput {
 	return o
+}
+
+func (o NetworkFunctionOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkFunction] {
+	return pulumix.Output[*NetworkFunction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The reference to the device resource. Once set, it cannot be updated.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cloud Endpoint object.
@@ -190,6 +191,12 @@ func (i *CloudEndpoint) ToCloudEndpointOutputWithContext(ctx context.Context) Cl
 	return pulumi.ToOutputWithContext(ctx, i).(CloudEndpointOutput)
 }
 
+func (i *CloudEndpoint) ToOutput(ctx context.Context) pulumix.Output[*CloudEndpoint] {
+	return pulumix.Output[*CloudEndpoint]{
+		OutputState: i.ToCloudEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CloudEndpointOutput struct{ *pulumi.OutputState }
 
 func (CloudEndpointOutput) ElementType() reflect.Type {
@@ -202,6 +209,12 @@ func (o CloudEndpointOutput) ToCloudEndpointOutput() CloudEndpointOutput {
 
 func (o CloudEndpointOutput) ToCloudEndpointOutputWithContext(ctx context.Context) CloudEndpointOutput {
 	return o
+}
+
+func (o CloudEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudEndpoint] {
+	return pulumix.Output[*CloudEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure file share name

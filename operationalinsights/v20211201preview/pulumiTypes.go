@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o PrivateLinkScopedResourceResponseOutput) ToPrivateLinkScopedResourceResp
 	return o
 }
 
+func (o PrivateLinkScopedResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkScopedResourceResponse] {
+	return pulumix.Output[PrivateLinkScopedResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The full resource Id of the private link scope resource.
 func (o PrivateLinkScopedResourceResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkScopedResourceResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -58,6 +65,12 @@ func (o PrivateLinkScopedResourceResponseArrayOutput) ToPrivateLinkScopedResourc
 
 func (o PrivateLinkScopedResourceResponseArrayOutput) ToPrivateLinkScopedResourceResponseArrayOutputWithContext(ctx context.Context) PrivateLinkScopedResourceResponseArrayOutput {
 	return o
+}
+
+func (o PrivateLinkScopedResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateLinkScopedResourceResponse] {
+	return pulumix.Output[[]PrivateLinkScopedResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateLinkScopedResourceResponseArrayOutput) Index(i pulumi.IntInput) PrivateLinkScopedResourceResponseOutput {
@@ -95,6 +108,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -162,6 +181,12 @@ func (i WorkspaceCappingArgs) ToWorkspaceCappingOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceCappingOutput)
 }
 
+func (i WorkspaceCappingArgs) ToOutput(ctx context.Context) pulumix.Output[WorkspaceCapping] {
+	return pulumix.Output[WorkspaceCapping]{
+		OutputState: i.ToWorkspaceCappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkspaceCappingArgs) ToWorkspaceCappingPtrOutput() WorkspaceCappingPtrOutput {
 	return i.ToWorkspaceCappingPtrOutputWithContext(context.Background())
 }
@@ -203,6 +228,12 @@ func (i *workspaceCappingPtrType) ToWorkspaceCappingPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceCappingPtrOutput)
 }
 
+func (i *workspaceCappingPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceCapping] {
+	return pulumix.Output[*WorkspaceCapping]{
+		OutputState: i.ToWorkspaceCappingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The daily volume cap for ingestion.
 type WorkspaceCappingOutput struct{ *pulumi.OutputState }
 
@@ -228,6 +259,12 @@ func (o WorkspaceCappingOutput) ToWorkspaceCappingPtrOutputWithContext(ctx conte
 	}).(WorkspaceCappingPtrOutput)
 }
 
+func (o WorkspaceCappingOutput) ToOutput(ctx context.Context) pulumix.Output[WorkspaceCapping] {
+	return pulumix.Output[WorkspaceCapping]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The workspace daily quota for ingestion.
 func (o WorkspaceCappingOutput) DailyQuotaGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v WorkspaceCapping) *float64 { return v.DailyQuotaGb }).(pulumi.Float64PtrOutput)
@@ -245,6 +282,12 @@ func (o WorkspaceCappingPtrOutput) ToWorkspaceCappingPtrOutput() WorkspaceCappin
 
 func (o WorkspaceCappingPtrOutput) ToWorkspaceCappingPtrOutputWithContext(ctx context.Context) WorkspaceCappingPtrOutput {
 	return o
+}
+
+func (o WorkspaceCappingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceCapping] {
+	return pulumix.Output[*WorkspaceCapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkspaceCappingPtrOutput) Elem() WorkspaceCappingOutput {
@@ -292,6 +335,12 @@ func (o WorkspaceCappingResponseOutput) ToWorkspaceCappingResponseOutputWithCont
 	return o
 }
 
+func (o WorkspaceCappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkspaceCappingResponse] {
+	return pulumix.Output[WorkspaceCappingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The workspace daily quota for ingestion.
 func (o WorkspaceCappingResponseOutput) DailyQuotaGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v WorkspaceCappingResponse) *float64 { return v.DailyQuotaGb }).(pulumi.Float64PtrOutput)
@@ -319,6 +368,12 @@ func (o WorkspaceCappingResponsePtrOutput) ToWorkspaceCappingResponsePtrOutput()
 
 func (o WorkspaceCappingResponsePtrOutput) ToWorkspaceCappingResponsePtrOutputWithContext(ctx context.Context) WorkspaceCappingResponsePtrOutput {
 	return o
+}
+
+func (o WorkspaceCappingResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceCappingResponse] {
+	return pulumix.Output[*WorkspaceCappingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkspaceCappingResponsePtrOutput) Elem() WorkspaceCappingResponseOutput {
@@ -412,6 +467,12 @@ func (i WorkspaceFeaturesArgs) ToWorkspaceFeaturesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceFeaturesOutput)
 }
 
+func (i WorkspaceFeaturesArgs) ToOutput(ctx context.Context) pulumix.Output[WorkspaceFeatures] {
+	return pulumix.Output[WorkspaceFeatures]{
+		OutputState: i.ToWorkspaceFeaturesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkspaceFeaturesArgs) ToWorkspaceFeaturesPtrOutput() WorkspaceFeaturesPtrOutput {
 	return i.ToWorkspaceFeaturesPtrOutputWithContext(context.Background())
 }
@@ -453,6 +514,12 @@ func (i *workspaceFeaturesPtrType) ToWorkspaceFeaturesPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceFeaturesPtrOutput)
 }
 
+func (i *workspaceFeaturesPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceFeatures] {
+	return pulumix.Output[*WorkspaceFeatures]{
+		OutputState: i.ToWorkspaceFeaturesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Workspace features.
 type WorkspaceFeaturesOutput struct{ *pulumi.OutputState }
 
@@ -476,6 +543,12 @@ func (o WorkspaceFeaturesOutput) ToWorkspaceFeaturesPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceFeatures) *WorkspaceFeatures {
 		return &v
 	}).(WorkspaceFeaturesPtrOutput)
+}
+
+func (o WorkspaceFeaturesOutput) ToOutput(ctx context.Context) pulumix.Output[WorkspaceFeatures] {
+	return pulumix.Output[WorkspaceFeatures]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Dedicated LA cluster resourceId that is linked to the workspaces.
@@ -515,6 +588,12 @@ func (o WorkspaceFeaturesPtrOutput) ToWorkspaceFeaturesPtrOutput() WorkspaceFeat
 
 func (o WorkspaceFeaturesPtrOutput) ToWorkspaceFeaturesPtrOutputWithContext(ctx context.Context) WorkspaceFeaturesPtrOutput {
 	return o
+}
+
+func (o WorkspaceFeaturesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceFeatures] {
+	return pulumix.Output[*WorkspaceFeatures]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkspaceFeaturesPtrOutput) Elem() WorkspaceFeaturesOutput {
@@ -606,6 +685,12 @@ func (o WorkspaceFeaturesResponseOutput) ToWorkspaceFeaturesResponseOutputWithCo
 	return o
 }
 
+func (o WorkspaceFeaturesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkspaceFeaturesResponse] {
+	return pulumix.Output[WorkspaceFeaturesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Dedicated LA cluster resourceId that is linked to the workspaces.
 func (o WorkspaceFeaturesResponseOutput) ClusterResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkspaceFeaturesResponse) *string { return v.ClusterResourceId }).(pulumi.StringPtrOutput)
@@ -643,6 +728,12 @@ func (o WorkspaceFeaturesResponsePtrOutput) ToWorkspaceFeaturesResponsePtrOutput
 
 func (o WorkspaceFeaturesResponsePtrOutput) ToWorkspaceFeaturesResponsePtrOutputWithContext(ctx context.Context) WorkspaceFeaturesResponsePtrOutput {
 	return o
+}
+
+func (o WorkspaceFeaturesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceFeaturesResponse] {
+	return pulumix.Output[*WorkspaceFeaturesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkspaceFeaturesResponsePtrOutput) Elem() WorkspaceFeaturesResponseOutput {
@@ -744,6 +835,12 @@ func (i WorkspaceSkuArgs) ToWorkspaceSkuOutputWithContext(ctx context.Context) W
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceSkuOutput)
 }
 
+func (i WorkspaceSkuArgs) ToOutput(ctx context.Context) pulumix.Output[WorkspaceSku] {
+	return pulumix.Output[WorkspaceSku]{
+		OutputState: i.ToWorkspaceSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkspaceSkuArgs) ToWorkspaceSkuPtrOutput() WorkspaceSkuPtrOutput {
 	return i.ToWorkspaceSkuPtrOutputWithContext(context.Background())
 }
@@ -785,6 +882,12 @@ func (i *workspaceSkuPtrType) ToWorkspaceSkuPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceSkuPtrOutput)
 }
 
+func (i *workspaceSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceSku] {
+	return pulumix.Output[*WorkspaceSku]{
+		OutputState: i.ToWorkspaceSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The SKU (tier) of a workspace.
 type WorkspaceSkuOutput struct{ *pulumi.OutputState }
 
@@ -810,6 +913,12 @@ func (o WorkspaceSkuOutput) ToWorkspaceSkuPtrOutputWithContext(ctx context.Conte
 	}).(WorkspaceSkuPtrOutput)
 }
 
+func (o WorkspaceSkuOutput) ToOutput(ctx context.Context) pulumix.Output[WorkspaceSku] {
+	return pulumix.Output[WorkspaceSku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
 func (o WorkspaceSkuOutput) CapacityReservationLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkspaceSku) *int { return v.CapacityReservationLevel }).(pulumi.IntPtrOutput)
@@ -832,6 +941,12 @@ func (o WorkspaceSkuPtrOutput) ToWorkspaceSkuPtrOutput() WorkspaceSkuPtrOutput {
 
 func (o WorkspaceSkuPtrOutput) ToWorkspaceSkuPtrOutputWithContext(ctx context.Context) WorkspaceSkuPtrOutput {
 	return o
+}
+
+func (o WorkspaceSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceSku] {
+	return pulumix.Output[*WorkspaceSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkspaceSkuPtrOutput) Elem() WorkspaceSkuOutput {
@@ -889,6 +1004,12 @@ func (o WorkspaceSkuResponseOutput) ToWorkspaceSkuResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o WorkspaceSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkspaceSkuResponse] {
+	return pulumix.Output[WorkspaceSkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
 func (o WorkspaceSkuResponseOutput) CapacityReservationLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkspaceSkuResponse) *int { return v.CapacityReservationLevel }).(pulumi.IntPtrOutput)
@@ -916,6 +1037,12 @@ func (o WorkspaceSkuResponsePtrOutput) ToWorkspaceSkuResponsePtrOutput() Workspa
 
 func (o WorkspaceSkuResponsePtrOutput) ToWorkspaceSkuResponsePtrOutputWithContext(ctx context.Context) WorkspaceSkuResponsePtrOutput {
 	return o
+}
+
+func (o WorkspaceSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceSkuResponse] {
+	return pulumix.Output[*WorkspaceSkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkspaceSkuResponsePtrOutput) Elem() WorkspaceSkuResponseOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Sku information related properties of a server.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -65,6 +72,12 @@ func (o SkuOutput) ToSkuOutput() SkuOutput {
 
 func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
+}
+
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the sku, typically, tier + family + cores, e.g. Standard_D4s_v3.
@@ -112,6 +125,12 @@ func (i StorageArgs) ToStorageOutputWithContext(ctx context.Context) StorageOutp
 	return pulumi.ToOutputWithContext(ctx, i).(StorageOutput)
 }
 
+func (i StorageArgs) ToOutput(ctx context.Context) pulumix.Output[Storage] {
+	return pulumix.Output[Storage]{
+		OutputState: i.ToStorageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Storage properties of a server
 type StorageOutput struct{ *pulumi.OutputState }
 
@@ -125,6 +144,12 @@ func (o StorageOutput) ToStorageOutput() StorageOutput {
 
 func (o StorageOutput) ToStorageOutputWithContext(ctx context.Context) StorageOutput {
 	return o
+}
+
+func (o StorageOutput) ToOutput(ctx context.Context) pulumix.Output[Storage] {
+	return pulumix.Output[Storage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Max storage allowed for a server.

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets the content source type.
@@ -86,6 +87,12 @@ func (o EncryptionKeySourceTypeOutput) ToEncryptionKeySourceTypePtrOutputWithCon
 	}).(EncryptionKeySourceTypePtrOutput)
 }
 
+func (o EncryptionKeySourceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionKeySourceType] {
+	return pulumix.Output[EncryptionKeySourceType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EncryptionKeySourceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -119,6 +126,12 @@ func (o EncryptionKeySourceTypePtrOutput) ToEncryptionKeySourceTypePtrOutput() E
 
 func (o EncryptionKeySourceTypePtrOutput) ToEncryptionKeySourceTypePtrOutputWithContext(ctx context.Context) EncryptionKeySourceTypePtrOutput {
 	return o
+}
+
+func (o EncryptionKeySourceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeySourceType] {
+	return pulumix.Output[*EncryptionKeySourceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionKeySourceTypePtrOutput) Elem() EncryptionKeySourceTypeOutput {
@@ -181,6 +194,12 @@ func (in *encryptionKeySourceTypePtr) ToEncryptionKeySourceTypePtrOutput() Encry
 
 func (in *encryptionKeySourceTypePtr) ToEncryptionKeySourceTypePtrOutputWithContext(ctx context.Context) EncryptionKeySourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionKeySourceTypePtrOutput)
+}
+
+func (in *encryptionKeySourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeySourceType] {
+	return pulumix.Output[*EncryptionKeySourceType]{
+		OutputState: in.ToEncryptionKeySourceTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Update classifications included in the software update configuration.
@@ -261,6 +280,12 @@ func (o OperatingSystemTypeOutput) ToOperatingSystemTypePtrOutputWithContext(ctx
 	}).(OperatingSystemTypePtrOutput)
 }
 
+func (o OperatingSystemTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OperatingSystemType] {
+	return pulumix.Output[OperatingSystemType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OperatingSystemTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -294,6 +319,12 @@ func (o OperatingSystemTypePtrOutput) ToOperatingSystemTypePtrOutput() Operating
 
 func (o OperatingSystemTypePtrOutput) ToOperatingSystemTypePtrOutputWithContext(ctx context.Context) OperatingSystemTypePtrOutput {
 	return o
+}
+
+func (o OperatingSystemTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemType] {
+	return pulumix.Output[*OperatingSystemType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OperatingSystemTypePtrOutput) Elem() OperatingSystemTypeOutput {
@@ -356,6 +387,12 @@ func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutput() OperatingSyst
 
 func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutputWithContext(ctx context.Context) OperatingSystemTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypePtrOutput)
+}
+
+func (in *operatingSystemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemType] {
+	return pulumix.Output[*OperatingSystemType]{
+		OutputState: in.ToOperatingSystemTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The identity type.
@@ -428,6 +465,12 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
+func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
+	return pulumix.Output[ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -461,6 +504,12 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -523,6 +572,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+}
+
+func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Gets or sets the type of the runbook.
@@ -650,6 +705,12 @@ func (o TagOperatorsOutput) ToTagOperatorsPtrOutputWithContext(ctx context.Conte
 	}).(TagOperatorsPtrOutput)
 }
 
+func (o TagOperatorsOutput) ToOutput(ctx context.Context) pulumix.Output[TagOperators] {
+	return pulumix.Output[TagOperators]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TagOperatorsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -683,6 +744,12 @@ func (o TagOperatorsPtrOutput) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
 
 func (o TagOperatorsPtrOutput) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
 	return o
+}
+
+func (o TagOperatorsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagOperators] {
+	return pulumix.Output[*TagOperators]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagOperatorsPtrOutput) Elem() TagOperatorsOutput {
@@ -745,6 +812,12 @@ func (in *tagOperatorsPtr) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
 
 func (in *tagOperatorsPtr) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TagOperatorsPtrOutput)
+}
+
+func (in *tagOperatorsPtr) ToOutput(ctx context.Context) pulumix.Output[*TagOperators] {
+	return pulumix.Output[*TagOperators]{
+		OutputState: in.ToTagOperatorsPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The token type. Must be either PersonalAccessToken or Oauth.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the public encryption key of the device.
@@ -77,6 +78,12 @@ func (o GetManagerDevicePublicEncryptionKeyResultOutput) ToGetManagerDevicePubli
 
 func (o GetManagerDevicePublicEncryptionKeyResultOutput) ToGetManagerDevicePublicEncryptionKeyResultOutputWithContext(ctx context.Context) GetManagerDevicePublicEncryptionKeyResultOutput {
 	return o
+}
+
+func (o GetManagerDevicePublicEncryptionKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetManagerDevicePublicEncryptionKeyResult] {
+	return pulumix.Output[GetManagerDevicePublicEncryptionKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The key.

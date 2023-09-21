@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The format of the certificate - either Pfx or Cer. If omitted, the default is Pfx.
@@ -80,6 +81,12 @@ func (o CertificateFormatOutput) ToCertificateFormatPtrOutputWithContext(ctx con
 	}).(CertificateFormatPtrOutput)
 }
 
+func (o CertificateFormatOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateFormat] {
+	return pulumix.Output[CertificateFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CertificateFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o CertificateFormatPtrOutput) ToCertificateFormatPtrOutput() CertificateFo
 
 func (o CertificateFormatPtrOutput) ToCertificateFormatPtrOutputWithContext(ctx context.Context) CertificateFormatPtrOutput {
 	return o
+}
+
+func (o CertificateFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateFormat] {
+	return pulumix.Output[*CertificateFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateFormatPtrOutput) Elem() CertificateFormatOutput {
@@ -175,6 +188,12 @@ func (in *certificateFormatPtr) ToCertificateFormatPtrOutput() CertificateFormat
 
 func (in *certificateFormatPtr) ToCertificateFormatPtrOutputWithContext(ctx context.Context) CertificateFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateFormatPtrOutput)
+}
+
+func (in *certificateFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateFormat] {
+	return pulumix.Output[*CertificateFormat]{
+		OutputState: in.ToCertificateFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

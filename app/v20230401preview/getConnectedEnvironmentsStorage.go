@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get storage for a connectedEnvironment.
@@ -84,6 +85,12 @@ func (o LookupConnectedEnvironmentsStorageResultOutput) ToLookupConnectedEnviron
 
 func (o LookupConnectedEnvironmentsStorageResultOutput) ToLookupConnectedEnvironmentsStorageResultOutputWithContext(ctx context.Context) LookupConnectedEnvironmentsStorageResultOutput {
 	return o
+}
+
+func (o LookupConnectedEnvironmentsStorageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectedEnvironmentsStorageResult] {
+	return pulumix.Output[LookupConnectedEnvironmentsStorageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

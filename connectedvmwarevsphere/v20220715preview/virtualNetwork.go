@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Define the virtualNetwork.
@@ -171,6 +172,12 @@ func (i *VirtualNetwork) ToVirtualNetworkOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkOutput)
 }
 
+func (i *VirtualNetwork) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetwork] {
+	return pulumix.Output[*VirtualNetwork]{
+		OutputState: i.ToVirtualNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualNetworkOutput struct{ *pulumi.OutputState }
 
 func (VirtualNetworkOutput) ElementType() reflect.Type {
@@ -183,6 +190,12 @@ func (o VirtualNetworkOutput) ToVirtualNetworkOutput() VirtualNetworkOutput {
 
 func (o VirtualNetworkOutput) ToVirtualNetworkOutputWithContext(ctx context.Context) VirtualNetworkOutput {
 	return o
+}
+
+func (o VirtualNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetwork] {
+	return pulumix.Output[*VirtualNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the name of the corresponding resource in Kubernetes.

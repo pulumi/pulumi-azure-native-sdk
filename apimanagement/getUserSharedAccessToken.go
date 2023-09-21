@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Shared Access Authorization Token for the User.
@@ -97,6 +98,12 @@ func (o GetUserSharedAccessTokenResultOutput) ToGetUserSharedAccessTokenResultOu
 
 func (o GetUserSharedAccessTokenResultOutput) ToGetUserSharedAccessTokenResultOutputWithContext(ctx context.Context) GetUserSharedAccessTokenResultOutput {
 	return o
+}
+
+func (o GetUserSharedAccessTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetUserSharedAccessTokenResult] {
+	return pulumix.Output[GetUserSharedAccessTokenResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Shared Access Authorization token for the User.

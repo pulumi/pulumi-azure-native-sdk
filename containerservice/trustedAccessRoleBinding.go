@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines binding between a resource and role
@@ -183,6 +184,12 @@ func (i *TrustedAccessRoleBinding) ToTrustedAccessRoleBindingOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(TrustedAccessRoleBindingOutput)
 }
 
+func (i *TrustedAccessRoleBinding) ToOutput(ctx context.Context) pulumix.Output[*TrustedAccessRoleBinding] {
+	return pulumix.Output[*TrustedAccessRoleBinding]{
+		OutputState: i.ToTrustedAccessRoleBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TrustedAccessRoleBindingOutput struct{ *pulumi.OutputState }
 
 func (TrustedAccessRoleBindingOutput) ElementType() reflect.Type {
@@ -195,6 +202,12 @@ func (o TrustedAccessRoleBindingOutput) ToTrustedAccessRoleBindingOutput() Trust
 
 func (o TrustedAccessRoleBindingOutput) ToTrustedAccessRoleBindingOutputWithContext(ctx context.Context) TrustedAccessRoleBindingOutput {
 	return o
+}
+
+func (o TrustedAccessRoleBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*TrustedAccessRoleBinding] {
+	return pulumix.Output[*TrustedAccessRoleBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

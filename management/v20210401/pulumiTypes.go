@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i CreateManagementGroupDetailsArgs) ToCreateManagementGroupDetailsOutput()
 
 func (i CreateManagementGroupDetailsArgs) ToCreateManagementGroupDetailsOutputWithContext(ctx context.Context) CreateManagementGroupDetailsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CreateManagementGroupDetailsOutput)
+}
+
+func (i CreateManagementGroupDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[CreateManagementGroupDetails] {
+	return pulumix.Output[CreateManagementGroupDetails]{
+		OutputState: i.ToCreateManagementGroupDetailsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CreateManagementGroupDetailsArgs) ToCreateManagementGroupDetailsPtrOutput() CreateManagementGroupDetailsPtrOutput {
@@ -89,6 +96,12 @@ func (i *createManagementGroupDetailsPtrType) ToCreateManagementGroupDetailsPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(CreateManagementGroupDetailsPtrOutput)
 }
 
+func (i *createManagementGroupDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CreateManagementGroupDetails] {
+	return pulumix.Output[*CreateManagementGroupDetails]{
+		OutputState: i.ToCreateManagementGroupDetailsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The details of a management group used during creation.
 type CreateManagementGroupDetailsOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o CreateManagementGroupDetailsOutput) ToCreateManagementGroupDetailsPtrOut
 	}).(CreateManagementGroupDetailsPtrOutput)
 }
 
+func (o CreateManagementGroupDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[CreateManagementGroupDetails] {
+	return pulumix.Output[CreateManagementGroupDetails]{
+		OutputState: o.OutputState,
+	}
+}
+
 // (Optional) The ID of the parent management group used during creation.
 func (o CreateManagementGroupDetailsOutput) Parent() CreateParentGroupInfoPtrOutput {
 	return o.ApplyT(func(v CreateManagementGroupDetails) *CreateParentGroupInfo { return v.Parent }).(CreateParentGroupInfoPtrOutput)
@@ -131,6 +150,12 @@ func (o CreateManagementGroupDetailsPtrOutput) ToCreateManagementGroupDetailsPtr
 
 func (o CreateManagementGroupDetailsPtrOutput) ToCreateManagementGroupDetailsPtrOutputWithContext(ctx context.Context) CreateManagementGroupDetailsPtrOutput {
 	return o
+}
+
+func (o CreateManagementGroupDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreateManagementGroupDetails] {
+	return pulumix.Output[*CreateManagementGroupDetails]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CreateManagementGroupDetailsPtrOutput) Elem() CreateManagementGroupDetailsOutput {
@@ -188,6 +213,12 @@ func (i CreateParentGroupInfoArgs) ToCreateParentGroupInfoOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CreateParentGroupInfoOutput)
 }
 
+func (i CreateParentGroupInfoArgs) ToOutput(ctx context.Context) pulumix.Output[CreateParentGroupInfo] {
+	return pulumix.Output[CreateParentGroupInfo]{
+		OutputState: i.ToCreateParentGroupInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CreateParentGroupInfoArgs) ToCreateParentGroupInfoPtrOutput() CreateParentGroupInfoPtrOutput {
 	return i.ToCreateParentGroupInfoPtrOutputWithContext(context.Background())
 }
@@ -229,6 +260,12 @@ func (i *createParentGroupInfoPtrType) ToCreateParentGroupInfoPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(CreateParentGroupInfoPtrOutput)
 }
 
+func (i *createParentGroupInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*CreateParentGroupInfo] {
+	return pulumix.Output[*CreateParentGroupInfo]{
+		OutputState: i.ToCreateParentGroupInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // (Optional) The ID of the parent management group used during creation.
 type CreateParentGroupInfoOutput struct{ *pulumi.OutputState }
 
@@ -254,6 +291,12 @@ func (o CreateParentGroupInfoOutput) ToCreateParentGroupInfoPtrOutputWithContext
 	}).(CreateParentGroupInfoPtrOutput)
 }
 
+func (o CreateParentGroupInfoOutput) ToOutput(ctx context.Context) pulumix.Output[CreateParentGroupInfo] {
+	return pulumix.Output[CreateParentGroupInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
 func (o CreateParentGroupInfoOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CreateParentGroupInfo) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -271,6 +314,12 @@ func (o CreateParentGroupInfoPtrOutput) ToCreateParentGroupInfoPtrOutput() Creat
 
 func (o CreateParentGroupInfoPtrOutput) ToCreateParentGroupInfoPtrOutputWithContext(ctx context.Context) CreateParentGroupInfoPtrOutput {
 	return o
+}
+
+func (o CreateParentGroupInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreateParentGroupInfo] {
+	return pulumix.Output[*CreateParentGroupInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CreateParentGroupInfoPtrOutput) Elem() CreateParentGroupInfoOutput {
@@ -314,6 +363,12 @@ func (o DescendantParentGroupInfoResponseOutput) ToDescendantParentGroupInfoResp
 	return o
 }
 
+func (o DescendantParentGroupInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DescendantParentGroupInfoResponse] {
+	return pulumix.Output[DescendantParentGroupInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
 func (o DescendantParentGroupInfoResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DescendantParentGroupInfoResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -331,6 +386,12 @@ func (o DescendantParentGroupInfoResponsePtrOutput) ToDescendantParentGroupInfoR
 
 func (o DescendantParentGroupInfoResponsePtrOutput) ToDescendantParentGroupInfoResponsePtrOutputWithContext(ctx context.Context) DescendantParentGroupInfoResponsePtrOutput {
 	return o
+}
+
+func (o DescendantParentGroupInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DescendantParentGroupInfoResponse] {
+	return pulumix.Output[*DescendantParentGroupInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DescendantParentGroupInfoResponsePtrOutput) Elem() DescendantParentGroupInfoResponseOutput {
@@ -395,6 +456,12 @@ func (o EntityInfoResponseOutput) ToEntityInfoResponseOutput() EntityInfoRespons
 
 func (o EntityInfoResponseOutput) ToEntityInfoResponseOutputWithContext(ctx context.Context) EntityInfoResponseOutput {
 	return o
+}
+
+func (o EntityInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EntityInfoResponse] {
+	return pulumix.Output[EntityInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The friendly name of the management group.
@@ -475,6 +542,12 @@ func (o EntityInfoResponseArrayOutput) ToEntityInfoResponseArrayOutputWithContex
 	return o
 }
 
+func (o EntityInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EntityInfoResponse] {
+	return pulumix.Output[[]EntityInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityInfoResponseArrayOutput) Index(i pulumi.IntInput) EntityInfoResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityInfoResponse {
 		return vs[0].([]EntityInfoResponse)[vs[1].(int)]
@@ -502,6 +575,12 @@ func (o EntityParentGroupInfoResponseOutput) ToEntityParentGroupInfoResponseOutp
 	return o
 }
 
+func (o EntityParentGroupInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EntityParentGroupInfoResponse] {
+	return pulumix.Output[EntityParentGroupInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
 func (o EntityParentGroupInfoResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntityParentGroupInfoResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -519,6 +598,12 @@ func (o EntityParentGroupInfoResponsePtrOutput) ToEntityParentGroupInfoResponseP
 
 func (o EntityParentGroupInfoResponsePtrOutput) ToEntityParentGroupInfoResponsePtrOutputWithContext(ctx context.Context) EntityParentGroupInfoResponsePtrOutput {
 	return o
+}
+
+func (o EntityParentGroupInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityParentGroupInfoResponse] {
+	return pulumix.Output[*EntityParentGroupInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityParentGroupInfoResponsePtrOutput) Elem() EntityParentGroupInfoResponseOutput {
@@ -570,6 +655,12 @@ func (o ManagementGroupChildInfoResponseOutput) ToManagementGroupChildInfoRespon
 	return o
 }
 
+func (o ManagementGroupChildInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementGroupChildInfoResponse] {
+	return pulumix.Output[ManagementGroupChildInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of children.
 func (o ManagementGroupChildInfoResponseOutput) Children() ManagementGroupChildInfoResponseArrayOutput {
 	return o.ApplyT(func(v ManagementGroupChildInfoResponse) []ManagementGroupChildInfoResponse { return v.Children }).(ManagementGroupChildInfoResponseArrayOutput)
@@ -609,6 +700,12 @@ func (o ManagementGroupChildInfoResponseArrayOutput) ToManagementGroupChildInfoR
 	return o
 }
 
+func (o ManagementGroupChildInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementGroupChildInfoResponse] {
+	return pulumix.Output[[]ManagementGroupChildInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ManagementGroupChildInfoResponseArrayOutput) Index(i pulumi.IntInput) ManagementGroupChildInfoResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagementGroupChildInfoResponse {
 		return vs[0].([]ManagementGroupChildInfoResponse)[vs[1].(int)]
@@ -646,6 +743,12 @@ func (o ManagementGroupDetailsResponseOutput) ToManagementGroupDetailsResponseOu
 
 func (o ManagementGroupDetailsResponseOutput) ToManagementGroupDetailsResponseOutputWithContext(ctx context.Context) ManagementGroupDetailsResponseOutput {
 	return o
+}
+
+func (o ManagementGroupDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementGroupDetailsResponse] {
+	return pulumix.Output[ManagementGroupDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ancestors of the management group.
@@ -697,6 +800,12 @@ func (o ManagementGroupDetailsResponsePtrOutput) ToManagementGroupDetailsRespons
 
 func (o ManagementGroupDetailsResponsePtrOutput) ToManagementGroupDetailsResponsePtrOutputWithContext(ctx context.Context) ManagementGroupDetailsResponsePtrOutput {
 	return o
+}
+
+func (o ManagementGroupDetailsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementGroupDetailsResponse] {
+	return pulumix.Output[*ManagementGroupDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagementGroupDetailsResponsePtrOutput) Elem() ManagementGroupDetailsResponseOutput {
@@ -802,6 +911,12 @@ func (o ManagementGroupPathElementResponseOutput) ToManagementGroupPathElementRe
 	return o
 }
 
+func (o ManagementGroupPathElementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementGroupPathElementResponse] {
+	return pulumix.Output[ManagementGroupPathElementResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The friendly name of the group.
 func (o ManagementGroupPathElementResponseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagementGroupPathElementResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -824,6 +939,12 @@ func (o ManagementGroupPathElementResponseArrayOutput) ToManagementGroupPathElem
 
 func (o ManagementGroupPathElementResponseArrayOutput) ToManagementGroupPathElementResponseArrayOutputWithContext(ctx context.Context) ManagementGroupPathElementResponseArrayOutput {
 	return o
+}
+
+func (o ManagementGroupPathElementResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementGroupPathElementResponse] {
+	return pulumix.Output[[]ManagementGroupPathElementResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagementGroupPathElementResponseArrayOutput) Index(i pulumi.IntInput) ManagementGroupPathElementResponseOutput {
@@ -857,6 +978,12 @@ func (o ParentGroupInfoResponseOutput) ToParentGroupInfoResponseOutputWithContex
 	return o
 }
 
+func (o ParentGroupInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParentGroupInfoResponse] {
+	return pulumix.Output[ParentGroupInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The friendly name of the parent management group.
 func (o ParentGroupInfoResponseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParentGroupInfoResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -884,6 +1011,12 @@ func (o ParentGroupInfoResponsePtrOutput) ToParentGroupInfoResponsePtrOutput() P
 
 func (o ParentGroupInfoResponsePtrOutput) ToParentGroupInfoResponsePtrOutputWithContext(ctx context.Context) ParentGroupInfoResponsePtrOutput {
 	return o
+}
+
+func (o ParentGroupInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ParentGroupInfoResponse] {
+	return pulumix.Output[*ParentGroupInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParentGroupInfoResponsePtrOutput) Elem() ParentGroupInfoResponseOutput {

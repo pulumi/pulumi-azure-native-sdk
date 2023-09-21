@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves details about given subscription which is associated with the management group.
@@ -86,6 +87,12 @@ func (o LookupManagementGroupSubscriptionResultOutput) ToLookupManagementGroupSu
 
 func (o LookupManagementGroupSubscriptionResultOutput) ToLookupManagementGroupSubscriptionResultOutputWithContext(ctx context.Context) LookupManagementGroupSubscriptionResultOutput {
 	return o
+}
+
+func (o LookupManagementGroupSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagementGroupSubscriptionResult] {
+	return pulumix.Output[LookupManagementGroupSubscriptionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The friendly name of the subscription.

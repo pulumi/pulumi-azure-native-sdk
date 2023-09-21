@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details of a Media Services account
@@ -115,6 +116,12 @@ func (o LookupMediaServiceResultOutput) ToLookupMediaServiceResultOutput() Looku
 
 func (o LookupMediaServiceResultOutput) ToLookupMediaServiceResultOutputWithContext(ctx context.Context) LookupMediaServiceResultOutput {
 	return o
+}
+
+func (o LookupMediaServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMediaServiceResult] {
+	return pulumix.Output[LookupMediaServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account encryption properties.

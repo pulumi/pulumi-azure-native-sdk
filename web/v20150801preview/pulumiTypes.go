@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -116,6 +117,12 @@ func (i ApiEntityArgs) ToApiEntityOutputWithContext(ctx context.Context) ApiEnti
 	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityOutput)
 }
 
+func (i ApiEntityArgs) ToOutput(ctx context.Context) pulumix.Output[ApiEntity] {
+	return pulumix.Output[ApiEntity]{
+		OutputState: i.ToApiEntityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ApiEntityArgs) ToApiEntityPtrOutput() ApiEntityPtrOutput {
 	return i.ToApiEntityPtrOutputWithContext(context.Background())
 }
@@ -157,6 +164,12 @@ func (i *apiEntityPtrType) ToApiEntityPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityPtrOutput)
 }
 
+func (i *apiEntityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApiEntity] {
+	return pulumix.Output[*ApiEntity]{
+		OutputState: i.ToApiEntityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // API Management
 type ApiEntityOutput struct{ *pulumi.OutputState }
 
@@ -180,6 +193,12 @@ func (o ApiEntityOutput) ToApiEntityPtrOutputWithContext(ctx context.Context) Ap
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiEntity) *ApiEntity {
 		return &v
 	}).(ApiEntityPtrOutput)
+}
+
+func (o ApiEntityOutput) ToOutput(ctx context.Context) pulumix.Output[ApiEntity] {
+	return pulumix.Output[ApiEntity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // API definition Url - url where the swagger can be downloaded from
@@ -284,6 +303,12 @@ func (o ApiEntityPtrOutput) ToApiEntityPtrOutput() ApiEntityPtrOutput {
 
 func (o ApiEntityPtrOutput) ToApiEntityPtrOutputWithContext(ctx context.Context) ApiEntityPtrOutput {
 	return o
+}
+
+func (o ApiEntityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiEntity] {
+	return pulumix.Output[*ApiEntity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiEntityPtrOutput) Elem() ApiEntityOutput {
@@ -531,6 +556,12 @@ func (o ApiEntityResponseOutput) ToApiEntityResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o ApiEntityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApiEntityResponse] {
+	return pulumix.Output[ApiEntityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // API definition Url - url where the swagger can be downloaded from
 func (o ApiEntityResponseOutput) ApiDefinitionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiEntityResponse) *string { return v.ApiDefinitionUrl }).(pulumi.StringPtrOutput)
@@ -633,6 +664,12 @@ func (o ApiEntityResponsePtrOutput) ToApiEntityResponsePtrOutput() ApiEntityResp
 
 func (o ApiEntityResponsePtrOutput) ToApiEntityResponsePtrOutputWithContext(ctx context.Context) ApiEntityResponsePtrOutput {
 	return o
+}
+
+func (o ApiEntityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiEntityResponse] {
+	return pulumix.Output[*ApiEntityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiEntityResponsePtrOutput) Elem() ApiEntityResponseOutput {
@@ -884,6 +921,12 @@ func (i ApiOAuthSettingsArgs) ToApiOAuthSettingsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ApiOAuthSettingsOutput)
 }
 
+func (i ApiOAuthSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ApiOAuthSettings] {
+	return pulumix.Output[ApiOAuthSettings]{
+		OutputState: i.ToApiOAuthSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ApiOAuthSettingsArgs) ToApiOAuthSettingsPtrOutput() ApiOAuthSettingsPtrOutput {
 	return i.ToApiOAuthSettingsPtrOutputWithContext(context.Background())
 }
@@ -925,6 +968,12 @@ func (i *apiOAuthSettingsPtrType) ToApiOAuthSettingsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ApiOAuthSettingsPtrOutput)
 }
 
+func (i *apiOAuthSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApiOAuthSettings] {
+	return pulumix.Output[*ApiOAuthSettings]{
+		OutputState: i.ToApiOAuthSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OAuth settings for the connection provider
 type ApiOAuthSettingsOutput struct{ *pulumi.OutputState }
 
@@ -948,6 +997,12 @@ func (o ApiOAuthSettingsOutput) ToApiOAuthSettingsPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiOAuthSettings) *ApiOAuthSettings {
 		return &v
 	}).(ApiOAuthSettingsPtrOutput)
+}
+
+func (o ApiOAuthSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ApiOAuthSettings] {
+	return pulumix.Output[ApiOAuthSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource provider client id
@@ -997,6 +1052,12 @@ func (o ApiOAuthSettingsPtrOutput) ToApiOAuthSettingsPtrOutput() ApiOAuthSetting
 
 func (o ApiOAuthSettingsPtrOutput) ToApiOAuthSettingsPtrOutputWithContext(ctx context.Context) ApiOAuthSettingsPtrOutput {
 	return o
+}
+
+func (o ApiOAuthSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiOAuthSettings] {
+	return pulumix.Output[*ApiOAuthSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiOAuthSettingsPtrOutput) Elem() ApiOAuthSettingsOutput {
@@ -1122,6 +1183,12 @@ func (i ApiOAuthSettingsParameterArgs) ToApiOAuthSettingsParameterOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ApiOAuthSettingsParameterOutput)
 }
 
+func (i ApiOAuthSettingsParameterArgs) ToOutput(ctx context.Context) pulumix.Output[ApiOAuthSettingsParameter] {
+	return pulumix.Output[ApiOAuthSettingsParameter]{
+		OutputState: i.ToApiOAuthSettingsParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApiOAuthSettingsParameterMapInput is an input type that accepts ApiOAuthSettingsParameterMap and ApiOAuthSettingsParameterMapOutput values.
 // You can construct a concrete instance of `ApiOAuthSettingsParameterMapInput` via:
 //
@@ -1147,6 +1214,12 @@ func (i ApiOAuthSettingsParameterMap) ToApiOAuthSettingsParameterMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ApiOAuthSettingsParameterMapOutput)
 }
 
+func (i ApiOAuthSettingsParameterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ApiOAuthSettingsParameter] {
+	return pulumix.Output[map[string]ApiOAuthSettingsParameter]{
+		OutputState: i.ToApiOAuthSettingsParameterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OAuth Settings Parameter
 type ApiOAuthSettingsParameterOutput struct{ *pulumi.OutputState }
 
@@ -1160,6 +1233,12 @@ func (o ApiOAuthSettingsParameterOutput) ToApiOAuthSettingsParameterOutput() Api
 
 func (o ApiOAuthSettingsParameterOutput) ToApiOAuthSettingsParameterOutputWithContext(ctx context.Context) ApiOAuthSettingsParameterOutput {
 	return o
+}
+
+func (o ApiOAuthSettingsParameterOutput) ToOutput(ctx context.Context) pulumix.Output[ApiOAuthSettingsParameter] {
+	return pulumix.Output[ApiOAuthSettingsParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Read only: Options available to this parameter
@@ -1189,6 +1268,12 @@ func (o ApiOAuthSettingsParameterMapOutput) ToApiOAuthSettingsParameterMapOutput
 
 func (o ApiOAuthSettingsParameterMapOutput) ToApiOAuthSettingsParameterMapOutputWithContext(ctx context.Context) ApiOAuthSettingsParameterMapOutput {
 	return o
+}
+
+func (o ApiOAuthSettingsParameterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ApiOAuthSettingsParameter] {
+	return pulumix.Output[map[string]ApiOAuthSettingsParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiOAuthSettingsParameterMapOutput) MapIndex(k pulumi.StringInput) ApiOAuthSettingsParameterOutput {
@@ -1222,6 +1307,12 @@ func (o ApiOAuthSettingsParameterResponseOutput) ToApiOAuthSettingsParameterResp
 	return o
 }
 
+func (o ApiOAuthSettingsParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApiOAuthSettingsParameterResponse] {
+	return pulumix.Output[ApiOAuthSettingsParameterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Read only: Options available to this parameter
 func (o ApiOAuthSettingsParameterResponseOutput) Options() pulumi.AnyOutput {
 	return o.ApplyT(func(v ApiOAuthSettingsParameterResponse) interface{} { return v.Options }).(pulumi.AnyOutput)
@@ -1249,6 +1340,12 @@ func (o ApiOAuthSettingsParameterResponseMapOutput) ToApiOAuthSettingsParameterR
 
 func (o ApiOAuthSettingsParameterResponseMapOutput) ToApiOAuthSettingsParameterResponseMapOutputWithContext(ctx context.Context) ApiOAuthSettingsParameterResponseMapOutput {
 	return o
+}
+
+func (o ApiOAuthSettingsParameterResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ApiOAuthSettingsParameterResponse] {
+	return pulumix.Output[map[string]ApiOAuthSettingsParameterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiOAuthSettingsParameterResponseMapOutput) MapIndex(k pulumi.StringInput) ApiOAuthSettingsParameterResponseOutput {
@@ -1288,6 +1385,12 @@ func (o ApiOAuthSettingsResponseOutput) ToApiOAuthSettingsResponseOutput() ApiOA
 
 func (o ApiOAuthSettingsResponseOutput) ToApiOAuthSettingsResponseOutputWithContext(ctx context.Context) ApiOAuthSettingsResponseOutput {
 	return o
+}
+
+func (o ApiOAuthSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApiOAuthSettingsResponse] {
+	return pulumix.Output[ApiOAuthSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource provider client id
@@ -1339,6 +1442,12 @@ func (o ApiOAuthSettingsResponsePtrOutput) ToApiOAuthSettingsResponsePtrOutput()
 
 func (o ApiOAuthSettingsResponsePtrOutput) ToApiOAuthSettingsResponsePtrOutputWithContext(ctx context.Context) ApiOAuthSettingsResponsePtrOutput {
 	return o
+}
+
+func (o ApiOAuthSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiOAuthSettingsResponse] {
+	return pulumix.Output[*ApiOAuthSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiOAuthSettingsResponsePtrOutput) Elem() ApiOAuthSettingsResponseOutput {
@@ -1480,6 +1589,12 @@ func (i ApiPoliciesArgs) ToApiPoliciesOutputWithContext(ctx context.Context) Api
 	return pulumi.ToOutputWithContext(ctx, i).(ApiPoliciesOutput)
 }
 
+func (i ApiPoliciesArgs) ToOutput(ctx context.Context) pulumix.Output[ApiPolicies] {
+	return pulumix.Output[ApiPolicies]{
+		OutputState: i.ToApiPoliciesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ApiPoliciesArgs) ToApiPoliciesPtrOutput() ApiPoliciesPtrOutput {
 	return i.ToApiPoliciesPtrOutputWithContext(context.Background())
 }
@@ -1521,6 +1636,12 @@ func (i *apiPoliciesPtrType) ToApiPoliciesPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ApiPoliciesPtrOutput)
 }
 
+func (i *apiPoliciesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApiPolicies] {
+	return pulumix.Output[*ApiPolicies]{
+		OutputState: i.ToApiPoliciesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // API policies
 type ApiPoliciesOutput struct{ *pulumi.OutputState }
 
@@ -1544,6 +1665,12 @@ func (o ApiPoliciesOutput) ToApiPoliciesPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiPolicies) *ApiPolicies {
 		return &v
 	}).(ApiPoliciesPtrOutput)
+}
+
+func (o ApiPoliciesOutput) ToOutput(ctx context.Context) pulumix.Output[ApiPolicies] {
+	return pulumix.Output[ApiPolicies]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Content of xml policy
@@ -1593,6 +1720,12 @@ func (o ApiPoliciesPtrOutput) ToApiPoliciesPtrOutput() ApiPoliciesPtrOutput {
 
 func (o ApiPoliciesPtrOutput) ToApiPoliciesPtrOutputWithContext(ctx context.Context) ApiPoliciesPtrOutput {
 	return o
+}
+
+func (o ApiPoliciesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiPolicies] {
+	return pulumix.Output[*ApiPolicies]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiPoliciesPtrOutput) Elem() ApiPoliciesOutput {
@@ -1708,6 +1841,12 @@ func (o ApiPoliciesResponseOutput) ToApiPoliciesResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o ApiPoliciesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApiPoliciesResponse] {
+	return pulumix.Output[ApiPoliciesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Content of xml policy
 func (o ApiPoliciesResponseOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiPoliciesResponse) *string { return v.Content }).(pulumi.StringPtrOutput)
@@ -1755,6 +1894,12 @@ func (o ApiPoliciesResponsePtrOutput) ToApiPoliciesResponsePtrOutput() ApiPolici
 
 func (o ApiPoliciesResponsePtrOutput) ToApiPoliciesResponsePtrOutputWithContext(ctx context.Context) ApiPoliciesResponsePtrOutput {
 	return o
+}
+
+func (o ApiPoliciesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiPoliciesResponse] {
+	return pulumix.Output[*ApiPoliciesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiPoliciesResponsePtrOutput) Elem() ApiPoliciesResponseOutput {
@@ -1888,6 +2033,12 @@ func (i ArmPlanArgs) ToArmPlanOutputWithContext(ctx context.Context) ArmPlanOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ArmPlanOutput)
 }
 
+func (i ArmPlanArgs) ToOutput(ctx context.Context) pulumix.Output[ArmPlan] {
+	return pulumix.Output[ArmPlan]{
+		OutputState: i.ToArmPlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ArmPlanArgs) ToArmPlanPtrOutput() ArmPlanPtrOutput {
 	return i.ToArmPlanPtrOutputWithContext(context.Background())
 }
@@ -1929,6 +2080,12 @@ func (i *armPlanPtrType) ToArmPlanPtrOutputWithContext(ctx context.Context) ArmP
 	return pulumi.ToOutputWithContext(ctx, i).(ArmPlanPtrOutput)
 }
 
+func (i *armPlanPtrType) ToOutput(ctx context.Context) pulumix.Output[*ArmPlan] {
+	return pulumix.Output[*ArmPlan]{
+		OutputState: i.ToArmPlanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The plan object in an ARM, represents a marketplace plan
 type ArmPlanOutput struct{ *pulumi.OutputState }
 
@@ -1952,6 +2109,12 @@ func (o ArmPlanOutput) ToArmPlanPtrOutputWithContext(ctx context.Context) ArmPla
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArmPlan) *ArmPlan {
 		return &v
 	}).(ArmPlanPtrOutput)
+}
+
+func (o ArmPlanOutput) ToOutput(ctx context.Context) pulumix.Output[ArmPlan] {
+	return pulumix.Output[ArmPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name
@@ -1991,6 +2154,12 @@ func (o ArmPlanPtrOutput) ToArmPlanPtrOutput() ArmPlanPtrOutput {
 
 func (o ArmPlanPtrOutput) ToArmPlanPtrOutputWithContext(ctx context.Context) ArmPlanPtrOutput {
 	return o
+}
+
+func (o ArmPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArmPlan] {
+	return pulumix.Output[*ArmPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ArmPlanPtrOutput) Elem() ArmPlanOutput {
@@ -2082,6 +2251,12 @@ func (o ArmPlanResponseOutput) ToArmPlanResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ArmPlanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ArmPlanResponse] {
+	return pulumix.Output[ArmPlanResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name
 func (o ArmPlanResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ArmPlanResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2119,6 +2294,12 @@ func (o ArmPlanResponsePtrOutput) ToArmPlanResponsePtrOutput() ArmPlanResponsePt
 
 func (o ArmPlanResponsePtrOutput) ToArmPlanResponsePtrOutputWithContext(ctx context.Context) ArmPlanResponsePtrOutput {
 	return o
+}
+
+func (o ArmPlanResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArmPlanResponse] {
+	return pulumix.Output[*ArmPlanResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ArmPlanResponsePtrOutput) Elem() ArmPlanResponseOutput {
@@ -2244,6 +2425,12 @@ func (i BackendServiceDefinitionArgs) ToBackendServiceDefinitionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceDefinitionOutput)
 }
 
+func (i BackendServiceDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[BackendServiceDefinition] {
+	return pulumix.Output[BackendServiceDefinition]{
+		OutputState: i.ToBackendServiceDefinitionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BackendServiceDefinitionArgs) ToBackendServiceDefinitionPtrOutput() BackendServiceDefinitionPtrOutput {
 	return i.ToBackendServiceDefinitionPtrOutputWithContext(context.Background())
 }
@@ -2285,6 +2472,12 @@ func (i *backendServiceDefinitionPtrType) ToBackendServiceDefinitionPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceDefinitionPtrOutput)
 }
 
+func (i *backendServiceDefinitionPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceDefinition] {
+	return pulumix.Output[*BackendServiceDefinition]{
+		OutputState: i.ToBackendServiceDefinitionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // API definitions with backend urls
 type BackendServiceDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -2308,6 +2501,12 @@ func (o BackendServiceDefinitionOutput) ToBackendServiceDefinitionPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServiceDefinition) *BackendServiceDefinition {
 		return &v
 	}).(BackendServiceDefinitionPtrOutput)
+}
+
+func (o BackendServiceDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceDefinition] {
+	return pulumix.Output[BackendServiceDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Service Urls per Hosting environment
@@ -2364,6 +2563,12 @@ func (o BackendServiceDefinitionPtrOutput) ToBackendServiceDefinitionPtrOutput()
 
 func (o BackendServiceDefinitionPtrOutput) ToBackendServiceDefinitionPtrOutputWithContext(ctx context.Context) BackendServiceDefinitionPtrOutput {
 	return o
+}
+
+func (o BackendServiceDefinitionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceDefinition] {
+	return pulumix.Output[*BackendServiceDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceDefinitionPtrOutput) Elem() BackendServiceDefinitionOutput {
@@ -2491,6 +2696,12 @@ func (o BackendServiceDefinitionResponseOutput) ToBackendServiceDefinitionRespon
 	return o
 }
 
+func (o BackendServiceDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceDefinitionResponse] {
+	return pulumix.Output[BackendServiceDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Service Urls per Hosting environment
 func (o BackendServiceDefinitionResponseOutput) HostingEnvironmentServiceUrls() HostingEnvironmentServiceDescriptionsResponseArrayOutput {
 	return o.ApplyT(func(v BackendServiceDefinitionResponse) []HostingEnvironmentServiceDescriptionsResponse {
@@ -2545,6 +2756,12 @@ func (o BackendServiceDefinitionResponsePtrOutput) ToBackendServiceDefinitionRes
 
 func (o BackendServiceDefinitionResponsePtrOutput) ToBackendServiceDefinitionResponsePtrOutputWithContext(ctx context.Context) BackendServiceDefinitionResponsePtrOutput {
 	return o
+}
+
+func (o BackendServiceDefinitionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceDefinitionResponse] {
+	return pulumix.Output[*BackendServiceDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceDefinitionResponsePtrOutput) Elem() BackendServiceDefinitionResponseOutput {
@@ -2700,6 +2917,12 @@ func (i ConnectionErrorArgs) ToConnectionErrorOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionErrorOutput)
 }
 
+func (i ConnectionErrorArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionError] {
+	return pulumix.Output[ConnectionError]{
+		OutputState: i.ToConnectionErrorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionErrorArgs) ToConnectionErrorPtrOutput() ConnectionErrorPtrOutput {
 	return i.ToConnectionErrorPtrOutputWithContext(context.Background())
 }
@@ -2741,6 +2964,12 @@ func (i *connectionErrorPtrType) ToConnectionErrorPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionErrorPtrOutput)
 }
 
+func (i *connectionErrorPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionError] {
+	return pulumix.Output[*ConnectionError]{
+		OutputState: i.ToConnectionErrorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Connection error
 type ConnectionErrorOutput struct{ *pulumi.OutputState }
 
@@ -2764,6 +2993,12 @@ func (o ConnectionErrorOutput) ToConnectionErrorPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionError) *ConnectionError {
 		return &v
 	}).(ConnectionErrorPtrOutput)
+}
+
+func (o ConnectionErrorOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionError] {
+	return pulumix.Output[ConnectionError]{
+		OutputState: o.OutputState,
+	}
 }
 
 // code of the status
@@ -2818,6 +3053,12 @@ func (o ConnectionErrorPtrOutput) ToConnectionErrorPtrOutput() ConnectionErrorPt
 
 func (o ConnectionErrorPtrOutput) ToConnectionErrorPtrOutputWithContext(ctx context.Context) ConnectionErrorPtrOutput {
 	return o
+}
+
+func (o ConnectionErrorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionError] {
+	return pulumix.Output[*ConnectionError]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionErrorPtrOutput) Elem() ConnectionErrorOutput {
@@ -2945,6 +3186,12 @@ func (o ConnectionErrorResponseOutput) ToConnectionErrorResponseOutputWithContex
 	return o
 }
 
+func (o ConnectionErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionErrorResponse] {
+	return pulumix.Output[ConnectionErrorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // code of the status
 func (o ConnectionErrorResponseOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionErrorResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
@@ -2997,6 +3244,12 @@ func (o ConnectionErrorResponsePtrOutput) ToConnectionErrorResponsePtrOutput() C
 
 func (o ConnectionErrorResponsePtrOutput) ToConnectionErrorResponsePtrOutputWithContext(ctx context.Context) ConnectionErrorResponsePtrOutput {
 	return o
+}
+
+func (o ConnectionErrorResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionErrorResponse] {
+	return pulumix.Output[*ConnectionErrorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionErrorResponsePtrOutput) Elem() ConnectionErrorResponseOutput {
@@ -3136,6 +3389,12 @@ func (i ConnectionParameterArgs) ToConnectionParameterOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionParameterOutput)
 }
 
+func (i ConnectionParameterArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionParameter] {
+	return pulumix.Output[ConnectionParameter]{
+		OutputState: i.ToConnectionParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConnectionParameterMapInput is an input type that accepts ConnectionParameterMap and ConnectionParameterMapOutput values.
 // You can construct a concrete instance of `ConnectionParameterMapInput` via:
 //
@@ -3161,6 +3420,12 @@ func (i ConnectionParameterMap) ToConnectionParameterMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionParameterMapOutput)
 }
 
+func (i ConnectionParameterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ConnectionParameter] {
+	return pulumix.Output[map[string]ConnectionParameter]{
+		OutputState: i.ToConnectionParameterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // connection provider parameters
 type ConnectionParameterOutput struct{ *pulumi.OutputState }
 
@@ -3174,6 +3439,12 @@ func (o ConnectionParameterOutput) ToConnectionParameterOutput() ConnectionParam
 
 func (o ConnectionParameterOutput) ToConnectionParameterOutputWithContext(ctx context.Context) ConnectionParameterOutput {
 	return o
+}
+
+func (o ConnectionParameterOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionParameter] {
+	return pulumix.Output[ConnectionParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Default parameter value
@@ -3210,6 +3481,12 @@ func (o ConnectionParameterMapOutput) ToConnectionParameterMapOutputWithContext(
 	return o
 }
 
+func (o ConnectionParameterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ConnectionParameter] {
+	return pulumix.Output[map[string]ConnectionParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionParameterMapOutput) MapIndex(k pulumi.StringInput) ConnectionParameterOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ConnectionParameter {
 		return vs[0].(map[string]ConnectionParameter)[vs[1].(string)]
@@ -3241,6 +3518,12 @@ func (o ConnectionParameterResponseOutput) ToConnectionParameterResponseOutput()
 
 func (o ConnectionParameterResponseOutput) ToConnectionParameterResponseOutputWithContext(ctx context.Context) ConnectionParameterResponseOutput {
 	return o
+}
+
+func (o ConnectionParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionParameterResponse] {
+	return pulumix.Output[ConnectionParameterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Default parameter value
@@ -3275,6 +3558,12 @@ func (o ConnectionParameterResponseMapOutput) ToConnectionParameterResponseMapOu
 
 func (o ConnectionParameterResponseMapOutput) ToConnectionParameterResponseMapOutputWithContext(ctx context.Context) ConnectionParameterResponseMapOutput {
 	return o
+}
+
+func (o ConnectionParameterResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ConnectionParameterResponse] {
+	return pulumix.Output[map[string]ConnectionParameterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionParameterResponseMapOutput) MapIndex(k pulumi.StringInput) ConnectionParameterResponseOutput {
@@ -3350,6 +3639,12 @@ func (i ConnectionStatusArgs) ToConnectionStatusOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionStatusOutput)
 }
 
+func (i ConnectionStatusArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionStatus] {
+	return pulumix.Output[ConnectionStatus]{
+		OutputState: i.ToConnectionStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConnectionStatusArrayInput is an input type that accepts ConnectionStatusArray and ConnectionStatusArrayOutput values.
 // You can construct a concrete instance of `ConnectionStatusArrayInput` via:
 //
@@ -3375,6 +3670,12 @@ func (i ConnectionStatusArray) ToConnectionStatusArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionStatusArrayOutput)
 }
 
+func (i ConnectionStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionStatus] {
+	return pulumix.Output[[]ConnectionStatus]{
+		OutputState: i.ToConnectionStatusArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Connection status
 type ConnectionStatusOutput struct{ *pulumi.OutputState }
 
@@ -3388,6 +3689,12 @@ func (o ConnectionStatusOutput) ToConnectionStatusOutput() ConnectionStatusOutpu
 
 func (o ConnectionStatusOutput) ToConnectionStatusOutputWithContext(ctx context.Context) ConnectionStatusOutput {
 	return o
+}
+
+func (o ConnectionStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionStatus] {
+	return pulumix.Output[ConnectionStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Error details
@@ -3449,6 +3756,12 @@ func (o ConnectionStatusArrayOutput) ToConnectionStatusArrayOutputWithContext(ct
 	return o
 }
 
+func (o ConnectionStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionStatus] {
+	return pulumix.Output[[]ConnectionStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionStatusArrayOutput) Index(i pulumi.IntInput) ConnectionStatusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionStatus {
 		return vs[0].([]ConnectionStatus)[vs[1].(int)]
@@ -3490,6 +3803,12 @@ func (o ConnectionStatusResponseOutput) ToConnectionStatusResponseOutput() Conne
 
 func (o ConnectionStatusResponseOutput) ToConnectionStatusResponseOutputWithContext(ctx context.Context) ConnectionStatusResponseOutput {
 	return o
+}
+
+func (o ConnectionStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionStatusResponse] {
+	return pulumix.Output[ConnectionStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Error details
@@ -3551,6 +3870,12 @@ func (o ConnectionStatusResponseArrayOutput) ToConnectionStatusResponseArrayOutp
 	return o
 }
 
+func (o ConnectionStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionStatusResponse] {
+	return pulumix.Output[[]ConnectionStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionStatusResponseArrayOutput) Index(i pulumi.IntInput) ConnectionStatusResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionStatusResponse {
 		return vs[0].([]ConnectionStatusResponse)[vs[1].(int)]
@@ -3608,6 +3933,12 @@ func (i ConsentLinkInputParameterArgs) ToConsentLinkInputParameterOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentLinkInputParameterOutput)
 }
 
+func (i ConsentLinkInputParameterArgs) ToOutput(ctx context.Context) pulumix.Output[ConsentLinkInputParameter] {
+	return pulumix.Output[ConsentLinkInputParameter]{
+		OutputState: i.ToConsentLinkInputParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConsentLinkInputParameterArrayInput is an input type that accepts ConsentLinkInputParameterArray and ConsentLinkInputParameterArrayOutput values.
 // You can construct a concrete instance of `ConsentLinkInputParameterArrayInput` via:
 //
@@ -3633,6 +3964,12 @@ func (i ConsentLinkInputParameterArray) ToConsentLinkInputParameterArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentLinkInputParameterArrayOutput)
 }
 
+func (i ConsentLinkInputParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]ConsentLinkInputParameter] {
+	return pulumix.Output[[]ConsentLinkInputParameter]{
+		OutputState: i.ToConsentLinkInputParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConsentLinkInputParameterOutput struct{ *pulumi.OutputState }
 
 func (ConsentLinkInputParameterOutput) ElementType() reflect.Type {
@@ -3645,6 +3982,12 @@ func (o ConsentLinkInputParameterOutput) ToConsentLinkInputParameterOutput() Con
 
 func (o ConsentLinkInputParameterOutput) ToConsentLinkInputParameterOutputWithContext(ctx context.Context) ConsentLinkInputParameterOutput {
 	return o
+}
+
+func (o ConsentLinkInputParameterOutput) ToOutput(ctx context.Context) pulumix.Output[ConsentLinkInputParameter] {
+	return pulumix.Output[ConsentLinkInputParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AAD OID (user or group) if the principal type is ActiveDirectory.
@@ -3688,6 +4031,12 @@ func (o ConsentLinkInputParameterArrayOutput) ToConsentLinkInputParameterArrayOu
 	return o
 }
 
+func (o ConsentLinkInputParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConsentLinkInputParameter] {
+	return pulumix.Output[[]ConsentLinkInputParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConsentLinkInputParameterArrayOutput) Index(i pulumi.IntInput) ConsentLinkInputParameterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsentLinkInputParameter {
 		return vs[0].([]ConsentLinkInputParameter)[vs[1].(int)]
@@ -3717,6 +4066,12 @@ func (o ConsentLinkResponseOutput) ToConsentLinkResponseOutput() ConsentLinkResp
 
 func (o ConsentLinkResponseOutput) ToConsentLinkResponseOutputWithContext(ctx context.Context) ConsentLinkResponseOutput {
 	return o
+}
+
+func (o ConsentLinkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConsentLinkResponse] {
+	return pulumix.Output[ConsentLinkResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Display Name of the parameter in the connection provider's oauthSettings
@@ -3751,6 +4106,12 @@ func (o ConsentLinkResponseArrayOutput) ToConsentLinkResponseArrayOutput() Conse
 
 func (o ConsentLinkResponseArrayOutput) ToConsentLinkResponseArrayOutputWithContext(ctx context.Context) ConsentLinkResponseArrayOutput {
 	return o
+}
+
+func (o ConsentLinkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConsentLinkResponse] {
+	return pulumix.Output[[]ConsentLinkResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsentLinkResponseArrayOutput) Index(i pulumi.IntInput) ConsentLinkResponseOutput {
@@ -3818,6 +4179,12 @@ func (i CustomLoginSettingValueArgs) ToCustomLoginSettingValueOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLoginSettingValueOutput)
 }
 
+func (i CustomLoginSettingValueArgs) ToOutput(ctx context.Context) pulumix.Output[CustomLoginSettingValue] {
+	return pulumix.Output[CustomLoginSettingValue]{
+		OutputState: i.ToCustomLoginSettingValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CustomLoginSettingValueMapInput is an input type that accepts CustomLoginSettingValueMap and CustomLoginSettingValueMapOutput values.
 // You can construct a concrete instance of `CustomLoginSettingValueMapInput` via:
 //
@@ -3843,6 +4210,12 @@ func (i CustomLoginSettingValueMap) ToCustomLoginSettingValueMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLoginSettingValueMapOutput)
 }
 
+func (i CustomLoginSettingValueMap) ToOutput(ctx context.Context) pulumix.Output[map[string]CustomLoginSettingValue] {
+	return pulumix.Output[map[string]CustomLoginSettingValue]{
+		OutputState: i.ToCustomLoginSettingValueMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Custom logging setting value
 type CustomLoginSettingValueOutput struct{ *pulumi.OutputState }
 
@@ -3856,6 +4229,12 @@ func (o CustomLoginSettingValueOutput) ToCustomLoginSettingValueOutput() CustomL
 
 func (o CustomLoginSettingValueOutput) ToCustomLoginSettingValueOutputWithContext(ctx context.Context) CustomLoginSettingValueOutput {
 	return o
+}
+
+func (o CustomLoginSettingValueOutput) ToOutput(ctx context.Context) pulumix.Output[CustomLoginSettingValue] {
+	return pulumix.Output[CustomLoginSettingValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id
@@ -3907,6 +4286,12 @@ func (o CustomLoginSettingValueMapOutput) ToCustomLoginSettingValueMapOutputWith
 	return o
 }
 
+func (o CustomLoginSettingValueMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]CustomLoginSettingValue] {
+	return pulumix.Output[map[string]CustomLoginSettingValue]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomLoginSettingValueMapOutput) MapIndex(k pulumi.StringInput) CustomLoginSettingValueOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CustomLoginSettingValue {
 		return vs[0].(map[string]CustomLoginSettingValue)[vs[1].(string)]
@@ -3944,6 +4329,12 @@ func (o CustomLoginSettingValueResponseOutput) ToCustomLoginSettingValueResponse
 
 func (o CustomLoginSettingValueResponseOutput) ToCustomLoginSettingValueResponseOutputWithContext(ctx context.Context) CustomLoginSettingValueResponseOutput {
 	return o
+}
+
+func (o CustomLoginSettingValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomLoginSettingValueResponse] {
+	return pulumix.Output[CustomLoginSettingValueResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id
@@ -3993,6 +4384,12 @@ func (o CustomLoginSettingValueResponseMapOutput) ToCustomLoginSettingValueRespo
 
 func (o CustomLoginSettingValueResponseMapOutput) ToCustomLoginSettingValueResponseMapOutputWithContext(ctx context.Context) CustomLoginSettingValueResponseMapOutput {
 	return o
+}
+
+func (o CustomLoginSettingValueResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]CustomLoginSettingValueResponse] {
+	return pulumix.Output[map[string]CustomLoginSettingValueResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomLoginSettingValueResponseMapOutput) MapIndex(k pulumi.StringInput) CustomLoginSettingValueResponseOutput {
@@ -4060,6 +4457,12 @@ func (i ExpandedParentApiEntityArgs) ToExpandedParentApiEntityOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ExpandedParentApiEntityOutput)
 }
 
+func (i ExpandedParentApiEntityArgs) ToOutput(ctx context.Context) pulumix.Output[ExpandedParentApiEntity] {
+	return pulumix.Output[ExpandedParentApiEntity]{
+		OutputState: i.ToExpandedParentApiEntityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExpandedParentApiEntityArgs) ToExpandedParentApiEntityPtrOutput() ExpandedParentApiEntityPtrOutput {
 	return i.ToExpandedParentApiEntityPtrOutputWithContext(context.Background())
 }
@@ -4101,6 +4504,12 @@ func (i *expandedParentApiEntityPtrType) ToExpandedParentApiEntityPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ExpandedParentApiEntityPtrOutput)
 }
 
+func (i *expandedParentApiEntityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExpandedParentApiEntity] {
+	return pulumix.Output[*ExpandedParentApiEntity]{
+		OutputState: i.ToExpandedParentApiEntityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // expanded parent object for expansion
 type ExpandedParentApiEntityOutput struct{ *pulumi.OutputState }
 
@@ -4124,6 +4533,12 @@ func (o ExpandedParentApiEntityOutput) ToExpandedParentApiEntityPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpandedParentApiEntity) *ExpandedParentApiEntity {
 		return &v
 	}).(ExpandedParentApiEntityPtrOutput)
+}
+
+func (o ExpandedParentApiEntityOutput) ToOutput(ctx context.Context) pulumix.Output[ExpandedParentApiEntity] {
+	return pulumix.Output[ExpandedParentApiEntity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Id of connection provider
@@ -4173,6 +4588,12 @@ func (o ExpandedParentApiEntityPtrOutput) ToExpandedParentApiEntityPtrOutput() E
 
 func (o ExpandedParentApiEntityPtrOutput) ToExpandedParentApiEntityPtrOutputWithContext(ctx context.Context) ExpandedParentApiEntityPtrOutput {
 	return o
+}
+
+func (o ExpandedParentApiEntityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpandedParentApiEntity] {
+	return pulumix.Output[*ExpandedParentApiEntity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExpandedParentApiEntityPtrOutput) Elem() ExpandedParentApiEntityOutput {
@@ -4288,6 +4709,12 @@ func (o ExpandedParentApiEntityResponseOutput) ToExpandedParentApiEntityResponse
 	return o
 }
 
+func (o ExpandedParentApiEntityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpandedParentApiEntityResponse] {
+	return pulumix.Output[ExpandedParentApiEntityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Id of connection provider
 func (o ExpandedParentApiEntityResponseOutput) Entity() ResponseMessageEnvelopeApiEntityResponsePtrOutput {
 	return o.ApplyT(func(v ExpandedParentApiEntityResponse) *ResponseMessageEnvelopeApiEntityResponse { return v.Entity }).(ResponseMessageEnvelopeApiEntityResponsePtrOutput)
@@ -4335,6 +4762,12 @@ func (o ExpandedParentApiEntityResponsePtrOutput) ToExpandedParentApiEntityRespo
 
 func (o ExpandedParentApiEntityResponsePtrOutput) ToExpandedParentApiEntityResponsePtrOutputWithContext(ctx context.Context) ExpandedParentApiEntityResponsePtrOutput {
 	return o
+}
+
+func (o ExpandedParentApiEntityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpandedParentApiEntityResponse] {
+	return pulumix.Output[*ExpandedParentApiEntityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExpandedParentApiEntityResponsePtrOutput) Elem() ExpandedParentApiEntityResponseOutput {
@@ -4496,6 +4929,12 @@ func (i GeneralApiInformationArgs) ToGeneralApiInformationOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GeneralApiInformationOutput)
 }
 
+func (i GeneralApiInformationArgs) ToOutput(ctx context.Context) pulumix.Output[GeneralApiInformation] {
+	return pulumix.Output[GeneralApiInformation]{
+		OutputState: i.ToGeneralApiInformationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GeneralApiInformationArgs) ToGeneralApiInformationPtrOutput() GeneralApiInformationPtrOutput {
 	return i.ToGeneralApiInformationPtrOutputWithContext(context.Background())
 }
@@ -4537,6 +4976,12 @@ func (i *generalApiInformationPtrType) ToGeneralApiInformationPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(GeneralApiInformationPtrOutput)
 }
 
+func (i *generalApiInformationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GeneralApiInformation] {
+	return pulumix.Output[*GeneralApiInformation]{
+		OutputState: i.ToGeneralApiInformationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // General API information
 type GeneralApiInformationOutput struct{ *pulumi.OutputState }
 
@@ -4560,6 +5005,12 @@ func (o GeneralApiInformationOutput) ToGeneralApiInformationPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeneralApiInformation) *GeneralApiInformation {
 		return &v
 	}).(GeneralApiInformationPtrOutput)
+}
+
+func (o GeneralApiInformationOutput) ToOutput(ctx context.Context) pulumix.Output[GeneralApiInformation] {
+	return pulumix.Output[GeneralApiInformation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // DefaultConnectionNameTemplate
@@ -4634,6 +5085,12 @@ func (o GeneralApiInformationPtrOutput) ToGeneralApiInformationPtrOutput() Gener
 
 func (o GeneralApiInformationPtrOutput) ToGeneralApiInformationPtrOutputWithContext(ctx context.Context) GeneralApiInformationPtrOutput {
 	return o
+}
+
+func (o GeneralApiInformationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GeneralApiInformation] {
+	return pulumix.Output[*GeneralApiInformation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GeneralApiInformationPtrOutput) Elem() GeneralApiInformationOutput {
@@ -4809,6 +5266,12 @@ func (o GeneralApiInformationResponseOutput) ToGeneralApiInformationResponseOutp
 	return o
 }
 
+func (o GeneralApiInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GeneralApiInformationResponse] {
+	return pulumix.Output[GeneralApiInformationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // DefaultConnectionNameTemplate
 func (o GeneralApiInformationResponseOutput) ConnectionDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GeneralApiInformationResponse) *string { return v.ConnectionDisplayName }).(pulumi.StringPtrOutput)
@@ -4881,6 +5344,12 @@ func (o GeneralApiInformationResponsePtrOutput) ToGeneralApiInformationResponseP
 
 func (o GeneralApiInformationResponsePtrOutput) ToGeneralApiInformationResponsePtrOutputWithContext(ctx context.Context) GeneralApiInformationResponsePtrOutput {
 	return o
+}
+
+func (o GeneralApiInformationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GeneralApiInformationResponse] {
+	return pulumix.Output[*GeneralApiInformationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GeneralApiInformationResponsePtrOutput) Elem() GeneralApiInformationResponseOutput {
@@ -5066,6 +5535,12 @@ func (i HostingEnvironmentServiceDescriptionsArgs) ToHostingEnvironmentServiceDe
 	return pulumi.ToOutputWithContext(ctx, i).(HostingEnvironmentServiceDescriptionsOutput)
 }
 
+func (i HostingEnvironmentServiceDescriptionsArgs) ToOutput(ctx context.Context) pulumix.Output[HostingEnvironmentServiceDescriptions] {
+	return pulumix.Output[HostingEnvironmentServiceDescriptions]{
+		OutputState: i.ToHostingEnvironmentServiceDescriptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HostingEnvironmentServiceDescriptionsArrayInput is an input type that accepts HostingEnvironmentServiceDescriptionsArray and HostingEnvironmentServiceDescriptionsArrayOutput values.
 // You can construct a concrete instance of `HostingEnvironmentServiceDescriptionsArrayInput` via:
 //
@@ -5091,6 +5566,12 @@ func (i HostingEnvironmentServiceDescriptionsArray) ToHostingEnvironmentServiceD
 	return pulumi.ToOutputWithContext(ctx, i).(HostingEnvironmentServiceDescriptionsArrayOutput)
 }
 
+func (i HostingEnvironmentServiceDescriptionsArray) ToOutput(ctx context.Context) pulumix.Output[[]HostingEnvironmentServiceDescriptions] {
+	return pulumix.Output[[]HostingEnvironmentServiceDescriptions]{
+		OutputState: i.ToHostingEnvironmentServiceDescriptionsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Back end service per ASE
 type HostingEnvironmentServiceDescriptionsOutput struct{ *pulumi.OutputState }
 
@@ -5104,6 +5585,12 @@ func (o HostingEnvironmentServiceDescriptionsOutput) ToHostingEnvironmentService
 
 func (o HostingEnvironmentServiceDescriptionsOutput) ToHostingEnvironmentServiceDescriptionsOutputWithContext(ctx context.Context) HostingEnvironmentServiceDescriptionsOutput {
 	return o
+}
+
+func (o HostingEnvironmentServiceDescriptionsOutput) ToOutput(ctx context.Context) pulumix.Output[HostingEnvironmentServiceDescriptions] {
+	return pulumix.Output[HostingEnvironmentServiceDescriptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Host Id
@@ -5144,6 +5631,12 @@ func (o HostingEnvironmentServiceDescriptionsArrayOutput) ToHostingEnvironmentSe
 	return o
 }
 
+func (o HostingEnvironmentServiceDescriptionsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HostingEnvironmentServiceDescriptions] {
+	return pulumix.Output[[]HostingEnvironmentServiceDescriptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostingEnvironmentServiceDescriptionsArrayOutput) Index(i pulumi.IntInput) HostingEnvironmentServiceDescriptionsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostingEnvironmentServiceDescriptions {
 		return vs[0].([]HostingEnvironmentServiceDescriptions)[vs[1].(int)]
@@ -5178,6 +5671,12 @@ func (o HostingEnvironmentServiceDescriptionsResponseOutput) ToHostingEnvironmen
 
 func (o HostingEnvironmentServiceDescriptionsResponseOutput) ToHostingEnvironmentServiceDescriptionsResponseOutputWithContext(ctx context.Context) HostingEnvironmentServiceDescriptionsResponseOutput {
 	return o
+}
+
+func (o HostingEnvironmentServiceDescriptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HostingEnvironmentServiceDescriptionsResponse] {
+	return pulumix.Output[HostingEnvironmentServiceDescriptionsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Host Id
@@ -5216,6 +5715,12 @@ func (o HostingEnvironmentServiceDescriptionsResponseArrayOutput) ToHostingEnvir
 
 func (o HostingEnvironmentServiceDescriptionsResponseArrayOutput) ToHostingEnvironmentServiceDescriptionsResponseArrayOutputWithContext(ctx context.Context) HostingEnvironmentServiceDescriptionsResponseArrayOutput {
 	return o
+}
+
+func (o HostingEnvironmentServiceDescriptionsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HostingEnvironmentServiceDescriptionsResponse] {
+	return pulumix.Output[[]HostingEnvironmentServiceDescriptionsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostingEnvironmentServiceDescriptionsResponseArrayOutput) Index(i pulumi.IntInput) HostingEnvironmentServiceDescriptionsResponseOutput {
@@ -5283,6 +5788,12 @@ func (i ParameterCustomLoginSettingValuesArgs) ToParameterCustomLoginSettingValu
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterCustomLoginSettingValuesOutput)
 }
 
+func (i ParameterCustomLoginSettingValuesArgs) ToOutput(ctx context.Context) pulumix.Output[ParameterCustomLoginSettingValues] {
+	return pulumix.Output[ParameterCustomLoginSettingValues]{
+		OutputState: i.ToParameterCustomLoginSettingValuesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ParameterCustomLoginSettingValuesMapInput is an input type that accepts ParameterCustomLoginSettingValuesMap and ParameterCustomLoginSettingValuesMapOutput values.
 // You can construct a concrete instance of `ParameterCustomLoginSettingValuesMapInput` via:
 //
@@ -5308,6 +5819,12 @@ func (i ParameterCustomLoginSettingValuesMap) ToParameterCustomLoginSettingValue
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterCustomLoginSettingValuesMapOutput)
 }
 
+func (i ParameterCustomLoginSettingValuesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterCustomLoginSettingValues] {
+	return pulumix.Output[map[string]ParameterCustomLoginSettingValues]{
+		OutputState: i.ToParameterCustomLoginSettingValuesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Custom logging setting values
 type ParameterCustomLoginSettingValuesOutput struct{ *pulumi.OutputState }
 
@@ -5321,6 +5838,12 @@ func (o ParameterCustomLoginSettingValuesOutput) ToParameterCustomLoginSettingVa
 
 func (o ParameterCustomLoginSettingValuesOutput) ToParameterCustomLoginSettingValuesOutputWithContext(ctx context.Context) ParameterCustomLoginSettingValuesOutput {
 	return o
+}
+
+func (o ParameterCustomLoginSettingValuesOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterCustomLoginSettingValues] {
+	return pulumix.Output[ParameterCustomLoginSettingValues]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Custom parameters.
@@ -5374,6 +5897,12 @@ func (o ParameterCustomLoginSettingValuesMapOutput) ToParameterCustomLoginSettin
 	return o
 }
 
+func (o ParameterCustomLoginSettingValuesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterCustomLoginSettingValues] {
+	return pulumix.Output[map[string]ParameterCustomLoginSettingValues]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ParameterCustomLoginSettingValuesMapOutput) MapIndex(k pulumi.StringInput) ParameterCustomLoginSettingValuesOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ParameterCustomLoginSettingValues {
 		return vs[0].(map[string]ParameterCustomLoginSettingValues)[vs[1].(string)]
@@ -5411,6 +5940,12 @@ func (o ParameterCustomLoginSettingValuesResponseOutput) ToParameterCustomLoginS
 
 func (o ParameterCustomLoginSettingValuesResponseOutput) ToParameterCustomLoginSettingValuesResponseOutputWithContext(ctx context.Context) ParameterCustomLoginSettingValuesResponseOutput {
 	return o
+}
+
+func (o ParameterCustomLoginSettingValuesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterCustomLoginSettingValuesResponse] {
+	return pulumix.Output[ParameterCustomLoginSettingValuesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Custom parameters.
@@ -5462,6 +5997,12 @@ func (o ParameterCustomLoginSettingValuesResponseMapOutput) ToParameterCustomLog
 
 func (o ParameterCustomLoginSettingValuesResponseMapOutput) ToParameterCustomLoginSettingValuesResponseMapOutputWithContext(ctx context.Context) ParameterCustomLoginSettingValuesResponseMapOutput {
 	return o
+}
+
+func (o ParameterCustomLoginSettingValuesResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterCustomLoginSettingValuesResponse] {
+	return pulumix.Output[map[string]ParameterCustomLoginSettingValuesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParameterCustomLoginSettingValuesResponseMapOutput) MapIndex(k pulumi.StringInput) ParameterCustomLoginSettingValuesResponseOutput {
@@ -5537,6 +6078,12 @@ func (i ResponseMessageEnvelopeApiEntityArgs) ToResponseMessageEnvelopeApiEntity
 	return pulumi.ToOutputWithContext(ctx, i).(ResponseMessageEnvelopeApiEntityOutput)
 }
 
+func (i ResponseMessageEnvelopeApiEntityArgs) ToOutput(ctx context.Context) pulumix.Output[ResponseMessageEnvelopeApiEntity] {
+	return pulumix.Output[ResponseMessageEnvelopeApiEntity]{
+		OutputState: i.ToResponseMessageEnvelopeApiEntityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResponseMessageEnvelopeApiEntityArgs) ToResponseMessageEnvelopeApiEntityPtrOutput() ResponseMessageEnvelopeApiEntityPtrOutput {
 	return i.ToResponseMessageEnvelopeApiEntityPtrOutputWithContext(context.Background())
 }
@@ -5578,6 +6125,12 @@ func (i *responseMessageEnvelopeApiEntityPtrType) ToResponseMessageEnvelopeApiEn
 	return pulumi.ToOutputWithContext(ctx, i).(ResponseMessageEnvelopeApiEntityPtrOutput)
 }
 
+func (i *responseMessageEnvelopeApiEntityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResponseMessageEnvelopeApiEntity] {
+	return pulumix.Output[*ResponseMessageEnvelopeApiEntity]{
+		OutputState: i.ToResponseMessageEnvelopeApiEntityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message envelope that contains the common Azure resource manager properties and the resource provider specific content
 type ResponseMessageEnvelopeApiEntityOutput struct{ *pulumi.OutputState }
 
@@ -5601,6 +6154,12 @@ func (o ResponseMessageEnvelopeApiEntityOutput) ToResponseMessageEnvelopeApiEnti
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResponseMessageEnvelopeApiEntity) *ResponseMessageEnvelopeApiEntity {
 		return &v
 	}).(ResponseMessageEnvelopeApiEntityPtrOutput)
+}
+
+func (o ResponseMessageEnvelopeApiEntityOutput) ToOutput(ctx context.Context) pulumix.Output[ResponseMessageEnvelopeApiEntity] {
+	return pulumix.Output[ResponseMessageEnvelopeApiEntity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id. Typically id is populated only for responses to GET requests. Caller is responsible for passing in this
@@ -5658,6 +6217,12 @@ func (o ResponseMessageEnvelopeApiEntityPtrOutput) ToResponseMessageEnvelopeApiE
 
 func (o ResponseMessageEnvelopeApiEntityPtrOutput) ToResponseMessageEnvelopeApiEntityPtrOutputWithContext(ctx context.Context) ResponseMessageEnvelopeApiEntityPtrOutput {
 	return o
+}
+
+func (o ResponseMessageEnvelopeApiEntityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResponseMessageEnvelopeApiEntity] {
+	return pulumix.Output[*ResponseMessageEnvelopeApiEntity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResponseMessageEnvelopeApiEntityPtrOutput) Elem() ResponseMessageEnvelopeApiEntityOutput {
@@ -5790,6 +6355,12 @@ func (o ResponseMessageEnvelopeApiEntityResponseOutput) ToResponseMessageEnvelop
 	return o
 }
 
+func (o ResponseMessageEnvelopeApiEntityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResponseMessageEnvelopeApiEntityResponse] {
+	return pulumix.Output[ResponseMessageEnvelopeApiEntityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource Id. Typically id is populated only for responses to GET requests. Caller is responsible for passing in this
 //
 //	value for GET requests only.
@@ -5845,6 +6416,12 @@ func (o ResponseMessageEnvelopeApiEntityResponsePtrOutput) ToResponseMessageEnve
 
 func (o ResponseMessageEnvelopeApiEntityResponsePtrOutput) ToResponseMessageEnvelopeApiEntityResponsePtrOutputWithContext(ctx context.Context) ResponseMessageEnvelopeApiEntityResponsePtrOutput {
 	return o
+}
+
+func (o ResponseMessageEnvelopeApiEntityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResponseMessageEnvelopeApiEntityResponse] {
+	return pulumix.Output[*ResponseMessageEnvelopeApiEntityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResponseMessageEnvelopeApiEntityResponsePtrOutput) Elem() ResponseMessageEnvelopeApiEntityResponseOutput {
@@ -5991,6 +6568,12 @@ func (i SkuDescriptionArgs) ToSkuDescriptionOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SkuDescriptionOutput)
 }
 
+func (i SkuDescriptionArgs) ToOutput(ctx context.Context) pulumix.Output[SkuDescription] {
+	return pulumix.Output[SkuDescription]{
+		OutputState: i.ToSkuDescriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SkuDescriptionArgs) ToSkuDescriptionPtrOutput() SkuDescriptionPtrOutput {
 	return i.ToSkuDescriptionPtrOutputWithContext(context.Background())
 }
@@ -6032,6 +6615,12 @@ func (i *skuDescriptionPtrType) ToSkuDescriptionPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SkuDescriptionPtrOutput)
 }
 
+func (i *skuDescriptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SkuDescription] {
+	return pulumix.Output[*SkuDescription]{
+		OutputState: i.ToSkuDescriptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a sku for a scalable resource
 type SkuDescriptionOutput struct{ *pulumi.OutputState }
 
@@ -6055,6 +6644,12 @@ func (o SkuDescriptionOutput) ToSkuDescriptionPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkuDescription) *SkuDescription {
 		return &v
 	}).(SkuDescriptionPtrOutput)
+}
+
+func (o SkuDescriptionOutput) ToOutput(ctx context.Context) pulumix.Output[SkuDescription] {
+	return pulumix.Output[SkuDescription]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Current number of instances assigned to the resource
@@ -6094,6 +6689,12 @@ func (o SkuDescriptionPtrOutput) ToSkuDescriptionPtrOutput() SkuDescriptionPtrOu
 
 func (o SkuDescriptionPtrOutput) ToSkuDescriptionPtrOutputWithContext(ctx context.Context) SkuDescriptionPtrOutput {
 	return o
+}
+
+func (o SkuDescriptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuDescription] {
+	return pulumix.Output[*SkuDescription]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuDescriptionPtrOutput) Elem() SkuDescriptionOutput {
@@ -6185,6 +6786,12 @@ func (o SkuDescriptionResponseOutput) ToSkuDescriptionResponseOutputWithContext(
 	return o
 }
 
+func (o SkuDescriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuDescriptionResponse] {
+	return pulumix.Output[SkuDescriptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Current number of instances assigned to the resource
 func (o SkuDescriptionResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SkuDescriptionResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -6222,6 +6829,12 @@ func (o SkuDescriptionResponsePtrOutput) ToSkuDescriptionResponsePtrOutput() Sku
 
 func (o SkuDescriptionResponsePtrOutput) ToSkuDescriptionResponsePtrOutputWithContext(ctx context.Context) SkuDescriptionResponsePtrOutput {
 	return o
+}
+
+func (o SkuDescriptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuDescriptionResponse] {
+	return pulumix.Output[*SkuDescriptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuDescriptionResponsePtrOutput) Elem() SkuDescriptionResponseOutput {

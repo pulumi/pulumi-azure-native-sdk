@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a configuration profile preference
@@ -82,6 +83,12 @@ func (o LookupConfigurationProfilePreferenceResultOutput) ToLookupConfigurationP
 
 func (o LookupConfigurationProfilePreferenceResultOutput) ToLookupConfigurationProfilePreferenceResultOutputWithContext(ctx context.Context) LookupConfigurationProfilePreferenceResultOutput {
 	return o
+}
+
+func (o LookupConfigurationProfilePreferenceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigurationProfilePreferenceResult] {
+	return pulumix.Output[LookupConfigurationProfilePreferenceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

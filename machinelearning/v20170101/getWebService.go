@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Web Service Definition as specified by a subscription, resource group, and name. Note that the storage credentials and web service keys are not returned by this call. To get the web service access keys, call List Keys.
@@ -97,6 +98,12 @@ func (o LookupWebServiceResultOutput) ToLookupWebServiceResultOutput() LookupWeb
 
 func (o LookupWebServiceResultOutput) ToLookupWebServiceResultOutputWithContext(ctx context.Context) LookupWebServiceResultOutput {
 	return o
+}
+
+func (o LookupWebServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebServiceResult] {
+	return pulumix.Output[LookupWebServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the resource ID.

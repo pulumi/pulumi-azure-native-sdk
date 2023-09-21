@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Connection strings for ingesting security scan logs and data.
@@ -68,6 +69,12 @@ func (o ListIngestionSettingConnectionStringsResultOutput) ToListIngestionSettin
 
 func (o ListIngestionSettingConnectionStringsResultOutput) ToListIngestionSettingConnectionStringsResultOutputWithContext(ctx context.Context) ListIngestionSettingConnectionStringsResultOutput {
 	return o
+}
+
+func (o ListIngestionSettingConnectionStringsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListIngestionSettingConnectionStringsResult] {
+	return pulumix.Output[ListIngestionSettingConnectionStringsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Connection strings

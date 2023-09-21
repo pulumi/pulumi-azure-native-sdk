@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The list credential result response.
@@ -72,6 +73,12 @@ func (o ListFleetCredentialsResultOutput) ToListFleetCredentialsResultOutput() L
 
 func (o ListFleetCredentialsResultOutput) ToListFleetCredentialsResultOutputWithContext(ctx context.Context) ListFleetCredentialsResultOutput {
 	return o
+}
+
+func (o ListFleetCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListFleetCredentialsResult] {
+	return pulumix.Output[ListFleetCredentialsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Base64-encoded Kubernetes configuration file.

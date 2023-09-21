@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Storage Account on the  Data Box Edge/Gateway device.
@@ -94,6 +95,12 @@ func (o LookupStorageAccountResultOutput) ToLookupStorageAccountResultOutput() L
 
 func (o LookupStorageAccountResultOutput) ToLookupStorageAccountResultOutputWithContext(ctx context.Context) LookupStorageAccountResultOutput {
 	return o
+}
+
+func (o LookupStorageAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStorageAccountResult] {
+	return pulumix.Output[LookupStorageAccountResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // BlobEndpoint of Storage Account

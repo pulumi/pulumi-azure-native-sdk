@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The order details.
@@ -194,6 +195,12 @@ func (i *Order) ToOrderOutputWithContext(ctx context.Context) OrderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrderOutput)
 }
 
+func (i *Order) ToOutput(ctx context.Context) pulumix.Output[*Order] {
+	return pulumix.Output[*Order]{
+		OutputState: i.ToOrderOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrderOutput struct{ *pulumi.OutputState }
 
 func (OrderOutput) ElementType() reflect.Type {
@@ -206,6 +213,12 @@ func (o OrderOutput) ToOrderOutput() OrderOutput {
 
 func (o OrderOutput) ToOrderOutputWithContext(ctx context.Context) OrderOutput {
 	return o
+}
+
+func (o OrderOutput) ToOutput(ctx context.Context) pulumix.Output[*Order] {
+	return pulumix.Output[*Order]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The contact details.

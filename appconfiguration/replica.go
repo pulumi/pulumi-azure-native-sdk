@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The replica resource.
@@ -131,6 +132,12 @@ func (i *Replica) ToReplicaOutputWithContext(ctx context.Context) ReplicaOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicaOutput)
 }
 
+func (i *Replica) ToOutput(ctx context.Context) pulumix.Output[*Replica] {
+	return pulumix.Output[*Replica]{
+		OutputState: i.ToReplicaOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReplicaOutput struct{ *pulumi.OutputState }
 
 func (ReplicaOutput) ElementType() reflect.Type {
@@ -143,6 +150,12 @@ func (o ReplicaOutput) ToReplicaOutput() ReplicaOutput {
 
 func (o ReplicaOutput) ToReplicaOutputWithContext(ctx context.Context) ReplicaOutput {
 	return o
+}
+
+func (o ReplicaOutput) ToOutput(ctx context.Context) pulumix.Output[*Replica] {
+	return pulumix.Output[*Replica]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URI of the replica where the replica API will be available.

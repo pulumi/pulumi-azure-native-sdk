@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides the details of the backup policies associated to Recovery Services Vault. This is an asynchronous
@@ -89,6 +90,12 @@ func (o LookupProtectionPolicyResultOutput) ToLookupProtectionPolicyResultOutput
 
 func (o LookupProtectionPolicyResultOutput) ToLookupProtectionPolicyResultOutputWithContext(ctx context.Context) LookupProtectionPolicyResultOutput {
 	return o
+}
+
+func (o LookupProtectionPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProtectionPolicyResult] {
+	return pulumix.Output[LookupProtectionPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional ETag.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Base definition for datastore secrets.
@@ -76,6 +77,12 @@ func (o ListDatastoreSecretsResultOutput) ToListDatastoreSecretsResultOutput() L
 
 func (o ListDatastoreSecretsResultOutput) ToListDatastoreSecretsResultOutputWithContext(ctx context.Context) ListDatastoreSecretsResultOutput {
 	return o
+}
+
+func (o ListDatastoreSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListDatastoreSecretsResult] {
+	return pulumix.Output[ListDatastoreSecretsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // [Required] Credential type used to authentication with storage.

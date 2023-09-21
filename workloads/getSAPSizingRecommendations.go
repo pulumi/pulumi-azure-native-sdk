@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get SAP sizing recommendations by providing input SAPS for application tier and memory required for database tier
@@ -105,6 +106,12 @@ func (o GetSAPSizingRecommendationsResultOutput) ToGetSAPSizingRecommendationsRe
 
 func (o GetSAPSizingRecommendationsResultOutput) ToGetSAPSizingRecommendationsResultOutputWithContext(ctx context.Context) GetSAPSizingRecommendationsResultOutput {
 	return o
+}
+
+func (o GetSAPSizingRecommendationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSAPSizingRecommendationsResult] {
+	return pulumix.Output[GetSAPSizingRecommendationsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of SAP deployment, single server or Three tier.

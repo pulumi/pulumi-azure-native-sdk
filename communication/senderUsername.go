@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A class representing a SenderUsername resource.
@@ -150,6 +151,12 @@ func (i *SenderUsername) ToSenderUsernameOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SenderUsernameOutput)
 }
 
+func (i *SenderUsername) ToOutput(ctx context.Context) pulumix.Output[*SenderUsername] {
+	return pulumix.Output[*SenderUsername]{
+		OutputState: i.ToSenderUsernameOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SenderUsernameOutput struct{ *pulumi.OutputState }
 
 func (SenderUsernameOutput) ElementType() reflect.Type {
@@ -162,6 +169,12 @@ func (o SenderUsernameOutput) ToSenderUsernameOutput() SenderUsernameOutput {
 
 func (o SenderUsernameOutput) ToSenderUsernameOutputWithContext(ctx context.Context) SenderUsernameOutput {
 	return o
+}
+
+func (o SenderUsernameOutput) ToOutput(ctx context.Context) pulumix.Output[*SenderUsername] {
+	return pulumix.Output[*SenderUsername]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location where the SenderUsername resource data is stored at rest.

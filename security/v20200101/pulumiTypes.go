@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o AdaptiveApplicationControlIssueSummaryResponseOutput) ToAdaptiveApplicat
 	return o
 }
 
+func (o AdaptiveApplicationControlIssueSummaryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdaptiveApplicationControlIssueSummaryResponse] {
+	return pulumix.Output[AdaptiveApplicationControlIssueSummaryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // An alert that machines within a group can have
 func (o AdaptiveApplicationControlIssueSummaryResponseOutput) Issue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AdaptiveApplicationControlIssueSummaryResponse) *string { return v.Issue }).(pulumi.StringPtrOutput)
@@ -58,6 +65,12 @@ func (o AdaptiveApplicationControlIssueSummaryResponseArrayOutput) ToAdaptiveApp
 
 func (o AdaptiveApplicationControlIssueSummaryResponseArrayOutput) ToAdaptiveApplicationControlIssueSummaryResponseArrayOutputWithContext(ctx context.Context) AdaptiveApplicationControlIssueSummaryResponseArrayOutput {
 	return o
+}
+
+func (o AdaptiveApplicationControlIssueSummaryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AdaptiveApplicationControlIssueSummaryResponse] {
+	return pulumix.Output[[]AdaptiveApplicationControlIssueSummaryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AdaptiveApplicationControlIssueSummaryResponseArrayOutput) Index(i pulumi.IntInput) AdaptiveApplicationControlIssueSummaryResponseOutput {
@@ -85,6 +98,12 @@ func (o AssessmentLinksResponseOutput) ToAssessmentLinksResponseOutput() Assessm
 
 func (o AssessmentLinksResponseOutput) ToAssessmentLinksResponseOutputWithContext(ctx context.Context) AssessmentLinksResponseOutput {
 	return o
+}
+
+func (o AssessmentLinksResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssessmentLinksResponse] {
+	return pulumix.Output[AssessmentLinksResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Link to assessment in Azure Portal
@@ -135,6 +154,12 @@ func (i AssessmentStatusArgs) ToAssessmentStatusOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AssessmentStatusOutput)
 }
 
+func (i AssessmentStatusArgs) ToOutput(ctx context.Context) pulumix.Output[AssessmentStatus] {
+	return pulumix.Output[AssessmentStatus]{
+		OutputState: i.ToAssessmentStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The result of the assessment
 type AssessmentStatusOutput struct{ *pulumi.OutputState }
 
@@ -148,6 +173,12 @@ func (o AssessmentStatusOutput) ToAssessmentStatusOutput() AssessmentStatusOutpu
 
 func (o AssessmentStatusOutput) ToAssessmentStatusOutputWithContext(ctx context.Context) AssessmentStatusOutput {
 	return o
+}
+
+func (o AssessmentStatusOutput) ToOutput(ctx context.Context) pulumix.Output[AssessmentStatus] {
+	return pulumix.Output[AssessmentStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Programmatic code for the cause of the assessment status
@@ -188,6 +219,12 @@ func (o AssessmentStatusResponseOutput) ToAssessmentStatusResponseOutput() Asses
 
 func (o AssessmentStatusResponseOutput) ToAssessmentStatusResponseOutputWithContext(ctx context.Context) AssessmentStatusResponseOutput {
 	return o
+}
+
+func (o AssessmentStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssessmentStatusResponse] {
+	return pulumix.Output[AssessmentStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Programmatic code for the cause of the assessment status
@@ -262,6 +299,12 @@ func (i JitNetworkAccessPolicyVirtualMachineArgs) ToJitNetworkAccessPolicyVirtua
 	return pulumi.ToOutputWithContext(ctx, i).(JitNetworkAccessPolicyVirtualMachineOutput)
 }
 
+func (i JitNetworkAccessPolicyVirtualMachineArgs) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessPolicyVirtualMachine] {
+	return pulumix.Output[JitNetworkAccessPolicyVirtualMachine]{
+		OutputState: i.ToJitNetworkAccessPolicyVirtualMachineOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JitNetworkAccessPolicyVirtualMachineArrayInput is an input type that accepts JitNetworkAccessPolicyVirtualMachineArray and JitNetworkAccessPolicyVirtualMachineArrayOutput values.
 // You can construct a concrete instance of `JitNetworkAccessPolicyVirtualMachineArrayInput` via:
 //
@@ -287,6 +330,12 @@ func (i JitNetworkAccessPolicyVirtualMachineArray) ToJitNetworkAccessPolicyVirtu
 	return pulumi.ToOutputWithContext(ctx, i).(JitNetworkAccessPolicyVirtualMachineArrayOutput)
 }
 
+func (i JitNetworkAccessPolicyVirtualMachineArray) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessPolicyVirtualMachine] {
+	return pulumix.Output[[]JitNetworkAccessPolicyVirtualMachine]{
+		OutputState: i.ToJitNetworkAccessPolicyVirtualMachineArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JitNetworkAccessPolicyVirtualMachineOutput struct{ *pulumi.OutputState }
 
 func (JitNetworkAccessPolicyVirtualMachineOutput) ElementType() reflect.Type {
@@ -299,6 +348,12 @@ func (o JitNetworkAccessPolicyVirtualMachineOutput) ToJitNetworkAccessPolicyVirt
 
 func (o JitNetworkAccessPolicyVirtualMachineOutput) ToJitNetworkAccessPolicyVirtualMachineOutputWithContext(ctx context.Context) JitNetworkAccessPolicyVirtualMachineOutput {
 	return o
+}
+
+func (o JitNetworkAccessPolicyVirtualMachineOutput) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessPolicyVirtualMachine] {
+	return pulumix.Output[JitNetworkAccessPolicyVirtualMachine]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID of the virtual machine that is linked to this policy
@@ -330,6 +385,12 @@ func (o JitNetworkAccessPolicyVirtualMachineArrayOutput) ToJitNetworkAccessPolic
 	return o
 }
 
+func (o JitNetworkAccessPolicyVirtualMachineArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessPolicyVirtualMachine] {
+	return pulumix.Output[[]JitNetworkAccessPolicyVirtualMachine]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JitNetworkAccessPolicyVirtualMachineArrayOutput) Index(i pulumi.IntInput) JitNetworkAccessPolicyVirtualMachineOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JitNetworkAccessPolicyVirtualMachine {
 		return vs[0].([]JitNetworkAccessPolicyVirtualMachine)[vs[1].(int)]
@@ -357,6 +418,12 @@ func (o JitNetworkAccessPolicyVirtualMachineResponseOutput) ToJitNetworkAccessPo
 
 func (o JitNetworkAccessPolicyVirtualMachineResponseOutput) ToJitNetworkAccessPolicyVirtualMachineResponseOutputWithContext(ctx context.Context) JitNetworkAccessPolicyVirtualMachineResponseOutput {
 	return o
+}
+
+func (o JitNetworkAccessPolicyVirtualMachineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessPolicyVirtualMachineResponse] {
+	return pulumix.Output[JitNetworkAccessPolicyVirtualMachineResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID of the virtual machine that is linked to this policy
@@ -388,6 +455,12 @@ func (o JitNetworkAccessPolicyVirtualMachineResponseArrayOutput) ToJitNetworkAcc
 
 func (o JitNetworkAccessPolicyVirtualMachineResponseArrayOutput) ToJitNetworkAccessPolicyVirtualMachineResponseArrayOutputWithContext(ctx context.Context) JitNetworkAccessPolicyVirtualMachineResponseArrayOutput {
 	return o
+}
+
+func (o JitNetworkAccessPolicyVirtualMachineResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessPolicyVirtualMachineResponse] {
+	return pulumix.Output[[]JitNetworkAccessPolicyVirtualMachineResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JitNetworkAccessPolicyVirtualMachineResponseArrayOutput) Index(i pulumi.IntInput) JitNetworkAccessPolicyVirtualMachineResponseOutput {
@@ -441,6 +514,12 @@ func (i JitNetworkAccessPortRuleArgs) ToJitNetworkAccessPortRuleOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(JitNetworkAccessPortRuleOutput)
 }
 
+func (i JitNetworkAccessPortRuleArgs) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessPortRule] {
+	return pulumix.Output[JitNetworkAccessPortRule]{
+		OutputState: i.ToJitNetworkAccessPortRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JitNetworkAccessPortRuleArrayInput is an input type that accepts JitNetworkAccessPortRuleArray and JitNetworkAccessPortRuleArrayOutput values.
 // You can construct a concrete instance of `JitNetworkAccessPortRuleArrayInput` via:
 //
@@ -466,6 +545,12 @@ func (i JitNetworkAccessPortRuleArray) ToJitNetworkAccessPortRuleArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(JitNetworkAccessPortRuleArrayOutput)
 }
 
+func (i JitNetworkAccessPortRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessPortRule] {
+	return pulumix.Output[[]JitNetworkAccessPortRule]{
+		OutputState: i.ToJitNetworkAccessPortRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JitNetworkAccessPortRuleOutput struct{ *pulumi.OutputState }
 
 func (JitNetworkAccessPortRuleOutput) ElementType() reflect.Type {
@@ -478,6 +563,12 @@ func (o JitNetworkAccessPortRuleOutput) ToJitNetworkAccessPortRuleOutput() JitNe
 
 func (o JitNetworkAccessPortRuleOutput) ToJitNetworkAccessPortRuleOutputWithContext(ctx context.Context) JitNetworkAccessPortRuleOutput {
 	return o
+}
+
+func (o JitNetworkAccessPortRuleOutput) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessPortRule] {
+	return pulumix.Output[JitNetworkAccessPortRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Mutually exclusive with the "allowedSourceAddressPrefixes" parameter. Should be an IP address or CIDR, for example "192.168.0.3" or "192.168.0.0/16".
@@ -517,6 +608,12 @@ func (o JitNetworkAccessPortRuleArrayOutput) ToJitNetworkAccessPortRuleArrayOutp
 	return o
 }
 
+func (o JitNetworkAccessPortRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessPortRule] {
+	return pulumix.Output[[]JitNetworkAccessPortRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JitNetworkAccessPortRuleArrayOutput) Index(i pulumi.IntInput) JitNetworkAccessPortRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JitNetworkAccessPortRule {
 		return vs[0].([]JitNetworkAccessPortRule)[vs[1].(int)]
@@ -546,6 +643,12 @@ func (o JitNetworkAccessPortRuleResponseOutput) ToJitNetworkAccessPortRuleRespon
 
 func (o JitNetworkAccessPortRuleResponseOutput) ToJitNetworkAccessPortRuleResponseOutputWithContext(ctx context.Context) JitNetworkAccessPortRuleResponseOutput {
 	return o
+}
+
+func (o JitNetworkAccessPortRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessPortRuleResponse] {
+	return pulumix.Output[JitNetworkAccessPortRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Mutually exclusive with the "allowedSourceAddressPrefixes" parameter. Should be an IP address or CIDR, for example "192.168.0.3" or "192.168.0.0/16".
@@ -583,6 +686,12 @@ func (o JitNetworkAccessPortRuleResponseArrayOutput) ToJitNetworkAccessPortRuleR
 
 func (o JitNetworkAccessPortRuleResponseArrayOutput) ToJitNetworkAccessPortRuleResponseArrayOutputWithContext(ctx context.Context) JitNetworkAccessPortRuleResponseArrayOutput {
 	return o
+}
+
+func (o JitNetworkAccessPortRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessPortRuleResponse] {
+	return pulumix.Output[[]JitNetworkAccessPortRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JitNetworkAccessPortRuleResponseArrayOutput) Index(i pulumi.IntInput) JitNetworkAccessPortRuleResponseOutput {
@@ -634,6 +743,12 @@ func (i JitNetworkAccessRequestArgs) ToJitNetworkAccessRequestOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(JitNetworkAccessRequestOutput)
 }
 
+func (i JitNetworkAccessRequestArgs) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessRequest] {
+	return pulumix.Output[JitNetworkAccessRequest]{
+		OutputState: i.ToJitNetworkAccessRequestOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JitNetworkAccessRequestArrayInput is an input type that accepts JitNetworkAccessRequestArray and JitNetworkAccessRequestArrayOutput values.
 // You can construct a concrete instance of `JitNetworkAccessRequestArrayInput` via:
 //
@@ -659,6 +774,12 @@ func (i JitNetworkAccessRequestArray) ToJitNetworkAccessRequestArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(JitNetworkAccessRequestArrayOutput)
 }
 
+func (i JitNetworkAccessRequestArray) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessRequest] {
+	return pulumix.Output[[]JitNetworkAccessRequest]{
+		OutputState: i.ToJitNetworkAccessRequestArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JitNetworkAccessRequestOutput struct{ *pulumi.OutputState }
 
 func (JitNetworkAccessRequestOutput) ElementType() reflect.Type {
@@ -671,6 +792,12 @@ func (o JitNetworkAccessRequestOutput) ToJitNetworkAccessRequestOutput() JitNetw
 
 func (o JitNetworkAccessRequestOutput) ToJitNetworkAccessRequestOutputWithContext(ctx context.Context) JitNetworkAccessRequestOutput {
 	return o
+}
+
+func (o JitNetworkAccessRequestOutput) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessRequest] {
+	return pulumix.Output[JitNetworkAccessRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The justification for making the initiate request
@@ -704,6 +831,12 @@ func (o JitNetworkAccessRequestArrayOutput) ToJitNetworkAccessRequestArrayOutput
 
 func (o JitNetworkAccessRequestArrayOutput) ToJitNetworkAccessRequestArrayOutputWithContext(ctx context.Context) JitNetworkAccessRequestArrayOutput {
 	return o
+}
+
+func (o JitNetworkAccessRequestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessRequest] {
+	return pulumix.Output[[]JitNetworkAccessRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JitNetworkAccessRequestArrayOutput) Index(i pulumi.IntInput) JitNetworkAccessRequestOutput {
@@ -767,6 +900,12 @@ func (i JitNetworkAccessRequestPortArgs) ToJitNetworkAccessRequestPortOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(JitNetworkAccessRequestPortOutput)
 }
 
+func (i JitNetworkAccessRequestPortArgs) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessRequestPort] {
+	return pulumix.Output[JitNetworkAccessRequestPort]{
+		OutputState: i.ToJitNetworkAccessRequestPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JitNetworkAccessRequestPortArrayInput is an input type that accepts JitNetworkAccessRequestPortArray and JitNetworkAccessRequestPortArrayOutput values.
 // You can construct a concrete instance of `JitNetworkAccessRequestPortArrayInput` via:
 //
@@ -792,6 +931,12 @@ func (i JitNetworkAccessRequestPortArray) ToJitNetworkAccessRequestPortArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(JitNetworkAccessRequestPortArrayOutput)
 }
 
+func (i JitNetworkAccessRequestPortArray) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessRequestPort] {
+	return pulumix.Output[[]JitNetworkAccessRequestPort]{
+		OutputState: i.ToJitNetworkAccessRequestPortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JitNetworkAccessRequestPortOutput struct{ *pulumi.OutputState }
 
 func (JitNetworkAccessRequestPortOutput) ElementType() reflect.Type {
@@ -804,6 +949,12 @@ func (o JitNetworkAccessRequestPortOutput) ToJitNetworkAccessRequestPortOutput()
 
 func (o JitNetworkAccessRequestPortOutput) ToJitNetworkAccessRequestPortOutputWithContext(ctx context.Context) JitNetworkAccessRequestPortOutput {
 	return o
+}
+
+func (o JitNetworkAccessRequestPortOutput) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessRequestPort] {
+	return pulumix.Output[JitNetworkAccessRequestPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Mutually exclusive with the "allowedSourceAddressPrefixes" parameter. Should be an IP address or CIDR, for example "192.168.0.3" or "192.168.0.0/16".
@@ -854,6 +1005,12 @@ func (o JitNetworkAccessRequestPortArrayOutput) ToJitNetworkAccessRequestPortArr
 	return o
 }
 
+func (o JitNetworkAccessRequestPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessRequestPort] {
+	return pulumix.Output[[]JitNetworkAccessRequestPort]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JitNetworkAccessRequestPortArrayOutput) Index(i pulumi.IntInput) JitNetworkAccessRequestPortOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JitNetworkAccessRequestPort {
 		return vs[0].([]JitNetworkAccessRequestPort)[vs[1].(int)]
@@ -888,6 +1045,12 @@ func (o JitNetworkAccessRequestPortResponseOutput) ToJitNetworkAccessRequestPort
 
 func (o JitNetworkAccessRequestPortResponseOutput) ToJitNetworkAccessRequestPortResponseOutputWithContext(ctx context.Context) JitNetworkAccessRequestPortResponseOutput {
 	return o
+}
+
+func (o JitNetworkAccessRequestPortResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessRequestPortResponse] {
+	return pulumix.Output[JitNetworkAccessRequestPortResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Mutually exclusive with the "allowedSourceAddressPrefixes" parameter. Should be an IP address or CIDR, for example "192.168.0.3" or "192.168.0.0/16".
@@ -938,6 +1101,12 @@ func (o JitNetworkAccessRequestPortResponseArrayOutput) ToJitNetworkAccessReques
 	return o
 }
 
+func (o JitNetworkAccessRequestPortResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessRequestPortResponse] {
+	return pulumix.Output[[]JitNetworkAccessRequestPortResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JitNetworkAccessRequestPortResponseArrayOutput) Index(i pulumi.IntInput) JitNetworkAccessRequestPortResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JitNetworkAccessRequestPortResponse {
 		return vs[0].([]JitNetworkAccessRequestPortResponse)[vs[1].(int)]
@@ -966,6 +1135,12 @@ func (o JitNetworkAccessRequestResponseOutput) ToJitNetworkAccessRequestResponse
 
 func (o JitNetworkAccessRequestResponseOutput) ToJitNetworkAccessRequestResponseOutputWithContext(ctx context.Context) JitNetworkAccessRequestResponseOutput {
 	return o
+}
+
+func (o JitNetworkAccessRequestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessRequestResponse] {
+	return pulumix.Output[JitNetworkAccessRequestResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The justification for making the initiate request
@@ -1001,6 +1176,12 @@ func (o JitNetworkAccessRequestResponseArrayOutput) ToJitNetworkAccessRequestRes
 
 func (o JitNetworkAccessRequestResponseArrayOutput) ToJitNetworkAccessRequestResponseArrayOutputWithContext(ctx context.Context) JitNetworkAccessRequestResponseArrayOutput {
 	return o
+}
+
+func (o JitNetworkAccessRequestResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessRequestResponse] {
+	return pulumix.Output[[]JitNetworkAccessRequestResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JitNetworkAccessRequestResponseArrayOutput) Index(i pulumi.IntInput) JitNetworkAccessRequestResponseOutput {
@@ -1046,6 +1227,12 @@ func (i JitNetworkAccessRequestVirtualMachineArgs) ToJitNetworkAccessRequestVirt
 	return pulumi.ToOutputWithContext(ctx, i).(JitNetworkAccessRequestVirtualMachineOutput)
 }
 
+func (i JitNetworkAccessRequestVirtualMachineArgs) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessRequestVirtualMachine] {
+	return pulumix.Output[JitNetworkAccessRequestVirtualMachine]{
+		OutputState: i.ToJitNetworkAccessRequestVirtualMachineOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JitNetworkAccessRequestVirtualMachineArrayInput is an input type that accepts JitNetworkAccessRequestVirtualMachineArray and JitNetworkAccessRequestVirtualMachineArrayOutput values.
 // You can construct a concrete instance of `JitNetworkAccessRequestVirtualMachineArrayInput` via:
 //
@@ -1071,6 +1258,12 @@ func (i JitNetworkAccessRequestVirtualMachineArray) ToJitNetworkAccessRequestVir
 	return pulumi.ToOutputWithContext(ctx, i).(JitNetworkAccessRequestVirtualMachineArrayOutput)
 }
 
+func (i JitNetworkAccessRequestVirtualMachineArray) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessRequestVirtualMachine] {
+	return pulumix.Output[[]JitNetworkAccessRequestVirtualMachine]{
+		OutputState: i.ToJitNetworkAccessRequestVirtualMachineArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JitNetworkAccessRequestVirtualMachineOutput struct{ *pulumi.OutputState }
 
 func (JitNetworkAccessRequestVirtualMachineOutput) ElementType() reflect.Type {
@@ -1083,6 +1276,12 @@ func (o JitNetworkAccessRequestVirtualMachineOutput) ToJitNetworkAccessRequestVi
 
 func (o JitNetworkAccessRequestVirtualMachineOutput) ToJitNetworkAccessRequestVirtualMachineOutputWithContext(ctx context.Context) JitNetworkAccessRequestVirtualMachineOutput {
 	return o
+}
+
+func (o JitNetworkAccessRequestVirtualMachineOutput) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessRequestVirtualMachine] {
+	return pulumix.Output[JitNetworkAccessRequestVirtualMachine]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID of the virtual machine that is linked to this policy
@@ -1107,6 +1306,12 @@ func (o JitNetworkAccessRequestVirtualMachineArrayOutput) ToJitNetworkAccessRequ
 
 func (o JitNetworkAccessRequestVirtualMachineArrayOutput) ToJitNetworkAccessRequestVirtualMachineArrayOutputWithContext(ctx context.Context) JitNetworkAccessRequestVirtualMachineArrayOutput {
 	return o
+}
+
+func (o JitNetworkAccessRequestVirtualMachineArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessRequestVirtualMachine] {
+	return pulumix.Output[[]JitNetworkAccessRequestVirtualMachine]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JitNetworkAccessRequestVirtualMachineArrayOutput) Index(i pulumi.IntInput) JitNetworkAccessRequestVirtualMachineOutput {
@@ -1136,6 +1341,12 @@ func (o JitNetworkAccessRequestVirtualMachineResponseOutput) ToJitNetworkAccessR
 	return o
 }
 
+func (o JitNetworkAccessRequestVirtualMachineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JitNetworkAccessRequestVirtualMachineResponse] {
+	return pulumix.Output[JitNetworkAccessRequestVirtualMachineResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the virtual machine that is linked to this policy
 func (o JitNetworkAccessRequestVirtualMachineResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JitNetworkAccessRequestVirtualMachineResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1160,6 +1371,12 @@ func (o JitNetworkAccessRequestVirtualMachineResponseArrayOutput) ToJitNetworkAc
 
 func (o JitNetworkAccessRequestVirtualMachineResponseArrayOutput) ToJitNetworkAccessRequestVirtualMachineResponseArrayOutputWithContext(ctx context.Context) JitNetworkAccessRequestVirtualMachineResponseArrayOutput {
 	return o
+}
+
+func (o JitNetworkAccessRequestVirtualMachineResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitNetworkAccessRequestVirtualMachineResponse] {
+	return pulumix.Output[[]JitNetworkAccessRequestVirtualMachineResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JitNetworkAccessRequestVirtualMachineResponseArrayOutput) Index(i pulumi.IntInput) JitNetworkAccessRequestVirtualMachineResponseOutput {
@@ -1299,6 +1516,12 @@ func (i PathRecommendationArgs) ToPathRecommendationOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PathRecommendationOutput)
 }
 
+func (i PathRecommendationArgs) ToOutput(ctx context.Context) pulumix.Output[PathRecommendation] {
+	return pulumix.Output[PathRecommendation]{
+		OutputState: i.ToPathRecommendationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PathRecommendationArrayInput is an input type that accepts PathRecommendationArray and PathRecommendationArrayOutput values.
 // You can construct a concrete instance of `PathRecommendationArrayInput` via:
 //
@@ -1324,6 +1547,12 @@ func (i PathRecommendationArray) ToPathRecommendationArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(PathRecommendationArrayOutput)
 }
 
+func (i PathRecommendationArray) ToOutput(ctx context.Context) pulumix.Output[[]PathRecommendation] {
+	return pulumix.Output[[]PathRecommendation]{
+		OutputState: i.ToPathRecommendationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a path that is recommended to be allowed and its properties
 type PathRecommendationOutput struct{ *pulumi.OutputState }
 
@@ -1337,6 +1566,12 @@ func (o PathRecommendationOutput) ToPathRecommendationOutput() PathRecommendatio
 
 func (o PathRecommendationOutput) ToPathRecommendationOutputWithContext(ctx context.Context) PathRecommendationOutput {
 	return o
+}
+
+func (o PathRecommendationOutput) ToOutput(ctx context.Context) pulumix.Output[PathRecommendation] {
+	return pulumix.Output[PathRecommendation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The recommendation action of the machine or rule
@@ -1396,6 +1631,12 @@ func (o PathRecommendationArrayOutput) ToPathRecommendationArrayOutputWithContex
 	return o
 }
 
+func (o PathRecommendationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PathRecommendation] {
+	return pulumix.Output[[]PathRecommendation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PathRecommendationArrayOutput) Index(i pulumi.IntInput) PathRecommendationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PathRecommendation {
 		return vs[0].([]PathRecommendation)[vs[1].(int)]
@@ -1435,6 +1676,12 @@ func (o PathRecommendationResponseOutput) ToPathRecommendationResponseOutput() P
 
 func (o PathRecommendationResponseOutput) ToPathRecommendationResponseOutputWithContext(ctx context.Context) PathRecommendationResponseOutput {
 	return o
+}
+
+func (o PathRecommendationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PathRecommendationResponse] {
+	return pulumix.Output[PathRecommendationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The recommendation action of the machine or rule
@@ -1494,6 +1741,12 @@ func (o PathRecommendationResponseArrayOutput) ToPathRecommendationResponseArray
 	return o
 }
 
+func (o PathRecommendationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PathRecommendationResponse] {
+	return pulumix.Output[[]PathRecommendationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PathRecommendationResponseArrayOutput) Index(i pulumi.IntInput) PathRecommendationResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PathRecommendationResponse {
 		return vs[0].([]PathRecommendationResponse)[vs[1].(int)]
@@ -1547,6 +1800,12 @@ func (i ProtectionModeArgs) ToProtectionModeOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectionModeOutput)
 }
 
+func (i ProtectionModeArgs) ToOutput(ctx context.Context) pulumix.Output[ProtectionMode] {
+	return pulumix.Output[ProtectionMode]{
+		OutputState: i.ToProtectionModeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ProtectionModeArgs) ToProtectionModePtrOutput() ProtectionModePtrOutput {
 	return i.ToProtectionModePtrOutputWithContext(context.Background())
 }
@@ -1588,6 +1847,12 @@ func (i *protectionModePtrType) ToProtectionModePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectionModePtrOutput)
 }
 
+func (i *protectionModePtrType) ToOutput(ctx context.Context) pulumix.Output[*ProtectionMode] {
+	return pulumix.Output[*ProtectionMode]{
+		OutputState: i.ToProtectionModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The protection mode of the collection/file types. Exe/Msi/Script are used for Windows, Executable is used for Linux.
 type ProtectionModeOutput struct{ *pulumi.OutputState }
 
@@ -1611,6 +1876,12 @@ func (o ProtectionModeOutput) ToProtectionModePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProtectionMode) *ProtectionMode {
 		return &v
 	}).(ProtectionModePtrOutput)
+}
+
+func (o ProtectionModeOutput) ToOutput(ctx context.Context) pulumix.Output[ProtectionMode] {
+	return pulumix.Output[ProtectionMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The application control policy enforcement/protection mode of the machine group
@@ -1645,6 +1916,12 @@ func (o ProtectionModePtrOutput) ToProtectionModePtrOutput() ProtectionModePtrOu
 
 func (o ProtectionModePtrOutput) ToProtectionModePtrOutputWithContext(ctx context.Context) ProtectionModePtrOutput {
 	return o
+}
+
+func (o ProtectionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProtectionMode] {
+	return pulumix.Output[*ProtectionMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProtectionModePtrOutput) Elem() ProtectionModeOutput {
@@ -1724,6 +2001,12 @@ func (o ProtectionModeResponseOutput) ToProtectionModeResponseOutputWithContext(
 	return o
 }
 
+func (o ProtectionModeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProtectionModeResponse] {
+	return pulumix.Output[ProtectionModeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The application control policy enforcement/protection mode of the machine group
 func (o ProtectionModeResponseOutput) Exe() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProtectionModeResponse) *string { return v.Exe }).(pulumi.StringPtrOutput)
@@ -1756,6 +2039,12 @@ func (o ProtectionModeResponsePtrOutput) ToProtectionModeResponsePtrOutput() Pro
 
 func (o ProtectionModeResponsePtrOutput) ToProtectionModeResponsePtrOutputWithContext(ctx context.Context) ProtectionModeResponsePtrOutput {
 	return o
+}
+
+func (o ProtectionModeResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProtectionModeResponse] {
+	return pulumix.Output[*ProtectionModeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProtectionModeResponsePtrOutput) Elem() ProtectionModeResponseOutput {
@@ -1855,6 +2144,12 @@ func (i PublisherInfoArgs) ToPublisherInfoOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PublisherInfoOutput)
 }
 
+func (i PublisherInfoArgs) ToOutput(ctx context.Context) pulumix.Output[PublisherInfo] {
+	return pulumix.Output[PublisherInfo]{
+		OutputState: i.ToPublisherInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PublisherInfoArgs) ToPublisherInfoPtrOutput() PublisherInfoPtrOutput {
 	return i.ToPublisherInfoPtrOutputWithContext(context.Background())
 }
@@ -1896,6 +2191,12 @@ func (i *publisherInfoPtrType) ToPublisherInfoPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(PublisherInfoPtrOutput)
 }
 
+func (i *publisherInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*PublisherInfo] {
+	return pulumix.Output[*PublisherInfo]{
+		OutputState: i.ToPublisherInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents the publisher information of a process/rule
 type PublisherInfoOutput struct{ *pulumi.OutputState }
 
@@ -1919,6 +2220,12 @@ func (o PublisherInfoOutput) ToPublisherInfoPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublisherInfo) *PublisherInfo {
 		return &v
 	}).(PublisherInfoPtrOutput)
+}
+
+func (o PublisherInfoOutput) ToOutput(ctx context.Context) pulumix.Output[PublisherInfo] {
+	return pulumix.Output[PublisherInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The "OriginalName" field taken from the file's version resource
@@ -1953,6 +2260,12 @@ func (o PublisherInfoPtrOutput) ToPublisherInfoPtrOutput() PublisherInfoPtrOutpu
 
 func (o PublisherInfoPtrOutput) ToPublisherInfoPtrOutputWithContext(ctx context.Context) PublisherInfoPtrOutput {
 	return o
+}
+
+func (o PublisherInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublisherInfo] {
+	return pulumix.Output[*PublisherInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PublisherInfoPtrOutput) Elem() PublisherInfoOutput {
@@ -2032,6 +2345,12 @@ func (o PublisherInfoResponseOutput) ToPublisherInfoResponseOutputWithContext(ct
 	return o
 }
 
+func (o PublisherInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PublisherInfoResponse] {
+	return pulumix.Output[PublisherInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The "OriginalName" field taken from the file's version resource
 func (o PublisherInfoResponseOutput) BinaryName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PublisherInfoResponse) *string { return v.BinaryName }).(pulumi.StringPtrOutput)
@@ -2064,6 +2383,12 @@ func (o PublisherInfoResponsePtrOutput) ToPublisherInfoResponsePtrOutput() Publi
 
 func (o PublisherInfoResponsePtrOutput) ToPublisherInfoResponsePtrOutputWithContext(ctx context.Context) PublisherInfoResponsePtrOutput {
 	return o
+}
+
+func (o PublisherInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublisherInfoResponse] {
+	return pulumix.Output[*PublisherInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PublisherInfoResponsePtrOutput) Elem() PublisherInfoResponseOutput {
@@ -2159,6 +2484,12 @@ func (i SecurityAssessmentMetadataPartnerDataArgs) ToSecurityAssessmentMetadataP
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentMetadataPartnerDataOutput)
 }
 
+func (i SecurityAssessmentMetadataPartnerDataArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataPartnerData] {
+	return pulumix.Output[SecurityAssessmentMetadataPartnerData]{
+		OutputState: i.ToSecurityAssessmentMetadataPartnerDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecurityAssessmentMetadataPartnerDataArgs) ToSecurityAssessmentMetadataPartnerDataPtrOutput() SecurityAssessmentMetadataPartnerDataPtrOutput {
 	return i.ToSecurityAssessmentMetadataPartnerDataPtrOutputWithContext(context.Background())
 }
@@ -2200,6 +2531,12 @@ func (i *securityAssessmentMetadataPartnerDataPtrType) ToSecurityAssessmentMetad
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentMetadataPartnerDataPtrOutput)
 }
 
+func (i *securityAssessmentMetadataPartnerDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataPartnerData] {
+	return pulumix.Output[*SecurityAssessmentMetadataPartnerData]{
+		OutputState: i.ToSecurityAssessmentMetadataPartnerDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the partner that created the assessment
 type SecurityAssessmentMetadataPartnerDataOutput struct{ *pulumi.OutputState }
 
@@ -2223,6 +2560,12 @@ func (o SecurityAssessmentMetadataPartnerDataOutput) ToSecurityAssessmentMetadat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityAssessmentMetadataPartnerData) *SecurityAssessmentMetadataPartnerData {
 		return &v
 	}).(SecurityAssessmentMetadataPartnerDataPtrOutput)
+}
+
+func (o SecurityAssessmentMetadataPartnerDataOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataPartnerData] {
+	return pulumix.Output[SecurityAssessmentMetadataPartnerData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the company of the partner
@@ -2252,6 +2595,12 @@ func (o SecurityAssessmentMetadataPartnerDataPtrOutput) ToSecurityAssessmentMeta
 
 func (o SecurityAssessmentMetadataPartnerDataPtrOutput) ToSecurityAssessmentMetadataPartnerDataPtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPartnerDataPtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentMetadataPartnerDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataPartnerData] {
+	return pulumix.Output[*SecurityAssessmentMetadataPartnerData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentMetadataPartnerDataPtrOutput) Elem() SecurityAssessmentMetadataPartnerDataOutput {
@@ -2319,6 +2668,12 @@ func (o SecurityAssessmentMetadataPartnerDataResponseOutput) ToSecurityAssessmen
 	return o
 }
 
+func (o SecurityAssessmentMetadataPartnerDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataPartnerDataResponse] {
+	return pulumix.Output[SecurityAssessmentMetadataPartnerDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the company of the partner
 func (o SecurityAssessmentMetadataPartnerDataResponseOutput) PartnerName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityAssessmentMetadataPartnerDataResponse) string { return v.PartnerName }).(pulumi.StringOutput)
@@ -2346,6 +2701,12 @@ func (o SecurityAssessmentMetadataPartnerDataResponsePtrOutput) ToSecurityAssess
 
 func (o SecurityAssessmentMetadataPartnerDataResponsePtrOutput) ToSecurityAssessmentMetadataPartnerDataResponsePtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPartnerDataResponsePtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentMetadataPartnerDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataPartnerDataResponse] {
+	return pulumix.Output[*SecurityAssessmentMetadataPartnerDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentMetadataPartnerDataResponsePtrOutput) Elem() SecurityAssessmentMetadataPartnerDataResponseOutput {
@@ -2459,6 +2820,12 @@ func (i SecurityAssessmentMetadataPropertiesArgs) ToSecurityAssessmentMetadataPr
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentMetadataPropertiesOutput)
 }
 
+func (i SecurityAssessmentMetadataPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataProperties] {
+	return pulumix.Output[SecurityAssessmentMetadataProperties]{
+		OutputState: i.ToSecurityAssessmentMetadataPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecurityAssessmentMetadataPropertiesArgs) ToSecurityAssessmentMetadataPropertiesPtrOutput() SecurityAssessmentMetadataPropertiesPtrOutput {
 	return i.ToSecurityAssessmentMetadataPropertiesPtrOutputWithContext(context.Background())
 }
@@ -2500,6 +2867,12 @@ func (i *securityAssessmentMetadataPropertiesPtrType) ToSecurityAssessmentMetada
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentMetadataPropertiesPtrOutput)
 }
 
+func (i *securityAssessmentMetadataPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataProperties] {
+	return pulumix.Output[*SecurityAssessmentMetadataProperties]{
+		OutputState: i.ToSecurityAssessmentMetadataPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes properties of an assessment metadata.
 type SecurityAssessmentMetadataPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2523,6 +2896,12 @@ func (o SecurityAssessmentMetadataPropertiesOutput) ToSecurityAssessmentMetadata
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityAssessmentMetadataProperties) *SecurityAssessmentMetadataProperties {
 		return &v
 	}).(SecurityAssessmentMetadataPropertiesPtrOutput)
+}
+
+func (o SecurityAssessmentMetadataPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataProperties] {
+	return pulumix.Output[SecurityAssessmentMetadataProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
@@ -2592,6 +2971,12 @@ func (o SecurityAssessmentMetadataPropertiesPtrOutput) ToSecurityAssessmentMetad
 
 func (o SecurityAssessmentMetadataPropertiesPtrOutput) ToSecurityAssessmentMetadataPropertiesPtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesPtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataProperties] {
+	return pulumix.Output[*SecurityAssessmentMetadataProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentMetadataPropertiesPtrOutput) Elem() SecurityAssessmentMetadataPropertiesOutput {
@@ -2753,6 +3138,12 @@ func (o SecurityAssessmentMetadataPropertiesResponseOutput) ToSecurityAssessment
 	return o
 }
 
+func (o SecurityAssessmentMetadataPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataPropertiesResponse] {
+	return pulumix.Output[SecurityAssessmentMetadataPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
 func (o SecurityAssessmentMetadataPropertiesResponseOutput) AssessmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityAssessmentMetadataPropertiesResponse) string { return v.AssessmentType }).(pulumi.StringOutput)
@@ -2825,6 +3216,12 @@ func (o SecurityAssessmentMetadataPropertiesResponsePtrOutput) ToSecurityAssessm
 
 func (o SecurityAssessmentMetadataPropertiesResponsePtrOutput) ToSecurityAssessmentMetadataPropertiesResponsePtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataPropertiesResponse] {
+	return pulumix.Output[*SecurityAssessmentMetadataPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentMetadataPropertiesResponsePtrOutput) Elem() SecurityAssessmentMetadataPropertiesResponseOutput {
@@ -2994,6 +3391,12 @@ func (i SecurityAssessmentPartnerDataArgs) ToSecurityAssessmentPartnerDataOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentPartnerDataOutput)
 }
 
+func (i SecurityAssessmentPartnerDataArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentPartnerData] {
+	return pulumix.Output[SecurityAssessmentPartnerData]{
+		OutputState: i.ToSecurityAssessmentPartnerDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecurityAssessmentPartnerDataArgs) ToSecurityAssessmentPartnerDataPtrOutput() SecurityAssessmentPartnerDataPtrOutput {
 	return i.ToSecurityAssessmentPartnerDataPtrOutputWithContext(context.Background())
 }
@@ -3035,6 +3438,12 @@ func (i *securityAssessmentPartnerDataPtrType) ToSecurityAssessmentPartnerDataPt
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentPartnerDataPtrOutput)
 }
 
+func (i *securityAssessmentPartnerDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentPartnerData] {
+	return pulumix.Output[*SecurityAssessmentPartnerData]{
+		OutputState: i.ToSecurityAssessmentPartnerDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Data regarding 3rd party partner integration
 type SecurityAssessmentPartnerDataOutput struct{ *pulumi.OutputState }
 
@@ -3060,6 +3469,12 @@ func (o SecurityAssessmentPartnerDataOutput) ToSecurityAssessmentPartnerDataPtrO
 	}).(SecurityAssessmentPartnerDataPtrOutput)
 }
 
+func (o SecurityAssessmentPartnerDataOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentPartnerData] {
+	return pulumix.Output[SecurityAssessmentPartnerData]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the company of the partner
 func (o SecurityAssessmentPartnerDataOutput) PartnerName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityAssessmentPartnerData) string { return v.PartnerName }).(pulumi.StringOutput)
@@ -3082,6 +3497,12 @@ func (o SecurityAssessmentPartnerDataPtrOutput) ToSecurityAssessmentPartnerDataP
 
 func (o SecurityAssessmentPartnerDataPtrOutput) ToSecurityAssessmentPartnerDataPtrOutputWithContext(ctx context.Context) SecurityAssessmentPartnerDataPtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentPartnerDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentPartnerData] {
+	return pulumix.Output[*SecurityAssessmentPartnerData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentPartnerDataPtrOutput) Elem() SecurityAssessmentPartnerDataOutput {
@@ -3137,6 +3558,12 @@ func (o SecurityAssessmentPartnerDataResponseOutput) ToSecurityAssessmentPartner
 	return o
 }
 
+func (o SecurityAssessmentPartnerDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentPartnerDataResponse] {
+	return pulumix.Output[SecurityAssessmentPartnerDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the company of the partner
 func (o SecurityAssessmentPartnerDataResponseOutput) PartnerName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityAssessmentPartnerDataResponse) string { return v.PartnerName }).(pulumi.StringOutput)
@@ -3159,6 +3586,12 @@ func (o SecurityAssessmentPartnerDataResponsePtrOutput) ToSecurityAssessmentPart
 
 func (o SecurityAssessmentPartnerDataResponsePtrOutput) ToSecurityAssessmentPartnerDataResponsePtrOutputWithContext(ctx context.Context) SecurityAssessmentPartnerDataResponsePtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentPartnerDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentPartnerDataResponse] {
+	return pulumix.Output[*SecurityAssessmentPartnerDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentPartnerDataResponsePtrOutput) Elem() SecurityAssessmentPartnerDataResponseOutput {
@@ -3230,6 +3663,12 @@ func (i UserRecommendationArgs) ToUserRecommendationOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(UserRecommendationOutput)
 }
 
+func (i UserRecommendationArgs) ToOutput(ctx context.Context) pulumix.Output[UserRecommendation] {
+	return pulumix.Output[UserRecommendation]{
+		OutputState: i.ToUserRecommendationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UserRecommendationArrayInput is an input type that accepts UserRecommendationArray and UserRecommendationArrayOutput values.
 // You can construct a concrete instance of `UserRecommendationArrayInput` via:
 //
@@ -3255,6 +3694,12 @@ func (i UserRecommendationArray) ToUserRecommendationArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(UserRecommendationArrayOutput)
 }
 
+func (i UserRecommendationArray) ToOutput(ctx context.Context) pulumix.Output[[]UserRecommendation] {
+	return pulumix.Output[[]UserRecommendation]{
+		OutputState: i.ToUserRecommendationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a user that is recommended to be allowed for a certain rule
 type UserRecommendationOutput struct{ *pulumi.OutputState }
 
@@ -3268,6 +3713,12 @@ func (o UserRecommendationOutput) ToUserRecommendationOutput() UserRecommendatio
 
 func (o UserRecommendationOutput) ToUserRecommendationOutputWithContext(ctx context.Context) UserRecommendationOutput {
 	return o
+}
+
+func (o UserRecommendationOutput) ToOutput(ctx context.Context) pulumix.Output[UserRecommendation] {
+	return pulumix.Output[UserRecommendation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The recommendation action of the machine or rule
@@ -3292,6 +3743,12 @@ func (o UserRecommendationArrayOutput) ToUserRecommendationArrayOutput() UserRec
 
 func (o UserRecommendationArrayOutput) ToUserRecommendationArrayOutputWithContext(ctx context.Context) UserRecommendationArrayOutput {
 	return o
+}
+
+func (o UserRecommendationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserRecommendation] {
+	return pulumix.Output[[]UserRecommendation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserRecommendationArrayOutput) Index(i pulumi.IntInput) UserRecommendationOutput {
@@ -3323,6 +3780,12 @@ func (o UserRecommendationResponseOutput) ToUserRecommendationResponseOutputWith
 	return o
 }
 
+func (o UserRecommendationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserRecommendationResponse] {
+	return pulumix.Output[UserRecommendationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The recommendation action of the machine or rule
 func (o UserRecommendationResponseOutput) RecommendationAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserRecommendationResponse) *string { return v.RecommendationAction }).(pulumi.StringPtrOutput)
@@ -3345,6 +3808,12 @@ func (o UserRecommendationResponseArrayOutput) ToUserRecommendationResponseArray
 
 func (o UserRecommendationResponseArrayOutput) ToUserRecommendationResponseArrayOutputWithContext(ctx context.Context) UserRecommendationResponseArrayOutput {
 	return o
+}
+
+func (o UserRecommendationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserRecommendationResponse] {
+	return pulumix.Output[[]UserRecommendationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserRecommendationResponseArrayOutput) Index(i pulumi.IntInput) UserRecommendationResponseOutput {
@@ -3400,6 +3869,12 @@ func (i VmRecommendationArgs) ToVmRecommendationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VmRecommendationOutput)
 }
 
+func (i VmRecommendationArgs) ToOutput(ctx context.Context) pulumix.Output[VmRecommendation] {
+	return pulumix.Output[VmRecommendation]{
+		OutputState: i.ToVmRecommendationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VmRecommendationArrayInput is an input type that accepts VmRecommendationArray and VmRecommendationArrayOutput values.
 // You can construct a concrete instance of `VmRecommendationArrayInput` via:
 //
@@ -3425,6 +3900,12 @@ func (i VmRecommendationArray) ToVmRecommendationArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VmRecommendationArrayOutput)
 }
 
+func (i VmRecommendationArray) ToOutput(ctx context.Context) pulumix.Output[[]VmRecommendation] {
+	return pulumix.Output[[]VmRecommendation]{
+		OutputState: i.ToVmRecommendationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a machine that is part of a machine group
 type VmRecommendationOutput struct{ *pulumi.OutputState }
 
@@ -3438,6 +3919,12 @@ func (o VmRecommendationOutput) ToVmRecommendationOutput() VmRecommendationOutpu
 
 func (o VmRecommendationOutput) ToVmRecommendationOutputWithContext(ctx context.Context) VmRecommendationOutput {
 	return o
+}
+
+func (o VmRecommendationOutput) ToOutput(ctx context.Context) pulumix.Output[VmRecommendation] {
+	return pulumix.Output[VmRecommendation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration status of the machines group or machine or rule
@@ -3474,6 +3961,12 @@ func (o VmRecommendationArrayOutput) ToVmRecommendationArrayOutputWithContext(ct
 	return o
 }
 
+func (o VmRecommendationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VmRecommendation] {
+	return pulumix.Output[[]VmRecommendation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VmRecommendationArrayOutput) Index(i pulumi.IntInput) VmRecommendationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmRecommendation {
 		return vs[0].([]VmRecommendation)[vs[1].(int)]
@@ -3505,6 +3998,12 @@ func (o VmRecommendationResponseOutput) ToVmRecommendationResponseOutput() VmRec
 
 func (o VmRecommendationResponseOutput) ToVmRecommendationResponseOutputWithContext(ctx context.Context) VmRecommendationResponseOutput {
 	return o
+}
+
+func (o VmRecommendationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmRecommendationResponse] {
+	return pulumix.Output[VmRecommendationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration status of the machines group or machine or rule
@@ -3539,6 +4038,12 @@ func (o VmRecommendationResponseArrayOutput) ToVmRecommendationResponseArrayOutp
 
 func (o VmRecommendationResponseArrayOutput) ToVmRecommendationResponseArrayOutputWithContext(ctx context.Context) VmRecommendationResponseArrayOutput {
 	return o
+}
+
+func (o VmRecommendationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VmRecommendationResponse] {
+	return pulumix.Output[[]VmRecommendationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VmRecommendationResponseArrayOutput) Index(i pulumi.IntInput) VmRecommendationResponseOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Change data capture resource type.
@@ -169,6 +170,12 @@ func (i *ChangeDataCapture) ToChangeDataCaptureOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ChangeDataCaptureOutput)
 }
 
+func (i *ChangeDataCapture) ToOutput(ctx context.Context) pulumix.Output[*ChangeDataCapture] {
+	return pulumix.Output[*ChangeDataCapture]{
+		OutputState: i.ToChangeDataCaptureOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ChangeDataCaptureOutput struct{ *pulumi.OutputState }
 
 func (ChangeDataCaptureOutput) ElementType() reflect.Type {
@@ -181,6 +188,12 @@ func (o ChangeDataCaptureOutput) ToChangeDataCaptureOutput() ChangeDataCaptureOu
 
 func (o ChangeDataCaptureOutput) ToChangeDataCaptureOutputWithContext(ctx context.Context) ChangeDataCaptureOutput {
 	return o
+}
+
+func (o ChangeDataCaptureOutput) ToOutput(ctx context.Context) pulumix.Output[*ChangeDataCapture] {
+	return pulumix.Output[*ChangeDataCapture]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A boolean to determine if the vnet configuration needs to be overwritten.

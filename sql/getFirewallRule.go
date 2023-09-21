@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a firewall rule.
@@ -85,6 +86,12 @@ func (o LookupFirewallRuleResultOutput) ToLookupFirewallRuleResultOutput() Looku
 
 func (o LookupFirewallRuleResultOutput) ToLookupFirewallRuleResultOutputWithContext(ctx context.Context) LookupFirewallRuleResultOutput {
 	return o
+}
+
+func (o LookupFirewallRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFirewallRuleResult] {
+	return pulumix.Output[LookupFirewallRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress. Use value '0.0.0.0' for all Azure-internal IP addresses.

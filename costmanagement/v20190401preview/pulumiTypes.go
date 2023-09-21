@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i BudgetTimePeriodArgs) ToBudgetTimePeriodOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetTimePeriodOutput)
 }
 
+func (i BudgetTimePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetTimePeriod] {
+	return pulumix.Output[BudgetTimePeriod]{
+		OutputState: i.ToBudgetTimePeriodOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The start and end date for a budget.
 type BudgetTimePeriodOutput struct{ *pulumi.OutputState }
 
@@ -65,6 +72,12 @@ func (o BudgetTimePeriodOutput) ToBudgetTimePeriodOutput() BudgetTimePeriodOutpu
 
 func (o BudgetTimePeriodOutput) ToBudgetTimePeriodOutputWithContext(ctx context.Context) BudgetTimePeriodOutput {
 	return o
+}
+
+func (o BudgetTimePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetTimePeriod] {
+	return pulumix.Output[BudgetTimePeriod]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The end date for the budget. If not provided, we default this to 10 years from the start date.
@@ -100,6 +113,12 @@ func (o BudgetTimePeriodResponseOutput) ToBudgetTimePeriodResponseOutputWithCont
 	return o
 }
 
+func (o BudgetTimePeriodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetTimePeriodResponse] {
+	return pulumix.Output[BudgetTimePeriodResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The end date for the budget. If not provided, we default this to 10 years from the start date.
 func (o BudgetTimePeriodResponseOutput) EndDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetTimePeriodResponse) *string { return v.EndDate }).(pulumi.StringPtrOutput)
@@ -131,6 +150,12 @@ func (o CurrentSpendResponseOutput) ToCurrentSpendResponseOutput() CurrentSpendR
 
 func (o CurrentSpendResponseOutput) ToCurrentSpendResponseOutputWithContext(ctx context.Context) CurrentSpendResponseOutput {
 	return o
+}
+
+func (o CurrentSpendResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CurrentSpendResponse] {
+	return pulumix.Output[CurrentSpendResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The total amount of cost which is being tracked by the budget.
@@ -198,6 +223,12 @@ func (i NotificationArgs) ToNotificationOutputWithContext(ctx context.Context) N
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationOutput)
 }
 
+func (i NotificationArgs) ToOutput(ctx context.Context) pulumix.Output[Notification] {
+	return pulumix.Output[Notification]{
+		OutputState: i.ToNotificationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NotificationMapInput is an input type that accepts NotificationMap and NotificationMapOutput values.
 // You can construct a concrete instance of `NotificationMapInput` via:
 //
@@ -223,6 +254,12 @@ func (i NotificationMap) ToNotificationMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationMapOutput)
 }
 
+func (i NotificationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]Notification] {
+	return pulumix.Output[map[string]Notification]{
+		OutputState: i.ToNotificationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The notification associated with a budget.
 type NotificationOutput struct{ *pulumi.OutputState }
 
@@ -236,6 +273,12 @@ func (o NotificationOutput) ToNotificationOutput() NotificationOutput {
 
 func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context) NotificationOutput {
 	return o
+}
+
+func (o NotificationOutput) ToOutput(ctx context.Context) pulumix.Output[Notification] {
+	return pulumix.Output[Notification]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Email addresses to send the budget notification to when the threshold is exceeded.
@@ -282,6 +325,12 @@ func (o NotificationMapOutput) ToNotificationMapOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o NotificationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]Notification] {
+	return pulumix.Output[map[string]Notification]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NotificationMapOutput) MapIndex(k pulumi.StringInput) NotificationOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Notification {
 		return vs[0].(map[string]Notification)[vs[1].(string)]
@@ -317,6 +366,12 @@ func (o NotificationResponseOutput) ToNotificationResponseOutput() NotificationR
 
 func (o NotificationResponseOutput) ToNotificationResponseOutputWithContext(ctx context.Context) NotificationResponseOutput {
 	return o
+}
+
+func (o NotificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationResponse] {
+	return pulumix.Output[NotificationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Email addresses to send the budget notification to when the threshold is exceeded.
@@ -361,6 +416,12 @@ func (o NotificationResponseMapOutput) ToNotificationResponseMapOutput() Notific
 
 func (o NotificationResponseMapOutput) ToNotificationResponseMapOutputWithContext(ctx context.Context) NotificationResponseMapOutput {
 	return o
+}
+
+func (o NotificationResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]NotificationResponse] {
+	return pulumix.Output[map[string]NotificationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationResponseMapOutput) MapIndex(k pulumi.StringInput) NotificationResponseOutput {
@@ -412,6 +473,12 @@ func (i ReportConfigComparisonExpressionArgs) ToReportConfigComparisonExpression
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigComparisonExpressionOutput)
 }
 
+func (i ReportConfigComparisonExpressionArgs) ToOutput(ctx context.Context) pulumix.Output[ReportConfigComparisonExpression] {
+	return pulumix.Output[ReportConfigComparisonExpression]{
+		OutputState: i.ToReportConfigComparisonExpressionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ReportConfigComparisonExpressionArgs) ToReportConfigComparisonExpressionPtrOutput() ReportConfigComparisonExpressionPtrOutput {
 	return i.ToReportConfigComparisonExpressionPtrOutputWithContext(context.Background())
 }
@@ -453,6 +520,12 @@ func (i *reportConfigComparisonExpressionPtrType) ToReportConfigComparisonExpres
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigComparisonExpressionPtrOutput)
 }
 
+func (i *reportConfigComparisonExpressionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigComparisonExpression] {
+	return pulumix.Output[*ReportConfigComparisonExpression]{
+		OutputState: i.ToReportConfigComparisonExpressionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The comparison expression to be used in the report.
 type ReportConfigComparisonExpressionOutput struct{ *pulumi.OutputState }
 
@@ -476,6 +549,12 @@ func (o ReportConfigComparisonExpressionOutput) ToReportConfigComparisonExpressi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReportConfigComparisonExpression) *ReportConfigComparisonExpression {
 		return &v
 	}).(ReportConfigComparisonExpressionPtrOutput)
+}
+
+func (o ReportConfigComparisonExpressionOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigComparisonExpression] {
+	return pulumix.Output[ReportConfigComparisonExpression]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the column to use in comparison.
@@ -505,6 +584,12 @@ func (o ReportConfigComparisonExpressionPtrOutput) ToReportConfigComparisonExpre
 
 func (o ReportConfigComparisonExpressionPtrOutput) ToReportConfigComparisonExpressionPtrOutputWithContext(ctx context.Context) ReportConfigComparisonExpressionPtrOutput {
 	return o
+}
+
+func (o ReportConfigComparisonExpressionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigComparisonExpression] {
+	return pulumix.Output[*ReportConfigComparisonExpression]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReportConfigComparisonExpressionPtrOutput) Elem() ReportConfigComparisonExpressionOutput {
@@ -572,6 +657,12 @@ func (o ReportConfigComparisonExpressionResponseOutput) ToReportConfigComparison
 	return o
 }
 
+func (o ReportConfigComparisonExpressionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigComparisonExpressionResponse] {
+	return pulumix.Output[ReportConfigComparisonExpressionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the column to use in comparison.
 func (o ReportConfigComparisonExpressionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportConfigComparisonExpressionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -599,6 +690,12 @@ func (o ReportConfigComparisonExpressionResponsePtrOutput) ToReportConfigCompari
 
 func (o ReportConfigComparisonExpressionResponsePtrOutput) ToReportConfigComparisonExpressionResponsePtrOutputWithContext(ctx context.Context) ReportConfigComparisonExpressionResponsePtrOutput {
 	return o
+}
+
+func (o ReportConfigComparisonExpressionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigComparisonExpressionResponse] {
+	return pulumix.Output[*ReportConfigComparisonExpressionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReportConfigComparisonExpressionResponsePtrOutput) Elem() ReportConfigComparisonExpressionResponseOutput {
@@ -692,6 +789,12 @@ func (i ReportConfigFilterArgs) ToReportConfigFilterOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigFilterOutput)
 }
 
+func (i ReportConfigFilterArgs) ToOutput(ctx context.Context) pulumix.Output[ReportConfigFilter] {
+	return pulumix.Output[ReportConfigFilter]{
+		OutputState: i.ToReportConfigFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ReportConfigFilterArgs) ToReportConfigFilterPtrOutput() ReportConfigFilterPtrOutput {
 	return i.ToReportConfigFilterPtrOutputWithContext(context.Background())
 }
@@ -733,6 +836,12 @@ func (i *reportConfigFilterPtrType) ToReportConfigFilterPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigFilterPtrOutput)
 }
 
+func (i *reportConfigFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigFilter] {
+	return pulumix.Output[*ReportConfigFilter]{
+		OutputState: i.ToReportConfigFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ReportConfigFilterArrayInput is an input type that accepts ReportConfigFilterArray and ReportConfigFilterArrayOutput values.
 // You can construct a concrete instance of `ReportConfigFilterArrayInput` via:
 //
@@ -758,6 +867,12 @@ func (i ReportConfigFilterArray) ToReportConfigFilterArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigFilterArrayOutput)
 }
 
+func (i ReportConfigFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigFilter] {
+	return pulumix.Output[[]ReportConfigFilter]{
+		OutputState: i.ToReportConfigFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The filter expression to be used in the report.
 type ReportConfigFilterOutput struct{ *pulumi.OutputState }
 
@@ -781,6 +896,12 @@ func (o ReportConfigFilterOutput) ToReportConfigFilterPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReportConfigFilter) *ReportConfigFilter {
 		return &v
 	}).(ReportConfigFilterPtrOutput)
+}
+
+func (o ReportConfigFilterOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigFilter] {
+	return pulumix.Output[ReportConfigFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The logical "AND" expression. Must have at least 2 items.
@@ -820,6 +941,12 @@ func (o ReportConfigFilterPtrOutput) ToReportConfigFilterPtrOutput() ReportConfi
 
 func (o ReportConfigFilterPtrOutput) ToReportConfigFilterPtrOutputWithContext(ctx context.Context) ReportConfigFilterPtrOutput {
 	return o
+}
+
+func (o ReportConfigFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigFilter] {
+	return pulumix.Output[*ReportConfigFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReportConfigFilterPtrOutput) Elem() ReportConfigFilterOutput {
@@ -896,6 +1023,12 @@ func (o ReportConfigFilterArrayOutput) ToReportConfigFilterArrayOutputWithContex
 	return o
 }
 
+func (o ReportConfigFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigFilter] {
+	return pulumix.Output[[]ReportConfigFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReportConfigFilterArrayOutput) Index(i pulumi.IntInput) ReportConfigFilterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportConfigFilter {
 		return vs[0].([]ReportConfigFilter)[vs[1].(int)]
@@ -929,6 +1062,12 @@ func (o ReportConfigFilterResponseOutput) ToReportConfigFilterResponseOutput() R
 
 func (o ReportConfigFilterResponseOutput) ToReportConfigFilterResponseOutputWithContext(ctx context.Context) ReportConfigFilterResponseOutput {
 	return o
+}
+
+func (o ReportConfigFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigFilterResponse] {
+	return pulumix.Output[ReportConfigFilterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The logical "AND" expression. Must have at least 2 items.
@@ -968,6 +1107,12 @@ func (o ReportConfigFilterResponsePtrOutput) ToReportConfigFilterResponsePtrOutp
 
 func (o ReportConfigFilterResponsePtrOutput) ToReportConfigFilterResponsePtrOutputWithContext(ctx context.Context) ReportConfigFilterResponsePtrOutput {
 	return o
+}
+
+func (o ReportConfigFilterResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigFilterResponse] {
+	return pulumix.Output[*ReportConfigFilterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReportConfigFilterResponsePtrOutput) Elem() ReportConfigFilterResponseOutput {
@@ -1042,6 +1187,12 @@ func (o ReportConfigFilterResponseArrayOutput) ToReportConfigFilterResponseArray
 
 func (o ReportConfigFilterResponseArrayOutput) ToReportConfigFilterResponseArrayOutputWithContext(ctx context.Context) ReportConfigFilterResponseArrayOutput {
 	return o
+}
+
+func (o ReportConfigFilterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigFilterResponse] {
+	return pulumix.Output[[]ReportConfigFilterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReportConfigFilterResponseArrayOutput) Index(i pulumi.IntInput) ReportConfigFilterResponseOutput {

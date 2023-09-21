@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Managed cluster.
@@ -566,6 +567,12 @@ func (i *ManagedCluster) ToManagedClusterOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterOutput)
 }
 
+func (i *ManagedCluster) ToOutput(ctx context.Context) pulumix.Output[*ManagedCluster] {
+	return pulumix.Output[*ManagedCluster]{
+		OutputState: i.ToManagedClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedClusterOutput struct{ *pulumi.OutputState }
 
 func (ManagedClusterOutput) ElementType() reflect.Type {
@@ -578,6 +585,12 @@ func (o ManagedClusterOutput) ToManagedClusterOutput() ManagedClusterOutput {
 
 func (o ManagedClusterOutput) ToManagedClusterOutputWithContext(ctx context.Context) ManagedClusterOutput {
 	return o
+}
+
+func (o ManagedClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedCluster] {
+	return pulumix.Output[*ManagedCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Azure Active Directory configuration.

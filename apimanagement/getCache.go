@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the Cache specified by its identifier.
@@ -89,6 +90,12 @@ func (o LookupCacheResultOutput) ToLookupCacheResultOutput() LookupCacheResultOu
 
 func (o LookupCacheResultOutput) ToLookupCacheResultOutputWithContext(ctx context.Context) LookupCacheResultOutput {
 	return o
+}
+
+func (o LookupCacheResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCacheResult] {
+	return pulumix.Output[LookupCacheResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Runtime connection string to cache

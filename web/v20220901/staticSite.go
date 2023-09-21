@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Static Site ARM resource.
@@ -244,6 +245,12 @@ func (i *StaticSite) ToStaticSiteOutputWithContext(ctx context.Context) StaticSi
 	return pulumi.ToOutputWithContext(ctx, i).(StaticSiteOutput)
 }
 
+func (i *StaticSite) ToOutput(ctx context.Context) pulumix.Output[*StaticSite] {
+	return pulumix.Output[*StaticSite]{
+		OutputState: i.ToStaticSiteOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StaticSiteOutput struct{ *pulumi.OutputState }
 
 func (StaticSiteOutput) ElementType() reflect.Type {
@@ -256,6 +263,12 @@ func (o StaticSiteOutput) ToStaticSiteOutput() StaticSiteOutput {
 
 func (o StaticSiteOutput) ToStaticSiteOutputWithContext(ctx context.Context) StaticSiteOutput {
 	return o
+}
+
+func (o StaticSiteOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticSite] {
+	return pulumix.Output[*StaticSite]{
+		OutputState: o.OutputState,
+	}
 }
 
 // <code>false</code> if config file is locked for this static web app; otherwise, <code>true</code>.

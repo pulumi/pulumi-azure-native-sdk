@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Security Standard on a resource
@@ -163,6 +164,12 @@ func (i *Standard) ToStandardOutputWithContext(ctx context.Context) StandardOutp
 	return pulumi.ToOutputWithContext(ctx, i).(StandardOutput)
 }
 
+func (i *Standard) ToOutput(ctx context.Context) pulumix.Output[*Standard] {
+	return pulumix.Output[*Standard]{
+		OutputState: i.ToStandardOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StandardOutput struct{ *pulumi.OutputState }
 
 func (StandardOutput) ElementType() reflect.Type {
@@ -175,6 +182,12 @@ func (o StandardOutput) ToStandardOutput() StandardOutput {
 
 func (o StandardOutput) ToStandardOutputWithContext(ctx context.Context) StandardOutput {
 	return o
+}
+
+func (o StandardOutput) ToOutput(ctx context.Context) pulumix.Output[*Standard] {
+	return pulumix.Output[*Standard]{
+		OutputState: o.OutputState,
+	}
 }
 
 // category of the standard provided

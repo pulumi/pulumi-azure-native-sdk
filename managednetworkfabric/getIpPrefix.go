@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements IP Prefix GET method.
@@ -89,6 +90,12 @@ func (o LookupIpPrefixResultOutput) ToLookupIpPrefixResultOutput() LookupIpPrefi
 
 func (o LookupIpPrefixResultOutput) ToLookupIpPrefixResultOutputWithContext(ctx context.Context) LookupIpPrefixResultOutput {
 	return o
+}
+
+func (o LookupIpPrefixResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIpPrefixResult] {
+	return pulumix.Output[LookupIpPrefixResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Switch configuration description.

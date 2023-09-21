@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure SQL job agent.
@@ -183,6 +184,12 @@ func (i *JobAgent) ToJobAgentOutputWithContext(ctx context.Context) JobAgentOutp
 	return pulumi.ToOutputWithContext(ctx, i).(JobAgentOutput)
 }
 
+func (i *JobAgent) ToOutput(ctx context.Context) pulumix.Output[*JobAgent] {
+	return pulumix.Output[*JobAgent]{
+		OutputState: i.ToJobAgentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobAgentOutput struct{ *pulumi.OutputState }
 
 func (JobAgentOutput) ElementType() reflect.Type {
@@ -195,6 +202,12 @@ func (o JobAgentOutput) ToJobAgentOutput() JobAgentOutput {
 
 func (o JobAgentOutput) ToJobAgentOutputWithContext(ctx context.Context) JobAgentOutput {
 	return o
+}
+
+func (o JobAgentOutput) ToOutput(ctx context.Context) pulumix.Output[*JobAgent] {
+	return pulumix.Output[*JobAgent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID of the database to store job metadata in.

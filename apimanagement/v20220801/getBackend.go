@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the backend specified by its identifier.
@@ -109,6 +110,12 @@ func (o LookupBackendResultOutput) ToLookupBackendResultOutput() LookupBackendRe
 
 func (o LookupBackendResultOutput) ToLookupBackendResultOutputWithContext(ctx context.Context) LookupBackendResultOutput {
 	return o
+}
+
+func (o LookupBackendResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackendResult] {
+	return pulumix.Output[LookupBackendResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Backend Credentials Contract Properties

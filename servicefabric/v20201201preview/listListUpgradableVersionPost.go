@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // If a target is not provided, it will get the minimum and maximum versions available from the current cluster version. If a target is given, it will provide the required path to get from the current cluster version to the target version.
@@ -75,6 +76,12 @@ func (o ListListUpgradableVersionPostResultOutput) ToListListUpgradableVersionPo
 
 func (o ListListUpgradableVersionPostResultOutput) ToListListUpgradableVersionPostResultOutputWithContext(ctx context.Context) ListListUpgradableVersionPostResultOutput {
 	return o
+}
+
+func (o ListListUpgradableVersionPostResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListListUpgradableVersionPostResult] {
+	return pulumix.Output[ListListUpgradableVersionPostResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListListUpgradableVersionPostResultOutput) SupportedPath() pulumi.StringArrayOutput {

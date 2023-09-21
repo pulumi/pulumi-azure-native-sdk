@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Update details
@@ -233,6 +234,12 @@ func (i *Update) ToUpdateOutputWithContext(ctx context.Context) UpdateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UpdateOutput)
 }
 
+func (i *Update) ToOutput(ctx context.Context) pulumix.Output[*Update] {
+	return pulumix.Output[*Update]{
+		OutputState: i.ToUpdateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UpdateOutput struct{ *pulumi.OutputState }
 
 func (UpdateOutput) ElementType() reflect.Type {
@@ -245,6 +252,12 @@ func (o UpdateOutput) ToUpdateOutput() UpdateOutput {
 
 func (o UpdateOutput) ToUpdateOutputWithContext(ctx context.Context) UpdateOutput {
 	return o
+}
+
+func (o UpdateOutput) ToOutput(ctx context.Context) pulumix.Output[*Update] {
+	return pulumix.Output[*Update]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Extensible KV pairs serialized as a string. This is currently used to report the stamp OEM family and hardware model information when an update is flagged as Invalid for the stamp based on OEM type.

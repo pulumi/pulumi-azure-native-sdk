@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets additional information for the specified Azure Stack Edge/Data Box Gateway device.
@@ -108,6 +109,12 @@ func (o GetDeviceExtendedInformationResultOutput) ToGetDeviceExtendedInformation
 
 func (o GetDeviceExtendedInformationResultOutput) ToGetDeviceExtendedInformationResultOutputWithContext(ctx context.Context) GetDeviceExtendedInformationResultOutput {
 	return o
+}
+
+func (o GetDeviceExtendedInformationResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceExtendedInformationResult] {
+	return pulumix.Output[GetDeviceExtendedInformationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of Channel Integrity Key stored in the Client Key Vault

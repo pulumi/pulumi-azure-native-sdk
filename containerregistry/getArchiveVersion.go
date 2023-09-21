@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the archive version.
@@ -95,6 +96,12 @@ func (o LookupArchiveVersionResultOutput) ToLookupArchiveVersionResultOutput() L
 
 func (o LookupArchiveVersionResultOutput) ToLookupArchiveVersionResultOutputWithContext(ctx context.Context) LookupArchiveVersionResultOutput {
 	return o
+}
+
+func (o LookupArchiveVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupArchiveVersionResult] {
+	return pulumix.Output[LookupArchiveVersionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The detailed error message for the archive version in the case of failure.

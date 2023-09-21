@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2022-04-01-preview.
@@ -81,6 +82,12 @@ func (o GetBillingHubServiceUsageResultOutput) ToGetBillingHubServiceUsageResult
 
 func (o GetBillingHubServiceUsageResultOutput) ToGetBillingHubServiceUsageResultOutputWithContext(ctx context.Context) GetBillingHubServiceUsageResultOutput {
 	return o
+}
+
+func (o GetBillingHubServiceUsageResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBillingHubServiceUsageResult] {
+	return pulumix.Output[GetBillingHubServiceUsageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetBillingHubServiceUsageResultOutput) NextRequest() BillingHubGetUsageRequestResponsePtrOutput {

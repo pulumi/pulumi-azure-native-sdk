@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing remediation at resource scope.
@@ -105,6 +106,12 @@ func (o LookupRemediationAtResourceResultOutput) ToLookupRemediationAtResourceRe
 
 func (o LookupRemediationAtResourceResultOutput) ToLookupRemediationAtResourceResultOutputWithContext(ctx context.Context) LookupRemediationAtResourceResultOutput {
 	return o
+}
+
+func (o LookupRemediationAtResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRemediationAtResourceResult] {
+	return pulumix.Output[LookupRemediationAtResourceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The remediation correlation Id. Can be used to find events related to the remediation in the activity log.

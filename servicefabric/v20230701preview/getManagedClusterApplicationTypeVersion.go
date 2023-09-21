@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Service Fabric managed application type version resource created or in the process of being created in the Service Fabric managed application type name resource.
@@ -94,6 +95,12 @@ func (o LookupManagedClusterApplicationTypeVersionResultOutput) ToLookupManagedC
 
 func (o LookupManagedClusterApplicationTypeVersionResultOutput) ToLookupManagedClusterApplicationTypeVersionResultOutputWithContext(ctx context.Context) LookupManagedClusterApplicationTypeVersionResultOutput {
 	return o
+}
+
+func (o LookupManagedClusterApplicationTypeVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedClusterApplicationTypeVersionResult] {
+	return pulumix.Output[LookupManagedClusterApplicationTypeVersionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL to the application package

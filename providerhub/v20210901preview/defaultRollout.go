@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Default rollout definition.
@@ -125,6 +126,12 @@ func (i *DefaultRollout) ToDefaultRolloutOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultRolloutOutput)
 }
 
+func (i *DefaultRollout) ToOutput(ctx context.Context) pulumix.Output[*DefaultRollout] {
+	return pulumix.Output[*DefaultRollout]{
+		OutputState: i.ToDefaultRolloutOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DefaultRolloutOutput struct{ *pulumi.OutputState }
 
 func (DefaultRolloutOutput) ElementType() reflect.Type {
@@ -137,6 +144,12 @@ func (o DefaultRolloutOutput) ToDefaultRolloutOutput() DefaultRolloutOutput {
 
 func (o DefaultRolloutOutput) ToDefaultRolloutOutputWithContext(ctx context.Context) DefaultRolloutOutput {
 	return o
+}
+
+func (o DefaultRolloutOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultRollout] {
+	return pulumix.Output[*DefaultRollout]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

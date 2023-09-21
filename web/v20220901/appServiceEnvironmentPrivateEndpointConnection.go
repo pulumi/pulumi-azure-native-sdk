@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Remote Private Endpoint Connection ARM resource.
@@ -148,6 +149,12 @@ func (i *AppServiceEnvironmentPrivateEndpointConnection) ToAppServiceEnvironment
 	return pulumi.ToOutputWithContext(ctx, i).(AppServiceEnvironmentPrivateEndpointConnectionOutput)
 }
 
+func (i *AppServiceEnvironmentPrivateEndpointConnection) ToOutput(ctx context.Context) pulumix.Output[*AppServiceEnvironmentPrivateEndpointConnection] {
+	return pulumix.Output[*AppServiceEnvironmentPrivateEndpointConnection]{
+		OutputState: i.ToAppServiceEnvironmentPrivateEndpointConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppServiceEnvironmentPrivateEndpointConnectionOutput struct{ *pulumi.OutputState }
 
 func (AppServiceEnvironmentPrivateEndpointConnectionOutput) ElementType() reflect.Type {
@@ -160,6 +167,12 @@ func (o AppServiceEnvironmentPrivateEndpointConnectionOutput) ToAppServiceEnviro
 
 func (o AppServiceEnvironmentPrivateEndpointConnectionOutput) ToAppServiceEnvironmentPrivateEndpointConnectionOutputWithContext(ctx context.Context) AppServiceEnvironmentPrivateEndpointConnectionOutput {
 	return o
+}
+
+func (o AppServiceEnvironmentPrivateEndpointConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*AppServiceEnvironmentPrivateEndpointConnection] {
+	return pulumix.Output[*AppServiceEnvironmentPrivateEndpointConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Private IPAddresses mapped to the remote private endpoint

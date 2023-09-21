@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sku family of the Cloud HSM Cluster
@@ -85,6 +86,12 @@ func (o CloudHsmClusterSkuNameOutput) ToCloudHsmClusterSkuNamePtrOutputWithConte
 	}).(CloudHsmClusterSkuNamePtrOutput)
 }
 
+func (o CloudHsmClusterSkuNameOutput) ToOutput(ctx context.Context) pulumix.Output[CloudHsmClusterSkuName] {
+	return pulumix.Output[CloudHsmClusterSkuName]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CloudHsmClusterSkuNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,6 +125,12 @@ func (o CloudHsmClusterSkuNamePtrOutput) ToCloudHsmClusterSkuNamePtrOutput() Clo
 
 func (o CloudHsmClusterSkuNamePtrOutput) ToCloudHsmClusterSkuNamePtrOutputWithContext(ctx context.Context) CloudHsmClusterSkuNamePtrOutput {
 	return o
+}
+
+func (o CloudHsmClusterSkuNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudHsmClusterSkuName] {
+	return pulumix.Output[*CloudHsmClusterSkuName]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudHsmClusterSkuNamePtrOutput) Elem() CloudHsmClusterSkuNameOutput {
@@ -180,6 +193,12 @@ func (in *cloudHsmClusterSkuNamePtr) ToCloudHsmClusterSkuNamePtrOutput() CloudHs
 
 func (in *cloudHsmClusterSkuNamePtr) ToCloudHsmClusterSkuNamePtrOutputWithContext(ctx context.Context) CloudHsmClusterSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudHsmClusterSkuNamePtrOutput)
+}
+
+func (in *cloudHsmClusterSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudHsmClusterSkuName] {
+	return pulumix.Output[*CloudHsmClusterSkuName]{
+		OutputState: in.ToCloudHsmClusterSkuNamePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.

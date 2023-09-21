@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an integration account session.
@@ -91,6 +92,12 @@ func (o LookupIntegrationAccountSessionResultOutput) ToLookupIntegrationAccountS
 
 func (o LookupIntegrationAccountSessionResultOutput) ToLookupIntegrationAccountSessionResultOutputWithContext(ctx context.Context) LookupIntegrationAccountSessionResultOutput {
 	return o
+}
+
+func (o LookupIntegrationAccountSessionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIntegrationAccountSessionResult] {
+	return pulumix.Output[LookupIntegrationAccountSessionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The changed time.

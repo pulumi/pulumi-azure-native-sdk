@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Additional Patch to be enable or enabled on the SQL Virtual Machine.
@@ -91,6 +92,12 @@ func (o AssessmentDayOfWeekOutput) ToAssessmentDayOfWeekPtrOutputWithContext(ctx
 	}).(AssessmentDayOfWeekPtrOutput)
 }
 
+func (o AssessmentDayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[AssessmentDayOfWeek] {
+	return pulumix.Output[AssessmentDayOfWeek]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AssessmentDayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,6 +131,12 @@ func (o AssessmentDayOfWeekPtrOutput) ToAssessmentDayOfWeekPtrOutput() Assessmen
 
 func (o AssessmentDayOfWeekPtrOutput) ToAssessmentDayOfWeekPtrOutputWithContext(ctx context.Context) AssessmentDayOfWeekPtrOutput {
 	return o
+}
+
+func (o AssessmentDayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssessmentDayOfWeek] {
+	return pulumix.Output[*AssessmentDayOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AssessmentDayOfWeekPtrOutput) Elem() AssessmentDayOfWeekOutput {
@@ -186,6 +199,12 @@ func (in *assessmentDayOfWeekPtr) ToAssessmentDayOfWeekPtrOutput() AssessmentDay
 
 func (in *assessmentDayOfWeekPtr) ToAssessmentDayOfWeekPtrOutputWithContext(ctx context.Context) AssessmentDayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentDayOfWeekPtrOutput)
+}
+
+func (in *assessmentDayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentDayOfWeek] {
+	return pulumix.Output[*AssessmentDayOfWeek]{
+		OutputState: in.ToAssessmentDayOfWeekPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type AutoBackupDaysOfWeek string
@@ -307,6 +326,12 @@ func (o DayOfWeekOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Da
 	}).(DayOfWeekPtrOutput)
 }
 
+func (o DayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[DayOfWeek] {
+	return pulumix.Output[DayOfWeek]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -340,6 +365,12 @@ func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return o
+}
+
+func (o DayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
+	return pulumix.Output[*DayOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DayOfWeekPtrOutput) Elem() DayOfWeekOutput {
@@ -402,6 +433,12 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
+}
+
+func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
+	return pulumix.Output[*DayOfWeek]{
+		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Disk configuration to apply to SQL Server.

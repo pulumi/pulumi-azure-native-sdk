@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the log profile.
@@ -86,6 +87,12 @@ func (o LookupLogProfileResultOutput) ToLookupLogProfileResultOutput() LookupLog
 
 func (o LookupLogProfileResultOutput) ToLookupLogProfileResultOutputWithContext(ctx context.Context) LookupLogProfileResultOutput {
 	return o
+}
+
+func (o LookupLogProfileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLogProfileResult] {
+	return pulumix.Output[LookupLogProfileResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the categories of the logs. These categories are created as is convenient to the user. Some values are: 'Write', 'Delete', and/or 'Action.'

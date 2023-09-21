@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // WebApp site web model.
@@ -140,6 +141,12 @@ func (i *WebAppSitesController) ToWebAppSitesControllerOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppSitesControllerOutput)
 }
 
+func (i *WebAppSitesController) ToOutput(ctx context.Context) pulumix.Output[*WebAppSitesController] {
+	return pulumix.Output[*WebAppSitesController]{
+		OutputState: i.ToWebAppSitesControllerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppSitesControllerOutput struct{ *pulumi.OutputState }
 
 func (WebAppSitesControllerOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o WebAppSitesControllerOutput) ToWebAppSitesControllerOutput() WebAppSites
 
 func (o WebAppSitesControllerOutput) ToWebAppSitesControllerOutputWithContext(ctx context.Context) WebAppSitesControllerOutput {
 	return o
+}
+
+func (o WebAppSitesControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppSitesController] {
+	return pulumix.Output[*WebAppSitesController]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the discovery scenario.

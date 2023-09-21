@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i ActionGroupArgs) ToActionGroupOutputWithContext(ctx context.Context) Act
 	return pulumi.ToOutputWithContext(ctx, i).(ActionGroupOutput)
 }
 
+func (i ActionGroupArgs) ToOutput(ctx context.Context) pulumix.Output[ActionGroup] {
+	return pulumix.Output[ActionGroup]{
+		OutputState: i.ToActionGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ActionGroupArrayInput is an input type that accepts ActionGroupArray and ActionGroupArrayOutput values.
 // You can construct a concrete instance of `ActionGroupArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i ActionGroupArray) ToActionGroupArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ActionGroupArrayOutput)
 }
 
+func (i ActionGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]ActionGroup] {
+	return pulumix.Output[[]ActionGroup]{
+		OutputState: i.ToActionGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A pointer to an Azure Action Group.
 type ActionGroupOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o ActionGroupOutput) ToActionGroupOutput() ActionGroupOutput {
 
 func (o ActionGroupOutput) ToActionGroupOutputWithContext(ctx context.Context) ActionGroupOutput {
 	return o
+}
+
+func (o ActionGroupOutput) ToOutput(ctx context.Context) pulumix.Output[ActionGroup] {
+	return pulumix.Output[ActionGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource ID of the Action Group. This cannot be null or empty.
@@ -114,6 +133,12 @@ func (o ActionGroupArrayOutput) ToActionGroupArrayOutput() ActionGroupArrayOutpu
 
 func (o ActionGroupArrayOutput) ToActionGroupArrayOutputWithContext(ctx context.Context) ActionGroupArrayOutput {
 	return o
+}
+
+func (o ActionGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ActionGroup] {
+	return pulumix.Output[[]ActionGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ActionGroupArrayOutput) Index(i pulumi.IntInput) ActionGroupOutput {
@@ -145,6 +170,12 @@ func (o ActionGroupResponseOutput) ToActionGroupResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o ActionGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActionGroupResponse] {
+	return pulumix.Output[ActionGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource ID of the Action Group. This cannot be null or empty.
 func (o ActionGroupResponseOutput) ActionGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGroupResponse) string { return v.ActionGroupId }).(pulumi.StringOutput)
@@ -167,6 +198,12 @@ func (o ActionGroupResponseArrayOutput) ToActionGroupResponseArrayOutput() Actio
 
 func (o ActionGroupResponseArrayOutput) ToActionGroupResponseArrayOutputWithContext(ctx context.Context) ActionGroupResponseArrayOutput {
 	return o
+}
+
+func (o ActionGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ActionGroupResponse] {
+	return pulumix.Output[[]ActionGroupResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ActionGroupResponseArrayOutput) Index(i pulumi.IntInput) ActionGroupResponseOutput {
@@ -210,6 +247,12 @@ func (i ActionListArgs) ToActionListOutputWithContext(ctx context.Context) Actio
 	return pulumi.ToOutputWithContext(ctx, i).(ActionListOutput)
 }
 
+func (i ActionListArgs) ToOutput(ctx context.Context) pulumix.Output[ActionList] {
+	return pulumix.Output[ActionList]{
+		OutputState: i.ToActionListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A list of Activity Log Alert rule actions.
 type ActionListOutput struct{ *pulumi.OutputState }
 
@@ -223,6 +266,12 @@ func (o ActionListOutput) ToActionListOutput() ActionListOutput {
 
 func (o ActionListOutput) ToActionListOutputWithContext(ctx context.Context) ActionListOutput {
 	return o
+}
+
+func (o ActionListOutput) ToOutput(ctx context.Context) pulumix.Output[ActionList] {
+	return pulumix.Output[ActionList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of the Action Groups.
@@ -249,6 +298,12 @@ func (o ActionListResponseOutput) ToActionListResponseOutput() ActionListRespons
 
 func (o ActionListResponseOutput) ToActionListResponseOutputWithContext(ctx context.Context) ActionListResponseOutput {
 	return o
+}
+
+func (o ActionListResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActionListResponse] {
+	return pulumix.Output[ActionListResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of the Action Groups.
@@ -291,6 +346,12 @@ func (i AlertRuleAllOfConditionArgs) ToAlertRuleAllOfConditionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleAllOfConditionOutput)
 }
 
+func (i AlertRuleAllOfConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AlertRuleAllOfCondition] {
+	return pulumix.Output[AlertRuleAllOfCondition]{
+		OutputState: i.ToAlertRuleAllOfConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An Activity Log Alert rule condition that is met when all its member conditions are met.
 type AlertRuleAllOfConditionOutput struct{ *pulumi.OutputState }
 
@@ -304,6 +365,12 @@ func (o AlertRuleAllOfConditionOutput) ToAlertRuleAllOfConditionOutput() AlertRu
 
 func (o AlertRuleAllOfConditionOutput) ToAlertRuleAllOfConditionOutputWithContext(ctx context.Context) AlertRuleAllOfConditionOutput {
 	return o
+}
+
+func (o AlertRuleAllOfConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AlertRuleAllOfCondition] {
+	return pulumix.Output[AlertRuleAllOfCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of Activity Log Alert rule conditions.
@@ -330,6 +397,12 @@ func (o AlertRuleAllOfConditionResponseOutput) ToAlertRuleAllOfConditionResponse
 
 func (o AlertRuleAllOfConditionResponseOutput) ToAlertRuleAllOfConditionResponseOutputWithContext(ctx context.Context) AlertRuleAllOfConditionResponseOutput {
 	return o
+}
+
+func (o AlertRuleAllOfConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AlertRuleAllOfConditionResponse] {
+	return pulumix.Output[AlertRuleAllOfConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of Activity Log Alert rule conditions.
@@ -398,6 +471,12 @@ func (i AlertRuleAnyOfOrLeafConditionArgs) ToAlertRuleAnyOfOrLeafConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleAnyOfOrLeafConditionOutput)
 }
 
+func (i AlertRuleAnyOfOrLeafConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AlertRuleAnyOfOrLeafCondition] {
+	return pulumix.Output[AlertRuleAnyOfOrLeafCondition]{
+		OutputState: i.ToAlertRuleAnyOfOrLeafConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlertRuleAnyOfOrLeafConditionArrayInput is an input type that accepts AlertRuleAnyOfOrLeafConditionArray and AlertRuleAnyOfOrLeafConditionArrayOutput values.
 // You can construct a concrete instance of `AlertRuleAnyOfOrLeafConditionArrayInput` via:
 //
@@ -423,6 +502,12 @@ func (i AlertRuleAnyOfOrLeafConditionArray) ToAlertRuleAnyOfOrLeafConditionArray
 	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleAnyOfOrLeafConditionArrayOutput)
 }
 
+func (i AlertRuleAnyOfOrLeafConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertRuleAnyOfOrLeafCondition] {
+	return pulumix.Output[[]AlertRuleAnyOfOrLeafCondition]{
+		OutputState: i.ToAlertRuleAnyOfOrLeafConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An Activity Log Alert rule condition that is met when all its member conditions are met.
 // Each condition can be of one of the following types:
 // __Important__: Each type has its unique subset of properties. Properties from different types CANNOT exist in one condition.
@@ -442,6 +527,12 @@ func (o AlertRuleAnyOfOrLeafConditionOutput) ToAlertRuleAnyOfOrLeafConditionOutp
 
 func (o AlertRuleAnyOfOrLeafConditionOutput) ToAlertRuleAnyOfOrLeafConditionOutputWithContext(ctx context.Context) AlertRuleAnyOfOrLeafConditionOutput {
 	return o
+}
+
+func (o AlertRuleAnyOfOrLeafConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AlertRuleAnyOfOrLeafCondition] {
+	return pulumix.Output[AlertRuleAnyOfOrLeafCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
@@ -477,6 +568,12 @@ func (o AlertRuleAnyOfOrLeafConditionArrayOutput) ToAlertRuleAnyOfOrLeafConditio
 
 func (o AlertRuleAnyOfOrLeafConditionArrayOutput) ToAlertRuleAnyOfOrLeafConditionArrayOutputWithContext(ctx context.Context) AlertRuleAnyOfOrLeafConditionArrayOutput {
 	return o
+}
+
+func (o AlertRuleAnyOfOrLeafConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertRuleAnyOfOrLeafCondition] {
+	return pulumix.Output[[]AlertRuleAnyOfOrLeafCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertRuleAnyOfOrLeafConditionArrayOutput) Index(i pulumi.IntInput) AlertRuleAnyOfOrLeafConditionOutput {
@@ -525,6 +622,12 @@ func (o AlertRuleAnyOfOrLeafConditionResponseOutput) ToAlertRuleAnyOfOrLeafCondi
 	return o
 }
 
+func (o AlertRuleAnyOfOrLeafConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AlertRuleAnyOfOrLeafConditionResponse] {
+	return pulumix.Output[AlertRuleAnyOfOrLeafConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
 func (o AlertRuleAnyOfOrLeafConditionResponseOutput) AnyOf() AlertRuleLeafConditionResponseArrayOutput {
 	return o.ApplyT(func(v AlertRuleAnyOfOrLeafConditionResponse) []AlertRuleLeafConditionResponse { return v.AnyOf }).(AlertRuleLeafConditionResponseArrayOutput)
@@ -558,6 +661,12 @@ func (o AlertRuleAnyOfOrLeafConditionResponseArrayOutput) ToAlertRuleAnyOfOrLeaf
 
 func (o AlertRuleAnyOfOrLeafConditionResponseArrayOutput) ToAlertRuleAnyOfOrLeafConditionResponseArrayOutputWithContext(ctx context.Context) AlertRuleAnyOfOrLeafConditionResponseArrayOutput {
 	return o
+}
+
+func (o AlertRuleAnyOfOrLeafConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertRuleAnyOfOrLeafConditionResponse] {
+	return pulumix.Output[[]AlertRuleAnyOfOrLeafConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertRuleAnyOfOrLeafConditionResponseArrayOutput) Index(i pulumi.IntInput) AlertRuleAnyOfOrLeafConditionResponseOutput {
@@ -613,6 +722,12 @@ func (i AlertRuleLeafConditionArgs) ToAlertRuleLeafConditionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleLeafConditionOutput)
 }
 
+func (i AlertRuleLeafConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AlertRuleLeafCondition] {
+	return pulumix.Output[AlertRuleLeafCondition]{
+		OutputState: i.ToAlertRuleLeafConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlertRuleLeafConditionArrayInput is an input type that accepts AlertRuleLeafConditionArray and AlertRuleLeafConditionArrayOutput values.
 // You can construct a concrete instance of `AlertRuleLeafConditionArrayInput` via:
 //
@@ -638,6 +753,12 @@ func (i AlertRuleLeafConditionArray) ToAlertRuleLeafConditionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleLeafConditionArrayOutput)
 }
 
+func (i AlertRuleLeafConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertRuleLeafCondition] {
+	return pulumix.Output[[]AlertRuleLeafCondition]{
+		OutputState: i.ToAlertRuleLeafConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An Activity Log Alert rule condition that is met by comparing the field and value of an Activity Log event.
 // This condition must contain 'field' and either 'equals' or 'containsAny'.
 type AlertRuleLeafConditionOutput struct{ *pulumi.OutputState }
@@ -652,6 +773,12 @@ func (o AlertRuleLeafConditionOutput) ToAlertRuleLeafConditionOutput() AlertRule
 
 func (o AlertRuleLeafConditionOutput) ToAlertRuleLeafConditionOutputWithContext(ctx context.Context) AlertRuleLeafConditionOutput {
 	return o
+}
+
+func (o AlertRuleLeafConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AlertRuleLeafCondition] {
+	return pulumix.Output[AlertRuleLeafCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
@@ -682,6 +809,12 @@ func (o AlertRuleLeafConditionArrayOutput) ToAlertRuleLeafConditionArrayOutput()
 
 func (o AlertRuleLeafConditionArrayOutput) ToAlertRuleLeafConditionArrayOutputWithContext(ctx context.Context) AlertRuleLeafConditionArrayOutput {
 	return o
+}
+
+func (o AlertRuleLeafConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertRuleLeafCondition] {
+	return pulumix.Output[[]AlertRuleLeafCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertRuleLeafConditionArrayOutput) Index(i pulumi.IntInput) AlertRuleLeafConditionOutput {
@@ -718,6 +851,12 @@ func (o AlertRuleLeafConditionResponseOutput) ToAlertRuleLeafConditionResponseOu
 	return o
 }
 
+func (o AlertRuleLeafConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AlertRuleLeafConditionResponse] {
+	return pulumix.Output[AlertRuleLeafConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
 func (o AlertRuleLeafConditionResponseOutput) ContainsAny() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AlertRuleLeafConditionResponse) []string { return v.ContainsAny }).(pulumi.StringArrayOutput)
@@ -746,6 +885,12 @@ func (o AlertRuleLeafConditionResponseArrayOutput) ToAlertRuleLeafConditionRespo
 
 func (o AlertRuleLeafConditionResponseArrayOutput) ToAlertRuleLeafConditionResponseArrayOutputWithContext(ctx context.Context) AlertRuleLeafConditionResponseArrayOutput {
 	return o
+}
+
+func (o AlertRuleLeafConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertRuleLeafConditionResponse] {
+	return pulumix.Output[[]AlertRuleLeafConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertRuleLeafConditionResponseArrayOutput) Index(i pulumi.IntInput) AlertRuleLeafConditionResponseOutput {

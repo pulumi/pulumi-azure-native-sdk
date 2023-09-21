@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the metadata of the provisioning service without SAS keys.
@@ -93,6 +94,12 @@ func (o LookupIotDpsResourceResultOutput) ToLookupIotDpsResourceResultOutput() L
 
 func (o LookupIotDpsResourceResultOutput) ToLookupIotDpsResourceResultOutputWithContext(ctx context.Context) LookupIotDpsResourceResultOutput {
 	return o
+}
+
+func (o LookupIotDpsResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIotDpsResourceResult] {
+	return pulumix.Output[LookupIotDpsResourceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.

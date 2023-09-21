@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The X509 Certificate.
@@ -152,6 +153,12 @@ func (i *DpsCertificate) ToDpsCertificateOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DpsCertificateOutput)
 }
 
+func (i *DpsCertificate) ToOutput(ctx context.Context) pulumix.Output[*DpsCertificate] {
+	return pulumix.Output[*DpsCertificate]{
+		OutputState: i.ToDpsCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DpsCertificateOutput struct{ *pulumi.OutputState }
 
 func (DpsCertificateOutput) ElementType() reflect.Type {
@@ -164,6 +171,12 @@ func (o DpsCertificateOutput) ToDpsCertificateOutput() DpsCertificateOutput {
 
 func (o DpsCertificateOutput) ToDpsCertificateOutputWithContext(ctx context.Context) DpsCertificateOutput {
 	return o
+}
+
+func (o DpsCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*DpsCertificate] {
+	return pulumix.Output[*DpsCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The entity tag.

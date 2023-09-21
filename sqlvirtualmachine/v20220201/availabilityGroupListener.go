@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A SQL Server availability group listener.
@@ -173,6 +174,12 @@ func (i *AvailabilityGroupListener) ToAvailabilityGroupListenerOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityGroupListenerOutput)
 }
 
+func (i *AvailabilityGroupListener) ToOutput(ctx context.Context) pulumix.Output[*AvailabilityGroupListener] {
+	return pulumix.Output[*AvailabilityGroupListener]{
+		OutputState: i.ToAvailabilityGroupListenerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AvailabilityGroupListenerOutput struct{ *pulumi.OutputState }
 
 func (AvailabilityGroupListenerOutput) ElementType() reflect.Type {
@@ -185,6 +192,12 @@ func (o AvailabilityGroupListenerOutput) ToAvailabilityGroupListenerOutput() Ava
 
 func (o AvailabilityGroupListenerOutput) ToAvailabilityGroupListenerOutputWithContext(ctx context.Context) AvailabilityGroupListenerOutput {
 	return o
+}
+
+func (o AvailabilityGroupListenerOutput) ToOutput(ctx context.Context) pulumix.Output[*AvailabilityGroupListener] {
+	return pulumix.Output[*AvailabilityGroupListener]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Availability Group configuration.

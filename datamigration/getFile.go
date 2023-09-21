@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The files resource is a nested, proxy-only resource representing a file stored under the project resource. This method retrieves information about a file.
@@ -91,6 +92,12 @@ func (o LookupFileResultOutput) ToLookupFileResultOutput() LookupFileResultOutpu
 
 func (o LookupFileResultOutput) ToLookupFileResultOutputWithContext(ctx context.Context) LookupFileResultOutput {
 	return o
+}
+
+func (o LookupFileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFileResult] {
+	return pulumix.Output[LookupFileResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // HTTP strong entity tag value. This is ignored if submitted.

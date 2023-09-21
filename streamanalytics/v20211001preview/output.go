@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
@@ -164,6 +165,12 @@ func (i *Output) ToOutputOutputWithContext(ctx context.Context) OutputOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OutputOutput)
 }
 
+func (i *Output) ToOutput(ctx context.Context) pulumix.Output[*Output] {
+	return pulumix.Output[*Output]{
+		OutputState: i.ToOutputOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OutputOutput struct{ *pulumi.OutputState }
 
 func (OutputOutput) ElementType() reflect.Type {
@@ -176,6 +183,12 @@ func (o OutputOutput) ToOutputOutput() OutputOutput {
 
 func (o OutputOutput) ToOutputOutputWithContext(ctx context.Context) OutputOutput {
 	return o
+}
+
+func (o OutputOutput) ToOutput(ctx context.Context) pulumix.Output[*Output] {
+	return pulumix.Output[*Output]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.

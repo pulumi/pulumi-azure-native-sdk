@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get authorizationRule for a WCF relay by name.
@@ -86,6 +87,12 @@ func (o LookupWCFRelayAuthorizationRuleResultOutput) ToLookupWCFRelayAuthorizati
 
 func (o LookupWCFRelayAuthorizationRuleResultOutput) ToLookupWCFRelayAuthorizationRuleResultOutputWithContext(ctx context.Context) LookupWCFRelayAuthorizationRuleResultOutput {
 	return o
+}
+
+func (o LookupWCFRelayAuthorizationRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWCFRelayAuthorizationRuleResult] {
+	return pulumix.Output[LookupWCFRelayAuthorizationRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.

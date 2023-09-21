@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an invitation in a share
@@ -108,6 +109,12 @@ func (o LookupInvitationResultOutput) ToLookupInvitationResultOutput() LookupInv
 
 func (o LookupInvitationResultOutput) ToLookupInvitationResultOutputWithContext(ctx context.Context) LookupInvitationResultOutput {
 	return o
+}
+
+func (o LookupInvitationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInvitationResult] {
+	return pulumix.Output[LookupInvitationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The expiration date for the invitation and share subscription.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Attestation service response message.
@@ -151,6 +152,12 @@ func (i *AttestationProvider) ToAttestationProviderOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AttestationProviderOutput)
 }
 
+func (i *AttestationProvider) ToOutput(ctx context.Context) pulumix.Output[*AttestationProvider] {
+	return pulumix.Output[*AttestationProvider]{
+		OutputState: i.ToAttestationProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttestationProviderOutput struct{ *pulumi.OutputState }
 
 func (AttestationProviderOutput) ElementType() reflect.Type {
@@ -163,6 +170,12 @@ func (o AttestationProviderOutput) ToAttestationProviderOutput() AttestationProv
 
 func (o AttestationProviderOutput) ToAttestationProviderOutputWithContext(ctx context.Context) AttestationProviderOutput {
 	return o
+}
+
+func (o AttestationProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*AttestationProvider] {
+	return pulumix.Output[*AttestationProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the uri of attestation service

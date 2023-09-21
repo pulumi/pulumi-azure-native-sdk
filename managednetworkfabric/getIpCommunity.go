@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements an IP Community GET method.
@@ -93,6 +94,12 @@ func (o LookupIpCommunityResultOutput) ToLookupIpCommunityResultOutput() LookupI
 
 func (o LookupIpCommunityResultOutput) ToLookupIpCommunityResultOutputWithContext(ctx context.Context) LookupIpCommunityResultOutput {
 	return o
+}
+
+func (o LookupIpCommunityResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIpCommunityResult] {
+	return pulumix.Output[LookupIpCommunityResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Action to be taken on the configuration. Example: Permit | Deny.

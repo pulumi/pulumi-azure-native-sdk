@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the list of assignments for an access policy of a redis cache
@@ -89,6 +90,12 @@ func (o LookupAccessPolicyAssignmentResultOutput) ToLookupAccessPolicyAssignment
 
 func (o LookupAccessPolicyAssignmentResultOutput) ToLookupAccessPolicyAssignmentResultOutputWithContext(ctx context.Context) LookupAccessPolicyAssignmentResultOutput {
 	return o
+}
+
+func (o LookupAccessPolicyAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccessPolicyAssignmentResult] {
+	return pulumix.Output[LookupAccessPolicyAssignmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the access policy that is being assigned

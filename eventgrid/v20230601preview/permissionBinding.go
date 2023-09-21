@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Permission binding resource.
@@ -149,6 +150,12 @@ func (i *PermissionBinding) ToPermissionBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionBindingOutput)
 }
 
+func (i *PermissionBinding) ToOutput(ctx context.Context) pulumix.Output[*PermissionBinding] {
+	return pulumix.Output[*PermissionBinding]{
+		OutputState: i.ToPermissionBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PermissionBindingOutput struct{ *pulumi.OutputState }
 
 func (PermissionBindingOutput) ElementType() reflect.Type {
@@ -161,6 +168,12 @@ func (o PermissionBindingOutput) ToPermissionBindingOutput() PermissionBindingOu
 
 func (o PermissionBindingOutput) ToPermissionBindingOutputWithContext(ctx context.Context) PermissionBindingOutput {
 	return o
+}
+
+func (o PermissionBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*PermissionBinding] {
+	return pulumix.Output[*PermissionBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the client group resource that the permission is bound to.

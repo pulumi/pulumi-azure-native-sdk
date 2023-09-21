@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error.
@@ -78,6 +79,12 @@ func (o ConnectionModeOutput) ToConnectionModePtrOutputWithContext(ctx context.C
 	}).(ConnectionModePtrOutput)
 }
 
+func (o ConnectionModeOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionMode] {
+	return pulumix.Output[ConnectionMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o ConnectionModePtrOutput) ToConnectionModePtrOutput() ConnectionModePtrOu
 
 func (o ConnectionModePtrOutput) ToConnectionModePtrOutputWithContext(ctx context.Context) ConnectionModePtrOutput {
 	return o
+}
+
+func (o ConnectionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionMode] {
+	return pulumix.Output[*ConnectionMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionModePtrOutput) Elem() ConnectionModeOutput {
@@ -173,6 +186,12 @@ func (in *connectionModePtr) ToConnectionModePtrOutput() ConnectionModePtrOutput
 
 func (in *connectionModePtr) ToConnectionModePtrOutputWithContext(ctx context.Context) ConnectionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionModePtrOutput)
+}
+
+func (in *connectionModePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionMode] {
+	return pulumix.Output[*ConnectionMode]{
+		OutputState: in.ToConnectionModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The name of the Azure pricing tier to which the SKU applies.

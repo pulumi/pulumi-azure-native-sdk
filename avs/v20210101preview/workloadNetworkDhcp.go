@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // NSX DHCP
@@ -155,6 +156,12 @@ func (i *WorkloadNetworkDhcp) ToWorkloadNetworkDhcpOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadNetworkDhcpOutput)
 }
 
+func (i *WorkloadNetworkDhcp) ToOutput(ctx context.Context) pulumix.Output[*WorkloadNetworkDhcp] {
+	return pulumix.Output[*WorkloadNetworkDhcp]{
+		OutputState: i.ToWorkloadNetworkDhcpOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkloadNetworkDhcpOutput struct{ *pulumi.OutputState }
 
 func (WorkloadNetworkDhcpOutput) ElementType() reflect.Type {
@@ -167,6 +174,12 @@ func (o WorkloadNetworkDhcpOutput) ToWorkloadNetworkDhcpOutput() WorkloadNetwork
 
 func (o WorkloadNetworkDhcpOutput) ToWorkloadNetworkDhcpOutputWithContext(ctx context.Context) WorkloadNetworkDhcpOutput {
 	return o
+}
+
+func (o WorkloadNetworkDhcpOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadNetworkDhcp] {
+	return pulumix.Output[*WorkloadNetworkDhcp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Type of DHCP: SERVER or RELAY.

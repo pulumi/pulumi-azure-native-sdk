@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a data connector.
@@ -95,6 +96,12 @@ func (o LookupAwsS3DataConnectorResultOutput) ToLookupAwsS3DataConnectorResultOu
 
 func (o LookupAwsS3DataConnectorResultOutput) ToLookupAwsS3DataConnectorResultOutputWithContext(ctx context.Context) LookupAwsS3DataConnectorResultOutput {
 	return o
+}
+
+func (o LookupAwsS3DataConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAwsS3DataConnectorResult] {
+	return pulumix.Output[LookupAwsS3DataConnectorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available data types for the connector.

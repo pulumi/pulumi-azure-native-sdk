@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The representation of a single video in a Video Analyzer account.
@@ -138,6 +139,12 @@ func (i *Video) ToVideoOutputWithContext(ctx context.Context) VideoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VideoOutput)
 }
 
+func (i *Video) ToOutput(ctx context.Context) pulumix.Output[*Video] {
+	return pulumix.Output[*Video]{
+		OutputState: i.ToVideoOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VideoOutput struct{ *pulumi.OutputState }
 
 func (VideoOutput) ElementType() reflect.Type {
@@ -150,6 +157,12 @@ func (o VideoOutput) ToVideoOutput() VideoOutput {
 
 func (o VideoOutput) ToVideoOutputWithContext(ctx context.Context) VideoOutput {
 	return o
+}
+
+func (o VideoOutput) ToOutput(ctx context.Context) pulumix.Output[*Video] {
+	return pulumix.Output[*Video]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional video description provided by the user. Value can be up to 2048 characters long.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
@@ -169,6 +170,12 @@ func (i *ContainerAppsAuthConfig) ToContainerAppsAuthConfigOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerAppsAuthConfigOutput)
 }
 
+func (i *ContainerAppsAuthConfig) ToOutput(ctx context.Context) pulumix.Output[*ContainerAppsAuthConfig] {
+	return pulumix.Output[*ContainerAppsAuthConfig]{
+		OutputState: i.ToContainerAppsAuthConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerAppsAuthConfigOutput struct{ *pulumi.OutputState }
 
 func (ContainerAppsAuthConfigOutput) ElementType() reflect.Type {
@@ -181,6 +188,12 @@ func (o ContainerAppsAuthConfigOutput) ToContainerAppsAuthConfigOutput() Contain
 
 func (o ContainerAppsAuthConfigOutput) ToContainerAppsAuthConfigOutputWithContext(ctx context.Context) ContainerAppsAuthConfigOutput {
 	return o
+}
+
+func (o ContainerAppsAuthConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerAppsAuthConfig] {
+	return pulumix.Output[*ContainerAppsAuthConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration settings that determines the validation flow of users using  Service Authentication/Authorization.

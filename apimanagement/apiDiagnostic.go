@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Diagnostic details.
@@ -231,6 +232,12 @@ func (i *ApiDiagnostic) ToApiDiagnosticOutputWithContext(ctx context.Context) Ap
 	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticOutput)
 }
 
+func (i *ApiDiagnostic) ToOutput(ctx context.Context) pulumix.Output[*ApiDiagnostic] {
+	return pulumix.Output[*ApiDiagnostic]{
+		OutputState: i.ToApiDiagnosticOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiDiagnosticOutput struct{ *pulumi.OutputState }
 
 func (ApiDiagnosticOutput) ElementType() reflect.Type {
@@ -243,6 +250,12 @@ func (o ApiDiagnosticOutput) ToApiDiagnosticOutput() ApiDiagnosticOutput {
 
 func (o ApiDiagnosticOutput) ToApiDiagnosticOutputWithContext(ctx context.Context) ApiDiagnosticOutput {
 	return o
+}
+
+func (o ApiDiagnosticOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiDiagnostic] {
+	return pulumix.Output[*ApiDiagnostic]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies for what type of messages sampling settings should not apply.

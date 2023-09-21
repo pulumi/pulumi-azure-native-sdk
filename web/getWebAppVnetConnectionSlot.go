@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Gets a virtual network the app (or deployment slot) is connected to by name.
@@ -102,6 +103,12 @@ func (o LookupWebAppVnetConnectionSlotResultOutput) ToLookupWebAppVnetConnection
 
 func (o LookupWebAppVnetConnectionSlotResultOutput) ToLookupWebAppVnetConnectionSlotResultOutputWithContext(ctx context.Context) LookupWebAppVnetConnectionSlotResultOutput {
 	return o
+}
+
+func (o LookupWebAppVnetConnectionSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppVnetConnectionSlotResult] {
+	return pulumix.Output[LookupWebAppVnetConnectionSlotResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A certificate file (.cer) blob containing the public key of the private key used to authenticate a

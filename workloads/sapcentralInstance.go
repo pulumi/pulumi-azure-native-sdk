@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Define the SAP Central Services Instance resource.
@@ -164,6 +165,12 @@ func (i *SAPCentralInstance) ToSAPCentralInstanceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SAPCentralInstanceOutput)
 }
 
+func (i *SAPCentralInstance) ToOutput(ctx context.Context) pulumix.Output[*SAPCentralInstance] {
+	return pulumix.Output[*SAPCentralInstance]{
+		OutputState: i.ToSAPCentralInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SAPCentralInstanceOutput struct{ *pulumi.OutputState }
 
 func (SAPCentralInstanceOutput) ElementType() reflect.Type {
@@ -176,6 +183,12 @@ func (o SAPCentralInstanceOutput) ToSAPCentralInstanceOutput() SAPCentralInstanc
 
 func (o SAPCentralInstanceOutput) ToSAPCentralInstanceOutputWithContext(ctx context.Context) SAPCentralInstanceOutput {
 	return o
+}
+
+func (o SAPCentralInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*SAPCentralInstance] {
+	return pulumix.Output[*SAPCentralInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Defines the SAP Enqueue Replication Server (ERS) properties.

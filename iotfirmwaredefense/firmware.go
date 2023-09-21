@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Firmware definition
@@ -171,6 +172,12 @@ func (i *Firmware) ToFirmwareOutputWithContext(ctx context.Context) FirmwareOutp
 	return pulumi.ToOutputWithContext(ctx, i).(FirmwareOutput)
 }
 
+func (i *Firmware) ToOutput(ctx context.Context) pulumix.Output[*Firmware] {
+	return pulumix.Output[*Firmware]{
+		OutputState: i.ToFirmwareOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirmwareOutput struct{ *pulumi.OutputState }
 
 func (FirmwareOutput) ElementType() reflect.Type {
@@ -183,6 +190,12 @@ func (o FirmwareOutput) ToFirmwareOutput() FirmwareOutput {
 
 func (o FirmwareOutput) ToFirmwareOutputWithContext(ctx context.Context) FirmwareOutput {
 	return o
+}
+
+func (o FirmwareOutput) ToOutput(ctx context.Context) pulumix.Output[*Firmware] {
+	return pulumix.Output[*Firmware]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User-specified description of the firmware.

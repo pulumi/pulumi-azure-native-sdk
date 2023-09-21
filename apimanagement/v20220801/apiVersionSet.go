@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // API Version Set Contract details.
@@ -196,6 +197,12 @@ func (i *ApiVersionSet) ToApiVersionSetOutputWithContext(ctx context.Context) Ap
 	return pulumi.ToOutputWithContext(ctx, i).(ApiVersionSetOutput)
 }
 
+func (i *ApiVersionSet) ToOutput(ctx context.Context) pulumix.Output[*ApiVersionSet] {
+	return pulumix.Output[*ApiVersionSet]{
+		OutputState: i.ToApiVersionSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiVersionSetOutput struct{ *pulumi.OutputState }
 
 func (ApiVersionSetOutput) ElementType() reflect.Type {
@@ -208,6 +215,12 @@ func (o ApiVersionSetOutput) ToApiVersionSetOutput() ApiVersionSetOutput {
 
 func (o ApiVersionSetOutput) ToApiVersionSetOutputWithContext(ctx context.Context) ApiVersionSetOutput {
 	return o
+}
+
+func (o ApiVersionSetOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiVersionSet] {
+	return pulumix.Output[*ApiVersionSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of API Version Set.

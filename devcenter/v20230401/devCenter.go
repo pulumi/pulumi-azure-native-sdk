@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a devcenter resource.
@@ -147,6 +148,12 @@ func (i *DevCenter) ToDevCenterOutputWithContext(ctx context.Context) DevCenterO
 	return pulumi.ToOutputWithContext(ctx, i).(DevCenterOutput)
 }
 
+func (i *DevCenter) ToOutput(ctx context.Context) pulumix.Output[*DevCenter] {
+	return pulumix.Output[*DevCenter]{
+		OutputState: i.ToDevCenterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DevCenterOutput struct{ *pulumi.OutputState }
 
 func (DevCenterOutput) ElementType() reflect.Type {
@@ -159,6 +166,12 @@ func (o DevCenterOutput) ToDevCenterOutput() DevCenterOutput {
 
 func (o DevCenterOutput) ToDevCenterOutputWithContext(ctx context.Context) DevCenterOutput {
 	return o
+}
+
+func (o DevCenterOutput) ToOutput(ctx context.Context) pulumix.Output[*DevCenter] {
+	return pulumix.Output[*DevCenter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URI of the Dev Center.

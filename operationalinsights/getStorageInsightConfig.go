@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a storage insight instance.
@@ -93,6 +94,12 @@ func (o LookupStorageInsightConfigResultOutput) ToLookupStorageInsightConfigResu
 
 func (o LookupStorageInsightConfigResultOutput) ToLookupStorageInsightConfigResultOutputWithContext(ctx context.Context) LookupStorageInsightConfigResultOutput {
 	return o
+}
+
+func (o LookupStorageInsightConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStorageInsightConfigResult] {
+	return pulumix.Output[LookupStorageInsightConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The names of the blob containers that the workspace should read

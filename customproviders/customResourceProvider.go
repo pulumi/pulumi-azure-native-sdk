@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A manifest file that defines the custom resource provider resources.
@@ -141,6 +142,12 @@ func (i *CustomResourceProvider) ToCustomResourceProviderOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceProviderOutput)
 }
 
+func (i *CustomResourceProvider) ToOutput(ctx context.Context) pulumix.Output[*CustomResourceProvider] {
+	return pulumix.Output[*CustomResourceProvider]{
+		OutputState: i.ToCustomResourceProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomResourceProviderOutput struct{ *pulumi.OutputState }
 
 func (CustomResourceProviderOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o CustomResourceProviderOutput) ToCustomResourceProviderOutput() CustomRes
 
 func (o CustomResourceProviderOutput) ToCustomResourceProviderOutputWithContext(ctx context.Context) CustomResourceProviderOutput {
 	return o
+}
+
+func (o CustomResourceProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomResourceProvider] {
+	return pulumix.Output[*CustomResourceProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of actions that the custom resource provider implements.

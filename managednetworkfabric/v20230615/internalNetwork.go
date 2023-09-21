@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines the Internal Network resource.
@@ -238,6 +239,12 @@ func (i *InternalNetwork) ToInternalNetworkOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(InternalNetworkOutput)
 }
 
+func (i *InternalNetwork) ToOutput(ctx context.Context) pulumix.Output[*InternalNetwork] {
+	return pulumix.Output[*InternalNetwork]{
+		OutputState: i.ToInternalNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InternalNetworkOutput struct{ *pulumi.OutputState }
 
 func (InternalNetworkOutput) ElementType() reflect.Type {
@@ -250,6 +257,12 @@ func (o InternalNetworkOutput) ToInternalNetworkOutput() InternalNetworkOutput {
 
 func (o InternalNetworkOutput) ToInternalNetworkOutputWithContext(ctx context.Context) InternalNetworkOutput {
 	return o
+}
+
+func (o InternalNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*InternalNetwork] {
+	return pulumix.Output[*InternalNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Administrative state of the resource.

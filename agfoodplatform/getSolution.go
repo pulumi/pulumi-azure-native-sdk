@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get installed Solution details by Solution id.
@@ -87,6 +88,12 @@ func (o LookupSolutionResultOutput) ToLookupSolutionResultOutput() LookupSolutio
 
 func (o LookupSolutionResultOutput) ToLookupSolutionResultOutputWithContext(ctx context.Context) LookupSolutionResultOutput {
 	return o
+}
+
+func (o LookupSolutionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSolutionResult] {
+	return pulumix.Output[LookupSolutionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ETag value to implement optimistic concurrency.

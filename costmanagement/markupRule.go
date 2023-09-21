@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Markup rule
@@ -161,6 +162,12 @@ func (i *MarkupRule) ToMarkupRuleOutputWithContext(ctx context.Context) MarkupRu
 	return pulumi.ToOutputWithContext(ctx, i).(MarkupRuleOutput)
 }
 
+func (i *MarkupRule) ToOutput(ctx context.Context) pulumix.Output[*MarkupRule] {
+	return pulumix.Output[*MarkupRule]{
+		OutputState: i.ToMarkupRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MarkupRuleOutput struct{ *pulumi.OutputState }
 
 func (MarkupRuleOutput) ElementType() reflect.Type {
@@ -173,6 +180,12 @@ func (o MarkupRuleOutput) ToMarkupRuleOutput() MarkupRuleOutput {
 
 func (o MarkupRuleOutput) ToMarkupRuleOutputWithContext(ctx context.Context) MarkupRuleOutput {
 	return o
+}
+
+func (o MarkupRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*MarkupRule] {
+	return pulumix.Output[*MarkupRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Customer information for the markup rule.

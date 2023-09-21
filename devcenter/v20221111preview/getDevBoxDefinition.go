@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Dev Box definition
@@ -102,6 +103,12 @@ func (o LookupDevBoxDefinitionResultOutput) ToLookupDevBoxDefinitionResultOutput
 
 func (o LookupDevBoxDefinitionResultOutput) ToLookupDevBoxDefinitionResultOutputWithContext(ctx context.Context) LookupDevBoxDefinitionResultOutput {
 	return o
+}
+
+func (o LookupDevBoxDefinitionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDevBoxDefinitionResult] {
+	return pulumix.Output[LookupDevBoxDefinitionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Image reference information for the currently active image (only populated during updates).

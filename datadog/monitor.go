@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2021-03-01
@@ -134,6 +135,12 @@ func (i *Monitor) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorOutput)
 }
 
+func (i *Monitor) ToOutput(ctx context.Context) pulumix.Output[*Monitor] {
+	return pulumix.Output[*Monitor]{
+		OutputState: i.ToMonitorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MonitorOutput struct{ *pulumi.OutputState }
 
 func (MonitorOutput) ElementType() reflect.Type {
@@ -146,6 +153,12 @@ func (o MonitorOutput) ToMonitorOutput() MonitorOutput {
 
 func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput {
 	return o
+}
+
+func (o MonitorOutput) ToOutput(ctx context.Context) pulumix.Output[*Monitor] {
+	return pulumix.Output[*Monitor]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MonitorOutput) Identity() IdentityPropertiesResponsePtrOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Data Lake Analytics firewall rule.
@@ -85,6 +86,12 @@ func (o LookupFirewallRuleResultOutput) ToLookupFirewallRuleResultOutput() Looku
 
 func (o LookupFirewallRuleResultOutput) ToLookupFirewallRuleResultOutputWithContext(ctx context.Context) LookupFirewallRuleResultOutput {
 	return o
+}
+
+func (o LookupFirewallRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFirewallRuleResult] {
+	return pulumix.Output[LookupFirewallRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.

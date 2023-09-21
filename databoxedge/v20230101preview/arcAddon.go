@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Arc Addon.
@@ -209,6 +210,12 @@ func (i *ArcAddon) ToArcAddonOutputWithContext(ctx context.Context) ArcAddonOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ArcAddonOutput)
 }
 
+func (i *ArcAddon) ToOutput(ctx context.Context) pulumix.Output[*ArcAddon] {
+	return pulumix.Output[*ArcAddon]{
+		OutputState: i.ToArcAddonOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ArcAddonOutput struct{ *pulumi.OutputState }
 
 func (ArcAddonOutput) ElementType() reflect.Type {
@@ -221,6 +228,12 @@ func (o ArcAddonOutput) ToArcAddonOutput() ArcAddonOutput {
 
 func (o ArcAddonOutput) ToArcAddonOutputWithContext(ctx context.Context) ArcAddonOutput {
 	return o
+}
+
+func (o ArcAddonOutput) ToOutput(ctx context.Context) pulumix.Output[*ArcAddon] {
+	return pulumix.Output[*ArcAddon]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Arc Custom Locations ObjectId

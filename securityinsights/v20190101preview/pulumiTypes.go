@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -133,6 +134,12 @@ func (i AutomationRulePropertyValuesConditionArgs) ToAutomationRulePropertyValue
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationRulePropertyValuesConditionOutput)
 }
 
+func (i AutomationRulePropertyValuesConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AutomationRulePropertyValuesCondition] {
+	return pulumix.Output[AutomationRulePropertyValuesCondition]{
+		OutputState: i.ToAutomationRulePropertyValuesConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutomationRulePropertyValuesConditionArrayInput is an input type that accepts AutomationRulePropertyValuesConditionArray and AutomationRulePropertyValuesConditionArrayOutput values.
 // You can construct a concrete instance of `AutomationRulePropertyValuesConditionArrayInput` via:
 //
@@ -158,6 +165,12 @@ func (i AutomationRulePropertyValuesConditionArray) ToAutomationRulePropertyValu
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationRulePropertyValuesConditionArrayOutput)
 }
 
+func (i AutomationRulePropertyValuesConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]AutomationRulePropertyValuesCondition] {
+	return pulumix.Output[[]AutomationRulePropertyValuesCondition]{
+		OutputState: i.ToAutomationRulePropertyValuesConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes an automation rule condition that evaluates a property's value
 type AutomationRulePropertyValuesConditionOutput struct{ *pulumi.OutputState }
 
@@ -171,6 +184,12 @@ func (o AutomationRulePropertyValuesConditionOutput) ToAutomationRulePropertyVal
 
 func (o AutomationRulePropertyValuesConditionOutput) ToAutomationRulePropertyValuesConditionOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionOutput {
 	return o
+}
+
+func (o AutomationRulePropertyValuesConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRulePropertyValuesCondition] {
+	return pulumix.Output[AutomationRulePropertyValuesCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration of the automation rule condition
@@ -198,6 +217,12 @@ func (o AutomationRulePropertyValuesConditionArrayOutput) ToAutomationRuleProper
 
 func (o AutomationRulePropertyValuesConditionArrayOutput) ToAutomationRulePropertyValuesConditionArrayOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionArrayOutput {
 	return o
+}
+
+func (o AutomationRulePropertyValuesConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationRulePropertyValuesCondition] {
+	return pulumix.Output[[]AutomationRulePropertyValuesCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutomationRulePropertyValuesConditionArrayOutput) Index(i pulumi.IntInput) AutomationRulePropertyValuesConditionOutput {
@@ -249,6 +274,12 @@ func (i AutomationRulePropertyValuesConditionConditionPropertiesArgs) ToAutomati
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationRulePropertyValuesConditionConditionPropertiesOutput)
 }
 
+func (i AutomationRulePropertyValuesConditionConditionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AutomationRulePropertyValuesConditionConditionProperties] {
+	return pulumix.Output[AutomationRulePropertyValuesConditionConditionProperties]{
+		OutputState: i.ToAutomationRulePropertyValuesConditionConditionPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The configuration of the automation rule condition
 type AutomationRulePropertyValuesConditionConditionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -262,6 +293,12 @@ func (o AutomationRulePropertyValuesConditionConditionPropertiesOutput) ToAutoma
 
 func (o AutomationRulePropertyValuesConditionConditionPropertiesOutput) ToAutomationRulePropertyValuesConditionConditionPropertiesOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionConditionPropertiesOutput {
 	return o
+}
+
+func (o AutomationRulePropertyValuesConditionConditionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRulePropertyValuesConditionConditionProperties] {
+	return pulumix.Output[AutomationRulePropertyValuesConditionConditionProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The operator to use for evaluation the condition
@@ -303,6 +340,12 @@ func (o AutomationRulePropertyValuesConditionResponseOutput) ToAutomationRulePro
 	return o
 }
 
+func (o AutomationRulePropertyValuesConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRulePropertyValuesConditionResponse] {
+	return pulumix.Output[AutomationRulePropertyValuesConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration of the automation rule condition
 func (o AutomationRulePropertyValuesConditionResponseOutput) ConditionProperties() AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput {
 	return o.ApplyT(func(v AutomationRulePropertyValuesConditionResponse) AutomationRulePropertyValuesConditionResponseConditionProperties {
@@ -328,6 +371,12 @@ func (o AutomationRulePropertyValuesConditionResponseArrayOutput) ToAutomationRu
 
 func (o AutomationRulePropertyValuesConditionResponseArrayOutput) ToAutomationRulePropertyValuesConditionResponseArrayOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionResponseArrayOutput {
 	return o
+}
+
+func (o AutomationRulePropertyValuesConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationRulePropertyValuesConditionResponse] {
+	return pulumix.Output[[]AutomationRulePropertyValuesConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutomationRulePropertyValuesConditionResponseArrayOutput) Index(i pulumi.IntInput) AutomationRulePropertyValuesConditionResponseOutput {
@@ -359,6 +408,12 @@ func (o AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput) 
 
 func (o AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput) ToAutomationRulePropertyValuesConditionResponseConditionPropertiesOutputWithContext(ctx context.Context) AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput {
 	return o
+}
+
+func (o AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRulePropertyValuesConditionResponseConditionProperties] {
+	return pulumix.Output[AutomationRulePropertyValuesConditionResponseConditionProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The operator to use for evaluation the condition
@@ -469,6 +524,12 @@ func (i AutomationRuleTriggeringLogicArgs) ToAutomationRuleTriggeringLogicOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleTriggeringLogicOutput)
 }
 
+func (i AutomationRuleTriggeringLogicArgs) ToOutput(ctx context.Context) pulumix.Output[AutomationRuleTriggeringLogic] {
+	return pulumix.Output[AutomationRuleTriggeringLogic]{
+		OutputState: i.ToAutomationRuleTriggeringLogicOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes automation rule triggering logic
 type AutomationRuleTriggeringLogicOutput struct{ *pulumi.OutputState }
 
@@ -482,6 +543,12 @@ func (o AutomationRuleTriggeringLogicOutput) ToAutomationRuleTriggeringLogicOutp
 
 func (o AutomationRuleTriggeringLogicOutput) ToAutomationRuleTriggeringLogicOutputWithContext(ctx context.Context) AutomationRuleTriggeringLogicOutput {
 	return o
+}
+
+func (o AutomationRuleTriggeringLogicOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRuleTriggeringLogic] {
+	return pulumix.Output[AutomationRuleTriggeringLogic]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The conditions to evaluate to determine if the automation rule should be triggered on a given object
@@ -536,6 +603,12 @@ func (o AutomationRuleTriggeringLogicResponseOutput) ToAutomationRuleTriggeringL
 
 func (o AutomationRuleTriggeringLogicResponseOutput) ToAutomationRuleTriggeringLogicResponseOutputWithContext(ctx context.Context) AutomationRuleTriggeringLogicResponseOutput {
 	return o
+}
+
+func (o AutomationRuleTriggeringLogicResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRuleTriggeringLogicResponse] {
+	return pulumix.Output[AutomationRuleTriggeringLogicResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The conditions to evaluate to determine if the automation rule should be triggered on a given object
@@ -615,6 +688,12 @@ func (o ClientInfoResponseOutput) ToClientInfoResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o ClientInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClientInfoResponse] {
+	return pulumix.Output[ClientInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The email of the client.
 func (o ClientInfoResponseOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientInfoResponse) *string { return v.Email }).(pulumi.StringPtrOutput)
@@ -662,6 +741,12 @@ func (o EntityInsightItemResponseOutput) ToEntityInsightItemResponseOutputWithCo
 	return o
 }
 
+func (o EntityInsightItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EntityInsightItemResponse] {
+	return pulumix.Output[EntityInsightItemResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Query results for table insights query.
 func (o EntityInsightItemResponseOutput) ChartQueryResults() InsightsTableResultResponseArrayOutput {
 	return o.ApplyT(func(v EntityInsightItemResponse) []InsightsTableResultResponse { return v.ChartQueryResults }).(InsightsTableResultResponseArrayOutput)
@@ -698,6 +783,12 @@ func (o EntityInsightItemResponseArrayOutput) ToEntityInsightItemResponseArrayOu
 	return o
 }
 
+func (o EntityInsightItemResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EntityInsightItemResponse] {
+	return pulumix.Output[[]EntityInsightItemResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityInsightItemResponseArrayOutput) Index(i pulumi.IntInput) EntityInsightItemResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityInsightItemResponse {
 		return vs[0].([]EntityInsightItemResponse)[vs[1].(int)]
@@ -727,6 +818,12 @@ func (o EntityInsightItemResponseQueryTimeIntervalOutput) ToEntityInsightItemRes
 	return o
 }
 
+func (o EntityInsightItemResponseQueryTimeIntervalOutput) ToOutput(ctx context.Context) pulumix.Output[EntityInsightItemResponseQueryTimeInterval] {
+	return pulumix.Output[EntityInsightItemResponseQueryTimeInterval]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Insight query end time
 func (o EntityInsightItemResponseQueryTimeIntervalOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntityInsightItemResponseQueryTimeInterval) *string { return v.EndTime }).(pulumi.StringPtrOutput)
@@ -749,6 +846,12 @@ func (o EntityInsightItemResponseQueryTimeIntervalPtrOutput) ToEntityInsightItem
 
 func (o EntityInsightItemResponseQueryTimeIntervalPtrOutput) ToEntityInsightItemResponseQueryTimeIntervalPtrOutputWithContext(ctx context.Context) EntityInsightItemResponseQueryTimeIntervalPtrOutput {
 	return o
+}
+
+func (o EntityInsightItemResponseQueryTimeIntervalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityInsightItemResponseQueryTimeInterval] {
+	return pulumix.Output[*EntityInsightItemResponseQueryTimeInterval]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityInsightItemResponseQueryTimeIntervalPtrOutput) Elem() EntityInsightItemResponseQueryTimeIntervalOutput {
@@ -806,6 +909,12 @@ func (o GetInsightsErrorResponseOutput) ToGetInsightsErrorResponseOutputWithCont
 	return o
 }
 
+func (o GetInsightsErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GetInsightsErrorResponse] {
+	return pulumix.Output[GetInsightsErrorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the error message
 func (o GetInsightsErrorResponseOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInsightsErrorResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
@@ -833,6 +942,12 @@ func (o GetInsightsErrorResponseArrayOutput) ToGetInsightsErrorResponseArrayOutp
 
 func (o GetInsightsErrorResponseArrayOutput) ToGetInsightsErrorResponseArrayOutputWithContext(ctx context.Context) GetInsightsErrorResponseArrayOutput {
 	return o
+}
+
+func (o GetInsightsErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInsightsErrorResponse] {
+	return pulumix.Output[[]GetInsightsErrorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInsightsErrorResponseArrayOutput) Index(i pulumi.IntInput) GetInsightsErrorResponseOutput {
@@ -864,6 +979,12 @@ func (o GetInsightsResultsMetadataResponseOutput) ToGetInsightsResultsMetadataRe
 	return o
 }
 
+func (o GetInsightsResultsMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GetInsightsResultsMetadataResponse] {
+	return pulumix.Output[GetInsightsResultsMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // information about the failed queries
 func (o GetInsightsResultsMetadataResponseOutput) Errors() GetInsightsErrorResponseArrayOutput {
 	return o.ApplyT(func(v GetInsightsResultsMetadataResponse) []GetInsightsErrorResponse { return v.Errors }).(GetInsightsErrorResponseArrayOutput)
@@ -886,6 +1007,12 @@ func (o GetInsightsResultsMetadataResponsePtrOutput) ToGetInsightsResultsMetadat
 
 func (o GetInsightsResultsMetadataResponsePtrOutput) ToGetInsightsResultsMetadataResponsePtrOutputWithContext(ctx context.Context) GetInsightsResultsMetadataResponsePtrOutput {
 	return o
+}
+
+func (o GetInsightsResultsMetadataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetInsightsResultsMetadataResponse] {
+	return pulumix.Output[*GetInsightsResultsMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInsightsResultsMetadataResponsePtrOutput) Elem() GetInsightsResultsMetadataResponseOutput {
@@ -965,6 +1092,12 @@ func (i IncidentInfoArgs) ToIncidentInfoOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(IncidentInfoOutput)
 }
 
+func (i IncidentInfoArgs) ToOutput(ctx context.Context) pulumix.Output[IncidentInfo] {
+	return pulumix.Output[IncidentInfo]{
+		OutputState: i.ToIncidentInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IncidentInfoArgs) ToIncidentInfoPtrOutput() IncidentInfoPtrOutput {
 	return i.ToIncidentInfoPtrOutputWithContext(context.Background())
 }
@@ -1006,6 +1139,12 @@ func (i *incidentInfoPtrType) ToIncidentInfoPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(IncidentInfoPtrOutput)
 }
 
+func (i *incidentInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*IncidentInfo] {
+	return pulumix.Output[*IncidentInfo]{
+		OutputState: i.ToIncidentInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes related incident information for the bookmark
 type IncidentInfoOutput struct{ *pulumi.OutputState }
 
@@ -1029,6 +1168,12 @@ func (o IncidentInfoOutput) ToIncidentInfoPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IncidentInfo) *IncidentInfo {
 		return &v
 	}).(IncidentInfoPtrOutput)
+}
+
+func (o IncidentInfoOutput) ToOutput(ctx context.Context) pulumix.Output[IncidentInfo] {
+	return pulumix.Output[IncidentInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Incident Id
@@ -1063,6 +1208,12 @@ func (o IncidentInfoPtrOutput) ToIncidentInfoPtrOutput() IncidentInfoPtrOutput {
 
 func (o IncidentInfoPtrOutput) ToIncidentInfoPtrOutputWithContext(ctx context.Context) IncidentInfoPtrOutput {
 	return o
+}
+
+func (o IncidentInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IncidentInfo] {
+	return pulumix.Output[*IncidentInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IncidentInfoPtrOutput) Elem() IncidentInfoOutput {
@@ -1142,6 +1293,12 @@ func (o IncidentInfoResponseOutput) ToIncidentInfoResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o IncidentInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IncidentInfoResponse] {
+	return pulumix.Output[IncidentInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Incident Id
 func (o IncidentInfoResponseOutput) IncidentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IncidentInfoResponse) *string { return v.IncidentId }).(pulumi.StringPtrOutput)
@@ -1174,6 +1331,12 @@ func (o IncidentInfoResponsePtrOutput) ToIncidentInfoResponsePtrOutput() Inciden
 
 func (o IncidentInfoResponsePtrOutput) ToIncidentInfoResponsePtrOutputWithContext(ctx context.Context) IncidentInfoResponsePtrOutput {
 	return o
+}
+
+func (o IncidentInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IncidentInfoResponse] {
+	return pulumix.Output[*IncidentInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IncidentInfoResponsePtrOutput) Elem() IncidentInfoResponseOutput {
@@ -1287,6 +1450,12 @@ func (o InsightsTableResultResponseOutput) ToInsightsTableResultResponseOutputWi
 	return o
 }
 
+func (o InsightsTableResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InsightsTableResultResponse] {
+	return pulumix.Output[InsightsTableResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Columns Metadata of the table
 func (o InsightsTableResultResponseOutput) Columns() InsightsTableResultResponseColumnsArrayOutput {
 	return o.ApplyT(func(v InsightsTableResultResponse) []InsightsTableResultResponseColumns { return v.Columns }).(InsightsTableResultResponseColumnsArrayOutput)
@@ -1309,6 +1478,12 @@ func (o InsightsTableResultResponsePtrOutput) ToInsightsTableResultResponsePtrOu
 
 func (o InsightsTableResultResponsePtrOutput) ToInsightsTableResultResponsePtrOutputWithContext(ctx context.Context) InsightsTableResultResponsePtrOutput {
 	return o
+}
+
+func (o InsightsTableResultResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InsightsTableResultResponse] {
+	return pulumix.Output[*InsightsTableResultResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InsightsTableResultResponsePtrOutput) Elem() InsightsTableResultResponseOutput {
@@ -1355,6 +1530,12 @@ func (o InsightsTableResultResponseArrayOutput) ToInsightsTableResultResponseArr
 	return o
 }
 
+func (o InsightsTableResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InsightsTableResultResponse] {
+	return pulumix.Output[[]InsightsTableResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InsightsTableResultResponseArrayOutput) Index(i pulumi.IntInput) InsightsTableResultResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InsightsTableResultResponse {
 		return vs[0].([]InsightsTableResultResponse)[vs[1].(int)]
@@ -1382,6 +1563,12 @@ func (o InsightsTableResultResponseColumnsOutput) ToInsightsTableResultResponseC
 	return o
 }
 
+func (o InsightsTableResultResponseColumnsOutput) ToOutput(ctx context.Context) pulumix.Output[InsightsTableResultResponseColumns] {
+	return pulumix.Output[InsightsTableResultResponseColumns]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the name of the colum
 func (o InsightsTableResultResponseColumnsOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InsightsTableResultResponseColumns) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1404,6 +1591,12 @@ func (o InsightsTableResultResponseColumnsArrayOutput) ToInsightsTableResultResp
 
 func (o InsightsTableResultResponseColumnsArrayOutput) ToInsightsTableResultResponseColumnsArrayOutputWithContext(ctx context.Context) InsightsTableResultResponseColumnsArrayOutput {
 	return o
+}
+
+func (o InsightsTableResultResponseColumnsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InsightsTableResultResponseColumns] {
+	return pulumix.Output[[]InsightsTableResultResponseColumns]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InsightsTableResultResponseColumnsArrayOutput) Index(i pulumi.IntInput) InsightsTableResultResponseColumnsOutput {
@@ -1460,6 +1653,12 @@ func (o TimelineAggregationResponseOutput) ToTimelineAggregationResponseOutputWi
 	return o
 }
 
+func (o TimelineAggregationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimelineAggregationResponse] {
+	return pulumix.Output[TimelineAggregationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the total items found for a kind
 func (o TimelineAggregationResponseOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v TimelineAggregationResponse) int { return v.Count }).(pulumi.IntOutput)
@@ -1482,6 +1681,12 @@ func (o TimelineAggregationResponseArrayOutput) ToTimelineAggregationResponseArr
 
 func (o TimelineAggregationResponseArrayOutput) ToTimelineAggregationResponseArrayOutputWithContext(ctx context.Context) TimelineAggregationResponseArrayOutput {
 	return o
+}
+
+func (o TimelineAggregationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimelineAggregationResponse] {
+	return pulumix.Output[[]TimelineAggregationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimelineAggregationResponseArrayOutput) Index(i pulumi.IntInput) TimelineAggregationResponseOutput {
@@ -1515,6 +1720,12 @@ func (o TimelineErrorResponseOutput) ToTimelineErrorResponseOutputWithContext(ct
 	return o
 }
 
+func (o TimelineErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimelineErrorResponse] {
+	return pulumix.Output[TimelineErrorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the error message
 func (o TimelineErrorResponseOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v TimelineErrorResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
@@ -1542,6 +1753,12 @@ func (o TimelineErrorResponseArrayOutput) ToTimelineErrorResponseArrayOutput() T
 
 func (o TimelineErrorResponseArrayOutput) ToTimelineErrorResponseArrayOutputWithContext(ctx context.Context) TimelineErrorResponseArrayOutput {
 	return o
+}
+
+func (o TimelineErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimelineErrorResponse] {
+	return pulumix.Output[[]TimelineErrorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimelineErrorResponseArrayOutput) Index(i pulumi.IntInput) TimelineErrorResponseOutput {
@@ -1575,6 +1792,12 @@ func (o TimelineResultsMetadataResponseOutput) ToTimelineResultsMetadataResponse
 	return o
 }
 
+func (o TimelineResultsMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimelineResultsMetadataResponse] {
+	return pulumix.Output[TimelineResultsMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // timeline aggregation per kind
 func (o TimelineResultsMetadataResponseOutput) Aggregations() TimelineAggregationResponseArrayOutput {
 	return o.ApplyT(func(v TimelineResultsMetadataResponse) []TimelineAggregationResponse { return v.Aggregations }).(TimelineAggregationResponseArrayOutput)
@@ -1602,6 +1825,12 @@ func (o TimelineResultsMetadataResponsePtrOutput) ToTimelineResultsMetadataRespo
 
 func (o TimelineResultsMetadataResponsePtrOutput) ToTimelineResultsMetadataResponsePtrOutputWithContext(ctx context.Context) TimelineResultsMetadataResponsePtrOutput {
 	return o
+}
+
+func (o TimelineResultsMetadataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimelineResultsMetadataResponse] {
+	return pulumix.Output[*TimelineResultsMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimelineResultsMetadataResponsePtrOutput) Elem() TimelineResultsMetadataResponseOutput {
@@ -1679,6 +1908,12 @@ func (i UserInfoArgs) ToUserInfoOutputWithContext(ctx context.Context) UserInfoO
 	return pulumi.ToOutputWithContext(ctx, i).(UserInfoOutput)
 }
 
+func (i UserInfoArgs) ToOutput(ctx context.Context) pulumix.Output[UserInfo] {
+	return pulumix.Output[UserInfo]{
+		OutputState: i.ToUserInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UserInfoArgs) ToUserInfoPtrOutput() UserInfoPtrOutput {
 	return i.ToUserInfoPtrOutputWithContext(context.Background())
 }
@@ -1720,6 +1955,12 @@ func (i *userInfoPtrType) ToUserInfoPtrOutputWithContext(ctx context.Context) Us
 	return pulumi.ToOutputWithContext(ctx, i).(UserInfoPtrOutput)
 }
 
+func (i *userInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserInfo] {
+	return pulumix.Output[*UserInfo]{
+		OutputState: i.ToUserInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // User information that made some action
 type UserInfoOutput struct{ *pulumi.OutputState }
 
@@ -1745,6 +1986,12 @@ func (o UserInfoOutput) ToUserInfoPtrOutputWithContext(ctx context.Context) User
 	}).(UserInfoPtrOutput)
 }
 
+func (o UserInfoOutput) ToOutput(ctx context.Context) pulumix.Output[UserInfo] {
+	return pulumix.Output[UserInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The object id of the user.
 func (o UserInfoOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserInfo) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
@@ -1762,6 +2009,12 @@ func (o UserInfoPtrOutput) ToUserInfoPtrOutput() UserInfoPtrOutput {
 
 func (o UserInfoPtrOutput) ToUserInfoPtrOutputWithContext(ctx context.Context) UserInfoPtrOutput {
 	return o
+}
+
+func (o UserInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserInfo] {
+	return pulumix.Output[*UserInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserInfoPtrOutput) Elem() UserInfoOutput {
@@ -1809,6 +2062,12 @@ func (o UserInfoResponseOutput) ToUserInfoResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o UserInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserInfoResponse] {
+	return pulumix.Output[UserInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The email of the user.
 func (o UserInfoResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v UserInfoResponse) string { return v.Email }).(pulumi.StringOutput)
@@ -1836,6 +2095,12 @@ func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutput() UserInfoRespons
 
 func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutputWithContext(ctx context.Context) UserInfoResponsePtrOutput {
 	return o
+}
+
+func (o UserInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserInfoResponse] {
+	return pulumix.Output[*UserInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserInfoResponsePtrOutput) Elem() UserInfoResponseOutput {
@@ -1913,6 +2178,12 @@ func (i WatchlistUserInfoArgs) ToWatchlistUserInfoOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WatchlistUserInfoOutput)
 }
 
+func (i WatchlistUserInfoArgs) ToOutput(ctx context.Context) pulumix.Output[WatchlistUserInfo] {
+	return pulumix.Output[WatchlistUserInfo]{
+		OutputState: i.ToWatchlistUserInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WatchlistUserInfoArgs) ToWatchlistUserInfoPtrOutput() WatchlistUserInfoPtrOutput {
 	return i.ToWatchlistUserInfoPtrOutputWithContext(context.Background())
 }
@@ -1954,6 +2225,12 @@ func (i *watchlistUserInfoPtrType) ToWatchlistUserInfoPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(WatchlistUserInfoPtrOutput)
 }
 
+func (i *watchlistUserInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*WatchlistUserInfo] {
+	return pulumix.Output[*WatchlistUserInfo]{
+		OutputState: i.ToWatchlistUserInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // User information that made some action
 type WatchlistUserInfoOutput struct{ *pulumi.OutputState }
 
@@ -1979,6 +2256,12 @@ func (o WatchlistUserInfoOutput) ToWatchlistUserInfoPtrOutputWithContext(ctx con
 	}).(WatchlistUserInfoPtrOutput)
 }
 
+func (o WatchlistUserInfoOutput) ToOutput(ctx context.Context) pulumix.Output[WatchlistUserInfo] {
+	return pulumix.Output[WatchlistUserInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The object id of the user.
 func (o WatchlistUserInfoOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WatchlistUserInfo) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
@@ -1996,6 +2279,12 @@ func (o WatchlistUserInfoPtrOutput) ToWatchlistUserInfoPtrOutput() WatchlistUser
 
 func (o WatchlistUserInfoPtrOutput) ToWatchlistUserInfoPtrOutputWithContext(ctx context.Context) WatchlistUserInfoPtrOutput {
 	return o
+}
+
+func (o WatchlistUserInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WatchlistUserInfo] {
+	return pulumix.Output[*WatchlistUserInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WatchlistUserInfoPtrOutput) Elem() WatchlistUserInfoOutput {
@@ -2043,6 +2332,12 @@ func (o WatchlistUserInfoResponseOutput) ToWatchlistUserInfoResponseOutputWithCo
 	return o
 }
 
+func (o WatchlistUserInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WatchlistUserInfoResponse] {
+	return pulumix.Output[WatchlistUserInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The email of the user.
 func (o WatchlistUserInfoResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v WatchlistUserInfoResponse) string { return v.Email }).(pulumi.StringOutput)
@@ -2070,6 +2365,12 @@ func (o WatchlistUserInfoResponsePtrOutput) ToWatchlistUserInfoResponsePtrOutput
 
 func (o WatchlistUserInfoResponsePtrOutput) ToWatchlistUserInfoResponsePtrOutputWithContext(ctx context.Context) WatchlistUserInfoResponsePtrOutput {
 	return o
+}
+
+func (o WatchlistUserInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WatchlistUserInfoResponse] {
+	return pulumix.Output[*WatchlistUserInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WatchlistUserInfoResponsePtrOutput) Elem() WatchlistUserInfoResponseOutput {

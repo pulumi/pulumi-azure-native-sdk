@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Test Base Package resource.
@@ -201,6 +202,12 @@ func (i *Package) ToPackageOutputWithContext(ctx context.Context) PackageOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(PackageOutput)
 }
 
+func (i *Package) ToOutput(ctx context.Context) pulumix.Output[*Package] {
+	return pulumix.Output[*Package]{
+		OutputState: i.ToPackageOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PackageOutput struct{ *pulumi.OutputState }
 
 func (PackageOutput) ElementType() reflect.Type {
@@ -213,6 +220,12 @@ func (o PackageOutput) ToPackageOutput() PackageOutput {
 
 func (o PackageOutput) ToPackageOutputWithContext(ctx context.Context) PackageOutput {
 	return o
+}
+
+func (o PackageOutput) ToOutput(ctx context.Context) pulumix.Output[*Package] {
+	return pulumix.Output[*Package]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Application name

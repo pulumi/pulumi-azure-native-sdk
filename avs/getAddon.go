@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An addon resource
@@ -83,6 +84,12 @@ func (o LookupAddonResultOutput) ToLookupAddonResultOutput() LookupAddonResultOu
 
 func (o LookupAddonResultOutput) ToLookupAddonResultOutputWithContext(ctx context.Context) LookupAddonResultOutput {
 	return o
+}
+
+func (o LookupAddonResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAddonResult] {
+	return pulumix.Output[LookupAddonResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.

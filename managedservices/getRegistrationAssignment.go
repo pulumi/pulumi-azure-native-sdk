@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the specified registration assignment.
@@ -85,6 +86,12 @@ func (o LookupRegistrationAssignmentResultOutput) ToLookupRegistrationAssignment
 
 func (o LookupRegistrationAssignmentResultOutput) ToLookupRegistrationAssignmentResultOutputWithContext(ctx context.Context) LookupRegistrationAssignmentResultOutput {
 	return o
+}
+
+func (o LookupRegistrationAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegistrationAssignmentResult] {
+	return pulumix.Output[LookupRegistrationAssignmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The fully qualified path of the registration assignment.

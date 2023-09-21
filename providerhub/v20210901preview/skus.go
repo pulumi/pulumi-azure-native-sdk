@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Skus struct {
@@ -128,6 +129,12 @@ func (i *Skus) ToSkusOutputWithContext(ctx context.Context) SkusOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkusOutput)
 }
 
+func (i *Skus) ToOutput(ctx context.Context) pulumix.Output[*Skus] {
+	return pulumix.Output[*Skus]{
+		OutputState: i.ToSkusOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SkusOutput struct{ *pulumi.OutputState }
 
 func (SkusOutput) ElementType() reflect.Type {
@@ -140,6 +147,12 @@ func (o SkusOutput) ToSkusOutput() SkusOutput {
 
 func (o SkusOutput) ToSkusOutputWithContext(ctx context.Context) SkusOutput {
 	return o
+}
+
+func (o SkusOutput) ToOutput(ctx context.Context) pulumix.Output[*Skus] {
+	return pulumix.Output[*Skus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

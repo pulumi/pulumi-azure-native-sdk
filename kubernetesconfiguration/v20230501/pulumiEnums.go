@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The identity type.
@@ -78,6 +79,12 @@ func (o AKSIdentityTypeOutput) ToAKSIdentityTypePtrOutputWithContext(ctx context
 	}).(AKSIdentityTypePtrOutput)
 }
 
+func (o AKSIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AKSIdentityType] {
+	return pulumix.Output[AKSIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AKSIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o AKSIdentityTypePtrOutput) ToAKSIdentityTypePtrOutput() AKSIdentityTypePt
 
 func (o AKSIdentityTypePtrOutput) ToAKSIdentityTypePtrOutputWithContext(ctx context.Context) AKSIdentityTypePtrOutput {
 	return o
+}
+
+func (o AKSIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AKSIdentityType] {
+	return pulumix.Output[*AKSIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AKSIdentityTypePtrOutput) Elem() AKSIdentityTypeOutput {
@@ -173,6 +186,12 @@ func (in *aksidentityTypePtr) ToAKSIdentityTypePtrOutput() AKSIdentityTypePtrOut
 
 func (in *aksidentityTypePtr) ToAKSIdentityTypePtrOutputWithContext(ctx context.Context) AKSIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AKSIdentityTypePtrOutput)
+}
+
+func (in *aksidentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AKSIdentityType] {
+	return pulumix.Output[*AKSIdentityType]{
+		OutputState: in.ToAKSIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Level of the status.
@@ -266,6 +285,12 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
+func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
+	return pulumix.Output[ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -299,6 +324,12 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -361,6 +392,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+}
+
+func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Scope at which the operator will be installed.

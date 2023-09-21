@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Domain ownership Identifier.
@@ -163,6 +164,12 @@ func (i *DomainOwnershipIdentifier) ToDomainOwnershipIdentifierOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(DomainOwnershipIdentifierOutput)
 }
 
+func (i *DomainOwnershipIdentifier) ToOutput(ctx context.Context) pulumix.Output[*DomainOwnershipIdentifier] {
+	return pulumix.Output[*DomainOwnershipIdentifier]{
+		OutputState: i.ToDomainOwnershipIdentifierOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainOwnershipIdentifierOutput struct{ *pulumi.OutputState }
 
 func (DomainOwnershipIdentifierOutput) ElementType() reflect.Type {
@@ -175,6 +182,12 @@ func (o DomainOwnershipIdentifierOutput) ToDomainOwnershipIdentifierOutput() Dom
 
 func (o DomainOwnershipIdentifierOutput) ToDomainOwnershipIdentifierOutputWithContext(ctx context.Context) DomainOwnershipIdentifierOutput {
 	return o
+}
+
+func (o DomainOwnershipIdentifierOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainOwnershipIdentifier] {
+	return pulumix.Output[*DomainOwnershipIdentifier]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Kind of resource.

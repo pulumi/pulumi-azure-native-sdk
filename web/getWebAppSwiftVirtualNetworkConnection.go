@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Gets a Swift Virtual Network connection.
@@ -83,6 +84,12 @@ func (o LookupWebAppSwiftVirtualNetworkConnectionResultOutput) ToLookupWebAppSwi
 
 func (o LookupWebAppSwiftVirtualNetworkConnectionResultOutput) ToLookupWebAppSwiftVirtualNetworkConnectionResultOutputWithContext(ctx context.Context) LookupWebAppSwiftVirtualNetworkConnectionResultOutput {
 	return o
+}
+
+func (o LookupWebAppSwiftVirtualNetworkConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppSwiftVirtualNetworkConnectionResult] {
+	return pulumix.Output[LookupWebAppSwiftVirtualNetworkConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id.

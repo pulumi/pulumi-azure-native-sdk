@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the access keys of the resource.
@@ -79,6 +80,12 @@ func (o ListWebPubSubKeysResultOutput) ToListWebPubSubKeysResultOutput() ListWeb
 
 func (o ListWebPubSubKeysResultOutput) ToListWebPubSubKeysResultOutputWithContext(ctx context.Context) ListWebPubSubKeysResultOutput {
 	return o
+}
+
+func (o ListWebPubSubKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebPubSubKeysResult] {
+	return pulumix.Output[ListWebPubSubKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Connection string constructed via the primaryKey

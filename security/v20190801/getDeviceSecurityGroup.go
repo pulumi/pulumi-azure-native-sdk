@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this method to get the device security group for the specified IoT Hub resource.
@@ -84,6 +85,12 @@ func (o LookupDeviceSecurityGroupResultOutput) ToLookupDeviceSecurityGroupResult
 
 func (o LookupDeviceSecurityGroupResultOutput) ToLookupDeviceSecurityGroupResultOutputWithContext(ctx context.Context) LookupDeviceSecurityGroupResultOutput {
 	return o
+}
+
+func (o LookupDeviceSecurityGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeviceSecurityGroupResult] {
+	return pulumix.Output[LookupDeviceSecurityGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The allow-list custom alert rules.

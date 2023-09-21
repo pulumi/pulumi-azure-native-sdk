@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i CapabilityArgs) ToCapabilityOutputWithContext(ctx context.Context) Capab
 	return pulumi.ToOutputWithContext(ctx, i).(CapabilityOutput)
 }
 
+func (i CapabilityArgs) ToOutput(ctx context.Context) pulumix.Output[Capability] {
+	return pulumix.Output[Capability]{
+		OutputState: i.ToCapabilityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CapabilityArrayInput is an input type that accepts CapabilityArray and CapabilityArrayOutput values.
 // You can construct a concrete instance of `CapabilityArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i CapabilityArray) ToCapabilityArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CapabilityArrayOutput)
 }
 
+func (i CapabilityArray) ToOutput(ctx context.Context) pulumix.Output[[]Capability] {
+	return pulumix.Output[[]Capability]{
+		OutputState: i.ToCapabilityArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the capabilities/features allowed for a specific SKU.
 type CapabilityOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o CapabilityOutput) ToCapabilityOutput() CapabilityOutput {
 
 func (o CapabilityOutput) ToCapabilityOutputWithContext(ctx context.Context) CapabilityOutput {
 	return o
+}
+
+func (o CapabilityOutput) ToOutput(ctx context.Context) pulumix.Output[Capability] {
+	return pulumix.Output[Capability]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the SKU capability.
@@ -123,6 +142,12 @@ func (o CapabilityArrayOutput) ToCapabilityArrayOutput() CapabilityArrayOutput {
 
 func (o CapabilityArrayOutput) ToCapabilityArrayOutputWithContext(ctx context.Context) CapabilityArrayOutput {
 	return o
+}
+
+func (o CapabilityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Capability] {
+	return pulumix.Output[[]Capability]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CapabilityArrayOutput) Index(i pulumi.IntInput) CapabilityOutput {
@@ -156,6 +181,12 @@ func (o CapabilityResponseOutput) ToCapabilityResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o CapabilityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CapabilityResponse] {
+	return pulumix.Output[CapabilityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the SKU capability.
 func (o CapabilityResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CapabilityResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -183,6 +214,12 @@ func (o CapabilityResponseArrayOutput) ToCapabilityResponseArrayOutput() Capabil
 
 func (o CapabilityResponseArrayOutput) ToCapabilityResponseArrayOutputWithContext(ctx context.Context) CapabilityResponseArrayOutput {
 	return o
+}
+
+func (o CapabilityResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CapabilityResponse] {
+	return pulumix.Output[[]CapabilityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CapabilityResponseArrayOutput) Index(i pulumi.IntInput) CapabilityResponseOutput {
@@ -226,6 +263,12 @@ func (i HostingEnvironmentProfileArgs) ToHostingEnvironmentProfileOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(HostingEnvironmentProfileOutput)
 }
 
+func (i HostingEnvironmentProfileArgs) ToOutput(ctx context.Context) pulumix.Output[HostingEnvironmentProfile] {
+	return pulumix.Output[HostingEnvironmentProfile]{
+		OutputState: i.ToHostingEnvironmentProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HostingEnvironmentProfileArgs) ToHostingEnvironmentProfilePtrOutput() HostingEnvironmentProfilePtrOutput {
 	return i.ToHostingEnvironmentProfilePtrOutputWithContext(context.Background())
 }
@@ -267,6 +310,12 @@ func (i *hostingEnvironmentProfilePtrType) ToHostingEnvironmentProfilePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(HostingEnvironmentProfilePtrOutput)
 }
 
+func (i *hostingEnvironmentProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*HostingEnvironmentProfile] {
+	return pulumix.Output[*HostingEnvironmentProfile]{
+		OutputState: i.ToHostingEnvironmentProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification for an App Service Environment to use for this resource.
 type HostingEnvironmentProfileOutput struct{ *pulumi.OutputState }
 
@@ -292,6 +341,12 @@ func (o HostingEnvironmentProfileOutput) ToHostingEnvironmentProfilePtrOutputWit
 	}).(HostingEnvironmentProfilePtrOutput)
 }
 
+func (o HostingEnvironmentProfileOutput) ToOutput(ctx context.Context) pulumix.Output[HostingEnvironmentProfile] {
+	return pulumix.Output[HostingEnvironmentProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the App Service Environment.
 func (o HostingEnvironmentProfileOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HostingEnvironmentProfile) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -309,6 +364,12 @@ func (o HostingEnvironmentProfilePtrOutput) ToHostingEnvironmentProfilePtrOutput
 
 func (o HostingEnvironmentProfilePtrOutput) ToHostingEnvironmentProfilePtrOutputWithContext(ctx context.Context) HostingEnvironmentProfilePtrOutput {
 	return o
+}
+
+func (o HostingEnvironmentProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostingEnvironmentProfile] {
+	return pulumix.Output[*HostingEnvironmentProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostingEnvironmentProfilePtrOutput) Elem() HostingEnvironmentProfileOutput {
@@ -356,6 +417,12 @@ func (o HostingEnvironmentProfileResponseOutput) ToHostingEnvironmentProfileResp
 	return o
 }
 
+func (o HostingEnvironmentProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HostingEnvironmentProfileResponse] {
+	return pulumix.Output[HostingEnvironmentProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the App Service Environment.
 func (o HostingEnvironmentProfileResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HostingEnvironmentProfileResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -383,6 +450,12 @@ func (o HostingEnvironmentProfileResponsePtrOutput) ToHostingEnvironmentProfileR
 
 func (o HostingEnvironmentProfileResponsePtrOutput) ToHostingEnvironmentProfileResponsePtrOutputWithContext(ctx context.Context) HostingEnvironmentProfileResponsePtrOutput {
 	return o
+}
+
+func (o HostingEnvironmentProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostingEnvironmentProfileResponse] {
+	return pulumix.Output[*HostingEnvironmentProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostingEnvironmentProfileResponsePtrOutput) Elem() HostingEnvironmentProfileResponseOutput {
@@ -472,6 +545,12 @@ func (i SkuCapacityArgs) ToSkuCapacityOutputWithContext(ctx context.Context) Sku
 	return pulumi.ToOutputWithContext(ctx, i).(SkuCapacityOutput)
 }
 
+func (i SkuCapacityArgs) ToOutput(ctx context.Context) pulumix.Output[SkuCapacity] {
+	return pulumix.Output[SkuCapacity]{
+		OutputState: i.ToSkuCapacityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SkuCapacityArgs) ToSkuCapacityPtrOutput() SkuCapacityPtrOutput {
 	return i.ToSkuCapacityPtrOutputWithContext(context.Background())
 }
@@ -513,6 +592,12 @@ func (i *skuCapacityPtrType) ToSkuCapacityPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SkuCapacityPtrOutput)
 }
 
+func (i *skuCapacityPtrType) ToOutput(ctx context.Context) pulumix.Output[*SkuCapacity] {
+	return pulumix.Output[*SkuCapacity]{
+		OutputState: i.ToSkuCapacityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Description of the App Service plan scale options.
 type SkuCapacityOutput struct{ *pulumi.OutputState }
 
@@ -536,6 +621,12 @@ func (o SkuCapacityOutput) ToSkuCapacityPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkuCapacity) *SkuCapacity {
 		return &v
 	}).(SkuCapacityPtrOutput)
+}
+
+func (o SkuCapacityOutput) ToOutput(ctx context.Context) pulumix.Output[SkuCapacity] {
+	return pulumix.Output[SkuCapacity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Default number of workers for this App Service plan SKU.
@@ -570,6 +661,12 @@ func (o SkuCapacityPtrOutput) ToSkuCapacityPtrOutput() SkuCapacityPtrOutput {
 
 func (o SkuCapacityPtrOutput) ToSkuCapacityPtrOutputWithContext(ctx context.Context) SkuCapacityPtrOutput {
 	return o
+}
+
+func (o SkuCapacityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuCapacity] {
+	return pulumix.Output[*SkuCapacity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuCapacityPtrOutput) Elem() SkuCapacityOutput {
@@ -649,6 +746,12 @@ func (o SkuCapacityResponseOutput) ToSkuCapacityResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o SkuCapacityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuCapacityResponse] {
+	return pulumix.Output[SkuCapacityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Default number of workers for this App Service plan SKU.
 func (o SkuCapacityResponseOutput) Default() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SkuCapacityResponse) *int { return v.Default }).(pulumi.IntPtrOutput)
@@ -681,6 +784,12 @@ func (o SkuCapacityResponsePtrOutput) ToSkuCapacityResponsePtrOutput() SkuCapaci
 
 func (o SkuCapacityResponsePtrOutput) ToSkuCapacityResponsePtrOutputWithContext(ctx context.Context) SkuCapacityResponsePtrOutput {
 	return o
+}
+
+func (o SkuCapacityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuCapacityResponse] {
+	return pulumix.Output[*SkuCapacityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuCapacityResponsePtrOutput) Elem() SkuCapacityResponseOutput {
@@ -796,6 +905,12 @@ func (i SkuDescriptionArgs) ToSkuDescriptionOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SkuDescriptionOutput)
 }
 
+func (i SkuDescriptionArgs) ToOutput(ctx context.Context) pulumix.Output[SkuDescription] {
+	return pulumix.Output[SkuDescription]{
+		OutputState: i.ToSkuDescriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SkuDescriptionArgs) ToSkuDescriptionPtrOutput() SkuDescriptionPtrOutput {
 	return i.ToSkuDescriptionPtrOutputWithContext(context.Background())
 }
@@ -837,6 +952,12 @@ func (i *skuDescriptionPtrType) ToSkuDescriptionPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SkuDescriptionPtrOutput)
 }
 
+func (i *skuDescriptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SkuDescription] {
+	return pulumix.Output[*SkuDescription]{
+		OutputState: i.ToSkuDescriptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Description of a SKU for a scalable resource.
 type SkuDescriptionOutput struct{ *pulumi.OutputState }
 
@@ -860,6 +981,12 @@ func (o SkuDescriptionOutput) ToSkuDescriptionPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkuDescription) *SkuDescription {
 		return &v
 	}).(SkuDescriptionPtrOutput)
+}
+
+func (o SkuDescriptionOutput) ToOutput(ctx context.Context) pulumix.Output[SkuDescription] {
+	return pulumix.Output[SkuDescription]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Capabilities of the SKU, e.g., is traffic manager enabled?
@@ -914,6 +1041,12 @@ func (o SkuDescriptionPtrOutput) ToSkuDescriptionPtrOutput() SkuDescriptionPtrOu
 
 func (o SkuDescriptionPtrOutput) ToSkuDescriptionPtrOutputWithContext(ctx context.Context) SkuDescriptionPtrOutput {
 	return o
+}
+
+func (o SkuDescriptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuDescription] {
+	return pulumix.Output[*SkuDescription]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuDescriptionPtrOutput) Elem() SkuDescriptionOutput {
@@ -1041,6 +1174,12 @@ func (o SkuDescriptionResponseOutput) ToSkuDescriptionResponseOutputWithContext(
 	return o
 }
 
+func (o SkuDescriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuDescriptionResponse] {
+	return pulumix.Output[SkuDescriptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Capabilities of the SKU, e.g., is traffic manager enabled?
 func (o SkuDescriptionResponseOutput) Capabilities() CapabilityResponseArrayOutput {
 	return o.ApplyT(func(v SkuDescriptionResponse) []CapabilityResponse { return v.Capabilities }).(CapabilityResponseArrayOutput)
@@ -1093,6 +1232,12 @@ func (o SkuDescriptionResponsePtrOutput) ToSkuDescriptionResponsePtrOutput() Sku
 
 func (o SkuDescriptionResponsePtrOutput) ToSkuDescriptionResponsePtrOutputWithContext(ctx context.Context) SkuDescriptionResponsePtrOutput {
 	return o
+}
+
+func (o SkuDescriptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuDescriptionResponse] {
+	return pulumix.Output[*SkuDescriptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuDescriptionResponsePtrOutput) Elem() SkuDescriptionResponseOutput {

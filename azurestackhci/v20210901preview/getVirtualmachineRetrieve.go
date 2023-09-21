@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets virtual machines by resource name
@@ -116,6 +117,12 @@ func (o LookupVirtualmachineRetrieveResultOutput) ToLookupVirtualmachineRetrieve
 
 func (o LookupVirtualmachineRetrieveResultOutput) ToLookupVirtualmachineRetrieveResultOutputWithContext(ctx context.Context) LookupVirtualmachineRetrieveResultOutput {
 	return o
+}
+
+func (o LookupVirtualmachineRetrieveResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualmachineRetrieveResult] {
+	return pulumix.Output[LookupVirtualmachineRetrieveResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The extendedLocation of the resource.

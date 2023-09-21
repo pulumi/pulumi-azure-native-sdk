@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the virtual machine details
@@ -77,6 +78,12 @@ func (o GetGlobalUserEnvironmentResultOutput) ToGetGlobalUserEnvironmentResultOu
 
 func (o GetGlobalUserEnvironmentResultOutput) ToGetGlobalUserEnvironmentResultOutputWithContext(ctx context.Context) GetGlobalUserEnvironmentResultOutput {
 	return o
+}
+
+func (o GetGlobalUserEnvironmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalUserEnvironmentResult] {
+	return pulumix.Output[GetGlobalUserEnvironmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Details of the environment

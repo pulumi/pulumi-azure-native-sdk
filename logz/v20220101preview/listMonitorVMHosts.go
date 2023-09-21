@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response of a list VM Host Update Operation.
@@ -74,6 +75,12 @@ func (o ListMonitorVMHostsResultOutput) ToListMonitorVMHostsResultOutput() ListM
 
 func (o ListMonitorVMHostsResultOutput) ToListMonitorVMHostsResultOutputWithContext(ctx context.Context) ListMonitorVMHostsResultOutput {
 	return o
+}
+
+func (o ListMonitorVMHostsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListMonitorVMHostsResult] {
+	return pulumix.Output[ListMonitorVMHostsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Link to the next set of results, if any.

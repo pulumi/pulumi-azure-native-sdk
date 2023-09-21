@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Import collector.
@@ -77,6 +78,12 @@ func (o LookupImportCollectorResultOutput) ToLookupImportCollectorResultOutput()
 
 func (o LookupImportCollectorResultOutput) ToLookupImportCollectorResultOutputWithContext(ctx context.Context) LookupImportCollectorResultOutput {
 	return o
+}
+
+func (o LookupImportCollectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupImportCollectorResult] {
+	return pulumix.Output[LookupImportCollectorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupImportCollectorResultOutput) ETag() pulumi.StringPtrOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the PNS Credentials associated with a notification hub .
@@ -98,6 +99,12 @@ func (o GetNotificationHubPnsCredentialsResultOutput) ToGetNotificationHubPnsCre
 
 func (o GetNotificationHubPnsCredentialsResultOutput) ToGetNotificationHubPnsCredentialsResultOutputWithContext(ctx context.Context) GetNotificationHubPnsCredentialsResultOutput {
 	return o
+}
+
+func (o GetNotificationHubPnsCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNotificationHubPnsCredentialsResult] {
+	return pulumix.Output[GetNotificationHubPnsCredentialsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The AdmCredential of the created NotificationHub

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a shareSubscription in an account
@@ -112,6 +113,12 @@ func (o LookupShareSubscriptionResultOutput) ToLookupShareSubscriptionResultOutp
 
 func (o LookupShareSubscriptionResultOutput) ToLookupShareSubscriptionResultOutputWithContext(ctx context.Context) LookupShareSubscriptionResultOutput {
 	return o
+}
+
+func (o LookupShareSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupShareSubscriptionResult] {
+	return pulumix.Output[LookupShareSubscriptionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time at which the share subscription was created.

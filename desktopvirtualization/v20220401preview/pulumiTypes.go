@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i AgentUpdatePropertiesArgs) ToAgentUpdatePropertiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AgentUpdatePropertiesOutput)
 }
 
+func (i AgentUpdatePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AgentUpdateProperties] {
+	return pulumix.Output[AgentUpdateProperties]{
+		OutputState: i.ToAgentUpdatePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AgentUpdatePropertiesArgs) ToAgentUpdatePropertiesPtrOutput() AgentUpdatePropertiesPtrOutput {
 	return i.ToAgentUpdatePropertiesPtrOutputWithContext(context.Background())
 }
@@ -101,6 +108,12 @@ func (i *agentUpdatePropertiesPtrType) ToAgentUpdatePropertiesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AgentUpdatePropertiesPtrOutput)
 }
 
+func (i *agentUpdatePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AgentUpdateProperties] {
+	return pulumix.Output[*AgentUpdateProperties]{
+		OutputState: i.ToAgentUpdatePropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The session host configuration for updating agent, monitoring agent, and stack component.
 type AgentUpdatePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -124,6 +137,12 @@ func (o AgentUpdatePropertiesOutput) ToAgentUpdatePropertiesPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentUpdateProperties) *AgentUpdateProperties {
 		return &v
 	}).(AgentUpdatePropertiesPtrOutput)
+}
+
+func (o AgentUpdatePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AgentUpdateProperties] {
+	return pulumix.Output[AgentUpdateProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true.
@@ -158,6 +177,12 @@ func (o AgentUpdatePropertiesPtrOutput) ToAgentUpdatePropertiesPtrOutput() Agent
 
 func (o AgentUpdatePropertiesPtrOutput) ToAgentUpdatePropertiesPtrOutputWithContext(ctx context.Context) AgentUpdatePropertiesPtrOutput {
 	return o
+}
+
+func (o AgentUpdatePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentUpdateProperties] {
+	return pulumix.Output[*AgentUpdateProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AgentUpdatePropertiesPtrOutput) Elem() AgentUpdatePropertiesOutput {
@@ -237,6 +262,12 @@ func (o AgentUpdatePropertiesResponseOutput) ToAgentUpdatePropertiesResponseOutp
 	return o
 }
 
+func (o AgentUpdatePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AgentUpdatePropertiesResponse] {
+	return pulumix.Output[AgentUpdatePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true.
 func (o AgentUpdatePropertiesResponseOutput) MaintenanceWindowTimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentUpdatePropertiesResponse) *string { return v.MaintenanceWindowTimeZone }).(pulumi.StringPtrOutput)
@@ -271,6 +302,12 @@ func (o AgentUpdatePropertiesResponsePtrOutput) ToAgentUpdatePropertiesResponseP
 
 func (o AgentUpdatePropertiesResponsePtrOutput) ToAgentUpdatePropertiesResponsePtrOutputWithContext(ctx context.Context) AgentUpdatePropertiesResponsePtrOutput {
 	return o
+}
+
+func (o AgentUpdatePropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentUpdatePropertiesResponse] {
+	return pulumix.Output[*AgentUpdatePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AgentUpdatePropertiesResponsePtrOutput) Elem() AgentUpdatePropertiesResponseOutput {
@@ -362,6 +399,12 @@ func (i MaintenanceWindowPropertiesArgs) ToMaintenanceWindowPropertiesOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPropertiesOutput)
 }
 
+func (i MaintenanceWindowPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindowProperties] {
+	return pulumix.Output[MaintenanceWindowProperties]{
+		OutputState: i.ToMaintenanceWindowPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MaintenanceWindowPropertiesArrayInput is an input type that accepts MaintenanceWindowPropertiesArray and MaintenanceWindowPropertiesArrayOutput values.
 // You can construct a concrete instance of `MaintenanceWindowPropertiesArrayInput` via:
 //
@@ -387,6 +430,12 @@ func (i MaintenanceWindowPropertiesArray) ToMaintenanceWindowPropertiesArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPropertiesArrayOutput)
 }
 
+func (i MaintenanceWindowPropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]MaintenanceWindowProperties] {
+	return pulumix.Output[[]MaintenanceWindowProperties]{
+		OutputState: i.ToMaintenanceWindowPropertiesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Maintenance window starting hour and day of week.
 type MaintenanceWindowPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -400,6 +449,12 @@ func (o MaintenanceWindowPropertiesOutput) ToMaintenanceWindowPropertiesOutput()
 
 func (o MaintenanceWindowPropertiesOutput) ToMaintenanceWindowPropertiesOutputWithContext(ctx context.Context) MaintenanceWindowPropertiesOutput {
 	return o
+}
+
+func (o MaintenanceWindowPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindowProperties] {
+	return pulumix.Output[MaintenanceWindowProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Day of the week.
@@ -424,6 +479,12 @@ func (o MaintenanceWindowPropertiesArrayOutput) ToMaintenanceWindowPropertiesArr
 
 func (o MaintenanceWindowPropertiesArrayOutput) ToMaintenanceWindowPropertiesArrayOutputWithContext(ctx context.Context) MaintenanceWindowPropertiesArrayOutput {
 	return o
+}
+
+func (o MaintenanceWindowPropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MaintenanceWindowProperties] {
+	return pulumix.Output[[]MaintenanceWindowProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MaintenanceWindowPropertiesArrayOutput) Index(i pulumi.IntInput) MaintenanceWindowPropertiesOutput {
@@ -455,6 +516,12 @@ func (o MaintenanceWindowPropertiesResponseOutput) ToMaintenanceWindowProperties
 	return o
 }
 
+func (o MaintenanceWindowPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindowPropertiesResponse] {
+	return pulumix.Output[MaintenanceWindowPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Day of the week.
 func (o MaintenanceWindowPropertiesResponseOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindowPropertiesResponse) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
@@ -477,6 +544,12 @@ func (o MaintenanceWindowPropertiesResponseArrayOutput) ToMaintenanceWindowPrope
 
 func (o MaintenanceWindowPropertiesResponseArrayOutput) ToMaintenanceWindowPropertiesResponseArrayOutputWithContext(ctx context.Context) MaintenanceWindowPropertiesResponseArrayOutput {
 	return o
+}
+
+func (o MaintenanceWindowPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MaintenanceWindowPropertiesResponse] {
+	return pulumix.Output[[]MaintenanceWindowPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MaintenanceWindowPropertiesResponseArrayOutput) Index(i pulumi.IntInput) MaintenanceWindowPropertiesResponseOutput {
@@ -524,6 +597,12 @@ func (i MigrationRequestPropertiesArgs) ToMigrationRequestPropertiesOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationRequestPropertiesOutput)
 }
 
+func (i MigrationRequestPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MigrationRequestProperties] {
+	return pulumix.Output[MigrationRequestProperties]{
+		OutputState: i.ToMigrationRequestPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MigrationRequestPropertiesArgs) ToMigrationRequestPropertiesPtrOutput() MigrationRequestPropertiesPtrOutput {
 	return i.ToMigrationRequestPropertiesPtrOutputWithContext(context.Background())
 }
@@ -565,6 +644,12 @@ func (i *migrationRequestPropertiesPtrType) ToMigrationRequestPropertiesPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationRequestPropertiesPtrOutput)
 }
 
+func (i *migrationRequestPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MigrationRequestProperties] {
+	return pulumix.Output[*MigrationRequestProperties]{
+		OutputState: i.ToMigrationRequestPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties for arm migration.
 type MigrationRequestPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -590,6 +675,12 @@ func (o MigrationRequestPropertiesOutput) ToMigrationRequestPropertiesPtrOutputW
 	}).(MigrationRequestPropertiesPtrOutput)
 }
 
+func (o MigrationRequestPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MigrationRequestProperties] {
+	return pulumix.Output[MigrationRequestProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The path to the legacy object to migrate.
 func (o MigrationRequestPropertiesOutput) MigrationPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MigrationRequestProperties) *string { return v.MigrationPath }).(pulumi.StringPtrOutput)
@@ -612,6 +703,12 @@ func (o MigrationRequestPropertiesPtrOutput) ToMigrationRequestPropertiesPtrOutp
 
 func (o MigrationRequestPropertiesPtrOutput) ToMigrationRequestPropertiesPtrOutputWithContext(ctx context.Context) MigrationRequestPropertiesPtrOutput {
 	return o
+}
+
+func (o MigrationRequestPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationRequestProperties] {
+	return pulumix.Output[*MigrationRequestProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MigrationRequestPropertiesPtrOutput) Elem() MigrationRequestPropertiesOutput {
@@ -667,6 +764,12 @@ func (o MigrationRequestPropertiesResponseOutput) ToMigrationRequestPropertiesRe
 	return o
 }
 
+func (o MigrationRequestPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MigrationRequestPropertiesResponse] {
+	return pulumix.Output[MigrationRequestPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The path to the legacy object to migrate.
 func (o MigrationRequestPropertiesResponseOutput) MigrationPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MigrationRequestPropertiesResponse) *string { return v.MigrationPath }).(pulumi.StringPtrOutput)
@@ -689,6 +792,12 @@ func (o MigrationRequestPropertiesResponsePtrOutput) ToMigrationRequestPropertie
 
 func (o MigrationRequestPropertiesResponsePtrOutput) ToMigrationRequestPropertiesResponsePtrOutputWithContext(ctx context.Context) MigrationRequestPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o MigrationRequestPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationRequestPropertiesResponse] {
+	return pulumix.Output[*MigrationRequestPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MigrationRequestPropertiesResponsePtrOutput) Elem() MigrationRequestPropertiesResponseOutput {
@@ -752,6 +861,12 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
+	return pulumix.Output[PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -798,6 +913,12 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
+	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -825,6 +946,12 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
+func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
+	return pulumix.Output[PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -842,6 +969,12 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
+	return pulumix.Output[*PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -887,6 +1020,12 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
+	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -947,6 +1086,12 @@ func (i RegistrationInfoArgs) ToRegistrationInfoOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationInfoOutput)
 }
 
+func (i RegistrationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[RegistrationInfo] {
+	return pulumix.Output[RegistrationInfo]{
+		OutputState: i.ToRegistrationInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RegistrationInfoArgs) ToRegistrationInfoPtrOutput() RegistrationInfoPtrOutput {
 	return i.ToRegistrationInfoPtrOutputWithContext(context.Background())
 }
@@ -988,6 +1133,12 @@ func (i *registrationInfoPtrType) ToRegistrationInfoPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationInfoPtrOutput)
 }
 
+func (i *registrationInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*RegistrationInfo] {
+	return pulumix.Output[*RegistrationInfo]{
+		OutputState: i.ToRegistrationInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a RegistrationInfo definition.
 type RegistrationInfoOutput struct{ *pulumi.OutputState }
 
@@ -1011,6 +1162,12 @@ func (o RegistrationInfoOutput) ToRegistrationInfoPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistrationInfo) *RegistrationInfo {
 		return &v
 	}).(RegistrationInfoPtrOutput)
+}
+
+func (o RegistrationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[RegistrationInfo] {
+	return pulumix.Output[RegistrationInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Expiration time of registration token.
@@ -1040,6 +1197,12 @@ func (o RegistrationInfoPtrOutput) ToRegistrationInfoPtrOutput() RegistrationInf
 
 func (o RegistrationInfoPtrOutput) ToRegistrationInfoPtrOutputWithContext(ctx context.Context) RegistrationInfoPtrOutput {
 	return o
+}
+
+func (o RegistrationInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistrationInfo] {
+	return pulumix.Output[*RegistrationInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegistrationInfoPtrOutput) Elem() RegistrationInfoOutput {
@@ -1107,6 +1270,12 @@ func (o RegistrationInfoResponseOutput) ToRegistrationInfoResponseOutputWithCont
 	return o
 }
 
+func (o RegistrationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RegistrationInfoResponse] {
+	return pulumix.Output[RegistrationInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Expiration time of registration token.
 func (o RegistrationInfoResponseOutput) ExpirationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegistrationInfoResponse) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
@@ -1134,6 +1303,12 @@ func (o RegistrationInfoResponsePtrOutput) ToRegistrationInfoResponsePtrOutput()
 
 func (o RegistrationInfoResponsePtrOutput) ToRegistrationInfoResponsePtrOutputWithContext(ctx context.Context) RegistrationInfoResponsePtrOutput {
 	return o
+}
+
+func (o RegistrationInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistrationInfoResponse] {
+	return pulumix.Output[*RegistrationInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegistrationInfoResponsePtrOutput) Elem() RegistrationInfoResponseOutput {
@@ -1209,6 +1384,12 @@ func (i ResourceModelWithAllowedPropertySetIdentityArgs) ToResourceModelWithAllo
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceModelWithAllowedPropertySetIdentityOutput)
 }
 
+func (i ResourceModelWithAllowedPropertySetIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceModelWithAllowedPropertySetIdentity] {
+	return pulumix.Output[ResourceModelWithAllowedPropertySetIdentity]{
+		OutputState: i.ToResourceModelWithAllowedPropertySetIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceModelWithAllowedPropertySetIdentityArgs) ToResourceModelWithAllowedPropertySetIdentityPtrOutput() ResourceModelWithAllowedPropertySetIdentityPtrOutput {
 	return i.ToResourceModelWithAllowedPropertySetIdentityPtrOutputWithContext(context.Background())
 }
@@ -1250,6 +1431,12 @@ func (i *resourceModelWithAllowedPropertySetIdentityPtrType) ToResourceModelWith
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceModelWithAllowedPropertySetIdentityPtrOutput)
 }
 
+func (i *resourceModelWithAllowedPropertySetIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceModelWithAllowedPropertySetIdentity] {
+	return pulumix.Output[*ResourceModelWithAllowedPropertySetIdentity]{
+		OutputState: i.ToResourceModelWithAllowedPropertySetIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceModelWithAllowedPropertySetIdentityOutput struct{ *pulumi.OutputState }
 
 func (ResourceModelWithAllowedPropertySetIdentityOutput) ElementType() reflect.Type {
@@ -1274,6 +1461,12 @@ func (o ResourceModelWithAllowedPropertySetIdentityOutput) ToResourceModelWithAl
 	}).(ResourceModelWithAllowedPropertySetIdentityPtrOutput)
 }
 
+func (o ResourceModelWithAllowedPropertySetIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceModelWithAllowedPropertySetIdentity] {
+	return pulumix.Output[ResourceModelWithAllowedPropertySetIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o ResourceModelWithAllowedPropertySetIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v ResourceModelWithAllowedPropertySetIdentity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -1291,6 +1484,12 @@ func (o ResourceModelWithAllowedPropertySetIdentityPtrOutput) ToResourceModelWit
 
 func (o ResourceModelWithAllowedPropertySetIdentityPtrOutput) ToResourceModelWithAllowedPropertySetIdentityPtrOutputWithContext(ctx context.Context) ResourceModelWithAllowedPropertySetIdentityPtrOutput {
 	return o
+}
+
+func (o ResourceModelWithAllowedPropertySetIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceModelWithAllowedPropertySetIdentity] {
+	return pulumix.Output[*ResourceModelWithAllowedPropertySetIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceModelWithAllowedPropertySetIdentityPtrOutput) Elem() ResourceModelWithAllowedPropertySetIdentityOutput {
@@ -1362,6 +1561,12 @@ func (i ResourceModelWithAllowedPropertySetPlanArgs) ToResourceModelWithAllowedP
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceModelWithAllowedPropertySetPlanOutput)
 }
 
+func (i ResourceModelWithAllowedPropertySetPlanArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceModelWithAllowedPropertySetPlan] {
+	return pulumix.Output[ResourceModelWithAllowedPropertySetPlan]{
+		OutputState: i.ToResourceModelWithAllowedPropertySetPlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceModelWithAllowedPropertySetPlanArgs) ToResourceModelWithAllowedPropertySetPlanPtrOutput() ResourceModelWithAllowedPropertySetPlanPtrOutput {
 	return i.ToResourceModelWithAllowedPropertySetPlanPtrOutputWithContext(context.Background())
 }
@@ -1403,6 +1608,12 @@ func (i *resourceModelWithAllowedPropertySetPlanPtrType) ToResourceModelWithAllo
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceModelWithAllowedPropertySetPlanPtrOutput)
 }
 
+func (i *resourceModelWithAllowedPropertySetPlanPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceModelWithAllowedPropertySetPlan] {
+	return pulumix.Output[*ResourceModelWithAllowedPropertySetPlan]{
+		OutputState: i.ToResourceModelWithAllowedPropertySetPlanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceModelWithAllowedPropertySetPlanOutput struct{ *pulumi.OutputState }
 
 func (ResourceModelWithAllowedPropertySetPlanOutput) ElementType() reflect.Type {
@@ -1425,6 +1636,12 @@ func (o ResourceModelWithAllowedPropertySetPlanOutput) ToResourceModelWithAllowe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceModelWithAllowedPropertySetPlan) *ResourceModelWithAllowedPropertySetPlan {
 		return &v
 	}).(ResourceModelWithAllowedPropertySetPlanPtrOutput)
+}
+
+func (o ResourceModelWithAllowedPropertySetPlanOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceModelWithAllowedPropertySetPlan] {
+	return pulumix.Output[ResourceModelWithAllowedPropertySetPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A user defined name of the 3rd Party Artifact that is being procured.
@@ -1464,6 +1681,12 @@ func (o ResourceModelWithAllowedPropertySetPlanPtrOutput) ToResourceModelWithAll
 
 func (o ResourceModelWithAllowedPropertySetPlanPtrOutput) ToResourceModelWithAllowedPropertySetPlanPtrOutputWithContext(ctx context.Context) ResourceModelWithAllowedPropertySetPlanPtrOutput {
 	return o
+}
+
+func (o ResourceModelWithAllowedPropertySetPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceModelWithAllowedPropertySetPlan] {
+	return pulumix.Output[*ResourceModelWithAllowedPropertySetPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceModelWithAllowedPropertySetPlanPtrOutput) Elem() ResourceModelWithAllowedPropertySetPlanOutput {
@@ -1549,6 +1772,12 @@ func (o ResourceModelWithAllowedPropertySetResponseIdentityOutput) ToResourceMod
 	return o
 }
 
+func (o ResourceModelWithAllowedPropertySetResponseIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceModelWithAllowedPropertySetResponseIdentity] {
+	return pulumix.Output[ResourceModelWithAllowedPropertySetResponseIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal ID of resource identity.
 func (o ResourceModelWithAllowedPropertySetResponseIdentityOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceModelWithAllowedPropertySetResponseIdentity) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1576,6 +1805,12 @@ func (o ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput) ToResource
 
 func (o ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput) ToResourceModelWithAllowedPropertySetResponseIdentityPtrOutputWithContext(ctx context.Context) ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
 	return o
+}
+
+func (o ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceModelWithAllowedPropertySetResponseIdentity] {
+	return pulumix.Output[*ResourceModelWithAllowedPropertySetResponseIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput) Elem() ResourceModelWithAllowedPropertySetResponseIdentityOutput {
@@ -1645,6 +1880,12 @@ func (o ResourceModelWithAllowedPropertySetResponsePlanOutput) ToResourceModelWi
 	return o
 }
 
+func (o ResourceModelWithAllowedPropertySetResponsePlanOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceModelWithAllowedPropertySetResponsePlan] {
+	return pulumix.Output[ResourceModelWithAllowedPropertySetResponsePlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A user defined name of the 3rd Party Artifact that is being procured.
 func (o ResourceModelWithAllowedPropertySetResponsePlanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceModelWithAllowedPropertySetResponsePlan) string { return v.Name }).(pulumi.StringOutput)
@@ -1682,6 +1923,12 @@ func (o ResourceModelWithAllowedPropertySetResponsePlanPtrOutput) ToResourceMode
 
 func (o ResourceModelWithAllowedPropertySetResponsePlanPtrOutput) ToResourceModelWithAllowedPropertySetResponsePlanPtrOutputWithContext(ctx context.Context) ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
 	return o
+}
+
+func (o ResourceModelWithAllowedPropertySetResponsePlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceModelWithAllowedPropertySetResponsePlan] {
+	return pulumix.Output[*ResourceModelWithAllowedPropertySetResponsePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceModelWithAllowedPropertySetResponsePlanPtrOutput) Elem() ResourceModelWithAllowedPropertySetResponsePlanOutput {
@@ -1771,6 +2018,12 @@ func (o ResourceModelWithAllowedPropertySetResponseSkuOutput) ToResourceModelWit
 	return o
 }
 
+func (o ResourceModelWithAllowedPropertySetResponseSkuOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceModelWithAllowedPropertySetResponseSku] {
+	return pulumix.Output[ResourceModelWithAllowedPropertySetResponseSku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
 func (o ResourceModelWithAllowedPropertySetResponseSkuOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceModelWithAllowedPropertySetResponseSku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -1808,6 +2061,12 @@ func (o ResourceModelWithAllowedPropertySetResponseSkuPtrOutput) ToResourceModel
 
 func (o ResourceModelWithAllowedPropertySetResponseSkuPtrOutput) ToResourceModelWithAllowedPropertySetResponseSkuPtrOutputWithContext(ctx context.Context) ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
 	return o
+}
+
+func (o ResourceModelWithAllowedPropertySetResponseSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceModelWithAllowedPropertySetResponseSku] {
+	return pulumix.Output[*ResourceModelWithAllowedPropertySetResponseSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceModelWithAllowedPropertySetResponseSkuPtrOutput) Elem() ResourceModelWithAllowedPropertySetResponseSkuOutput {
@@ -1919,6 +2178,12 @@ func (i ResourceModelWithAllowedPropertySetSkuArgs) ToResourceModelWithAllowedPr
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceModelWithAllowedPropertySetSkuOutput)
 }
 
+func (i ResourceModelWithAllowedPropertySetSkuArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceModelWithAllowedPropertySetSku] {
+	return pulumix.Output[ResourceModelWithAllowedPropertySetSku]{
+		OutputState: i.ToResourceModelWithAllowedPropertySetSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceModelWithAllowedPropertySetSkuArgs) ToResourceModelWithAllowedPropertySetSkuPtrOutput() ResourceModelWithAllowedPropertySetSkuPtrOutput {
 	return i.ToResourceModelWithAllowedPropertySetSkuPtrOutputWithContext(context.Background())
 }
@@ -1960,6 +2225,12 @@ func (i *resourceModelWithAllowedPropertySetSkuPtrType) ToResourceModelWithAllow
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceModelWithAllowedPropertySetSkuPtrOutput)
 }
 
+func (i *resourceModelWithAllowedPropertySetSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceModelWithAllowedPropertySetSku] {
+	return pulumix.Output[*ResourceModelWithAllowedPropertySetSku]{
+		OutputState: i.ToResourceModelWithAllowedPropertySetSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceModelWithAllowedPropertySetSkuOutput struct{ *pulumi.OutputState }
 
 func (ResourceModelWithAllowedPropertySetSkuOutput) ElementType() reflect.Type {
@@ -1982,6 +2253,12 @@ func (o ResourceModelWithAllowedPropertySetSkuOutput) ToResourceModelWithAllowed
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceModelWithAllowedPropertySetSku) *ResourceModelWithAllowedPropertySetSku {
 		return &v
 	}).(ResourceModelWithAllowedPropertySetSkuPtrOutput)
+}
+
+func (o ResourceModelWithAllowedPropertySetSkuOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceModelWithAllowedPropertySetSku] {
+	return pulumix.Output[ResourceModelWithAllowedPropertySetSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
@@ -2021,6 +2298,12 @@ func (o ResourceModelWithAllowedPropertySetSkuPtrOutput) ToResourceModelWithAllo
 
 func (o ResourceModelWithAllowedPropertySetSkuPtrOutput) ToResourceModelWithAllowedPropertySetSkuPtrOutputWithContext(ctx context.Context) ResourceModelWithAllowedPropertySetSkuPtrOutput {
 	return o
+}
+
+func (o ResourceModelWithAllowedPropertySetSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceModelWithAllowedPropertySetSku] {
+	return pulumix.Output[*ResourceModelWithAllowedPropertySetSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceModelWithAllowedPropertySetSkuPtrOutput) Elem() ResourceModelWithAllowedPropertySetSkuOutput {
@@ -2112,6 +2395,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

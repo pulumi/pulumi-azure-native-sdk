@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Schema Contract details.
@@ -182,6 +183,12 @@ func (i *ApiSchema) ToApiSchemaOutputWithContext(ctx context.Context) ApiSchemaO
 	return pulumi.ToOutputWithContext(ctx, i).(ApiSchemaOutput)
 }
 
+func (i *ApiSchema) ToOutput(ctx context.Context) pulumix.Output[*ApiSchema] {
+	return pulumix.Output[*ApiSchema]{
+		OutputState: i.ToApiSchemaOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiSchemaOutput struct{ *pulumi.OutputState }
 
 func (ApiSchemaOutput) ElementType() reflect.Type {
@@ -194,6 +201,12 @@ func (o ApiSchemaOutput) ToApiSchemaOutput() ApiSchemaOutput {
 
 func (o ApiSchemaOutput) ToApiSchemaOutputWithContext(ctx context.Context) ApiSchemaOutput {
 	return o
+}
+
+func (o ApiSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiSchema] {
+	return pulumix.Output[*ApiSchema]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Must be a valid a media type used in a Content-Type header as defined in the RFC 2616. Media type of the schema document (e.g. application/json, application/xml). </br> - `Swagger` Schema use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL` Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use `application/vnd.ms-azure-apim.wadl.grammars+xml`.

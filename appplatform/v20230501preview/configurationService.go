@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Application Configuration Service resource
@@ -159,6 +160,12 @@ func (i *ConfigurationService) ToConfigurationServiceOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationServiceOutput)
 }
 
+func (i *ConfigurationService) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationService] {
+	return pulumix.Output[*ConfigurationService]{
+		OutputState: i.ToConfigurationServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConfigurationServiceOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationServiceOutput) ElementType() reflect.Type {
@@ -171,6 +178,12 @@ func (o ConfigurationServiceOutput) ToConfigurationServiceOutput() Configuration
 
 func (o ConfigurationServiceOutput) ToConfigurationServiceOutputWithContext(ctx context.Context) ConfigurationServiceOutput {
 	return o
+}
+
+func (o ConfigurationServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationService] {
+	return pulumix.Output[*ConfigurationService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource.

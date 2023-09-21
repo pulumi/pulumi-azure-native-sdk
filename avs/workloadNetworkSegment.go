@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // NSX Segment
@@ -161,6 +162,12 @@ func (i *WorkloadNetworkSegment) ToWorkloadNetworkSegmentOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadNetworkSegmentOutput)
 }
 
+func (i *WorkloadNetworkSegment) ToOutput(ctx context.Context) pulumix.Output[*WorkloadNetworkSegment] {
+	return pulumix.Output[*WorkloadNetworkSegment]{
+		OutputState: i.ToWorkloadNetworkSegmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkloadNetworkSegmentOutput struct{ *pulumi.OutputState }
 
 func (WorkloadNetworkSegmentOutput) ElementType() reflect.Type {
@@ -173,6 +180,12 @@ func (o WorkloadNetworkSegmentOutput) ToWorkloadNetworkSegmentOutput() WorkloadN
 
 func (o WorkloadNetworkSegmentOutput) ToWorkloadNetworkSegmentOutputWithContext(ctx context.Context) WorkloadNetworkSegmentOutput {
 	return o
+}
+
+func (o WorkloadNetworkSegmentOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadNetworkSegment] {
+	return pulumix.Output[*WorkloadNetworkSegment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gateway which to connect segment to.

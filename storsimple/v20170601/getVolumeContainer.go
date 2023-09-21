@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified volume container name.
@@ -102,6 +103,12 @@ func (o LookupVolumeContainerResultOutput) ToLookupVolumeContainerResultOutput()
 
 func (o LookupVolumeContainerResultOutput) ToLookupVolumeContainerResultOutputWithContext(ctx context.Context) LookupVolumeContainerResultOutput {
 	return o
+}
+
+func (o LookupVolumeContainerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVolumeContainerResult] {
+	return pulumix.Output[LookupVolumeContainerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bandwidth-rate set on the volume container.

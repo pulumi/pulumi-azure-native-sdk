@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -42,6 +43,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -117,6 +124,12 @@ func (i VolumeBackupsArgs) ToVolumeBackupsOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeBackupsOutput)
 }
 
+func (i VolumeBackupsArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeBackups] {
+	return pulumix.Output[VolumeBackups]{
+		OutputState: i.ToVolumeBackupsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VolumeBackupsArrayInput is an input type that accepts VolumeBackupsArray and VolumeBackupsArrayOutput values.
 // You can construct a concrete instance of `VolumeBackupsArrayInput` via:
 //
@@ -142,6 +155,12 @@ func (i VolumeBackupsArray) ToVolumeBackupsArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeBackupsArrayOutput)
 }
 
+func (i VolumeBackupsArray) ToOutput(ctx context.Context) pulumix.Output[[]VolumeBackups] {
+	return pulumix.Output[[]VolumeBackups]{
+		OutputState: i.ToVolumeBackupsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Volume details using the backup policy
 type VolumeBackupsOutput struct{ *pulumi.OutputState }
 
@@ -155,6 +174,12 @@ func (o VolumeBackupsOutput) ToVolumeBackupsOutput() VolumeBackupsOutput {
 
 func (o VolumeBackupsOutput) ToVolumeBackupsOutputWithContext(ctx context.Context) VolumeBackupsOutput {
 	return o
+}
+
+func (o VolumeBackupsOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeBackups] {
+	return pulumix.Output[VolumeBackups]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Total count of backups for volume
@@ -184,6 +209,12 @@ func (o VolumeBackupsArrayOutput) ToVolumeBackupsArrayOutput() VolumeBackupsArra
 
 func (o VolumeBackupsArrayOutput) ToVolumeBackupsArrayOutputWithContext(ctx context.Context) VolumeBackupsArrayOutput {
 	return o
+}
+
+func (o VolumeBackupsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeBackups] {
+	return pulumix.Output[[]VolumeBackups]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeBackupsArrayOutput) Index(i pulumi.IntInput) VolumeBackupsOutput {
@@ -217,6 +248,12 @@ func (o VolumeBackupsResponseOutput) ToVolumeBackupsResponseOutputWithContext(ct
 	return o
 }
 
+func (o VolumeBackupsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeBackupsResponse] {
+	return pulumix.Output[VolumeBackupsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Total count of backups for volume
 func (o VolumeBackupsResponseOutput) BackupsCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VolumeBackupsResponse) *int { return v.BackupsCount }).(pulumi.IntPtrOutput)
@@ -244,6 +281,12 @@ func (o VolumeBackupsResponseArrayOutput) ToVolumeBackupsResponseArrayOutput() V
 
 func (o VolumeBackupsResponseArrayOutput) ToVolumeBackupsResponseArrayOutputWithContext(ctx context.Context) VolumeBackupsResponseArrayOutput {
 	return o
+}
+
+func (o VolumeBackupsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeBackupsResponse] {
+	return pulumix.Output[[]VolumeBackupsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeBackupsResponseArrayOutput) Index(i pulumi.IntInput) VolumeBackupsResponseOutput {

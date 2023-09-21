@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a link in the hub.
@@ -106,6 +107,12 @@ func (o LookupLinkResultOutput) ToLookupLinkResultOutput() LookupLinkResultOutpu
 
 func (o LookupLinkResultOutput) ToLookupLinkResultOutputWithContext(ctx context.Context) LookupLinkResultOutput {
 	return o
+}
+
+func (o LookupLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLinkResult] {
+	return pulumix.Output[LookupLinkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Localized descriptions for the Link.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -64,6 +65,12 @@ func (i WorkbookTemplateGalleryArgs) ToWorkbookTemplateGalleryOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(WorkbookTemplateGalleryOutput)
 }
 
+func (i WorkbookTemplateGalleryArgs) ToOutput(ctx context.Context) pulumix.Output[WorkbookTemplateGallery] {
+	return pulumix.Output[WorkbookTemplateGallery]{
+		OutputState: i.ToWorkbookTemplateGalleryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkbookTemplateGalleryArrayInput is an input type that accepts WorkbookTemplateGalleryArray and WorkbookTemplateGalleryArrayOutput values.
 // You can construct a concrete instance of `WorkbookTemplateGalleryArrayInput` via:
 //
@@ -89,6 +96,12 @@ func (i WorkbookTemplateGalleryArray) ToWorkbookTemplateGalleryArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkbookTemplateGalleryArrayOutput)
 }
 
+func (i WorkbookTemplateGalleryArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkbookTemplateGallery] {
+	return pulumix.Output[[]WorkbookTemplateGallery]{
+		OutputState: i.ToWorkbookTemplateGalleryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Gallery information for a workbook template.
 type WorkbookTemplateGalleryOutput struct{ *pulumi.OutputState }
 
@@ -102,6 +115,12 @@ func (o WorkbookTemplateGalleryOutput) ToWorkbookTemplateGalleryOutput() Workboo
 
 func (o WorkbookTemplateGalleryOutput) ToWorkbookTemplateGalleryOutputWithContext(ctx context.Context) WorkbookTemplateGalleryOutput {
 	return o
+}
+
+func (o WorkbookTemplateGalleryOutput) ToOutput(ctx context.Context) pulumix.Output[WorkbookTemplateGallery] {
+	return pulumix.Output[WorkbookTemplateGallery]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Category for the gallery.
@@ -143,6 +162,12 @@ func (o WorkbookTemplateGalleryArrayOutput) ToWorkbookTemplateGalleryArrayOutput
 	return o
 }
 
+func (o WorkbookTemplateGalleryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkbookTemplateGallery] {
+	return pulumix.Output[[]WorkbookTemplateGallery]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkbookTemplateGalleryArrayOutput) Index(i pulumi.IntInput) WorkbookTemplateGalleryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkbookTemplateGallery {
 		return vs[0].([]WorkbookTemplateGallery)[vs[1].(int)]
@@ -176,6 +201,12 @@ func (o WorkbookTemplateGalleryResponseOutput) ToWorkbookTemplateGalleryResponse
 
 func (o WorkbookTemplateGalleryResponseOutput) ToWorkbookTemplateGalleryResponseOutputWithContext(ctx context.Context) WorkbookTemplateGalleryResponseOutput {
 	return o
+}
+
+func (o WorkbookTemplateGalleryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkbookTemplateGalleryResponse] {
+	return pulumix.Output[WorkbookTemplateGalleryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Category for the gallery.
@@ -215,6 +246,12 @@ func (o WorkbookTemplateGalleryResponseArrayOutput) ToWorkbookTemplateGalleryRes
 
 func (o WorkbookTemplateGalleryResponseArrayOutput) ToWorkbookTemplateGalleryResponseArrayOutputWithContext(ctx context.Context) WorkbookTemplateGalleryResponseArrayOutput {
 	return o
+}
+
+func (o WorkbookTemplateGalleryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkbookTemplateGalleryResponse] {
+	return pulumix.Output[[]WorkbookTemplateGalleryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkbookTemplateGalleryResponseArrayOutput) Index(i pulumi.IntInput) WorkbookTemplateGalleryResponseOutput {
@@ -262,6 +299,12 @@ func (i WorkbookTemplateLocalizedGalleryArgs) ToWorkbookTemplateLocalizedGallery
 	return pulumi.ToOutputWithContext(ctx, i).(WorkbookTemplateLocalizedGalleryOutput)
 }
 
+func (i WorkbookTemplateLocalizedGalleryArgs) ToOutput(ctx context.Context) pulumix.Output[WorkbookTemplateLocalizedGallery] {
+	return pulumix.Output[WorkbookTemplateLocalizedGallery]{
+		OutputState: i.ToWorkbookTemplateLocalizedGalleryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkbookTemplateLocalizedGalleryArrayInput is an input type that accepts WorkbookTemplateLocalizedGalleryArray and WorkbookTemplateLocalizedGalleryArrayOutput values.
 // You can construct a concrete instance of `WorkbookTemplateLocalizedGalleryArrayInput` via:
 //
@@ -287,6 +330,12 @@ func (i WorkbookTemplateLocalizedGalleryArray) ToWorkbookTemplateLocalizedGaller
 	return pulumi.ToOutputWithContext(ctx, i).(WorkbookTemplateLocalizedGalleryArrayOutput)
 }
 
+func (i WorkbookTemplateLocalizedGalleryArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkbookTemplateLocalizedGallery] {
+	return pulumix.Output[[]WorkbookTemplateLocalizedGallery]{
+		OutputState: i.ToWorkbookTemplateLocalizedGalleryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Localized template data and gallery information.
 type WorkbookTemplateLocalizedGalleryOutput struct{ *pulumi.OutputState }
 
@@ -300,6 +349,12 @@ func (o WorkbookTemplateLocalizedGalleryOutput) ToWorkbookTemplateLocalizedGalle
 
 func (o WorkbookTemplateLocalizedGalleryOutput) ToWorkbookTemplateLocalizedGalleryOutputWithContext(ctx context.Context) WorkbookTemplateLocalizedGalleryOutput {
 	return o
+}
+
+func (o WorkbookTemplateLocalizedGalleryOutput) ToOutput(ctx context.Context) pulumix.Output[WorkbookTemplateLocalizedGallery] {
+	return pulumix.Output[WorkbookTemplateLocalizedGallery]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Workbook galleries supported by the template.
@@ -324,6 +379,12 @@ func (o WorkbookTemplateLocalizedGalleryArrayOutput) ToWorkbookTemplateLocalized
 
 func (o WorkbookTemplateLocalizedGalleryArrayOutput) ToWorkbookTemplateLocalizedGalleryArrayOutputWithContext(ctx context.Context) WorkbookTemplateLocalizedGalleryArrayOutput {
 	return o
+}
+
+func (o WorkbookTemplateLocalizedGalleryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkbookTemplateLocalizedGallery] {
+	return pulumix.Output[[]WorkbookTemplateLocalizedGallery]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkbookTemplateLocalizedGalleryArrayOutput) Index(i pulumi.IntInput) WorkbookTemplateLocalizedGalleryOutput {
@@ -355,6 +416,12 @@ func (o WorkbookTemplateLocalizedGalleryResponseOutput) ToWorkbookTemplateLocali
 	return o
 }
 
+func (o WorkbookTemplateLocalizedGalleryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkbookTemplateLocalizedGalleryResponse] {
+	return pulumix.Output[WorkbookTemplateLocalizedGalleryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Workbook galleries supported by the template.
 func (o WorkbookTemplateLocalizedGalleryResponseOutput) Galleries() WorkbookTemplateGalleryResponseArrayOutput {
 	return o.ApplyT(func(v WorkbookTemplateLocalizedGalleryResponse) []WorkbookTemplateGalleryResponse { return v.Galleries }).(WorkbookTemplateGalleryResponseArrayOutput)
@@ -379,6 +446,12 @@ func (o WorkbookTemplateLocalizedGalleryResponseArrayOutput) ToWorkbookTemplateL
 	return o
 }
 
+func (o WorkbookTemplateLocalizedGalleryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkbookTemplateLocalizedGalleryResponse] {
+	return pulumix.Output[[]WorkbookTemplateLocalizedGalleryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkbookTemplateLocalizedGalleryResponseArrayOutput) Index(i pulumi.IntInput) WorkbookTemplateLocalizedGalleryResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkbookTemplateLocalizedGalleryResponse {
 		return vs[0].([]WorkbookTemplateLocalizedGalleryResponse)[vs[1].(int)]
@@ -397,6 +470,12 @@ func (i WorkbookTemplateLocalizedGalleryArrayMap) ToWorkbookTemplateLocalizedGal
 
 func (i WorkbookTemplateLocalizedGalleryArrayMap) ToWorkbookTemplateLocalizedGalleryArrayMapOutputWithContext(ctx context.Context) WorkbookTemplateLocalizedGalleryArrayMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkbookTemplateLocalizedGalleryArrayMapOutput)
+}
+
+func (i WorkbookTemplateLocalizedGalleryArrayMap) ToOutput(ctx context.Context) pulumix.Output[map[string][]WorkbookTemplateLocalizedGallery] {
+	return pulumix.Output[map[string][]WorkbookTemplateLocalizedGallery]{
+		OutputState: i.ToWorkbookTemplateLocalizedGalleryArrayMapOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WorkbookTemplateLocalizedGalleryArrayMapInput is an input type that accepts WorkbookTemplateLocalizedGalleryArrayMap and WorkbookTemplateLocalizedGalleryArrayMapOutput values.
@@ -424,6 +503,12 @@ func (o WorkbookTemplateLocalizedGalleryArrayMapOutput) ToWorkbookTemplateLocali
 	return o
 }
 
+func (o WorkbookTemplateLocalizedGalleryArrayMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string][]WorkbookTemplateLocalizedGallery] {
+	return pulumix.Output[map[string][]WorkbookTemplateLocalizedGallery]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkbookTemplateLocalizedGalleryArrayMapOutput) MapIndex(k pulumi.StringInput) WorkbookTemplateLocalizedGalleryArrayOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) []WorkbookTemplateLocalizedGallery {
 		return vs[0].(map[string][]WorkbookTemplateLocalizedGallery)[vs[1].(string)]
@@ -442,6 +527,12 @@ func (o WorkbookTemplateLocalizedGalleryResponseArrayMapOutput) ToWorkbookTempla
 
 func (o WorkbookTemplateLocalizedGalleryResponseArrayMapOutput) ToWorkbookTemplateLocalizedGalleryResponseArrayMapOutputWithContext(ctx context.Context) WorkbookTemplateLocalizedGalleryResponseArrayMapOutput {
 	return o
+}
+
+func (o WorkbookTemplateLocalizedGalleryResponseArrayMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string][]WorkbookTemplateLocalizedGalleryResponse] {
+	return pulumix.Output[map[string][]WorkbookTemplateLocalizedGalleryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkbookTemplateLocalizedGalleryResponseArrayMapOutput) MapIndex(k pulumi.StringInput) WorkbookTemplateLocalizedGalleryResponseArrayOutput {

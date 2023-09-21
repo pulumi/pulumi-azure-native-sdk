@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource representation of a workflow
@@ -266,6 +267,12 @@ func (i *Workflow) ToWorkflowOutputWithContext(ctx context.Context) WorkflowOutp
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowOutput)
 }
 
+func (i *Workflow) ToOutput(ctx context.Context) pulumix.Output[*Workflow] {
+	return pulumix.Output[*Workflow]{
+		OutputState: i.ToWorkflowOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkflowOutput struct{ *pulumi.OutputState }
 
 func (WorkflowOutput) ElementType() reflect.Type {
@@ -278,6 +285,12 @@ func (o WorkflowOutput) ToWorkflowOutput() WorkflowOutput {
 
 func (o WorkflowOutput) ToWorkflowOutputWithContext(ctx context.Context) WorkflowOutput {
 	return o
+}
+
+func (o WorkflowOutput) ToOutput(ctx context.Context) pulumix.Output[*Workflow] {
+	return pulumix.Output[*Workflow]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Information on the azure container registry

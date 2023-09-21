@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Site REST Resource.
@@ -85,6 +86,12 @@ func (o LookupHyperVSiteResultOutput) ToLookupHyperVSiteResultOutput() LookupHyp
 
 func (o LookupHyperVSiteResultOutput) ToLookupHyperVSiteResultOutputWithContext(ctx context.Context) LookupHyperVSiteResultOutput {
 	return o
+}
+
+func (o LookupHyperVSiteResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHyperVSiteResult] {
+	return pulumix.Output[LookupHyperVSiteResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // eTag for concurrency control.

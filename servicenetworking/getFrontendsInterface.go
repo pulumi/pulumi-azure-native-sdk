@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Frontend
@@ -91,6 +92,12 @@ func (o LookupFrontendsInterfaceResultOutput) ToLookupFrontendsInterfaceResultOu
 
 func (o LookupFrontendsInterfaceResultOutput) ToLookupFrontendsInterfaceResultOutputWithContext(ctx context.Context) LookupFrontendsInterfaceResultOutput {
 	return o
+}
+
+func (o LookupFrontendsInterfaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFrontendsInterfaceResult] {
+	return pulumix.Output[LookupFrontendsInterfaceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend.

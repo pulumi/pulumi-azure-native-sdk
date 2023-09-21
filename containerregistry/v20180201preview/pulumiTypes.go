@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -40,6 +41,12 @@ func (o BaseImageDependencyResponseOutput) ToBaseImageDependencyResponseOutput()
 
 func (o BaseImageDependencyResponseOutput) ToBaseImageDependencyResponseOutputWithContext(ctx context.Context) BaseImageDependencyResponseOutput {
 	return o
+}
+
+func (o BaseImageDependencyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BaseImageDependencyResponse] {
+	return pulumix.Output[BaseImageDependencyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The sha256-based digest of the image manifest.
@@ -79,6 +86,12 @@ func (o BaseImageDependencyResponseArrayOutput) ToBaseImageDependencyResponseArr
 
 func (o BaseImageDependencyResponseArrayOutput) ToBaseImageDependencyResponseArrayOutputWithContext(ctx context.Context) BaseImageDependencyResponseArrayOutput {
 	return o
+}
+
+func (o BaseImageDependencyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BaseImageDependencyResponse] {
+	return pulumix.Output[[]BaseImageDependencyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BaseImageDependencyResponseArrayOutput) Index(i pulumi.IntInput) BaseImageDependencyResponseOutput {
@@ -127,6 +140,12 @@ func (o BuildArgumentResponseOutput) ToBuildArgumentResponseOutputWithContext(ct
 	return o
 }
 
+func (o BuildArgumentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BuildArgumentResponse] {
+	return pulumix.Output[BuildArgumentResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag to indicate whether the argument represents a secret and want to be removed from build logs.
 func (o BuildArgumentResponseOutput) GetIsSecret() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BuildArgumentResponse) *bool { return v.IsSecret }).(pulumi.BoolPtrOutput)
@@ -159,6 +178,12 @@ func (o BuildArgumentResponseArrayOutput) ToBuildArgumentResponseArrayOutput() B
 
 func (o BuildArgumentResponseArrayOutput) ToBuildArgumentResponseArrayOutputWithContext(ctx context.Context) BuildArgumentResponseArrayOutput {
 	return o
+}
+
+func (o BuildArgumentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BuildArgumentResponse] {
+	return pulumix.Output[[]BuildArgumentResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BuildArgumentResponseArrayOutput) Index(i pulumi.IntInput) BuildArgumentResponseOutput {
@@ -224,6 +249,12 @@ func (o DockerBuildStepResponseOutput) ToDockerBuildStepResponseOutput() DockerB
 
 func (o DockerBuildStepResponseOutput) ToDockerBuildStepResponseOutputWithContext(ctx context.Context) DockerBuildStepResponseOutput {
 	return o
+}
+
+func (o DockerBuildStepResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DockerBuildStepResponse] {
+	return pulumix.Output[DockerBuildStepResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of base image dependencies for a step.
@@ -321,6 +352,12 @@ func (i PlatformPropertiesArgs) ToPlatformPropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PlatformPropertiesOutput)
 }
 
+func (i PlatformPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[PlatformProperties] {
+	return pulumix.Output[PlatformProperties]{
+		OutputState: i.ToPlatformPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The platform properties against which the build has to happen.
 type PlatformPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -334,6 +371,12 @@ func (o PlatformPropertiesOutput) ToPlatformPropertiesOutput() PlatformPropertie
 
 func (o PlatformPropertiesOutput) ToPlatformPropertiesOutputWithContext(ctx context.Context) PlatformPropertiesOutput {
 	return o
+}
+
+func (o PlatformPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PlatformProperties] {
+	return pulumix.Output[PlatformProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The CPU configuration in terms of number of cores required for the build.
@@ -367,6 +410,12 @@ func (o PlatformPropertiesResponseOutput) ToPlatformPropertiesResponseOutput() P
 
 func (o PlatformPropertiesResponseOutput) ToPlatformPropertiesResponseOutputWithContext(ctx context.Context) PlatformPropertiesResponseOutput {
 	return o
+}
+
+func (o PlatformPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PlatformPropertiesResponse] {
+	return pulumix.Output[PlatformPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The CPU configuration in terms of number of cores required for the build.
@@ -430,6 +479,12 @@ func (i SourceControlAuthInfoArgs) ToSourceControlAuthInfoOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SourceControlAuthInfoOutput)
 }
 
+func (i SourceControlAuthInfoArgs) ToOutput(ctx context.Context) pulumix.Output[SourceControlAuthInfo] {
+	return pulumix.Output[SourceControlAuthInfo]{
+		OutputState: i.ToSourceControlAuthInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SourceControlAuthInfoArgs) ToSourceControlAuthInfoPtrOutput() SourceControlAuthInfoPtrOutput {
 	return i.ToSourceControlAuthInfoPtrOutputWithContext(context.Background())
 }
@@ -471,6 +526,12 @@ func (i *sourceControlAuthInfoPtrType) ToSourceControlAuthInfoPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(SourceControlAuthInfoPtrOutput)
 }
 
+func (i *sourceControlAuthInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*SourceControlAuthInfo] {
+	return pulumix.Output[*SourceControlAuthInfo]{
+		OutputState: i.ToSourceControlAuthInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The authorization properties for accessing the source code repository.
 type SourceControlAuthInfoOutput struct{ *pulumi.OutputState }
 
@@ -494,6 +555,12 @@ func (o SourceControlAuthInfoOutput) ToSourceControlAuthInfoPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceControlAuthInfo) *SourceControlAuthInfo {
 		return &v
 	}).(SourceControlAuthInfoPtrOutput)
+}
+
+func (o SourceControlAuthInfoOutput) ToOutput(ctx context.Context) pulumix.Output[SourceControlAuthInfo] {
+	return pulumix.Output[SourceControlAuthInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time in seconds that the token remains valid
@@ -533,6 +600,12 @@ func (o SourceControlAuthInfoPtrOutput) ToSourceControlAuthInfoPtrOutput() Sourc
 
 func (o SourceControlAuthInfoPtrOutput) ToSourceControlAuthInfoPtrOutputWithContext(ctx context.Context) SourceControlAuthInfoPtrOutput {
 	return o
+}
+
+func (o SourceControlAuthInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceControlAuthInfo] {
+	return pulumix.Output[*SourceControlAuthInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SourceControlAuthInfoPtrOutput) Elem() SourceControlAuthInfoOutput {
@@ -624,6 +697,12 @@ func (o SourceControlAuthInfoResponseOutput) ToSourceControlAuthInfoResponseOutp
 	return o
 }
 
+func (o SourceControlAuthInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceControlAuthInfoResponse] {
+	return pulumix.Output[SourceControlAuthInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Time in seconds that the token remains valid
 func (o SourceControlAuthInfoResponseOutput) ExpiresIn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SourceControlAuthInfoResponse) *int { return v.ExpiresIn }).(pulumi.IntPtrOutput)
@@ -661,6 +740,12 @@ func (o SourceControlAuthInfoResponsePtrOutput) ToSourceControlAuthInfoResponseP
 
 func (o SourceControlAuthInfoResponsePtrOutput) ToSourceControlAuthInfoResponsePtrOutputWithContext(ctx context.Context) SourceControlAuthInfoResponsePtrOutput {
 	return o
+}
+
+func (o SourceControlAuthInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceControlAuthInfoResponse] {
+	return pulumix.Output[*SourceControlAuthInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SourceControlAuthInfoResponsePtrOutput) Elem() SourceControlAuthInfoResponseOutput {
@@ -794,6 +879,12 @@ func (i SourceRepositoryPropertiesArgs) ToSourceRepositoryPropertiesOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(SourceRepositoryPropertiesOutput)
 }
 
+func (i SourceRepositoryPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SourceRepositoryProperties] {
+	return pulumix.Output[SourceRepositoryProperties]{
+		OutputState: i.ToSourceRepositoryPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The properties of the source code repository.
 type SourceRepositoryPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -807,6 +898,12 @@ func (o SourceRepositoryPropertiesOutput) ToSourceRepositoryPropertiesOutput() S
 
 func (o SourceRepositoryPropertiesOutput) ToSourceRepositoryPropertiesOutputWithContext(ctx context.Context) SourceRepositoryPropertiesOutput {
 	return o
+}
+
+func (o SourceRepositoryPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SourceRepositoryProperties] {
+	return pulumix.Output[SourceRepositoryProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value of this property indicates whether the source control commit trigger is enabled or not.
@@ -867,6 +964,12 @@ func (o SourceRepositoryPropertiesResponseOutput) ToSourceRepositoryPropertiesRe
 
 func (o SourceRepositoryPropertiesResponseOutput) ToSourceRepositoryPropertiesResponseOutputWithContext(ctx context.Context) SourceRepositoryPropertiesResponseOutput {
 	return o
+}
+
+func (o SourceRepositoryPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceRepositoryPropertiesResponse] {
+	return pulumix.Output[SourceRepositoryPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value of this property indicates whether the source control commit trigger is enabled or not.

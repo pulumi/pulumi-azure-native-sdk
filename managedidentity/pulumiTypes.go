@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -42,6 +43,12 @@ func (o AzureResourceResponseOutput) ToAzureResourceResponseOutput() AzureResour
 
 func (o AzureResourceResponseOutput) ToAzureResourceResponseOutputWithContext(ctx context.Context) AzureResourceResponseOutput {
 	return o
+}
+
+func (o AzureResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureResourceResponse] {
+	return pulumix.Output[AzureResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of this resource.
@@ -88,6 +95,12 @@ func (o AzureResourceResponseArrayOutput) ToAzureResourceResponseArrayOutputWith
 	return o
 }
 
+func (o AzureResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureResourceResponse] {
+	return pulumix.Output[[]AzureResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AzureResourceResponseArrayOutput) Index(i pulumi.IntInput) AzureResourceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureResourceResponse {
 		return vs[0].([]AzureResourceResponse)[vs[1].(int)]
@@ -123,6 +136,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

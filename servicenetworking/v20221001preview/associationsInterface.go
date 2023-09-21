@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Association Subresource of Traffic Controller
@@ -149,6 +150,12 @@ func (i *AssociationsInterface) ToAssociationsInterfaceOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AssociationsInterfaceOutput)
 }
 
+func (i *AssociationsInterface) ToOutput(ctx context.Context) pulumix.Output[*AssociationsInterface] {
+	return pulumix.Output[*AssociationsInterface]{
+		OutputState: i.ToAssociationsInterfaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AssociationsInterfaceOutput struct{ *pulumi.OutputState }
 
 func (AssociationsInterfaceOutput) ElementType() reflect.Type {
@@ -161,6 +168,12 @@ func (o AssociationsInterfaceOutput) ToAssociationsInterfaceOutput() Association
 
 func (o AssociationsInterfaceOutput) ToAssociationsInterfaceOutputWithContext(ctx context.Context) AssociationsInterfaceOutput {
 	return o
+}
+
+func (o AssociationsInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[*AssociationsInterface] {
+	return pulumix.Output[*AssociationsInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Association Type

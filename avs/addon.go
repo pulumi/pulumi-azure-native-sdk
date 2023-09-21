@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An addon resource
@@ -137,6 +138,12 @@ func (i *Addon) ToAddonOutputWithContext(ctx context.Context) AddonOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AddonOutput)
 }
 
+func (i *Addon) ToOutput(ctx context.Context) pulumix.Output[*Addon] {
+	return pulumix.Output[*Addon]{
+		OutputState: i.ToAddonOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AddonOutput struct{ *pulumi.OutputState }
 
 func (AddonOutput) ElementType() reflect.Type {
@@ -149,6 +156,12 @@ func (o AddonOutput) ToAddonOutput() AddonOutput {
 
 func (o AddonOutput) ToAddonOutputWithContext(ctx context.Context) AddonOutput {
 	return o
+}
+
+func (o AddonOutput) ToOutput(ctx context.Context) pulumix.Output[*Addon] {
+	return pulumix.Output[*Addon]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name.

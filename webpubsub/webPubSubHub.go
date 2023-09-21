@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A hub setting
@@ -143,6 +144,12 @@ func (i *WebPubSubHub) ToWebPubSubHubOutputWithContext(ctx context.Context) WebP
 	return pulumi.ToOutputWithContext(ctx, i).(WebPubSubHubOutput)
 }
 
+func (i *WebPubSubHub) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubHub] {
+	return pulumix.Output[*WebPubSubHub]{
+		OutputState: i.ToWebPubSubHubOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebPubSubHubOutput struct{ *pulumi.OutputState }
 
 func (WebPubSubHubOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o WebPubSubHubOutput) ToWebPubSubHubOutput() WebPubSubHubOutput {
 
 func (o WebPubSubHubOutput) ToWebPubSubHubOutputWithContext(ctx context.Context) WebPubSubHubOutput {
 	return o
+}
+
+func (o WebPubSubHubOutput) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubHub] {
+	return pulumix.Output[*WebPubSubHub]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource.

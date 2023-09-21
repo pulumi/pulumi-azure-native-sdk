@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the email template specified by its identifier.
@@ -93,6 +94,12 @@ func (o LookupEmailTemplateResultOutput) ToLookupEmailTemplateResultOutput() Loo
 
 func (o LookupEmailTemplateResultOutput) ToLookupEmailTemplateResultOutputWithContext(ctx context.Context) LookupEmailTemplateResultOutput {
 	return o
+}
+
+func (o LookupEmailTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEmailTemplateResult] {
+	return pulumix.Output[LookupEmailTemplateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Email Template Body. This should be a valid XDocument

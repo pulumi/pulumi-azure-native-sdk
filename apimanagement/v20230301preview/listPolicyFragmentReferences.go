@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists policy resources that reference the policy fragment.
@@ -88,6 +89,12 @@ func (o ListPolicyFragmentReferencesResultOutput) ToListPolicyFragmentReferences
 
 func (o ListPolicyFragmentReferencesResultOutput) ToListPolicyFragmentReferencesResultOutputWithContext(ctx context.Context) ListPolicyFragmentReferencesResultOutput {
 	return o
+}
+
+func (o ListPolicyFragmentReferencesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListPolicyFragmentReferencesResult] {
+	return pulumix.Output[ListPolicyFragmentReferencesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Total record count number.

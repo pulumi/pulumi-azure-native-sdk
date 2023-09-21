@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a policy fragment.
@@ -104,6 +105,12 @@ func (o LookupPolicyFragmentResultOutput) ToLookupPolicyFragmentResultOutput() L
 
 func (o LookupPolicyFragmentResultOutput) ToLookupPolicyFragmentResultOutputWithContext(ctx context.Context) LookupPolicyFragmentResultOutput {
 	return o
+}
+
+func (o LookupPolicyFragmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPolicyFragmentResult] {
+	return pulumix.Output[LookupPolicyFragmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Policy fragment description.

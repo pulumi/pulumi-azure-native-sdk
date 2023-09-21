@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Role management policy
@@ -129,6 +130,12 @@ func (i *RoleManagementPolicyAssignment) ToRoleManagementPolicyAssignmentOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(RoleManagementPolicyAssignmentOutput)
 }
 
+func (i *RoleManagementPolicyAssignment) ToOutput(ctx context.Context) pulumix.Output[*RoleManagementPolicyAssignment] {
+	return pulumix.Output[*RoleManagementPolicyAssignment]{
+		OutputState: i.ToRoleManagementPolicyAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RoleManagementPolicyAssignmentOutput struct{ *pulumi.OutputState }
 
 func (RoleManagementPolicyAssignmentOutput) ElementType() reflect.Type {
@@ -141,6 +148,12 @@ func (o RoleManagementPolicyAssignmentOutput) ToRoleManagementPolicyAssignmentOu
 
 func (o RoleManagementPolicyAssignmentOutput) ToRoleManagementPolicyAssignmentOutputWithContext(ctx context.Context) RoleManagementPolicyAssignmentOutput {
 	return o
+}
+
+func (o RoleManagementPolicyAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*RoleManagementPolicyAssignment] {
+	return pulumix.Output[*RoleManagementPolicyAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The readonly computed rule applied to the policy.

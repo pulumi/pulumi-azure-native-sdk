@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the download URL of the test execution screen recording.
@@ -83,6 +84,12 @@ func (o GetTestResultVideoDownloadURLResultOutput) ToGetTestResultVideoDownloadU
 
 func (o GetTestResultVideoDownloadURLResultOutput) ToGetTestResultVideoDownloadURLResultOutputWithContext(ctx context.Context) GetTestResultVideoDownloadURLResultOutput {
 	return o
+}
+
+func (o GetTestResultVideoDownloadURLResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTestResultVideoDownloadURLResult] {
+	return pulumix.Output[GetTestResultVideoDownloadURLResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The download URL.

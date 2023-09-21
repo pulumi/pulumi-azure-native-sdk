@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the build step for a build task.
@@ -97,6 +98,12 @@ func (o LookupBuildStepResultOutput) ToLookupBuildStepResultOutput() LookupBuild
 
 func (o LookupBuildStepResultOutput) ToLookupBuildStepResultOutputWithContext(ctx context.Context) LookupBuildStepResultOutput {
 	return o
+}
+
+func (o LookupBuildStepResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBuildStepResult] {
+	return pulumix.Output[LookupBuildStepResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource ID.

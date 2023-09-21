@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -84,6 +85,12 @@ func (i PrometheusRuleArgs) ToPrometheusRuleOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusRuleOutput)
 }
 
+func (i PrometheusRuleArgs) ToOutput(ctx context.Context) pulumix.Output[PrometheusRule] {
+	return pulumix.Output[PrometheusRule]{
+		OutputState: i.ToPrometheusRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrometheusRuleArrayInput is an input type that accepts PrometheusRuleArray and PrometheusRuleArrayOutput values.
 // You can construct a concrete instance of `PrometheusRuleArrayInput` via:
 //
@@ -109,6 +116,12 @@ func (i PrometheusRuleArray) ToPrometheusRuleArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusRuleArrayOutput)
 }
 
+func (i PrometheusRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]PrometheusRule] {
+	return pulumix.Output[[]PrometheusRule]{
+		OutputState: i.ToPrometheusRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An Azure Prometheus alerting or recording rule.
 type PrometheusRuleOutput struct{ *pulumi.OutputState }
 
@@ -122,6 +135,12 @@ func (o PrometheusRuleOutput) ToPrometheusRuleOutput() PrometheusRuleOutput {
 
 func (o PrometheusRuleOutput) ToPrometheusRuleOutputWithContext(ctx context.Context) PrometheusRuleOutput {
 	return o
+}
+
+func (o PrometheusRuleOutput) ToOutput(ctx context.Context) pulumix.Output[PrometheusRule] {
+	return pulumix.Output[PrometheusRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
@@ -188,6 +207,12 @@ func (o PrometheusRuleArrayOutput) ToPrometheusRuleArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o PrometheusRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrometheusRule] {
+	return pulumix.Output[[]PrometheusRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrometheusRuleArrayOutput) Index(i pulumi.IntInput) PrometheusRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrometheusRule {
 		return vs[0].([]PrometheusRule)[vs[1].(int)]
@@ -233,6 +258,12 @@ func (i PrometheusRuleGroupActionArgs) ToPrometheusRuleGroupActionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusRuleGroupActionOutput)
 }
 
+func (i PrometheusRuleGroupActionArgs) ToOutput(ctx context.Context) pulumix.Output[PrometheusRuleGroupAction] {
+	return pulumix.Output[PrometheusRuleGroupAction]{
+		OutputState: i.ToPrometheusRuleGroupActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrometheusRuleGroupActionArrayInput is an input type that accepts PrometheusRuleGroupActionArray and PrometheusRuleGroupActionArrayOutput values.
 // You can construct a concrete instance of `PrometheusRuleGroupActionArrayInput` via:
 //
@@ -258,6 +289,12 @@ func (i PrometheusRuleGroupActionArray) ToPrometheusRuleGroupActionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusRuleGroupActionArrayOutput)
 }
 
+func (i PrometheusRuleGroupActionArray) ToOutput(ctx context.Context) pulumix.Output[[]PrometheusRuleGroupAction] {
+	return pulumix.Output[[]PrometheusRuleGroupAction]{
+		OutputState: i.ToPrometheusRuleGroupActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An alert action. Only relevant for alerts.
 type PrometheusRuleGroupActionOutput struct{ *pulumi.OutputState }
 
@@ -271,6 +308,12 @@ func (o PrometheusRuleGroupActionOutput) ToPrometheusRuleGroupActionOutput() Pro
 
 func (o PrometheusRuleGroupActionOutput) ToPrometheusRuleGroupActionOutputWithContext(ctx context.Context) PrometheusRuleGroupActionOutput {
 	return o
+}
+
+func (o PrometheusRuleGroupActionOutput) ToOutput(ctx context.Context) pulumix.Output[PrometheusRuleGroupAction] {
+	return pulumix.Output[PrometheusRuleGroupAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource id of the action group to use.
@@ -295,6 +338,12 @@ func (o PrometheusRuleGroupActionArrayOutput) ToPrometheusRuleGroupActionArrayOu
 
 func (o PrometheusRuleGroupActionArrayOutput) ToPrometheusRuleGroupActionArrayOutputWithContext(ctx context.Context) PrometheusRuleGroupActionArrayOutput {
 	return o
+}
+
+func (o PrometheusRuleGroupActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrometheusRuleGroupAction] {
+	return pulumix.Output[[]PrometheusRuleGroupAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrometheusRuleGroupActionArrayOutput) Index(i pulumi.IntInput) PrometheusRuleGroupActionOutput {
@@ -326,6 +375,12 @@ func (o PrometheusRuleGroupActionResponseOutput) ToPrometheusRuleGroupActionResp
 	return o
 }
 
+func (o PrometheusRuleGroupActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrometheusRuleGroupActionResponse] {
+	return pulumix.Output[PrometheusRuleGroupActionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource id of the action group to use.
 func (o PrometheusRuleGroupActionResponseOutput) ActionGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrometheusRuleGroupActionResponse) *string { return v.ActionGroupId }).(pulumi.StringPtrOutput)
@@ -348,6 +403,12 @@ func (o PrometheusRuleGroupActionResponseArrayOutput) ToPrometheusRuleGroupActio
 
 func (o PrometheusRuleGroupActionResponseArrayOutput) ToPrometheusRuleGroupActionResponseArrayOutputWithContext(ctx context.Context) PrometheusRuleGroupActionResponseArrayOutput {
 	return o
+}
+
+func (o PrometheusRuleGroupActionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrometheusRuleGroupActionResponse] {
+	return pulumix.Output[[]PrometheusRuleGroupActionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrometheusRuleGroupActionResponseArrayOutput) Index(i pulumi.IntInput) PrometheusRuleGroupActionResponseOutput {
@@ -395,6 +456,12 @@ func (i PrometheusRuleResolveConfigurationArgs) ToPrometheusRuleResolveConfigura
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusRuleResolveConfigurationOutput)
 }
 
+func (i PrometheusRuleResolveConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[PrometheusRuleResolveConfiguration] {
+	return pulumix.Output[PrometheusRuleResolveConfiguration]{
+		OutputState: i.ToPrometheusRuleResolveConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrometheusRuleResolveConfigurationArgs) ToPrometheusRuleResolveConfigurationPtrOutput() PrometheusRuleResolveConfigurationPtrOutput {
 	return i.ToPrometheusRuleResolveConfigurationPtrOutputWithContext(context.Background())
 }
@@ -436,6 +503,12 @@ func (i *prometheusRuleResolveConfigurationPtrType) ToPrometheusRuleResolveConfi
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusRuleResolveConfigurationPtrOutput)
 }
 
+func (i *prometheusRuleResolveConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrometheusRuleResolveConfiguration] {
+	return pulumix.Output[*PrometheusRuleResolveConfiguration]{
+		OutputState: i.ToPrometheusRuleResolveConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the Prometheus alert rule configuration.
 type PrometheusRuleResolveConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -461,6 +534,12 @@ func (o PrometheusRuleResolveConfigurationOutput) ToPrometheusRuleResolveConfigu
 	}).(PrometheusRuleResolveConfigurationPtrOutput)
 }
 
+func (o PrometheusRuleResolveConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[PrometheusRuleResolveConfiguration] {
+	return pulumix.Output[PrometheusRuleResolveConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Enable alert auto-resolution.
 func (o PrometheusRuleResolveConfigurationOutput) AutoResolved() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PrometheusRuleResolveConfiguration) *bool { return v.AutoResolved }).(pulumi.BoolPtrOutput)
@@ -483,6 +562,12 @@ func (o PrometheusRuleResolveConfigurationPtrOutput) ToPrometheusRuleResolveConf
 
 func (o PrometheusRuleResolveConfigurationPtrOutput) ToPrometheusRuleResolveConfigurationPtrOutputWithContext(ctx context.Context) PrometheusRuleResolveConfigurationPtrOutput {
 	return o
+}
+
+func (o PrometheusRuleResolveConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrometheusRuleResolveConfiguration] {
+	return pulumix.Output[*PrometheusRuleResolveConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrometheusRuleResolveConfigurationPtrOutput) Elem() PrometheusRuleResolveConfigurationOutput {
@@ -538,6 +623,12 @@ func (o PrometheusRuleResolveConfigurationResponseOutput) ToPrometheusRuleResolv
 	return o
 }
 
+func (o PrometheusRuleResolveConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrometheusRuleResolveConfigurationResponse] {
+	return pulumix.Output[PrometheusRuleResolveConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Enable alert auto-resolution.
 func (o PrometheusRuleResolveConfigurationResponseOutput) AutoResolved() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PrometheusRuleResolveConfigurationResponse) *bool { return v.AutoResolved }).(pulumi.BoolPtrOutput)
@@ -560,6 +651,12 @@ func (o PrometheusRuleResolveConfigurationResponsePtrOutput) ToPrometheusRuleRes
 
 func (o PrometheusRuleResolveConfigurationResponsePtrOutput) ToPrometheusRuleResolveConfigurationResponsePtrOutputWithContext(ctx context.Context) PrometheusRuleResolveConfigurationResponsePtrOutput {
 	return o
+}
+
+func (o PrometheusRuleResolveConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrometheusRuleResolveConfigurationResponse] {
+	return pulumix.Output[*PrometheusRuleResolveConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrometheusRuleResolveConfigurationResponsePtrOutput) Elem() PrometheusRuleResolveConfigurationResponseOutput {
@@ -631,6 +728,12 @@ func (o PrometheusRuleResponseOutput) ToPrometheusRuleResponseOutputWithContext(
 	return o
 }
 
+func (o PrometheusRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrometheusRuleResponse] {
+	return pulumix.Output[PrometheusRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
 func (o PrometheusRuleResponseOutput) Actions() PrometheusRuleGroupActionResponseArrayOutput {
 	return o.ApplyT(func(v PrometheusRuleResponse) []PrometheusRuleGroupActionResponse { return v.Actions }).(PrometheusRuleGroupActionResponseArrayOutput)
@@ -697,6 +800,12 @@ func (o PrometheusRuleResponseArrayOutput) ToPrometheusRuleResponseArrayOutputWi
 	return o
 }
 
+func (o PrometheusRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrometheusRuleResponse] {
+	return pulumix.Output[[]PrometheusRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrometheusRuleResponseArrayOutput) Index(i pulumi.IntInput) PrometheusRuleResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrometheusRuleResponse {
 		return vs[0].([]PrometheusRuleResponse)[vs[1].(int)]
@@ -732,6 +841,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

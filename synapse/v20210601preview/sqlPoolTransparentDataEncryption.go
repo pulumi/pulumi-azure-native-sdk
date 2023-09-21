@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Sql pool transparent data encryption configuration.
@@ -148,6 +149,12 @@ func (i *SqlPoolTransparentDataEncryption) ToSqlPoolTransparentDataEncryptionOut
 	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolTransparentDataEncryptionOutput)
 }
 
+func (i *SqlPoolTransparentDataEncryption) ToOutput(ctx context.Context) pulumix.Output[*SqlPoolTransparentDataEncryption] {
+	return pulumix.Output[*SqlPoolTransparentDataEncryption]{
+		OutputState: i.ToSqlPoolTransparentDataEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlPoolTransparentDataEncryptionOutput struct{ *pulumi.OutputState }
 
 func (SqlPoolTransparentDataEncryptionOutput) ElementType() reflect.Type {
@@ -160,6 +167,12 @@ func (o SqlPoolTransparentDataEncryptionOutput) ToSqlPoolTransparentDataEncrypti
 
 func (o SqlPoolTransparentDataEncryptionOutput) ToSqlPoolTransparentDataEncryptionOutputWithContext(ctx context.Context) SqlPoolTransparentDataEncryptionOutput {
 	return o
+}
+
+func (o SqlPoolTransparentDataEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlPoolTransparentDataEncryption] {
+	return pulumix.Output[*SqlPoolTransparentDataEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource location.

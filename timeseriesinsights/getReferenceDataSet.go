@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the reference data set with the specified name in the specified environment.
@@ -93,6 +94,12 @@ func (o LookupReferenceDataSetResultOutput) ToLookupReferenceDataSetResultOutput
 
 func (o LookupReferenceDataSetResultOutput) ToLookupReferenceDataSetResultOutputWithContext(ctx context.Context) LookupReferenceDataSetResultOutput {
 	return o
+}
+
+func (o LookupReferenceDataSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReferenceDataSetResult] {
+	return pulumix.Output[LookupReferenceDataSetResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the resource was created.

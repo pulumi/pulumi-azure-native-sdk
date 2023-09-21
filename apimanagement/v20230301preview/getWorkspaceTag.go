@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the tag specified by its identifier.
@@ -86,6 +87,12 @@ func (o LookupWorkspaceTagResultOutput) ToLookupWorkspaceTagResultOutput() Looku
 
 func (o LookupWorkspaceTagResultOutput) ToLookupWorkspaceTagResultOutputWithContext(ctx context.Context) LookupWorkspaceTagResultOutput {
 	return o
+}
+
+func (o LookupWorkspaceTagResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceTagResult] {
+	return pulumix.Output[LookupWorkspaceTagResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Tag name.

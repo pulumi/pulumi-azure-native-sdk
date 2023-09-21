@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the current version of the specified key from the specified key vault.
@@ -114,6 +115,12 @@ func (o LookupKeyResultOutput) ToLookupKeyResultOutput() LookupKeyResultOutput {
 
 func (o LookupKeyResultOutput) ToLookupKeyResultOutputWithContext(ctx context.Context) LookupKeyResultOutput {
 	return o
+}
+
+func (o LookupKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKeyResult] {
+	return pulumix.Output[LookupKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The attributes of the key.

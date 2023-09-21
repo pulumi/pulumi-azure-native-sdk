@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure SQL instance pool.
@@ -192,6 +193,12 @@ func (i *InstancePool) ToInstancePoolOutputWithContext(ctx context.Context) Inst
 	return pulumi.ToOutputWithContext(ctx, i).(InstancePoolOutput)
 }
 
+func (i *InstancePool) ToOutput(ctx context.Context) pulumix.Output[*InstancePool] {
+	return pulumix.Output[*InstancePool]{
+		OutputState: i.ToInstancePoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstancePoolOutput struct{ *pulumi.OutputState }
 
 func (InstancePoolOutput) ElementType() reflect.Type {
@@ -204,6 +211,12 @@ func (o InstancePoolOutput) ToInstancePoolOutput() InstancePoolOutput {
 
 func (o InstancePoolOutput) ToInstancePoolOutputWithContext(ctx context.Context) InstancePoolOutput {
 	return o
+}
+
+func (o InstancePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*InstancePool] {
+	return pulumix.Output[*InstancePool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price).

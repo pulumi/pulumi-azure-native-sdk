@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of API.
@@ -133,6 +134,12 @@ func (o ProtocolOutput) ToProtocolPtrOutputWithContext(ctx context.Context) Prot
 	}).(ProtocolPtrOutput)
 }
 
+func (o ProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[Protocol] {
+	return pulumix.Output[Protocol]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -166,6 +173,12 @@ func (o ProtocolPtrOutput) ToProtocolPtrOutput() ProtocolPtrOutput {
 
 func (o ProtocolPtrOutput) ToProtocolPtrOutputWithContext(ctx context.Context) ProtocolPtrOutput {
 	return o
+}
+
+func (o ProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
+	return pulumix.Output[*Protocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProtocolPtrOutput) Elem() ProtocolOutput {
@@ -230,6 +243,12 @@ func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) Proto
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
 }
 
+func (in *protocolPtr) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
+	return pulumix.Output[*Protocol]{
+		OutputState: in.ToProtocolPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProtocolArrayInput is an input type that accepts ProtocolArray and ProtocolArrayOutput values.
 // You can construct a concrete instance of `ProtocolArrayInput` via:
 //
@@ -255,6 +274,12 @@ func (i ProtocolArray) ToProtocolArrayOutputWithContext(ctx context.Context) Pro
 	return pulumi.ToOutputWithContext(ctx, i).(ProtocolArrayOutput)
 }
 
+func (i ProtocolArray) ToOutput(ctx context.Context) pulumix.Output[[]Protocol] {
+	return pulumix.Output[[]Protocol]{
+		OutputState: i.ToProtocolArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProtocolArrayOutput struct{ *pulumi.OutputState }
 
 func (ProtocolArrayOutput) ElementType() reflect.Type {
@@ -267,6 +292,12 @@ func (o ProtocolArrayOutput) ToProtocolArrayOutput() ProtocolArrayOutput {
 
 func (o ProtocolArrayOutput) ToProtocolArrayOutputWithContext(ctx context.Context) ProtocolArrayOutput {
 	return o
+}
+
+func (o ProtocolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Protocol] {
+	return pulumix.Output[[]Protocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProtocolArrayOutput) Index(i pulumi.IntInput) ProtocolOutput {

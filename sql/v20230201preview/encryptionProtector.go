@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The server encryption protector.
@@ -185,6 +186,12 @@ func (i *EncryptionProtector) ToEncryptionProtectorOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionProtectorOutput)
 }
 
+func (i *EncryptionProtector) ToOutput(ctx context.Context) pulumix.Output[*EncryptionProtector] {
+	return pulumix.Output[*EncryptionProtector]{
+		OutputState: i.ToEncryptionProtectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EncryptionProtectorOutput struct{ *pulumi.OutputState }
 
 func (EncryptionProtectorOutput) ElementType() reflect.Type {
@@ -197,6 +204,12 @@ func (o EncryptionProtectorOutput) ToEncryptionProtectorOutput() EncryptionProte
 
 func (o EncryptionProtectorOutput) ToEncryptionProtectorOutputWithContext(ctx context.Context) EncryptionProtectorOutput {
 	return o
+}
+
+func (o EncryptionProtectorOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionProtector] {
+	return pulumix.Output[*EncryptionProtector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Key auto rotation opt-in flag. Either true or false.

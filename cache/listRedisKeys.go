@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve a Redis cache's access keys. This operation requires write permission to the cache resource.
@@ -75,6 +76,12 @@ func (o ListRedisKeysResultOutput) ToListRedisKeysResultOutput() ListRedisKeysRe
 
 func (o ListRedisKeysResultOutput) ToListRedisKeysResultOutputWithContext(ctx context.Context) ListRedisKeysResultOutput {
 	return o
+}
+
+func (o ListRedisKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListRedisKeysResult] {
+	return pulumix.Output[ListRedisKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The current primary key that clients can use to authenticate with Redis cache.

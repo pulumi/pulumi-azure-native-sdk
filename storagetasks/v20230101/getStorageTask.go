@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the storage task properties
@@ -96,6 +97,12 @@ func (o LookupStorageTaskResultOutput) ToLookupStorageTaskResultOutput() LookupS
 
 func (o LookupStorageTaskResultOutput) ToLookupStorageTaskResultOutputWithContext(ctx context.Context) LookupStorageTaskResultOutput {
 	return o
+}
+
+func (o LookupStorageTaskResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStorageTaskResult] {
+	return pulumix.Output[LookupStorageTaskResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The storage task action that is executed

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List all entities (Management Groups, Subscriptions, etc.) for the authenticated user.
@@ -114,6 +115,12 @@ func (o GetEntityResultOutput) ToGetEntityResultOutput() GetEntityResultOutput {
 
 func (o GetEntityResultOutput) ToGetEntityResultOutputWithContext(ctx context.Context) GetEntityResultOutput {
 	return o
+}
+
+func (o GetEntityResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEntityResult] {
+	return pulumix.Output[GetEntityResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Total count of records that match the filter

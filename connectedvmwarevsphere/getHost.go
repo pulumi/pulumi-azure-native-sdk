@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements host GET method.
@@ -107,6 +108,12 @@ func (o LookupHostResultOutput) ToLookupHostResultOutput() LookupHostResultOutpu
 
 func (o LookupHostResultOutput) ToLookupHostResultOutputWithContext(ctx context.Context) LookupHostResultOutput {
 	return o
+}
+
+func (o LookupHostResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHostResult] {
+	return pulumix.Output[LookupHostResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the name of the corresponding resource in Kubernetes.

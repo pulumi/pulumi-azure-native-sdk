@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a single software update configuration by name.
@@ -110,6 +111,12 @@ func (o LookupSoftwareUpdateConfigurationByNameResultOutput) ToLookupSoftwareUpd
 
 func (o LookupSoftwareUpdateConfigurationByNameResultOutput) ToLookupSoftwareUpdateConfigurationByNameResultOutputWithContext(ctx context.Context) LookupSoftwareUpdateConfigurationByNameResultOutput {
 	return o
+}
+
+func (o LookupSoftwareUpdateConfigurationByNameResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSoftwareUpdateConfigurationByNameResult] {
+	return pulumix.Output[LookupSoftwareUpdateConfigurationByNameResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // CreatedBy property, which only appears in the response.

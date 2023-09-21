@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets properties of a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
@@ -91,6 +92,12 @@ func (o LookupProviderInstanceResultOutput) ToLookupProviderInstanceResultOutput
 
 func (o LookupProviderInstanceResultOutput) ToLookupProviderInstanceResultOutputWithContext(ctx context.Context) LookupProviderInstanceResultOutput {
 	return o
+}
+
+func (o LookupProviderInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProviderInstanceResult] {
+	return pulumix.Output[LookupProviderInstanceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Defines the provider instance errors.

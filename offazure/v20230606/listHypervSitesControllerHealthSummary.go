@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Method to get site health summary.
@@ -74,6 +75,12 @@ func (o ListHypervSitesControllerHealthSummaryResultOutput) ToListHypervSitesCon
 
 func (o ListHypervSitesControllerHealthSummaryResultOutput) ToListHypervSitesControllerHealthSummaryResultOutputWithContext(ctx context.Context) ListHypervSitesControllerHealthSummaryResultOutput {
 	return o
+}
+
+func (o ListHypervSitesControllerHealthSummaryResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListHypervSitesControllerHealthSummaryResult] {
+	return pulumix.Output[ListHypervSitesControllerHealthSummaryResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the value of next link.

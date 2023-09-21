@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a single favorite by its FavoriteId, defined within an Application Insights component.
@@ -97,6 +98,12 @@ func (o LookupFavoriteResultOutput) ToLookupFavoriteResultOutput() LookupFavorit
 
 func (o LookupFavoriteResultOutput) ToLookupFavoriteResultOutputWithContext(ctx context.Context) LookupFavoriteResultOutput {
 	return o
+}
+
+func (o LookupFavoriteResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFavoriteResult] {
+	return pulumix.Output[LookupFavoriteResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Favorite category, as defined by the user at creation time.

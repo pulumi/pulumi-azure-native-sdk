@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified backup policy name.
@@ -101,6 +102,12 @@ func (o LookupBackupPolicyResultOutput) ToLookupBackupPolicyResultOutput() Looku
 
 func (o LookupBackupPolicyResultOutput) ToLookupBackupPolicyResultOutputWithContext(ctx context.Context) LookupBackupPolicyResultOutput {
 	return o
+}
+
+func (o LookupBackupPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackupPolicyResult] {
+	return pulumix.Output[LookupBackupPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The backup policy creation type. Indicates whether this was created through SaaS or through StorSimple Snapshot Manager.

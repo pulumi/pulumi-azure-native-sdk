@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Data Lake Analytics compute policy.
@@ -89,6 +90,12 @@ func (o LookupComputePolicyResultOutput) ToLookupComputePolicyResultOutput() Loo
 
 func (o LookupComputePolicyResultOutput) ToLookupComputePolicyResultOutputWithContext(ctx context.Context) LookupComputePolicyResultOutput {
 	return o
+}
+
+func (o LookupComputePolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupComputePolicyResult] {
+	return pulumix.Output[LookupComputePolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource identifier.

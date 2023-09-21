@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB trigger.
@@ -235,6 +236,12 @@ func (i *SqlResourceSqlTrigger) ToSqlResourceSqlTriggerOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SqlResourceSqlTriggerOutput)
 }
 
+func (i *SqlResourceSqlTrigger) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlTrigger] {
+	return pulumix.Output[*SqlResourceSqlTrigger]{
+		OutputState: i.ToSqlResourceSqlTriggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlResourceSqlTriggerOutput struct{ *pulumi.OutputState }
 
 func (SqlResourceSqlTriggerOutput) ElementType() reflect.Type {
@@ -247,6 +254,12 @@ func (o SqlResourceSqlTriggerOutput) ToSqlResourceSqlTriggerOutput() SqlResource
 
 func (o SqlResourceSqlTriggerOutput) ToSqlResourceSqlTriggerOutputWithContext(ctx context.Context) SqlResourceSqlTriggerOutput {
 	return o
+}
+
+func (o SqlResourceSqlTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlTrigger] {
+	return pulumix.Output[*SqlResourceSqlTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location of the resource group to which the resource belongs.

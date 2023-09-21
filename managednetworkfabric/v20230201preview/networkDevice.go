@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The NetworkDevice resource definition.
@@ -170,6 +171,12 @@ func (i *NetworkDevice) ToNetworkDeviceOutputWithContext(ctx context.Context) Ne
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkDeviceOutput)
 }
 
+func (i *NetworkDevice) ToOutput(ctx context.Context) pulumix.Output[*NetworkDevice] {
+	return pulumix.Output[*NetworkDevice]{
+		OutputState: i.ToNetworkDeviceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkDeviceOutput struct{ *pulumi.OutputState }
 
 func (NetworkDeviceOutput) ElementType() reflect.Type {
@@ -182,6 +189,12 @@ func (o NetworkDeviceOutput) ToNetworkDeviceOutput() NetworkDeviceOutput {
 
 func (o NetworkDeviceOutput) ToNetworkDeviceOutputWithContext(ctx context.Context) NetworkDeviceOutput {
 	return o
+}
+
+func (o NetworkDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkDevice] {
+	return pulumix.Output[*NetworkDevice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Switch configuration description.

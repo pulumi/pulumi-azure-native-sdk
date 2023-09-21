@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The build task that has the resource properties and all build items. The build task will have all information to schedule a build against it.
@@ -183,6 +184,12 @@ func (i *BuildTask) ToBuildTaskOutputWithContext(ctx context.Context) BuildTaskO
 	return pulumi.ToOutputWithContext(ctx, i).(BuildTaskOutput)
 }
 
+func (i *BuildTask) ToOutput(ctx context.Context) pulumix.Output[*BuildTask] {
+	return pulumix.Output[*BuildTask]{
+		OutputState: i.ToBuildTaskOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BuildTaskOutput struct{ *pulumi.OutputState }
 
 func (BuildTaskOutput) ElementType() reflect.Type {
@@ -195,6 +202,12 @@ func (o BuildTaskOutput) ToBuildTaskOutput() BuildTaskOutput {
 
 func (o BuildTaskOutput) ToBuildTaskOutputWithContext(ctx context.Context) BuildTaskOutput {
 	return o
+}
+
+func (o BuildTaskOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildTask] {
+	return pulumix.Output[*BuildTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alternative updatable name for a build task.

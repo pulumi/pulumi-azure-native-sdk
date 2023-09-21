@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configuration Assignment
@@ -126,6 +127,12 @@ func (i *ConfigurationAssignmentsForSubscription) ToConfigurationAssignmentsForS
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAssignmentsForSubscriptionOutput)
 }
 
+func (i *ConfigurationAssignmentsForSubscription) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationAssignmentsForSubscription] {
+	return pulumix.Output[*ConfigurationAssignmentsForSubscription]{
+		OutputState: i.ToConfigurationAssignmentsForSubscriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConfigurationAssignmentsForSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationAssignmentsForSubscriptionOutput) ElementType() reflect.Type {
@@ -138,6 +145,12 @@ func (o ConfigurationAssignmentsForSubscriptionOutput) ToConfigurationAssignment
 
 func (o ConfigurationAssignmentsForSubscriptionOutput) ToConfigurationAssignmentsForSubscriptionOutputWithContext(ctx context.Context) ConfigurationAssignmentsForSubscriptionOutput {
 	return o
+}
+
+func (o ConfigurationAssignmentsForSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationAssignmentsForSubscription] {
+	return pulumix.Output[*ConfigurationAssignmentsForSubscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Properties of the configuration assignment

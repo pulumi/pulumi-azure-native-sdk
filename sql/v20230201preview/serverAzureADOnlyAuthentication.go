@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Active Directory only authentication.
@@ -160,6 +161,12 @@ func (i *ServerAzureADOnlyAuthentication) ToServerAzureADOnlyAuthenticationOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServerAzureADOnlyAuthenticationOutput)
 }
 
+func (i *ServerAzureADOnlyAuthentication) ToOutput(ctx context.Context) pulumix.Output[*ServerAzureADOnlyAuthentication] {
+	return pulumix.Output[*ServerAzureADOnlyAuthentication]{
+		OutputState: i.ToServerAzureADOnlyAuthenticationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerAzureADOnlyAuthenticationOutput struct{ *pulumi.OutputState }
 
 func (ServerAzureADOnlyAuthenticationOutput) ElementType() reflect.Type {
@@ -172,6 +179,12 @@ func (o ServerAzureADOnlyAuthenticationOutput) ToServerAzureADOnlyAuthentication
 
 func (o ServerAzureADOnlyAuthenticationOutput) ToServerAzureADOnlyAuthenticationOutputWithContext(ctx context.Context) ServerAzureADOnlyAuthenticationOutput {
 	return o
+}
+
+func (o ServerAzureADOnlyAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerAzureADOnlyAuthentication] {
+	return pulumix.Output[*ServerAzureADOnlyAuthentication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure Active Directory only Authentication enabled.

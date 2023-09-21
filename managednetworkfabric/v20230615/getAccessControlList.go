@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements Access Control List GET method.
@@ -115,6 +116,12 @@ func (o LookupAccessControlListResultOutput) ToLookupAccessControlListResultOutp
 
 func (o LookupAccessControlListResultOutput) ToLookupAccessControlListResultOutputWithContext(ctx context.Context) LookupAccessControlListResultOutput {
 	return o
+}
+
+func (o LookupAccessControlListResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccessControlListResult] {
+	return pulumix.Output[LookupAccessControlListResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access Control List file URL.

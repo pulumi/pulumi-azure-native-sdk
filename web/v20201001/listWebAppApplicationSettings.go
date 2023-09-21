@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the application settings of an app.
@@ -82,6 +83,12 @@ func (o ListWebAppApplicationSettingsResultOutput) ToListWebAppApplicationSettin
 
 func (o ListWebAppApplicationSettingsResultOutput) ToListWebAppApplicationSettingsResultOutputWithContext(ctx context.Context) ListWebAppApplicationSettingsResultOutput {
 	return o
+}
+
+func (o ListWebAppApplicationSettingsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppApplicationSettingsResult] {
+	return pulumix.Output[ListWebAppApplicationSettingsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id.

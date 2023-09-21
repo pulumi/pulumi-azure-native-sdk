@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List deployments that are using the builder.
@@ -80,6 +81,12 @@ func (o ListBuildServiceBuilderDeploymentsResultOutput) ToListBuildServiceBuilde
 
 func (o ListBuildServiceBuilderDeploymentsResultOutput) ToListBuildServiceBuilderDeploymentsResultOutputWithContext(ctx context.Context) ListBuildServiceBuilderDeploymentsResultOutput {
 	return o
+}
+
+func (o ListBuildServiceBuilderDeploymentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListBuildServiceBuilderDeploymentsResult] {
+	return pulumix.Output[ListBuildServiceBuilderDeploymentsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of deployment resource ids.

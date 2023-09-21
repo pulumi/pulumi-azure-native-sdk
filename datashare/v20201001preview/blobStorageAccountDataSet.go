@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure blob storage account data set.
@@ -171,6 +172,12 @@ func (i *BlobStorageAccountDataSet) ToBlobStorageAccountDataSetOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(BlobStorageAccountDataSetOutput)
 }
 
+func (i *BlobStorageAccountDataSet) ToOutput(ctx context.Context) pulumix.Output[*BlobStorageAccountDataSet] {
+	return pulumix.Output[*BlobStorageAccountDataSet]{
+		OutputState: i.ToBlobStorageAccountDataSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BlobStorageAccountDataSetOutput struct{ *pulumi.OutputState }
 
 func (BlobStorageAccountDataSetOutput) ElementType() reflect.Type {
@@ -183,6 +190,12 @@ func (o BlobStorageAccountDataSetOutput) ToBlobStorageAccountDataSetOutput() Blo
 
 func (o BlobStorageAccountDataSetOutput) ToBlobStorageAccountDataSetOutputWithContext(ctx context.Context) BlobStorageAccountDataSetOutput {
 	return o
+}
+
+func (o BlobStorageAccountDataSetOutput) ToOutput(ctx context.Context) pulumix.Output[*BlobStorageAccountDataSet] {
+	return pulumix.Output[*BlobStorageAccountDataSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique id for identifying a data set resource

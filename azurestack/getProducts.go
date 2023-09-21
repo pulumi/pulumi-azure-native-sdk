@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a list of products.
@@ -79,6 +80,12 @@ func (o GetProductsResultOutput) ToGetProductsResultOutput() GetProductsResultOu
 
 func (o GetProductsResultOutput) ToGetProductsResultOutputWithContext(ctx context.Context) GetProductsResultOutput {
 	return o
+}
+
+func (o GetProductsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProductsResult] {
+	return pulumix.Output[GetProductsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // URI to the next page.

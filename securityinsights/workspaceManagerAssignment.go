@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The workspace manager assignment
@@ -154,6 +155,12 @@ func (i *WorkspaceManagerAssignment) ToWorkspaceManagerAssignmentOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceManagerAssignmentOutput)
 }
 
+func (i *WorkspaceManagerAssignment) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceManagerAssignment] {
+	return pulumix.Output[*WorkspaceManagerAssignment]{
+		OutputState: i.ToWorkspaceManagerAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceManagerAssignmentOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceManagerAssignmentOutput) ElementType() reflect.Type {
@@ -166,6 +173,12 @@ func (o WorkspaceManagerAssignmentOutput) ToWorkspaceManagerAssignmentOutput() W
 
 func (o WorkspaceManagerAssignmentOutput) ToWorkspaceManagerAssignmentOutputWithContext(ctx context.Context) WorkspaceManagerAssignmentOutput {
 	return o
+}
+
+func (o WorkspaceManagerAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceManagerAssignment] {
+	return pulumix.Output[*WorkspaceManagerAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Etag.

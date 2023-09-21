@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets all linked storage account of a specific data source type associated with the specified workspace.
@@ -84,6 +85,12 @@ func (o LookupLinkedStorageAccountResultOutput) ToLookupLinkedStorageAccountResu
 
 func (o LookupLinkedStorageAccountResultOutput) ToLookupLinkedStorageAccountResultOutputWithContext(ctx context.Context) LookupLinkedStorageAccountResultOutput {
 	return o
+}
+
+func (o LookupLinkedStorageAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLinkedStorageAccountResult] {
+	return pulumix.Output[LookupLinkedStorageAccountResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Linked storage accounts type.

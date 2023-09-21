@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An device group resource belonging to a product resource.
@@ -159,6 +160,12 @@ func (i *DeviceGroup) ToDeviceGroupOutputWithContext(ctx context.Context) Device
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceGroupOutput)
 }
 
+func (i *DeviceGroup) ToOutput(ctx context.Context) pulumix.Output[*DeviceGroup] {
+	return pulumix.Output[*DeviceGroup]{
+		OutputState: i.ToDeviceGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceGroupOutput struct{ *pulumi.OutputState }
 
 func (DeviceGroupOutput) ElementType() reflect.Type {
@@ -171,6 +178,12 @@ func (o DeviceGroupOutput) ToDeviceGroupOutput() DeviceGroupOutput {
 
 func (o DeviceGroupOutput) ToDeviceGroupOutputWithContext(ctx context.Context) DeviceGroupOutput {
 	return o
+}
+
+func (o DeviceGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceGroup] {
+	return pulumix.Output[*DeviceGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Flag to define if the user allows for crash dump collection.

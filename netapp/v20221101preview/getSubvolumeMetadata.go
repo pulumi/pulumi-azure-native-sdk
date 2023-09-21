@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get details of the specified subvolume
@@ -108,6 +109,12 @@ func (o GetSubvolumeMetadataResultOutput) ToGetSubvolumeMetadataResultOutput() G
 
 func (o GetSubvolumeMetadataResultOutput) ToGetSubvolumeMetadataResultOutputWithContext(ctx context.Context) GetSubvolumeMetadataResultOutput {
 	return o
+}
+
+func (o GetSubvolumeMetadataResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSubvolumeMetadataResult] {
+	return pulumix.Output[GetSubvolumeMetadataResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Most recent access time and date

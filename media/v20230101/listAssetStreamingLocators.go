@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists Streaming Locators which are associated with this asset.
@@ -76,6 +77,12 @@ func (o ListAssetStreamingLocatorsResultOutput) ToListAssetStreamingLocatorsResu
 
 func (o ListAssetStreamingLocatorsResultOutput) ToListAssetStreamingLocatorsResultOutputWithContext(ctx context.Context) ListAssetStreamingLocatorsResultOutput {
 	return o
+}
+
+func (o ListAssetStreamingLocatorsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListAssetStreamingLocatorsResult] {
+	return pulumix.Output[ListAssetStreamingLocatorsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of Streaming Locators.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01
@@ -119,6 +120,12 @@ func (i *HyperVCollector) ToHyperVCollectorOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(HyperVCollectorOutput)
 }
 
+func (i *HyperVCollector) ToOutput(ctx context.Context) pulumix.Output[*HyperVCollector] {
+	return pulumix.Output[*HyperVCollector]{
+		OutputState: i.ToHyperVCollectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HyperVCollectorOutput struct{ *pulumi.OutputState }
 
 func (HyperVCollectorOutput) ElementType() reflect.Type {
@@ -131,6 +138,12 @@ func (o HyperVCollectorOutput) ToHyperVCollectorOutput() HyperVCollectorOutput {
 
 func (o HyperVCollectorOutput) ToHyperVCollectorOutputWithContext(ctx context.Context) HyperVCollectorOutput {
 	return o
+}
+
+func (o HyperVCollectorOutput) ToOutput(ctx context.Context) pulumix.Output[*HyperVCollector] {
+	return pulumix.Output[*HyperVCollector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HyperVCollectorOutput) ETag() pulumi.StringPtrOutput {

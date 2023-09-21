@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A custom certificate.
@@ -159,6 +160,12 @@ func (i *SignalRCustomCertificate) ToSignalRCustomCertificateOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(SignalRCustomCertificateOutput)
 }
 
+func (i *SignalRCustomCertificate) ToOutput(ctx context.Context) pulumix.Output[*SignalRCustomCertificate] {
+	return pulumix.Output[*SignalRCustomCertificate]{
+		OutputState: i.ToSignalRCustomCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SignalRCustomCertificateOutput struct{ *pulumi.OutputState }
 
 func (SignalRCustomCertificateOutput) ElementType() reflect.Type {
@@ -171,6 +178,12 @@ func (o SignalRCustomCertificateOutput) ToSignalRCustomCertificateOutput() Signa
 
 func (o SignalRCustomCertificateOutput) ToSignalRCustomCertificateOutputWithContext(ctx context.Context) SignalRCustomCertificateOutput {
 	return o
+}
+
+func (o SignalRCustomCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*SignalRCustomCertificate] {
+	return pulumix.Output[*SignalRCustomCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Base uri of the KeyVault that stores certificate.

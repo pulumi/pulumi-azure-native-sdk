@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i DefenderSettingsPropertiesMdeIntegrationArgs) ToDefenderSettingsProperti
 	return pulumi.ToOutputWithContext(ctx, i).(DefenderSettingsPropertiesMdeIntegrationOutput)
 }
 
+func (i DefenderSettingsPropertiesMdeIntegrationArgs) ToOutput(ctx context.Context) pulumix.Output[DefenderSettingsPropertiesMdeIntegration] {
+	return pulumix.Output[DefenderSettingsPropertiesMdeIntegration]{
+		OutputState: i.ToDefenderSettingsPropertiesMdeIntegrationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MDE integration configuration
 type DefenderSettingsPropertiesMdeIntegrationOutput struct{ *pulumi.OutputState }
 
@@ -61,6 +68,12 @@ func (o DefenderSettingsPropertiesMdeIntegrationOutput) ToDefenderSettingsProper
 
 func (o DefenderSettingsPropertiesMdeIntegrationOutput) ToDefenderSettingsPropertiesMdeIntegrationOutputWithContext(ctx context.Context) DefenderSettingsPropertiesMdeIntegrationOutput {
 	return o
+}
+
+func (o DefenderSettingsPropertiesMdeIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[DefenderSettingsPropertiesMdeIntegration] {
+	return pulumix.Output[DefenderSettingsPropertiesMdeIntegration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Integration status
@@ -87,6 +100,12 @@ func (o DefenderSettingsPropertiesResponseMdeIntegrationOutput) ToDefenderSettin
 
 func (o DefenderSettingsPropertiesResponseMdeIntegrationOutput) ToDefenderSettingsPropertiesResponseMdeIntegrationOutputWithContext(ctx context.Context) DefenderSettingsPropertiesResponseMdeIntegrationOutput {
 	return o
+}
+
+func (o DefenderSettingsPropertiesResponseMdeIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[DefenderSettingsPropertiesResponseMdeIntegration] {
+	return pulumix.Output[DefenderSettingsPropertiesResponseMdeIntegration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Integration status
@@ -123,6 +142,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

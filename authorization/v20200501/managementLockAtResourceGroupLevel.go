@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The lock information.
@@ -140,6 +141,12 @@ func (i *ManagementLockAtResourceGroupLevel) ToManagementLockAtResourceGroupLeve
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementLockAtResourceGroupLevelOutput)
 }
 
+func (i *ManagementLockAtResourceGroupLevel) ToOutput(ctx context.Context) pulumix.Output[*ManagementLockAtResourceGroupLevel] {
+	return pulumix.Output[*ManagementLockAtResourceGroupLevel]{
+		OutputState: i.ToManagementLockAtResourceGroupLevelOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagementLockAtResourceGroupLevelOutput struct{ *pulumi.OutputState }
 
 func (ManagementLockAtResourceGroupLevelOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o ManagementLockAtResourceGroupLevelOutput) ToManagementLockAtResourceGrou
 
 func (o ManagementLockAtResourceGroupLevelOutput) ToManagementLockAtResourceGroupLevelOutputWithContext(ctx context.Context) ManagementLockAtResourceGroupLevelOutput {
 	return o
+}
+
+func (o ManagementLockAtResourceGroupLevelOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementLockAtResourceGroupLevel] {
+	return pulumix.Output[*ManagementLockAtResourceGroupLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.

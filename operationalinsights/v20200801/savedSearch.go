@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Value object for saved search results.
@@ -174,6 +175,12 @@ func (i *SavedSearch) ToSavedSearchOutputWithContext(ctx context.Context) SavedS
 	return pulumi.ToOutputWithContext(ctx, i).(SavedSearchOutput)
 }
 
+func (i *SavedSearch) ToOutput(ctx context.Context) pulumix.Output[*SavedSearch] {
+	return pulumix.Output[*SavedSearch]{
+		OutputState: i.ToSavedSearchOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SavedSearchOutput struct{ *pulumi.OutputState }
 
 func (SavedSearchOutput) ElementType() reflect.Type {
@@ -186,6 +193,12 @@ func (o SavedSearchOutput) ToSavedSearchOutput() SavedSearchOutput {
 
 func (o SavedSearchOutput) ToSavedSearchOutputWithContext(ctx context.Context) SavedSearchOutput {
 	return o
+}
+
+func (o SavedSearchOutput) ToOutput(ctx context.Context) pulumix.Output[*SavedSearch] {
+	return pulumix.Output[*SavedSearch]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The category of the saved search. This helps the user to find a saved search faster.

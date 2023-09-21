@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i PolicyVariableColumnArgs) ToPolicyVariableColumnOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyVariableColumnOutput)
 }
 
+func (i PolicyVariableColumnArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyVariableColumn] {
+	return pulumix.Output[PolicyVariableColumn]{
+		OutputState: i.ToPolicyVariableColumnOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PolicyVariableColumnArrayInput is an input type that accepts PolicyVariableColumnArray and PolicyVariableColumnArrayOutput values.
 // You can construct a concrete instance of `PolicyVariableColumnArrayInput` via:
 //
@@ -73,6 +80,12 @@ func (i PolicyVariableColumnArray) ToPolicyVariableColumnArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyVariableColumnArrayOutput)
 }
 
+func (i PolicyVariableColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyVariableColumn] {
+	return pulumix.Output[[]PolicyVariableColumn]{
+		OutputState: i.ToPolicyVariableColumnArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The variable column.
 type PolicyVariableColumnOutput struct{ *pulumi.OutputState }
 
@@ -86,6 +99,12 @@ func (o PolicyVariableColumnOutput) ToPolicyVariableColumnOutput() PolicyVariabl
 
 func (o PolicyVariableColumnOutput) ToPolicyVariableColumnOutputWithContext(ctx context.Context) PolicyVariableColumnOutput {
 	return o
+}
+
+func (o PolicyVariableColumnOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyVariableColumn] {
+	return pulumix.Output[PolicyVariableColumn]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of this policy variable column.
@@ -105,6 +124,12 @@ func (o PolicyVariableColumnArrayOutput) ToPolicyVariableColumnArrayOutput() Pol
 
 func (o PolicyVariableColumnArrayOutput) ToPolicyVariableColumnArrayOutputWithContext(ctx context.Context) PolicyVariableColumnArrayOutput {
 	return o
+}
+
+func (o PolicyVariableColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyVariableColumn] {
+	return pulumix.Output[[]PolicyVariableColumn]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyVariableColumnArrayOutput) Index(i pulumi.IntInput) PolicyVariableColumnOutput {
@@ -134,6 +159,12 @@ func (o PolicyVariableColumnResponseOutput) ToPolicyVariableColumnResponseOutput
 	return o
 }
 
+func (o PolicyVariableColumnResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyVariableColumnResponse] {
+	return pulumix.Output[PolicyVariableColumnResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of this policy variable column.
 func (o PolicyVariableColumnResponseOutput) ColumnName() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyVariableColumnResponse) string { return v.ColumnName }).(pulumi.StringOutput)
@@ -151,6 +182,12 @@ func (o PolicyVariableColumnResponseArrayOutput) ToPolicyVariableColumnResponseA
 
 func (o PolicyVariableColumnResponseArrayOutput) ToPolicyVariableColumnResponseArrayOutputWithContext(ctx context.Context) PolicyVariableColumnResponseArrayOutput {
 	return o
+}
+
+func (o PolicyVariableColumnResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyVariableColumnResponse] {
+	return pulumix.Output[[]PolicyVariableColumnResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyVariableColumnResponseArrayOutput) Index(i pulumi.IntInput) PolicyVariableColumnResponseOutput {
@@ -198,6 +235,12 @@ func (i PolicyVariableValueColumnValueArgs) ToPolicyVariableValueColumnValueOutp
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyVariableValueColumnValueOutput)
 }
 
+func (i PolicyVariableValueColumnValueArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyVariableValueColumnValue] {
+	return pulumix.Output[PolicyVariableValueColumnValue]{
+		OutputState: i.ToPolicyVariableValueColumnValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PolicyVariableValueColumnValueArrayInput is an input type that accepts PolicyVariableValueColumnValueArray and PolicyVariableValueColumnValueArrayOutput values.
 // You can construct a concrete instance of `PolicyVariableValueColumnValueArrayInput` via:
 //
@@ -223,6 +266,12 @@ func (i PolicyVariableValueColumnValueArray) ToPolicyVariableValueColumnValueArr
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyVariableValueColumnValueArrayOutput)
 }
 
+func (i PolicyVariableValueColumnValueArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyVariableValueColumnValue] {
+	return pulumix.Output[[]PolicyVariableValueColumnValue]{
+		OutputState: i.ToPolicyVariableValueColumnValueArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The name value tuple for this variable value column.
 type PolicyVariableValueColumnValueOutput struct{ *pulumi.OutputState }
 
@@ -236,6 +285,12 @@ func (o PolicyVariableValueColumnValueOutput) ToPolicyVariableValueColumnValueOu
 
 func (o PolicyVariableValueColumnValueOutput) ToPolicyVariableValueColumnValueOutputWithContext(ctx context.Context) PolicyVariableValueColumnValueOutput {
 	return o
+}
+
+func (o PolicyVariableValueColumnValueOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyVariableValueColumnValue] {
+	return pulumix.Output[PolicyVariableValueColumnValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Column name for the variable value
@@ -260,6 +315,12 @@ func (o PolicyVariableValueColumnValueArrayOutput) ToPolicyVariableValueColumnVa
 
 func (o PolicyVariableValueColumnValueArrayOutput) ToPolicyVariableValueColumnValueArrayOutputWithContext(ctx context.Context) PolicyVariableValueColumnValueArrayOutput {
 	return o
+}
+
+func (o PolicyVariableValueColumnValueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyVariableValueColumnValue] {
+	return pulumix.Output[[]PolicyVariableValueColumnValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyVariableValueColumnValueArrayOutput) Index(i pulumi.IntInput) PolicyVariableValueColumnValueOutput {
@@ -291,6 +352,12 @@ func (o PolicyVariableValueColumnValueResponseOutput) ToPolicyVariableValueColum
 	return o
 }
 
+func (o PolicyVariableValueColumnValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyVariableValueColumnValueResponse] {
+	return pulumix.Output[PolicyVariableValueColumnValueResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Column name for the variable value
 func (o PolicyVariableValueColumnValueResponseOutput) ColumnName() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyVariableValueColumnValueResponse) string { return v.ColumnName }).(pulumi.StringOutput)
@@ -313,6 +380,12 @@ func (o PolicyVariableValueColumnValueResponseArrayOutput) ToPolicyVariableValue
 
 func (o PolicyVariableValueColumnValueResponseArrayOutput) ToPolicyVariableValueColumnValueResponseArrayOutputWithContext(ctx context.Context) PolicyVariableValueColumnValueResponseArrayOutput {
 	return o
+}
+
+func (o PolicyVariableValueColumnValueResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyVariableValueColumnValueResponse] {
+	return pulumix.Output[[]PolicyVariableValueColumnValueResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyVariableValueColumnValueResponseArrayOutput) Index(i pulumi.IntInput) PolicyVariableValueColumnValueResponseOutput {
@@ -350,6 +423,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

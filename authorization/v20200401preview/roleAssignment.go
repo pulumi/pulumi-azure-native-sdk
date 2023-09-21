@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Role Assignments
@@ -199,6 +200,12 @@ func (i *RoleAssignment) ToRoleAssignmentOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAssignmentOutput)
 }
 
+func (i *RoleAssignment) ToOutput(ctx context.Context) pulumix.Output[*RoleAssignment] {
+	return pulumix.Output[*RoleAssignment]{
+		OutputState: i.ToRoleAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RoleAssignmentOutput struct{ *pulumi.OutputState }
 
 func (RoleAssignmentOutput) ElementType() reflect.Type {
@@ -211,6 +218,12 @@ func (o RoleAssignmentOutput) ToRoleAssignmentOutput() RoleAssignmentOutput {
 
 func (o RoleAssignmentOutput) ToRoleAssignmentOutputWithContext(ctx context.Context) RoleAssignmentOutput {
 	return o
+}
+
+func (o RoleAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*RoleAssignment] {
+	return pulumix.Output[*RoleAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Delegation flag for the role assignment

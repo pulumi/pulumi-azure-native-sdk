@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Product details.
@@ -212,6 +213,12 @@ func (i *Product) ToProductOutputWithContext(ctx context.Context) ProductOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProductOutput)
 }
 
+func (i *Product) ToOutput(ctx context.Context) pulumix.Output[*Product] {
+	return pulumix.Output[*Product]{
+		OutputState: i.ToProductOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProductOutput struct{ *pulumi.OutputState }
 
 func (ProductOutput) ElementType() reflect.Type {
@@ -224,6 +231,12 @@ func (o ProductOutput) ToProductOutput() ProductOutput {
 
 func (o ProductOutput) ToProductOutputWithContext(ctx context.Context) ProductOutput {
 	return o
+}
+
+func (o ProductOutput) ToOutput(ctx context.Context) pulumix.Output[*Product] {
+	return pulumix.Output[*Product]{
+		OutputState: o.OutputState,
+	}
 }
 
 // whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false.

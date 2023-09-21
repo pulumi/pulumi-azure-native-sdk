@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response for POST requests that return single SharedAccessAuthorizationRule.
@@ -93,6 +94,12 @@ func (o LookupNotificationHubAuthorizationRuleResultOutput) ToLookupNotification
 
 func (o LookupNotificationHubAuthorizationRuleResultOutput) ToLookupNotificationHubAuthorizationRuleResultOutputWithContext(ctx context.Context) LookupNotificationHubAuthorizationRuleResultOutput {
 	return o
+}
+
+func (o LookupNotificationHubAuthorizationRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNotificationHubAuthorizationRuleResult] {
+	return pulumix.Output[LookupNotificationHubAuthorizationRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

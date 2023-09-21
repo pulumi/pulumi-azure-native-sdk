@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Execute Insights for an entity.
@@ -98,6 +99,12 @@ func (o GetEntityInsightsResultOutput) ToGetEntityInsightsResultOutput() GetEnti
 
 func (o GetEntityInsightsResultOutput) ToGetEntityInsightsResultOutputWithContext(ctx context.Context) GetEntityInsightsResultOutput {
 	return o
+}
+
+func (o GetEntityInsightsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEntityInsightsResult] {
+	return pulumix.Output[GetEntityInsightsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The metadata from the get insights operation results.

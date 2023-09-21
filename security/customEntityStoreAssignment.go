@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Custom entity store assignment
@@ -119,6 +120,12 @@ func (i *CustomEntityStoreAssignment) ToCustomEntityStoreAssignmentOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(CustomEntityStoreAssignmentOutput)
 }
 
+func (i *CustomEntityStoreAssignment) ToOutput(ctx context.Context) pulumix.Output[*CustomEntityStoreAssignment] {
+	return pulumix.Output[*CustomEntityStoreAssignment]{
+		OutputState: i.ToCustomEntityStoreAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomEntityStoreAssignmentOutput struct{ *pulumi.OutputState }
 
 func (CustomEntityStoreAssignmentOutput) ElementType() reflect.Type {
@@ -131,6 +138,12 @@ func (o CustomEntityStoreAssignmentOutput) ToCustomEntityStoreAssignmentOutput()
 
 func (o CustomEntityStoreAssignmentOutput) ToCustomEntityStoreAssignmentOutputWithContext(ctx context.Context) CustomEntityStoreAssignmentOutput {
 	return o
+}
+
+func (o CustomEntityStoreAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomEntityStoreAssignment] {
+	return pulumix.Output[*CustomEntityStoreAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The link to entity store database.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type WorkspaceConnection struct {
@@ -173,6 +174,12 @@ func (i *WorkspaceConnection) ToWorkspaceConnectionOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionOutput)
 }
 
+func (i *WorkspaceConnection) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceConnection] {
+	return pulumix.Output[*WorkspaceConnection]{
+		OutputState: i.ToWorkspaceConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceConnectionOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceConnectionOutput) ElementType() reflect.Type {
@@ -185,6 +192,12 @@ func (o WorkspaceConnectionOutput) ToWorkspaceConnectionOutput() WorkspaceConnec
 
 func (o WorkspaceConnectionOutput) ToWorkspaceConnectionOutputWithContext(ctx context.Context) WorkspaceConnectionOutput {
 	return o
+}
+
+func (o WorkspaceConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceConnection] {
+	return pulumix.Output[*WorkspaceConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

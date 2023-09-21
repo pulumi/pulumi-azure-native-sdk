@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Product-API link details.
@@ -135,6 +136,12 @@ func (i *ProductApiLink) ToProductApiLinkOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ProductApiLinkOutput)
 }
 
+func (i *ProductApiLink) ToOutput(ctx context.Context) pulumix.Output[*ProductApiLink] {
+	return pulumix.Output[*ProductApiLink]{
+		OutputState: i.ToProductApiLinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProductApiLinkOutput struct{ *pulumi.OutputState }
 
 func (ProductApiLinkOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o ProductApiLinkOutput) ToProductApiLinkOutput() ProductApiLinkOutput {
 
 func (o ProductApiLinkOutput) ToProductApiLinkOutputWithContext(ctx context.Context) ProductApiLinkOutput {
 	return o
+}
+
+func (o ProductApiLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*ProductApiLink] {
+	return pulumix.Output[*ProductApiLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Full resource Id of an API.

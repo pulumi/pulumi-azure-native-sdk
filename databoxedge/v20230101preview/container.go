@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a container on the  Data Box Edge/Gateway device.
@@ -178,6 +179,12 @@ func (i *Container) ToContainerOutputWithContext(ctx context.Context) ContainerO
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerOutput)
 }
 
+func (i *Container) ToOutput(ctx context.Context) pulumix.Output[*Container] {
+	return pulumix.Output[*Container]{
+		OutputState: i.ToContainerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerOutput struct{ *pulumi.OutputState }
 
 func (ContainerOutput) ElementType() reflect.Type {
@@ -190,6 +197,12 @@ func (o ContainerOutput) ToContainerOutput() ContainerOutput {
 
 func (o ContainerOutput) ToContainerOutputWithContext(ctx context.Context) ContainerOutput {
 	return o
+}
+
+func (o ContainerOutput) ToOutput(ctx context.Context) pulumix.Output[*Container] {
+	return pulumix.Output[*Container]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Current status of the container.

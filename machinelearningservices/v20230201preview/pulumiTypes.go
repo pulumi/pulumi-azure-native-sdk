@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,6 +54,12 @@ func (o FeatureResponseOutput) ToFeatureResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o FeatureResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureResponse] {
+	return pulumix.Output[FeatureResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies type
 func (o FeatureResponseOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
@@ -85,6 +92,12 @@ func (o FeatureResponseArrayOutput) ToFeatureResponseArrayOutput() FeatureRespon
 
 func (o FeatureResponseArrayOutput) ToFeatureResponseArrayOutputWithContext(ctx context.Context) FeatureResponseArrayOutput {
 	return o
+}
+
+func (o FeatureResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FeatureResponse] {
+	return pulumix.Output[[]FeatureResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureResponseArrayOutput) Index(i pulumi.IntInput) FeatureResponseOutput {

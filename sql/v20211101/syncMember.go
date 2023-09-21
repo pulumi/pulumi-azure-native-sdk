@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure SQL Database sync member.
@@ -225,6 +226,12 @@ func (i *SyncMember) ToSyncMemberOutputWithContext(ctx context.Context) SyncMemb
 	return pulumi.ToOutputWithContext(ctx, i).(SyncMemberOutput)
 }
 
+func (i *SyncMember) ToOutput(ctx context.Context) pulumix.Output[*SyncMember] {
+	return pulumix.Output[*SyncMember]{
+		OutputState: i.ToSyncMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SyncMemberOutput struct{ *pulumi.OutputState }
 
 func (SyncMemberOutput) ElementType() reflect.Type {
@@ -237,6 +244,12 @@ func (o SyncMemberOutput) ToSyncMemberOutput() SyncMemberOutput {
 
 func (o SyncMemberOutput) ToSyncMemberOutputWithContext(ctx context.Context) SyncMemberOutput {
 	return o
+}
+
+func (o SyncMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*SyncMember] {
+	return pulumix.Output[*SyncMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Database name of the member database in the sync member.

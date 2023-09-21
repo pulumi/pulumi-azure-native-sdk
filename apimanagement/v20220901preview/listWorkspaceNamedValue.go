@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the secret of the named value specified by its identifier.
@@ -80,6 +81,12 @@ func (o ListWorkspaceNamedValueResultOutput) ToListWorkspaceNamedValueResultOutp
 
 func (o ListWorkspaceNamedValueResultOutput) ToListWorkspaceNamedValueResultOutputWithContext(ctx context.Context) ListWorkspaceNamedValueResultOutput {
 	return o
+}
+
+func (o ListWorkspaceNamedValueResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWorkspaceNamedValueResult] {
+	return pulumix.Output[ListWorkspaceNamedValueResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This is secret value of the NamedValue entity.

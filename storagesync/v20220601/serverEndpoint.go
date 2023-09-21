@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Server Endpoint object.
@@ -253,6 +254,12 @@ func (i *ServerEndpoint) ToServerEndpointOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ServerEndpointOutput)
 }
 
+func (i *ServerEndpoint) ToOutput(ctx context.Context) pulumix.Output[*ServerEndpoint] {
+	return pulumix.Output[*ServerEndpoint]{
+		OutputState: i.ToServerEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerEndpointOutput struct{ *pulumi.OutputState }
 
 func (ServerEndpointOutput) ElementType() reflect.Type {
@@ -265,6 +272,12 @@ func (o ServerEndpointOutput) ToServerEndpointOutput() ServerEndpointOutput {
 
 func (o ServerEndpointOutput) ToServerEndpointOutputWithContext(ctx context.Context) ServerEndpointOutput {
 	return o
+}
+
+func (o ServerEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerEndpoint] {
+	return pulumix.Output[*ServerEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cloud Tiering.

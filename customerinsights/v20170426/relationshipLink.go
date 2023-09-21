@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The relationship link resource format.
@@ -180,6 +181,12 @@ func (i *RelationshipLink) ToRelationshipLinkOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RelationshipLinkOutput)
 }
 
+func (i *RelationshipLink) ToOutput(ctx context.Context) pulumix.Output[*RelationshipLink] {
+	return pulumix.Output[*RelationshipLink]{
+		OutputState: i.ToRelationshipLinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RelationshipLinkOutput struct{ *pulumi.OutputState }
 
 func (RelationshipLinkOutput) ElementType() reflect.Type {
@@ -192,6 +199,12 @@ func (o RelationshipLinkOutput) ToRelationshipLinkOutput() RelationshipLinkOutpu
 
 func (o RelationshipLinkOutput) ToRelationshipLinkOutputWithContext(ctx context.Context) RelationshipLinkOutput {
 	return o
+}
+
+func (o RelationshipLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*RelationshipLink] {
+	return pulumix.Output[*RelationshipLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Localized descriptions for the Relationship Link.

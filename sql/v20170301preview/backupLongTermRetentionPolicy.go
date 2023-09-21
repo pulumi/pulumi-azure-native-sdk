@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A long term retention policy.
@@ -185,6 +186,12 @@ func (i *BackupLongTermRetentionPolicy) ToBackupLongTermRetentionPolicyOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(BackupLongTermRetentionPolicyOutput)
 }
 
+func (i *BackupLongTermRetentionPolicy) ToOutput(ctx context.Context) pulumix.Output[*BackupLongTermRetentionPolicy] {
+	return pulumix.Output[*BackupLongTermRetentionPolicy]{
+		OutputState: i.ToBackupLongTermRetentionPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupLongTermRetentionPolicyOutput struct{ *pulumi.OutputState }
 
 func (BackupLongTermRetentionPolicyOutput) ElementType() reflect.Type {
@@ -197,6 +204,12 @@ func (o BackupLongTermRetentionPolicyOutput) ToBackupLongTermRetentionPolicyOutp
 
 func (o BackupLongTermRetentionPolicyOutput) ToBackupLongTermRetentionPolicyOutputWithContext(ctx context.Context) BackupLongTermRetentionPolicyOutput {
 	return o
+}
+
+func (o BackupLongTermRetentionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupLongTermRetentionPolicy] {
+	return pulumix.Output[*BackupLongTermRetentionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The monthly retention policy for an LTR backup in an ISO 8601 format.

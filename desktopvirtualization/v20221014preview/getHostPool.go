@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a host pool.
@@ -137,6 +138,12 @@ func (o LookupHostPoolResultOutput) ToLookupHostPoolResultOutput() LookupHostPoo
 
 func (o LookupHostPoolResultOutput) ToLookupHostPoolResultOutputWithContext(ctx context.Context) LookupHostPoolResultOutput {
 	return o
+}
+
+func (o LookupHostPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHostPoolResult] {
+	return pulumix.Output[LookupHostPoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The session host configuration for updating agent, monitoring agent, and stack component.

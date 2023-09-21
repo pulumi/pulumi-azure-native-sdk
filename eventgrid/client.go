@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Client resource.
@@ -165,6 +166,12 @@ func (i *Client) ToClientOutputWithContext(ctx context.Context) ClientOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientOutput)
 }
 
+func (i *Client) ToOutput(ctx context.Context) pulumix.Output[*Client] {
+	return pulumix.Output[*Client]{
+		OutputState: i.ToClientOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClientOutput struct{ *pulumi.OutputState }
 
 func (ClientOutput) ElementType() reflect.Type {
@@ -177,6 +184,12 @@ func (o ClientOutput) ToClientOutput() ClientOutput {
 
 func (o ClientOutput) ToClientOutputWithContext(ctx context.Context) ClientOutput {
 	return o
+}
+
+func (o ClientOutput) ToOutput(ctx context.Context) pulumix.Output[*Client] {
+	return pulumix.Output[*Client]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Attributes for the client. Supported values are int, bool, string, string[].

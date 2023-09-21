@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The operation returns the credentials.
@@ -75,6 +76,12 @@ func (o ListOpenShiftClusterCredentialsResultOutput) ToListOpenShiftClusterCrede
 
 func (o ListOpenShiftClusterCredentialsResultOutput) ToListOpenShiftClusterCredentialsResultOutputWithContext(ctx context.Context) ListOpenShiftClusterCredentialsResultOutput {
 	return o
+}
+
+func (o ListOpenShiftClusterCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListOpenShiftClusterCredentialsResult] {
+	return pulumix.Output[ListOpenShiftClusterCredentialsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The password for the kubeadmin user.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the Service Registry and its properties.
@@ -85,6 +86,12 @@ func (o LookupServiceRegistryResultOutput) ToLookupServiceRegistryResultOutput()
 
 func (o LookupServiceRegistryResultOutput) ToLookupServiceRegistryResultOutputWithContext(ctx context.Context) LookupServiceRegistryResultOutput {
 	return o
+}
+
+func (o LookupServiceRegistryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceRegistryResult] {
+	return pulumix.Output[LookupServiceRegistryResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

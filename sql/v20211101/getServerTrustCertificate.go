@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a server trust certificate that was uploaded from box to Sql Managed Instance.
@@ -86,6 +87,12 @@ func (o LookupServerTrustCertificateResultOutput) ToLookupServerTrustCertificate
 
 func (o LookupServerTrustCertificateResultOutput) ToLookupServerTrustCertificateResultOutputWithContext(ctx context.Context) LookupServerTrustCertificateResultOutput {
 	return o
+}
+
+func (o LookupServerTrustCertificateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServerTrustCertificateResult] {
+	return pulumix.Output[LookupServerTrustCertificateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The certificate name

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The device security group resource
@@ -136,6 +137,12 @@ func (i *DeviceSecurityGroup) ToDeviceSecurityGroupOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceSecurityGroupOutput)
 }
 
+func (i *DeviceSecurityGroup) ToOutput(ctx context.Context) pulumix.Output[*DeviceSecurityGroup] {
+	return pulumix.Output[*DeviceSecurityGroup]{
+		OutputState: i.ToDeviceSecurityGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceSecurityGroupOutput struct{ *pulumi.OutputState }
 
 func (DeviceSecurityGroupOutput) ElementType() reflect.Type {
@@ -148,6 +155,12 @@ func (o DeviceSecurityGroupOutput) ToDeviceSecurityGroupOutput() DeviceSecurityG
 
 func (o DeviceSecurityGroupOutput) ToDeviceSecurityGroupOutputWithContext(ctx context.Context) DeviceSecurityGroupOutput {
 	return o
+}
+
+func (o DeviceSecurityGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceSecurityGroup] {
+	return pulumix.Output[*DeviceSecurityGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The allow-list custom alert rules.

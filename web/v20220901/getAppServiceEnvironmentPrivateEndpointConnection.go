@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Gets a private endpoint connection
@@ -89,6 +90,12 @@ func (o LookupAppServiceEnvironmentPrivateEndpointConnectionResultOutput) ToLook
 
 func (o LookupAppServiceEnvironmentPrivateEndpointConnectionResultOutput) ToLookupAppServiceEnvironmentPrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupAppServiceEnvironmentPrivateEndpointConnectionResultOutput {
 	return o
+}
+
+func (o LookupAppServiceEnvironmentPrivateEndpointConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppServiceEnvironmentPrivateEndpointConnectionResult] {
+	return pulumix.Output[LookupAppServiceEnvironmentPrivateEndpointConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id.

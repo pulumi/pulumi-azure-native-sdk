@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (o EventImpactedResourceResponseOutput) ToEventImpactedResourceResponseOutp
 
 func (o EventImpactedResourceResponseOutput) ToEventImpactedResourceResponseOutputWithContext(ctx context.Context) EventImpactedResourceResponseOutput {
 	return o
+}
+
+func (o EventImpactedResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EventImpactedResourceResponse] {
+	return pulumix.Output[EventImpactedResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -137,6 +144,12 @@ func (o EventImpactedResourceResponseArrayOutput) ToEventImpactedResourceRespons
 	return o
 }
 
+func (o EventImpactedResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EventImpactedResourceResponse] {
+	return pulumix.Output[[]EventImpactedResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EventImpactedResourceResponseArrayOutput) Index(i pulumi.IntInput) EventImpactedResourceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventImpactedResourceResponse {
 		return vs[0].([]EventImpactedResourceResponse)[vs[1].(int)]
@@ -166,6 +179,12 @@ func (o KeyValueItemResponseOutput) ToKeyValueItemResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o KeyValueItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyValueItemResponse] {
+	return pulumix.Output[KeyValueItemResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Key of tuple.
 func (o KeyValueItemResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyValueItemResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -188,6 +207,12 @@ func (o KeyValueItemResponseArrayOutput) ToKeyValueItemResponseArrayOutput() Key
 
 func (o KeyValueItemResponseArrayOutput) ToKeyValueItemResponseArrayOutputWithContext(ctx context.Context) KeyValueItemResponseArrayOutput {
 	return o
+}
+
+func (o KeyValueItemResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeyValueItemResponse] {
+	return pulumix.Output[[]KeyValueItemResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyValueItemResponseArrayOutput) Index(i pulumi.IntInput) KeyValueItemResponseOutput {
@@ -225,6 +250,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

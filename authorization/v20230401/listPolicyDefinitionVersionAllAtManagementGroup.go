@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This operation lists all the policy definition versions for all policy definitions at the management group scope.
@@ -70,6 +71,12 @@ func (o ListPolicyDefinitionVersionAllAtManagementGroupResultOutput) ToListPolic
 
 func (o ListPolicyDefinitionVersionAllAtManagementGroupResultOutput) ToListPolicyDefinitionVersionAllAtManagementGroupResultOutputWithContext(ctx context.Context) ListPolicyDefinitionVersionAllAtManagementGroupResultOutput {
 	return o
+}
+
+func (o ListPolicyDefinitionVersionAllAtManagementGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListPolicyDefinitionVersionAllAtManagementGroupResult] {
+	return pulumix.Output[ListPolicyDefinitionVersionAllAtManagementGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL to use for getting the next set of results.

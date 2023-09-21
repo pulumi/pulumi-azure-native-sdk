@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i DashboardLensArgs) ToDashboardLensOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardLensOutput)
 }
 
+func (i DashboardLensArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardLens] {
+	return pulumix.Output[DashboardLens]{
+		OutputState: i.ToDashboardLensOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DashboardLensMapInput is an input type that accepts DashboardLensMap and DashboardLensMapOutput values.
 // You can construct a concrete instance of `DashboardLensMapInput` via:
 //
@@ -81,6 +88,12 @@ func (i DashboardLensMap) ToDashboardLensMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardLensMapOutput)
 }
 
+func (i DashboardLensMap) ToOutput(ctx context.Context) pulumix.Output[map[string]DashboardLens] {
+	return pulumix.Output[map[string]DashboardLens]{
+		OutputState: i.ToDashboardLensMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A dashboard lens.
 type DashboardLensOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o DashboardLensOutput) ToDashboardLensOutput() DashboardLensOutput {
 
 func (o DashboardLensOutput) ToDashboardLensOutputWithContext(ctx context.Context) DashboardLensOutput {
 	return o
+}
+
+func (o DashboardLensOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardLens] {
+	return pulumix.Output[DashboardLens]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The dashboard len's metadata.
@@ -123,6 +142,12 @@ func (o DashboardLensMapOutput) ToDashboardLensMapOutput() DashboardLensMapOutpu
 
 func (o DashboardLensMapOutput) ToDashboardLensMapOutputWithContext(ctx context.Context) DashboardLensMapOutput {
 	return o
+}
+
+func (o DashboardLensMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]DashboardLens] {
+	return pulumix.Output[map[string]DashboardLens]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DashboardLensMapOutput) MapIndex(k pulumi.StringInput) DashboardLensOutput {
@@ -156,6 +181,12 @@ func (o DashboardLensResponseOutput) ToDashboardLensResponseOutputWithContext(ct
 	return o
 }
 
+func (o DashboardLensResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardLensResponse] {
+	return pulumix.Output[DashboardLensResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The dashboard len's metadata.
 func (o DashboardLensResponseOutput) Metadata() pulumi.MapOutput {
 	return o.ApplyT(func(v DashboardLensResponse) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
@@ -183,6 +214,12 @@ func (o DashboardLensResponseMapOutput) ToDashboardLensResponseMapOutput() Dashb
 
 func (o DashboardLensResponseMapOutput) ToDashboardLensResponseMapOutputWithContext(ctx context.Context) DashboardLensResponseMapOutput {
 	return o
+}
+
+func (o DashboardLensResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]DashboardLensResponse] {
+	return pulumix.Output[map[string]DashboardLensResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DashboardLensResponseMapOutput) MapIndex(k pulumi.StringInput) DashboardLensResponseOutput {
@@ -230,6 +267,12 @@ func (i DashboardPartsArgs) ToDashboardPartsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardPartsOutput)
 }
 
+func (i DashboardPartsArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardParts] {
+	return pulumix.Output[DashboardParts]{
+		OutputState: i.ToDashboardPartsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DashboardPartsMapInput is an input type that accepts DashboardPartsMap and DashboardPartsMapOutput values.
 // You can construct a concrete instance of `DashboardPartsMapInput` via:
 //
@@ -255,6 +298,12 @@ func (i DashboardPartsMap) ToDashboardPartsMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardPartsMapOutput)
 }
 
+func (i DashboardPartsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]DashboardParts] {
+	return pulumix.Output[map[string]DashboardParts]{
+		OutputState: i.ToDashboardPartsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A dashboard part.
 type DashboardPartsOutput struct{ *pulumi.OutputState }
 
@@ -268,6 +317,12 @@ func (o DashboardPartsOutput) ToDashboardPartsOutput() DashboardPartsOutput {
 
 func (o DashboardPartsOutput) ToDashboardPartsOutputWithContext(ctx context.Context) DashboardPartsOutput {
 	return o
+}
+
+func (o DashboardPartsOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardParts] {
+	return pulumix.Output[DashboardParts]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A dashboard part metadata.
@@ -292,6 +347,12 @@ func (o DashboardPartsMapOutput) ToDashboardPartsMapOutput() DashboardPartsMapOu
 
 func (o DashboardPartsMapOutput) ToDashboardPartsMapOutputWithContext(ctx context.Context) DashboardPartsMapOutput {
 	return o
+}
+
+func (o DashboardPartsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]DashboardParts] {
+	return pulumix.Output[map[string]DashboardParts]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DashboardPartsMapOutput) MapIndex(k pulumi.StringInput) DashboardPartsOutput {
@@ -351,6 +412,12 @@ func (i DashboardPartsPositionArgs) ToDashboardPartsPositionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardPartsPositionOutput)
 }
 
+func (i DashboardPartsPositionArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardPartsPosition] {
+	return pulumix.Output[DashboardPartsPosition]{
+		OutputState: i.ToDashboardPartsPositionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The dashboard's part position.
 type DashboardPartsPositionOutput struct{ *pulumi.OutputState }
 
@@ -364,6 +431,12 @@ func (o DashboardPartsPositionOutput) ToDashboardPartsPositionOutput() Dashboard
 
 func (o DashboardPartsPositionOutput) ToDashboardPartsPositionOutputWithContext(ctx context.Context) DashboardPartsPositionOutput {
 	return o
+}
+
+func (o DashboardPartsPositionOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardPartsPosition] {
+	return pulumix.Output[DashboardPartsPosition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The dashboard's part column span.
@@ -414,6 +487,12 @@ func (o DashboardPartsResponseOutput) ToDashboardPartsResponseOutputWithContext(
 	return o
 }
 
+func (o DashboardPartsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardPartsResponse] {
+	return pulumix.Output[DashboardPartsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A dashboard part metadata.
 func (o DashboardPartsResponseOutput) Metadata() pulumi.AnyOutput {
 	return o.ApplyT(func(v DashboardPartsResponse) interface{} { return v.Metadata }).(pulumi.AnyOutput)
@@ -436,6 +515,12 @@ func (o DashboardPartsResponseMapOutput) ToDashboardPartsResponseMapOutput() Das
 
 func (o DashboardPartsResponseMapOutput) ToDashboardPartsResponseMapOutputWithContext(ctx context.Context) DashboardPartsResponseMapOutput {
 	return o
+}
+
+func (o DashboardPartsResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]DashboardPartsResponse] {
+	return pulumix.Output[map[string]DashboardPartsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DashboardPartsResponseMapOutput) MapIndex(k pulumi.StringInput) DashboardPartsResponseOutput {
@@ -471,6 +556,12 @@ func (o DashboardPartsResponsePositionOutput) ToDashboardPartsResponsePositionOu
 
 func (o DashboardPartsResponsePositionOutput) ToDashboardPartsResponsePositionOutputWithContext(ctx context.Context) DashboardPartsResponsePositionOutput {
 	return o
+}
+
+func (o DashboardPartsResponsePositionOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardPartsResponsePosition] {
+	return pulumix.Output[DashboardPartsResponsePosition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The dashboard's part column span.

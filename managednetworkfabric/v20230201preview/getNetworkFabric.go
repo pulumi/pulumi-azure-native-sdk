@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get Network Fabric resource details.
@@ -125,6 +126,12 @@ func (o LookupNetworkFabricResultOutput) ToLookupNetworkFabricResultOutput() Loo
 
 func (o LookupNetworkFabricResultOutput) ToLookupNetworkFabricResultOutputWithContext(ctx context.Context) LookupNetworkFabricResultOutput {
 	return o
+}
+
+func (o LookupNetworkFabricResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkFabricResult] {
+	return pulumix.Output[LookupNetworkFabricResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Switch configuration description.

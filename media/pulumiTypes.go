@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -102,6 +103,12 @@ func (i AccessControlArgs) ToAccessControlOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AccessControlOutput)
 }
 
+func (i AccessControlArgs) ToOutput(ctx context.Context) pulumix.Output[AccessControl] {
+	return pulumix.Output[AccessControl]{
+		OutputState: i.ToAccessControlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AccessControlArgs) ToAccessControlPtrOutput() AccessControlPtrOutput {
 	return i.ToAccessControlPtrOutputWithContext(context.Background())
 }
@@ -143,6 +150,12 @@ func (i *accessControlPtrType) ToAccessControlPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AccessControlPtrOutput)
 }
 
+func (i *accessControlPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessControl] {
+	return pulumix.Output[*AccessControl]{
+		OutputState: i.ToAccessControlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessControlOutput struct{ *pulumi.OutputState }
 
 func (AccessControlOutput) ElementType() reflect.Type {
@@ -167,6 +180,12 @@ func (o AccessControlOutput) ToAccessControlPtrOutputWithContext(ctx context.Con
 	}).(AccessControlPtrOutput)
 }
 
+func (o AccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[AccessControl] {
+	return pulumix.Output[AccessControl]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The behavior for IP access control in Key Delivery.
 func (o AccessControlOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessControl) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
@@ -189,6 +208,12 @@ func (o AccessControlPtrOutput) ToAccessControlPtrOutput() AccessControlPtrOutpu
 
 func (o AccessControlPtrOutput) ToAccessControlPtrOutputWithContext(ctx context.Context) AccessControlPtrOutput {
 	return o
+}
+
+func (o AccessControlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessControl] {
+	return pulumix.Output[*AccessControl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessControlPtrOutput) Elem() AccessControlOutput {
@@ -242,6 +267,12 @@ func (o AccessControlResponseOutput) ToAccessControlResponseOutputWithContext(ct
 	return o
 }
 
+func (o AccessControlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessControlResponse] {
+	return pulumix.Output[AccessControlResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The behavior for IP access control in Key Delivery.
 func (o AccessControlResponseOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessControlResponse) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
@@ -264,6 +295,12 @@ func (o AccessControlResponsePtrOutput) ToAccessControlResponsePtrOutput() Acces
 
 func (o AccessControlResponsePtrOutput) ToAccessControlResponsePtrOutputWithContext(ctx context.Context) AccessControlResponsePtrOutput {
 	return o
+}
+
+func (o AccessControlResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessControlResponse] {
+	return pulumix.Output[*AccessControlResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessControlResponsePtrOutput) Elem() AccessControlResponseOutput {
@@ -337,6 +374,12 @@ func (i AccountEncryptionArgs) ToAccountEncryptionOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AccountEncryptionOutput)
 }
 
+func (i AccountEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[AccountEncryption] {
+	return pulumix.Output[AccountEncryption]{
+		OutputState: i.ToAccountEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AccountEncryptionArgs) ToAccountEncryptionPtrOutput() AccountEncryptionPtrOutput {
 	return i.ToAccountEncryptionPtrOutputWithContext(context.Background())
 }
@@ -378,6 +421,12 @@ func (i *accountEncryptionPtrType) ToAccountEncryptionPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AccountEncryptionPtrOutput)
 }
 
+func (i *accountEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccountEncryption] {
+	return pulumix.Output[*AccountEncryption]{
+		OutputState: i.ToAccountEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccountEncryptionOutput struct{ *pulumi.OutputState }
 
 func (AccountEncryptionOutput) ElementType() reflect.Type {
@@ -400,6 +449,12 @@ func (o AccountEncryptionOutput) ToAccountEncryptionPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountEncryption) *AccountEncryption {
 		return &v
 	}).(AccountEncryptionPtrOutput)
+}
+
+func (o AccountEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[AccountEncryption] {
+	return pulumix.Output[AccountEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Key Vault identity.
@@ -429,6 +484,12 @@ func (o AccountEncryptionPtrOutput) ToAccountEncryptionPtrOutput() AccountEncryp
 
 func (o AccountEncryptionPtrOutput) ToAccountEncryptionPtrOutputWithContext(ctx context.Context) AccountEncryptionPtrOutput {
 	return o
+}
+
+func (o AccountEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountEncryption] {
+	return pulumix.Output[*AccountEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountEncryptionPtrOutput) Elem() AccountEncryptionOutput {
@@ -496,6 +557,12 @@ func (o AccountEncryptionResponseOutput) ToAccountEncryptionResponseOutputWithCo
 	return o
 }
 
+func (o AccountEncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccountEncryptionResponse] {
+	return pulumix.Output[AccountEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Key Vault identity.
 func (o AccountEncryptionResponseOutput) Identity() ResourceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v AccountEncryptionResponse) *ResourceIdentityResponse { return v.Identity }).(ResourceIdentityResponsePtrOutput)
@@ -528,6 +595,12 @@ func (o AccountEncryptionResponsePtrOutput) ToAccountEncryptionResponsePtrOutput
 
 func (o AccountEncryptionResponsePtrOutput) ToAccountEncryptionResponsePtrOutputWithContext(ctx context.Context) AccountEncryptionResponsePtrOutput {
 	return o
+}
+
+func (o AccountEncryptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountEncryptionResponse] {
+	return pulumix.Output[*AccountEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountEncryptionResponsePtrOutput) Elem() AccountEncryptionResponseOutput {
@@ -615,6 +688,12 @@ func (i AkamaiAccessControlArgs) ToAkamaiAccessControlOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AkamaiAccessControlOutput)
 }
 
+func (i AkamaiAccessControlArgs) ToOutput(ctx context.Context) pulumix.Output[AkamaiAccessControl] {
+	return pulumix.Output[AkamaiAccessControl]{
+		OutputState: i.ToAkamaiAccessControlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AkamaiAccessControlArgs) ToAkamaiAccessControlPtrOutput() AkamaiAccessControlPtrOutput {
 	return i.ToAkamaiAccessControlPtrOutputWithContext(context.Background())
 }
@@ -656,6 +735,12 @@ func (i *akamaiAccessControlPtrType) ToAkamaiAccessControlPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AkamaiAccessControlPtrOutput)
 }
 
+func (i *akamaiAccessControlPtrType) ToOutput(ctx context.Context) pulumix.Output[*AkamaiAccessControl] {
+	return pulumix.Output[*AkamaiAccessControl]{
+		OutputState: i.ToAkamaiAccessControlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Akamai access control
 type AkamaiAccessControlOutput struct{ *pulumi.OutputState }
 
@@ -681,6 +766,12 @@ func (o AkamaiAccessControlOutput) ToAkamaiAccessControlPtrOutputWithContext(ctx
 	}).(AkamaiAccessControlPtrOutput)
 }
 
+func (o AkamaiAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[AkamaiAccessControl] {
+	return pulumix.Output[AkamaiAccessControl]{
+		OutputState: o.OutputState,
+	}
+}
+
 // authentication key list
 func (o AkamaiAccessControlOutput) AkamaiSignatureHeaderAuthenticationKeyList() AkamaiSignatureHeaderAuthenticationKeyArrayOutput {
 	return o.ApplyT(func(v AkamaiAccessControl) []AkamaiSignatureHeaderAuthenticationKey {
@@ -700,6 +791,12 @@ func (o AkamaiAccessControlPtrOutput) ToAkamaiAccessControlPtrOutput() AkamaiAcc
 
 func (o AkamaiAccessControlPtrOutput) ToAkamaiAccessControlPtrOutputWithContext(ctx context.Context) AkamaiAccessControlPtrOutput {
 	return o
+}
+
+func (o AkamaiAccessControlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AkamaiAccessControl] {
+	return pulumix.Output[*AkamaiAccessControl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AkamaiAccessControlPtrOutput) Elem() AkamaiAccessControlOutput {
@@ -743,6 +840,12 @@ func (o AkamaiAccessControlResponseOutput) ToAkamaiAccessControlResponseOutputWi
 	return o
 }
 
+func (o AkamaiAccessControlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AkamaiAccessControlResponse] {
+	return pulumix.Output[AkamaiAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // authentication key list
 func (o AkamaiAccessControlResponseOutput) AkamaiSignatureHeaderAuthenticationKeyList() AkamaiSignatureHeaderAuthenticationKeyResponseArrayOutput {
 	return o.ApplyT(func(v AkamaiAccessControlResponse) []AkamaiSignatureHeaderAuthenticationKeyResponse {
@@ -762,6 +865,12 @@ func (o AkamaiAccessControlResponsePtrOutput) ToAkamaiAccessControlResponsePtrOu
 
 func (o AkamaiAccessControlResponsePtrOutput) ToAkamaiAccessControlResponsePtrOutputWithContext(ctx context.Context) AkamaiAccessControlResponsePtrOutput {
 	return o
+}
+
+func (o AkamaiAccessControlResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AkamaiAccessControlResponse] {
+	return pulumix.Output[*AkamaiAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AkamaiAccessControlResponsePtrOutput) Elem() AkamaiAccessControlResponseOutput {
@@ -827,6 +936,12 @@ func (i AkamaiSignatureHeaderAuthenticationKeyArgs) ToAkamaiSignatureHeaderAuthe
 	return pulumi.ToOutputWithContext(ctx, i).(AkamaiSignatureHeaderAuthenticationKeyOutput)
 }
 
+func (i AkamaiSignatureHeaderAuthenticationKeyArgs) ToOutput(ctx context.Context) pulumix.Output[AkamaiSignatureHeaderAuthenticationKey] {
+	return pulumix.Output[AkamaiSignatureHeaderAuthenticationKey]{
+		OutputState: i.ToAkamaiSignatureHeaderAuthenticationKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AkamaiSignatureHeaderAuthenticationKeyArrayInput is an input type that accepts AkamaiSignatureHeaderAuthenticationKeyArray and AkamaiSignatureHeaderAuthenticationKeyArrayOutput values.
 // You can construct a concrete instance of `AkamaiSignatureHeaderAuthenticationKeyArrayInput` via:
 //
@@ -852,6 +967,12 @@ func (i AkamaiSignatureHeaderAuthenticationKeyArray) ToAkamaiSignatureHeaderAuth
 	return pulumi.ToOutputWithContext(ctx, i).(AkamaiSignatureHeaderAuthenticationKeyArrayOutput)
 }
 
+func (i AkamaiSignatureHeaderAuthenticationKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]AkamaiSignatureHeaderAuthenticationKey] {
+	return pulumix.Output[[]AkamaiSignatureHeaderAuthenticationKey]{
+		OutputState: i.ToAkamaiSignatureHeaderAuthenticationKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Akamai Signature Header authentication key.
 type AkamaiSignatureHeaderAuthenticationKeyOutput struct{ *pulumi.OutputState }
 
@@ -865,6 +986,12 @@ func (o AkamaiSignatureHeaderAuthenticationKeyOutput) ToAkamaiSignatureHeaderAut
 
 func (o AkamaiSignatureHeaderAuthenticationKeyOutput) ToAkamaiSignatureHeaderAuthenticationKeyOutputWithContext(ctx context.Context) AkamaiSignatureHeaderAuthenticationKeyOutput {
 	return o
+}
+
+func (o AkamaiSignatureHeaderAuthenticationKeyOutput) ToOutput(ctx context.Context) pulumix.Output[AkamaiSignatureHeaderAuthenticationKey] {
+	return pulumix.Output[AkamaiSignatureHeaderAuthenticationKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // authentication key
@@ -894,6 +1021,12 @@ func (o AkamaiSignatureHeaderAuthenticationKeyArrayOutput) ToAkamaiSignatureHead
 
 func (o AkamaiSignatureHeaderAuthenticationKeyArrayOutput) ToAkamaiSignatureHeaderAuthenticationKeyArrayOutputWithContext(ctx context.Context) AkamaiSignatureHeaderAuthenticationKeyArrayOutput {
 	return o
+}
+
+func (o AkamaiSignatureHeaderAuthenticationKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AkamaiSignatureHeaderAuthenticationKey] {
+	return pulumix.Output[[]AkamaiSignatureHeaderAuthenticationKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AkamaiSignatureHeaderAuthenticationKeyArrayOutput) Index(i pulumi.IntInput) AkamaiSignatureHeaderAuthenticationKeyOutput {
@@ -927,6 +1060,12 @@ func (o AkamaiSignatureHeaderAuthenticationKeyResponseOutput) ToAkamaiSignatureH
 	return o
 }
 
+func (o AkamaiSignatureHeaderAuthenticationKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AkamaiSignatureHeaderAuthenticationKeyResponse] {
+	return pulumix.Output[AkamaiSignatureHeaderAuthenticationKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // authentication key
 func (o AkamaiSignatureHeaderAuthenticationKeyResponseOutput) Base64Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AkamaiSignatureHeaderAuthenticationKeyResponse) *string { return v.Base64Key }).(pulumi.StringPtrOutput)
@@ -954,6 +1093,12 @@ func (o AkamaiSignatureHeaderAuthenticationKeyResponseArrayOutput) ToAkamaiSigna
 
 func (o AkamaiSignatureHeaderAuthenticationKeyResponseArrayOutput) ToAkamaiSignatureHeaderAuthenticationKeyResponseArrayOutputWithContext(ctx context.Context) AkamaiSignatureHeaderAuthenticationKeyResponseArrayOutput {
 	return o
+}
+
+func (o AkamaiSignatureHeaderAuthenticationKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AkamaiSignatureHeaderAuthenticationKeyResponse] {
+	return pulumix.Output[[]AkamaiSignatureHeaderAuthenticationKeyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AkamaiSignatureHeaderAuthenticationKeyResponseArrayOutput) Index(i pulumi.IntInput) AkamaiSignatureHeaderAuthenticationKeyResponseOutput {
@@ -997,6 +1142,12 @@ func (i ArmStreamingEndpointCurrentSkuArgs) ToArmStreamingEndpointCurrentSkuOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ArmStreamingEndpointCurrentSkuOutput)
 }
 
+func (i ArmStreamingEndpointCurrentSkuArgs) ToOutput(ctx context.Context) pulumix.Output[ArmStreamingEndpointCurrentSku] {
+	return pulumix.Output[ArmStreamingEndpointCurrentSku]{
+		OutputState: i.ToArmStreamingEndpointCurrentSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ArmStreamingEndpointCurrentSkuArgs) ToArmStreamingEndpointCurrentSkuPtrOutput() ArmStreamingEndpointCurrentSkuPtrOutput {
 	return i.ToArmStreamingEndpointCurrentSkuPtrOutputWithContext(context.Background())
 }
@@ -1038,6 +1189,12 @@ func (i *armStreamingEndpointCurrentSkuPtrType) ToArmStreamingEndpointCurrentSku
 	return pulumi.ToOutputWithContext(ctx, i).(ArmStreamingEndpointCurrentSkuPtrOutput)
 }
 
+func (i *armStreamingEndpointCurrentSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ArmStreamingEndpointCurrentSku] {
+	return pulumix.Output[*ArmStreamingEndpointCurrentSku]{
+		OutputState: i.ToArmStreamingEndpointCurrentSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The streaming endpoint current sku.
 type ArmStreamingEndpointCurrentSkuOutput struct{ *pulumi.OutputState }
 
@@ -1063,6 +1220,12 @@ func (o ArmStreamingEndpointCurrentSkuOutput) ToArmStreamingEndpointCurrentSkuPt
 	}).(ArmStreamingEndpointCurrentSkuPtrOutput)
 }
 
+func (o ArmStreamingEndpointCurrentSkuOutput) ToOutput(ctx context.Context) pulumix.Output[ArmStreamingEndpointCurrentSku] {
+	return pulumix.Output[ArmStreamingEndpointCurrentSku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The streaming endpoint sku capacity.
 func (o ArmStreamingEndpointCurrentSkuOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ArmStreamingEndpointCurrentSku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -1080,6 +1243,12 @@ func (o ArmStreamingEndpointCurrentSkuPtrOutput) ToArmStreamingEndpointCurrentSk
 
 func (o ArmStreamingEndpointCurrentSkuPtrOutput) ToArmStreamingEndpointCurrentSkuPtrOutputWithContext(ctx context.Context) ArmStreamingEndpointCurrentSkuPtrOutput {
 	return o
+}
+
+func (o ArmStreamingEndpointCurrentSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArmStreamingEndpointCurrentSku] {
+	return pulumix.Output[*ArmStreamingEndpointCurrentSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ArmStreamingEndpointCurrentSkuPtrOutput) Elem() ArmStreamingEndpointCurrentSkuOutput {
@@ -1125,6 +1294,12 @@ func (o ArmStreamingEndpointCurrentSkuResponseOutput) ToArmStreamingEndpointCurr
 	return o
 }
 
+func (o ArmStreamingEndpointCurrentSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ArmStreamingEndpointCurrentSkuResponse] {
+	return pulumix.Output[ArmStreamingEndpointCurrentSkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The streaming endpoint sku capacity.
 func (o ArmStreamingEndpointCurrentSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ArmStreamingEndpointCurrentSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -1147,6 +1322,12 @@ func (o ArmStreamingEndpointCurrentSkuResponsePtrOutput) ToArmStreamingEndpointC
 
 func (o ArmStreamingEndpointCurrentSkuResponsePtrOutput) ToArmStreamingEndpointCurrentSkuResponsePtrOutputWithContext(ctx context.Context) ArmStreamingEndpointCurrentSkuResponsePtrOutput {
 	return o
+}
+
+func (o ArmStreamingEndpointCurrentSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArmStreamingEndpointCurrentSkuResponse] {
+	return pulumix.Output[*ArmStreamingEndpointCurrentSkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ArmStreamingEndpointCurrentSkuResponsePtrOutput) Elem() ArmStreamingEndpointCurrentSkuResponseOutput {
@@ -1204,6 +1385,12 @@ func (o AssetFileEncryptionMetadataResponseOutput) ToAssetFileEncryptionMetadata
 	return o
 }
 
+func (o AssetFileEncryptionMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssetFileEncryptionMetadataResponse] {
+	return pulumix.Output[AssetFileEncryptionMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Asset File Id.
 func (o AssetFileEncryptionMetadataResponseOutput) AssetFileId() pulumi.StringOutput {
 	return o.ApplyT(func(v AssetFileEncryptionMetadataResponse) string { return v.AssetFileId }).(pulumi.StringOutput)
@@ -1231,6 +1418,12 @@ func (o AssetFileEncryptionMetadataResponseArrayOutput) ToAssetFileEncryptionMet
 
 func (o AssetFileEncryptionMetadataResponseArrayOutput) ToAssetFileEncryptionMetadataResponseArrayOutputWithContext(ctx context.Context) AssetFileEncryptionMetadataResponseArrayOutput {
 	return o
+}
+
+func (o AssetFileEncryptionMetadataResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssetFileEncryptionMetadataResponse] {
+	return pulumix.Output[[]AssetFileEncryptionMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AssetFileEncryptionMetadataResponseArrayOutput) Index(i pulumi.IntInput) AssetFileEncryptionMetadataResponseOutput {
@@ -1272,6 +1465,12 @@ func (o AssetStreamingLocatorResponseOutput) ToAssetStreamingLocatorResponseOutp
 
 func (o AssetStreamingLocatorResponseOutput) ToAssetStreamingLocatorResponseOutputWithContext(ctx context.Context) AssetStreamingLocatorResponseOutput {
 	return o
+}
+
+func (o AssetStreamingLocatorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssetStreamingLocatorResponse] {
+	return pulumix.Output[AssetStreamingLocatorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Asset Name.
@@ -1326,6 +1525,12 @@ func (o AssetStreamingLocatorResponseArrayOutput) ToAssetStreamingLocatorRespons
 
 func (o AssetStreamingLocatorResponseArrayOutput) ToAssetStreamingLocatorResponseArrayOutputWithContext(ctx context.Context) AssetStreamingLocatorResponseArrayOutput {
 	return o
+}
+
+func (o AssetStreamingLocatorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssetStreamingLocatorResponse] {
+	return pulumix.Output[[]AssetStreamingLocatorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AssetStreamingLocatorResponseArrayOutput) Index(i pulumi.IntInput) AssetStreamingLocatorResponseOutput {
@@ -1551,6 +1756,12 @@ func (i CbcsDrmConfigurationArgs) ToCbcsDrmConfigurationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CbcsDrmConfigurationOutput)
 }
 
+func (i CbcsDrmConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[CbcsDrmConfiguration] {
+	return pulumix.Output[CbcsDrmConfiguration]{
+		OutputState: i.ToCbcsDrmConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CbcsDrmConfigurationArgs) ToCbcsDrmConfigurationPtrOutput() CbcsDrmConfigurationPtrOutput {
 	return i.ToCbcsDrmConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1592,6 +1803,12 @@ func (i *cbcsDrmConfigurationPtrType) ToCbcsDrmConfigurationPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(CbcsDrmConfigurationPtrOutput)
 }
 
+func (i *cbcsDrmConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*CbcsDrmConfiguration] {
+	return pulumix.Output[*CbcsDrmConfiguration]{
+		OutputState: i.ToCbcsDrmConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class to specify DRM configurations of CommonEncryptionCbcs scheme in Streaming Policy
 type CbcsDrmConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -1615,6 +1832,12 @@ func (o CbcsDrmConfigurationOutput) ToCbcsDrmConfigurationPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CbcsDrmConfiguration) *CbcsDrmConfiguration {
 		return &v
 	}).(CbcsDrmConfigurationPtrOutput)
+}
+
+func (o CbcsDrmConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[CbcsDrmConfiguration] {
+	return pulumix.Output[CbcsDrmConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // FairPlay configurations
@@ -1644,6 +1867,12 @@ func (o CbcsDrmConfigurationPtrOutput) ToCbcsDrmConfigurationPtrOutput() CbcsDrm
 
 func (o CbcsDrmConfigurationPtrOutput) ToCbcsDrmConfigurationPtrOutputWithContext(ctx context.Context) CbcsDrmConfigurationPtrOutput {
 	return o
+}
+
+func (o CbcsDrmConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CbcsDrmConfiguration] {
+	return pulumix.Output[*CbcsDrmConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CbcsDrmConfigurationPtrOutput) Elem() CbcsDrmConfigurationOutput {
@@ -1711,6 +1940,12 @@ func (o CbcsDrmConfigurationResponseOutput) ToCbcsDrmConfigurationResponseOutput
 	return o
 }
 
+func (o CbcsDrmConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CbcsDrmConfigurationResponse] {
+	return pulumix.Output[CbcsDrmConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // FairPlay configurations
 func (o CbcsDrmConfigurationResponseOutput) FairPlay() StreamingPolicyFairPlayConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v CbcsDrmConfigurationResponse) *StreamingPolicyFairPlayConfigurationResponse { return v.FairPlay }).(StreamingPolicyFairPlayConfigurationResponsePtrOutput)
@@ -1740,6 +1975,12 @@ func (o CbcsDrmConfigurationResponsePtrOutput) ToCbcsDrmConfigurationResponsePtr
 
 func (o CbcsDrmConfigurationResponsePtrOutput) ToCbcsDrmConfigurationResponsePtrOutputWithContext(ctx context.Context) CbcsDrmConfigurationResponsePtrOutput {
 	return o
+}
+
+func (o CbcsDrmConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CbcsDrmConfigurationResponse] {
+	return pulumix.Output[*CbcsDrmConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CbcsDrmConfigurationResponsePtrOutput) Elem() CbcsDrmConfigurationResponseOutput {
@@ -1821,6 +2062,12 @@ func (i CencDrmConfigurationArgs) ToCencDrmConfigurationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CencDrmConfigurationOutput)
 }
 
+func (i CencDrmConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[CencDrmConfiguration] {
+	return pulumix.Output[CencDrmConfiguration]{
+		OutputState: i.ToCencDrmConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CencDrmConfigurationArgs) ToCencDrmConfigurationPtrOutput() CencDrmConfigurationPtrOutput {
 	return i.ToCencDrmConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1862,6 +2109,12 @@ func (i *cencDrmConfigurationPtrType) ToCencDrmConfigurationPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(CencDrmConfigurationPtrOutput)
 }
 
+func (i *cencDrmConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*CencDrmConfiguration] {
+	return pulumix.Output[*CencDrmConfiguration]{
+		OutputState: i.ToCencDrmConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class to specify DRM configurations of CommonEncryptionCenc scheme in Streaming Policy
 type CencDrmConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -1887,6 +2140,12 @@ func (o CencDrmConfigurationOutput) ToCencDrmConfigurationPtrOutputWithContext(c
 	}).(CencDrmConfigurationPtrOutput)
 }
 
+func (o CencDrmConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[CencDrmConfiguration] {
+	return pulumix.Output[CencDrmConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // PlayReady configurations
 func (o CencDrmConfigurationOutput) PlayReady() StreamingPolicyPlayReadyConfigurationPtrOutput {
 	return o.ApplyT(func(v CencDrmConfiguration) *StreamingPolicyPlayReadyConfiguration { return v.PlayReady }).(StreamingPolicyPlayReadyConfigurationPtrOutput)
@@ -1909,6 +2168,12 @@ func (o CencDrmConfigurationPtrOutput) ToCencDrmConfigurationPtrOutput() CencDrm
 
 func (o CencDrmConfigurationPtrOutput) ToCencDrmConfigurationPtrOutputWithContext(ctx context.Context) CencDrmConfigurationPtrOutput {
 	return o
+}
+
+func (o CencDrmConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CencDrmConfiguration] {
+	return pulumix.Output[*CencDrmConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CencDrmConfigurationPtrOutput) Elem() CencDrmConfigurationOutput {
@@ -1964,6 +2229,12 @@ func (o CencDrmConfigurationResponseOutput) ToCencDrmConfigurationResponseOutput
 	return o
 }
 
+func (o CencDrmConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CencDrmConfigurationResponse] {
+	return pulumix.Output[CencDrmConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // PlayReady configurations
 func (o CencDrmConfigurationResponseOutput) PlayReady() StreamingPolicyPlayReadyConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v CencDrmConfigurationResponse) *StreamingPolicyPlayReadyConfigurationResponse {
@@ -1988,6 +2259,12 @@ func (o CencDrmConfigurationResponsePtrOutput) ToCencDrmConfigurationResponsePtr
 
 func (o CencDrmConfigurationResponsePtrOutput) ToCencDrmConfigurationResponsePtrOutputWithContext(ctx context.Context) CencDrmConfigurationResponsePtrOutput {
 	return o
+}
+
+func (o CencDrmConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CencDrmConfigurationResponse] {
+	return pulumix.Output[*CencDrmConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CencDrmConfigurationResponsePtrOutput) Elem() CencDrmConfigurationResponseOutput {
@@ -2055,6 +2332,12 @@ func (i ClearKeyEncryptionConfigurationArgs) ToClearKeyEncryptionConfigurationOu
 	return pulumi.ToOutputWithContext(ctx, i).(ClearKeyEncryptionConfigurationOutput)
 }
 
+func (i ClearKeyEncryptionConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ClearKeyEncryptionConfiguration] {
+	return pulumix.Output[ClearKeyEncryptionConfiguration]{
+		OutputState: i.ToClearKeyEncryptionConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ClearKeyEncryptionConfigurationArgs) ToClearKeyEncryptionConfigurationPtrOutput() ClearKeyEncryptionConfigurationPtrOutput {
 	return i.ToClearKeyEncryptionConfigurationPtrOutputWithContext(context.Background())
 }
@@ -2096,6 +2379,12 @@ func (i *clearKeyEncryptionConfigurationPtrType) ToClearKeyEncryptionConfigurati
 	return pulumi.ToOutputWithContext(ctx, i).(ClearKeyEncryptionConfigurationPtrOutput)
 }
 
+func (i *clearKeyEncryptionConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClearKeyEncryptionConfiguration] {
+	return pulumix.Output[*ClearKeyEncryptionConfiguration]{
+		OutputState: i.ToClearKeyEncryptionConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class to specify ClearKey configuration of common encryption schemes in Streaming Policy
 type ClearKeyEncryptionConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -2121,6 +2410,12 @@ func (o ClearKeyEncryptionConfigurationOutput) ToClearKeyEncryptionConfiguration
 	}).(ClearKeyEncryptionConfigurationPtrOutput)
 }
 
+func (o ClearKeyEncryptionConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ClearKeyEncryptionConfiguration] {
+	return pulumix.Output[ClearKeyEncryptionConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Template for the URL of the custom service delivering content keys to end user players. Not required when using Azure Media Services for issuing licenses. The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token value is {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId.
 func (o ClearKeyEncryptionConfigurationOutput) CustomKeysAcquisitionUrlTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClearKeyEncryptionConfiguration) *string { return v.CustomKeysAcquisitionUrlTemplate }).(pulumi.StringPtrOutput)
@@ -2138,6 +2433,12 @@ func (o ClearKeyEncryptionConfigurationPtrOutput) ToClearKeyEncryptionConfigurat
 
 func (o ClearKeyEncryptionConfigurationPtrOutput) ToClearKeyEncryptionConfigurationPtrOutputWithContext(ctx context.Context) ClearKeyEncryptionConfigurationPtrOutput {
 	return o
+}
+
+func (o ClearKeyEncryptionConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClearKeyEncryptionConfiguration] {
+	return pulumix.Output[*ClearKeyEncryptionConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClearKeyEncryptionConfigurationPtrOutput) Elem() ClearKeyEncryptionConfigurationOutput {
@@ -2181,6 +2482,12 @@ func (o ClearKeyEncryptionConfigurationResponseOutput) ToClearKeyEncryptionConfi
 	return o
 }
 
+func (o ClearKeyEncryptionConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClearKeyEncryptionConfigurationResponse] {
+	return pulumix.Output[ClearKeyEncryptionConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Template for the URL of the custom service delivering content keys to end user players. Not required when using Azure Media Services for issuing licenses. The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token value is {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId.
 func (o ClearKeyEncryptionConfigurationResponseOutput) CustomKeysAcquisitionUrlTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClearKeyEncryptionConfigurationResponse) *string { return v.CustomKeysAcquisitionUrlTemplate }).(pulumi.StringPtrOutput)
@@ -2198,6 +2505,12 @@ func (o ClearKeyEncryptionConfigurationResponsePtrOutput) ToClearKeyEncryptionCo
 
 func (o ClearKeyEncryptionConfigurationResponsePtrOutput) ToClearKeyEncryptionConfigurationResponsePtrOutputWithContext(ctx context.Context) ClearKeyEncryptionConfigurationResponsePtrOutput {
 	return o
+}
+
+func (o ClearKeyEncryptionConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClearKeyEncryptionConfigurationResponse] {
+	return pulumix.Output[*ClearKeyEncryptionConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClearKeyEncryptionConfigurationResponsePtrOutput) Elem() ClearKeyEncryptionConfigurationResponseOutput {
@@ -2271,6 +2584,12 @@ func (i CommonEncryptionCbcsArgs) ToCommonEncryptionCbcsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CommonEncryptionCbcsOutput)
 }
 
+func (i CommonEncryptionCbcsArgs) ToOutput(ctx context.Context) pulumix.Output[CommonEncryptionCbcs] {
+	return pulumix.Output[CommonEncryptionCbcs]{
+		OutputState: i.ToCommonEncryptionCbcsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CommonEncryptionCbcsArgs) ToCommonEncryptionCbcsPtrOutput() CommonEncryptionCbcsPtrOutput {
 	return i.ToCommonEncryptionCbcsPtrOutputWithContext(context.Background())
 }
@@ -2312,6 +2631,12 @@ func (i *commonEncryptionCbcsPtrType) ToCommonEncryptionCbcsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(CommonEncryptionCbcsPtrOutput)
 }
 
+func (i *commonEncryptionCbcsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CommonEncryptionCbcs] {
+	return pulumix.Output[*CommonEncryptionCbcs]{
+		OutputState: i.ToCommonEncryptionCbcsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class for CommonEncryptionCbcs encryption scheme
 type CommonEncryptionCbcsOutput struct{ *pulumi.OutputState }
 
@@ -2335,6 +2660,12 @@ func (o CommonEncryptionCbcsOutput) ToCommonEncryptionCbcsPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonEncryptionCbcs) *CommonEncryptionCbcs {
 		return &v
 	}).(CommonEncryptionCbcsPtrOutput)
+}
+
+func (o CommonEncryptionCbcsOutput) ToOutput(ctx context.Context) pulumix.Output[CommonEncryptionCbcs] {
+	return pulumix.Output[CommonEncryptionCbcs]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional configuration supporting ClearKey in CommonEncryptionCbcs encryption scheme.
@@ -2376,6 +2707,12 @@ func (o CommonEncryptionCbcsPtrOutput) ToCommonEncryptionCbcsPtrOutput() CommonE
 
 func (o CommonEncryptionCbcsPtrOutput) ToCommonEncryptionCbcsPtrOutputWithContext(ctx context.Context) CommonEncryptionCbcsPtrOutput {
 	return o
+}
+
+func (o CommonEncryptionCbcsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CommonEncryptionCbcs] {
+	return pulumix.Output[*CommonEncryptionCbcs]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CommonEncryptionCbcsPtrOutput) Elem() CommonEncryptionCbcsOutput {
@@ -2467,6 +2804,12 @@ func (o CommonEncryptionCbcsResponseOutput) ToCommonEncryptionCbcsResponseOutput
 	return o
 }
 
+func (o CommonEncryptionCbcsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CommonEncryptionCbcsResponse] {
+	return pulumix.Output[CommonEncryptionCbcsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional configuration supporting ClearKey in CommonEncryptionCbcs encryption scheme.
 func (o CommonEncryptionCbcsResponseOutput) ClearKeyEncryptionConfiguration() ClearKeyEncryptionConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v CommonEncryptionCbcsResponse) *ClearKeyEncryptionConfigurationResponse {
@@ -2506,6 +2849,12 @@ func (o CommonEncryptionCbcsResponsePtrOutput) ToCommonEncryptionCbcsResponsePtr
 
 func (o CommonEncryptionCbcsResponsePtrOutput) ToCommonEncryptionCbcsResponsePtrOutputWithContext(ctx context.Context) CommonEncryptionCbcsResponsePtrOutput {
 	return o
+}
+
+func (o CommonEncryptionCbcsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CommonEncryptionCbcsResponse] {
+	return pulumix.Output[*CommonEncryptionCbcsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CommonEncryptionCbcsResponsePtrOutput) Elem() CommonEncryptionCbcsResponseOutput {
@@ -2619,6 +2968,12 @@ func (i CommonEncryptionCencArgs) ToCommonEncryptionCencOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CommonEncryptionCencOutput)
 }
 
+func (i CommonEncryptionCencArgs) ToOutput(ctx context.Context) pulumix.Output[CommonEncryptionCenc] {
+	return pulumix.Output[CommonEncryptionCenc]{
+		OutputState: i.ToCommonEncryptionCencOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CommonEncryptionCencArgs) ToCommonEncryptionCencPtrOutput() CommonEncryptionCencPtrOutput {
 	return i.ToCommonEncryptionCencPtrOutputWithContext(context.Background())
 }
@@ -2660,6 +3015,12 @@ func (i *commonEncryptionCencPtrType) ToCommonEncryptionCencPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(CommonEncryptionCencPtrOutput)
 }
 
+func (i *commonEncryptionCencPtrType) ToOutput(ctx context.Context) pulumix.Output[*CommonEncryptionCenc] {
+	return pulumix.Output[*CommonEncryptionCenc]{
+		OutputState: i.ToCommonEncryptionCencPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class for envelope encryption scheme
 type CommonEncryptionCencOutput struct{ *pulumi.OutputState }
 
@@ -2683,6 +3044,12 @@ func (o CommonEncryptionCencOutput) ToCommonEncryptionCencPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonEncryptionCenc) *CommonEncryptionCenc {
 		return &v
 	}).(CommonEncryptionCencPtrOutput)
+}
+
+func (o CommonEncryptionCencOutput) ToOutput(ctx context.Context) pulumix.Output[CommonEncryptionCenc] {
+	return pulumix.Output[CommonEncryptionCenc]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional configuration supporting ClearKey in CommonEncryptionCenc encryption scheme.
@@ -2724,6 +3091,12 @@ func (o CommonEncryptionCencPtrOutput) ToCommonEncryptionCencPtrOutput() CommonE
 
 func (o CommonEncryptionCencPtrOutput) ToCommonEncryptionCencPtrOutputWithContext(ctx context.Context) CommonEncryptionCencPtrOutput {
 	return o
+}
+
+func (o CommonEncryptionCencPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CommonEncryptionCenc] {
+	return pulumix.Output[*CommonEncryptionCenc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CommonEncryptionCencPtrOutput) Elem() CommonEncryptionCencOutput {
@@ -2815,6 +3188,12 @@ func (o CommonEncryptionCencResponseOutput) ToCommonEncryptionCencResponseOutput
 	return o
 }
 
+func (o CommonEncryptionCencResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CommonEncryptionCencResponse] {
+	return pulumix.Output[CommonEncryptionCencResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional configuration supporting ClearKey in CommonEncryptionCenc encryption scheme.
 func (o CommonEncryptionCencResponseOutput) ClearKeyEncryptionConfiguration() ClearKeyEncryptionConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v CommonEncryptionCencResponse) *ClearKeyEncryptionConfigurationResponse {
@@ -2854,6 +3233,12 @@ func (o CommonEncryptionCencResponsePtrOutput) ToCommonEncryptionCencResponsePtr
 
 func (o CommonEncryptionCencResponsePtrOutput) ToCommonEncryptionCencResponsePtrOutputWithContext(ctx context.Context) CommonEncryptionCencResponsePtrOutput {
 	return o
+}
+
+func (o CommonEncryptionCencResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CommonEncryptionCencResponse] {
+	return pulumix.Output[*CommonEncryptionCencResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CommonEncryptionCencResponsePtrOutput) Elem() CommonEncryptionCencResponseOutput {
@@ -3039,6 +3424,12 @@ func (i ContentKeyPolicyOptionArgs) ToContentKeyPolicyOptionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ContentKeyPolicyOptionOutput)
 }
 
+func (i ContentKeyPolicyOptionArgs) ToOutput(ctx context.Context) pulumix.Output[ContentKeyPolicyOption] {
+	return pulumix.Output[ContentKeyPolicyOption]{
+		OutputState: i.ToContentKeyPolicyOptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContentKeyPolicyOptionArrayInput is an input type that accepts ContentKeyPolicyOptionArray and ContentKeyPolicyOptionArrayOutput values.
 // You can construct a concrete instance of `ContentKeyPolicyOptionArrayInput` via:
 //
@@ -3064,6 +3455,12 @@ func (i ContentKeyPolicyOptionArray) ToContentKeyPolicyOptionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ContentKeyPolicyOptionArrayOutput)
 }
 
+func (i ContentKeyPolicyOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]ContentKeyPolicyOption] {
+	return pulumix.Output[[]ContentKeyPolicyOption]{
+		OutputState: i.ToContentKeyPolicyOptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a policy option.
 type ContentKeyPolicyOptionOutput struct{ *pulumi.OutputState }
 
@@ -3077,6 +3474,12 @@ func (o ContentKeyPolicyOptionOutput) ToContentKeyPolicyOptionOutput() ContentKe
 
 func (o ContentKeyPolicyOptionOutput) ToContentKeyPolicyOptionOutputWithContext(ctx context.Context) ContentKeyPolicyOptionOutput {
 	return o
+}
+
+func (o ContentKeyPolicyOptionOutput) ToOutput(ctx context.Context) pulumix.Output[ContentKeyPolicyOption] {
+	return pulumix.Output[ContentKeyPolicyOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The key delivery configuration.
@@ -3106,6 +3509,12 @@ func (o ContentKeyPolicyOptionArrayOutput) ToContentKeyPolicyOptionArrayOutput()
 
 func (o ContentKeyPolicyOptionArrayOutput) ToContentKeyPolicyOptionArrayOutputWithContext(ctx context.Context) ContentKeyPolicyOptionArrayOutput {
 	return o
+}
+
+func (o ContentKeyPolicyOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContentKeyPolicyOption] {
+	return pulumix.Output[[]ContentKeyPolicyOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContentKeyPolicyOptionArrayOutput) Index(i pulumi.IntInput) ContentKeyPolicyOptionOutput {
@@ -3141,6 +3550,12 @@ func (o ContentKeyPolicyOptionResponseOutput) ToContentKeyPolicyOptionResponseOu
 	return o
 }
 
+func (o ContentKeyPolicyOptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContentKeyPolicyOptionResponse] {
+	return pulumix.Output[ContentKeyPolicyOptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The key delivery configuration.
 func (o ContentKeyPolicyOptionResponseOutput) Configuration() pulumi.AnyOutput {
 	return o.ApplyT(func(v ContentKeyPolicyOptionResponse) interface{} { return v.Configuration }).(pulumi.AnyOutput)
@@ -3173,6 +3588,12 @@ func (o ContentKeyPolicyOptionResponseArrayOutput) ToContentKeyPolicyOptionRespo
 
 func (o ContentKeyPolicyOptionResponseArrayOutput) ToContentKeyPolicyOptionResponseArrayOutputWithContext(ctx context.Context) ContentKeyPolicyOptionResponseArrayOutput {
 	return o
+}
+
+func (o ContentKeyPolicyOptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContentKeyPolicyOptionResponse] {
+	return pulumix.Output[[]ContentKeyPolicyOptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContentKeyPolicyOptionResponseArrayOutput) Index(i pulumi.IntInput) ContentKeyPolicyOptionResponseOutput {
@@ -3600,6 +4021,12 @@ func (i CrossSiteAccessPoliciesArgs) ToCrossSiteAccessPoliciesOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(CrossSiteAccessPoliciesOutput)
 }
 
+func (i CrossSiteAccessPoliciesArgs) ToOutput(ctx context.Context) pulumix.Output[CrossSiteAccessPolicies] {
+	return pulumix.Output[CrossSiteAccessPolicies]{
+		OutputState: i.ToCrossSiteAccessPoliciesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CrossSiteAccessPoliciesArgs) ToCrossSiteAccessPoliciesPtrOutput() CrossSiteAccessPoliciesPtrOutput {
 	return i.ToCrossSiteAccessPoliciesPtrOutputWithContext(context.Background())
 }
@@ -3641,6 +4068,12 @@ func (i *crossSiteAccessPoliciesPtrType) ToCrossSiteAccessPoliciesPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(CrossSiteAccessPoliciesPtrOutput)
 }
 
+func (i *crossSiteAccessPoliciesPtrType) ToOutput(ctx context.Context) pulumix.Output[*CrossSiteAccessPolicies] {
+	return pulumix.Output[*CrossSiteAccessPolicies]{
+		OutputState: i.ToCrossSiteAccessPoliciesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The client access policy.
 type CrossSiteAccessPoliciesOutput struct{ *pulumi.OutputState }
 
@@ -3666,6 +4099,12 @@ func (o CrossSiteAccessPoliciesOutput) ToCrossSiteAccessPoliciesPtrOutputWithCon
 	}).(CrossSiteAccessPoliciesPtrOutput)
 }
 
+func (o CrossSiteAccessPoliciesOutput) ToOutput(ctx context.Context) pulumix.Output[CrossSiteAccessPolicies] {
+	return pulumix.Output[CrossSiteAccessPolicies]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The content of clientaccesspolicy.xml used by Silverlight.
 func (o CrossSiteAccessPoliciesOutput) ClientAccessPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CrossSiteAccessPolicies) *string { return v.ClientAccessPolicy }).(pulumi.StringPtrOutput)
@@ -3688,6 +4127,12 @@ func (o CrossSiteAccessPoliciesPtrOutput) ToCrossSiteAccessPoliciesPtrOutput() C
 
 func (o CrossSiteAccessPoliciesPtrOutput) ToCrossSiteAccessPoliciesPtrOutputWithContext(ctx context.Context) CrossSiteAccessPoliciesPtrOutput {
 	return o
+}
+
+func (o CrossSiteAccessPoliciesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CrossSiteAccessPolicies] {
+	return pulumix.Output[*CrossSiteAccessPolicies]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CrossSiteAccessPoliciesPtrOutput) Elem() CrossSiteAccessPoliciesOutput {
@@ -3743,6 +4188,12 @@ func (o CrossSiteAccessPoliciesResponseOutput) ToCrossSiteAccessPoliciesResponse
 	return o
 }
 
+func (o CrossSiteAccessPoliciesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CrossSiteAccessPoliciesResponse] {
+	return pulumix.Output[CrossSiteAccessPoliciesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The content of clientaccesspolicy.xml used by Silverlight.
 func (o CrossSiteAccessPoliciesResponseOutput) ClientAccessPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CrossSiteAccessPoliciesResponse) *string { return v.ClientAccessPolicy }).(pulumi.StringPtrOutput)
@@ -3765,6 +4216,12 @@ func (o CrossSiteAccessPoliciesResponsePtrOutput) ToCrossSiteAccessPoliciesRespo
 
 func (o CrossSiteAccessPoliciesResponsePtrOutput) ToCrossSiteAccessPoliciesResponsePtrOutputWithContext(ctx context.Context) CrossSiteAccessPoliciesResponsePtrOutput {
 	return o
+}
+
+func (o CrossSiteAccessPoliciesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CrossSiteAccessPoliciesResponse] {
+	return pulumix.Output[*CrossSiteAccessPoliciesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CrossSiteAccessPoliciesResponsePtrOutput) Elem() CrossSiteAccessPoliciesResponseOutput {
@@ -3878,6 +4335,12 @@ func (i DefaultKeyArgs) ToDefaultKeyOutputWithContext(ctx context.Context) Defau
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultKeyOutput)
 }
 
+func (i DefaultKeyArgs) ToOutput(ctx context.Context) pulumix.Output[DefaultKey] {
+	return pulumix.Output[DefaultKey]{
+		OutputState: i.ToDefaultKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DefaultKeyArgs) ToDefaultKeyPtrOutput() DefaultKeyPtrOutput {
 	return i.ToDefaultKeyPtrOutputWithContext(context.Background())
 }
@@ -3919,6 +4382,12 @@ func (i *defaultKeyPtrType) ToDefaultKeyPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultKeyPtrOutput)
 }
 
+func (i *defaultKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*DefaultKey] {
+	return pulumix.Output[*DefaultKey]{
+		OutputState: i.ToDefaultKeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class to specify properties of default content key for each encryption scheme
 type DefaultKeyOutput struct{ *pulumi.OutputState }
 
@@ -3944,6 +4413,12 @@ func (o DefaultKeyOutput) ToDefaultKeyPtrOutputWithContext(ctx context.Context) 
 	}).(DefaultKeyPtrOutput)
 }
 
+func (o DefaultKeyOutput) ToOutput(ctx context.Context) pulumix.Output[DefaultKey] {
+	return pulumix.Output[DefaultKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Label can be used to specify Content Key when creating a Streaming Locator
 func (o DefaultKeyOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DefaultKey) *string { return v.Label }).(pulumi.StringPtrOutput)
@@ -3966,6 +4441,12 @@ func (o DefaultKeyPtrOutput) ToDefaultKeyPtrOutput() DefaultKeyPtrOutput {
 
 func (o DefaultKeyPtrOutput) ToDefaultKeyPtrOutputWithContext(ctx context.Context) DefaultKeyPtrOutput {
 	return o
+}
+
+func (o DefaultKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultKey] {
+	return pulumix.Output[*DefaultKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DefaultKeyPtrOutput) Elem() DefaultKeyOutput {
@@ -4021,6 +4502,12 @@ func (o DefaultKeyResponseOutput) ToDefaultKeyResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o DefaultKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DefaultKeyResponse] {
+	return pulumix.Output[DefaultKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Label can be used to specify Content Key when creating a Streaming Locator
 func (o DefaultKeyResponseOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DefaultKeyResponse) *string { return v.Label }).(pulumi.StringPtrOutput)
@@ -4043,6 +4530,12 @@ func (o DefaultKeyResponsePtrOutput) ToDefaultKeyResponsePtrOutput() DefaultKeyR
 
 func (o DefaultKeyResponsePtrOutput) ToDefaultKeyResponsePtrOutputWithContext(ctx context.Context) DefaultKeyResponsePtrOutput {
 	return o
+}
+
+func (o DefaultKeyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultKeyResponse] {
+	return pulumix.Output[*DefaultKeyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DefaultKeyResponsePtrOutput) Elem() DefaultKeyResponseOutput {
@@ -4116,6 +4609,12 @@ func (o EdgeUsageDataCollectionPolicyResponseOutput) ToEdgeUsageDataCollectionPo
 	return o
 }
 
+func (o EdgeUsageDataCollectionPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeUsageDataCollectionPolicyResponse] {
+	return pulumix.Output[EdgeUsageDataCollectionPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Usage data collection frequency in ISO 8601 duration format e.g. PT10M , PT5H.
 func (o EdgeUsageDataCollectionPolicyResponseOutput) DataCollectionFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeUsageDataCollectionPolicyResponse) *string { return v.DataCollectionFrequency }).(pulumi.StringPtrOutput)
@@ -4148,6 +4647,12 @@ func (o EdgeUsageDataCollectionPolicyResponsePtrOutput) ToEdgeUsageDataCollectio
 
 func (o EdgeUsageDataCollectionPolicyResponsePtrOutput) ToEdgeUsageDataCollectionPolicyResponsePtrOutputWithContext(ctx context.Context) EdgeUsageDataCollectionPolicyResponsePtrOutput {
 	return o
+}
+
+func (o EdgeUsageDataCollectionPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeUsageDataCollectionPolicyResponse] {
+	return pulumix.Output[*EdgeUsageDataCollectionPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeUsageDataCollectionPolicyResponsePtrOutput) Elem() EdgeUsageDataCollectionPolicyResponseOutput {
@@ -4223,6 +4728,12 @@ func (o EdgeUsageDataEventHubResponseOutput) ToEdgeUsageDataEventHubResponseOutp
 	return o
 }
 
+func (o EdgeUsageDataEventHubResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeUsageDataEventHubResponse] {
+	return pulumix.Output[EdgeUsageDataEventHubResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the Event Hub where usage will be reported.
 func (o EdgeUsageDataEventHubResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeUsageDataEventHubResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -4250,6 +4761,12 @@ func (o EdgeUsageDataEventHubResponsePtrOutput) ToEdgeUsageDataEventHubResponseP
 
 func (o EdgeUsageDataEventHubResponsePtrOutput) ToEdgeUsageDataEventHubResponsePtrOutputWithContext(ctx context.Context) EdgeUsageDataEventHubResponsePtrOutput {
 	return o
+}
+
+func (o EdgeUsageDataEventHubResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeUsageDataEventHubResponse] {
+	return pulumix.Output[*EdgeUsageDataEventHubResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeUsageDataEventHubResponsePtrOutput) Elem() EdgeUsageDataEventHubResponseOutput {
@@ -4339,6 +4856,12 @@ func (i EnabledProtocolsArgs) ToEnabledProtocolsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EnabledProtocolsOutput)
 }
 
+func (i EnabledProtocolsArgs) ToOutput(ctx context.Context) pulumix.Output[EnabledProtocols] {
+	return pulumix.Output[EnabledProtocols]{
+		OutputState: i.ToEnabledProtocolsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnabledProtocolsArgs) ToEnabledProtocolsPtrOutput() EnabledProtocolsPtrOutput {
 	return i.ToEnabledProtocolsPtrOutputWithContext(context.Background())
 }
@@ -4380,6 +4903,12 @@ func (i *enabledProtocolsPtrType) ToEnabledProtocolsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EnabledProtocolsPtrOutput)
 }
 
+func (i *enabledProtocolsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnabledProtocols] {
+	return pulumix.Output[*EnabledProtocols]{
+		OutputState: i.ToEnabledProtocolsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class to specify which protocols are enabled
 type EnabledProtocolsOutput struct{ *pulumi.OutputState }
 
@@ -4403,6 +4932,12 @@ func (o EnabledProtocolsOutput) ToEnabledProtocolsPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnabledProtocols) *EnabledProtocols {
 		return &v
 	}).(EnabledProtocolsPtrOutput)
+}
+
+func (o EnabledProtocolsOutput) ToOutput(ctx context.Context) pulumix.Output[EnabledProtocols] {
+	return pulumix.Output[EnabledProtocols]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Enable DASH protocol or not
@@ -4437,6 +4972,12 @@ func (o EnabledProtocolsPtrOutput) ToEnabledProtocolsPtrOutput() EnabledProtocol
 
 func (o EnabledProtocolsPtrOutput) ToEnabledProtocolsPtrOutputWithContext(ctx context.Context) EnabledProtocolsPtrOutput {
 	return o
+}
+
+func (o EnabledProtocolsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnabledProtocols] {
+	return pulumix.Output[*EnabledProtocols]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnabledProtocolsPtrOutput) Elem() EnabledProtocolsOutput {
@@ -4516,6 +5057,12 @@ func (o EnabledProtocolsResponseOutput) ToEnabledProtocolsResponseOutputWithCont
 	return o
 }
 
+func (o EnabledProtocolsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnabledProtocolsResponse] {
+	return pulumix.Output[EnabledProtocolsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Enable DASH protocol or not
 func (o EnabledProtocolsResponseOutput) Dash() pulumi.BoolOutput {
 	return o.ApplyT(func(v EnabledProtocolsResponse) bool { return v.Dash }).(pulumi.BoolOutput)
@@ -4548,6 +5095,12 @@ func (o EnabledProtocolsResponsePtrOutput) ToEnabledProtocolsResponsePtrOutput()
 
 func (o EnabledProtocolsResponsePtrOutput) ToEnabledProtocolsResponsePtrOutputWithContext(ctx context.Context) EnabledProtocolsResponsePtrOutput {
 	return o
+}
+
+func (o EnabledProtocolsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnabledProtocolsResponse] {
+	return pulumix.Output[*EnabledProtocolsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnabledProtocolsResponsePtrOutput) Elem() EnabledProtocolsResponseOutput {
@@ -4647,6 +5200,12 @@ func (i EnvelopeEncryptionArgs) ToEnvelopeEncryptionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeEncryptionOutput)
 }
 
+func (i EnvelopeEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[EnvelopeEncryption] {
+	return pulumix.Output[EnvelopeEncryption]{
+		OutputState: i.ToEnvelopeEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnvelopeEncryptionArgs) ToEnvelopeEncryptionPtrOutput() EnvelopeEncryptionPtrOutput {
 	return i.ToEnvelopeEncryptionPtrOutputWithContext(context.Background())
 }
@@ -4688,6 +5247,12 @@ func (i *envelopeEncryptionPtrType) ToEnvelopeEncryptionPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeEncryptionPtrOutput)
 }
 
+func (i *envelopeEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvelopeEncryption] {
+	return pulumix.Output[*EnvelopeEncryption]{
+		OutputState: i.ToEnvelopeEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class for EnvelopeEncryption encryption scheme
 type EnvelopeEncryptionOutput struct{ *pulumi.OutputState }
 
@@ -4711,6 +5276,12 @@ func (o EnvelopeEncryptionOutput) ToEnvelopeEncryptionPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvelopeEncryption) *EnvelopeEncryption {
 		return &v
 	}).(EnvelopeEncryptionPtrOutput)
+}
+
+func (o EnvelopeEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[EnvelopeEncryption] {
+	return pulumix.Output[EnvelopeEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Representing which tracks should not be encrypted
@@ -4745,6 +5316,12 @@ func (o EnvelopeEncryptionPtrOutput) ToEnvelopeEncryptionPtrOutput() EnvelopeEnc
 
 func (o EnvelopeEncryptionPtrOutput) ToEnvelopeEncryptionPtrOutputWithContext(ctx context.Context) EnvelopeEncryptionPtrOutput {
 	return o
+}
+
+func (o EnvelopeEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvelopeEncryption] {
+	return pulumix.Output[*EnvelopeEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvelopeEncryptionPtrOutput) Elem() EnvelopeEncryptionOutput {
@@ -4824,6 +5401,12 @@ func (o EnvelopeEncryptionResponseOutput) ToEnvelopeEncryptionResponseOutputWith
 	return o
 }
 
+func (o EnvelopeEncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvelopeEncryptionResponse] {
+	return pulumix.Output[EnvelopeEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Representing which tracks should not be encrypted
 func (o EnvelopeEncryptionResponseOutput) ClearTracks() TrackSelectionResponseArrayOutput {
 	return o.ApplyT(func(v EnvelopeEncryptionResponse) []TrackSelectionResponse { return v.ClearTracks }).(TrackSelectionResponseArrayOutput)
@@ -4856,6 +5439,12 @@ func (o EnvelopeEncryptionResponsePtrOutput) ToEnvelopeEncryptionResponsePtrOutp
 
 func (o EnvelopeEncryptionResponsePtrOutput) ToEnvelopeEncryptionResponsePtrOutputWithContext(ctx context.Context) EnvelopeEncryptionResponsePtrOutput {
 	return o
+}
+
+func (o EnvelopeEncryptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvelopeEncryptionResponse] {
+	return pulumix.Output[*EnvelopeEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvelopeEncryptionResponsePtrOutput) Elem() EnvelopeEncryptionResponseOutput {
@@ -5001,6 +5590,12 @@ func (i FilterTrackPropertyConditionArgs) ToFilterTrackPropertyConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(FilterTrackPropertyConditionOutput)
 }
 
+func (i FilterTrackPropertyConditionArgs) ToOutput(ctx context.Context) pulumix.Output[FilterTrackPropertyCondition] {
+	return pulumix.Output[FilterTrackPropertyCondition]{
+		OutputState: i.ToFilterTrackPropertyConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FilterTrackPropertyConditionArrayInput is an input type that accepts FilterTrackPropertyConditionArray and FilterTrackPropertyConditionArrayOutput values.
 // You can construct a concrete instance of `FilterTrackPropertyConditionArrayInput` via:
 //
@@ -5026,6 +5621,12 @@ func (i FilterTrackPropertyConditionArray) ToFilterTrackPropertyConditionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(FilterTrackPropertyConditionArrayOutput)
 }
 
+func (i FilterTrackPropertyConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]FilterTrackPropertyCondition] {
+	return pulumix.Output[[]FilterTrackPropertyCondition]{
+		OutputState: i.ToFilterTrackPropertyConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The class to specify one track property condition.
 type FilterTrackPropertyConditionOutput struct{ *pulumi.OutputState }
 
@@ -5039,6 +5640,12 @@ func (o FilterTrackPropertyConditionOutput) ToFilterTrackPropertyConditionOutput
 
 func (o FilterTrackPropertyConditionOutput) ToFilterTrackPropertyConditionOutputWithContext(ctx context.Context) FilterTrackPropertyConditionOutput {
 	return o
+}
+
+func (o FilterTrackPropertyConditionOutput) ToOutput(ctx context.Context) pulumix.Output[FilterTrackPropertyCondition] {
+	return pulumix.Output[FilterTrackPropertyCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The track property condition operation.
@@ -5068,6 +5675,12 @@ func (o FilterTrackPropertyConditionArrayOutput) ToFilterTrackPropertyConditionA
 
 func (o FilterTrackPropertyConditionArrayOutput) ToFilterTrackPropertyConditionArrayOutputWithContext(ctx context.Context) FilterTrackPropertyConditionArrayOutput {
 	return o
+}
+
+func (o FilterTrackPropertyConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilterTrackPropertyCondition] {
+	return pulumix.Output[[]FilterTrackPropertyCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FilterTrackPropertyConditionArrayOutput) Index(i pulumi.IntInput) FilterTrackPropertyConditionOutput {
@@ -5101,6 +5714,12 @@ func (o FilterTrackPropertyConditionResponseOutput) ToFilterTrackPropertyConditi
 	return o
 }
 
+func (o FilterTrackPropertyConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FilterTrackPropertyConditionResponse] {
+	return pulumix.Output[FilterTrackPropertyConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The track property condition operation.
 func (o FilterTrackPropertyConditionResponseOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v FilterTrackPropertyConditionResponse) string { return v.Operation }).(pulumi.StringOutput)
@@ -5128,6 +5747,12 @@ func (o FilterTrackPropertyConditionResponseArrayOutput) ToFilterTrackPropertyCo
 
 func (o FilterTrackPropertyConditionResponseArrayOutput) ToFilterTrackPropertyConditionResponseArrayOutputWithContext(ctx context.Context) FilterTrackPropertyConditionResponseArrayOutput {
 	return o
+}
+
+func (o FilterTrackPropertyConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilterTrackPropertyConditionResponse] {
+	return pulumix.Output[[]FilterTrackPropertyConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FilterTrackPropertyConditionResponseArrayOutput) Index(i pulumi.IntInput) FilterTrackPropertyConditionResponseOutput {
@@ -5171,6 +5796,12 @@ func (i FilterTrackSelectionArgs) ToFilterTrackSelectionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FilterTrackSelectionOutput)
 }
 
+func (i FilterTrackSelectionArgs) ToOutput(ctx context.Context) pulumix.Output[FilterTrackSelection] {
+	return pulumix.Output[FilterTrackSelection]{
+		OutputState: i.ToFilterTrackSelectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FilterTrackSelectionArrayInput is an input type that accepts FilterTrackSelectionArray and FilterTrackSelectionArrayOutput values.
 // You can construct a concrete instance of `FilterTrackSelectionArrayInput` via:
 //
@@ -5196,6 +5827,12 @@ func (i FilterTrackSelectionArray) ToFilterTrackSelectionArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(FilterTrackSelectionArrayOutput)
 }
 
+func (i FilterTrackSelectionArray) ToOutput(ctx context.Context) pulumix.Output[[]FilterTrackSelection] {
+	return pulumix.Output[[]FilterTrackSelection]{
+		OutputState: i.ToFilterTrackSelectionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Representing a list of FilterTrackPropertyConditions to select a track.  The filters are combined using a logical AND operation.
 type FilterTrackSelectionOutput struct{ *pulumi.OutputState }
 
@@ -5209,6 +5846,12 @@ func (o FilterTrackSelectionOutput) ToFilterTrackSelectionOutput() FilterTrackSe
 
 func (o FilterTrackSelectionOutput) ToFilterTrackSelectionOutputWithContext(ctx context.Context) FilterTrackSelectionOutput {
 	return o
+}
+
+func (o FilterTrackSelectionOutput) ToOutput(ctx context.Context) pulumix.Output[FilterTrackSelection] {
+	return pulumix.Output[FilterTrackSelection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The track selections.
@@ -5228,6 +5871,12 @@ func (o FilterTrackSelectionArrayOutput) ToFilterTrackSelectionArrayOutput() Fil
 
 func (o FilterTrackSelectionArrayOutput) ToFilterTrackSelectionArrayOutputWithContext(ctx context.Context) FilterTrackSelectionArrayOutput {
 	return o
+}
+
+func (o FilterTrackSelectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilterTrackSelection] {
+	return pulumix.Output[[]FilterTrackSelection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FilterTrackSelectionArrayOutput) Index(i pulumi.IntInput) FilterTrackSelectionOutput {
@@ -5257,6 +5906,12 @@ func (o FilterTrackSelectionResponseOutput) ToFilterTrackSelectionResponseOutput
 	return o
 }
 
+func (o FilterTrackSelectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FilterTrackSelectionResponse] {
+	return pulumix.Output[FilterTrackSelectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The track selections.
 func (o FilterTrackSelectionResponseOutput) TrackSelections() FilterTrackPropertyConditionResponseArrayOutput {
 	return o.ApplyT(func(v FilterTrackSelectionResponse) []FilterTrackPropertyConditionResponse { return v.TrackSelections }).(FilterTrackPropertyConditionResponseArrayOutput)
@@ -5274,6 +5929,12 @@ func (o FilterTrackSelectionResponseArrayOutput) ToFilterTrackSelectionResponseA
 
 func (o FilterTrackSelectionResponseArrayOutput) ToFilterTrackSelectionResponseArrayOutputWithContext(ctx context.Context) FilterTrackSelectionResponseArrayOutput {
 	return o
+}
+
+func (o FilterTrackSelectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilterTrackSelectionResponse] {
+	return pulumix.Output[[]FilterTrackSelectionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FilterTrackSelectionResponseArrayOutput) Index(i pulumi.IntInput) FilterTrackSelectionResponseOutput {
@@ -5349,6 +6010,12 @@ func (i FirstQualityArgs) ToFirstQualityOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, i).(FirstQualityOutput)
 }
 
+func (i FirstQualityArgs) ToOutput(ctx context.Context) pulumix.Output[FirstQuality] {
+	return pulumix.Output[FirstQuality]{
+		OutputState: i.ToFirstQualityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FirstQualityArgs) ToFirstQualityPtrOutput() FirstQualityPtrOutput {
 	return i.ToFirstQualityPtrOutputWithContext(context.Background())
 }
@@ -5390,6 +6057,12 @@ func (i *firstQualityPtrType) ToFirstQualityPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(FirstQualityPtrOutput)
 }
 
+func (i *firstQualityPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirstQuality] {
+	return pulumix.Output[*FirstQuality]{
+		OutputState: i.ToFirstQualityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Filter First Quality
 type FirstQualityOutput struct{ *pulumi.OutputState }
 
@@ -5415,6 +6088,12 @@ func (o FirstQualityOutput) ToFirstQualityPtrOutputWithContext(ctx context.Conte
 	}).(FirstQualityPtrOutput)
 }
 
+func (o FirstQualityOutput) ToOutput(ctx context.Context) pulumix.Output[FirstQuality] {
+	return pulumix.Output[FirstQuality]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The first quality bitrate.
 func (o FirstQualityOutput) Bitrate() pulumi.IntOutput {
 	return o.ApplyT(func(v FirstQuality) int { return v.Bitrate }).(pulumi.IntOutput)
@@ -5432,6 +6111,12 @@ func (o FirstQualityPtrOutput) ToFirstQualityPtrOutput() FirstQualityPtrOutput {
 
 func (o FirstQualityPtrOutput) ToFirstQualityPtrOutputWithContext(ctx context.Context) FirstQualityPtrOutput {
 	return o
+}
+
+func (o FirstQualityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirstQuality] {
+	return pulumix.Output[*FirstQuality]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirstQualityPtrOutput) Elem() FirstQualityOutput {
@@ -5475,6 +6160,12 @@ func (o FirstQualityResponseOutput) ToFirstQualityResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o FirstQualityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirstQualityResponse] {
+	return pulumix.Output[FirstQualityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The first quality bitrate.
 func (o FirstQualityResponseOutput) Bitrate() pulumi.IntOutput {
 	return o.ApplyT(func(v FirstQualityResponse) int { return v.Bitrate }).(pulumi.IntOutput)
@@ -5492,6 +6183,12 @@ func (o FirstQualityResponsePtrOutput) ToFirstQualityResponsePtrOutput() FirstQu
 
 func (o FirstQualityResponsePtrOutput) ToFirstQualityResponsePtrOutputWithContext(ctx context.Context) FirstQualityResponsePtrOutput {
 	return o
+}
+
+func (o FirstQualityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirstQualityResponse] {
+	return pulumix.Output[*FirstQualityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirstQualityResponsePtrOutput) Elem() FirstQualityResponseOutput {
@@ -5805,6 +6502,12 @@ func (i HlsArgs) ToHlsOutputWithContext(ctx context.Context) HlsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HlsOutput)
 }
 
+func (i HlsArgs) ToOutput(ctx context.Context) pulumix.Output[Hls] {
+	return pulumix.Output[Hls]{
+		OutputState: i.ToHlsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HlsArgs) ToHlsPtrOutput() HlsPtrOutput {
 	return i.ToHlsPtrOutputWithContext(context.Background())
 }
@@ -5846,6 +6549,12 @@ func (i *hlsPtrType) ToHlsPtrOutputWithContext(ctx context.Context) HlsPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(HlsPtrOutput)
 }
 
+func (i *hlsPtrType) ToOutput(ctx context.Context) pulumix.Output[*Hls] {
+	return pulumix.Output[*Hls]{
+		OutputState: i.ToHlsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HTTP Live Streaming (HLS) packing setting for the live output.
 type HlsOutput struct{ *pulumi.OutputState }
 
@@ -5871,6 +6580,12 @@ func (o HlsOutput) ToHlsPtrOutputWithContext(ctx context.Context) HlsPtrOutput {
 	}).(HlsPtrOutput)
 }
 
+func (o HlsOutput) ToOutput(ctx context.Context) pulumix.Output[Hls] {
+	return pulumix.Output[Hls]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of fragments in an HTTP Live Streaming (HLS) TS segment in the output of the live event. This value does not affect the packing ratio for HLS CMAF output.
 func (o HlsOutput) FragmentsPerTsSegment() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Hls) *int { return v.FragmentsPerTsSegment }).(pulumi.IntPtrOutput)
@@ -5888,6 +6603,12 @@ func (o HlsPtrOutput) ToHlsPtrOutput() HlsPtrOutput {
 
 func (o HlsPtrOutput) ToHlsPtrOutputWithContext(ctx context.Context) HlsPtrOutput {
 	return o
+}
+
+func (o HlsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Hls] {
+	return pulumix.Output[*Hls]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HlsPtrOutput) Elem() HlsOutput {
@@ -5931,6 +6652,12 @@ func (o HlsResponseOutput) ToHlsResponseOutputWithContext(ctx context.Context) H
 	return o
 }
 
+func (o HlsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HlsResponse] {
+	return pulumix.Output[HlsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of fragments in an HTTP Live Streaming (HLS) TS segment in the output of the live event. This value does not affect the packing ratio for HLS CMAF output.
 func (o HlsResponseOutput) FragmentsPerTsSegment() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HlsResponse) *int { return v.FragmentsPerTsSegment }).(pulumi.IntPtrOutput)
@@ -5948,6 +6675,12 @@ func (o HlsResponsePtrOutput) ToHlsResponsePtrOutput() HlsResponsePtrOutput {
 
 func (o HlsResponsePtrOutput) ToHlsResponsePtrOutputWithContext(ctx context.Context) HlsResponsePtrOutput {
 	return o
+}
+
+func (o HlsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HlsResponse] {
+	return pulumix.Output[*HlsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HlsResponsePtrOutput) Elem() HlsResponseOutput {
@@ -6025,6 +6758,12 @@ func (i IPAccessControlArgs) ToIPAccessControlOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(IPAccessControlOutput)
 }
 
+func (i IPAccessControlArgs) ToOutput(ctx context.Context) pulumix.Output[IPAccessControl] {
+	return pulumix.Output[IPAccessControl]{
+		OutputState: i.ToIPAccessControlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IPAccessControlArgs) ToIPAccessControlPtrOutput() IPAccessControlPtrOutput {
 	return i.ToIPAccessControlPtrOutputWithContext(context.Background())
 }
@@ -6066,6 +6805,12 @@ func (i *ipaccessControlPtrType) ToIPAccessControlPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(IPAccessControlPtrOutput)
 }
 
+func (i *ipaccessControlPtrType) ToOutput(ctx context.Context) pulumix.Output[*IPAccessControl] {
+	return pulumix.Output[*IPAccessControl]{
+		OutputState: i.ToIPAccessControlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The IP access control.
 type IPAccessControlOutput struct{ *pulumi.OutputState }
 
@@ -6091,6 +6836,12 @@ func (o IPAccessControlOutput) ToIPAccessControlPtrOutputWithContext(ctx context
 	}).(IPAccessControlPtrOutput)
 }
 
+func (o IPAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[IPAccessControl] {
+	return pulumix.Output[IPAccessControl]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP allow list.
 func (o IPAccessControlOutput) Allow() IPRangeArrayOutput {
 	return o.ApplyT(func(v IPAccessControl) []IPRange { return v.Allow }).(IPRangeArrayOutput)
@@ -6108,6 +6859,12 @@ func (o IPAccessControlPtrOutput) ToIPAccessControlPtrOutput() IPAccessControlPt
 
 func (o IPAccessControlPtrOutput) ToIPAccessControlPtrOutputWithContext(ctx context.Context) IPAccessControlPtrOutput {
 	return o
+}
+
+func (o IPAccessControlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPAccessControl] {
+	return pulumix.Output[*IPAccessControl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPAccessControlPtrOutput) Elem() IPAccessControlOutput {
@@ -6151,6 +6908,12 @@ func (o IPAccessControlResponseOutput) ToIPAccessControlResponseOutputWithContex
 	return o
 }
 
+func (o IPAccessControlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IPAccessControlResponse] {
+	return pulumix.Output[IPAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP allow list.
 func (o IPAccessControlResponseOutput) Allow() IPRangeResponseArrayOutput {
 	return o.ApplyT(func(v IPAccessControlResponse) []IPRangeResponse { return v.Allow }).(IPRangeResponseArrayOutput)
@@ -6168,6 +6931,12 @@ func (o IPAccessControlResponsePtrOutput) ToIPAccessControlResponsePtrOutput() I
 
 func (o IPAccessControlResponsePtrOutput) ToIPAccessControlResponsePtrOutputWithContext(ctx context.Context) IPAccessControlResponsePtrOutput {
 	return o
+}
+
+func (o IPAccessControlResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPAccessControlResponse] {
+	return pulumix.Output[*IPAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPAccessControlResponsePtrOutput) Elem() IPAccessControlResponseOutput {
@@ -6233,6 +7002,12 @@ func (i IPRangeArgs) ToIPRangeOutputWithContext(ctx context.Context) IPRangeOutp
 	return pulumi.ToOutputWithContext(ctx, i).(IPRangeOutput)
 }
 
+func (i IPRangeArgs) ToOutput(ctx context.Context) pulumix.Output[IPRange] {
+	return pulumix.Output[IPRange]{
+		OutputState: i.ToIPRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IPRangeArrayInput is an input type that accepts IPRangeArray and IPRangeArrayOutput values.
 // You can construct a concrete instance of `IPRangeArrayInput` via:
 //
@@ -6258,6 +7033,12 @@ func (i IPRangeArray) ToIPRangeArrayOutputWithContext(ctx context.Context) IPRan
 	return pulumi.ToOutputWithContext(ctx, i).(IPRangeArrayOutput)
 }
 
+func (i IPRangeArray) ToOutput(ctx context.Context) pulumix.Output[[]IPRange] {
+	return pulumix.Output[[]IPRange]{
+		OutputState: i.ToIPRangeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The IP address range in the CIDR scheme.
 type IPRangeOutput struct{ *pulumi.OutputState }
 
@@ -6271,6 +7052,12 @@ func (o IPRangeOutput) ToIPRangeOutput() IPRangeOutput {
 
 func (o IPRangeOutput) ToIPRangeOutputWithContext(ctx context.Context) IPRangeOutput {
 	return o
+}
+
+func (o IPRangeOutput) ToOutput(ctx context.Context) pulumix.Output[IPRange] {
+	return pulumix.Output[IPRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address.
@@ -6300,6 +7087,12 @@ func (o IPRangeArrayOutput) ToIPRangeArrayOutput() IPRangeArrayOutput {
 
 func (o IPRangeArrayOutput) ToIPRangeArrayOutputWithContext(ctx context.Context) IPRangeArrayOutput {
 	return o
+}
+
+func (o IPRangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPRange] {
+	return pulumix.Output[[]IPRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPRangeArrayOutput) Index(i pulumi.IntInput) IPRangeOutput {
@@ -6333,6 +7126,12 @@ func (o IPRangeResponseOutput) ToIPRangeResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o IPRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IPRangeResponse] {
+	return pulumix.Output[IPRangeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP address.
 func (o IPRangeResponseOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPRangeResponse) *string { return v.Address }).(pulumi.StringPtrOutput)
@@ -6360,6 +7159,12 @@ func (o IPRangeResponseArrayOutput) ToIPRangeResponseArrayOutput() IPRangeRespon
 
 func (o IPRangeResponseArrayOutput) ToIPRangeResponseArrayOutputWithContext(ctx context.Context) IPRangeResponseArrayOutput {
 	return o
+}
+
+func (o IPRangeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPRangeResponse] {
+	return pulumix.Output[[]IPRangeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPRangeResponseArrayOutput) Index(i pulumi.IntInput) IPRangeResponseOutput {
@@ -6473,6 +7278,12 @@ func (o JobErrorDetailResponseOutput) ToJobErrorDetailResponseOutputWithContext(
 	return o
 }
 
+func (o JobErrorDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobErrorDetailResponse] {
+	return pulumix.Output[JobErrorDetailResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Code describing the error detail.
 func (o JobErrorDetailResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v JobErrorDetailResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -6495,6 +7306,12 @@ func (o JobErrorDetailResponseArrayOutput) ToJobErrorDetailResponseArrayOutput()
 
 func (o JobErrorDetailResponseArrayOutput) ToJobErrorDetailResponseArrayOutputWithContext(ctx context.Context) JobErrorDetailResponseArrayOutput {
 	return o
+}
+
+func (o JobErrorDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobErrorDetailResponse] {
+	return pulumix.Output[[]JobErrorDetailResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) JobErrorDetailResponseOutput {
@@ -6530,6 +7347,12 @@ func (o JobErrorResponseOutput) ToJobErrorResponseOutput() JobErrorResponseOutpu
 
 func (o JobErrorResponseOutput) ToJobErrorResponseOutputWithContext(ctx context.Context) JobErrorResponseOutput {
 	return o
+}
+
+func (o JobErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobErrorResponse] {
+	return pulumix.Output[JobErrorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Helps with categorization of errors.
@@ -6752,6 +7575,12 @@ func (i JobOutputAssetArgs) ToJobOutputAssetOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(JobOutputAssetOutput)
 }
 
+func (i JobOutputAssetArgs) ToOutput(ctx context.Context) pulumix.Output[JobOutputAsset] {
+	return pulumix.Output[JobOutputAsset]{
+		OutputState: i.ToJobOutputAssetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobOutputAssetArrayInput is an input type that accepts JobOutputAssetArray and JobOutputAssetArrayOutput values.
 // You can construct a concrete instance of `JobOutputAssetArrayInput` via:
 //
@@ -6777,6 +7606,12 @@ func (i JobOutputAssetArray) ToJobOutputAssetArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(JobOutputAssetArrayOutput)
 }
 
+func (i JobOutputAssetArray) ToOutput(ctx context.Context) pulumix.Output[[]JobOutputAsset] {
+	return pulumix.Output[[]JobOutputAsset]{
+		OutputState: i.ToJobOutputAssetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents an Asset used as a JobOutput.
 type JobOutputAssetOutput struct{ *pulumi.OutputState }
 
@@ -6790,6 +7625,12 @@ func (o JobOutputAssetOutput) ToJobOutputAssetOutput() JobOutputAssetOutput {
 
 func (o JobOutputAssetOutput) ToJobOutputAssetOutputWithContext(ctx context.Context) JobOutputAssetOutput {
 	return o
+}
+
+func (o JobOutputAssetOutput) ToOutput(ctx context.Context) pulumix.Output[JobOutputAsset] {
+	return pulumix.Output[JobOutputAsset]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the output Asset.
@@ -6825,6 +7666,12 @@ func (o JobOutputAssetArrayOutput) ToJobOutputAssetArrayOutput() JobOutputAssetA
 
 func (o JobOutputAssetArrayOutput) ToJobOutputAssetArrayOutputWithContext(ctx context.Context) JobOutputAssetArrayOutput {
 	return o
+}
+
+func (o JobOutputAssetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobOutputAsset] {
+	return pulumix.Output[[]JobOutputAsset]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobOutputAssetArrayOutput) Index(i pulumi.IntInput) JobOutputAssetOutput {
@@ -6869,6 +7716,12 @@ func (o JobOutputAssetResponseOutput) ToJobOutputAssetResponseOutput() JobOutput
 
 func (o JobOutputAssetResponseOutput) ToJobOutputAssetResponseOutputWithContext(ctx context.Context) JobOutputAssetResponseOutput {
 	return o
+}
+
+func (o JobOutputAssetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobOutputAssetResponse] {
+	return pulumix.Output[JobOutputAssetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the output Asset.
@@ -6929,6 +7782,12 @@ func (o JobOutputAssetResponseArrayOutput) ToJobOutputAssetResponseArrayOutput()
 
 func (o JobOutputAssetResponseArrayOutput) ToJobOutputAssetResponseArrayOutputWithContext(ctx context.Context) JobOutputAssetResponseArrayOutput {
 	return o
+}
+
+func (o JobOutputAssetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobOutputAssetResponse] {
+	return pulumix.Output[[]JobOutputAssetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobOutputAssetResponseArrayOutput) Index(i pulumi.IntInput) JobOutputAssetResponseOutput {
@@ -7062,6 +7921,12 @@ func (i KeyDeliveryArgs) ToKeyDeliveryOutputWithContext(ctx context.Context) Key
 	return pulumi.ToOutputWithContext(ctx, i).(KeyDeliveryOutput)
 }
 
+func (i KeyDeliveryArgs) ToOutput(ctx context.Context) pulumix.Output[KeyDelivery] {
+	return pulumix.Output[KeyDelivery]{
+		OutputState: i.ToKeyDeliveryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeyDeliveryArgs) ToKeyDeliveryPtrOutput() KeyDeliveryPtrOutput {
 	return i.ToKeyDeliveryPtrOutputWithContext(context.Background())
 }
@@ -7103,6 +7968,12 @@ func (i *keyDeliveryPtrType) ToKeyDeliveryPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(KeyDeliveryPtrOutput)
 }
 
+func (i *keyDeliveryPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyDelivery] {
+	return pulumix.Output[*KeyDelivery]{
+		OutputState: i.ToKeyDeliveryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeyDeliveryOutput struct{ *pulumi.OutputState }
 
 func (KeyDeliveryOutput) ElementType() reflect.Type {
@@ -7127,6 +7998,12 @@ func (o KeyDeliveryOutput) ToKeyDeliveryPtrOutputWithContext(ctx context.Context
 	}).(KeyDeliveryPtrOutput)
 }
 
+func (o KeyDeliveryOutput) ToOutput(ctx context.Context) pulumix.Output[KeyDelivery] {
+	return pulumix.Output[KeyDelivery]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The access control properties for Key Delivery.
 func (o KeyDeliveryOutput) AccessControl() AccessControlPtrOutput {
 	return o.ApplyT(func(v KeyDelivery) *AccessControl { return v.AccessControl }).(AccessControlPtrOutput)
@@ -7144,6 +8021,12 @@ func (o KeyDeliveryPtrOutput) ToKeyDeliveryPtrOutput() KeyDeliveryPtrOutput {
 
 func (o KeyDeliveryPtrOutput) ToKeyDeliveryPtrOutputWithContext(ctx context.Context) KeyDeliveryPtrOutput {
 	return o
+}
+
+func (o KeyDeliveryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyDelivery] {
+	return pulumix.Output[*KeyDelivery]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyDeliveryPtrOutput) Elem() KeyDeliveryOutput {
@@ -7185,6 +8068,12 @@ func (o KeyDeliveryResponseOutput) ToKeyDeliveryResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o KeyDeliveryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyDeliveryResponse] {
+	return pulumix.Output[KeyDeliveryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The access control properties for Key Delivery.
 func (o KeyDeliveryResponseOutput) AccessControl() AccessControlResponsePtrOutput {
 	return o.ApplyT(func(v KeyDeliveryResponse) *AccessControlResponse { return v.AccessControl }).(AccessControlResponsePtrOutput)
@@ -7202,6 +8091,12 @@ func (o KeyDeliveryResponsePtrOutput) ToKeyDeliveryResponsePtrOutput() KeyDelive
 
 func (o KeyDeliveryResponsePtrOutput) ToKeyDeliveryResponsePtrOutputWithContext(ctx context.Context) KeyDeliveryResponsePtrOutput {
 	return o
+}
+
+func (o KeyDeliveryResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyDeliveryResponse] {
+	return pulumix.Output[*KeyDeliveryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyDeliveryResponsePtrOutput) Elem() KeyDeliveryResponseOutput {
@@ -7257,6 +8152,12 @@ func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesOutput)
 }
 
+func (i KeyVaultPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultProperties] {
+	return pulumix.Output[KeyVaultProperties]{
+		OutputState: i.ToKeyVaultPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesPtrOutput() KeyVaultPropertiesPtrOutput {
 	return i.ToKeyVaultPropertiesPtrOutputWithContext(context.Background())
 }
@@ -7298,6 +8199,12 @@ func (i *keyVaultPropertiesPtrType) ToKeyVaultPropertiesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesPtrOutput)
 }
 
+func (i *keyVaultPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultProperties] {
+	return pulumix.Output[*KeyVaultProperties]{
+		OutputState: i.ToKeyVaultPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeyVaultPropertiesOutput struct{ *pulumi.OutputState }
 
 func (KeyVaultPropertiesOutput) ElementType() reflect.Type {
@@ -7322,6 +8229,12 @@ func (o KeyVaultPropertiesOutput) ToKeyVaultPropertiesPtrOutputWithContext(ctx c
 	}).(KeyVaultPropertiesPtrOutput)
 }
 
+func (o KeyVaultPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultProperties] {
+	return pulumix.Output[KeyVaultProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The URL of the Key Vault key used to encrypt the account. The key may either be versioned (for example https://vault/keys/mykey/version1) or reference a key without a version (for example https://vault/keys/mykey).
 func (o KeyVaultPropertiesOutput) KeyIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultProperties) *string { return v.KeyIdentifier }).(pulumi.StringPtrOutput)
@@ -7339,6 +8252,12 @@ func (o KeyVaultPropertiesPtrOutput) ToKeyVaultPropertiesPtrOutput() KeyVaultPro
 
 func (o KeyVaultPropertiesPtrOutput) ToKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) KeyVaultPropertiesPtrOutput {
 	return o
+}
+
+func (o KeyVaultPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultProperties] {
+	return pulumix.Output[*KeyVaultProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyVaultPropertiesPtrOutput) Elem() KeyVaultPropertiesOutput {
@@ -7382,6 +8301,12 @@ func (o KeyVaultPropertiesResponseOutput) ToKeyVaultPropertiesResponseOutputWith
 	return o
 }
 
+func (o KeyVaultPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultPropertiesResponse] {
+	return pulumix.Output[KeyVaultPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The current key used to encrypt the Media Services account, including the key version.
 func (o KeyVaultPropertiesResponseOutput) CurrentKeyIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultPropertiesResponse) string { return v.CurrentKeyIdentifier }).(pulumi.StringOutput)
@@ -7404,6 +8329,12 @@ func (o KeyVaultPropertiesResponsePtrOutput) ToKeyVaultPropertiesResponsePtrOutp
 
 func (o KeyVaultPropertiesResponsePtrOutput) ToKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) KeyVaultPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o KeyVaultPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultPropertiesResponse] {
+	return pulumix.Output[*KeyVaultPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyVaultPropertiesResponsePtrOutput) Elem() KeyVaultPropertiesResponseOutput {
@@ -7483,6 +8414,12 @@ func (i LiveEventEncodingArgs) ToLiveEventEncodingOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventEncodingOutput)
 }
 
+func (i LiveEventEncodingArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventEncoding] {
+	return pulumix.Output[LiveEventEncoding]{
+		OutputState: i.ToLiveEventEncodingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LiveEventEncodingArgs) ToLiveEventEncodingPtrOutput() LiveEventEncodingPtrOutput {
 	return i.ToLiveEventEncodingPtrOutputWithContext(context.Background())
 }
@@ -7524,6 +8461,12 @@ func (i *liveEventEncodingPtrType) ToLiveEventEncodingPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventEncodingPtrOutput)
 }
 
+func (i *liveEventEncodingPtrType) ToOutput(ctx context.Context) pulumix.Output[*LiveEventEncoding] {
+	return pulumix.Output[*LiveEventEncoding]{
+		OutputState: i.ToLiveEventEncodingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the live event type and optional encoding settings for encoding live events.
 type LiveEventEncodingOutput struct{ *pulumi.OutputState }
 
@@ -7547,6 +8490,12 @@ func (o LiveEventEncodingOutput) ToLiveEventEncodingPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiveEventEncoding) *LiveEventEncoding {
 		return &v
 	}).(LiveEventEncodingPtrOutput)
+}
+
+func (o LiveEventEncodingOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventEncoding] {
+	return pulumix.Output[LiveEventEncoding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Live event type. When encodingType is set to PassthroughBasic or PassthroughStandard, the service simply passes through the incoming video and audio layer(s) to the output. When encodingType is set to Standard or Premium1080p, a live encoder transcodes the incoming stream into multiple bitrates or layers. See https://go.microsoft.com/fwlink/?linkid=2095101 for more information. This property cannot be modified after the live event is created.
@@ -7581,6 +8530,12 @@ func (o LiveEventEncodingPtrOutput) ToLiveEventEncodingPtrOutput() LiveEventEnco
 
 func (o LiveEventEncodingPtrOutput) ToLiveEventEncodingPtrOutputWithContext(ctx context.Context) LiveEventEncodingPtrOutput {
 	return o
+}
+
+func (o LiveEventEncodingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventEncoding] {
+	return pulumix.Output[*LiveEventEncoding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventEncodingPtrOutput) Elem() LiveEventEncodingOutput {
@@ -7660,6 +8615,12 @@ func (o LiveEventEncodingResponseOutput) ToLiveEventEncodingResponseOutputWithCo
 	return o
 }
 
+func (o LiveEventEncodingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventEncodingResponse] {
+	return pulumix.Output[LiveEventEncodingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Live event type. When encodingType is set to PassthroughBasic or PassthroughStandard, the service simply passes through the incoming video and audio layer(s) to the output. When encodingType is set to Standard or Premium1080p, a live encoder transcodes the incoming stream into multiple bitrates or layers. See https://go.microsoft.com/fwlink/?linkid=2095101 for more information. This property cannot be modified after the live event is created.
 func (o LiveEventEncodingResponseOutput) EncodingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LiveEventEncodingResponse) *string { return v.EncodingType }).(pulumi.StringPtrOutput)
@@ -7692,6 +8653,12 @@ func (o LiveEventEncodingResponsePtrOutput) ToLiveEventEncodingResponsePtrOutput
 
 func (o LiveEventEncodingResponsePtrOutput) ToLiveEventEncodingResponsePtrOutputWithContext(ctx context.Context) LiveEventEncodingResponsePtrOutput {
 	return o
+}
+
+func (o LiveEventEncodingResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventEncodingResponse] {
+	return pulumix.Output[*LiveEventEncodingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventEncodingResponsePtrOutput) Elem() LiveEventEncodingResponseOutput {
@@ -7783,6 +8750,12 @@ func (i LiveEventEndpointArgs) ToLiveEventEndpointOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventEndpointOutput)
 }
 
+func (i LiveEventEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventEndpoint] {
+	return pulumix.Output[LiveEventEndpoint]{
+		OutputState: i.ToLiveEventEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LiveEventEndpointArrayInput is an input type that accepts LiveEventEndpointArray and LiveEventEndpointArrayOutput values.
 // You can construct a concrete instance of `LiveEventEndpointArrayInput` via:
 //
@@ -7808,6 +8781,12 @@ func (i LiveEventEndpointArray) ToLiveEventEndpointArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventEndpointArrayOutput)
 }
 
+func (i LiveEventEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventEndpoint] {
+	return pulumix.Output[[]LiveEventEndpoint]{
+		OutputState: i.ToLiveEventEndpointArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The live event endpoint.
 type LiveEventEndpointOutput struct{ *pulumi.OutputState }
 
@@ -7821,6 +8800,12 @@ func (o LiveEventEndpointOutput) ToLiveEventEndpointOutput() LiveEventEndpointOu
 
 func (o LiveEventEndpointOutput) ToLiveEventEndpointOutputWithContext(ctx context.Context) LiveEventEndpointOutput {
 	return o
+}
+
+func (o LiveEventEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventEndpoint] {
+	return pulumix.Output[LiveEventEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The endpoint protocol.
@@ -7845,6 +8830,12 @@ func (o LiveEventEndpointArrayOutput) ToLiveEventEndpointArrayOutput() LiveEvent
 
 func (o LiveEventEndpointArrayOutput) ToLiveEventEndpointArrayOutputWithContext(ctx context.Context) LiveEventEndpointArrayOutput {
 	return o
+}
+
+func (o LiveEventEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventEndpoint] {
+	return pulumix.Output[[]LiveEventEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventEndpointArrayOutput) Index(i pulumi.IntInput) LiveEventEndpointOutput {
@@ -7876,6 +8867,12 @@ func (o LiveEventEndpointResponseOutput) ToLiveEventEndpointResponseOutputWithCo
 	return o
 }
 
+func (o LiveEventEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventEndpointResponse] {
+	return pulumix.Output[LiveEventEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The endpoint protocol.
 func (o LiveEventEndpointResponseOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LiveEventEndpointResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
@@ -7898,6 +8895,12 @@ func (o LiveEventEndpointResponseArrayOutput) ToLiveEventEndpointResponseArrayOu
 
 func (o LiveEventEndpointResponseArrayOutput) ToLiveEventEndpointResponseArrayOutputWithContext(ctx context.Context) LiveEventEndpointResponseArrayOutput {
 	return o
+}
+
+func (o LiveEventEndpointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventEndpointResponse] {
+	return pulumix.Output[[]LiveEventEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventEndpointResponseArrayOutput) Index(i pulumi.IntInput) LiveEventEndpointResponseOutput {
@@ -7931,6 +8934,12 @@ func (o LiveEventIngestInterruptionResponseOutput) ToLiveEventIngestInterruption
 
 func (o LiveEventIngestInterruptionResponseOutput) ToLiveEventIngestInterruptionResponseOutputWithContext(ctx context.Context) LiveEventIngestInterruptionResponseOutput {
 	return o
+}
+
+func (o LiveEventIngestInterruptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventIngestInterruptionResponse] {
+	return pulumix.Output[LiveEventIngestInterruptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // UTC time of interruption start, encoder disconnected.
@@ -7967,6 +8976,12 @@ func (o LiveEventIngestInterruptionResponseArrayOutput) ToLiveEventIngestInterru
 	return o
 }
 
+func (o LiveEventIngestInterruptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventIngestInterruptionResponse] {
+	return pulumix.Output[[]LiveEventIngestInterruptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LiveEventIngestInterruptionResponseArrayOutput) Index(i pulumi.IntInput) LiveEventIngestInterruptionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LiveEventIngestInterruptionResponse {
 		return vs[0].([]LiveEventIngestInterruptionResponse)[vs[1].(int)]
@@ -8000,6 +9015,12 @@ func (o LiveEventIngestionResponseOutput) ToLiveEventIngestionResponseOutput() L
 
 func (o LiveEventIngestionResponseOutput) ToLiveEventIngestionResponseOutputWithContext(ctx context.Context) LiveEventIngestionResponseOutput {
 	return o
+}
+
+func (o LiveEventIngestionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventIngestionResponse] {
+	return pulumix.Output[LiveEventIngestionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Ingestion begin time in UTC.
@@ -8039,6 +9060,12 @@ func (o LiveEventIngestionResponsePtrOutput) ToLiveEventIngestionResponsePtrOutp
 
 func (o LiveEventIngestionResponsePtrOutput) ToLiveEventIngestionResponsePtrOutputWithContext(ctx context.Context) LiveEventIngestionResponsePtrOutput {
 	return o
+}
+
+func (o LiveEventIngestionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventIngestionResponse] {
+	return pulumix.Output[*LiveEventIngestionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventIngestionResponsePtrOutput) Elem() LiveEventIngestionResponseOutput {
@@ -8156,6 +9183,12 @@ func (i LiveEventInputTypeArgs) ToLiveEventInputTypeOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventInputTypeOutput)
 }
 
+func (i LiveEventInputTypeArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputType] {
+	return pulumix.Output[LiveEventInputType]{
+		OutputState: i.ToLiveEventInputTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The live event input.
 type LiveEventInputTypeOutput struct{ *pulumi.OutputState }
 
@@ -8169,6 +9202,12 @@ func (o LiveEventInputTypeOutput) ToLiveEventInputTypeOutput() LiveEventInputTyp
 
 func (o LiveEventInputTypeOutput) ToLiveEventInputTypeOutputWithContext(ctx context.Context) LiveEventInputTypeOutput {
 	return o
+}
+
+func (o LiveEventInputTypeOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputType] {
+	return pulumix.Output[LiveEventInputType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access control for live event input.
@@ -8236,6 +9275,12 @@ func (i LiveEventInputAccessControlArgs) ToLiveEventInputAccessControlOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventInputAccessControlOutput)
 }
 
+func (i LiveEventInputAccessControlArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputAccessControl] {
+	return pulumix.Output[LiveEventInputAccessControl]{
+		OutputState: i.ToLiveEventInputAccessControlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LiveEventInputAccessControlArgs) ToLiveEventInputAccessControlPtrOutput() LiveEventInputAccessControlPtrOutput {
 	return i.ToLiveEventInputAccessControlPtrOutputWithContext(context.Background())
 }
@@ -8277,6 +9322,12 @@ func (i *liveEventInputAccessControlPtrType) ToLiveEventInputAccessControlPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventInputAccessControlPtrOutput)
 }
 
+func (i *liveEventInputAccessControlPtrType) ToOutput(ctx context.Context) pulumix.Output[*LiveEventInputAccessControl] {
+	return pulumix.Output[*LiveEventInputAccessControl]{
+		OutputState: i.ToLiveEventInputAccessControlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The IP access control for live event input.
 type LiveEventInputAccessControlOutput struct{ *pulumi.OutputState }
 
@@ -8302,6 +9353,12 @@ func (o LiveEventInputAccessControlOutput) ToLiveEventInputAccessControlPtrOutpu
 	}).(LiveEventInputAccessControlPtrOutput)
 }
 
+func (o LiveEventInputAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputAccessControl] {
+	return pulumix.Output[LiveEventInputAccessControl]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP access control properties.
 func (o LiveEventInputAccessControlOutput) Ip() IPAccessControlPtrOutput {
 	return o.ApplyT(func(v LiveEventInputAccessControl) *IPAccessControl { return v.Ip }).(IPAccessControlPtrOutput)
@@ -8319,6 +9376,12 @@ func (o LiveEventInputAccessControlPtrOutput) ToLiveEventInputAccessControlPtrOu
 
 func (o LiveEventInputAccessControlPtrOutput) ToLiveEventInputAccessControlPtrOutputWithContext(ctx context.Context) LiveEventInputAccessControlPtrOutput {
 	return o
+}
+
+func (o LiveEventInputAccessControlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventInputAccessControl] {
+	return pulumix.Output[*LiveEventInputAccessControl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventInputAccessControlPtrOutput) Elem() LiveEventInputAccessControlOutput {
@@ -8362,6 +9425,12 @@ func (o LiveEventInputAccessControlResponseOutput) ToLiveEventInputAccessControl
 	return o
 }
 
+func (o LiveEventInputAccessControlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputAccessControlResponse] {
+	return pulumix.Output[LiveEventInputAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP access control properties.
 func (o LiveEventInputAccessControlResponseOutput) Ip() IPAccessControlResponsePtrOutput {
 	return o.ApplyT(func(v LiveEventInputAccessControlResponse) *IPAccessControlResponse { return v.Ip }).(IPAccessControlResponsePtrOutput)
@@ -8379,6 +9448,12 @@ func (o LiveEventInputAccessControlResponsePtrOutput) ToLiveEventInputAccessCont
 
 func (o LiveEventInputAccessControlResponsePtrOutput) ToLiveEventInputAccessControlResponsePtrOutputWithContext(ctx context.Context) LiveEventInputAccessControlResponsePtrOutput {
 	return o
+}
+
+func (o LiveEventInputAccessControlResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventInputAccessControlResponse] {
+	return pulumix.Output[*LiveEventInputAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventInputAccessControlResponsePtrOutput) Elem() LiveEventInputAccessControlResponseOutput {
@@ -8430,6 +9505,12 @@ func (o LiveEventInputResponseOutput) ToLiveEventInputResponseOutput() LiveEvent
 
 func (o LiveEventInputResponseOutput) ToLiveEventInputResponseOutputWithContext(ctx context.Context) LiveEventInputResponseOutput {
 	return o
+}
+
+func (o LiveEventInputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputResponse] {
+	return pulumix.Output[LiveEventInputResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access control for live event input.
@@ -8507,6 +9588,12 @@ func (i LiveEventInputTrackSelectionArgs) ToLiveEventInputTrackSelectionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventInputTrackSelectionOutput)
 }
 
+func (i LiveEventInputTrackSelectionArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputTrackSelection] {
+	return pulumix.Output[LiveEventInputTrackSelection]{
+		OutputState: i.ToLiveEventInputTrackSelectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LiveEventInputTrackSelectionArrayInput is an input type that accepts LiveEventInputTrackSelectionArray and LiveEventInputTrackSelectionArrayOutput values.
 // You can construct a concrete instance of `LiveEventInputTrackSelectionArrayInput` via:
 //
@@ -8532,6 +9619,12 @@ func (i LiveEventInputTrackSelectionArray) ToLiveEventInputTrackSelectionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventInputTrackSelectionArrayOutput)
 }
 
+func (i LiveEventInputTrackSelectionArray) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventInputTrackSelection] {
+	return pulumix.Output[[]LiveEventInputTrackSelection]{
+		OutputState: i.ToLiveEventInputTrackSelectionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A track selection condition. This property is reserved for future use, any value set on this property will be ignored.
 type LiveEventInputTrackSelectionOutput struct{ *pulumi.OutputState }
 
@@ -8545,6 +9638,12 @@ func (o LiveEventInputTrackSelectionOutput) ToLiveEventInputTrackSelectionOutput
 
 func (o LiveEventInputTrackSelectionOutput) ToLiveEventInputTrackSelectionOutputWithContext(ctx context.Context) LiveEventInputTrackSelectionOutput {
 	return o
+}
+
+func (o LiveEventInputTrackSelectionOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputTrackSelection] {
+	return pulumix.Output[LiveEventInputTrackSelection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Comparing operation. This property is reserved for future use, any value set on this property will be ignored.
@@ -8574,6 +9673,12 @@ func (o LiveEventInputTrackSelectionArrayOutput) ToLiveEventInputTrackSelectionA
 
 func (o LiveEventInputTrackSelectionArrayOutput) ToLiveEventInputTrackSelectionArrayOutputWithContext(ctx context.Context) LiveEventInputTrackSelectionArrayOutput {
 	return o
+}
+
+func (o LiveEventInputTrackSelectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventInputTrackSelection] {
+	return pulumix.Output[[]LiveEventInputTrackSelection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventInputTrackSelectionArrayOutput) Index(i pulumi.IntInput) LiveEventInputTrackSelectionOutput {
@@ -8607,6 +9712,12 @@ func (o LiveEventInputTrackSelectionResponseOutput) ToLiveEventInputTrackSelecti
 	return o
 }
 
+func (o LiveEventInputTrackSelectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputTrackSelectionResponse] {
+	return pulumix.Output[LiveEventInputTrackSelectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Comparing operation. This property is reserved for future use, any value set on this property will be ignored.
 func (o LiveEventInputTrackSelectionResponseOutput) Operation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LiveEventInputTrackSelectionResponse) *string { return v.Operation }).(pulumi.StringPtrOutput)
@@ -8634,6 +9745,12 @@ func (o LiveEventInputTrackSelectionResponseArrayOutput) ToLiveEventInputTrackSe
 
 func (o LiveEventInputTrackSelectionResponseArrayOutput) ToLiveEventInputTrackSelectionResponseArrayOutputWithContext(ctx context.Context) LiveEventInputTrackSelectionResponseArrayOutput {
 	return o
+}
+
+func (o LiveEventInputTrackSelectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventInputTrackSelectionResponse] {
+	return pulumix.Output[[]LiveEventInputTrackSelectionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventInputTrackSelectionResponseArrayOutput) Index(i pulumi.IntInput) LiveEventInputTrackSelectionResponseOutput {
@@ -8677,6 +9794,12 @@ func (i LiveEventOutputTranscriptionTrackArgs) ToLiveEventOutputTranscriptionTra
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventOutputTranscriptionTrackOutput)
 }
 
+func (i LiveEventOutputTranscriptionTrackArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventOutputTranscriptionTrack] {
+	return pulumix.Output[LiveEventOutputTranscriptionTrack]{
+		OutputState: i.ToLiveEventOutputTranscriptionTrackOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LiveEventOutputTranscriptionTrackArgs) ToLiveEventOutputTranscriptionTrackPtrOutput() LiveEventOutputTranscriptionTrackPtrOutput {
 	return i.ToLiveEventOutputTranscriptionTrackPtrOutputWithContext(context.Background())
 }
@@ -8718,6 +9841,12 @@ func (i *liveEventOutputTranscriptionTrackPtrType) ToLiveEventOutputTranscriptio
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventOutputTranscriptionTrackPtrOutput)
 }
 
+func (i *liveEventOutputTranscriptionTrackPtrType) ToOutput(ctx context.Context) pulumix.Output[*LiveEventOutputTranscriptionTrack] {
+	return pulumix.Output[*LiveEventOutputTranscriptionTrack]{
+		OutputState: i.ToLiveEventOutputTranscriptionTrackPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a transcription track in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
 type LiveEventOutputTranscriptionTrackOutput struct{ *pulumi.OutputState }
 
@@ -8743,6 +9872,12 @@ func (o LiveEventOutputTranscriptionTrackOutput) ToLiveEventOutputTranscriptionT
 	}).(LiveEventOutputTranscriptionTrackPtrOutput)
 }
 
+func (o LiveEventOutputTranscriptionTrackOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventOutputTranscriptionTrack] {
+	return pulumix.Output[LiveEventOutputTranscriptionTrack]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The output track name. This property is reserved for future use, any value set on this property will be ignored.
 func (o LiveEventOutputTranscriptionTrackOutput) TrackName() pulumi.StringOutput {
 	return o.ApplyT(func(v LiveEventOutputTranscriptionTrack) string { return v.TrackName }).(pulumi.StringOutput)
@@ -8760,6 +9895,12 @@ func (o LiveEventOutputTranscriptionTrackPtrOutput) ToLiveEventOutputTranscripti
 
 func (o LiveEventOutputTranscriptionTrackPtrOutput) ToLiveEventOutputTranscriptionTrackPtrOutputWithContext(ctx context.Context) LiveEventOutputTranscriptionTrackPtrOutput {
 	return o
+}
+
+func (o LiveEventOutputTranscriptionTrackPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventOutputTranscriptionTrack] {
+	return pulumix.Output[*LiveEventOutputTranscriptionTrack]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventOutputTranscriptionTrackPtrOutput) Elem() LiveEventOutputTranscriptionTrackOutput {
@@ -8803,6 +9944,12 @@ func (o LiveEventOutputTranscriptionTrackResponseOutput) ToLiveEventOutputTransc
 	return o
 }
 
+func (o LiveEventOutputTranscriptionTrackResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventOutputTranscriptionTrackResponse] {
+	return pulumix.Output[LiveEventOutputTranscriptionTrackResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The output track name. This property is reserved for future use, any value set on this property will be ignored.
 func (o LiveEventOutputTranscriptionTrackResponseOutput) TrackName() pulumi.StringOutput {
 	return o.ApplyT(func(v LiveEventOutputTranscriptionTrackResponse) string { return v.TrackName }).(pulumi.StringOutput)
@@ -8820,6 +9967,12 @@ func (o LiveEventOutputTranscriptionTrackResponsePtrOutput) ToLiveEventOutputTra
 
 func (o LiveEventOutputTranscriptionTrackResponsePtrOutput) ToLiveEventOutputTranscriptionTrackResponsePtrOutputWithContext(ctx context.Context) LiveEventOutputTranscriptionTrackResponsePtrOutput {
 	return o
+}
+
+func (o LiveEventOutputTranscriptionTrackResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventOutputTranscriptionTrackResponse] {
+	return pulumix.Output[*LiveEventOutputTranscriptionTrackResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventOutputTranscriptionTrackResponsePtrOutput) Elem() LiveEventOutputTranscriptionTrackResponseOutput {
@@ -8893,6 +10046,12 @@ func (i LiveEventPreviewArgs) ToLiveEventPreviewOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventPreviewOutput)
 }
 
+func (i LiveEventPreviewArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventPreview] {
+	return pulumix.Output[LiveEventPreview]{
+		OutputState: i.ToLiveEventPreviewOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LiveEventPreviewArgs) ToLiveEventPreviewPtrOutput() LiveEventPreviewPtrOutput {
 	return i.ToLiveEventPreviewPtrOutputWithContext(context.Background())
 }
@@ -8934,6 +10093,12 @@ func (i *liveEventPreviewPtrType) ToLiveEventPreviewPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventPreviewPtrOutput)
 }
 
+func (i *liveEventPreviewPtrType) ToOutput(ctx context.Context) pulumix.Output[*LiveEventPreview] {
+	return pulumix.Output[*LiveEventPreview]{
+		OutputState: i.ToLiveEventPreviewPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Live event preview settings.
 type LiveEventPreviewOutput struct{ *pulumi.OutputState }
 
@@ -8957,6 +10122,12 @@ func (o LiveEventPreviewOutput) ToLiveEventPreviewPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiveEventPreview) *LiveEventPreview {
 		return &v
 	}).(LiveEventPreviewPtrOutput)
+}
+
+func (o LiveEventPreviewOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventPreview] {
+	return pulumix.Output[LiveEventPreview]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access control for live event preview.
@@ -8996,6 +10167,12 @@ func (o LiveEventPreviewPtrOutput) ToLiveEventPreviewPtrOutput() LiveEventPrevie
 
 func (o LiveEventPreviewPtrOutput) ToLiveEventPreviewPtrOutputWithContext(ctx context.Context) LiveEventPreviewPtrOutput {
 	return o
+}
+
+func (o LiveEventPreviewPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventPreview] {
+	return pulumix.Output[*LiveEventPreview]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventPreviewPtrOutput) Elem() LiveEventPreviewOutput {
@@ -9093,6 +10270,12 @@ func (i LiveEventPreviewAccessControlArgs) ToLiveEventPreviewAccessControlOutput
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventPreviewAccessControlOutput)
 }
 
+func (i LiveEventPreviewAccessControlArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventPreviewAccessControl] {
+	return pulumix.Output[LiveEventPreviewAccessControl]{
+		OutputState: i.ToLiveEventPreviewAccessControlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LiveEventPreviewAccessControlArgs) ToLiveEventPreviewAccessControlPtrOutput() LiveEventPreviewAccessControlPtrOutput {
 	return i.ToLiveEventPreviewAccessControlPtrOutputWithContext(context.Background())
 }
@@ -9134,6 +10317,12 @@ func (i *liveEventPreviewAccessControlPtrType) ToLiveEventPreviewAccessControlPt
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventPreviewAccessControlPtrOutput)
 }
 
+func (i *liveEventPreviewAccessControlPtrType) ToOutput(ctx context.Context) pulumix.Output[*LiveEventPreviewAccessControl] {
+	return pulumix.Output[*LiveEventPreviewAccessControl]{
+		OutputState: i.ToLiveEventPreviewAccessControlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The IP access control for the live event preview endpoint.
 type LiveEventPreviewAccessControlOutput struct{ *pulumi.OutputState }
 
@@ -9159,6 +10348,12 @@ func (o LiveEventPreviewAccessControlOutput) ToLiveEventPreviewAccessControlPtrO
 	}).(LiveEventPreviewAccessControlPtrOutput)
 }
 
+func (o LiveEventPreviewAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventPreviewAccessControl] {
+	return pulumix.Output[LiveEventPreviewAccessControl]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP access control properties.
 func (o LiveEventPreviewAccessControlOutput) Ip() IPAccessControlPtrOutput {
 	return o.ApplyT(func(v LiveEventPreviewAccessControl) *IPAccessControl { return v.Ip }).(IPAccessControlPtrOutput)
@@ -9176,6 +10371,12 @@ func (o LiveEventPreviewAccessControlPtrOutput) ToLiveEventPreviewAccessControlP
 
 func (o LiveEventPreviewAccessControlPtrOutput) ToLiveEventPreviewAccessControlPtrOutputWithContext(ctx context.Context) LiveEventPreviewAccessControlPtrOutput {
 	return o
+}
+
+func (o LiveEventPreviewAccessControlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventPreviewAccessControl] {
+	return pulumix.Output[*LiveEventPreviewAccessControl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventPreviewAccessControlPtrOutput) Elem() LiveEventPreviewAccessControlOutput {
@@ -9219,6 +10420,12 @@ func (o LiveEventPreviewAccessControlResponseOutput) ToLiveEventPreviewAccessCon
 	return o
 }
 
+func (o LiveEventPreviewAccessControlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventPreviewAccessControlResponse] {
+	return pulumix.Output[LiveEventPreviewAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP access control properties.
 func (o LiveEventPreviewAccessControlResponseOutput) Ip() IPAccessControlResponsePtrOutput {
 	return o.ApplyT(func(v LiveEventPreviewAccessControlResponse) *IPAccessControlResponse { return v.Ip }).(IPAccessControlResponsePtrOutput)
@@ -9236,6 +10443,12 @@ func (o LiveEventPreviewAccessControlResponsePtrOutput) ToLiveEventPreviewAccess
 
 func (o LiveEventPreviewAccessControlResponsePtrOutput) ToLiveEventPreviewAccessControlResponsePtrOutputWithContext(ctx context.Context) LiveEventPreviewAccessControlResponsePtrOutput {
 	return o
+}
+
+func (o LiveEventPreviewAccessControlResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventPreviewAccessControlResponse] {
+	return pulumix.Output[*LiveEventPreviewAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventPreviewAccessControlResponsePtrOutput) Elem() LiveEventPreviewAccessControlResponseOutput {
@@ -9287,6 +10500,12 @@ func (o LiveEventPreviewResponseOutput) ToLiveEventPreviewResponseOutputWithCont
 	return o
 }
 
+func (o LiveEventPreviewResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventPreviewResponse] {
+	return pulumix.Output[LiveEventPreviewResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The access control for live event preview.
 func (o LiveEventPreviewResponseOutput) AccessControl() LiveEventPreviewAccessControlResponsePtrOutput {
 	return o.ApplyT(func(v LiveEventPreviewResponse) *LiveEventPreviewAccessControlResponse { return v.AccessControl }).(LiveEventPreviewAccessControlResponsePtrOutput)
@@ -9324,6 +10543,12 @@ func (o LiveEventPreviewResponsePtrOutput) ToLiveEventPreviewResponsePtrOutput()
 
 func (o LiveEventPreviewResponsePtrOutput) ToLiveEventPreviewResponsePtrOutputWithContext(ctx context.Context) LiveEventPreviewResponsePtrOutput {
 	return o
+}
+
+func (o LiveEventPreviewResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventPreviewResponse] {
+	return pulumix.Output[*LiveEventPreviewResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventPreviewResponsePtrOutput) Elem() LiveEventPreviewResponseOutput {
@@ -9417,6 +10642,12 @@ func (o LiveEventStatusResponseOutput) ToLiveEventStatusResponseOutputWithContex
 	return o
 }
 
+func (o LiveEventStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventStatusResponse] {
+	return pulumix.Output[LiveEventStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of strings justifying the health status.
 func (o LiveEventStatusResponseOutput) HealthDescriptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LiveEventStatusResponse) []string { return v.HealthDescriptions }).(pulumi.StringArrayOutput)
@@ -9459,6 +10690,12 @@ func (o LiveEventStatusResponseArrayOutput) ToLiveEventStatusResponseArrayOutput
 
 func (o LiveEventStatusResponseArrayOutput) ToLiveEventStatusResponseArrayOutputWithContext(ctx context.Context) LiveEventStatusResponseArrayOutput {
 	return o
+}
+
+func (o LiveEventStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventStatusResponse] {
+	return pulumix.Output[[]LiveEventStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventStatusResponseArrayOutput) Index(i pulumi.IntInput) LiveEventStatusResponseOutput {
@@ -9542,6 +10779,12 @@ func (o LiveEventStreamEventDataResponseOutput) ToLiveEventStreamEventDataRespon
 
 func (o LiveEventStreamEventDataResponseOutput) ToLiveEventStreamEventDataResponseOutputWithContext(ctx context.Context) LiveEventStreamEventDataResponseOutput {
 	return o
+}
+
+func (o LiveEventStreamEventDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventStreamEventDataResponse] {
+	return pulumix.Output[LiveEventStreamEventDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Bitrate of the track.
@@ -9701,6 +10944,12 @@ func (o LiveEventStreamEventDataResponsePtrOutput) ToLiveEventStreamEventDataRes
 
 func (o LiveEventStreamEventDataResponsePtrOutput) ToLiveEventStreamEventDataResponsePtrOutputWithContext(ctx context.Context) LiveEventStreamEventDataResponsePtrOutput {
 	return o
+}
+
+func (o LiveEventStreamEventDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventStreamEventDataResponse] {
+	return pulumix.Output[*LiveEventStreamEventDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventStreamEventDataResponsePtrOutput) Elem() LiveEventStreamEventDataResponseOutput {
@@ -10030,6 +11279,12 @@ func (o LiveEventStreamEventResponseOutput) ToLiveEventStreamEventResponseOutput
 	return o
 }
 
+func (o LiveEventStreamEventResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventStreamEventResponse] {
+	return pulumix.Output[LiveEventStreamEventResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Event data based on event type.
 func (o LiveEventStreamEventResponseOutput) Data() LiveEventStreamEventDataResponsePtrOutput {
 	return o.ApplyT(func(v LiveEventStreamEventResponse) *LiveEventStreamEventDataResponse { return v.Data }).(LiveEventStreamEventDataResponsePtrOutput)
@@ -10062,6 +11317,12 @@ func (o LiveEventStreamEventResponseArrayOutput) ToLiveEventStreamEventResponseA
 
 func (o LiveEventStreamEventResponseArrayOutput) ToLiveEventStreamEventResponseArrayOutputWithContext(ctx context.Context) LiveEventStreamEventResponseArrayOutput {
 	return o
+}
+
+func (o LiveEventStreamEventResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventStreamEventResponse] {
+	return pulumix.Output[[]LiveEventStreamEventResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventStreamEventResponseArrayOutput) Index(i pulumi.IntInput) LiveEventStreamEventResponseOutput {
@@ -10105,6 +11366,12 @@ func (i LiveEventTimedMetadataEndpointArgs) ToLiveEventTimedMetadataEndpointOutp
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventTimedMetadataEndpointOutput)
 }
 
+func (i LiveEventTimedMetadataEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventTimedMetadataEndpoint] {
+	return pulumix.Output[LiveEventTimedMetadataEndpoint]{
+		OutputState: i.ToLiveEventTimedMetadataEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LiveEventTimedMetadataEndpointArrayInput is an input type that accepts LiveEventTimedMetadataEndpointArray and LiveEventTimedMetadataEndpointArrayOutput values.
 // You can construct a concrete instance of `LiveEventTimedMetadataEndpointArrayInput` via:
 //
@@ -10130,6 +11397,12 @@ func (i LiveEventTimedMetadataEndpointArray) ToLiveEventTimedMetadataEndpointArr
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventTimedMetadataEndpointArrayOutput)
 }
 
+func (i LiveEventTimedMetadataEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventTimedMetadataEndpoint] {
+	return pulumix.Output[[]LiveEventTimedMetadataEndpoint]{
+		OutputState: i.ToLiveEventTimedMetadataEndpointArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The live event metadata insertion endpoint.
 type LiveEventTimedMetadataEndpointOutput struct{ *pulumi.OutputState }
 
@@ -10143,6 +11416,12 @@ func (o LiveEventTimedMetadataEndpointOutput) ToLiveEventTimedMetadataEndpointOu
 
 func (o LiveEventTimedMetadataEndpointOutput) ToLiveEventTimedMetadataEndpointOutputWithContext(ctx context.Context) LiveEventTimedMetadataEndpointOutput {
 	return o
+}
+
+func (o LiveEventTimedMetadataEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventTimedMetadataEndpoint] {
+	return pulumix.Output[LiveEventTimedMetadataEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The metadata endpoint URL.
@@ -10162,6 +11441,12 @@ func (o LiveEventTimedMetadataEndpointArrayOutput) ToLiveEventTimedMetadataEndpo
 
 func (o LiveEventTimedMetadataEndpointArrayOutput) ToLiveEventTimedMetadataEndpointArrayOutputWithContext(ctx context.Context) LiveEventTimedMetadataEndpointArrayOutput {
 	return o
+}
+
+func (o LiveEventTimedMetadataEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventTimedMetadataEndpoint] {
+	return pulumix.Output[[]LiveEventTimedMetadataEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventTimedMetadataEndpointArrayOutput) Index(i pulumi.IntInput) LiveEventTimedMetadataEndpointOutput {
@@ -10191,6 +11476,12 @@ func (o LiveEventTimedMetadataEndpointResponseOutput) ToLiveEventTimedMetadataEn
 	return o
 }
 
+func (o LiveEventTimedMetadataEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventTimedMetadataEndpointResponse] {
+	return pulumix.Output[LiveEventTimedMetadataEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The metadata endpoint URL.
 func (o LiveEventTimedMetadataEndpointResponseOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LiveEventTimedMetadataEndpointResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
@@ -10208,6 +11499,12 @@ func (o LiveEventTimedMetadataEndpointResponseArrayOutput) ToLiveEventTimedMetad
 
 func (o LiveEventTimedMetadataEndpointResponseArrayOutput) ToLiveEventTimedMetadataEndpointResponseArrayOutputWithContext(ctx context.Context) LiveEventTimedMetadataEndpointResponseArrayOutput {
 	return o
+}
+
+func (o LiveEventTimedMetadataEndpointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventTimedMetadataEndpointResponse] {
+	return pulumix.Output[[]LiveEventTimedMetadataEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventTimedMetadataEndpointResponseArrayOutput) Index(i pulumi.IntInput) LiveEventTimedMetadataEndpointResponseOutput {
@@ -10265,6 +11562,12 @@ func (o LiveEventTrackEventDataResponseOutput) ToLiveEventTrackEventDataResponse
 
 func (o LiveEventTrackEventDataResponseOutput) ToLiveEventTrackEventDataResponseOutputWithContext(ctx context.Context) LiveEventTrackEventDataResponseOutput {
 	return o
+}
+
+func (o LiveEventTrackEventDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventTrackEventDataResponse] {
+	return pulumix.Output[LiveEventTrackEventDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Bitrate of the track.
@@ -10359,6 +11662,12 @@ func (o LiveEventTrackEventDataResponsePtrOutput) ToLiveEventTrackEventDataRespo
 
 func (o LiveEventTrackEventDataResponsePtrOutput) ToLiveEventTrackEventDataResponsePtrOutputWithContext(ctx context.Context) LiveEventTrackEventDataResponsePtrOutput {
 	return o
+}
+
+func (o LiveEventTrackEventDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventTrackEventDataResponse] {
+	return pulumix.Output[*LiveEventTrackEventDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventTrackEventDataResponsePtrOutput) Elem() LiveEventTrackEventDataResponseOutput {
@@ -10556,6 +11865,12 @@ func (o LiveEventTrackEventResponseOutput) ToLiveEventTrackEventResponseOutputWi
 	return o
 }
 
+func (o LiveEventTrackEventResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventTrackEventResponse] {
+	return pulumix.Output[LiveEventTrackEventResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Event data.
 func (o LiveEventTrackEventResponseOutput) Data() LiveEventTrackEventDataResponsePtrOutput {
 	return o.ApplyT(func(v LiveEventTrackEventResponse) *LiveEventTrackEventDataResponse { return v.Data }).(LiveEventTrackEventDataResponsePtrOutput)
@@ -10583,6 +11898,12 @@ func (o LiveEventTrackEventResponseArrayOutput) ToLiveEventTrackEventResponseArr
 
 func (o LiveEventTrackEventResponseArrayOutput) ToLiveEventTrackEventResponseArrayOutputWithContext(ctx context.Context) LiveEventTrackEventResponseArrayOutput {
 	return o
+}
+
+func (o LiveEventTrackEventResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventTrackEventResponse] {
+	return pulumix.Output[[]LiveEventTrackEventResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventTrackEventResponseArrayOutput) Index(i pulumi.IntInput) LiveEventTrackEventResponseOutput {
@@ -10620,6 +11941,12 @@ func (o LiveEventTrackStatusResponseOutput) ToLiveEventTrackStatusResponseOutput
 
 func (o LiveEventTrackStatusResponseOutput) ToLiveEventTrackStatusResponseOutputWithContext(ctx context.Context) LiveEventTrackStatusResponseOutput {
 	return o
+}
+
+func (o LiveEventTrackStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventTrackStatusResponse] {
+	return pulumix.Output[LiveEventTrackStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Expected bitrate for this track.
@@ -10664,6 +11991,12 @@ func (o LiveEventTrackStatusResponseArrayOutput) ToLiveEventTrackStatusResponseA
 
 func (o LiveEventTrackStatusResponseArrayOutput) ToLiveEventTrackStatusResponseArrayOutputWithContext(ctx context.Context) LiveEventTrackStatusResponseArrayOutput {
 	return o
+}
+
+func (o LiveEventTrackStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventTrackStatusResponse] {
+	return pulumix.Output[[]LiveEventTrackStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventTrackStatusResponseArrayOutput) Index(i pulumi.IntInput) LiveEventTrackStatusResponseOutput {
@@ -10715,6 +12048,12 @@ func (i LiveEventTranscriptionArgs) ToLiveEventTranscriptionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventTranscriptionOutput)
 }
 
+func (i LiveEventTranscriptionArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventTranscription] {
+	return pulumix.Output[LiveEventTranscription]{
+		OutputState: i.ToLiveEventTranscriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LiveEventTranscriptionArrayInput is an input type that accepts LiveEventTranscriptionArray and LiveEventTranscriptionArrayOutput values.
 // You can construct a concrete instance of `LiveEventTranscriptionArrayInput` via:
 //
@@ -10740,6 +12079,12 @@ func (i LiveEventTranscriptionArray) ToLiveEventTranscriptionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventTranscriptionArrayOutput)
 }
 
+func (i LiveEventTranscriptionArray) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventTranscription] {
+	return pulumix.Output[[]LiveEventTranscription]{
+		OutputState: i.ToLiveEventTranscriptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the transcription tracks in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
 type LiveEventTranscriptionOutput struct{ *pulumi.OutputState }
 
@@ -10753,6 +12098,12 @@ func (o LiveEventTranscriptionOutput) ToLiveEventTranscriptionOutput() LiveEvent
 
 func (o LiveEventTranscriptionOutput) ToLiveEventTranscriptionOutputWithContext(ctx context.Context) LiveEventTranscriptionOutput {
 	return o
+}
+
+func (o LiveEventTranscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventTranscription] {
+	return pulumix.Output[LiveEventTranscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Provides a mechanism to select the audio track in the input live feed, to which speech-to-text transcription is applied. This property is reserved for future use, any value set on this property will be ignored.
@@ -10782,6 +12133,12 @@ func (o LiveEventTranscriptionArrayOutput) ToLiveEventTranscriptionArrayOutput()
 
 func (o LiveEventTranscriptionArrayOutput) ToLiveEventTranscriptionArrayOutputWithContext(ctx context.Context) LiveEventTranscriptionArrayOutput {
 	return o
+}
+
+func (o LiveEventTranscriptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventTranscription] {
+	return pulumix.Output[[]LiveEventTranscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventTranscriptionArrayOutput) Index(i pulumi.IntInput) LiveEventTranscriptionOutput {
@@ -10815,6 +12172,12 @@ func (o LiveEventTranscriptionResponseOutput) ToLiveEventTranscriptionResponseOu
 	return o
 }
 
+func (o LiveEventTranscriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventTranscriptionResponse] {
+	return pulumix.Output[LiveEventTranscriptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Provides a mechanism to select the audio track in the input live feed, to which speech-to-text transcription is applied. This property is reserved for future use, any value set on this property will be ignored.
 func (o LiveEventTranscriptionResponseOutput) InputTrackSelection() LiveEventInputTrackSelectionResponseArrayOutput {
 	return o.ApplyT(func(v LiveEventTranscriptionResponse) []LiveEventInputTrackSelectionResponse {
@@ -10846,6 +12209,12 @@ func (o LiveEventTranscriptionResponseArrayOutput) ToLiveEventTranscriptionRespo
 
 func (o LiveEventTranscriptionResponseArrayOutput) ToLiveEventTranscriptionResponseArrayOutputWithContext(ctx context.Context) LiveEventTranscriptionResponseArrayOutput {
 	return o
+}
+
+func (o LiveEventTranscriptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventTranscriptionResponse] {
+	return pulumix.Output[[]LiveEventTranscriptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventTranscriptionResponseArrayOutput) Index(i pulumi.IntInput) LiveEventTranscriptionResponseOutput {
@@ -10903,6 +12272,12 @@ func (i MediaGraphAssetSinkArgs) ToMediaGraphAssetSinkOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(MediaGraphAssetSinkOutput)
 }
 
+func (i MediaGraphAssetSinkArgs) ToOutput(ctx context.Context) pulumix.Output[MediaGraphAssetSink] {
+	return pulumix.Output[MediaGraphAssetSink]{
+		OutputState: i.ToMediaGraphAssetSinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MediaGraphAssetSinkArrayInput is an input type that accepts MediaGraphAssetSinkArray and MediaGraphAssetSinkArrayOutput values.
 // You can construct a concrete instance of `MediaGraphAssetSinkArrayInput` via:
 //
@@ -10928,6 +12303,12 @@ func (i MediaGraphAssetSinkArray) ToMediaGraphAssetSinkArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(MediaGraphAssetSinkArrayOutput)
 }
 
+func (i MediaGraphAssetSinkArray) ToOutput(ctx context.Context) pulumix.Output[[]MediaGraphAssetSink] {
+	return pulumix.Output[[]MediaGraphAssetSink]{
+		OutputState: i.ToMediaGraphAssetSinkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Asset sink.
 type MediaGraphAssetSinkOutput struct{ *pulumi.OutputState }
 
@@ -10941,6 +12322,12 @@ func (o MediaGraphAssetSinkOutput) ToMediaGraphAssetSinkOutput() MediaGraphAsset
 
 func (o MediaGraphAssetSinkOutput) ToMediaGraphAssetSinkOutputWithContext(ctx context.Context) MediaGraphAssetSinkOutput {
 	return o
+}
+
+func (o MediaGraphAssetSinkOutput) ToOutput(ctx context.Context) pulumix.Output[MediaGraphAssetSink] {
+	return pulumix.Output[MediaGraphAssetSink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Asset name.
@@ -10978,6 +12365,12 @@ func (o MediaGraphAssetSinkArrayOutput) ToMediaGraphAssetSinkArrayOutputWithCont
 	return o
 }
 
+func (o MediaGraphAssetSinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MediaGraphAssetSink] {
+	return pulumix.Output[[]MediaGraphAssetSink]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MediaGraphAssetSinkArrayOutput) Index(i pulumi.IntInput) MediaGraphAssetSinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MediaGraphAssetSink {
 		return vs[0].([]MediaGraphAssetSink)[vs[1].(int)]
@@ -11010,6 +12403,12 @@ func (o MediaGraphAssetSinkResponseOutput) ToMediaGraphAssetSinkResponseOutput()
 
 func (o MediaGraphAssetSinkResponseOutput) ToMediaGraphAssetSinkResponseOutputWithContext(ctx context.Context) MediaGraphAssetSinkResponseOutput {
 	return o
+}
+
+func (o MediaGraphAssetSinkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MediaGraphAssetSinkResponse] {
+	return pulumix.Output[MediaGraphAssetSinkResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Asset name.
@@ -11045,6 +12444,12 @@ func (o MediaGraphAssetSinkResponseArrayOutput) ToMediaGraphAssetSinkResponseArr
 
 func (o MediaGraphAssetSinkResponseArrayOutput) ToMediaGraphAssetSinkResponseArrayOutputWithContext(ctx context.Context) MediaGraphAssetSinkResponseArrayOutput {
 	return o
+}
+
+func (o MediaGraphAssetSinkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MediaGraphAssetSinkResponse] {
+	return pulumix.Output[[]MediaGraphAssetSinkResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MediaGraphAssetSinkResponseArrayOutput) Index(i pulumi.IntInput) MediaGraphAssetSinkResponseOutput {
@@ -11142,6 +12547,12 @@ func (i MediaGraphRtspSourceArgs) ToMediaGraphRtspSourceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MediaGraphRtspSourceOutput)
 }
 
+func (i MediaGraphRtspSourceArgs) ToOutput(ctx context.Context) pulumix.Output[MediaGraphRtspSource] {
+	return pulumix.Output[MediaGraphRtspSource]{
+		OutputState: i.ToMediaGraphRtspSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MediaGraphRtspSourceArrayInput is an input type that accepts MediaGraphRtspSourceArray and MediaGraphRtspSourceArrayOutput values.
 // You can construct a concrete instance of `MediaGraphRtspSourceArrayInput` via:
 //
@@ -11167,6 +12578,12 @@ func (i MediaGraphRtspSourceArray) ToMediaGraphRtspSourceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(MediaGraphRtspSourceArrayOutput)
 }
 
+func (i MediaGraphRtspSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]MediaGraphRtspSource] {
+	return pulumix.Output[[]MediaGraphRtspSource]{
+		OutputState: i.ToMediaGraphRtspSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RTSP source.
 type MediaGraphRtspSourceOutput struct{ *pulumi.OutputState }
 
@@ -11180,6 +12597,12 @@ func (o MediaGraphRtspSourceOutput) ToMediaGraphRtspSourceOutput() MediaGraphRts
 
 func (o MediaGraphRtspSourceOutput) ToMediaGraphRtspSourceOutputWithContext(ctx context.Context) MediaGraphRtspSourceOutput {
 	return o
+}
+
+func (o MediaGraphRtspSourceOutput) ToOutput(ctx context.Context) pulumix.Output[MediaGraphRtspSource] {
+	return pulumix.Output[MediaGraphRtspSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // RTSP endpoint of the stream being connected to.
@@ -11217,6 +12640,12 @@ func (o MediaGraphRtspSourceArrayOutput) ToMediaGraphRtspSourceArrayOutputWithCo
 	return o
 }
 
+func (o MediaGraphRtspSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MediaGraphRtspSource] {
+	return pulumix.Output[[]MediaGraphRtspSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MediaGraphRtspSourceArrayOutput) Index(i pulumi.IntInput) MediaGraphRtspSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MediaGraphRtspSource {
 		return vs[0].([]MediaGraphRtspSource)[vs[1].(int)]
@@ -11249,6 +12678,12 @@ func (o MediaGraphRtspSourceResponseOutput) ToMediaGraphRtspSourceResponseOutput
 
 func (o MediaGraphRtspSourceResponseOutput) ToMediaGraphRtspSourceResponseOutputWithContext(ctx context.Context) MediaGraphRtspSourceResponseOutput {
 	return o
+}
+
+func (o MediaGraphRtspSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MediaGraphRtspSourceResponse] {
+	return pulumix.Output[MediaGraphRtspSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // RTSP endpoint of the stream being connected to.
@@ -11284,6 +12719,12 @@ func (o MediaGraphRtspSourceResponseArrayOutput) ToMediaGraphRtspSourceResponseA
 
 func (o MediaGraphRtspSourceResponseArrayOutput) ToMediaGraphRtspSourceResponseArrayOutputWithContext(ctx context.Context) MediaGraphRtspSourceResponseArrayOutput {
 	return o
+}
+
+func (o MediaGraphRtspSourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MediaGraphRtspSourceResponse] {
+	return pulumix.Output[[]MediaGraphRtspSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MediaGraphRtspSourceResponseArrayOutput) Index(i pulumi.IntInput) MediaGraphRtspSourceResponseOutput {
@@ -11397,6 +12838,12 @@ func (i MediaServiceIdentityArgs) ToMediaServiceIdentityOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MediaServiceIdentityOutput)
 }
 
+func (i MediaServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[MediaServiceIdentity] {
+	return pulumix.Output[MediaServiceIdentity]{
+		OutputState: i.ToMediaServiceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MediaServiceIdentityArgs) ToMediaServiceIdentityPtrOutput() MediaServiceIdentityPtrOutput {
 	return i.ToMediaServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -11438,6 +12885,12 @@ func (i *mediaServiceIdentityPtrType) ToMediaServiceIdentityPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(MediaServiceIdentityPtrOutput)
 }
 
+func (i *mediaServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*MediaServiceIdentity] {
+	return pulumix.Output[*MediaServiceIdentity]{
+		OutputState: i.ToMediaServiceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MediaServiceIdentityOutput struct{ *pulumi.OutputState }
 
 func (MediaServiceIdentityOutput) ElementType() reflect.Type {
@@ -11462,6 +12915,12 @@ func (o MediaServiceIdentityOutput) ToMediaServiceIdentityPtrOutputWithContext(c
 	}).(MediaServiceIdentityPtrOutput)
 }
 
+func (o MediaServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[MediaServiceIdentity] {
+	return pulumix.Output[MediaServiceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o MediaServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MediaServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -11484,6 +12943,12 @@ func (o MediaServiceIdentityPtrOutput) ToMediaServiceIdentityPtrOutput() MediaSe
 
 func (o MediaServiceIdentityPtrOutput) ToMediaServiceIdentityPtrOutputWithContext(ctx context.Context) MediaServiceIdentityPtrOutput {
 	return o
+}
+
+func (o MediaServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MediaServiceIdentity] {
+	return pulumix.Output[*MediaServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MediaServiceIdentityPtrOutput) Elem() MediaServiceIdentityOutput {
@@ -11541,6 +13006,12 @@ func (o MediaServiceIdentityResponseOutput) ToMediaServiceIdentityResponseOutput
 	return o
 }
 
+func (o MediaServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MediaServiceIdentityResponse] {
+	return pulumix.Output[MediaServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Principal ID of the identity.
 func (o MediaServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v MediaServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -11575,6 +13046,12 @@ func (o MediaServiceIdentityResponsePtrOutput) ToMediaServiceIdentityResponsePtr
 
 func (o MediaServiceIdentityResponsePtrOutput) ToMediaServiceIdentityResponsePtrOutputWithContext(ctx context.Context) MediaServiceIdentityResponsePtrOutput {
 	return o
+}
+
+func (o MediaServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MediaServiceIdentityResponse] {
+	return pulumix.Output[*MediaServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MediaServiceIdentityResponsePtrOutput) Elem() MediaServiceIdentityResponseOutput {
@@ -11706,6 +13183,12 @@ func (i NoEncryptionArgs) ToNoEncryptionOutputWithContext(ctx context.Context) N
 	return pulumi.ToOutputWithContext(ctx, i).(NoEncryptionOutput)
 }
 
+func (i NoEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[NoEncryption] {
+	return pulumix.Output[NoEncryption]{
+		OutputState: i.ToNoEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NoEncryptionArgs) ToNoEncryptionPtrOutput() NoEncryptionPtrOutput {
 	return i.ToNoEncryptionPtrOutputWithContext(context.Background())
 }
@@ -11747,6 +13230,12 @@ func (i *noEncryptionPtrType) ToNoEncryptionPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(NoEncryptionPtrOutput)
 }
 
+func (i *noEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*NoEncryption] {
+	return pulumix.Output[*NoEncryption]{
+		OutputState: i.ToNoEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class for NoEncryption scheme
 type NoEncryptionOutput struct{ *pulumi.OutputState }
 
@@ -11772,6 +13261,12 @@ func (o NoEncryptionOutput) ToNoEncryptionPtrOutputWithContext(ctx context.Conte
 	}).(NoEncryptionPtrOutput)
 }
 
+func (o NoEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[NoEncryption] {
+	return pulumix.Output[NoEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Representing supported protocols
 func (o NoEncryptionOutput) EnabledProtocols() EnabledProtocolsPtrOutput {
 	return o.ApplyT(func(v NoEncryption) *EnabledProtocols { return v.EnabledProtocols }).(EnabledProtocolsPtrOutput)
@@ -11789,6 +13284,12 @@ func (o NoEncryptionPtrOutput) ToNoEncryptionPtrOutput() NoEncryptionPtrOutput {
 
 func (o NoEncryptionPtrOutput) ToNoEncryptionPtrOutputWithContext(ctx context.Context) NoEncryptionPtrOutput {
 	return o
+}
+
+func (o NoEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NoEncryption] {
+	return pulumix.Output[*NoEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NoEncryptionPtrOutput) Elem() NoEncryptionOutput {
@@ -11832,6 +13333,12 @@ func (o NoEncryptionResponseOutput) ToNoEncryptionResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o NoEncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NoEncryptionResponse] {
+	return pulumix.Output[NoEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Representing supported protocols
 func (o NoEncryptionResponseOutput) EnabledProtocols() EnabledProtocolsResponsePtrOutput {
 	return o.ApplyT(func(v NoEncryptionResponse) *EnabledProtocolsResponse { return v.EnabledProtocols }).(EnabledProtocolsResponsePtrOutput)
@@ -11849,6 +13356,12 @@ func (o NoEncryptionResponsePtrOutput) ToNoEncryptionResponsePtrOutput() NoEncry
 
 func (o NoEncryptionResponsePtrOutput) ToNoEncryptionResponsePtrOutputWithContext(ctx context.Context) NoEncryptionResponsePtrOutput {
 	return o
+}
+
+func (o NoEncryptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NoEncryptionResponse] {
+	return pulumix.Output[*NoEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NoEncryptionResponsePtrOutput) Elem() NoEncryptionResponseOutput {
@@ -12022,6 +13535,12 @@ func (i PresentationTimeRangeArgs) ToPresentationTimeRangeOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(PresentationTimeRangeOutput)
 }
 
+func (i PresentationTimeRangeArgs) ToOutput(ctx context.Context) pulumix.Output[PresentationTimeRange] {
+	return pulumix.Output[PresentationTimeRange]{
+		OutputState: i.ToPresentationTimeRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PresentationTimeRangeArgs) ToPresentationTimeRangePtrOutput() PresentationTimeRangePtrOutput {
 	return i.ToPresentationTimeRangePtrOutputWithContext(context.Background())
 }
@@ -12063,6 +13582,12 @@ func (i *presentationTimeRangePtrType) ToPresentationTimeRangePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(PresentationTimeRangePtrOutput)
 }
 
+func (i *presentationTimeRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*PresentationTimeRange] {
+	return pulumix.Output[*PresentationTimeRange]{
+		OutputState: i.ToPresentationTimeRangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The presentation time range, this is asset related and not recommended for Account Filter.
 type PresentationTimeRangeOutput struct{ *pulumi.OutputState }
 
@@ -12086,6 +13611,12 @@ func (o PresentationTimeRangeOutput) ToPresentationTimeRangePtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PresentationTimeRange) *PresentationTimeRange {
 		return &v
 	}).(PresentationTimeRangePtrOutput)
+}
+
+func (o PresentationTimeRangeOutput) ToOutput(ctx context.Context) pulumix.Output[PresentationTimeRange] {
+	return pulumix.Output[PresentationTimeRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The absolute end time boundary.
@@ -12130,6 +13661,12 @@ func (o PresentationTimeRangePtrOutput) ToPresentationTimeRangePtrOutput() Prese
 
 func (o PresentationTimeRangePtrOutput) ToPresentationTimeRangePtrOutputWithContext(ctx context.Context) PresentationTimeRangePtrOutput {
 	return o
+}
+
+func (o PresentationTimeRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PresentationTimeRange] {
+	return pulumix.Output[*PresentationTimeRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PresentationTimeRangePtrOutput) Elem() PresentationTimeRangeOutput {
@@ -12233,6 +13770,12 @@ func (o PresentationTimeRangeResponseOutput) ToPresentationTimeRangeResponseOutp
 	return o
 }
 
+func (o PresentationTimeRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PresentationTimeRangeResponse] {
+	return pulumix.Output[PresentationTimeRangeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The absolute end time boundary.
 func (o PresentationTimeRangeResponseOutput) EndTimestamp() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v PresentationTimeRangeResponse) *float64 { return v.EndTimestamp }).(pulumi.Float64PtrOutput)
@@ -12275,6 +13818,12 @@ func (o PresentationTimeRangeResponsePtrOutput) ToPresentationTimeRangeResponseP
 
 func (o PresentationTimeRangeResponsePtrOutput) ToPresentationTimeRangeResponsePtrOutputWithContext(ctx context.Context) PresentationTimeRangeResponsePtrOutput {
 	return o
+}
+
+func (o PresentationTimeRangeResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PresentationTimeRangeResponse] {
+	return pulumix.Output[*PresentationTimeRangeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PresentationTimeRangeResponsePtrOutput) Elem() PresentationTimeRangeResponseOutput {
@@ -12418,6 +13967,12 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
+	return pulumix.Output[PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -12464,6 +14019,12 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
+	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -12491,6 +14052,12 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
+func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
+	return pulumix.Output[PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -12508,6 +14075,12 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
+	return pulumix.Output[*PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -12573,6 +14146,12 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
+func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -12586,6 +14165,12 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -12626,6 +14211,12 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
+	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -12704,6 +14295,12 @@ func (i ResourceIdentityArgs) ToResourceIdentityOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityOutput)
 }
 
+func (i ResourceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentity] {
+	return pulumix.Output[ResourceIdentity]{
+		OutputState: i.ToResourceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceIdentityArgs) ToResourceIdentityPtrOutput() ResourceIdentityPtrOutput {
 	return i.ToResourceIdentityPtrOutputWithContext(context.Background())
 }
@@ -12745,6 +14342,12 @@ func (i *resourceIdentityPtrType) ToResourceIdentityPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityPtrOutput)
 }
 
+func (i *resourceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentity] {
+	return pulumix.Output[*ResourceIdentity]{
+		OutputState: i.ToResourceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceIdentityOutput struct{ *pulumi.OutputState }
 
 func (ResourceIdentityOutput) ElementType() reflect.Type {
@@ -12769,6 +14372,12 @@ func (o ResourceIdentityOutput) ToResourceIdentityPtrOutputWithContext(ctx conte
 	}).(ResourceIdentityPtrOutput)
 }
 
+func (o ResourceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentity] {
+	return pulumix.Output[ResourceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates whether to use System Assigned Managed Identity. Mutual exclusive with User Assigned Managed Identity.
 func (o ResourceIdentityOutput) UseSystemAssignedIdentity() pulumi.BoolOutput {
 	return o.ApplyT(func(v ResourceIdentity) bool { return v.UseSystemAssignedIdentity }).(pulumi.BoolOutput)
@@ -12791,6 +14400,12 @@ func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutput() ResourceIdentit
 
 func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutputWithContext(ctx context.Context) ResourceIdentityPtrOutput {
 	return o
+}
+
+func (o ResourceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentity] {
+	return pulumix.Output[*ResourceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityPtrOutput) Elem() ResourceIdentityOutput {
@@ -12844,6 +14459,12 @@ func (o ResourceIdentityResponseOutput) ToResourceIdentityResponseOutputWithCont
 	return o
 }
 
+func (o ResourceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityResponse] {
+	return pulumix.Output[ResourceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates whether to use System Assigned Managed Identity. Mutual exclusive with User Assigned Managed Identity.
 func (o ResourceIdentityResponseOutput) UseSystemAssignedIdentity() pulumi.BoolOutput {
 	return o.ApplyT(func(v ResourceIdentityResponse) bool { return v.UseSystemAssignedIdentity }).(pulumi.BoolOutput)
@@ -12866,6 +14487,12 @@ func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutput()
 
 func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutputWithContext(ctx context.Context) ResourceIdentityResponsePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityResponse] {
+	return pulumix.Output[*ResourceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityResponsePtrOutput) Elem() ResourceIdentityResponseOutput {
@@ -13067,6 +14694,12 @@ func (i StorageAccountArgs) ToStorageAccountOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountOutput)
 }
 
+func (i StorageAccountArgs) ToOutput(ctx context.Context) pulumix.Output[StorageAccount] {
+	return pulumix.Output[StorageAccount]{
+		OutputState: i.ToStorageAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StorageAccountArrayInput is an input type that accepts StorageAccountArray and StorageAccountArrayOutput values.
 // You can construct a concrete instance of `StorageAccountArrayInput` via:
 //
@@ -13092,6 +14725,12 @@ func (i StorageAccountArray) ToStorageAccountArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountArrayOutput)
 }
 
+func (i StorageAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]StorageAccount] {
+	return pulumix.Output[[]StorageAccount]{
+		OutputState: i.ToStorageAccountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The storage account details.
 type StorageAccountOutput struct{ *pulumi.OutputState }
 
@@ -13105,6 +14744,12 @@ func (o StorageAccountOutput) ToStorageAccountOutput() StorageAccountOutput {
 
 func (o StorageAccountOutput) ToStorageAccountOutputWithContext(ctx context.Context) StorageAccountOutput {
 	return o
+}
+
+func (o StorageAccountOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccount] {
+	return pulumix.Output[StorageAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the storage account resource. Media Services relies on tables and queues as well as blobs, so the primary storage account must be a Standard Storage account (either Microsoft.ClassicStorage or Microsoft.Storage). Blob only storage accounts can be added as secondary storage accounts.
@@ -13134,6 +14779,12 @@ func (o StorageAccountArrayOutput) ToStorageAccountArrayOutput() StorageAccountA
 
 func (o StorageAccountArrayOutput) ToStorageAccountArrayOutputWithContext(ctx context.Context) StorageAccountArrayOutput {
 	return o
+}
+
+func (o StorageAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageAccount] {
+	return pulumix.Output[[]StorageAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageAccountArrayOutput) Index(i pulumi.IntInput) StorageAccountOutput {
@@ -13169,6 +14820,12 @@ func (o StorageAccountResponseOutput) ToStorageAccountResponseOutputWithContext(
 	return o
 }
 
+func (o StorageAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountResponse] {
+	return pulumix.Output[StorageAccountResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the storage account resource. Media Services relies on tables and queues as well as blobs, so the primary storage account must be a Standard Storage account (either Microsoft.ClassicStorage or Microsoft.Storage). Blob only storage accounts can be added as secondary storage accounts.
 func (o StorageAccountResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageAccountResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -13201,6 +14858,12 @@ func (o StorageAccountResponseArrayOutput) ToStorageAccountResponseArrayOutput()
 
 func (o StorageAccountResponseArrayOutput) ToStorageAccountResponseArrayOutputWithContext(ctx context.Context) StorageAccountResponseArrayOutput {
 	return o
+}
+
+func (o StorageAccountResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageAccountResponse] {
+	return pulumix.Output[[]StorageAccountResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageAccountResponseArrayOutput) Index(i pulumi.IntInput) StorageAccountResponseOutput {
@@ -13248,6 +14911,12 @@ func (i StreamingEndpointAccessControlArgs) ToStreamingEndpointAccessControlOutp
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingEndpointAccessControlOutput)
 }
 
+func (i StreamingEndpointAccessControlArgs) ToOutput(ctx context.Context) pulumix.Output[StreamingEndpointAccessControl] {
+	return pulumix.Output[StreamingEndpointAccessControl]{
+		OutputState: i.ToStreamingEndpointAccessControlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StreamingEndpointAccessControlArgs) ToStreamingEndpointAccessControlPtrOutput() StreamingEndpointAccessControlPtrOutput {
 	return i.ToStreamingEndpointAccessControlPtrOutputWithContext(context.Background())
 }
@@ -13289,6 +14958,12 @@ func (i *streamingEndpointAccessControlPtrType) ToStreamingEndpointAccessControl
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingEndpointAccessControlPtrOutput)
 }
 
+func (i *streamingEndpointAccessControlPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamingEndpointAccessControl] {
+	return pulumix.Output[*StreamingEndpointAccessControl]{
+		OutputState: i.ToStreamingEndpointAccessControlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Streaming endpoint access control definition.
 type StreamingEndpointAccessControlOutput struct{ *pulumi.OutputState }
 
@@ -13314,6 +14989,12 @@ func (o StreamingEndpointAccessControlOutput) ToStreamingEndpointAccessControlPt
 	}).(StreamingEndpointAccessControlPtrOutput)
 }
 
+func (o StreamingEndpointAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingEndpointAccessControl] {
+	return pulumix.Output[StreamingEndpointAccessControl]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The access control of Akamai
 func (o StreamingEndpointAccessControlOutput) Akamai() AkamaiAccessControlPtrOutput {
 	return o.ApplyT(func(v StreamingEndpointAccessControl) *AkamaiAccessControl { return v.Akamai }).(AkamaiAccessControlPtrOutput)
@@ -13336,6 +15017,12 @@ func (o StreamingEndpointAccessControlPtrOutput) ToStreamingEndpointAccessContro
 
 func (o StreamingEndpointAccessControlPtrOutput) ToStreamingEndpointAccessControlPtrOutputWithContext(ctx context.Context) StreamingEndpointAccessControlPtrOutput {
 	return o
+}
+
+func (o StreamingEndpointAccessControlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingEndpointAccessControl] {
+	return pulumix.Output[*StreamingEndpointAccessControl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingEndpointAccessControlPtrOutput) Elem() StreamingEndpointAccessControlOutput {
@@ -13391,6 +15078,12 @@ func (o StreamingEndpointAccessControlResponseOutput) ToStreamingEndpointAccessC
 	return o
 }
 
+func (o StreamingEndpointAccessControlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingEndpointAccessControlResponse] {
+	return pulumix.Output[StreamingEndpointAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The access control of Akamai
 func (o StreamingEndpointAccessControlResponseOutput) Akamai() AkamaiAccessControlResponsePtrOutput {
 	return o.ApplyT(func(v StreamingEndpointAccessControlResponse) *AkamaiAccessControlResponse { return v.Akamai }).(AkamaiAccessControlResponsePtrOutput)
@@ -13413,6 +15106,12 @@ func (o StreamingEndpointAccessControlResponsePtrOutput) ToStreamingEndpointAcce
 
 func (o StreamingEndpointAccessControlResponsePtrOutput) ToStreamingEndpointAccessControlResponsePtrOutputWithContext(ctx context.Context) StreamingEndpointAccessControlResponsePtrOutput {
 	return o
+}
+
+func (o StreamingEndpointAccessControlResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingEndpointAccessControlResponse] {
+	return pulumix.Output[*StreamingEndpointAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingEndpointAccessControlResponsePtrOutput) Elem() StreamingEndpointAccessControlResponseOutput {
@@ -13488,6 +15187,12 @@ func (i StreamingLocatorContentKeyArgs) ToStreamingLocatorContentKeyOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingLocatorContentKeyOutput)
 }
 
+func (i StreamingLocatorContentKeyArgs) ToOutput(ctx context.Context) pulumix.Output[StreamingLocatorContentKey] {
+	return pulumix.Output[StreamingLocatorContentKey]{
+		OutputState: i.ToStreamingLocatorContentKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StreamingLocatorContentKeyArrayInput is an input type that accepts StreamingLocatorContentKeyArray and StreamingLocatorContentKeyArrayOutput values.
 // You can construct a concrete instance of `StreamingLocatorContentKeyArrayInput` via:
 //
@@ -13513,6 +15218,12 @@ func (i StreamingLocatorContentKeyArray) ToStreamingLocatorContentKeyArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingLocatorContentKeyArrayOutput)
 }
 
+func (i StreamingLocatorContentKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamingLocatorContentKey] {
+	return pulumix.Output[[]StreamingLocatorContentKey]{
+		OutputState: i.ToStreamingLocatorContentKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class for content key in Streaming Locator
 type StreamingLocatorContentKeyOutput struct{ *pulumi.OutputState }
 
@@ -13526,6 +15237,12 @@ func (o StreamingLocatorContentKeyOutput) ToStreamingLocatorContentKeyOutput() S
 
 func (o StreamingLocatorContentKeyOutput) ToStreamingLocatorContentKeyOutputWithContext(ctx context.Context) StreamingLocatorContentKeyOutput {
 	return o
+}
+
+func (o StreamingLocatorContentKeyOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingLocatorContentKey] {
+	return pulumix.Output[StreamingLocatorContentKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of Content Key
@@ -13555,6 +15272,12 @@ func (o StreamingLocatorContentKeyArrayOutput) ToStreamingLocatorContentKeyArray
 
 func (o StreamingLocatorContentKeyArrayOutput) ToStreamingLocatorContentKeyArrayOutputWithContext(ctx context.Context) StreamingLocatorContentKeyArrayOutput {
 	return o
+}
+
+func (o StreamingLocatorContentKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamingLocatorContentKey] {
+	return pulumix.Output[[]StreamingLocatorContentKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingLocatorContentKeyArrayOutput) Index(i pulumi.IntInput) StreamingLocatorContentKeyOutput {
@@ -13592,6 +15315,12 @@ func (o StreamingLocatorContentKeyResponseOutput) ToStreamingLocatorContentKeyRe
 
 func (o StreamingLocatorContentKeyResponseOutput) ToStreamingLocatorContentKeyResponseOutputWithContext(ctx context.Context) StreamingLocatorContentKeyResponseOutput {
 	return o
+}
+
+func (o StreamingLocatorContentKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingLocatorContentKeyResponse] {
+	return pulumix.Output[StreamingLocatorContentKeyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of Content Key
@@ -13638,6 +15367,12 @@ func (o StreamingLocatorContentKeyResponseArrayOutput) ToStreamingLocatorContent
 	return o
 }
 
+func (o StreamingLocatorContentKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamingLocatorContentKeyResponse] {
+	return pulumix.Output[[]StreamingLocatorContentKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StreamingLocatorContentKeyResponseArrayOutput) Index(i pulumi.IntInput) StreamingLocatorContentKeyResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamingLocatorContentKeyResponse {
 		return vs[0].([]StreamingLocatorContentKeyResponse)[vs[1].(int)]
@@ -13669,6 +15404,12 @@ func (o StreamingPathResponseOutput) ToStreamingPathResponseOutputWithContext(ct
 	return o
 }
 
+func (o StreamingPathResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingPathResponse] {
+	return pulumix.Output[StreamingPathResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Encryption scheme
 func (o StreamingPathResponseOutput) EncryptionScheme() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamingPathResponse) string { return v.EncryptionScheme }).(pulumi.StringOutput)
@@ -13696,6 +15437,12 @@ func (o StreamingPathResponseArrayOutput) ToStreamingPathResponseArrayOutput() S
 
 func (o StreamingPathResponseArrayOutput) ToStreamingPathResponseArrayOutputWithContext(ctx context.Context) StreamingPathResponseArrayOutput {
 	return o
+}
+
+func (o StreamingPathResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamingPathResponse] {
+	return pulumix.Output[[]StreamingPathResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingPathResponseArrayOutput) Index(i pulumi.IntInput) StreamingPathResponseOutput {
@@ -13747,6 +15494,12 @@ func (i StreamingPolicyContentKeyArgs) ToStreamingPolicyContentKeyOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyContentKeyOutput)
 }
 
+func (i StreamingPolicyContentKeyArgs) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyContentKey] {
+	return pulumix.Output[StreamingPolicyContentKey]{
+		OutputState: i.ToStreamingPolicyContentKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StreamingPolicyContentKeyArrayInput is an input type that accepts StreamingPolicyContentKeyArray and StreamingPolicyContentKeyArrayOutput values.
 // You can construct a concrete instance of `StreamingPolicyContentKeyArrayInput` via:
 //
@@ -13772,6 +15525,12 @@ func (i StreamingPolicyContentKeyArray) ToStreamingPolicyContentKeyArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyContentKeyArrayOutput)
 }
 
+func (i StreamingPolicyContentKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamingPolicyContentKey] {
+	return pulumix.Output[[]StreamingPolicyContentKey]{
+		OutputState: i.ToStreamingPolicyContentKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class to specify properties of content key
 type StreamingPolicyContentKeyOutput struct{ *pulumi.OutputState }
 
@@ -13785,6 +15544,12 @@ func (o StreamingPolicyContentKeyOutput) ToStreamingPolicyContentKeyOutput() Str
 
 func (o StreamingPolicyContentKeyOutput) ToStreamingPolicyContentKeyOutputWithContext(ctx context.Context) StreamingPolicyContentKeyOutput {
 	return o
+}
+
+func (o StreamingPolicyContentKeyOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyContentKey] {
+	return pulumix.Output[StreamingPolicyContentKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Label can be used to specify Content Key when creating a Streaming Locator
@@ -13814,6 +15579,12 @@ func (o StreamingPolicyContentKeyArrayOutput) ToStreamingPolicyContentKeyArrayOu
 
 func (o StreamingPolicyContentKeyArrayOutput) ToStreamingPolicyContentKeyArrayOutputWithContext(ctx context.Context) StreamingPolicyContentKeyArrayOutput {
 	return o
+}
+
+func (o StreamingPolicyContentKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamingPolicyContentKey] {
+	return pulumix.Output[[]StreamingPolicyContentKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingPolicyContentKeyArrayOutput) Index(i pulumi.IntInput) StreamingPolicyContentKeyOutput {
@@ -13847,6 +15618,12 @@ func (o StreamingPolicyContentKeyResponseOutput) ToStreamingPolicyContentKeyResp
 	return o
 }
 
+func (o StreamingPolicyContentKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyContentKeyResponse] {
+	return pulumix.Output[StreamingPolicyContentKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Label can be used to specify Content Key when creating a Streaming Locator
 func (o StreamingPolicyContentKeyResponseOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamingPolicyContentKeyResponse) *string { return v.Label }).(pulumi.StringPtrOutput)
@@ -13874,6 +15651,12 @@ func (o StreamingPolicyContentKeyResponseArrayOutput) ToStreamingPolicyContentKe
 
 func (o StreamingPolicyContentKeyResponseArrayOutput) ToStreamingPolicyContentKeyResponseArrayOutputWithContext(ctx context.Context) StreamingPolicyContentKeyResponseArrayOutput {
 	return o
+}
+
+func (o StreamingPolicyContentKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamingPolicyContentKeyResponse] {
+	return pulumix.Output[[]StreamingPolicyContentKeyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingPolicyContentKeyResponseArrayOutput) Index(i pulumi.IntInput) StreamingPolicyContentKeyResponseOutput {
@@ -13921,6 +15704,12 @@ func (i StreamingPolicyContentKeysArgs) ToStreamingPolicyContentKeysOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyContentKeysOutput)
 }
 
+func (i StreamingPolicyContentKeysArgs) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyContentKeys] {
+	return pulumix.Output[StreamingPolicyContentKeys]{
+		OutputState: i.ToStreamingPolicyContentKeysOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StreamingPolicyContentKeysArgs) ToStreamingPolicyContentKeysPtrOutput() StreamingPolicyContentKeysPtrOutput {
 	return i.ToStreamingPolicyContentKeysPtrOutputWithContext(context.Background())
 }
@@ -13962,6 +15751,12 @@ func (i *streamingPolicyContentKeysPtrType) ToStreamingPolicyContentKeysPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyContentKeysPtrOutput)
 }
 
+func (i *streamingPolicyContentKeysPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicyContentKeys] {
+	return pulumix.Output[*StreamingPolicyContentKeys]{
+		OutputState: i.ToStreamingPolicyContentKeysPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class to specify properties of all content keys in Streaming Policy
 type StreamingPolicyContentKeysOutput struct{ *pulumi.OutputState }
 
@@ -13987,6 +15782,12 @@ func (o StreamingPolicyContentKeysOutput) ToStreamingPolicyContentKeysPtrOutputW
 	}).(StreamingPolicyContentKeysPtrOutput)
 }
 
+func (o StreamingPolicyContentKeysOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyContentKeys] {
+	return pulumix.Output[StreamingPolicyContentKeys]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Default content key for an encryption scheme
 func (o StreamingPolicyContentKeysOutput) DefaultKey() DefaultKeyPtrOutput {
 	return o.ApplyT(func(v StreamingPolicyContentKeys) *DefaultKey { return v.DefaultKey }).(DefaultKeyPtrOutput)
@@ -14009,6 +15810,12 @@ func (o StreamingPolicyContentKeysPtrOutput) ToStreamingPolicyContentKeysPtrOutp
 
 func (o StreamingPolicyContentKeysPtrOutput) ToStreamingPolicyContentKeysPtrOutputWithContext(ctx context.Context) StreamingPolicyContentKeysPtrOutput {
 	return o
+}
+
+func (o StreamingPolicyContentKeysPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicyContentKeys] {
+	return pulumix.Output[*StreamingPolicyContentKeys]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingPolicyContentKeysPtrOutput) Elem() StreamingPolicyContentKeysOutput {
@@ -14064,6 +15871,12 @@ func (o StreamingPolicyContentKeysResponseOutput) ToStreamingPolicyContentKeysRe
 	return o
 }
 
+func (o StreamingPolicyContentKeysResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyContentKeysResponse] {
+	return pulumix.Output[StreamingPolicyContentKeysResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Default content key for an encryption scheme
 func (o StreamingPolicyContentKeysResponseOutput) DefaultKey() DefaultKeyResponsePtrOutput {
 	return o.ApplyT(func(v StreamingPolicyContentKeysResponse) *DefaultKeyResponse { return v.DefaultKey }).(DefaultKeyResponsePtrOutput)
@@ -14088,6 +15901,12 @@ func (o StreamingPolicyContentKeysResponsePtrOutput) ToStreamingPolicyContentKey
 
 func (o StreamingPolicyContentKeysResponsePtrOutput) ToStreamingPolicyContentKeysResponsePtrOutputWithContext(ctx context.Context) StreamingPolicyContentKeysResponsePtrOutput {
 	return o
+}
+
+func (o StreamingPolicyContentKeysResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicyContentKeysResponse] {
+	return pulumix.Output[*StreamingPolicyContentKeysResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingPolicyContentKeysResponsePtrOutput) Elem() StreamingPolicyContentKeysResponseOutput {
@@ -14159,6 +15978,12 @@ func (i StreamingPolicyFairPlayConfigurationArgs) ToStreamingPolicyFairPlayConfi
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyFairPlayConfigurationOutput)
 }
 
+func (i StreamingPolicyFairPlayConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyFairPlayConfiguration] {
+	return pulumix.Output[StreamingPolicyFairPlayConfiguration]{
+		OutputState: i.ToStreamingPolicyFairPlayConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StreamingPolicyFairPlayConfigurationArgs) ToStreamingPolicyFairPlayConfigurationPtrOutput() StreamingPolicyFairPlayConfigurationPtrOutput {
 	return i.ToStreamingPolicyFairPlayConfigurationPtrOutputWithContext(context.Background())
 }
@@ -14200,6 +16025,12 @@ func (i *streamingPolicyFairPlayConfigurationPtrType) ToStreamingPolicyFairPlayC
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyFairPlayConfigurationPtrOutput)
 }
 
+func (i *streamingPolicyFairPlayConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicyFairPlayConfiguration] {
+	return pulumix.Output[*StreamingPolicyFairPlayConfiguration]{
+		OutputState: i.ToStreamingPolicyFairPlayConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class to specify configurations of FairPlay in Streaming Policy
 type StreamingPolicyFairPlayConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -14225,6 +16056,12 @@ func (o StreamingPolicyFairPlayConfigurationOutput) ToStreamingPolicyFairPlayCon
 	}).(StreamingPolicyFairPlayConfigurationPtrOutput)
 }
 
+func (o StreamingPolicyFairPlayConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyFairPlayConfiguration] {
+	return pulumix.Output[StreamingPolicyFairPlayConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // All license to be persistent or not
 func (o StreamingPolicyFairPlayConfigurationOutput) AllowPersistentLicense() pulumi.BoolOutput {
 	return o.ApplyT(func(v StreamingPolicyFairPlayConfiguration) bool { return v.AllowPersistentLicense }).(pulumi.BoolOutput)
@@ -14247,6 +16084,12 @@ func (o StreamingPolicyFairPlayConfigurationPtrOutput) ToStreamingPolicyFairPlay
 
 func (o StreamingPolicyFairPlayConfigurationPtrOutput) ToStreamingPolicyFairPlayConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyFairPlayConfigurationPtrOutput {
 	return o
+}
+
+func (o StreamingPolicyFairPlayConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicyFairPlayConfiguration] {
+	return pulumix.Output[*StreamingPolicyFairPlayConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingPolicyFairPlayConfigurationPtrOutput) Elem() StreamingPolicyFairPlayConfigurationOutput {
@@ -14302,6 +16145,12 @@ func (o StreamingPolicyFairPlayConfigurationResponseOutput) ToStreamingPolicyFai
 	return o
 }
 
+func (o StreamingPolicyFairPlayConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyFairPlayConfigurationResponse] {
+	return pulumix.Output[StreamingPolicyFairPlayConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // All license to be persistent or not
 func (o StreamingPolicyFairPlayConfigurationResponseOutput) AllowPersistentLicense() pulumi.BoolOutput {
 	return o.ApplyT(func(v StreamingPolicyFairPlayConfigurationResponse) bool { return v.AllowPersistentLicense }).(pulumi.BoolOutput)
@@ -14326,6 +16175,12 @@ func (o StreamingPolicyFairPlayConfigurationResponsePtrOutput) ToStreamingPolicy
 
 func (o StreamingPolicyFairPlayConfigurationResponsePtrOutput) ToStreamingPolicyFairPlayConfigurationResponsePtrOutputWithContext(ctx context.Context) StreamingPolicyFairPlayConfigurationResponsePtrOutput {
 	return o
+}
+
+func (o StreamingPolicyFairPlayConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicyFairPlayConfigurationResponse] {
+	return pulumix.Output[*StreamingPolicyFairPlayConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingPolicyFairPlayConfigurationResponsePtrOutput) Elem() StreamingPolicyFairPlayConfigurationResponseOutput {
@@ -14397,6 +16252,12 @@ func (i StreamingPolicyPlayReadyConfigurationArgs) ToStreamingPolicyPlayReadyCon
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyPlayReadyConfigurationOutput)
 }
 
+func (i StreamingPolicyPlayReadyConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyPlayReadyConfiguration] {
+	return pulumix.Output[StreamingPolicyPlayReadyConfiguration]{
+		OutputState: i.ToStreamingPolicyPlayReadyConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StreamingPolicyPlayReadyConfigurationArgs) ToStreamingPolicyPlayReadyConfigurationPtrOutput() StreamingPolicyPlayReadyConfigurationPtrOutput {
 	return i.ToStreamingPolicyPlayReadyConfigurationPtrOutputWithContext(context.Background())
 }
@@ -14438,6 +16299,12 @@ func (i *streamingPolicyPlayReadyConfigurationPtrType) ToStreamingPolicyPlayRead
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyPlayReadyConfigurationPtrOutput)
 }
 
+func (i *streamingPolicyPlayReadyConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicyPlayReadyConfiguration] {
+	return pulumix.Output[*StreamingPolicyPlayReadyConfiguration]{
+		OutputState: i.ToStreamingPolicyPlayReadyConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class to specify configurations of PlayReady in Streaming Policy
 type StreamingPolicyPlayReadyConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -14463,6 +16330,12 @@ func (o StreamingPolicyPlayReadyConfigurationOutput) ToStreamingPolicyPlayReadyC
 	}).(StreamingPolicyPlayReadyConfigurationPtrOutput)
 }
 
+func (o StreamingPolicyPlayReadyConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyPlayReadyConfiguration] {
+	return pulumix.Output[StreamingPolicyPlayReadyConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
 func (o StreamingPolicyPlayReadyConfigurationOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamingPolicyPlayReadyConfiguration) *string { return v.CustomLicenseAcquisitionUrlTemplate }).(pulumi.StringPtrOutput)
@@ -14485,6 +16358,12 @@ func (o StreamingPolicyPlayReadyConfigurationPtrOutput) ToStreamingPolicyPlayRea
 
 func (o StreamingPolicyPlayReadyConfigurationPtrOutput) ToStreamingPolicyPlayReadyConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyPlayReadyConfigurationPtrOutput {
 	return o
+}
+
+func (o StreamingPolicyPlayReadyConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicyPlayReadyConfiguration] {
+	return pulumix.Output[*StreamingPolicyPlayReadyConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingPolicyPlayReadyConfigurationPtrOutput) Elem() StreamingPolicyPlayReadyConfigurationOutput {
@@ -14540,6 +16419,12 @@ func (o StreamingPolicyPlayReadyConfigurationResponseOutput) ToStreamingPolicyPl
 	return o
 }
 
+func (o StreamingPolicyPlayReadyConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyPlayReadyConfigurationResponse] {
+	return pulumix.Output[StreamingPolicyPlayReadyConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
 func (o StreamingPolicyPlayReadyConfigurationResponseOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamingPolicyPlayReadyConfigurationResponse) *string {
@@ -14564,6 +16449,12 @@ func (o StreamingPolicyPlayReadyConfigurationResponsePtrOutput) ToStreamingPolic
 
 func (o StreamingPolicyPlayReadyConfigurationResponsePtrOutput) ToStreamingPolicyPlayReadyConfigurationResponsePtrOutputWithContext(ctx context.Context) StreamingPolicyPlayReadyConfigurationResponsePtrOutput {
 	return o
+}
+
+func (o StreamingPolicyPlayReadyConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicyPlayReadyConfigurationResponse] {
+	return pulumix.Output[*StreamingPolicyPlayReadyConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingPolicyPlayReadyConfigurationResponsePtrOutput) Elem() StreamingPolicyPlayReadyConfigurationResponseOutput {
@@ -14631,6 +16522,12 @@ func (i StreamingPolicyWidevineConfigurationArgs) ToStreamingPolicyWidevineConfi
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyWidevineConfigurationOutput)
 }
 
+func (i StreamingPolicyWidevineConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyWidevineConfiguration] {
+	return pulumix.Output[StreamingPolicyWidevineConfiguration]{
+		OutputState: i.ToStreamingPolicyWidevineConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StreamingPolicyWidevineConfigurationArgs) ToStreamingPolicyWidevineConfigurationPtrOutput() StreamingPolicyWidevineConfigurationPtrOutput {
 	return i.ToStreamingPolicyWidevineConfigurationPtrOutputWithContext(context.Background())
 }
@@ -14672,6 +16569,12 @@ func (i *streamingPolicyWidevineConfigurationPtrType) ToStreamingPolicyWidevineC
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyWidevineConfigurationPtrOutput)
 }
 
+func (i *streamingPolicyWidevineConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicyWidevineConfiguration] {
+	return pulumix.Output[*StreamingPolicyWidevineConfiguration]{
+		OutputState: i.ToStreamingPolicyWidevineConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class to specify configurations of Widevine in Streaming Policy
 type StreamingPolicyWidevineConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -14697,6 +16600,12 @@ func (o StreamingPolicyWidevineConfigurationOutput) ToStreamingPolicyWidevineCon
 	}).(StreamingPolicyWidevineConfigurationPtrOutput)
 }
 
+func (o StreamingPolicyWidevineConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyWidevineConfiguration] {
+	return pulumix.Output[StreamingPolicyWidevineConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
 func (o StreamingPolicyWidevineConfigurationOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamingPolicyWidevineConfiguration) *string { return v.CustomLicenseAcquisitionUrlTemplate }).(pulumi.StringPtrOutput)
@@ -14714,6 +16623,12 @@ func (o StreamingPolicyWidevineConfigurationPtrOutput) ToStreamingPolicyWidevine
 
 func (o StreamingPolicyWidevineConfigurationPtrOutput) ToStreamingPolicyWidevineConfigurationPtrOutputWithContext(ctx context.Context) StreamingPolicyWidevineConfigurationPtrOutput {
 	return o
+}
+
+func (o StreamingPolicyWidevineConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicyWidevineConfiguration] {
+	return pulumix.Output[*StreamingPolicyWidevineConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingPolicyWidevineConfigurationPtrOutput) Elem() StreamingPolicyWidevineConfigurationOutput {
@@ -14757,6 +16672,12 @@ func (o StreamingPolicyWidevineConfigurationResponseOutput) ToStreamingPolicyWid
 	return o
 }
 
+func (o StreamingPolicyWidevineConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingPolicyWidevineConfigurationResponse] {
+	return pulumix.Output[StreamingPolicyWidevineConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Template for the URL of the custom service delivering licenses to end user players.  Not required when using Azure Media Services for issuing licenses.  The template supports replaceable tokens that the service will update at runtime with the value specific to the request.  The currently supported token values are {AlternativeMediaId}, which is replaced with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of identifier of the key being requested.
 func (o StreamingPolicyWidevineConfigurationResponseOutput) CustomLicenseAcquisitionUrlTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamingPolicyWidevineConfigurationResponse) *string {
@@ -14776,6 +16697,12 @@ func (o StreamingPolicyWidevineConfigurationResponsePtrOutput) ToStreamingPolicy
 
 func (o StreamingPolicyWidevineConfigurationResponsePtrOutput) ToStreamingPolicyWidevineConfigurationResponsePtrOutputWithContext(ctx context.Context) StreamingPolicyWidevineConfigurationResponsePtrOutput {
 	return o
+}
+
+func (o StreamingPolicyWidevineConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicyWidevineConfigurationResponse] {
+	return pulumix.Output[*StreamingPolicyWidevineConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingPolicyWidevineConfigurationResponsePtrOutput) Elem() StreamingPolicyWidevineConfigurationResponseOutput {
@@ -14827,6 +16754,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -14934,6 +16867,12 @@ func (i TrackPropertyConditionArgs) ToTrackPropertyConditionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(TrackPropertyConditionOutput)
 }
 
+func (i TrackPropertyConditionArgs) ToOutput(ctx context.Context) pulumix.Output[TrackPropertyCondition] {
+	return pulumix.Output[TrackPropertyCondition]{
+		OutputState: i.ToTrackPropertyConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TrackPropertyConditionArrayInput is an input type that accepts TrackPropertyConditionArray and TrackPropertyConditionArrayOutput values.
 // You can construct a concrete instance of `TrackPropertyConditionArrayInput` via:
 //
@@ -14959,6 +16898,12 @@ func (i TrackPropertyConditionArray) ToTrackPropertyConditionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(TrackPropertyConditionArrayOutput)
 }
 
+func (i TrackPropertyConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]TrackPropertyCondition] {
+	return pulumix.Output[[]TrackPropertyCondition]{
+		OutputState: i.ToTrackPropertyConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class to specify one track property condition
 type TrackPropertyConditionOutput struct{ *pulumi.OutputState }
 
@@ -14972,6 +16917,12 @@ func (o TrackPropertyConditionOutput) ToTrackPropertyConditionOutput() TrackProp
 
 func (o TrackPropertyConditionOutput) ToTrackPropertyConditionOutputWithContext(ctx context.Context) TrackPropertyConditionOutput {
 	return o
+}
+
+func (o TrackPropertyConditionOutput) ToOutput(ctx context.Context) pulumix.Output[TrackPropertyCondition] {
+	return pulumix.Output[TrackPropertyCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Track property condition operation
@@ -15001,6 +16952,12 @@ func (o TrackPropertyConditionArrayOutput) ToTrackPropertyConditionArrayOutput()
 
 func (o TrackPropertyConditionArrayOutput) ToTrackPropertyConditionArrayOutputWithContext(ctx context.Context) TrackPropertyConditionArrayOutput {
 	return o
+}
+
+func (o TrackPropertyConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrackPropertyCondition] {
+	return pulumix.Output[[]TrackPropertyCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrackPropertyConditionArrayOutput) Index(i pulumi.IntInput) TrackPropertyConditionOutput {
@@ -15034,6 +16991,12 @@ func (o TrackPropertyConditionResponseOutput) ToTrackPropertyConditionResponseOu
 	return o
 }
 
+func (o TrackPropertyConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrackPropertyConditionResponse] {
+	return pulumix.Output[TrackPropertyConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Track property condition operation
 func (o TrackPropertyConditionResponseOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v TrackPropertyConditionResponse) string { return v.Operation }).(pulumi.StringOutput)
@@ -15061,6 +17024,12 @@ func (o TrackPropertyConditionResponseArrayOutput) ToTrackPropertyConditionRespo
 
 func (o TrackPropertyConditionResponseArrayOutput) ToTrackPropertyConditionResponseArrayOutputWithContext(ctx context.Context) TrackPropertyConditionResponseArrayOutput {
 	return o
+}
+
+func (o TrackPropertyConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrackPropertyConditionResponse] {
+	return pulumix.Output[[]TrackPropertyConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrackPropertyConditionResponseArrayOutput) Index(i pulumi.IntInput) TrackPropertyConditionResponseOutput {
@@ -15104,6 +17073,12 @@ func (i TrackSelectionArgs) ToTrackSelectionOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(TrackSelectionOutput)
 }
 
+func (i TrackSelectionArgs) ToOutput(ctx context.Context) pulumix.Output[TrackSelection] {
+	return pulumix.Output[TrackSelection]{
+		OutputState: i.ToTrackSelectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TrackSelectionArrayInput is an input type that accepts TrackSelectionArray and TrackSelectionArrayOutput values.
 // You can construct a concrete instance of `TrackSelectionArrayInput` via:
 //
@@ -15129,6 +17104,12 @@ func (i TrackSelectionArray) ToTrackSelectionArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TrackSelectionArrayOutput)
 }
 
+func (i TrackSelectionArray) ToOutput(ctx context.Context) pulumix.Output[[]TrackSelection] {
+	return pulumix.Output[[]TrackSelection]{
+		OutputState: i.ToTrackSelectionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class to select a track
 type TrackSelectionOutput struct{ *pulumi.OutputState }
 
@@ -15142,6 +17123,12 @@ func (o TrackSelectionOutput) ToTrackSelectionOutput() TrackSelectionOutput {
 
 func (o TrackSelectionOutput) ToTrackSelectionOutputWithContext(ctx context.Context) TrackSelectionOutput {
 	return o
+}
+
+func (o TrackSelectionOutput) ToOutput(ctx context.Context) pulumix.Output[TrackSelection] {
+	return pulumix.Output[TrackSelection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // TrackSelections is a track property condition list which can specify track(s)
@@ -15161,6 +17148,12 @@ func (o TrackSelectionArrayOutput) ToTrackSelectionArrayOutput() TrackSelectionA
 
 func (o TrackSelectionArrayOutput) ToTrackSelectionArrayOutputWithContext(ctx context.Context) TrackSelectionArrayOutput {
 	return o
+}
+
+func (o TrackSelectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrackSelection] {
+	return pulumix.Output[[]TrackSelection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrackSelectionArrayOutput) Index(i pulumi.IntInput) TrackSelectionOutput {
@@ -15190,6 +17183,12 @@ func (o TrackSelectionResponseOutput) ToTrackSelectionResponseOutputWithContext(
 	return o
 }
 
+func (o TrackSelectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrackSelectionResponse] {
+	return pulumix.Output[TrackSelectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // TrackSelections is a track property condition list which can specify track(s)
 func (o TrackSelectionResponseOutput) TrackSelections() TrackPropertyConditionResponseArrayOutput {
 	return o.ApplyT(func(v TrackSelectionResponse) []TrackPropertyConditionResponse { return v.TrackSelections }).(TrackPropertyConditionResponseArrayOutput)
@@ -15207,6 +17206,12 @@ func (o TrackSelectionResponseArrayOutput) ToTrackSelectionResponseArrayOutput()
 
 func (o TrackSelectionResponseArrayOutput) ToTrackSelectionResponseArrayOutputWithContext(ctx context.Context) TrackSelectionResponseArrayOutput {
 	return o
+}
+
+func (o TrackSelectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrackSelectionResponse] {
+	return pulumix.Output[[]TrackSelectionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrackSelectionResponseArrayOutput) Index(i pulumi.IntInput) TrackSelectionResponseOutput {
@@ -15258,6 +17263,12 @@ func (i TransformOutputTypeArgs) ToTransformOutputTypeOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputTypeOutput)
 }
 
+func (i TransformOutputTypeArgs) ToOutput(ctx context.Context) pulumix.Output[TransformOutputType] {
+	return pulumix.Output[TransformOutputType]{
+		OutputState: i.ToTransformOutputTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransformOutputTypeArrayInput is an input type that accepts TransformOutputTypeArray and TransformOutputTypeArrayOutput values.
 // You can construct a concrete instance of `TransformOutputTypeArrayInput` via:
 //
@@ -15283,6 +17294,12 @@ func (i TransformOutputTypeArray) ToTransformOutputTypeArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputTypeArrayOutput)
 }
 
+func (i TransformOutputTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]TransformOutputType] {
+	return pulumix.Output[[]TransformOutputType]{
+		OutputState: i.ToTransformOutputTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the properties of a TransformOutput, which are the rules to be applied while generating the desired output.
 type TransformOutputTypeOutput struct{ *pulumi.OutputState }
 
@@ -15296,6 +17313,12 @@ func (o TransformOutputTypeOutput) ToTransformOutputTypeOutput() TransformOutput
 
 func (o TransformOutputTypeOutput) ToTransformOutputTypeOutputWithContext(ctx context.Context) TransformOutputTypeOutput {
 	return o
+}
+
+func (o TransformOutputTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TransformOutputType] {
+	return pulumix.Output[TransformOutputType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A Transform can define more than one outputs. This property defines what the service should do when one output fails - either continue to produce other outputs, or, stop the other outputs. The overall Job state will not reflect failures of outputs that are specified with 'ContinueJob'. The default is 'StopProcessingJob'.
@@ -15325,6 +17348,12 @@ func (o TransformOutputTypeArrayOutput) ToTransformOutputTypeArrayOutput() Trans
 
 func (o TransformOutputTypeArrayOutput) ToTransformOutputTypeArrayOutputWithContext(ctx context.Context) TransformOutputTypeArrayOutput {
 	return o
+}
+
+func (o TransformOutputTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformOutputType] {
+	return pulumix.Output[[]TransformOutputType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransformOutputTypeArrayOutput) Index(i pulumi.IntInput) TransformOutputTypeOutput {
@@ -15358,6 +17387,12 @@ func (o TransformOutputResponseOutput) ToTransformOutputResponseOutputWithContex
 	return o
 }
 
+func (o TransformOutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TransformOutputResponse] {
+	return pulumix.Output[TransformOutputResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A Transform can define more than one outputs. This property defines what the service should do when one output fails - either continue to produce other outputs, or, stop the other outputs. The overall Job state will not reflect failures of outputs that are specified with 'ContinueJob'. The default is 'StopProcessingJob'.
 func (o TransformOutputResponseOutput) OnError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransformOutputResponse) *string { return v.OnError }).(pulumi.StringPtrOutput)
@@ -15385,6 +17420,12 @@ func (o TransformOutputResponseArrayOutput) ToTransformOutputResponseArrayOutput
 
 func (o TransformOutputResponseArrayOutput) ToTransformOutputResponseArrayOutputWithContext(ctx context.Context) TransformOutputResponseArrayOutput {
 	return o
+}
+
+func (o TransformOutputResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformOutputResponse] {
+	return pulumix.Output[[]TransformOutputResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransformOutputResponseArrayOutput) Index(i pulumi.IntInput) TransformOutputResponseOutput {
@@ -15436,6 +17477,12 @@ func (o UserAssignedManagedIdentityResponseOutput) ToUserAssignedManagedIdentity
 	return o
 }
 
+func (o UserAssignedManagedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedManagedIdentityResponse] {
+	return pulumix.Output[UserAssignedManagedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The client ID.
 func (o UserAssignedManagedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedManagedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -15458,6 +17505,12 @@ func (o UserAssignedManagedIdentityResponseMapOutput) ToUserAssignedManagedIdent
 
 func (o UserAssignedManagedIdentityResponseMapOutput) ToUserAssignedManagedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedManagedIdentityResponseMapOutput {
 	return o
+}
+
+func (o UserAssignedManagedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedManagedIdentityResponse] {
+	return pulumix.Output[map[string]UserAssignedManagedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAssignedManagedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedManagedIdentityResponseOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // IoT Defender settings
@@ -136,6 +137,12 @@ func (i *DefenderSetting) ToDefenderSettingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DefenderSettingOutput)
 }
 
+func (i *DefenderSetting) ToOutput(ctx context.Context) pulumix.Output[*DefenderSetting] {
+	return pulumix.Output[*DefenderSetting]{
+		OutputState: i.ToDefenderSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DefenderSettingOutput struct{ *pulumi.OutputState }
 
 func (DefenderSettingOutput) ElementType() reflect.Type {
@@ -148,6 +155,12 @@ func (o DefenderSettingOutput) ToDefenderSettingOutput() DefenderSettingOutput {
 
 func (o DefenderSettingOutput) ToDefenderSettingOutputWithContext(ctx context.Context) DefenderSettingOutput {
 	return o
+}
+
+func (o DefenderSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*DefenderSetting] {
+	return pulumix.Output[*DefenderSetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Size of the device quota. Value is required to be in multiples of 100.

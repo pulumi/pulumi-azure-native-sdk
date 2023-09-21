@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DataSetMapping in a shareSubscription
@@ -105,6 +106,12 @@ func (o LookupADLSGen2StorageAccountDataSetMappingResultOutput) ToLookupADLSGen2
 
 func (o LookupADLSGen2StorageAccountDataSetMappingResultOutput) ToLookupADLSGen2StorageAccountDataSetMappingResultOutputWithContext(ctx context.Context) LookupADLSGen2StorageAccountDataSetMappingResultOutput {
 	return o
+}
+
+func (o LookupADLSGen2StorageAccountDataSetMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupADLSGen2StorageAccountDataSetMappingResult] {
+	return pulumix.Output[LookupADLSGen2StorageAccountDataSetMappingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the container name.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description of hybrid connection resource.
@@ -143,6 +144,12 @@ func (i *HybridConnection) ToHybridConnectionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(HybridConnectionOutput)
 }
 
+func (i *HybridConnection) ToOutput(ctx context.Context) pulumix.Output[*HybridConnection] {
+	return pulumix.Output[*HybridConnection]{
+		OutputState: i.ToHybridConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HybridConnectionOutput struct{ *pulumi.OutputState }
 
 func (HybridConnectionOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o HybridConnectionOutput) ToHybridConnectionOutput() HybridConnectionOutpu
 
 func (o HybridConnectionOutput) ToHybridConnectionOutputWithContext(ctx context.Context) HybridConnectionOutput {
 	return o
+}
+
+func (o HybridConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridConnection] {
+	return pulumix.Output[*HybridConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the hybrid connection was created.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i AccessModeSettingsArgs) ToAccessModeSettingsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AccessModeSettingsOutput)
 }
 
+func (i AccessModeSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AccessModeSettings] {
+	return pulumix.Output[AccessModeSettings]{
+		OutputState: i.ToAccessModeSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties that define the scope private link mode settings.
 type AccessModeSettingsOutput struct{ *pulumi.OutputState }
 
@@ -69,6 +76,12 @@ func (o AccessModeSettingsOutput) ToAccessModeSettingsOutput() AccessModeSetting
 
 func (o AccessModeSettingsOutput) ToAccessModeSettingsOutputWithContext(ctx context.Context) AccessModeSettingsOutput {
 	return o
+}
+
+func (o AccessModeSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AccessModeSettings] {
+	return pulumix.Output[AccessModeSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of exclusions that override the default access mode settings for specific private endpoint connections.
@@ -129,6 +142,12 @@ func (i AccessModeSettingsExclusionArgs) ToAccessModeSettingsExclusionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AccessModeSettingsExclusionOutput)
 }
 
+func (i AccessModeSettingsExclusionArgs) ToOutput(ctx context.Context) pulumix.Output[AccessModeSettingsExclusion] {
+	return pulumix.Output[AccessModeSettingsExclusion]{
+		OutputState: i.ToAccessModeSettingsExclusionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessModeSettingsExclusionArrayInput is an input type that accepts AccessModeSettingsExclusionArray and AccessModeSettingsExclusionArrayOutput values.
 // You can construct a concrete instance of `AccessModeSettingsExclusionArrayInput` via:
 //
@@ -154,6 +173,12 @@ func (i AccessModeSettingsExclusionArray) ToAccessModeSettingsExclusionArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AccessModeSettingsExclusionArrayOutput)
 }
 
+func (i AccessModeSettingsExclusionArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessModeSettingsExclusion] {
+	return pulumix.Output[[]AccessModeSettingsExclusion]{
+		OutputState: i.ToAccessModeSettingsExclusionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties that define the scope private link mode settings exclusion item. This setting applies to a specific private endpoint connection and overrides the default settings for that private endpoint connection.
 type AccessModeSettingsExclusionOutput struct{ *pulumi.OutputState }
 
@@ -167,6 +192,12 @@ func (o AccessModeSettingsExclusionOutput) ToAccessModeSettingsExclusionOutput()
 
 func (o AccessModeSettingsExclusionOutput) ToAccessModeSettingsExclusionOutputWithContext(ctx context.Context) AccessModeSettingsExclusionOutput {
 	return o
+}
+
+func (o AccessModeSettingsExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[AccessModeSettingsExclusion] {
+	return pulumix.Output[AccessModeSettingsExclusion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the access mode of ingestion through the specified private endpoint connection in the exclusion.
@@ -196,6 +227,12 @@ func (o AccessModeSettingsExclusionArrayOutput) ToAccessModeSettingsExclusionArr
 
 func (o AccessModeSettingsExclusionArrayOutput) ToAccessModeSettingsExclusionArrayOutputWithContext(ctx context.Context) AccessModeSettingsExclusionArrayOutput {
 	return o
+}
+
+func (o AccessModeSettingsExclusionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessModeSettingsExclusion] {
+	return pulumix.Output[[]AccessModeSettingsExclusion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessModeSettingsExclusionArrayOutput) Index(i pulumi.IntInput) AccessModeSettingsExclusionOutput {
@@ -229,6 +266,12 @@ func (o AccessModeSettingsExclusionResponseOutput) ToAccessModeSettingsExclusion
 	return o
 }
 
+func (o AccessModeSettingsExclusionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessModeSettingsExclusionResponse] {
+	return pulumix.Output[AccessModeSettingsExclusionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the access mode of ingestion through the specified private endpoint connection in the exclusion.
 func (o AccessModeSettingsExclusionResponseOutput) IngestionAccessMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessModeSettingsExclusionResponse) *string { return v.IngestionAccessMode }).(pulumi.StringPtrOutput)
@@ -256,6 +299,12 @@ func (o AccessModeSettingsExclusionResponseArrayOutput) ToAccessModeSettingsExcl
 
 func (o AccessModeSettingsExclusionResponseArrayOutput) ToAccessModeSettingsExclusionResponseArrayOutputWithContext(ctx context.Context) AccessModeSettingsExclusionResponseArrayOutput {
 	return o
+}
+
+func (o AccessModeSettingsExclusionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessModeSettingsExclusionResponse] {
+	return pulumix.Output[[]AccessModeSettingsExclusionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessModeSettingsExclusionResponseArrayOutput) Index(i pulumi.IntInput) AccessModeSettingsExclusionResponseOutput {
@@ -287,6 +336,12 @@ func (o AccessModeSettingsResponseOutput) ToAccessModeSettingsResponseOutput() A
 
 func (o AccessModeSettingsResponseOutput) ToAccessModeSettingsResponseOutputWithContext(ctx context.Context) AccessModeSettingsResponseOutput {
 	return o
+}
+
+func (o AccessModeSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessModeSettingsResponse] {
+	return pulumix.Output[AccessModeSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of exclusions that override the default access mode settings for specific private endpoint connections.
@@ -335,6 +390,12 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
+	return pulumix.Output[PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -381,6 +442,12 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
+	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -408,6 +475,12 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
+func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
+	return pulumix.Output[PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -425,6 +498,12 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
+	return pulumix.Output[*PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -490,6 +569,12 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
+func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -503,6 +588,12 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -543,6 +634,12 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
+	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -589,6 +686,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

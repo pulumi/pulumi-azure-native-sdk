@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the export pipeline.
@@ -92,6 +93,12 @@ func (o LookupExportPipelineResultOutput) ToLookupExportPipelineResultOutput() L
 
 func (o LookupExportPipelineResultOutput) ToLookupExportPipelineResultOutputWithContext(ctx context.Context) LookupExportPipelineResultOutput {
 	return o
+}
+
+func (o LookupExportPipelineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExportPipelineResult] {
+	return pulumix.Output[LookupExportPipelineResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource ID.

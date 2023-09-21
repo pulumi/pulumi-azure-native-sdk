@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing an Event Grid data connection.
@@ -213,6 +214,12 @@ func (i *EventGridDataConnection) ToEventGridDataConnectionOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(EventGridDataConnectionOutput)
 }
 
+func (i *EventGridDataConnection) ToOutput(ctx context.Context) pulumix.Output[*EventGridDataConnection] {
+	return pulumix.Output[*EventGridDataConnection]{
+		OutputState: i.ToEventGridDataConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EventGridDataConnectionOutput struct{ *pulumi.OutputState }
 
 func (EventGridDataConnectionOutput) ElementType() reflect.Type {
@@ -225,6 +232,12 @@ func (o EventGridDataConnectionOutput) ToEventGridDataConnectionOutput() EventGr
 
 func (o EventGridDataConnectionOutput) ToEventGridDataConnectionOutputWithContext(ctx context.Context) EventGridDataConnectionOutput {
 	return o
+}
+
+func (o EventGridDataConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*EventGridDataConnection] {
+	return pulumix.Output[*EventGridDataConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of blob storage event type to process.

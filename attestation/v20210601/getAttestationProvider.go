@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the status of Attestation Provider.
@@ -94,6 +95,12 @@ func (o LookupAttestationProviderResultOutput) ToLookupAttestationProviderResult
 
 func (o LookupAttestationProviderResultOutput) ToLookupAttestationProviderResultOutputWithContext(ctx context.Context) LookupAttestationProviderResultOutput {
 	return o
+}
+
+func (o LookupAttestationProviderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAttestationProviderResult] {
+	return pulumix.Output[LookupAttestationProviderResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the uri of attestation service

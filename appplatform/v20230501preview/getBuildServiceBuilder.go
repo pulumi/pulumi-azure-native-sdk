@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a KPack builder.
@@ -88,6 +89,12 @@ func (o LookupBuildServiceBuilderResultOutput) ToLookupBuildServiceBuilderResult
 
 func (o LookupBuildServiceBuilderResultOutput) ToLookupBuildServiceBuilderResultOutputWithContext(ctx context.Context) LookupBuildServiceBuilderResultOutput {
 	return o
+}
+
+func (o LookupBuildServiceBuilderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBuildServiceBuilderResult] {
+	return pulumix.Output[LookupBuildServiceBuilderResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

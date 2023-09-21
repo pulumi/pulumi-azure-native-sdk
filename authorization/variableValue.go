@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The variable value.
@@ -120,6 +121,12 @@ func (i *VariableValue) ToVariableValueOutputWithContext(ctx context.Context) Va
 	return pulumi.ToOutputWithContext(ctx, i).(VariableValueOutput)
 }
 
+func (i *VariableValue) ToOutput(ctx context.Context) pulumix.Output[*VariableValue] {
+	return pulumix.Output[*VariableValue]{
+		OutputState: i.ToVariableValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VariableValueOutput struct{ *pulumi.OutputState }
 
 func (VariableValueOutput) ElementType() reflect.Type {
@@ -132,6 +139,12 @@ func (o VariableValueOutput) ToVariableValueOutput() VariableValueOutput {
 
 func (o VariableValueOutput) ToVariableValueOutputWithContext(ctx context.Context) VariableValueOutput {
 	return o
+}
+
+func (o VariableValueOutput) ToOutput(ctx context.Context) pulumix.Output[*VariableValue] {
+	return pulumix.Output[*VariableValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the variable.

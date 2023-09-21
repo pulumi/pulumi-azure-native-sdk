@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing delivery rule within a rule set.
@@ -113,6 +114,12 @@ func (o LookupRuleResultOutput) ToLookupRuleResultOutput() LookupRuleResultOutpu
 
 func (o LookupRuleResultOutput) ToLookupRuleResultOutputWithContext(ctx context.Context) LookupRuleResultOutput {
 	return o
+}
+
+func (o LookupRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRuleResult] {
+	return pulumix.Output[LookupRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of actions that are executed when all the conditions of a rule are satisfied.

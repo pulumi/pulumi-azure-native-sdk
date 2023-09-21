@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Supported protocols for the customer's endpoint.
@@ -87,6 +88,12 @@ func (o AfdQueryStringCachingBehaviorOutput) ToAfdQueryStringCachingBehaviorPtrO
 	}).(AfdQueryStringCachingBehaviorPtrOutput)
 }
 
+func (o AfdQueryStringCachingBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[AfdQueryStringCachingBehavior] {
+	return pulumix.Output[AfdQueryStringCachingBehavior]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AfdQueryStringCachingBehaviorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,6 +127,12 @@ func (o AfdQueryStringCachingBehaviorPtrOutput) ToAfdQueryStringCachingBehaviorP
 
 func (o AfdQueryStringCachingBehaviorPtrOutput) ToAfdQueryStringCachingBehaviorPtrOutputWithContext(ctx context.Context) AfdQueryStringCachingBehaviorPtrOutput {
 	return o
+}
+
+func (o AfdQueryStringCachingBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AfdQueryStringCachingBehavior] {
+	return pulumix.Output[*AfdQueryStringCachingBehavior]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AfdQueryStringCachingBehaviorPtrOutput) Elem() AfdQueryStringCachingBehaviorOutput {
@@ -182,6 +195,12 @@ func (in *afdQueryStringCachingBehaviorPtr) ToAfdQueryStringCachingBehaviorPtrOu
 
 func (in *afdQueryStringCachingBehaviorPtr) ToAfdQueryStringCachingBehaviorPtrOutputWithContext(ctx context.Context) AfdQueryStringCachingBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AfdQueryStringCachingBehaviorPtrOutput)
+}
+
+func (in *afdQueryStringCachingBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*AfdQueryStringCachingBehavior] {
+	return pulumix.Output[*AfdQueryStringCachingBehavior]{
+		OutputState: in.ToAfdQueryStringCachingBehaviorPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
@@ -270,6 +289,12 @@ func (o HealthProbeRequestTypeOutput) ToHealthProbeRequestTypePtrOutputWithConte
 	}).(HealthProbeRequestTypePtrOutput)
 }
 
+func (o HealthProbeRequestTypeOutput) ToOutput(ctx context.Context) pulumix.Output[HealthProbeRequestType] {
+	return pulumix.Output[HealthProbeRequestType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HealthProbeRequestTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -303,6 +328,12 @@ func (o HealthProbeRequestTypePtrOutput) ToHealthProbeRequestTypePtrOutput() Hea
 
 func (o HealthProbeRequestTypePtrOutput) ToHealthProbeRequestTypePtrOutputWithContext(ctx context.Context) HealthProbeRequestTypePtrOutput {
 	return o
+}
+
+func (o HealthProbeRequestTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HealthProbeRequestType] {
+	return pulumix.Output[*HealthProbeRequestType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HealthProbeRequestTypePtrOutput) Elem() HealthProbeRequestTypeOutput {
@@ -365,6 +396,12 @@ func (in *healthProbeRequestTypePtr) ToHealthProbeRequestTypePtrOutput() HealthP
 
 func (in *healthProbeRequestTypePtr) ToHealthProbeRequestTypePtrOutputWithContext(ctx context.Context) HealthProbeRequestTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HealthProbeRequestTypePtrOutput)
+}
+
+func (in *healthProbeRequestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HealthProbeRequestType] {
+	return pulumix.Output[*HealthProbeRequestType]{
+		OutputState: in.ToHealthProbeRequestTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
@@ -452,6 +489,12 @@ func (o ProbeProtocolOutput) ToProbeProtocolPtrOutputWithContext(ctx context.Con
 	}).(ProbeProtocolPtrOutput)
 }
 
+func (o ProbeProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[ProbeProtocol] {
+	return pulumix.Output[ProbeProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProbeProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -485,6 +528,12 @@ func (o ProbeProtocolPtrOutput) ToProbeProtocolPtrOutput() ProbeProtocolPtrOutpu
 
 func (o ProbeProtocolPtrOutput) ToProbeProtocolPtrOutputWithContext(ctx context.Context) ProbeProtocolPtrOutput {
 	return o
+}
+
+func (o ProbeProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProbeProtocol] {
+	return pulumix.Output[*ProbeProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProbeProtocolPtrOutput) Elem() ProbeProtocolOutput {
@@ -547,6 +596,12 @@ func (in *probeProtocolPtr) ToProbeProtocolPtrOutput() ProbeProtocolPtrOutput {
 
 func (in *probeProtocolPtr) ToProbeProtocolPtrOutputWithContext(ctx context.Context) ProbeProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProbeProtocolPtrOutput)
+}
+
+func (in *probeProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ProbeProtocol] {
+	return pulumix.Output[*ProbeProtocol]{
+		OutputState: in.ToProbeProtocolPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of response errors for real user requests for which origin will be deemed unhealthy
@@ -618,6 +673,12 @@ func (o ResponseBasedDetectedErrorTypesOutput) ToResponseBasedDetectedErrorTypes
 	}).(ResponseBasedDetectedErrorTypesPtrOutput)
 }
 
+func (o ResponseBasedDetectedErrorTypesOutput) ToOutput(ctx context.Context) pulumix.Output[ResponseBasedDetectedErrorTypes] {
+	return pulumix.Output[ResponseBasedDetectedErrorTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResponseBasedDetectedErrorTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -651,6 +712,12 @@ func (o ResponseBasedDetectedErrorTypesPtrOutput) ToResponseBasedDetectedErrorTy
 
 func (o ResponseBasedDetectedErrorTypesPtrOutput) ToResponseBasedDetectedErrorTypesPtrOutputWithContext(ctx context.Context) ResponseBasedDetectedErrorTypesPtrOutput {
 	return o
+}
+
+func (o ResponseBasedDetectedErrorTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResponseBasedDetectedErrorTypes] {
+	return pulumix.Output[*ResponseBasedDetectedErrorTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResponseBasedDetectedErrorTypesPtrOutput) Elem() ResponseBasedDetectedErrorTypesOutput {
@@ -713,6 +780,12 @@ func (in *responseBasedDetectedErrorTypesPtr) ToResponseBasedDetectedErrorTypesP
 
 func (in *responseBasedDetectedErrorTypesPtr) ToResponseBasedDetectedErrorTypesPtrOutputWithContext(ctx context.Context) ResponseBasedDetectedErrorTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResponseBasedDetectedErrorTypesPtrOutput)
+}
+
+func (in *responseBasedDetectedErrorTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ResponseBasedDetectedErrorTypes] {
+	return pulumix.Output[*ResponseBasedDetectedErrorTypes]{
+		OutputState: in.ToResponseBasedDetectedErrorTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Name of the pricing tier.

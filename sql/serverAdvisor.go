@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Database, Server or Elastic Pool Advisor.
@@ -181,6 +182,12 @@ func (i *ServerAdvisor) ToServerAdvisorOutputWithContext(ctx context.Context) Se
 	return pulumi.ToOutputWithContext(ctx, i).(ServerAdvisorOutput)
 }
 
+func (i *ServerAdvisor) ToOutput(ctx context.Context) pulumix.Output[*ServerAdvisor] {
+	return pulumix.Output[*ServerAdvisor]{
+		OutputState: i.ToServerAdvisorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerAdvisorOutput struct{ *pulumi.OutputState }
 
 func (ServerAdvisorOutput) ElementType() reflect.Type {
@@ -193,6 +200,12 @@ func (o ServerAdvisorOutput) ToServerAdvisorOutput() ServerAdvisorOutput {
 
 func (o ServerAdvisorOutput) ToServerAdvisorOutputWithContext(ctx context.Context) ServerAdvisorOutput {
 	return o
+}
+
+func (o ServerAdvisorOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerAdvisor] {
+	return pulumix.Output[*ServerAdvisor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the status of availability of this advisor to customers. Possible values are 'GA', 'PublicPreview', 'LimitedPublicPreview' and 'PrivatePreview'.

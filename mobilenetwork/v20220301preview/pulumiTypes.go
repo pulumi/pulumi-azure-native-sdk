@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i AttachedDataNetworkResourceIdArgs) ToAttachedDataNetworkResourceIdOutput
 
 func (i AttachedDataNetworkResourceIdArgs) ToAttachedDataNetworkResourceIdOutputWithContext(ctx context.Context) AttachedDataNetworkResourceIdOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDataNetworkResourceIdOutput)
+}
+
+func (i AttachedDataNetworkResourceIdArgs) ToOutput(ctx context.Context) pulumix.Output[AttachedDataNetworkResourceId] {
+	return pulumix.Output[AttachedDataNetworkResourceId]{
+		OutputState: i.ToAttachedDataNetworkResourceIdOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i AttachedDataNetworkResourceIdArgs) ToAttachedDataNetworkResourceIdPtrOutput() AttachedDataNetworkResourceIdPtrOutput {
@@ -89,6 +96,12 @@ func (i *attachedDataNetworkResourceIdPtrType) ToAttachedDataNetworkResourceIdPt
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDataNetworkResourceIdPtrOutput)
 }
 
+func (i *attachedDataNetworkResourceIdPtrType) ToOutput(ctx context.Context) pulumix.Output[*AttachedDataNetworkResourceId] {
+	return pulumix.Output[*AttachedDataNetworkResourceId]{
+		OutputState: i.ToAttachedDataNetworkResourceIdPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Reference to an Attached Data Network resource.
 type AttachedDataNetworkResourceIdOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o AttachedDataNetworkResourceIdOutput) ToAttachedDataNetworkResourceIdPtrO
 	}).(AttachedDataNetworkResourceIdPtrOutput)
 }
 
+func (o AttachedDataNetworkResourceIdOutput) ToOutput(ctx context.Context) pulumix.Output[AttachedDataNetworkResourceId] {
+	return pulumix.Output[AttachedDataNetworkResourceId]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Attached Data Network resource ID.
 func (o AttachedDataNetworkResourceIdOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDataNetworkResourceId) string { return v.Id }).(pulumi.StringOutput)
@@ -131,6 +150,12 @@ func (o AttachedDataNetworkResourceIdPtrOutput) ToAttachedDataNetworkResourceIdP
 
 func (o AttachedDataNetworkResourceIdPtrOutput) ToAttachedDataNetworkResourceIdPtrOutputWithContext(ctx context.Context) AttachedDataNetworkResourceIdPtrOutput {
 	return o
+}
+
+func (o AttachedDataNetworkResourceIdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedDataNetworkResourceId] {
+	return pulumix.Output[*AttachedDataNetworkResourceId]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttachedDataNetworkResourceIdPtrOutput) Elem() AttachedDataNetworkResourceIdOutput {
@@ -174,6 +199,12 @@ func (o AttachedDataNetworkResourceIdResponseOutput) ToAttachedDataNetworkResour
 	return o
 }
 
+func (o AttachedDataNetworkResourceIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AttachedDataNetworkResourceIdResponse] {
+	return pulumix.Output[AttachedDataNetworkResourceIdResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Attached Data Network resource ID.
 func (o AttachedDataNetworkResourceIdResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDataNetworkResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -191,6 +222,12 @@ func (o AttachedDataNetworkResourceIdResponsePtrOutput) ToAttachedDataNetworkRes
 
 func (o AttachedDataNetworkResourceIdResponsePtrOutput) ToAttachedDataNetworkResourceIdResponsePtrOutputWithContext(ctx context.Context) AttachedDataNetworkResourceIdResponsePtrOutput {
 	return o
+}
+
+func (o AttachedDataNetworkResourceIdResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedDataNetworkResourceIdResponse] {
+	return pulumix.Output[*AttachedDataNetworkResourceIdResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttachedDataNetworkResourceIdResponsePtrOutput) Elem() AttachedDataNetworkResourceIdResponseOutput {
@@ -248,6 +285,12 @@ func (i CustomLocationResourceIdArgs) ToCustomLocationResourceIdOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLocationResourceIdOutput)
 }
 
+func (i CustomLocationResourceIdArgs) ToOutput(ctx context.Context) pulumix.Output[CustomLocationResourceId] {
+	return pulumix.Output[CustomLocationResourceId]{
+		OutputState: i.ToCustomLocationResourceIdOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CustomLocationResourceIdArgs) ToCustomLocationResourceIdPtrOutput() CustomLocationResourceIdPtrOutput {
 	return i.ToCustomLocationResourceIdPtrOutputWithContext(context.Background())
 }
@@ -289,6 +332,12 @@ func (i *customLocationResourceIdPtrType) ToCustomLocationResourceIdPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLocationResourceIdPtrOutput)
 }
 
+func (i *customLocationResourceIdPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomLocationResourceId] {
+	return pulumix.Output[*CustomLocationResourceId]{
+		OutputState: i.ToCustomLocationResourceIdPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Reference to an Azure ARC custom location resource.
 type CustomLocationResourceIdOutput struct{ *pulumi.OutputState }
 
@@ -314,6 +363,12 @@ func (o CustomLocationResourceIdOutput) ToCustomLocationResourceIdPtrOutputWithC
 	}).(CustomLocationResourceIdPtrOutput)
 }
 
+func (o CustomLocationResourceIdOutput) ToOutput(ctx context.Context) pulumix.Output[CustomLocationResourceId] {
+	return pulumix.Output[CustomLocationResourceId]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Azure ARC custom location resource ID.
 func (o CustomLocationResourceIdOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomLocationResourceId) string { return v.Id }).(pulumi.StringOutput)
@@ -331,6 +386,12 @@ func (o CustomLocationResourceIdPtrOutput) ToCustomLocationResourceIdPtrOutput()
 
 func (o CustomLocationResourceIdPtrOutput) ToCustomLocationResourceIdPtrOutputWithContext(ctx context.Context) CustomLocationResourceIdPtrOutput {
 	return o
+}
+
+func (o CustomLocationResourceIdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomLocationResourceId] {
+	return pulumix.Output[*CustomLocationResourceId]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomLocationResourceIdPtrOutput) Elem() CustomLocationResourceIdOutput {
@@ -374,6 +435,12 @@ func (o CustomLocationResourceIdResponseOutput) ToCustomLocationResourceIdRespon
 	return o
 }
 
+func (o CustomLocationResourceIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomLocationResourceIdResponse] {
+	return pulumix.Output[CustomLocationResourceIdResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Azure ARC custom location resource ID.
 func (o CustomLocationResourceIdResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomLocationResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -391,6 +458,12 @@ func (o CustomLocationResourceIdResponsePtrOutput) ToCustomLocationResourceIdRes
 
 func (o CustomLocationResourceIdResponsePtrOutput) ToCustomLocationResourceIdResponsePtrOutputWithContext(ctx context.Context) CustomLocationResourceIdResponsePtrOutput {
 	return o
+}
+
+func (o CustomLocationResourceIdResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomLocationResourceIdResponse] {
+	return pulumix.Output[*CustomLocationResourceIdResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomLocationResourceIdResponsePtrOutput) Elem() CustomLocationResourceIdResponseOutput {
@@ -460,6 +533,12 @@ func (i InterfacePropertiesArgs) ToInterfacePropertiesOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InterfacePropertiesOutput)
 }
 
+func (i InterfacePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[InterfaceProperties] {
+	return pulumix.Output[InterfaceProperties]{
+		OutputState: i.ToInterfacePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Interface properties
 type InterfacePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -473,6 +552,12 @@ func (o InterfacePropertiesOutput) ToInterfacePropertiesOutput() InterfaceProper
 
 func (o InterfacePropertiesOutput) ToInterfacePropertiesOutputWithContext(ctx context.Context) InterfacePropertiesOutput {
 	return o
+}
+
+func (o InterfacePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[InterfaceProperties] {
+	return pulumix.Output[InterfaceProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IPv4 address.
@@ -520,6 +605,12 @@ func (o InterfacePropertiesResponseOutput) ToInterfacePropertiesResponseOutput()
 
 func (o InterfacePropertiesResponseOutput) ToInterfacePropertiesResponseOutputWithContext(ctx context.Context) InterfacePropertiesResponseOutput {
 	return o
+}
+
+func (o InterfacePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InterfacePropertiesResponse] {
+	return pulumix.Output[InterfacePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IPv4 address.
@@ -577,6 +668,12 @@ func (i MobileNetworkResourceIdArgs) ToMobileNetworkResourceIdOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(MobileNetworkResourceIdOutput)
 }
 
+func (i MobileNetworkResourceIdArgs) ToOutput(ctx context.Context) pulumix.Output[MobileNetworkResourceId] {
+	return pulumix.Output[MobileNetworkResourceId]{
+		OutputState: i.ToMobileNetworkResourceIdOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MobileNetworkResourceIdArgs) ToMobileNetworkResourceIdPtrOutput() MobileNetworkResourceIdPtrOutput {
 	return i.ToMobileNetworkResourceIdPtrOutputWithContext(context.Background())
 }
@@ -618,6 +715,12 @@ func (i *mobileNetworkResourceIdPtrType) ToMobileNetworkResourceIdPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(MobileNetworkResourceIdPtrOutput)
 }
 
+func (i *mobileNetworkResourceIdPtrType) ToOutput(ctx context.Context) pulumix.Output[*MobileNetworkResourceId] {
+	return pulumix.Output[*MobileNetworkResourceId]{
+		OutputState: i.ToMobileNetworkResourceIdPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Reference to a Mobile Network resource.
 type MobileNetworkResourceIdOutput struct{ *pulumi.OutputState }
 
@@ -643,6 +746,12 @@ func (o MobileNetworkResourceIdOutput) ToMobileNetworkResourceIdPtrOutputWithCon
 	}).(MobileNetworkResourceIdPtrOutput)
 }
 
+func (o MobileNetworkResourceIdOutput) ToOutput(ctx context.Context) pulumix.Output[MobileNetworkResourceId] {
+	return pulumix.Output[MobileNetworkResourceId]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Mobile Network resource ID.
 func (o MobileNetworkResourceIdOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v MobileNetworkResourceId) string { return v.Id }).(pulumi.StringOutput)
@@ -660,6 +769,12 @@ func (o MobileNetworkResourceIdPtrOutput) ToMobileNetworkResourceIdPtrOutput() M
 
 func (o MobileNetworkResourceIdPtrOutput) ToMobileNetworkResourceIdPtrOutputWithContext(ctx context.Context) MobileNetworkResourceIdPtrOutput {
 	return o
+}
+
+func (o MobileNetworkResourceIdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MobileNetworkResourceId] {
+	return pulumix.Output[*MobileNetworkResourceId]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MobileNetworkResourceIdPtrOutput) Elem() MobileNetworkResourceIdOutput {
@@ -703,6 +818,12 @@ func (o MobileNetworkResourceIdResponseOutput) ToMobileNetworkResourceIdResponse
 	return o
 }
 
+func (o MobileNetworkResourceIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MobileNetworkResourceIdResponse] {
+	return pulumix.Output[MobileNetworkResourceIdResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Mobile Network resource ID.
 func (o MobileNetworkResourceIdResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v MobileNetworkResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -720,6 +841,12 @@ func (o MobileNetworkResourceIdResponsePtrOutput) ToMobileNetworkResourceIdRespo
 
 func (o MobileNetworkResourceIdResponsePtrOutput) ToMobileNetworkResourceIdResponsePtrOutputWithContext(ctx context.Context) MobileNetworkResourceIdResponsePtrOutput {
 	return o
+}
+
+func (o MobileNetworkResourceIdResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MobileNetworkResourceIdResponse] {
+	return pulumix.Output[*MobileNetworkResourceIdResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MobileNetworkResourceIdResponsePtrOutput) Elem() MobileNetworkResourceIdResponseOutput {
@@ -777,6 +904,12 @@ func (i SimPolicyResourceIdArgs) ToSimPolicyResourceIdOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SimPolicyResourceIdOutput)
 }
 
+func (i SimPolicyResourceIdArgs) ToOutput(ctx context.Context) pulumix.Output[SimPolicyResourceId] {
+	return pulumix.Output[SimPolicyResourceId]{
+		OutputState: i.ToSimPolicyResourceIdOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SimPolicyResourceIdArgs) ToSimPolicyResourceIdPtrOutput() SimPolicyResourceIdPtrOutput {
 	return i.ToSimPolicyResourceIdPtrOutputWithContext(context.Background())
 }
@@ -818,6 +951,12 @@ func (i *simPolicyResourceIdPtrType) ToSimPolicyResourceIdPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(SimPolicyResourceIdPtrOutput)
 }
 
+func (i *simPolicyResourceIdPtrType) ToOutput(ctx context.Context) pulumix.Output[*SimPolicyResourceId] {
+	return pulumix.Output[*SimPolicyResourceId]{
+		OutputState: i.ToSimPolicyResourceIdPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Reference to a SIM Policy resource.
 type SimPolicyResourceIdOutput struct{ *pulumi.OutputState }
 
@@ -843,6 +982,12 @@ func (o SimPolicyResourceIdOutput) ToSimPolicyResourceIdPtrOutputWithContext(ctx
 	}).(SimPolicyResourceIdPtrOutput)
 }
 
+func (o SimPolicyResourceIdOutput) ToOutput(ctx context.Context) pulumix.Output[SimPolicyResourceId] {
+	return pulumix.Output[SimPolicyResourceId]{
+		OutputState: o.OutputState,
+	}
+}
+
 // SIM Policy resource ID.
 func (o SimPolicyResourceIdOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v SimPolicyResourceId) string { return v.Id }).(pulumi.StringOutput)
@@ -860,6 +1005,12 @@ func (o SimPolicyResourceIdPtrOutput) ToSimPolicyResourceIdPtrOutput() SimPolicy
 
 func (o SimPolicyResourceIdPtrOutput) ToSimPolicyResourceIdPtrOutputWithContext(ctx context.Context) SimPolicyResourceIdPtrOutput {
 	return o
+}
+
+func (o SimPolicyResourceIdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SimPolicyResourceId] {
+	return pulumix.Output[*SimPolicyResourceId]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SimPolicyResourceIdPtrOutput) Elem() SimPolicyResourceIdOutput {
@@ -903,6 +1054,12 @@ func (o SimPolicyResourceIdResponseOutput) ToSimPolicyResourceIdResponseOutputWi
 	return o
 }
 
+func (o SimPolicyResourceIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SimPolicyResourceIdResponse] {
+	return pulumix.Output[SimPolicyResourceIdResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // SIM Policy resource ID.
 func (o SimPolicyResourceIdResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v SimPolicyResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -920,6 +1077,12 @@ func (o SimPolicyResourceIdResponsePtrOutput) ToSimPolicyResourceIdResponsePtrOu
 
 func (o SimPolicyResourceIdResponsePtrOutput) ToSimPolicyResourceIdResponsePtrOutputWithContext(ctx context.Context) SimPolicyResourceIdResponsePtrOutput {
 	return o
+}
+
+func (o SimPolicyResourceIdResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SimPolicyResourceIdResponse] {
+	return pulumix.Output[*SimPolicyResourceIdResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SimPolicyResourceIdResponsePtrOutput) Elem() SimPolicyResourceIdResponseOutput {
@@ -985,6 +1148,12 @@ func (i SimStaticIpPropertiesArgs) ToSimStaticIpPropertiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SimStaticIpPropertiesOutput)
 }
 
+func (i SimStaticIpPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SimStaticIpProperties] {
+	return pulumix.Output[SimStaticIpProperties]{
+		OutputState: i.ToSimStaticIpPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SimStaticIpPropertiesArrayInput is an input type that accepts SimStaticIpPropertiesArray and SimStaticIpPropertiesArrayOutput values.
 // You can construct a concrete instance of `SimStaticIpPropertiesArrayInput` via:
 //
@@ -1010,6 +1179,12 @@ func (i SimStaticIpPropertiesArray) ToSimStaticIpPropertiesArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(SimStaticIpPropertiesArrayOutput)
 }
 
+func (i SimStaticIpPropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]SimStaticIpProperties] {
+	return pulumix.Output[[]SimStaticIpProperties]{
+		OutputState: i.ToSimStaticIpPropertiesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Static IP configuration for a sim, scoped to a particular attached data network and slice.
 type SimStaticIpPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1023,6 +1198,12 @@ func (o SimStaticIpPropertiesOutput) ToSimStaticIpPropertiesOutput() SimStaticIp
 
 func (o SimStaticIpPropertiesOutput) ToSimStaticIpPropertiesOutputWithContext(ctx context.Context) SimStaticIpPropertiesOutput {
 	return o
+}
+
+func (o SimStaticIpPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SimStaticIpProperties] {
+	return pulumix.Output[SimStaticIpProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The attached data network on which the static IP address will be used. The combination of attachedDataNetwork and slice defines the network scope of the IP address.
@@ -1052,6 +1233,12 @@ func (o SimStaticIpPropertiesArrayOutput) ToSimStaticIpPropertiesArrayOutput() S
 
 func (o SimStaticIpPropertiesArrayOutput) ToSimStaticIpPropertiesArrayOutputWithContext(ctx context.Context) SimStaticIpPropertiesArrayOutput {
 	return o
+}
+
+func (o SimStaticIpPropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SimStaticIpProperties] {
+	return pulumix.Output[[]SimStaticIpProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SimStaticIpPropertiesArrayOutput) Index(i pulumi.IntInput) SimStaticIpPropertiesOutput {
@@ -1085,6 +1272,12 @@ func (o SimStaticIpPropertiesResponseOutput) ToSimStaticIpPropertiesResponseOutp
 	return o
 }
 
+func (o SimStaticIpPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SimStaticIpPropertiesResponse] {
+	return pulumix.Output[SimStaticIpPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The attached data network on which the static IP address will be used. The combination of attachedDataNetwork and slice defines the network scope of the IP address.
 func (o SimStaticIpPropertiesResponseOutput) AttachedDataNetwork() AttachedDataNetworkResourceIdResponsePtrOutput {
 	return o.ApplyT(func(v SimStaticIpPropertiesResponse) *AttachedDataNetworkResourceIdResponse {
@@ -1116,6 +1309,12 @@ func (o SimStaticIpPropertiesResponseArrayOutput) ToSimStaticIpPropertiesRespons
 	return o
 }
 
+func (o SimStaticIpPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SimStaticIpPropertiesResponse] {
+	return pulumix.Output[[]SimStaticIpPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SimStaticIpPropertiesResponseArrayOutput) Index(i pulumi.IntInput) SimStaticIpPropertiesResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SimStaticIpPropertiesResponse {
 		return vs[0].([]SimStaticIpPropertiesResponse)[vs[1].(int)]
@@ -1143,6 +1342,12 @@ func (o SimStaticIpPropertiesResponseStaticIpOutput) ToSimStaticIpPropertiesResp
 	return o
 }
 
+func (o SimStaticIpPropertiesResponseStaticIpOutput) ToOutput(ctx context.Context) pulumix.Output[SimStaticIpPropertiesResponseStaticIp] {
+	return pulumix.Output[SimStaticIpPropertiesResponseStaticIp]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IPv4 address assigned to the sim at this network scope. This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attachedDataNetwork.
 func (o SimStaticIpPropertiesResponseStaticIpOutput) Ipv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SimStaticIpPropertiesResponseStaticIp) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
@@ -1160,6 +1365,12 @@ func (o SimStaticIpPropertiesResponseStaticIpPtrOutput) ToSimStaticIpPropertiesR
 
 func (o SimStaticIpPropertiesResponseStaticIpPtrOutput) ToSimStaticIpPropertiesResponseStaticIpPtrOutputWithContext(ctx context.Context) SimStaticIpPropertiesResponseStaticIpPtrOutput {
 	return o
+}
+
+func (o SimStaticIpPropertiesResponseStaticIpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SimStaticIpPropertiesResponseStaticIp] {
+	return pulumix.Output[*SimStaticIpPropertiesResponseStaticIp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SimStaticIpPropertiesResponseStaticIpPtrOutput) Elem() SimStaticIpPropertiesResponseStaticIpOutput {
@@ -1217,6 +1428,12 @@ func (i SimStaticIpPropertiesStaticIpArgs) ToSimStaticIpPropertiesStaticIpOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SimStaticIpPropertiesStaticIpOutput)
 }
 
+func (i SimStaticIpPropertiesStaticIpArgs) ToOutput(ctx context.Context) pulumix.Output[SimStaticIpPropertiesStaticIp] {
+	return pulumix.Output[SimStaticIpPropertiesStaticIp]{
+		OutputState: i.ToSimStaticIpPropertiesStaticIpOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SimStaticIpPropertiesStaticIpArgs) ToSimStaticIpPropertiesStaticIpPtrOutput() SimStaticIpPropertiesStaticIpPtrOutput {
 	return i.ToSimStaticIpPropertiesStaticIpPtrOutputWithContext(context.Background())
 }
@@ -1258,6 +1475,12 @@ func (i *simStaticIpPropertiesStaticIpPtrType) ToSimStaticIpPropertiesStaticIpPt
 	return pulumi.ToOutputWithContext(ctx, i).(SimStaticIpPropertiesStaticIpPtrOutput)
 }
 
+func (i *simStaticIpPropertiesStaticIpPtrType) ToOutput(ctx context.Context) pulumix.Output[*SimStaticIpPropertiesStaticIp] {
+	return pulumix.Output[*SimStaticIpPropertiesStaticIp]{
+		OutputState: i.ToSimStaticIpPropertiesStaticIpPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The static IP configuration for the sim to use at the defined network scope.
 type SimStaticIpPropertiesStaticIpOutput struct{ *pulumi.OutputState }
 
@@ -1283,6 +1506,12 @@ func (o SimStaticIpPropertiesStaticIpOutput) ToSimStaticIpPropertiesStaticIpPtrO
 	}).(SimStaticIpPropertiesStaticIpPtrOutput)
 }
 
+func (o SimStaticIpPropertiesStaticIpOutput) ToOutput(ctx context.Context) pulumix.Output[SimStaticIpPropertiesStaticIp] {
+	return pulumix.Output[SimStaticIpPropertiesStaticIp]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IPv4 address assigned to the sim at this network scope. This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attachedDataNetwork.
 func (o SimStaticIpPropertiesStaticIpOutput) Ipv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SimStaticIpPropertiesStaticIp) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
@@ -1300,6 +1529,12 @@ func (o SimStaticIpPropertiesStaticIpPtrOutput) ToSimStaticIpPropertiesStaticIpP
 
 func (o SimStaticIpPropertiesStaticIpPtrOutput) ToSimStaticIpPropertiesStaticIpPtrOutputWithContext(ctx context.Context) SimStaticIpPropertiesStaticIpPtrOutput {
 	return o
+}
+
+func (o SimStaticIpPropertiesStaticIpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SimStaticIpPropertiesStaticIp] {
+	return pulumix.Output[*SimStaticIpPropertiesStaticIp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SimStaticIpPropertiesStaticIpPtrOutput) Elem() SimStaticIpPropertiesStaticIpOutput {
@@ -1357,6 +1592,12 @@ func (i SliceResourceIdArgs) ToSliceResourceIdOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SliceResourceIdOutput)
 }
 
+func (i SliceResourceIdArgs) ToOutput(ctx context.Context) pulumix.Output[SliceResourceId] {
+	return pulumix.Output[SliceResourceId]{
+		OutputState: i.ToSliceResourceIdOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SliceResourceIdArgs) ToSliceResourceIdPtrOutput() SliceResourceIdPtrOutput {
 	return i.ToSliceResourceIdPtrOutputWithContext(context.Background())
 }
@@ -1398,6 +1639,12 @@ func (i *sliceResourceIdPtrType) ToSliceResourceIdPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SliceResourceIdPtrOutput)
 }
 
+func (i *sliceResourceIdPtrType) ToOutput(ctx context.Context) pulumix.Output[*SliceResourceId] {
+	return pulumix.Output[*SliceResourceId]{
+		OutputState: i.ToSliceResourceIdPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Reference to a Slice resource.
 type SliceResourceIdOutput struct{ *pulumi.OutputState }
 
@@ -1423,6 +1670,12 @@ func (o SliceResourceIdOutput) ToSliceResourceIdPtrOutputWithContext(ctx context
 	}).(SliceResourceIdPtrOutput)
 }
 
+func (o SliceResourceIdOutput) ToOutput(ctx context.Context) pulumix.Output[SliceResourceId] {
+	return pulumix.Output[SliceResourceId]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Slice resource ID.
 func (o SliceResourceIdOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v SliceResourceId) string { return v.Id }).(pulumi.StringOutput)
@@ -1440,6 +1693,12 @@ func (o SliceResourceIdPtrOutput) ToSliceResourceIdPtrOutput() SliceResourceIdPt
 
 func (o SliceResourceIdPtrOutput) ToSliceResourceIdPtrOutputWithContext(ctx context.Context) SliceResourceIdPtrOutput {
 	return o
+}
+
+func (o SliceResourceIdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SliceResourceId] {
+	return pulumix.Output[*SliceResourceId]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SliceResourceIdPtrOutput) Elem() SliceResourceIdOutput {
@@ -1483,6 +1742,12 @@ func (o SliceResourceIdResponseOutput) ToSliceResourceIdResponseOutputWithContex
 	return o
 }
 
+func (o SliceResourceIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SliceResourceIdResponse] {
+	return pulumix.Output[SliceResourceIdResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Slice resource ID.
 func (o SliceResourceIdResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v SliceResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1500,6 +1765,12 @@ func (o SliceResourceIdResponsePtrOutput) ToSliceResourceIdResponsePtrOutput() S
 
 func (o SliceResourceIdResponsePtrOutput) ToSliceResourceIdResponsePtrOutputWithContext(ctx context.Context) SliceResourceIdResponsePtrOutput {
 	return o
+}
+
+func (o SliceResourceIdResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SliceResourceIdResponse] {
+	return pulumix.Output[*SliceResourceIdResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SliceResourceIdResponsePtrOutput) Elem() SliceResourceIdResponseOutput {
@@ -1551,6 +1822,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

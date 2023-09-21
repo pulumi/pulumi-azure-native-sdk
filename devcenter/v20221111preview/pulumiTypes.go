@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i ImageReferenceArgs) ToImageReferenceOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ImageReferenceOutput)
 }
 
+func (i ImageReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ImageReference] {
+	return pulumix.Output[ImageReference]{
+		OutputState: i.ToImageReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Image reference information
 type ImageReferenceOutput struct{ *pulumi.OutputState }
 
@@ -73,6 +80,12 @@ func (o ImageReferenceOutput) ToImageReferenceOutput() ImageReferenceOutput {
 
 func (o ImageReferenceOutput) ToImageReferenceOutputWithContext(ctx context.Context) ImageReferenceOutput {
 	return o
+}
+
+func (o ImageReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ImageReference] {
+	return pulumix.Output[ImageReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
@@ -124,6 +137,12 @@ func (o ImageReferenceResponseOutput) ToImageReferenceResponseOutputWithContext(
 	return o
 }
 
+func (o ImageReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImageReferenceResponse] {
+	return pulumix.Output[ImageReferenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use.
 func (o ImageReferenceResponseOutput) ExactVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageReferenceResponse) string { return v.ExactVersion }).(pulumi.StringOutput)
@@ -170,6 +189,12 @@ func (o ImageValidationErrorDetailsResponseOutput) ToImageValidationErrorDetails
 
 func (o ImageValidationErrorDetailsResponseOutput) ToImageValidationErrorDetailsResponseOutputWithContext(ctx context.Context) ImageValidationErrorDetailsResponseOutput {
 	return o
+}
+
+func (o ImageValidationErrorDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImageValidationErrorDetailsResponse] {
+	return pulumix.Output[ImageValidationErrorDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An identifier for the error.
@@ -233,6 +258,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The resource model definition representing SKU
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -246,6 +277,12 @@ func (o SkuOutput) ToSkuOutput() SkuOutput {
 
 func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
+}
+
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
@@ -302,6 +339,12 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
 func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -356,6 +399,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

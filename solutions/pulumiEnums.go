@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The managed application definition artifact type.
@@ -79,6 +80,12 @@ func (o ApplicationArtifactTypeOutput) ToApplicationArtifactTypePtrOutputWithCon
 	}).(ApplicationArtifactTypePtrOutput)
 }
 
+func (o ApplicationArtifactTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationArtifactType] {
+	return pulumix.Output[ApplicationArtifactType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApplicationArtifactTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -112,6 +119,12 @@ func (o ApplicationArtifactTypePtrOutput) ToApplicationArtifactTypePtrOutput() A
 
 func (o ApplicationArtifactTypePtrOutput) ToApplicationArtifactTypePtrOutputWithContext(ctx context.Context) ApplicationArtifactTypePtrOutput {
 	return o
+}
+
+func (o ApplicationArtifactTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationArtifactType] {
+	return pulumix.Output[*ApplicationArtifactType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationArtifactTypePtrOutput) Elem() ApplicationArtifactTypeOutput {
@@ -174,6 +187,12 @@ func (in *applicationArtifactTypePtr) ToApplicationArtifactTypePtrOutput() Appli
 
 func (in *applicationArtifactTypePtr) ToApplicationArtifactTypePtrOutputWithContext(ctx context.Context) ApplicationArtifactTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationArtifactTypePtrOutput)
+}
+
+func (in *applicationArtifactTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationArtifactType] {
+	return pulumix.Output[*ApplicationArtifactType]{
+		OutputState: in.ToApplicationArtifactTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The managed application definition artifact name.
@@ -255,6 +274,12 @@ func (o ApplicationLockLevelOutput) ToApplicationLockLevelPtrOutputWithContext(c
 	}).(ApplicationLockLevelPtrOutput)
 }
 
+func (o ApplicationLockLevelOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationLockLevel] {
+	return pulumix.Output[ApplicationLockLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApplicationLockLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -288,6 +313,12 @@ func (o ApplicationLockLevelPtrOutput) ToApplicationLockLevelPtrOutput() Applica
 
 func (o ApplicationLockLevelPtrOutput) ToApplicationLockLevelPtrOutputWithContext(ctx context.Context) ApplicationLockLevelPtrOutput {
 	return o
+}
+
+func (o ApplicationLockLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLockLevel] {
+	return pulumix.Output[*ApplicationLockLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationLockLevelPtrOutput) Elem() ApplicationLockLevelOutput {
@@ -350,6 +381,12 @@ func (in *applicationLockLevelPtr) ToApplicationLockLevelPtrOutput() Application
 
 func (in *applicationLockLevelPtr) ToApplicationLockLevelPtrOutputWithContext(ctx context.Context) ApplicationLockLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationLockLevelPtrOutput)
+}
+
+func (in *applicationLockLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLockLevel] {
+	return pulumix.Output[*ApplicationLockLevel]{
+		OutputState: in.ToApplicationLockLevelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The managed application management mode.
@@ -466,6 +503,12 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
+func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
+	return pulumix.Output[ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -499,6 +542,12 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -561,6 +610,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+}
+
+func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

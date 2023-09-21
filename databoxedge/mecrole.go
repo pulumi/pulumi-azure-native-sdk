@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MEC role.
@@ -203,6 +204,12 @@ func (i *MECRole) ToMECRoleOutputWithContext(ctx context.Context) MECRoleOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(MECRoleOutput)
 }
 
+func (i *MECRole) ToOutput(ctx context.Context) pulumix.Output[*MECRole] {
+	return pulumix.Output[*MECRole]{
+		OutputState: i.ToMECRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MECRoleOutput struct{ *pulumi.OutputState }
 
 func (MECRoleOutput) ElementType() reflect.Type {
@@ -215,6 +222,12 @@ func (o MECRoleOutput) ToMECRoleOutput() MECRoleOutput {
 
 func (o MECRoleOutput) ToMECRoleOutputWithContext(ctx context.Context) MECRoleOutput {
 	return o
+}
+
+func (o MECRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*MECRole] {
+	return pulumix.Output[*MECRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Activation key of the MEC.

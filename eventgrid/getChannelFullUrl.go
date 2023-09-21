@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the full endpoint URL of a partner destination channel.
@@ -77,6 +78,12 @@ func (o GetChannelFullUrlResultOutput) ToGetChannelFullUrlResultOutput() GetChan
 
 func (o GetChannelFullUrlResultOutput) ToGetChannelFullUrlResultOutputWithContext(ctx context.Context) GetChannelFullUrlResultOutput {
 	return o
+}
+
+func (o GetChannelFullUrlResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetChannelFullUrlResult] {
+	return pulumix.Output[GetChannelFullUrlResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL that represents the endpoint of the destination of an event subscription.

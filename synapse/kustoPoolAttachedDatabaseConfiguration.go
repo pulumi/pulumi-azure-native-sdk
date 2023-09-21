@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing an attached database configuration.
@@ -168,6 +169,12 @@ func (i *KustoPoolAttachedDatabaseConfiguration) ToKustoPoolAttachedDatabaseConf
 	return pulumi.ToOutputWithContext(ctx, i).(KustoPoolAttachedDatabaseConfigurationOutput)
 }
 
+func (i *KustoPoolAttachedDatabaseConfiguration) ToOutput(ctx context.Context) pulumix.Output[*KustoPoolAttachedDatabaseConfiguration] {
+	return pulumix.Output[*KustoPoolAttachedDatabaseConfiguration]{
+		OutputState: i.ToKustoPoolAttachedDatabaseConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KustoPoolAttachedDatabaseConfigurationOutput struct{ *pulumi.OutputState }
 
 func (KustoPoolAttachedDatabaseConfigurationOutput) ElementType() reflect.Type {
@@ -180,6 +187,12 @@ func (o KustoPoolAttachedDatabaseConfigurationOutput) ToKustoPoolAttachedDatabas
 
 func (o KustoPoolAttachedDatabaseConfigurationOutput) ToKustoPoolAttachedDatabaseConfigurationOutputWithContext(ctx context.Context) KustoPoolAttachedDatabaseConfigurationOutput {
 	return o
+}
+
+func (o KustoPoolAttachedDatabaseConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*KustoPoolAttachedDatabaseConfiguration] {
+	return pulumix.Output[*KustoPoolAttachedDatabaseConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of databases from the clusterResourceId which are currently attached to the kusto pool.

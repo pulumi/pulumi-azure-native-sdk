@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -71,6 +72,12 @@ func (i ConnectedClusterIdentityArgs) ToConnectedClusterIdentityOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectedClusterIdentityOutput)
 }
 
+func (i ConnectedClusterIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectedClusterIdentity] {
+	return pulumix.Output[ConnectedClusterIdentity]{
+		OutputState: i.ToConnectedClusterIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity for the connected cluster.
 type ConnectedClusterIdentityOutput struct{ *pulumi.OutputState }
 
@@ -84,6 +91,12 @@ func (o ConnectedClusterIdentityOutput) ToConnectedClusterIdentityOutput() Conne
 
 func (o ConnectedClusterIdentityOutput) ToConnectedClusterIdentityOutputWithContext(ctx context.Context) ConnectedClusterIdentityOutput {
 	return o
+}
+
+func (o ConnectedClusterIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectedClusterIdentity] {
+	return pulumix.Output[ConnectedClusterIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
@@ -128,6 +141,12 @@ func (o ConnectedClusterIdentityResponseOutput) ToConnectedClusterIdentityRespon
 	return o
 }
 
+func (o ConnectedClusterIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectedClusterIdentityResponse] {
+	return pulumix.Output[ConnectedClusterIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal id of connected cluster identity. This property will only be provided for a system assigned identity.
 func (o ConnectedClusterIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectedClusterIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -166,6 +185,12 @@ func (o CredentialResultResponseOutput) ToCredentialResultResponseOutputWithCont
 	return o
 }
 
+func (o CredentialResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CredentialResultResponse] {
+	return pulumix.Output[CredentialResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the credential.
 func (o CredentialResultResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CredentialResultResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -188,6 +213,12 @@ func (o CredentialResultResponseArrayOutput) ToCredentialResultResponseArrayOutp
 
 func (o CredentialResultResponseArrayOutput) ToCredentialResultResponseArrayOutputWithContext(ctx context.Context) CredentialResultResponseArrayOutput {
 	return o
+}
+
+func (o CredentialResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CredentialResultResponse] {
+	return pulumix.Output[[]CredentialResultResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CredentialResultResponseArrayOutput) Index(i pulumi.IntInput) CredentialResultResponseOutput {
@@ -221,6 +252,12 @@ func (o HybridConnectionConfigResponseOutput) ToHybridConnectionConfigResponseOu
 
 func (o HybridConnectionConfigResponseOutput) ToHybridConnectionConfigResponseOutputWithContext(ctx context.Context) HybridConnectionConfigResponseOutput {
 	return o
+}
+
+func (o HybridConnectionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HybridConnectionConfigResponse] {
+	return pulumix.Output[HybridConnectionConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Timestamp when this token will be expired.
@@ -272,6 +309,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

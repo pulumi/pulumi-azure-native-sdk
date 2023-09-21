@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the detailed information for a given pipeline run.
@@ -103,6 +104,12 @@ func (o LookupPipelineRunResultOutput) ToLookupPipelineRunResultOutput() LookupP
 
 func (o LookupPipelineRunResultOutput) ToLookupPipelineRunResultOutputWithContext(ctx context.Context) LookupPipelineRunResultOutput {
 	return o
+}
+
+func (o LookupPipelineRunResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPipelineRunResult] {
+	return pulumix.Output[LookupPipelineRunResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // How the pipeline run should be forced to recreate even if the pipeline run configuration has not changed.

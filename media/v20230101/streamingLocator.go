@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Streaming Locator resource
@@ -200,6 +201,12 @@ func (i *StreamingLocator) ToStreamingLocatorOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingLocatorOutput)
 }
 
+func (i *StreamingLocator) ToOutput(ctx context.Context) pulumix.Output[*StreamingLocator] {
+	return pulumix.Output[*StreamingLocator]{
+		OutputState: i.ToStreamingLocatorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StreamingLocatorOutput struct{ *pulumi.OutputState }
 
 func (StreamingLocatorOutput) ElementType() reflect.Type {
@@ -212,6 +219,12 @@ func (o StreamingLocatorOutput) ToStreamingLocatorOutput() StreamingLocatorOutpu
 
 func (o StreamingLocatorOutput) ToStreamingLocatorOutputWithContext(ctx context.Context) StreamingLocatorOutput {
 	return o
+}
+
+func (o StreamingLocatorOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingLocator] {
+	return pulumix.Output[*StreamingLocator]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Alternative Media ID of this Streaming Locator

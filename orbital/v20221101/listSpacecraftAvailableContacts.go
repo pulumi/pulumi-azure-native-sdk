@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns list of available contacts. A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.
@@ -90,6 +91,12 @@ func (o ListSpacecraftAvailableContactsResultOutput) ToListSpacecraftAvailableCo
 
 func (o ListSpacecraftAvailableContactsResultOutput) ToListSpacecraftAvailableContactsResultOutputWithContext(ctx context.Context) ListSpacecraftAvailableContactsResultOutput {
 	return o
+}
+
+func (o ListSpacecraftAvailableContactsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListSpacecraftAvailableContactsResult] {
+	return pulumix.Output[ListSpacecraftAvailableContactsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL to get the next set of results.

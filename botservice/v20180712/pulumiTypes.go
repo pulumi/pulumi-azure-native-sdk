@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i EnterpriseChannelNodeArgs) ToEnterpriseChannelNodeOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseChannelNodeOutput)
 }
 
+func (i EnterpriseChannelNodeArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseChannelNode] {
+	return pulumix.Output[EnterpriseChannelNode]{
+		OutputState: i.ToEnterpriseChannelNodeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseChannelNodeArrayInput is an input type that accepts EnterpriseChannelNodeArray and EnterpriseChannelNodeArrayOutput values.
 // You can construct a concrete instance of `EnterpriseChannelNodeArrayInput` via:
 //
@@ -85,6 +92,12 @@ func (i EnterpriseChannelNodeArray) ToEnterpriseChannelNodeArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseChannelNodeArrayOutput)
 }
 
+func (i EnterpriseChannelNodeArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseChannelNode] {
+	return pulumix.Output[[]EnterpriseChannelNode]{
+		OutputState: i.ToEnterpriseChannelNodeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The properties specific to an Enterprise Channel Node.
 type EnterpriseChannelNodeOutput struct{ *pulumi.OutputState }
 
@@ -98,6 +111,12 @@ func (o EnterpriseChannelNodeOutput) ToEnterpriseChannelNodeOutput() EnterpriseC
 
 func (o EnterpriseChannelNodeOutput) ToEnterpriseChannelNodeOutputWithContext(ctx context.Context) EnterpriseChannelNodeOutput {
 	return o
+}
+
+func (o EnterpriseChannelNodeOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseChannelNode] {
+	return pulumix.Output[EnterpriseChannelNode]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location of the Enterprise Channel Node.
@@ -134,6 +153,12 @@ func (o EnterpriseChannelNodeArrayOutput) ToEnterpriseChannelNodeArrayOutputWith
 	return o
 }
 
+func (o EnterpriseChannelNodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseChannelNode] {
+	return pulumix.Output[[]EnterpriseChannelNode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseChannelNodeArrayOutput) Index(i pulumi.IntInput) EnterpriseChannelNodeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseChannelNode {
 		return vs[0].([]EnterpriseChannelNode)[vs[1].(int)]
@@ -167,6 +192,12 @@ func (o EnterpriseChannelNodeResponseOutput) ToEnterpriseChannelNodeResponseOutp
 
 func (o EnterpriseChannelNodeResponseOutput) ToEnterpriseChannelNodeResponseOutputWithContext(ctx context.Context) EnterpriseChannelNodeResponseOutput {
 	return o
+}
+
+func (o EnterpriseChannelNodeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseChannelNodeResponse] {
+	return pulumix.Output[EnterpriseChannelNodeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location of the Enterprise Channel Node.
@@ -206,6 +237,12 @@ func (o EnterpriseChannelNodeResponseArrayOutput) ToEnterpriseChannelNodeRespons
 
 func (o EnterpriseChannelNodeResponseArrayOutput) ToEnterpriseChannelNodeResponseArrayOutputWithContext(ctx context.Context) EnterpriseChannelNodeResponseArrayOutput {
 	return o
+}
+
+func (o EnterpriseChannelNodeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseChannelNodeResponse] {
+	return pulumix.Output[[]EnterpriseChannelNodeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseChannelNodeResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseChannelNodeResponseOutput {
@@ -253,6 +290,12 @@ func (i EnterpriseChannelPropertiesArgs) ToEnterpriseChannelPropertiesOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseChannelPropertiesOutput)
 }
 
+func (i EnterpriseChannelPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseChannelProperties] {
+	return pulumix.Output[EnterpriseChannelProperties]{
+		OutputState: i.ToEnterpriseChannelPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseChannelPropertiesArgs) ToEnterpriseChannelPropertiesPtrOutput() EnterpriseChannelPropertiesPtrOutput {
 	return i.ToEnterpriseChannelPropertiesPtrOutputWithContext(context.Background())
 }
@@ -294,6 +337,12 @@ func (i *enterpriseChannelPropertiesPtrType) ToEnterpriseChannelPropertiesPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseChannelPropertiesPtrOutput)
 }
 
+func (i *enterpriseChannelPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseChannelProperties] {
+	return pulumix.Output[*EnterpriseChannelProperties]{
+		OutputState: i.ToEnterpriseChannelPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The parameters to provide for the Enterprise Channel.
 type EnterpriseChannelPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -319,6 +368,12 @@ func (o EnterpriseChannelPropertiesOutput) ToEnterpriseChannelPropertiesPtrOutpu
 	}).(EnterpriseChannelPropertiesPtrOutput)
 }
 
+func (o EnterpriseChannelPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseChannelProperties] {
+	return pulumix.Output[EnterpriseChannelProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The nodes associated with the Enterprise Channel.
 func (o EnterpriseChannelPropertiesOutput) Nodes() EnterpriseChannelNodeArrayOutput {
 	return o.ApplyT(func(v EnterpriseChannelProperties) []EnterpriseChannelNode { return v.Nodes }).(EnterpriseChannelNodeArrayOutput)
@@ -341,6 +396,12 @@ func (o EnterpriseChannelPropertiesPtrOutput) ToEnterpriseChannelPropertiesPtrOu
 
 func (o EnterpriseChannelPropertiesPtrOutput) ToEnterpriseChannelPropertiesPtrOutputWithContext(ctx context.Context) EnterpriseChannelPropertiesPtrOutput {
 	return o
+}
+
+func (o EnterpriseChannelPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseChannelProperties] {
+	return pulumix.Output[*EnterpriseChannelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseChannelPropertiesPtrOutput) Elem() EnterpriseChannelPropertiesOutput {
@@ -394,6 +455,12 @@ func (o EnterpriseChannelPropertiesResponseOutput) ToEnterpriseChannelProperties
 
 func (o EnterpriseChannelPropertiesResponseOutput) ToEnterpriseChannelPropertiesResponseOutputWithContext(ctx context.Context) EnterpriseChannelPropertiesResponseOutput {
 	return o
+}
+
+func (o EnterpriseChannelPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseChannelPropertiesResponse] {
+	return pulumix.Output[EnterpriseChannelPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The nodes associated with the Enterprise Channel.
@@ -479,6 +546,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -520,6 +593,12 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
+func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The SKU of the cognitive services account.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -545,6 +624,12 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The sku name
 func (o SkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
@@ -562,6 +647,12 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
+}
+
+func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -607,6 +698,12 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The sku name
 func (o SkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -629,6 +726,12 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
+}
+
+func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
+	return pulumix.Output[*SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This returns the list of interfaces in the WSDL
@@ -89,6 +90,12 @@ func (o ListCustomApiWsdlInterfacesResultOutput) ToListCustomApiWsdlInterfacesRe
 
 func (o ListCustomApiWsdlInterfacesResultOutput) ToListCustomApiWsdlInterfacesResultOutputWithContext(ctx context.Context) ListCustomApiWsdlInterfacesResultOutput {
 	return o
+}
+
+func (o ListCustomApiWsdlInterfacesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListCustomApiWsdlInterfacesResult] {
+	return pulumix.Output[ListCustomApiWsdlInterfacesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Collection of WSDL interfaces

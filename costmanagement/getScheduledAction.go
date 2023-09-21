@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the private scheduled action by name.
@@ -95,6 +96,12 @@ func (o LookupScheduledActionResultOutput) ToLookupScheduledActionResultOutput()
 
 func (o LookupScheduledActionResultOutput) ToLookupScheduledActionResultOutputWithContext(ctx context.Context) LookupScheduledActionResultOutput {
 	return o
+}
+
+func (o LookupScheduledActionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScheduledActionResult] {
+	return pulumix.Output[LookupScheduledActionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Scheduled action name.

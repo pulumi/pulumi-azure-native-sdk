@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i ARecordArgs) ToARecordOutputWithContext(ctx context.Context) ARecordOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ARecordOutput)
 }
 
+func (i ARecordArgs) ToOutput(ctx context.Context) pulumix.Output[ARecord] {
+	return pulumix.Output[ARecord]{
+		OutputState: i.ToARecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ARecordArrayInput is an input type that accepts ARecordArray and ARecordArrayOutput values.
 // You can construct a concrete instance of `ARecordArrayInput` via:
 //
@@ -73,6 +80,12 @@ func (i ARecordArray) ToARecordArrayOutputWithContext(ctx context.Context) AReco
 	return pulumi.ToOutputWithContext(ctx, i).(ARecordArrayOutput)
 }
 
+func (i ARecordArray) ToOutput(ctx context.Context) pulumix.Output[[]ARecord] {
+	return pulumix.Output[[]ARecord]{
+		OutputState: i.ToARecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An A record.
 type ARecordOutput struct{ *pulumi.OutputState }
 
@@ -86,6 +99,12 @@ func (o ARecordOutput) ToARecordOutput() ARecordOutput {
 
 func (o ARecordOutput) ToARecordOutputWithContext(ctx context.Context) ARecordOutput {
 	return o
+}
+
+func (o ARecordOutput) ToOutput(ctx context.Context) pulumix.Output[ARecord] {
+	return pulumix.Output[ARecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IPv4 address of this A record.
@@ -105,6 +124,12 @@ func (o ARecordArrayOutput) ToARecordArrayOutput() ARecordArrayOutput {
 
 func (o ARecordArrayOutput) ToARecordArrayOutputWithContext(ctx context.Context) ARecordArrayOutput {
 	return o
+}
+
+func (o ARecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ARecord] {
+	return pulumix.Output[[]ARecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ARecordArrayOutput) Index(i pulumi.IntInput) ARecordOutput {
@@ -134,6 +159,12 @@ func (o ARecordResponseOutput) ToARecordResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ARecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ARecordResponse] {
+	return pulumix.Output[ARecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IPv4 address of this A record.
 func (o ARecordResponseOutput) Ipv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ARecordResponse) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
@@ -151,6 +182,12 @@ func (o ARecordResponseArrayOutput) ToARecordResponseArrayOutput() ARecordRespon
 
 func (o ARecordResponseArrayOutput) ToARecordResponseArrayOutputWithContext(ctx context.Context) ARecordResponseArrayOutput {
 	return o
+}
+
+func (o ARecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ARecordResponse] {
+	return pulumix.Output[[]ARecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ARecordResponseArrayOutput) Index(i pulumi.IntInput) ARecordResponseOutput {
@@ -194,6 +231,12 @@ func (i AaaaRecordArgs) ToAaaaRecordOutputWithContext(ctx context.Context) AaaaR
 	return pulumi.ToOutputWithContext(ctx, i).(AaaaRecordOutput)
 }
 
+func (i AaaaRecordArgs) ToOutput(ctx context.Context) pulumix.Output[AaaaRecord] {
+	return pulumix.Output[AaaaRecord]{
+		OutputState: i.ToAaaaRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AaaaRecordArrayInput is an input type that accepts AaaaRecordArray and AaaaRecordArrayOutput values.
 // You can construct a concrete instance of `AaaaRecordArrayInput` via:
 //
@@ -219,6 +262,12 @@ func (i AaaaRecordArray) ToAaaaRecordArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AaaaRecordArrayOutput)
 }
 
+func (i AaaaRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]AaaaRecord] {
+	return pulumix.Output[[]AaaaRecord]{
+		OutputState: i.ToAaaaRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An AAAA record.
 type AaaaRecordOutput struct{ *pulumi.OutputState }
 
@@ -232,6 +281,12 @@ func (o AaaaRecordOutput) ToAaaaRecordOutput() AaaaRecordOutput {
 
 func (o AaaaRecordOutput) ToAaaaRecordOutputWithContext(ctx context.Context) AaaaRecordOutput {
 	return o
+}
+
+func (o AaaaRecordOutput) ToOutput(ctx context.Context) pulumix.Output[AaaaRecord] {
+	return pulumix.Output[AaaaRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IPv6 address of this AAAA record.
@@ -251,6 +306,12 @@ func (o AaaaRecordArrayOutput) ToAaaaRecordArrayOutput() AaaaRecordArrayOutput {
 
 func (o AaaaRecordArrayOutput) ToAaaaRecordArrayOutputWithContext(ctx context.Context) AaaaRecordArrayOutput {
 	return o
+}
+
+func (o AaaaRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AaaaRecord] {
+	return pulumix.Output[[]AaaaRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AaaaRecordArrayOutput) Index(i pulumi.IntInput) AaaaRecordOutput {
@@ -280,6 +341,12 @@ func (o AaaaRecordResponseOutput) ToAaaaRecordResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o AaaaRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AaaaRecordResponse] {
+	return pulumix.Output[AaaaRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IPv6 address of this AAAA record.
 func (o AaaaRecordResponseOutput) Ipv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AaaaRecordResponse) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
@@ -297,6 +364,12 @@ func (o AaaaRecordResponseArrayOutput) ToAaaaRecordResponseArrayOutput() AaaaRec
 
 func (o AaaaRecordResponseArrayOutput) ToAaaaRecordResponseArrayOutputWithContext(ctx context.Context) AaaaRecordResponseArrayOutput {
 	return o
+}
+
+func (o AaaaRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AaaaRecordResponse] {
+	return pulumix.Output[[]AaaaRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AaaaRecordResponseArrayOutput) Index(i pulumi.IntInput) AaaaRecordResponseOutput {
@@ -348,6 +421,12 @@ func (i CaaRecordArgs) ToCaaRecordOutputWithContext(ctx context.Context) CaaReco
 	return pulumi.ToOutputWithContext(ctx, i).(CaaRecordOutput)
 }
 
+func (i CaaRecordArgs) ToOutput(ctx context.Context) pulumix.Output[CaaRecord] {
+	return pulumix.Output[CaaRecord]{
+		OutputState: i.ToCaaRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CaaRecordArrayInput is an input type that accepts CaaRecordArray and CaaRecordArrayOutput values.
 // You can construct a concrete instance of `CaaRecordArrayInput` via:
 //
@@ -373,6 +452,12 @@ func (i CaaRecordArray) ToCaaRecordArrayOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CaaRecordArrayOutput)
 }
 
+func (i CaaRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]CaaRecord] {
+	return pulumix.Output[[]CaaRecord]{
+		OutputState: i.ToCaaRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A CAA record.
 type CaaRecordOutput struct{ *pulumi.OutputState }
 
@@ -386,6 +471,12 @@ func (o CaaRecordOutput) ToCaaRecordOutput() CaaRecordOutput {
 
 func (o CaaRecordOutput) ToCaaRecordOutputWithContext(ctx context.Context) CaaRecordOutput {
 	return o
+}
+
+func (o CaaRecordOutput) ToOutput(ctx context.Context) pulumix.Output[CaaRecord] {
+	return pulumix.Output[CaaRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The flags for this CAA record as an integer between 0 and 255.
@@ -415,6 +506,12 @@ func (o CaaRecordArrayOutput) ToCaaRecordArrayOutput() CaaRecordArrayOutput {
 
 func (o CaaRecordArrayOutput) ToCaaRecordArrayOutputWithContext(ctx context.Context) CaaRecordArrayOutput {
 	return o
+}
+
+func (o CaaRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CaaRecord] {
+	return pulumix.Output[[]CaaRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CaaRecordArrayOutput) Index(i pulumi.IntInput) CaaRecordOutput {
@@ -448,6 +545,12 @@ func (o CaaRecordResponseOutput) ToCaaRecordResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o CaaRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CaaRecordResponse] {
+	return pulumix.Output[CaaRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The flags for this CAA record as an integer between 0 and 255.
 func (o CaaRecordResponseOutput) Flags() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CaaRecordResponse) *int { return v.Flags }).(pulumi.IntPtrOutput)
@@ -475,6 +578,12 @@ func (o CaaRecordResponseArrayOutput) ToCaaRecordResponseArrayOutput() CaaRecord
 
 func (o CaaRecordResponseArrayOutput) ToCaaRecordResponseArrayOutputWithContext(ctx context.Context) CaaRecordResponseArrayOutput {
 	return o
+}
+
+func (o CaaRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CaaRecordResponse] {
+	return pulumix.Output[[]CaaRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CaaRecordResponseArrayOutput) Index(i pulumi.IntInput) CaaRecordResponseOutput {
@@ -518,6 +627,12 @@ func (i CnameRecordArgs) ToCnameRecordOutputWithContext(ctx context.Context) Cna
 	return pulumi.ToOutputWithContext(ctx, i).(CnameRecordOutput)
 }
 
+func (i CnameRecordArgs) ToOutput(ctx context.Context) pulumix.Output[CnameRecord] {
+	return pulumix.Output[CnameRecord]{
+		OutputState: i.ToCnameRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CnameRecordArgs) ToCnameRecordPtrOutput() CnameRecordPtrOutput {
 	return i.ToCnameRecordPtrOutputWithContext(context.Background())
 }
@@ -559,6 +674,12 @@ func (i *cnameRecordPtrType) ToCnameRecordPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CnameRecordPtrOutput)
 }
 
+func (i *cnameRecordPtrType) ToOutput(ctx context.Context) pulumix.Output[*CnameRecord] {
+	return pulumix.Output[*CnameRecord]{
+		OutputState: i.ToCnameRecordPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A CNAME record.
 type CnameRecordOutput struct{ *pulumi.OutputState }
 
@@ -584,6 +705,12 @@ func (o CnameRecordOutput) ToCnameRecordPtrOutputWithContext(ctx context.Context
 	}).(CnameRecordPtrOutput)
 }
 
+func (o CnameRecordOutput) ToOutput(ctx context.Context) pulumix.Output[CnameRecord] {
+	return pulumix.Output[CnameRecord]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The canonical name for this CNAME record.
 func (o CnameRecordOutput) Cname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CnameRecord) *string { return v.Cname }).(pulumi.StringPtrOutput)
@@ -601,6 +728,12 @@ func (o CnameRecordPtrOutput) ToCnameRecordPtrOutput() CnameRecordPtrOutput {
 
 func (o CnameRecordPtrOutput) ToCnameRecordPtrOutputWithContext(ctx context.Context) CnameRecordPtrOutput {
 	return o
+}
+
+func (o CnameRecordPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CnameRecord] {
+	return pulumix.Output[*CnameRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CnameRecordPtrOutput) Elem() CnameRecordOutput {
@@ -644,6 +777,12 @@ func (o CnameRecordResponseOutput) ToCnameRecordResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o CnameRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CnameRecordResponse] {
+	return pulumix.Output[CnameRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The canonical name for this CNAME record.
 func (o CnameRecordResponseOutput) Cname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CnameRecordResponse) *string { return v.Cname }).(pulumi.StringPtrOutput)
@@ -661,6 +800,12 @@ func (o CnameRecordResponsePtrOutput) ToCnameRecordResponsePtrOutput() CnameReco
 
 func (o CnameRecordResponsePtrOutput) ToCnameRecordResponsePtrOutputWithContext(ctx context.Context) CnameRecordResponsePtrOutput {
 	return o
+}
+
+func (o CnameRecordResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CnameRecordResponse] {
+	return pulumix.Output[*CnameRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CnameRecordResponsePtrOutput) Elem() CnameRecordResponseOutput {
@@ -706,6 +851,12 @@ func (o DnsResourceReferenceResponseOutput) ToDnsResourceReferenceResponseOutput
 	return o
 }
 
+func (o DnsResourceReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DnsResourceReferenceResponse] {
+	return pulumix.Output[DnsResourceReferenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of dns Records
 func (o DnsResourceReferenceResponseOutput) DnsResources() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v DnsResourceReferenceResponse) []SubResourceResponse { return v.DnsResources }).(SubResourceResponseArrayOutput)
@@ -728,6 +879,12 @@ func (o DnsResourceReferenceResponseArrayOutput) ToDnsResourceReferenceResponseA
 
 func (o DnsResourceReferenceResponseArrayOutput) ToDnsResourceReferenceResponseArrayOutputWithContext(ctx context.Context) DnsResourceReferenceResponseArrayOutput {
 	return o
+}
+
+func (o DnsResourceReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DnsResourceReferenceResponse] {
+	return pulumix.Output[[]DnsResourceReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DnsResourceReferenceResponseArrayOutput) Index(i pulumi.IntInput) DnsResourceReferenceResponseOutput {
@@ -775,6 +932,12 @@ func (i MxRecordArgs) ToMxRecordOutputWithContext(ctx context.Context) MxRecordO
 	return pulumi.ToOutputWithContext(ctx, i).(MxRecordOutput)
 }
 
+func (i MxRecordArgs) ToOutput(ctx context.Context) pulumix.Output[MxRecord] {
+	return pulumix.Output[MxRecord]{
+		OutputState: i.ToMxRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MxRecordArrayInput is an input type that accepts MxRecordArray and MxRecordArrayOutput values.
 // You can construct a concrete instance of `MxRecordArrayInput` via:
 //
@@ -800,6 +963,12 @@ func (i MxRecordArray) ToMxRecordArrayOutputWithContext(ctx context.Context) MxR
 	return pulumi.ToOutputWithContext(ctx, i).(MxRecordArrayOutput)
 }
 
+func (i MxRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]MxRecord] {
+	return pulumix.Output[[]MxRecord]{
+		OutputState: i.ToMxRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An MX record.
 type MxRecordOutput struct{ *pulumi.OutputState }
 
@@ -813,6 +982,12 @@ func (o MxRecordOutput) ToMxRecordOutput() MxRecordOutput {
 
 func (o MxRecordOutput) ToMxRecordOutputWithContext(ctx context.Context) MxRecordOutput {
 	return o
+}
+
+func (o MxRecordOutput) ToOutput(ctx context.Context) pulumix.Output[MxRecord] {
+	return pulumix.Output[MxRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The domain name of the mail host for this MX record.
@@ -837,6 +1012,12 @@ func (o MxRecordArrayOutput) ToMxRecordArrayOutput() MxRecordArrayOutput {
 
 func (o MxRecordArrayOutput) ToMxRecordArrayOutputWithContext(ctx context.Context) MxRecordArrayOutput {
 	return o
+}
+
+func (o MxRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MxRecord] {
+	return pulumix.Output[[]MxRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MxRecordArrayOutput) Index(i pulumi.IntInput) MxRecordOutput {
@@ -868,6 +1049,12 @@ func (o MxRecordResponseOutput) ToMxRecordResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o MxRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MxRecordResponse] {
+	return pulumix.Output[MxRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The domain name of the mail host for this MX record.
 func (o MxRecordResponseOutput) Exchange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MxRecordResponse) *string { return v.Exchange }).(pulumi.StringPtrOutput)
@@ -890,6 +1077,12 @@ func (o MxRecordResponseArrayOutput) ToMxRecordResponseArrayOutput() MxRecordRes
 
 func (o MxRecordResponseArrayOutput) ToMxRecordResponseArrayOutputWithContext(ctx context.Context) MxRecordResponseArrayOutput {
 	return o
+}
+
+func (o MxRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MxRecordResponse] {
+	return pulumix.Output[[]MxRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MxRecordResponseArrayOutput) Index(i pulumi.IntInput) MxRecordResponseOutput {
@@ -933,6 +1126,12 @@ func (i NsRecordArgs) ToNsRecordOutputWithContext(ctx context.Context) NsRecordO
 	return pulumi.ToOutputWithContext(ctx, i).(NsRecordOutput)
 }
 
+func (i NsRecordArgs) ToOutput(ctx context.Context) pulumix.Output[NsRecord] {
+	return pulumix.Output[NsRecord]{
+		OutputState: i.ToNsRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NsRecordArrayInput is an input type that accepts NsRecordArray and NsRecordArrayOutput values.
 // You can construct a concrete instance of `NsRecordArrayInput` via:
 //
@@ -958,6 +1157,12 @@ func (i NsRecordArray) ToNsRecordArrayOutputWithContext(ctx context.Context) NsR
 	return pulumi.ToOutputWithContext(ctx, i).(NsRecordArrayOutput)
 }
 
+func (i NsRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]NsRecord] {
+	return pulumix.Output[[]NsRecord]{
+		OutputState: i.ToNsRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An NS record.
 type NsRecordOutput struct{ *pulumi.OutputState }
 
@@ -971,6 +1176,12 @@ func (o NsRecordOutput) ToNsRecordOutput() NsRecordOutput {
 
 func (o NsRecordOutput) ToNsRecordOutputWithContext(ctx context.Context) NsRecordOutput {
 	return o
+}
+
+func (o NsRecordOutput) ToOutput(ctx context.Context) pulumix.Output[NsRecord] {
+	return pulumix.Output[NsRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name server name for this NS record.
@@ -990,6 +1201,12 @@ func (o NsRecordArrayOutput) ToNsRecordArrayOutput() NsRecordArrayOutput {
 
 func (o NsRecordArrayOutput) ToNsRecordArrayOutputWithContext(ctx context.Context) NsRecordArrayOutput {
 	return o
+}
+
+func (o NsRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NsRecord] {
+	return pulumix.Output[[]NsRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NsRecordArrayOutput) Index(i pulumi.IntInput) NsRecordOutput {
@@ -1019,6 +1236,12 @@ func (o NsRecordResponseOutput) ToNsRecordResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o NsRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NsRecordResponse] {
+	return pulumix.Output[NsRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name server name for this NS record.
 func (o NsRecordResponseOutput) Nsdname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NsRecordResponse) *string { return v.Nsdname }).(pulumi.StringPtrOutput)
@@ -1036,6 +1259,12 @@ func (o NsRecordResponseArrayOutput) ToNsRecordResponseArrayOutput() NsRecordRes
 
 func (o NsRecordResponseArrayOutput) ToNsRecordResponseArrayOutputWithContext(ctx context.Context) NsRecordResponseArrayOutput {
 	return o
+}
+
+func (o NsRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NsRecordResponse] {
+	return pulumix.Output[[]NsRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NsRecordResponseArrayOutput) Index(i pulumi.IntInput) NsRecordResponseOutput {
@@ -1079,6 +1308,12 @@ func (i PtrRecordArgs) ToPtrRecordOutputWithContext(ctx context.Context) PtrReco
 	return pulumi.ToOutputWithContext(ctx, i).(PtrRecordOutput)
 }
 
+func (i PtrRecordArgs) ToOutput(ctx context.Context) pulumix.Output[PtrRecord] {
+	return pulumix.Output[PtrRecord]{
+		OutputState: i.ToPtrRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PtrRecordArrayInput is an input type that accepts PtrRecordArray and PtrRecordArrayOutput values.
 // You can construct a concrete instance of `PtrRecordArrayInput` via:
 //
@@ -1104,6 +1339,12 @@ func (i PtrRecordArray) ToPtrRecordArrayOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PtrRecordArrayOutput)
 }
 
+func (i PtrRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]PtrRecord] {
+	return pulumix.Output[[]PtrRecord]{
+		OutputState: i.ToPtrRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A PTR record.
 type PtrRecordOutput struct{ *pulumi.OutputState }
 
@@ -1117,6 +1358,12 @@ func (o PtrRecordOutput) ToPtrRecordOutput() PtrRecordOutput {
 
 func (o PtrRecordOutput) ToPtrRecordOutputWithContext(ctx context.Context) PtrRecordOutput {
 	return o
+}
+
+func (o PtrRecordOutput) ToOutput(ctx context.Context) pulumix.Output[PtrRecord] {
+	return pulumix.Output[PtrRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The PTR target domain name for this PTR record.
@@ -1136,6 +1383,12 @@ func (o PtrRecordArrayOutput) ToPtrRecordArrayOutput() PtrRecordArrayOutput {
 
 func (o PtrRecordArrayOutput) ToPtrRecordArrayOutputWithContext(ctx context.Context) PtrRecordArrayOutput {
 	return o
+}
+
+func (o PtrRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PtrRecord] {
+	return pulumix.Output[[]PtrRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PtrRecordArrayOutput) Index(i pulumi.IntInput) PtrRecordOutput {
@@ -1165,6 +1418,12 @@ func (o PtrRecordResponseOutput) ToPtrRecordResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o PtrRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PtrRecordResponse] {
+	return pulumix.Output[PtrRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The PTR target domain name for this PTR record.
 func (o PtrRecordResponseOutput) Ptrdname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PtrRecordResponse) *string { return v.Ptrdname }).(pulumi.StringPtrOutput)
@@ -1182,6 +1441,12 @@ func (o PtrRecordResponseArrayOutput) ToPtrRecordResponseArrayOutput() PtrRecord
 
 func (o PtrRecordResponseArrayOutput) ToPtrRecordResponseArrayOutputWithContext(ctx context.Context) PtrRecordResponseArrayOutput {
 	return o
+}
+
+func (o PtrRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PtrRecordResponse] {
+	return pulumix.Output[[]PtrRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PtrRecordResponseArrayOutput) Index(i pulumi.IntInput) PtrRecordResponseOutput {
@@ -1249,6 +1514,12 @@ func (i SoaRecordArgs) ToSoaRecordOutputWithContext(ctx context.Context) SoaReco
 	return pulumi.ToOutputWithContext(ctx, i).(SoaRecordOutput)
 }
 
+func (i SoaRecordArgs) ToOutput(ctx context.Context) pulumix.Output[SoaRecord] {
+	return pulumix.Output[SoaRecord]{
+		OutputState: i.ToSoaRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SoaRecordArgs) ToSoaRecordPtrOutput() SoaRecordPtrOutput {
 	return i.ToSoaRecordPtrOutputWithContext(context.Background())
 }
@@ -1290,6 +1561,12 @@ func (i *soaRecordPtrType) ToSoaRecordPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SoaRecordPtrOutput)
 }
 
+func (i *soaRecordPtrType) ToOutput(ctx context.Context) pulumix.Output[*SoaRecord] {
+	return pulumix.Output[*SoaRecord]{
+		OutputState: i.ToSoaRecordPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An SOA record.
 type SoaRecordOutput struct{ *pulumi.OutputState }
 
@@ -1313,6 +1590,12 @@ func (o SoaRecordOutput) ToSoaRecordPtrOutputWithContext(ctx context.Context) So
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoaRecord) *SoaRecord {
 		return &v
 	}).(SoaRecordPtrOutput)
+}
+
+func (o SoaRecordOutput) ToOutput(ctx context.Context) pulumix.Output[SoaRecord] {
+	return pulumix.Output[SoaRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The email contact for this SOA record.
@@ -1362,6 +1645,12 @@ func (o SoaRecordPtrOutput) ToSoaRecordPtrOutput() SoaRecordPtrOutput {
 
 func (o SoaRecordPtrOutput) ToSoaRecordPtrOutputWithContext(ctx context.Context) SoaRecordPtrOutput {
 	return o
+}
+
+func (o SoaRecordPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoaRecord] {
+	return pulumix.Output[*SoaRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SoaRecordPtrOutput) Elem() SoaRecordOutput {
@@ -1477,6 +1766,12 @@ func (o SoaRecordResponseOutput) ToSoaRecordResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o SoaRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoaRecordResponse] {
+	return pulumix.Output[SoaRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The email contact for this SOA record.
 func (o SoaRecordResponseOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SoaRecordResponse) *string { return v.Email }).(pulumi.StringPtrOutput)
@@ -1524,6 +1819,12 @@ func (o SoaRecordResponsePtrOutput) ToSoaRecordResponsePtrOutput() SoaRecordResp
 
 func (o SoaRecordResponsePtrOutput) ToSoaRecordResponsePtrOutputWithContext(ctx context.Context) SoaRecordResponsePtrOutput {
 	return o
+}
+
+func (o SoaRecordResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoaRecordResponse] {
+	return pulumix.Output[*SoaRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SoaRecordResponsePtrOutput) Elem() SoaRecordResponseOutput {
@@ -1653,6 +1954,12 @@ func (i SrvRecordArgs) ToSrvRecordOutputWithContext(ctx context.Context) SrvReco
 	return pulumi.ToOutputWithContext(ctx, i).(SrvRecordOutput)
 }
 
+func (i SrvRecordArgs) ToOutput(ctx context.Context) pulumix.Output[SrvRecord] {
+	return pulumix.Output[SrvRecord]{
+		OutputState: i.ToSrvRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SrvRecordArrayInput is an input type that accepts SrvRecordArray and SrvRecordArrayOutput values.
 // You can construct a concrete instance of `SrvRecordArrayInput` via:
 //
@@ -1678,6 +1985,12 @@ func (i SrvRecordArray) ToSrvRecordArrayOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SrvRecordArrayOutput)
 }
 
+func (i SrvRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]SrvRecord] {
+	return pulumix.Output[[]SrvRecord]{
+		OutputState: i.ToSrvRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An SRV record.
 type SrvRecordOutput struct{ *pulumi.OutputState }
 
@@ -1691,6 +2004,12 @@ func (o SrvRecordOutput) ToSrvRecordOutput() SrvRecordOutput {
 
 func (o SrvRecordOutput) ToSrvRecordOutputWithContext(ctx context.Context) SrvRecordOutput {
 	return o
+}
+
+func (o SrvRecordOutput) ToOutput(ctx context.Context) pulumix.Output[SrvRecord] {
+	return pulumix.Output[SrvRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The port value for this SRV record.
@@ -1727,6 +2046,12 @@ func (o SrvRecordArrayOutput) ToSrvRecordArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o SrvRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SrvRecord] {
+	return pulumix.Output[[]SrvRecord]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SrvRecordArrayOutput) Index(i pulumi.IntInput) SrvRecordOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SrvRecord {
 		return vs[0].([]SrvRecord)[vs[1].(int)]
@@ -1758,6 +2083,12 @@ func (o SrvRecordResponseOutput) ToSrvRecordResponseOutput() SrvRecordResponseOu
 
 func (o SrvRecordResponseOutput) ToSrvRecordResponseOutputWithContext(ctx context.Context) SrvRecordResponseOutput {
 	return o
+}
+
+func (o SrvRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SrvRecordResponse] {
+	return pulumix.Output[SrvRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The port value for this SRV record.
@@ -1792,6 +2123,12 @@ func (o SrvRecordResponseArrayOutput) ToSrvRecordResponseArrayOutput() SrvRecord
 
 func (o SrvRecordResponseArrayOutput) ToSrvRecordResponseArrayOutputWithContext(ctx context.Context) SrvRecordResponseArrayOutput {
 	return o
+}
+
+func (o SrvRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SrvRecordResponse] {
+	return pulumix.Output[[]SrvRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SrvRecordResponseArrayOutput) Index(i pulumi.IntInput) SrvRecordResponseOutput {
@@ -1841,6 +2178,12 @@ func (i SubResourceArgs) ToSubResourceOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourceOutput)
 }
 
+func (i SubResourceArgs) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
+	return pulumix.Output[SubResource]{
+		OutputState: i.ToSubResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SubResourceArgs) ToSubResourcePtrOutput() SubResourcePtrOutput {
 	return i.ToSubResourcePtrOutputWithContext(context.Background())
 }
@@ -1882,6 +2225,12 @@ func (i *subResourcePtrType) ToSubResourcePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourcePtrOutput)
 }
 
+func (i *subResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
+	return pulumix.Output[*SubResource]{
+		OutputState: i.ToSubResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SubResourceArrayInput is an input type that accepts SubResourceArray and SubResourceArrayOutput values.
 // You can construct a concrete instance of `SubResourceArrayInput` via:
 //
@@ -1905,6 +2254,12 @@ func (i SubResourceArray) ToSubResourceArrayOutput() SubResourceArrayOutput {
 
 func (i SubResourceArray) ToSubResourceArrayOutputWithContext(ctx context.Context) SubResourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourceArrayOutput)
+}
+
+func (i SubResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]SubResource] {
+	return pulumix.Output[[]SubResource]{
+		OutputState: i.ToSubResourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // A reference to a another resource
@@ -1932,6 +2287,12 @@ func (o SubResourceOutput) ToSubResourcePtrOutputWithContext(ctx context.Context
 	}).(SubResourcePtrOutput)
 }
 
+func (o SubResourceOutput) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
+	return pulumix.Output[SubResource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
 // An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
 // A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
@@ -1952,6 +2313,12 @@ func (o SubResourcePtrOutput) ToSubResourcePtrOutput() SubResourcePtrOutput {
 
 func (o SubResourcePtrOutput) ToSubResourcePtrOutputWithContext(ctx context.Context) SubResourcePtrOutput {
 	return o
+}
+
+func (o SubResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
+	return pulumix.Output[*SubResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubResourcePtrOutput) Elem() SubResourceOutput {
@@ -1991,6 +2358,12 @@ func (o SubResourceArrayOutput) ToSubResourceArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o SubResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubResource] {
+	return pulumix.Output[[]SubResource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubResourceArrayOutput) Index(i pulumi.IntInput) SubResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubResource {
 		return vs[0].([]SubResource)[vs[1].(int)]
@@ -2018,6 +2391,12 @@ func (o SubResourceResponseOutput) ToSubResourceResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o SubResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubResourceResponse] {
+	return pulumix.Output[SubResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource Id.
 func (o SubResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2035,6 +2414,12 @@ func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutput() SubResour
 
 func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutputWithContext(ctx context.Context) SubResourceResponsePtrOutput {
 	return o
+}
+
+func (o SubResourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResourceResponse] {
+	return pulumix.Output[*SubResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubResourceResponsePtrOutput) Elem() SubResourceResponseOutput {
@@ -2069,6 +2454,12 @@ func (o SubResourceResponseArrayOutput) ToSubResourceResponseArrayOutput() SubRe
 
 func (o SubResourceResponseArrayOutput) ToSubResourceResponseArrayOutputWithContext(ctx context.Context) SubResourceResponseArrayOutput {
 	return o
+}
+
+func (o SubResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubResourceResponse] {
+	return pulumix.Output[[]SubResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubResourceResponseArrayOutput) Index(i pulumi.IntInput) SubResourceResponseOutput {
@@ -2112,6 +2503,12 @@ func (i TxtRecordArgs) ToTxtRecordOutputWithContext(ctx context.Context) TxtReco
 	return pulumi.ToOutputWithContext(ctx, i).(TxtRecordOutput)
 }
 
+func (i TxtRecordArgs) ToOutput(ctx context.Context) pulumix.Output[TxtRecord] {
+	return pulumix.Output[TxtRecord]{
+		OutputState: i.ToTxtRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TxtRecordArrayInput is an input type that accepts TxtRecordArray and TxtRecordArrayOutput values.
 // You can construct a concrete instance of `TxtRecordArrayInput` via:
 //
@@ -2137,6 +2534,12 @@ func (i TxtRecordArray) ToTxtRecordArrayOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TxtRecordArrayOutput)
 }
 
+func (i TxtRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]TxtRecord] {
+	return pulumix.Output[[]TxtRecord]{
+		OutputState: i.ToTxtRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A TXT record.
 type TxtRecordOutput struct{ *pulumi.OutputState }
 
@@ -2150,6 +2553,12 @@ func (o TxtRecordOutput) ToTxtRecordOutput() TxtRecordOutput {
 
 func (o TxtRecordOutput) ToTxtRecordOutputWithContext(ctx context.Context) TxtRecordOutput {
 	return o
+}
+
+func (o TxtRecordOutput) ToOutput(ctx context.Context) pulumix.Output[TxtRecord] {
+	return pulumix.Output[TxtRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The text value of this TXT record.
@@ -2169,6 +2578,12 @@ func (o TxtRecordArrayOutput) ToTxtRecordArrayOutput() TxtRecordArrayOutput {
 
 func (o TxtRecordArrayOutput) ToTxtRecordArrayOutputWithContext(ctx context.Context) TxtRecordArrayOutput {
 	return o
+}
+
+func (o TxtRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TxtRecord] {
+	return pulumix.Output[[]TxtRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TxtRecordArrayOutput) Index(i pulumi.IntInput) TxtRecordOutput {
@@ -2198,6 +2613,12 @@ func (o TxtRecordResponseOutput) ToTxtRecordResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o TxtRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TxtRecordResponse] {
+	return pulumix.Output[TxtRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The text value of this TXT record.
 func (o TxtRecordResponseOutput) Value() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TxtRecordResponse) []string { return v.Value }).(pulumi.StringArrayOutput)
@@ -2215,6 +2636,12 @@ func (o TxtRecordResponseArrayOutput) ToTxtRecordResponseArrayOutput() TxtRecord
 
 func (o TxtRecordResponseArrayOutput) ToTxtRecordResponseArrayOutputWithContext(ctx context.Context) TxtRecordResponseArrayOutput {
 	return o
+}
+
+func (o TxtRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TxtRecordResponse] {
+	return pulumix.Output[[]TxtRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TxtRecordResponseArrayOutput) Index(i pulumi.IntInput) TxtRecordResponseOutput {

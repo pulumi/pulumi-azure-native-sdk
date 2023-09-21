@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -177,6 +178,12 @@ func (i ExportPolicyRuleArgs) ToExportPolicyRuleOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExportPolicyRuleOutput)
 }
 
+func (i ExportPolicyRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ExportPolicyRule] {
+	return pulumix.Output[ExportPolicyRule]{
+		OutputState: i.ToExportPolicyRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ExportPolicyRuleArrayInput is an input type that accepts ExportPolicyRuleArray and ExportPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `ExportPolicyRuleArrayInput` via:
 //
@@ -202,6 +209,12 @@ func (i ExportPolicyRuleArray) ToExportPolicyRuleArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ExportPolicyRuleArrayOutput)
 }
 
+func (i ExportPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ExportPolicyRule] {
+	return pulumix.Output[[]ExportPolicyRule]{
+		OutputState: i.ToExportPolicyRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Volume Export Policy Rule
 type ExportPolicyRuleOutput struct{ *pulumi.OutputState }
 
@@ -215,6 +228,12 @@ func (o ExportPolicyRuleOutput) ToExportPolicyRuleOutput() ExportPolicyRuleOutpu
 
 func (o ExportPolicyRuleOutput) ToExportPolicyRuleOutputWithContext(ctx context.Context) ExportPolicyRuleOutput {
 	return o
+}
+
+func (o ExportPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ExportPolicyRule] {
+	return pulumix.Output[ExportPolicyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
@@ -304,6 +323,12 @@ func (o ExportPolicyRuleArrayOutput) ToExportPolicyRuleArrayOutput() ExportPolic
 
 func (o ExportPolicyRuleArrayOutput) ToExportPolicyRuleArrayOutputWithContext(ctx context.Context) ExportPolicyRuleArrayOutput {
 	return o
+}
+
+func (o ExportPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExportPolicyRule] {
+	return pulumix.Output[[]ExportPolicyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExportPolicyRuleArrayOutput) Index(i pulumi.IntInput) ExportPolicyRuleOutput {
@@ -402,6 +427,12 @@ func (o ExportPolicyRuleResponseOutput) ToExportPolicyRuleResponseOutputWithCont
 	return o
 }
 
+func (o ExportPolicyRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportPolicyRuleResponse] {
+	return pulumix.Output[ExportPolicyRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
 func (o ExportPolicyRuleResponseOutput) AllowedClients() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExportPolicyRuleResponse) *string { return v.AllowedClients }).(pulumi.StringPtrOutput)
@@ -491,6 +522,12 @@ func (o ExportPolicyRuleResponseArrayOutput) ToExportPolicyRuleResponseArrayOutp
 	return o
 }
 
+func (o ExportPolicyRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExportPolicyRuleResponse] {
+	return pulumix.Output[[]ExportPolicyRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ExportPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) ExportPolicyRuleResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExportPolicyRuleResponse {
 		return vs[0].([]ExportPolicyRuleResponse)[vs[1].(int)]
@@ -522,6 +559,12 @@ func (o MountTargetPropertiesResponseOutput) ToMountTargetPropertiesResponseOutp
 
 func (o MountTargetPropertiesResponseOutput) ToMountTargetPropertiesResponseOutputWithContext(ctx context.Context) MountTargetPropertiesResponseOutput {
 	return o
+}
+
+func (o MountTargetPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MountTargetPropertiesResponse] {
+	return pulumix.Output[MountTargetPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // UUID v4 used to identify the MountTarget
@@ -556,6 +599,12 @@ func (o MountTargetPropertiesResponseArrayOutput) ToMountTargetPropertiesRespons
 
 func (o MountTargetPropertiesResponseArrayOutput) ToMountTargetPropertiesResponseArrayOutputWithContext(ctx context.Context) MountTargetPropertiesResponseArrayOutput {
 	return o
+}
+
+func (o MountTargetPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MountTargetPropertiesResponse] {
+	return pulumix.Output[[]MountTargetPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MountTargetPropertiesResponseArrayOutput) Index(i pulumi.IntInput) MountTargetPropertiesResponseOutput {
@@ -603,6 +652,12 @@ func (i PlacementKeyValuePairsArgs) ToPlacementKeyValuePairsOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PlacementKeyValuePairsOutput)
 }
 
+func (i PlacementKeyValuePairsArgs) ToOutput(ctx context.Context) pulumix.Output[PlacementKeyValuePairs] {
+	return pulumix.Output[PlacementKeyValuePairs]{
+		OutputState: i.ToPlacementKeyValuePairsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PlacementKeyValuePairsArrayInput is an input type that accepts PlacementKeyValuePairsArray and PlacementKeyValuePairsArrayOutput values.
 // You can construct a concrete instance of `PlacementKeyValuePairsArrayInput` via:
 //
@@ -628,6 +683,12 @@ func (i PlacementKeyValuePairsArray) ToPlacementKeyValuePairsArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PlacementKeyValuePairsArrayOutput)
 }
 
+func (i PlacementKeyValuePairsArray) ToOutput(ctx context.Context) pulumix.Output[[]PlacementKeyValuePairs] {
+	return pulumix.Output[[]PlacementKeyValuePairs]{
+		OutputState: i.ToPlacementKeyValuePairsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Application specific parameters for the placement of volumes in the volume group
 type PlacementKeyValuePairsOutput struct{ *pulumi.OutputState }
 
@@ -641,6 +702,12 @@ func (o PlacementKeyValuePairsOutput) ToPlacementKeyValuePairsOutput() Placement
 
 func (o PlacementKeyValuePairsOutput) ToPlacementKeyValuePairsOutputWithContext(ctx context.Context) PlacementKeyValuePairsOutput {
 	return o
+}
+
+func (o PlacementKeyValuePairsOutput) ToOutput(ctx context.Context) pulumix.Output[PlacementKeyValuePairs] {
+	return pulumix.Output[PlacementKeyValuePairs]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Key for an application specific parameter for the placement of volumes in the volume group
@@ -665,6 +732,12 @@ func (o PlacementKeyValuePairsArrayOutput) ToPlacementKeyValuePairsArrayOutput()
 
 func (o PlacementKeyValuePairsArrayOutput) ToPlacementKeyValuePairsArrayOutputWithContext(ctx context.Context) PlacementKeyValuePairsArrayOutput {
 	return o
+}
+
+func (o PlacementKeyValuePairsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PlacementKeyValuePairs] {
+	return pulumix.Output[[]PlacementKeyValuePairs]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PlacementKeyValuePairsArrayOutput) Index(i pulumi.IntInput) PlacementKeyValuePairsOutput {
@@ -696,6 +769,12 @@ func (o PlacementKeyValuePairsResponseOutput) ToPlacementKeyValuePairsResponseOu
 	return o
 }
 
+func (o PlacementKeyValuePairsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PlacementKeyValuePairsResponse] {
+	return pulumix.Output[PlacementKeyValuePairsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Key for an application specific parameter for the placement of volumes in the volume group
 func (o PlacementKeyValuePairsResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v PlacementKeyValuePairsResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -718,6 +797,12 @@ func (o PlacementKeyValuePairsResponseArrayOutput) ToPlacementKeyValuePairsRespo
 
 func (o PlacementKeyValuePairsResponseArrayOutput) ToPlacementKeyValuePairsResponseArrayOutputWithContext(ctx context.Context) PlacementKeyValuePairsResponseArrayOutput {
 	return o
+}
+
+func (o PlacementKeyValuePairsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PlacementKeyValuePairsResponse] {
+	return pulumix.Output[[]PlacementKeyValuePairsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PlacementKeyValuePairsResponseArrayOutput) Index(i pulumi.IntInput) PlacementKeyValuePairsResponseOutput {
@@ -777,6 +862,12 @@ func (i ReplicationObjectArgs) ToReplicationObjectOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationObjectOutput)
 }
 
+func (i ReplicationObjectArgs) ToOutput(ctx context.Context) pulumix.Output[ReplicationObject] {
+	return pulumix.Output[ReplicationObject]{
+		OutputState: i.ToReplicationObjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ReplicationObjectArgs) ToReplicationObjectPtrOutput() ReplicationObjectPtrOutput {
 	return i.ToReplicationObjectPtrOutputWithContext(context.Background())
 }
@@ -818,6 +909,12 @@ func (i *replicationObjectPtrType) ToReplicationObjectPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationObjectPtrOutput)
 }
 
+func (i *replicationObjectPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReplicationObject] {
+	return pulumix.Output[*ReplicationObject]{
+		OutputState: i.ToReplicationObjectPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Replication properties
 type ReplicationObjectOutput struct{ *pulumi.OutputState }
 
@@ -841,6 +938,12 @@ func (o ReplicationObjectOutput) ToReplicationObjectPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReplicationObject) *ReplicationObject {
 		return &v
 	}).(ReplicationObjectPtrOutput)
+}
+
+func (o ReplicationObjectOutput) ToOutput(ctx context.Context) pulumix.Output[ReplicationObject] {
+	return pulumix.Output[ReplicationObject]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates whether the local volume is the source or destination for the Volume Replication
@@ -880,6 +983,12 @@ func (o ReplicationObjectPtrOutput) ToReplicationObjectPtrOutput() ReplicationOb
 
 func (o ReplicationObjectPtrOutput) ToReplicationObjectPtrOutputWithContext(ctx context.Context) ReplicationObjectPtrOutput {
 	return o
+}
+
+func (o ReplicationObjectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationObject] {
+	return pulumix.Output[*ReplicationObject]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReplicationObjectPtrOutput) Elem() ReplicationObjectOutput {
@@ -971,6 +1080,12 @@ func (o ReplicationObjectResponseOutput) ToReplicationObjectResponseOutputWithCo
 	return o
 }
 
+func (o ReplicationObjectResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReplicationObjectResponse] {
+	return pulumix.Output[ReplicationObjectResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates whether the local volume is the source or destination for the Volume Replication
 func (o ReplicationObjectResponseOutput) EndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicationObjectResponse) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
@@ -1008,6 +1123,12 @@ func (o ReplicationObjectResponsePtrOutput) ToReplicationObjectResponsePtrOutput
 
 func (o ReplicationObjectResponsePtrOutput) ToReplicationObjectResponsePtrOutputWithContext(ctx context.Context) ReplicationObjectResponsePtrOutput {
 	return o
+}
+
+func (o ReplicationObjectResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationObjectResponse] {
+	return pulumix.Output[*ReplicationObjectResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReplicationObjectResponsePtrOutput) Elem() ReplicationObjectResponseOutput {
@@ -1101,6 +1222,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -1178,6 +1305,12 @@ func (i VolumeBackupPropertiesArgs) ToVolumeBackupPropertiesOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeBackupPropertiesOutput)
 }
 
+func (i VolumeBackupPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeBackupProperties] {
+	return pulumix.Output[VolumeBackupProperties]{
+		OutputState: i.ToVolumeBackupPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VolumeBackupPropertiesArgs) ToVolumeBackupPropertiesPtrOutput() VolumeBackupPropertiesPtrOutput {
 	return i.ToVolumeBackupPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1219,6 +1352,12 @@ func (i *volumeBackupPropertiesPtrType) ToVolumeBackupPropertiesPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeBackupPropertiesPtrOutput)
 }
 
+func (i *volumeBackupPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*VolumeBackupProperties] {
+	return pulumix.Output[*VolumeBackupProperties]{
+		OutputState: i.ToVolumeBackupPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Volume Backup Properties
 type VolumeBackupPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1242,6 +1381,12 @@ func (o VolumeBackupPropertiesOutput) ToVolumeBackupPropertiesPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeBackupProperties) *VolumeBackupProperties {
 		return &v
 	}).(VolumeBackupPropertiesPtrOutput)
+}
+
+func (o VolumeBackupPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeBackupProperties] {
+	return pulumix.Output[VolumeBackupProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Backup Enabled
@@ -1276,6 +1421,12 @@ func (o VolumeBackupPropertiesPtrOutput) ToVolumeBackupPropertiesPtrOutput() Vol
 
 func (o VolumeBackupPropertiesPtrOutput) ToVolumeBackupPropertiesPtrOutputWithContext(ctx context.Context) VolumeBackupPropertiesPtrOutput {
 	return o
+}
+
+func (o VolumeBackupPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeBackupProperties] {
+	return pulumix.Output[*VolumeBackupProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeBackupPropertiesPtrOutput) Elem() VolumeBackupPropertiesOutput {
@@ -1355,6 +1506,12 @@ func (o VolumeBackupPropertiesResponseOutput) ToVolumeBackupPropertiesResponseOu
 	return o
 }
 
+func (o VolumeBackupPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeBackupPropertiesResponse] {
+	return pulumix.Output[VolumeBackupPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Backup Enabled
 func (o VolumeBackupPropertiesResponseOutput) BackupEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeBackupPropertiesResponse) *bool { return v.BackupEnabled }).(pulumi.BoolPtrOutput)
@@ -1387,6 +1544,12 @@ func (o VolumeBackupPropertiesResponsePtrOutput) ToVolumeBackupPropertiesRespons
 
 func (o VolumeBackupPropertiesResponsePtrOutput) ToVolumeBackupPropertiesResponsePtrOutputWithContext(ctx context.Context) VolumeBackupPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o VolumeBackupPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeBackupPropertiesResponse] {
+	return pulumix.Output[*VolumeBackupPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeBackupPropertiesResponsePtrOutput) Elem() VolumeBackupPropertiesResponseOutput {
@@ -1490,6 +1653,12 @@ func (i VolumeGroupMetaDataArgs) ToVolumeGroupMetaDataOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeGroupMetaDataOutput)
 }
 
+func (i VolumeGroupMetaDataArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeGroupMetaData] {
+	return pulumix.Output[VolumeGroupMetaData]{
+		OutputState: i.ToVolumeGroupMetaDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VolumeGroupMetaDataArgs) ToVolumeGroupMetaDataPtrOutput() VolumeGroupMetaDataPtrOutput {
 	return i.ToVolumeGroupMetaDataPtrOutputWithContext(context.Background())
 }
@@ -1531,6 +1700,12 @@ func (i *volumeGroupMetaDataPtrType) ToVolumeGroupMetaDataPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeGroupMetaDataPtrOutput)
 }
 
+func (i *volumeGroupMetaDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*VolumeGroupMetaData] {
+	return pulumix.Output[*VolumeGroupMetaData]{
+		OutputState: i.ToVolumeGroupMetaDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Volume group properties
 type VolumeGroupMetaDataOutput struct{ *pulumi.OutputState }
 
@@ -1554,6 +1729,12 @@ func (o VolumeGroupMetaDataOutput) ToVolumeGroupMetaDataPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeGroupMetaData) *VolumeGroupMetaData {
 		return &v
 	}).(VolumeGroupMetaDataPtrOutput)
+}
+
+func (o VolumeGroupMetaDataOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeGroupMetaData] {
+	return pulumix.Output[VolumeGroupMetaData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Application specific identifier
@@ -1593,6 +1774,12 @@ func (o VolumeGroupMetaDataPtrOutput) ToVolumeGroupMetaDataPtrOutput() VolumeGro
 
 func (o VolumeGroupMetaDataPtrOutput) ToVolumeGroupMetaDataPtrOutputWithContext(ctx context.Context) VolumeGroupMetaDataPtrOutput {
 	return o
+}
+
+func (o VolumeGroupMetaDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeGroupMetaData] {
+	return pulumix.Output[*VolumeGroupMetaData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeGroupMetaDataPtrOutput) Elem() VolumeGroupMetaDataOutput {
@@ -1686,6 +1873,12 @@ func (o VolumeGroupMetaDataResponseOutput) ToVolumeGroupMetaDataResponseOutputWi
 	return o
 }
 
+func (o VolumeGroupMetaDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeGroupMetaDataResponse] {
+	return pulumix.Output[VolumeGroupMetaDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Application specific identifier
 func (o VolumeGroupMetaDataResponseOutput) ApplicationIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupMetaDataResponse) *string { return v.ApplicationIdentifier }).(pulumi.StringPtrOutput)
@@ -1728,6 +1921,12 @@ func (o VolumeGroupMetaDataResponsePtrOutput) ToVolumeGroupMetaDataResponsePtrOu
 
 func (o VolumeGroupMetaDataResponsePtrOutput) ToVolumeGroupMetaDataResponsePtrOutputWithContext(ctx context.Context) VolumeGroupMetaDataResponsePtrOutput {
 	return o
+}
+
+func (o VolumeGroupMetaDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeGroupMetaDataResponse] {
+	return pulumix.Output[*VolumeGroupMetaDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeGroupMetaDataResponsePtrOutput) Elem() VolumeGroupMetaDataResponseOutput {
@@ -2086,6 +2285,12 @@ func (i VolumeGroupVolumePropertiesArgs) ToVolumeGroupVolumePropertiesOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeGroupVolumePropertiesOutput)
 }
 
+func (i VolumeGroupVolumePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeGroupVolumeProperties] {
+	return pulumix.Output[VolumeGroupVolumeProperties]{
+		OutputState: i.ToVolumeGroupVolumePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VolumeGroupVolumePropertiesArrayInput is an input type that accepts VolumeGroupVolumePropertiesArray and VolumeGroupVolumePropertiesArrayOutput values.
 // You can construct a concrete instance of `VolumeGroupVolumePropertiesArrayInput` via:
 //
@@ -2111,6 +2316,12 @@ func (i VolumeGroupVolumePropertiesArray) ToVolumeGroupVolumePropertiesArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeGroupVolumePropertiesArrayOutput)
 }
 
+func (i VolumeGroupVolumePropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]VolumeGroupVolumeProperties] {
+	return pulumix.Output[[]VolumeGroupVolumeProperties]{
+		OutputState: i.ToVolumeGroupVolumePropertiesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Volume resource
 type VolumeGroupVolumePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2124,6 +2335,12 @@ func (o VolumeGroupVolumePropertiesOutput) ToVolumeGroupVolumePropertiesOutput()
 
 func (o VolumeGroupVolumePropertiesOutput) ToVolumeGroupVolumePropertiesOutputWithContext(ctx context.Context) VolumeGroupVolumePropertiesOutput {
 	return o
+}
+
+func (o VolumeGroupVolumePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeGroupVolumeProperties] {
+	return pulumix.Output[VolumeGroupVolumeProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
@@ -2309,6 +2526,12 @@ func (o VolumeGroupVolumePropertiesArrayOutput) ToVolumeGroupVolumePropertiesArr
 	return o
 }
 
+func (o VolumeGroupVolumePropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeGroupVolumeProperties] {
+	return pulumix.Output[[]VolumeGroupVolumeProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeGroupVolumePropertiesArrayOutput) Index(i pulumi.IntInput) VolumeGroupVolumePropertiesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeGroupVolumeProperties {
 		return vs[0].([]VolumeGroupVolumeProperties)[vs[1].(int)]
@@ -2491,6 +2714,12 @@ func (o VolumeGroupVolumePropertiesResponseOutput) ToVolumeGroupVolumeProperties
 
 func (o VolumeGroupVolumePropertiesResponseOutput) ToVolumeGroupVolumePropertiesResponseOutputWithContext(ctx context.Context) VolumeGroupVolumePropertiesResponseOutput {
 	return o
+}
+
+func (o VolumeGroupVolumePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeGroupVolumePropertiesResponse] {
+	return pulumix.Output[VolumeGroupVolumePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
@@ -2740,6 +2969,12 @@ func (o VolumeGroupVolumePropertiesResponseArrayOutput) ToVolumeGroupVolumePrope
 	return o
 }
 
+func (o VolumeGroupVolumePropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeGroupVolumePropertiesResponse] {
+	return pulumix.Output[[]VolumeGroupVolumePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeGroupVolumePropertiesResponseArrayOutput) Index(i pulumi.IntInput) VolumeGroupVolumePropertiesResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeGroupVolumePropertiesResponse {
 		return vs[0].([]VolumeGroupVolumePropertiesResponse)[vs[1].(int)]
@@ -2789,6 +3024,12 @@ func (i VolumePropertiesDataProtectionArgs) ToVolumePropertiesDataProtectionOutp
 	return pulumi.ToOutputWithContext(ctx, i).(VolumePropertiesDataProtectionOutput)
 }
 
+func (i VolumePropertiesDataProtectionArgs) ToOutput(ctx context.Context) pulumix.Output[VolumePropertiesDataProtection] {
+	return pulumix.Output[VolumePropertiesDataProtection]{
+		OutputState: i.ToVolumePropertiesDataProtectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VolumePropertiesDataProtectionArgs) ToVolumePropertiesDataProtectionPtrOutput() VolumePropertiesDataProtectionPtrOutput {
 	return i.ToVolumePropertiesDataProtectionPtrOutputWithContext(context.Background())
 }
@@ -2830,6 +3071,12 @@ func (i *volumePropertiesDataProtectionPtrType) ToVolumePropertiesDataProtection
 	return pulumi.ToOutputWithContext(ctx, i).(VolumePropertiesDataProtectionPtrOutput)
 }
 
+func (i *volumePropertiesDataProtectionPtrType) ToOutput(ctx context.Context) pulumix.Output[*VolumePropertiesDataProtection] {
+	return pulumix.Output[*VolumePropertiesDataProtection]{
+		OutputState: i.ToVolumePropertiesDataProtectionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DataProtection type volumes include an object containing details of the replication
 type VolumePropertiesDataProtectionOutput struct{ *pulumi.OutputState }
 
@@ -2853,6 +3100,12 @@ func (o VolumePropertiesDataProtectionOutput) ToVolumePropertiesDataProtectionPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumePropertiesDataProtection) *VolumePropertiesDataProtection {
 		return &v
 	}).(VolumePropertiesDataProtectionPtrOutput)
+}
+
+func (o VolumePropertiesDataProtectionOutput) ToOutput(ctx context.Context) pulumix.Output[VolumePropertiesDataProtection] {
+	return pulumix.Output[VolumePropertiesDataProtection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Backup Properties
@@ -2882,6 +3135,12 @@ func (o VolumePropertiesDataProtectionPtrOutput) ToVolumePropertiesDataProtectio
 
 func (o VolumePropertiesDataProtectionPtrOutput) ToVolumePropertiesDataProtectionPtrOutputWithContext(ctx context.Context) VolumePropertiesDataProtectionPtrOutput {
 	return o
+}
+
+func (o VolumePropertiesDataProtectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumePropertiesDataProtection] {
+	return pulumix.Output[*VolumePropertiesDataProtection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumePropertiesDataProtectionPtrOutput) Elem() VolumePropertiesDataProtectionOutput {
@@ -2959,6 +3218,12 @@ func (i VolumePropertiesExportPolicyArgs) ToVolumePropertiesExportPolicyOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(VolumePropertiesExportPolicyOutput)
 }
 
+func (i VolumePropertiesExportPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[VolumePropertiesExportPolicy] {
+	return pulumix.Output[VolumePropertiesExportPolicy]{
+		OutputState: i.ToVolumePropertiesExportPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VolumePropertiesExportPolicyArgs) ToVolumePropertiesExportPolicyPtrOutput() VolumePropertiesExportPolicyPtrOutput {
 	return i.ToVolumePropertiesExportPolicyPtrOutputWithContext(context.Background())
 }
@@ -3000,6 +3265,12 @@ func (i *volumePropertiesExportPolicyPtrType) ToVolumePropertiesExportPolicyPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(VolumePropertiesExportPolicyPtrOutput)
 }
 
+func (i *volumePropertiesExportPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*VolumePropertiesExportPolicy] {
+	return pulumix.Output[*VolumePropertiesExportPolicy]{
+		OutputState: i.ToVolumePropertiesExportPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Set of export policy rules
 type VolumePropertiesExportPolicyOutput struct{ *pulumi.OutputState }
 
@@ -3025,6 +3296,12 @@ func (o VolumePropertiesExportPolicyOutput) ToVolumePropertiesExportPolicyPtrOut
 	}).(VolumePropertiesExportPolicyPtrOutput)
 }
 
+func (o VolumePropertiesExportPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[VolumePropertiesExportPolicy] {
+	return pulumix.Output[VolumePropertiesExportPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Export policy rule
 func (o VolumePropertiesExportPolicyOutput) Rules() ExportPolicyRuleArrayOutput {
 	return o.ApplyT(func(v VolumePropertiesExportPolicy) []ExportPolicyRule { return v.Rules }).(ExportPolicyRuleArrayOutput)
@@ -3042,6 +3319,12 @@ func (o VolumePropertiesExportPolicyPtrOutput) ToVolumePropertiesExportPolicyPtr
 
 func (o VolumePropertiesExportPolicyPtrOutput) ToVolumePropertiesExportPolicyPtrOutputWithContext(ctx context.Context) VolumePropertiesExportPolicyPtrOutput {
 	return o
+}
+
+func (o VolumePropertiesExportPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumePropertiesExportPolicy] {
+	return pulumix.Output[*VolumePropertiesExportPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumePropertiesExportPolicyPtrOutput) Elem() VolumePropertiesExportPolicyOutput {
@@ -3089,6 +3372,12 @@ func (o VolumePropertiesResponseDataProtectionOutput) ToVolumePropertiesResponse
 	return o
 }
 
+func (o VolumePropertiesResponseDataProtectionOutput) ToOutput(ctx context.Context) pulumix.Output[VolumePropertiesResponseDataProtection] {
+	return pulumix.Output[VolumePropertiesResponseDataProtection]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Backup Properties
 func (o VolumePropertiesResponseDataProtectionOutput) Backup() VolumeBackupPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v VolumePropertiesResponseDataProtection) *VolumeBackupPropertiesResponse { return v.Backup }).(VolumeBackupPropertiesResponsePtrOutput)
@@ -3116,6 +3405,12 @@ func (o VolumePropertiesResponseDataProtectionPtrOutput) ToVolumePropertiesRespo
 
 func (o VolumePropertiesResponseDataProtectionPtrOutput) ToVolumePropertiesResponseDataProtectionPtrOutputWithContext(ctx context.Context) VolumePropertiesResponseDataProtectionPtrOutput {
 	return o
+}
+
+func (o VolumePropertiesResponseDataProtectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumePropertiesResponseDataProtection] {
+	return pulumix.Output[*VolumePropertiesResponseDataProtection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumePropertiesResponseDataProtectionPtrOutput) Elem() VolumePropertiesResponseDataProtectionOutput {
@@ -3179,6 +3474,12 @@ func (o VolumePropertiesResponseExportPolicyOutput) ToVolumePropertiesResponseEx
 	return o
 }
 
+func (o VolumePropertiesResponseExportPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[VolumePropertiesResponseExportPolicy] {
+	return pulumix.Output[VolumePropertiesResponseExportPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Export policy rule
 func (o VolumePropertiesResponseExportPolicyOutput) Rules() ExportPolicyRuleResponseArrayOutput {
 	return o.ApplyT(func(v VolumePropertiesResponseExportPolicy) []ExportPolicyRuleResponse { return v.Rules }).(ExportPolicyRuleResponseArrayOutput)
@@ -3196,6 +3497,12 @@ func (o VolumePropertiesResponseExportPolicyPtrOutput) ToVolumePropertiesRespons
 
 func (o VolumePropertiesResponseExportPolicyPtrOutput) ToVolumePropertiesResponseExportPolicyPtrOutputWithContext(ctx context.Context) VolumePropertiesResponseExportPolicyPtrOutput {
 	return o
+}
+
+func (o VolumePropertiesResponseExportPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumePropertiesResponseExportPolicy] {
+	return pulumix.Output[*VolumePropertiesResponseExportPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumePropertiesResponseExportPolicyPtrOutput) Elem() VolumePropertiesResponseExportPolicyOutput {
@@ -3253,6 +3560,12 @@ func (i VolumeSnapshotPropertiesArgs) ToVolumeSnapshotPropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotPropertiesOutput)
 }
 
+func (i VolumeSnapshotPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeSnapshotProperties] {
+	return pulumix.Output[VolumeSnapshotProperties]{
+		OutputState: i.ToVolumeSnapshotPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VolumeSnapshotPropertiesArgs) ToVolumeSnapshotPropertiesPtrOutput() VolumeSnapshotPropertiesPtrOutput {
 	return i.ToVolumeSnapshotPropertiesPtrOutputWithContext(context.Background())
 }
@@ -3294,6 +3607,12 @@ func (i *volumeSnapshotPropertiesPtrType) ToVolumeSnapshotPropertiesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotPropertiesPtrOutput)
 }
 
+func (i *volumeSnapshotPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*VolumeSnapshotProperties] {
+	return pulumix.Output[*VolumeSnapshotProperties]{
+		OutputState: i.ToVolumeSnapshotPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Volume Snapshot Properties
 type VolumeSnapshotPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -3319,6 +3638,12 @@ func (o VolumeSnapshotPropertiesOutput) ToVolumeSnapshotPropertiesPtrOutputWithC
 	}).(VolumeSnapshotPropertiesPtrOutput)
 }
 
+func (o VolumeSnapshotPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeSnapshotProperties] {
+	return pulumix.Output[VolumeSnapshotProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Snapshot Policy ResourceId
 func (o VolumeSnapshotPropertiesOutput) SnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeSnapshotProperties) *string { return v.SnapshotPolicyId }).(pulumi.StringPtrOutput)
@@ -3336,6 +3661,12 @@ func (o VolumeSnapshotPropertiesPtrOutput) ToVolumeSnapshotPropertiesPtrOutput()
 
 func (o VolumeSnapshotPropertiesPtrOutput) ToVolumeSnapshotPropertiesPtrOutputWithContext(ctx context.Context) VolumeSnapshotPropertiesPtrOutput {
 	return o
+}
+
+func (o VolumeSnapshotPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeSnapshotProperties] {
+	return pulumix.Output[*VolumeSnapshotProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeSnapshotPropertiesPtrOutput) Elem() VolumeSnapshotPropertiesOutput {
@@ -3379,6 +3710,12 @@ func (o VolumeSnapshotPropertiesResponseOutput) ToVolumeSnapshotPropertiesRespon
 	return o
 }
 
+func (o VolumeSnapshotPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeSnapshotPropertiesResponse] {
+	return pulumix.Output[VolumeSnapshotPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Snapshot Policy ResourceId
 func (o VolumeSnapshotPropertiesResponseOutput) SnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeSnapshotPropertiesResponse) *string { return v.SnapshotPolicyId }).(pulumi.StringPtrOutput)
@@ -3396,6 +3733,12 @@ func (o VolumeSnapshotPropertiesResponsePtrOutput) ToVolumeSnapshotPropertiesRes
 
 func (o VolumeSnapshotPropertiesResponsePtrOutput) ToVolumeSnapshotPropertiesResponsePtrOutputWithContext(ctx context.Context) VolumeSnapshotPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o VolumeSnapshotPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeSnapshotPropertiesResponse] {
+	return pulumix.Output[*VolumeSnapshotPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeSnapshotPropertiesResponsePtrOutput) Elem() VolumeSnapshotPropertiesResponseOutput {

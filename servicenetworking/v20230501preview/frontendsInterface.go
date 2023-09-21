@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Frontend Subresource of Traffic Controller.
@@ -136,6 +137,12 @@ func (i *FrontendsInterface) ToFrontendsInterfaceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FrontendsInterfaceOutput)
 }
 
+func (i *FrontendsInterface) ToOutput(ctx context.Context) pulumix.Output[*FrontendsInterface] {
+	return pulumix.Output[*FrontendsInterface]{
+		OutputState: i.ToFrontendsInterfaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FrontendsInterfaceOutput struct{ *pulumi.OutputState }
 
 func (FrontendsInterfaceOutput) ElementType() reflect.Type {
@@ -148,6 +155,12 @@ func (o FrontendsInterfaceOutput) ToFrontendsInterfaceOutput() FrontendsInterfac
 
 func (o FrontendsInterfaceOutput) ToFrontendsInterfaceOutputWithContext(ctx context.Context) FrontendsInterfaceOutput {
 	return o
+}
+
+func (o FrontendsInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[*FrontendsInterface] {
+	return pulumix.Output[*FrontendsInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend.

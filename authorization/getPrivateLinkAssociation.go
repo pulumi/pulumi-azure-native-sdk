@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a single private link association
@@ -77,6 +78,12 @@ func (o LookupPrivateLinkAssociationResultOutput) ToLookupPrivateLinkAssociation
 
 func (o LookupPrivateLinkAssociationResultOutput) ToLookupPrivateLinkAssociationResultOutputWithContext(ctx context.Context) LookupPrivateLinkAssociationResultOutput {
 	return o
+}
+
+func (o LookupPrivateLinkAssociationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateLinkAssociationResult] {
+	return pulumix.Output[LookupPrivateLinkAssociationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The plaResourceID.

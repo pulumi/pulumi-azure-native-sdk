@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the description for the specified hybrid connection.
@@ -94,6 +95,12 @@ func (o LookupHybridConnectionResultOutput) ToLookupHybridConnectionResultOutput
 
 func (o LookupHybridConnectionResultOutput) ToLookupHybridConnectionResultOutputWithContext(ctx context.Context) LookupHybridConnectionResultOutput {
 	return o
+}
+
+func (o LookupHybridConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHybridConnectionResult] {
+	return pulumix.Output[LookupHybridConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the hybrid connection was created.

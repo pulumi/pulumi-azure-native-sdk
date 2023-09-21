@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a valid sender username for a domains resource.
@@ -94,6 +95,12 @@ func (o LookupSenderUsernameResultOutput) ToLookupSenderUsernameResultOutput() L
 
 func (o LookupSenderUsernameResultOutput) ToLookupSenderUsernameResultOutputWithContext(ctx context.Context) LookupSenderUsernameResultOutput {
 	return o
+}
+
+func (o LookupSenderUsernameResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSenderUsernameResult] {
+	return pulumix.Output[LookupSenderUsernameResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location where the SenderUsername resource data is stored at rest.

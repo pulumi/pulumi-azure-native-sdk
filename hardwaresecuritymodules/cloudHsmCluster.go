@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource information with extended details.
@@ -167,6 +168,12 @@ func (i *CloudHsmCluster) ToCloudHsmClusterOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CloudHsmClusterOutput)
 }
 
+func (i *CloudHsmCluster) ToOutput(ctx context.Context) pulumix.Output[*CloudHsmCluster] {
+	return pulumix.Output[*CloudHsmCluster]{
+		OutputState: i.ToCloudHsmClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CloudHsmClusterOutput struct{ *pulumi.OutputState }
 
 func (CloudHsmClusterOutput) ElementType() reflect.Type {
@@ -179,6 +186,12 @@ func (o CloudHsmClusterOutput) ToCloudHsmClusterOutput() CloudHsmClusterOutput {
 
 func (o CloudHsmClusterOutput) ToCloudHsmClusterOutputWithContext(ctx context.Context) CloudHsmClusterOutput {
 	return o
+}
+
+func (o CloudHsmClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudHsmCluster] {
+	return pulumix.Output[*CloudHsmCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Cloud HSM Cluster's auto-generated Domain Name Label Scope

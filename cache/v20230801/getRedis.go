@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Redis cache (resource description).
@@ -143,6 +144,12 @@ func (o LookupRedisResultOutput) ToLookupRedisResultOutput() LookupRedisResultOu
 
 func (o LookupRedisResultOutput) ToLookupRedisResultOutputWithContext(ctx context.Context) LookupRedisResultOutput {
 	return o
+}
+
+func (o LookupRedisResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRedisResult] {
+	return pulumix.Output[LookupRedisResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The keys of the Redis cache - not set if this object is not the response to Create or Update redis cache

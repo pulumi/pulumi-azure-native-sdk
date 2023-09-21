@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Build step resource properties
@@ -125,6 +126,12 @@ func (i *BuildStep) ToBuildStepOutputWithContext(ctx context.Context) BuildStepO
 	return pulumi.ToOutputWithContext(ctx, i).(BuildStepOutput)
 }
 
+func (i *BuildStep) ToOutput(ctx context.Context) pulumix.Output[*BuildStep] {
+	return pulumix.Output[*BuildStep]{
+		OutputState: i.ToBuildStepOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BuildStepOutput struct{ *pulumi.OutputState }
 
 func (BuildStepOutput) ElementType() reflect.Type {
@@ -137,6 +144,12 @@ func (o BuildStepOutput) ToBuildStepOutput() BuildStepOutput {
 
 func (o BuildStepOutput) ToBuildStepOutputWithContext(ctx context.Context) BuildStepOutput {
 	return o
+}
+
+func (o BuildStepOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildStep] {
+	return pulumix.Output[*BuildStep]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource.

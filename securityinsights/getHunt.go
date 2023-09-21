@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a hunt, without relations and comments.
@@ -118,6 +119,12 @@ func (o LookupHuntResultOutput) ToLookupHuntResultOutput() LookupHuntResultOutpu
 
 func (o LookupHuntResultOutput) ToLookupHuntResultOutputWithContext(ctx context.Context) LookupHuntResultOutput {
 	return o
+}
+
+func (o LookupHuntResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHuntResult] {
+	return pulumix.Output[LookupHuntResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of mitre attack tactics the hunt is associated with

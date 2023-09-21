@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Server trust certificate imported from box to enable connection between box and Sql Managed Instance.
@@ -150,6 +151,12 @@ func (i *ServerTrustCertificate) ToServerTrustCertificateOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTrustCertificateOutput)
 }
 
+func (i *ServerTrustCertificate) ToOutput(ctx context.Context) pulumix.Output[*ServerTrustCertificate] {
+	return pulumix.Output[*ServerTrustCertificate]{
+		OutputState: i.ToServerTrustCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerTrustCertificateOutput struct{ *pulumi.OutputState }
 
 func (ServerTrustCertificateOutput) ElementType() reflect.Type {
@@ -162,6 +169,12 @@ func (o ServerTrustCertificateOutput) ToServerTrustCertificateOutput() ServerTru
 
 func (o ServerTrustCertificateOutput) ToServerTrustCertificateOutputWithContext(ctx context.Context) ServerTrustCertificateOutput {
 	return o
+}
+
+func (o ServerTrustCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerTrustCertificate] {
+	return pulumix.Output[*ServerTrustCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The certificate name

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Rights that this key has.
@@ -106,6 +107,12 @@ func (o IpFilterActionTypeOutput) ToIpFilterActionTypePtrOutputWithContext(ctx c
 	}).(IpFilterActionTypePtrOutput)
 }
 
+func (o IpFilterActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[IpFilterActionType] {
+	return pulumix.Output[IpFilterActionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IpFilterActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -139,6 +146,12 @@ func (o IpFilterActionTypePtrOutput) ToIpFilterActionTypePtrOutput() IpFilterAct
 
 func (o IpFilterActionTypePtrOutput) ToIpFilterActionTypePtrOutputWithContext(ctx context.Context) IpFilterActionTypePtrOutput {
 	return o
+}
+
+func (o IpFilterActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IpFilterActionType] {
+	return pulumix.Output[*IpFilterActionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpFilterActionTypePtrOutput) Elem() IpFilterActionTypeOutput {
@@ -201,6 +214,12 @@ func (in *ipFilterActionTypePtr) ToIpFilterActionTypePtrOutput() IpFilterActionT
 
 func (in *ipFilterActionTypePtr) ToIpFilterActionTypePtrOutputWithContext(ctx context.Context) IpFilterActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpFilterActionTypePtrOutput)
+}
+
+func (in *ipFilterActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IpFilterActionType] {
+	return pulumix.Output[*IpFilterActionType]{
+		OutputState: in.ToIpFilterActionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Target for requests captured by this rule.
@@ -272,6 +291,12 @@ func (o IpFilterTargetTypeOutput) ToIpFilterTargetTypePtrOutputWithContext(ctx c
 	}).(IpFilterTargetTypePtrOutput)
 }
 
+func (o IpFilterTargetTypeOutput) ToOutput(ctx context.Context) pulumix.Output[IpFilterTargetType] {
+	return pulumix.Output[IpFilterTargetType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IpFilterTargetTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -305,6 +330,12 @@ func (o IpFilterTargetTypePtrOutput) ToIpFilterTargetTypePtrOutput() IpFilterTar
 
 func (o IpFilterTargetTypePtrOutput) ToIpFilterTargetTypePtrOutputWithContext(ctx context.Context) IpFilterTargetTypePtrOutput {
 	return o
+}
+
+func (o IpFilterTargetTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IpFilterTargetType] {
+	return pulumix.Output[*IpFilterTargetType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpFilterTargetTypePtrOutput) Elem() IpFilterTargetTypeOutput {
@@ -367,6 +398,12 @@ func (in *ipFilterTargetTypePtr) ToIpFilterTargetTypePtrOutput() IpFilterTargetT
 
 func (in *ipFilterTargetTypePtr) ToIpFilterTargetTypePtrOutputWithContext(ctx context.Context) IpFilterTargetTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpFilterTargetTypePtrOutput)
+}
+
+func (in *ipFilterTargetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IpFilterTargetType] {
+	return pulumix.Output[*IpFilterTargetType]{
+		OutputState: in.ToIpFilterTargetTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The status of a private endpoint connection

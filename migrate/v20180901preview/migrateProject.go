@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Migrate Project REST Resource.
@@ -135,6 +136,12 @@ func (i *MigrateProject) ToMigrateProjectOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(MigrateProjectOutput)
 }
 
+func (i *MigrateProject) ToOutput(ctx context.Context) pulumix.Output[*MigrateProject] {
+	return pulumix.Output[*MigrateProject]{
+		OutputState: i.ToMigrateProjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MigrateProjectOutput struct{ *pulumi.OutputState }
 
 func (MigrateProjectOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o MigrateProjectOutput) ToMigrateProjectOutput() MigrateProjectOutput {
 
 func (o MigrateProjectOutput) ToMigrateProjectOutputWithContext(ctx context.Context) MigrateProjectOutput {
 	return o
+}
+
+func (o MigrateProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrateProject] {
+	return pulumix.Output[*MigrateProject]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the eTag for concurrency control.

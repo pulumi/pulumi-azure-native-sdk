@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets data image upload URL.
@@ -88,6 +89,12 @@ func (o GetImageUploadUrlForDataResultOutput) ToGetImageUploadUrlForDataResultOu
 
 func (o GetImageUploadUrlForDataResultOutput) ToGetImageUploadUrlForDataResultOutputWithContext(ctx context.Context) GetImageUploadUrlForDataResultOutput {
 	return o
+}
+
+func (o GetImageUploadUrlForDataResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetImageUploadUrlForDataResult] {
+	return pulumix.Output[GetImageUploadUrlForDataResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Content URL for the image blob.

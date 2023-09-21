@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AdaptiveApplicationControl struct {
@@ -137,6 +138,12 @@ func (i *AdaptiveApplicationControl) ToAdaptiveApplicationControlOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AdaptiveApplicationControlOutput)
 }
 
+func (i *AdaptiveApplicationControl) ToOutput(ctx context.Context) pulumix.Output[*AdaptiveApplicationControl] {
+	return pulumix.Output[*AdaptiveApplicationControl]{
+		OutputState: i.ToAdaptiveApplicationControlOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AdaptiveApplicationControlOutput struct{ *pulumi.OutputState }
 
 func (AdaptiveApplicationControlOutput) ElementType() reflect.Type {
@@ -149,6 +156,12 @@ func (o AdaptiveApplicationControlOutput) ToAdaptiveApplicationControlOutput() A
 
 func (o AdaptiveApplicationControlOutput) ToAdaptiveApplicationControlOutputWithContext(ctx context.Context) AdaptiveApplicationControlOutput {
 	return o
+}
+
+func (o AdaptiveApplicationControlOutput) ToOutput(ctx context.Context) pulumix.Output[*AdaptiveApplicationControl] {
+	return pulumix.Output[*AdaptiveApplicationControl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration status of the machines group or machine or rule

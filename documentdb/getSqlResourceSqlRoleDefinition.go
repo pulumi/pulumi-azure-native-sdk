@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition with the given Id.
@@ -87,6 +88,12 @@ func (o LookupSqlResourceSqlRoleDefinitionResultOutput) ToLookupSqlResourceSqlRo
 
 func (o LookupSqlResourceSqlRoleDefinitionResultOutput) ToLookupSqlResourceSqlRoleDefinitionResultOutputWithContext(ctx context.Context) LookupSqlResourceSqlRoleDefinitionResultOutput {
 	return o
+}
+
+func (o LookupSqlResourceSqlRoleDefinitionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlResourceSqlRoleDefinitionResult] {
+	return pulumix.Output[LookupSqlResourceSqlRoleDefinitionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A set of fully qualified Scopes at or below which Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist.

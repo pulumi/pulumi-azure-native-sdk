@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i DelegatedSubnetArgumentsArgs) ToDelegatedSubnetArgumentsOutput() Delegat
 
 func (i DelegatedSubnetArgumentsArgs) ToDelegatedSubnetArgumentsOutputWithContext(ctx context.Context) DelegatedSubnetArgumentsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DelegatedSubnetArgumentsOutput)
+}
+
+func (i DelegatedSubnetArgumentsArgs) ToOutput(ctx context.Context) pulumix.Output[DelegatedSubnetArguments] {
+	return pulumix.Output[DelegatedSubnetArguments]{
+		OutputState: i.ToDelegatedSubnetArgumentsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i DelegatedSubnetArgumentsArgs) ToDelegatedSubnetArgumentsPtrOutput() DelegatedSubnetArgumentsPtrOutput {
@@ -89,6 +96,12 @@ func (i *delegatedSubnetArgumentsPtrType) ToDelegatedSubnetArgumentsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DelegatedSubnetArgumentsPtrOutput)
 }
 
+func (i *delegatedSubnetArgumentsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DelegatedSubnetArguments] {
+	return pulumix.Output[*DelegatedSubnetArguments]{
+		OutputState: i.ToDelegatedSubnetArgumentsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Delegated subnet arguments of a server
 type DelegatedSubnetArgumentsOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o DelegatedSubnetArgumentsOutput) ToDelegatedSubnetArgumentsPtrOutputWithC
 	}).(DelegatedSubnetArgumentsPtrOutput)
 }
 
+func (o DelegatedSubnetArgumentsOutput) ToOutput(ctx context.Context) pulumix.Output[DelegatedSubnetArguments] {
+	return pulumix.Output[DelegatedSubnetArguments]{
+		OutputState: o.OutputState,
+	}
+}
+
 // delegated subnet arm resource id.
 func (o DelegatedSubnetArgumentsOutput) SubnetArmResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DelegatedSubnetArguments) *string { return v.SubnetArmResourceId }).(pulumi.StringPtrOutput)
@@ -131,6 +150,12 @@ func (o DelegatedSubnetArgumentsPtrOutput) ToDelegatedSubnetArgumentsPtrOutput()
 
 func (o DelegatedSubnetArgumentsPtrOutput) ToDelegatedSubnetArgumentsPtrOutputWithContext(ctx context.Context) DelegatedSubnetArgumentsPtrOutput {
 	return o
+}
+
+func (o DelegatedSubnetArgumentsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DelegatedSubnetArguments] {
+	return pulumix.Output[*DelegatedSubnetArguments]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DelegatedSubnetArgumentsPtrOutput) Elem() DelegatedSubnetArgumentsOutput {
@@ -174,6 +199,12 @@ func (o DelegatedSubnetArgumentsResponseOutput) ToDelegatedSubnetArgumentsRespon
 	return o
 }
 
+func (o DelegatedSubnetArgumentsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DelegatedSubnetArgumentsResponse] {
+	return pulumix.Output[DelegatedSubnetArgumentsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // delegated subnet arm resource id.
 func (o DelegatedSubnetArgumentsResponseOutput) SubnetArmResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DelegatedSubnetArgumentsResponse) *string { return v.SubnetArmResourceId }).(pulumi.StringPtrOutput)
@@ -191,6 +222,12 @@ func (o DelegatedSubnetArgumentsResponsePtrOutput) ToDelegatedSubnetArgumentsRes
 
 func (o DelegatedSubnetArgumentsResponsePtrOutput) ToDelegatedSubnetArgumentsResponsePtrOutputWithContext(ctx context.Context) DelegatedSubnetArgumentsResponsePtrOutput {
 	return o
+}
+
+func (o DelegatedSubnetArgumentsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DelegatedSubnetArgumentsResponse] {
+	return pulumix.Output[*DelegatedSubnetArgumentsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DelegatedSubnetArgumentsResponsePtrOutput) Elem() DelegatedSubnetArgumentsResponseOutput {
@@ -248,6 +285,12 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
+func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
 	return i.ToIdentityPtrOutputWithContext(context.Background())
 }
@@ -289,6 +332,12 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
+func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity for the resource.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -314,6 +363,12 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
+func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v Identity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -331,6 +386,12 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
+}
+
+func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -378,6 +439,12 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
+	return pulumix.Output[IdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal ID of resource identity.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -405,6 +472,12 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
+}
+
+func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
+	return pulumix.Output[*IdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -494,6 +567,12 @@ func (i MaintenanceWindowArgs) ToMaintenanceWindowOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowOutput)
 }
 
+func (i MaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindow] {
+	return pulumix.Output[MaintenanceWindow]{
+		OutputState: i.ToMaintenanceWindowOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MaintenanceWindowArgs) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
 	return i.ToMaintenanceWindowPtrOutputWithContext(context.Background())
 }
@@ -535,6 +614,12 @@ func (i *maintenanceWindowPtrType) ToMaintenanceWindowPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPtrOutput)
 }
 
+func (i *maintenanceWindowPtrType) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindow] {
+	return pulumix.Output[*MaintenanceWindow]{
+		OutputState: i.ToMaintenanceWindowPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Maintenance window of a server.
 type MaintenanceWindowOutput struct{ *pulumi.OutputState }
 
@@ -558,6 +643,12 @@ func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindow) *MaintenanceWindow {
 		return &v
 	}).(MaintenanceWindowPtrOutput)
+}
+
+func (o MaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindow] {
+	return pulumix.Output[MaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 // indicates whether custom window is enabled or disabled
@@ -592,6 +683,12 @@ func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutput() MaintenanceWi
 
 func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
 	return o
+}
+
+func (o MaintenanceWindowPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindow] {
+	return pulumix.Output[*MaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
@@ -671,6 +768,12 @@ func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutputWithCo
 	return o
 }
 
+func (o MaintenanceWindowResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindowResponse] {
+	return pulumix.Output[MaintenanceWindowResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // indicates whether custom window is enabled or disabled
 func (o MaintenanceWindowResponseOutput) CustomWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) *string { return v.CustomWindow }).(pulumi.StringPtrOutput)
@@ -703,6 +806,12 @@ func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutput
 
 func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
 	return o
+}
+
+func (o MaintenanceWindowResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindowResponse] {
+	return pulumix.Output[*MaintenanceWindowResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MaintenanceWindowResponsePtrOutput) Elem() MaintenanceWindowResponseOutput {
@@ -794,6 +903,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -835,6 +950,12 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
+func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Billing information related properties of a server.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -860,6 +981,12 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the sku, e.g. Standard_D32s_v3.
 func (o SkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
@@ -882,6 +1009,12 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
+}
+
+func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -937,6 +1070,12 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the sku, e.g. Standard_D32s_v3.
 func (o SkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -959,6 +1098,12 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
+}
+
+func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
+	return pulumix.Output[*SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -1038,6 +1183,12 @@ func (i StorageProfileArgs) ToStorageProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageProfileOutput)
 }
 
+func (i StorageProfileArgs) ToOutput(ctx context.Context) pulumix.Output[StorageProfile] {
+	return pulumix.Output[StorageProfile]{
+		OutputState: i.ToStorageProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StorageProfileArgs) ToStorageProfilePtrOutput() StorageProfilePtrOutput {
 	return i.ToStorageProfilePtrOutputWithContext(context.Background())
 }
@@ -1079,6 +1230,12 @@ func (i *storageProfilePtrType) ToStorageProfilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(StorageProfilePtrOutput)
 }
 
+func (i *storageProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageProfile] {
+	return pulumix.Output[*StorageProfile]{
+		OutputState: i.ToStorageProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Storage Profile properties of a server
 type StorageProfileOutput struct{ *pulumi.OutputState }
 
@@ -1102,6 +1259,12 @@ func (o StorageProfileOutput) ToStorageProfilePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageProfile) *StorageProfile {
 		return &v
 	}).(StorageProfilePtrOutput)
+}
+
+func (o StorageProfileOutput) ToOutput(ctx context.Context) pulumix.Output[StorageProfile] {
+	return pulumix.Output[StorageProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Backup retention days for the server.
@@ -1136,6 +1299,12 @@ func (o StorageProfilePtrOutput) ToStorageProfilePtrOutput() StorageProfilePtrOu
 
 func (o StorageProfilePtrOutput) ToStorageProfilePtrOutputWithContext(ctx context.Context) StorageProfilePtrOutput {
 	return o
+}
+
+func (o StorageProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageProfile] {
+	return pulumix.Output[*StorageProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageProfilePtrOutput) Elem() StorageProfileOutput {
@@ -1217,6 +1386,12 @@ func (o StorageProfileResponseOutput) ToStorageProfileResponseOutputWithContext(
 	return o
 }
 
+func (o StorageProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageProfileResponse] {
+	return pulumix.Output[StorageProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Backup retention days for the server.
 func (o StorageProfileResponseOutput) BackupRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StorageProfileResponse) *int { return v.BackupRetentionDays }).(pulumi.IntPtrOutput)
@@ -1254,6 +1429,12 @@ func (o StorageProfileResponsePtrOutput) ToStorageProfileResponsePtrOutput() Sto
 
 func (o StorageProfileResponsePtrOutput) ToStorageProfileResponsePtrOutputWithContext(ctx context.Context) StorageProfileResponsePtrOutput {
 	return o
+}
+
+func (o StorageProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageProfileResponse] {
+	return pulumix.Output[*StorageProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageProfileResponsePtrOutput) Elem() StorageProfileResponseOutput {

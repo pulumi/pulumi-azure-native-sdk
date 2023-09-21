@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Peering is a logical representation of a set of connections to the Microsoft Cloud Edge at a location.
@@ -185,6 +186,12 @@ func (i *Peering) ToPeeringOutputWithContext(ctx context.Context) PeeringOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringOutput)
 }
 
+func (i *Peering) ToOutput(ctx context.Context) pulumix.Output[*Peering] {
+	return pulumix.Output[*Peering]{
+		OutputState: i.ToPeeringOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PeeringOutput struct{ *pulumi.OutputState }
 
 func (PeeringOutput) ElementType() reflect.Type {
@@ -197,6 +204,12 @@ func (o PeeringOutput) ToPeeringOutput() PeeringOutput {
 
 func (o PeeringOutput) ToPeeringOutputWithContext(ctx context.Context) PeeringOutput {
 	return o
+}
+
+func (o PeeringOutput) ToOutput(ctx context.Context) pulumix.Output[*Peering] {
+	return pulumix.Output[*Peering]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The properties that define a direct peering.

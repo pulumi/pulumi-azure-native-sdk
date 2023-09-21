@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A job.
@@ -182,6 +183,12 @@ func (i *Job) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobOutput)
 }
 
+func (i *Job) ToOutput(ctx context.Context) pulumix.Output[*Job] {
+	return pulumix.Output[*Job]{
+		OutputState: i.ToJobOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobOutput struct{ *pulumi.OutputState }
 
 func (JobOutput) ElementType() reflect.Type {
@@ -194,6 +201,12 @@ func (o JobOutput) ToJobOutput() JobOutput {
 
 func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
+}
+
+func (o JobOutput) ToOutput(ctx context.Context) pulumix.Output[*Job] {
+	return pulumix.Output[*Job]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User-defined description of the job.

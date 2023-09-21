@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets the type.
@@ -85,6 +86,12 @@ func (o ParameterTypeOutput) ToParameterTypePtrOutputWithContext(ctx context.Con
 	}).(ParameterTypePtrOutput)
 }
 
+func (o ParameterTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterType] {
+	return pulumix.Output[ParameterType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ParameterTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,6 +125,12 @@ func (o ParameterTypePtrOutput) ToParameterTypePtrOutput() ParameterTypePtrOutpu
 
 func (o ParameterTypePtrOutput) ToParameterTypePtrOutputWithContext(ctx context.Context) ParameterTypePtrOutput {
 	return o
+}
+
+func (o ParameterTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ParameterType] {
+	return pulumix.Output[*ParameterType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParameterTypePtrOutput) Elem() ParameterTypeOutput {
@@ -180,6 +193,12 @@ func (in *parameterTypePtr) ToParameterTypePtrOutput() ParameterTypePtrOutput {
 
 func (in *parameterTypePtr) ToParameterTypePtrOutputWithContext(ctx context.Context) ParameterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ParameterTypePtrOutput)
+}
+
+func (in *parameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ParameterType] {
+	return pulumix.Output[*ParameterType]{
+		OutputState: in.ToParameterTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Gets or sets the name.
@@ -254,6 +273,12 @@ func (o SkuNameOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNam
 	}).(SkuNamePtrOutput)
 }
 
+func (o SkuNameOutput) ToOutput(ctx context.Context) pulumix.Output[SkuName] {
+	return pulumix.Output[SkuName]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SkuNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -287,6 +312,12 @@ func (o SkuNamePtrOutput) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (o SkuNamePtrOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return o
+}
+
+func (o SkuNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
+	return pulumix.Output[*SkuName]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuNamePtrOutput) Elem() SkuNameOutput {
@@ -349,6 +380,12 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
+}
+
+func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
+	return pulumix.Output[*SkuName]{
+		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Gets or sets the state.
@@ -422,6 +459,12 @@ func (o WorkflowStateEnumOutput) ToWorkflowStateEnumPtrOutputWithContext(ctx con
 	}).(WorkflowStateEnumPtrOutput)
 }
 
+func (o WorkflowStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowStateEnum] {
+	return pulumix.Output[WorkflowStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkflowStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o WorkflowStateEnumPtrOutput) ToWorkflowStateEnumPtrOutput() WorkflowState
 
 func (o WorkflowStateEnumPtrOutput) ToWorkflowStateEnumPtrOutputWithContext(ctx context.Context) WorkflowStateEnumPtrOutput {
 	return o
+}
+
+func (o WorkflowStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowStateEnum] {
+	return pulumix.Output[*WorkflowStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkflowStateEnumPtrOutput) Elem() WorkflowStateEnumOutput {
@@ -517,6 +566,12 @@ func (in *workflowStateEnumPtr) ToWorkflowStateEnumPtrOutput() WorkflowStateEnum
 
 func (in *workflowStateEnumPtr) ToWorkflowStateEnumPtrOutputWithContext(ctx context.Context) WorkflowStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkflowStateEnumPtrOutput)
+}
+
+func (in *workflowStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkflowStateEnum] {
+	return pulumix.Output[*WorkflowStateEnum]{
+		OutputState: in.ToWorkflowStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

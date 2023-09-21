@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configuration profile assignment is an association between a VM and automanage profile configuration.
@@ -129,6 +130,12 @@ func (i *ConfigurationProfileHCRPAssignment) ToConfigurationProfileHCRPAssignmen
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfileHCRPAssignmentOutput)
 }
 
+func (i *ConfigurationProfileHCRPAssignment) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfileHCRPAssignment] {
+	return pulumix.Output[*ConfigurationProfileHCRPAssignment]{
+		OutputState: i.ToConfigurationProfileHCRPAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConfigurationProfileHCRPAssignmentOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationProfileHCRPAssignmentOutput) ElementType() reflect.Type {
@@ -141,6 +148,12 @@ func (o ConfigurationProfileHCRPAssignmentOutput) ToConfigurationProfileHCRPAssi
 
 func (o ConfigurationProfileHCRPAssignmentOutput) ToConfigurationProfileHCRPAssignmentOutputWithContext(ctx context.Context) ConfigurationProfileHCRPAssignmentOutput {
 	return o
+}
+
+func (o ConfigurationProfileHCRPAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfileHCRPAssignment] {
+	return pulumix.Output[*ConfigurationProfileHCRPAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure resource id. Indicates if this resource is managed by another Azure resource.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the API link for the product.
@@ -87,6 +88,12 @@ func (o LookupProductApiLinkResultOutput) ToLookupProductApiLinkResultOutput() L
 
 func (o LookupProductApiLinkResultOutput) ToLookupProductApiLinkResultOutputWithContext(ctx context.Context) LookupProductApiLinkResultOutput {
 	return o
+}
+
+func (o LookupProductApiLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProductApiLinkResult] {
+	return pulumix.Output[LookupProductApiLinkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Full resource Id of an API.

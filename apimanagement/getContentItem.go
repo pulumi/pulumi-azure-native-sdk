@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the developer portal's content item specified by its identifier.
@@ -87,6 +88,12 @@ func (o LookupContentItemResultOutput) ToLookupContentItemResultOutput() LookupC
 
 func (o LookupContentItemResultOutput) ToLookupContentItemResultOutputWithContext(ctx context.Context) LookupContentItemResultOutput {
 	return o
+}
+
+func (o LookupContentItemResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContentItemResult] {
+	return pulumix.Output[LookupContentItemResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

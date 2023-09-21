@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the access key for the specified configuration store.
@@ -78,6 +79,12 @@ func (o ListConfigurationStoreKeysResultOutput) ToListConfigurationStoreKeysResu
 
 func (o ListConfigurationStoreKeysResultOutput) ToListConfigurationStoreKeysResultOutputWithContext(ctx context.Context) ListConfigurationStoreKeysResultOutput {
 	return o
+}
+
+func (o ListConfigurationStoreKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListConfigurationStoreKeysResult] {
+	return pulumix.Output[ListConfigurationStoreKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URI that can be used to request the next set of paged results.

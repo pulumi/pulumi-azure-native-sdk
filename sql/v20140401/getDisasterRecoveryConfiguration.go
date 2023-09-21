@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a disaster recovery configuration.
@@ -96,6 +97,12 @@ func (o LookupDisasterRecoveryConfigurationResultOutput) ToLookupDisasterRecover
 
 func (o LookupDisasterRecoveryConfigurationResultOutput) ToLookupDisasterRecoveryConfigurationResultOutputWithContext(ctx context.Context) LookupDisasterRecoveryConfigurationResultOutput {
 	return o
+}
+
+func (o LookupDisasterRecoveryConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDisasterRecoveryConfigurationResult] {
+	return pulumix.Output[LookupDisasterRecoveryConfigurationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether or not failover can be done automatically.

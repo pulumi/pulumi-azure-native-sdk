@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a role assignment for the caller on a enrollment Account. The operation is supported only for billing accounts with agreement type Enterprise Agreement.
@@ -100,6 +101,12 @@ func (o LookupBillingRoleAssignmentByEnrollmentAccountResultOutput) ToLookupBill
 
 func (o LookupBillingRoleAssignmentByEnrollmentAccountResultOutput) ToLookupBillingRoleAssignmentByEnrollmentAccountResultOutputWithContext(ctx context.Context) LookupBillingRoleAssignmentByEnrollmentAccountResultOutput {
 	return o
+}
+
+func (o LookupBillingRoleAssignmentByEnrollmentAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBillingRoleAssignmentByEnrollmentAccountResult] {
+	return pulumix.Output[LookupBillingRoleAssignmentByEnrollmentAccountResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The principal Id of the user who created the role assignment.

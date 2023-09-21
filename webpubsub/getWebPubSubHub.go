@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a hub setting.
@@ -96,6 +97,12 @@ func (o LookupWebPubSubHubResultOutput) ToLookupWebPubSubHubResultOutput() Looku
 
 func (o LookupWebPubSubHubResultOutput) ToLookupWebPubSubHubResultOutputWithContext(ctx context.Context) LookupWebPubSubHubResultOutput {
 	return o
+}
+
+func (o LookupWebPubSubHubResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebPubSubHubResult] {
+	return pulumix.Output[LookupWebPubSubHubResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

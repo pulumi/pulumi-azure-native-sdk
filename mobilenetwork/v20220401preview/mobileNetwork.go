@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Mobile network resource.
@@ -180,6 +181,12 @@ func (i *MobileNetwork) ToMobileNetworkOutputWithContext(ctx context.Context) Mo
 	return pulumi.ToOutputWithContext(ctx, i).(MobileNetworkOutput)
 }
 
+func (i *MobileNetwork) ToOutput(ctx context.Context) pulumix.Output[*MobileNetwork] {
+	return pulumix.Output[*MobileNetwork]{
+		OutputState: i.ToMobileNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MobileNetworkOutput struct{ *pulumi.OutputState }
 
 func (MobileNetworkOutput) ElementType() reflect.Type {
@@ -192,6 +199,12 @@ func (o MobileNetworkOutput) ToMobileNetworkOutput() MobileNetworkOutput {
 
 func (o MobileNetworkOutput) ToMobileNetworkOutputWithContext(ctx context.Context) MobileNetworkOutput {
 	return o
+}
+
+func (o MobileNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*MobileNetwork] {
+	return pulumix.Output[*MobileNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

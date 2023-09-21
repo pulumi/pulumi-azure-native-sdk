@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // App Service Environment ARM resource.
@@ -333,6 +334,12 @@ func (i *AppServiceEnvironment) ToAppServiceEnvironmentOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AppServiceEnvironmentOutput)
 }
 
+func (i *AppServiceEnvironment) ToOutput(ctx context.Context) pulumix.Output[*AppServiceEnvironment] {
+	return pulumix.Output[*AppServiceEnvironment]{
+		OutputState: i.ToAppServiceEnvironmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppServiceEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (AppServiceEnvironmentOutput) ElementType() reflect.Type {
@@ -345,6 +352,12 @@ func (o AppServiceEnvironmentOutput) ToAppServiceEnvironmentOutput() AppServiceE
 
 func (o AppServiceEnvironmentOutput) ToAppServiceEnvironmentOutputWithContext(ctx context.Context) AppServiceEnvironmentOutput {
 	return o
+}
+
+func (o AppServiceEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AppServiceEnvironment] {
+	return pulumix.Output[*AppServiceEnvironment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of comma separated strings describing which VM sizes are allowed for front-ends.

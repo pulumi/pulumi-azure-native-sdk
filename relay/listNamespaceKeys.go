@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Primary and secondary connection strings to the namespace.
@@ -85,6 +86,12 @@ func (o ListNamespaceKeysResultOutput) ToListNamespaceKeysResultOutput() ListNam
 
 func (o ListNamespaceKeysResultOutput) ToListNamespaceKeysResultOutputWithContext(ctx context.Context) ListNamespaceKeysResultOutput {
 	return o
+}
+
+func (o ListNamespaceKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListNamespaceKeysResult] {
+	return pulumix.Output[ListNamespaceKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A string that describes the authorization rule.

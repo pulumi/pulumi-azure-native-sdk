@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the running status of the Network Interface.
@@ -85,6 +86,12 @@ func (o GetNetworkInterfaceStatusResultOutput) ToGetNetworkInterfaceStatusResult
 
 func (o GetNetworkInterfaceStatusResultOutput) ToGetNetworkInterfaceStatusResultOutputWithContext(ctx context.Context) GetNetworkInterfaceStatusResultOutput {
 	return o
+}
+
+func (o GetNetworkInterfaceStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworkInterfaceStatusResult] {
+	return pulumix.Output[GetNetworkInterfaceStatusResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The interface administrative state.

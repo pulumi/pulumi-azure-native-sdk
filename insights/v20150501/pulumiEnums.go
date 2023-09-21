@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Enum indicating if this favorite definition is owned by a specific user or is shared between all users with access to the Application Insights component.
@@ -78,6 +79,12 @@ func (o FavoriteTypeOutput) ToFavoriteTypePtrOutputWithContext(ctx context.Conte
 	}).(FavoriteTypePtrOutput)
 }
 
+func (o FavoriteTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FavoriteType] {
+	return pulumix.Output[FavoriteType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FavoriteTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o FavoriteTypePtrOutput) ToFavoriteTypePtrOutput() FavoriteTypePtrOutput {
 
 func (o FavoriteTypePtrOutput) ToFavoriteTypePtrOutputWithContext(ctx context.Context) FavoriteTypePtrOutput {
 	return o
+}
+
+func (o FavoriteTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FavoriteType] {
+	return pulumix.Output[*FavoriteType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FavoriteTypePtrOutput) Elem() FavoriteTypeOutput {
@@ -173,6 +186,12 @@ func (in *favoriteTypePtr) ToFavoriteTypePtrOutput() FavoriteTypePtrOutput {
 
 func (in *favoriteTypePtr) ToFavoriteTypePtrOutputWithContext(ctx context.Context) FavoriteTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FavoriteTypePtrOutput)
+}
+
+func (in *favoriteTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FavoriteType] {
+	return pulumix.Output[*FavoriteType]{
+		OutputState: in.ToFavoriteTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.

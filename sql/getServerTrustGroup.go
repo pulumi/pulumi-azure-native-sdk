@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a server trust group.
@@ -85,6 +86,12 @@ func (o LookupServerTrustGroupResultOutput) ToLookupServerTrustGroupResultOutput
 
 func (o LookupServerTrustGroupResultOutput) ToLookupServerTrustGroupResultOutputWithContext(ctx context.Context) LookupServerTrustGroupResultOutput {
 	return o
+}
+
+func (o LookupServerTrustGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServerTrustGroupResult] {
+	return pulumix.Output[LookupServerTrustGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Group members information for the server trust group.

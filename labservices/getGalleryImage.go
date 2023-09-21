@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get gallery image
@@ -113,6 +114,12 @@ func (o LookupGalleryImageResultOutput) ToLookupGalleryImageResultOutput() Looku
 
 func (o LookupGalleryImageResultOutput) ToLookupGalleryImageResultOutputWithContext(ctx context.Context) LookupGalleryImageResultOutput {
 	return o
+}
+
+func (o LookupGalleryImageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGalleryImageResult] {
+	return pulumix.Output[LookupGalleryImageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The author of the gallery image.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SyncSet represents a SyncSet for an Azure Red Hat OpenShift Cluster.
@@ -130,6 +131,12 @@ func (i *SyncSet) ToSyncSetOutputWithContext(ctx context.Context) SyncSetOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SyncSetOutput)
 }
 
+func (i *SyncSet) ToOutput(ctx context.Context) pulumix.Output[*SyncSet] {
+	return pulumix.Output[*SyncSet]{
+		OutputState: i.ToSyncSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SyncSetOutput struct{ *pulumi.OutputState }
 
 func (SyncSetOutput) ElementType() reflect.Type {
@@ -142,6 +149,12 @@ func (o SyncSetOutput) ToSyncSetOutput() SyncSetOutput {
 
 func (o SyncSetOutput) ToSyncSetOutputWithContext(ctx context.Context) SyncSetOutput {
 	return o
+}
+
+func (o SyncSetOutput) ToOutput(ctx context.Context) pulumix.Output[*SyncSet] {
+	return pulumix.Output[*SyncSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

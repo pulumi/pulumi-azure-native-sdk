@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List all replications for a specified volume
@@ -80,6 +81,12 @@ func (o ListVolumeReplicationsResultOutput) ToListVolumeReplicationsResultOutput
 
 func (o ListVolumeReplicationsResultOutput) ToListVolumeReplicationsResultOutputWithContext(ctx context.Context) ListVolumeReplicationsResultOutput {
 	return o
+}
+
+func (o ListVolumeReplicationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListVolumeReplicationsResult] {
+	return pulumix.Output[ListVolumeReplicationsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of replications

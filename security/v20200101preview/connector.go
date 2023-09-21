@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The connector setting
@@ -112,6 +113,12 @@ func (i *Connector) ToConnectorOutputWithContext(ctx context.Context) ConnectorO
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOutput)
 }
 
+func (i *Connector) ToOutput(ctx context.Context) pulumix.Output[*Connector] {
+	return pulumix.Output[*Connector]{
+		OutputState: i.ToConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectorOutput struct{ *pulumi.OutputState }
 
 func (ConnectorOutput) ElementType() reflect.Type {
@@ -124,6 +131,12 @@ func (o ConnectorOutput) ToConnectorOutput() ConnectorOutput {
 
 func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) ConnectorOutput {
 	return o
+}
+
+func (o ConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*Connector] {
+	return pulumix.Output[*Connector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Settings for authentication management, these settings are relevant only for the cloud connector.

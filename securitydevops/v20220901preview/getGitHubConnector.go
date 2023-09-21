@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
@@ -84,6 +85,12 @@ func (o LookupGitHubConnectorResultOutput) ToLookupGitHubConnectorResultOutput()
 
 func (o LookupGitHubConnectorResultOutput) ToLookupGitHubConnectorResultOutputWithContext(ctx context.Context) LookupGitHubConnectorResultOutput {
 	return o
+}
+
+func (o LookupGitHubConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGitHubConnectorResult] {
+	return pulumix.Output[LookupGitHubConnectorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

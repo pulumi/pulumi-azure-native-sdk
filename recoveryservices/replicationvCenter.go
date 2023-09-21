@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // vCenter definition.
@@ -200,6 +201,12 @@ func (i *ReplicationvCenter) ToReplicationvCenterOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationvCenterOutput)
 }
 
+func (i *ReplicationvCenter) ToOutput(ctx context.Context) pulumix.Output[*ReplicationvCenter] {
+	return pulumix.Output[*ReplicationvCenter]{
+		OutputState: i.ToReplicationvCenterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReplicationvCenterOutput struct{ *pulumi.OutputState }
 
 func (ReplicationvCenterOutput) ElementType() reflect.Type {
@@ -212,6 +219,12 @@ func (o ReplicationvCenterOutput) ToReplicationvCenterOutput() ReplicationvCente
 
 func (o ReplicationvCenterOutput) ToReplicationvCenterOutputWithContext(ctx context.Context) ReplicationvCenterOutput {
 	return o
+}
+
+func (o ReplicationvCenterOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationvCenter] {
+	return pulumix.Output[*ReplicationvCenter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Location

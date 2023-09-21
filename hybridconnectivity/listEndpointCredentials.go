@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the endpoint access credentials to the resource.
@@ -91,6 +92,12 @@ func (o ListEndpointCredentialsResultOutput) ToListEndpointCredentialsResultOutp
 
 func (o ListEndpointCredentialsResultOutput) ToListEndpointCredentialsResultOutputWithContext(ctx context.Context) ListEndpointCredentialsResultOutput {
 	return o
+}
+
+func (o ListEndpointCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListEndpointCredentialsResult] {
+	return pulumix.Output[ListEndpointCredentialsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access key for hybrid connection.

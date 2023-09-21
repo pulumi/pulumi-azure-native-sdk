@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Traffic Collector resource.
@@ -145,6 +146,12 @@ func (i *AzureTrafficCollector) ToAzureTrafficCollectorOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AzureTrafficCollectorOutput)
 }
 
+func (i *AzureTrafficCollector) ToOutput(ctx context.Context) pulumix.Output[*AzureTrafficCollector] {
+	return pulumix.Output[*AzureTrafficCollector]{
+		OutputState: i.ToAzureTrafficCollectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AzureTrafficCollectorOutput struct{ *pulumi.OutputState }
 
 func (AzureTrafficCollectorOutput) ElementType() reflect.Type {
@@ -157,6 +164,12 @@ func (o AzureTrafficCollectorOutput) ToAzureTrafficCollectorOutput() AzureTraffi
 
 func (o AzureTrafficCollectorOutput) ToAzureTrafficCollectorOutputWithContext(ctx context.Context) AzureTrafficCollectorOutput {
 	return o
+}
+
+func (o AzureTrafficCollectorOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureTrafficCollector] {
+	return pulumix.Output[*AzureTrafficCollector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Collector Policies for Azure Traffic Collector.

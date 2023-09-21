@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SIM group resource.
@@ -148,6 +149,12 @@ func (i *SimGroup) ToSimGroupOutputWithContext(ctx context.Context) SimGroupOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SimGroupOutput)
 }
 
+func (i *SimGroup) ToOutput(ctx context.Context) pulumix.Output[*SimGroup] {
+	return pulumix.Output[*SimGroup]{
+		OutputState: i.ToSimGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SimGroupOutput struct{ *pulumi.OutputState }
 
 func (SimGroupOutput) ElementType() reflect.Type {
@@ -160,6 +167,12 @@ func (o SimGroupOutput) ToSimGroupOutput() SimGroupOutput {
 
 func (o SimGroupOutput) ToSimGroupOutputWithContext(ctx context.Context) SimGroupOutput {
 	return o
+}
+
+func (o SimGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*SimGroup] {
+	return pulumix.Output[*SimGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A key to encrypt the SIM data that belongs to this SIM group.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get current user settings for current signed in user. This operation returns settings for the user's cloud shell preferences including preferred location, storage profile, shell type, font and size settings.
@@ -72,6 +73,12 @@ func (o LookupUserSettingsWithLocationResultOutput) ToLookupUserSettingsWithLoca
 
 func (o LookupUserSettingsWithLocationResultOutput) ToLookupUserSettingsWithLocationResultOutputWithContext(ctx context.Context) LookupUserSettingsWithLocationResultOutput {
 	return o
+}
+
+func (o LookupUserSettingsWithLocationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupUserSettingsWithLocationResult] {
+	return pulumix.Output[LookupUserSettingsWithLocationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The cloud shell user settings properties.

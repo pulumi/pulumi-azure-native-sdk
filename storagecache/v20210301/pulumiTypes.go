@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i BlobNfsTargetArgs) ToBlobNfsTargetOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(BlobNfsTargetOutput)
 }
 
+func (i BlobNfsTargetArgs) ToOutput(ctx context.Context) pulumix.Output[BlobNfsTarget] {
+	return pulumix.Output[BlobNfsTarget]{
+		OutputState: i.ToBlobNfsTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BlobNfsTargetArgs) ToBlobNfsTargetPtrOutput() BlobNfsTargetPtrOutput {
 	return i.ToBlobNfsTargetPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *blobNfsTargetPtrType) ToBlobNfsTargetPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(BlobNfsTargetPtrOutput)
 }
 
+func (i *blobNfsTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*BlobNfsTarget] {
+	return pulumix.Output[*BlobNfsTarget]{
+		OutputState: i.ToBlobNfsTargetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties pertaining to the BlobNfsTarget.
 type BlobNfsTargetOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o BlobNfsTargetOutput) ToBlobNfsTargetPtrOutputWithContext(ctx context.Con
 	}).(BlobNfsTargetPtrOutput)
 }
 
+func (o BlobNfsTargetOutput) ToOutput(ctx context.Context) pulumix.Output[BlobNfsTarget] {
+	return pulumix.Output[BlobNfsTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the storage container.
 func (o BlobNfsTargetOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlobNfsTarget) *string { return v.Target }).(pulumi.StringPtrOutput)
@@ -140,6 +159,12 @@ func (o BlobNfsTargetPtrOutput) ToBlobNfsTargetPtrOutput() BlobNfsTargetPtrOutpu
 
 func (o BlobNfsTargetPtrOutput) ToBlobNfsTargetPtrOutputWithContext(ctx context.Context) BlobNfsTargetPtrOutput {
 	return o
+}
+
+func (o BlobNfsTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlobNfsTarget] {
+	return pulumix.Output[*BlobNfsTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BlobNfsTargetPtrOutput) Elem() BlobNfsTargetOutput {
@@ -195,6 +220,12 @@ func (o BlobNfsTargetResponseOutput) ToBlobNfsTargetResponseOutputWithContext(ct
 	return o
 }
 
+func (o BlobNfsTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BlobNfsTargetResponse] {
+	return pulumix.Output[BlobNfsTargetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the storage container.
 func (o BlobNfsTargetResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlobNfsTargetResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
@@ -217,6 +248,12 @@ func (o BlobNfsTargetResponsePtrOutput) ToBlobNfsTargetResponsePtrOutput() BlobN
 
 func (o BlobNfsTargetResponsePtrOutput) ToBlobNfsTargetResponsePtrOutputWithContext(ctx context.Context) BlobNfsTargetResponsePtrOutput {
 	return o
+}
+
+func (o BlobNfsTargetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlobNfsTargetResponse] {
+	return pulumix.Output[*BlobNfsTargetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BlobNfsTargetResponsePtrOutput) Elem() BlobNfsTargetResponseOutput {
@@ -304,6 +341,12 @@ func (i CacheActiveDirectorySettingsArgs) ToCacheActiveDirectorySettingsOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(CacheActiveDirectorySettingsOutput)
 }
 
+func (i CacheActiveDirectorySettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CacheActiveDirectorySettings] {
+	return pulumix.Output[CacheActiveDirectorySettings]{
+		OutputState: i.ToCacheActiveDirectorySettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CacheActiveDirectorySettingsArgs) ToCacheActiveDirectorySettingsPtrOutput() CacheActiveDirectorySettingsPtrOutput {
 	return i.ToCacheActiveDirectorySettingsPtrOutputWithContext(context.Background())
 }
@@ -345,6 +388,12 @@ func (i *cacheActiveDirectorySettingsPtrType) ToCacheActiveDirectorySettingsPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(CacheActiveDirectorySettingsPtrOutput)
 }
 
+func (i *cacheActiveDirectorySettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CacheActiveDirectorySettings] {
+	return pulumix.Output[*CacheActiveDirectorySettings]{
+		OutputState: i.ToCacheActiveDirectorySettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Active Directory settings used to join a cache to a domain.
 type CacheActiveDirectorySettingsOutput struct{ *pulumi.OutputState }
 
@@ -368,6 +417,12 @@ func (o CacheActiveDirectorySettingsOutput) ToCacheActiveDirectorySettingsPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CacheActiveDirectorySettings) *CacheActiveDirectorySettings {
 		return &v
 	}).(CacheActiveDirectorySettingsPtrOutput)
+}
+
+func (o CacheActiveDirectorySettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CacheActiveDirectorySettings] {
+	return pulumix.Output[CacheActiveDirectorySettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
@@ -412,6 +467,12 @@ func (o CacheActiveDirectorySettingsPtrOutput) ToCacheActiveDirectorySettingsPtr
 
 func (o CacheActiveDirectorySettingsPtrOutput) ToCacheActiveDirectorySettingsPtrOutputWithContext(ctx context.Context) CacheActiveDirectorySettingsPtrOutput {
 	return o
+}
+
+func (o CacheActiveDirectorySettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheActiveDirectorySettings] {
+	return pulumix.Output[*CacheActiveDirectorySettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheActiveDirectorySettingsPtrOutput) Elem() CacheActiveDirectorySettingsOutput {
@@ -523,6 +584,12 @@ func (i CacheActiveDirectorySettingsCredentialsArgs) ToCacheActiveDirectorySetti
 	return pulumi.ToOutputWithContext(ctx, i).(CacheActiveDirectorySettingsCredentialsOutput)
 }
 
+func (i CacheActiveDirectorySettingsCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[CacheActiveDirectorySettingsCredentials] {
+	return pulumix.Output[CacheActiveDirectorySettingsCredentials]{
+		OutputState: i.ToCacheActiveDirectorySettingsCredentialsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CacheActiveDirectorySettingsCredentialsArgs) ToCacheActiveDirectorySettingsCredentialsPtrOutput() CacheActiveDirectorySettingsCredentialsPtrOutput {
 	return i.ToCacheActiveDirectorySettingsCredentialsPtrOutputWithContext(context.Background())
 }
@@ -564,6 +631,12 @@ func (i *cacheActiveDirectorySettingsCredentialsPtrType) ToCacheActiveDirectoryS
 	return pulumi.ToOutputWithContext(ctx, i).(CacheActiveDirectorySettingsCredentialsPtrOutput)
 }
 
+func (i *cacheActiveDirectorySettingsCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CacheActiveDirectorySettingsCredentials] {
+	return pulumix.Output[*CacheActiveDirectorySettingsCredentials]{
+		OutputState: i.ToCacheActiveDirectorySettingsCredentialsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Active Directory admin credentials used to join the HPC Cache to a domain.
 type CacheActiveDirectorySettingsCredentialsOutput struct{ *pulumi.OutputState }
 
@@ -589,6 +662,12 @@ func (o CacheActiveDirectorySettingsCredentialsOutput) ToCacheActiveDirectorySet
 	}).(CacheActiveDirectorySettingsCredentialsPtrOutput)
 }
 
+func (o CacheActiveDirectorySettingsCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[CacheActiveDirectorySettingsCredentials] {
+	return pulumix.Output[CacheActiveDirectorySettingsCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
 func (o CacheActiveDirectorySettingsCredentialsOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheActiveDirectorySettingsCredentials) string { return v.Password }).(pulumi.StringOutput)
@@ -611,6 +690,12 @@ func (o CacheActiveDirectorySettingsCredentialsPtrOutput) ToCacheActiveDirectory
 
 func (o CacheActiveDirectorySettingsCredentialsPtrOutput) ToCacheActiveDirectorySettingsCredentialsPtrOutputWithContext(ctx context.Context) CacheActiveDirectorySettingsCredentialsPtrOutput {
 	return o
+}
+
+func (o CacheActiveDirectorySettingsCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheActiveDirectorySettingsCredentials] {
+	return pulumix.Output[*CacheActiveDirectorySettingsCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheActiveDirectorySettingsCredentialsPtrOutput) Elem() CacheActiveDirectorySettingsCredentialsOutput {
@@ -676,6 +761,12 @@ func (o CacheActiveDirectorySettingsResponseOutput) ToCacheActiveDirectorySettin
 	return o
 }
 
+func (o CacheActiveDirectorySettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CacheActiveDirectorySettingsResponse] {
+	return pulumix.Output[CacheActiveDirectorySettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
 func (o CacheActiveDirectorySettingsResponseOutput) CacheNetBiosName() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheActiveDirectorySettingsResponse) string { return v.CacheNetBiosName }).(pulumi.StringOutput)
@@ -725,6 +816,12 @@ func (o CacheActiveDirectorySettingsResponsePtrOutput) ToCacheActiveDirectorySet
 
 func (o CacheActiveDirectorySettingsResponsePtrOutput) ToCacheActiveDirectorySettingsResponsePtrOutputWithContext(ctx context.Context) CacheActiveDirectorySettingsResponsePtrOutput {
 	return o
+}
+
+func (o CacheActiveDirectorySettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheActiveDirectorySettingsResponse] {
+	return pulumix.Output[*CacheActiveDirectorySettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheActiveDirectorySettingsResponsePtrOutput) Elem() CacheActiveDirectorySettingsResponseOutput {
@@ -830,6 +927,12 @@ func (o CacheActiveDirectorySettingsResponseCredentialsOutput) ToCacheActiveDire
 	return o
 }
 
+func (o CacheActiveDirectorySettingsResponseCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[CacheActiveDirectorySettingsResponseCredentials] {
+	return pulumix.Output[CacheActiveDirectorySettingsResponseCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
 func (o CacheActiveDirectorySettingsResponseCredentialsOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheActiveDirectorySettingsResponseCredentials) string { return v.Password }).(pulumi.StringOutput)
@@ -852,6 +955,12 @@ func (o CacheActiveDirectorySettingsResponseCredentialsPtrOutput) ToCacheActiveD
 
 func (o CacheActiveDirectorySettingsResponseCredentialsPtrOutput) ToCacheActiveDirectorySettingsResponseCredentialsPtrOutputWithContext(ctx context.Context) CacheActiveDirectorySettingsResponseCredentialsPtrOutput {
 	return o
+}
+
+func (o CacheActiveDirectorySettingsResponseCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheActiveDirectorySettingsResponseCredentials] {
+	return pulumix.Output[*CacheActiveDirectorySettingsResponseCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheActiveDirectorySettingsResponseCredentialsPtrOutput) Elem() CacheActiveDirectorySettingsResponseCredentialsOutput {
@@ -943,6 +1052,12 @@ func (i CacheDirectorySettingsArgs) ToCacheDirectorySettingsOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CacheDirectorySettingsOutput)
 }
 
+func (i CacheDirectorySettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CacheDirectorySettings] {
+	return pulumix.Output[CacheDirectorySettings]{
+		OutputState: i.ToCacheDirectorySettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CacheDirectorySettingsArgs) ToCacheDirectorySettingsPtrOutput() CacheDirectorySettingsPtrOutput {
 	return i.ToCacheDirectorySettingsPtrOutputWithContext(context.Background())
 }
@@ -984,6 +1099,12 @@ func (i *cacheDirectorySettingsPtrType) ToCacheDirectorySettingsPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(CacheDirectorySettingsPtrOutput)
 }
 
+func (i *cacheDirectorySettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CacheDirectorySettings] {
+	return pulumix.Output[*CacheDirectorySettings]{
+		OutputState: i.ToCacheDirectorySettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cache Directory Services settings.
 type CacheDirectorySettingsOutput struct{ *pulumi.OutputState }
 
@@ -1009,6 +1130,12 @@ func (o CacheDirectorySettingsOutput) ToCacheDirectorySettingsPtrOutputWithConte
 	}).(CacheDirectorySettingsPtrOutput)
 }
 
+func (o CacheDirectorySettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CacheDirectorySettings] {
+	return pulumix.Output[CacheDirectorySettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies settings for joining the HPC Cache to an Active Directory domain.
 func (o CacheDirectorySettingsOutput) ActiveDirectory() CacheActiveDirectorySettingsPtrOutput {
 	return o.ApplyT(func(v CacheDirectorySettings) *CacheActiveDirectorySettings { return v.ActiveDirectory }).(CacheActiveDirectorySettingsPtrOutput)
@@ -1031,6 +1158,12 @@ func (o CacheDirectorySettingsPtrOutput) ToCacheDirectorySettingsPtrOutput() Cac
 
 func (o CacheDirectorySettingsPtrOutput) ToCacheDirectorySettingsPtrOutputWithContext(ctx context.Context) CacheDirectorySettingsPtrOutput {
 	return o
+}
+
+func (o CacheDirectorySettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheDirectorySettings] {
+	return pulumix.Output[*CacheDirectorySettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheDirectorySettingsPtrOutput) Elem() CacheDirectorySettingsOutput {
@@ -1097,6 +1230,12 @@ func (o CacheDirectorySettingsResponseOutput) ToCacheDirectorySettingsResponseOu
 	return o
 }
 
+func (o CacheDirectorySettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CacheDirectorySettingsResponse] {
+	return pulumix.Output[CacheDirectorySettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies settings for joining the HPC Cache to an Active Directory domain.
 func (o CacheDirectorySettingsResponseOutput) ActiveDirectory() CacheActiveDirectorySettingsResponsePtrOutput {
 	return o.ApplyT(func(v CacheDirectorySettingsResponse) *CacheActiveDirectorySettingsResponse { return v.ActiveDirectory }).(CacheActiveDirectorySettingsResponsePtrOutput)
@@ -1121,6 +1260,12 @@ func (o CacheDirectorySettingsResponsePtrOutput) ToCacheDirectorySettingsRespons
 
 func (o CacheDirectorySettingsResponsePtrOutput) ToCacheDirectorySettingsResponsePtrOutputWithContext(ctx context.Context) CacheDirectorySettingsResponsePtrOutput {
 	return o
+}
+
+func (o CacheDirectorySettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheDirectorySettingsResponse] {
+	return pulumix.Output[*CacheDirectorySettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheDirectorySettingsResponsePtrOutput) Elem() CacheDirectorySettingsResponseOutput {
@@ -1188,6 +1333,12 @@ func (i CacheEncryptionSettingsArgs) ToCacheEncryptionSettingsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(CacheEncryptionSettingsOutput)
 }
 
+func (i CacheEncryptionSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CacheEncryptionSettings] {
+	return pulumix.Output[CacheEncryptionSettings]{
+		OutputState: i.ToCacheEncryptionSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CacheEncryptionSettingsArgs) ToCacheEncryptionSettingsPtrOutput() CacheEncryptionSettingsPtrOutput {
 	return i.ToCacheEncryptionSettingsPtrOutputWithContext(context.Background())
 }
@@ -1229,6 +1380,12 @@ func (i *cacheEncryptionSettingsPtrType) ToCacheEncryptionSettingsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(CacheEncryptionSettingsPtrOutput)
 }
 
+func (i *cacheEncryptionSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CacheEncryptionSettings] {
+	return pulumix.Output[*CacheEncryptionSettings]{
+		OutputState: i.ToCacheEncryptionSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cache encryption settings.
 type CacheEncryptionSettingsOutput struct{ *pulumi.OutputState }
 
@@ -1254,6 +1411,12 @@ func (o CacheEncryptionSettingsOutput) ToCacheEncryptionSettingsPtrOutputWithCon
 	}).(CacheEncryptionSettingsPtrOutput)
 }
 
+func (o CacheEncryptionSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CacheEncryptionSettings] {
+	return pulumix.Output[CacheEncryptionSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the location of the key encryption key in Key Vault.
 func (o CacheEncryptionSettingsOutput) KeyEncryptionKey() KeyVaultKeyReferencePtrOutput {
 	return o.ApplyT(func(v CacheEncryptionSettings) *KeyVaultKeyReference { return v.KeyEncryptionKey }).(KeyVaultKeyReferencePtrOutput)
@@ -1271,6 +1434,12 @@ func (o CacheEncryptionSettingsPtrOutput) ToCacheEncryptionSettingsPtrOutput() C
 
 func (o CacheEncryptionSettingsPtrOutput) ToCacheEncryptionSettingsPtrOutputWithContext(ctx context.Context) CacheEncryptionSettingsPtrOutput {
 	return o
+}
+
+func (o CacheEncryptionSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheEncryptionSettings] {
+	return pulumix.Output[*CacheEncryptionSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheEncryptionSettingsPtrOutput) Elem() CacheEncryptionSettingsOutput {
@@ -1314,6 +1483,12 @@ func (o CacheEncryptionSettingsResponseOutput) ToCacheEncryptionSettingsResponse
 	return o
 }
 
+func (o CacheEncryptionSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CacheEncryptionSettingsResponse] {
+	return pulumix.Output[CacheEncryptionSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the location of the key encryption key in Key Vault.
 func (o CacheEncryptionSettingsResponseOutput) KeyEncryptionKey() KeyVaultKeyReferenceResponsePtrOutput {
 	return o.ApplyT(func(v CacheEncryptionSettingsResponse) *KeyVaultKeyReferenceResponse { return v.KeyEncryptionKey }).(KeyVaultKeyReferenceResponsePtrOutput)
@@ -1331,6 +1506,12 @@ func (o CacheEncryptionSettingsResponsePtrOutput) ToCacheEncryptionSettingsRespo
 
 func (o CacheEncryptionSettingsResponsePtrOutput) ToCacheEncryptionSettingsResponsePtrOutputWithContext(ctx context.Context) CacheEncryptionSettingsResponsePtrOutput {
 	return o
+}
+
+func (o CacheEncryptionSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheEncryptionSettingsResponse] {
+	return pulumix.Output[*CacheEncryptionSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheEncryptionSettingsResponsePtrOutput) Elem() CacheEncryptionSettingsResponseOutput {
@@ -1376,6 +1557,12 @@ func (o CacheHealthResponseOutput) ToCacheHealthResponseOutput() CacheHealthResp
 
 func (o CacheHealthResponseOutput) ToCacheHealthResponseOutputWithContext(ctx context.Context) CacheHealthResponseOutput {
 	return o
+}
+
+func (o CacheHealthResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CacheHealthResponse] {
+	return pulumix.Output[CacheHealthResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Outstanding conditions that need to be investigated and resolved.
@@ -1428,6 +1615,12 @@ func (i CacheIdentityArgs) ToCacheIdentityOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CacheIdentityOutput)
 }
 
+func (i CacheIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[CacheIdentity] {
+	return pulumix.Output[CacheIdentity]{
+		OutputState: i.ToCacheIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CacheIdentityArgs) ToCacheIdentityPtrOutput() CacheIdentityPtrOutput {
 	return i.ToCacheIdentityPtrOutputWithContext(context.Background())
 }
@@ -1469,6 +1662,12 @@ func (i *cacheIdentityPtrType) ToCacheIdentityPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(CacheIdentityPtrOutput)
 }
 
+func (i *cacheIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*CacheIdentity] {
+	return pulumix.Output[*CacheIdentity]{
+		OutputState: i.ToCacheIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cache identity properties.
 type CacheIdentityOutput struct{ *pulumi.OutputState }
 
@@ -1494,6 +1693,12 @@ func (o CacheIdentityOutput) ToCacheIdentityPtrOutputWithContext(ctx context.Con
 	}).(CacheIdentityPtrOutput)
 }
 
+func (o CacheIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[CacheIdentity] {
+	return pulumix.Output[CacheIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The type of identity used for the cache
 func (o CacheIdentityOutput) Type() CacheIdentityTypePtrOutput {
 	return o.ApplyT(func(v CacheIdentity) *CacheIdentityType { return v.Type }).(CacheIdentityTypePtrOutput)
@@ -1511,6 +1716,12 @@ func (o CacheIdentityPtrOutput) ToCacheIdentityPtrOutput() CacheIdentityPtrOutpu
 
 func (o CacheIdentityPtrOutput) ToCacheIdentityPtrOutputWithContext(ctx context.Context) CacheIdentityPtrOutput {
 	return o
+}
+
+func (o CacheIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheIdentity] {
+	return pulumix.Output[*CacheIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheIdentityPtrOutput) Elem() CacheIdentityOutput {
@@ -1558,6 +1769,12 @@ func (o CacheIdentityResponseOutput) ToCacheIdentityResponseOutputWithContext(ct
 	return o
 }
 
+func (o CacheIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CacheIdentityResponse] {
+	return pulumix.Output[CacheIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal id of the cache.
 func (o CacheIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1585,6 +1802,12 @@ func (o CacheIdentityResponsePtrOutput) ToCacheIdentityResponsePtrOutput() Cache
 
 func (o CacheIdentityResponsePtrOutput) ToCacheIdentityResponsePtrOutputWithContext(ctx context.Context) CacheIdentityResponsePtrOutput {
 	return o
+}
+
+func (o CacheIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheIdentityResponse] {
+	return pulumix.Output[*CacheIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheIdentityResponsePtrOutput) Elem() CacheIdentityResponseOutput {
@@ -1705,6 +1928,12 @@ func (i CacheNetworkSettingsArgs) ToCacheNetworkSettingsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CacheNetworkSettingsOutput)
 }
 
+func (i CacheNetworkSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CacheNetworkSettings] {
+	return pulumix.Output[CacheNetworkSettings]{
+		OutputState: i.ToCacheNetworkSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CacheNetworkSettingsArgs) ToCacheNetworkSettingsPtrOutput() CacheNetworkSettingsPtrOutput {
 	return i.ToCacheNetworkSettingsPtrOutputWithContext(context.Background())
 }
@@ -1746,6 +1975,12 @@ func (i *cacheNetworkSettingsPtrType) ToCacheNetworkSettingsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(CacheNetworkSettingsPtrOutput)
 }
 
+func (i *cacheNetworkSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CacheNetworkSettings] {
+	return pulumix.Output[*CacheNetworkSettings]{
+		OutputState: i.ToCacheNetworkSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cache network settings.
 type CacheNetworkSettingsOutput struct{ *pulumi.OutputState }
 
@@ -1769,6 +2004,12 @@ func (o CacheNetworkSettingsOutput) ToCacheNetworkSettingsPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CacheNetworkSettings) *CacheNetworkSettings {
 		return &v
 	}).(CacheNetworkSettingsPtrOutput)
+}
+
+func (o CacheNetworkSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CacheNetworkSettings] {
+	return pulumix.Output[CacheNetworkSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // DNS search domain
@@ -1803,6 +2044,12 @@ func (o CacheNetworkSettingsPtrOutput) ToCacheNetworkSettingsPtrOutput() CacheNe
 
 func (o CacheNetworkSettingsPtrOutput) ToCacheNetworkSettingsPtrOutputWithContext(ctx context.Context) CacheNetworkSettingsPtrOutput {
 	return o
+}
+
+func (o CacheNetworkSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheNetworkSettings] {
+	return pulumix.Output[*CacheNetworkSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheNetworkSettingsPtrOutput) Elem() CacheNetworkSettingsOutput {
@@ -1901,6 +2148,12 @@ func (o CacheNetworkSettingsResponseOutput) ToCacheNetworkSettingsResponseOutput
 	return o
 }
 
+func (o CacheNetworkSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CacheNetworkSettingsResponse] {
+	return pulumix.Output[CacheNetworkSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // DNS search domain
 func (o CacheNetworkSettingsResponseOutput) DnsSearchDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CacheNetworkSettingsResponse) *string { return v.DnsSearchDomain }).(pulumi.StringPtrOutput)
@@ -1938,6 +2191,12 @@ func (o CacheNetworkSettingsResponsePtrOutput) ToCacheNetworkSettingsResponsePtr
 
 func (o CacheNetworkSettingsResponsePtrOutput) ToCacheNetworkSettingsResponsePtrOutputWithContext(ctx context.Context) CacheNetworkSettingsResponsePtrOutput {
 	return o
+}
+
+func (o CacheNetworkSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheNetworkSettingsResponse] {
+	return pulumix.Output[*CacheNetworkSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheNetworkSettingsResponsePtrOutput) Elem() CacheNetworkSettingsResponseOutput {
@@ -2021,6 +2280,12 @@ func (o CacheResponseSkuOutput) ToCacheResponseSkuOutputWithContext(ctx context.
 	return o
 }
 
+func (o CacheResponseSkuOutput) ToOutput(ctx context.Context) pulumix.Output[CacheResponseSku] {
+	return pulumix.Output[CacheResponseSku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // SKU name for this Cache.
 func (o CacheResponseSkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CacheResponseSku) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2038,6 +2303,12 @@ func (o CacheResponseSkuPtrOutput) ToCacheResponseSkuPtrOutput() CacheResponseSk
 
 func (o CacheResponseSkuPtrOutput) ToCacheResponseSkuPtrOutputWithContext(ctx context.Context) CacheResponseSkuPtrOutput {
 	return o
+}
+
+func (o CacheResponseSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheResponseSku] {
+	return pulumix.Output[*CacheResponseSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheResponseSkuPtrOutput) Elem() CacheResponseSkuOutput {
@@ -2095,6 +2366,12 @@ func (i CacheSecuritySettingsArgs) ToCacheSecuritySettingsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CacheSecuritySettingsOutput)
 }
 
+func (i CacheSecuritySettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CacheSecuritySettings] {
+	return pulumix.Output[CacheSecuritySettings]{
+		OutputState: i.ToCacheSecuritySettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CacheSecuritySettingsArgs) ToCacheSecuritySettingsPtrOutput() CacheSecuritySettingsPtrOutput {
 	return i.ToCacheSecuritySettingsPtrOutputWithContext(context.Background())
 }
@@ -2136,6 +2413,12 @@ func (i *cacheSecuritySettingsPtrType) ToCacheSecuritySettingsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(CacheSecuritySettingsPtrOutput)
 }
 
+func (i *cacheSecuritySettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CacheSecuritySettings] {
+	return pulumix.Output[*CacheSecuritySettings]{
+		OutputState: i.ToCacheSecuritySettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cache security settings.
 type CacheSecuritySettingsOutput struct{ *pulumi.OutputState }
 
@@ -2161,6 +2444,12 @@ func (o CacheSecuritySettingsOutput) ToCacheSecuritySettingsPtrOutputWithContext
 	}).(CacheSecuritySettingsPtrOutput)
 }
 
+func (o CacheSecuritySettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CacheSecuritySettings] {
+	return pulumix.Output[CacheSecuritySettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // NFS access policies defined for this cache.
 func (o CacheSecuritySettingsOutput) AccessPolicies() NfsAccessPolicyArrayOutput {
 	return o.ApplyT(func(v CacheSecuritySettings) []NfsAccessPolicy { return v.AccessPolicies }).(NfsAccessPolicyArrayOutput)
@@ -2178,6 +2467,12 @@ func (o CacheSecuritySettingsPtrOutput) ToCacheSecuritySettingsPtrOutput() Cache
 
 func (o CacheSecuritySettingsPtrOutput) ToCacheSecuritySettingsPtrOutputWithContext(ctx context.Context) CacheSecuritySettingsPtrOutput {
 	return o
+}
+
+func (o CacheSecuritySettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheSecuritySettings] {
+	return pulumix.Output[*CacheSecuritySettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheSecuritySettingsPtrOutput) Elem() CacheSecuritySettingsOutput {
@@ -2221,6 +2516,12 @@ func (o CacheSecuritySettingsResponseOutput) ToCacheSecuritySettingsResponseOutp
 	return o
 }
 
+func (o CacheSecuritySettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CacheSecuritySettingsResponse] {
+	return pulumix.Output[CacheSecuritySettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // NFS access policies defined for this cache.
 func (o CacheSecuritySettingsResponseOutput) AccessPolicies() NfsAccessPolicyResponseArrayOutput {
 	return o.ApplyT(func(v CacheSecuritySettingsResponse) []NfsAccessPolicyResponse { return v.AccessPolicies }).(NfsAccessPolicyResponseArrayOutput)
@@ -2238,6 +2539,12 @@ func (o CacheSecuritySettingsResponsePtrOutput) ToCacheSecuritySettingsResponseP
 
 func (o CacheSecuritySettingsResponsePtrOutput) ToCacheSecuritySettingsResponsePtrOutputWithContext(ctx context.Context) CacheSecuritySettingsResponsePtrOutput {
 	return o
+}
+
+func (o CacheSecuritySettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheSecuritySettingsResponse] {
+	return pulumix.Output[*CacheSecuritySettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheSecuritySettingsResponsePtrOutput) Elem() CacheSecuritySettingsResponseOutput {
@@ -2295,6 +2602,12 @@ func (i CacheSkuArgs) ToCacheSkuOutputWithContext(ctx context.Context) CacheSkuO
 	return pulumi.ToOutputWithContext(ctx, i).(CacheSkuOutput)
 }
 
+func (i CacheSkuArgs) ToOutput(ctx context.Context) pulumix.Output[CacheSku] {
+	return pulumix.Output[CacheSku]{
+		OutputState: i.ToCacheSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CacheSkuArgs) ToCacheSkuPtrOutput() CacheSkuPtrOutput {
 	return i.ToCacheSkuPtrOutputWithContext(context.Background())
 }
@@ -2336,6 +2649,12 @@ func (i *cacheSkuPtrType) ToCacheSkuPtrOutputWithContext(ctx context.Context) Ca
 	return pulumi.ToOutputWithContext(ctx, i).(CacheSkuPtrOutput)
 }
 
+func (i *cacheSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*CacheSku] {
+	return pulumix.Output[*CacheSku]{
+		OutputState: i.ToCacheSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SKU for the Cache.
 type CacheSkuOutput struct{ *pulumi.OutputState }
 
@@ -2361,6 +2680,12 @@ func (o CacheSkuOutput) ToCacheSkuPtrOutputWithContext(ctx context.Context) Cach
 	}).(CacheSkuPtrOutput)
 }
 
+func (o CacheSkuOutput) ToOutput(ctx context.Context) pulumix.Output[CacheSku] {
+	return pulumix.Output[CacheSku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // SKU name for this Cache.
 func (o CacheSkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CacheSku) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2378,6 +2703,12 @@ func (o CacheSkuPtrOutput) ToCacheSkuPtrOutput() CacheSkuPtrOutput {
 
 func (o CacheSkuPtrOutput) ToCacheSkuPtrOutputWithContext(ctx context.Context) CacheSkuPtrOutput {
 	return o
+}
+
+func (o CacheSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheSku] {
+	return pulumix.Output[*CacheSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheSkuPtrOutput) Elem() CacheSkuOutput {
@@ -2429,6 +2760,12 @@ func (o CacheUpgradeStatusResponseOutput) ToCacheUpgradeStatusResponseOutputWith
 	return o
 }
 
+func (o CacheUpgradeStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CacheUpgradeStatusResponse] {
+	return pulumix.Output[CacheUpgradeStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Version string of the firmware currently installed on this Cache.
 func (o CacheUpgradeStatusResponseOutput) CurrentFirmwareVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheUpgradeStatusResponse) string { return v.CurrentFirmwareVersion }).(pulumi.StringOutput)
@@ -2466,6 +2803,12 @@ func (o CacheUpgradeStatusResponsePtrOutput) ToCacheUpgradeStatusResponsePtrOutp
 
 func (o CacheUpgradeStatusResponsePtrOutput) ToCacheUpgradeStatusResponsePtrOutputWithContext(ctx context.Context) CacheUpgradeStatusResponsePtrOutput {
 	return o
+}
+
+func (o CacheUpgradeStatusResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheUpgradeStatusResponse] {
+	return pulumix.Output[*CacheUpgradeStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheUpgradeStatusResponsePtrOutput) Elem() CacheUpgradeStatusResponseOutput {
@@ -2627,6 +2970,12 @@ func (i CacheUsernameDownloadSettingsArgs) ToCacheUsernameDownloadSettingsOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CacheUsernameDownloadSettingsOutput)
 }
 
+func (i CacheUsernameDownloadSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CacheUsernameDownloadSettings] {
+	return pulumix.Output[CacheUsernameDownloadSettings]{
+		OutputState: i.ToCacheUsernameDownloadSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CacheUsernameDownloadSettingsArgs) ToCacheUsernameDownloadSettingsPtrOutput() CacheUsernameDownloadSettingsPtrOutput {
 	return i.ToCacheUsernameDownloadSettingsPtrOutputWithContext(context.Background())
 }
@@ -2668,6 +3017,12 @@ func (i *cacheUsernameDownloadSettingsPtrType) ToCacheUsernameDownloadSettingsPt
 	return pulumi.ToOutputWithContext(ctx, i).(CacheUsernameDownloadSettingsPtrOutput)
 }
 
+func (i *cacheUsernameDownloadSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CacheUsernameDownloadSettings] {
+	return pulumix.Output[*CacheUsernameDownloadSettings]{
+		OutputState: i.ToCacheUsernameDownloadSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings for Extended Groups username and group download.
 type CacheUsernameDownloadSettingsOutput struct{ *pulumi.OutputState }
 
@@ -2691,6 +3046,12 @@ func (o CacheUsernameDownloadSettingsOutput) ToCacheUsernameDownloadSettingsPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CacheUsernameDownloadSettings) *CacheUsernameDownloadSettings {
 		return &v
 	}).(CacheUsernameDownloadSettingsPtrOutput)
+}
+
+func (o CacheUsernameDownloadSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CacheUsernameDownloadSettings] {
+	return pulumix.Output[CacheUsernameDownloadSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
@@ -2760,6 +3121,12 @@ func (o CacheUsernameDownloadSettingsPtrOutput) ToCacheUsernameDownloadSettingsP
 
 func (o CacheUsernameDownloadSettingsPtrOutput) ToCacheUsernameDownloadSettingsPtrOutputWithContext(ctx context.Context) CacheUsernameDownloadSettingsPtrOutput {
 	return o
+}
+
+func (o CacheUsernameDownloadSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheUsernameDownloadSettings] {
+	return pulumix.Output[*CacheUsernameDownloadSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheUsernameDownloadSettingsPtrOutput) Elem() CacheUsernameDownloadSettingsOutput {
@@ -2921,6 +3288,12 @@ func (i CacheUsernameDownloadSettingsCredentialsArgs) ToCacheUsernameDownloadSet
 	return pulumi.ToOutputWithContext(ctx, i).(CacheUsernameDownloadSettingsCredentialsOutput)
 }
 
+func (i CacheUsernameDownloadSettingsCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[CacheUsernameDownloadSettingsCredentials] {
+	return pulumix.Output[CacheUsernameDownloadSettingsCredentials]{
+		OutputState: i.ToCacheUsernameDownloadSettingsCredentialsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CacheUsernameDownloadSettingsCredentialsArgs) ToCacheUsernameDownloadSettingsCredentialsPtrOutput() CacheUsernameDownloadSettingsCredentialsPtrOutput {
 	return i.ToCacheUsernameDownloadSettingsCredentialsPtrOutputWithContext(context.Background())
 }
@@ -2962,6 +3335,12 @@ func (i *cacheUsernameDownloadSettingsCredentialsPtrType) ToCacheUsernameDownloa
 	return pulumi.ToOutputWithContext(ctx, i).(CacheUsernameDownloadSettingsCredentialsPtrOutput)
 }
 
+func (i *cacheUsernameDownloadSettingsCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CacheUsernameDownloadSettingsCredentials] {
+	return pulumix.Output[*CacheUsernameDownloadSettingsCredentials]{
+		OutputState: i.ToCacheUsernameDownloadSettingsCredentialsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // When present, these are the credentials for the secure LDAP connection.
 type CacheUsernameDownloadSettingsCredentialsOutput struct{ *pulumi.OutputState }
 
@@ -2987,6 +3366,12 @@ func (o CacheUsernameDownloadSettingsCredentialsOutput) ToCacheUsernameDownloadS
 	}).(CacheUsernameDownloadSettingsCredentialsPtrOutput)
 }
 
+func (o CacheUsernameDownloadSettingsCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[CacheUsernameDownloadSettingsCredentials] {
+	return pulumix.Output[CacheUsernameDownloadSettingsCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
 func (o CacheUsernameDownloadSettingsCredentialsOutput) BindDn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CacheUsernameDownloadSettingsCredentials) *string { return v.BindDn }).(pulumi.StringPtrOutput)
@@ -3009,6 +3394,12 @@ func (o CacheUsernameDownloadSettingsCredentialsPtrOutput) ToCacheUsernameDownlo
 
 func (o CacheUsernameDownloadSettingsCredentialsPtrOutput) ToCacheUsernameDownloadSettingsCredentialsPtrOutputWithContext(ctx context.Context) CacheUsernameDownloadSettingsCredentialsPtrOutput {
 	return o
+}
+
+func (o CacheUsernameDownloadSettingsCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheUsernameDownloadSettingsCredentials] {
+	return pulumix.Output[*CacheUsernameDownloadSettingsCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheUsernameDownloadSettingsCredentialsPtrOutput) Elem() CacheUsernameDownloadSettingsCredentialsOutput {
@@ -3097,6 +3488,12 @@ func (o CacheUsernameDownloadSettingsResponseOutput) ToCacheUsernameDownloadSett
 	return o
 }
 
+func (o CacheUsernameDownloadSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CacheUsernameDownloadSettingsResponse] {
+	return pulumix.Output[CacheUsernameDownloadSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
 func (o CacheUsernameDownloadSettingsResponseOutput) AutoDownloadCertificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CacheUsernameDownloadSettingsResponse) *bool { return v.AutoDownloadCertificate }).(pulumi.BoolPtrOutput)
@@ -3171,6 +3568,12 @@ func (o CacheUsernameDownloadSettingsResponsePtrOutput) ToCacheUsernameDownloadS
 
 func (o CacheUsernameDownloadSettingsResponsePtrOutput) ToCacheUsernameDownloadSettingsResponsePtrOutputWithContext(ctx context.Context) CacheUsernameDownloadSettingsResponsePtrOutput {
 	return o
+}
+
+func (o CacheUsernameDownloadSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheUsernameDownloadSettingsResponse] {
+	return pulumix.Output[*CacheUsernameDownloadSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheUsernameDownloadSettingsResponsePtrOutput) Elem() CacheUsernameDownloadSettingsResponseOutput {
@@ -3326,6 +3729,12 @@ func (o CacheUsernameDownloadSettingsResponseCredentialsOutput) ToCacheUsernameD
 	return o
 }
 
+func (o CacheUsernameDownloadSettingsResponseCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[CacheUsernameDownloadSettingsResponseCredentials] {
+	return pulumix.Output[CacheUsernameDownloadSettingsResponseCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
 func (o CacheUsernameDownloadSettingsResponseCredentialsOutput) BindDn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CacheUsernameDownloadSettingsResponseCredentials) *string { return v.BindDn }).(pulumi.StringPtrOutput)
@@ -3348,6 +3757,12 @@ func (o CacheUsernameDownloadSettingsResponseCredentialsPtrOutput) ToCacheUserna
 
 func (o CacheUsernameDownloadSettingsResponseCredentialsPtrOutput) ToCacheUsernameDownloadSettingsResponseCredentialsPtrOutputWithContext(ctx context.Context) CacheUsernameDownloadSettingsResponseCredentialsPtrOutput {
 	return o
+}
+
+func (o CacheUsernameDownloadSettingsResponseCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheUsernameDownloadSettingsResponseCredentials] {
+	return pulumix.Output[*CacheUsernameDownloadSettingsResponseCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheUsernameDownloadSettingsResponseCredentialsPtrOutput) Elem() CacheUsernameDownloadSettingsResponseCredentialsOutput {
@@ -3415,6 +3830,12 @@ func (i ClfsTargetArgs) ToClfsTargetOutputWithContext(ctx context.Context) ClfsT
 	return pulumi.ToOutputWithContext(ctx, i).(ClfsTargetOutput)
 }
 
+func (i ClfsTargetArgs) ToOutput(ctx context.Context) pulumix.Output[ClfsTarget] {
+	return pulumix.Output[ClfsTarget]{
+		OutputState: i.ToClfsTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ClfsTargetArgs) ToClfsTargetPtrOutput() ClfsTargetPtrOutput {
 	return i.ToClfsTargetPtrOutputWithContext(context.Background())
 }
@@ -3456,6 +3877,12 @@ func (i *clfsTargetPtrType) ToClfsTargetPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ClfsTargetPtrOutput)
 }
 
+func (i *clfsTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClfsTarget] {
+	return pulumix.Output[*ClfsTarget]{
+		OutputState: i.ToClfsTargetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties pertaining to the ClfsTarget
 type ClfsTargetOutput struct{ *pulumi.OutputState }
 
@@ -3481,6 +3908,12 @@ func (o ClfsTargetOutput) ToClfsTargetPtrOutputWithContext(ctx context.Context) 
 	}).(ClfsTargetPtrOutput)
 }
 
+func (o ClfsTargetOutput) ToOutput(ctx context.Context) pulumix.Output[ClfsTarget] {
+	return pulumix.Output[ClfsTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of storage container.
 func (o ClfsTargetOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClfsTarget) *string { return v.Target }).(pulumi.StringPtrOutput)
@@ -3498,6 +3931,12 @@ func (o ClfsTargetPtrOutput) ToClfsTargetPtrOutput() ClfsTargetPtrOutput {
 
 func (o ClfsTargetPtrOutput) ToClfsTargetPtrOutputWithContext(ctx context.Context) ClfsTargetPtrOutput {
 	return o
+}
+
+func (o ClfsTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClfsTarget] {
+	return pulumix.Output[*ClfsTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClfsTargetPtrOutput) Elem() ClfsTargetOutput {
@@ -3541,6 +3980,12 @@ func (o ClfsTargetResponseOutput) ToClfsTargetResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o ClfsTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClfsTargetResponse] {
+	return pulumix.Output[ClfsTargetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of storage container.
 func (o ClfsTargetResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClfsTargetResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
@@ -3558,6 +4003,12 @@ func (o ClfsTargetResponsePtrOutput) ToClfsTargetResponsePtrOutput() ClfsTargetR
 
 func (o ClfsTargetResponsePtrOutput) ToClfsTargetResponsePtrOutputWithContext(ctx context.Context) ClfsTargetResponsePtrOutput {
 	return o
+}
+
+func (o ClfsTargetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClfsTargetResponse] {
+	return pulumix.Output[*ClfsTargetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClfsTargetResponsePtrOutput) Elem() ClfsTargetResponseOutput {
@@ -3603,6 +4054,12 @@ func (o ConditionResponseOutput) ToConditionResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o ConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionResponse] {
+	return pulumix.Output[ConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The issue requiring attention.
 func (o ConditionResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v ConditionResponse) string { return v.Message }).(pulumi.StringOutput)
@@ -3625,6 +4082,12 @@ func (o ConditionResponseArrayOutput) ToConditionResponseArrayOutput() Condition
 
 func (o ConditionResponseArrayOutput) ToConditionResponseArrayOutputWithContext(ctx context.Context) ConditionResponseArrayOutput {
 	return o
+}
+
+func (o ConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConditionResponse] {
+	return pulumix.Output[[]ConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponseOutput {
@@ -3672,6 +4135,12 @@ func (i KeyVaultKeyReferenceArgs) ToKeyVaultKeyReferenceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultKeyReferenceOutput)
 }
 
+func (i KeyVaultKeyReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultKeyReference] {
+	return pulumix.Output[KeyVaultKeyReference]{
+		OutputState: i.ToKeyVaultKeyReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeyVaultKeyReferenceArgs) ToKeyVaultKeyReferencePtrOutput() KeyVaultKeyReferencePtrOutput {
 	return i.ToKeyVaultKeyReferencePtrOutputWithContext(context.Background())
 }
@@ -3713,6 +4182,12 @@ func (i *keyVaultKeyReferencePtrType) ToKeyVaultKeyReferencePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultKeyReferencePtrOutput)
 }
 
+func (i *keyVaultKeyReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultKeyReference] {
+	return pulumix.Output[*KeyVaultKeyReference]{
+		OutputState: i.ToKeyVaultKeyReferencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a reference to Key Vault Key.
 type KeyVaultKeyReferenceOutput struct{ *pulumi.OutputState }
 
@@ -3738,6 +4213,12 @@ func (o KeyVaultKeyReferenceOutput) ToKeyVaultKeyReferencePtrOutputWithContext(c
 	}).(KeyVaultKeyReferencePtrOutput)
 }
 
+func (o KeyVaultKeyReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultKeyReference] {
+	return pulumix.Output[KeyVaultKeyReference]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The URL referencing a key encryption key in Key Vault.
 func (o KeyVaultKeyReferenceOutput) KeyUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultKeyReference) string { return v.KeyUrl }).(pulumi.StringOutput)
@@ -3760,6 +4241,12 @@ func (o KeyVaultKeyReferencePtrOutput) ToKeyVaultKeyReferencePtrOutput() KeyVaul
 
 func (o KeyVaultKeyReferencePtrOutput) ToKeyVaultKeyReferencePtrOutputWithContext(ctx context.Context) KeyVaultKeyReferencePtrOutput {
 	return o
+}
+
+func (o KeyVaultKeyReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultKeyReference] {
+	return pulumix.Output[*KeyVaultKeyReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyVaultKeyReferencePtrOutput) Elem() KeyVaultKeyReferenceOutput {
@@ -3815,6 +4302,12 @@ func (o KeyVaultKeyReferenceResponseOutput) ToKeyVaultKeyReferenceResponseOutput
 	return o
 }
 
+func (o KeyVaultKeyReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultKeyReferenceResponse] {
+	return pulumix.Output[KeyVaultKeyReferenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The URL referencing a key encryption key in Key Vault.
 func (o KeyVaultKeyReferenceResponseOutput) KeyUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultKeyReferenceResponse) string { return v.KeyUrl }).(pulumi.StringOutput)
@@ -3837,6 +4330,12 @@ func (o KeyVaultKeyReferenceResponsePtrOutput) ToKeyVaultKeyReferenceResponsePtr
 
 func (o KeyVaultKeyReferenceResponsePtrOutput) ToKeyVaultKeyReferenceResponsePtrOutputWithContext(ctx context.Context) KeyVaultKeyReferenceResponsePtrOutput {
 	return o
+}
+
+func (o KeyVaultKeyReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultKeyReferenceResponse] {
+	return pulumix.Output[*KeyVaultKeyReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyVaultKeyReferenceResponsePtrOutput) Elem() KeyVaultKeyReferenceResponseOutput {
@@ -3890,6 +4389,12 @@ func (o KeyVaultKeyReferenceResponseSourceVaultOutput) ToKeyVaultKeyReferenceRes
 	return o
 }
 
+func (o KeyVaultKeyReferenceResponseSourceVaultOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultKeyReferenceResponseSourceVault] {
+	return pulumix.Output[KeyVaultKeyReferenceResponseSourceVault]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource Id.
 func (o KeyVaultKeyReferenceResponseSourceVaultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultKeyReferenceResponseSourceVault) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -3907,6 +4412,12 @@ func (o KeyVaultKeyReferenceResponseSourceVaultPtrOutput) ToKeyVaultKeyReference
 
 func (o KeyVaultKeyReferenceResponseSourceVaultPtrOutput) ToKeyVaultKeyReferenceResponseSourceVaultPtrOutputWithContext(ctx context.Context) KeyVaultKeyReferenceResponseSourceVaultPtrOutput {
 	return o
+}
+
+func (o KeyVaultKeyReferenceResponseSourceVaultPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultKeyReferenceResponseSourceVault] {
+	return pulumix.Output[*KeyVaultKeyReferenceResponseSourceVault]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyVaultKeyReferenceResponseSourceVaultPtrOutput) Elem() KeyVaultKeyReferenceResponseSourceVaultOutput {
@@ -3964,6 +4475,12 @@ func (i KeyVaultKeyReferenceSourceVaultArgs) ToKeyVaultKeyReferenceSourceVaultOu
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultKeyReferenceSourceVaultOutput)
 }
 
+func (i KeyVaultKeyReferenceSourceVaultArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultKeyReferenceSourceVault] {
+	return pulumix.Output[KeyVaultKeyReferenceSourceVault]{
+		OutputState: i.ToKeyVaultKeyReferenceSourceVaultOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeyVaultKeyReferenceSourceVaultArgs) ToKeyVaultKeyReferenceSourceVaultPtrOutput() KeyVaultKeyReferenceSourceVaultPtrOutput {
 	return i.ToKeyVaultKeyReferenceSourceVaultPtrOutputWithContext(context.Background())
 }
@@ -4005,6 +4522,12 @@ func (i *keyVaultKeyReferenceSourceVaultPtrType) ToKeyVaultKeyReferenceSourceVau
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultKeyReferenceSourceVaultPtrOutput)
 }
 
+func (i *keyVaultKeyReferenceSourceVaultPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultKeyReferenceSourceVault] {
+	return pulumix.Output[*KeyVaultKeyReferenceSourceVault]{
+		OutputState: i.ToKeyVaultKeyReferenceSourceVaultPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a resource Id to source Key Vault.
 type KeyVaultKeyReferenceSourceVaultOutput struct{ *pulumi.OutputState }
 
@@ -4030,6 +4553,12 @@ func (o KeyVaultKeyReferenceSourceVaultOutput) ToKeyVaultKeyReferenceSourceVault
 	}).(KeyVaultKeyReferenceSourceVaultPtrOutput)
 }
 
+func (o KeyVaultKeyReferenceSourceVaultOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultKeyReferenceSourceVault] {
+	return pulumix.Output[KeyVaultKeyReferenceSourceVault]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource Id.
 func (o KeyVaultKeyReferenceSourceVaultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultKeyReferenceSourceVault) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -4047,6 +4576,12 @@ func (o KeyVaultKeyReferenceSourceVaultPtrOutput) ToKeyVaultKeyReferenceSourceVa
 
 func (o KeyVaultKeyReferenceSourceVaultPtrOutput) ToKeyVaultKeyReferenceSourceVaultPtrOutputWithContext(ctx context.Context) KeyVaultKeyReferenceSourceVaultPtrOutput {
 	return o
+}
+
+func (o KeyVaultKeyReferenceSourceVaultPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultKeyReferenceSourceVault] {
+	return pulumix.Output[*KeyVaultKeyReferenceSourceVault]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyVaultKeyReferenceSourceVaultPtrOutput) Elem() KeyVaultKeyReferenceSourceVaultOutput {
@@ -4140,6 +4675,12 @@ func (i NamespaceJunctionArgs) ToNamespaceJunctionOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceJunctionOutput)
 }
 
+func (i NamespaceJunctionArgs) ToOutput(ctx context.Context) pulumix.Output[NamespaceJunction] {
+	return pulumix.Output[NamespaceJunction]{
+		OutputState: i.ToNamespaceJunctionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NamespaceJunctionArrayInput is an input type that accepts NamespaceJunctionArray and NamespaceJunctionArrayOutput values.
 // You can construct a concrete instance of `NamespaceJunctionArrayInput` via:
 //
@@ -4165,6 +4706,12 @@ func (i NamespaceJunctionArray) ToNamespaceJunctionArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceJunctionArrayOutput)
 }
 
+func (i NamespaceJunctionArray) ToOutput(ctx context.Context) pulumix.Output[[]NamespaceJunction] {
+	return pulumix.Output[[]NamespaceJunction]{
+		OutputState: i.ToNamespaceJunctionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A namespace junction.
 type NamespaceJunctionOutput struct{ *pulumi.OutputState }
 
@@ -4178,6 +4725,12 @@ func (o NamespaceJunctionOutput) ToNamespaceJunctionOutput() NamespaceJunctionOu
 
 func (o NamespaceJunctionOutput) ToNamespaceJunctionOutputWithContext(ctx context.Context) NamespaceJunctionOutput {
 	return o
+}
+
+func (o NamespaceJunctionOutput) ToOutput(ctx context.Context) pulumix.Output[NamespaceJunction] {
+	return pulumix.Output[NamespaceJunction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Namespace path on a Cache for a Storage Target.
@@ -4212,6 +4765,12 @@ func (o NamespaceJunctionArrayOutput) ToNamespaceJunctionArrayOutput() Namespace
 
 func (o NamespaceJunctionArrayOutput) ToNamespaceJunctionArrayOutputWithContext(ctx context.Context) NamespaceJunctionArrayOutput {
 	return o
+}
+
+func (o NamespaceJunctionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NamespaceJunction] {
+	return pulumix.Output[[]NamespaceJunction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NamespaceJunctionArrayOutput) Index(i pulumi.IntInput) NamespaceJunctionOutput {
@@ -4260,6 +4819,12 @@ func (o NamespaceJunctionResponseOutput) ToNamespaceJunctionResponseOutputWithCo
 	return o
 }
 
+func (o NamespaceJunctionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NamespaceJunctionResponse] {
+	return pulumix.Output[NamespaceJunctionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Namespace path on a Cache for a Storage Target.
 func (o NamespaceJunctionResponseOutput) NamespacePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NamespaceJunctionResponse) *string { return v.NamespacePath }).(pulumi.StringPtrOutput)
@@ -4292,6 +4857,12 @@ func (o NamespaceJunctionResponseArrayOutput) ToNamespaceJunctionResponseArrayOu
 
 func (o NamespaceJunctionResponseArrayOutput) ToNamespaceJunctionResponseArrayOutputWithContext(ctx context.Context) NamespaceJunctionResponseArrayOutput {
 	return o
+}
+
+func (o NamespaceJunctionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NamespaceJunctionResponse] {
+	return pulumix.Output[[]NamespaceJunctionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NamespaceJunctionResponseArrayOutput) Index(i pulumi.IntInput) NamespaceJunctionResponseOutput {
@@ -4339,6 +4910,12 @@ func (i Nfs3TargetArgs) ToNfs3TargetOutputWithContext(ctx context.Context) Nfs3T
 	return pulumi.ToOutputWithContext(ctx, i).(Nfs3TargetOutput)
 }
 
+func (i Nfs3TargetArgs) ToOutput(ctx context.Context) pulumix.Output[Nfs3Target] {
+	return pulumix.Output[Nfs3Target]{
+		OutputState: i.ToNfs3TargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i Nfs3TargetArgs) ToNfs3TargetPtrOutput() Nfs3TargetPtrOutput {
 	return i.ToNfs3TargetPtrOutputWithContext(context.Background())
 }
@@ -4380,6 +4957,12 @@ func (i *nfs3TargetPtrType) ToNfs3TargetPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(Nfs3TargetPtrOutput)
 }
 
+func (i *nfs3TargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*Nfs3Target] {
+	return pulumix.Output[*Nfs3Target]{
+		OutputState: i.ToNfs3TargetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties pertaining to the Nfs3Target
 type Nfs3TargetOutput struct{ *pulumi.OutputState }
 
@@ -4405,6 +4988,12 @@ func (o Nfs3TargetOutput) ToNfs3TargetPtrOutputWithContext(ctx context.Context) 
 	}).(Nfs3TargetPtrOutput)
 }
 
+func (o Nfs3TargetOutput) ToOutput(ctx context.Context) pulumix.Output[Nfs3Target] {
+	return pulumix.Output[Nfs3Target]{
+		OutputState: o.OutputState,
+	}
+}
+
 // IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
 func (o Nfs3TargetOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Nfs3Target) *string { return v.Target }).(pulumi.StringPtrOutput)
@@ -4427,6 +5016,12 @@ func (o Nfs3TargetPtrOutput) ToNfs3TargetPtrOutput() Nfs3TargetPtrOutput {
 
 func (o Nfs3TargetPtrOutput) ToNfs3TargetPtrOutputWithContext(ctx context.Context) Nfs3TargetPtrOutput {
 	return o
+}
+
+func (o Nfs3TargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Nfs3Target] {
+	return pulumix.Output[*Nfs3Target]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Nfs3TargetPtrOutput) Elem() Nfs3TargetOutput {
@@ -4482,6 +5077,12 @@ func (o Nfs3TargetResponseOutput) ToNfs3TargetResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o Nfs3TargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Nfs3TargetResponse] {
+	return pulumix.Output[Nfs3TargetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
 func (o Nfs3TargetResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Nfs3TargetResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
@@ -4504,6 +5105,12 @@ func (o Nfs3TargetResponsePtrOutput) ToNfs3TargetResponsePtrOutput() Nfs3TargetR
 
 func (o Nfs3TargetResponsePtrOutput) ToNfs3TargetResponsePtrOutputWithContext(ctx context.Context) Nfs3TargetResponsePtrOutput {
 	return o
+}
+
+func (o Nfs3TargetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Nfs3TargetResponse] {
+	return pulumix.Output[*Nfs3TargetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Nfs3TargetResponsePtrOutput) Elem() Nfs3TargetResponseOutput {
@@ -4575,6 +5182,12 @@ func (i NfsAccessPolicyArgs) ToNfsAccessPolicyOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(NfsAccessPolicyOutput)
 }
 
+func (i NfsAccessPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[NfsAccessPolicy] {
+	return pulumix.Output[NfsAccessPolicy]{
+		OutputState: i.ToNfsAccessPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NfsAccessPolicyArrayInput is an input type that accepts NfsAccessPolicyArray and NfsAccessPolicyArrayOutput values.
 // You can construct a concrete instance of `NfsAccessPolicyArrayInput` via:
 //
@@ -4600,6 +5213,12 @@ func (i NfsAccessPolicyArray) ToNfsAccessPolicyArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(NfsAccessPolicyArrayOutput)
 }
 
+func (i NfsAccessPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]NfsAccessPolicy] {
+	return pulumix.Output[[]NfsAccessPolicy]{
+		OutputState: i.ToNfsAccessPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A set of rules describing access policies applied to NFSv3 clients of the cache.
 type NfsAccessPolicyOutput struct{ *pulumi.OutputState }
 
@@ -4613,6 +5232,12 @@ func (o NfsAccessPolicyOutput) ToNfsAccessPolicyOutput() NfsAccessPolicyOutput {
 
 func (o NfsAccessPolicyOutput) ToNfsAccessPolicyOutputWithContext(ctx context.Context) NfsAccessPolicyOutput {
 	return o
+}
+
+func (o NfsAccessPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[NfsAccessPolicy] {
+	return pulumix.Output[NfsAccessPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The set of rules describing client accesses allowed under this policy.
@@ -4637,6 +5262,12 @@ func (o NfsAccessPolicyArrayOutput) ToNfsAccessPolicyArrayOutput() NfsAccessPoli
 
 func (o NfsAccessPolicyArrayOutput) ToNfsAccessPolicyArrayOutputWithContext(ctx context.Context) NfsAccessPolicyArrayOutput {
 	return o
+}
+
+func (o NfsAccessPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NfsAccessPolicy] {
+	return pulumix.Output[[]NfsAccessPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NfsAccessPolicyArrayOutput) Index(i pulumi.IntInput) NfsAccessPolicyOutput {
@@ -4668,6 +5299,12 @@ func (o NfsAccessPolicyResponseOutput) ToNfsAccessPolicyResponseOutputWithContex
 	return o
 }
 
+func (o NfsAccessPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NfsAccessPolicyResponse] {
+	return pulumix.Output[NfsAccessPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The set of rules describing client accesses allowed under this policy.
 func (o NfsAccessPolicyResponseOutput) AccessRules() NfsAccessRuleResponseArrayOutput {
 	return o.ApplyT(func(v NfsAccessPolicyResponse) []NfsAccessRuleResponse { return v.AccessRules }).(NfsAccessRuleResponseArrayOutput)
@@ -4690,6 +5327,12 @@ func (o NfsAccessPolicyResponseArrayOutput) ToNfsAccessPolicyResponseArrayOutput
 
 func (o NfsAccessPolicyResponseArrayOutput) ToNfsAccessPolicyResponseArrayOutputWithContext(ctx context.Context) NfsAccessPolicyResponseArrayOutput {
 	return o
+}
+
+func (o NfsAccessPolicyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NfsAccessPolicyResponse] {
+	return pulumix.Output[[]NfsAccessPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NfsAccessPolicyResponseArrayOutput) Index(i pulumi.IntInput) NfsAccessPolicyResponseOutput {
@@ -4761,6 +5404,12 @@ func (i NfsAccessRuleArgs) ToNfsAccessRuleOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NfsAccessRuleOutput)
 }
 
+func (i NfsAccessRuleArgs) ToOutput(ctx context.Context) pulumix.Output[NfsAccessRule] {
+	return pulumix.Output[NfsAccessRule]{
+		OutputState: i.ToNfsAccessRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NfsAccessRuleArrayInput is an input type that accepts NfsAccessRuleArray and NfsAccessRuleArrayOutput values.
 // You can construct a concrete instance of `NfsAccessRuleArrayInput` via:
 //
@@ -4786,6 +5435,12 @@ func (i NfsAccessRuleArray) ToNfsAccessRuleArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(NfsAccessRuleArrayOutput)
 }
 
+func (i NfsAccessRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]NfsAccessRule] {
+	return pulumix.Output[[]NfsAccessRule]{
+		OutputState: i.ToNfsAccessRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Rule to place restrictions on portions of the cache namespace being presented to clients.
 type NfsAccessRuleOutput struct{ *pulumi.OutputState }
 
@@ -4799,6 +5454,12 @@ func (o NfsAccessRuleOutput) ToNfsAccessRuleOutput() NfsAccessRuleOutput {
 
 func (o NfsAccessRuleOutput) ToNfsAccessRuleOutputWithContext(ctx context.Context) NfsAccessRuleOutput {
 	return o
+}
+
+func (o NfsAccessRuleOutput) ToOutput(ctx context.Context) pulumix.Output[NfsAccessRule] {
+	return pulumix.Output[NfsAccessRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access allowed by this rule.
@@ -4855,6 +5516,12 @@ func (o NfsAccessRuleArrayOutput) ToNfsAccessRuleArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o NfsAccessRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NfsAccessRule] {
+	return pulumix.Output[[]NfsAccessRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NfsAccessRuleArrayOutput) Index(i pulumi.IntInput) NfsAccessRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NfsAccessRule {
 		return vs[0].([]NfsAccessRule)[vs[1].(int)]
@@ -4894,6 +5561,12 @@ func (o NfsAccessRuleResponseOutput) ToNfsAccessRuleResponseOutput() NfsAccessRu
 
 func (o NfsAccessRuleResponseOutput) ToNfsAccessRuleResponseOutputWithContext(ctx context.Context) NfsAccessRuleResponseOutput {
 	return o
+}
+
+func (o NfsAccessRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NfsAccessRuleResponse] {
+	return pulumix.Output[NfsAccessRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access allowed by this rule.
@@ -4950,6 +5623,12 @@ func (o NfsAccessRuleResponseArrayOutput) ToNfsAccessRuleResponseArrayOutputWith
 	return o
 }
 
+func (o NfsAccessRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NfsAccessRuleResponse] {
+	return pulumix.Output[[]NfsAccessRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NfsAccessRuleResponseArrayOutput) Index(i pulumi.IntInput) NfsAccessRuleResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NfsAccessRuleResponse {
 		return vs[0].([]NfsAccessRuleResponse)[vs[1].(int)]
@@ -4985,6 +5664,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -5052,6 +5737,12 @@ func (i UnknownTargetArgs) ToUnknownTargetOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(UnknownTargetOutput)
 }
 
+func (i UnknownTargetArgs) ToOutput(ctx context.Context) pulumix.Output[UnknownTarget] {
+	return pulumix.Output[UnknownTarget]{
+		OutputState: i.ToUnknownTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UnknownTargetArgs) ToUnknownTargetPtrOutput() UnknownTargetPtrOutput {
 	return i.ToUnknownTargetPtrOutputWithContext(context.Background())
 }
@@ -5093,6 +5784,12 @@ func (i *unknownTargetPtrType) ToUnknownTargetPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(UnknownTargetPtrOutput)
 }
 
+func (i *unknownTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*UnknownTarget] {
+	return pulumix.Output[*UnknownTarget]{
+		OutputState: i.ToUnknownTargetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties pertaining to the UnknownTarget
 type UnknownTargetOutput struct{ *pulumi.OutputState }
 
@@ -5118,6 +5815,12 @@ func (o UnknownTargetOutput) ToUnknownTargetPtrOutputWithContext(ctx context.Con
 	}).(UnknownTargetPtrOutput)
 }
 
+func (o UnknownTargetOutput) ToOutput(ctx context.Context) pulumix.Output[UnknownTarget] {
+	return pulumix.Output[UnknownTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Dictionary of string->string pairs containing information about the Storage Target.
 func (o UnknownTargetOutput) Attributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v UnknownTarget) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
@@ -5135,6 +5838,12 @@ func (o UnknownTargetPtrOutput) ToUnknownTargetPtrOutput() UnknownTargetPtrOutpu
 
 func (o UnknownTargetPtrOutput) ToUnknownTargetPtrOutputWithContext(ctx context.Context) UnknownTargetPtrOutput {
 	return o
+}
+
+func (o UnknownTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UnknownTarget] {
+	return pulumix.Output[*UnknownTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UnknownTargetPtrOutput) Elem() UnknownTargetOutput {
@@ -5178,6 +5887,12 @@ func (o UnknownTargetResponseOutput) ToUnknownTargetResponseOutputWithContext(ct
 	return o
 }
 
+func (o UnknownTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UnknownTargetResponse] {
+	return pulumix.Output[UnknownTargetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Dictionary of string->string pairs containing information about the Storage Target.
 func (o UnknownTargetResponseOutput) Attributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v UnknownTargetResponse) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
@@ -5195,6 +5910,12 @@ func (o UnknownTargetResponsePtrOutput) ToUnknownTargetResponsePtrOutput() Unkno
 
 func (o UnknownTargetResponsePtrOutput) ToUnknownTargetResponsePtrOutputWithContext(ctx context.Context) UnknownTargetResponsePtrOutput {
 	return o
+}
+
+func (o UnknownTargetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UnknownTargetResponse] {
+	return pulumix.Output[*UnknownTargetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UnknownTargetResponsePtrOutput) Elem() UnknownTargetResponseOutput {

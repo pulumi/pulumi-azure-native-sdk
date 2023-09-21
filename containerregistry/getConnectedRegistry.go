@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the connected registry.
@@ -118,6 +119,12 @@ func (o LookupConnectedRegistryResultOutput) ToLookupConnectedRegistryResultOutp
 
 func (o LookupConnectedRegistryResultOutput) ToLookupConnectedRegistryResultOutputWithContext(ctx context.Context) LookupConnectedRegistryResultOutput {
 	return o
+}
+
+func (o LookupConnectedRegistryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectedRegistryResult] {
+	return pulumix.Output[LookupConnectedRegistryResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The activation properties of the connected registry.

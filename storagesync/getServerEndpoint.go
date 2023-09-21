@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a ServerEndpoint.
@@ -127,6 +128,12 @@ func (o LookupServerEndpointResultOutput) ToLookupServerEndpointResultOutput() L
 
 func (o LookupServerEndpointResultOutput) ToLookupServerEndpointResultOutputWithContext(ctx context.Context) LookupServerEndpointResultOutput {
 	return o
+}
+
+func (o LookupServerEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServerEndpointResult] {
+	return pulumix.Output[LookupServerEndpointResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cloud Tiering.

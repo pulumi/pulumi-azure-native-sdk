@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get lab account
@@ -94,6 +95,12 @@ func (o LookupLabAccountResultOutput) ToLookupLabAccountResultOutput() LookupLab
 
 func (o LookupLabAccountResultOutput) ToLookupLabAccountResultOutputWithContext(ctx context.Context) LookupLabAccountResultOutput {
 	return o
+}
+
+func (o LookupLabAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLabAccountResult] {
+	return pulumix.Output[LookupLabAccountResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents if region selection is enabled

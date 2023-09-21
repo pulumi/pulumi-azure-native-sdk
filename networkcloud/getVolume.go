@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of the provided volume.
@@ -95,6 +96,12 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutput() LookupVolumeResul
 
 func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx context.Context) LookupVolumeResultOutput {
 	return o
+}
+
+func (o LookupVolumeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVolumeResult] {
+	return pulumix.Output[LookupVolumeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of resource IDs that attach the volume. It may include virtual machines and Hybrid AKS clusters.

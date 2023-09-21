@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -66,6 +67,12 @@ func (o CloudErrorBodyResponseOutput) ToCloudErrorBodyResponseOutputWithContext(
 	return o
 }
 
+func (o CloudErrorBodyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudErrorBodyResponse] {
+	return pulumix.Output[CloudErrorBodyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Error code string.
 func (o CloudErrorBodyResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudErrorBodyResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -98,6 +105,12 @@ func (o CloudErrorBodyResponsePtrOutput) ToCloudErrorBodyResponsePtrOutput() Clo
 
 func (o CloudErrorBodyResponsePtrOutput) ToCloudErrorBodyResponsePtrOutputWithContext(ctx context.Context) CloudErrorBodyResponsePtrOutput {
 	return o
+}
+
+func (o CloudErrorBodyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudErrorBodyResponse] {
+	return pulumix.Output[*CloudErrorBodyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudErrorBodyResponsePtrOutput) Elem() CloudErrorBodyResponseOutput {
@@ -164,6 +177,12 @@ func (o CloudErrorBodyResponseArrayOutput) ToCloudErrorBodyResponseArrayOutputWi
 	return o
 }
 
+func (o CloudErrorBodyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CloudErrorBodyResponse] {
+	return pulumix.Output[[]CloudErrorBodyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CloudErrorBodyResponseArrayOutput) Index(i pulumi.IntInput) CloudErrorBodyResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudErrorBodyResponse {
 		return vs[0].([]CloudErrorBodyResponse)[vs[1].(int)]
@@ -227,6 +246,12 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
+func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity for the resource.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -240,6 +265,12 @@ func (o IdentityOutput) ToIdentityOutput() IdentityOutput {
 
 func (o IdentityOutput) ToIdentityOutputWithContext(ctx context.Context) IdentityOutput {
 	return o
+}
+
+func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of identities.
@@ -275,6 +306,12 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
+	return pulumix.Output[IdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of identities.
 func (o IdentityResponseOutput) IdentityIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IdentityResponse) []string { return v.IdentityIds }).(pulumi.StringArrayOutput)
@@ -297,6 +334,12 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
+}
+
+func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
+	return pulumix.Output[*IdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -352,6 +395,12 @@ func (o MessageResponseOutput) ToMessageResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o MessageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MessageResponse] {
+	return pulumix.Output[MessageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The actual message text.
 func (o MessageResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v MessageResponse) string { return v.Message }).(pulumi.StringOutput)
@@ -374,6 +423,12 @@ func (o MessageResponseArrayOutput) ToMessageResponseArrayOutput() MessageRespon
 
 func (o MessageResponseArrayOutput) ToMessageResponseArrayOutputWithContext(ctx context.Context) MessageResponseArrayOutput {
 	return o
+}
+
+func (o MessageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MessageResponse] {
+	return pulumix.Output[[]MessageResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MessageResponseArrayOutput) Index(i pulumi.IntInput) MessageResponseOutput {
@@ -417,6 +472,12 @@ func (i PrePostStepArgs) ToPrePostStepOutputWithContext(ctx context.Context) Pre
 	return pulumi.ToOutputWithContext(ctx, i).(PrePostStepOutput)
 }
 
+func (i PrePostStepArgs) ToOutput(ctx context.Context) pulumix.Output[PrePostStep] {
+	return pulumix.Output[PrePostStep]{
+		OutputState: i.ToPrePostStepOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrePostStepArrayInput is an input type that accepts PrePostStepArray and PrePostStepArrayOutput values.
 // You can construct a concrete instance of `PrePostStepArrayInput` via:
 //
@@ -442,6 +503,12 @@ func (i PrePostStepArray) ToPrePostStepArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PrePostStepArrayOutput)
 }
 
+func (i PrePostStepArray) ToOutput(ctx context.Context) pulumix.Output[[]PrePostStep] {
+	return pulumix.Output[[]PrePostStep]{
+		OutputState: i.ToPrePostStepArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The properties that define a step.
 type PrePostStepOutput struct{ *pulumi.OutputState }
 
@@ -455,6 +522,12 @@ func (o PrePostStepOutput) ToPrePostStepOutput() PrePostStepOutput {
 
 func (o PrePostStepOutput) ToPrePostStepOutputWithContext(ctx context.Context) PrePostStepOutput {
 	return o
+}
+
+func (o PrePostStepOutput) ToOutput(ctx context.Context) pulumix.Output[PrePostStep] {
+	return pulumix.Output[PrePostStep]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource Id of the step to be run.
@@ -474,6 +547,12 @@ func (o PrePostStepArrayOutput) ToPrePostStepArrayOutput() PrePostStepArrayOutpu
 
 func (o PrePostStepArrayOutput) ToPrePostStepArrayOutputWithContext(ctx context.Context) PrePostStepArrayOutput {
 	return o
+}
+
+func (o PrePostStepArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrePostStep] {
+	return pulumix.Output[[]PrePostStep]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrePostStepArrayOutput) Index(i pulumi.IntInput) PrePostStepOutput {
@@ -503,6 +582,12 @@ func (o PrePostStepResponseOutput) ToPrePostStepResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o PrePostStepResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrePostStepResponse] {
+	return pulumix.Output[PrePostStepResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource Id of the step to be run.
 func (o PrePostStepResponseOutput) StepId() pulumi.StringOutput {
 	return o.ApplyT(func(v PrePostStepResponse) string { return v.StepId }).(pulumi.StringOutput)
@@ -520,6 +605,12 @@ func (o PrePostStepResponseArrayOutput) ToPrePostStepResponseArrayOutput() PrePo
 
 func (o PrePostStepResponseArrayOutput) ToPrePostStepResponseArrayOutputWithContext(ctx context.Context) PrePostStepResponseArrayOutput {
 	return o
+}
+
+func (o PrePostStepResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrePostStepResponse] {
+	return pulumix.Output[[]PrePostStepResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrePostStepResponseArrayOutput) Index(i pulumi.IntInput) PrePostStepResponseOutput {
@@ -557,6 +648,12 @@ func (o ResourceOperationResponseOutput) ToResourceOperationResponseOutput() Res
 
 func (o ResourceOperationResponseOutput) ToResourceOperationResponseOutputWithContext(ctx context.Context) ResourceOperationResponseOutput {
 	return o
+}
+
+func (o ResourceOperationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceOperationResponse] {
+	return pulumix.Output[ResourceOperationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of the operation. For ARM resources, this is the operationId obtained from ARM service.
@@ -601,6 +698,12 @@ func (o ResourceOperationResponseArrayOutput) ToResourceOperationResponseArrayOu
 
 func (o ResourceOperationResponseArrayOutput) ToResourceOperationResponseArrayOutputWithContext(ctx context.Context) ResourceOperationResponseArrayOutput {
 	return o
+}
+
+func (o ResourceOperationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceOperationResponse] {
+	return pulumix.Output[[]ResourceOperationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceOperationResponseArrayOutput) Index(i pulumi.IntInput) ResourceOperationResponseOutput {
@@ -754,6 +857,12 @@ func (o RolloutOperationInfoResponseOutput) ToRolloutOperationInfoResponseOutput
 	return o
 }
 
+func (o RolloutOperationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RolloutOperationInfoResponse] {
+	return pulumix.Output[RolloutOperationInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The start time of the rollout in UTC. This property will not be set if the rollout has not completed yet.
 func (o RolloutOperationInfoResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v RolloutOperationInfoResponse) string { return v.EndTime }).(pulumi.StringOutput)
@@ -810,6 +919,12 @@ func (o RolloutStepResponseOutput) ToRolloutStepResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o RolloutStepResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RolloutStepResponse] {
+	return pulumix.Output[RolloutStepResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Supplementary informative messages during rollout.
 func (o RolloutStepResponseOutput) Messages() MessageResponseArrayOutput {
 	return o.ApplyT(func(v RolloutStepResponse) []MessageResponse { return v.Messages }).(MessageResponseArrayOutput)
@@ -852,6 +967,12 @@ func (o RolloutStepResponseArrayOutput) ToRolloutStepResponseArrayOutput() Rollo
 
 func (o RolloutStepResponseArrayOutput) ToRolloutStepResponseArrayOutputWithContext(ctx context.Context) RolloutStepResponseArrayOutput {
 	return o
+}
+
+func (o RolloutStepResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RolloutStepResponse] {
+	return pulumix.Output[[]RolloutStepResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RolloutStepResponseArrayOutput) Index(i pulumi.IntInput) RolloutStepResponseOutput {
@@ -901,6 +1022,12 @@ func (i SasAuthenticationArgs) ToSasAuthenticationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SasAuthenticationOutput)
 }
 
+func (i SasAuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[SasAuthentication] {
+	return pulumix.Output[SasAuthentication]{
+		OutputState: i.ToSasAuthenticationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines the properties to access the artifacts using an Azure Storage SAS URI.
 type SasAuthenticationOutput struct{ *pulumi.OutputState }
 
@@ -914,6 +1041,12 @@ func (o SasAuthenticationOutput) ToSasAuthenticationOutput() SasAuthenticationOu
 
 func (o SasAuthenticationOutput) ToSasAuthenticationOutputWithContext(ctx context.Context) SasAuthenticationOutput {
 	return o
+}
+
+func (o SasAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[SasAuthentication] {
+	return pulumix.Output[SasAuthentication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SAS URI to the Azure Storage blob container. Any offset from the root of the container to where the artifacts are located can be defined in the artifactRoot.
@@ -949,6 +1082,12 @@ func (o SasAuthenticationResponseOutput) ToSasAuthenticationResponseOutput() Sas
 
 func (o SasAuthenticationResponseOutput) ToSasAuthenticationResponseOutputWithContext(ctx context.Context) SasAuthenticationResponseOutput {
 	return o
+}
+
+func (o SasAuthenticationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SasAuthenticationResponse] {
+	return pulumix.Output[SasAuthenticationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SAS URI to the Azure Storage blob container. Any offset from the root of the container to where the artifacts are located can be defined in the artifactRoot.
@@ -989,6 +1128,12 @@ func (o ServiceResponseOutput) ToServiceResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ServiceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceResponse] {
+	return pulumix.Output[ServiceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the service.
 func (o ServiceResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1021,6 +1166,12 @@ func (o ServiceResponseArrayOutput) ToServiceResponseArrayOutput() ServiceRespon
 
 func (o ServiceResponseArrayOutput) ToServiceResponseArrayOutputWithContext(ctx context.Context) ServiceResponseArrayOutput {
 	return o
+}
+
+func (o ServiceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceResponse] {
+	return pulumix.Output[[]ServiceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceResponseArrayOutput) Index(i pulumi.IntInput) ServiceResponseOutput {
@@ -1076,6 +1227,12 @@ func (i ServiceUnitArtifactsArgs) ToServiceUnitArtifactsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceUnitArtifactsOutput)
 }
 
+func (i ServiceUnitArtifactsArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceUnitArtifacts] {
+	return pulumix.Output[ServiceUnitArtifacts]{
+		OutputState: i.ToServiceUnitArtifactsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceUnitArtifactsArgs) ToServiceUnitArtifactsPtrOutput() ServiceUnitArtifactsPtrOutput {
 	return i.ToServiceUnitArtifactsPtrOutputWithContext(context.Background())
 }
@@ -1117,6 +1274,12 @@ func (i *serviceUnitArtifactsPtrType) ToServiceUnitArtifactsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceUnitArtifactsPtrOutput)
 }
 
+func (i *serviceUnitArtifactsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceUnitArtifacts] {
+	return pulumix.Output[*ServiceUnitArtifacts]{
+		OutputState: i.ToServiceUnitArtifactsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines the artifacts of a service unit.
 type ServiceUnitArtifactsOutput struct{ *pulumi.OutputState }
 
@@ -1140,6 +1303,12 @@ func (o ServiceUnitArtifactsOutput) ToServiceUnitArtifactsPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceUnitArtifacts) *ServiceUnitArtifacts {
 		return &v
 	}).(ServiceUnitArtifactsPtrOutput)
+}
+
+func (o ServiceUnitArtifactsOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceUnitArtifacts] {
+	return pulumix.Output[ServiceUnitArtifacts]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The path to the ARM parameters file relative to the artifact source.
@@ -1174,6 +1343,12 @@ func (o ServiceUnitArtifactsPtrOutput) ToServiceUnitArtifactsPtrOutput() Service
 
 func (o ServiceUnitArtifactsPtrOutput) ToServiceUnitArtifactsPtrOutputWithContext(ctx context.Context) ServiceUnitArtifactsPtrOutput {
 	return o
+}
+
+func (o ServiceUnitArtifactsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceUnitArtifacts] {
+	return pulumix.Output[*ServiceUnitArtifacts]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceUnitArtifactsPtrOutput) Elem() ServiceUnitArtifactsOutput {
@@ -1253,6 +1428,12 @@ func (o ServiceUnitArtifactsResponseOutput) ToServiceUnitArtifactsResponseOutput
 	return o
 }
 
+func (o ServiceUnitArtifactsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceUnitArtifactsResponse] {
+	return pulumix.Output[ServiceUnitArtifactsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The path to the ARM parameters file relative to the artifact source.
 func (o ServiceUnitArtifactsResponseOutput) ParametersArtifactSourceRelativePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceUnitArtifactsResponse) *string { return v.ParametersArtifactSourceRelativePath }).(pulumi.StringPtrOutput)
@@ -1285,6 +1466,12 @@ func (o ServiceUnitArtifactsResponsePtrOutput) ToServiceUnitArtifactsResponsePtr
 
 func (o ServiceUnitArtifactsResponsePtrOutput) ToServiceUnitArtifactsResponsePtrOutputWithContext(ctx context.Context) ServiceUnitArtifactsResponsePtrOutput {
 	return o
+}
+
+func (o ServiceUnitArtifactsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceUnitArtifactsResponse] {
+	return pulumix.Output[*ServiceUnitArtifactsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceUnitArtifactsResponsePtrOutput) Elem() ServiceUnitArtifactsResponseOutput {
@@ -1366,6 +1553,12 @@ func (o ServiceUnitResponseOutput) ToServiceUnitResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o ServiceUnitResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceUnitResponse] {
+	return pulumix.Output[ServiceUnitResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The artifacts for the service unit.
 func (o ServiceUnitResponseOutput) Artifacts() ServiceUnitArtifactsResponsePtrOutput {
 	return o.ApplyT(func(v ServiceUnitResponse) *ServiceUnitArtifactsResponse { return v.Artifacts }).(ServiceUnitArtifactsResponsePtrOutput)
@@ -1403,6 +1596,12 @@ func (o ServiceUnitResponseArrayOutput) ToServiceUnitResponseArrayOutput() Servi
 
 func (o ServiceUnitResponseArrayOutput) ToServiceUnitResponseArrayOutputWithContext(ctx context.Context) ServiceUnitResponseArrayOutput {
 	return o
+}
+
+func (o ServiceUnitResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceUnitResponse] {
+	return pulumix.Output[[]ServiceUnitResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceUnitResponseArrayOutput) Index(i pulumi.IntInput) ServiceUnitResponseOutput {
@@ -1462,6 +1661,12 @@ func (i StepGroupArgs) ToStepGroupOutputWithContext(ctx context.Context) StepGro
 	return pulumi.ToOutputWithContext(ctx, i).(StepGroupOutput)
 }
 
+func (i StepGroupArgs) ToOutput(ctx context.Context) pulumix.Output[StepGroup] {
+	return pulumix.Output[StepGroup]{
+		OutputState: i.ToStepGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StepGroupArrayInput is an input type that accepts StepGroupArray and StepGroupArrayOutput values.
 // You can construct a concrete instance of `StepGroupArrayInput` via:
 //
@@ -1487,6 +1692,12 @@ func (i StepGroupArray) ToStepGroupArrayOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(StepGroupArrayOutput)
 }
 
+func (i StepGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]StepGroup] {
+	return pulumix.Output[[]StepGroup]{
+		OutputState: i.ToStepGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The properties that define a Step group in a rollout.
 type StepGroupOutput struct{ *pulumi.OutputState }
 
@@ -1500,6 +1711,12 @@ func (o StepGroupOutput) ToStepGroupOutput() StepGroupOutput {
 
 func (o StepGroupOutput) ToStepGroupOutputWithContext(ctx context.Context) StepGroupOutput {
 	return o
+}
+
+func (o StepGroupOutput) ToOutput(ctx context.Context) pulumix.Output[StepGroup] {
+	return pulumix.Output[StepGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of step group names on which this step group depends on.
@@ -1541,6 +1758,12 @@ func (o StepGroupArrayOutput) ToStepGroupArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o StepGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StepGroup] {
+	return pulumix.Output[[]StepGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StepGroupArrayOutput) Index(i pulumi.IntInput) StepGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StepGroup {
 		return vs[0].([]StepGroup)[vs[1].(int)]
@@ -1574,6 +1797,12 @@ func (o StepGroupResponseOutput) ToStepGroupResponseOutput() StepGroupResponseOu
 
 func (o StepGroupResponseOutput) ToStepGroupResponseOutputWithContext(ctx context.Context) StepGroupResponseOutput {
 	return o
+}
+
+func (o StepGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StepGroupResponse] {
+	return pulumix.Output[StepGroupResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of step group names on which this step group depends on.
@@ -1615,6 +1844,12 @@ func (o StepGroupResponseArrayOutput) ToStepGroupResponseArrayOutputWithContext(
 	return o
 }
 
+func (o StepGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StepGroupResponse] {
+	return pulumix.Output[[]StepGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StepGroupResponseArrayOutput) Index(i pulumi.IntInput) StepGroupResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StepGroupResponse {
 		return vs[0].([]StepGroupResponse)[vs[1].(int)]
@@ -1650,6 +1885,12 @@ func (o StepOperationInfoResponseOutput) ToStepOperationInfoResponseOutput() Ste
 
 func (o StepOperationInfoResponseOutput) ToStepOperationInfoResponseOutputWithContext(ctx context.Context) StepOperationInfoResponseOutput {
 	return o
+}
+
+func (o StepOperationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StepOperationInfoResponse] {
+	return pulumix.Output[StepOperationInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier to track the request for ARM-based resources.

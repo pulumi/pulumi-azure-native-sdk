@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Custom Locations definition.
@@ -177,6 +178,12 @@ func (i *CustomLocation) ToCustomLocationOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLocationOutput)
 }
 
+func (i *CustomLocation) ToOutput(ctx context.Context) pulumix.Output[*CustomLocation] {
+	return pulumix.Output[*CustomLocation]{
+		OutputState: i.ToCustomLocationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomLocationOutput struct{ *pulumi.OutputState }
 
 func (CustomLocationOutput) ElementType() reflect.Type {
@@ -189,6 +196,12 @@ func (o CustomLocationOutput) ToCustomLocationOutput() CustomLocationOutput {
 
 func (o CustomLocationOutput) ToCustomLocationOutputWithContext(ctx context.Context) CustomLocationOutput {
 	return o
+}
+
+func (o CustomLocationOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomLocation] {
+	return pulumix.Output[*CustomLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This is optional input that contains the authentication that should be used to generate the namespace.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The network interface resource definition.
@@ -177,6 +178,12 @@ func (i *NetworkinterfaceRetrieve) ToNetworkinterfaceRetrieveOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkinterfaceRetrieveOutput)
 }
 
+func (i *NetworkinterfaceRetrieve) ToOutput(ctx context.Context) pulumix.Output[*NetworkinterfaceRetrieve] {
+	return pulumix.Output[*NetworkinterfaceRetrieve]{
+		OutputState: i.ToNetworkinterfaceRetrieveOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkinterfaceRetrieveOutput struct{ *pulumi.OutputState }
 
 func (NetworkinterfaceRetrieveOutput) ElementType() reflect.Type {
@@ -189,6 +196,12 @@ func (o NetworkinterfaceRetrieveOutput) ToNetworkinterfaceRetrieveOutput() Netwo
 
 func (o NetworkinterfaceRetrieveOutput) ToNetworkinterfaceRetrieveOutputWithContext(ctx context.Context) NetworkinterfaceRetrieveOutput {
 	return o
+}
+
+func (o NetworkinterfaceRetrieveOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkinterfaceRetrieve] {
+	return pulumix.Output[*NetworkinterfaceRetrieve]{
+		OutputState: o.OutputState,
+	}
 }
 
 // DNS Settings for the interface

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutput() ErrorDetailResp
 
 func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx context.Context) ErrorDetailResponseOutput {
 	return o
+}
+
+func (o ErrorDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorDetailResponse] {
+	return pulumix.Output[ErrorDetailResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The error's code.
@@ -70,6 +77,12 @@ func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutput() Error
 
 func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithContext(ctx context.Context) ErrorDetailResponseArrayOutput {
 	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorDetailResponse] {
+	return pulumix.Output[[]ErrorDetailResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
@@ -125,6 +138,12 @@ func (i LocationDataArgs) ToLocationDataOutputWithContext(ctx context.Context) L
 	return pulumi.ToOutputWithContext(ctx, i).(LocationDataOutput)
 }
 
+func (i LocationDataArgs) ToOutput(ctx context.Context) pulumix.Output[LocationData] {
+	return pulumix.Output[LocationData]{
+		OutputState: i.ToLocationDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LocationDataArgs) ToLocationDataPtrOutput() LocationDataPtrOutput {
 	return i.ToLocationDataPtrOutputWithContext(context.Background())
 }
@@ -166,6 +185,12 @@ func (i *locationDataPtrType) ToLocationDataPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(LocationDataPtrOutput)
 }
 
+func (i *locationDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*LocationData] {
+	return pulumix.Output[*LocationData]{
+		OutputState: i.ToLocationDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Metadata pertaining to the geographic location of the resource.
 type LocationDataOutput struct{ *pulumi.OutputState }
 
@@ -189,6 +214,12 @@ func (o LocationDataOutput) ToLocationDataPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocationData) *LocationData {
 		return &v
 	}).(LocationDataPtrOutput)
+}
+
+func (o LocationDataOutput) ToOutput(ctx context.Context) pulumix.Output[LocationData] {
+	return pulumix.Output[LocationData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The city or locality where the resource is located.
@@ -223,6 +254,12 @@ func (o LocationDataPtrOutput) ToLocationDataPtrOutput() LocationDataPtrOutput {
 
 func (o LocationDataPtrOutput) ToLocationDataPtrOutputWithContext(ctx context.Context) LocationDataPtrOutput {
 	return o
+}
+
+func (o LocationDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocationData] {
+	return pulumix.Output[*LocationData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LocationDataPtrOutput) Elem() LocationDataOutput {
@@ -302,6 +339,12 @@ func (o LocationDataResponseOutput) ToLocationDataResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o LocationDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LocationDataResponse] {
+	return pulumix.Output[LocationDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The city or locality where the resource is located.
 func (o LocationDataResponseOutput) City() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocationDataResponse) *string { return v.City }).(pulumi.StringPtrOutput)
@@ -334,6 +377,12 @@ func (o LocationDataResponsePtrOutput) ToLocationDataResponsePtrOutput() Locatio
 
 func (o LocationDataResponsePtrOutput) ToLocationDataResponsePtrOutputWithContext(ctx context.Context) LocationDataResponsePtrOutput {
 	return o
+}
+
+func (o LocationDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocationDataResponse] {
+	return pulumix.Output[*LocationDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LocationDataResponsePtrOutput) Elem() LocationDataResponseOutput {
@@ -413,6 +462,12 @@ func (o MachineExtensionInstanceViewResponseOutput) ToMachineExtensionInstanceVi
 	return o
 }
 
+func (o MachineExtensionInstanceViewResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionInstanceViewResponse] {
+	return pulumix.Output[MachineExtensionInstanceViewResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The machine extension name.
 func (o MachineExtensionInstanceViewResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MachineExtensionInstanceViewResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -449,6 +504,12 @@ func (o MachineExtensionInstanceViewResponseArrayOutput) ToMachineExtensionInsta
 	return o
 }
 
+func (o MachineExtensionInstanceViewResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MachineExtensionInstanceViewResponse] {
+	return pulumix.Output[[]MachineExtensionInstanceViewResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MachineExtensionInstanceViewResponseArrayOutput) Index(i pulumi.IntInput) MachineExtensionInstanceViewResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MachineExtensionInstanceViewResponse {
 		return vs[0].([]MachineExtensionInstanceViewResponse)[vs[1].(int)]
@@ -482,6 +543,12 @@ func (o MachineExtensionInstanceViewResponseStatusOutput) ToMachineExtensionInst
 
 func (o MachineExtensionInstanceViewResponseStatusOutput) ToMachineExtensionInstanceViewResponseStatusOutputWithContext(ctx context.Context) MachineExtensionInstanceViewResponseStatusOutput {
 	return o
+}
+
+func (o MachineExtensionInstanceViewResponseStatusOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionInstanceViewResponseStatus] {
+	return pulumix.Output[MachineExtensionInstanceViewResponseStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status code.
@@ -521,6 +588,12 @@ func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToMachineExtensionI
 
 func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToMachineExtensionInstanceViewResponseStatusPtrOutputWithContext(ctx context.Context) MachineExtensionInstanceViewResponseStatusPtrOutput {
 	return o
+}
+
+func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionInstanceViewResponseStatus] {
+	return pulumix.Output[*MachineExtensionInstanceViewResponseStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MachineExtensionInstanceViewResponseStatusPtrOutput) Elem() MachineExtensionInstanceViewResponseStatusOutput {
@@ -616,6 +689,12 @@ func (i MachineIdentityArgs) ToMachineIdentityOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MachineIdentityOutput)
 }
 
+func (i MachineIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[MachineIdentity] {
+	return pulumix.Output[MachineIdentity]{
+		OutputState: i.ToMachineIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MachineIdentityArgs) ToMachineIdentityPtrOutput() MachineIdentityPtrOutput {
 	return i.ToMachineIdentityPtrOutputWithContext(context.Background())
 }
@@ -657,6 +736,12 @@ func (i *machineIdentityPtrType) ToMachineIdentityPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(MachineIdentityPtrOutput)
 }
 
+func (i *machineIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*MachineIdentity] {
+	return pulumix.Output[*MachineIdentity]{
+		OutputState: i.ToMachineIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MachineIdentityOutput struct{ *pulumi.OutputState }
 
 func (MachineIdentityOutput) ElementType() reflect.Type {
@@ -681,6 +766,12 @@ func (o MachineIdentityOutput) ToMachineIdentityPtrOutputWithContext(ctx context
 	}).(MachineIdentityPtrOutput)
 }
 
+func (o MachineIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[MachineIdentity] {
+	return pulumix.Output[MachineIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o MachineIdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MachineIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -698,6 +789,12 @@ func (o MachineIdentityPtrOutput) ToMachineIdentityPtrOutput() MachineIdentityPt
 
 func (o MachineIdentityPtrOutput) ToMachineIdentityPtrOutputWithContext(ctx context.Context) MachineIdentityPtrOutput {
 	return o
+}
+
+func (o MachineIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineIdentity] {
+	return pulumix.Output[*MachineIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MachineIdentityPtrOutput) Elem() MachineIdentityOutput {
@@ -741,6 +838,12 @@ func (o MachinePropertiesResponseOsProfileOutput) ToMachinePropertiesResponseOsP
 	return o
 }
 
+func (o MachinePropertiesResponseOsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[MachinePropertiesResponseOsProfile] {
+	return pulumix.Output[MachinePropertiesResponseOsProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the host OS name of the hybrid machine.
 func (o MachinePropertiesResponseOsProfileOutput) ComputerName() pulumi.StringOutput {
 	return o.ApplyT(func(v MachinePropertiesResponseOsProfile) string { return v.ComputerName }).(pulumi.StringOutput)
@@ -758,6 +861,12 @@ func (o MachinePropertiesResponseOsProfilePtrOutput) ToMachinePropertiesResponse
 
 func (o MachinePropertiesResponseOsProfilePtrOutput) ToMachinePropertiesResponseOsProfilePtrOutputWithContext(ctx context.Context) MachinePropertiesResponseOsProfilePtrOutput {
 	return o
+}
+
+func (o MachinePropertiesResponseOsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachinePropertiesResponseOsProfile] {
+	return pulumix.Output[*MachinePropertiesResponseOsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MachinePropertiesResponseOsProfilePtrOutput) Elem() MachinePropertiesResponseOsProfileOutput {
@@ -803,6 +912,12 @@ func (o MachineResponseIdentityOutput) ToMachineResponseIdentityOutputWithContex
 	return o
 }
 
+func (o MachineResponseIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[MachineResponseIdentity] {
+	return pulumix.Output[MachineResponseIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity's principal id.
 func (o MachineResponseIdentityOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v MachineResponseIdentity) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -830,6 +945,12 @@ func (o MachineResponseIdentityPtrOutput) ToMachineResponseIdentityPtrOutput() M
 
 func (o MachineResponseIdentityPtrOutput) ToMachineResponseIdentityPtrOutputWithContext(ctx context.Context) MachineResponseIdentityPtrOutput {
 	return o
+}
+
+func (o MachineResponseIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineResponseIdentity] {
+	return pulumix.Output[*MachineResponseIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MachineResponseIdentityPtrOutput) Elem() MachineResponseIdentityOutput {

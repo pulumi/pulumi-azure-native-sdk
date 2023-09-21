@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i AccountResourcePropertiesArgs) ToAccountResourcePropertiesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AccountResourcePropertiesOutput)
 }
 
+func (i AccountResourcePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AccountResourceProperties] {
+	return pulumix.Output[AccountResourceProperties]{
+		OutputState: i.ToAccountResourcePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Property bag from billing account
 type AccountResourcePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -61,6 +68,12 @@ func (o AccountResourcePropertiesOutput) ToAccountResourcePropertiesOutput() Acc
 
 func (o AccountResourcePropertiesOutput) ToAccountResourcePropertiesOutputWithContext(ctx context.Context) AccountResourcePropertiesOutput {
 	return o
+}
+
+func (o AccountResourcePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AccountResourceProperties] {
+	return pulumix.Output[AccountResourceProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Customer owned application ID
@@ -91,6 +104,12 @@ func (o AccountResourceResponsePropertiesOutput) ToAccountResourceResponseProper
 
 func (o AccountResourceResponsePropertiesOutput) ToAccountResourceResponsePropertiesOutputWithContext(ctx context.Context) AccountResourceResponsePropertiesOutput {
 	return o
+}
+
+func (o AccountResourceResponsePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AccountResourceResponseProperties] {
+	return pulumix.Output[AccountResourceResponseProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Customer owned application ID
@@ -133,6 +152,12 @@ func (o AccountResourceResponseSystemDataOutput) ToAccountResourceResponseSystem
 
 func (o AccountResourceResponseSystemDataOutput) ToAccountResourceResponseSystemDataOutputWithContext(ctx context.Context) AccountResourceResponseSystemDataOutput {
 	return o
+}
+
+func (o AccountResourceResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[AccountResourceResponseSystemData] {
+	return pulumix.Output[AccountResourceResponseSystemData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

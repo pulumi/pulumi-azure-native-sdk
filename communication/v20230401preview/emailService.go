@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A class representing an EmailService resource.
@@ -145,6 +146,12 @@ func (i *EmailService) ToEmailServiceOutputWithContext(ctx context.Context) Emai
 	return pulumi.ToOutputWithContext(ctx, i).(EmailServiceOutput)
 }
 
+func (i *EmailService) ToOutput(ctx context.Context) pulumix.Output[*EmailService] {
+	return pulumix.Output[*EmailService]{
+		OutputState: i.ToEmailServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EmailServiceOutput struct{ *pulumi.OutputState }
 
 func (EmailServiceOutput) ElementType() reflect.Type {
@@ -157,6 +164,12 @@ func (o EmailServiceOutput) ToEmailServiceOutput() EmailServiceOutput {
 
 func (o EmailServiceOutput) ToEmailServiceOutputWithContext(ctx context.Context) EmailServiceOutput {
 	return o
+}
+
+func (o EmailServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailService] {
+	return pulumix.Output[*EmailService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location where the email service stores its data at rest.

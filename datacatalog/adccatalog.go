@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Data Catalog.
@@ -159,6 +160,12 @@ func (i *ADCCatalog) ToADCCatalogOutputWithContext(ctx context.Context) ADCCatal
 	return pulumi.ToOutputWithContext(ctx, i).(ADCCatalogOutput)
 }
 
+func (i *ADCCatalog) ToOutput(ctx context.Context) pulumix.Output[*ADCCatalog] {
+	return pulumix.Output[*ADCCatalog]{
+		OutputState: i.ToADCCatalogOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ADCCatalogOutput struct{ *pulumi.OutputState }
 
 func (ADCCatalogOutput) ElementType() reflect.Type {
@@ -171,6 +178,12 @@ func (o ADCCatalogOutput) ToADCCatalogOutput() ADCCatalogOutput {
 
 func (o ADCCatalogOutput) ToADCCatalogOutputWithContext(ctx context.Context) ADCCatalogOutput {
 	return o
+}
+
+func (o ADCCatalogOutput) ToOutput(ctx context.Context) pulumix.Output[*ADCCatalog] {
+	return pulumix.Output[*ADCCatalog]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure data catalog admin list.

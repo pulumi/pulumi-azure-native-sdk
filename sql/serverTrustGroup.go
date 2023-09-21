@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A server trust group.
@@ -170,6 +171,12 @@ func (i *ServerTrustGroup) ToServerTrustGroupOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTrustGroupOutput)
 }
 
+func (i *ServerTrustGroup) ToOutput(ctx context.Context) pulumix.Output[*ServerTrustGroup] {
+	return pulumix.Output[*ServerTrustGroup]{
+		OutputState: i.ToServerTrustGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerTrustGroupOutput struct{ *pulumi.OutputState }
 
 func (ServerTrustGroupOutput) ElementType() reflect.Type {
@@ -182,6 +189,12 @@ func (o ServerTrustGroupOutput) ToServerTrustGroupOutput() ServerTrustGroupOutpu
 
 func (o ServerTrustGroupOutput) ToServerTrustGroupOutputWithContext(ctx context.Context) ServerTrustGroupOutput {
 	return o
+}
+
+func (o ServerTrustGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerTrustGroup] {
+	return pulumix.Output[*ServerTrustGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Group members information for the server trust group.

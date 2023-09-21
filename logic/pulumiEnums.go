@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The agreement type.
@@ -80,6 +81,12 @@ func (o AgreementTypeOutput) ToAgreementTypePtrOutputWithContext(ctx context.Con
 	}).(AgreementTypePtrOutput)
 }
 
+func (o AgreementTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AgreementType] {
+	return pulumix.Output[AgreementType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AgreementTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o AgreementTypePtrOutput) ToAgreementTypePtrOutput() AgreementTypePtrOutpu
 
 func (o AgreementTypePtrOutput) ToAgreementTypePtrOutputWithContext(ctx context.Context) AgreementTypePtrOutput {
 	return o
+}
+
+func (o AgreementTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgreementType] {
+	return pulumix.Output[*AgreementType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AgreementTypePtrOutput) Elem() AgreementTypeOutput {
@@ -175,6 +188,12 @@ func (in *agreementTypePtr) ToAgreementTypePtrOutput() AgreementTypePtrOutput {
 
 func (in *agreementTypePtr) ToAgreementTypePtrOutputWithContext(ctx context.Context) AgreementTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AgreementTypePtrOutput)
+}
+
+func (in *agreementTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AgreementType] {
+	return pulumix.Output[*AgreementType]{
+		OutputState: in.ToAgreementTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The day of the week.
@@ -250,6 +269,12 @@ func (o DayOfWeekOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Da
 	}).(DayOfWeekPtrOutput)
 }
 
+func (o DayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[DayOfWeek] {
+	return pulumix.Output[DayOfWeek]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -283,6 +308,12 @@ func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return o
+}
+
+func (o DayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
+	return pulumix.Output[*DayOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DayOfWeekPtrOutput) Elem() DayOfWeekOutput {
@@ -345,6 +376,12 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
+}
+
+func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
+	return pulumix.Output[*DayOfWeek]{
+		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type DaysOfWeek string
@@ -419,6 +456,12 @@ func (o DaysOfWeekOutput) ToDaysOfWeekPtrOutputWithContext(ctx context.Context) 
 	}).(DaysOfWeekPtrOutput)
 }
 
+func (o DaysOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[DaysOfWeek] {
+	return pulumix.Output[DaysOfWeek]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DaysOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -452,6 +495,12 @@ func (o DaysOfWeekPtrOutput) ToDaysOfWeekPtrOutput() DaysOfWeekPtrOutput {
 
 func (o DaysOfWeekPtrOutput) ToDaysOfWeekPtrOutputWithContext(ctx context.Context) DaysOfWeekPtrOutput {
 	return o
+}
+
+func (o DaysOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaysOfWeek] {
+	return pulumix.Output[*DaysOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DaysOfWeekPtrOutput) Elem() DaysOfWeekOutput {
@@ -516,6 +565,12 @@ func (in *daysOfWeekPtr) ToDaysOfWeekPtrOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, in).(DaysOfWeekPtrOutput)
 }
 
+func (in *daysOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DaysOfWeek] {
+	return pulumix.Output[*DaysOfWeek]{
+		OutputState: in.ToDaysOfWeekPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DaysOfWeekArrayInput is an input type that accepts DaysOfWeekArray and DaysOfWeekArrayOutput values.
 // You can construct a concrete instance of `DaysOfWeekArrayInput` via:
 //
@@ -541,6 +596,12 @@ func (i DaysOfWeekArray) ToDaysOfWeekArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DaysOfWeekArrayOutput)
 }
 
+func (i DaysOfWeekArray) ToOutput(ctx context.Context) pulumix.Output[[]DaysOfWeek] {
+	return pulumix.Output[[]DaysOfWeek]{
+		OutputState: i.ToDaysOfWeekArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DaysOfWeekArrayOutput struct{ *pulumi.OutputState }
 
 func (DaysOfWeekArrayOutput) ElementType() reflect.Type {
@@ -553,6 +614,12 @@ func (o DaysOfWeekArrayOutput) ToDaysOfWeekArrayOutput() DaysOfWeekArrayOutput {
 
 func (o DaysOfWeekArrayOutput) ToDaysOfWeekArrayOutputWithContext(ctx context.Context) DaysOfWeekArrayOutput {
 	return o
+}
+
+func (o DaysOfWeekArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DaysOfWeek] {
+	return pulumix.Output[[]DaysOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DaysOfWeekArrayOutput) Index(i pulumi.IntInput) DaysOfWeekOutput {
@@ -651,6 +718,12 @@ func (o EdifactDecimalIndicatorOutput) ToEdifactDecimalIndicatorPtrOutputWithCon
 	}).(EdifactDecimalIndicatorPtrOutput)
 }
 
+func (o EdifactDecimalIndicatorOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactDecimalIndicator] {
+	return pulumix.Output[EdifactDecimalIndicator]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EdifactDecimalIndicatorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -684,6 +757,12 @@ func (o EdifactDecimalIndicatorPtrOutput) ToEdifactDecimalIndicatorPtrOutput() E
 
 func (o EdifactDecimalIndicatorPtrOutput) ToEdifactDecimalIndicatorPtrOutputWithContext(ctx context.Context) EdifactDecimalIndicatorPtrOutput {
 	return o
+}
+
+func (o EdifactDecimalIndicatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactDecimalIndicator] {
+	return pulumix.Output[*EdifactDecimalIndicator]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdifactDecimalIndicatorPtrOutput) Elem() EdifactDecimalIndicatorOutput {
@@ -746,6 +825,12 @@ func (in *edifactDecimalIndicatorPtr) ToEdifactDecimalIndicatorPtrOutput() Edifa
 
 func (in *edifactDecimalIndicatorPtr) ToEdifactDecimalIndicatorPtrOutputWithContext(ctx context.Context) EdifactDecimalIndicatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EdifactDecimalIndicatorPtrOutput)
+}
+
+func (in *edifactDecimalIndicatorPtr) ToOutput(ctx context.Context) pulumix.Output[*EdifactDecimalIndicator] {
+	return pulumix.Output[*EdifactDecimalIndicator]{
+		OutputState: in.ToEdifactDecimalIndicatorPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The encryption algorithm.
@@ -871,6 +956,12 @@ func (o KeyTypeOutput) ToKeyTypePtrOutputWithContext(ctx context.Context) KeyTyp
 	}).(KeyTypePtrOutput)
 }
 
+func (o KeyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[KeyType] {
+	return pulumix.Output[KeyType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -904,6 +995,12 @@ func (o KeyTypePtrOutput) ToKeyTypePtrOutput() KeyTypePtrOutput {
 
 func (o KeyTypePtrOutput) ToKeyTypePtrOutputWithContext(ctx context.Context) KeyTypePtrOutput {
 	return o
+}
+
+func (o KeyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyType] {
+	return pulumix.Output[*KeyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyTypePtrOutput) Elem() KeyTypeOutput {
@@ -966,6 +1063,12 @@ func (in *keyTypePtr) ToKeyTypePtrOutput() KeyTypePtrOutput {
 
 func (in *keyTypePtr) ToKeyTypePtrOutputWithContext(ctx context.Context) KeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyTypePtrOutput)
+}
+
+func (in *keyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KeyType] {
+	return pulumix.Output[*KeyType]{
+		OutputState: in.ToKeyTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of managed service identity. The type 'SystemAssigned' includes an implicitly created identity. The type 'None' will remove any identities from the resource.
@@ -1110,6 +1213,12 @@ func (o RosettaNetActionTypeOutput) ToRosettaNetActionTypePtrOutputWithContext(c
 	}).(RosettaNetActionTypePtrOutput)
 }
 
+func (o RosettaNetActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RosettaNetActionType] {
+	return pulumix.Output[RosettaNetActionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RosettaNetActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1143,6 +1252,12 @@ func (o RosettaNetActionTypePtrOutput) ToRosettaNetActionTypePtrOutput() Rosetta
 
 func (o RosettaNetActionTypePtrOutput) ToRosettaNetActionTypePtrOutputWithContext(ctx context.Context) RosettaNetActionTypePtrOutput {
 	return o
+}
+
+func (o RosettaNetActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RosettaNetActionType] {
+	return pulumix.Output[*RosettaNetActionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RosettaNetActionTypePtrOutput) Elem() RosettaNetActionTypeOutput {
@@ -1205,6 +1320,12 @@ func (in *rosettaNetActionTypePtr) ToRosettaNetActionTypePtrOutput() RosettaNetA
 
 func (in *rosettaNetActionTypePtr) ToRosettaNetActionTypePtrOutputWithContext(ctx context.Context) RosettaNetActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RosettaNetActionTypePtrOutput)
+}
+
+func (in *rosettaNetActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RosettaNetActionType] {
+	return pulumix.Output[*RosettaNetActionType]{
+		OutputState: in.ToRosettaNetActionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The RosettaNet ProcessConfiguration activity type.
@@ -1280,6 +1401,12 @@ func (o RosettaNetPipActivityTypeOutput) ToRosettaNetPipActivityTypePtrOutputWit
 	}).(RosettaNetPipActivityTypePtrOutput)
 }
 
+func (o RosettaNetPipActivityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RosettaNetPipActivityType] {
+	return pulumix.Output[RosettaNetPipActivityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RosettaNetPipActivityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1313,6 +1440,12 @@ func (o RosettaNetPipActivityTypePtrOutput) ToRosettaNetPipActivityTypePtrOutput
 
 func (o RosettaNetPipActivityTypePtrOutput) ToRosettaNetPipActivityTypePtrOutputWithContext(ctx context.Context) RosettaNetPipActivityTypePtrOutput {
 	return o
+}
+
+func (o RosettaNetPipActivityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RosettaNetPipActivityType] {
+	return pulumix.Output[*RosettaNetPipActivityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RosettaNetPipActivityTypePtrOutput) Elem() RosettaNetPipActivityTypeOutput {
@@ -1375,6 +1508,12 @@ func (in *rosettaNetPipActivityTypePtr) ToRosettaNetPipActivityTypePtrOutput() R
 
 func (in *rosettaNetPipActivityTypePtr) ToRosettaNetPipActivityTypePtrOutputWithContext(ctx context.Context) RosettaNetPipActivityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RosettaNetPipActivityTypePtrOutput)
+}
+
+func (in *rosettaNetPipActivityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RosettaNetPipActivityType] {
+	return pulumix.Output[*RosettaNetPipActivityType]{
+		OutputState: in.ToRosettaNetPipActivityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The persistent confidentiality encryption scope.
@@ -1447,6 +1586,12 @@ func (o RosettaNetPipConfidentialityScopeOutput) ToRosettaNetPipConfidentialityS
 	}).(RosettaNetPipConfidentialityScopePtrOutput)
 }
 
+func (o RosettaNetPipConfidentialityScopeOutput) ToOutput(ctx context.Context) pulumix.Output[RosettaNetPipConfidentialityScope] {
+	return pulumix.Output[RosettaNetPipConfidentialityScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RosettaNetPipConfidentialityScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1480,6 +1625,12 @@ func (o RosettaNetPipConfidentialityScopePtrOutput) ToRosettaNetPipConfidentiali
 
 func (o RosettaNetPipConfidentialityScopePtrOutput) ToRosettaNetPipConfidentialityScopePtrOutputWithContext(ctx context.Context) RosettaNetPipConfidentialityScopePtrOutput {
 	return o
+}
+
+func (o RosettaNetPipConfidentialityScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RosettaNetPipConfidentialityScope] {
+	return pulumix.Output[*RosettaNetPipConfidentialityScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RosettaNetPipConfidentialityScopePtrOutput) Elem() RosettaNetPipConfidentialityScopeOutput {
@@ -1542,6 +1693,12 @@ func (in *rosettaNetPipConfidentialityScopePtr) ToRosettaNetPipConfidentialitySc
 
 func (in *rosettaNetPipConfidentialityScopePtr) ToRosettaNetPipConfidentialityScopePtrOutputWithContext(ctx context.Context) RosettaNetPipConfidentialityScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RosettaNetPipConfidentialityScopePtrOutput)
+}
+
+func (in *rosettaNetPipConfidentialityScopePtr) ToOutput(ctx context.Context) pulumix.Output[*RosettaNetPipConfidentialityScope] {
+	return pulumix.Output[*RosettaNetPipConfidentialityScope]{
+		OutputState: in.ToRosettaNetPipConfidentialityScopePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The RosettaNet ProcessConfiguration role type.
@@ -1614,6 +1771,12 @@ func (o RosettaNetPipRoleTypeOutput) ToRosettaNetPipRoleTypePtrOutputWithContext
 	}).(RosettaNetPipRoleTypePtrOutput)
 }
 
+func (o RosettaNetPipRoleTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RosettaNetPipRoleType] {
+	return pulumix.Output[RosettaNetPipRoleType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RosettaNetPipRoleTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1647,6 +1810,12 @@ func (o RosettaNetPipRoleTypePtrOutput) ToRosettaNetPipRoleTypePtrOutput() Roset
 
 func (o RosettaNetPipRoleTypePtrOutput) ToRosettaNetPipRoleTypePtrOutputWithContext(ctx context.Context) RosettaNetPipRoleTypePtrOutput {
 	return o
+}
+
+func (o RosettaNetPipRoleTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RosettaNetPipRoleType] {
+	return pulumix.Output[*RosettaNetPipRoleType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RosettaNetPipRoleTypePtrOutput) Elem() RosettaNetPipRoleTypeOutput {
@@ -1709,6 +1878,12 @@ func (in *rosettaNetPipRoleTypePtr) ToRosettaNetPipRoleTypePtrOutput() RosettaNe
 
 func (in *rosettaNetPipRoleTypePtr) ToRosettaNetPipRoleTypePtrOutputWithContext(ctx context.Context) RosettaNetPipRoleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RosettaNetPipRoleTypePtrOutput)
+}
+
+func (in *rosettaNetPipRoleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RosettaNetPipRoleType] {
+	return pulumix.Output[*RosettaNetPipRoleType]{
+		OutputState: in.ToRosettaNetPipRoleTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The value indicating whether the RosettaNet PIP communication is synchronous.
@@ -1780,6 +1955,12 @@ func (o RosettaNetResponseTypeOutput) ToRosettaNetResponseTypePtrOutputWithConte
 	}).(RosettaNetResponseTypePtrOutput)
 }
 
+func (o RosettaNetResponseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RosettaNetResponseType] {
+	return pulumix.Output[RosettaNetResponseType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RosettaNetResponseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1813,6 +1994,12 @@ func (o RosettaNetResponseTypePtrOutput) ToRosettaNetResponseTypePtrOutput() Ros
 
 func (o RosettaNetResponseTypePtrOutput) ToRosettaNetResponseTypePtrOutputWithContext(ctx context.Context) RosettaNetResponseTypePtrOutput {
 	return o
+}
+
+func (o RosettaNetResponseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RosettaNetResponseType] {
+	return pulumix.Output[*RosettaNetResponseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RosettaNetResponseTypePtrOutput) Elem() RosettaNetResponseTypeOutput {
@@ -1875,6 +2062,12 @@ func (in *rosettaNetResponseTypePtr) ToRosettaNetResponseTypePtrOutput() Rosetta
 
 func (in *rosettaNetResponseTypePtr) ToRosettaNetResponseTypePtrOutputWithContext(ctx context.Context) RosettaNetResponseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RosettaNetResponseTypePtrOutput)
+}
+
+func (in *rosettaNetResponseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RosettaNetResponseType] {
+	return pulumix.Output[*RosettaNetResponseType]{
+		OutputState: in.ToRosettaNetResponseTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The schema type.
@@ -1956,6 +2149,12 @@ func (o SegmentTerminatorSuffixOutput) ToSegmentTerminatorSuffixPtrOutputWithCon
 	}).(SegmentTerminatorSuffixPtrOutput)
 }
 
+func (o SegmentTerminatorSuffixOutput) ToOutput(ctx context.Context) pulumix.Output[SegmentTerminatorSuffix] {
+	return pulumix.Output[SegmentTerminatorSuffix]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SegmentTerminatorSuffixOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1989,6 +2188,12 @@ func (o SegmentTerminatorSuffixPtrOutput) ToSegmentTerminatorSuffixPtrOutput() S
 
 func (o SegmentTerminatorSuffixPtrOutput) ToSegmentTerminatorSuffixPtrOutputWithContext(ctx context.Context) SegmentTerminatorSuffixPtrOutput {
 	return o
+}
+
+func (o SegmentTerminatorSuffixPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SegmentTerminatorSuffix] {
+	return pulumix.Output[*SegmentTerminatorSuffix]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SegmentTerminatorSuffixPtrOutput) Elem() SegmentTerminatorSuffixOutput {
@@ -2051,6 +2256,12 @@ func (in *segmentTerminatorSuffixPtr) ToSegmentTerminatorSuffixPtrOutput() Segme
 
 func (in *segmentTerminatorSuffixPtr) ToSegmentTerminatorSuffixPtrOutputWithContext(ctx context.Context) SegmentTerminatorSuffixPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SegmentTerminatorSuffixPtrOutput)
+}
+
+func (in *segmentTerminatorSuffixPtr) ToOutput(ctx context.Context) pulumix.Output[*SegmentTerminatorSuffix] {
+	return pulumix.Output[*SegmentTerminatorSuffix]{
+		OutputState: in.ToSegmentTerminatorSuffixPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The signing algorithm.

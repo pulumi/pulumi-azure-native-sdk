@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Lists the roles configured for the static site.
@@ -81,6 +82,12 @@ func (o ListStaticSiteConfiguredRolesResultOutput) ToListStaticSiteConfiguredRol
 
 func (o ListStaticSiteConfiguredRolesResultOutput) ToListStaticSiteConfiguredRolesResultOutputWithContext(ctx context.Context) ListStaticSiteConfiguredRolesResultOutput {
 	return o
+}
+
+func (o ListStaticSiteConfiguredRolesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListStaticSiteConfiguredRolesResult] {
+	return pulumix.Output[ListStaticSiteConfiguredRolesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id.

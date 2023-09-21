@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -92,6 +93,12 @@ func (i SaasCreationPropertiesArgs) ToSaasCreationPropertiesOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(SaasCreationPropertiesOutput)
 }
 
+func (i SaasCreationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SaasCreationProperties] {
+	return pulumix.Output[SaasCreationProperties]{
+		OutputState: i.ToSaasCreationPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SaasCreationPropertiesArgs) ToSaasCreationPropertiesPtrOutput() SaasCreationPropertiesPtrOutput {
 	return i.ToSaasCreationPropertiesPtrOutputWithContext(context.Background())
 }
@@ -133,6 +140,12 @@ func (i *saasCreationPropertiesPtrType) ToSaasCreationPropertiesPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(SaasCreationPropertiesPtrOutput)
 }
 
+func (i *saasCreationPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SaasCreationProperties] {
+	return pulumix.Output[*SaasCreationProperties]{
+		OutputState: i.ToSaasCreationPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // properties for creation saas
 type SaasCreationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -156,6 +169,12 @@ func (o SaasCreationPropertiesOutput) ToSaasCreationPropertiesPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SaasCreationProperties) *SaasCreationProperties {
 		return &v
 	}).(SaasCreationPropertiesPtrOutput)
+}
+
+func (o SaasCreationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SaasCreationProperties] {
+	return pulumix.Output[SaasCreationProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the SaaS subscription will auto renew upon term end.
@@ -230,6 +249,12 @@ func (o SaasCreationPropertiesPtrOutput) ToSaasCreationPropertiesPtrOutput() Saa
 
 func (o SaasCreationPropertiesPtrOutput) ToSaasCreationPropertiesPtrOutputWithContext(ctx context.Context) SaasCreationPropertiesPtrOutput {
 	return o
+}
+
+func (o SaasCreationPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SaasCreationProperties] {
+	return pulumix.Output[*SaasCreationProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SaasCreationPropertiesPtrOutput) Elem() SaasCreationPropertiesOutput {
@@ -387,6 +412,12 @@ func (o SaasPropertiesResponseTermOutput) ToSaasPropertiesResponseTermOutputWith
 	return o
 }
 
+func (o SaasPropertiesResponseTermOutput) ToOutput(ctx context.Context) pulumix.Output[SaasPropertiesResponseTerm] {
+	return pulumix.Output[SaasPropertiesResponseTerm]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The end date of the current term
 func (o SaasPropertiesResponseTermOutput) EndDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SaasPropertiesResponseTerm) *string { return v.EndDate }).(pulumi.StringPtrOutput)
@@ -414,6 +445,12 @@ func (o SaasPropertiesResponseTermPtrOutput) ToSaasPropertiesResponseTermPtrOutp
 
 func (o SaasPropertiesResponseTermPtrOutput) ToSaasPropertiesResponseTermPtrOutputWithContext(ctx context.Context) SaasPropertiesResponseTermPtrOutput {
 	return o
+}
+
+func (o SaasPropertiesResponseTermPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SaasPropertiesResponseTerm] {
+	return pulumix.Output[*SaasPropertiesResponseTerm]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SaasPropertiesResponseTermPtrOutput) Elem() SaasPropertiesResponseTermOutput {
@@ -507,6 +544,12 @@ func (o SaasResourceResponsePropertiesOutput) ToSaasResourceResponsePropertiesOu
 
 func (o SaasResourceResponsePropertiesOutput) ToSaasResourceResponsePropertiesOutputWithContext(ctx context.Context) SaasResourceResponsePropertiesOutput {
 	return o
+}
+
+func (o SaasResourceResponsePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SaasResourceResponseProperties] {
+	return pulumix.Output[SaasResourceResponseProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the SaaS subscription will auto renew upon term end.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a task with extended information that includes all secrets.
@@ -133,6 +134,12 @@ func (o ListTaskDetailsResultOutput) ToListTaskDetailsResultOutput() ListTaskDet
 
 func (o ListTaskDetailsResultOutput) ToListTaskDetailsResultOutputWithContext(ctx context.Context) ListTaskDetailsResultOutput {
 	return o
+}
+
+func (o ListTaskDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListTaskDetailsResult] {
+	return pulumix.Output[ListTaskDetailsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The machine configuration of the run agent.

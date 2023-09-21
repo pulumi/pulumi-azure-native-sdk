@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -552,6 +553,12 @@ func (i ClusterInfoArgs) ToClusterInfoOutputWithContext(ctx context.Context) Clu
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterInfoOutput)
 }
 
+func (i ClusterInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterInfo] {
+	return pulumix.Output[ClusterInfo]{
+		OutputState: i.ToClusterInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ClusterInfoArgs) ToClusterInfoPtrOutput() ClusterInfoPtrOutput {
 	return i.ToClusterInfoPtrOutputWithContext(context.Background())
 }
@@ -593,6 +600,12 @@ func (i *clusterInfoPtrType) ToClusterInfoPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterInfoPtrOutput)
 }
 
+func (i *clusterInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterInfo] {
+	return pulumix.Output[*ClusterInfo]{
+		OutputState: i.ToClusterInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The properties associated with a Stream Analytics cluster.
 type ClusterInfoOutput struct{ *pulumi.OutputState }
 
@@ -618,6 +631,12 @@ func (o ClusterInfoOutput) ToClusterInfoPtrOutputWithContext(ctx context.Context
 	}).(ClusterInfoPtrOutput)
 }
 
+func (o ClusterInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterInfo] {
+	return pulumix.Output[ClusterInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource id of cluster.
 func (o ClusterInfoOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInfo) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -635,6 +654,12 @@ func (o ClusterInfoPtrOutput) ToClusterInfoPtrOutput() ClusterInfoPtrOutput {
 
 func (o ClusterInfoPtrOutput) ToClusterInfoPtrOutputWithContext(ctx context.Context) ClusterInfoPtrOutput {
 	return o
+}
+
+func (o ClusterInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterInfo] {
+	return pulumix.Output[*ClusterInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterInfoPtrOutput) Elem() ClusterInfoOutput {
@@ -678,6 +703,12 @@ func (o ClusterInfoResponseOutput) ToClusterInfoResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o ClusterInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterInfoResponse] {
+	return pulumix.Output[ClusterInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource id of cluster.
 func (o ClusterInfoResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInfoResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -695,6 +726,12 @@ func (o ClusterInfoResponsePtrOutput) ToClusterInfoResponsePtrOutput() ClusterIn
 
 func (o ClusterInfoResponsePtrOutput) ToClusterInfoResponsePtrOutputWithContext(ctx context.Context) ClusterInfoResponsePtrOutput {
 	return o
+}
+
+func (o ClusterInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterInfoResponse] {
+	return pulumix.Output[*ClusterInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterInfoResponsePtrOutput) Elem() ClusterInfoResponseOutput {
@@ -742,6 +779,12 @@ func (o ClusterJobResponseOutput) ToClusterJobResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o ClusterJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterJobResponse] {
+	return pulumix.Output[ClusterJobResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the streaming job.
 func (o ClusterJobResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterJobResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -769,6 +812,12 @@ func (o ClusterJobResponseArrayOutput) ToClusterJobResponseArrayOutput() Cluster
 
 func (o ClusterJobResponseArrayOutput) ToClusterJobResponseArrayOutputWithContext(ctx context.Context) ClusterJobResponseArrayOutput {
 	return o
+}
+
+func (o ClusterJobResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterJobResponse] {
+	return pulumix.Output[[]ClusterJobResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterJobResponseArrayOutput) Index(i pulumi.IntInput) ClusterJobResponseOutput {
@@ -816,6 +865,12 @@ func (i ClusterSkuArgs) ToClusterSkuOutputWithContext(ctx context.Context) Clust
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterSkuOutput)
 }
 
+func (i ClusterSkuArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterSku] {
+	return pulumix.Output[ClusterSku]{
+		OutputState: i.ToClusterSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ClusterSkuArgs) ToClusterSkuPtrOutput() ClusterSkuPtrOutput {
 	return i.ToClusterSkuPtrOutputWithContext(context.Background())
 }
@@ -857,6 +912,12 @@ func (i *clusterSkuPtrType) ToClusterSkuPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterSkuPtrOutput)
 }
 
+func (i *clusterSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterSku] {
+	return pulumix.Output[*ClusterSku]{
+		OutputState: i.ToClusterSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
 type ClusterSkuOutput struct{ *pulumi.OutputState }
 
@@ -882,6 +943,12 @@ func (o ClusterSkuOutput) ToClusterSkuPtrOutputWithContext(ctx context.Context) 
 	}).(ClusterSkuPtrOutput)
 }
 
+func (o ClusterSkuOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterSku] {
+	return pulumix.Output[ClusterSku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Denotes the number of streaming units the cluster can support. Valid values for this property are multiples of 36 with a minimum value of 36 and maximum value of 216. Required on PUT (CreateOrUpdate) requests.
 func (o ClusterSkuOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterSku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -904,6 +971,12 @@ func (o ClusterSkuPtrOutput) ToClusterSkuPtrOutput() ClusterSkuPtrOutput {
 
 func (o ClusterSkuPtrOutput) ToClusterSkuPtrOutputWithContext(ctx context.Context) ClusterSkuPtrOutput {
 	return o
+}
+
+func (o ClusterSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterSku] {
+	return pulumix.Output[*ClusterSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterSkuPtrOutput) Elem() ClusterSkuOutput {
@@ -959,6 +1032,12 @@ func (o ClusterSkuResponseOutput) ToClusterSkuResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o ClusterSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterSkuResponse] {
+	return pulumix.Output[ClusterSkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Denotes the number of streaming units the cluster can support. Valid values for this property are multiples of 36 with a minimum value of 36 and maximum value of 216. Required on PUT (CreateOrUpdate) requests.
 func (o ClusterSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -981,6 +1060,12 @@ func (o ClusterSkuResponsePtrOutput) ToClusterSkuResponsePtrOutput() ClusterSkuR
 
 func (o ClusterSkuResponsePtrOutput) ToClusterSkuResponsePtrOutputWithContext(ctx context.Context) ClusterSkuResponsePtrOutput {
 	return o
+}
+
+func (o ClusterSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterSkuResponse] {
+	return pulumix.Output[*ClusterSkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterSkuResponsePtrOutput) Elem() ClusterSkuResponseOutput {
@@ -1072,6 +1157,12 @@ func (o DiagnosticConditionResponseOutput) ToDiagnosticConditionResponseOutputWi
 	return o
 }
 
+func (o DiagnosticConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiagnosticConditionResponse] {
+	return pulumix.Output[DiagnosticConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The opaque diagnostic code.
 func (o DiagnosticConditionResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v DiagnosticConditionResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -1101,6 +1192,12 @@ func (o DiagnosticConditionResponseArrayOutput) ToDiagnosticConditionResponseArr
 	return o
 }
 
+func (o DiagnosticConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiagnosticConditionResponse] {
+	return pulumix.Output[[]DiagnosticConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DiagnosticConditionResponseArrayOutput) Index(i pulumi.IntInput) DiagnosticConditionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiagnosticConditionResponse {
 		return vs[0].([]DiagnosticConditionResponse)[vs[1].(int)]
@@ -1126,6 +1223,12 @@ func (o DiagnosticsResponseOutput) ToDiagnosticsResponseOutput() DiagnosticsResp
 
 func (o DiagnosticsResponseOutput) ToDiagnosticsResponseOutputWithContext(ctx context.Context) DiagnosticsResponseOutput {
 	return o
+}
+
+func (o DiagnosticsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiagnosticsResponse] {
+	return pulumix.Output[DiagnosticsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A collection of zero or more conditions applicable to the resource, or to the job overall, that warrant customer attention.
@@ -1388,6 +1491,12 @@ func (i FunctionTypeArgs) ToFunctionTypeOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionTypeOutput)
 }
 
+func (i FunctionTypeArgs) ToOutput(ctx context.Context) pulumix.Output[FunctionType] {
+	return pulumix.Output[FunctionType]{
+		OutputState: i.ToFunctionTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FunctionTypeArrayInput is an input type that accepts FunctionTypeArray and FunctionTypeArrayOutput values.
 // You can construct a concrete instance of `FunctionTypeArrayInput` via:
 //
@@ -1413,6 +1522,12 @@ func (i FunctionTypeArray) ToFunctionTypeArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionTypeArrayOutput)
 }
 
+func (i FunctionTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]FunctionType] {
+	return pulumix.Output[[]FunctionType]{
+		OutputState: i.ToFunctionTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A function object, containing all information associated with the named function. All functions are contained under a streaming job.
 type FunctionTypeOutput struct{ *pulumi.OutputState }
 
@@ -1426,6 +1541,12 @@ func (o FunctionTypeOutput) ToFunctionTypeOutput() FunctionTypeOutput {
 
 func (o FunctionTypeOutput) ToFunctionTypeOutputWithContext(ctx context.Context) FunctionTypeOutput {
 	return o
+}
+
+func (o FunctionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionType] {
+	return pulumix.Output[FunctionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name
@@ -1450,6 +1571,12 @@ func (o FunctionTypeArrayOutput) ToFunctionTypeArrayOutput() FunctionTypeArrayOu
 
 func (o FunctionTypeArrayOutput) ToFunctionTypeArrayOutputWithContext(ctx context.Context) FunctionTypeArrayOutput {
 	return o
+}
+
+func (o FunctionTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FunctionType] {
+	return pulumix.Output[[]FunctionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FunctionTypeArrayOutput) Index(i pulumi.IntInput) FunctionTypeOutput {
@@ -1513,6 +1640,12 @@ func (o FunctionResponseOutput) ToFunctionResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o FunctionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionResponse] {
+	return pulumix.Output[FunctionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource Id
 func (o FunctionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1545,6 +1678,12 @@ func (o FunctionResponseArrayOutput) ToFunctionResponseArrayOutput() FunctionRes
 
 func (o FunctionResponseArrayOutput) ToFunctionResponseArrayOutputWithContext(ctx context.Context) FunctionResponseArrayOutput {
 	return o
+}
+
+func (o FunctionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FunctionResponse] {
+	return pulumix.Output[[]FunctionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FunctionResponseArrayOutput) Index(i pulumi.IntInput) FunctionResponseOutput {
@@ -1624,6 +1763,12 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
+func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
 	return i.ToIdentityPtrOutputWithContext(context.Background())
 }
@@ -1665,6 +1810,12 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
+func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes how identity is verified
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -1690,6 +1841,12 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
+func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type
 func (o IdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Identity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -1707,6 +1864,12 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
+}
+
+func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -1754,6 +1917,12 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
+	return pulumix.Output[IdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity principal ID
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1781,6 +1950,12 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
+}
+
+func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
+	return pulumix.Output[*IdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -1862,6 +2037,12 @@ func (i InputTypeArgs) ToInputTypeOutputWithContext(ctx context.Context) InputTy
 	return pulumi.ToOutputWithContext(ctx, i).(InputTypeOutput)
 }
 
+func (i InputTypeArgs) ToOutput(ctx context.Context) pulumix.Output[InputType] {
+	return pulumix.Output[InputType]{
+		OutputState: i.ToInputTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InputTypeArrayInput is an input type that accepts InputTypeArray and InputTypeArrayOutput values.
 // You can construct a concrete instance of `InputTypeArrayInput` via:
 //
@@ -1887,6 +2068,12 @@ func (i InputTypeArray) ToInputTypeArrayOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(InputTypeArrayOutput)
 }
 
+func (i InputTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]InputType] {
+	return pulumix.Output[[]InputType]{
+		OutputState: i.ToInputTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
 type InputTypeOutput struct{ *pulumi.OutputState }
 
@@ -1900,6 +2087,12 @@ func (o InputTypeOutput) ToInputTypeOutput() InputTypeOutput {
 
 func (o InputTypeOutput) ToInputTypeOutputWithContext(ctx context.Context) InputTypeOutput {
 	return o
+}
+
+func (o InputTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InputType] {
+	return pulumix.Output[InputType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name
@@ -1924,6 +2117,12 @@ func (o InputTypeArrayOutput) ToInputTypeArrayOutput() InputTypeArrayOutput {
 
 func (o InputTypeArrayOutput) ToInputTypeArrayOutputWithContext(ctx context.Context) InputTypeArrayOutput {
 	return o
+}
+
+func (o InputTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InputType] {
+	return pulumix.Output[[]InputType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InputTypeArrayOutput) Index(i pulumi.IntInput) InputTypeOutput {
@@ -1959,6 +2158,12 @@ func (o InputResponseOutput) ToInputResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o InputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InputResponse] {
+	return pulumix.Output[InputResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource Id
 func (o InputResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v InputResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1991,6 +2196,12 @@ func (o InputResponseArrayOutput) ToInputResponseArrayOutput() InputResponseArra
 
 func (o InputResponseArrayOutput) ToInputResponseArrayOutputWithContext(ctx context.Context) InputResponseArrayOutput {
 	return o
+}
+
+func (o InputResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InputResponse] {
+	return pulumix.Output[[]InputResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InputResponseArrayOutput) Index(i pulumi.IntInput) InputResponseOutput {
@@ -2094,6 +2305,12 @@ func (i JobStorageAccountArgs) ToJobStorageAccountOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(JobStorageAccountOutput)
 }
 
+func (i JobStorageAccountArgs) ToOutput(ctx context.Context) pulumix.Output[JobStorageAccount] {
+	return pulumix.Output[JobStorageAccount]{
+		OutputState: i.ToJobStorageAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobStorageAccountArgs) ToJobStorageAccountPtrOutput() JobStorageAccountPtrOutput {
 	return i.ToJobStorageAccountPtrOutputWithContext(context.Background())
 }
@@ -2135,6 +2352,12 @@ func (i *jobStorageAccountPtrType) ToJobStorageAccountPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(JobStorageAccountPtrOutput)
 }
 
+func (i *jobStorageAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobStorageAccount] {
+	return pulumix.Output[*JobStorageAccount]{
+		OutputState: i.ToJobStorageAccountPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The properties that are associated with an Azure Storage account with MSI
 type JobStorageAccountOutput struct{ *pulumi.OutputState }
 
@@ -2158,6 +2381,12 @@ func (o JobStorageAccountOutput) ToJobStorageAccountPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStorageAccount) *JobStorageAccount {
 		return &v
 	}).(JobStorageAccountPtrOutput)
+}
+
+func (o JobStorageAccountOutput) ToOutput(ctx context.Context) pulumix.Output[JobStorageAccount] {
+	return pulumix.Output[JobStorageAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests.
@@ -2187,6 +2416,12 @@ func (o JobStorageAccountPtrOutput) ToJobStorageAccountPtrOutput() JobStorageAcc
 
 func (o JobStorageAccountPtrOutput) ToJobStorageAccountPtrOutputWithContext(ctx context.Context) JobStorageAccountPtrOutput {
 	return o
+}
+
+func (o JobStorageAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobStorageAccount] {
+	return pulumix.Output[*JobStorageAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobStorageAccountPtrOutput) Elem() JobStorageAccountOutput {
@@ -2254,6 +2489,12 @@ func (o JobStorageAccountResponseOutput) ToJobStorageAccountResponseOutputWithCo
 	return o
 }
 
+func (o JobStorageAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobStorageAccountResponse] {
+	return pulumix.Output[JobStorageAccountResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests.
 func (o JobStorageAccountResponseOutput) AccountKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStorageAccountResponse) *string { return v.AccountKey }).(pulumi.StringPtrOutput)
@@ -2281,6 +2522,12 @@ func (o JobStorageAccountResponsePtrOutput) ToJobStorageAccountResponsePtrOutput
 
 func (o JobStorageAccountResponsePtrOutput) ToJobStorageAccountResponsePtrOutputWithContext(ctx context.Context) JobStorageAccountResponsePtrOutput {
 	return o
+}
+
+func (o JobStorageAccountResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobStorageAccountResponse] {
+	return pulumix.Output[*JobStorageAccountResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobStorageAccountResponsePtrOutput) Elem() JobStorageAccountResponseOutput {
@@ -2396,6 +2643,12 @@ func (i OutputTypeArgs) ToOutputTypeOutputWithContext(ctx context.Context) Outpu
 	return pulumi.ToOutputWithContext(ctx, i).(OutputTypeOutput)
 }
 
+func (i OutputTypeArgs) ToOutput(ctx context.Context) pulumix.Output[OutputType] {
+	return pulumix.Output[OutputType]{
+		OutputState: i.ToOutputTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OutputTypeArrayInput is an input type that accepts OutputTypeArray and OutputTypeArrayOutput values.
 // You can construct a concrete instance of `OutputTypeArrayInput` via:
 //
@@ -2421,6 +2674,12 @@ func (i OutputTypeArray) ToOutputTypeArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(OutputTypeArrayOutput)
 }
 
+func (i OutputTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]OutputType] {
+	return pulumix.Output[[]OutputType]{
+		OutputState: i.ToOutputTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
 type OutputTypeOutput struct{ *pulumi.OutputState }
 
@@ -2434,6 +2693,12 @@ func (o OutputTypeOutput) ToOutputTypeOutput() OutputTypeOutput {
 
 func (o OutputTypeOutput) ToOutputTypeOutputWithContext(ctx context.Context) OutputTypeOutput {
 	return o
+}
+
+func (o OutputTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OutputType] {
+	return pulumix.Output[OutputType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
@@ -2473,6 +2738,12 @@ func (o OutputTypeArrayOutput) ToOutputTypeArrayOutput() OutputTypeArrayOutput {
 
 func (o OutputTypeArrayOutput) ToOutputTypeArrayOutputWithContext(ctx context.Context) OutputTypeArrayOutput {
 	return o
+}
+
+func (o OutputTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OutputType] {
+	return pulumix.Output[[]OutputType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OutputTypeArrayOutput) Index(i pulumi.IntInput) OutputTypeOutput {
@@ -2516,6 +2787,12 @@ func (o OutputResponseOutput) ToOutputResponseOutput() OutputResponseOutput {
 
 func (o OutputResponseOutput) ToOutputResponseOutputWithContext(ctx context.Context) OutputResponseOutput {
 	return o
+}
+
+func (o OutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OutputResponse] {
+	return pulumix.Output[OutputResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
@@ -2575,6 +2852,12 @@ func (o OutputResponseArrayOutput) ToOutputResponseArrayOutput() OutputResponseA
 
 func (o OutputResponseArrayOutput) ToOutputResponseArrayOutputWithContext(ctx context.Context) OutputResponseArrayOutput {
 	return o
+}
+
+func (o OutputResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OutputResponse] {
+	return pulumix.Output[[]OutputResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OutputResponseArrayOutput) Index(i pulumi.IntInput) OutputResponseOutput {
@@ -2668,6 +2951,12 @@ func (o PrivateLinkConnectionStateResponseOutput) ToPrivateLinkConnectionStateRe
 	return o
 }
 
+func (o PrivateLinkConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkConnectionStateResponse] {
+	return pulumix.Output[PrivateLinkConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A message indicating if changes on the service provider require any updates on the consumer.
 func (o PrivateLinkConnectionStateResponseOutput) ActionsRequired() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateLinkConnectionStateResponse) string { return v.ActionsRequired }).(pulumi.StringOutput)
@@ -2695,6 +2984,12 @@ func (o PrivateLinkConnectionStateResponsePtrOutput) ToPrivateLinkConnectionStat
 
 func (o PrivateLinkConnectionStateResponsePtrOutput) ToPrivateLinkConnectionStateResponsePtrOutputWithContext(ctx context.Context) PrivateLinkConnectionStateResponsePtrOutput {
 	return o
+}
+
+func (o PrivateLinkConnectionStateResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkConnectionStateResponse] {
+	return pulumix.Output[*PrivateLinkConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateLinkConnectionStateResponsePtrOutput) Elem() PrivateLinkConnectionStateResponseOutput {
@@ -2776,6 +3071,12 @@ func (i PrivateLinkServiceConnectionArgs) ToPrivateLinkServiceConnectionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionOutput)
 }
 
+func (i PrivateLinkServiceConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnection] {
+	return pulumix.Output[PrivateLinkServiceConnection]{
+		OutputState: i.ToPrivateLinkServiceConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateLinkServiceConnectionArrayInput is an input type that accepts PrivateLinkServiceConnectionArray and PrivateLinkServiceConnectionArrayOutput values.
 // You can construct a concrete instance of `PrivateLinkServiceConnectionArrayInput` via:
 //
@@ -2801,6 +3102,12 @@ func (i PrivateLinkServiceConnectionArray) ToPrivateLinkServiceConnectionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionArrayOutput)
 }
 
+func (i PrivateLinkServiceConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateLinkServiceConnection] {
+	return pulumix.Output[[]PrivateLinkServiceConnection]{
+		OutputState: i.ToPrivateLinkServiceConnectionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A grouping of information about the connection to the remote resource.
 type PrivateLinkServiceConnectionOutput struct{ *pulumi.OutputState }
 
@@ -2814,6 +3121,12 @@ func (o PrivateLinkServiceConnectionOutput) ToPrivateLinkServiceConnectionOutput
 
 func (o PrivateLinkServiceConnectionOutput) ToPrivateLinkServiceConnectionOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnection] {
+	return pulumix.Output[PrivateLinkServiceConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
@@ -2838,6 +3151,12 @@ func (o PrivateLinkServiceConnectionArrayOutput) ToPrivateLinkServiceConnectionA
 
 func (o PrivateLinkServiceConnectionArrayOutput) ToPrivateLinkServiceConnectionArrayOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionArrayOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateLinkServiceConnection] {
+	return pulumix.Output[[]PrivateLinkServiceConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateLinkServiceConnectionArrayOutput) Index(i pulumi.IntInput) PrivateLinkServiceConnectionOutput {
@@ -2871,6 +3190,12 @@ func (o PrivateLinkServiceConnectionResponseOutput) ToPrivateLinkServiceConnecti
 
 func (o PrivateLinkServiceConnectionResponseOutput) ToPrivateLinkServiceConnectionResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionResponseOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionResponse] {
+	return pulumix.Output[PrivateLinkServiceConnectionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
@@ -2907,6 +3232,12 @@ func (o PrivateLinkServiceConnectionResponseArrayOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionResponseArrayOutput) ToPrivateLinkServiceConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionResponseArrayOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateLinkServiceConnectionResponse] {
+	return pulumix.Output[[]PrivateLinkServiceConnectionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateLinkServiceConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateLinkServiceConnectionResponseOutput {
@@ -3094,6 +3425,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -3135,6 +3472,12 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
+func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The properties that are associated with a SKU.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -3160,6 +3503,12 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the SKU. Required on PUT (CreateOrReplace) requests.
 func (o SkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Sku) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -3177,6 +3526,12 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
+}
+
+func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -3220,6 +3575,12 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the SKU. Required on PUT (CreateOrReplace) requests.
 func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -3237,6 +3598,12 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
+}
+
+func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
+	return pulumix.Output[*SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -3380,6 +3747,12 @@ func (i TransformationArgs) ToTransformationOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(TransformationOutput)
 }
 
+func (i TransformationArgs) ToOutput(ctx context.Context) pulumix.Output[Transformation] {
+	return pulumix.Output[Transformation]{
+		OutputState: i.ToTransformationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TransformationArgs) ToTransformationPtrOutput() TransformationPtrOutput {
 	return i.ToTransformationPtrOutputWithContext(context.Background())
 }
@@ -3421,6 +3794,12 @@ func (i *transformationPtrType) ToTransformationPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(TransformationPtrOutput)
 }
 
+func (i *transformationPtrType) ToOutput(ctx context.Context) pulumix.Output[*Transformation] {
+	return pulumix.Output[*Transformation]{
+		OutputState: i.ToTransformationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A transformation object, containing all information associated with the named transformation. All transformations are contained under a streaming job.
 type TransformationOutput struct{ *pulumi.OutputState }
 
@@ -3444,6 +3823,12 @@ func (o TransformationOutput) ToTransformationPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Transformation) *Transformation {
 		return &v
 	}).(TransformationPtrOutput)
+}
+
+func (o TransformationOutput) ToOutput(ctx context.Context) pulumix.Output[Transformation] {
+	return pulumix.Output[Transformation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name
@@ -3478,6 +3863,12 @@ func (o TransformationPtrOutput) ToTransformationPtrOutput() TransformationPtrOu
 
 func (o TransformationPtrOutput) ToTransformationPtrOutputWithContext(ctx context.Context) TransformationPtrOutput {
 	return o
+}
+
+func (o TransformationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Transformation] {
+	return pulumix.Output[*Transformation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransformationPtrOutput) Elem() TransformationOutput {
@@ -3576,6 +3967,12 @@ func (o TransformationResponseOutput) ToTransformationResponseOutputWithContext(
 	return o
 }
 
+func (o TransformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TransformationResponse] {
+	return pulumix.Output[TransformationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The current entity tag for the transformation. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency.
 func (o TransformationResponseOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v TransformationResponse) string { return v.Etag }).(pulumi.StringOutput)
@@ -3623,6 +4020,12 @@ func (o TransformationResponsePtrOutput) ToTransformationResponsePtrOutput() Tra
 
 func (o TransformationResponsePtrOutput) ToTransformationResponsePtrOutputWithContext(ctx context.Context) TransformationResponsePtrOutput {
 	return o
+}
+
+func (o TransformationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TransformationResponse] {
+	return pulumix.Output[*TransformationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransformationResponsePtrOutput) Elem() TransformationResponseOutput {

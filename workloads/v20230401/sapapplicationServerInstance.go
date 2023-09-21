@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Define the SAP Application Server Instance resource.
@@ -165,6 +166,12 @@ func (i *SAPApplicationServerInstance) ToSAPApplicationServerInstanceOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SAPApplicationServerInstanceOutput)
 }
 
+func (i *SAPApplicationServerInstance) ToOutput(ctx context.Context) pulumix.Output[*SAPApplicationServerInstance] {
+	return pulumix.Output[*SAPApplicationServerInstance]{
+		OutputState: i.ToSAPApplicationServerInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SAPApplicationServerInstanceOutput struct{ *pulumi.OutputState }
 
 func (SAPApplicationServerInstanceOutput) ElementType() reflect.Type {
@@ -177,6 +184,12 @@ func (o SAPApplicationServerInstanceOutput) ToSAPApplicationServerInstanceOutput
 
 func (o SAPApplicationServerInstanceOutput) ToSAPApplicationServerInstanceOutputWithContext(ctx context.Context) SAPApplicationServerInstanceOutput {
 	return o
+}
+
+func (o SAPApplicationServerInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*SAPApplicationServerInstance] {
+	return pulumix.Output[*SAPApplicationServerInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Defines the Application Instance errors.

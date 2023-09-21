@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Issue Attachment Contract details.
@@ -202,6 +203,12 @@ func (i *ApiIssueAttachment) ToApiIssueAttachmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIssueAttachmentOutput)
 }
 
+func (i *ApiIssueAttachment) ToOutput(ctx context.Context) pulumix.Output[*ApiIssueAttachment] {
+	return pulumix.Output[*ApiIssueAttachment]{
+		OutputState: i.ToApiIssueAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiIssueAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ApiIssueAttachmentOutput) ElementType() reflect.Type {
@@ -214,6 +221,12 @@ func (o ApiIssueAttachmentOutput) ToApiIssueAttachmentOutput() ApiIssueAttachmen
 
 func (o ApiIssueAttachmentOutput) ToApiIssueAttachmentOutputWithContext(ctx context.Context) ApiIssueAttachmentOutput {
 	return o
+}
+
+func (o ApiIssueAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiIssueAttachment] {
+	return pulumix.Output[*ApiIssueAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An HTTP link or Base64-encoded binary data.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -78,6 +79,12 @@ func (i MigrateProjectPropertiesArgs) ToMigrateProjectPropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(MigrateProjectPropertiesOutput)
 }
 
+func (i MigrateProjectPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MigrateProjectProperties] {
+	return pulumix.Output[MigrateProjectProperties]{
+		OutputState: i.ToMigrateProjectPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MigrateProjectPropertiesArgs) ToMigrateProjectPropertiesPtrOutput() MigrateProjectPropertiesPtrOutput {
 	return i.ToMigrateProjectPropertiesPtrOutputWithContext(context.Background())
 }
@@ -119,6 +126,12 @@ func (i *migrateProjectPropertiesPtrType) ToMigrateProjectPropertiesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(MigrateProjectPropertiesPtrOutput)
 }
 
+func (i *migrateProjectPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MigrateProjectProperties] {
+	return pulumix.Output[*MigrateProjectProperties]{
+		OutputState: i.ToMigrateProjectPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class for migrate project properties.
 type MigrateProjectPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -144,6 +157,12 @@ func (o MigrateProjectPropertiesOutput) ToMigrateProjectPropertiesPtrOutputWithC
 	}).(MigrateProjectPropertiesPtrOutput)
 }
 
+func (o MigrateProjectPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MigrateProjectProperties] {
+	return pulumix.Output[MigrateProjectProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Provisioning state of the migrate project.
 func (o MigrateProjectPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MigrateProjectProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
@@ -166,6 +185,12 @@ func (o MigrateProjectPropertiesPtrOutput) ToMigrateProjectPropertiesPtrOutput()
 
 func (o MigrateProjectPropertiesPtrOutput) ToMigrateProjectPropertiesPtrOutputWithContext(ctx context.Context) MigrateProjectPropertiesPtrOutput {
 	return o
+}
+
+func (o MigrateProjectPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrateProjectProperties] {
+	return pulumix.Output[*MigrateProjectProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MigrateProjectPropertiesPtrOutput) Elem() MigrateProjectPropertiesOutput {
@@ -227,6 +252,12 @@ func (o MigrateProjectPropertiesResponseOutput) ToMigrateProjectPropertiesRespon
 	return o
 }
 
+func (o MigrateProjectPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MigrateProjectPropertiesResponse] {
+	return pulumix.Output[MigrateProjectPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets the last time the project summary was refreshed.
 func (o MigrateProjectPropertiesResponseOutput) LastSummaryRefreshedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MigrateProjectPropertiesResponse) string { return v.LastSummaryRefreshedTime }).(pulumi.StringOutput)
@@ -272,6 +303,12 @@ func (o MigrateProjectResponseTagsOutput) ToMigrateProjectResponseTagsOutputWith
 	return o
 }
 
+func (o MigrateProjectResponseTagsOutput) ToOutput(ctx context.Context) pulumix.Output[MigrateProjectResponseTags] {
+	return pulumix.Output[MigrateProjectResponseTags]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MigrateProjectResponseTagsOutput) AdditionalProperties() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MigrateProjectResponseTags) *string { return v.AdditionalProperties }).(pulumi.StringPtrOutput)
 }
@@ -288,6 +325,12 @@ func (o MigrateProjectResponseTagsPtrOutput) ToMigrateProjectResponseTagsPtrOutp
 
 func (o MigrateProjectResponseTagsPtrOutput) ToMigrateProjectResponseTagsPtrOutputWithContext(ctx context.Context) MigrateProjectResponseTagsPtrOutput {
 	return o
+}
+
+func (o MigrateProjectResponseTagsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrateProjectResponseTags] {
+	return pulumix.Output[*MigrateProjectResponseTags]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MigrateProjectResponseTagsPtrOutput) Elem() MigrateProjectResponseTagsOutput {
@@ -342,6 +385,12 @@ func (i MigrateProjectTagsArgs) ToMigrateProjectTagsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(MigrateProjectTagsOutput)
 }
 
+func (i MigrateProjectTagsArgs) ToOutput(ctx context.Context) pulumix.Output[MigrateProjectTags] {
+	return pulumix.Output[MigrateProjectTags]{
+		OutputState: i.ToMigrateProjectTagsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MigrateProjectTagsArgs) ToMigrateProjectTagsPtrOutput() MigrateProjectTagsPtrOutput {
 	return i.ToMigrateProjectTagsPtrOutputWithContext(context.Background())
 }
@@ -383,6 +432,12 @@ func (i *migrateProjectTagsPtrType) ToMigrateProjectTagsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(MigrateProjectTagsPtrOutput)
 }
 
+func (i *migrateProjectTagsPtrType) ToOutput(ctx context.Context) pulumix.Output[*MigrateProjectTags] {
+	return pulumix.Output[*MigrateProjectTags]{
+		OutputState: i.ToMigrateProjectTagsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Gets or sets the tags.
 type MigrateProjectTagsOutput struct{ *pulumi.OutputState }
 
@@ -408,6 +463,12 @@ func (o MigrateProjectTagsOutput) ToMigrateProjectTagsPtrOutputWithContext(ctx c
 	}).(MigrateProjectTagsPtrOutput)
 }
 
+func (o MigrateProjectTagsOutput) ToOutput(ctx context.Context) pulumix.Output[MigrateProjectTags] {
+	return pulumix.Output[MigrateProjectTags]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MigrateProjectTagsOutput) AdditionalProperties() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MigrateProjectTags) *string { return v.AdditionalProperties }).(pulumi.StringPtrOutput)
 }
@@ -424,6 +485,12 @@ func (o MigrateProjectTagsPtrOutput) ToMigrateProjectTagsPtrOutput() MigrateProj
 
 func (o MigrateProjectTagsPtrOutput) ToMigrateProjectTagsPtrOutputWithContext(ctx context.Context) MigrateProjectTagsPtrOutput {
 	return o
+}
+
+func (o MigrateProjectTagsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrateProjectTags] {
+	return pulumix.Output[*MigrateProjectTags]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MigrateProjectTagsPtrOutput) Elem() MigrateProjectTagsOutput {
@@ -528,6 +595,12 @@ func (i SolutionDetailsArgs) ToSolutionDetailsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SolutionDetailsOutput)
 }
 
+func (i SolutionDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[SolutionDetails] {
+	return pulumix.Output[SolutionDetails]{
+		OutputState: i.ToSolutionDetailsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SolutionDetailsArgs) ToSolutionDetailsPtrOutput() SolutionDetailsPtrOutput {
 	return i.ToSolutionDetailsPtrOutputWithContext(context.Background())
 }
@@ -569,6 +642,12 @@ func (i *solutionDetailsPtrType) ToSolutionDetailsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SolutionDetailsPtrOutput)
 }
 
+func (i *solutionDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SolutionDetails] {
+	return pulumix.Output[*SolutionDetails]{
+		OutputState: i.ToSolutionDetailsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class representing the details of the solution.
 type SolutionDetailsOutput struct{ *pulumi.OutputState }
 
@@ -592,6 +671,12 @@ func (o SolutionDetailsOutput) ToSolutionDetailsPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SolutionDetails) *SolutionDetails {
 		return &v
 	}).(SolutionDetailsPtrOutput)
+}
+
+func (o SolutionDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[SolutionDetails] {
+	return pulumix.Output[SolutionDetails]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the count of assessments reported by the solution.
@@ -621,6 +706,12 @@ func (o SolutionDetailsPtrOutput) ToSolutionDetailsPtrOutput() SolutionDetailsPt
 
 func (o SolutionDetailsPtrOutput) ToSolutionDetailsPtrOutputWithContext(ctx context.Context) SolutionDetailsPtrOutput {
 	return o
+}
+
+func (o SolutionDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SolutionDetails] {
+	return pulumix.Output[*SolutionDetails]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SolutionDetailsPtrOutput) Elem() SolutionDetailsOutput {
@@ -688,6 +779,12 @@ func (o SolutionDetailsResponseOutput) ToSolutionDetailsResponseOutputWithContex
 	return o
 }
 
+func (o SolutionDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SolutionDetailsResponse] {
+	return pulumix.Output[SolutionDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the count of assessments reported by the solution.
 func (o SolutionDetailsResponseOutput) AssessmentCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SolutionDetailsResponse) *int { return v.AssessmentCount }).(pulumi.IntPtrOutput)
@@ -715,6 +812,12 @@ func (o SolutionDetailsResponsePtrOutput) ToSolutionDetailsResponsePtrOutput() S
 
 func (o SolutionDetailsResponsePtrOutput) ToSolutionDetailsResponsePtrOutputWithContext(ctx context.Context) SolutionDetailsResponsePtrOutput {
 	return o
+}
+
+func (o SolutionDetailsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SolutionDetailsResponse] {
+	return pulumix.Output[*SolutionDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SolutionDetailsResponsePtrOutput) Elem() SolutionDetailsResponseOutput {
@@ -812,6 +915,12 @@ func (i SolutionPropertiesArgs) ToSolutionPropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SolutionPropertiesOutput)
 }
 
+func (i SolutionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SolutionProperties] {
+	return pulumix.Output[SolutionProperties]{
+		OutputState: i.ToSolutionPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SolutionPropertiesArgs) ToSolutionPropertiesPtrOutput() SolutionPropertiesPtrOutput {
 	return i.ToSolutionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -853,6 +962,12 @@ func (i *solutionPropertiesPtrType) ToSolutionPropertiesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SolutionPropertiesPtrOutput)
 }
 
+func (i *solutionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SolutionProperties] {
+	return pulumix.Output[*SolutionProperties]{
+		OutputState: i.ToSolutionPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class for solution properties.
 type SolutionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -876,6 +991,12 @@ func (o SolutionPropertiesOutput) ToSolutionPropertiesPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SolutionProperties) *SolutionProperties {
 		return &v
 	}).(SolutionPropertiesPtrOutput)
+}
+
+func (o SolutionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SolutionProperties] {
+	return pulumix.Output[SolutionProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the cleanup state of the solution.
@@ -920,6 +1041,12 @@ func (o SolutionPropertiesPtrOutput) ToSolutionPropertiesPtrOutput() SolutionPro
 
 func (o SolutionPropertiesPtrOutput) ToSolutionPropertiesPtrOutputWithContext(ctx context.Context) SolutionPropertiesPtrOutput {
 	return o
+}
+
+func (o SolutionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SolutionProperties] {
+	return pulumix.Output[*SolutionProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SolutionPropertiesPtrOutput) Elem() SolutionPropertiesOutput {
@@ -1023,6 +1150,12 @@ func (o SolutionPropertiesResponseOutput) ToSolutionPropertiesResponseOutput() S
 
 func (o SolutionPropertiesResponseOutput) ToSolutionPropertiesResponseOutputWithContext(ctx context.Context) SolutionPropertiesResponseOutput {
 	return o
+}
+
+func (o SolutionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SolutionPropertiesResponse] {
+	return pulumix.Output[SolutionPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the cleanup state of the solution.

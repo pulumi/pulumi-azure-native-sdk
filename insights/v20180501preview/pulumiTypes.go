@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (o ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRes
 
 func (o ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsOutput) ToApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsOutputWithContext(ctx context.Context) ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsOutput {
 	return o
+}
+
+func (o ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions] {
+	return pulumix.Output[ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The rule description
@@ -116,6 +123,12 @@ func (o ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRes
 
 func (o ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsPtrOutput) ToApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsPtrOutputWithContext(ctx context.Context) ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsPtrOutput {
 	return o
+}
+
+func (o ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions] {
+	return pulumix.Output[*ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsPtrOutput) Elem() ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitionsOutput {
@@ -271,6 +284,12 @@ func (i ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRul
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsOutput)
 }
 
+func (i ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions] {
+	return pulumix.Output[ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions]{
+		OutputState: i.ToApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsArgs) ToApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsPtrOutput() ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsPtrOutput {
 	return i.ToApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsPtrOutputWithContext(context.Background())
 }
@@ -312,6 +331,12 @@ func (i *applicationInsightsComponentProactiveDetectionConfigurationPropertiesRu
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsPtrOutput)
 }
 
+func (i *applicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions] {
+	return pulumix.Output[*ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions]{
+		OutputState: i.ToApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Static definitions of the ProactiveDetection configuration rule (same values for all components).
 type ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsOutput struct{ *pulumi.OutputState }
 
@@ -335,6 +360,12 @@ func (o ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRul
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions) *ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions {
 		return &v
 	}).(ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsPtrOutput)
+}
+
+func (o ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions] {
+	return pulumix.Output[ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The rule description
@@ -405,6 +436,12 @@ func (o ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRul
 
 func (o ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsPtrOutput) ToApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsPtrOutputWithContext(ctx context.Context) ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsPtrOutput {
 	return o
+}
+
+func (o ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions] {
+	return pulumix.Output[*ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsPtrOutput) Elem() ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -54,6 +55,12 @@ func (i ConnectionPropertiesPrivateLinkServiceConnectionStateArgs) ToConnectionP
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPropertiesPrivateLinkServiceConnectionStateOutput)
 }
 
+func (i ConnectionPropertiesPrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionPropertiesPrivateLinkServiceConnectionState] {
+	return pulumix.Output[ConnectionPropertiesPrivateLinkServiceConnectionState]{
+		OutputState: i.ToConnectionPropertiesPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionPropertiesPrivateLinkServiceConnectionStateArgs) ToConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput() ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput {
 	return i.ToConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
 }
@@ -95,6 +102,12 @@ func (i *connectionPropertiesPrivateLinkServiceConnectionStatePtrType) ToConnect
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput)
 }
 
+func (i *connectionPropertiesPrivateLinkServiceConnectionStatePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionPropertiesPrivateLinkServiceConnectionState] {
+	return pulumix.Output[*ConnectionPropertiesPrivateLinkServiceConnectionState]{
+		OutputState: i.ToConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionPropertiesPrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
 func (ConnectionPropertiesPrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
@@ -117,6 +130,12 @@ func (o ConnectionPropertiesPrivateLinkServiceConnectionStateOutput) ToConnectio
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionPropertiesPrivateLinkServiceConnectionState) *ConnectionPropertiesPrivateLinkServiceConnectionState {
 		return &v
 	}).(ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput)
+}
+
+func (o ConnectionPropertiesPrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionPropertiesPrivateLinkServiceConnectionState] {
+	return pulumix.Output[ConnectionPropertiesPrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Actions required for a private endpoint connection.
@@ -146,6 +165,12 @@ func (o ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput) ToConnec
 
 func (o ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput) ToConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput {
 	return o
+}
+
+func (o ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionPropertiesPrivateLinkServiceConnectionState] {
+	return pulumix.Output[*ConnectionPropertiesPrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput) Elem() ConnectionPropertiesPrivateLinkServiceConnectionStateOutput {
@@ -207,6 +232,12 @@ func (o ConnectionPropertiesResponsePrivateEndpointOutput) ToConnectionPropertie
 	return o
 }
 
+func (o ConnectionPropertiesResponsePrivateEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionPropertiesResponsePrivateEndpoint] {
+	return pulumix.Output[ConnectionPropertiesResponsePrivateEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource identifier.
 func (o ConnectionPropertiesResponsePrivateEndpointOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionPropertiesResponsePrivateEndpoint) string { return v.Id }).(pulumi.StringOutput)
@@ -224,6 +255,12 @@ func (o ConnectionPropertiesResponsePrivateEndpointPtrOutput) ToConnectionProper
 
 func (o ConnectionPropertiesResponsePrivateEndpointPtrOutput) ToConnectionPropertiesResponsePrivateEndpointPtrOutputWithContext(ctx context.Context) ConnectionPropertiesResponsePrivateEndpointPtrOutput {
 	return o
+}
+
+func (o ConnectionPropertiesResponsePrivateEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionPropertiesResponsePrivateEndpoint] {
+	return pulumix.Output[*ConnectionPropertiesResponsePrivateEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionPropertiesResponsePrivateEndpointPtrOutput) Elem() ConnectionPropertiesResponsePrivateEndpointOutput {
@@ -269,6 +306,12 @@ func (o ConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput) ToC
 	return o
 }
 
+func (o ConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionPropertiesResponsePrivateLinkServiceConnectionState] {
+	return pulumix.Output[ConnectionPropertiesResponsePrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Actions required for a private endpoint connection.
 func (o ConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionPropertiesResponsePrivateLinkServiceConnectionState) *string {
@@ -298,6 +341,12 @@ func (o ConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) 
 
 func (o ConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) ToConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) ConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput {
 	return o
+}
+
+func (o ConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionPropertiesResponsePrivateLinkServiceConnectionState] {
+	return pulumix.Output[*ConnectionPropertiesResponsePrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) Elem() ConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput {
@@ -375,6 +424,12 @@ func (i PrivateEndpointConnectionPropertiesArgs) ToPrivateEndpointConnectionProp
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesOutput)
 }
 
+func (i PrivateEndpointConnectionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionProperties] {
+	return pulumix.Output[PrivateEndpointConnectionProperties]{
+		OutputState: i.ToPrivateEndpointConnectionPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateEndpointConnectionPropertiesOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionPropertiesOutput) ElementType() reflect.Type {
@@ -387,6 +442,12 @@ func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPr
 
 func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPropertiesOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionProperties] {
+	return pulumix.Output[PrivateEndpointConnectionProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of group ids for the private endpoint connection.
@@ -421,6 +482,12 @@ func (o PrivateEndpointConnectionResponsePropertiesOutput) ToPrivateEndpointConn
 
 func (o PrivateEndpointConnectionResponsePropertiesOutput) ToPrivateEndpointConnectionResponsePropertiesOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponsePropertiesOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionResponsePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponseProperties] {
+	return pulumix.Output[PrivateEndpointConnectionResponseProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of group ids for the private endpoint connection.

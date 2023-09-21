@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The application type name resource
@@ -168,6 +169,12 @@ func (i *ManagedClusterApplicationType) ToManagedClusterApplicationTypeOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterApplicationTypeOutput)
 }
 
+func (i *ManagedClusterApplicationType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterApplicationType] {
+	return pulumix.Output[*ManagedClusterApplicationType]{
+		OutputState: i.ToManagedClusterApplicationTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedClusterApplicationTypeOutput struct{ *pulumi.OutputState }
 
 func (ManagedClusterApplicationTypeOutput) ElementType() reflect.Type {
@@ -180,6 +187,12 @@ func (o ManagedClusterApplicationTypeOutput) ToManagedClusterApplicationTypeOutp
 
 func (o ManagedClusterApplicationTypeOutput) ToManagedClusterApplicationTypeOutputWithContext(ctx context.Context) ManagedClusterApplicationTypeOutput {
 	return o
+}
+
+func (o ManagedClusterApplicationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterApplicationType] {
+	return pulumix.Output[*ManagedClusterApplicationType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource location depends on the parent resource.

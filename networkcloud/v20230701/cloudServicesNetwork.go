@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Upon creation, the additional services that are provided by the platform will be allocated and
@@ -173,6 +174,12 @@ func (i *CloudServicesNetwork) ToCloudServicesNetworkOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServicesNetworkOutput)
 }
 
+func (i *CloudServicesNetwork) ToOutput(ctx context.Context) pulumix.Output[*CloudServicesNetwork] {
+	return pulumix.Output[*CloudServicesNetwork]{
+		OutputState: i.ToCloudServicesNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CloudServicesNetworkOutput struct{ *pulumi.OutputState }
 
 func (CloudServicesNetworkOutput) ElementType() reflect.Type {
@@ -185,6 +192,12 @@ func (o CloudServicesNetworkOutput) ToCloudServicesNetworkOutput() CloudServices
 
 func (o CloudServicesNetworkOutput) ToCloudServicesNetworkOutputWithContext(ctx context.Context) CloudServicesNetworkOutput {
 	return o
+}
+
+func (o CloudServicesNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServicesNetwork] {
+	return pulumix.Output[*CloudServicesNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint.
