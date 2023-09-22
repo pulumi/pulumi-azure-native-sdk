@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Single item in a List or Get AuthorizationRule operation
@@ -141,6 +142,12 @@ func (i *WCFRelayAuthorizationRule) ToWCFRelayAuthorizationRuleOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(WCFRelayAuthorizationRuleOutput)
 }
 
+func (i *WCFRelayAuthorizationRule) ToOutput(ctx context.Context) pulumix.Output[*WCFRelayAuthorizationRule] {
+	return pulumix.Output[*WCFRelayAuthorizationRule]{
+		OutputState: i.ToWCFRelayAuthorizationRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WCFRelayAuthorizationRuleOutput struct{ *pulumi.OutputState }
 
 func (WCFRelayAuthorizationRuleOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o WCFRelayAuthorizationRuleOutput) ToWCFRelayAuthorizationRuleOutput() WCF
 
 func (o WCFRelayAuthorizationRuleOutput) ToWCFRelayAuthorizationRuleOutputWithContext(ctx context.Context) WCFRelayAuthorizationRuleOutput {
 	return o
+}
+
+func (o WCFRelayAuthorizationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*WCFRelayAuthorizationRule] {
+	return pulumix.Output[*WCFRelayAuthorizationRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The geo-location where the resource lives

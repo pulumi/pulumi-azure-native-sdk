@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Attached data network resource.
@@ -234,6 +235,12 @@ func (i *AttachedDataNetwork) ToAttachedDataNetworkOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDataNetworkOutput)
 }
 
+func (i *AttachedDataNetwork) ToOutput(ctx context.Context) pulumix.Output[*AttachedDataNetwork] {
+	return pulumix.Output[*AttachedDataNetwork]{
+		OutputState: i.ToAttachedDataNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttachedDataNetworkOutput struct{ *pulumi.OutputState }
 
 func (AttachedDataNetworkOutput) ElementType() reflect.Type {
@@ -246,6 +253,12 @@ func (o AttachedDataNetworkOutput) ToAttachedDataNetworkOutput() AttachedDataNet
 
 func (o AttachedDataNetworkOutput) ToAttachedDataNetworkOutputWithContext(ctx context.Context) AttachedDataNetworkOutput {
 	return o
+}
+
+func (o AttachedDataNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedDataNetwork] {
+	return pulumix.Output[*AttachedDataNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

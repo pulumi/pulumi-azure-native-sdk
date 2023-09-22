@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get configuration assignment for resource..
@@ -86,6 +87,12 @@ func (o LookupConfigurationAssignmentsForResourceGroupResultOutput) ToLookupConf
 
 func (o LookupConfigurationAssignmentsForResourceGroupResultOutput) ToLookupConfigurationAssignmentsForResourceGroupResultOutputWithContext(ctx context.Context) LookupConfigurationAssignmentsForResourceGroupResultOutput {
 	return o
+}
+
+func (o LookupConfigurationAssignmentsForResourceGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigurationAssignmentsForResourceGroupResult] {
+	return pulumix.Output[LookupConfigurationAssignmentsForResourceGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Properties of the configuration assignment

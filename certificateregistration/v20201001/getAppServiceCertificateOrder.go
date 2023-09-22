@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a certificate order.
@@ -143,6 +144,12 @@ func (o LookupAppServiceCertificateOrderResultOutput) ToLookupAppServiceCertific
 
 func (o LookupAppServiceCertificateOrderResultOutput) ToLookupAppServiceCertificateOrderResultOutputWithContext(ctx context.Context) LookupAppServiceCertificateOrderResultOutput {
 	return o
+}
+
+func (o LookupAppServiceCertificateOrderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppServiceCertificateOrderResult] {
+	return pulumix.Output[LookupAppServiceCertificateOrderResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Reasons why App Service Certificate is not renewable at the current moment.

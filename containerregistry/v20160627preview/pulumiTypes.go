@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i StorageAccountPropertiesArgs) ToStorageAccountPropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountPropertiesOutput)
 }
 
+func (i StorageAccountPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[StorageAccountProperties] {
+	return pulumix.Output[StorageAccountProperties]{
+		OutputState: i.ToStorageAccountPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The properties of a storage account for a container registry.
 type StorageAccountPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -65,6 +72,12 @@ func (o StorageAccountPropertiesOutput) ToStorageAccountPropertiesOutput() Stora
 
 func (o StorageAccountPropertiesOutput) ToStorageAccountPropertiesOutputWithContext(ctx context.Context) StorageAccountPropertiesOutput {
 	return o
+}
+
+func (o StorageAccountPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountProperties] {
+	return pulumix.Output[StorageAccountProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access key to the storage account.
@@ -98,6 +111,12 @@ func (o StorageAccountPropertiesResponseOutput) ToStorageAccountPropertiesRespon
 
 func (o StorageAccountPropertiesResponseOutput) ToStorageAccountPropertiesResponseOutputWithContext(ctx context.Context) StorageAccountPropertiesResponseOutput {
 	return o
+}
+
+func (o StorageAccountPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountPropertiesResponse] {
+	return pulumix.Output[StorageAccountPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access key to the storage account.

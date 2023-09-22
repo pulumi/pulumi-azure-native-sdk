@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a server vulnerability assessments setting of the requested kind, that is set on the subscription
@@ -80,6 +81,12 @@ func (o LookupAzureServersSettingResultOutput) ToLookupAzureServersSettingResult
 
 func (o LookupAzureServersSettingResultOutput) ToLookupAzureServersSettingResultOutputWithContext(ctx context.Context) LookupAzureServersSettingResultOutput {
 	return o
+}
+
+func (o LookupAzureServersSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAzureServersSettingResult] {
+	return pulumix.Output[LookupAzureServersSettingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

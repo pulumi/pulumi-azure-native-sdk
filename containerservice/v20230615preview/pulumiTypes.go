@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i APIServerAccessProfileArgs) ToAPIServerAccessProfileOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(APIServerAccessProfileOutput)
 }
 
+func (i APIServerAccessProfileArgs) ToOutput(ctx context.Context) pulumix.Output[APIServerAccessProfile] {
+	return pulumix.Output[APIServerAccessProfile]{
+		OutputState: i.ToAPIServerAccessProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i APIServerAccessProfileArgs) ToAPIServerAccessProfilePtrOutput() APIServerAccessProfilePtrOutput {
 	return i.ToAPIServerAccessProfilePtrOutputWithContext(context.Background())
 }
@@ -97,6 +104,12 @@ func (i *apiserverAccessProfilePtrType) ToAPIServerAccessProfilePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(APIServerAccessProfilePtrOutput)
 }
 
+func (i *apiserverAccessProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*APIServerAccessProfile] {
+	return pulumix.Output[*APIServerAccessProfile]{
+		OutputState: i.ToAPIServerAccessProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Access profile for the Fleet hub API server.
 type APIServerAccessProfileOutput struct{ *pulumi.OutputState }
 
@@ -120,6 +133,12 @@ func (o APIServerAccessProfileOutput) ToAPIServerAccessProfilePtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v APIServerAccessProfile) *APIServerAccessProfile {
 		return &v
 	}).(APIServerAccessProfilePtrOutput)
+}
+
+func (o APIServerAccessProfileOutput) ToOutput(ctx context.Context) pulumix.Output[APIServerAccessProfile] {
+	return pulumix.Output[APIServerAccessProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to create the Fleet hub as a private cluster or not.
@@ -149,6 +168,12 @@ func (o APIServerAccessProfilePtrOutput) ToAPIServerAccessProfilePtrOutput() API
 
 func (o APIServerAccessProfilePtrOutput) ToAPIServerAccessProfilePtrOutputWithContext(ctx context.Context) APIServerAccessProfilePtrOutput {
 	return o
+}
+
+func (o APIServerAccessProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*APIServerAccessProfile] {
+	return pulumix.Output[*APIServerAccessProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o APIServerAccessProfilePtrOutput) Elem() APIServerAccessProfileOutput {
@@ -216,6 +241,12 @@ func (o APIServerAccessProfileResponseOutput) ToAPIServerAccessProfileResponseOu
 	return o
 }
 
+func (o APIServerAccessProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[APIServerAccessProfileResponse] {
+	return pulumix.Output[APIServerAccessProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether to create the Fleet hub as a private cluster or not.
 func (o APIServerAccessProfileResponseOutput) EnablePrivateCluster() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v APIServerAccessProfileResponse) *bool { return v.EnablePrivateCluster }).(pulumi.BoolPtrOutput)
@@ -243,6 +274,12 @@ func (o APIServerAccessProfileResponsePtrOutput) ToAPIServerAccessProfileRespons
 
 func (o APIServerAccessProfileResponsePtrOutput) ToAPIServerAccessProfileResponsePtrOutputWithContext(ctx context.Context) APIServerAccessProfileResponsePtrOutput {
 	return o
+}
+
+func (o APIServerAccessProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*APIServerAccessProfileResponse] {
+	return pulumix.Output[*APIServerAccessProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o APIServerAccessProfileResponsePtrOutput) Elem() APIServerAccessProfileResponseOutput {
@@ -320,6 +357,12 @@ func (i AgentProfileArgs) ToAgentProfileOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AgentProfileOutput)
 }
 
+func (i AgentProfileArgs) ToOutput(ctx context.Context) pulumix.Output[AgentProfile] {
+	return pulumix.Output[AgentProfile]{
+		OutputState: i.ToAgentProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AgentProfileArgs) ToAgentProfilePtrOutput() AgentProfilePtrOutput {
 	return i.ToAgentProfilePtrOutputWithContext(context.Background())
 }
@@ -361,6 +404,12 @@ func (i *agentProfilePtrType) ToAgentProfilePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AgentProfilePtrOutput)
 }
 
+func (i *agentProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*AgentProfile] {
+	return pulumix.Output[*AgentProfile]{
+		OutputState: i.ToAgentProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Agent profile for the Fleet hub.
 type AgentProfileOutput struct{ *pulumi.OutputState }
 
@@ -386,6 +435,12 @@ func (o AgentProfileOutput) ToAgentProfilePtrOutputWithContext(ctx context.Conte
 	}).(AgentProfilePtrOutput)
 }
 
+func (o AgentProfileOutput) ToOutput(ctx context.Context) pulumix.Output[AgentProfile] {
+	return pulumix.Output[AgentProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
 func (o AgentProfileOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentProfile) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
@@ -403,6 +458,12 @@ func (o AgentProfilePtrOutput) ToAgentProfilePtrOutput() AgentProfilePtrOutput {
 
 func (o AgentProfilePtrOutput) ToAgentProfilePtrOutputWithContext(ctx context.Context) AgentProfilePtrOutput {
 	return o
+}
+
+func (o AgentProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentProfile] {
+	return pulumix.Output[*AgentProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AgentProfilePtrOutput) Elem() AgentProfileOutput {
@@ -446,6 +507,12 @@ func (o AgentProfileResponseOutput) ToAgentProfileResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o AgentProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AgentProfileResponse] {
+	return pulumix.Output[AgentProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
 func (o AgentProfileResponseOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentProfileResponse) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
@@ -463,6 +530,12 @@ func (o AgentProfileResponsePtrOutput) ToAgentProfileResponsePtrOutput() AgentPr
 
 func (o AgentProfileResponsePtrOutput) ToAgentProfileResponsePtrOutputWithContext(ctx context.Context) AgentProfileResponsePtrOutput {
 	return o
+}
+
+func (o AgentProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentProfileResponse] {
+	return pulumix.Output[*AgentProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AgentProfileResponsePtrOutput) Elem() AgentProfileResponseOutput {
@@ -508,6 +581,12 @@ func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWi
 	return o
 }
 
+func (o ErrorAdditionalInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorAdditionalInfoResponse] {
+	return pulumix.Output[ErrorAdditionalInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The additional info.
 func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
 	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
@@ -530,6 +609,12 @@ func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArr
 
 func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
 	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorAdditionalInfoResponse] {
+	return pulumix.Output[[]ErrorAdditionalInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
@@ -565,6 +650,12 @@ func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutput() ErrorDetailResp
 
 func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx context.Context) ErrorDetailResponseOutput {
 	return o
+}
+
+func (o ErrorDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorDetailResponse] {
+	return pulumix.Output[ErrorDetailResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The error additional info.
@@ -606,6 +697,12 @@ func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithCont
 	return o
 }
 
+func (o ErrorDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorDetailResponse] {
+	return pulumix.Output[[]ErrorDetailResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponse {
 		return vs[0].([]ErrorDetailResponse)[vs[1].(int)]
@@ -635,6 +732,12 @@ func (o FleetCredentialResultResponseOutput) ToFleetCredentialResultResponseOutp
 	return o
 }
 
+func (o FleetCredentialResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FleetCredentialResultResponse] {
+	return pulumix.Output[FleetCredentialResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the credential.
 func (o FleetCredentialResultResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FleetCredentialResultResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -657,6 +760,12 @@ func (o FleetCredentialResultResponseArrayOutput) ToFleetCredentialResultRespons
 
 func (o FleetCredentialResultResponseArrayOutput) ToFleetCredentialResultResponseArrayOutputWithContext(ctx context.Context) FleetCredentialResultResponseArrayOutput {
 	return o
+}
+
+func (o FleetCredentialResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FleetCredentialResultResponse] {
+	return pulumix.Output[[]FleetCredentialResultResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FleetCredentialResultResponseArrayOutput) Index(i pulumi.IntInput) FleetCredentialResultResponseOutput {
@@ -708,6 +817,12 @@ func (i FleetHubProfileArgs) ToFleetHubProfileOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(FleetHubProfileOutput)
 }
 
+func (i FleetHubProfileArgs) ToOutput(ctx context.Context) pulumix.Output[FleetHubProfile] {
+	return pulumix.Output[FleetHubProfile]{
+		OutputState: i.ToFleetHubProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FleetHubProfileArgs) ToFleetHubProfilePtrOutput() FleetHubProfilePtrOutput {
 	return i.ToFleetHubProfilePtrOutputWithContext(context.Background())
 }
@@ -749,6 +864,12 @@ func (i *fleetHubProfilePtrType) ToFleetHubProfilePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(FleetHubProfilePtrOutput)
 }
 
+func (i *fleetHubProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*FleetHubProfile] {
+	return pulumix.Output[*FleetHubProfile]{
+		OutputState: i.ToFleetHubProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The FleetHubProfile configures the fleet hub.
 type FleetHubProfileOutput struct{ *pulumi.OutputState }
 
@@ -772,6 +893,12 @@ func (o FleetHubProfileOutput) ToFleetHubProfilePtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetHubProfile) *FleetHubProfile {
 		return &v
 	}).(FleetHubProfilePtrOutput)
+}
+
+func (o FleetHubProfileOutput) ToOutput(ctx context.Context) pulumix.Output[FleetHubProfile] {
+	return pulumix.Output[FleetHubProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The agent profile for the Fleet hub.
@@ -801,6 +928,12 @@ func (o FleetHubProfilePtrOutput) ToFleetHubProfilePtrOutput() FleetHubProfilePt
 
 func (o FleetHubProfilePtrOutput) ToFleetHubProfilePtrOutputWithContext(ctx context.Context) FleetHubProfilePtrOutput {
 	return o
+}
+
+func (o FleetHubProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FleetHubProfile] {
+	return pulumix.Output[*FleetHubProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FleetHubProfilePtrOutput) Elem() FleetHubProfileOutput {
@@ -872,6 +1005,12 @@ func (o FleetHubProfileResponseOutput) ToFleetHubProfileResponseOutputWithContex
 	return o
 }
 
+func (o FleetHubProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FleetHubProfileResponse] {
+	return pulumix.Output[FleetHubProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The agent profile for the Fleet hub.
 func (o FleetHubProfileResponseOutput) AgentProfile() AgentProfileResponsePtrOutput {
 	return o.ApplyT(func(v FleetHubProfileResponse) *AgentProfileResponse { return v.AgentProfile }).(AgentProfileResponsePtrOutput)
@@ -909,6 +1048,12 @@ func (o FleetHubProfileResponsePtrOutput) ToFleetHubProfileResponsePtrOutput() F
 
 func (o FleetHubProfileResponsePtrOutput) ToFleetHubProfileResponsePtrOutputWithContext(ctx context.Context) FleetHubProfileResponsePtrOutput {
 	return o
+}
+
+func (o FleetHubProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FleetHubProfileResponse] {
+	return pulumix.Output[*FleetHubProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FleetHubProfileResponsePtrOutput) Elem() FleetHubProfileResponseOutput {
@@ -1010,6 +1155,12 @@ func (i ManagedClusterUpdateArgs) ToManagedClusterUpdateOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterUpdateOutput)
 }
 
+func (i ManagedClusterUpdateArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterUpdate] {
+	return pulumix.Output[ManagedClusterUpdate]{
+		OutputState: i.ToManagedClusterUpdateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The update to be applied to the ManagedClusters.
 type ManagedClusterUpdateOutput struct{ *pulumi.OutputState }
 
@@ -1023,6 +1174,12 @@ func (o ManagedClusterUpdateOutput) ToManagedClusterUpdateOutput() ManagedCluste
 
 func (o ManagedClusterUpdateOutput) ToManagedClusterUpdateOutputWithContext(ctx context.Context) ManagedClusterUpdateOutput {
 	return o
+}
+
+func (o ManagedClusterUpdateOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterUpdate] {
+	return pulumix.Output[ManagedClusterUpdate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The node image upgrade to be applied to the target nodes in update run.
@@ -1056,6 +1213,12 @@ func (o ManagedClusterUpdateResponseOutput) ToManagedClusterUpdateResponseOutput
 
 func (o ManagedClusterUpdateResponseOutput) ToManagedClusterUpdateResponseOutputWithContext(ctx context.Context) ManagedClusterUpdateResponseOutput {
 	return o
+}
+
+func (o ManagedClusterUpdateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterUpdateResponse] {
+	return pulumix.Output[ManagedClusterUpdateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The node image upgrade to be applied to the target nodes in update run.
@@ -1111,6 +1274,12 @@ func (i ManagedClusterUpgradeSpecArgs) ToManagedClusterUpgradeSpecOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterUpgradeSpecOutput)
 }
 
+func (i ManagedClusterUpgradeSpecArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterUpgradeSpec] {
+	return pulumix.Output[ManagedClusterUpgradeSpec]{
+		OutputState: i.ToManagedClusterUpgradeSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The upgrade to apply to a ManagedCluster.
 type ManagedClusterUpgradeSpecOutput struct{ *pulumi.OutputState }
 
@@ -1124,6 +1293,12 @@ func (o ManagedClusterUpgradeSpecOutput) ToManagedClusterUpgradeSpecOutput() Man
 
 func (o ManagedClusterUpgradeSpecOutput) ToManagedClusterUpgradeSpecOutputWithContext(ctx context.Context) ManagedClusterUpgradeSpecOutput {
 	return o
+}
+
+func (o ManagedClusterUpgradeSpecOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterUpgradeSpec] {
+	return pulumix.Output[ManagedClusterUpgradeSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Kubernetes version to upgrade the member clusters to.
@@ -1161,6 +1336,12 @@ func (o ManagedClusterUpgradeSpecResponseOutput) ToManagedClusterUpgradeSpecResp
 
 func (o ManagedClusterUpgradeSpecResponseOutput) ToManagedClusterUpgradeSpecResponseOutputWithContext(ctx context.Context) ManagedClusterUpgradeSpecResponseOutput {
 	return o
+}
+
+func (o ManagedClusterUpgradeSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterUpgradeSpecResponse] {
+	return pulumix.Output[ManagedClusterUpgradeSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Kubernetes version to upgrade the member clusters to.
@@ -1214,6 +1395,12 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
+func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
 	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -1255,6 +1442,12 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
+func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -1280,6 +1473,12 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
+func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -1302,6 +1501,12 @@ func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() Man
 
 func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
@@ -1361,6 +1566,12 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
+func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
+	return pulumix.Output[ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1395,6 +1606,12 @@ func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityRespons
 
 func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
+	return pulumix.Output[*ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
@@ -1476,6 +1693,12 @@ func (o MemberUpdateStatusResponseOutput) ToMemberUpdateStatusResponseOutputWith
 	return o
 }
 
+func (o MemberUpdateStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MemberUpdateStatusResponse] {
+	return pulumix.Output[MemberUpdateStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Azure resource id of the target Kubernetes cluster.
 func (o MemberUpdateStatusResponseOutput) ClusterResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v MemberUpdateStatusResponse) string { return v.ClusterResourceId }).(pulumi.StringOutput)
@@ -1513,6 +1736,12 @@ func (o MemberUpdateStatusResponseArrayOutput) ToMemberUpdateStatusResponseArray
 
 func (o MemberUpdateStatusResponseArrayOutput) ToMemberUpdateStatusResponseArrayOutputWithContext(ctx context.Context) MemberUpdateStatusResponseArrayOutput {
 	return o
+}
+
+func (o MemberUpdateStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MemberUpdateStatusResponse] {
+	return pulumix.Output[[]MemberUpdateStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MemberUpdateStatusResponseArrayOutput) Index(i pulumi.IntInput) MemberUpdateStatusResponseOutput {
@@ -1556,6 +1785,12 @@ func (i NodeImageSelectionArgs) ToNodeImageSelectionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(NodeImageSelectionOutput)
 }
 
+func (i NodeImageSelectionArgs) ToOutput(ctx context.Context) pulumix.Output[NodeImageSelection] {
+	return pulumix.Output[NodeImageSelection]{
+		OutputState: i.ToNodeImageSelectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NodeImageSelectionArgs) ToNodeImageSelectionPtrOutput() NodeImageSelectionPtrOutput {
 	return i.ToNodeImageSelectionPtrOutputWithContext(context.Background())
 }
@@ -1597,6 +1832,12 @@ func (i *nodeImageSelectionPtrType) ToNodeImageSelectionPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(NodeImageSelectionPtrOutput)
 }
 
+func (i *nodeImageSelectionPtrType) ToOutput(ctx context.Context) pulumix.Output[*NodeImageSelection] {
+	return pulumix.Output[*NodeImageSelection]{
+		OutputState: i.ToNodeImageSelectionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The node image upgrade to be applied to the target nodes in update run.
 type NodeImageSelectionOutput struct{ *pulumi.OutputState }
 
@@ -1622,6 +1863,12 @@ func (o NodeImageSelectionOutput) ToNodeImageSelectionPtrOutputWithContext(ctx c
 	}).(NodeImageSelectionPtrOutput)
 }
 
+func (o NodeImageSelectionOutput) ToOutput(ctx context.Context) pulumix.Output[NodeImageSelection] {
+	return pulumix.Output[NodeImageSelection]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The node image upgrade type.
 func (o NodeImageSelectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeImageSelection) string { return v.Type }).(pulumi.StringOutput)
@@ -1639,6 +1886,12 @@ func (o NodeImageSelectionPtrOutput) ToNodeImageSelectionPtrOutput() NodeImageSe
 
 func (o NodeImageSelectionPtrOutput) ToNodeImageSelectionPtrOutputWithContext(ctx context.Context) NodeImageSelectionPtrOutput {
 	return o
+}
+
+func (o NodeImageSelectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeImageSelection] {
+	return pulumix.Output[*NodeImageSelection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeImageSelectionPtrOutput) Elem() NodeImageSelectionOutput {
@@ -1682,6 +1935,12 @@ func (o NodeImageSelectionResponseOutput) ToNodeImageSelectionResponseOutputWith
 	return o
 }
 
+func (o NodeImageSelectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeImageSelectionResponse] {
+	return pulumix.Output[NodeImageSelectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The node image upgrade type.
 func (o NodeImageSelectionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeImageSelectionResponse) string { return v.Type }).(pulumi.StringOutput)
@@ -1699,6 +1958,12 @@ func (o NodeImageSelectionResponsePtrOutput) ToNodeImageSelectionResponsePtrOutp
 
 func (o NodeImageSelectionResponsePtrOutput) ToNodeImageSelectionResponsePtrOutputWithContext(ctx context.Context) NodeImageSelectionResponsePtrOutput {
 	return o
+}
+
+func (o NodeImageSelectionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeImageSelectionResponse] {
+	return pulumix.Output[*NodeImageSelectionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeImageSelectionResponsePtrOutput) Elem() NodeImageSelectionResponseOutput {
@@ -1742,6 +2007,12 @@ func (o NodeImageSelectionStatusResponseOutput) ToNodeImageSelectionStatusRespon
 	return o
 }
 
+func (o NodeImageSelectionStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeImageSelectionStatusResponse] {
+	return pulumix.Output[NodeImageSelectionStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The image versions to upgrade the nodes to.
 func (o NodeImageSelectionStatusResponseOutput) SelectedNodeImageVersions() NodeImageVersionResponseArrayOutput {
 	return o.ApplyT(func(v NodeImageSelectionStatusResponse) []NodeImageVersionResponse {
@@ -1770,6 +2041,12 @@ func (o NodeImageVersionResponseOutput) ToNodeImageVersionResponseOutputWithCont
 	return o
 }
 
+func (o NodeImageVersionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeImageVersionResponse] {
+	return pulumix.Output[NodeImageVersionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The image version to upgrade the nodes to (e.g., 'AKSUbuntu-1804gen2containerd-2022.12.13').
 func (o NodeImageVersionResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeImageVersionResponse) string { return v.Version }).(pulumi.StringOutput)
@@ -1787,6 +2064,12 @@ func (o NodeImageVersionResponseArrayOutput) ToNodeImageVersionResponseArrayOutp
 
 func (o NodeImageVersionResponseArrayOutput) ToNodeImageVersionResponseArrayOutputWithContext(ctx context.Context) NodeImageVersionResponseArrayOutput {
 	return o
+}
+
+func (o NodeImageVersionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeImageVersionResponse] {
+	return pulumix.Output[[]NodeImageVersionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeImageVersionResponseArrayOutput) Index(i pulumi.IntInput) NodeImageVersionResponseOutput {
@@ -1824,6 +2107,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -1895,6 +2184,12 @@ func (i UpdateGroupArgs) ToUpdateGroupOutputWithContext(ctx context.Context) Upd
 	return pulumi.ToOutputWithContext(ctx, i).(UpdateGroupOutput)
 }
 
+func (i UpdateGroupArgs) ToOutput(ctx context.Context) pulumix.Output[UpdateGroup] {
+	return pulumix.Output[UpdateGroup]{
+		OutputState: i.ToUpdateGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UpdateGroupArrayInput is an input type that accepts UpdateGroupArray and UpdateGroupArrayOutput values.
 // You can construct a concrete instance of `UpdateGroupArrayInput` via:
 //
@@ -1920,6 +2215,12 @@ func (i UpdateGroupArray) ToUpdateGroupArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(UpdateGroupArrayOutput)
 }
 
+func (i UpdateGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]UpdateGroup] {
+	return pulumix.Output[[]UpdateGroup]{
+		OutputState: i.ToUpdateGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A group to be updated.
 type UpdateGroupOutput struct{ *pulumi.OutputState }
 
@@ -1933,6 +2234,12 @@ func (o UpdateGroupOutput) ToUpdateGroupOutput() UpdateGroupOutput {
 
 func (o UpdateGroupOutput) ToUpdateGroupOutputWithContext(ctx context.Context) UpdateGroupOutput {
 	return o
+}
+
+func (o UpdateGroupOutput) ToOutput(ctx context.Context) pulumix.Output[UpdateGroup] {
+	return pulumix.Output[UpdateGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Fleet member group to update.
@@ -1954,6 +2261,12 @@ func (o UpdateGroupArrayOutput) ToUpdateGroupArrayOutput() UpdateGroupArrayOutpu
 
 func (o UpdateGroupArrayOutput) ToUpdateGroupArrayOutputWithContext(ctx context.Context) UpdateGroupArrayOutput {
 	return o
+}
+
+func (o UpdateGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UpdateGroup] {
+	return pulumix.Output[[]UpdateGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpdateGroupArrayOutput) Index(i pulumi.IntInput) UpdateGroupOutput {
@@ -1985,6 +2298,12 @@ func (o UpdateGroupResponseOutput) ToUpdateGroupResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o UpdateGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpdateGroupResponse] {
+	return pulumix.Output[UpdateGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the Fleet member group to update.
 // It should match the name of an existing FleetMember group.
 // A group can only appear once across all UpdateStages in the UpdateRun.
@@ -2004,6 +2323,12 @@ func (o UpdateGroupResponseArrayOutput) ToUpdateGroupResponseArrayOutput() Updat
 
 func (o UpdateGroupResponseArrayOutput) ToUpdateGroupResponseArrayOutputWithContext(ctx context.Context) UpdateGroupResponseArrayOutput {
 	return o
+}
+
+func (o UpdateGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UpdateGroupResponse] {
+	return pulumix.Output[[]UpdateGroupResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpdateGroupResponseArrayOutput) Index(i pulumi.IntInput) UpdateGroupResponseOutput {
@@ -2037,6 +2362,12 @@ func (o UpdateGroupStatusResponseOutput) ToUpdateGroupStatusResponseOutputWithCo
 	return o
 }
 
+func (o UpdateGroupStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpdateGroupStatusResponse] {
+	return pulumix.Output[UpdateGroupStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of member this UpdateGroup updates.
 func (o UpdateGroupStatusResponseOutput) Members() MemberUpdateStatusResponseArrayOutput {
 	return o.ApplyT(func(v UpdateGroupStatusResponse) []MemberUpdateStatusResponse { return v.Members }).(MemberUpdateStatusResponseArrayOutput)
@@ -2064,6 +2395,12 @@ func (o UpdateGroupStatusResponseArrayOutput) ToUpdateGroupStatusResponseArrayOu
 
 func (o UpdateGroupStatusResponseArrayOutput) ToUpdateGroupStatusResponseArrayOutputWithContext(ctx context.Context) UpdateGroupStatusResponseArrayOutput {
 	return o
+}
+
+func (o UpdateGroupStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UpdateGroupStatusResponse] {
+	return pulumix.Output[[]UpdateGroupStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpdateGroupStatusResponseArrayOutput) Index(i pulumi.IntInput) UpdateGroupStatusResponseOutput {
@@ -2095,6 +2432,12 @@ func (o UpdateRunStatusResponseOutput) ToUpdateRunStatusResponseOutput() UpdateR
 
 func (o UpdateRunStatusResponseOutput) ToUpdateRunStatusResponseOutputWithContext(ctx context.Context) UpdateRunStatusResponseOutput {
 	return o
+}
+
+func (o UpdateRunStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpdateRunStatusResponse] {
+	return pulumix.Output[UpdateRunStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The node image upgrade specs for the update run. It is only set in update run when `NodeImageSelection.type` is `Consistent`.
@@ -2147,6 +2490,12 @@ func (i UpdateRunStrategyArgs) ToUpdateRunStrategyOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(UpdateRunStrategyOutput)
 }
 
+func (i UpdateRunStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[UpdateRunStrategy] {
+	return pulumix.Output[UpdateRunStrategy]{
+		OutputState: i.ToUpdateRunStrategyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UpdateRunStrategyArgs) ToUpdateRunStrategyPtrOutput() UpdateRunStrategyPtrOutput {
 	return i.ToUpdateRunStrategyPtrOutputWithContext(context.Background())
 }
@@ -2188,6 +2537,12 @@ func (i *updateRunStrategyPtrType) ToUpdateRunStrategyPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(UpdateRunStrategyPtrOutput)
 }
 
+func (i *updateRunStrategyPtrType) ToOutput(ctx context.Context) pulumix.Output[*UpdateRunStrategy] {
+	return pulumix.Output[*UpdateRunStrategy]{
+		OutputState: i.ToUpdateRunStrategyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The UpdateRunStrategy configures the sequence of Stages and Groups in which the clusters will be updated.
 type UpdateRunStrategyOutput struct{ *pulumi.OutputState }
 
@@ -2213,6 +2568,12 @@ func (o UpdateRunStrategyOutput) ToUpdateRunStrategyPtrOutputWithContext(ctx con
 	}).(UpdateRunStrategyPtrOutput)
 }
 
+func (o UpdateRunStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[UpdateRunStrategy] {
+	return pulumix.Output[UpdateRunStrategy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of stages that compose this update run.
 func (o UpdateRunStrategyOutput) Stages() UpdateStageArrayOutput {
 	return o.ApplyT(func(v UpdateRunStrategy) []UpdateStage { return v.Stages }).(UpdateStageArrayOutput)
@@ -2230,6 +2591,12 @@ func (o UpdateRunStrategyPtrOutput) ToUpdateRunStrategyPtrOutput() UpdateRunStra
 
 func (o UpdateRunStrategyPtrOutput) ToUpdateRunStrategyPtrOutputWithContext(ctx context.Context) UpdateRunStrategyPtrOutput {
 	return o
+}
+
+func (o UpdateRunStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UpdateRunStrategy] {
+	return pulumix.Output[*UpdateRunStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpdateRunStrategyPtrOutput) Elem() UpdateRunStrategyOutput {
@@ -2273,6 +2640,12 @@ func (o UpdateRunStrategyResponseOutput) ToUpdateRunStrategyResponseOutputWithCo
 	return o
 }
 
+func (o UpdateRunStrategyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpdateRunStrategyResponse] {
+	return pulumix.Output[UpdateRunStrategyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of stages that compose this update run.
 func (o UpdateRunStrategyResponseOutput) Stages() UpdateStageResponseArrayOutput {
 	return o.ApplyT(func(v UpdateRunStrategyResponse) []UpdateStageResponse { return v.Stages }).(UpdateStageResponseArrayOutput)
@@ -2290,6 +2663,12 @@ func (o UpdateRunStrategyResponsePtrOutput) ToUpdateRunStrategyResponsePtrOutput
 
 func (o UpdateRunStrategyResponsePtrOutput) ToUpdateRunStrategyResponsePtrOutputWithContext(ctx context.Context) UpdateRunStrategyResponsePtrOutput {
 	return o
+}
+
+func (o UpdateRunStrategyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UpdateRunStrategyResponse] {
+	return pulumix.Output[*UpdateRunStrategyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpdateRunStrategyResponsePtrOutput) Elem() UpdateRunStrategyResponseOutput {
@@ -2365,6 +2744,12 @@ func (i UpdateStageArgs) ToUpdateStageOutputWithContext(ctx context.Context) Upd
 	return pulumi.ToOutputWithContext(ctx, i).(UpdateStageOutput)
 }
 
+func (i UpdateStageArgs) ToOutput(ctx context.Context) pulumix.Output[UpdateStage] {
+	return pulumix.Output[UpdateStage]{
+		OutputState: i.ToUpdateStageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UpdateStageArrayInput is an input type that accepts UpdateStageArray and UpdateStageArrayOutput values.
 // You can construct a concrete instance of `UpdateStageArrayInput` via:
 //
@@ -2390,6 +2775,12 @@ func (i UpdateStageArray) ToUpdateStageArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(UpdateStageArrayOutput)
 }
 
+func (i UpdateStageArray) ToOutput(ctx context.Context) pulumix.Output[[]UpdateStage] {
+	return pulumix.Output[[]UpdateStage]{
+		OutputState: i.ToUpdateStageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains the groups to be updated by an UpdateRun.
 // Update order:
 // - Sequential between stages: Stages run sequentially. The previous stage must complete before the next one starts.
@@ -2407,6 +2798,12 @@ func (o UpdateStageOutput) ToUpdateStageOutput() UpdateStageOutput {
 
 func (o UpdateStageOutput) ToUpdateStageOutputWithContext(ctx context.Context) UpdateStageOutput {
 	return o
+}
+
+func (o UpdateStageOutput) ToOutput(ctx context.Context) pulumix.Output[UpdateStage] {
+	return pulumix.Output[UpdateStage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified.
@@ -2437,6 +2834,12 @@ func (o UpdateStageArrayOutput) ToUpdateStageArrayOutput() UpdateStageArrayOutpu
 
 func (o UpdateStageArrayOutput) ToUpdateStageArrayOutputWithContext(ctx context.Context) UpdateStageArrayOutput {
 	return o
+}
+
+func (o UpdateStageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UpdateStage] {
+	return pulumix.Output[[]UpdateStage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpdateStageArrayOutput) Index(i pulumi.IntInput) UpdateStageOutput {
@@ -2479,6 +2882,12 @@ func (o UpdateStageResponseOutput) ToUpdateStageResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o UpdateStageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpdateStageResponse] {
+	return pulumix.Output[UpdateStageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified.
 func (o UpdateStageResponseOutput) AfterStageWaitInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UpdateStageResponse) *int { return v.AfterStageWaitInSeconds }).(pulumi.IntPtrOutput)
@@ -2507,6 +2916,12 @@ func (o UpdateStageResponseArrayOutput) ToUpdateStageResponseArrayOutput() Updat
 
 func (o UpdateStageResponseArrayOutput) ToUpdateStageResponseArrayOutputWithContext(ctx context.Context) UpdateStageResponseArrayOutput {
 	return o
+}
+
+func (o UpdateStageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UpdateStageResponse] {
+	return pulumix.Output[[]UpdateStageResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpdateStageResponseArrayOutput) Index(i pulumi.IntInput) UpdateStageResponseOutput {
@@ -2540,6 +2955,12 @@ func (o UpdateStageStatusResponseOutput) ToUpdateStageStatusResponseOutput() Upd
 
 func (o UpdateStageStatusResponseOutput) ToUpdateStageStatusResponseOutputWithContext(ctx context.Context) UpdateStageStatusResponseOutput {
 	return o
+}
+
+func (o UpdateStageStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpdateStageStatusResponse] {
+	return pulumix.Output[UpdateStageStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status of the wait period configured on the UpdateStage.
@@ -2576,6 +2997,12 @@ func (o UpdateStageStatusResponseArrayOutput) ToUpdateStageStatusResponseArrayOu
 	return o
 }
 
+func (o UpdateStageStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UpdateStageStatusResponse] {
+	return pulumix.Output[[]UpdateStageStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UpdateStageStatusResponseArrayOutput) Index(i pulumi.IntInput) UpdateStageStatusResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpdateStageStatusResponse {
 		return vs[0].([]UpdateStageStatusResponse)[vs[1].(int)]
@@ -2607,6 +3034,12 @@ func (o UpdateStatusResponseOutput) ToUpdateStatusResponseOutput() UpdateStatusR
 
 func (o UpdateStatusResponseOutput) ToUpdateStatusResponseOutputWithContext(ctx context.Context) UpdateStatusResponseOutput {
 	return o
+}
+
+func (o UpdateStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpdateStatusResponse] {
+	return pulumix.Output[UpdateStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the operation or group was completed.
@@ -2652,6 +3085,12 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
+func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
+	return pulumix.Output[UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -2674,6 +3113,12 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
+	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
@@ -2703,6 +3148,12 @@ func (o WaitStatusResponseOutput) ToWaitStatusResponseOutput() WaitStatusRespons
 
 func (o WaitStatusResponseOutput) ToWaitStatusResponseOutputWithContext(ctx context.Context) WaitStatusResponseOutput {
 	return o
+}
+
+func (o WaitStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WaitStatusResponse] {
+	return pulumix.Output[WaitStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status of the wait duration.

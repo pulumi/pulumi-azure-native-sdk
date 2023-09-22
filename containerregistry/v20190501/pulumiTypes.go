@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -76,6 +77,12 @@ func (i IPRuleArgs) ToIPRuleOutputWithContext(ctx context.Context) IPRuleOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(IPRuleOutput)
 }
 
+func (i IPRuleArgs) ToOutput(ctx context.Context) pulumix.Output[IPRule] {
+	return pulumix.Output[IPRule]{
+		OutputState: i.ToIPRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IPRuleArrayInput is an input type that accepts IPRuleArray and IPRuleArrayOutput values.
 // You can construct a concrete instance of `IPRuleArrayInput` via:
 //
@@ -101,6 +108,12 @@ func (i IPRuleArray) ToIPRuleArrayOutputWithContext(ctx context.Context) IPRuleA
 	return pulumi.ToOutputWithContext(ctx, i).(IPRuleArrayOutput)
 }
 
+func (i IPRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]IPRule] {
+	return pulumix.Output[[]IPRule]{
+		OutputState: i.ToIPRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IP rule with specific IP or IP range in CIDR format.
 type IPRuleOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o IPRuleOutput) ToIPRuleOutput() IPRuleOutput {
 
 func (o IPRuleOutput) ToIPRuleOutputWithContext(ctx context.Context) IPRuleOutput {
 	return o
+}
+
+func (o IPRuleOutput) ToOutput(ctx context.Context) pulumix.Output[IPRule] {
+	return pulumix.Output[IPRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action of IP ACL rule.
@@ -138,6 +157,12 @@ func (o IPRuleArrayOutput) ToIPRuleArrayOutput() IPRuleArrayOutput {
 
 func (o IPRuleArrayOutput) ToIPRuleArrayOutputWithContext(ctx context.Context) IPRuleArrayOutput {
 	return o
+}
+
+func (o IPRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPRule] {
+	return pulumix.Output[[]IPRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPRuleArrayOutput) Index(i pulumi.IntInput) IPRuleOutput {
@@ -182,6 +207,12 @@ func (o IPRuleResponseOutput) ToIPRuleResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o IPRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IPRuleResponse] {
+	return pulumix.Output[IPRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The action of IP ACL rule.
 func (o IPRuleResponseOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPRuleResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
@@ -204,6 +235,12 @@ func (o IPRuleResponseArrayOutput) ToIPRuleResponseArrayOutput() IPRuleResponseA
 
 func (o IPRuleResponseArrayOutput) ToIPRuleResponseArrayOutputWithContext(ctx context.Context) IPRuleResponseArrayOutput {
 	return o
+}
+
+func (o IPRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPRuleResponse] {
+	return pulumix.Output[[]IPRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPRuleResponseArrayOutput) Index(i pulumi.IntInput) IPRuleResponseOutput {
@@ -278,6 +315,12 @@ func (i NetworkRuleSetArgs) ToNetworkRuleSetOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetOutput)
 }
 
+func (i NetworkRuleSetArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSet] {
+	return pulumix.Output[NetworkRuleSet]{
+		OutputState: i.ToNetworkRuleSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NetworkRuleSetArgs) ToNetworkRuleSetPtrOutput() NetworkRuleSetPtrOutput {
 	return i.ToNetworkRuleSetPtrOutputWithContext(context.Background())
 }
@@ -319,6 +362,12 @@ func (i *networkRuleSetPtrType) ToNetworkRuleSetPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetPtrOutput)
 }
 
+func (i *networkRuleSetPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleSet] {
+	return pulumix.Output[*NetworkRuleSet]{
+		OutputState: i.ToNetworkRuleSetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The network rule set for a container registry.
 type NetworkRuleSetOutput struct{ *pulumi.OutputState }
 
@@ -342,6 +391,12 @@ func (o NetworkRuleSetOutput) ToNetworkRuleSetPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkRuleSet) *NetworkRuleSet {
 		return &v
 	}).(NetworkRuleSetPtrOutput)
+}
+
+func (o NetworkRuleSetOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSet] {
+	return pulumix.Output[NetworkRuleSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The default action of allow or deny when no other rules match.
@@ -371,6 +426,12 @@ func (o NetworkRuleSetPtrOutput) ToNetworkRuleSetPtrOutput() NetworkRuleSetPtrOu
 
 func (o NetworkRuleSetPtrOutput) ToNetworkRuleSetPtrOutputWithContext(ctx context.Context) NetworkRuleSetPtrOutput {
 	return o
+}
+
+func (o NetworkRuleSetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleSet] {
+	return pulumix.Output[*NetworkRuleSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkRuleSetPtrOutput) Elem() NetworkRuleSetOutput {
@@ -450,6 +511,12 @@ func (o NetworkRuleSetResponseOutput) ToNetworkRuleSetResponseOutputWithContext(
 	return o
 }
 
+func (o NetworkRuleSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSetResponse] {
+	return pulumix.Output[NetworkRuleSetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The default action of allow or deny when no other rules match.
 func (o NetworkRuleSetResponseOutput) DefaultAction() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkRuleSetResponse) string { return v.DefaultAction }).(pulumi.StringOutput)
@@ -477,6 +544,12 @@ func (o NetworkRuleSetResponsePtrOutput) ToNetworkRuleSetResponsePtrOutput() Net
 
 func (o NetworkRuleSetResponsePtrOutput) ToNetworkRuleSetResponsePtrOutputWithContext(ctx context.Context) NetworkRuleSetResponsePtrOutput {
 	return o
+}
+
+func (o NetworkRuleSetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleSetResponse] {
+	return pulumix.Output[*NetworkRuleSetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkRuleSetResponsePtrOutput) Elem() NetworkRuleSetResponseOutput {
@@ -586,6 +659,12 @@ func (i PoliciesArgs) ToPoliciesOutputWithContext(ctx context.Context) PoliciesO
 	return pulumi.ToOutputWithContext(ctx, i).(PoliciesOutput)
 }
 
+func (i PoliciesArgs) ToOutput(ctx context.Context) pulumix.Output[Policies] {
+	return pulumix.Output[Policies]{
+		OutputState: i.ToPoliciesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PoliciesArgs) ToPoliciesPtrOutput() PoliciesPtrOutput {
 	return i.ToPoliciesPtrOutputWithContext(context.Background())
 }
@@ -627,6 +706,12 @@ func (i *policiesPtrType) ToPoliciesPtrOutputWithContext(ctx context.Context) Po
 	return pulumi.ToOutputWithContext(ctx, i).(PoliciesPtrOutput)
 }
 
+func (i *policiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*Policies] {
+	return pulumix.Output[*Policies]{
+		OutputState: i.ToPoliciesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The policies for a container registry.
 type PoliciesOutput struct{ *pulumi.OutputState }
 
@@ -650,6 +735,12 @@ func (o PoliciesOutput) ToPoliciesPtrOutputWithContext(ctx context.Context) Poli
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Policies) *Policies {
 		return &v
 	}).(PoliciesPtrOutput)
+}
+
+func (o PoliciesOutput) ToOutput(ctx context.Context) pulumix.Output[Policies] {
+	return pulumix.Output[Policies]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The quarantine policy for a container registry.
@@ -679,6 +770,12 @@ func (o PoliciesPtrOutput) ToPoliciesPtrOutput() PoliciesPtrOutput {
 
 func (o PoliciesPtrOutput) ToPoliciesPtrOutputWithContext(ctx context.Context) PoliciesPtrOutput {
 	return o
+}
+
+func (o PoliciesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Policies] {
+	return pulumix.Output[*Policies]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PoliciesPtrOutput) Elem() PoliciesOutput {
@@ -761,6 +858,12 @@ func (o PoliciesResponseOutput) ToPoliciesResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o PoliciesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PoliciesResponse] {
+	return pulumix.Output[PoliciesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The quarantine policy for a container registry.
 func (o PoliciesResponseOutput) QuarantinePolicy() QuarantinePolicyResponsePtrOutput {
 	return o.ApplyT(func(v PoliciesResponse) *QuarantinePolicyResponse { return v.QuarantinePolicy }).(QuarantinePolicyResponsePtrOutput)
@@ -788,6 +891,12 @@ func (o PoliciesResponsePtrOutput) ToPoliciesResponsePtrOutput() PoliciesRespons
 
 func (o PoliciesResponsePtrOutput) ToPoliciesResponsePtrOutputWithContext(ctx context.Context) PoliciesResponsePtrOutput {
 	return o
+}
+
+func (o PoliciesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PoliciesResponse] {
+	return pulumix.Output[*PoliciesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PoliciesResponsePtrOutput) Elem() PoliciesResponseOutput {
@@ -889,6 +998,12 @@ func (i QuarantinePolicyArgs) ToQuarantinePolicyOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(QuarantinePolicyOutput)
 }
 
+func (i QuarantinePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[QuarantinePolicy] {
+	return pulumix.Output[QuarantinePolicy]{
+		OutputState: i.ToQuarantinePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i QuarantinePolicyArgs) ToQuarantinePolicyPtrOutput() QuarantinePolicyPtrOutput {
 	return i.ToQuarantinePolicyPtrOutputWithContext(context.Background())
 }
@@ -930,6 +1045,12 @@ func (i *quarantinePolicyPtrType) ToQuarantinePolicyPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(QuarantinePolicyPtrOutput)
 }
 
+func (i *quarantinePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*QuarantinePolicy] {
+	return pulumix.Output[*QuarantinePolicy]{
+		OutputState: i.ToQuarantinePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The quarantine policy for a container registry.
 type QuarantinePolicyOutput struct{ *pulumi.OutputState }
 
@@ -955,6 +1076,12 @@ func (o QuarantinePolicyOutput) ToQuarantinePolicyPtrOutputWithContext(ctx conte
 	}).(QuarantinePolicyPtrOutput)
 }
 
+func (o QuarantinePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[QuarantinePolicy] {
+	return pulumix.Output[QuarantinePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The value that indicates whether the policy is enabled or not.
 func (o QuarantinePolicyOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QuarantinePolicy) *string { return v.Status }).(pulumi.StringPtrOutput)
@@ -972,6 +1099,12 @@ func (o QuarantinePolicyPtrOutput) ToQuarantinePolicyPtrOutput() QuarantinePolic
 
 func (o QuarantinePolicyPtrOutput) ToQuarantinePolicyPtrOutputWithContext(ctx context.Context) QuarantinePolicyPtrOutput {
 	return o
+}
+
+func (o QuarantinePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QuarantinePolicy] {
+	return pulumix.Output[*QuarantinePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QuarantinePolicyPtrOutput) Elem() QuarantinePolicyOutput {
@@ -1028,6 +1161,12 @@ func (o QuarantinePolicyResponseOutput) ToQuarantinePolicyResponseOutputWithCont
 	return o
 }
 
+func (o QuarantinePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QuarantinePolicyResponse] {
+	return pulumix.Output[QuarantinePolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The value that indicates whether the policy is enabled or not.
 func (o QuarantinePolicyResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QuarantinePolicyResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
@@ -1045,6 +1184,12 @@ func (o QuarantinePolicyResponsePtrOutput) ToQuarantinePolicyResponsePtrOutput()
 
 func (o QuarantinePolicyResponsePtrOutput) ToQuarantinePolicyResponsePtrOutputWithContext(ctx context.Context) QuarantinePolicyResponsePtrOutput {
 	return o
+}
+
+func (o QuarantinePolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QuarantinePolicyResponse] {
+	return pulumix.Output[*QuarantinePolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QuarantinePolicyResponsePtrOutput) Elem() QuarantinePolicyResponseOutput {
@@ -1090,6 +1235,12 @@ func (o RegistryPasswordResponseOutput) ToRegistryPasswordResponseOutputWithCont
 	return o
 }
 
+func (o RegistryPasswordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RegistryPasswordResponse] {
+	return pulumix.Output[RegistryPasswordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The password name.
 func (o RegistryPasswordResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegistryPasswordResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1112,6 +1263,12 @@ func (o RegistryPasswordResponseArrayOutput) ToRegistryPasswordResponseArrayOutp
 
 func (o RegistryPasswordResponseArrayOutput) ToRegistryPasswordResponseArrayOutputWithContext(ctx context.Context) RegistryPasswordResponseArrayOutput {
 	return o
+}
+
+func (o RegistryPasswordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RegistryPasswordResponse] {
+	return pulumix.Output[[]RegistryPasswordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegistryPasswordResponseArrayOutput) Index(i pulumi.IntInput) RegistryPasswordResponseOutput {
@@ -1190,6 +1347,12 @@ func (i RetentionPolicyArgs) ToRetentionPolicyOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyOutput)
 }
 
+func (i RetentionPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicy] {
+	return pulumix.Output[RetentionPolicy]{
+		OutputState: i.ToRetentionPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RetentionPolicyArgs) ToRetentionPolicyPtrOutput() RetentionPolicyPtrOutput {
 	return i.ToRetentionPolicyPtrOutputWithContext(context.Background())
 }
@@ -1231,6 +1394,12 @@ func (i *retentionPolicyPtrType) ToRetentionPolicyPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyPtrOutput)
 }
 
+func (i *retentionPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*RetentionPolicy] {
+	return pulumix.Output[*RetentionPolicy]{
+		OutputState: i.ToRetentionPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The retention policy for a container registry.
 type RetentionPolicyOutput struct{ *pulumi.OutputState }
 
@@ -1256,6 +1425,12 @@ func (o RetentionPolicyOutput) ToRetentionPolicyPtrOutputWithContext(ctx context
 	}).(RetentionPolicyPtrOutput)
 }
 
+func (o RetentionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicy] {
+	return pulumix.Output[RetentionPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of days to retain an untagged manifest after which it gets purged.
 func (o RetentionPolicyOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionPolicy) *int { return v.Days }).(pulumi.IntPtrOutput)
@@ -1278,6 +1453,12 @@ func (o RetentionPolicyPtrOutput) ToRetentionPolicyPtrOutput() RetentionPolicyPt
 
 func (o RetentionPolicyPtrOutput) ToRetentionPolicyPtrOutputWithContext(ctx context.Context) RetentionPolicyPtrOutput {
 	return o
+}
+
+func (o RetentionPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetentionPolicy] {
+	return pulumix.Output[*RetentionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RetentionPolicyPtrOutput) Elem() RetentionPolicyOutput {
@@ -1352,6 +1533,12 @@ func (o RetentionPolicyResponseOutput) ToRetentionPolicyResponseOutputWithContex
 	return o
 }
 
+func (o RetentionPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicyResponse] {
+	return pulumix.Output[RetentionPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of days to retain an untagged manifest after which it gets purged.
 func (o RetentionPolicyResponseOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyResponse) *int { return v.Days }).(pulumi.IntPtrOutput)
@@ -1379,6 +1566,12 @@ func (o RetentionPolicyResponsePtrOutput) ToRetentionPolicyResponsePtrOutput() R
 
 func (o RetentionPolicyResponsePtrOutput) ToRetentionPolicyResponsePtrOutputWithContext(ctx context.Context) RetentionPolicyResponsePtrOutput {
 	return o
+}
+
+func (o RetentionPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetentionPolicyResponse] {
+	return pulumix.Output[*RetentionPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RetentionPolicyResponsePtrOutput) Elem() RetentionPolicyResponseOutput {
@@ -1456,6 +1649,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The SKU of a container registry.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -1469,6 +1668,12 @@ func (o SkuOutput) ToSkuOutput() SkuOutput {
 
 func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
+}
+
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SKU name of the container registry. Required for registry creation.
@@ -1497,6 +1702,12 @@ func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
 
 func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
 	return o
+}
+
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SKU name of the container registry. Required for registry creation.
@@ -1532,6 +1743,12 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
+}
+
+func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
+	return pulumix.Output[StatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The short label for the status.
@@ -1584,6 +1801,12 @@ func (i StorageAccountPropertiesArgs) ToStorageAccountPropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountPropertiesOutput)
 }
 
+func (i StorageAccountPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[StorageAccountProperties] {
+	return pulumix.Output[StorageAccountProperties]{
+		OutputState: i.ToStorageAccountPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StorageAccountPropertiesArgs) ToStorageAccountPropertiesPtrOutput() StorageAccountPropertiesPtrOutput {
 	return i.ToStorageAccountPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1625,6 +1848,12 @@ func (i *storageAccountPropertiesPtrType) ToStorageAccountPropertiesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountPropertiesPtrOutput)
 }
 
+func (i *storageAccountPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountProperties] {
+	return pulumix.Output[*StorageAccountProperties]{
+		OutputState: i.ToStorageAccountPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The properties of a storage account for a container registry. Only applicable to Classic SKU.
 type StorageAccountPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1650,6 +1879,12 @@ func (o StorageAccountPropertiesOutput) ToStorageAccountPropertiesPtrOutputWithC
 	}).(StorageAccountPropertiesPtrOutput)
 }
 
+func (o StorageAccountPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountProperties] {
+	return pulumix.Output[StorageAccountProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource ID of the storage account.
 func (o StorageAccountPropertiesOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageAccountProperties) string { return v.Id }).(pulumi.StringOutput)
@@ -1667,6 +1902,12 @@ func (o StorageAccountPropertiesPtrOutput) ToStorageAccountPropertiesPtrOutput()
 
 func (o StorageAccountPropertiesPtrOutput) ToStorageAccountPropertiesPtrOutputWithContext(ctx context.Context) StorageAccountPropertiesPtrOutput {
 	return o
+}
+
+func (o StorageAccountPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountProperties] {
+	return pulumix.Output[*StorageAccountProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageAccountPropertiesPtrOutput) Elem() StorageAccountPropertiesOutput {
@@ -1710,6 +1951,12 @@ func (o StorageAccountPropertiesResponseOutput) ToStorageAccountPropertiesRespon
 	return o
 }
 
+func (o StorageAccountPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountPropertiesResponse] {
+	return pulumix.Output[StorageAccountPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource ID of the storage account.
 func (o StorageAccountPropertiesResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageAccountPropertiesResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1727,6 +1974,12 @@ func (o StorageAccountPropertiesResponsePtrOutput) ToStorageAccountPropertiesRes
 
 func (o StorageAccountPropertiesResponsePtrOutput) ToStorageAccountPropertiesResponsePtrOutputWithContext(ctx context.Context) StorageAccountPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o StorageAccountPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountPropertiesResponse] {
+	return pulumix.Output[*StorageAccountPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageAccountPropertiesResponsePtrOutput) Elem() StorageAccountPropertiesResponseOutput {
@@ -1819,6 +2072,12 @@ func (i TrustPolicyArgs) ToTrustPolicyOutputWithContext(ctx context.Context) Tru
 	return pulumi.ToOutputWithContext(ctx, i).(TrustPolicyOutput)
 }
 
+func (i TrustPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[TrustPolicy] {
+	return pulumix.Output[TrustPolicy]{
+		OutputState: i.ToTrustPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TrustPolicyArgs) ToTrustPolicyPtrOutput() TrustPolicyPtrOutput {
 	return i.ToTrustPolicyPtrOutputWithContext(context.Background())
 }
@@ -1860,6 +2119,12 @@ func (i *trustPolicyPtrType) ToTrustPolicyPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TrustPolicyPtrOutput)
 }
 
+func (i *trustPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*TrustPolicy] {
+	return pulumix.Output[*TrustPolicy]{
+		OutputState: i.ToTrustPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The content trust policy for a container registry.
 type TrustPolicyOutput struct{ *pulumi.OutputState }
 
@@ -1885,6 +2150,12 @@ func (o TrustPolicyOutput) ToTrustPolicyPtrOutputWithContext(ctx context.Context
 	}).(TrustPolicyPtrOutput)
 }
 
+func (o TrustPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[TrustPolicy] {
+	return pulumix.Output[TrustPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The value that indicates whether the policy is enabled or not.
 func (o TrustPolicyOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrustPolicy) *string { return v.Status }).(pulumi.StringPtrOutput)
@@ -1907,6 +2178,12 @@ func (o TrustPolicyPtrOutput) ToTrustPolicyPtrOutput() TrustPolicyPtrOutput {
 
 func (o TrustPolicyPtrOutput) ToTrustPolicyPtrOutputWithContext(ctx context.Context) TrustPolicyPtrOutput {
 	return o
+}
+
+func (o TrustPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrustPolicy] {
+	return pulumix.Output[*TrustPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrustPolicyPtrOutput) Elem() TrustPolicyOutput {
@@ -1979,6 +2256,12 @@ func (o TrustPolicyResponseOutput) ToTrustPolicyResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o TrustPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrustPolicyResponse] {
+	return pulumix.Output[TrustPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The value that indicates whether the policy is enabled or not.
 func (o TrustPolicyResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrustPolicyResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
@@ -2001,6 +2284,12 @@ func (o TrustPolicyResponsePtrOutput) ToTrustPolicyResponsePtrOutput() TrustPoli
 
 func (o TrustPolicyResponsePtrOutput) ToTrustPolicyResponsePtrOutputWithContext(ctx context.Context) TrustPolicyResponsePtrOutput {
 	return o
+}
+
+func (o TrustPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrustPolicyResponse] {
+	return pulumix.Output[*TrustPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrustPolicyResponsePtrOutput) Elem() TrustPolicyResponseOutput {
@@ -2096,6 +2385,12 @@ func (i VirtualNetworkRuleArgs) ToVirtualNetworkRuleOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkRuleOutput)
 }
 
+func (i VirtualNetworkRuleArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkRule] {
+	return pulumix.Output[VirtualNetworkRule]{
+		OutputState: i.ToVirtualNetworkRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualNetworkRuleArrayInput is an input type that accepts VirtualNetworkRuleArray and VirtualNetworkRuleArrayOutput values.
 // You can construct a concrete instance of `VirtualNetworkRuleArrayInput` via:
 //
@@ -2121,6 +2416,12 @@ func (i VirtualNetworkRuleArray) ToVirtualNetworkRuleArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkRuleArrayOutput)
 }
 
+func (i VirtualNetworkRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkRule] {
+	return pulumix.Output[[]VirtualNetworkRule]{
+		OutputState: i.ToVirtualNetworkRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Virtual network rule.
 type VirtualNetworkRuleOutput struct{ *pulumi.OutputState }
 
@@ -2134,6 +2435,12 @@ func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutput() VirtualNetworkRul
 
 func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput {
 	return o
+}
+
+func (o VirtualNetworkRuleOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkRule] {
+	return pulumix.Output[VirtualNetworkRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action of virtual network rule.
@@ -2158,6 +2465,12 @@ func (o VirtualNetworkRuleArrayOutput) ToVirtualNetworkRuleArrayOutput() Virtual
 
 func (o VirtualNetworkRuleArrayOutput) ToVirtualNetworkRuleArrayOutputWithContext(ctx context.Context) VirtualNetworkRuleArrayOutput {
 	return o
+}
+
+func (o VirtualNetworkRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkRule] {
+	return pulumix.Output[[]VirtualNetworkRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkRuleArrayOutput) Index(i pulumi.IntInput) VirtualNetworkRuleOutput {
@@ -2202,6 +2515,12 @@ func (o VirtualNetworkRuleResponseOutput) ToVirtualNetworkRuleResponseOutputWith
 	return o
 }
 
+func (o VirtualNetworkRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkRuleResponse] {
+	return pulumix.Output[VirtualNetworkRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The action of virtual network rule.
 func (o VirtualNetworkRuleResponseOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkRuleResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
@@ -2224,6 +2543,12 @@ func (o VirtualNetworkRuleResponseArrayOutput) ToVirtualNetworkRuleResponseArray
 
 func (o VirtualNetworkRuleResponseArrayOutput) ToVirtualNetworkRuleResponseArrayOutputWithContext(ctx context.Context) VirtualNetworkRuleResponseArrayOutput {
 	return o
+}
+
+func (o VirtualNetworkRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkRuleResponse] {
+	return pulumix.Output[[]VirtualNetworkRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkRuleResponseArrayOutput) Index(i pulumi.IntInput) VirtualNetworkRuleResponseOutput {

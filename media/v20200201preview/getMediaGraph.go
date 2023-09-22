@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details of a Media Graph in the Media Services account.
@@ -92,6 +93,12 @@ func (o LookupMediaGraphResultOutput) ToLookupMediaGraphResultOutput() LookupMed
 
 func (o LookupMediaGraphResultOutput) ToLookupMediaGraphResultOutputWithContext(ctx context.Context) LookupMediaGraphResultOutput {
 	return o
+}
+
+func (o LookupMediaGraphResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMediaGraphResult] {
+	return pulumix.Output[LookupMediaGraphResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Date the Media Graph was created.

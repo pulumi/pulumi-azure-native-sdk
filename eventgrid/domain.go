@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // EventGrid Domain.
@@ -272,6 +273,12 @@ func (i *Domain) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainOutput)
 }
 
+func (i *Domain) ToOutput(ctx context.Context) pulumix.Output[*Domain] {
+	return pulumix.Output[*Domain]{
+		OutputState: i.ToDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainOutput struct{ *pulumi.OutputState }
 
 func (DomainOutput) ElementType() reflect.Type {
@@ -284,6 +291,12 @@ func (o DomainOutput) ToDomainOutput() DomainOutput {
 
 func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
 	return o
+}
+
+func (o DomainOutput) ToOutput(ctx context.Context) pulumix.Output[*Domain] {
+	return pulumix.Output[*Domain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This Boolean is used to specify the creation mechanism for 'all' the Event Grid Domain Topics associated with this Event Grid Domain resource.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i CreateFirewallRuleWithAccountParametersArgs) ToCreateFirewallRuleWithAcc
 	return pulumi.ToOutputWithContext(ctx, i).(CreateFirewallRuleWithAccountParametersOutput)
 }
 
+func (i CreateFirewallRuleWithAccountParametersArgs) ToOutput(ctx context.Context) pulumix.Output[CreateFirewallRuleWithAccountParameters] {
+	return pulumix.Output[CreateFirewallRuleWithAccountParameters]{
+		OutputState: i.ToCreateFirewallRuleWithAccountParametersOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CreateFirewallRuleWithAccountParametersArrayInput is an input type that accepts CreateFirewallRuleWithAccountParametersArray and CreateFirewallRuleWithAccountParametersArrayOutput values.
 // You can construct a concrete instance of `CreateFirewallRuleWithAccountParametersArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i CreateFirewallRuleWithAccountParametersArray) ToCreateFirewallRuleWithAc
 	return pulumi.ToOutputWithContext(ctx, i).(CreateFirewallRuleWithAccountParametersArrayOutput)
 }
 
+func (i CreateFirewallRuleWithAccountParametersArray) ToOutput(ctx context.Context) pulumix.Output[[]CreateFirewallRuleWithAccountParameters] {
+	return pulumix.Output[[]CreateFirewallRuleWithAccountParameters]{
+		OutputState: i.ToCreateFirewallRuleWithAccountParametersArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The parameters used to create a new firewall rule while creating a new Data Lake Store account.
 type CreateFirewallRuleWithAccountParametersOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o CreateFirewallRuleWithAccountParametersOutput) ToCreateFirewallRuleWithA
 
 func (o CreateFirewallRuleWithAccountParametersOutput) ToCreateFirewallRuleWithAccountParametersOutputWithContext(ctx context.Context) CreateFirewallRuleWithAccountParametersOutput {
 	return o
+}
+
+func (o CreateFirewallRuleWithAccountParametersOutput) ToOutput(ctx context.Context) pulumix.Output[CreateFirewallRuleWithAccountParameters] {
+	return pulumix.Output[CreateFirewallRuleWithAccountParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
@@ -123,6 +142,12 @@ func (o CreateFirewallRuleWithAccountParametersArrayOutput) ToCreateFirewallRule
 
 func (o CreateFirewallRuleWithAccountParametersArrayOutput) ToCreateFirewallRuleWithAccountParametersArrayOutputWithContext(ctx context.Context) CreateFirewallRuleWithAccountParametersArrayOutput {
 	return o
+}
+
+func (o CreateFirewallRuleWithAccountParametersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CreateFirewallRuleWithAccountParameters] {
+	return pulumix.Output[[]CreateFirewallRuleWithAccountParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CreateFirewallRuleWithAccountParametersArrayOutput) Index(i pulumi.IntInput) CreateFirewallRuleWithAccountParametersOutput {
@@ -170,6 +195,12 @@ func (i CreateTrustedIdProviderWithAccountParametersArgs) ToCreateTrustedIdProvi
 	return pulumi.ToOutputWithContext(ctx, i).(CreateTrustedIdProviderWithAccountParametersOutput)
 }
 
+func (i CreateTrustedIdProviderWithAccountParametersArgs) ToOutput(ctx context.Context) pulumix.Output[CreateTrustedIdProviderWithAccountParameters] {
+	return pulumix.Output[CreateTrustedIdProviderWithAccountParameters]{
+		OutputState: i.ToCreateTrustedIdProviderWithAccountParametersOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CreateTrustedIdProviderWithAccountParametersArrayInput is an input type that accepts CreateTrustedIdProviderWithAccountParametersArray and CreateTrustedIdProviderWithAccountParametersArrayOutput values.
 // You can construct a concrete instance of `CreateTrustedIdProviderWithAccountParametersArrayInput` via:
 //
@@ -195,6 +226,12 @@ func (i CreateTrustedIdProviderWithAccountParametersArray) ToCreateTrustedIdProv
 	return pulumi.ToOutputWithContext(ctx, i).(CreateTrustedIdProviderWithAccountParametersArrayOutput)
 }
 
+func (i CreateTrustedIdProviderWithAccountParametersArray) ToOutput(ctx context.Context) pulumix.Output[[]CreateTrustedIdProviderWithAccountParameters] {
+	return pulumix.Output[[]CreateTrustedIdProviderWithAccountParameters]{
+		OutputState: i.ToCreateTrustedIdProviderWithAccountParametersArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The parameters used to create a new trusted identity provider while creating a new Data Lake Store account.
 type CreateTrustedIdProviderWithAccountParametersOutput struct{ *pulumi.OutputState }
 
@@ -208,6 +245,12 @@ func (o CreateTrustedIdProviderWithAccountParametersOutput) ToCreateTrustedIdPro
 
 func (o CreateTrustedIdProviderWithAccountParametersOutput) ToCreateTrustedIdProviderWithAccountParametersOutputWithContext(ctx context.Context) CreateTrustedIdProviderWithAccountParametersOutput {
 	return o
+}
+
+func (o CreateTrustedIdProviderWithAccountParametersOutput) ToOutput(ctx context.Context) pulumix.Output[CreateTrustedIdProviderWithAccountParameters] {
+	return pulumix.Output[CreateTrustedIdProviderWithAccountParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL of this trusted identity provider.
@@ -232,6 +275,12 @@ func (o CreateTrustedIdProviderWithAccountParametersArrayOutput) ToCreateTrusted
 
 func (o CreateTrustedIdProviderWithAccountParametersArrayOutput) ToCreateTrustedIdProviderWithAccountParametersArrayOutputWithContext(ctx context.Context) CreateTrustedIdProviderWithAccountParametersArrayOutput {
 	return o
+}
+
+func (o CreateTrustedIdProviderWithAccountParametersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CreateTrustedIdProviderWithAccountParameters] {
+	return pulumix.Output[[]CreateTrustedIdProviderWithAccountParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CreateTrustedIdProviderWithAccountParametersArrayOutput) Index(i pulumi.IntInput) CreateTrustedIdProviderWithAccountParametersOutput {
@@ -279,6 +328,12 @@ func (i CreateVirtualNetworkRuleWithAccountParametersArgs) ToCreateVirtualNetwor
 	return pulumi.ToOutputWithContext(ctx, i).(CreateVirtualNetworkRuleWithAccountParametersOutput)
 }
 
+func (i CreateVirtualNetworkRuleWithAccountParametersArgs) ToOutput(ctx context.Context) pulumix.Output[CreateVirtualNetworkRuleWithAccountParameters] {
+	return pulumix.Output[CreateVirtualNetworkRuleWithAccountParameters]{
+		OutputState: i.ToCreateVirtualNetworkRuleWithAccountParametersOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CreateVirtualNetworkRuleWithAccountParametersArrayInput is an input type that accepts CreateVirtualNetworkRuleWithAccountParametersArray and CreateVirtualNetworkRuleWithAccountParametersArrayOutput values.
 // You can construct a concrete instance of `CreateVirtualNetworkRuleWithAccountParametersArrayInput` via:
 //
@@ -304,6 +359,12 @@ func (i CreateVirtualNetworkRuleWithAccountParametersArray) ToCreateVirtualNetwo
 	return pulumi.ToOutputWithContext(ctx, i).(CreateVirtualNetworkRuleWithAccountParametersArrayOutput)
 }
 
+func (i CreateVirtualNetworkRuleWithAccountParametersArray) ToOutput(ctx context.Context) pulumix.Output[[]CreateVirtualNetworkRuleWithAccountParameters] {
+	return pulumix.Output[[]CreateVirtualNetworkRuleWithAccountParameters]{
+		OutputState: i.ToCreateVirtualNetworkRuleWithAccountParametersArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The parameters used to create a new virtual network rule while creating a new Data Lake Store account.
 type CreateVirtualNetworkRuleWithAccountParametersOutput struct{ *pulumi.OutputState }
 
@@ -317,6 +378,12 @@ func (o CreateVirtualNetworkRuleWithAccountParametersOutput) ToCreateVirtualNetw
 
 func (o CreateVirtualNetworkRuleWithAccountParametersOutput) ToCreateVirtualNetworkRuleWithAccountParametersOutputWithContext(ctx context.Context) CreateVirtualNetworkRuleWithAccountParametersOutput {
 	return o
+}
+
+func (o CreateVirtualNetworkRuleWithAccountParametersOutput) ToOutput(ctx context.Context) pulumix.Output[CreateVirtualNetworkRuleWithAccountParameters] {
+	return pulumix.Output[CreateVirtualNetworkRuleWithAccountParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The unique name of the virtual network rule to create.
@@ -341,6 +408,12 @@ func (o CreateVirtualNetworkRuleWithAccountParametersArrayOutput) ToCreateVirtua
 
 func (o CreateVirtualNetworkRuleWithAccountParametersArrayOutput) ToCreateVirtualNetworkRuleWithAccountParametersArrayOutputWithContext(ctx context.Context) CreateVirtualNetworkRuleWithAccountParametersArrayOutput {
 	return o
+}
+
+func (o CreateVirtualNetworkRuleWithAccountParametersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CreateVirtualNetworkRuleWithAccountParameters] {
+	return pulumix.Output[[]CreateVirtualNetworkRuleWithAccountParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CreateVirtualNetworkRuleWithAccountParametersArrayOutput) Index(i pulumi.IntInput) CreateVirtualNetworkRuleWithAccountParametersOutput {
@@ -388,6 +461,12 @@ func (i EncryptionConfigArgs) ToEncryptionConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput)
 }
 
+func (i EncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
+	return pulumix.Output[EncryptionConfig]{
+		OutputState: i.ToEncryptionConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
 	return i.ToEncryptionConfigPtrOutputWithContext(context.Background())
 }
@@ -429,6 +508,12 @@ func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigPtrOutput)
 }
 
+func (i *encryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
+	return pulumix.Output[*EncryptionConfig]{
+		OutputState: i.ToEncryptionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The encryption configuration for the account.
 type EncryptionConfigOutput struct{ *pulumi.OutputState }
 
@@ -454,6 +539,12 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx conte
 	}).(EncryptionConfigPtrOutput)
 }
 
+func (o EncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
+	return pulumix.Output[EncryptionConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Key Vault information for connecting to user managed encryption keys.
 func (o EncryptionConfigOutput) KeyVaultMetaInfo() KeyVaultMetaInfoPtrOutput {
 	return o.ApplyT(func(v EncryptionConfig) *KeyVaultMetaInfo { return v.KeyVaultMetaInfo }).(KeyVaultMetaInfoPtrOutput)
@@ -476,6 +567,12 @@ func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutput() EncryptionConfi
 
 func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
 	return o
+}
+
+func (o EncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
+	return pulumix.Output[*EncryptionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
@@ -531,6 +628,12 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithCont
 	return o
 }
 
+func (o EncryptionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfigResponse] {
+	return pulumix.Output[EncryptionConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Key Vault information for connecting to user managed encryption keys.
 func (o EncryptionConfigResponseOutput) KeyVaultMetaInfo() KeyVaultMetaInfoResponsePtrOutput {
 	return o.ApplyT(func(v EncryptionConfigResponse) *KeyVaultMetaInfoResponse { return v.KeyVaultMetaInfo }).(KeyVaultMetaInfoResponsePtrOutput)
@@ -576,6 +679,12 @@ func (i EncryptionIdentityArgs) ToEncryptionIdentityOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionIdentityOutput)
 }
 
+func (i EncryptionIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionIdentity] {
+	return pulumix.Output[EncryptionIdentity]{
+		OutputState: i.ToEncryptionIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EncryptionIdentityArgs) ToEncryptionIdentityPtrOutput() EncryptionIdentityPtrOutput {
 	return i.ToEncryptionIdentityPtrOutputWithContext(context.Background())
 }
@@ -617,6 +726,12 @@ func (i *encryptionIdentityPtrType) ToEncryptionIdentityPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionIdentityPtrOutput)
 }
 
+func (i *encryptionIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionIdentity] {
+	return pulumix.Output[*EncryptionIdentity]{
+		OutputState: i.ToEncryptionIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The encryption identity properties.
 type EncryptionIdentityOutput struct{ *pulumi.OutputState }
 
@@ -642,6 +757,12 @@ func (o EncryptionIdentityOutput) ToEncryptionIdentityPtrOutputWithContext(ctx c
 	}).(EncryptionIdentityPtrOutput)
 }
 
+func (o EncryptionIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionIdentity] {
+	return pulumix.Output[EncryptionIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The type of encryption being used. Currently the only supported type is 'SystemAssigned'.
 func (o EncryptionIdentityOutput) Type() EncryptionIdentityTypeOutput {
 	return o.ApplyT(func(v EncryptionIdentity) EncryptionIdentityType { return v.Type }).(EncryptionIdentityTypeOutput)
@@ -659,6 +780,12 @@ func (o EncryptionIdentityPtrOutput) ToEncryptionIdentityPtrOutput() EncryptionI
 
 func (o EncryptionIdentityPtrOutput) ToEncryptionIdentityPtrOutputWithContext(ctx context.Context) EncryptionIdentityPtrOutput {
 	return o
+}
+
+func (o EncryptionIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionIdentity] {
+	return pulumix.Output[*EncryptionIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionIdentityPtrOutput) Elem() EncryptionIdentityOutput {
@@ -706,6 +833,12 @@ func (o EncryptionIdentityResponseOutput) ToEncryptionIdentityResponseOutputWith
 	return o
 }
 
+func (o EncryptionIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionIdentityResponse] {
+	return pulumix.Output[EncryptionIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal identifier associated with the encryption.
 func (o EncryptionIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -750,6 +883,12 @@ func (o FirewallRuleResponseOutput) ToFirewallRuleResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o FirewallRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallRuleResponse] {
+	return pulumix.Output[FirewallRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
 func (o FirewallRuleResponseOutput) EndIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallRuleResponse) string { return v.EndIpAddress }).(pulumi.StringOutput)
@@ -787,6 +926,12 @@ func (o FirewallRuleResponseArrayOutput) ToFirewallRuleResponseArrayOutput() Fir
 
 func (o FirewallRuleResponseArrayOutput) ToFirewallRuleResponseArrayOutputWithContext(ctx context.Context) FirewallRuleResponseArrayOutput {
 	return o
+}
+
+func (o FirewallRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallRuleResponse] {
+	return pulumix.Output[[]FirewallRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallRuleResponseArrayOutput) Index(i pulumi.IntInput) FirewallRuleResponseOutput {
@@ -838,6 +983,12 @@ func (i KeyVaultMetaInfoArgs) ToKeyVaultMetaInfoOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultMetaInfoOutput)
 }
 
+func (i KeyVaultMetaInfoArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultMetaInfo] {
+	return pulumix.Output[KeyVaultMetaInfo]{
+		OutputState: i.ToKeyVaultMetaInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeyVaultMetaInfoArgs) ToKeyVaultMetaInfoPtrOutput() KeyVaultMetaInfoPtrOutput {
 	return i.ToKeyVaultMetaInfoPtrOutputWithContext(context.Background())
 }
@@ -879,6 +1030,12 @@ func (i *keyVaultMetaInfoPtrType) ToKeyVaultMetaInfoPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultMetaInfoPtrOutput)
 }
 
+func (i *keyVaultMetaInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultMetaInfo] {
+	return pulumix.Output[*KeyVaultMetaInfo]{
+		OutputState: i.ToKeyVaultMetaInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Metadata information used by account encryption.
 type KeyVaultMetaInfoOutput struct{ *pulumi.OutputState }
 
@@ -902,6 +1059,12 @@ func (o KeyVaultMetaInfoOutput) ToKeyVaultMetaInfoPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultMetaInfo) *KeyVaultMetaInfo {
 		return &v
 	}).(KeyVaultMetaInfoPtrOutput)
+}
+
+func (o KeyVaultMetaInfoOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultMetaInfo] {
+	return pulumix.Output[KeyVaultMetaInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the user managed encryption key.
@@ -931,6 +1094,12 @@ func (o KeyVaultMetaInfoPtrOutput) ToKeyVaultMetaInfoPtrOutput() KeyVaultMetaInf
 
 func (o KeyVaultMetaInfoPtrOutput) ToKeyVaultMetaInfoPtrOutputWithContext(ctx context.Context) KeyVaultMetaInfoPtrOutput {
 	return o
+}
+
+func (o KeyVaultMetaInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultMetaInfo] {
+	return pulumix.Output[*KeyVaultMetaInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyVaultMetaInfoPtrOutput) Elem() KeyVaultMetaInfoOutput {
@@ -998,6 +1167,12 @@ func (o KeyVaultMetaInfoResponseOutput) ToKeyVaultMetaInfoResponseOutputWithCont
 	return o
 }
 
+func (o KeyVaultMetaInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultMetaInfoResponse] {
+	return pulumix.Output[KeyVaultMetaInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the user managed encryption key.
 func (o KeyVaultMetaInfoResponseOutput) EncryptionKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultMetaInfoResponse) string { return v.EncryptionKeyName }).(pulumi.StringOutput)
@@ -1025,6 +1200,12 @@ func (o KeyVaultMetaInfoResponsePtrOutput) ToKeyVaultMetaInfoResponsePtrOutput()
 
 func (o KeyVaultMetaInfoResponsePtrOutput) ToKeyVaultMetaInfoResponsePtrOutputWithContext(ctx context.Context) KeyVaultMetaInfoResponsePtrOutput {
 	return o
+}
+
+func (o KeyVaultMetaInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultMetaInfoResponse] {
+	return pulumix.Output[*KeyVaultMetaInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyVaultMetaInfoResponsePtrOutput) Elem() KeyVaultMetaInfoResponseOutput {
@@ -1094,6 +1275,12 @@ func (o TrustedIdProviderResponseOutput) ToTrustedIdProviderResponseOutputWithCo
 	return o
 }
 
+func (o TrustedIdProviderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrustedIdProviderResponse] {
+	return pulumix.Output[TrustedIdProviderResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource identifier.
 func (o TrustedIdProviderResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v TrustedIdProviderResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1126,6 +1313,12 @@ func (o TrustedIdProviderResponseArrayOutput) ToTrustedIdProviderResponseArrayOu
 
 func (o TrustedIdProviderResponseArrayOutput) ToTrustedIdProviderResponseArrayOutputWithContext(ctx context.Context) TrustedIdProviderResponseArrayOutput {
 	return o
+}
+
+func (o TrustedIdProviderResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrustedIdProviderResponse] {
+	return pulumix.Output[[]TrustedIdProviderResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrustedIdProviderResponseArrayOutput) Index(i pulumi.IntInput) TrustedIdProviderResponseOutput {
@@ -1161,6 +1354,12 @@ func (o VirtualNetworkRuleResponseOutput) ToVirtualNetworkRuleResponseOutputWith
 	return o
 }
 
+func (o VirtualNetworkRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkRuleResponse] {
+	return pulumix.Output[VirtualNetworkRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource identifier.
 func (o VirtualNetworkRuleResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualNetworkRuleResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1193,6 +1392,12 @@ func (o VirtualNetworkRuleResponseArrayOutput) ToVirtualNetworkRuleResponseArray
 
 func (o VirtualNetworkRuleResponseArrayOutput) ToVirtualNetworkRuleResponseArrayOutputWithContext(ctx context.Context) VirtualNetworkRuleResponseArrayOutput {
 	return o
+}
+
+func (o VirtualNetworkRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkRuleResponse] {
+	return pulumix.Output[[]VirtualNetworkRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkRuleResponseArrayOutput) Index(i pulumi.IntInput) VirtualNetworkRuleResponseOutput {

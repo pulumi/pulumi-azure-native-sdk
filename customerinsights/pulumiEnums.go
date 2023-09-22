@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The calculation window.
@@ -81,6 +82,12 @@ func (o CalculationWindowTypesOutput) ToCalculationWindowTypesPtrOutputWithConte
 	}).(CalculationWindowTypesPtrOutput)
 }
 
+func (o CalculationWindowTypesOutput) ToOutput(ctx context.Context) pulumix.Output[CalculationWindowTypes] {
+	return pulumix.Output[CalculationWindowTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CalculationWindowTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -114,6 +121,12 @@ func (o CalculationWindowTypesPtrOutput) ToCalculationWindowTypesPtrOutput() Cal
 
 func (o CalculationWindowTypesPtrOutput) ToCalculationWindowTypesPtrOutputWithContext(ctx context.Context) CalculationWindowTypesPtrOutput {
 	return o
+}
+
+func (o CalculationWindowTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CalculationWindowTypes] {
+	return pulumix.Output[*CalculationWindowTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CalculationWindowTypesPtrOutput) Elem() CalculationWindowTypesOutput {
@@ -176,6 +189,12 @@ func (in *calculationWindowTypesPtr) ToCalculationWindowTypesPtrOutput() Calcula
 
 func (in *calculationWindowTypesPtr) ToCalculationWindowTypesPtrOutputWithContext(ctx context.Context) CalculationWindowTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CalculationWindowTypesPtrOutput)
+}
+
+func (in *calculationWindowTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*CalculationWindowTypes] {
+	return pulumix.Output[*CalculationWindowTypes]{
+		OutputState: in.ToCalculationWindowTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The Relationship Cardinality.
@@ -247,6 +266,12 @@ func (o CardinalityTypesOutput) ToCardinalityTypesPtrOutputWithContext(ctx conte
 	}).(CardinalityTypesPtrOutput)
 }
 
+func (o CardinalityTypesOutput) ToOutput(ctx context.Context) pulumix.Output[CardinalityTypes] {
+	return pulumix.Output[CardinalityTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CardinalityTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -280,6 +305,12 @@ func (o CardinalityTypesPtrOutput) ToCardinalityTypesPtrOutput() CardinalityType
 
 func (o CardinalityTypesPtrOutput) ToCardinalityTypesPtrOutputWithContext(ctx context.Context) CardinalityTypesPtrOutput {
 	return o
+}
+
+func (o CardinalityTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CardinalityTypes] {
+	return pulumix.Output[*CardinalityTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CardinalityTypesPtrOutput) Elem() CardinalityTypesOutput {
@@ -342,6 +373,12 @@ func (in *cardinalityTypesPtr) ToCardinalityTypesPtrOutput() CardinalityTypesPtr
 
 func (in *cardinalityTypesPtr) ToCardinalityTypesPtrOutputWithContext(ctx context.Context) CardinalityTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CardinalityTypesPtrOutput)
+}
+
+func (in *cardinalityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*CardinalityTypes] {
+	return pulumix.Output[*CardinalityTypes]{
+		OutputState: in.ToCardinalityTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of completion operation.
@@ -413,6 +450,12 @@ func (o CompletionOperationTypesOutput) ToCompletionOperationTypesPtrOutputWithC
 	}).(CompletionOperationTypesPtrOutput)
 }
 
+func (o CompletionOperationTypesOutput) ToOutput(ctx context.Context) pulumix.Output[CompletionOperationTypes] {
+	return pulumix.Output[CompletionOperationTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CompletionOperationTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -446,6 +489,12 @@ func (o CompletionOperationTypesPtrOutput) ToCompletionOperationTypesPtrOutput()
 
 func (o CompletionOperationTypesPtrOutput) ToCompletionOperationTypesPtrOutputWithContext(ctx context.Context) CompletionOperationTypesPtrOutput {
 	return o
+}
+
+func (o CompletionOperationTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CompletionOperationTypes] {
+	return pulumix.Output[*CompletionOperationTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CompletionOperationTypesPtrOutput) Elem() CompletionOperationTypesOutput {
@@ -508,6 +557,12 @@ func (in *completionOperationTypesPtr) ToCompletionOperationTypesPtrOutput() Com
 
 func (in *completionOperationTypesPtr) ToCompletionOperationTypesPtrOutputWithContext(ctx context.Context) CompletionOperationTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CompletionOperationTypesPtrOutput)
+}
+
+func (in *completionOperationTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*CompletionOperationTypes] {
+	return pulumix.Output[*CompletionOperationTypes]{
+		OutputState: in.ToCompletionOperationTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of connector.
@@ -592,6 +647,12 @@ func (o EntityTypeOutput) ToEntityTypePtrOutputWithContext(ctx context.Context) 
 	}).(EntityTypePtrOutput)
 }
 
+func (o EntityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EntityType] {
+	return pulumix.Output[EntityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -625,6 +686,12 @@ func (o EntityTypePtrOutput) ToEntityTypePtrOutput() EntityTypePtrOutput {
 
 func (o EntityTypePtrOutput) ToEntityTypePtrOutputWithContext(ctx context.Context) EntityTypePtrOutput {
 	return o
+}
+
+func (o EntityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityType] {
+	return pulumix.Output[*EntityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityTypePtrOutput) Elem() EntityTypeOutput {
@@ -687,6 +754,12 @@ func (in *entityTypePtr) ToEntityTypePtrOutput() EntityTypePtrOutput {
 
 func (in *entityTypePtr) ToEntityTypePtrOutputWithContext(ctx context.Context) EntityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypePtrOutput)
+}
+
+func (in *entityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EntityType] {
+	return pulumix.Output[*EntityType]{
+		OutputState: in.ToEntityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of entity.
@@ -759,6 +832,12 @@ func (o EntityTypesOutput) ToEntityTypesPtrOutputWithContext(ctx context.Context
 	}).(EntityTypesPtrOutput)
 }
 
+func (o EntityTypesOutput) ToOutput(ctx context.Context) pulumix.Output[EntityTypes] {
+	return pulumix.Output[EntityTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -792,6 +871,12 @@ func (o EntityTypesPtrOutput) ToEntityTypesPtrOutput() EntityTypesPtrOutput {
 
 func (o EntityTypesPtrOutput) ToEntityTypesPtrOutputWithContext(ctx context.Context) EntityTypesPtrOutput {
 	return o
+}
+
+func (o EntityTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityTypes] {
+	return pulumix.Output[*EntityTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityTypesPtrOutput) Elem() EntityTypesOutput {
@@ -854,6 +939,12 @@ func (in *entityTypesPtr) ToEntityTypesPtrOutput() EntityTypesPtrOutput {
 
 func (in *entityTypesPtr) ToEntityTypesPtrOutputWithContext(ctx context.Context) EntityTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypesPtrOutput)
+}
+
+func (in *entityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTypes] {
+	return pulumix.Output[*EntityTypes]{
+		OutputState: in.ToEntityTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of error management to use for the mapping.
@@ -925,6 +1016,12 @@ func (o ErrorManagementTypesOutput) ToErrorManagementTypesPtrOutputWithContext(c
 	}).(ErrorManagementTypesPtrOutput)
 }
 
+func (o ErrorManagementTypesOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorManagementTypes] {
+	return pulumix.Output[ErrorManagementTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ErrorManagementTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -958,6 +1055,12 @@ func (o ErrorManagementTypesPtrOutput) ToErrorManagementTypesPtrOutput() ErrorMa
 
 func (o ErrorManagementTypesPtrOutput) ToErrorManagementTypesPtrOutputWithContext(ctx context.Context) ErrorManagementTypesPtrOutput {
 	return o
+}
+
+func (o ErrorManagementTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorManagementTypes] {
+	return pulumix.Output[*ErrorManagementTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErrorManagementTypesPtrOutput) Elem() ErrorManagementTypesOutput {
@@ -1020,6 +1123,12 @@ func (in *errorManagementTypesPtr) ToErrorManagementTypesPtrOutput() ErrorManage
 
 func (in *errorManagementTypesPtr) ToErrorManagementTypesPtrOutputWithContext(ctx context.Context) ErrorManagementTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ErrorManagementTypesPtrOutput)
+}
+
+func (in *errorManagementTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ErrorManagementTypes] {
+	return pulumix.Output[*ErrorManagementTypes]{
+		OutputState: in.ToErrorManagementTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type mapping format.
@@ -1089,6 +1198,12 @@ func (o FormatTypesOutput) ToFormatTypesPtrOutputWithContext(ctx context.Context
 	}).(FormatTypesPtrOutput)
 }
 
+func (o FormatTypesOutput) ToOutput(ctx context.Context) pulumix.Output[FormatTypes] {
+	return pulumix.Output[FormatTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FormatTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1122,6 +1237,12 @@ func (o FormatTypesPtrOutput) ToFormatTypesPtrOutput() FormatTypesPtrOutput {
 
 func (o FormatTypesPtrOutput) ToFormatTypesPtrOutputWithContext(ctx context.Context) FormatTypesPtrOutput {
 	return o
+}
+
+func (o FormatTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FormatTypes] {
+	return pulumix.Output[*FormatTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FormatTypesPtrOutput) Elem() FormatTypesOutput {
@@ -1184,6 +1305,12 @@ func (in *formatTypesPtr) ToFormatTypesPtrOutput() FormatTypesPtrOutput {
 
 func (in *formatTypesPtr) ToFormatTypesPtrOutputWithContext(ctx context.Context) FormatTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FormatTypesPtrOutput)
+}
+
+func (in *formatTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*FormatTypes] {
+	return pulumix.Output[*FormatTypes]{
+		OutputState: in.ToFormatTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The frequency to update.
@@ -1257,6 +1384,12 @@ func (o FrequencyTypesOutput) ToFrequencyTypesPtrOutputWithContext(ctx context.C
 	}).(FrequencyTypesPtrOutput)
 }
 
+func (o FrequencyTypesOutput) ToOutput(ctx context.Context) pulumix.Output[FrequencyTypes] {
+	return pulumix.Output[FrequencyTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FrequencyTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1290,6 +1423,12 @@ func (o FrequencyTypesPtrOutput) ToFrequencyTypesPtrOutput() FrequencyTypesPtrOu
 
 func (o FrequencyTypesPtrOutput) ToFrequencyTypesPtrOutputWithContext(ctx context.Context) FrequencyTypesPtrOutput {
 	return o
+}
+
+func (o FrequencyTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FrequencyTypes] {
+	return pulumix.Output[*FrequencyTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FrequencyTypesPtrOutput) Elem() FrequencyTypesOutput {
@@ -1352,6 +1491,12 @@ func (in *frequencyTypesPtr) ToFrequencyTypesPtrOutput() FrequencyTypesPtrOutput
 
 func (in *frequencyTypesPtr) ToFrequencyTypesPtrOutputWithContext(ctx context.Context) FrequencyTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FrequencyTypesPtrOutput)
+}
+
+func (in *frequencyTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*FrequencyTypes] {
+	return pulumix.Output[*FrequencyTypes]{
+		OutputState: in.ToFrequencyTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only.
@@ -1422,6 +1567,12 @@ func (o InstanceOperationTypeOutput) ToInstanceOperationTypePtrOutputWithContext
 	}).(InstanceOperationTypePtrOutput)
 }
 
+func (o InstanceOperationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceOperationType] {
+	return pulumix.Output[InstanceOperationType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceOperationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1455,6 +1606,12 @@ func (o InstanceOperationTypePtrOutput) ToInstanceOperationTypePtrOutput() Insta
 
 func (o InstanceOperationTypePtrOutput) ToInstanceOperationTypePtrOutputWithContext(ctx context.Context) InstanceOperationTypePtrOutput {
 	return o
+}
+
+func (o InstanceOperationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceOperationType] {
+	return pulumix.Output[*InstanceOperationType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceOperationTypePtrOutput) Elem() InstanceOperationTypeOutput {
@@ -1517,6 +1674,12 @@ func (in *instanceOperationTypePtr) ToInstanceOperationTypePtrOutput() InstanceO
 
 func (in *instanceOperationTypePtr) ToInstanceOperationTypePtrOutputWithContext(ctx context.Context) InstanceOperationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceOperationTypePtrOutput)
+}
+
+func (in *instanceOperationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceOperationType] {
+	return pulumix.Output[*InstanceOperationType]{
+		OutputState: in.ToInstanceOperationTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The computation function for the KPI.
@@ -1593,6 +1756,12 @@ func (o KpiFunctionsOutput) ToKpiFunctionsPtrOutputWithContext(ctx context.Conte
 	}).(KpiFunctionsPtrOutput)
 }
 
+func (o KpiFunctionsOutput) ToOutput(ctx context.Context) pulumix.Output[KpiFunctions] {
+	return pulumix.Output[KpiFunctions]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KpiFunctionsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1626,6 +1795,12 @@ func (o KpiFunctionsPtrOutput) ToKpiFunctionsPtrOutput() KpiFunctionsPtrOutput {
 
 func (o KpiFunctionsPtrOutput) ToKpiFunctionsPtrOutputWithContext(ctx context.Context) KpiFunctionsPtrOutput {
 	return o
+}
+
+func (o KpiFunctionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KpiFunctions] {
+	return pulumix.Output[*KpiFunctions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KpiFunctionsPtrOutput) Elem() KpiFunctionsOutput {
@@ -1688,6 +1863,12 @@ func (in *kpiFunctionsPtr) ToKpiFunctionsPtrOutput() KpiFunctionsPtrOutput {
 
 func (in *kpiFunctionsPtr) ToKpiFunctionsPtrOutputWithContext(ctx context.Context) KpiFunctionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KpiFunctionsPtrOutput)
+}
+
+func (in *kpiFunctionsPtr) ToOutput(ctx context.Context) pulumix.Output[*KpiFunctions] {
+	return pulumix.Output[*KpiFunctions]{
+		OutputState: in.ToKpiFunctionsPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Link type.
@@ -1758,6 +1939,12 @@ func (o LinkTypesOutput) ToLinkTypesPtrOutputWithContext(ctx context.Context) Li
 	}).(LinkTypesPtrOutput)
 }
 
+func (o LinkTypesOutput) ToOutput(ctx context.Context) pulumix.Output[LinkTypes] {
+	return pulumix.Output[LinkTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LinkTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1791,6 +1978,12 @@ func (o LinkTypesPtrOutput) ToLinkTypesPtrOutput() LinkTypesPtrOutput {
 
 func (o LinkTypesPtrOutput) ToLinkTypesPtrOutputWithContext(ctx context.Context) LinkTypesPtrOutput {
 	return o
+}
+
+func (o LinkTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkTypes] {
+	return pulumix.Output[*LinkTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LinkTypesPtrOutput) Elem() LinkTypesOutput {
@@ -1853,6 +2046,12 @@ func (in *linkTypesPtr) ToLinkTypesPtrOutput() LinkTypesPtrOutput {
 
 func (in *linkTypesPtr) ToLinkTypesPtrOutputWithContext(ctx context.Context) LinkTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LinkTypesPtrOutput)
+}
+
+func (in *linkTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*LinkTypes] {
+	return pulumix.Output[*LinkTypes]{
+		OutputState: in.ToLinkTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of roles.
@@ -1927,6 +2126,12 @@ func (o RoleTypesOutput) ToRoleTypesPtrOutputWithContext(ctx context.Context) Ro
 	}).(RoleTypesPtrOutput)
 }
 
+func (o RoleTypesOutput) ToOutput(ctx context.Context) pulumix.Output[RoleTypes] {
+	return pulumix.Output[RoleTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RoleTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1960,6 +2165,12 @@ func (o RoleTypesPtrOutput) ToRoleTypesPtrOutput() RoleTypesPtrOutput {
 
 func (o RoleTypesPtrOutput) ToRoleTypesPtrOutputWithContext(ctx context.Context) RoleTypesPtrOutput {
 	return o
+}
+
+func (o RoleTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoleTypes] {
+	return pulumix.Output[*RoleTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RoleTypesPtrOutput) Elem() RoleTypesOutput {
@@ -2022,6 +2233,12 @@ func (in *roleTypesPtr) ToRoleTypesPtrOutput() RoleTypesPtrOutput {
 
 func (in *roleTypesPtr) ToRoleTypesPtrOutputWithContext(ctx context.Context) RoleTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RoleTypesPtrOutput)
+}
+
+func (in *roleTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*RoleTypes] {
+	return pulumix.Output[*RoleTypes]{
+		OutputState: in.ToRoleTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

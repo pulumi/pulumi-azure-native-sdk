@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a server key.
@@ -92,6 +93,12 @@ func (o LookupServerKeyResultOutput) ToLookupServerKeyResultOutput() LookupServe
 
 func (o LookupServerKeyResultOutput) ToLookupServerKeyResultOutputWithContext(ctx context.Context) LookupServerKeyResultOutput {
 	return o
+}
+
+func (o LookupServerKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServerKeyResult] {
+	return pulumix.Output[LookupServerKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Key auto rotation opt-in flag. Either true or false.

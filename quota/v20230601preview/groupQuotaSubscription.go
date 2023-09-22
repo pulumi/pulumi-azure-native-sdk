@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This represents a Azure subscriptionId that is associated with a GroupQuotaSEntity.
@@ -114,6 +115,12 @@ func (i *GroupQuotaSubscription) ToGroupQuotaSubscriptionOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(GroupQuotaSubscriptionOutput)
 }
 
+func (i *GroupQuotaSubscription) ToOutput(ctx context.Context) pulumix.Output[*GroupQuotaSubscription] {
+	return pulumix.Output[*GroupQuotaSubscription]{
+		OutputState: i.ToGroupQuotaSubscriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupQuotaSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (GroupQuotaSubscriptionOutput) ElementType() reflect.Type {
@@ -126,6 +133,12 @@ func (o GroupQuotaSubscriptionOutput) ToGroupQuotaSubscriptionOutput() GroupQuot
 
 func (o GroupQuotaSubscriptionOutput) ToGroupQuotaSubscriptionOutputWithContext(ctx context.Context) GroupQuotaSubscriptionOutput {
 	return o
+}
+
+func (o GroupQuotaSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupQuotaSubscription] {
+	return pulumix.Output[*GroupQuotaSubscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

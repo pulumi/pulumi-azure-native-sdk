@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Method to get a Hyper-V cluster.
@@ -101,6 +102,12 @@ func (o LookupHypervClusterControllerClusterResultOutput) ToLookupHypervClusterC
 
 func (o LookupHypervClusterControllerClusterResultOutput) ToLookupHypervClusterControllerClusterResultOutputWithContext(ctx context.Context) LookupHypervClusterControllerClusterResultOutput {
 	return o
+}
+
+func (o LookupHypervClusterControllerClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHypervClusterControllerClusterResult] {
+	return pulumix.Output[LookupHypervClusterControllerClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the timestamp marking Hyper-V cluster creation.

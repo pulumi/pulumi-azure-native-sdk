@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Pipeline job represents a unique instance of a batch topology, used for offline processing of selected portions of archived content.
@@ -145,6 +146,12 @@ func (i *PipelineJob) ToPipelineJobOutputWithContext(ctx context.Context) Pipeli
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobOutput)
 }
 
+func (i *PipelineJob) ToOutput(ctx context.Context) pulumix.Output[*PipelineJob] {
+	return pulumix.Output[*PipelineJob]{
+		OutputState: i.ToPipelineJobOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PipelineJobOutput struct{ *pulumi.OutputState }
 
 func (PipelineJobOutput) ElementType() reflect.Type {
@@ -157,6 +164,12 @@ func (o PipelineJobOutput) ToPipelineJobOutput() PipelineJobOutput {
 
 func (o PipelineJobOutput) ToPipelineJobOutputWithContext(ctx context.Context) PipelineJobOutput {
 	return o
+}
+
+func (o PipelineJobOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineJob] {
+	return pulumix.Output[*PipelineJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description for the pipeline.

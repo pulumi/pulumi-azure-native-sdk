@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details of a Streaming Policy in the Media Services account
@@ -94,6 +95,12 @@ func (o LookupStreamingPolicyResultOutput) ToLookupStreamingPolicyResultOutput()
 
 func (o LookupStreamingPolicyResultOutput) ToLookupStreamingPolicyResultOutputWithContext(ctx context.Context) LookupStreamingPolicyResultOutput {
 	return o
+}
+
+func (o LookupStreamingPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStreamingPolicyResult] {
+	return pulumix.Output[LookupStreamingPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration of CommonEncryptionCbcs

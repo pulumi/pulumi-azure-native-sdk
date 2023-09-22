@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets all deployments for a remediation at management group scope.
@@ -83,6 +84,12 @@ func (o ListRemediationDeploymentsAtManagementGroupResultOutput) ToListRemediati
 
 func (o ListRemediationDeploymentsAtManagementGroupResultOutput) ToListRemediationDeploymentsAtManagementGroupResultOutputWithContext(ctx context.Context) ListRemediationDeploymentsAtManagementGroupResultOutput {
 	return o
+}
+
+func (o ListRemediationDeploymentsAtManagementGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListRemediationDeploymentsAtManagementGroupResult] {
+	return pulumix.Output[ListRemediationDeploymentsAtManagementGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL to get the next set of results.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An ADLS Gen2 folder data set mapping.
@@ -208,6 +209,12 @@ func (i *ADLSGen2FolderDataSetMapping) ToADLSGen2FolderDataSetMappingOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ADLSGen2FolderDataSetMappingOutput)
 }
 
+func (i *ADLSGen2FolderDataSetMapping) ToOutput(ctx context.Context) pulumix.Output[*ADLSGen2FolderDataSetMapping] {
+	return pulumix.Output[*ADLSGen2FolderDataSetMapping]{
+		OutputState: i.ToADLSGen2FolderDataSetMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ADLSGen2FolderDataSetMappingOutput struct{ *pulumi.OutputState }
 
 func (ADLSGen2FolderDataSetMappingOutput) ElementType() reflect.Type {
@@ -220,6 +227,12 @@ func (o ADLSGen2FolderDataSetMappingOutput) ToADLSGen2FolderDataSetMappingOutput
 
 func (o ADLSGen2FolderDataSetMappingOutput) ToADLSGen2FolderDataSetMappingOutputWithContext(ctx context.Context) ADLSGen2FolderDataSetMappingOutput {
 	return o
+}
+
+func (o ADLSGen2FolderDataSetMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*ADLSGen2FolderDataSetMapping] {
+	return pulumix.Output[*ADLSGen2FolderDataSetMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the source data set.

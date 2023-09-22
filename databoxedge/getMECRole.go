@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a specific role by name.
@@ -94,6 +95,12 @@ func (o LookupMECRoleResultOutput) ToLookupMECRoleResultOutput() LookupMECRoleRe
 
 func (o LookupMECRoleResultOutput) ToLookupMECRoleResultOutputWithContext(ctx context.Context) LookupMECRoleResultOutput {
 	return o
+}
+
+func (o LookupMECRoleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMECRoleResult] {
+	return pulumix.Output[LookupMECRoleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Activation key of the MEC.

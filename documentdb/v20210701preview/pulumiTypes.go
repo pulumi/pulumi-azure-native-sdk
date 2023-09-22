@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i CertificateArgs) ToCertificateOutputWithContext(ctx context.Context) Cer
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateOutput)
 }
 
+func (i CertificateArgs) ToOutput(ctx context.Context) pulumix.Output[Certificate] {
+	return pulumix.Output[Certificate]{
+		OutputState: i.ToCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CertificateArrayInput is an input type that accepts CertificateArray and CertificateArrayOutput values.
 // You can construct a concrete instance of `CertificateArrayInput` via:
 //
@@ -71,6 +78,12 @@ func (i CertificateArray) ToCertificateArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateArrayOutput)
 }
 
+func (i CertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]Certificate] {
+	return pulumix.Output[[]Certificate]{
+		OutputState: i.ToCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CertificateOutput struct{ *pulumi.OutputState }
 
 func (CertificateOutput) ElementType() reflect.Type {
@@ -83,6 +96,12 @@ func (o CertificateOutput) ToCertificateOutput() CertificateOutput {
 
 func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) CertificateOutput {
 	return o
+}
+
+func (o CertificateOutput) ToOutput(ctx context.Context) pulumix.Output[Certificate] {
+	return pulumix.Output[Certificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // PEM formatted public key.
@@ -102,6 +121,12 @@ func (o CertificateArrayOutput) ToCertificateArrayOutput() CertificateArrayOutpu
 
 func (o CertificateArrayOutput) ToCertificateArrayOutputWithContext(ctx context.Context) CertificateArrayOutput {
 	return o
+}
+
+func (o CertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Certificate] {
+	return pulumix.Output[[]Certificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateArrayOutput) Index(i pulumi.IntInput) CertificateOutput {
@@ -129,6 +154,12 @@ func (o CertificateResponseOutput) ToCertificateResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o CertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateResponse] {
+	return pulumix.Output[CertificateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // PEM formatted public key.
 func (o CertificateResponseOutput) Pem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateResponse) *string { return v.Pem }).(pulumi.StringPtrOutput)
@@ -146,6 +177,12 @@ func (o CertificateResponseArrayOutput) ToCertificateResponseArrayOutput() Certi
 
 func (o CertificateResponseArrayOutput) ToCertificateResponseArrayOutputWithContext(ctx context.Context) CertificateResponseArrayOutput {
 	return o
+}
+
+func (o CertificateResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CertificateResponse] {
+	return pulumix.Output[[]CertificateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateResponseArrayOutput) Index(i pulumi.IntInput) CertificateResponseOutput {
@@ -237,6 +274,12 @@ func (i ClusterResourcePropertiesArgs) ToClusterResourcePropertiesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterResourcePropertiesOutput)
 }
 
+func (i ClusterResourcePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterResourceProperties] {
+	return pulumix.Output[ClusterResourceProperties]{
+		OutputState: i.ToClusterResourcePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ClusterResourcePropertiesArgs) ToClusterResourcePropertiesPtrOutput() ClusterResourcePropertiesPtrOutput {
 	return i.ToClusterResourcePropertiesPtrOutputWithContext(context.Background())
 }
@@ -278,6 +321,12 @@ func (i *clusterResourcePropertiesPtrType) ToClusterResourcePropertiesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterResourcePropertiesPtrOutput)
 }
 
+func (i *clusterResourcePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterResourceProperties] {
+	return pulumix.Output[*ClusterResourceProperties]{
+		OutputState: i.ToClusterResourcePropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties of a managed Cassandra cluster.
 type ClusterResourcePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -301,6 +350,12 @@ func (o ClusterResourcePropertiesOutput) ToClusterResourcePropertiesPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterResourceProperties) *ClusterResourceProperties {
 		return &v
 	}).(ClusterResourcePropertiesPtrOutput)
+}
+
+func (o ClusterResourcePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterResourceProperties] {
+	return pulumix.Output[ClusterResourceProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
@@ -380,6 +435,12 @@ func (o ClusterResourcePropertiesPtrOutput) ToClusterResourcePropertiesPtrOutput
 
 func (o ClusterResourcePropertiesPtrOutput) ToClusterResourcePropertiesPtrOutputWithContext(ctx context.Context) ClusterResourcePropertiesPtrOutput {
 	return o
+}
+
+func (o ClusterResourcePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterResourceProperties] {
+	return pulumix.Output[*ClusterResourceProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterResourcePropertiesPtrOutput) Elem() ClusterResourcePropertiesOutput {
@@ -567,6 +628,12 @@ func (o ClusterResourceResponsePropertiesOutput) ToClusterResourceResponseProper
 	return o
 }
 
+func (o ClusterResourceResponsePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterResourceResponseProperties] {
+	return pulumix.Output[ClusterResourceResponseProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
 func (o ClusterResourceResponsePropertiesOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterResourceResponseProperties) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
@@ -671,6 +738,12 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
+func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
 	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -712,6 +785,12 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
+func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity for the resource.
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -737,6 +816,12 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
+func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
 func (o ManagedServiceIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -759,6 +844,12 @@ func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() Man
 
 func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
@@ -818,6 +909,12 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
+func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
+	return pulumix.Output[ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal id of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -852,6 +949,12 @@ func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityRespons
 
 func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
+	return pulumix.Output[*ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
@@ -925,6 +1028,12 @@ func (o ManagedServiceIdentityResponseUserAssignedIdentitiesOutput) ToManagedSer
 	return o
 }
 
+func (o ManagedServiceIdentityResponseUserAssignedIdentitiesOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponseUserAssignedIdentities] {
+	return pulumix.Output[ManagedServiceIdentityResponseUserAssignedIdentities]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The client id of user assigned identity.
 func (o ManagedServiceIdentityResponseUserAssignedIdentitiesOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponseUserAssignedIdentities) string { return v.ClientId }).(pulumi.StringOutput)
@@ -947,6 +1056,12 @@ func (o ManagedServiceIdentityResponseUserAssignedIdentitiesMapOutput) ToManaged
 
 func (o ManagedServiceIdentityResponseUserAssignedIdentitiesMapOutput) ToManagedServiceIdentityResponseUserAssignedIdentitiesMapOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseUserAssignedIdentitiesMapOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityResponseUserAssignedIdentitiesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ManagedServiceIdentityResponseUserAssignedIdentities] {
+	return pulumix.Output[map[string]ManagedServiceIdentityResponseUserAssignedIdentities]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.StringInput) ManagedServiceIdentityResponseUserAssignedIdentitiesOutput {
@@ -986,6 +1101,12 @@ func (i SeedNodeArgs) ToSeedNodeOutput() SeedNodeOutput {
 
 func (i SeedNodeArgs) ToSeedNodeOutputWithContext(ctx context.Context) SeedNodeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SeedNodeOutput)
+}
+
+func (i SeedNodeArgs) ToOutput(ctx context.Context) pulumix.Output[SeedNode] {
+	return pulumix.Output[SeedNode]{
+		OutputState: i.ToSeedNodeOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i SeedNodeArgs) ToSeedNodePtrOutput() SeedNodePtrOutput {
@@ -1029,6 +1150,12 @@ func (i *seedNodePtrType) ToSeedNodePtrOutputWithContext(ctx context.Context) Se
 	return pulumi.ToOutputWithContext(ctx, i).(SeedNodePtrOutput)
 }
 
+func (i *seedNodePtrType) ToOutput(ctx context.Context) pulumix.Output[*SeedNode] {
+	return pulumix.Output[*SeedNode]{
+		OutputState: i.ToSeedNodePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SeedNodeArrayInput is an input type that accepts SeedNodeArray and SeedNodeArrayOutput values.
 // You can construct a concrete instance of `SeedNodeArrayInput` via:
 //
@@ -1052,6 +1179,12 @@ func (i SeedNodeArray) ToSeedNodeArrayOutput() SeedNodeArrayOutput {
 
 func (i SeedNodeArray) ToSeedNodeArrayOutputWithContext(ctx context.Context) SeedNodeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SeedNodeArrayOutput)
+}
+
+func (i SeedNodeArray) ToOutput(ctx context.Context) pulumix.Output[[]SeedNode] {
+	return pulumix.Output[[]SeedNode]{
+		OutputState: i.ToSeedNodeArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 type SeedNodeOutput struct{ *pulumi.OutputState }
@@ -1078,6 +1211,12 @@ func (o SeedNodeOutput) ToSeedNodePtrOutputWithContext(ctx context.Context) Seed
 	}).(SeedNodePtrOutput)
 }
 
+func (o SeedNodeOutput) ToOutput(ctx context.Context) pulumix.Output[SeedNode] {
+	return pulumix.Output[SeedNode]{
+		OutputState: o.OutputState,
+	}
+}
+
 // IP address of this seed node.
 func (o SeedNodeOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SeedNode) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
@@ -1095,6 +1234,12 @@ func (o SeedNodePtrOutput) ToSeedNodePtrOutput() SeedNodePtrOutput {
 
 func (o SeedNodePtrOutput) ToSeedNodePtrOutputWithContext(ctx context.Context) SeedNodePtrOutput {
 	return o
+}
+
+func (o SeedNodePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SeedNode] {
+	return pulumix.Output[*SeedNode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SeedNodePtrOutput) Elem() SeedNodeOutput {
@@ -1131,6 +1276,12 @@ func (o SeedNodeArrayOutput) ToSeedNodeArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o SeedNodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SeedNode] {
+	return pulumix.Output[[]SeedNode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SeedNodeArrayOutput) Index(i pulumi.IntInput) SeedNodeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SeedNode {
 		return vs[0].([]SeedNode)[vs[1].(int)]
@@ -1156,6 +1307,12 @@ func (o SeedNodeResponseOutput) ToSeedNodeResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o SeedNodeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SeedNodeResponse] {
+	return pulumix.Output[SeedNodeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // IP address of this seed node.
 func (o SeedNodeResponseOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SeedNodeResponse) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
@@ -1173,6 +1330,12 @@ func (o SeedNodeResponsePtrOutput) ToSeedNodeResponsePtrOutput() SeedNodeRespons
 
 func (o SeedNodeResponsePtrOutput) ToSeedNodeResponsePtrOutputWithContext(ctx context.Context) SeedNodeResponsePtrOutput {
 	return o
+}
+
+func (o SeedNodeResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SeedNodeResponse] {
+	return pulumix.Output[*SeedNodeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SeedNodeResponsePtrOutput) Elem() SeedNodeResponseOutput {
@@ -1207,6 +1370,12 @@ func (o SeedNodeResponseArrayOutput) ToSeedNodeResponseArrayOutput() SeedNodeRes
 
 func (o SeedNodeResponseArrayOutput) ToSeedNodeResponseArrayOutputWithContext(ctx context.Context) SeedNodeResponseArrayOutput {
 	return o
+}
+
+func (o SeedNodeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SeedNodeResponse] {
+	return pulumix.Output[[]SeedNodeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SeedNodeResponseArrayOutput) Index(i pulumi.IntInput) SeedNodeResponseOutput {

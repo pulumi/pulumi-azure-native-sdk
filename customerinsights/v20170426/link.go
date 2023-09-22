@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The link resource format.
@@ -199,6 +200,12 @@ func (i *Link) ToLinkOutputWithContext(ctx context.Context) LinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkOutput)
 }
 
+func (i *Link) ToOutput(ctx context.Context) pulumix.Output[*Link] {
+	return pulumix.Output[*Link]{
+		OutputState: i.ToLinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LinkOutput struct{ *pulumi.OutputState }
 
 func (LinkOutput) ElementType() reflect.Type {
@@ -211,6 +218,12 @@ func (o LinkOutput) ToLinkOutput() LinkOutput {
 
 func (o LinkOutput) ToLinkOutputWithContext(ctx context.Context) LinkOutput {
 	return o
+}
+
+func (o LinkOutput) ToOutput(ctx context.Context) pulumix.Output[*Link] {
+	return pulumix.Output[*Link]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Localized descriptions for the Link.

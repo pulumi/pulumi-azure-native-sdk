@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of the provided trunked network.
@@ -117,6 +118,12 @@ func (o LookupTrunkedNetworkResultOutput) ToLookupTrunkedNetworkResultOutput() L
 
 func (o LookupTrunkedNetworkResultOutput) ToLookupTrunkedNetworkResultOutputWithContext(ctx context.Context) LookupTrunkedNetworkResultOutput {
 	return o
+}
+
+func (o LookupTrunkedNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTrunkedNetworkResult] {
+	return pulumix.Output[LookupTrunkedNetworkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.

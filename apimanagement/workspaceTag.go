@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Tag Contract details.
@@ -135,6 +136,12 @@ func (i *WorkspaceTag) ToWorkspaceTagOutputWithContext(ctx context.Context) Work
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceTagOutput)
 }
 
+func (i *WorkspaceTag) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceTag] {
+	return pulumix.Output[*WorkspaceTag]{
+		OutputState: i.ToWorkspaceTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceTagOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceTagOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o WorkspaceTagOutput) ToWorkspaceTagOutput() WorkspaceTagOutput {
 
 func (o WorkspaceTagOutput) ToWorkspaceTagOutputWithContext(ctx context.Context) WorkspaceTagOutput {
 	return o
+}
+
+func (o WorkspaceTagOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceTag] {
+	return pulumix.Output[*WorkspaceTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Tag name.

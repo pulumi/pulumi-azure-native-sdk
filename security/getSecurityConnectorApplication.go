@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a specific application for the requested scope by applicationId
@@ -87,6 +88,12 @@ func (o LookupSecurityConnectorApplicationResultOutput) ToLookupSecurityConnecto
 
 func (o LookupSecurityConnectorApplicationResultOutput) ToLookupSecurityConnectorApplicationResultOutputWithContext(ctx context.Context) LookupSecurityConnectorApplicationResultOutput {
 	return o
+}
+
+func (o LookupSecurityConnectorApplicationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecurityConnectorApplicationResult] {
+	return pulumix.Output[LookupSecurityConnectorApplicationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // description of the application

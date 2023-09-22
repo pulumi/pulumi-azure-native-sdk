@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The status of the Canonical support plan.
@@ -113,6 +114,12 @@ func (i *SupportPlanType) ToSupportPlanTypeOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SupportPlanTypeOutput)
 }
 
+func (i *SupportPlanType) ToOutput(ctx context.Context) pulumix.Output[*SupportPlanType] {
+	return pulumix.Output[*SupportPlanType]{
+		OutputState: i.ToSupportPlanTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SupportPlanTypeOutput struct{ *pulumi.OutputState }
 
 func (SupportPlanTypeOutput) ElementType() reflect.Type {
@@ -125,6 +132,12 @@ func (o SupportPlanTypeOutput) ToSupportPlanTypeOutput() SupportPlanTypeOutput {
 
 func (o SupportPlanTypeOutput) ToSupportPlanTypeOutputWithContext(ctx context.Context) SupportPlanTypeOutput {
 	return o
+}
+
+func (o SupportPlanTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*SupportPlanType] {
+	return pulumix.Output[*SupportPlanType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Canonical support plan, i.e. "essential", "standard" or "advanced".

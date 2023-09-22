@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the source control properties for a build task.
@@ -96,6 +97,12 @@ func (o ListBuildTaskSourceRepositoryPropertiesResultOutput) ToListBuildTaskSour
 
 func (o ListBuildTaskSourceRepositoryPropertiesResultOutput) ToListBuildTaskSourceRepositoryPropertiesResultOutputWithContext(ctx context.Context) ListBuildTaskSourceRepositoryPropertiesResultOutput {
 	return o
+}
+
+func (o ListBuildTaskSourceRepositoryPropertiesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListBuildTaskSourceRepositoryPropertiesResult] {
+	return pulumix.Output[ListBuildTaskSourceRepositoryPropertiesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value of this property indicates whether the source control commit trigger is enabled or not.

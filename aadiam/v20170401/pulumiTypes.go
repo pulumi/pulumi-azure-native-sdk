@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i LogSettingsArgs) ToLogSettingsOutputWithContext(ctx context.Context) Log
 	return pulumi.ToOutputWithContext(ctx, i).(LogSettingsOutput)
 }
 
+func (i LogSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[LogSettings] {
+	return pulumix.Output[LogSettings]{
+		OutputState: i.ToLogSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LogSettingsArrayInput is an input type that accepts LogSettingsArray and LogSettingsArrayOutput values.
 // You can construct a concrete instance of `LogSettingsArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i LogSettingsArray) ToLogSettingsArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(LogSettingsArrayOutput)
 }
 
+func (i LogSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]LogSettings] {
+	return pulumix.Output[[]LogSettings]{
+		OutputState: i.ToLogSettingsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
 type LogSettingsOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o LogSettingsOutput) ToLogSettingsOutput() LogSettingsOutput {
 
 func (o LogSettingsOutput) ToLogSettingsOutputWithContext(ctx context.Context) LogSettingsOutput {
 	return o
+}
+
+func (o LogSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[LogSettings] {
+	return pulumix.Output[LogSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
@@ -123,6 +142,12 @@ func (o LogSettingsArrayOutput) ToLogSettingsArrayOutput() LogSettingsArrayOutpu
 
 func (o LogSettingsArrayOutput) ToLogSettingsArrayOutputWithContext(ctx context.Context) LogSettingsArrayOutput {
 	return o
+}
+
+func (o LogSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LogSettings] {
+	return pulumix.Output[[]LogSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogSettingsArrayOutput) Index(i pulumi.IntInput) LogSettingsOutput {
@@ -156,6 +181,12 @@ func (o LogSettingsResponseOutput) ToLogSettingsResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o LogSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogSettingsResponse] {
+	return pulumix.Output[LogSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
 func (o LogSettingsResponseOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogSettingsResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
@@ -183,6 +214,12 @@ func (o LogSettingsResponseArrayOutput) ToLogSettingsResponseArrayOutput() LogSe
 
 func (o LogSettingsResponseArrayOutput) ToLogSettingsResponseArrayOutputWithContext(ctx context.Context) LogSettingsResponseArrayOutput {
 	return o
+}
+
+func (o LogSettingsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LogSettingsResponse] {
+	return pulumix.Output[[]LogSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogSettingsResponseArrayOutput) Index(i pulumi.IntInput) LogSettingsResponseOutput {
@@ -230,6 +267,12 @@ func (i RetentionPolicyArgs) ToRetentionPolicyOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyOutput)
 }
 
+func (i RetentionPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicy] {
+	return pulumix.Output[RetentionPolicy]{
+		OutputState: i.ToRetentionPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RetentionPolicyArgs) ToRetentionPolicyPtrOutput() RetentionPolicyPtrOutput {
 	return i.ToRetentionPolicyPtrOutputWithContext(context.Background())
 }
@@ -271,6 +314,12 @@ func (i *retentionPolicyPtrType) ToRetentionPolicyPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyPtrOutput)
 }
 
+func (i *retentionPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*RetentionPolicy] {
+	return pulumix.Output[*RetentionPolicy]{
+		OutputState: i.ToRetentionPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the retention policy for the log.
 type RetentionPolicyOutput struct{ *pulumi.OutputState }
 
@@ -296,6 +345,12 @@ func (o RetentionPolicyOutput) ToRetentionPolicyPtrOutputWithContext(ctx context
 	}).(RetentionPolicyPtrOutput)
 }
 
+func (o RetentionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicy] {
+	return pulumix.Output[RetentionPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of days for the retention in days. A value of 0 will retain the events indefinitely.
 func (o RetentionPolicyOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v RetentionPolicy) int { return v.Days }).(pulumi.IntOutput)
@@ -318,6 +373,12 @@ func (o RetentionPolicyPtrOutput) ToRetentionPolicyPtrOutput() RetentionPolicyPt
 
 func (o RetentionPolicyPtrOutput) ToRetentionPolicyPtrOutputWithContext(ctx context.Context) RetentionPolicyPtrOutput {
 	return o
+}
+
+func (o RetentionPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetentionPolicy] {
+	return pulumix.Output[*RetentionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RetentionPolicyPtrOutput) Elem() RetentionPolicyOutput {
@@ -373,6 +434,12 @@ func (o RetentionPolicyResponseOutput) ToRetentionPolicyResponseOutputWithContex
 	return o
 }
 
+func (o RetentionPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicyResponse] {
+	return pulumix.Output[RetentionPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of days for the retention in days. A value of 0 will retain the events indefinitely.
 func (o RetentionPolicyResponseOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v RetentionPolicyResponse) int { return v.Days }).(pulumi.IntOutput)
@@ -395,6 +462,12 @@ func (o RetentionPolicyResponsePtrOutput) ToRetentionPolicyResponsePtrOutput() R
 
 func (o RetentionPolicyResponsePtrOutput) ToRetentionPolicyResponsePtrOutputWithContext(ctx context.Context) RetentionPolicyResponsePtrOutput {
 	return o
+}
+
+func (o RetentionPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetentionPolicyResponse] {
+	return pulumix.Output[*RetentionPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RetentionPolicyResponsePtrOutput) Elem() RetentionPolicyResponseOutput {

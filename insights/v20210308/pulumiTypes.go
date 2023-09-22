@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i MyWorkbookManagedIdentityArgs) ToMyWorkbookManagedIdentityOutput() MyWor
 
 func (i MyWorkbookManagedIdentityArgs) ToMyWorkbookManagedIdentityOutputWithContext(ctx context.Context) MyWorkbookManagedIdentityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MyWorkbookManagedIdentityOutput)
+}
+
+func (i MyWorkbookManagedIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[MyWorkbookManagedIdentity] {
+	return pulumix.Output[MyWorkbookManagedIdentity]{
+		OutputState: i.ToMyWorkbookManagedIdentityOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i MyWorkbookManagedIdentityArgs) ToMyWorkbookManagedIdentityPtrOutput() MyWorkbookManagedIdentityPtrOutput {
@@ -89,6 +96,12 @@ func (i *myWorkbookManagedIdentityPtrType) ToMyWorkbookManagedIdentityPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(MyWorkbookManagedIdentityPtrOutput)
 }
 
+func (i *myWorkbookManagedIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*MyWorkbookManagedIdentity] {
+	return pulumix.Output[*MyWorkbookManagedIdentity]{
+		OutputState: i.ToMyWorkbookManagedIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Customer Managed Identity
 type MyWorkbookManagedIdentityOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o MyWorkbookManagedIdentityOutput) ToMyWorkbookManagedIdentityPtrOutputWit
 	}).(MyWorkbookManagedIdentityPtrOutput)
 }
 
+func (o MyWorkbookManagedIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[MyWorkbookManagedIdentity] {
+	return pulumix.Output[MyWorkbookManagedIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o MyWorkbookManagedIdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MyWorkbookManagedIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -131,6 +150,12 @@ func (o MyWorkbookManagedIdentityPtrOutput) ToMyWorkbookManagedIdentityPtrOutput
 
 func (o MyWorkbookManagedIdentityPtrOutput) ToMyWorkbookManagedIdentityPtrOutputWithContext(ctx context.Context) MyWorkbookManagedIdentityPtrOutput {
 	return o
+}
+
+func (o MyWorkbookManagedIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MyWorkbookManagedIdentity] {
+	return pulumix.Output[*MyWorkbookManagedIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MyWorkbookManagedIdentityPtrOutput) Elem() MyWorkbookManagedIdentityOutput {
@@ -176,6 +201,12 @@ func (o MyWorkbookManagedIdentityResponseOutput) ToMyWorkbookManagedIdentityResp
 	return o
 }
 
+func (o MyWorkbookManagedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MyWorkbookManagedIdentityResponse] {
+	return pulumix.Output[MyWorkbookManagedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o MyWorkbookManagedIdentityResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MyWorkbookManagedIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -200,6 +231,12 @@ func (o MyWorkbookManagedIdentityResponsePtrOutput) ToMyWorkbookManagedIdentityR
 
 func (o MyWorkbookManagedIdentityResponsePtrOutput) ToMyWorkbookManagedIdentityResponsePtrOutputWithContext(ctx context.Context) MyWorkbookManagedIdentityResponsePtrOutput {
 	return o
+}
+
+func (o MyWorkbookManagedIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MyWorkbookManagedIdentityResponse] {
+	return pulumix.Output[*MyWorkbookManagedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MyWorkbookManagedIdentityResponsePtrOutput) Elem() MyWorkbookManagedIdentityResponseOutput {
@@ -255,6 +292,12 @@ func (o MyWorkbookUserAssignedIdentitiesResponseOutput) ToMyWorkbookUserAssigned
 	return o
 }
 
+func (o MyWorkbookUserAssignedIdentitiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MyWorkbookUserAssignedIdentitiesResponse] {
+	return pulumix.Output[MyWorkbookUserAssignedIdentitiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal ID of resource identity.
 func (o MyWorkbookUserAssignedIdentitiesResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v MyWorkbookUserAssignedIdentitiesResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -277,6 +320,12 @@ func (o MyWorkbookUserAssignedIdentitiesResponsePtrOutput) ToMyWorkbookUserAssig
 
 func (o MyWorkbookUserAssignedIdentitiesResponsePtrOutput) ToMyWorkbookUserAssignedIdentitiesResponsePtrOutputWithContext(ctx context.Context) MyWorkbookUserAssignedIdentitiesResponsePtrOutput {
 	return o
+}
+
+func (o MyWorkbookUserAssignedIdentitiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MyWorkbookUserAssignedIdentitiesResponse] {
+	return pulumix.Output[*MyWorkbookUserAssignedIdentitiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MyWorkbookUserAssignedIdentitiesResponsePtrOutput) Elem() MyWorkbookUserAssignedIdentitiesResponseOutput {
@@ -338,6 +387,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -405,6 +460,12 @@ func (i WorkbookManagedIdentityArgs) ToWorkbookManagedIdentityOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(WorkbookManagedIdentityOutput)
 }
 
+func (i WorkbookManagedIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[WorkbookManagedIdentity] {
+	return pulumix.Output[WorkbookManagedIdentity]{
+		OutputState: i.ToWorkbookManagedIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkbookManagedIdentityArgs) ToWorkbookManagedIdentityPtrOutput() WorkbookManagedIdentityPtrOutput {
 	return i.ToWorkbookManagedIdentityPtrOutputWithContext(context.Background())
 }
@@ -446,6 +507,12 @@ func (i *workbookManagedIdentityPtrType) ToWorkbookManagedIdentityPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(WorkbookManagedIdentityPtrOutput)
 }
 
+func (i *workbookManagedIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkbookManagedIdentity] {
+	return pulumix.Output[*WorkbookManagedIdentity]{
+		OutputState: i.ToWorkbookManagedIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Customer Managed Identity
 type WorkbookManagedIdentityOutput struct{ *pulumi.OutputState }
 
@@ -471,6 +538,12 @@ func (o WorkbookManagedIdentityOutput) ToWorkbookManagedIdentityPtrOutputWithCon
 	}).(WorkbookManagedIdentityPtrOutput)
 }
 
+func (o WorkbookManagedIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[WorkbookManagedIdentity] {
+	return pulumix.Output[WorkbookManagedIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o WorkbookManagedIdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkbookManagedIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -488,6 +561,12 @@ func (o WorkbookManagedIdentityPtrOutput) ToWorkbookManagedIdentityPtrOutput() W
 
 func (o WorkbookManagedIdentityPtrOutput) ToWorkbookManagedIdentityPtrOutputWithContext(ctx context.Context) WorkbookManagedIdentityPtrOutput {
 	return o
+}
+
+func (o WorkbookManagedIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkbookManagedIdentity] {
+	return pulumix.Output[*WorkbookManagedIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkbookManagedIdentityPtrOutput) Elem() WorkbookManagedIdentityOutput {
@@ -533,6 +612,12 @@ func (o WorkbookManagedIdentityResponseOutput) ToWorkbookManagedIdentityResponse
 	return o
 }
 
+func (o WorkbookManagedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkbookManagedIdentityResponse] {
+	return pulumix.Output[WorkbookManagedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o WorkbookManagedIdentityResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkbookManagedIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -557,6 +642,12 @@ func (o WorkbookManagedIdentityResponsePtrOutput) ToWorkbookManagedIdentityRespo
 
 func (o WorkbookManagedIdentityResponsePtrOutput) ToWorkbookManagedIdentityResponsePtrOutputWithContext(ctx context.Context) WorkbookManagedIdentityResponsePtrOutput {
 	return o
+}
+
+func (o WorkbookManagedIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkbookManagedIdentityResponse] {
+	return pulumix.Output[*WorkbookManagedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkbookManagedIdentityResponsePtrOutput) Elem() WorkbookManagedIdentityResponseOutput {
@@ -614,6 +705,12 @@ func (o WorkbookUserAssignedIdentitiesResponseOutput) ToWorkbookUserAssignedIden
 	return o
 }
 
+func (o WorkbookUserAssignedIdentitiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkbookUserAssignedIdentitiesResponse] {
+	return pulumix.Output[WorkbookUserAssignedIdentitiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The client ID of resource.
 func (o WorkbookUserAssignedIdentitiesResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkbookUserAssignedIdentitiesResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -641,6 +738,12 @@ func (o WorkbookUserAssignedIdentitiesResponsePtrOutput) ToWorkbookUserAssignedI
 
 func (o WorkbookUserAssignedIdentitiesResponsePtrOutput) ToWorkbookUserAssignedIdentitiesResponsePtrOutputWithContext(ctx context.Context) WorkbookUserAssignedIdentitiesResponsePtrOutput {
 	return o
+}
+
+func (o WorkbookUserAssignedIdentitiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkbookUserAssignedIdentitiesResponse] {
+	return pulumix.Output[*WorkbookUserAssignedIdentitiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkbookUserAssignedIdentitiesResponsePtrOutput) Elem() WorkbookUserAssignedIdentitiesResponseOutput {

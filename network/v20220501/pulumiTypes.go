@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -76,6 +77,12 @@ func (i CustomRuleArgs) ToCustomRuleOutputWithContext(ctx context.Context) Custo
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRuleOutput)
 }
 
+func (i CustomRuleArgs) ToOutput(ctx context.Context) pulumix.Output[CustomRule] {
+	return pulumix.Output[CustomRule]{
+		OutputState: i.ToCustomRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CustomRuleArrayInput is an input type that accepts CustomRuleArray and CustomRuleArrayOutput values.
 // You can construct a concrete instance of `CustomRuleArrayInput` via:
 //
@@ -101,6 +108,12 @@ func (i CustomRuleArray) ToCustomRuleArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRuleArrayOutput)
 }
 
+func (i CustomRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]CustomRule] {
+	return pulumix.Output[[]CustomRule]{
+		OutputState: i.ToCustomRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines contents of a web application rule
 type CustomRuleOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o CustomRuleOutput) ToCustomRuleOutput() CustomRuleOutput {
 
 func (o CustomRuleOutput) ToCustomRuleOutputWithContext(ctx context.Context) CustomRuleOutput {
 	return o
+}
+
+func (o CustomRuleOutput) ToOutput(ctx context.Context) pulumix.Output[CustomRule] {
+	return pulumix.Output[CustomRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes what action to be applied when rule matches.
@@ -170,6 +189,12 @@ func (o CustomRuleArrayOutput) ToCustomRuleArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o CustomRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CustomRule] {
+	return pulumix.Output[[]CustomRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomRuleArrayOutput) Index(i pulumi.IntInput) CustomRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomRule {
 		return vs[0].([]CustomRule)[vs[1].(int)]
@@ -209,6 +234,12 @@ func (i CustomRuleListArgs) ToCustomRuleListOutput() CustomRuleListOutput {
 
 func (i CustomRuleListArgs) ToCustomRuleListOutputWithContext(ctx context.Context) CustomRuleListOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRuleListOutput)
+}
+
+func (i CustomRuleListArgs) ToOutput(ctx context.Context) pulumix.Output[CustomRuleList] {
+	return pulumix.Output[CustomRuleList]{
+		OutputState: i.ToCustomRuleListOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CustomRuleListArgs) ToCustomRuleListPtrOutput() CustomRuleListPtrOutput {
@@ -252,6 +283,12 @@ func (i *customRuleListPtrType) ToCustomRuleListPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRuleListPtrOutput)
 }
 
+func (i *customRuleListPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomRuleList] {
+	return pulumix.Output[*CustomRuleList]{
+		OutputState: i.ToCustomRuleListPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines contents of custom rules
 type CustomRuleListOutput struct{ *pulumi.OutputState }
 
@@ -277,6 +314,12 @@ func (o CustomRuleListOutput) ToCustomRuleListPtrOutputWithContext(ctx context.C
 	}).(CustomRuleListPtrOutput)
 }
 
+func (o CustomRuleListOutput) ToOutput(ctx context.Context) pulumix.Output[CustomRuleList] {
+	return pulumix.Output[CustomRuleList]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of rules
 func (o CustomRuleListOutput) Rules() CustomRuleArrayOutput {
 	return o.ApplyT(func(v CustomRuleList) []CustomRule { return v.Rules }).(CustomRuleArrayOutput)
@@ -294,6 +337,12 @@ func (o CustomRuleListPtrOutput) ToCustomRuleListPtrOutput() CustomRuleListPtrOu
 
 func (o CustomRuleListPtrOutput) ToCustomRuleListPtrOutputWithContext(ctx context.Context) CustomRuleListPtrOutput {
 	return o
+}
+
+func (o CustomRuleListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomRuleList] {
+	return pulumix.Output[*CustomRuleList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomRuleListPtrOutput) Elem() CustomRuleListOutput {
@@ -337,6 +386,12 @@ func (o CustomRuleListResponseOutput) ToCustomRuleListResponseOutputWithContext(
 	return o
 }
 
+func (o CustomRuleListResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomRuleListResponse] {
+	return pulumix.Output[CustomRuleListResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of rules
 func (o CustomRuleListResponseOutput) Rules() CustomRuleResponseArrayOutput {
 	return o.ApplyT(func(v CustomRuleListResponse) []CustomRuleResponse { return v.Rules }).(CustomRuleResponseArrayOutput)
@@ -354,6 +409,12 @@ func (o CustomRuleListResponsePtrOutput) ToCustomRuleListResponsePtrOutput() Cus
 
 func (o CustomRuleListResponsePtrOutput) ToCustomRuleListResponsePtrOutputWithContext(ctx context.Context) CustomRuleListResponsePtrOutput {
 	return o
+}
+
+func (o CustomRuleListResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomRuleListResponse] {
+	return pulumix.Output[*CustomRuleListResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomRuleListResponsePtrOutput) Elem() CustomRuleListResponseOutput {
@@ -411,6 +472,12 @@ func (o CustomRuleResponseOutput) ToCustomRuleResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o CustomRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomRuleResponse] {
+	return pulumix.Output[CustomRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Describes what action to be applied when rule matches.
 func (o CustomRuleResponseOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomRuleResponse) string { return v.Action }).(pulumi.StringOutput)
@@ -465,6 +532,12 @@ func (o CustomRuleResponseArrayOutput) ToCustomRuleResponseArrayOutputWithContex
 	return o
 }
 
+func (o CustomRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CustomRuleResponse] {
+	return pulumix.Output[[]CustomRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomRuleResponseArrayOutput) Index(i pulumi.IntInput) CustomRuleResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomRuleResponse {
 		return vs[0].([]CustomRuleResponse)[vs[1].(int)]
@@ -514,6 +587,12 @@ func (i FrontDoorManagedRuleGroupOverrideArgs) ToFrontDoorManagedRuleGroupOverri
 	return pulumi.ToOutputWithContext(ctx, i).(FrontDoorManagedRuleGroupOverrideOutput)
 }
 
+func (i FrontDoorManagedRuleGroupOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[FrontDoorManagedRuleGroupOverride] {
+	return pulumix.Output[FrontDoorManagedRuleGroupOverride]{
+		OutputState: i.ToFrontDoorManagedRuleGroupOverrideOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FrontDoorManagedRuleGroupOverrideArrayInput is an input type that accepts FrontDoorManagedRuleGroupOverrideArray and FrontDoorManagedRuleGroupOverrideArrayOutput values.
 // You can construct a concrete instance of `FrontDoorManagedRuleGroupOverrideArrayInput` via:
 //
@@ -539,6 +618,12 @@ func (i FrontDoorManagedRuleGroupOverrideArray) ToFrontDoorManagedRuleGroupOverr
 	return pulumi.ToOutputWithContext(ctx, i).(FrontDoorManagedRuleGroupOverrideArrayOutput)
 }
 
+func (i FrontDoorManagedRuleGroupOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]FrontDoorManagedRuleGroupOverride] {
+	return pulumix.Output[[]FrontDoorManagedRuleGroupOverride]{
+		OutputState: i.ToFrontDoorManagedRuleGroupOverrideArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines a managed rule group override setting.
 type FrontDoorManagedRuleGroupOverrideOutput struct{ *pulumi.OutputState }
 
@@ -552,6 +637,12 @@ func (o FrontDoorManagedRuleGroupOverrideOutput) ToFrontDoorManagedRuleGroupOver
 
 func (o FrontDoorManagedRuleGroupOverrideOutput) ToFrontDoorManagedRuleGroupOverrideOutputWithContext(ctx context.Context) FrontDoorManagedRuleGroupOverrideOutput {
 	return o
+}
+
+func (o FrontDoorManagedRuleGroupOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[FrontDoorManagedRuleGroupOverride] {
+	return pulumix.Output[FrontDoorManagedRuleGroupOverride]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the exclusions that are applied to all rules in the group.
@@ -581,6 +672,12 @@ func (o FrontDoorManagedRuleGroupOverrideArrayOutput) ToFrontDoorManagedRuleGrou
 
 func (o FrontDoorManagedRuleGroupOverrideArrayOutput) ToFrontDoorManagedRuleGroupOverrideArrayOutputWithContext(ctx context.Context) FrontDoorManagedRuleGroupOverrideArrayOutput {
 	return o
+}
+
+func (o FrontDoorManagedRuleGroupOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FrontDoorManagedRuleGroupOverride] {
+	return pulumix.Output[[]FrontDoorManagedRuleGroupOverride]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FrontDoorManagedRuleGroupOverrideArrayOutput) Index(i pulumi.IntInput) FrontDoorManagedRuleGroupOverrideOutput {
@@ -614,6 +711,12 @@ func (o FrontDoorManagedRuleGroupOverrideResponseOutput) ToFrontDoorManagedRuleG
 	return o
 }
 
+func (o FrontDoorManagedRuleGroupOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FrontDoorManagedRuleGroupOverrideResponse] {
+	return pulumix.Output[FrontDoorManagedRuleGroupOverrideResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Describes the exclusions that are applied to all rules in the group.
 func (o FrontDoorManagedRuleGroupOverrideResponseOutput) Exclusions() ManagedRuleExclusionResponseArrayOutput {
 	return o.ApplyT(func(v FrontDoorManagedRuleGroupOverrideResponse) []ManagedRuleExclusionResponse { return v.Exclusions }).(ManagedRuleExclusionResponseArrayOutput)
@@ -643,6 +746,12 @@ func (o FrontDoorManagedRuleGroupOverrideResponseArrayOutput) ToFrontDoorManaged
 
 func (o FrontDoorManagedRuleGroupOverrideResponseArrayOutput) ToFrontDoorManagedRuleGroupOverrideResponseArrayOutputWithContext(ctx context.Context) FrontDoorManagedRuleGroupOverrideResponseArrayOutput {
 	return o
+}
+
+func (o FrontDoorManagedRuleGroupOverrideResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FrontDoorManagedRuleGroupOverrideResponse] {
+	return pulumix.Output[[]FrontDoorManagedRuleGroupOverrideResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FrontDoorManagedRuleGroupOverrideResponseArrayOutput) Index(i pulumi.IntInput) FrontDoorManagedRuleGroupOverrideResponseOutput {
@@ -698,6 +807,12 @@ func (i FrontDoorManagedRuleOverrideArgs) ToFrontDoorManagedRuleOverrideOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(FrontDoorManagedRuleOverrideOutput)
 }
 
+func (i FrontDoorManagedRuleOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[FrontDoorManagedRuleOverride] {
+	return pulumix.Output[FrontDoorManagedRuleOverride]{
+		OutputState: i.ToFrontDoorManagedRuleOverrideOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FrontDoorManagedRuleOverrideArrayInput is an input type that accepts FrontDoorManagedRuleOverrideArray and FrontDoorManagedRuleOverrideArrayOutput values.
 // You can construct a concrete instance of `FrontDoorManagedRuleOverrideArrayInput` via:
 //
@@ -723,6 +838,12 @@ func (i FrontDoorManagedRuleOverrideArray) ToFrontDoorManagedRuleOverrideArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(FrontDoorManagedRuleOverrideArrayOutput)
 }
 
+func (i FrontDoorManagedRuleOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]FrontDoorManagedRuleOverride] {
+	return pulumix.Output[[]FrontDoorManagedRuleOverride]{
+		OutputState: i.ToFrontDoorManagedRuleOverrideArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines a managed rule group override setting.
 type FrontDoorManagedRuleOverrideOutput struct{ *pulumi.OutputState }
 
@@ -736,6 +857,12 @@ func (o FrontDoorManagedRuleOverrideOutput) ToFrontDoorManagedRuleOverrideOutput
 
 func (o FrontDoorManagedRuleOverrideOutput) ToFrontDoorManagedRuleOverrideOutputWithContext(ctx context.Context) FrontDoorManagedRuleOverrideOutput {
 	return o
+}
+
+func (o FrontDoorManagedRuleOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[FrontDoorManagedRuleOverride] {
+	return pulumix.Output[FrontDoorManagedRuleOverride]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the override action to be applied when rule matches.
@@ -772,6 +899,12 @@ func (o FrontDoorManagedRuleOverrideArrayOutput) ToFrontDoorManagedRuleOverrideA
 	return o
 }
 
+func (o FrontDoorManagedRuleOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FrontDoorManagedRuleOverride] {
+	return pulumix.Output[[]FrontDoorManagedRuleOverride]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FrontDoorManagedRuleOverrideArrayOutput) Index(i pulumi.IntInput) FrontDoorManagedRuleOverrideOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FrontDoorManagedRuleOverride {
 		return vs[0].([]FrontDoorManagedRuleOverride)[vs[1].(int)]
@@ -803,6 +936,12 @@ func (o FrontDoorManagedRuleOverrideResponseOutput) ToFrontDoorManagedRuleOverri
 
 func (o FrontDoorManagedRuleOverrideResponseOutput) ToFrontDoorManagedRuleOverrideResponseOutputWithContext(ctx context.Context) FrontDoorManagedRuleOverrideResponseOutput {
 	return o
+}
+
+func (o FrontDoorManagedRuleOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FrontDoorManagedRuleOverrideResponse] {
+	return pulumix.Output[FrontDoorManagedRuleOverrideResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the override action to be applied when rule matches.
@@ -837,6 +976,12 @@ func (o FrontDoorManagedRuleOverrideResponseArrayOutput) ToFrontDoorManagedRuleO
 
 func (o FrontDoorManagedRuleOverrideResponseArrayOutput) ToFrontDoorManagedRuleOverrideResponseArrayOutputWithContext(ctx context.Context) FrontDoorManagedRuleOverrideResponseArrayOutput {
 	return o
+}
+
+func (o FrontDoorManagedRuleOverrideResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FrontDoorManagedRuleOverrideResponse] {
+	return pulumix.Output[[]FrontDoorManagedRuleOverrideResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FrontDoorManagedRuleOverrideResponseArrayOutput) Index(i pulumi.IntInput) FrontDoorManagedRuleOverrideResponseOutput {
@@ -896,6 +1041,12 @@ func (i FrontDoorManagedRuleSetArgs) ToFrontDoorManagedRuleSetOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(FrontDoorManagedRuleSetOutput)
 }
 
+func (i FrontDoorManagedRuleSetArgs) ToOutput(ctx context.Context) pulumix.Output[FrontDoorManagedRuleSet] {
+	return pulumix.Output[FrontDoorManagedRuleSet]{
+		OutputState: i.ToFrontDoorManagedRuleSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FrontDoorManagedRuleSetArrayInput is an input type that accepts FrontDoorManagedRuleSetArray and FrontDoorManagedRuleSetArrayOutput values.
 // You can construct a concrete instance of `FrontDoorManagedRuleSetArrayInput` via:
 //
@@ -921,6 +1072,12 @@ func (i FrontDoorManagedRuleSetArray) ToFrontDoorManagedRuleSetArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(FrontDoorManagedRuleSetArrayOutput)
 }
 
+func (i FrontDoorManagedRuleSetArray) ToOutput(ctx context.Context) pulumix.Output[[]FrontDoorManagedRuleSet] {
+	return pulumix.Output[[]FrontDoorManagedRuleSet]{
+		OutputState: i.ToFrontDoorManagedRuleSetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines a managed rule set.
 type FrontDoorManagedRuleSetOutput struct{ *pulumi.OutputState }
 
@@ -934,6 +1091,12 @@ func (o FrontDoorManagedRuleSetOutput) ToFrontDoorManagedRuleSetOutput() FrontDo
 
 func (o FrontDoorManagedRuleSetOutput) ToFrontDoorManagedRuleSetOutputWithContext(ctx context.Context) FrontDoorManagedRuleSetOutput {
 	return o
+}
+
+func (o FrontDoorManagedRuleSetOutput) ToOutput(ctx context.Context) pulumix.Output[FrontDoorManagedRuleSet] {
+	return pulumix.Output[FrontDoorManagedRuleSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the exclusions that are applied to all rules in the set.
@@ -975,6 +1138,12 @@ func (o FrontDoorManagedRuleSetArrayOutput) ToFrontDoorManagedRuleSetArrayOutput
 	return o
 }
 
+func (o FrontDoorManagedRuleSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FrontDoorManagedRuleSet] {
+	return pulumix.Output[[]FrontDoorManagedRuleSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FrontDoorManagedRuleSetArrayOutput) Index(i pulumi.IntInput) FrontDoorManagedRuleSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FrontDoorManagedRuleSet {
 		return vs[0].([]FrontDoorManagedRuleSet)[vs[1].(int)]
@@ -1008,6 +1177,12 @@ func (o FrontDoorManagedRuleSetResponseOutput) ToFrontDoorManagedRuleSetResponse
 
 func (o FrontDoorManagedRuleSetResponseOutput) ToFrontDoorManagedRuleSetResponseOutputWithContext(ctx context.Context) FrontDoorManagedRuleSetResponseOutput {
 	return o
+}
+
+func (o FrontDoorManagedRuleSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FrontDoorManagedRuleSetResponse] {
+	return pulumix.Output[FrontDoorManagedRuleSetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the exclusions that are applied to all rules in the set.
@@ -1049,6 +1224,12 @@ func (o FrontDoorManagedRuleSetResponseArrayOutput) ToFrontDoorManagedRuleSetRes
 
 func (o FrontDoorManagedRuleSetResponseArrayOutput) ToFrontDoorManagedRuleSetResponseArrayOutputWithContext(ctx context.Context) FrontDoorManagedRuleSetResponseArrayOutput {
 	return o
+}
+
+func (o FrontDoorManagedRuleSetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FrontDoorManagedRuleSetResponse] {
+	return pulumix.Output[[]FrontDoorManagedRuleSetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FrontDoorManagedRuleSetResponseArrayOutput) Index(i pulumi.IntInput) FrontDoorManagedRuleSetResponseOutput {
@@ -1112,6 +1293,12 @@ func (i FrontDoorMatchConditionArgs) ToFrontDoorMatchConditionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(FrontDoorMatchConditionOutput)
 }
 
+func (i FrontDoorMatchConditionArgs) ToOutput(ctx context.Context) pulumix.Output[FrontDoorMatchCondition] {
+	return pulumix.Output[FrontDoorMatchCondition]{
+		OutputState: i.ToFrontDoorMatchConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FrontDoorMatchConditionArrayInput is an input type that accepts FrontDoorMatchConditionArray and FrontDoorMatchConditionArrayOutput values.
 // You can construct a concrete instance of `FrontDoorMatchConditionArrayInput` via:
 //
@@ -1137,6 +1324,12 @@ func (i FrontDoorMatchConditionArray) ToFrontDoorMatchConditionArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(FrontDoorMatchConditionArrayOutput)
 }
 
+func (i FrontDoorMatchConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]FrontDoorMatchCondition] {
+	return pulumix.Output[[]FrontDoorMatchCondition]{
+		OutputState: i.ToFrontDoorMatchConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Define a match condition.
 type FrontDoorMatchConditionOutput struct{ *pulumi.OutputState }
 
@@ -1150,6 +1343,12 @@ func (o FrontDoorMatchConditionOutput) ToFrontDoorMatchConditionOutput() FrontDo
 
 func (o FrontDoorMatchConditionOutput) ToFrontDoorMatchConditionOutputWithContext(ctx context.Context) FrontDoorMatchConditionOutput {
 	return o
+}
+
+func (o FrontDoorMatchConditionOutput) ToOutput(ctx context.Context) pulumix.Output[FrontDoorMatchCondition] {
+	return pulumix.Output[FrontDoorMatchCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of possible match values.
@@ -1196,6 +1395,12 @@ func (o FrontDoorMatchConditionArrayOutput) ToFrontDoorMatchConditionArrayOutput
 	return o
 }
 
+func (o FrontDoorMatchConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FrontDoorMatchCondition] {
+	return pulumix.Output[[]FrontDoorMatchCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FrontDoorMatchConditionArrayOutput) Index(i pulumi.IntInput) FrontDoorMatchConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FrontDoorMatchCondition {
 		return vs[0].([]FrontDoorMatchCondition)[vs[1].(int)]
@@ -1231,6 +1436,12 @@ func (o FrontDoorMatchConditionResponseOutput) ToFrontDoorMatchConditionResponse
 
 func (o FrontDoorMatchConditionResponseOutput) ToFrontDoorMatchConditionResponseOutputWithContext(ctx context.Context) FrontDoorMatchConditionResponseOutput {
 	return o
+}
+
+func (o FrontDoorMatchConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FrontDoorMatchConditionResponse] {
+	return pulumix.Output[FrontDoorMatchConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of possible match values.
@@ -1275,6 +1486,12 @@ func (o FrontDoorMatchConditionResponseArrayOutput) ToFrontDoorMatchConditionRes
 
 func (o FrontDoorMatchConditionResponseArrayOutput) ToFrontDoorMatchConditionResponseArrayOutputWithContext(ctx context.Context) FrontDoorMatchConditionResponseArrayOutput {
 	return o
+}
+
+func (o FrontDoorMatchConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FrontDoorMatchConditionResponse] {
+	return pulumix.Output[[]FrontDoorMatchConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FrontDoorMatchConditionResponseArrayOutput) Index(i pulumi.IntInput) FrontDoorMatchConditionResponseOutput {
@@ -1338,6 +1555,12 @@ func (i FrontDoorPolicySettingsArgs) ToFrontDoorPolicySettingsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(FrontDoorPolicySettingsOutput)
 }
 
+func (i FrontDoorPolicySettingsArgs) ToOutput(ctx context.Context) pulumix.Output[FrontDoorPolicySettings] {
+	return pulumix.Output[FrontDoorPolicySettings]{
+		OutputState: i.ToFrontDoorPolicySettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FrontDoorPolicySettingsArgs) ToFrontDoorPolicySettingsPtrOutput() FrontDoorPolicySettingsPtrOutput {
 	return i.ToFrontDoorPolicySettingsPtrOutputWithContext(context.Background())
 }
@@ -1379,6 +1602,12 @@ func (i *frontDoorPolicySettingsPtrType) ToFrontDoorPolicySettingsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(FrontDoorPolicySettingsPtrOutput)
 }
 
+func (i *frontDoorPolicySettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*FrontDoorPolicySettings] {
+	return pulumix.Output[*FrontDoorPolicySettings]{
+		OutputState: i.ToFrontDoorPolicySettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines top-level WebApplicationFirewallPolicy configuration settings.
 type FrontDoorPolicySettingsOutput struct{ *pulumi.OutputState }
 
@@ -1402,6 +1631,12 @@ func (o FrontDoorPolicySettingsOutput) ToFrontDoorPolicySettingsPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FrontDoorPolicySettings) *FrontDoorPolicySettings {
 		return &v
 	}).(FrontDoorPolicySettingsPtrOutput)
+}
+
+func (o FrontDoorPolicySettingsOutput) ToOutput(ctx context.Context) pulumix.Output[FrontDoorPolicySettings] {
+	return pulumix.Output[FrontDoorPolicySettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
@@ -1446,6 +1681,12 @@ func (o FrontDoorPolicySettingsPtrOutput) ToFrontDoorPolicySettingsPtrOutput() F
 
 func (o FrontDoorPolicySettingsPtrOutput) ToFrontDoorPolicySettingsPtrOutputWithContext(ctx context.Context) FrontDoorPolicySettingsPtrOutput {
 	return o
+}
+
+func (o FrontDoorPolicySettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FrontDoorPolicySettings] {
+	return pulumix.Output[*FrontDoorPolicySettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FrontDoorPolicySettingsPtrOutput) Elem() FrontDoorPolicySettingsOutput {
@@ -1549,6 +1790,12 @@ func (o FrontDoorPolicySettingsResponseOutput) ToFrontDoorPolicySettingsResponse
 	return o
 }
 
+func (o FrontDoorPolicySettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FrontDoorPolicySettingsResponse] {
+	return pulumix.Output[FrontDoorPolicySettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
 func (o FrontDoorPolicySettingsResponseOutput) CustomBlockResponseBody() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FrontDoorPolicySettingsResponse) *string { return v.CustomBlockResponseBody }).(pulumi.StringPtrOutput)
@@ -1591,6 +1838,12 @@ func (o FrontDoorPolicySettingsResponsePtrOutput) ToFrontDoorPolicySettingsRespo
 
 func (o FrontDoorPolicySettingsResponsePtrOutput) ToFrontDoorPolicySettingsResponsePtrOutputWithContext(ctx context.Context) FrontDoorPolicySettingsResponsePtrOutput {
 	return o
+}
+
+func (o FrontDoorPolicySettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FrontDoorPolicySettingsResponse] {
+	return pulumix.Output[*FrontDoorPolicySettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FrontDoorPolicySettingsResponsePtrOutput) Elem() FrontDoorPolicySettingsResponseOutput {
@@ -1684,6 +1937,12 @@ func (o FrontendEndpointLinkResponseOutput) ToFrontendEndpointLinkResponseOutput
 	return o
 }
 
+func (o FrontendEndpointLinkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FrontendEndpointLinkResponse] {
+	return pulumix.Output[FrontendEndpointLinkResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID.
 func (o FrontendEndpointLinkResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FrontendEndpointLinkResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -1701,6 +1960,12 @@ func (o FrontendEndpointLinkResponseArrayOutput) ToFrontendEndpointLinkResponseA
 
 func (o FrontendEndpointLinkResponseArrayOutput) ToFrontendEndpointLinkResponseArrayOutputWithContext(ctx context.Context) FrontendEndpointLinkResponseArrayOutput {
 	return o
+}
+
+func (o FrontendEndpointLinkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FrontendEndpointLinkResponse] {
+	return pulumix.Output[[]FrontendEndpointLinkResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FrontendEndpointLinkResponseArrayOutput) Index(i pulumi.IntInput) FrontendEndpointLinkResponseOutput {
@@ -1752,6 +2017,12 @@ func (i ManagedRuleExclusionArgs) ToManagedRuleExclusionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedRuleExclusionOutput)
 }
 
+func (i ManagedRuleExclusionArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedRuleExclusion] {
+	return pulumix.Output[ManagedRuleExclusion]{
+		OutputState: i.ToManagedRuleExclusionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ManagedRuleExclusionArrayInput is an input type that accepts ManagedRuleExclusionArray and ManagedRuleExclusionArrayOutput values.
 // You can construct a concrete instance of `ManagedRuleExclusionArrayInput` via:
 //
@@ -1777,6 +2048,12 @@ func (i ManagedRuleExclusionArray) ToManagedRuleExclusionArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedRuleExclusionArrayOutput)
 }
 
+func (i ManagedRuleExclusionArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagedRuleExclusion] {
+	return pulumix.Output[[]ManagedRuleExclusion]{
+		OutputState: i.ToManagedRuleExclusionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Exclude variables from managed rule evaluation.
 type ManagedRuleExclusionOutput struct{ *pulumi.OutputState }
 
@@ -1790,6 +2067,12 @@ func (o ManagedRuleExclusionOutput) ToManagedRuleExclusionOutput() ManagedRuleEx
 
 func (o ManagedRuleExclusionOutput) ToManagedRuleExclusionOutputWithContext(ctx context.Context) ManagedRuleExclusionOutput {
 	return o
+}
+
+func (o ManagedRuleExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedRuleExclusion] {
+	return pulumix.Output[ManagedRuleExclusion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The variable type to be excluded.
@@ -1819,6 +2102,12 @@ func (o ManagedRuleExclusionArrayOutput) ToManagedRuleExclusionArrayOutput() Man
 
 func (o ManagedRuleExclusionArrayOutput) ToManagedRuleExclusionArrayOutputWithContext(ctx context.Context) ManagedRuleExclusionArrayOutput {
 	return o
+}
+
+func (o ManagedRuleExclusionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedRuleExclusion] {
+	return pulumix.Output[[]ManagedRuleExclusion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedRuleExclusionArrayOutput) Index(i pulumi.IntInput) ManagedRuleExclusionOutput {
@@ -1852,6 +2141,12 @@ func (o ManagedRuleExclusionResponseOutput) ToManagedRuleExclusionResponseOutput
 	return o
 }
 
+func (o ManagedRuleExclusionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedRuleExclusionResponse] {
+	return pulumix.Output[ManagedRuleExclusionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The variable type to be excluded.
 func (o ManagedRuleExclusionResponseOutput) MatchVariable() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedRuleExclusionResponse) string { return v.MatchVariable }).(pulumi.StringOutput)
@@ -1879,6 +2174,12 @@ func (o ManagedRuleExclusionResponseArrayOutput) ToManagedRuleExclusionResponseA
 
 func (o ManagedRuleExclusionResponseArrayOutput) ToManagedRuleExclusionResponseArrayOutputWithContext(ctx context.Context) ManagedRuleExclusionResponseArrayOutput {
 	return o
+}
+
+func (o ManagedRuleExclusionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedRuleExclusionResponse] {
+	return pulumix.Output[[]ManagedRuleExclusionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedRuleExclusionResponseArrayOutput) Index(i pulumi.IntInput) ManagedRuleExclusionResponseOutput {
@@ -1922,6 +2223,12 @@ func (i ManagedRuleSetListArgs) ToManagedRuleSetListOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedRuleSetListOutput)
 }
 
+func (i ManagedRuleSetListArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedRuleSetList] {
+	return pulumix.Output[ManagedRuleSetList]{
+		OutputState: i.ToManagedRuleSetListOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedRuleSetListArgs) ToManagedRuleSetListPtrOutput() ManagedRuleSetListPtrOutput {
 	return i.ToManagedRuleSetListPtrOutputWithContext(context.Background())
 }
@@ -1963,6 +2270,12 @@ func (i *managedRuleSetListPtrType) ToManagedRuleSetListPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedRuleSetListPtrOutput)
 }
 
+func (i *managedRuleSetListPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedRuleSetList] {
+	return pulumix.Output[*ManagedRuleSetList]{
+		OutputState: i.ToManagedRuleSetListPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines the list of managed rule sets for the policy.
 type ManagedRuleSetListOutput struct{ *pulumi.OutputState }
 
@@ -1988,6 +2301,12 @@ func (o ManagedRuleSetListOutput) ToManagedRuleSetListPtrOutputWithContext(ctx c
 	}).(ManagedRuleSetListPtrOutput)
 }
 
+func (o ManagedRuleSetListOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedRuleSetList] {
+	return pulumix.Output[ManagedRuleSetList]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of rule sets.
 func (o ManagedRuleSetListOutput) ManagedRuleSets() FrontDoorManagedRuleSetArrayOutput {
 	return o.ApplyT(func(v ManagedRuleSetList) []FrontDoorManagedRuleSet { return v.ManagedRuleSets }).(FrontDoorManagedRuleSetArrayOutput)
@@ -2005,6 +2324,12 @@ func (o ManagedRuleSetListPtrOutput) ToManagedRuleSetListPtrOutput() ManagedRule
 
 func (o ManagedRuleSetListPtrOutput) ToManagedRuleSetListPtrOutputWithContext(ctx context.Context) ManagedRuleSetListPtrOutput {
 	return o
+}
+
+func (o ManagedRuleSetListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedRuleSetList] {
+	return pulumix.Output[*ManagedRuleSetList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedRuleSetListPtrOutput) Elem() ManagedRuleSetListOutput {
@@ -2048,6 +2373,12 @@ func (o ManagedRuleSetListResponseOutput) ToManagedRuleSetListResponseOutputWith
 	return o
 }
 
+func (o ManagedRuleSetListResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedRuleSetListResponse] {
+	return pulumix.Output[ManagedRuleSetListResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of rule sets.
 func (o ManagedRuleSetListResponseOutput) ManagedRuleSets() FrontDoorManagedRuleSetResponseArrayOutput {
 	return o.ApplyT(func(v ManagedRuleSetListResponse) []FrontDoorManagedRuleSetResponse { return v.ManagedRuleSets }).(FrontDoorManagedRuleSetResponseArrayOutput)
@@ -2065,6 +2396,12 @@ func (o ManagedRuleSetListResponsePtrOutput) ToManagedRuleSetListResponsePtrOutp
 
 func (o ManagedRuleSetListResponsePtrOutput) ToManagedRuleSetListResponsePtrOutputWithContext(ctx context.Context) ManagedRuleSetListResponsePtrOutput {
 	return o
+}
+
+func (o ManagedRuleSetListResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedRuleSetListResponse] {
+	return pulumix.Output[*ManagedRuleSetListResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedRuleSetListResponsePtrOutput) Elem() ManagedRuleSetListResponseOutput {
@@ -2108,6 +2445,12 @@ func (o RoutingRuleLinkResponseOutput) ToRoutingRuleLinkResponseOutputWithContex
 	return o
 }
 
+func (o RoutingRuleLinkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RoutingRuleLinkResponse] {
+	return pulumix.Output[RoutingRuleLinkResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID.
 func (o RoutingRuleLinkResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoutingRuleLinkResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2125,6 +2468,12 @@ func (o RoutingRuleLinkResponseArrayOutput) ToRoutingRuleLinkResponseArrayOutput
 
 func (o RoutingRuleLinkResponseArrayOutput) ToRoutingRuleLinkResponseArrayOutputWithContext(ctx context.Context) RoutingRuleLinkResponseArrayOutput {
 	return o
+}
+
+func (o RoutingRuleLinkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RoutingRuleLinkResponse] {
+	return pulumix.Output[[]RoutingRuleLinkResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RoutingRuleLinkResponseArrayOutput) Index(i pulumi.IntInput) RoutingRuleLinkResponseOutput {
@@ -2154,6 +2503,12 @@ func (o SecurityPolicyLinkResponseOutput) ToSecurityPolicyLinkResponseOutputWith
 	return o
 }
 
+func (o SecurityPolicyLinkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyLinkResponse] {
+	return pulumix.Output[SecurityPolicyLinkResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID.
 func (o SecurityPolicyLinkResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyLinkResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2171,6 +2526,12 @@ func (o SecurityPolicyLinkResponseArrayOutput) ToSecurityPolicyLinkResponseArray
 
 func (o SecurityPolicyLinkResponseArrayOutput) ToSecurityPolicyLinkResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyLinkResponseArrayOutput {
 	return o
+}
+
+func (o SecurityPolicyLinkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyLinkResponse] {
+	return pulumix.Output[[]SecurityPolicyLinkResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPolicyLinkResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyLinkResponseOutput {
@@ -2214,6 +2575,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -2255,6 +2622,12 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
+func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The pricing tier of the web application firewall policy.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -2280,6 +2653,12 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the pricing tier.
 func (o SkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Sku) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2297,6 +2676,12 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
+}
+
+func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -2340,6 +2725,12 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the pricing tier.
 func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2357,6 +2748,12 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
+}
+
+func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
+	return pulumix.Output[*SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -2400,6 +2797,12 @@ func (o SubResourceResponseOutput) ToSubResourceResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o SubResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubResourceResponse] {
+	return pulumix.Output[SubResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID.
 func (o SubResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2417,6 +2820,12 @@ func (o SubResourceResponseArrayOutput) ToSubResourceResponseArrayOutput() SubRe
 
 func (o SubResourceResponseArrayOutput) ToSubResourceResponseArrayOutputWithContext(ctx context.Context) SubResourceResponseArrayOutput {
 	return o
+}
+
+func (o SubResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubResourceResponse] {
+	return pulumix.Output[[]SubResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubResourceResponseArrayOutput) Index(i pulumi.IntInput) SubResourceResponseOutput {

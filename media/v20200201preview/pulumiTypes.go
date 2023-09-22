@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -62,6 +63,12 @@ func (i MediaGraphAssetSinkArgs) ToMediaGraphAssetSinkOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(MediaGraphAssetSinkOutput)
 }
 
+func (i MediaGraphAssetSinkArgs) ToOutput(ctx context.Context) pulumix.Output[MediaGraphAssetSink] {
+	return pulumix.Output[MediaGraphAssetSink]{
+		OutputState: i.ToMediaGraphAssetSinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MediaGraphAssetSinkArrayInput is an input type that accepts MediaGraphAssetSinkArray and MediaGraphAssetSinkArrayOutput values.
 // You can construct a concrete instance of `MediaGraphAssetSinkArrayInput` via:
 //
@@ -87,6 +94,12 @@ func (i MediaGraphAssetSinkArray) ToMediaGraphAssetSinkArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(MediaGraphAssetSinkArrayOutput)
 }
 
+func (i MediaGraphAssetSinkArray) ToOutput(ctx context.Context) pulumix.Output[[]MediaGraphAssetSink] {
+	return pulumix.Output[[]MediaGraphAssetSink]{
+		OutputState: i.ToMediaGraphAssetSinkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Asset sink.
 type MediaGraphAssetSinkOutput struct{ *pulumi.OutputState }
 
@@ -100,6 +113,12 @@ func (o MediaGraphAssetSinkOutput) ToMediaGraphAssetSinkOutput() MediaGraphAsset
 
 func (o MediaGraphAssetSinkOutput) ToMediaGraphAssetSinkOutputWithContext(ctx context.Context) MediaGraphAssetSinkOutput {
 	return o
+}
+
+func (o MediaGraphAssetSinkOutput) ToOutput(ctx context.Context) pulumix.Output[MediaGraphAssetSink] {
+	return pulumix.Output[MediaGraphAssetSink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Asset name.
@@ -137,6 +156,12 @@ func (o MediaGraphAssetSinkArrayOutput) ToMediaGraphAssetSinkArrayOutputWithCont
 	return o
 }
 
+func (o MediaGraphAssetSinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MediaGraphAssetSink] {
+	return pulumix.Output[[]MediaGraphAssetSink]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MediaGraphAssetSinkArrayOutput) Index(i pulumi.IntInput) MediaGraphAssetSinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MediaGraphAssetSink {
 		return vs[0].([]MediaGraphAssetSink)[vs[1].(int)]
@@ -169,6 +194,12 @@ func (o MediaGraphAssetSinkResponseOutput) ToMediaGraphAssetSinkResponseOutput()
 
 func (o MediaGraphAssetSinkResponseOutput) ToMediaGraphAssetSinkResponseOutputWithContext(ctx context.Context) MediaGraphAssetSinkResponseOutput {
 	return o
+}
+
+func (o MediaGraphAssetSinkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MediaGraphAssetSinkResponse] {
+	return pulumix.Output[MediaGraphAssetSinkResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Asset name.
@@ -204,6 +235,12 @@ func (o MediaGraphAssetSinkResponseArrayOutput) ToMediaGraphAssetSinkResponseArr
 
 func (o MediaGraphAssetSinkResponseArrayOutput) ToMediaGraphAssetSinkResponseArrayOutputWithContext(ctx context.Context) MediaGraphAssetSinkResponseArrayOutput {
 	return o
+}
+
+func (o MediaGraphAssetSinkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MediaGraphAssetSinkResponse] {
+	return pulumix.Output[[]MediaGraphAssetSinkResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MediaGraphAssetSinkResponseArrayOutput) Index(i pulumi.IntInput) MediaGraphAssetSinkResponseOutput {
@@ -301,6 +338,12 @@ func (i MediaGraphRtspSourceArgs) ToMediaGraphRtspSourceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MediaGraphRtspSourceOutput)
 }
 
+func (i MediaGraphRtspSourceArgs) ToOutput(ctx context.Context) pulumix.Output[MediaGraphRtspSource] {
+	return pulumix.Output[MediaGraphRtspSource]{
+		OutputState: i.ToMediaGraphRtspSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MediaGraphRtspSourceArrayInput is an input type that accepts MediaGraphRtspSourceArray and MediaGraphRtspSourceArrayOutput values.
 // You can construct a concrete instance of `MediaGraphRtspSourceArrayInput` via:
 //
@@ -326,6 +369,12 @@ func (i MediaGraphRtspSourceArray) ToMediaGraphRtspSourceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(MediaGraphRtspSourceArrayOutput)
 }
 
+func (i MediaGraphRtspSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]MediaGraphRtspSource] {
+	return pulumix.Output[[]MediaGraphRtspSource]{
+		OutputState: i.ToMediaGraphRtspSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RTSP source.
 type MediaGraphRtspSourceOutput struct{ *pulumi.OutputState }
 
@@ -339,6 +388,12 @@ func (o MediaGraphRtspSourceOutput) ToMediaGraphRtspSourceOutput() MediaGraphRts
 
 func (o MediaGraphRtspSourceOutput) ToMediaGraphRtspSourceOutputWithContext(ctx context.Context) MediaGraphRtspSourceOutput {
 	return o
+}
+
+func (o MediaGraphRtspSourceOutput) ToOutput(ctx context.Context) pulumix.Output[MediaGraphRtspSource] {
+	return pulumix.Output[MediaGraphRtspSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // RTSP endpoint of the stream being connected to.
@@ -376,6 +431,12 @@ func (o MediaGraphRtspSourceArrayOutput) ToMediaGraphRtspSourceArrayOutputWithCo
 	return o
 }
 
+func (o MediaGraphRtspSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MediaGraphRtspSource] {
+	return pulumix.Output[[]MediaGraphRtspSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MediaGraphRtspSourceArrayOutput) Index(i pulumi.IntInput) MediaGraphRtspSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MediaGraphRtspSource {
 		return vs[0].([]MediaGraphRtspSource)[vs[1].(int)]
@@ -408,6 +469,12 @@ func (o MediaGraphRtspSourceResponseOutput) ToMediaGraphRtspSourceResponseOutput
 
 func (o MediaGraphRtspSourceResponseOutput) ToMediaGraphRtspSourceResponseOutputWithContext(ctx context.Context) MediaGraphRtspSourceResponseOutput {
 	return o
+}
+
+func (o MediaGraphRtspSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MediaGraphRtspSourceResponse] {
+	return pulumix.Output[MediaGraphRtspSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // RTSP endpoint of the stream being connected to.
@@ -443,6 +510,12 @@ func (o MediaGraphRtspSourceResponseArrayOutput) ToMediaGraphRtspSourceResponseA
 
 func (o MediaGraphRtspSourceResponseArrayOutput) ToMediaGraphRtspSourceResponseArrayOutputWithContext(ctx context.Context) MediaGraphRtspSourceResponseArrayOutput {
 	return o
+}
+
+func (o MediaGraphRtspSourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MediaGraphRtspSourceResponse] {
+	return pulumix.Output[[]MediaGraphRtspSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MediaGraphRtspSourceResponseArrayOutput) Index(i pulumi.IntInput) MediaGraphRtspSourceResponseOutput {

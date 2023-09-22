@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Outbound Rule Basic Resource for the managed network of a machine learning workspace.
@@ -84,6 +85,12 @@ func (o LookupManagedNetworkSettingsRuleResultOutput) ToLookupManagedNetworkSett
 
 func (o LookupManagedNetworkSettingsRuleResultOutput) ToLookupManagedNetworkSettingsRuleResultOutputWithContext(ctx context.Context) LookupManagedNetworkSettingsRuleResultOutput {
 	return o
+}
+
+func (o LookupManagedNetworkSettingsRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedNetworkSettingsRuleResult] {
+	return pulumix.Output[LookupManagedNetworkSettingsRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

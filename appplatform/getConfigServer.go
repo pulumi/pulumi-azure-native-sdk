@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the config server and its properties.
@@ -81,6 +82,12 @@ func (o LookupConfigServerResultOutput) ToLookupConfigServerResultOutput() Looku
 
 func (o LookupConfigServerResultOutput) ToLookupConfigServerResultOutputWithContext(ctx context.Context) LookupConfigServerResultOutput {
 	return o
+}
+
+func (o LookupConfigServerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigServerResult] {
+	return pulumix.Output[LookupConfigServerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i EnterprisePolicyIdentityArgs) ToEnterprisePolicyIdentityOutput() Enterpr
 
 func (i EnterprisePolicyIdentityArgs) ToEnterprisePolicyIdentityOutputWithContext(ctx context.Context) EnterprisePolicyIdentityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterprisePolicyIdentityOutput)
+}
+
+func (i EnterprisePolicyIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[EnterprisePolicyIdentity] {
+	return pulumix.Output[EnterprisePolicyIdentity]{
+		OutputState: i.ToEnterprisePolicyIdentityOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterprisePolicyIdentityArgs) ToEnterprisePolicyIdentityPtrOutput() EnterprisePolicyIdentityPtrOutput {
@@ -89,6 +96,12 @@ func (i *enterprisePolicyIdentityPtrType) ToEnterprisePolicyIdentityPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(EnterprisePolicyIdentityPtrOutput)
 }
 
+func (i *enterprisePolicyIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterprisePolicyIdentity] {
+	return pulumix.Output[*EnterprisePolicyIdentity]{
+		OutputState: i.ToEnterprisePolicyIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The identity of the EnterprisePolicy.
 type EnterprisePolicyIdentityOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o EnterprisePolicyIdentityOutput) ToEnterprisePolicyIdentityPtrOutputWithC
 	}).(EnterprisePolicyIdentityPtrOutput)
 }
 
+func (o EnterprisePolicyIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[EnterprisePolicyIdentity] {
+	return pulumix.Output[EnterprisePolicyIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
 func (o EnterprisePolicyIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v EnterprisePolicyIdentity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -131,6 +150,12 @@ func (o EnterprisePolicyIdentityPtrOutput) ToEnterprisePolicyIdentityPtrOutput()
 
 func (o EnterprisePolicyIdentityPtrOutput) ToEnterprisePolicyIdentityPtrOutputWithContext(ctx context.Context) EnterprisePolicyIdentityPtrOutput {
 	return o
+}
+
+func (o EnterprisePolicyIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterprisePolicyIdentity] {
+	return pulumix.Output[*EnterprisePolicyIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterprisePolicyIdentityPtrOutput) Elem() EnterprisePolicyIdentityOutput {
@@ -178,6 +203,12 @@ func (o EnterprisePolicyIdentityResponseOutput) ToEnterprisePolicyIdentityRespon
 	return o
 }
 
+func (o EnterprisePolicyIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterprisePolicyIdentityResponse] {
+	return pulumix.Output[EnterprisePolicyIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal id of EnterprisePolicy identity.
 func (o EnterprisePolicyIdentityResponseOutput) SystemAssignedIdentityPrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterprisePolicyIdentityResponse) string { return v.SystemAssignedIdentityPrincipalId }).(pulumi.StringOutput)
@@ -205,6 +236,12 @@ func (o EnterprisePolicyIdentityResponsePtrOutput) ToEnterprisePolicyIdentityRes
 
 func (o EnterprisePolicyIdentityResponsePtrOutput) ToEnterprisePolicyIdentityResponsePtrOutputWithContext(ctx context.Context) EnterprisePolicyIdentityResponsePtrOutput {
 	return o
+}
+
+func (o EnterprisePolicyIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterprisePolicyIdentityResponse] {
+	return pulumix.Output[*EnterprisePolicyIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterprisePolicyIdentityResponsePtrOutput) Elem() EnterprisePolicyIdentityResponseOutput {
@@ -286,6 +323,12 @@ func (i KeyPropertiesArgs) ToKeyPropertiesOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPropertiesOutput)
 }
 
+func (i KeyPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KeyProperties] {
+	return pulumix.Output[KeyProperties]{
+		OutputState: i.ToKeyPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeyPropertiesArgs) ToKeyPropertiesPtrOutput() KeyPropertiesPtrOutput {
 	return i.ToKeyPropertiesPtrOutputWithContext(context.Background())
 }
@@ -327,6 +370,12 @@ func (i *keyPropertiesPtrType) ToKeyPropertiesPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPropertiesPtrOutput)
 }
 
+func (i *keyPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyProperties] {
+	return pulumix.Output[*KeyProperties]{
+		OutputState: i.ToKeyPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Url and version of the KeyVault Secret
 type KeyPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -352,6 +401,12 @@ func (o KeyPropertiesOutput) ToKeyPropertiesPtrOutputWithContext(ctx context.Con
 	}).(KeyPropertiesPtrOutput)
 }
 
+func (o KeyPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KeyProperties] {
+	return pulumix.Output[KeyProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identifier of the key vault key used to encrypt data.
 func (o KeyPropertiesOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -374,6 +429,12 @@ func (o KeyPropertiesPtrOutput) ToKeyPropertiesPtrOutput() KeyPropertiesPtrOutpu
 
 func (o KeyPropertiesPtrOutput) ToKeyPropertiesPtrOutputWithContext(ctx context.Context) KeyPropertiesPtrOutput {
 	return o
+}
+
+func (o KeyPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyProperties] {
+	return pulumix.Output[*KeyProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyPropertiesPtrOutput) Elem() KeyPropertiesOutput {
@@ -429,6 +490,12 @@ func (o KeyPropertiesResponseOutput) ToKeyPropertiesResponseOutputWithContext(ct
 	return o
 }
 
+func (o KeyPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyPropertiesResponse] {
+	return pulumix.Output[KeyPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identifier of the key vault key used to encrypt data.
 func (o KeyPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -451,6 +518,12 @@ func (o KeyPropertiesResponsePtrOutput) ToKeyPropertiesResponsePtrOutput() KeyPr
 
 func (o KeyPropertiesResponsePtrOutput) ToKeyPropertiesResponsePtrOutputWithContext(ctx context.Context) KeyPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o KeyPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyPropertiesResponse] {
+	return pulumix.Output[*KeyPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyPropertiesResponsePtrOutput) Elem() KeyPropertiesResponseOutput {
@@ -522,6 +595,12 @@ func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesOutput)
 }
 
+func (i KeyVaultPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultProperties] {
+	return pulumix.Output[KeyVaultProperties]{
+		OutputState: i.ToKeyVaultPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesPtrOutput() KeyVaultPropertiesPtrOutput {
 	return i.ToKeyVaultPropertiesPtrOutputWithContext(context.Background())
 }
@@ -563,6 +642,12 @@ func (i *keyVaultPropertiesPtrType) ToKeyVaultPropertiesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesPtrOutput)
 }
 
+func (i *keyVaultPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultProperties] {
+	return pulumix.Output[*KeyVaultProperties]{
+		OutputState: i.ToKeyVaultPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings concerning key vault encryption for a configuration store.
 type KeyVaultPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -588,6 +673,12 @@ func (o KeyVaultPropertiesOutput) ToKeyVaultPropertiesPtrOutputWithContext(ctx c
 	}).(KeyVaultPropertiesPtrOutput)
 }
 
+func (o KeyVaultPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultProperties] {
+	return pulumix.Output[KeyVaultProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Uri of KeyVault
 func (o KeyVaultPropertiesOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultProperties) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -610,6 +701,12 @@ func (o KeyVaultPropertiesPtrOutput) ToKeyVaultPropertiesPtrOutput() KeyVaultPro
 
 func (o KeyVaultPropertiesPtrOutput) ToKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) KeyVaultPropertiesPtrOutput {
 	return o
+}
+
+func (o KeyVaultPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultProperties] {
+	return pulumix.Output[*KeyVaultProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyVaultPropertiesPtrOutput) Elem() KeyVaultPropertiesOutput {
@@ -665,6 +762,12 @@ func (o KeyVaultPropertiesResponseOutput) ToKeyVaultPropertiesResponseOutputWith
 	return o
 }
 
+func (o KeyVaultPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultPropertiesResponse] {
+	return pulumix.Output[KeyVaultPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Uri of KeyVault
 func (o KeyVaultPropertiesResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultPropertiesResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -687,6 +790,12 @@ func (o KeyVaultPropertiesResponsePtrOutput) ToKeyVaultPropertiesResponsePtrOutp
 
 func (o KeyVaultPropertiesResponsePtrOutput) ToKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) KeyVaultPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o KeyVaultPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultPropertiesResponse] {
+	return pulumix.Output[*KeyVaultPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyVaultPropertiesResponsePtrOutput) Elem() KeyVaultPropertiesResponseOutput {
@@ -740,6 +849,12 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
+func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
+	return pulumix.Output[PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -757,6 +872,12 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
+	return pulumix.Output[*PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -822,6 +943,12 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
+func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -835,6 +962,12 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -875,6 +1008,12 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
+	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -931,6 +1070,12 @@ func (i PropertiesEncryptionArgs) ToPropertiesEncryptionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PropertiesEncryptionOutput)
 }
 
+func (i PropertiesEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[PropertiesEncryption] {
+	return pulumix.Output[PropertiesEncryption]{
+		OutputState: i.ToPropertiesEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PropertiesEncryptionArgs) ToPropertiesEncryptionPtrOutput() PropertiesEncryptionPtrOutput {
 	return i.ToPropertiesEncryptionPtrOutputWithContext(context.Background())
 }
@@ -972,6 +1117,12 @@ func (i *propertiesEncryptionPtrType) ToPropertiesEncryptionPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PropertiesEncryptionPtrOutput)
 }
 
+func (i *propertiesEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*PropertiesEncryption] {
+	return pulumix.Output[*PropertiesEncryption]{
+		OutputState: i.ToPropertiesEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The encryption settings for a configuration store.
 type PropertiesEncryptionOutput struct{ *pulumi.OutputState }
 
@@ -997,6 +1148,12 @@ func (o PropertiesEncryptionOutput) ToPropertiesEncryptionPtrOutputWithContext(c
 	}).(PropertiesEncryptionPtrOutput)
 }
 
+func (o PropertiesEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[PropertiesEncryption] {
+	return pulumix.Output[PropertiesEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Key vault properties.
 func (o PropertiesEncryptionOutput) KeyVault() KeyVaultPropertiesPtrOutput {
 	return o.ApplyT(func(v PropertiesEncryption) *KeyVaultProperties { return v.KeyVault }).(KeyVaultPropertiesPtrOutput)
@@ -1019,6 +1176,12 @@ func (o PropertiesEncryptionPtrOutput) ToPropertiesEncryptionPtrOutput() Propert
 
 func (o PropertiesEncryptionPtrOutput) ToPropertiesEncryptionPtrOutputWithContext(ctx context.Context) PropertiesEncryptionPtrOutput {
 	return o
+}
+
+func (o PropertiesEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PropertiesEncryption] {
+	return pulumix.Output[*PropertiesEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PropertiesEncryptionPtrOutput) Elem() PropertiesEncryptionOutput {
@@ -1086,6 +1249,12 @@ func (i PropertiesLockboxArgs) ToPropertiesLockboxOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PropertiesLockboxOutput)
 }
 
+func (i PropertiesLockboxArgs) ToOutput(ctx context.Context) pulumix.Output[PropertiesLockbox] {
+	return pulumix.Output[PropertiesLockbox]{
+		OutputState: i.ToPropertiesLockboxOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PropertiesLockboxArgs) ToPropertiesLockboxPtrOutput() PropertiesLockboxPtrOutput {
 	return i.ToPropertiesLockboxPtrOutputWithContext(context.Background())
 }
@@ -1127,6 +1296,12 @@ func (i *propertiesLockboxPtrType) ToPropertiesLockboxPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PropertiesLockboxPtrOutput)
 }
 
+func (i *propertiesLockboxPtrType) ToOutput(ctx context.Context) pulumix.Output[*PropertiesLockbox] {
+	return pulumix.Output[*PropertiesLockbox]{
+		OutputState: i.ToPropertiesLockboxPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings concerning lockbox.
 type PropertiesLockboxOutput struct{ *pulumi.OutputState }
 
@@ -1152,6 +1327,12 @@ func (o PropertiesLockboxOutput) ToPropertiesLockboxPtrOutputWithContext(ctx con
 	}).(PropertiesLockboxPtrOutput)
 }
 
+func (o PropertiesLockboxOutput) ToOutput(ctx context.Context) pulumix.Output[PropertiesLockbox] {
+	return pulumix.Output[PropertiesLockbox]{
+		OutputState: o.OutputState,
+	}
+}
+
 // lockbox configuration
 func (o PropertiesLockboxOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PropertiesLockbox) *string { return v.State }).(pulumi.StringPtrOutput)
@@ -1169,6 +1350,12 @@ func (o PropertiesLockboxPtrOutput) ToPropertiesLockboxPtrOutput() PropertiesLoc
 
 func (o PropertiesLockboxPtrOutput) ToPropertiesLockboxPtrOutputWithContext(ctx context.Context) PropertiesLockboxPtrOutput {
 	return o
+}
+
+func (o PropertiesLockboxPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PropertiesLockbox] {
+	return pulumix.Output[*PropertiesLockbox]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PropertiesLockboxPtrOutput) Elem() PropertiesLockboxOutput {
@@ -1226,6 +1413,12 @@ func (i PropertiesNetworkInjectionArgs) ToPropertiesNetworkInjectionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(PropertiesNetworkInjectionOutput)
 }
 
+func (i PropertiesNetworkInjectionArgs) ToOutput(ctx context.Context) pulumix.Output[PropertiesNetworkInjection] {
+	return pulumix.Output[PropertiesNetworkInjection]{
+		OutputState: i.ToPropertiesNetworkInjectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PropertiesNetworkInjectionArgs) ToPropertiesNetworkInjectionPtrOutput() PropertiesNetworkInjectionPtrOutput {
 	return i.ToPropertiesNetworkInjectionPtrOutputWithContext(context.Background())
 }
@@ -1267,6 +1460,12 @@ func (i *propertiesNetworkInjectionPtrType) ToPropertiesNetworkInjectionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(PropertiesNetworkInjectionPtrOutput)
 }
 
+func (i *propertiesNetworkInjectionPtrType) ToOutput(ctx context.Context) pulumix.Output[*PropertiesNetworkInjection] {
+	return pulumix.Output[*PropertiesNetworkInjection]{
+		OutputState: i.ToPropertiesNetworkInjectionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings concerning network injection.
 type PropertiesNetworkInjectionOutput struct{ *pulumi.OutputState }
 
@@ -1292,6 +1491,12 @@ func (o PropertiesNetworkInjectionOutput) ToPropertiesNetworkInjectionPtrOutputW
 	}).(PropertiesNetworkInjectionPtrOutput)
 }
 
+func (o PropertiesNetworkInjectionOutput) ToOutput(ctx context.Context) pulumix.Output[PropertiesNetworkInjection] {
+	return pulumix.Output[PropertiesNetworkInjection]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Network injection configuration
 func (o PropertiesNetworkInjectionOutput) VirtualNetworks() VirtualNetworkPropertiesListPtrOutput {
 	return o.ApplyT(func(v PropertiesNetworkInjection) *VirtualNetworkPropertiesList { return v.VirtualNetworks }).(VirtualNetworkPropertiesListPtrOutput)
@@ -1309,6 +1514,12 @@ func (o PropertiesNetworkInjectionPtrOutput) ToPropertiesNetworkInjectionPtrOutp
 
 func (o PropertiesNetworkInjectionPtrOutput) ToPropertiesNetworkInjectionPtrOutputWithContext(ctx context.Context) PropertiesNetworkInjectionPtrOutput {
 	return o
+}
+
+func (o PropertiesNetworkInjectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PropertiesNetworkInjection] {
+	return pulumix.Output[*PropertiesNetworkInjection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PropertiesNetworkInjectionPtrOutput) Elem() PropertiesNetworkInjectionOutput {
@@ -1354,6 +1565,12 @@ func (o PropertiesResponseEncryptionOutput) ToPropertiesResponseEncryptionOutput
 	return o
 }
 
+func (o PropertiesResponseEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[PropertiesResponseEncryption] {
+	return pulumix.Output[PropertiesResponseEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Key vault properties.
 func (o PropertiesResponseEncryptionOutput) KeyVault() KeyVaultPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v PropertiesResponseEncryption) *KeyVaultPropertiesResponse { return v.KeyVault }).(KeyVaultPropertiesResponsePtrOutput)
@@ -1376,6 +1593,12 @@ func (o PropertiesResponseEncryptionPtrOutput) ToPropertiesResponseEncryptionPtr
 
 func (o PropertiesResponseEncryptionPtrOutput) ToPropertiesResponseEncryptionPtrOutputWithContext(ctx context.Context) PropertiesResponseEncryptionPtrOutput {
 	return o
+}
+
+func (o PropertiesResponseEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PropertiesResponseEncryption] {
+	return pulumix.Output[*PropertiesResponseEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PropertiesResponseEncryptionPtrOutput) Elem() PropertiesResponseEncryptionOutput {
@@ -1429,6 +1652,12 @@ func (o PropertiesResponseLockboxOutput) ToPropertiesResponseLockboxOutputWithCo
 	return o
 }
 
+func (o PropertiesResponseLockboxOutput) ToOutput(ctx context.Context) pulumix.Output[PropertiesResponseLockbox] {
+	return pulumix.Output[PropertiesResponseLockbox]{
+		OutputState: o.OutputState,
+	}
+}
+
 // lockbox configuration
 func (o PropertiesResponseLockboxOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PropertiesResponseLockbox) *string { return v.State }).(pulumi.StringPtrOutput)
@@ -1446,6 +1675,12 @@ func (o PropertiesResponseLockboxPtrOutput) ToPropertiesResponseLockboxPtrOutput
 
 func (o PropertiesResponseLockboxPtrOutput) ToPropertiesResponseLockboxPtrOutputWithContext(ctx context.Context) PropertiesResponseLockboxPtrOutput {
 	return o
+}
+
+func (o PropertiesResponseLockboxPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PropertiesResponseLockbox] {
+	return pulumix.Output[*PropertiesResponseLockbox]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PropertiesResponseLockboxPtrOutput) Elem() PropertiesResponseLockboxOutput {
@@ -1489,6 +1724,12 @@ func (o PropertiesResponseNetworkInjectionOutput) ToPropertiesResponseNetworkInj
 	return o
 }
 
+func (o PropertiesResponseNetworkInjectionOutput) ToOutput(ctx context.Context) pulumix.Output[PropertiesResponseNetworkInjection] {
+	return pulumix.Output[PropertiesResponseNetworkInjection]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Network injection configuration
 func (o PropertiesResponseNetworkInjectionOutput) VirtualNetworks() VirtualNetworkPropertiesListResponsePtrOutput {
 	return o.ApplyT(func(v PropertiesResponseNetworkInjection) *VirtualNetworkPropertiesListResponse {
@@ -1508,6 +1749,12 @@ func (o PropertiesResponseNetworkInjectionPtrOutput) ToPropertiesResponseNetwork
 
 func (o PropertiesResponseNetworkInjectionPtrOutput) ToPropertiesResponseNetworkInjectionPtrOutputWithContext(ctx context.Context) PropertiesResponseNetworkInjectionPtrOutput {
 	return o
+}
+
+func (o PropertiesResponseNetworkInjectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PropertiesResponseNetworkInjection] {
+	return pulumix.Output[*PropertiesResponseNetworkInjection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PropertiesResponseNetworkInjectionPtrOutput) Elem() PropertiesResponseNetworkInjectionOutput {
@@ -1565,6 +1812,12 @@ func (i SubnetPropertiesArgs) ToSubnetPropertiesOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetPropertiesOutput)
 }
 
+func (i SubnetPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SubnetProperties] {
+	return pulumix.Output[SubnetProperties]{
+		OutputState: i.ToSubnetPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SubnetPropertiesArgs) ToSubnetPropertiesPtrOutput() SubnetPropertiesPtrOutput {
 	return i.ToSubnetPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1606,6 +1859,12 @@ func (i *subnetPropertiesPtrType) ToSubnetPropertiesPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetPropertiesPtrOutput)
 }
 
+func (i *subnetPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SubnetProperties] {
+	return pulumix.Output[*SubnetProperties]{
+		OutputState: i.ToSubnetPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties of a subnet.
 type SubnetPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1631,6 +1890,12 @@ func (o SubnetPropertiesOutput) ToSubnetPropertiesPtrOutputWithContext(ctx conte
 	}).(SubnetPropertiesPtrOutput)
 }
 
+func (o SubnetPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetProperties] {
+	return pulumix.Output[SubnetProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Subnet name.
 func (o SubnetPropertiesOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1648,6 +1913,12 @@ func (o SubnetPropertiesPtrOutput) ToSubnetPropertiesPtrOutput() SubnetPropertie
 
 func (o SubnetPropertiesPtrOutput) ToSubnetPropertiesPtrOutputWithContext(ctx context.Context) SubnetPropertiesPtrOutput {
 	return o
+}
+
+func (o SubnetPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetProperties] {
+	return pulumix.Output[*SubnetProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetPropertiesPtrOutput) Elem() SubnetPropertiesOutput {
@@ -1691,6 +1962,12 @@ func (o SubnetPropertiesResponseOutput) ToSubnetPropertiesResponseOutputWithCont
 	return o
 }
 
+func (o SubnetPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetPropertiesResponse] {
+	return pulumix.Output[SubnetPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Subnet name.
 func (o SubnetPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1708,6 +1985,12 @@ func (o SubnetPropertiesResponsePtrOutput) ToSubnetPropertiesResponsePtrOutput()
 
 func (o SubnetPropertiesResponsePtrOutput) ToSubnetPropertiesResponsePtrOutputWithContext(ctx context.Context) SubnetPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o SubnetPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetPropertiesResponse] {
+	return pulumix.Output[*SubnetPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetPropertiesResponsePtrOutput) Elem() SubnetPropertiesResponseOutput {
@@ -1759,6 +2042,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -1830,6 +2119,12 @@ func (i VirtualNetworkPropertiesArgs) ToVirtualNetworkPropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesOutput)
 }
 
+func (i VirtualNetworkPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkProperties] {
+	return pulumix.Output[VirtualNetworkProperties]{
+		OutputState: i.ToVirtualNetworkPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualNetworkPropertiesArrayInput is an input type that accepts VirtualNetworkPropertiesArray and VirtualNetworkPropertiesArrayOutput values.
 // You can construct a concrete instance of `VirtualNetworkPropertiesArrayInput` via:
 //
@@ -1855,6 +2150,12 @@ func (i VirtualNetworkPropertiesArray) ToVirtualNetworkPropertiesArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesArrayOutput)
 }
 
+func (i VirtualNetworkPropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkProperties] {
+	return pulumix.Output[[]VirtualNetworkProperties]{
+		OutputState: i.ToVirtualNetworkPropertiesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings concerning the virtual network.
 type VirtualNetworkPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1868,6 +2169,12 @@ func (o VirtualNetworkPropertiesOutput) ToVirtualNetworkPropertiesOutput() Virtu
 
 func (o VirtualNetworkPropertiesOutput) ToVirtualNetworkPropertiesOutputWithContext(ctx context.Context) VirtualNetworkPropertiesOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkProperties] {
+	return pulumix.Output[VirtualNetworkProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Uri of the virtual network.
@@ -1892,6 +2199,12 @@ func (o VirtualNetworkPropertiesArrayOutput) ToVirtualNetworkPropertiesArrayOutp
 
 func (o VirtualNetworkPropertiesArrayOutput) ToVirtualNetworkPropertiesArrayOutputWithContext(ctx context.Context) VirtualNetworkPropertiesArrayOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkProperties] {
+	return pulumix.Output[[]VirtualNetworkProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkPropertiesArrayOutput) Index(i pulumi.IntInput) VirtualNetworkPropertiesOutput {
@@ -1939,6 +2252,12 @@ func (i VirtualNetworkPropertiesListArgs) ToVirtualNetworkPropertiesListOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesListOutput)
 }
 
+func (i VirtualNetworkPropertiesListArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesList] {
+	return pulumix.Output[VirtualNetworkPropertiesList]{
+		OutputState: i.ToVirtualNetworkPropertiesListOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualNetworkPropertiesListArgs) ToVirtualNetworkPropertiesListPtrOutput() VirtualNetworkPropertiesListPtrOutput {
 	return i.ToVirtualNetworkPropertiesListPtrOutputWithContext(context.Background())
 }
@@ -1980,6 +2299,12 @@ func (i *virtualNetworkPropertiesListPtrType) ToVirtualNetworkPropertiesListPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesListPtrOutput)
 }
 
+func (i *virtualNetworkPropertiesListPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkPropertiesList] {
+	return pulumix.Output[*VirtualNetworkPropertiesList]{
+		OutputState: i.ToVirtualNetworkPropertiesListPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A list of private link resources
 type VirtualNetworkPropertiesListOutput struct{ *pulumi.OutputState }
 
@@ -2005,6 +2330,12 @@ func (o VirtualNetworkPropertiesListOutput) ToVirtualNetworkPropertiesListPtrOut
 	}).(VirtualNetworkPropertiesListPtrOutput)
 }
 
+func (o VirtualNetworkPropertiesListOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesList] {
+	return pulumix.Output[VirtualNetworkPropertiesList]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Next page link if any.
 func (o VirtualNetworkPropertiesListOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkPropertiesList) *string { return v.NextLink }).(pulumi.StringPtrOutput)
@@ -2027,6 +2358,12 @@ func (o VirtualNetworkPropertiesListPtrOutput) ToVirtualNetworkPropertiesListPtr
 
 func (o VirtualNetworkPropertiesListPtrOutput) ToVirtualNetworkPropertiesListPtrOutputWithContext(ctx context.Context) VirtualNetworkPropertiesListPtrOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkPropertiesList] {
+	return pulumix.Output[*VirtualNetworkPropertiesList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkPropertiesListPtrOutput) Elem() VirtualNetworkPropertiesListOutput {
@@ -2082,6 +2419,12 @@ func (o VirtualNetworkPropertiesListResponseOutput) ToVirtualNetworkPropertiesLi
 	return o
 }
 
+func (o VirtualNetworkPropertiesListResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesListResponse] {
+	return pulumix.Output[VirtualNetworkPropertiesListResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Next page link if any.
 func (o VirtualNetworkPropertiesListResponseOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkPropertiesListResponse) *string { return v.NextLink }).(pulumi.StringPtrOutput)
@@ -2104,6 +2447,12 @@ func (o VirtualNetworkPropertiesListResponsePtrOutput) ToVirtualNetworkPropertie
 
 func (o VirtualNetworkPropertiesListResponsePtrOutput) ToVirtualNetworkPropertiesListResponsePtrOutputWithContext(ctx context.Context) VirtualNetworkPropertiesListResponsePtrOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesListResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkPropertiesListResponse] {
+	return pulumix.Output[*VirtualNetworkPropertiesListResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkPropertiesListResponsePtrOutput) Elem() VirtualNetworkPropertiesListResponseOutput {
@@ -2159,6 +2508,12 @@ func (o VirtualNetworkPropertiesResponseOutput) ToVirtualNetworkPropertiesRespon
 	return o
 }
 
+func (o VirtualNetworkPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesResponse] {
+	return pulumix.Output[VirtualNetworkPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Uri of the virtual network.
 func (o VirtualNetworkPropertiesResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkPropertiesResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2181,6 +2536,12 @@ func (o VirtualNetworkPropertiesResponseArrayOutput) ToVirtualNetworkPropertiesR
 
 func (o VirtualNetworkPropertiesResponseArrayOutput) ToVirtualNetworkPropertiesResponseArrayOutputWithContext(ctx context.Context) VirtualNetworkPropertiesResponseArrayOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkPropertiesResponse] {
+	return pulumix.Output[[]VirtualNetworkPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkPropertiesResponseArrayOutput) Index(i pulumi.IntInput) VirtualNetworkPropertiesResponseOutput {

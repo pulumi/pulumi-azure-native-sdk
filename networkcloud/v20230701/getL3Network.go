@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of the provided layer 3 (L3) network.
@@ -135,6 +136,12 @@ func (o LookupL3NetworkResultOutput) ToLookupL3NetworkResultOutput() LookupL3Net
 
 func (o LookupL3NetworkResultOutput) ToLookupL3NetworkResultOutputWithContext(ctx context.Context) LookupL3NetworkResultOutput {
 	return o
+}
+
+func (o LookupL3NetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupL3NetworkResult] {
+	return pulumix.Output[LookupL3NetworkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.

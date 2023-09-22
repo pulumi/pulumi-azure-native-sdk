@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Customer creates a Contact Profile Resource, which will contain all of the configurations required for scheduling a contact.
@@ -173,6 +174,12 @@ func (i *ContactProfile) ToContactProfileOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ContactProfileOutput)
 }
 
+func (i *ContactProfile) ToOutput(ctx context.Context) pulumix.Output[*ContactProfile] {
+	return pulumix.Output[*ContactProfile]{
+		OutputState: i.ToContactProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContactProfileOutput struct{ *pulumi.OutputState }
 
 func (ContactProfileOutput) ElementType() reflect.Type {
@@ -185,6 +192,12 @@ func (o ContactProfileOutput) ToContactProfileOutput() ContactProfileOutput {
 
 func (o ContactProfileOutput) ToContactProfileOutputWithContext(ctx context.Context) ContactProfileOutput {
 	return o
+}
+
+func (o ContactProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*ContactProfile] {
+	return pulumix.Output[*ContactProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Auto-tracking configuration.

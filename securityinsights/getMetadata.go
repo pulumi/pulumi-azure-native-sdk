@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Metadata.
@@ -123,6 +124,12 @@ func (o LookupMetadataResultOutput) ToLookupMetadataResultOutput() LookupMetadat
 
 func (o LookupMetadataResultOutput) ToLookupMetadataResultOutputWithContext(ctx context.Context) LookupMetadataResultOutput {
 	return o
+}
+
+func (o LookupMetadataResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMetadataResult] {
+	return pulumix.Output[LookupMetadataResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creator of the content item.

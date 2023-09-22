@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -107,6 +108,12 @@ func (o CreateModeOutput) ToCreateModePtrOutputWithContext(ctx context.Context) 
 	}).(CreateModePtrOutput)
 }
 
+func (o CreateModeOutput) ToOutput(ctx context.Context) pulumix.Output[CreateMode] {
+	return pulumix.Output[CreateMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CreateModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -140,6 +147,12 @@ func (o CreateModePtrOutput) ToCreateModePtrOutput() CreateModePtrOutput {
 
 func (o CreateModePtrOutput) ToCreateModePtrOutputWithContext(ctx context.Context) CreateModePtrOutput {
 	return o
+}
+
+func (o CreateModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
+	return pulumix.Output[*CreateMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CreateModePtrOutput) Elem() CreateModeOutput {
@@ -202,6 +215,12 @@ func (in *createModePtr) ToCreateModePtrOutput() CreateModePtrOutput {
 
 func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) CreateModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
+}
+
+func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
+	return pulumix.Output[*CreateMode]{
+		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The elliptic curve name. For valid values, see JsonWebKeyCurveName.
@@ -334,6 +353,12 @@ func (o KeyRotationPolicyActionTypeOutput) ToKeyRotationPolicyActionTypePtrOutpu
 	}).(KeyRotationPolicyActionTypePtrOutput)
 }
 
+func (o KeyRotationPolicyActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[KeyRotationPolicyActionType] {
+	return pulumix.Output[KeyRotationPolicyActionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeyRotationPolicyActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -367,6 +392,12 @@ func (o KeyRotationPolicyActionTypePtrOutput) ToKeyRotationPolicyActionTypePtrOu
 
 func (o KeyRotationPolicyActionTypePtrOutput) ToKeyRotationPolicyActionTypePtrOutputWithContext(ctx context.Context) KeyRotationPolicyActionTypePtrOutput {
 	return o
+}
+
+func (o KeyRotationPolicyActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyRotationPolicyActionType] {
+	return pulumix.Output[*KeyRotationPolicyActionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyRotationPolicyActionTypePtrOutput) Elem() KeyRotationPolicyActionTypeOutput {
@@ -429,6 +460,12 @@ func (in *keyRotationPolicyActionTypePtr) ToKeyRotationPolicyActionTypePtrOutput
 
 func (in *keyRotationPolicyActionTypePtr) ToKeyRotationPolicyActionTypePtrOutputWithContext(ctx context.Context) KeyRotationPolicyActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyRotationPolicyActionTypePtrOutput)
+}
+
+func (in *keyRotationPolicyActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KeyRotationPolicyActionType] {
+	return pulumix.Output[*KeyRotationPolicyActionType]{
+		OutputState: in.ToKeyRotationPolicyActionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SKU Family of the managed HSM Pool
@@ -507,6 +544,12 @@ func (o ManagedHsmSkuNameOutput) ToManagedHsmSkuNamePtrOutputWithContext(ctx con
 	}).(ManagedHsmSkuNamePtrOutput)
 }
 
+func (o ManagedHsmSkuNameOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedHsmSkuName] {
+	return pulumix.Output[ManagedHsmSkuName]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ManagedHsmSkuNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -540,6 +583,12 @@ func (o ManagedHsmSkuNamePtrOutput) ToManagedHsmSkuNamePtrOutput() ManagedHsmSku
 
 func (o ManagedHsmSkuNamePtrOutput) ToManagedHsmSkuNamePtrOutputWithContext(ctx context.Context) ManagedHsmSkuNamePtrOutput {
 	return o
+}
+
+func (o ManagedHsmSkuNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedHsmSkuName] {
+	return pulumix.Output[*ManagedHsmSkuName]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedHsmSkuNamePtrOutput) Elem() ManagedHsmSkuNameOutput {
@@ -602,6 +651,12 @@ func (in *managedHsmSkuNamePtr) ToManagedHsmSkuNamePtrOutput() ManagedHsmSkuName
 
 func (in *managedHsmSkuNamePtr) ToManagedHsmSkuNamePtrOutputWithContext(ctx context.Context) ManagedHsmSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedHsmSkuNamePtrOutput)
+}
+
+func (in *managedHsmSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedHsmSkuName] {
+	return pulumix.Output[*ManagedHsmSkuName]{
+		OutputState: in.ToManagedHsmSkuNamePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
@@ -727,6 +782,12 @@ func (o SkuNameOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNam
 	}).(SkuNamePtrOutput)
 }
 
+func (o SkuNameOutput) ToOutput(ctx context.Context) pulumix.Output[SkuName] {
+	return pulumix.Output[SkuName]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SkuNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -760,6 +821,12 @@ func (o SkuNamePtrOutput) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (o SkuNamePtrOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return o
+}
+
+func (o SkuNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
+	return pulumix.Output[*SkuName]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuNamePtrOutput) Elem() SkuNameOutput {
@@ -822,6 +889,12 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
+}
+
+func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
+	return pulumix.Output[*SkuName]{
+		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type StoragePermissions string

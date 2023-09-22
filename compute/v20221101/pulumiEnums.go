@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
@@ -89,6 +90,12 @@ func (o IntervalInMinsOutput) ToIntervalInMinsPtrOutputWithContext(ctx context.C
 	}).(IntervalInMinsPtrOutput)
 }
 
+func (o IntervalInMinsOutput) ToOutput(ctx context.Context) pulumix.Output[IntervalInMins] {
+	return pulumix.Output[IntervalInMins]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IntervalInMinsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,6 +129,12 @@ func (o IntervalInMinsPtrOutput) ToIntervalInMinsPtrOutput() IntervalInMinsPtrOu
 
 func (o IntervalInMinsPtrOutput) ToIntervalInMinsPtrOutputWithContext(ctx context.Context) IntervalInMinsPtrOutput {
 	return o
+}
+
+func (o IntervalInMinsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IntervalInMins] {
+	return pulumix.Output[*IntervalInMins]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntervalInMinsPtrOutput) Elem() IntervalInMinsOutput {
@@ -184,6 +197,12 @@ func (in *intervalInMinsPtr) ToIntervalInMinsPtrOutput() IntervalInMinsPtrOutput
 
 func (in *intervalInMinsPtr) ToIntervalInMinsPtrOutputWithContext(ctx context.Context) IntervalInMinsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntervalInMinsPtrOutput)
+}
+
+func (in *intervalInMinsPtr) ToOutput(ctx context.Context) pulumix.Output[*IntervalInMins] {
+	return pulumix.Output[*IntervalInMins]{
+		OutputState: in.ToIntervalInMinsPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

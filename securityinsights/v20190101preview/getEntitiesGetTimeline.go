@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Timeline for an entity.
@@ -98,6 +99,12 @@ func (o GetEntitiesGetTimelineResultOutput) ToGetEntitiesGetTimelineResultOutput
 
 func (o GetEntitiesGetTimelineResultOutput) ToGetEntitiesGetTimelineResultOutputWithContext(ctx context.Context) GetEntitiesGetTimelineResultOutput {
 	return o
+}
+
+func (o GetEntitiesGetTimelineResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEntitiesGetTimelineResult] {
+	return pulumix.Output[GetEntitiesGetTimelineResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The metadata from the timeline operation results.

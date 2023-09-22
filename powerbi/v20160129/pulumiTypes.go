@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i AzureSkuArgs) ToAzureSkuOutput() AzureSkuOutput {
 
 func (i AzureSkuArgs) ToAzureSkuOutputWithContext(ctx context.Context) AzureSkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AzureSkuOutput)
+}
+
+func (i AzureSkuArgs) ToOutput(ctx context.Context) pulumix.Output[AzureSku] {
+	return pulumix.Output[AzureSku]{
+		OutputState: i.ToAzureSkuOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i AzureSkuArgs) ToAzureSkuPtrOutput() AzureSkuPtrOutput {
@@ -91,6 +98,12 @@ func (i *azureSkuPtrType) ToAzureSkuPtrOutputWithContext(ctx context.Context) Az
 	return pulumi.ToOutputWithContext(ctx, i).(AzureSkuPtrOutput)
 }
 
+func (i *azureSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureSku] {
+	return pulumix.Output[*AzureSku]{
+		OutputState: i.ToAzureSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AzureSkuOutput struct{ *pulumi.OutputState }
 
 func (AzureSkuOutput) ElementType() reflect.Type {
@@ -115,6 +128,12 @@ func (o AzureSkuOutput) ToAzureSkuPtrOutputWithContext(ctx context.Context) Azur
 	}).(AzureSkuPtrOutput)
 }
 
+func (o AzureSkuOutput) ToOutput(ctx context.Context) pulumix.Output[AzureSku] {
+	return pulumix.Output[AzureSku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // SKU name
 func (o AzureSkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureSku) string { return v.Name }).(pulumi.StringOutput)
@@ -137,6 +156,12 @@ func (o AzureSkuPtrOutput) ToAzureSkuPtrOutput() AzureSkuPtrOutput {
 
 func (o AzureSkuPtrOutput) ToAzureSkuPtrOutputWithContext(ctx context.Context) AzureSkuPtrOutput {
 	return o
+}
+
+func (o AzureSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureSku] {
+	return pulumix.Output[*AzureSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureSkuPtrOutput) Elem() AzureSkuOutput {
@@ -190,6 +215,12 @@ func (o AzureSkuResponseOutput) ToAzureSkuResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o AzureSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureSkuResponse] {
+	return pulumix.Output[AzureSkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // SKU name
 func (o AzureSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureSkuResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -212,6 +243,12 @@ func (o AzureSkuResponsePtrOutput) ToAzureSkuResponsePtrOutput() AzureSkuRespons
 
 func (o AzureSkuResponsePtrOutput) ToAzureSkuResponsePtrOutputWithContext(ctx context.Context) AzureSkuResponsePtrOutput {
 	return o
+}
+
+func (o AzureSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureSkuResponse] {
+	return pulumix.Output[*AzureSkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureSkuResponsePtrOutput) Elem() AzureSkuResponseOutput {

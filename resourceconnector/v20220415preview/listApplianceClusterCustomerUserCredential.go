@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the cluster customer user credentials for the dedicated appliance.
@@ -74,6 +75,12 @@ func (o ListApplianceClusterCustomerUserCredentialResultOutput) ToListApplianceC
 
 func (o ListApplianceClusterCustomerUserCredentialResultOutput) ToListApplianceClusterCustomerUserCredentialResultOutputWithContext(ctx context.Context) ListApplianceClusterCustomerUserCredentialResultOutput {
 	return o
+}
+
+func (o ListApplianceClusterCustomerUserCredentialResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListApplianceClusterCustomerUserCredentialResult] {
+	return pulumix.Output[ListApplianceClusterCustomerUserCredentialResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of appliance kubeconfigs.

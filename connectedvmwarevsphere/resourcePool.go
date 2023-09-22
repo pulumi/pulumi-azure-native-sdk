@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Define the resourcePool.
@@ -194,6 +195,12 @@ func (i *ResourcePool) ToResourcePoolOutputWithContext(ctx context.Context) Reso
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolOutput)
 }
 
+func (i *ResourcePool) ToOutput(ctx context.Context) pulumix.Output[*ResourcePool] {
+	return pulumix.Output[*ResourcePool]{
+		OutputState: i.ToResourcePoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourcePoolOutput struct{ *pulumi.OutputState }
 
 func (ResourcePoolOutput) ElementType() reflect.Type {
@@ -206,6 +213,12 @@ func (o ResourcePoolOutput) ToResourcePoolOutput() ResourcePoolOutput {
 
 func (o ResourcePoolOutput) ToResourcePoolOutputWithContext(ctx context.Context) ResourcePoolOutput {
 	return o
+}
+
+func (o ResourcePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePool] {
+	return pulumix.Output[*ResourcePool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets CPULimitMHz which specifies a CPU usage limit in MHz.

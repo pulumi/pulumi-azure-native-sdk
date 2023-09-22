@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Resource Manager resource envelope.
@@ -163,6 +164,12 @@ func (i *CodeVersion) ToCodeVersionOutputWithContext(ctx context.Context) CodeVe
 	return pulumi.ToOutputWithContext(ctx, i).(CodeVersionOutput)
 }
 
+func (i *CodeVersion) ToOutput(ctx context.Context) pulumix.Output[*CodeVersion] {
+	return pulumix.Output[*CodeVersion]{
+		OutputState: i.ToCodeVersionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CodeVersionOutput struct{ *pulumi.OutputState }
 
 func (CodeVersionOutput) ElementType() reflect.Type {
@@ -175,6 +182,12 @@ func (o CodeVersionOutput) ToCodeVersionOutput() CodeVersionOutput {
 
 func (o CodeVersionOutput) ToCodeVersionOutputWithContext(ctx context.Context) CodeVersionOutput {
 	return o
+}
+
+func (o CodeVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*CodeVersion] {
+	return pulumix.Output[*CodeVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

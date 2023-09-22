@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWi
 	return o
 }
 
+func (o ErrorAdditionalInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorAdditionalInfoResponse] {
+	return pulumix.Output[ErrorAdditionalInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The additional info.
 func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
 	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
@@ -58,6 +65,12 @@ func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArr
 
 func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
 	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorAdditionalInfoResponse] {
+	return pulumix.Output[[]ErrorAdditionalInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
@@ -93,6 +106,12 @@ func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutput() ErrorDetailResp
 
 func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx context.Context) ErrorDetailResponseOutput {
 	return o
+}
+
+func (o ErrorDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorDetailResponse] {
+	return pulumix.Output[ErrorDetailResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The error additional info.
@@ -132,6 +151,12 @@ func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutput() Error
 
 func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithContext(ctx context.Context) ErrorDetailResponseArrayOutput {
 	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorDetailResponse] {
+	return pulumix.Output[[]ErrorDetailResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
@@ -175,6 +200,12 @@ func (i ExtensionAksAssignedIdentityArgs) ToExtensionAksAssignedIdentityOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionAksAssignedIdentityOutput)
 }
 
+func (i ExtensionAksAssignedIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionAksAssignedIdentity] {
+	return pulumix.Output[ExtensionAksAssignedIdentity]{
+		OutputState: i.ToExtensionAksAssignedIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExtensionAksAssignedIdentityArgs) ToExtensionAksAssignedIdentityPtrOutput() ExtensionAksAssignedIdentityPtrOutput {
 	return i.ToExtensionAksAssignedIdentityPtrOutputWithContext(context.Background())
 }
@@ -216,6 +247,12 @@ func (i *extensionAksAssignedIdentityPtrType) ToExtensionAksAssignedIdentityPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionAksAssignedIdentityPtrOutput)
 }
 
+func (i *extensionAksAssignedIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExtensionAksAssignedIdentity] {
+	return pulumix.Output[*ExtensionAksAssignedIdentity]{
+		OutputState: i.ToExtensionAksAssignedIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity of the Extension resource in an AKS cluster
 type ExtensionAksAssignedIdentityOutput struct{ *pulumi.OutputState }
 
@@ -241,6 +278,12 @@ func (o ExtensionAksAssignedIdentityOutput) ToExtensionAksAssignedIdentityPtrOut
 	}).(ExtensionAksAssignedIdentityPtrOutput)
 }
 
+func (o ExtensionAksAssignedIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionAksAssignedIdentity] {
+	return pulumix.Output[ExtensionAksAssignedIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o ExtensionAksAssignedIdentityOutput) Type() AKSIdentityTypePtrOutput {
 	return o.ApplyT(func(v ExtensionAksAssignedIdentity) *AKSIdentityType { return v.Type }).(AKSIdentityTypePtrOutput)
@@ -258,6 +301,12 @@ func (o ExtensionAksAssignedIdentityPtrOutput) ToExtensionAksAssignedIdentityPtr
 
 func (o ExtensionAksAssignedIdentityPtrOutput) ToExtensionAksAssignedIdentityPtrOutputWithContext(ctx context.Context) ExtensionAksAssignedIdentityPtrOutput {
 	return o
+}
+
+func (o ExtensionAksAssignedIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionAksAssignedIdentity] {
+	return pulumix.Output[*ExtensionAksAssignedIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtensionAksAssignedIdentityPtrOutput) Elem() ExtensionAksAssignedIdentityOutput {
@@ -305,6 +354,12 @@ func (o ExtensionResponseAksAssignedIdentityOutput) ToExtensionResponseAksAssign
 	return o
 }
 
+func (o ExtensionResponseAksAssignedIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionResponseAksAssignedIdentity] {
+	return pulumix.Output[ExtensionResponseAksAssignedIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal ID of resource identity.
 func (o ExtensionResponseAksAssignedIdentityOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtensionResponseAksAssignedIdentity) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -332,6 +387,12 @@ func (o ExtensionResponseAksAssignedIdentityPtrOutput) ToExtensionResponseAksAss
 
 func (o ExtensionResponseAksAssignedIdentityPtrOutput) ToExtensionResponseAksAssignedIdentityPtrOutputWithContext(ctx context.Context) ExtensionResponseAksAssignedIdentityPtrOutput {
 	return o
+}
+
+func (o ExtensionResponseAksAssignedIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionResponseAksAssignedIdentity] {
+	return pulumix.Output[*ExtensionResponseAksAssignedIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtensionResponseAksAssignedIdentityPtrOutput) Elem() ExtensionResponseAksAssignedIdentityOutput {
@@ -449,6 +510,12 @@ func (i ExtensionStatusArgs) ToExtensionStatusOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionStatusOutput)
 }
 
+func (i ExtensionStatusArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionStatus] {
+	return pulumix.Output[ExtensionStatus]{
+		OutputState: i.ToExtensionStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ExtensionStatusArrayInput is an input type that accepts ExtensionStatusArray and ExtensionStatusArrayOutput values.
 // You can construct a concrete instance of `ExtensionStatusArrayInput` via:
 //
@@ -474,6 +541,12 @@ func (i ExtensionStatusArray) ToExtensionStatusArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionStatusArrayOutput)
 }
 
+func (i ExtensionStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionStatus] {
+	return pulumix.Output[[]ExtensionStatus]{
+		OutputState: i.ToExtensionStatusArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Status from the extension.
 type ExtensionStatusOutput struct{ *pulumi.OutputState }
 
@@ -487,6 +560,12 @@ func (o ExtensionStatusOutput) ToExtensionStatusOutput() ExtensionStatusOutput {
 
 func (o ExtensionStatusOutput) ToExtensionStatusOutputWithContext(ctx context.Context) ExtensionStatusOutput {
 	return o
+}
+
+func (o ExtensionStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionStatus] {
+	return pulumix.Output[ExtensionStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Status code provided by the Extension
@@ -526,6 +605,12 @@ func (o ExtensionStatusArrayOutput) ToExtensionStatusArrayOutput() ExtensionStat
 
 func (o ExtensionStatusArrayOutput) ToExtensionStatusArrayOutputWithContext(ctx context.Context) ExtensionStatusArrayOutput {
 	return o
+}
+
+func (o ExtensionStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionStatus] {
+	return pulumix.Output[[]ExtensionStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtensionStatusArrayOutput) Index(i pulumi.IntInput) ExtensionStatusOutput {
@@ -576,6 +661,12 @@ func (o ExtensionStatusResponseOutput) ToExtensionStatusResponseOutputWithContex
 	return o
 }
 
+func (o ExtensionStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionStatusResponse] {
+	return pulumix.Output[ExtensionStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Status code provided by the Extension
 func (o ExtensionStatusResponseOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtensionStatusResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
@@ -613,6 +704,12 @@ func (o ExtensionStatusResponseArrayOutput) ToExtensionStatusResponseArrayOutput
 
 func (o ExtensionStatusResponseArrayOutput) ToExtensionStatusResponseArrayOutputWithContext(ctx context.Context) ExtensionStatusResponseArrayOutput {
 	return o
+}
+
+func (o ExtensionStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionStatusResponse] {
+	return pulumix.Output[[]ExtensionStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtensionStatusResponseArrayOutput) Index(i pulumi.IntInput) ExtensionStatusResponseOutput {
@@ -656,6 +753,12 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
+func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
 	return i.ToIdentityPtrOutputWithContext(context.Background())
 }
@@ -697,6 +800,12 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
+func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity for the resource.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -722,6 +831,12 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
+func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v Identity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -739,6 +854,12 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
+}
+
+func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -786,6 +907,12 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
+	return pulumix.Output[IdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal ID of resource identity.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -813,6 +940,12 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
+}
+
+func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
+	return pulumix.Output[*IdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -894,6 +1027,12 @@ func (i ScopeArgs) ToScopeOutputWithContext(ctx context.Context) ScopeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeOutput)
 }
 
+func (i ScopeArgs) ToOutput(ctx context.Context) pulumix.Output[Scope] {
+	return pulumix.Output[Scope]{
+		OutputState: i.ToScopeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ScopeArgs) ToScopePtrOutput() ScopePtrOutput {
 	return i.ToScopePtrOutputWithContext(context.Background())
 }
@@ -935,6 +1074,12 @@ func (i *scopePtrType) ToScopePtrOutputWithContext(ctx context.Context) ScopePtr
 	return pulumi.ToOutputWithContext(ctx, i).(ScopePtrOutput)
 }
 
+func (i *scopePtrType) ToOutput(ctx context.Context) pulumix.Output[*Scope] {
+	return pulumix.Output[*Scope]{
+		OutputState: i.ToScopePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Scope of the extension. It can be either Cluster or Namespace; but not both.
 type ScopeOutput struct{ *pulumi.OutputState }
 
@@ -960,6 +1105,12 @@ func (o ScopeOutput) ToScopePtrOutputWithContext(ctx context.Context) ScopePtrOu
 	}).(ScopePtrOutput)
 }
 
+func (o ScopeOutput) ToOutput(ctx context.Context) pulumix.Output[Scope] {
+	return pulumix.Output[Scope]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies that the scope of the extension is Cluster
 func (o ScopeOutput) Cluster() ScopeClusterPtrOutput {
 	return o.ApplyT(func(v Scope) *ScopeCluster { return v.Cluster }).(ScopeClusterPtrOutput)
@@ -982,6 +1133,12 @@ func (o ScopePtrOutput) ToScopePtrOutput() ScopePtrOutput {
 
 func (o ScopePtrOutput) ToScopePtrOutputWithContext(ctx context.Context) ScopePtrOutput {
 	return o
+}
+
+func (o ScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Scope] {
+	return pulumix.Output[*Scope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopePtrOutput) Elem() ScopeOutput {
@@ -1049,6 +1206,12 @@ func (i ScopeClusterArgs) ToScopeClusterOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeClusterOutput)
 }
 
+func (i ScopeClusterArgs) ToOutput(ctx context.Context) pulumix.Output[ScopeCluster] {
+	return pulumix.Output[ScopeCluster]{
+		OutputState: i.ToScopeClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ScopeClusterArgs) ToScopeClusterPtrOutput() ScopeClusterPtrOutput {
 	return i.ToScopeClusterPtrOutputWithContext(context.Background())
 }
@@ -1090,6 +1253,12 @@ func (i *scopeClusterPtrType) ToScopeClusterPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeClusterPtrOutput)
 }
 
+func (i *scopeClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*ScopeCluster] {
+	return pulumix.Output[*ScopeCluster]{
+		OutputState: i.ToScopeClusterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies that the scope of the extension is Cluster
 type ScopeClusterOutput struct{ *pulumi.OutputState }
 
@@ -1115,6 +1284,12 @@ func (o ScopeClusterOutput) ToScopeClusterPtrOutputWithContext(ctx context.Conte
 	}).(ScopeClusterPtrOutput)
 }
 
+func (o ScopeClusterOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeCluster] {
+	return pulumix.Output[ScopeCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Namespace where the extension Release must be placed, for a Cluster scoped extension.  If this namespace does not exist, it will be created
 func (o ScopeClusterOutput) ReleaseNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScopeCluster) *string { return v.ReleaseNamespace }).(pulumi.StringPtrOutput)
@@ -1132,6 +1307,12 @@ func (o ScopeClusterPtrOutput) ToScopeClusterPtrOutput() ScopeClusterPtrOutput {
 
 func (o ScopeClusterPtrOutput) ToScopeClusterPtrOutputWithContext(ctx context.Context) ScopeClusterPtrOutput {
 	return o
+}
+
+func (o ScopeClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeCluster] {
+	return pulumix.Output[*ScopeCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeClusterPtrOutput) Elem() ScopeClusterOutput {
@@ -1175,6 +1356,12 @@ func (o ScopeClusterResponseOutput) ToScopeClusterResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o ScopeClusterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeClusterResponse] {
+	return pulumix.Output[ScopeClusterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Namespace where the extension Release must be placed, for a Cluster scoped extension.  If this namespace does not exist, it will be created
 func (o ScopeClusterResponseOutput) ReleaseNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScopeClusterResponse) *string { return v.ReleaseNamespace }).(pulumi.StringPtrOutput)
@@ -1192,6 +1379,12 @@ func (o ScopeClusterResponsePtrOutput) ToScopeClusterResponsePtrOutput() ScopeCl
 
 func (o ScopeClusterResponsePtrOutput) ToScopeClusterResponsePtrOutputWithContext(ctx context.Context) ScopeClusterResponsePtrOutput {
 	return o
+}
+
+func (o ScopeClusterResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeClusterResponse] {
+	return pulumix.Output[*ScopeClusterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeClusterResponsePtrOutput) Elem() ScopeClusterResponseOutput {
@@ -1249,6 +1442,12 @@ func (i ScopeNamespaceArgs) ToScopeNamespaceOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeNamespaceOutput)
 }
 
+func (i ScopeNamespaceArgs) ToOutput(ctx context.Context) pulumix.Output[ScopeNamespace] {
+	return pulumix.Output[ScopeNamespace]{
+		OutputState: i.ToScopeNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ScopeNamespaceArgs) ToScopeNamespacePtrOutput() ScopeNamespacePtrOutput {
 	return i.ToScopeNamespacePtrOutputWithContext(context.Background())
 }
@@ -1290,6 +1489,12 @@ func (i *scopeNamespacePtrType) ToScopeNamespacePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeNamespacePtrOutput)
 }
 
+func (i *scopeNamespacePtrType) ToOutput(ctx context.Context) pulumix.Output[*ScopeNamespace] {
+	return pulumix.Output[*ScopeNamespace]{
+		OutputState: i.ToScopeNamespacePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies that the scope of the extension is Namespace
 type ScopeNamespaceOutput struct{ *pulumi.OutputState }
 
@@ -1315,6 +1520,12 @@ func (o ScopeNamespaceOutput) ToScopeNamespacePtrOutputWithContext(ctx context.C
 	}).(ScopeNamespacePtrOutput)
 }
 
+func (o ScopeNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeNamespace] {
+	return pulumix.Output[ScopeNamespace]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Namespace where the extension will be created for an Namespace scoped extension.  If this namespace does not exist, it will be created
 func (o ScopeNamespaceOutput) TargetNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScopeNamespace) *string { return v.TargetNamespace }).(pulumi.StringPtrOutput)
@@ -1332,6 +1543,12 @@ func (o ScopeNamespacePtrOutput) ToScopeNamespacePtrOutput() ScopeNamespacePtrOu
 
 func (o ScopeNamespacePtrOutput) ToScopeNamespacePtrOutputWithContext(ctx context.Context) ScopeNamespacePtrOutput {
 	return o
+}
+
+func (o ScopeNamespacePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeNamespace] {
+	return pulumix.Output[*ScopeNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeNamespacePtrOutput) Elem() ScopeNamespaceOutput {
@@ -1375,6 +1592,12 @@ func (o ScopeNamespaceResponseOutput) ToScopeNamespaceResponseOutputWithContext(
 	return o
 }
 
+func (o ScopeNamespaceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeNamespaceResponse] {
+	return pulumix.Output[ScopeNamespaceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Namespace where the extension will be created for an Namespace scoped extension.  If this namespace does not exist, it will be created
 func (o ScopeNamespaceResponseOutput) TargetNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScopeNamespaceResponse) *string { return v.TargetNamespace }).(pulumi.StringPtrOutput)
@@ -1392,6 +1615,12 @@ func (o ScopeNamespaceResponsePtrOutput) ToScopeNamespaceResponsePtrOutput() Sco
 
 func (o ScopeNamespaceResponsePtrOutput) ToScopeNamespaceResponsePtrOutputWithContext(ctx context.Context) ScopeNamespaceResponsePtrOutput {
 	return o
+}
+
+func (o ScopeNamespaceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeNamespaceResponse] {
+	return pulumix.Output[*ScopeNamespaceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeNamespaceResponsePtrOutput) Elem() ScopeNamespaceResponseOutput {
@@ -1437,6 +1666,12 @@ func (o ScopeResponseOutput) ToScopeResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ScopeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeResponse] {
+	return pulumix.Output[ScopeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies that the scope of the extension is Cluster
 func (o ScopeResponseOutput) Cluster() ScopeClusterResponsePtrOutput {
 	return o.ApplyT(func(v ScopeResponse) *ScopeClusterResponse { return v.Cluster }).(ScopeClusterResponsePtrOutput)
@@ -1459,6 +1694,12 @@ func (o ScopeResponsePtrOutput) ToScopeResponsePtrOutput() ScopeResponsePtrOutpu
 
 func (o ScopeResponsePtrOutput) ToScopeResponsePtrOutputWithContext(ctx context.Context) ScopeResponsePtrOutput {
 	return o
+}
+
+func (o ScopeResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeResponse] {
+	return pulumix.Output[*ScopeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeResponsePtrOutput) Elem() ScopeResponseOutput {
@@ -1520,6 +1761,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

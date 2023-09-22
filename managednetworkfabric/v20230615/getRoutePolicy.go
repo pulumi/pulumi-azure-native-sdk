@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements Route Policy GET method.
@@ -115,6 +116,12 @@ func (o LookupRoutePolicyResultOutput) ToLookupRoutePolicyResultOutput() LookupR
 
 func (o LookupRoutePolicyResultOutput) ToLookupRoutePolicyResultOutputWithContext(ctx context.Context) LookupRoutePolicyResultOutput {
 	return o
+}
+
+func (o LookupRoutePolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRoutePolicyResult] {
+	return pulumix.Output[LookupRoutePolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.

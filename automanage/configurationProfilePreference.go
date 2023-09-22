@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the configuration profile preference.
@@ -127,6 +128,12 @@ func (i *ConfigurationProfilePreference) ToConfigurationProfilePreferenceOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfilePreferenceOutput)
 }
 
+func (i *ConfigurationProfilePreference) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfilePreference] {
+	return pulumix.Output[*ConfigurationProfilePreference]{
+		OutputState: i.ToConfigurationProfilePreferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConfigurationProfilePreferenceOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationProfilePreferenceOutput) ElementType() reflect.Type {
@@ -139,6 +146,12 @@ func (o ConfigurationProfilePreferenceOutput) ToConfigurationProfilePreferenceOu
 
 func (o ConfigurationProfilePreferenceOutput) ToConfigurationProfilePreferenceOutputWithContext(ctx context.Context) ConfigurationProfilePreferenceOutput {
 	return o
+}
+
+func (o ConfigurationProfilePreferenceOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfilePreference] {
+	return pulumix.Output[*ConfigurationProfilePreference]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The geo-location where the resource lives

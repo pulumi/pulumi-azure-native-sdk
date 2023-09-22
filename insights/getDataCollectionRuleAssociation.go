@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of generic ARM proxy resource.
@@ -91,6 +92,12 @@ func (o LookupDataCollectionRuleAssociationResultOutput) ToLookupDataCollectionR
 
 func (o LookupDataCollectionRuleAssociationResultOutput) ToLookupDataCollectionRuleAssociationResultOutputWithContext(ctx context.Context) LookupDataCollectionRuleAssociationResultOutput {
 	return o
+}
+
+func (o LookupDataCollectionRuleAssociationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataCollectionRuleAssociationResult] {
+	return pulumix.Output[LookupDataCollectionRuleAssociationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource ID of the data collection endpoint that is to be associated.

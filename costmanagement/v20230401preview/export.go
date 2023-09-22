@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An export resource.
@@ -199,6 +200,12 @@ func (i *Export) ToExportOutputWithContext(ctx context.Context) ExportOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExportOutput)
 }
 
+func (i *Export) ToOutput(ctx context.Context) pulumix.Output[*Export] {
+	return pulumix.Output[*Export]{
+		OutputState: i.ToExportOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ExportOutput struct{ *pulumi.OutputState }
 
 func (ExportOutput) ElementType() reflect.Type {
@@ -211,6 +218,12 @@ func (o ExportOutput) ToExportOutput() ExportOutput {
 
 func (o ExportOutput) ToExportOutputWithContext(ctx context.Context) ExportOutput {
 	return o
+}
+
+func (o ExportOutput) ToOutput(ctx context.Context) pulumix.Output[*Export] {
+	return pulumix.Output[*Export]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Has the definition for the export.

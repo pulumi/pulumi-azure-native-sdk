@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets NetworkRuleSet for a Namespace.
@@ -103,6 +104,12 @@ func (o LookupNamespaceNetworkRuleSetResultOutput) ToLookupNamespaceNetworkRuleS
 
 func (o LookupNamespaceNetworkRuleSetResultOutput) ToLookupNamespaceNetworkRuleSetResultOutputWithContext(ctx context.Context) LookupNamespaceNetworkRuleSetResultOutput {
 	return o
+}
+
+func (o LookupNamespaceNetworkRuleSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNamespaceNetworkRuleSetResult] {
+	return pulumix.Output[LookupNamespaceNetworkRuleSetResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Default Action for Network Rule Set

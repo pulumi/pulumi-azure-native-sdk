@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the properties of an existing Azure Cosmos DB Mongo User Definition with the given Id.
@@ -92,6 +93,12 @@ func (o LookupMongoDBResourceMongoUserDefinitionResultOutput) ToLookupMongoDBRes
 
 func (o LookupMongoDBResourceMongoUserDefinitionResultOutput) ToLookupMongoDBResourceMongoUserDefinitionResultOutputWithContext(ctx context.Context) LookupMongoDBResourceMongoUserDefinitionResultOutput {
 	return o
+}
+
+func (o LookupMongoDBResourceMongoUserDefinitionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMongoDBResourceMongoUserDefinitionResult] {
+	return pulumix.Output[LookupMongoDBResourceMongoUserDefinitionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A custom definition for the USer Definition.

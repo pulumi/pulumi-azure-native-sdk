@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified cache rule resource.
@@ -94,6 +95,12 @@ func (o LookupCacheRuleResultOutput) ToLookupCacheRuleResultOutput() LookupCache
 
 func (o LookupCacheRuleResultOutput) ToLookupCacheRuleResultOutputWithContext(ctx context.Context) LookupCacheRuleResultOutput {
 	return o
+}
+
+func (o LookupCacheRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCacheRuleResult] {
+	return pulumix.Output[LookupCacheRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation date of the cache rule.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Contains information about a database Threat Detection policy.
@@ -221,6 +222,12 @@ func (i *DatabaseThreatDetectionPolicy) ToDatabaseThreatDetectionPolicyOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseThreatDetectionPolicyOutput)
 }
 
+func (i *DatabaseThreatDetectionPolicy) ToOutput(ctx context.Context) pulumix.Output[*DatabaseThreatDetectionPolicy] {
+	return pulumix.Output[*DatabaseThreatDetectionPolicy]{
+		OutputState: i.ToDatabaseThreatDetectionPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseThreatDetectionPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatabaseThreatDetectionPolicyOutput) ElementType() reflect.Type {
@@ -233,6 +240,12 @@ func (o DatabaseThreatDetectionPolicyOutput) ToDatabaseThreatDetectionPolicyOutp
 
 func (o DatabaseThreatDetectionPolicyOutput) ToDatabaseThreatDetectionPolicyOutputWithContext(ctx context.Context) DatabaseThreatDetectionPolicyOutput {
 	return o
+}
+
+func (o DatabaseThreatDetectionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseThreatDetectionPolicy] {
+	return pulumix.Output[*DatabaseThreatDetectionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the semicolon-separated list of alerts that are disabled, or empty string to disable no alerts. Possible values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration; Unsafe_Action.

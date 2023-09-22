@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB container.
@@ -245,6 +246,12 @@ func (i *SqlResourceSqlContainer) ToSqlResourceSqlContainerOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SqlResourceSqlContainerOutput)
 }
 
+func (i *SqlResourceSqlContainer) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlContainer] {
+	return pulumix.Output[*SqlResourceSqlContainer]{
+		OutputState: i.ToSqlResourceSqlContainerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlResourceSqlContainerOutput struct{ *pulumi.OutputState }
 
 func (SqlResourceSqlContainerOutput) ElementType() reflect.Type {
@@ -257,6 +264,12 @@ func (o SqlResourceSqlContainerOutput) ToSqlResourceSqlContainerOutput() SqlReso
 
 func (o SqlResourceSqlContainerOutput) ToSqlResourceSqlContainerOutputWithContext(ctx context.Context) SqlResourceSqlContainerOutput {
 	return o
+}
+
+func (o SqlResourceSqlContainerOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlContainer] {
+	return pulumix.Output[*SqlResourceSqlContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location of the resource group to which the resource belongs.

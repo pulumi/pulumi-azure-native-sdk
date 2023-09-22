@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DataSet in a share
@@ -99,6 +100,12 @@ func (o LookupSqlDBTableDataSetResultOutput) ToLookupSqlDBTableDataSetResultOutp
 
 func (o LookupSqlDBTableDataSetResultOutput) ToLookupSqlDBTableDataSetResultOutputWithContext(ctx context.Context) LookupSqlDBTableDataSetResultOutput {
 	return o
+}
+
+func (o LookupSqlDBTableDataSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlDBTableDataSetResult] {
+	return pulumix.Output[LookupSqlDBTableDataSetResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique id for identifying a data set resource

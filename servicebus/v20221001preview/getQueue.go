@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a description for the specified queue.
@@ -128,6 +129,12 @@ func (o LookupQueueResultOutput) ToLookupQueueResultOutput() LookupQueueResultOu
 
 func (o LookupQueueResultOutput) ToLookupQueueResultOutputWithContext(ctx context.Context) LookupQueueResultOutput {
 	return o
+}
+
+func (o LookupQueueResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupQueueResult] {
+	return pulumix.Output[LookupQueueResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Last time a message was sent, or the last time there was a receive request to this queue.

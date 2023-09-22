@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The enabled access level for Web Access over SSH.
@@ -79,6 +80,12 @@ func (o ConnectionTypeOutput) ToConnectionTypePtrOutputWithContext(ctx context.C
 	}).(ConnectionTypePtrOutput)
 }
 
+func (o ConnectionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionType] {
+	return pulumix.Output[ConnectionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -112,6 +119,12 @@ func (o ConnectionTypePtrOutput) ToConnectionTypePtrOutput() ConnectionTypePtrOu
 
 func (o ConnectionTypePtrOutput) ToConnectionTypePtrOutputWithContext(ctx context.Context) ConnectionTypePtrOutput {
 	return o
+}
+
+func (o ConnectionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionType] {
+	return pulumix.Output[*ConnectionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionTypePtrOutput) Elem() ConnectionTypeOutput {
@@ -174,6 +187,12 @@ func (in *connectionTypePtr) ToConnectionTypePtrOutput() ConnectionTypePtrOutput
 
 func (in *connectionTypePtr) ToConnectionTypePtrOutputWithContext(ctx context.Context) ConnectionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionTypePtrOutput)
+}
+
+func (in *connectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionType] {
+	return pulumix.Output[*ConnectionType]{
+		OutputState: in.ToConnectionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates what lab virtual machines are created from.
@@ -246,6 +265,12 @@ func (o CreateOptionOutput) ToCreateOptionPtrOutputWithContext(ctx context.Conte
 	}).(CreateOptionPtrOutput)
 }
 
+func (o CreateOptionOutput) ToOutput(ctx context.Context) pulumix.Output[CreateOption] {
+	return pulumix.Output[CreateOption]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CreateOptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -279,6 +304,12 @@ func (o CreateOptionPtrOutput) ToCreateOptionPtrOutput() CreateOptionPtrOutput {
 
 func (o CreateOptionPtrOutput) ToCreateOptionPtrOutputWithContext(ctx context.Context) CreateOptionPtrOutput {
 	return o
+}
+
+func (o CreateOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreateOption] {
+	return pulumix.Output[*CreateOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CreateOptionPtrOutput) Elem() CreateOptionOutput {
@@ -341,6 +372,12 @@ func (in *createOptionPtr) ToCreateOptionPtrOutput() CreateOptionPtrOutput {
 
 func (in *createOptionPtr) ToCreateOptionPtrOutputWithContext(ctx context.Context) CreateOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CreateOptionPtrOutput)
+}
+
+func (in *createOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*CreateOption] {
+	return pulumix.Output[*CreateOption]{
+		OutputState: in.ToCreateOptionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Whether a VM will get shutdown when it hasn't been connected to after a period of time.
@@ -411,6 +448,12 @@ func (o EnableStateOutput) ToEnableStatePtrOutputWithContext(ctx context.Context
 	}).(EnableStatePtrOutput)
 }
 
+func (o EnableStateOutput) ToOutput(ctx context.Context) pulumix.Output[EnableState] {
+	return pulumix.Output[EnableState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnableStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -444,6 +487,12 @@ func (o EnableStatePtrOutput) ToEnableStatePtrOutput() EnableStatePtrOutput {
 
 func (o EnableStatePtrOutput) ToEnableStatePtrOutputWithContext(ctx context.Context) EnableStatePtrOutput {
 	return o
+}
+
+func (o EnableStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnableState] {
+	return pulumix.Output[*EnableState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnableStatePtrOutput) Elem() EnableStateOutput {
@@ -506,6 +555,12 @@ func (in *enableStatePtr) ToEnableStatePtrOutput() EnableStatePtrOutput {
 
 func (in *enableStatePtr) ToEnableStatePtrOutputWithContext(ctx context.Context) EnableStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnableStatePtrOutput)
+}
+
+func (in *enableStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EnableState] {
+	return pulumix.Output[*EnableState]{
+		OutputState: in.ToEnableStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The frequency of the recurrence.
@@ -578,6 +633,12 @@ func (o RecurrenceFrequencyOutput) ToRecurrenceFrequencyPtrOutputWithContext(ctx
 	}).(RecurrenceFrequencyPtrOutput)
 }
 
+func (o RecurrenceFrequencyOutput) ToOutput(ctx context.Context) pulumix.Output[RecurrenceFrequency] {
+	return pulumix.Output[RecurrenceFrequency]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RecurrenceFrequencyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -611,6 +672,12 @@ func (o RecurrenceFrequencyPtrOutput) ToRecurrenceFrequencyPtrOutput() Recurrenc
 
 func (o RecurrenceFrequencyPtrOutput) ToRecurrenceFrequencyPtrOutputWithContext(ctx context.Context) RecurrenceFrequencyPtrOutput {
 	return o
+}
+
+func (o RecurrenceFrequencyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
+	return pulumix.Output[*RecurrenceFrequency]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecurrenceFrequencyPtrOutput) Elem() RecurrenceFrequencyOutput {
@@ -673,6 +740,12 @@ func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutput() RecurrenceFre
 
 func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutputWithContext(ctx context.Context) RecurrenceFrequencyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RecurrenceFrequencyPtrOutput)
+}
+
+func (in *recurrenceFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
+	return pulumix.Output[*RecurrenceFrequency]{
+		OutputState: in.ToRecurrenceFrequencyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The identity type.
@@ -742,6 +815,12 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
+func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
+	return pulumix.Output[ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -775,6 +854,12 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -837,6 +922,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+}
+
+func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Whether a VM will get shutdown when it has idled for a period of time.
@@ -911,6 +1002,12 @@ func (o ShutdownOnIdleModeOutput) ToShutdownOnIdleModePtrOutputWithContext(ctx c
 	}).(ShutdownOnIdleModePtrOutput)
 }
 
+func (o ShutdownOnIdleModeOutput) ToOutput(ctx context.Context) pulumix.Output[ShutdownOnIdleMode] {
+	return pulumix.Output[ShutdownOnIdleMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ShutdownOnIdleModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -944,6 +1041,12 @@ func (o ShutdownOnIdleModePtrOutput) ToShutdownOnIdleModePtrOutput() ShutdownOnI
 
 func (o ShutdownOnIdleModePtrOutput) ToShutdownOnIdleModePtrOutputWithContext(ctx context.Context) ShutdownOnIdleModePtrOutput {
 	return o
+}
+
+func (o ShutdownOnIdleModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ShutdownOnIdleMode] {
+	return pulumix.Output[*ShutdownOnIdleMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ShutdownOnIdleModePtrOutput) Elem() ShutdownOnIdleModeOutput {
@@ -1006,6 +1109,12 @@ func (in *shutdownOnIdleModePtr) ToShutdownOnIdleModePtrOutput() ShutdownOnIdleM
 
 func (in *shutdownOnIdleModePtr) ToShutdownOnIdleModePtrOutputWithContext(ctx context.Context) ShutdownOnIdleModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ShutdownOnIdleModePtrOutput)
+}
+
+func (in *shutdownOnIdleModePtr) ToOutput(ctx context.Context) pulumix.Output[*ShutdownOnIdleMode] {
+	return pulumix.Output[*ShutdownOnIdleMode]{
+		OutputState: in.ToShutdownOnIdleModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
@@ -1078,6 +1187,12 @@ func (o SkuTierOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTie
 	}).(SkuTierPtrOutput)
 }
 
+func (o SkuTierOutput) ToOutput(ctx context.Context) pulumix.Output[SkuTier] {
+	return pulumix.Output[SkuTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SkuTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1111,6 +1226,12 @@ func (o SkuTierPtrOutput) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (o SkuTierPtrOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return o
+}
+
+func (o SkuTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
+	return pulumix.Output[*SkuTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuTierPtrOutput) Elem() SkuTierOutput {
@@ -1173,6 +1294,12 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
+}
+
+func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
+	return pulumix.Output[*SkuTier]{
+		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Days of the week.
@@ -1255,6 +1382,12 @@ func (o WeekDayOutput) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDa
 	}).(WeekDayPtrOutput)
 }
 
+func (o WeekDayOutput) ToOutput(ctx context.Context) pulumix.Output[WeekDay] {
+	return pulumix.Output[WeekDay]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WeekDayOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1288,6 +1421,12 @@ func (o WeekDayPtrOutput) ToWeekDayPtrOutput() WeekDayPtrOutput {
 
 func (o WeekDayPtrOutput) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDayPtrOutput {
 	return o
+}
+
+func (o WeekDayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WeekDay] {
+	return pulumix.Output[*WeekDay]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WeekDayPtrOutput) Elem() WeekDayOutput {
@@ -1352,6 +1491,12 @@ func (in *weekDayPtr) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDay
 	return pulumi.ToOutputWithContext(ctx, in).(WeekDayPtrOutput)
 }
 
+func (in *weekDayPtr) ToOutput(ctx context.Context) pulumix.Output[*WeekDay] {
+	return pulumix.Output[*WeekDay]{
+		OutputState: in.ToWeekDayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WeekDayArrayInput is an input type that accepts WeekDayArray and WeekDayArrayOutput values.
 // You can construct a concrete instance of `WeekDayArrayInput` via:
 //
@@ -1377,6 +1522,12 @@ func (i WeekDayArray) ToWeekDayArrayOutputWithContext(ctx context.Context) WeekD
 	return pulumi.ToOutputWithContext(ctx, i).(WeekDayArrayOutput)
 }
 
+func (i WeekDayArray) ToOutput(ctx context.Context) pulumix.Output[[]WeekDay] {
+	return pulumix.Output[[]WeekDay]{
+		OutputState: i.ToWeekDayArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WeekDayArrayOutput struct{ *pulumi.OutputState }
 
 func (WeekDayArrayOutput) ElementType() reflect.Type {
@@ -1389,6 +1540,12 @@ func (o WeekDayArrayOutput) ToWeekDayArrayOutput() WeekDayArrayOutput {
 
 func (o WeekDayArrayOutput) ToWeekDayArrayOutputWithContext(ctx context.Context) WeekDayArrayOutput {
 	return o
+}
+
+func (o WeekDayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WeekDay] {
+	return pulumix.Output[[]WeekDay]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WeekDayArrayOutput) Index(i pulumi.IntInput) WeekDayOutput {

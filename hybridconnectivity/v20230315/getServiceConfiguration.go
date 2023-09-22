@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details about the service to the resource.
@@ -102,6 +103,12 @@ func (o LookupServiceConfigurationResultOutput) ToLookupServiceConfigurationResu
 
 func (o LookupServiceConfigurationResultOutput) ToLookupServiceConfigurationResultOutputWithContext(ctx context.Context) LookupServiceConfigurationResultOutput {
 	return o
+}
+
+func (o LookupServiceConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceConfigurationResult] {
+	return pulumix.Output[LookupServiceConfigurationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

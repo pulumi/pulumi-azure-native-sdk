@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An object that represents a webhook for a container registry.
@@ -206,6 +207,12 @@ func (i *Webhook) ToWebhookOutputWithContext(ctx context.Context) WebhookOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookOutput)
 }
 
+func (i *Webhook) ToOutput(ctx context.Context) pulumix.Output[*Webhook] {
+	return pulumix.Output[*Webhook]{
+		OutputState: i.ToWebhookOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebhookOutput struct{ *pulumi.OutputState }
 
 func (WebhookOutput) ElementType() reflect.Type {
@@ -218,6 +225,12 @@ func (o WebhookOutput) ToWebhookOutput() WebhookOutput {
 
 func (o WebhookOutput) ToWebhookOutputWithContext(ctx context.Context) WebhookOutput {
 	return o
+}
+
+func (o WebhookOutput) ToOutput(ctx context.Context) pulumix.Output[*Webhook] {
+	return pulumix.Output[*Webhook]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of actions that trigger the webhook to post notifications.

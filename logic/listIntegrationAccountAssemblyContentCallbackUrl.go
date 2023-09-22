@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the content callback url for an integration account assembly.
@@ -87,6 +88,12 @@ func (o ListIntegrationAccountAssemblyContentCallbackUrlResultOutput) ToListInte
 
 func (o ListIntegrationAccountAssemblyContentCallbackUrlResultOutput) ToListIntegrationAccountAssemblyContentCallbackUrlResultOutputWithContext(ctx context.Context) ListIntegrationAccountAssemblyContentCallbackUrlResultOutput {
 	return o
+}
+
+func (o ListIntegrationAccountAssemblyContentCallbackUrlResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListIntegrationAccountAssemblyContentCallbackUrlResult] {
+	return pulumix.Output[ListIntegrationAccountAssemblyContentCallbackUrlResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the workflow trigger callback URL base path.

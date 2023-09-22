@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a MAK key.
@@ -108,6 +109,12 @@ func (o LookupMultipleActivationKeyResultOutput) ToLookupMultipleActivationKeyRe
 
 func (o LookupMultipleActivationKeyResultOutput) ToLookupMultipleActivationKeyResultOutputWithContext(ctx context.Context) LookupMultipleActivationKeyResultOutput {
 	return o
+}
+
+func (o LookupMultipleActivationKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMultipleActivationKeyResult] {
+	return pulumix.Output[LookupMultipleActivationKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Agreement number under which the key is requested.

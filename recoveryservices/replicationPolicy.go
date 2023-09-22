@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Protection profile details.
@@ -193,6 +194,12 @@ func (i *ReplicationPolicy) ToReplicationPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationPolicyOutput)
 }
 
+func (i *ReplicationPolicy) ToOutput(ctx context.Context) pulumix.Output[*ReplicationPolicy] {
+	return pulumix.Output[*ReplicationPolicy]{
+		OutputState: i.ToReplicationPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReplicationPolicyOutput struct{ *pulumi.OutputState }
 
 func (ReplicationPolicyOutput) ElementType() reflect.Type {
@@ -205,6 +212,12 @@ func (o ReplicationPolicyOutput) ToReplicationPolicyOutput() ReplicationPolicyOu
 
 func (o ReplicationPolicyOutput) ToReplicationPolicyOutputWithContext(ctx context.Context) ReplicationPolicyOutput {
 	return o
+}
+
+func (o ReplicationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationPolicy] {
+	return pulumix.Output[*ReplicationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Location

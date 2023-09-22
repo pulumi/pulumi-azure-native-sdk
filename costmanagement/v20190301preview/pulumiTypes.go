@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -38,6 +39,12 @@ func (o ConnectorCollectionErrorInfoResponseOutput) ToConnectorCollectionErrorIn
 
 func (o ConnectorCollectionErrorInfoResponseOutput) ToConnectorCollectionErrorInfoResponseOutputWithContext(ctx context.Context) ConnectorCollectionErrorInfoResponseOutput {
 	return o
+}
+
+func (o ConnectorCollectionErrorInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorCollectionErrorInfoResponse] {
+	return pulumix.Output[ConnectorCollectionErrorInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Short error code
@@ -72,6 +79,12 @@ func (o ConnectorCollectionErrorInfoResponsePtrOutput) ToConnectorCollectionErro
 
 func (o ConnectorCollectionErrorInfoResponsePtrOutput) ToConnectorCollectionErrorInfoResponsePtrOutputWithContext(ctx context.Context) ConnectorCollectionErrorInfoResponsePtrOutput {
 	return o
+}
+
+func (o ConnectorCollectionErrorInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorCollectionErrorInfoResponse] {
+	return pulumix.Output[*ConnectorCollectionErrorInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectorCollectionErrorInfoResponsePtrOutput) Elem() ConnectorCollectionErrorInfoResponseOutput {
@@ -149,6 +162,12 @@ func (o ConnectorCollectionInfoResponseOutput) ToConnectorCollectionInfoResponse
 
 func (o ConnectorCollectionInfoResponseOutput) ToConnectorCollectionInfoResponseOutputWithContext(ctx context.Context) ConnectorCollectionInfoResponseOutput {
 	return o
+}
+
+func (o ConnectorCollectionInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorCollectionInfoResponse] {
+	return pulumix.Output[ConnectorCollectionInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Error information of last collection

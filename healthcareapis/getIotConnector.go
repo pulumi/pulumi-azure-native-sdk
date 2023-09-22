@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified IoT Connector.
@@ -97,6 +98,12 @@ func (o LookupIotConnectorResultOutput) ToLookupIotConnectorResultOutput() Looku
 
 func (o LookupIotConnectorResultOutput) ToLookupIotConnectorResultOutputWithContext(ctx context.Context) LookupIotConnectorResultOutput {
 	return o
+}
+
+func (o LookupIotConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIotConnectorResult] {
+	return pulumix.Output[LookupIotConnectorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Device Mappings.

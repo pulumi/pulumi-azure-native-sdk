@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Representation of a managed Cassandra cluster.
@@ -181,6 +182,12 @@ func (i *CassandraCluster) ToCassandraClusterOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraClusterOutput)
 }
 
+func (i *CassandraCluster) ToOutput(ctx context.Context) pulumix.Output[*CassandraCluster] {
+	return pulumix.Output[*CassandraCluster]{
+		OutputState: i.ToCassandraClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CassandraClusterOutput struct{ *pulumi.OutputState }
 
 func (CassandraClusterOutput) ElementType() reflect.Type {
@@ -193,6 +200,12 @@ func (o CassandraClusterOutput) ToCassandraClusterOutput() CassandraClusterOutpu
 
 func (o CassandraClusterOutput) ToCassandraClusterOutputWithContext(ctx context.Context) CassandraClusterOutput {
 	return o
+}
+
+func (o CassandraClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*CassandraCluster] {
+	return pulumix.Output[*CassandraCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identity for the resource.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i PrincipalsArgs) ToPrincipalsOutputWithContext(ctx context.Context) Princ
 	return pulumi.ToOutputWithContext(ctx, i).(PrincipalsOutput)
 }
 
+func (i PrincipalsArgs) ToOutput(ctx context.Context) pulumix.Output[Principals] {
+	return pulumix.Output[Principals]{
+		OutputState: i.ToPrincipalsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrincipalsArrayInput is an input type that accepts PrincipalsArray and PrincipalsArrayOutput values.
 // You can construct a concrete instance of `PrincipalsArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i PrincipalsArray) ToPrincipalsArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PrincipalsArrayOutput)
 }
 
+func (i PrincipalsArray) ToOutput(ctx context.Context) pulumix.Output[[]Principals] {
+	return pulumix.Output[[]Principals]{
+		OutputState: i.ToPrincipalsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // User principals.
 type PrincipalsOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o PrincipalsOutput) ToPrincipalsOutput() PrincipalsOutput {
 
 func (o PrincipalsOutput) ToPrincipalsOutputWithContext(ctx context.Context) PrincipalsOutput {
 	return o
+}
+
+func (o PrincipalsOutput) ToOutput(ctx context.Context) pulumix.Output[Principals] {
+	return pulumix.Output[Principals]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Object Id for the user
@@ -114,6 +133,12 @@ func (o PrincipalsArrayOutput) ToPrincipalsArrayOutput() PrincipalsArrayOutput {
 
 func (o PrincipalsArrayOutput) ToPrincipalsArrayOutputWithContext(ctx context.Context) PrincipalsArrayOutput {
 	return o
+}
+
+func (o PrincipalsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Principals] {
+	return pulumix.Output[[]Principals]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrincipalsArrayOutput) Index(i pulumi.IntInput) PrincipalsOutput {
@@ -145,6 +170,12 @@ func (o PrincipalsResponseOutput) ToPrincipalsResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o PrincipalsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrincipalsResponse] {
+	return pulumix.Output[PrincipalsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Object Id for the user
 func (o PrincipalsResponseOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrincipalsResponse) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
@@ -167,6 +198,12 @@ func (o PrincipalsResponseArrayOutput) ToPrincipalsResponseArrayOutput() Princip
 
 func (o PrincipalsResponseArrayOutput) ToPrincipalsResponseArrayOutputWithContext(ctx context.Context) PrincipalsResponseArrayOutput {
 	return o
+}
+
+func (o PrincipalsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrincipalsResponse] {
+	return pulumix.Output[[]PrincipalsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrincipalsResponseArrayOutput) Index(i pulumi.IntInput) PrincipalsResponseOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure SQL DB Server Outbound Firewall Rule.
@@ -143,6 +144,12 @@ func (i *OutboundFirewallRule) ToOutboundFirewallRuleOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(OutboundFirewallRuleOutput)
 }
 
+func (i *OutboundFirewallRule) ToOutput(ctx context.Context) pulumix.Output[*OutboundFirewallRule] {
+	return pulumix.Output[*OutboundFirewallRule]{
+		OutputState: i.ToOutboundFirewallRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OutboundFirewallRuleOutput struct{ *pulumi.OutputState }
 
 func (OutboundFirewallRuleOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o OutboundFirewallRuleOutput) ToOutboundFirewallRuleOutput() OutboundFirew
 
 func (o OutboundFirewallRuleOutput) ToOutboundFirewallRuleOutputWithContext(ctx context.Context) OutboundFirewallRuleOutput {
 	return o
+}
+
+func (o OutboundFirewallRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*OutboundFirewallRule] {
+	return pulumix.Output[*OutboundFirewallRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name.

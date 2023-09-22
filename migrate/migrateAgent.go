@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MigrateAgent model.
@@ -133,6 +134,12 @@ func (i *MigrateAgent) ToMigrateAgentOutputWithContext(ctx context.Context) Migr
 	return pulumi.ToOutputWithContext(ctx, i).(MigrateAgentOutput)
 }
 
+func (i *MigrateAgent) ToOutput(ctx context.Context) pulumix.Output[*MigrateAgent] {
+	return pulumix.Output[*MigrateAgent]{
+		OutputState: i.ToMigrateAgentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MigrateAgentOutput struct{ *pulumi.OutputState }
 
 func (MigrateAgentOutput) ElementType() reflect.Type {
@@ -145,6 +152,12 @@ func (o MigrateAgentOutput) ToMigrateAgentOutput() MigrateAgentOutput {
 
 func (o MigrateAgentOutput) ToMigrateAgentOutputWithContext(ctx context.Context) MigrateAgentOutput {
 	return o
+}
+
+func (o MigrateAgentOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrateAgent] {
+	return pulumix.Output[*MigrateAgent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the name of the resource.

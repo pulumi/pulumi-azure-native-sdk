@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupResourceGuard(ctx *pulumi.Context, args *LookupResourceGuardArgs, opts ...pulumi.InvokeOption) (*LookupResourceGuardResult, error) {
@@ -83,6 +84,12 @@ func (o LookupResourceGuardResultOutput) ToLookupResourceGuardResultOutput() Loo
 
 func (o LookupResourceGuardResultOutput) ToLookupResourceGuardResultOutputWithContext(ctx context.Context) LookupResourceGuardResultOutput {
 	return o
+}
+
+func (o LookupResourceGuardResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResourceGuardResult] {
+	return pulumix.Output[LookupResourceGuardResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional ETag.

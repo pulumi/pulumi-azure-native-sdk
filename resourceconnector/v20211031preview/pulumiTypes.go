@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o ApplianceCredentialKubeconfigResponseOutput) ToApplianceCredentialKubeco
 	return o
 }
 
+func (o ApplianceCredentialKubeconfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplianceCredentialKubeconfigResponse] {
+	return pulumix.Output[ApplianceCredentialKubeconfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name which contains the role of the kubeconfig.
 func (o ApplianceCredentialKubeconfigResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplianceCredentialKubeconfigResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -58,6 +65,12 @@ func (o ApplianceCredentialKubeconfigResponseArrayOutput) ToApplianceCredentialK
 
 func (o ApplianceCredentialKubeconfigResponseArrayOutput) ToApplianceCredentialKubeconfigResponseArrayOutputWithContext(ctx context.Context) ApplianceCredentialKubeconfigResponseArrayOutput {
 	return o
+}
+
+func (o ApplianceCredentialKubeconfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplianceCredentialKubeconfigResponse] {
+	return pulumix.Output[[]ApplianceCredentialKubeconfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplianceCredentialKubeconfigResponseArrayOutput) Index(i pulumi.IntInput) ApplianceCredentialKubeconfigResponseOutput {
@@ -101,6 +114,12 @@ func (i AppliancePropertiesInfrastructureConfigArgs) ToAppliancePropertiesInfras
 	return pulumi.ToOutputWithContext(ctx, i).(AppliancePropertiesInfrastructureConfigOutput)
 }
 
+func (i AppliancePropertiesInfrastructureConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AppliancePropertiesInfrastructureConfig] {
+	return pulumix.Output[AppliancePropertiesInfrastructureConfig]{
+		OutputState: i.ToAppliancePropertiesInfrastructureConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppliancePropertiesInfrastructureConfigArgs) ToAppliancePropertiesInfrastructureConfigPtrOutput() AppliancePropertiesInfrastructureConfigPtrOutput {
 	return i.ToAppliancePropertiesInfrastructureConfigPtrOutputWithContext(context.Background())
 }
@@ -142,6 +161,12 @@ func (i *appliancePropertiesInfrastructureConfigPtrType) ToAppliancePropertiesIn
 	return pulumi.ToOutputWithContext(ctx, i).(AppliancePropertiesInfrastructureConfigPtrOutput)
 }
 
+func (i *appliancePropertiesInfrastructureConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppliancePropertiesInfrastructureConfig] {
+	return pulumix.Output[*AppliancePropertiesInfrastructureConfig]{
+		OutputState: i.ToAppliancePropertiesInfrastructureConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains infrastructure information about the Appliance
 type AppliancePropertiesInfrastructureConfigOutput struct{ *pulumi.OutputState }
 
@@ -167,6 +192,12 @@ func (o AppliancePropertiesInfrastructureConfigOutput) ToAppliancePropertiesInfr
 	}).(AppliancePropertiesInfrastructureConfigPtrOutput)
 }
 
+func (o AppliancePropertiesInfrastructureConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AppliancePropertiesInfrastructureConfig] {
+	return pulumix.Output[AppliancePropertiesInfrastructureConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Information about the connected appliance.
 func (o AppliancePropertiesInfrastructureConfigOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppliancePropertiesInfrastructureConfig) *string { return v.Provider }).(pulumi.StringPtrOutput)
@@ -184,6 +215,12 @@ func (o AppliancePropertiesInfrastructureConfigPtrOutput) ToAppliancePropertiesI
 
 func (o AppliancePropertiesInfrastructureConfigPtrOutput) ToAppliancePropertiesInfrastructureConfigPtrOutputWithContext(ctx context.Context) AppliancePropertiesInfrastructureConfigPtrOutput {
 	return o
+}
+
+func (o AppliancePropertiesInfrastructureConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppliancePropertiesInfrastructureConfig] {
+	return pulumix.Output[*AppliancePropertiesInfrastructureConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppliancePropertiesInfrastructureConfigPtrOutput) Elem() AppliancePropertiesInfrastructureConfigOutput {
@@ -227,6 +264,12 @@ func (o AppliancePropertiesResponseInfrastructureConfigOutput) ToApplianceProper
 	return o
 }
 
+func (o AppliancePropertiesResponseInfrastructureConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AppliancePropertiesResponseInfrastructureConfig] {
+	return pulumix.Output[AppliancePropertiesResponseInfrastructureConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Information about the connected appliance.
 func (o AppliancePropertiesResponseInfrastructureConfigOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppliancePropertiesResponseInfrastructureConfig) *string { return v.Provider }).(pulumi.StringPtrOutput)
@@ -244,6 +287,12 @@ func (o AppliancePropertiesResponseInfrastructureConfigPtrOutput) ToAppliancePro
 
 func (o AppliancePropertiesResponseInfrastructureConfigPtrOutput) ToAppliancePropertiesResponseInfrastructureConfigPtrOutputWithContext(ctx context.Context) AppliancePropertiesResponseInfrastructureConfigPtrOutput {
 	return o
+}
+
+func (o AppliancePropertiesResponseInfrastructureConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppliancePropertiesResponseInfrastructureConfig] {
+	return pulumix.Output[*AppliancePropertiesResponseInfrastructureConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppliancePropertiesResponseInfrastructureConfigPtrOutput) Elem() AppliancePropertiesResponseInfrastructureConfigOutput {
@@ -291,6 +340,12 @@ func (o HybridConnectionConfigResponseOutput) ToHybridConnectionConfigResponseOu
 
 func (o HybridConnectionConfigResponseOutput) ToHybridConnectionConfigResponseOutputWithContext(ctx context.Context) HybridConnectionConfigResponseOutput {
 	return o
+}
+
+func (o HybridConnectionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HybridConnectionConfigResponse] {
+	return pulumix.Output[HybridConnectionConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Timestamp when this token will be expired.
@@ -348,6 +403,12 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
+func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
 	return i.ToIdentityPtrOutputWithContext(context.Background())
 }
@@ -389,6 +450,12 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
+func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity for the resource.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -414,6 +481,12 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
+func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o IdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Identity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -431,6 +504,12 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
+}
+
+func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -478,6 +557,12 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
+	return pulumix.Output[IdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal ID of resource identity.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -505,6 +590,12 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
+}
+
+func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
+	return pulumix.Output[*IdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -576,6 +667,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

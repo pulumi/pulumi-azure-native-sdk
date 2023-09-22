@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -1491,6 +1492,12 @@ func (i DatabaseInfoArgs) ToDatabaseInfoOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInfoOutput)
 }
 
+func (i DatabaseInfoArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInfo] {
+	return pulumix.Output[DatabaseInfo]{
+		OutputState: i.ToDatabaseInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DatabaseInfoArrayInput is an input type that accepts DatabaseInfoArray and DatabaseInfoArrayOutput values.
 // You can construct a concrete instance of `DatabaseInfoArrayInput` via:
 //
@@ -1516,6 +1523,12 @@ func (i DatabaseInfoArray) ToDatabaseInfoArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInfoArrayOutput)
 }
 
+func (i DatabaseInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInfo] {
+	return pulumix.Output[[]DatabaseInfo]{
+		OutputState: i.ToDatabaseInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Project Database Details
 type DatabaseInfoOutput struct{ *pulumi.OutputState }
 
@@ -1529,6 +1542,12 @@ func (o DatabaseInfoOutput) ToDatabaseInfoOutput() DatabaseInfoOutput {
 
 func (o DatabaseInfoOutput) ToDatabaseInfoOutputWithContext(ctx context.Context) DatabaseInfoOutput {
 	return o
+}
+
+func (o DatabaseInfoOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInfo] {
+	return pulumix.Output[DatabaseInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the database
@@ -1548,6 +1567,12 @@ func (o DatabaseInfoArrayOutput) ToDatabaseInfoArrayOutput() DatabaseInfoArrayOu
 
 func (o DatabaseInfoArrayOutput) ToDatabaseInfoArrayOutputWithContext(ctx context.Context) DatabaseInfoArrayOutput {
 	return o
+}
+
+func (o DatabaseInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInfo] {
+	return pulumix.Output[[]DatabaseInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseInfoArrayOutput) Index(i pulumi.IntInput) DatabaseInfoOutput {
@@ -1577,6 +1602,12 @@ func (o DatabaseInfoResponseOutput) ToDatabaseInfoResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o DatabaseInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInfoResponse] {
+	return pulumix.Output[DatabaseInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the database
 func (o DatabaseInfoResponseOutput) SourceDatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInfoResponse) string { return v.SourceDatabaseName }).(pulumi.StringOutput)
@@ -1594,6 +1625,12 @@ func (o DatabaseInfoResponseArrayOutput) ToDatabaseInfoResponseArrayOutput() Dat
 
 func (o DatabaseInfoResponseArrayOutput) ToDatabaseInfoResponseArrayOutputWithContext(ctx context.Context) DatabaseInfoResponseArrayOutput {
 	return o
+}
+
+func (o DatabaseInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInfoResponse] {
+	return pulumix.Output[[]DatabaseInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseInfoResponseArrayOutput) Index(i pulumi.IntInput) DatabaseInfoResponseOutput {
@@ -5100,6 +5137,12 @@ func (i ProjectFilePropertiesArgs) ToProjectFilePropertiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFilePropertiesOutput)
 }
 
+func (i ProjectFilePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectFileProperties] {
+	return pulumix.Output[ProjectFileProperties]{
+		OutputState: i.ToProjectFilePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ProjectFilePropertiesArgs) ToProjectFilePropertiesPtrOutput() ProjectFilePropertiesPtrOutput {
 	return i.ToProjectFilePropertiesPtrOutputWithContext(context.Background())
 }
@@ -5141,6 +5184,12 @@ func (i *projectFilePropertiesPtrType) ToProjectFilePropertiesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFilePropertiesPtrOutput)
 }
 
+func (i *projectFilePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectFileProperties] {
+	return pulumix.Output[*ProjectFileProperties]{
+		OutputState: i.ToProjectFilePropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Base class for file properties.
 type ProjectFilePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -5164,6 +5213,12 @@ func (o ProjectFilePropertiesOutput) ToProjectFilePropertiesPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectFileProperties) *ProjectFileProperties {
 		return &v
 	}).(ProjectFilePropertiesPtrOutput)
+}
+
+func (o ProjectFilePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectFileProperties] {
+	return pulumix.Output[ProjectFileProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional File extension. If submitted it should not have a leading period and must match the extension from filePath.
@@ -5193,6 +5248,12 @@ func (o ProjectFilePropertiesPtrOutput) ToProjectFilePropertiesPtrOutput() Proje
 
 func (o ProjectFilePropertiesPtrOutput) ToProjectFilePropertiesPtrOutputWithContext(ctx context.Context) ProjectFilePropertiesPtrOutput {
 	return o
+}
+
+func (o ProjectFilePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectFileProperties] {
+	return pulumix.Output[*ProjectFileProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectFilePropertiesPtrOutput) Elem() ProjectFilePropertiesOutput {
@@ -5262,6 +5323,12 @@ func (o ProjectFilePropertiesResponseOutput) ToProjectFilePropertiesResponseOutp
 
 func (o ProjectFilePropertiesResponseOutput) ToProjectFilePropertiesResponseOutputWithContext(ctx context.Context) ProjectFilePropertiesResponseOutput {
 	return o
+}
+
+func (o ProjectFilePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectFilePropertiesResponse] {
+	return pulumix.Output[ProjectFilePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional File extension. If submitted it should not have a leading period and must match the extension from filePath.
@@ -5430,6 +5497,12 @@ func (i ServiceSkuArgs) ToServiceSkuOutputWithContext(ctx context.Context) Servi
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSkuOutput)
 }
 
+func (i ServiceSkuArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceSku] {
+	return pulumix.Output[ServiceSku]{
+		OutputState: i.ToServiceSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceSkuArgs) ToServiceSkuPtrOutput() ServiceSkuPtrOutput {
 	return i.ToServiceSkuPtrOutputWithContext(context.Background())
 }
@@ -5471,6 +5544,12 @@ func (i *serviceSkuPtrType) ToServiceSkuPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSkuPtrOutput)
 }
 
+func (i *serviceSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceSku] {
+	return pulumix.Output[*ServiceSku]{
+		OutputState: i.ToServiceSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An Azure SKU instance
 type ServiceSkuOutput struct{ *pulumi.OutputState }
 
@@ -5494,6 +5573,12 @@ func (o ServiceSkuOutput) ToServiceSkuPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceSku) *ServiceSku {
 		return &v
 	}).(ServiceSkuPtrOutput)
+}
+
+func (o ServiceSkuOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceSku] {
+	return pulumix.Output[ServiceSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The capacity of the SKU, if it supports scaling
@@ -5533,6 +5618,12 @@ func (o ServiceSkuPtrOutput) ToServiceSkuPtrOutput() ServiceSkuPtrOutput {
 
 func (o ServiceSkuPtrOutput) ToServiceSkuPtrOutputWithContext(ctx context.Context) ServiceSkuPtrOutput {
 	return o
+}
+
+func (o ServiceSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceSku] {
+	return pulumix.Output[*ServiceSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceSkuPtrOutput) Elem() ServiceSkuOutput {
@@ -5624,6 +5715,12 @@ func (o ServiceSkuResponseOutput) ToServiceSkuResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o ServiceSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceSkuResponse] {
+	return pulumix.Output[ServiceSkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The capacity of the SKU, if it supports scaling
 func (o ServiceSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -5661,6 +5758,12 @@ func (o ServiceSkuResponsePtrOutput) ToServiceSkuResponsePtrOutput() ServiceSkuR
 
 func (o ServiceSkuResponsePtrOutput) ToServiceSkuResponsePtrOutputWithContext(ctx context.Context) ServiceSkuResponsePtrOutput {
 	return o
+}
+
+func (o ServiceSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceSkuResponse] {
+	return pulumix.Output[*ServiceSkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceSkuResponsePtrOutput) Elem() ServiceSkuResponseOutput {
@@ -5872,6 +5975,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

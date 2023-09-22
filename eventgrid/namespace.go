@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Namespace resource.
@@ -181,6 +182,12 @@ func (i *Namespace) ToNamespaceOutputWithContext(ctx context.Context) NamespaceO
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceOutput)
 }
 
+func (i *Namespace) ToOutput(ctx context.Context) pulumix.Output[*Namespace] {
+	return pulumix.Output[*Namespace]{
+		OutputState: i.ToNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamespaceOutput struct{ *pulumi.OutputState }
 
 func (NamespaceOutput) ElementType() reflect.Type {
@@ -193,6 +200,12 @@ func (o NamespaceOutput) ToNamespaceOutput() NamespaceOutput {
 
 func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) NamespaceOutput {
 	return o
+}
+
+func (o NamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[*Namespace] {
+	return pulumix.Output[*Namespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identity information for the Namespace resource.

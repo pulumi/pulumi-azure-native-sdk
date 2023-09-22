@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // URL used to authorize the Developer Hub GitHub App
@@ -74,6 +75,12 @@ func (o GetGitHubOAuthResultOutput) ToGetGitHubOAuthResultOutput() GetGitHubOAut
 
 func (o GetGitHubOAuthResultOutput) ToGetGitHubOAuthResultOutputWithContext(ctx context.Context) GetGitHubOAuthResultOutput {
 	return o
+}
+
+func (o GetGitHubOAuthResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGitHubOAuthResult] {
+	return pulumix.Output[GetGitHubOAuthResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // URL for authorizing the Developer Hub GitHub App

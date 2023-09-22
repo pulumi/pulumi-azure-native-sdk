@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The essential information related to the peer's ASN.
@@ -153,6 +154,12 @@ func (i *PeerAsn) ToPeerAsnOutputWithContext(ctx context.Context) PeerAsnOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(PeerAsnOutput)
 }
 
+func (i *PeerAsn) ToOutput(ctx context.Context) pulumix.Output[*PeerAsn] {
+	return pulumix.Output[*PeerAsn]{
+		OutputState: i.ToPeerAsnOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PeerAsnOutput struct{ *pulumi.OutputState }
 
 func (PeerAsnOutput) ElementType() reflect.Type {
@@ -165,6 +172,12 @@ func (o PeerAsnOutput) ToPeerAsnOutput() PeerAsnOutput {
 
 func (o PeerAsnOutput) ToPeerAsnOutputWithContext(ctx context.Context) PeerAsnOutput {
 	return o
+}
+
+func (o PeerAsnOutput) ToOutput(ctx context.Context) pulumix.Output[*PeerAsn] {
+	return pulumix.Output[*PeerAsn]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The error message for the validation state

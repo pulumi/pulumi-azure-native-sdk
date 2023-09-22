@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the administrator login credentials for the specified container registry.
@@ -75,6 +76,12 @@ func (o GetRegistryCredentialsResultOutput) ToGetRegistryCredentialsResultOutput
 
 func (o GetRegistryCredentialsResultOutput) ToGetRegistryCredentialsResultOutputWithContext(ctx context.Context) GetRegistryCredentialsResultOutput {
 	return o
+}
+
+func (o GetRegistryCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegistryCredentialsResult] {
+	return pulumix.Output[GetRegistryCredentialsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The administrator password.

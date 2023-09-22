@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes an inbound endpoint for a DNS resolver.
@@ -147,6 +148,12 @@ func (i *InboundEndpoint) ToInboundEndpointOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(InboundEndpointOutput)
 }
 
+func (i *InboundEndpoint) ToOutput(ctx context.Context) pulumix.Output[*InboundEndpoint] {
+	return pulumix.Output[*InboundEndpoint]{
+		OutputState: i.ToInboundEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InboundEndpointOutput struct{ *pulumi.OutputState }
 
 func (InboundEndpointOutput) ElementType() reflect.Type {
@@ -159,6 +166,12 @@ func (o InboundEndpointOutput) ToInboundEndpointOutput() InboundEndpointOutput {
 
 func (o InboundEndpointOutput) ToInboundEndpointOutputWithContext(ctx context.Context) InboundEndpointOutput {
 	return o
+}
+
+func (o InboundEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*InboundEndpoint] {
+	return pulumix.Output[*InboundEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ETag of the inbound endpoint.

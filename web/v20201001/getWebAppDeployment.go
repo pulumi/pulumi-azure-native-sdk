@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a deployment by its ID for an app, or a deployment slot.
@@ -102,6 +103,12 @@ func (o LookupWebAppDeploymentResultOutput) ToLookupWebAppDeploymentResultOutput
 
 func (o LookupWebAppDeploymentResultOutput) ToLookupWebAppDeploymentResultOutputWithContext(ctx context.Context) LookupWebAppDeploymentResultOutput {
 	return o
+}
+
+func (o LookupWebAppDeploymentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppDeploymentResult] {
+	return pulumix.Output[LookupWebAppDeploymentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // True if deployment is currently active, false if completed and null if not started.

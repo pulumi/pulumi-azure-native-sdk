@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a single workbook by its resourceName.
@@ -113,6 +114,12 @@ func (o LookupWorkbookResultOutput) ToLookupWorkbookResultOutput() LookupWorkboo
 
 func (o LookupWorkbookResultOutput) ToLookupWorkbookResultOutputWithContext(ctx context.Context) LookupWorkbookResultOutput {
 	return o
+}
+
+func (o LookupWorkbookResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkbookResult] {
+	return pulumix.Output[LookupWorkbookResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Workbook category, as defined by the user at creation time.

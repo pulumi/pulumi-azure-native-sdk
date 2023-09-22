@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // IP firewall rule
@@ -147,6 +148,12 @@ func (i *IpFirewallRule) ToIpFirewallRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(IpFirewallRuleOutput)
 }
 
+func (i *IpFirewallRule) ToOutput(ctx context.Context) pulumix.Output[*IpFirewallRule] {
+	return pulumix.Output[*IpFirewallRule]{
+		OutputState: i.ToIpFirewallRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpFirewallRuleOutput struct{ *pulumi.OutputState }
 
 func (IpFirewallRuleOutput) ElementType() reflect.Type {
@@ -159,6 +166,12 @@ func (o IpFirewallRuleOutput) ToIpFirewallRuleOutput() IpFirewallRuleOutput {
 
 func (o IpFirewallRuleOutput) ToIpFirewallRuleOutputWithContext(ctx context.Context) IpFirewallRuleOutput {
 	return o
+}
+
+func (o IpFirewallRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*IpFirewallRule] {
+	return pulumix.Output[*IpFirewallRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress

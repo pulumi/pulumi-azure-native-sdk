@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the peer ASN with the specified name under the given subscription.
@@ -82,6 +83,12 @@ func (o LookupPeerAsnResultOutput) ToLookupPeerAsnResultOutput() LookupPeerAsnRe
 
 func (o LookupPeerAsnResultOutput) ToLookupPeerAsnResultOutputWithContext(ctx context.Context) LookupPeerAsnResultOutput {
 	return o
+}
+
+func (o LookupPeerAsnResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPeerAsnResult] {
+	return pulumix.Output[LookupPeerAsnResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The error message for the validation state

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
@@ -94,6 +95,12 @@ func (o LookupConnectionMonitorTestResultOutput) ToLookupConnectionMonitorTestRe
 
 func (o LookupConnectionMonitorTestResultOutput) ToLookupConnectionMonitorTestResultOutputWithContext(ctx context.Context) LookupConnectionMonitorTestResultOutput {
 	return o
+}
+
+func (o LookupConnectionMonitorTestResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectionMonitorTestResult] {
+	return pulumix.Output[LookupConnectionMonitorTestResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Connection Monitor test destination

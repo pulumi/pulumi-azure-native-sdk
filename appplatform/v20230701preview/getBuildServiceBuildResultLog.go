@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a KPack build result log download URL.
@@ -84,6 +85,12 @@ func (o GetBuildServiceBuildResultLogResultOutput) ToGetBuildServiceBuildResultL
 
 func (o GetBuildServiceBuildResultLogResultOutput) ToGetBuildServiceBuildResultLogResultOutputWithContext(ctx context.Context) GetBuildServiceBuildResultLogResultOutput {
 	return o
+}
+
+func (o GetBuildServiceBuildResultLogResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBuildServiceBuildResultLogResult] {
+	return pulumix.Output[GetBuildServiceBuildResultLogResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The public download URL of this build result log

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // IoT Addon.
@@ -197,6 +198,12 @@ func (i *IoTAddon) ToIoTAddonOutputWithContext(ctx context.Context) IoTAddonOutp
 	return pulumi.ToOutputWithContext(ctx, i).(IoTAddonOutput)
 }
 
+func (i *IoTAddon) ToOutput(ctx context.Context) pulumix.Output[*IoTAddon] {
+	return pulumix.Output[*IoTAddon]{
+		OutputState: i.ToIoTAddonOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IoTAddonOutput struct{ *pulumi.OutputState }
 
 func (IoTAddonOutput) ElementType() reflect.Type {
@@ -209,6 +216,12 @@ func (o IoTAddonOutput) ToIoTAddonOutput() IoTAddonOutput {
 
 func (o IoTAddonOutput) ToIoTAddonOutputWithContext(ctx context.Context) IoTAddonOutput {
 	return o
+}
+
+func (o IoTAddonOutput) ToOutput(ctx context.Context) pulumix.Output[*IoTAddon] {
+	return pulumix.Output[*IoTAddon]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Host OS supported by the IoT addon.

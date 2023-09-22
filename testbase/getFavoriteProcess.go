@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a favorite process for a Test Base Package.
@@ -89,6 +90,12 @@ func (o LookupFavoriteProcessResultOutput) ToLookupFavoriteProcessResultOutput()
 
 func (o LookupFavoriteProcessResultOutput) ToLookupFavoriteProcessResultOutputWithContext(ctx context.Context) LookupFavoriteProcessResultOutput {
 	return o
+}
+
+func (o LookupFavoriteProcessResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFavoriteProcessResult] {
+	return pulumix.Output[LookupFavoriteProcessResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The actual name of the favorite process. It will be equal to resource name except for the scenario that the process name contains characters that are not allowed in the resource name.

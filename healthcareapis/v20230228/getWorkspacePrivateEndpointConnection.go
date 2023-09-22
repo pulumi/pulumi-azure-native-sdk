@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified private endpoint connection associated with the workspace.
@@ -88,6 +89,12 @@ func (o LookupWorkspacePrivateEndpointConnectionResultOutput) ToLookupWorkspaceP
 
 func (o LookupWorkspacePrivateEndpointConnectionResultOutput) ToLookupWorkspacePrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupWorkspacePrivateEndpointConnectionResultOutput {
 	return o
+}
+
+func (o LookupWorkspacePrivateEndpointConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspacePrivateEndpointConnectionResult] {
+	return pulumix.Output[LookupWorkspacePrivateEndpointConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing peering with the specified name under the given subscription and resource group.
@@ -92,6 +93,12 @@ func (o LookupPeeringResultOutput) ToLookupPeeringResultOutput() LookupPeeringRe
 
 func (o LookupPeeringResultOutput) ToLookupPeeringResultOutputWithContext(ctx context.Context) LookupPeeringResultOutput {
 	return o
+}
+
+func (o LookupPeeringResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPeeringResult] {
+	return pulumix.Output[LookupPeeringResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The properties that define a direct peering.

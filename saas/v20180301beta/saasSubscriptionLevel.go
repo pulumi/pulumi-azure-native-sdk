@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SaaS REST API resource definition.
@@ -128,6 +129,12 @@ func (i *SaasSubscriptionLevel) ToSaasSubscriptionLevelOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SaasSubscriptionLevelOutput)
 }
 
+func (i *SaasSubscriptionLevel) ToOutput(ctx context.Context) pulumix.Output[*SaasSubscriptionLevel] {
+	return pulumix.Output[*SaasSubscriptionLevel]{
+		OutputState: i.ToSaasSubscriptionLevelOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SaasSubscriptionLevelOutput struct{ *pulumi.OutputState }
 
 func (SaasSubscriptionLevelOutput) ElementType() reflect.Type {
@@ -140,6 +147,12 @@ func (o SaasSubscriptionLevelOutput) ToSaasSubscriptionLevelOutput() SaasSubscri
 
 func (o SaasSubscriptionLevelOutput) ToSaasSubscriptionLevelOutputWithContext(ctx context.Context) SaasSubscriptionLevelOutput {
 	return o
+}
+
+func (o SaasSubscriptionLevelOutput) ToOutput(ctx context.Context) pulumix.Output[*SaasSubscriptionLevel] {
+	return pulumix.Output[*SaasSubscriptionLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

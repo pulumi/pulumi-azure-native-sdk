@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-04-01.
@@ -107,6 +108,12 @@ func (o LookupBatchDeploymentResultOutput) ToLookupBatchDeploymentResultOutput()
 
 func (o LookupBatchDeploymentResultOutput) ToLookupBatchDeploymentResultOutputWithContext(ctx context.Context) LookupBatchDeploymentResultOutput {
 	return o
+}
+
+func (o LookupBatchDeploymentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBatchDeploymentResult] {
+	return pulumix.Output[LookupBatchDeploymentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // [Required] Additional attributes of the entity.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an incident task.
@@ -100,6 +101,12 @@ func (o LookupIncidentTaskResultOutput) ToLookupIncidentTaskResultOutput() Looku
 
 func (o LookupIncidentTaskResultOutput) ToLookupIncidentTaskResultOutputWithContext(ctx context.Context) LookupIncidentTaskResultOutput {
 	return o
+}
+
+func (o LookupIncidentTaskResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIncidentTaskResult] {
+	return pulumix.Output[LookupIncidentTaskResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Information on the client (user or application) that made some action

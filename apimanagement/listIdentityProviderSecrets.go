@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the client secret details of the Identity Provider.
@@ -77,6 +78,12 @@ func (o ListIdentityProviderSecretsResultOutput) ToListIdentityProviderSecretsRe
 
 func (o ListIdentityProviderSecretsResultOutput) ToListIdentityProviderSecretsResultOutputWithContext(ctx context.Context) ListIdentityProviderSecretsResultOutput {
 	return o
+}
+
+func (o ListIdentityProviderSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListIdentityProviderSecretsResult] {
+	return pulumix.Output[ListIdentityProviderSecretsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.

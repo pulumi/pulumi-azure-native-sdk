@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Diagnostics package resource.
@@ -123,6 +124,12 @@ func (i *DiagnosticsPackage) ToDiagnosticsPackageOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticsPackageOutput)
 }
 
+func (i *DiagnosticsPackage) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticsPackage] {
+	return pulumix.Output[*DiagnosticsPackage]{
+		OutputState: i.ToDiagnosticsPackageOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DiagnosticsPackageOutput struct{ *pulumi.OutputState }
 
 func (DiagnosticsPackageOutput) ElementType() reflect.Type {
@@ -135,6 +142,12 @@ func (o DiagnosticsPackageOutput) ToDiagnosticsPackageOutput() DiagnosticsPackag
 
 func (o DiagnosticsPackageOutput) ToDiagnosticsPackageOutputWithContext(ctx context.Context) DiagnosticsPackageOutput {
 	return o
+}
+
+func (o DiagnosticsPackageOutput) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticsPackage] {
+	return pulumix.Output[*DiagnosticsPackage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the applicable start/stop schedules, if any.
@@ -105,6 +106,12 @@ func (o ListServiceFabricApplicableSchedulesResultOutput) ToListServiceFabricApp
 
 func (o ListServiceFabricApplicableSchedulesResultOutput) ToListServiceFabricApplicableSchedulesResultOutputWithContext(ctx context.Context) ListServiceFabricApplicableSchedulesResultOutput {
 	return o
+}
+
+func (o ListServiceFabricApplicableSchedulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListServiceFabricApplicableSchedulesResult] {
+	return pulumix.Output[ListServiceFabricApplicableSchedulesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The identifier of the resource.

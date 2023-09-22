@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This method gets the data store/repository by name.
@@ -90,6 +91,12 @@ func (o LookupDataStoreResultOutput) ToLookupDataStoreResultOutput() LookupDataS
 
 func (o LookupDataStoreResultOutput) ToLookupDataStoreResultOutputWithContext(ctx context.Context) LookupDataStoreResultOutput {
 	return o
+}
+
+func (o LookupDataStoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataStoreResult] {
+	return pulumix.Output[LookupDataStoreResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -38,6 +39,12 @@ func (o IdentifierResponseOutput) ToIdentifierResponseOutput() IdentifierRespons
 
 func (o IdentifierResponseOutput) ToIdentifierResponseOutputWithContext(ctx context.Context) IdentifierResponseOutput {
 	return o
+}
+
+func (o IdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentifierResponse] {
+	return pulumix.Output[IdentifierResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id.
@@ -72,6 +79,12 @@ func (o IdentifierResponseArrayOutput) ToIdentifierResponseArrayOutput() Identif
 
 func (o IdentifierResponseArrayOutput) ToIdentifierResponseArrayOutputWithContext(ctx context.Context) IdentifierResponseArrayOutput {
 	return o
+}
+
+func (o IdentifierResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IdentifierResponse] {
+	return pulumix.Output[[]IdentifierResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentifierResponseArrayOutput) Index(i pulumi.IntInput) IdentifierResponseOutput {

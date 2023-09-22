@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a database's threat detection policy.
@@ -103,6 +104,12 @@ func (o LookupDatabaseThreatDetectionPolicyResultOutput) ToLookupDatabaseThreatD
 
 func (o LookupDatabaseThreatDetectionPolicyResultOutput) ToLookupDatabaseThreatDetectionPolicyResultOutputWithContext(ctx context.Context) LookupDatabaseThreatDetectionPolicyResultOutput {
 	return o
+}
+
+func (o LookupDatabaseThreatDetectionPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatabaseThreatDetectionPolicyResult] {
+	return pulumix.Output[LookupDatabaseThreatDetectionPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the semicolon-separated list of alerts that are disabled, or empty string to disable no alerts. Possible values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration; Unsafe_Action.

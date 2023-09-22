@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the view by view name.
@@ -98,6 +99,12 @@ func (o LookupViewResultOutput) ToLookupViewResultOutput() LookupViewResultOutpu
 
 func (o LookupViewResultOutput) ToLookupViewResultOutputWithContext(ctx context.Context) LookupViewResultOutput {
 	return o
+}
+
+func (o LookupViewResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupViewResult] {
+	return pulumix.Output[LookupViewResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Show costs accumulated over time.

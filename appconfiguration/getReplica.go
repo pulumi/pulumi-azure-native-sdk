@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified replica.
@@ -89,6 +90,12 @@ func (o LookupReplicaResultOutput) ToLookupReplicaResultOutput() LookupReplicaRe
 
 func (o LookupReplicaResultOutput) ToLookupReplicaResultOutputWithContext(ctx context.Context) LookupReplicaResultOutput {
 	return o
+}
+
+func (o LookupReplicaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReplicaResult] {
+	return pulumix.Output[LookupReplicaResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URI of the replica where the replica API will be available.

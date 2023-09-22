@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Machine Learning service object wrapped into ARM resource envelope.
@@ -223,6 +224,12 @@ func (i *ACIService) ToACIServiceOutputWithContext(ctx context.Context) ACIServi
 	return pulumi.ToOutputWithContext(ctx, i).(ACIServiceOutput)
 }
 
+func (i *ACIService) ToOutput(ctx context.Context) pulumix.Output[*ACIService] {
+	return pulumix.Output[*ACIService]{
+		OutputState: i.ToACIServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ACIServiceOutput struct{ *pulumi.OutputState }
 
 func (ACIServiceOutput) ElementType() reflect.Type {
@@ -235,6 +242,12 @@ func (o ACIServiceOutput) ToACIServiceOutput() ACIServiceOutput {
 
 func (o ACIServiceOutput) ToACIServiceOutputWithContext(ctx context.Context) ACIServiceOutput {
 	return o
+}
+
+func (o ACIServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*ACIService] {
+	return pulumix.Output[*ACIService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The identity of the resource.

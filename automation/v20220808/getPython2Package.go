@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the python 2 package identified by package name.
@@ -108,6 +109,12 @@ func (o LookupPython2PackageResultOutput) ToLookupPython2PackageResultOutput() L
 
 func (o LookupPython2PackageResultOutput) ToLookupPython2PackageResultOutputWithContext(ctx context.Context) LookupPython2PackageResultOutput {
 	return o
+}
+
+func (o LookupPython2PackageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPython2PackageResult] {
+	return pulumix.Output[LookupPython2PackageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the activity count of the module.

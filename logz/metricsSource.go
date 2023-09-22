@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2022-01-01-preview
@@ -132,6 +133,12 @@ func (i *MetricsSource) ToMetricsSourceOutputWithContext(ctx context.Context) Me
 	return pulumi.ToOutputWithContext(ctx, i).(MetricsSourceOutput)
 }
 
+func (i *MetricsSource) ToOutput(ctx context.Context) pulumix.Output[*MetricsSource] {
+	return pulumix.Output[*MetricsSource]{
+		OutputState: i.ToMetricsSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetricsSourceOutput struct{ *pulumi.OutputState }
 
 func (MetricsSourceOutput) ElementType() reflect.Type {
@@ -144,6 +151,12 @@ func (o MetricsSourceOutput) ToMetricsSourceOutput() MetricsSourceOutput {
 
 func (o MetricsSourceOutput) ToMetricsSourceOutputWithContext(ctx context.Context) MetricsSourceOutput {
 	return o
+}
+
+func (o MetricsSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricsSource] {
+	return pulumix.Output[*MetricsSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricsSourceOutput) Identity() IdentityPropertiesResponsePtrOutput {

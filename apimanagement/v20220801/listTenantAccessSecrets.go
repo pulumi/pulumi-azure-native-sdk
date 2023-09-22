@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get tenant access information details.
@@ -84,6 +85,12 @@ func (o ListTenantAccessSecretsResultOutput) ToListTenantAccessSecretsResultOutp
 
 func (o ListTenantAccessSecretsResultOutput) ToListTenantAccessSecretsResultOutputWithContext(ctx context.Context) ListTenantAccessSecretsResultOutput {
 	return o
+}
+
+func (o ListTenantAccessSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListTenantAccessSecretsResult] {
+	return pulumix.Output[ListTenantAccessSecretsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Determines whether direct access is enabled.

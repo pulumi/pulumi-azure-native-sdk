@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Migrate Project REST Resource.
@@ -85,6 +86,12 @@ func (o LookupMigrateProjectResultOutput) ToLookupMigrateProjectResultOutput() L
 
 func (o LookupMigrateProjectResultOutput) ToLookupMigrateProjectResultOutputWithContext(ctx context.Context) LookupMigrateProjectResultOutput {
 	return o
+}
+
+func (o LookupMigrateProjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMigrateProjectResult] {
+	return pulumix.Output[LookupMigrateProjectResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the eTag for concurrency control.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Blueprint artifact that deploys a Resource Manager template.
@@ -170,6 +171,12 @@ func (i *TemplateArtifact) ToTemplateArtifactOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateArtifactOutput)
 }
 
+func (i *TemplateArtifact) ToOutput(ctx context.Context) pulumix.Output[*TemplateArtifact] {
+	return pulumix.Output[*TemplateArtifact]{
+		OutputState: i.ToTemplateArtifactOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TemplateArtifactOutput struct{ *pulumi.OutputState }
 
 func (TemplateArtifactOutput) ElementType() reflect.Type {
@@ -182,6 +189,12 @@ func (o TemplateArtifactOutput) ToTemplateArtifactOutput() TemplateArtifactOutpu
 
 func (o TemplateArtifactOutput) ToTemplateArtifactOutputWithContext(ctx context.Context) TemplateArtifactOutput {
 	return o
+}
+
+func (o TemplateArtifactOutput) ToOutput(ctx context.Context) pulumix.Output[*TemplateArtifact] {
+	return pulumix.Output[*TemplateArtifact]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Artifacts which need to be deployed before the specified artifact.

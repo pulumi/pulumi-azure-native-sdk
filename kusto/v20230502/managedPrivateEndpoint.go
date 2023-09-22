@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing a managed private endpoint.
@@ -164,6 +165,12 @@ func (i *ManagedPrivateEndpoint) ToManagedPrivateEndpointOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedPrivateEndpointOutput)
 }
 
+func (i *ManagedPrivateEndpoint) ToOutput(ctx context.Context) pulumix.Output[*ManagedPrivateEndpoint] {
+	return pulumix.Output[*ManagedPrivateEndpoint]{
+		OutputState: i.ToManagedPrivateEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedPrivateEndpointOutput struct{ *pulumi.OutputState }
 
 func (ManagedPrivateEndpointOutput) ElementType() reflect.Type {
@@ -176,6 +183,12 @@ func (o ManagedPrivateEndpointOutput) ToManagedPrivateEndpointOutput() ManagedPr
 
 func (o ManagedPrivateEndpointOutput) ToManagedPrivateEndpointOutputWithContext(ctx context.Context) ManagedPrivateEndpointOutput {
 	return o
+}
+
+func (o ManagedPrivateEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedPrivateEndpoint] {
+	return pulumix.Output[*ManagedPrivateEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The groupId in which the managed private endpoint is created.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the automation account type.
@@ -184,6 +185,12 @@ func (i *AutomationAccount) ToAutomationAccountOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationAccountOutput)
 }
 
+func (i *AutomationAccount) ToOutput(ctx context.Context) pulumix.Output[*AutomationAccount] {
+	return pulumix.Output[*AutomationAccount]{
+		OutputState: i.ToAutomationAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AutomationAccountOutput struct{ *pulumi.OutputState }
 
 func (AutomationAccountOutput) ElementType() reflect.Type {
@@ -196,6 +203,12 @@ func (o AutomationAccountOutput) ToAutomationAccountOutput() AutomationAccountOu
 
 func (o AutomationAccountOutput) ToAutomationAccountOutputWithContext(ctx context.Context) AutomationAccountOutput {
 	return o
+}
+
+func (o AutomationAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*AutomationAccount] {
+	return pulumix.Output[*AutomationAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // URL of automation hybrid service which is used for hybrid worker on-boarding.

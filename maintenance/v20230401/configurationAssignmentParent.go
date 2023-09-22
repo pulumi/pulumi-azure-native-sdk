@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configuration Assignment
@@ -181,6 +182,12 @@ func (i *ConfigurationAssignmentParent) ToConfigurationAssignmentParentOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAssignmentParentOutput)
 }
 
+func (i *ConfigurationAssignmentParent) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationAssignmentParent] {
+	return pulumix.Output[*ConfigurationAssignmentParent]{
+		OutputState: i.ToConfigurationAssignmentParentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConfigurationAssignmentParentOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationAssignmentParentOutput) ElementType() reflect.Type {
@@ -193,6 +200,12 @@ func (o ConfigurationAssignmentParentOutput) ToConfigurationAssignmentParentOutp
 
 func (o ConfigurationAssignmentParentOutput) ToConfigurationAssignmentParentOutputWithContext(ctx context.Context) ConfigurationAssignmentParentOutput {
 	return o
+}
+
+func (o ConfigurationAssignmentParentOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationAssignmentParent] {
+	return pulumix.Output[*ConfigurationAssignmentParent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Properties of the configuration assignment

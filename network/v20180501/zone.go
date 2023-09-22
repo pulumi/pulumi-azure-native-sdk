@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a DNS zone.
@@ -169,6 +170,12 @@ func (i *Zone) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneOutput)
 }
 
+func (i *Zone) ToOutput(ctx context.Context) pulumix.Output[*Zone] {
+	return pulumix.Output[*Zone]{
+		OutputState: i.ToZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZoneOutput struct{ *pulumi.OutputState }
 
 func (ZoneOutput) ElementType() reflect.Type {
@@ -181,6 +188,12 @@ func (o ZoneOutput) ToZoneOutput() ZoneOutput {
 
 func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return o
+}
+
+func (o ZoneOutput) ToOutput(ctx context.Context) pulumix.Output[*Zone] {
+	return pulumix.Output[*Zone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The etag of the zone.

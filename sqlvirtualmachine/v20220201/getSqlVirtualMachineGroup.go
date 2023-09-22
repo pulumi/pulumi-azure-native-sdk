@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a SQL virtual machine group.
@@ -96,6 +97,12 @@ func (o LookupSqlVirtualMachineGroupResultOutput) ToLookupSqlVirtualMachineGroup
 
 func (o LookupSqlVirtualMachineGroupResultOutput) ToLookupSqlVirtualMachineGroupResultOutputWithContext(ctx context.Context) LookupSqlVirtualMachineGroupResultOutput {
 	return o
+}
+
+func (o LookupSqlVirtualMachineGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlVirtualMachineGroupResult] {
+	return pulumix.Output[LookupSqlVirtualMachineGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cluster type.

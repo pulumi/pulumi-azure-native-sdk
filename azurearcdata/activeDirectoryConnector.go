@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Active directory connector resource
@@ -134,6 +135,12 @@ func (i *ActiveDirectoryConnector) ToActiveDirectoryConnectorOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryConnectorOutput)
 }
 
+func (i *ActiveDirectoryConnector) ToOutput(ctx context.Context) pulumix.Output[*ActiveDirectoryConnector] {
+	return pulumix.Output[*ActiveDirectoryConnector]{
+		OutputState: i.ToActiveDirectoryConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ActiveDirectoryConnectorOutput struct{ *pulumi.OutputState }
 
 func (ActiveDirectoryConnectorOutput) ElementType() reflect.Type {
@@ -146,6 +153,12 @@ func (o ActiveDirectoryConnectorOutput) ToActiveDirectoryConnectorOutput() Activ
 
 func (o ActiveDirectoryConnectorOutput) ToActiveDirectoryConnectorOutputWithContext(ctx context.Context) ActiveDirectoryConnectorOutput {
 	return o
+}
+
+func (o ActiveDirectoryConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*ActiveDirectoryConnector] {
+	return pulumix.Output[*ActiveDirectoryConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

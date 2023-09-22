@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of the sever administrator.
@@ -86,6 +87,12 @@ func (o AutoExecuteStatusOutput) ToAutoExecuteStatusPtrOutputWithContext(ctx con
 	}).(AutoExecuteStatusPtrOutput)
 }
 
+func (o AutoExecuteStatusOutput) ToOutput(ctx context.Context) pulumix.Output[AutoExecuteStatus] {
+	return pulumix.Output[AutoExecuteStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoExecuteStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -119,6 +126,12 @@ func (o AutoExecuteStatusPtrOutput) ToAutoExecuteStatusPtrOutput() AutoExecuteSt
 
 func (o AutoExecuteStatusPtrOutput) ToAutoExecuteStatusPtrOutputWithContext(ctx context.Context) AutoExecuteStatusPtrOutput {
 	return o
+}
+
+func (o AutoExecuteStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoExecuteStatus] {
+	return pulumix.Output[*AutoExecuteStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoExecuteStatusPtrOutput) Elem() AutoExecuteStatusOutput {
@@ -181,6 +194,12 @@ func (in *autoExecuteStatusPtr) ToAutoExecuteStatusPtrOutput() AutoExecuteStatus
 
 func (in *autoExecuteStatusPtr) ToAutoExecuteStatusPtrOutputWithContext(ctx context.Context) AutoExecuteStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoExecuteStatusPtrOutput)
+}
+
+func (in *autoExecuteStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoExecuteStatus] {
+	return pulumix.Output[*AutoExecuteStatus]{
+		OutputState: in.ToAutoExecuteStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The storage account type to be used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
@@ -261,6 +280,12 @@ func (o BlobAuditingPolicyStateOutput) ToBlobAuditingPolicyStatePtrOutputWithCon
 	}).(BlobAuditingPolicyStatePtrOutput)
 }
 
+func (o BlobAuditingPolicyStateOutput) ToOutput(ctx context.Context) pulumix.Output[BlobAuditingPolicyState] {
+	return pulumix.Output[BlobAuditingPolicyState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BlobAuditingPolicyStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -294,6 +319,12 @@ func (o BlobAuditingPolicyStatePtrOutput) ToBlobAuditingPolicyStatePtrOutput() B
 
 func (o BlobAuditingPolicyStatePtrOutput) ToBlobAuditingPolicyStatePtrOutputWithContext(ctx context.Context) BlobAuditingPolicyStatePtrOutput {
 	return o
+}
+
+func (o BlobAuditingPolicyStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlobAuditingPolicyState] {
+	return pulumix.Output[*BlobAuditingPolicyState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BlobAuditingPolicyStatePtrOutput) Elem() BlobAuditingPolicyStateOutput {
@@ -356,6 +387,12 @@ func (in *blobAuditingPolicyStatePtr) ToBlobAuditingPolicyStatePtrOutput() BlobA
 
 func (in *blobAuditingPolicyStatePtr) ToBlobAuditingPolicyStatePtrOutputWithContext(ctx context.Context) BlobAuditingPolicyStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BlobAuditingPolicyStatePtrOutput)
+}
+
+func (in *blobAuditingPolicyStatePtr) ToOutput(ctx context.Context) pulumix.Output[*BlobAuditingPolicyState] {
+	return pulumix.Output[*BlobAuditingPolicyState]{
+		OutputState: in.ToBlobAuditingPolicyStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Collation of the metadata catalog.
@@ -466,6 +503,12 @@ func (o DataMaskingStateOutput) ToDataMaskingStatePtrOutputWithContext(ctx conte
 	}).(DataMaskingStatePtrOutput)
 }
 
+func (o DataMaskingStateOutput) ToOutput(ctx context.Context) pulumix.Output[DataMaskingState] {
+	return pulumix.Output[DataMaskingState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DataMaskingStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -499,6 +542,12 @@ func (o DataMaskingStatePtrOutput) ToDataMaskingStatePtrOutput() DataMaskingStat
 
 func (o DataMaskingStatePtrOutput) ToDataMaskingStatePtrOutputWithContext(ctx context.Context) DataMaskingStatePtrOutput {
 	return o
+}
+
+func (o DataMaskingStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataMaskingState] {
+	return pulumix.Output[*DataMaskingState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataMaskingStatePtrOutput) Elem() DataMaskingStateOutput {
@@ -561,6 +610,12 @@ func (in *dataMaskingStatePtr) ToDataMaskingStatePtrOutput() DataMaskingStatePtr
 
 func (in *dataMaskingStatePtr) ToDataMaskingStatePtrOutputWithContext(ctx context.Context) DataMaskingStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataMaskingStatePtrOutput)
+}
+
+func (in *dataMaskingStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DataMaskingState] {
+	return pulumix.Output[*DataMaskingState]{
+		OutputState: in.ToDataMaskingStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The identity type
@@ -676,6 +731,12 @@ func (o GeoBackupPolicyStateEnumOutput) ToGeoBackupPolicyStateEnumPtrOutputWithC
 	}).(GeoBackupPolicyStateEnumPtrOutput)
 }
 
+func (o GeoBackupPolicyStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[GeoBackupPolicyStateEnum] {
+	return pulumix.Output[GeoBackupPolicyStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GeoBackupPolicyStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -709,6 +770,12 @@ func (o GeoBackupPolicyStateEnumPtrOutput) ToGeoBackupPolicyStateEnumPtrOutput()
 
 func (o GeoBackupPolicyStateEnumPtrOutput) ToGeoBackupPolicyStateEnumPtrOutputWithContext(ctx context.Context) GeoBackupPolicyStateEnumPtrOutput {
 	return o
+}
+
+func (o GeoBackupPolicyStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GeoBackupPolicyStateEnum] {
+	return pulumix.Output[*GeoBackupPolicyStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GeoBackupPolicyStateEnumPtrOutput) Elem() GeoBackupPolicyStateEnumOutput {
@@ -771,6 +838,12 @@ func (in *geoBackupPolicyStateEnumPtr) ToGeoBackupPolicyStateEnumPtrOutput() Geo
 
 func (in *geoBackupPolicyStateEnumPtr) ToGeoBackupPolicyStateEnumPtrOutputWithContext(ctx context.Context) GeoBackupPolicyStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GeoBackupPolicyStateEnumPtrOutput)
+}
+
+func (in *geoBackupPolicyStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*GeoBackupPolicyStateEnum] {
+	return pulumix.Output[*GeoBackupPolicyStateEnum]{
+		OutputState: in.ToGeoBackupPolicyStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
@@ -859,6 +932,12 @@ func (o JobScheduleTypeOutput) ToJobScheduleTypePtrOutputWithContext(ctx context
 	}).(JobScheduleTypePtrOutput)
 }
 
+func (o JobScheduleTypeOutput) ToOutput(ctx context.Context) pulumix.Output[JobScheduleType] {
+	return pulumix.Output[JobScheduleType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobScheduleTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -892,6 +971,12 @@ func (o JobScheduleTypePtrOutput) ToJobScheduleTypePtrOutput() JobScheduleTypePt
 
 func (o JobScheduleTypePtrOutput) ToJobScheduleTypePtrOutputWithContext(ctx context.Context) JobScheduleTypePtrOutput {
 	return o
+}
+
+func (o JobScheduleTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobScheduleType] {
+	return pulumix.Output[*JobScheduleType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobScheduleTypePtrOutput) Elem() JobScheduleTypeOutput {
@@ -954,6 +1039,12 @@ func (in *jobScheduleTypePtr) ToJobScheduleTypePtrOutput() JobScheduleTypePtrOut
 
 func (in *jobScheduleTypePtr) ToJobScheduleTypePtrOutputWithContext(ctx context.Context) JobScheduleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobScheduleTypePtrOutput)
+}
+
+func (in *jobScheduleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobScheduleType] {
+	return pulumix.Output[*JobScheduleType]{
+		OutputState: in.ToJobScheduleTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The source of the action to execute.
@@ -1045,6 +1136,12 @@ func (o JobTargetGroupMembershipTypeOutput) ToJobTargetGroupMembershipTypePtrOut
 	}).(JobTargetGroupMembershipTypePtrOutput)
 }
 
+func (o JobTargetGroupMembershipTypeOutput) ToOutput(ctx context.Context) pulumix.Output[JobTargetGroupMembershipType] {
+	return pulumix.Output[JobTargetGroupMembershipType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobTargetGroupMembershipTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1078,6 +1175,12 @@ func (o JobTargetGroupMembershipTypePtrOutput) ToJobTargetGroupMembershipTypePtr
 
 func (o JobTargetGroupMembershipTypePtrOutput) ToJobTargetGroupMembershipTypePtrOutputWithContext(ctx context.Context) JobTargetGroupMembershipTypePtrOutput {
 	return o
+}
+
+func (o JobTargetGroupMembershipTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTargetGroupMembershipType] {
+	return pulumix.Output[*JobTargetGroupMembershipType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTargetGroupMembershipTypePtrOutput) Elem() JobTargetGroupMembershipTypeOutput {
@@ -1140,6 +1243,12 @@ func (in *jobTargetGroupMembershipTypePtr) ToJobTargetGroupMembershipTypePtrOutp
 
 func (in *jobTargetGroupMembershipTypePtr) ToJobTargetGroupMembershipTypePtrOutputWithContext(ctx context.Context) JobTargetGroupMembershipTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobTargetGroupMembershipTypePtrOutput)
+}
+
+func (in *jobTargetGroupMembershipTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobTargetGroupMembershipType] {
+	return pulumix.Output[*JobTargetGroupMembershipType]{
+		OutputState: in.ToJobTargetGroupMembershipTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The target type.
@@ -1353,6 +1462,12 @@ func (o SecurityAlertsPolicyStateOutput) ToSecurityAlertsPolicyStatePtrOutputWit
 	}).(SecurityAlertsPolicyStatePtrOutput)
 }
 
+func (o SecurityAlertsPolicyStateOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAlertsPolicyState] {
+	return pulumix.Output[SecurityAlertsPolicyState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityAlertsPolicyStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1386,6 +1501,12 @@ func (o SecurityAlertsPolicyStatePtrOutput) ToSecurityAlertsPolicyStatePtrOutput
 
 func (o SecurityAlertsPolicyStatePtrOutput) ToSecurityAlertsPolicyStatePtrOutputWithContext(ctx context.Context) SecurityAlertsPolicyStatePtrOutput {
 	return o
+}
+
+func (o SecurityAlertsPolicyStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAlertsPolicyState] {
+	return pulumix.Output[*SecurityAlertsPolicyState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAlertsPolicyStatePtrOutput) Elem() SecurityAlertsPolicyStateOutput {
@@ -1448,6 +1569,12 @@ func (in *securityAlertsPolicyStatePtr) ToSecurityAlertsPolicyStatePtrOutput() S
 
 func (in *securityAlertsPolicyStatePtr) ToSecurityAlertsPolicyStatePtrOutputWithContext(ctx context.Context) SecurityAlertsPolicyStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityAlertsPolicyStatePtrOutput)
+}
+
+func (in *securityAlertsPolicyStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityAlertsPolicyState] {
+	return pulumix.Output[*SecurityAlertsPolicyState]{
+		OutputState: in.ToSecurityAlertsPolicyStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type SensitivityLabelRank string
@@ -1520,6 +1647,12 @@ func (o SensitivityLabelRankOutput) ToSensitivityLabelRankPtrOutputWithContext(c
 	}).(SensitivityLabelRankPtrOutput)
 }
 
+func (o SensitivityLabelRankOutput) ToOutput(ctx context.Context) pulumix.Output[SensitivityLabelRank] {
+	return pulumix.Output[SensitivityLabelRank]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SensitivityLabelRankOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1553,6 +1686,12 @@ func (o SensitivityLabelRankPtrOutput) ToSensitivityLabelRankPtrOutput() Sensiti
 
 func (o SensitivityLabelRankPtrOutput) ToSensitivityLabelRankPtrOutputWithContext(ctx context.Context) SensitivityLabelRankPtrOutput {
 	return o
+}
+
+func (o SensitivityLabelRankPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SensitivityLabelRank] {
+	return pulumix.Output[*SensitivityLabelRank]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SensitivityLabelRankPtrOutput) Elem() SensitivityLabelRankOutput {
@@ -1615,6 +1754,12 @@ func (in *sensitivityLabelRankPtr) ToSensitivityLabelRankPtrOutput() Sensitivity
 
 func (in *sensitivityLabelRankPtr) ToSensitivityLabelRankPtrOutputWithContext(ctx context.Context) SensitivityLabelRankPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SensitivityLabelRankPtrOutput)
+}
+
+func (in *sensitivityLabelRankPtr) ToOutput(ctx context.Context) pulumix.Output[*SensitivityLabelRank] {
+	return pulumix.Output[*SensitivityLabelRank]{
+		OutputState: in.ToSensitivityLabelRankPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The server key type like 'ServiceManaged', 'AzureKeyVault'.
@@ -1709,6 +1854,12 @@ func (o SqlVulnerabilityAssessmentStateOutput) ToSqlVulnerabilityAssessmentState
 	}).(SqlVulnerabilityAssessmentStatePtrOutput)
 }
 
+func (o SqlVulnerabilityAssessmentStateOutput) ToOutput(ctx context.Context) pulumix.Output[SqlVulnerabilityAssessmentState] {
+	return pulumix.Output[SqlVulnerabilityAssessmentState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SqlVulnerabilityAssessmentStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1742,6 +1893,12 @@ func (o SqlVulnerabilityAssessmentStatePtrOutput) ToSqlVulnerabilityAssessmentSt
 
 func (o SqlVulnerabilityAssessmentStatePtrOutput) ToSqlVulnerabilityAssessmentStatePtrOutputWithContext(ctx context.Context) SqlVulnerabilityAssessmentStatePtrOutput {
 	return o
+}
+
+func (o SqlVulnerabilityAssessmentStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlVulnerabilityAssessmentState] {
+	return pulumix.Output[*SqlVulnerabilityAssessmentState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SqlVulnerabilityAssessmentStatePtrOutput) Elem() SqlVulnerabilityAssessmentStateOutput {
@@ -1804,6 +1961,12 @@ func (in *sqlVulnerabilityAssessmentStatePtr) ToSqlVulnerabilityAssessmentStateP
 
 func (in *sqlVulnerabilityAssessmentStatePtr) ToSqlVulnerabilityAssessmentStatePtrOutputWithContext(ctx context.Context) SqlVulnerabilityAssessmentStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SqlVulnerabilityAssessmentStatePtrOutput)
+}
+
+func (in *sqlVulnerabilityAssessmentStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SqlVulnerabilityAssessmentState] {
+	return pulumix.Output[*SqlVulnerabilityAssessmentState]{
+		OutputState: in.ToSqlVulnerabilityAssessmentStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Conflict resolution policy of the sync group.
@@ -1899,6 +2062,12 @@ func (o TransparentDataEncryptionStateEnumOutput) ToTransparentDataEncryptionSta
 	}).(TransparentDataEncryptionStateEnumPtrOutput)
 }
 
+func (o TransparentDataEncryptionStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[TransparentDataEncryptionStateEnum] {
+	return pulumix.Output[TransparentDataEncryptionStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransparentDataEncryptionStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1932,6 +2101,12 @@ func (o TransparentDataEncryptionStateEnumPtrOutput) ToTransparentDataEncryption
 
 func (o TransparentDataEncryptionStateEnumPtrOutput) ToTransparentDataEncryptionStateEnumPtrOutputWithContext(ctx context.Context) TransparentDataEncryptionStateEnumPtrOutput {
 	return o
+}
+
+func (o TransparentDataEncryptionStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TransparentDataEncryptionStateEnum] {
+	return pulumix.Output[*TransparentDataEncryptionStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransparentDataEncryptionStateEnumPtrOutput) Elem() TransparentDataEncryptionStateEnumOutput {
@@ -1994,6 +2169,12 @@ func (in *transparentDataEncryptionStateEnumPtr) ToTransparentDataEncryptionStat
 
 func (in *transparentDataEncryptionStateEnumPtr) ToTransparentDataEncryptionStateEnumPtrOutputWithContext(ctx context.Context) TransparentDataEncryptionStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TransparentDataEncryptionStateEnumPtrOutput)
+}
+
+func (in *transparentDataEncryptionStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*TransparentDataEncryptionStateEnum] {
+	return pulumix.Output[*TransparentDataEncryptionStateEnum]{
+		OutputState: in.ToTransparentDataEncryptionStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

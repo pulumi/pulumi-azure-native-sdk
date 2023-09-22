@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the API specified by its identifier.
@@ -126,6 +127,12 @@ func (o LookupWorkspaceApiResultOutput) ToLookupWorkspaceApiResultOutput() Looku
 
 func (o LookupWorkspaceApiResultOutput) ToLookupWorkspaceApiResultOutputWithContext(ctx context.Context) LookupWorkspaceApiResultOutput {
 	return o
+}
+
+func (o LookupWorkspaceApiResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceApiResult] {
+	return pulumix.Output[LookupWorkspaceApiResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the revision of the API. If no value is provided, default revision 1 is created

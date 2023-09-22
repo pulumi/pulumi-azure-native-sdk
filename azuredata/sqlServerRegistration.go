@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A SQL server registration.
@@ -144,6 +145,12 @@ func (i *SqlServerRegistration) ToSqlServerRegistrationOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SqlServerRegistrationOutput)
 }
 
+func (i *SqlServerRegistration) ToOutput(ctx context.Context) pulumix.Output[*SqlServerRegistration] {
+	return pulumix.Output[*SqlServerRegistration]{
+		OutputState: i.ToSqlServerRegistrationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlServerRegistrationOutput struct{ *pulumi.OutputState }
 
 func (SqlServerRegistrationOutput) ElementType() reflect.Type {
@@ -156,6 +163,12 @@ func (o SqlServerRegistrationOutput) ToSqlServerRegistrationOutput() SqlServerRe
 
 func (o SqlServerRegistrationOutput) ToSqlServerRegistrationOutputWithContext(ctx context.Context) SqlServerRegistrationOutput {
 	return o
+}
+
+func (o SqlServerRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlServerRegistration] {
+	return pulumix.Output[*SqlServerRegistration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The geo-location where the resource lives

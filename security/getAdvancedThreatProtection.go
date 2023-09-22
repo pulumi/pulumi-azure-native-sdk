@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Advanced Threat Protection settings for the specified resource.
@@ -79,6 +80,12 @@ func (o LookupAdvancedThreatProtectionResultOutput) ToLookupAdvancedThreatProtec
 
 func (o LookupAdvancedThreatProtectionResultOutput) ToLookupAdvancedThreatProtectionResultOutputWithContext(ctx context.Context) LookupAdvancedThreatProtectionResultOutput {
 	return o
+}
+
+func (o LookupAdvancedThreatProtectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAdvancedThreatProtectionResult] {
+	return pulumix.Output[LookupAdvancedThreatProtectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id

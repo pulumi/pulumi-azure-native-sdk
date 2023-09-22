@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -34,6 +35,12 @@ func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) ToAzureMoni
 
 func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) ToAzureMonitorWorkspaceResponseDefaultIngestionSettingsOutputWithContext(ctx context.Context) AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput {
 	return o
+}
+
+func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AzureMonitorWorkspaceResponseDefaultIngestionSettings] {
+	return pulumix.Output[AzureMonitorWorkspaceResponseDefaultIngestionSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
@@ -71,6 +78,12 @@ func (o AzureMonitorWorkspaceResponseMetricsOutput) ToAzureMonitorWorkspaceRespo
 
 func (o AzureMonitorWorkspaceResponseMetricsOutput) ToAzureMonitorWorkspaceResponseMetricsOutputWithContext(ctx context.Context) AzureMonitorWorkspaceResponseMetricsOutput {
 	return o
+}
+
+func (o AzureMonitorWorkspaceResponseMetricsOutput) ToOutput(ctx context.Context) pulumix.Output[AzureMonitorWorkspaceResponseMetrics] {
+	return pulumix.Output[AzureMonitorWorkspaceResponseMetrics]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An internal identifier for the metrics container. Only to be used by the system
@@ -116,6 +129,12 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 
 func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
+	return pulumix.Output[PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The group ids for the private endpoint resource.
@@ -174,6 +193,12 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
+	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -201,6 +226,12 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
+func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
+	return pulumix.Output[PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ARM identifier for private endpoint.
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -218,6 +249,12 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
+	return pulumix.Output[*PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -265,6 +302,12 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 	return o
 }
 
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
+	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A message indicating if changes on the service provider require any updates on the consumer.
 func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
@@ -309,6 +352,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

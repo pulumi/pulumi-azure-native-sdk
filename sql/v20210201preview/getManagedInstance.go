@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a managed instance.
@@ -136,6 +137,12 @@ func (o LookupManagedInstanceResultOutput) ToLookupManagedInstanceResultOutput()
 
 func (o LookupManagedInstanceResultOutput) ToLookupManagedInstanceResultOutputWithContext(ctx context.Context) LookupManagedInstanceResultOutput {
 	return o
+}
+
+func (o LookupManagedInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedInstanceResult] {
+	return pulumix.Output[LookupManagedInstanceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Administrator username for the managed instance. Can only be specified when the managed instance is being created (and is required for creation).

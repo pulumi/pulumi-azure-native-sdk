@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The task run that has the ARM resource and properties.
@@ -146,6 +147,12 @@ func (i *TaskRun) ToTaskRunOutputWithContext(ctx context.Context) TaskRunOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(TaskRunOutput)
 }
 
+func (i *TaskRun) ToOutput(ctx context.Context) pulumix.Output[*TaskRun] {
+	return pulumix.Output[*TaskRun]{
+		OutputState: i.ToTaskRunOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TaskRunOutput struct{ *pulumi.OutputState }
 
 func (TaskRunOutput) ElementType() reflect.Type {
@@ -158,6 +165,12 @@ func (o TaskRunOutput) ToTaskRunOutput() TaskRunOutput {
 
 func (o TaskRunOutput) ToTaskRunOutputWithContext(ctx context.Context) TaskRunOutput {
 	return o
+}
+
+func (o TaskRunOutput) ToOutput(ctx context.Context) pulumix.Output[*TaskRun] {
+	return pulumix.Output[*TaskRun]{
+		OutputState: o.OutputState,
+	}
 }
 
 // How the run should be forced to rerun even if the run request configuration has not changed

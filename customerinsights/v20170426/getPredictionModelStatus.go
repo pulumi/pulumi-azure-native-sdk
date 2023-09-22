@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets model status of the prediction.
@@ -96,6 +97,12 @@ func (o GetPredictionModelStatusResultOutput) ToGetPredictionModelStatusResultOu
 
 func (o GetPredictionModelStatusResultOutput) ToGetPredictionModelStatusResultOutputWithContext(ctx context.Context) GetPredictionModelStatusResultOutput {
 	return o
+}
+
+func (o GetPredictionModelStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPredictionModelStatusResult] {
+	return pulumix.Output[GetPredictionModelStatusResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The model status message.

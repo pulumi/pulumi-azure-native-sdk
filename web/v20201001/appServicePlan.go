@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // App Service plan.
@@ -274,6 +275,12 @@ func (i *AppServicePlan) ToAppServicePlanOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AppServicePlanOutput)
 }
 
+func (i *AppServicePlan) ToOutput(ctx context.Context) pulumix.Output[*AppServicePlan] {
+	return pulumix.Output[*AppServicePlan]{
+		OutputState: i.ToAppServicePlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppServicePlanOutput struct{ *pulumi.OutputState }
 
 func (AppServicePlanOutput) ElementType() reflect.Type {
@@ -286,6 +293,12 @@ func (o AppServicePlanOutput) ToAppServicePlanOutput() AppServicePlanOutput {
 
 func (o AppServicePlanOutput) ToAppServicePlanOutputWithContext(ctx context.Context) AppServicePlanOutput {
 	return o
+}
+
+func (o AppServicePlanOutput) ToOutput(ctx context.Context) pulumix.Output[*AppServicePlan] {
+	return pulumix.Output[*AppServicePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the server farm free offer expires.

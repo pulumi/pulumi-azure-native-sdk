@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2016-03-01. Prior API version in Azure Native 1.x: 2016-03-01
@@ -136,6 +137,12 @@ func (i *JobCollection) ToJobCollectionOutputWithContext(ctx context.Context) Jo
 	return pulumi.ToOutputWithContext(ctx, i).(JobCollectionOutput)
 }
 
+func (i *JobCollection) ToOutput(ctx context.Context) pulumix.Output[*JobCollection] {
+	return pulumix.Output[*JobCollection]{
+		OutputState: i.ToJobCollectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobCollectionOutput struct{ *pulumi.OutputState }
 
 func (JobCollectionOutput) ElementType() reflect.Type {
@@ -148,6 +155,12 @@ func (o JobCollectionOutput) ToJobCollectionOutput() JobCollectionOutput {
 
 func (o JobCollectionOutput) ToJobCollectionOutputWithContext(ctx context.Context) JobCollectionOutput {
 	return o
+}
+
+func (o JobCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[*JobCollection] {
+	return pulumix.Output[*JobCollection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the storage account location.

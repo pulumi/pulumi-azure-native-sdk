@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response to get/put access policy.
@@ -129,6 +130,12 @@ func (i *AccessPolicy) ToAccessPolicyOutputWithContext(ctx context.Context) Acce
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyOutput)
 }
 
+func (i *AccessPolicy) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicy] {
+	return pulumix.Output[*AccessPolicy]{
+		OutputState: i.ToAccessPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessPolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyOutput) ElementType() reflect.Type {
@@ -141,6 +148,12 @@ func (o AccessPolicyOutput) ToAccessPolicyOutput() AccessPolicyOutput {
 
 func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput {
 	return o
+}
+
+func (o AccessPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicy] {
+	return pulumix.Output[*AccessPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

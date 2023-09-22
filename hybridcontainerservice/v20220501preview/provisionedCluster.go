@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The provisionedClusters resource definition.
@@ -142,6 +143,12 @@ func (i *ProvisionedCluster) ToProvisionedClusterOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ProvisionedClusterOutput)
 }
 
+func (i *ProvisionedCluster) ToOutput(ctx context.Context) pulumix.Output[*ProvisionedCluster] {
+	return pulumix.Output[*ProvisionedCluster]{
+		OutputState: i.ToProvisionedClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProvisionedClusterOutput struct{ *pulumi.OutputState }
 
 func (ProvisionedClusterOutput) ElementType() reflect.Type {
@@ -154,6 +161,12 @@ func (o ProvisionedClusterOutput) ToProvisionedClusterOutput() ProvisionedCluste
 
 func (o ProvisionedClusterOutput) ToProvisionedClusterOutputWithContext(ctx context.Context) ProvisionedClusterOutput {
 	return o
+}
+
+func (o ProvisionedClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*ProvisionedCluster] {
+	return pulumix.Output[*ProvisionedCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProvisionedClusterOutput) ExtendedLocation() ProvisionedClustersResponseResponseExtendedLocationPtrOutput {

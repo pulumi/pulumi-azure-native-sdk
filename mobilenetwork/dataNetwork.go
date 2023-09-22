@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data network resource. Must be created in the same location as its parent mobile network.
@@ -147,6 +148,12 @@ func (i *DataNetwork) ToDataNetworkOutputWithContext(ctx context.Context) DataNe
 	return pulumi.ToOutputWithContext(ctx, i).(DataNetworkOutput)
 }
 
+func (i *DataNetwork) ToOutput(ctx context.Context) pulumix.Output[*DataNetwork] {
+	return pulumix.Output[*DataNetwork]{
+		OutputState: i.ToDataNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataNetworkOutput struct{ *pulumi.OutputState }
 
 func (DataNetworkOutput) ElementType() reflect.Type {
@@ -159,6 +166,12 @@ func (o DataNetworkOutput) ToDataNetworkOutput() DataNetworkOutput {
 
 func (o DataNetworkOutput) ToDataNetworkOutputWithContext(ctx context.Context) DataNetworkOutput {
 	return o
+}
+
+func (o DataNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*DataNetwork] {
+	return pulumix.Output[*DataNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description for this data network.

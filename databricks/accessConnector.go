@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Information about azure databricks accessConnector.
@@ -137,6 +138,12 @@ func (i *AccessConnector) ToAccessConnectorOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AccessConnectorOutput)
 }
 
+func (i *AccessConnector) ToOutput(ctx context.Context) pulumix.Output[*AccessConnector] {
+	return pulumix.Output[*AccessConnector]{
+		OutputState: i.ToAccessConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessConnectorOutput struct{ *pulumi.OutputState }
 
 func (AccessConnectorOutput) ElementType() reflect.Type {
@@ -149,6 +156,12 @@ func (o AccessConnectorOutput) ToAccessConnectorOutput() AccessConnectorOutput {
 
 func (o AccessConnectorOutput) ToAccessConnectorOutputWithContext(ctx context.Context) AccessConnectorOutput {
 	return o
+}
+
+func (o AccessConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessConnector] {
+	return pulumix.Output[*AccessConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Managed service identity (system assigned and/or user assigned identities)

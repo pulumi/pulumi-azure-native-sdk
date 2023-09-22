@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sentinel onboarding state
@@ -195,6 +196,12 @@ func (i *SentinelOnboardingState) ToSentinelOnboardingStateOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SentinelOnboardingStateOutput)
 }
 
+func (i *SentinelOnboardingState) ToOutput(ctx context.Context) pulumix.Output[*SentinelOnboardingState] {
+	return pulumix.Output[*SentinelOnboardingState]{
+		OutputState: i.ToSentinelOnboardingStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SentinelOnboardingStateOutput struct{ *pulumi.OutputState }
 
 func (SentinelOnboardingStateOutput) ElementType() reflect.Type {
@@ -207,6 +214,12 @@ func (o SentinelOnboardingStateOutput) ToSentinelOnboardingStateOutput() Sentine
 
 func (o SentinelOnboardingStateOutput) ToSentinelOnboardingStateOutputWithContext(ctx context.Context) SentinelOnboardingStateOutput {
 	return o
+}
+
+func (o SentinelOnboardingStateOutput) ToOutput(ctx context.Context) pulumix.Output[*SentinelOnboardingState] {
+	return pulumix.Output[*SentinelOnboardingState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Flag that indicates the status of the CMK setting

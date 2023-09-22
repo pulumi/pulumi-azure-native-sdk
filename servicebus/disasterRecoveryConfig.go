@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Single item in List or Get Alias(Disaster Recovery configuration) operation
@@ -156,6 +157,12 @@ func (i *DisasterRecoveryConfig) ToDisasterRecoveryConfigOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryConfigOutput)
 }
 
+func (i *DisasterRecoveryConfig) ToOutput(ctx context.Context) pulumix.Output[*DisasterRecoveryConfig] {
+	return pulumix.Output[*DisasterRecoveryConfig]{
+		OutputState: i.ToDisasterRecoveryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DisasterRecoveryConfigOutput struct{ *pulumi.OutputState }
 
 func (DisasterRecoveryConfigOutput) ElementType() reflect.Type {
@@ -168,6 +175,12 @@ func (o DisasterRecoveryConfigOutput) ToDisasterRecoveryConfigOutput() DisasterR
 
 func (o DisasterRecoveryConfigOutput) ToDisasterRecoveryConfigOutputWithContext(ctx context.Context) DisasterRecoveryConfigOutput {
 	return o
+}
+
+func (o DisasterRecoveryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*DisasterRecoveryConfig] {
+	return pulumix.Output[*DisasterRecoveryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Primary/Secondary eventhub namespace name, which is part of GEO DR pairing

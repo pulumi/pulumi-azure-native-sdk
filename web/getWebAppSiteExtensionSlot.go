@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Get site extension information by its ID for a web site, or a deployment slot.
@@ -126,6 +127,12 @@ func (o LookupWebAppSiteExtensionSlotResultOutput) ToLookupWebAppSiteExtensionSl
 
 func (o LookupWebAppSiteExtensionSlotResultOutput) ToLookupWebAppSiteExtensionSlotResultOutputWithContext(ctx context.Context) LookupWebAppSiteExtensionSlotResultOutput {
 	return o
+}
+
+func (o LookupWebAppSiteExtensionSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppSiteExtensionSlotResult] {
+	return pulumix.Output[LookupWebAppSiteExtensionSlotResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of authors.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Instance of an Azure ML web service resource.
@@ -133,6 +134,12 @@ func (i *WebService) ToWebServiceOutputWithContext(ctx context.Context) WebServi
 	return pulumi.ToOutputWithContext(ctx, i).(WebServiceOutput)
 }
 
+func (i *WebService) ToOutput(ctx context.Context) pulumix.Output[*WebService] {
+	return pulumix.Output[*WebService]{
+		OutputState: i.ToWebServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebServiceOutput struct{ *pulumi.OutputState }
 
 func (WebServiceOutput) ElementType() reflect.Type {
@@ -145,6 +152,12 @@ func (o WebServiceOutput) ToWebServiceOutput() WebServiceOutput {
 
 func (o WebServiceOutput) ToWebServiceOutputWithContext(ctx context.Context) WebServiceOutput {
 	return o
+}
+
+func (o WebServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*WebService] {
+	return pulumix.Output[*WebService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the location of the resource.

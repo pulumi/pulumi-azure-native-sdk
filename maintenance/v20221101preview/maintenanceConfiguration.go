@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Maintenance configuration record type
@@ -215,6 +216,12 @@ func (i *MaintenanceConfiguration) ToMaintenanceConfigurationOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceConfigurationOutput)
 }
 
+func (i *MaintenanceConfiguration) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceConfiguration] {
+	return pulumix.Output[*MaintenanceConfiguration]{
+		OutputState: i.ToMaintenanceConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MaintenanceConfigurationOutput struct{ *pulumi.OutputState }
 
 func (MaintenanceConfigurationOutput) ElementType() reflect.Type {
@@ -227,6 +234,12 @@ func (o MaintenanceConfigurationOutput) ToMaintenanceConfigurationOutput() Maint
 
 func (o MaintenanceConfigurationOutput) ToMaintenanceConfigurationOutputWithContext(ctx context.Context) MaintenanceConfigurationOutput {
 	return o
+}
+
+func (o MaintenanceConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceConfiguration] {
+	return pulumix.Output[*MaintenanceConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Duration of the maintenance window in HH:mm format. If not provided, default value will be used based on maintenance scope provided. Example: 05:00.

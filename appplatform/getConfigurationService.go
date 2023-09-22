@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the Application Configuration Service and its properties.
@@ -96,6 +97,12 @@ func (o LookupConfigurationServiceResultOutput) ToLookupConfigurationServiceResu
 
 func (o LookupConfigurationServiceResultOutput) ToLookupConfigurationServiceResultOutputWithContext(ctx context.Context) LookupConfigurationServiceResultOutput {
 	return o
+}
+
+func (o LookupConfigurationServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigurationServiceResult] {
+	return pulumix.Output[LookupConfigurationServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

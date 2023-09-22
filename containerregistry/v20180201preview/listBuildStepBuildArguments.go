@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List the build arguments for a step including the secret arguments.
@@ -82,6 +83,12 @@ func (o ListBuildStepBuildArgumentsResultOutput) ToListBuildStepBuildArgumentsRe
 
 func (o ListBuildStepBuildArgumentsResultOutput) ToListBuildStepBuildArgumentsResultOutputWithContext(ctx context.Context) ListBuildStepBuildArgumentsResultOutput {
 	return o
+}
+
+func (o ListBuildStepBuildArgumentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListBuildStepBuildArgumentsResult] {
+	return pulumix.Output[ListBuildStepBuildArgumentsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URI that can be used to request the next set of paged results.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetMarketplaceImageSasTokenSASToken(ctx *pulumi.Context, args *GetMarketplaceImageSasTokenSASTokenArgs, opts ...pulumi.InvokeOption) (*GetMarketplaceImageSasTokenSASTokenResult, error) {
@@ -75,6 +76,12 @@ func (o GetMarketplaceImageSasTokenSASTokenResultOutput) ToGetMarketplaceImageSa
 
 func (o GetMarketplaceImageSasTokenSASTokenResultOutput) ToGetMarketplaceImageSasTokenSASTokenResultOutputWithContext(ctx context.Context) GetMarketplaceImageSasTokenSASTokenResultOutput {
 	return o
+}
+
+func (o GetMarketplaceImageSasTokenSASTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMarketplaceImageSasTokenSASTokenResult] {
+	return pulumix.Output[GetMarketplaceImageSasTokenSASTokenResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMarketplaceImageSasTokenSASTokenResultOutput) SasUri() pulumi.StringPtrOutput {

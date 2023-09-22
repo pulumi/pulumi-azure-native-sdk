@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This is the preferred geo location for the job to run.
@@ -103,6 +104,12 @@ func (o RunLocationOutput) ToRunLocationPtrOutputWithContext(ctx context.Context
 	}).(RunLocationPtrOutput)
 }
 
+func (o RunLocationOutput) ToOutput(ctx context.Context) pulumix.Output[RunLocation] {
+	return pulumix.Output[RunLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RunLocationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -136,6 +143,12 @@ func (o RunLocationPtrOutput) ToRunLocationPtrOutput() RunLocationPtrOutput {
 
 func (o RunLocationPtrOutput) ToRunLocationPtrOutputWithContext(ctx context.Context) RunLocationPtrOutput {
 	return o
+}
+
+func (o RunLocationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RunLocation] {
+	return pulumix.Output[*RunLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RunLocationPtrOutput) Elem() RunLocationOutput {
@@ -198,6 +211,12 @@ func (in *runLocationPtr) ToRunLocationPtrOutput() RunLocationPtrOutput {
 
 func (in *runLocationPtr) ToRunLocationPtrOutputWithContext(ctx context.Context) RunLocationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RunLocationPtrOutput)
+}
+
+func (in *runLocationPtr) ToOutput(ctx context.Context) pulumix.Output[*RunLocation] {
+	return pulumix.Output[*RunLocation]{
+		OutputState: in.ToRunLocationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // State of the job definition.
@@ -269,6 +288,12 @@ func (o StateOutput) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOu
 	}).(StatePtrOutput)
 }
 
+func (o StateOutput) ToOutput(ctx context.Context) pulumix.Output[State] {
+	return pulumix.Output[State]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -302,6 +327,12 @@ func (o StatePtrOutput) ToStatePtrOutput() StatePtrOutput {
 
 func (o StatePtrOutput) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOutput {
 	return o
+}
+
+func (o StatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*State] {
+	return pulumix.Output[*State]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StatePtrOutput) Elem() StateOutput {
@@ -364,6 +395,12 @@ func (in *statePtr) ToStatePtrOutput() StatePtrOutput {
 
 func (in *statePtr) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatePtrOutput)
+}
+
+func (in *statePtr) ToOutput(ctx context.Context) pulumix.Output[*State] {
+	return pulumix.Output[*State]{
+		OutputState: in.ToStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The encryption algorithm used to encrypt data.
@@ -436,6 +473,12 @@ func (o SupportedAlgorithmOutput) ToSupportedAlgorithmPtrOutputWithContext(ctx c
 	}).(SupportedAlgorithmPtrOutput)
 }
 
+func (o SupportedAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[SupportedAlgorithm] {
+	return pulumix.Output[SupportedAlgorithm]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SupportedAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -469,6 +512,12 @@ func (o SupportedAlgorithmPtrOutput) ToSupportedAlgorithmPtrOutput() SupportedAl
 
 func (o SupportedAlgorithmPtrOutput) ToSupportedAlgorithmPtrOutputWithContext(ctx context.Context) SupportedAlgorithmPtrOutput {
 	return o
+}
+
+func (o SupportedAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SupportedAlgorithm] {
+	return pulumix.Output[*SupportedAlgorithm]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SupportedAlgorithmPtrOutput) Elem() SupportedAlgorithmOutput {
@@ -531,6 +580,12 @@ func (in *supportedAlgorithmPtr) ToSupportedAlgorithmPtrOutput() SupportedAlgori
 
 func (in *supportedAlgorithmPtr) ToSupportedAlgorithmPtrOutputWithContext(ctx context.Context) SupportedAlgorithmPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SupportedAlgorithmPtrOutput)
+}
+
+func (in *supportedAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*SupportedAlgorithm] {
+	return pulumix.Output[*SupportedAlgorithm]{
+		OutputState: in.ToSupportedAlgorithmPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Enum to detect if user confirmation is required. If not passed will default to NotRequired.
@@ -601,6 +656,12 @@ func (o UserConfirmationOutput) ToUserConfirmationPtrOutputWithContext(ctx conte
 	}).(UserConfirmationPtrOutput)
 }
 
+func (o UserConfirmationOutput) ToOutput(ctx context.Context) pulumix.Output[UserConfirmation] {
+	return pulumix.Output[UserConfirmation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UserConfirmationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -634,6 +695,12 @@ func (o UserConfirmationPtrOutput) ToUserConfirmationPtrOutput() UserConfirmatio
 
 func (o UserConfirmationPtrOutput) ToUserConfirmationPtrOutputWithContext(ctx context.Context) UserConfirmationPtrOutput {
 	return o
+}
+
+func (o UserConfirmationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserConfirmation] {
+	return pulumix.Output[*UserConfirmation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserConfirmationPtrOutput) Elem() UserConfirmationOutput {
@@ -696,6 +763,12 @@ func (in *userConfirmationPtr) ToUserConfirmationPtrOutput() UserConfirmationPtr
 
 func (in *userConfirmationPtr) ToUserConfirmationPtrOutputWithContext(ctx context.Context) UserConfirmationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserConfirmationPtrOutput)
+}
+
+func (in *userConfirmationPtr) ToOutput(ctx context.Context) pulumix.Output[*UserConfirmation] {
+	return pulumix.Output[*UserConfirmation]{
+		OutputState: in.ToUserConfirmationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

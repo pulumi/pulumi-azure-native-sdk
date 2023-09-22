@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessRights string
@@ -78,6 +79,12 @@ func (o AccessRightsOutput) ToAccessRightsPtrOutputWithContext(ctx context.Conte
 	}).(AccessRightsPtrOutput)
 }
 
+func (o AccessRightsOutput) ToOutput(ctx context.Context) pulumix.Output[AccessRights] {
+	return pulumix.Output[AccessRights]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessRightsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o AccessRightsPtrOutput) ToAccessRightsPtrOutput() AccessRightsPtrOutput {
 
 func (o AccessRightsPtrOutput) ToAccessRightsPtrOutputWithContext(ctx context.Context) AccessRightsPtrOutput {
 	return o
+}
+
+func (o AccessRightsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessRights] {
+	return pulumix.Output[*AccessRights]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessRightsPtrOutput) Elem() AccessRightsOutput {
@@ -175,6 +188,12 @@ func (in *accessRightsPtr) ToAccessRightsPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(AccessRightsPtrOutput)
 }
 
+func (in *accessRightsPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessRights] {
+	return pulumix.Output[*AccessRights]{
+		OutputState: in.ToAccessRightsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessRightsArrayInput is an input type that accepts AccessRightsArray and AccessRightsArrayOutput values.
 // You can construct a concrete instance of `AccessRightsArrayInput` via:
 //
@@ -200,6 +219,12 @@ func (i AccessRightsArray) ToAccessRightsArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AccessRightsArrayOutput)
 }
 
+func (i AccessRightsArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessRights] {
+	return pulumix.Output[[]AccessRights]{
+		OutputState: i.ToAccessRightsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessRightsArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessRightsArrayOutput) ElementType() reflect.Type {
@@ -212,6 +237,12 @@ func (o AccessRightsArrayOutput) ToAccessRightsArrayOutput() AccessRightsArrayOu
 
 func (o AccessRightsArrayOutput) ToAccessRightsArrayOutputWithContext(ctx context.Context) AccessRightsArrayOutput {
 	return o
+}
+
+func (o AccessRightsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessRights] {
+	return pulumix.Output[[]AccessRights]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessRightsArrayOutput) Index(i pulumi.IntInput) AccessRightsOutput {
@@ -288,6 +319,12 @@ func (o NamespaceTypeOutput) ToNamespaceTypePtrOutputWithContext(ctx context.Con
 	}).(NamespaceTypePtrOutput)
 }
 
+func (o NamespaceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NamespaceType] {
+	return pulumix.Output[NamespaceType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NamespaceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -321,6 +358,12 @@ func (o NamespaceTypePtrOutput) ToNamespaceTypePtrOutput() NamespaceTypePtrOutpu
 
 func (o NamespaceTypePtrOutput) ToNamespaceTypePtrOutputWithContext(ctx context.Context) NamespaceTypePtrOutput {
 	return o
+}
+
+func (o NamespaceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceType] {
+	return pulumix.Output[*NamespaceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NamespaceTypePtrOutput) Elem() NamespaceTypeOutput {
@@ -383,6 +426,12 @@ func (in *namespaceTypePtr) ToNamespaceTypePtrOutput() NamespaceTypePtrOutput {
 
 func (in *namespaceTypePtr) ToNamespaceTypePtrOutputWithContext(ctx context.Context) NamespaceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NamespaceTypePtrOutput)
+}
+
+func (in *namespaceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NamespaceType] {
+	return pulumix.Output[*NamespaceType]{
+		OutputState: in.ToNamespaceTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Name of the notification hub sku

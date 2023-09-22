@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // NSX VM Group
@@ -91,6 +92,12 @@ func (o LookupWorkloadNetworkVMGroupResultOutput) ToLookupWorkloadNetworkVMGroup
 
 func (o LookupWorkloadNetworkVMGroupResultOutput) ToLookupWorkloadNetworkVMGroupResultOutputWithContext(ctx context.Context) LookupWorkloadNetworkVMGroupResultOutput {
 	return o
+}
+
+func (o LookupWorkloadNetworkVMGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkloadNetworkVMGroupResult] {
+	return pulumix.Output[LookupWorkloadNetworkVMGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Display name of the VM group.

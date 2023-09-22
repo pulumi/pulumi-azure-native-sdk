@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Site REST Resource.
@@ -141,6 +142,12 @@ func (i *HyperVSite) ToHyperVSiteOutputWithContext(ctx context.Context) HyperVSi
 	return pulumi.ToOutputWithContext(ctx, i).(HyperVSiteOutput)
 }
 
+func (i *HyperVSite) ToOutput(ctx context.Context) pulumix.Output[*HyperVSite] {
+	return pulumix.Output[*HyperVSite]{
+		OutputState: i.ToHyperVSiteOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HyperVSiteOutput struct{ *pulumi.OutputState }
 
 func (HyperVSiteOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o HyperVSiteOutput) ToHyperVSiteOutput() HyperVSiteOutput {
 
 func (o HyperVSiteOutput) ToHyperVSiteOutputWithContext(ctx context.Context) HyperVSiteOutput {
 	return o
+}
+
+func (o HyperVSiteOutput) ToOutput(ctx context.Context) pulumix.Output[*HyperVSite] {
+	return pulumix.Output[*HyperVSite]{
+		OutputState: o.OutputState,
+	}
 }
 
 // eTag for concurrency control.

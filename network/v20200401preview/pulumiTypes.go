@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -80,6 +81,12 @@ func (i InboundEndpointIPConfigurationArgs) ToInboundEndpointIPConfigurationOutp
 	return pulumi.ToOutputWithContext(ctx, i).(InboundEndpointIPConfigurationOutput)
 }
 
+func (i InboundEndpointIPConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[InboundEndpointIPConfiguration] {
+	return pulumix.Output[InboundEndpointIPConfiguration]{
+		OutputState: i.ToInboundEndpointIPConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InboundEndpointIPConfigurationArrayInput is an input type that accepts InboundEndpointIPConfigurationArray and InboundEndpointIPConfigurationArrayOutput values.
 // You can construct a concrete instance of `InboundEndpointIPConfigurationArrayInput` via:
 //
@@ -105,6 +112,12 @@ func (i InboundEndpointIPConfigurationArray) ToInboundEndpointIPConfigurationArr
 	return pulumi.ToOutputWithContext(ctx, i).(InboundEndpointIPConfigurationArrayOutput)
 }
 
+func (i InboundEndpointIPConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]InboundEndpointIPConfiguration] {
+	return pulumix.Output[[]InboundEndpointIPConfiguration]{
+		OutputState: i.ToInboundEndpointIPConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IP configuration.
 type InboundEndpointIPConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o InboundEndpointIPConfigurationOutput) ToInboundEndpointIPConfigurationOu
 
 func (o InboundEndpointIPConfigurationOutput) ToInboundEndpointIPConfigurationOutputWithContext(ctx context.Context) InboundEndpointIPConfigurationOutput {
 	return o
+}
+
+func (o InboundEndpointIPConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[InboundEndpointIPConfiguration] {
+	return pulumix.Output[InboundEndpointIPConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Private IP address of the IP configuration.
@@ -147,6 +166,12 @@ func (o InboundEndpointIPConfigurationArrayOutput) ToInboundEndpointIPConfigurat
 
 func (o InboundEndpointIPConfigurationArrayOutput) ToInboundEndpointIPConfigurationArrayOutputWithContext(ctx context.Context) InboundEndpointIPConfigurationArrayOutput {
 	return o
+}
+
+func (o InboundEndpointIPConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InboundEndpointIPConfiguration] {
+	return pulumix.Output[[]InboundEndpointIPConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InboundEndpointIPConfigurationArrayOutput) Index(i pulumi.IntInput) InboundEndpointIPConfigurationOutput {
@@ -193,6 +218,12 @@ func (o InboundEndpointIPConfigurationResponseOutput) ToInboundEndpointIPConfigu
 	return o
 }
 
+func (o InboundEndpointIPConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InboundEndpointIPConfigurationResponse] {
+	return pulumix.Output[InboundEndpointIPConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Private IP address of the IP configuration.
 func (o InboundEndpointIPConfigurationResponseOutput) PrivateIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InboundEndpointIPConfigurationResponse) *string { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
@@ -220,6 +251,12 @@ func (o InboundEndpointIPConfigurationResponseArrayOutput) ToInboundEndpointIPCo
 
 func (o InboundEndpointIPConfigurationResponseArrayOutput) ToInboundEndpointIPConfigurationResponseArrayOutputWithContext(ctx context.Context) InboundEndpointIPConfigurationResponseArrayOutput {
 	return o
+}
+
+func (o InboundEndpointIPConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InboundEndpointIPConfigurationResponse] {
+	return pulumix.Output[[]InboundEndpointIPConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InboundEndpointIPConfigurationResponseArrayOutput) Index(i pulumi.IntInput) InboundEndpointIPConfigurationResponseOutput {
@@ -269,6 +306,12 @@ func (i SubResourceArgs) ToSubResourceOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourceOutput)
 }
 
+func (i SubResourceArgs) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
+	return pulumix.Output[SubResource]{
+		OutputState: i.ToSubResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SubResourceArgs) ToSubResourcePtrOutput() SubResourcePtrOutput {
 	return i.ToSubResourcePtrOutputWithContext(context.Background())
 }
@@ -310,6 +353,12 @@ func (i *subResourcePtrType) ToSubResourcePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourcePtrOutput)
 }
 
+func (i *subResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
+	return pulumix.Output[*SubResource]{
+		OutputState: i.ToSubResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SubResourceArrayInput is an input type that accepts SubResourceArray and SubResourceArrayOutput values.
 // You can construct a concrete instance of `SubResourceArrayInput` via:
 //
@@ -333,6 +382,12 @@ func (i SubResourceArray) ToSubResourceArrayOutput() SubResourceArrayOutput {
 
 func (i SubResourceArray) ToSubResourceArrayOutputWithContext(ctx context.Context) SubResourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourceArrayOutput)
+}
+
+func (i SubResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]SubResource] {
+	return pulumix.Output[[]SubResource]{
+		OutputState: i.ToSubResourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Reference to another ARM resource.
@@ -360,6 +415,12 @@ func (o SubResourceOutput) ToSubResourcePtrOutputWithContext(ctx context.Context
 	}).(SubResourcePtrOutput)
 }
 
+func (o SubResourceOutput) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
+	return pulumix.Output[SubResource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
 // An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
 // A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
@@ -380,6 +441,12 @@ func (o SubResourcePtrOutput) ToSubResourcePtrOutput() SubResourcePtrOutput {
 
 func (o SubResourcePtrOutput) ToSubResourcePtrOutputWithContext(ctx context.Context) SubResourcePtrOutput {
 	return o
+}
+
+func (o SubResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
+	return pulumix.Output[*SubResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubResourcePtrOutput) Elem() SubResourceOutput {
@@ -419,6 +486,12 @@ func (o SubResourceArrayOutput) ToSubResourceArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o SubResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubResource] {
+	return pulumix.Output[[]SubResource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubResourceArrayOutput) Index(i pulumi.IntInput) SubResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubResource {
 		return vs[0].([]SubResource)[vs[1].(int)]
@@ -446,6 +519,12 @@ func (o SubResourceResponseOutput) ToSubResourceResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o SubResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubResourceResponse] {
+	return pulumix.Output[SubResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID.
 func (o SubResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -463,6 +542,12 @@ func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutput() SubResour
 
 func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutputWithContext(ctx context.Context) SubResourceResponsePtrOutput {
 	return o
+}
+
+func (o SubResourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResourceResponse] {
+	return pulumix.Output[*SubResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubResourceResponsePtrOutput) Elem() SubResourceResponseOutput {
@@ -497,6 +582,12 @@ func (o SubResourceResponseArrayOutput) ToSubResourceResponseArrayOutput() SubRe
 
 func (o SubResourceResponseArrayOutput) ToSubResourceResponseArrayOutputWithContext(ctx context.Context) SubResourceResponseArrayOutput {
 	return o
+}
+
+func (o SubResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubResourceResponse] {
+	return pulumix.Output[[]SubResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubResourceResponseArrayOutput) Index(i pulumi.IntInput) SubResourceResponseOutput {
@@ -534,6 +625,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -589,6 +686,12 @@ func (o VirtualNetworkDnsForwardingRulesetResponseOutput) ToVirtualNetworkDnsFor
 	return o
 }
 
+func (o VirtualNetworkDnsForwardingRulesetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkDnsForwardingRulesetResponse] {
+	return pulumix.Output[VirtualNetworkDnsForwardingRulesetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // DNS Forwarding Ruleset Resource ID.
 func (o VirtualNetworkDnsForwardingRulesetResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkDnsForwardingRulesetResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -611,6 +714,12 @@ func (o VirtualNetworkDnsForwardingRulesetResponseArrayOutput) ToVirtualNetworkD
 
 func (o VirtualNetworkDnsForwardingRulesetResponseArrayOutput) ToVirtualNetworkDnsForwardingRulesetResponseArrayOutputWithContext(ctx context.Context) VirtualNetworkDnsForwardingRulesetResponseArrayOutput {
 	return o
+}
+
+func (o VirtualNetworkDnsForwardingRulesetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkDnsForwardingRulesetResponse] {
+	return pulumix.Output[[]VirtualNetworkDnsForwardingRulesetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkDnsForwardingRulesetResponseArrayOutput) Index(i pulumi.IntInput) VirtualNetworkDnsForwardingRulesetResponseOutput {

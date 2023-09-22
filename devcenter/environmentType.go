@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an environment type.
@@ -141,6 +142,12 @@ func (i *EnvironmentType) ToEnvironmentTypeOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentTypeOutput)
 }
 
+func (i *EnvironmentType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentType] {
+	return pulumix.Output[*EnvironmentType]{
+		OutputState: i.ToEnvironmentTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnvironmentTypeOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentTypeOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o EnvironmentTypeOutput) ToEnvironmentTypeOutput() EnvironmentTypeOutput {
 
 func (o EnvironmentTypeOutput) ToEnvironmentTypeOutputWithContext(ctx context.Context) EnvironmentTypeOutput {
 	return o
+}
+
+func (o EnvironmentTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentType] {
+	return pulumix.Output[*EnvironmentType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

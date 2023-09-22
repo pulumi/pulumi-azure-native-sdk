@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Build resource payload
@@ -142,6 +143,12 @@ func (i *BuildServiceBuild) ToBuildServiceBuildOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BuildServiceBuildOutput)
 }
 
+func (i *BuildServiceBuild) ToOutput(ctx context.Context) pulumix.Output[*BuildServiceBuild] {
+	return pulumix.Output[*BuildServiceBuild]{
+		OutputState: i.ToBuildServiceBuildOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BuildServiceBuildOutput struct{ *pulumi.OutputState }
 
 func (BuildServiceBuildOutput) ElementType() reflect.Type {
@@ -154,6 +161,12 @@ func (o BuildServiceBuildOutput) ToBuildServiceBuildOutput() BuildServiceBuildOu
 
 func (o BuildServiceBuildOutput) ToBuildServiceBuildOutputWithContext(ctx context.Context) BuildServiceBuildOutput {
 	return o
+}
+
+func (o BuildServiceBuildOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildServiceBuild] {
+	return pulumix.Output[*BuildServiceBuild]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource.

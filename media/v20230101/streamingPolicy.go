@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Streaming Policy resource
@@ -170,6 +171,12 @@ func (i *StreamingPolicy) ToStreamingPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyOutput)
 }
 
+func (i *StreamingPolicy) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicy] {
+	return pulumix.Output[*StreamingPolicy]{
+		OutputState: i.ToStreamingPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StreamingPolicyOutput struct{ *pulumi.OutputState }
 
 func (StreamingPolicyOutput) ElementType() reflect.Type {
@@ -182,6 +189,12 @@ func (o StreamingPolicyOutput) ToStreamingPolicyOutput() StreamingPolicyOutput {
 
 func (o StreamingPolicyOutput) ToStreamingPolicyOutputWithContext(ctx context.Context) StreamingPolicyOutput {
 	return o
+}
+
+func (o StreamingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingPolicy] {
+	return pulumix.Output[*StreamingPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration of CommonEncryptionCbcs

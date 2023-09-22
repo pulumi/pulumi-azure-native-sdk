@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // NSX Port Mirroring
@@ -164,6 +165,12 @@ func (i *WorkloadNetworkPortMirroring) ToWorkloadNetworkPortMirroringOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadNetworkPortMirroringOutput)
 }
 
+func (i *WorkloadNetworkPortMirroring) ToOutput(ctx context.Context) pulumix.Output[*WorkloadNetworkPortMirroring] {
+	return pulumix.Output[*WorkloadNetworkPortMirroring]{
+		OutputState: i.ToWorkloadNetworkPortMirroringOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkloadNetworkPortMirroringOutput struct{ *pulumi.OutputState }
 
 func (WorkloadNetworkPortMirroringOutput) ElementType() reflect.Type {
@@ -176,6 +183,12 @@ func (o WorkloadNetworkPortMirroringOutput) ToWorkloadNetworkPortMirroringOutput
 
 func (o WorkloadNetworkPortMirroringOutput) ToWorkloadNetworkPortMirroringOutputWithContext(ctx context.Context) WorkloadNetworkPortMirroringOutput {
 	return o
+}
+
+func (o WorkloadNetworkPortMirroringOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadNetworkPortMirroring] {
+	return pulumix.Output[*WorkloadNetworkPortMirroring]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Destination VM Group.

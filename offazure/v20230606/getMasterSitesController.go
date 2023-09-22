@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a MasterSite
@@ -99,6 +100,12 @@ func (o LookupMasterSitesControllerResultOutput) ToLookupMasterSitesControllerRe
 
 func (o LookupMasterSitesControllerResultOutput) ToLookupMasterSitesControllerResultOutputWithContext(ctx context.Context) LookupMasterSitesControllerResultOutput {
 	return o
+}
+
+func (o LookupMasterSitesControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMasterSitesControllerResult] {
+	return pulumix.Output[LookupMasterSitesControllerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets a value indicating whether multiple sites per site type are

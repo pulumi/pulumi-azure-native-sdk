@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
@@ -101,6 +102,12 @@ func (o LookupDeviceGroupResultOutput) ToLookupDeviceGroupResultOutput() LookupD
 
 func (o LookupDeviceGroupResultOutput) ToLookupDeviceGroupResultOutputWithContext(ctx context.Context) LookupDeviceGroupResultOutput {
 	return o
+}
+
+func (o LookupDeviceGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeviceGroupResult] {
+	return pulumix.Output[LookupDeviceGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Flag to define if the user allows for crash dump collection.

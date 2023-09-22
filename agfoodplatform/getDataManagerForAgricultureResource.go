@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get DataManagerForAgriculture resource.
@@ -95,6 +96,12 @@ func (o LookupDataManagerForAgricultureResourceResultOutput) ToLookupDataManager
 
 func (o LookupDataManagerForAgricultureResourceResultOutput) ToLookupDataManagerForAgricultureResourceResultOutputWithContext(ctx context.Context) LookupDataManagerForAgricultureResourceResultOutput {
 	return o
+}
+
+func (o LookupDataManagerForAgricultureResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataManagerForAgricultureResourceResult] {
+	return pulumix.Output[LookupDataManagerForAgricultureResourceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

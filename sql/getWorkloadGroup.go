@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a workload group
@@ -97,6 +98,12 @@ func (o LookupWorkloadGroupResultOutput) ToLookupWorkloadGroupResultOutput() Loo
 
 func (o LookupWorkloadGroupResultOutput) ToLookupWorkloadGroupResultOutputWithContext(ctx context.Context) LookupWorkloadGroupResultOutput {
 	return o
+}
+
+func (o LookupWorkloadGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkloadGroupResult] {
+	return pulumix.Output[LookupWorkloadGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.

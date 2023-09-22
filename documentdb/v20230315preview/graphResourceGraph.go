@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB Graph resource.
@@ -170,6 +171,12 @@ func (i *GraphResourceGraph) ToGraphResourceGraphOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(GraphResourceGraphOutput)
 }
 
+func (i *GraphResourceGraph) ToOutput(ctx context.Context) pulumix.Output[*GraphResourceGraph] {
+	return pulumix.Output[*GraphResourceGraph]{
+		OutputState: i.ToGraphResourceGraphOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GraphResourceGraphOutput struct{ *pulumi.OutputState }
 
 func (GraphResourceGraphOutput) ElementType() reflect.Type {
@@ -182,6 +189,12 @@ func (o GraphResourceGraphOutput) ToGraphResourceGraphOutput() GraphResourceGrap
 
 func (o GraphResourceGraphOutput) ToGraphResourceGraphOutputWithContext(ctx context.Context) GraphResourceGraphOutput {
 	return o
+}
+
+func (o GraphResourceGraphOutput) ToOutput(ctx context.Context) pulumix.Output[*GraphResourceGraph] {
+	return pulumix.Output[*GraphResourceGraph]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identity for the resource.

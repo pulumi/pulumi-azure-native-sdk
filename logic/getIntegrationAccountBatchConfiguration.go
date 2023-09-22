@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a batch configuration for an integration account.
@@ -87,6 +88,12 @@ func (o LookupIntegrationAccountBatchConfigurationResultOutput) ToLookupIntegrat
 
 func (o LookupIntegrationAccountBatchConfigurationResultOutput) ToLookupIntegrationAccountBatchConfigurationResultOutputWithContext(ctx context.Context) LookupIntegrationAccountBatchConfigurationResultOutput {
 	return o
+}
+
+func (o LookupIntegrationAccountBatchConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIntegrationAccountBatchConfigurationResult] {
+	return pulumix.Output[LookupIntegrationAccountBatchConfigurationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource id.

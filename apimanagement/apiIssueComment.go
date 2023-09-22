@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Issue Comment Contract details.
@@ -199,6 +200,12 @@ func (i *ApiIssueComment) ToApiIssueCommentOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIssueCommentOutput)
 }
 
+func (i *ApiIssueComment) ToOutput(ctx context.Context) pulumix.Output[*ApiIssueComment] {
+	return pulumix.Output[*ApiIssueComment]{
+		OutputState: i.ToApiIssueCommentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiIssueCommentOutput struct{ *pulumi.OutputState }
 
 func (ApiIssueCommentOutput) ElementType() reflect.Type {
@@ -211,6 +218,12 @@ func (o ApiIssueCommentOutput) ToApiIssueCommentOutput() ApiIssueCommentOutput {
 
 func (o ApiIssueCommentOutput) ToApiIssueCommentOutputWithContext(ctx context.Context) ApiIssueCommentOutput {
 	return o
+}
+
+func (o ApiIssueCommentOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiIssueComment] {
+	return pulumix.Output[*ApiIssueComment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Date and time when the comment was created.

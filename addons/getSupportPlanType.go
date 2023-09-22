@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns whether or not the canonical support plan of type {type} is enabled for the subscription.
@@ -79,6 +80,12 @@ func (o LookupSupportPlanTypeResultOutput) ToLookupSupportPlanTypeResultOutput()
 
 func (o LookupSupportPlanTypeResultOutput) ToLookupSupportPlanTypeResultOutputWithContext(ctx context.Context) LookupSupportPlanTypeResultOutput {
 	return o
+}
+
+func (o LookupSupportPlanTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSupportPlanTypeResult] {
+	return pulumix.Output[LookupSupportPlanTypeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the ARM resource, e.g. "/subscriptions/{id}/providers/Microsoft.Addons/supportProvider/{supportProviderName}/supportPlanTypes/{planTypeName}".

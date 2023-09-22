@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the EnterprisePolicy.
@@ -163,6 +164,12 @@ func (i *EnterprisePolicy) ToEnterprisePolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(EnterprisePolicyOutput)
 }
 
+func (i *EnterprisePolicy) ToOutput(ctx context.Context) pulumix.Output[*EnterprisePolicy] {
+	return pulumix.Output[*EnterprisePolicy]{
+		OutputState: i.ToEnterprisePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterprisePolicyOutput struct{ *pulumi.OutputState }
 
 func (EnterprisePolicyOutput) ElementType() reflect.Type {
@@ -175,6 +182,12 @@ func (o EnterprisePolicyOutput) ToEnterprisePolicyOutput() EnterprisePolicyOutpu
 
 func (o EnterprisePolicyOutput) ToEnterprisePolicyOutputWithContext(ctx context.Context) EnterprisePolicyOutput {
 	return o
+}
+
+func (o EnterprisePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterprisePolicy] {
+	return pulumix.Output[*EnterprisePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The encryption settings for a configuration store.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // LoadTest details
@@ -150,6 +151,12 @@ func (i *LoadTest) ToLoadTestOutputWithContext(ctx context.Context) LoadTestOutp
 	return pulumi.ToOutputWithContext(ctx, i).(LoadTestOutput)
 }
 
+func (i *LoadTest) ToOutput(ctx context.Context) pulumix.Output[*LoadTest] {
+	return pulumix.Output[*LoadTest]{
+		OutputState: i.ToLoadTestOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LoadTestOutput struct{ *pulumi.OutputState }
 
 func (LoadTestOutput) ElementType() reflect.Type {
@@ -162,6 +169,12 @@ func (o LoadTestOutput) ToLoadTestOutput() LoadTestOutput {
 
 func (o LoadTestOutput) ToLoadTestOutputWithContext(ctx context.Context) LoadTestOutput {
 	return o
+}
+
+func (o LoadTestOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadTest] {
+	return pulumix.Output[*LoadTest]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource data plane URI.

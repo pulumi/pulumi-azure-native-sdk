@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the secret validation key of the DelegationSettings.
@@ -73,6 +74,12 @@ func (o ListDelegationSettingSecretsResultOutput) ToListDelegationSettingSecrets
 
 func (o ListDelegationSettingSecretsResultOutput) ToListDelegationSettingSecretsResultOutputWithContext(ctx context.Context) ListDelegationSettingSecretsResultOutput {
 	return o
+}
+
+func (o ListDelegationSettingSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListDelegationSettingSecretsResult] {
+	return pulumix.Output[ListDelegationSettingSecretsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This is secret value of the validation key in portal settings.

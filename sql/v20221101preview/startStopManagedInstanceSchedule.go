@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Managed instance's Start/Stop schedule.
@@ -154,6 +155,12 @@ func (i *StartStopManagedInstanceSchedule) ToStartStopManagedInstanceScheduleOut
 	return pulumi.ToOutputWithContext(ctx, i).(StartStopManagedInstanceScheduleOutput)
 }
 
+func (i *StartStopManagedInstanceSchedule) ToOutput(ctx context.Context) pulumix.Output[*StartStopManagedInstanceSchedule] {
+	return pulumix.Output[*StartStopManagedInstanceSchedule]{
+		OutputState: i.ToStartStopManagedInstanceScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StartStopManagedInstanceScheduleOutput struct{ *pulumi.OutputState }
 
 func (StartStopManagedInstanceScheduleOutput) ElementType() reflect.Type {
@@ -166,6 +173,12 @@ func (o StartStopManagedInstanceScheduleOutput) ToStartStopManagedInstanceSchedu
 
 func (o StartStopManagedInstanceScheduleOutput) ToStartStopManagedInstanceScheduleOutputWithContext(ctx context.Context) StartStopManagedInstanceScheduleOutput {
 	return o
+}
+
+func (o StartStopManagedInstanceScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*StartStopManagedInstanceSchedule] {
+	return pulumix.Output[*StartStopManagedInstanceSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the schedule.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the properties of the provided cluster manager.
@@ -101,6 +102,12 @@ func (o LookupClusterManagerResultOutput) ToLookupClusterManagerResultOutput() L
 
 func (o LookupClusterManagerResultOutput) ToLookupClusterManagerResultOutputWithContext(ctx context.Context) LookupClusterManagerResultOutput {
 	return o
+}
+
+func (o LookupClusterManagerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClusterManagerResult] {
+	return pulumix.Output[LookupClusterManagerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource ID of the Log Analytics workspace that is used for the logs collection.

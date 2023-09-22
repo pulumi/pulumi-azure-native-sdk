@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the notification hubs associated with a namespace.
@@ -102,6 +103,12 @@ func (o LookupNotificationHubResultOutput) ToLookupNotificationHubResultOutput()
 
 func (o LookupNotificationHubResultOutput) ToLookupNotificationHubResultOutputWithContext(ctx context.Context) LookupNotificationHubResultOutput {
 	return o
+}
+
+func (o LookupNotificationHubResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNotificationHubResult] {
+	return pulumix.Output[LookupNotificationHubResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The AdmCredential of the created NotificationHub

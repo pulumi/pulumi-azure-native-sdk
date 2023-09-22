@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i ConsoleCreatePropertiesArgs) ToConsoleCreatePropertiesOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ConsoleCreatePropertiesOutput)
 }
 
+func (i ConsoleCreatePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ConsoleCreateProperties] {
+	return pulumix.Output[ConsoleCreateProperties]{
+		OutputState: i.ToConsoleCreatePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cloud shell properties for creating a console.
 type ConsoleCreatePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -69,6 +76,12 @@ func (o ConsoleCreatePropertiesOutput) ToConsoleCreatePropertiesOutput() Console
 
 func (o ConsoleCreatePropertiesOutput) ToConsoleCreatePropertiesOutputWithContext(ctx context.Context) ConsoleCreatePropertiesOutput {
 	return o
+}
+
+func (o ConsoleCreatePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ConsoleCreateProperties] {
+	return pulumix.Output[ConsoleCreateProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The operating system type of the cloud shell.
@@ -109,6 +122,12 @@ func (o ConsolePropertiesResponseOutput) ToConsolePropertiesResponseOutput() Con
 
 func (o ConsolePropertiesResponseOutput) ToConsolePropertiesResponseOutputWithContext(ctx context.Context) ConsolePropertiesResponseOutput {
 	return o
+}
+
+func (o ConsolePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConsolePropertiesResponse] {
+	return pulumix.Output[ConsolePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The operating system type of the cloud shell.
@@ -169,6 +188,12 @@ func (i StorageProfileArgs) ToStorageProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageProfileOutput)
 }
 
+func (i StorageProfileArgs) ToOutput(ctx context.Context) pulumix.Output[StorageProfile] {
+	return pulumix.Output[StorageProfile]{
+		OutputState: i.ToStorageProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The storage profile of the user settings.
 type StorageProfileOutput struct{ *pulumi.OutputState }
 
@@ -182,6 +207,12 @@ func (o StorageProfileOutput) ToStorageProfileOutput() StorageProfileOutput {
 
 func (o StorageProfileOutput) ToStorageProfileOutputWithContext(ctx context.Context) StorageProfileOutput {
 	return o
+}
+
+func (o StorageProfileOutput) ToOutput(ctx context.Context) pulumix.Output[StorageProfile] {
+	return pulumix.Output[StorageProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Size of file share
@@ -222,6 +253,12 @@ func (o StorageProfileResponseOutput) ToStorageProfileResponseOutput() StoragePr
 
 func (o StorageProfileResponseOutput) ToStorageProfileResponseOutputWithContext(ctx context.Context) StorageProfileResponseOutput {
 	return o
+}
+
+func (o StorageProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageProfileResponse] {
+	return pulumix.Output[StorageProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Size of file share
@@ -278,6 +315,12 @@ func (i TerminalSettingsArgs) ToTerminalSettingsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TerminalSettingsOutput)
 }
 
+func (i TerminalSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[TerminalSettings] {
+	return pulumix.Output[TerminalSettings]{
+		OutputState: i.ToTerminalSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings for terminal appearance.
 type TerminalSettingsOutput struct{ *pulumi.OutputState }
 
@@ -291,6 +334,12 @@ func (o TerminalSettingsOutput) ToTerminalSettingsOutput() TerminalSettingsOutpu
 
 func (o TerminalSettingsOutput) ToTerminalSettingsOutputWithContext(ctx context.Context) TerminalSettingsOutput {
 	return o
+}
+
+func (o TerminalSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[TerminalSettings] {
+	return pulumix.Output[TerminalSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Size of terminal font.
@@ -324,6 +373,12 @@ func (o TerminalSettingsResponseOutput) ToTerminalSettingsResponseOutput() Termi
 
 func (o TerminalSettingsResponseOutput) ToTerminalSettingsResponseOutputWithContext(ctx context.Context) TerminalSettingsResponseOutput {
 	return o
+}
+
+func (o TerminalSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TerminalSettingsResponse] {
+	return pulumix.Output[TerminalSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Size of terminal font.
@@ -387,6 +442,12 @@ func (i UserPropertiesArgs) ToUserPropertiesOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(UserPropertiesOutput)
 }
 
+func (i UserPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[UserProperties] {
+	return pulumix.Output[UserProperties]{
+		OutputState: i.ToUserPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The cloud shell user settings properties.
 type UserPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -400,6 +461,12 @@ func (o UserPropertiesOutput) ToUserPropertiesOutput() UserPropertiesOutput {
 
 func (o UserPropertiesOutput) ToUserPropertiesOutputWithContext(ctx context.Context) UserPropertiesOutput {
 	return o
+}
+
+func (o UserPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[UserProperties] {
+	return pulumix.Output[UserProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The preferred location of the cloud shell.
@@ -454,6 +521,12 @@ func (o UserPropertiesResponseOutput) ToUserPropertiesResponseOutput() UserPrope
 
 func (o UserPropertiesResponseOutput) ToUserPropertiesResponseOutputWithContext(ctx context.Context) UserPropertiesResponseOutput {
 	return o
+}
+
+func (o UserPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserPropertiesResponse] {
+	return pulumix.Output[UserPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The preferred location of the cloud shell.

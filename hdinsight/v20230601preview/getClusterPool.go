@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a cluster pool.
@@ -102,6 +103,12 @@ func (o LookupClusterPoolResultOutput) ToLookupClusterPoolResultOutput() LookupC
 
 func (o LookupClusterPoolResultOutput) ToLookupClusterPoolResultOutputWithContext(ctx context.Context) LookupClusterPoolResultOutput {
 	return o
+}
+
+func (o LookupClusterPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClusterPoolResult] {
+	return pulumix.Output[LookupClusterPoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Properties of underlying AKS cluster.

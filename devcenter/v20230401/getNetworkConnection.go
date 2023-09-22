@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a network connection resource
@@ -100,6 +101,12 @@ func (o LookupNetworkConnectionResultOutput) ToLookupNetworkConnectionResultOutp
 
 func (o LookupNetworkConnectionResultOutput) ToLookupNetworkConnectionResultOutputWithContext(ctx context.Context) LookupNetworkConnectionResultOutput {
 	return o
+}
+
+func (o LookupNetworkConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkConnectionResult] {
+	return pulumix.Output[LookupNetworkConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AAD Join type.

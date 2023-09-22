@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Base class for backup ProtectionIntent.
@@ -210,6 +211,12 @@ func (i *ProtectionIntent) ToProtectionIntentOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectionIntentOutput)
 }
 
+func (i *ProtectionIntent) ToOutput(ctx context.Context) pulumix.Output[*ProtectionIntent] {
+	return pulumix.Output[*ProtectionIntent]{
+		OutputState: i.ToProtectionIntentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProtectionIntentOutput struct{ *pulumi.OutputState }
 
 func (ProtectionIntentOutput) ElementType() reflect.Type {
@@ -222,6 +229,12 @@ func (o ProtectionIntentOutput) ToProtectionIntentOutput() ProtectionIntentOutpu
 
 func (o ProtectionIntentOutput) ToProtectionIntentOutputWithContext(ctx context.Context) ProtectionIntentOutput {
 	return o
+}
+
+func (o ProtectionIntentOutput) ToOutput(ctx context.Context) pulumix.Output[*ProtectionIntent] {
+	return pulumix.Output[*ProtectionIntent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional ETag.

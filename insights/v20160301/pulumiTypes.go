@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -120,6 +121,12 @@ func (i RetentionPolicyArgs) ToRetentionPolicyOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyOutput)
 }
 
+func (i RetentionPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicy] {
+	return pulumix.Output[RetentionPolicy]{
+		OutputState: i.ToRetentionPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the retention policy for the log.
 type RetentionPolicyOutput struct{ *pulumi.OutputState }
 
@@ -133,6 +140,12 @@ func (o RetentionPolicyOutput) ToRetentionPolicyOutput() RetentionPolicyOutput {
 
 func (o RetentionPolicyOutput) ToRetentionPolicyOutputWithContext(ctx context.Context) RetentionPolicyOutput {
 	return o
+}
+
+func (o RetentionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicy] {
+	return pulumix.Output[RetentionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the number of days for the retention in days. A value of 0 will retain the events indefinitely.
@@ -166,6 +179,12 @@ func (o RetentionPolicyResponseOutput) ToRetentionPolicyResponseOutput() Retenti
 
 func (o RetentionPolicyResponseOutput) ToRetentionPolicyResponseOutputWithContext(ctx context.Context) RetentionPolicyResponseOutput {
 	return o
+}
+
+func (o RetentionPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicyResponse] {
+	return pulumix.Output[RetentionPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the number of days for the retention in days. A value of 0 will retain the events indefinitely.

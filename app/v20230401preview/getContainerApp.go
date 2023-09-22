@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Container App.
@@ -125,6 +126,12 @@ func (o LookupContainerAppResultOutput) ToLookupContainerAppResultOutput() Looku
 
 func (o LookupContainerAppResultOutput) ToLookupContainerAppResultOutputWithContext(ctx context.Context) LookupContainerAppResultOutput {
 	return o
+}
+
+func (o LookupContainerAppResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContainerAppResult] {
+	return pulumix.Output[LookupContainerAppResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Non versioned Container App configuration properties.

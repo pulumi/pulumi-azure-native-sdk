@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Storage resource payload.
@@ -157,6 +158,12 @@ func (i *Storage) ToStorageOutputWithContext(ctx context.Context) StorageOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(StorageOutput)
 }
 
+func (i *Storage) ToOutput(ctx context.Context) pulumix.Output[*Storage] {
+	return pulumix.Output[*Storage]{
+		OutputState: i.ToStorageOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StorageOutput struct{ *pulumi.OutputState }
 
 func (StorageOutput) ElementType() reflect.Type {
@@ -169,6 +176,12 @@ func (o StorageOutput) ToStorageOutput() StorageOutput {
 
 func (o StorageOutput) ToStorageOutputWithContext(ctx context.Context) StorageOutput {
 	return o
+}
+
+func (o StorageOutput) ToOutput(ctx context.Context) pulumix.Output[*Storage] {
+	return pulumix.Output[*Storage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource.

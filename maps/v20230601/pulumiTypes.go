@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i CorsRuleArgs) ToCorsRuleOutputWithContext(ctx context.Context) CorsRuleO
 	return pulumi.ToOutputWithContext(ctx, i).(CorsRuleOutput)
 }
 
+func (i CorsRuleArgs) ToOutput(ctx context.Context) pulumix.Output[CorsRule] {
+	return pulumix.Output[CorsRule]{
+		OutputState: i.ToCorsRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CorsRuleArrayInput is an input type that accepts CorsRuleArray and CorsRuleArrayOutput values.
 // You can construct a concrete instance of `CorsRuleArrayInput` via:
 //
@@ -73,6 +80,12 @@ func (i CorsRuleArray) ToCorsRuleArrayOutputWithContext(ctx context.Context) Cor
 	return pulumi.ToOutputWithContext(ctx, i).(CorsRuleArrayOutput)
 }
 
+func (i CorsRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]CorsRule] {
+	return pulumix.Output[[]CorsRule]{
+		OutputState: i.ToCorsRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies a CORS rule for the Map Account.
 type CorsRuleOutput struct{ *pulumi.OutputState }
 
@@ -86,6 +99,12 @@ func (o CorsRuleOutput) ToCorsRuleOutput() CorsRuleOutput {
 
 func (o CorsRuleOutput) ToCorsRuleOutputWithContext(ctx context.Context) CorsRuleOutput {
 	return o
+}
+
+func (o CorsRuleOutput) ToOutput(ctx context.Context) pulumix.Output[CorsRule] {
+	return pulumix.Output[CorsRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
@@ -105,6 +124,12 @@ func (o CorsRuleArrayOutput) ToCorsRuleArrayOutput() CorsRuleArrayOutput {
 
 func (o CorsRuleArrayOutput) ToCorsRuleArrayOutputWithContext(ctx context.Context) CorsRuleArrayOutput {
 	return o
+}
+
+func (o CorsRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CorsRule] {
+	return pulumix.Output[[]CorsRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CorsRuleArrayOutput) Index(i pulumi.IntInput) CorsRuleOutput {
@@ -134,6 +159,12 @@ func (o CorsRuleResponseOutput) ToCorsRuleResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o CorsRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CorsRuleResponse] {
+	return pulumix.Output[CorsRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
 func (o CorsRuleResponseOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsRuleResponse) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
@@ -151,6 +182,12 @@ func (o CorsRuleResponseArrayOutput) ToCorsRuleResponseArrayOutput() CorsRuleRes
 
 func (o CorsRuleResponseArrayOutput) ToCorsRuleResponseArrayOutputWithContext(ctx context.Context) CorsRuleResponseArrayOutput {
 	return o
+}
+
+func (o CorsRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CorsRuleResponse] {
+	return pulumix.Output[[]CorsRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CorsRuleResponseArrayOutput) Index(i pulumi.IntInput) CorsRuleResponseOutput {
@@ -194,6 +231,12 @@ func (i CorsRulesArgs) ToCorsRulesOutputWithContext(ctx context.Context) CorsRul
 	return pulumi.ToOutputWithContext(ctx, i).(CorsRulesOutput)
 }
 
+func (i CorsRulesArgs) ToOutput(ctx context.Context) pulumix.Output[CorsRules] {
+	return pulumix.Output[CorsRules]{
+		OutputState: i.ToCorsRulesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CorsRulesArgs) ToCorsRulesPtrOutput() CorsRulesPtrOutput {
 	return i.ToCorsRulesPtrOutputWithContext(context.Background())
 }
@@ -235,6 +278,12 @@ func (i *corsRulesPtrType) ToCorsRulesPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(CorsRulesPtrOutput)
 }
 
+func (i *corsRulesPtrType) ToOutput(ctx context.Context) pulumix.Output[*CorsRules] {
+	return pulumix.Output[*CorsRules]{
+		OutputState: i.ToCorsRulesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Sets the CORS rules. You can include up to five CorsRule elements in the request.
 type CorsRulesOutput struct{ *pulumi.OutputState }
 
@@ -260,6 +309,12 @@ func (o CorsRulesOutput) ToCorsRulesPtrOutputWithContext(ctx context.Context) Co
 	}).(CorsRulesPtrOutput)
 }
 
+func (o CorsRulesOutput) ToOutput(ctx context.Context) pulumix.Output[CorsRules] {
+	return pulumix.Output[CorsRules]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of CORS rules. You can include up to five CorsRule elements in the request.
 func (o CorsRulesOutput) CorsRules() CorsRuleArrayOutput {
 	return o.ApplyT(func(v CorsRules) []CorsRule { return v.CorsRules }).(CorsRuleArrayOutput)
@@ -277,6 +332,12 @@ func (o CorsRulesPtrOutput) ToCorsRulesPtrOutput() CorsRulesPtrOutput {
 
 func (o CorsRulesPtrOutput) ToCorsRulesPtrOutputWithContext(ctx context.Context) CorsRulesPtrOutput {
 	return o
+}
+
+func (o CorsRulesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CorsRules] {
+	return pulumix.Output[*CorsRules]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CorsRulesPtrOutput) Elem() CorsRulesOutput {
@@ -320,6 +381,12 @@ func (o CorsRulesResponseOutput) ToCorsRulesResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o CorsRulesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CorsRulesResponse] {
+	return pulumix.Output[CorsRulesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of CORS rules. You can include up to five CorsRule elements in the request.
 func (o CorsRulesResponseOutput) CorsRules() CorsRuleResponseArrayOutput {
 	return o.ApplyT(func(v CorsRulesResponse) []CorsRuleResponse { return v.CorsRules }).(CorsRuleResponseArrayOutput)
@@ -337,6 +404,12 @@ func (o CorsRulesResponsePtrOutput) ToCorsRulesResponsePtrOutput() CorsRulesResp
 
 func (o CorsRulesResponsePtrOutput) ToCorsRulesResponsePtrOutputWithContext(ctx context.Context) CorsRulesResponsePtrOutput {
 	return o
+}
+
+func (o CorsRulesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CorsRulesResponse] {
+	return pulumix.Output[*CorsRulesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CorsRulesResponsePtrOutput) Elem() CorsRulesResponseOutput {
@@ -394,6 +467,12 @@ func (i CreatorPropertiesArgs) ToCreatorPropertiesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CreatorPropertiesOutput)
 }
 
+func (i CreatorPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[CreatorProperties] {
+	return pulumix.Output[CreatorProperties]{
+		OutputState: i.ToCreatorPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Creator resource properties
 type CreatorPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -407,6 +486,12 @@ func (o CreatorPropertiesOutput) ToCreatorPropertiesOutput() CreatorPropertiesOu
 
 func (o CreatorPropertiesOutput) ToCreatorPropertiesOutputWithContext(ctx context.Context) CreatorPropertiesOutput {
 	return o
+}
+
+func (o CreatorPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[CreatorProperties] {
+	return pulumix.Output[CreatorProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The storage units to be allocated. Integer values from 1 to 100, inclusive.
@@ -435,6 +520,12 @@ func (o CreatorPropertiesResponseOutput) ToCreatorPropertiesResponseOutput() Cre
 
 func (o CreatorPropertiesResponseOutput) ToCreatorPropertiesResponseOutputWithContext(ctx context.Context) CreatorPropertiesResponseOutput {
 	return o
+}
+
+func (o CreatorPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CreatorPropertiesResponse] {
+	return pulumix.Output[CreatorPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled
@@ -486,6 +577,12 @@ func (i CustomerManagedKeyEncryptionArgs) ToCustomerManagedKeyEncryptionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerManagedKeyEncryptionOutput)
 }
 
+func (i CustomerManagedKeyEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[CustomerManagedKeyEncryption] {
+	return pulumix.Output[CustomerManagedKeyEncryption]{
+		OutputState: i.ToCustomerManagedKeyEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CustomerManagedKeyEncryptionArgs) ToCustomerManagedKeyEncryptionPtrOutput() CustomerManagedKeyEncryptionPtrOutput {
 	return i.ToCustomerManagedKeyEncryptionPtrOutputWithContext(context.Background())
 }
@@ -527,6 +624,12 @@ func (i *customerManagedKeyEncryptionPtrType) ToCustomerManagedKeyEncryptionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerManagedKeyEncryptionPtrOutput)
 }
 
+func (i *customerManagedKeyEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomerManagedKeyEncryption] {
+	return pulumix.Output[*CustomerManagedKeyEncryption]{
+		OutputState: i.ToCustomerManagedKeyEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // All Customer-managed key encryption properties for the resource.
 type CustomerManagedKeyEncryptionOutput struct{ *pulumi.OutputState }
 
@@ -550,6 +653,12 @@ func (o CustomerManagedKeyEncryptionOutput) ToCustomerManagedKeyEncryptionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomerManagedKeyEncryption) *CustomerManagedKeyEncryption {
 		return &v
 	}).(CustomerManagedKeyEncryptionPtrOutput)
+}
+
+func (o CustomerManagedKeyEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[CustomerManagedKeyEncryption] {
+	return pulumix.Output[CustomerManagedKeyEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
@@ -576,6 +685,12 @@ func (o CustomerManagedKeyEncryptionPtrOutput) ToCustomerManagedKeyEncryptionPtr
 
 func (o CustomerManagedKeyEncryptionPtrOutput) ToCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionPtrOutput {
 	return o
+}
+
+func (o CustomerManagedKeyEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomerManagedKeyEncryption] {
+	return pulumix.Output[*CustomerManagedKeyEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomerManagedKeyEncryptionPtrOutput) Elem() CustomerManagedKeyEncryptionOutput {
@@ -651,6 +766,12 @@ func (i CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs) ToCustomerMana
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput)
 }
 
+func (i CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity] {
+	return pulumix.Output[CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity]{
+		OutputState: i.ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput() CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput {
 	return i.ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutputWithContext(context.Background())
 }
@@ -692,6 +813,12 @@ func (i *customerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrType) ToCustomer
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput)
 }
 
+func (i *customerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity] {
+	return pulumix.Output[*CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity]{
+		OutputState: i.ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
 type CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput struct{ *pulumi.OutputState }
 
@@ -715,6 +842,12 @@ func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput) ToCustomerMa
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity) *CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
 		return &v
 	}).(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput)
+}
+
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity] {
+	return pulumix.Output[CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
@@ -748,6 +881,12 @@ func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput) ToCustome
 
 func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput {
 	return o
+}
+
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity] {
+	return pulumix.Output[*CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput) Elem() CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput {
@@ -813,6 +952,12 @@ func (o CustomerManagedKeyEncryptionResponseOutput) ToCustomerManagedKeyEncrypti
 	return o
 }
 
+func (o CustomerManagedKeyEncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomerManagedKeyEncryptionResponse] {
+	return pulumix.Output[CustomerManagedKeyEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
 func (o CustomerManagedKeyEncryptionResponseOutput) KeyEncryptionKeyIdentity() CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput {
 	return o.ApplyT(func(v CustomerManagedKeyEncryptionResponse) *CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity {
@@ -837,6 +982,12 @@ func (o CustomerManagedKeyEncryptionResponsePtrOutput) ToCustomerManagedKeyEncry
 
 func (o CustomerManagedKeyEncryptionResponsePtrOutput) ToCustomerManagedKeyEncryptionResponsePtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionResponsePtrOutput {
 	return o
+}
+
+func (o CustomerManagedKeyEncryptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomerManagedKeyEncryptionResponse] {
+	return pulumix.Output[*CustomerManagedKeyEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomerManagedKeyEncryptionResponsePtrOutput) Elem() CustomerManagedKeyEncryptionResponseOutput {
@@ -894,6 +1045,12 @@ func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput) ToCu
 	return o
 }
 
+func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity] {
+	return pulumix.Output[CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
 func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput) DelegatedIdentityClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity) *string {
@@ -925,6 +1082,12 @@ func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput) T
 
 func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput) ToCustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput {
 	return o
+}
+
+func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity] {
+	return pulumix.Output[*CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput) Elem() CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput {
@@ -1006,6 +1169,12 @@ func (i EncryptionArgs) ToEncryptionOutputWithContext(ctx context.Context) Encry
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionOutput)
 }
 
+func (i EncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[Encryption] {
+	return pulumix.Output[Encryption]{
+		OutputState: i.ToEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EncryptionArgs) ToEncryptionPtrOutput() EncryptionPtrOutput {
 	return i.ToEncryptionPtrOutputWithContext(context.Background())
 }
@@ -1047,6 +1216,12 @@ func (i *encryptionPtrType) ToEncryptionPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPtrOutput)
 }
 
+func (i *encryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*Encryption] {
+	return pulumix.Output[*Encryption]{
+		OutputState: i.ToEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled.
 type EncryptionOutput struct{ *pulumi.OutputState }
 
@@ -1072,6 +1247,12 @@ func (o EncryptionOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) 
 	}).(EncryptionPtrOutput)
 }
 
+func (o EncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[Encryption] {
+	return pulumix.Output[Encryption]{
+		OutputState: o.OutputState,
+	}
+}
+
 // All Customer-managed key encryption properties for the resource.
 func (o EncryptionOutput) CustomerManagedKeyEncryption() CustomerManagedKeyEncryptionPtrOutput {
 	return o.ApplyT(func(v Encryption) *CustomerManagedKeyEncryption { return v.CustomerManagedKeyEncryption }).(CustomerManagedKeyEncryptionPtrOutput)
@@ -1094,6 +1275,12 @@ func (o EncryptionPtrOutput) ToEncryptionPtrOutput() EncryptionPtrOutput {
 
 func (o EncryptionPtrOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
 	return o
+}
+
+func (o EncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Encryption] {
+	return pulumix.Output[*Encryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionPtrOutput) Elem() EncryptionOutput {
@@ -1149,6 +1336,12 @@ func (o EncryptionResponseOutput) ToEncryptionResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o EncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionResponse] {
+	return pulumix.Output[EncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // All Customer-managed key encryption properties for the resource.
 func (o EncryptionResponseOutput) CustomerManagedKeyEncryption() CustomerManagedKeyEncryptionResponsePtrOutput {
 	return o.ApplyT(func(v EncryptionResponse) *CustomerManagedKeyEncryptionResponse {
@@ -1173,6 +1366,12 @@ func (o EncryptionResponsePtrOutput) ToEncryptionResponsePtrOutput() EncryptionR
 
 func (o EncryptionResponsePtrOutput) ToEncryptionResponsePtrOutputWithContext(ctx context.Context) EncryptionResponsePtrOutput {
 	return o
+}
+
+func (o EncryptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionResponse] {
+	return pulumix.Output[*EncryptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionResponsePtrOutput) Elem() EncryptionResponseOutput {
@@ -1244,6 +1443,12 @@ func (i LinkedResourceArgs) ToLinkedResourceOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedResourceOutput)
 }
 
+func (i LinkedResourceArgs) ToOutput(ctx context.Context) pulumix.Output[LinkedResource] {
+	return pulumix.Output[LinkedResource]{
+		OutputState: i.ToLinkedResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LinkedResourceArrayInput is an input type that accepts LinkedResourceArray and LinkedResourceArrayOutput values.
 // You can construct a concrete instance of `LinkedResourceArrayInput` via:
 //
@@ -1269,6 +1474,12 @@ func (i LinkedResourceArray) ToLinkedResourceArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedResourceArrayOutput)
 }
 
+func (i LinkedResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]LinkedResource] {
+	return pulumix.Output[[]LinkedResource]{
+		OutputState: i.ToLinkedResourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Linked resource is reference to a resource deployed in an Azure subscription, add the linked resource `uniqueName` value as an optional parameter for operations on Azure Maps Geospatial REST APIs.
 type LinkedResourceOutput struct{ *pulumi.OutputState }
 
@@ -1282,6 +1493,12 @@ func (o LinkedResourceOutput) ToLinkedResourceOutput() LinkedResourceOutput {
 
 func (o LinkedResourceOutput) ToLinkedResourceOutputWithContext(ctx context.Context) LinkedResourceOutput {
 	return o
+}
+
+func (o LinkedResourceOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedResource] {
+	return pulumix.Output[LinkedResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}'.
@@ -1306,6 +1523,12 @@ func (o LinkedResourceArrayOutput) ToLinkedResourceArrayOutput() LinkedResourceA
 
 func (o LinkedResourceArrayOutput) ToLinkedResourceArrayOutputWithContext(ctx context.Context) LinkedResourceArrayOutput {
 	return o
+}
+
+func (o LinkedResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LinkedResource] {
+	return pulumix.Output[[]LinkedResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LinkedResourceArrayOutput) Index(i pulumi.IntInput) LinkedResourceOutput {
@@ -1337,6 +1560,12 @@ func (o LinkedResourceResponseOutput) ToLinkedResourceResponseOutputWithContext(
 	return o
 }
 
+func (o LinkedResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedResourceResponse] {
+	return pulumix.Output[LinkedResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}'.
 func (o LinkedResourceResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LinkedResourceResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1359,6 +1588,12 @@ func (o LinkedResourceResponseArrayOutput) ToLinkedResourceResponseArrayOutput()
 
 func (o LinkedResourceResponseArrayOutput) ToLinkedResourceResponseArrayOutputWithContext(ctx context.Context) LinkedResourceResponseArrayOutput {
 	return o
+}
+
+func (o LinkedResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LinkedResourceResponse] {
+	return pulumix.Output[[]LinkedResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LinkedResourceResponseArrayOutput) Index(i pulumi.IntInput) LinkedResourceResponseOutput {
@@ -1406,6 +1641,12 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
+func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
 	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -1447,6 +1688,12 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
+func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -1472,6 +1719,12 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
+func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -1494,6 +1747,12 @@ func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() Man
 
 func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
@@ -1553,6 +1812,12 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
+func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
+	return pulumix.Output[ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1587,6 +1852,12 @@ func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityRespons
 
 func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
+	return pulumix.Output[*ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
@@ -1710,6 +1981,12 @@ func (i MapsAccountPropertiesArgs) ToMapsAccountPropertiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MapsAccountPropertiesOutput)
 }
 
+func (i MapsAccountPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MapsAccountProperties] {
+	return pulumix.Output[MapsAccountProperties]{
+		OutputState: i.ToMapsAccountPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MapsAccountPropertiesArgs) ToMapsAccountPropertiesPtrOutput() MapsAccountPropertiesPtrOutput {
 	return i.ToMapsAccountPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1751,6 +2028,12 @@ func (i *mapsAccountPropertiesPtrType) ToMapsAccountPropertiesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(MapsAccountPropertiesPtrOutput)
 }
 
+func (i *mapsAccountPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MapsAccountProperties] {
+	return pulumix.Output[*MapsAccountProperties]{
+		OutputState: i.ToMapsAccountPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Additional Map account properties
 type MapsAccountPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1774,6 +2057,12 @@ func (o MapsAccountPropertiesOutput) ToMapsAccountPropertiesPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MapsAccountProperties) *MapsAccountProperties {
 		return &v
 	}).(MapsAccountPropertiesPtrOutput)
+}
+
+func (o MapsAccountPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MapsAccountProperties] {
+	return pulumix.Output[MapsAccountProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
@@ -1808,6 +2097,12 @@ func (o MapsAccountPropertiesPtrOutput) ToMapsAccountPropertiesPtrOutput() MapsA
 
 func (o MapsAccountPropertiesPtrOutput) ToMapsAccountPropertiesPtrOutputWithContext(ctx context.Context) MapsAccountPropertiesPtrOutput {
 	return o
+}
+
+func (o MapsAccountPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MapsAccountProperties] {
+	return pulumix.Output[*MapsAccountProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MapsAccountPropertiesPtrOutput) Elem() MapsAccountPropertiesOutput {
@@ -1904,6 +2199,12 @@ func (o MapsAccountPropertiesResponseOutput) ToMapsAccountPropertiesResponseOutp
 	return o
 }
 
+func (o MapsAccountPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapsAccountPropertiesResponse] {
+	return pulumix.Output[MapsAccountPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
 func (o MapsAccountPropertiesResponseOutput) Cors() CorsRulesResponsePtrOutput {
 	return o.ApplyT(func(v MapsAccountPropertiesResponse) *CorsRulesResponse { return v.Cors }).(CorsRulesResponsePtrOutput)
@@ -1969,6 +2270,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The SKU of the Maps Account.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -1982,6 +2289,12 @@ func (o SkuOutput) ToSkuOutput() SkuOutput {
 
 func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
+}
+
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the SKU, in standard format (such as S0).
@@ -2010,6 +2323,12 @@ func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
 
 func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
 	return o
+}
+
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the SKU, in standard format (such as S0).
@@ -2051,6 +2370,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -2106,6 +2431,12 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
+func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
+	return pulumix.Output[UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -2128,6 +2459,12 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
+	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {

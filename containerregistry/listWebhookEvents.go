@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists recent events for the specified webhook.
@@ -79,6 +80,12 @@ func (o ListWebhookEventsResultOutput) ToListWebhookEventsResultOutput() ListWeb
 
 func (o ListWebhookEventsResultOutput) ToListWebhookEventsResultOutputWithContext(ctx context.Context) ListWebhookEventsResultOutput {
 	return o
+}
+
+func (o ListWebhookEventsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebhookEventsResult] {
+	return pulumix.Output[ListWebhookEventsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URI that can be used to request the next list of events.

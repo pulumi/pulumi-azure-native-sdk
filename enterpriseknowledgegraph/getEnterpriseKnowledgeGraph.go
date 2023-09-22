@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a EnterpriseKnowledgeGraph service specified by the parameters.
@@ -85,6 +86,12 @@ func (o LookupEnterpriseKnowledgeGraphResultOutput) ToLookupEnterpriseKnowledgeG
 
 func (o LookupEnterpriseKnowledgeGraphResultOutput) ToLookupEnterpriseKnowledgeGraphResultOutputWithContext(ctx context.Context) LookupEnterpriseKnowledgeGraphResultOutput {
 	return o
+}
+
+func (o LookupEnterpriseKnowledgeGraphResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEnterpriseKnowledgeGraphResult] {
+	return pulumix.Output[LookupEnterpriseKnowledgeGraphResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the resource ID.

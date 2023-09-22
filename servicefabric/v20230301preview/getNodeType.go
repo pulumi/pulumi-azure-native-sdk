@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Service Fabric node type of a given managed cluster.
@@ -193,6 +194,12 @@ func (o LookupNodeTypeResultOutput) ToLookupNodeTypeResultOutput() LookupNodeTyp
 
 func (o LookupNodeTypeResultOutput) ToLookupNodeTypeResultOutputWithContext(ctx context.Context) LookupNodeTypeResultOutput {
 	return o
+}
+
+func (o LookupNodeTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNodeTypeResult] {
+	return pulumix.Output[LookupNodeTypeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional managed data disks.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The assembly definition.
@@ -143,6 +144,12 @@ func (i *IntegrationAccountAssembly) ToIntegrationAccountAssemblyOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountAssemblyOutput)
 }
 
+func (i *IntegrationAccountAssembly) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountAssembly] {
+	return pulumix.Output[*IntegrationAccountAssembly]{
+		OutputState: i.ToIntegrationAccountAssemblyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationAccountAssemblyOutput struct{ *pulumi.OutputState }
 
 func (IntegrationAccountAssemblyOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o IntegrationAccountAssemblyOutput) ToIntegrationAccountAssemblyOutput() I
 
 func (o IntegrationAccountAssemblyOutput) ToIntegrationAccountAssemblyOutputWithContext(ctx context.Context) IntegrationAccountAssemblyOutput {
 	return o
+}
+
+func (o IntegrationAccountAssemblyOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountAssembly] {
+	return pulumix.Output[*IntegrationAccountAssembly]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource location.

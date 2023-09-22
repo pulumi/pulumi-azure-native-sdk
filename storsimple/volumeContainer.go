@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The volume container.
@@ -164,6 +165,12 @@ func (i *VolumeContainer) ToVolumeContainerOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeContainerOutput)
 }
 
+func (i *VolumeContainer) ToOutput(ctx context.Context) pulumix.Output[*VolumeContainer] {
+	return pulumix.Output[*VolumeContainer]{
+		OutputState: i.ToVolumeContainerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VolumeContainerOutput struct{ *pulumi.OutputState }
 
 func (VolumeContainerOutput) ElementType() reflect.Type {
@@ -176,6 +183,12 @@ func (o VolumeContainerOutput) ToVolumeContainerOutput() VolumeContainerOutput {
 
 func (o VolumeContainerOutput) ToVolumeContainerOutputWithContext(ctx context.Context) VolumeContainerOutput {
 	return o
+}
+
+func (o VolumeContainerOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeContainer] {
+	return pulumix.Output[*VolumeContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bandwidth-rate set on the volume container.

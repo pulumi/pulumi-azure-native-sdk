@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response for iSCSI target requests.
@@ -140,6 +141,12 @@ func (i *IscsiTarget) ToIscsiTargetOutputWithContext(ctx context.Context) IscsiT
 	return pulumi.ToOutputWithContext(ctx, i).(IscsiTargetOutput)
 }
 
+func (i *IscsiTarget) ToOutput(ctx context.Context) pulumix.Output[*IscsiTarget] {
+	return pulumix.Output[*IscsiTarget]{
+		OutputState: i.ToIscsiTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IscsiTargetOutput struct{ *pulumi.OutputState }
 
 func (IscsiTargetOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o IscsiTargetOutput) ToIscsiTargetOutput() IscsiTargetOutput {
 
 func (o IscsiTargetOutput) ToIscsiTargetOutputWithContext(ctx context.Context) IscsiTargetOutput {
 	return o
+}
+
+func (o IscsiTargetOutput) ToOutput(ctx context.Context) pulumix.Output[*IscsiTarget] {
+	return pulumix.Output[*IscsiTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

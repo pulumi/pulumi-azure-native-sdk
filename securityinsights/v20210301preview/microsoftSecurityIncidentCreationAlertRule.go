@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents MicrosoftSecurityIncidentCreation rule.
@@ -273,6 +274,12 @@ func (i *MicrosoftSecurityIncidentCreationAlertRule) ToMicrosoftSecurityIncident
 	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftSecurityIncidentCreationAlertRuleOutput)
 }
 
+func (i *MicrosoftSecurityIncidentCreationAlertRule) ToOutput(ctx context.Context) pulumix.Output[*MicrosoftSecurityIncidentCreationAlertRule] {
+	return pulumix.Output[*MicrosoftSecurityIncidentCreationAlertRule]{
+		OutputState: i.ToMicrosoftSecurityIncidentCreationAlertRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MicrosoftSecurityIncidentCreationAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (MicrosoftSecurityIncidentCreationAlertRuleOutput) ElementType() reflect.Type {
@@ -285,6 +292,12 @@ func (o MicrosoftSecurityIncidentCreationAlertRuleOutput) ToMicrosoftSecurityInc
 
 func (o MicrosoftSecurityIncidentCreationAlertRuleOutput) ToMicrosoftSecurityIncidentCreationAlertRuleOutputWithContext(ctx context.Context) MicrosoftSecurityIncidentCreationAlertRuleOutput {
 	return o
+}
+
+func (o MicrosoftSecurityIncidentCreationAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*MicrosoftSecurityIncidentCreationAlertRule] {
+	return pulumix.Output[*MicrosoftSecurityIncidentCreationAlertRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Name of the alert rule template used to create this rule.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Trigger details.
@@ -199,6 +200,12 @@ func (i *PeriodicTimerEventTrigger) ToPeriodicTimerEventTriggerOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PeriodicTimerEventTriggerOutput)
 }
 
+func (i *PeriodicTimerEventTrigger) ToOutput(ctx context.Context) pulumix.Output[*PeriodicTimerEventTrigger] {
+	return pulumix.Output[*PeriodicTimerEventTrigger]{
+		OutputState: i.ToPeriodicTimerEventTriggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PeriodicTimerEventTriggerOutput struct{ *pulumi.OutputState }
 
 func (PeriodicTimerEventTriggerOutput) ElementType() reflect.Type {
@@ -211,6 +218,12 @@ func (o PeriodicTimerEventTriggerOutput) ToPeriodicTimerEventTriggerOutput() Per
 
 func (o PeriodicTimerEventTriggerOutput) ToPeriodicTimerEventTriggerOutputWithContext(ctx context.Context) PeriodicTimerEventTriggerOutput {
 	return o
+}
+
+func (o PeriodicTimerEventTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[*PeriodicTimerEventTrigger] {
+	return pulumix.Output[*PeriodicTimerEventTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.

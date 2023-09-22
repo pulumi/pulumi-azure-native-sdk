@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of the Source Control Configuration.
@@ -129,6 +130,12 @@ func (o LookupSourceControlConfigurationResultOutput) ToLookupSourceControlConfi
 
 func (o LookupSourceControlConfigurationResultOutput) ToLookupSourceControlConfigurationResultOutputWithContext(ctx context.Context) LookupSourceControlConfigurationResultOutput {
 	return o
+}
+
+func (o LookupSourceControlConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSourceControlConfigurationResult] {
+	return pulumix.Output[LookupSourceControlConfigurationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Compliance Status of the Configuration

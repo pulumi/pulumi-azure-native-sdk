@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Microsoft Purview Information Protection data connector.
@@ -225,6 +226,12 @@ func (i *MicrosoftPurviewInformationProtectionDataConnector) ToMicrosoftPurviewI
 	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftPurviewInformationProtectionDataConnectorOutput)
 }
 
+func (i *MicrosoftPurviewInformationProtectionDataConnector) ToOutput(ctx context.Context) pulumix.Output[*MicrosoftPurviewInformationProtectionDataConnector] {
+	return pulumix.Output[*MicrosoftPurviewInformationProtectionDataConnector]{
+		OutputState: i.ToMicrosoftPurviewInformationProtectionDataConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MicrosoftPurviewInformationProtectionDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (MicrosoftPurviewInformationProtectionDataConnectorOutput) ElementType() reflect.Type {
@@ -237,6 +244,12 @@ func (o MicrosoftPurviewInformationProtectionDataConnectorOutput) ToMicrosoftPur
 
 func (o MicrosoftPurviewInformationProtectionDataConnectorOutput) ToMicrosoftPurviewInformationProtectionDataConnectorOutputWithContext(ctx context.Context) MicrosoftPurviewInformationProtectionDataConnectorOutput {
 	return o
+}
+
+func (o MicrosoftPurviewInformationProtectionDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*MicrosoftPurviewInformationProtectionDataConnector] {
+	return pulumix.Output[*MicrosoftPurviewInformationProtectionDataConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available data types for the connector.

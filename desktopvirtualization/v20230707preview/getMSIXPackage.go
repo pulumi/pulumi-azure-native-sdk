@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a msixpackage.
@@ -104,6 +105,12 @@ func (o LookupMSIXPackageResultOutput) ToLookupMSIXPackageResultOutput() LookupM
 
 func (o LookupMSIXPackageResultOutput) ToLookupMSIXPackageResultOutputWithContext(ctx context.Context) LookupMSIXPackageResultOutput {
 	return o
+}
+
+func (o LookupMSIXPackageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMSIXPackageResult] {
+	return pulumix.Output[LookupMSIXPackageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User friendly Name to be displayed in the portal.

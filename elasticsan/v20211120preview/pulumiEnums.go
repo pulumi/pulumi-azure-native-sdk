@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The action of virtual network rule.
@@ -77,6 +78,12 @@ func (o ActionOutput) ToActionPtrOutputWithContext(ctx context.Context) ActionPt
 	}).(ActionPtrOutput)
 }
 
+func (o ActionOutput) ToOutput(ctx context.Context) pulumix.Output[Action] {
+	return pulumix.Output[Action]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -110,6 +117,12 @@ func (o ActionPtrOutput) ToActionPtrOutput() ActionPtrOutput {
 
 func (o ActionPtrOutput) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
 	return o
+}
+
+func (o ActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Action] {
+	return pulumix.Output[*Action]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ActionPtrOutput) Elem() ActionOutput {
@@ -172,6 +185,12 @@ func (in *actionPtr) ToActionPtrOutput() ActionPtrOutput {
 
 func (in *actionPtr) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ActionPtrOutput)
+}
+
+func (in *actionPtr) ToOutput(ctx context.Context) pulumix.Output[*Action] {
+	return pulumix.Output[*Action]{
+		OutputState: in.ToActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of encryption
@@ -275,6 +294,12 @@ func (o VolumeCreateOptionOutput) ToVolumeCreateOptionPtrOutputWithContext(ctx c
 	}).(VolumeCreateOptionPtrOutput)
 }
 
+func (o VolumeCreateOptionOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeCreateOption] {
+	return pulumix.Output[VolumeCreateOption]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeCreateOptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -308,6 +333,12 @@ func (o VolumeCreateOptionPtrOutput) ToVolumeCreateOptionPtrOutput() VolumeCreat
 
 func (o VolumeCreateOptionPtrOutput) ToVolumeCreateOptionPtrOutputWithContext(ctx context.Context) VolumeCreateOptionPtrOutput {
 	return o
+}
+
+func (o VolumeCreateOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeCreateOption] {
+	return pulumix.Output[*VolumeCreateOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeCreateOptionPtrOutput) Elem() VolumeCreateOptionOutput {
@@ -370,6 +401,12 @@ func (in *volumeCreateOptionPtr) ToVolumeCreateOptionPtrOutput() VolumeCreateOpt
 
 func (in *volumeCreateOptionPtr) ToVolumeCreateOptionPtrOutputWithContext(ctx context.Context) VolumeCreateOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeCreateOptionPtrOutput)
+}
+
+func (in *volumeCreateOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeCreateOption] {
+	return pulumix.Output[*VolumeCreateOption]{
+		OutputState: in.ToVolumeCreateOptionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

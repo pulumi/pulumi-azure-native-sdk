@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the watcher identified by watcher name.
@@ -105,6 +106,12 @@ func (o LookupWatcherResultOutput) ToLookupWatcherResultOutput() LookupWatcherRe
 
 func (o LookupWatcherResultOutput) ToLookupWatcherResultOutputWithContext(ctx context.Context) LookupWatcherResultOutput {
 	return o
+}
+
+func (o LookupWatcherResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWatcherResult] {
+	return pulumix.Output[LookupWatcherResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the creation time.

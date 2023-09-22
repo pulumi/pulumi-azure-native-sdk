@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The description of the service.
@@ -151,6 +152,12 @@ func (i *PrivateLinkServicesForSCCPowershell) ToPrivateLinkServicesForSCCPowersh
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServicesForSCCPowershellOutput)
 }
 
+func (i *PrivateLinkServicesForSCCPowershell) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServicesForSCCPowershell] {
+	return pulumix.Output[*PrivateLinkServicesForSCCPowershell]{
+		OutputState: i.ToPrivateLinkServicesForSCCPowershellOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateLinkServicesForSCCPowershellOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkServicesForSCCPowershellOutput) ElementType() reflect.Type {
@@ -163,6 +170,12 @@ func (o PrivateLinkServicesForSCCPowershellOutput) ToPrivateLinkServicesForSCCPo
 
 func (o PrivateLinkServicesForSCCPowershellOutput) ToPrivateLinkServicesForSCCPowershellOutputWithContext(ctx context.Context) PrivateLinkServicesForSCCPowershellOutput {
 	return o
+}
+
+func (o PrivateLinkServicesForSCCPowershellOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServicesForSCCPowershell] {
+	return pulumix.Output[*PrivateLinkServicesForSCCPowershell]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

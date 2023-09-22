@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a ImportSite
@@ -90,6 +91,12 @@ func (o LookupImportSitesControllerResultOutput) ToLookupImportSitesControllerRe
 
 func (o LookupImportSitesControllerResultOutput) ToLookupImportSitesControllerResultOutputWithContext(ctx context.Context) LookupImportSitesControllerResultOutput {
 	return o
+}
+
+func (o LookupImportSitesControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupImportSitesControllerResult] {
+	return pulumix.Output[LookupImportSitesControllerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the ARM ID of migration hub solution for SDS.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -84,6 +85,12 @@ func (i AdditionalRegionArgs) ToAdditionalRegionOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalRegionOutput)
 }
 
+func (i AdditionalRegionArgs) ToOutput(ctx context.Context) pulumix.Output[AdditionalRegion] {
+	return pulumix.Output[AdditionalRegion]{
+		OutputState: i.ToAdditionalRegionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AdditionalRegionArrayInput is an input type that accepts AdditionalRegionArray and AdditionalRegionArrayOutput values.
 // You can construct a concrete instance of `AdditionalRegionArrayInput` via:
 //
@@ -109,6 +116,12 @@ func (i AdditionalRegionArray) ToAdditionalRegionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalRegionArrayOutput)
 }
 
+func (i AdditionalRegionArray) ToOutput(ctx context.Context) pulumix.Output[[]AdditionalRegion] {
+	return pulumix.Output[[]AdditionalRegion]{
+		OutputState: i.ToAdditionalRegionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Description of an additional API Management resource location.
 type AdditionalRegionOutput struct{ *pulumi.OutputState }
 
@@ -122,6 +135,12 @@ func (o AdditionalRegionOutput) ToAdditionalRegionOutput() AdditionalRegionOutpu
 
 func (o AdditionalRegionOutput) ToAdditionalRegionOutputWithContext(ctx context.Context) AdditionalRegionOutput {
 	return o
+}
+
+func (o AdditionalRegionOutput) ToOutput(ctx context.Context) pulumix.Output[AdditionalRegion] {
+	return pulumix.Output[AdditionalRegion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location name of the additional region among Azure Data center regions.
@@ -156,6 +175,12 @@ func (o AdditionalRegionArrayOutput) ToAdditionalRegionArrayOutput() AdditionalR
 
 func (o AdditionalRegionArrayOutput) ToAdditionalRegionArrayOutputWithContext(ctx context.Context) AdditionalRegionArrayOutput {
 	return o
+}
+
+func (o AdditionalRegionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AdditionalRegion] {
+	return pulumix.Output[[]AdditionalRegion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AdditionalRegionArrayOutput) Index(i pulumi.IntInput) AdditionalRegionOutput {
@@ -206,6 +231,12 @@ func (o AdditionalRegionResponseOutput) ToAdditionalRegionResponseOutputWithCont
 	return o
 }
 
+func (o AdditionalRegionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdditionalRegionResponse] {
+	return pulumix.Output[AdditionalRegionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The location name of the additional region among Azure Data center regions.
 func (o AdditionalRegionResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v AdditionalRegionResponse) string { return v.Location }).(pulumi.StringOutput)
@@ -243,6 +274,12 @@ func (o AdditionalRegionResponseArrayOutput) ToAdditionalRegionResponseArrayOutp
 
 func (o AdditionalRegionResponseArrayOutput) ToAdditionalRegionResponseArrayOutputWithContext(ctx context.Context) AdditionalRegionResponseArrayOutput {
 	return o
+}
+
+func (o AdditionalRegionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AdditionalRegionResponse] {
+	return pulumix.Output[[]AdditionalRegionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AdditionalRegionResponseArrayOutput) Index(i pulumi.IntInput) AdditionalRegionResponseOutput {
@@ -314,6 +351,12 @@ func (i ApiManagementServiceSkuPropertiesArgs) ToApiManagementServiceSkuProperti
 	return pulumi.ToOutputWithContext(ctx, i).(ApiManagementServiceSkuPropertiesOutput)
 }
 
+func (i ApiManagementServiceSkuPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ApiManagementServiceSkuProperties] {
+	return pulumix.Output[ApiManagementServiceSkuProperties]{
+		OutputState: i.ToApiManagementServiceSkuPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // API Management service resource SKU properties.
 type ApiManagementServiceSkuPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -327,6 +370,12 @@ func (o ApiManagementServiceSkuPropertiesOutput) ToApiManagementServiceSkuProper
 
 func (o ApiManagementServiceSkuPropertiesOutput) ToApiManagementServiceSkuPropertiesOutputWithContext(ctx context.Context) ApiManagementServiceSkuPropertiesOutput {
 	return o
+}
+
+func (o ApiManagementServiceSkuPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ApiManagementServiceSkuProperties] {
+	return pulumix.Output[ApiManagementServiceSkuProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Capacity of the SKU (number of deployed units of the SKU). The default value is 1.
@@ -373,6 +422,12 @@ func (o ApiManagementServiceSkuPropertiesResponseOutput) ToApiManagementServiceS
 
 func (o ApiManagementServiceSkuPropertiesResponseOutput) ToApiManagementServiceSkuPropertiesResponseOutputWithContext(ctx context.Context) ApiManagementServiceSkuPropertiesResponseOutput {
 	return o
+}
+
+func (o ApiManagementServiceSkuPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApiManagementServiceSkuPropertiesResponse] {
+	return pulumix.Output[ApiManagementServiceSkuPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Capacity of the SKU (number of deployed units of the SKU). The default value is 1.
@@ -428,6 +483,12 @@ func (i CertificateInformationArgs) ToCertificateInformationOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateInformationOutput)
 }
 
+func (i CertificateInformationArgs) ToOutput(ctx context.Context) pulumix.Output[CertificateInformation] {
+	return pulumix.Output[CertificateInformation]{
+		OutputState: i.ToCertificateInformationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SSL certificate information.
 type CertificateInformationOutput struct{ *pulumi.OutputState }
 
@@ -441,6 +502,12 @@ func (o CertificateInformationOutput) ToCertificateInformationOutput() Certifica
 
 func (o CertificateInformationOutput) ToCertificateInformationOutputWithContext(ctx context.Context) CertificateInformationOutput {
 	return o
+}
+
+func (o CertificateInformationOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateInformation] {
+	return pulumix.Output[CertificateInformation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
@@ -481,6 +548,12 @@ func (o CertificateInformationResponseOutput) ToCertificateInformationResponseOu
 
 func (o CertificateInformationResponseOutput) ToCertificateInformationResponseOutputWithContext(ctx context.Context) CertificateInformationResponseOutput {
 	return o
+}
+
+func (o CertificateInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateInformationResponse] {
+	return pulumix.Output[CertificateInformationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
@@ -541,6 +614,12 @@ func (i HostnameConfigurationArgs) ToHostnameConfigurationOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(HostnameConfigurationOutput)
 }
 
+func (i HostnameConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[HostnameConfiguration] {
+	return pulumix.Output[HostnameConfiguration]{
+		OutputState: i.ToHostnameConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HostnameConfigurationArrayInput is an input type that accepts HostnameConfigurationArray and HostnameConfigurationArrayOutput values.
 // You can construct a concrete instance of `HostnameConfigurationArrayInput` via:
 //
@@ -566,6 +645,12 @@ func (i HostnameConfigurationArray) ToHostnameConfigurationArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(HostnameConfigurationArrayOutput)
 }
 
+func (i HostnameConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]HostnameConfiguration] {
+	return pulumix.Output[[]HostnameConfiguration]{
+		OutputState: i.ToHostnameConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Custom hostname configuration.
 type HostnameConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -579,6 +664,12 @@ func (o HostnameConfigurationOutput) ToHostnameConfigurationOutput() HostnameCon
 
 func (o HostnameConfigurationOutput) ToHostnameConfigurationOutputWithContext(ctx context.Context) HostnameConfigurationOutput {
 	return o
+}
+
+func (o HostnameConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[HostnameConfiguration] {
+	return pulumix.Output[HostnameConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Certificate information.
@@ -608,6 +699,12 @@ func (o HostnameConfigurationArrayOutput) ToHostnameConfigurationArrayOutput() H
 
 func (o HostnameConfigurationArrayOutput) ToHostnameConfigurationArrayOutputWithContext(ctx context.Context) HostnameConfigurationArrayOutput {
 	return o
+}
+
+func (o HostnameConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HostnameConfiguration] {
+	return pulumix.Output[[]HostnameConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostnameConfigurationArrayOutput) Index(i pulumi.IntInput) HostnameConfigurationOutput {
@@ -641,6 +738,12 @@ func (o HostnameConfigurationResponseOutput) ToHostnameConfigurationResponseOutp
 	return o
 }
 
+func (o HostnameConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HostnameConfigurationResponse] {
+	return pulumix.Output[HostnameConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Certificate information.
 func (o HostnameConfigurationResponseOutput) Certificate() CertificateInformationResponseOutput {
 	return o.ApplyT(func(v HostnameConfigurationResponse) CertificateInformationResponse { return v.Certificate }).(CertificateInformationResponseOutput)
@@ -668,6 +771,12 @@ func (o HostnameConfigurationResponseArrayOutput) ToHostnameConfigurationRespons
 
 func (o HostnameConfigurationResponseArrayOutput) ToHostnameConfigurationResponseArrayOutputWithContext(ctx context.Context) HostnameConfigurationResponseArrayOutput {
 	return o
+}
+
+func (o HostnameConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HostnameConfigurationResponse] {
+	return pulumix.Output[[]HostnameConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostnameConfigurationResponseArrayOutput) Index(i pulumi.IntInput) HostnameConfigurationResponseOutput {
@@ -715,6 +824,12 @@ func (i VirtualNetworkConfigurationArgs) ToVirtualNetworkConfigurationOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkConfigurationOutput)
 }
 
+func (i VirtualNetworkConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkConfiguration] {
+	return pulumix.Output[VirtualNetworkConfiguration]{
+		OutputState: i.ToVirtualNetworkConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualNetworkConfigurationArgs) ToVirtualNetworkConfigurationPtrOutput() VirtualNetworkConfigurationPtrOutput {
 	return i.ToVirtualNetworkConfigurationPtrOutputWithContext(context.Background())
 }
@@ -756,6 +871,12 @@ func (i *virtualNetworkConfigurationPtrType) ToVirtualNetworkConfigurationPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkConfigurationPtrOutput)
 }
 
+func (i *virtualNetworkConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkConfiguration] {
+	return pulumix.Output[*VirtualNetworkConfiguration]{
+		OutputState: i.ToVirtualNetworkConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration of a virtual network to which API Management service is deployed.
 type VirtualNetworkConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -781,6 +902,12 @@ func (o VirtualNetworkConfigurationOutput) ToVirtualNetworkConfigurationPtrOutpu
 	}).(VirtualNetworkConfigurationPtrOutput)
 }
 
+func (o VirtualNetworkConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkConfiguration] {
+	return pulumix.Output[VirtualNetworkConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The location of the virtual network.
 func (o VirtualNetworkConfigurationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
@@ -803,6 +930,12 @@ func (o VirtualNetworkConfigurationPtrOutput) ToVirtualNetworkConfigurationPtrOu
 
 func (o VirtualNetworkConfigurationPtrOutput) ToVirtualNetworkConfigurationPtrOutputWithContext(ctx context.Context) VirtualNetworkConfigurationPtrOutput {
 	return o
+}
+
+func (o VirtualNetworkConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkConfiguration] {
+	return pulumix.Output[*VirtualNetworkConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkConfigurationPtrOutput) Elem() VirtualNetworkConfigurationOutput {
@@ -862,6 +995,12 @@ func (o VirtualNetworkConfigurationResponseOutput) ToVirtualNetworkConfiguration
 	return o
 }
 
+func (o VirtualNetworkConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkConfigurationResponse] {
+	return pulumix.Output[VirtualNetworkConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The location of the virtual network.
 func (o VirtualNetworkConfigurationResponseOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkConfigurationResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
@@ -894,6 +1033,12 @@ func (o VirtualNetworkConfigurationResponsePtrOutput) ToVirtualNetworkConfigurat
 
 func (o VirtualNetworkConfigurationResponsePtrOutput) ToVirtualNetworkConfigurationResponsePtrOutputWithContext(ctx context.Context) VirtualNetworkConfigurationResponsePtrOutput {
 	return o
+}
+
+func (o VirtualNetworkConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkConfigurationResponse] {
+	return pulumix.Output[*VirtualNetworkConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkConfigurationResponsePtrOutput) Elem() VirtualNetworkConfigurationResponseOutput {

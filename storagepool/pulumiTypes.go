@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i AclArgs) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclOutput)
 }
 
+func (i AclArgs) ToOutput(ctx context.Context) pulumix.Output[Acl] {
+	return pulumix.Output[Acl]{
+		OutputState: i.ToAclOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AclArrayInput is an input type that accepts AclArray and AclArrayOutput values.
 // You can construct a concrete instance of `AclArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i AclArray) ToAclArrayOutputWithContext(ctx context.Context) AclArrayOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AclArrayOutput)
 }
 
+func (i AclArray) ToOutput(ctx context.Context) pulumix.Output[[]Acl] {
+	return pulumix.Output[[]Acl]{
+		OutputState: i.ToAclArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
 type AclOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o AclOutput) ToAclOutput() AclOutput {
 
 func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
+}
+
+func (o AclOutput) ToOutput(ctx context.Context) pulumix.Output[Acl] {
+	return pulumix.Output[Acl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
@@ -114,6 +133,12 @@ func (o AclArrayOutput) ToAclArrayOutput() AclArrayOutput {
 
 func (o AclArrayOutput) ToAclArrayOutputWithContext(ctx context.Context) AclArrayOutput {
 	return o
+}
+
+func (o AclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Acl] {
+	return pulumix.Output[[]Acl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AclArrayOutput) Index(i pulumi.IntInput) AclOutput {
@@ -145,6 +170,12 @@ func (o AclResponseOutput) ToAclResponseOutputWithContext(ctx context.Context) A
 	return o
 }
 
+func (o AclResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AclResponse] {
+	return pulumix.Output[AclResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
 func (o AclResponseOutput) InitiatorIqn() pulumi.StringOutput {
 	return o.ApplyT(func(v AclResponse) string { return v.InitiatorIqn }).(pulumi.StringOutput)
@@ -167,6 +198,12 @@ func (o AclResponseArrayOutput) ToAclResponseArrayOutput() AclResponseArrayOutpu
 
 func (o AclResponseArrayOutput) ToAclResponseArrayOutputWithContext(ctx context.Context) AclResponseArrayOutput {
 	return o
+}
+
+func (o AclResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AclResponse] {
+	return pulumix.Output[[]AclResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AclResponseArrayOutput) Index(i pulumi.IntInput) AclResponseOutput {
@@ -210,6 +247,12 @@ func (i DiskArgs) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskOutput)
 }
 
+func (i DiskArgs) ToOutput(ctx context.Context) pulumix.Output[Disk] {
+	return pulumix.Output[Disk]{
+		OutputState: i.ToDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DiskArrayInput is an input type that accepts DiskArray and DiskArrayOutput values.
 // You can construct a concrete instance of `DiskArrayInput` via:
 //
@@ -235,6 +278,12 @@ func (i DiskArray) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(DiskArrayOutput)
 }
 
+func (i DiskArray) ToOutput(ctx context.Context) pulumix.Output[[]Disk] {
+	return pulumix.Output[[]Disk]{
+		OutputState: i.ToDiskArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Azure Managed Disk to attach to the Disk Pool.
 type DiskOutput struct{ *pulumi.OutputState }
 
@@ -248,6 +297,12 @@ func (o DiskOutput) ToDiskOutput() DiskOutput {
 
 func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
+}
+
+func (o DiskOutput) ToOutput(ctx context.Context) pulumix.Output[Disk] {
+	return pulumix.Output[Disk]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique Azure Resource ID of the Managed Disk.
@@ -267,6 +322,12 @@ func (o DiskArrayOutput) ToDiskArrayOutput() DiskArrayOutput {
 
 func (o DiskArrayOutput) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOutput {
 	return o
+}
+
+func (o DiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Disk] {
+	return pulumix.Output[[]Disk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskArrayOutput) Index(i pulumi.IntInput) DiskOutput {
@@ -296,6 +357,12 @@ func (o DiskResponseOutput) ToDiskResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o DiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskResponse] {
+	return pulumix.Output[DiskResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Unique Azure Resource ID of the Managed Disk.
 func (o DiskResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -313,6 +380,12 @@ func (o DiskResponseArrayOutput) ToDiskResponseArrayOutput() DiskResponseArrayOu
 
 func (o DiskResponseArrayOutput) ToDiskResponseArrayOutputWithContext(ctx context.Context) DiskResponseArrayOutput {
 	return o
+}
+
+func (o DiskResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiskResponse] {
+	return pulumix.Output[[]DiskResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskResponseArrayOutput) Index(i pulumi.IntInput) DiskResponseOutput {
@@ -360,6 +433,12 @@ func (i IscsiLunArgs) ToIscsiLunOutputWithContext(ctx context.Context) IscsiLunO
 	return pulumi.ToOutputWithContext(ctx, i).(IscsiLunOutput)
 }
 
+func (i IscsiLunArgs) ToOutput(ctx context.Context) pulumix.Output[IscsiLun] {
+	return pulumix.Output[IscsiLun]{
+		OutputState: i.ToIscsiLunOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IscsiLunArrayInput is an input type that accepts IscsiLunArray and IscsiLunArrayOutput values.
 // You can construct a concrete instance of `IscsiLunArrayInput` via:
 //
@@ -385,6 +464,12 @@ func (i IscsiLunArray) ToIscsiLunArrayOutputWithContext(ctx context.Context) Isc
 	return pulumi.ToOutputWithContext(ctx, i).(IscsiLunArrayOutput)
 }
 
+func (i IscsiLunArray) ToOutput(ctx context.Context) pulumix.Output[[]IscsiLun] {
+	return pulumix.Output[[]IscsiLun]{
+		OutputState: i.ToIscsiLunArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LUN to expose the Azure Managed Disk.
 type IscsiLunOutput struct{ *pulumi.OutputState }
 
@@ -398,6 +483,12 @@ func (o IscsiLunOutput) ToIscsiLunOutput() IscsiLunOutput {
 
 func (o IscsiLunOutput) ToIscsiLunOutputWithContext(ctx context.Context) IscsiLunOutput {
 	return o
+}
+
+func (o IscsiLunOutput) ToOutput(ctx context.Context) pulumix.Output[IscsiLun] {
+	return pulumix.Output[IscsiLun]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure Resource ID of the Managed Disk.
@@ -422,6 +513,12 @@ func (o IscsiLunArrayOutput) ToIscsiLunArrayOutput() IscsiLunArrayOutput {
 
 func (o IscsiLunArrayOutput) ToIscsiLunArrayOutputWithContext(ctx context.Context) IscsiLunArrayOutput {
 	return o
+}
+
+func (o IscsiLunArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IscsiLun] {
+	return pulumix.Output[[]IscsiLun]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IscsiLunArrayOutput) Index(i pulumi.IntInput) IscsiLunOutput {
@@ -455,6 +552,12 @@ func (o IscsiLunResponseOutput) ToIscsiLunResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o IscsiLunResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IscsiLunResponse] {
+	return pulumix.Output[IscsiLunResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the Logical Unit Number of the iSCSI LUN.
 func (o IscsiLunResponseOutput) Lun() pulumi.IntOutput {
 	return o.ApplyT(func(v IscsiLunResponse) int { return v.Lun }).(pulumi.IntOutput)
@@ -482,6 +585,12 @@ func (o IscsiLunResponseArrayOutput) ToIscsiLunResponseArrayOutput() IscsiLunRes
 
 func (o IscsiLunResponseArrayOutput) ToIscsiLunResponseArrayOutputWithContext(ctx context.Context) IscsiLunResponseArrayOutput {
 	return o
+}
+
+func (o IscsiLunResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IscsiLunResponse] {
+	return pulumix.Output[[]IscsiLunResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IscsiLunResponseArrayOutput) Index(i pulumi.IntInput) IscsiLunResponseOutput {
@@ -529,6 +638,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Sku for ARM resource
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -542,6 +657,12 @@ func (o SkuOutput) ToSkuOutput() SkuOutput {
 
 func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
+}
+
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Sku name
@@ -583,6 +704,12 @@ func (o SystemMetadataResponseOutput) ToSystemMetadataResponseOutput() SystemMet
 
 func (o SystemMetadataResponseOutput) ToSystemMetadataResponseOutputWithContext(ctx context.Context) SystemMetadataResponseOutput {
 	return o
+}
+
+func (o SystemMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemMetadataResponse] {
+	return pulumix.Output[SystemMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

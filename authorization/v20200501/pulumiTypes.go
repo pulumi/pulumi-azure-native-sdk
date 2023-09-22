@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i ManagementLockOwnerArgs) ToManagementLockOwnerOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementLockOwnerOutput)
 }
 
+func (i ManagementLockOwnerArgs) ToOutput(ctx context.Context) pulumix.Output[ManagementLockOwner] {
+	return pulumix.Output[ManagementLockOwner]{
+		OutputState: i.ToManagementLockOwnerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ManagementLockOwnerArrayInput is an input type that accepts ManagementLockOwnerArray and ManagementLockOwnerArrayOutput values.
 // You can construct a concrete instance of `ManagementLockOwnerArrayInput` via:
 //
@@ -73,6 +80,12 @@ func (i ManagementLockOwnerArray) ToManagementLockOwnerArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementLockOwnerArrayOutput)
 }
 
+func (i ManagementLockOwnerArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagementLockOwner] {
+	return pulumix.Output[[]ManagementLockOwner]{
+		OutputState: i.ToManagementLockOwnerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Lock owner properties.
 type ManagementLockOwnerOutput struct{ *pulumi.OutputState }
 
@@ -86,6 +99,12 @@ func (o ManagementLockOwnerOutput) ToManagementLockOwnerOutput() ManagementLockO
 
 func (o ManagementLockOwnerOutput) ToManagementLockOwnerOutputWithContext(ctx context.Context) ManagementLockOwnerOutput {
 	return o
+}
+
+func (o ManagementLockOwnerOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementLockOwner] {
+	return pulumix.Output[ManagementLockOwner]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The application ID of the lock owner.
@@ -105,6 +124,12 @@ func (o ManagementLockOwnerArrayOutput) ToManagementLockOwnerArrayOutput() Manag
 
 func (o ManagementLockOwnerArrayOutput) ToManagementLockOwnerArrayOutputWithContext(ctx context.Context) ManagementLockOwnerArrayOutput {
 	return o
+}
+
+func (o ManagementLockOwnerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementLockOwner] {
+	return pulumix.Output[[]ManagementLockOwner]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagementLockOwnerArrayOutput) Index(i pulumi.IntInput) ManagementLockOwnerOutput {
@@ -134,6 +159,12 @@ func (o ManagementLockOwnerResponseOutput) ToManagementLockOwnerResponseOutputWi
 	return o
 }
 
+func (o ManagementLockOwnerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementLockOwnerResponse] {
+	return pulumix.Output[ManagementLockOwnerResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The application ID of the lock owner.
 func (o ManagementLockOwnerResponseOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagementLockOwnerResponse) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
@@ -151,6 +182,12 @@ func (o ManagementLockOwnerResponseArrayOutput) ToManagementLockOwnerResponseArr
 
 func (o ManagementLockOwnerResponseArrayOutput) ToManagementLockOwnerResponseArrayOutputWithContext(ctx context.Context) ManagementLockOwnerResponseArrayOutput {
 	return o
+}
+
+func (o ManagementLockOwnerResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementLockOwnerResponse] {
+	return pulumix.Output[[]ManagementLockOwnerResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagementLockOwnerResponseArrayOutput) Index(i pulumi.IntInput) ManagementLockOwnerResponseOutput {
@@ -194,6 +231,12 @@ func (i PrivateLinkAssociationPropertiesArgs) ToPrivateLinkAssociationProperties
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkAssociationPropertiesOutput)
 }
 
+func (i PrivateLinkAssociationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkAssociationProperties] {
+	return pulumix.Output[PrivateLinkAssociationProperties]{
+		OutputState: i.ToPrivateLinkAssociationPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivateLinkAssociationPropertiesArgs) ToPrivateLinkAssociationPropertiesPtrOutput() PrivateLinkAssociationPropertiesPtrOutput {
 	return i.ToPrivateLinkAssociationPropertiesPtrOutputWithContext(context.Background())
 }
@@ -235,6 +278,12 @@ func (i *privateLinkAssociationPropertiesPtrType) ToPrivateLinkAssociationProper
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkAssociationPropertiesPtrOutput)
 }
 
+func (i *privateLinkAssociationPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkAssociationProperties] {
+	return pulumix.Output[*PrivateLinkAssociationProperties]{
+		OutputState: i.ToPrivateLinkAssociationPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateLinkAssociationPropertiesOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkAssociationPropertiesOutput) ElementType() reflect.Type {
@@ -259,6 +308,12 @@ func (o PrivateLinkAssociationPropertiesOutput) ToPrivateLinkAssociationProperti
 	}).(PrivateLinkAssociationPropertiesPtrOutput)
 }
 
+func (o PrivateLinkAssociationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkAssociationProperties] {
+	return pulumix.Output[PrivateLinkAssociationProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The rmpl Resource ID.
 func (o PrivateLinkAssociationPropertiesOutput) PrivateLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkAssociationProperties) *string { return v.PrivateLink }).(pulumi.StringPtrOutput)
@@ -280,6 +335,12 @@ func (o PrivateLinkAssociationPropertiesPtrOutput) ToPrivateLinkAssociationPrope
 
 func (o PrivateLinkAssociationPropertiesPtrOutput) ToPrivateLinkAssociationPropertiesPtrOutputWithContext(ctx context.Context) PrivateLinkAssociationPropertiesPtrOutput {
 	return o
+}
+
+func (o PrivateLinkAssociationPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkAssociationProperties] {
+	return pulumix.Output[*PrivateLinkAssociationProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateLinkAssociationPropertiesPtrOutput) Elem() PrivateLinkAssociationPropertiesOutput {
@@ -337,6 +398,12 @@ func (o PrivateLinkAssociationPropertiesExpandedResponseOutput) ToPrivateLinkAss
 	return o
 }
 
+func (o PrivateLinkAssociationPropertiesExpandedResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkAssociationPropertiesExpandedResponse] {
+	return pulumix.Output[PrivateLinkAssociationPropertiesExpandedResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The rmpl Resource ID.
 func (o PrivateLinkAssociationPropertiesExpandedResponseOutput) PrivateLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkAssociationPropertiesExpandedResponse) *string { return v.PrivateLink }).(pulumi.StringPtrOutput)
@@ -375,6 +442,12 @@ func (o ResourceManagementPrivateLinkEndpointConnectionsResponseOutput) ToResour
 	return o
 }
 
+func (o ResourceManagementPrivateLinkEndpointConnectionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceManagementPrivateLinkEndpointConnectionsResponse] {
+	return pulumix.Output[ResourceManagementPrivateLinkEndpointConnectionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The private endpoint connections.
 func (o ResourceManagementPrivateLinkEndpointConnectionsResponseOutput) PrivateEndpointConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResourceManagementPrivateLinkEndpointConnectionsResponse) []string {
@@ -411,6 +484,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

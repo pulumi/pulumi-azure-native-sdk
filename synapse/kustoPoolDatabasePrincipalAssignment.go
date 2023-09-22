@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing a database principal assignment.
@@ -176,6 +177,12 @@ func (i *KustoPoolDatabasePrincipalAssignment) ToKustoPoolDatabasePrincipalAssig
 	return pulumi.ToOutputWithContext(ctx, i).(KustoPoolDatabasePrincipalAssignmentOutput)
 }
 
+func (i *KustoPoolDatabasePrincipalAssignment) ToOutput(ctx context.Context) pulumix.Output[*KustoPoolDatabasePrincipalAssignment] {
+	return pulumix.Output[*KustoPoolDatabasePrincipalAssignment]{
+		OutputState: i.ToKustoPoolDatabasePrincipalAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KustoPoolDatabasePrincipalAssignmentOutput struct{ *pulumi.OutputState }
 
 func (KustoPoolDatabasePrincipalAssignmentOutput) ElementType() reflect.Type {
@@ -188,6 +195,12 @@ func (o KustoPoolDatabasePrincipalAssignmentOutput) ToKustoPoolDatabasePrincipal
 
 func (o KustoPoolDatabasePrincipalAssignmentOutput) ToKustoPoolDatabasePrincipalAssignmentOutputWithContext(ctx context.Context) KustoPoolDatabasePrincipalAssignmentOutput {
 	return o
+}
+
+func (o KustoPoolDatabasePrincipalAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*KustoPoolDatabasePrincipalAssignment] {
+	return pulumix.Output[*KustoPoolDatabasePrincipalAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The service principal object id in AAD (Azure active directory)

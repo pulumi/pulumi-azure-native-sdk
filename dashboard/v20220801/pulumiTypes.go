@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i AzureMonitorWorkspaceIntegrationArgs) ToAzureMonitorWorkspaceIntegration
 	return pulumi.ToOutputWithContext(ctx, i).(AzureMonitorWorkspaceIntegrationOutput)
 }
 
+func (i AzureMonitorWorkspaceIntegrationArgs) ToOutput(ctx context.Context) pulumix.Output[AzureMonitorWorkspaceIntegration] {
+	return pulumix.Output[AzureMonitorWorkspaceIntegration]{
+		OutputState: i.ToAzureMonitorWorkspaceIntegrationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AzureMonitorWorkspaceIntegrationArrayInput is an input type that accepts AzureMonitorWorkspaceIntegrationArray and AzureMonitorWorkspaceIntegrationArrayOutput values.
 // You can construct a concrete instance of `AzureMonitorWorkspaceIntegrationArrayInput` via:
 //
@@ -73,6 +80,12 @@ func (i AzureMonitorWorkspaceIntegrationArray) ToAzureMonitorWorkspaceIntegratio
 	return pulumi.ToOutputWithContext(ctx, i).(AzureMonitorWorkspaceIntegrationArrayOutput)
 }
 
+func (i AzureMonitorWorkspaceIntegrationArray) ToOutput(ctx context.Context) pulumix.Output[[]AzureMonitorWorkspaceIntegration] {
+	return pulumix.Output[[]AzureMonitorWorkspaceIntegration]{
+		OutputState: i.ToAzureMonitorWorkspaceIntegrationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Integrations for Azure Monitor Workspace.
 type AzureMonitorWorkspaceIntegrationOutput struct{ *pulumi.OutputState }
 
@@ -86,6 +99,12 @@ func (o AzureMonitorWorkspaceIntegrationOutput) ToAzureMonitorWorkspaceIntegrati
 
 func (o AzureMonitorWorkspaceIntegrationOutput) ToAzureMonitorWorkspaceIntegrationOutputWithContext(ctx context.Context) AzureMonitorWorkspaceIntegrationOutput {
 	return o
+}
+
+func (o AzureMonitorWorkspaceIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[AzureMonitorWorkspaceIntegration] {
+	return pulumix.Output[AzureMonitorWorkspaceIntegration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource Id of the connected Azure Monitor Workspace.
@@ -105,6 +124,12 @@ func (o AzureMonitorWorkspaceIntegrationArrayOutput) ToAzureMonitorWorkspaceInte
 
 func (o AzureMonitorWorkspaceIntegrationArrayOutput) ToAzureMonitorWorkspaceIntegrationArrayOutputWithContext(ctx context.Context) AzureMonitorWorkspaceIntegrationArrayOutput {
 	return o
+}
+
+func (o AzureMonitorWorkspaceIntegrationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureMonitorWorkspaceIntegration] {
+	return pulumix.Output[[]AzureMonitorWorkspaceIntegration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureMonitorWorkspaceIntegrationArrayOutput) Index(i pulumi.IntInput) AzureMonitorWorkspaceIntegrationOutput {
@@ -134,6 +159,12 @@ func (o AzureMonitorWorkspaceIntegrationResponseOutput) ToAzureMonitorWorkspaceI
 	return o
 }
 
+func (o AzureMonitorWorkspaceIntegrationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureMonitorWorkspaceIntegrationResponse] {
+	return pulumix.Output[AzureMonitorWorkspaceIntegrationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource Id of the connected Azure Monitor Workspace.
 func (o AzureMonitorWorkspaceIntegrationResponseOutput) AzureMonitorWorkspaceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureMonitorWorkspaceIntegrationResponse) *string { return v.AzureMonitorWorkspaceResourceId }).(pulumi.StringPtrOutput)
@@ -151,6 +182,12 @@ func (o AzureMonitorWorkspaceIntegrationResponseArrayOutput) ToAzureMonitorWorks
 
 func (o AzureMonitorWorkspaceIntegrationResponseArrayOutput) ToAzureMonitorWorkspaceIntegrationResponseArrayOutputWithContext(ctx context.Context) AzureMonitorWorkspaceIntegrationResponseArrayOutput {
 	return o
+}
+
+func (o AzureMonitorWorkspaceIntegrationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureMonitorWorkspaceIntegrationResponse] {
+	return pulumix.Output[[]AzureMonitorWorkspaceIntegrationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureMonitorWorkspaceIntegrationResponseArrayOutput) Index(i pulumi.IntInput) AzureMonitorWorkspaceIntegrationResponseOutput {
@@ -190,6 +227,12 @@ func (i GrafanaIntegrationsArgs) ToGrafanaIntegrationsOutput() GrafanaIntegratio
 
 func (i GrafanaIntegrationsArgs) ToGrafanaIntegrationsOutputWithContext(ctx context.Context) GrafanaIntegrationsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GrafanaIntegrationsOutput)
+}
+
+func (i GrafanaIntegrationsArgs) ToOutput(ctx context.Context) pulumix.Output[GrafanaIntegrations] {
+	return pulumix.Output[GrafanaIntegrations]{
+		OutputState: i.ToGrafanaIntegrationsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GrafanaIntegrationsArgs) ToGrafanaIntegrationsPtrOutput() GrafanaIntegrationsPtrOutput {
@@ -233,6 +276,12 @@ func (i *grafanaIntegrationsPtrType) ToGrafanaIntegrationsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(GrafanaIntegrationsPtrOutput)
 }
 
+func (i *grafanaIntegrationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrafanaIntegrations] {
+	return pulumix.Output[*GrafanaIntegrations]{
+		OutputState: i.ToGrafanaIntegrationsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
 type GrafanaIntegrationsOutput struct{ *pulumi.OutputState }
 
@@ -258,6 +307,12 @@ func (o GrafanaIntegrationsOutput) ToGrafanaIntegrationsPtrOutputWithContext(ctx
 	}).(GrafanaIntegrationsPtrOutput)
 }
 
+func (o GrafanaIntegrationsOutput) ToOutput(ctx context.Context) pulumix.Output[GrafanaIntegrations] {
+	return pulumix.Output[GrafanaIntegrations]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GrafanaIntegrationsOutput) AzureMonitorWorkspaceIntegrations() AzureMonitorWorkspaceIntegrationArrayOutput {
 	return o.ApplyT(func(v GrafanaIntegrations) []AzureMonitorWorkspaceIntegration {
 		return v.AzureMonitorWorkspaceIntegrations
@@ -276,6 +331,12 @@ func (o GrafanaIntegrationsPtrOutput) ToGrafanaIntegrationsPtrOutput() GrafanaIn
 
 func (o GrafanaIntegrationsPtrOutput) ToGrafanaIntegrationsPtrOutputWithContext(ctx context.Context) GrafanaIntegrationsPtrOutput {
 	return o
+}
+
+func (o GrafanaIntegrationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrafanaIntegrations] {
+	return pulumix.Output[*GrafanaIntegrations]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrafanaIntegrationsPtrOutput) Elem() GrafanaIntegrationsOutput {
@@ -317,6 +378,12 @@ func (o GrafanaIntegrationsResponseOutput) ToGrafanaIntegrationsResponseOutputWi
 	return o
 }
 
+func (o GrafanaIntegrationsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GrafanaIntegrationsResponse] {
+	return pulumix.Output[GrafanaIntegrationsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GrafanaIntegrationsResponseOutput) AzureMonitorWorkspaceIntegrations() AzureMonitorWorkspaceIntegrationResponseArrayOutput {
 	return o.ApplyT(func(v GrafanaIntegrationsResponse) []AzureMonitorWorkspaceIntegrationResponse {
 		return v.AzureMonitorWorkspaceIntegrations
@@ -335,6 +402,12 @@ func (o GrafanaIntegrationsResponsePtrOutput) ToGrafanaIntegrationsResponsePtrOu
 
 func (o GrafanaIntegrationsResponsePtrOutput) ToGrafanaIntegrationsResponsePtrOutputWithContext(ctx context.Context) GrafanaIntegrationsResponsePtrOutput {
 	return o
+}
+
+func (o GrafanaIntegrationsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrafanaIntegrationsResponse] {
+	return pulumix.Output[*GrafanaIntegrationsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrafanaIntegrationsResponsePtrOutput) Elem() GrafanaIntegrationsResponseOutput {
@@ -411,6 +484,12 @@ func (i ManagedGrafanaPropertiesArgs) ToManagedGrafanaPropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedGrafanaPropertiesOutput)
 }
 
+func (i ManagedGrafanaPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedGrafanaProperties] {
+	return pulumix.Output[ManagedGrafanaProperties]{
+		OutputState: i.ToManagedGrafanaPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedGrafanaPropertiesArgs) ToManagedGrafanaPropertiesPtrOutput() ManagedGrafanaPropertiesPtrOutput {
 	return i.ToManagedGrafanaPropertiesPtrOutputWithContext(context.Background())
 }
@@ -452,6 +531,12 @@ func (i *managedGrafanaPropertiesPtrType) ToManagedGrafanaPropertiesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedGrafanaPropertiesPtrOutput)
 }
 
+func (i *managedGrafanaPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedGrafanaProperties] {
+	return pulumix.Output[*ManagedGrafanaProperties]{
+		OutputState: i.ToManagedGrafanaPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties specific to the grafana resource.
 type ManagedGrafanaPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -475,6 +560,12 @@ func (o ManagedGrafanaPropertiesOutput) ToManagedGrafanaPropertiesPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedGrafanaProperties) *ManagedGrafanaProperties {
 		return &v
 	}).(ManagedGrafanaPropertiesPtrOutput)
+}
+
+func (o ManagedGrafanaPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedGrafanaProperties] {
+	return pulumix.Output[ManagedGrafanaProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The api key setting of the Grafana instance.
@@ -519,6 +610,12 @@ func (o ManagedGrafanaPropertiesPtrOutput) ToManagedGrafanaPropertiesPtrOutput()
 
 func (o ManagedGrafanaPropertiesPtrOutput) ToManagedGrafanaPropertiesPtrOutputWithContext(ctx context.Context) ManagedGrafanaPropertiesPtrOutput {
 	return o
+}
+
+func (o ManagedGrafanaPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedGrafanaProperties] {
+	return pulumix.Output[*ManagedGrafanaProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedGrafanaPropertiesPtrOutput) Elem() ManagedGrafanaPropertiesOutput {
@@ -632,6 +729,12 @@ func (o ManagedGrafanaPropertiesResponseOutput) ToManagedGrafanaPropertiesRespon
 	return o
 }
 
+func (o ManagedGrafanaPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedGrafanaPropertiesResponse] {
+	return pulumix.Output[ManagedGrafanaPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The api key setting of the Grafana instance.
 func (o ManagedGrafanaPropertiesResponseOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedGrafanaPropertiesResponse) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
@@ -728,6 +831,12 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
+func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
 	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -769,6 +878,12 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
+func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -794,6 +909,12 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
+func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -816,6 +937,12 @@ func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() Man
 
 func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
@@ -875,6 +1002,12 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
+func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
+	return pulumix.Output[ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -909,6 +1042,12 @@ func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityRespons
 
 func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
+	return pulumix.Output[*ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
@@ -996,6 +1135,12 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
+	return pulumix.Output[PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The private endpoint connection group ids.
 func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
@@ -1052,6 +1197,12 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
+	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -1079,6 +1230,12 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
+func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
+	return pulumix.Output[PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1096,6 +1253,12 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
+	return pulumix.Output[*PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -1161,6 +1324,12 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
+func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -1174,6 +1343,12 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -1214,6 +1389,12 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
+	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -1262,6 +1443,12 @@ func (i ResourceSkuArgs) ToResourceSkuOutputWithContext(ctx context.Context) Res
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSkuOutput)
 }
 
+func (i ResourceSkuArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSku] {
+	return pulumix.Output[ResourceSku]{
+		OutputState: i.ToResourceSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSkuArgs) ToResourceSkuPtrOutput() ResourceSkuPtrOutput {
 	return i.ToResourceSkuPtrOutputWithContext(context.Background())
 }
@@ -1303,6 +1490,12 @@ func (i *resourceSkuPtrType) ToResourceSkuPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSkuPtrOutput)
 }
 
+func (i *resourceSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSku] {
+	return pulumix.Output[*ResourceSku]{
+		OutputState: i.ToResourceSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceSkuOutput struct{ *pulumi.OutputState }
 
 func (ResourceSkuOutput) ElementType() reflect.Type {
@@ -1327,6 +1520,12 @@ func (o ResourceSkuOutput) ToResourceSkuPtrOutputWithContext(ctx context.Context
 	}).(ResourceSkuPtrOutput)
 }
 
+func (o ResourceSkuOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSku] {
+	return pulumix.Output[ResourceSku]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceSkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSku) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1343,6 +1542,12 @@ func (o ResourceSkuPtrOutput) ToResourceSkuPtrOutput() ResourceSkuPtrOutput {
 
 func (o ResourceSkuPtrOutput) ToResourceSkuPtrOutputWithContext(ctx context.Context) ResourceSkuPtrOutput {
 	return o
+}
+
+func (o ResourceSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSku] {
+	return pulumix.Output[*ResourceSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSkuPtrOutput) Elem() ResourceSkuOutput {
@@ -1382,6 +1587,12 @@ func (o ResourceSkuResponseOutput) ToResourceSkuResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o ResourceSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSkuResponse] {
+	return pulumix.Output[ResourceSkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSkuResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1398,6 +1609,12 @@ func (o ResourceSkuResponsePtrOutput) ToResourceSkuResponsePtrOutput() ResourceS
 
 func (o ResourceSkuResponsePtrOutput) ToResourceSkuResponsePtrOutputWithContext(ctx context.Context) ResourceSkuResponsePtrOutput {
 	return o
+}
+
+func (o ResourceSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSkuResponse] {
+	return pulumix.Output[*ResourceSkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSkuResponsePtrOutput) Elem() ResourceSkuResponseOutput {
@@ -1448,6 +1665,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -1503,6 +1726,12 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
+func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
+	return pulumix.Output[UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -1525,6 +1754,12 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
+	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {

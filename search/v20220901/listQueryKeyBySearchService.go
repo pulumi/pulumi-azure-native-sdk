@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the list of query API keys for the given Azure Cognitive Search service.
@@ -74,6 +75,12 @@ func (o ListQueryKeyBySearchServiceResultOutput) ToListQueryKeyBySearchServiceRe
 
 func (o ListQueryKeyBySearchServiceResultOutput) ToListQueryKeyBySearchServiceResultOutputWithContext(ctx context.Context) ListQueryKeyBySearchServiceResultOutput {
 	return o
+}
+
+func (o ListQueryKeyBySearchServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListQueryKeyBySearchServiceResult] {
+	return pulumix.Output[ListQueryKeyBySearchServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Request URL that can be used to query next page of query keys. Returned when the total number of requested query keys exceed maximum page size.

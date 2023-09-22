@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Monitor Workspace definition
@@ -140,6 +141,12 @@ func (i *AzureMonitorWorkspace) ToAzureMonitorWorkspaceOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AzureMonitorWorkspaceOutput)
 }
 
+func (i *AzureMonitorWorkspace) ToOutput(ctx context.Context) pulumix.Output[*AzureMonitorWorkspace] {
+	return pulumix.Output[*AzureMonitorWorkspace]{
+		OutputState: i.ToAzureMonitorWorkspaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AzureMonitorWorkspaceOutput struct{ *pulumi.OutputState }
 
 func (AzureMonitorWorkspaceOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o AzureMonitorWorkspaceOutput) ToAzureMonitorWorkspaceOutput() AzureMonito
 
 func (o AzureMonitorWorkspaceOutput) ToAzureMonitorWorkspaceOutputWithContext(ctx context.Context) AzureMonitorWorkspaceOutput {
 	return o
+}
+
+func (o AzureMonitorWorkspaceOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureMonitorWorkspace] {
+	return pulumix.Output[*AzureMonitorWorkspace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The immutable Id of the Azure Monitor Workspace. This property is read-only.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -110,6 +111,12 @@ func (i AutomationRuleSetArgs) ToAutomationRuleSetOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleSetOutput)
 }
 
+func (i AutomationRuleSetArgs) ToOutput(ctx context.Context) pulumix.Output[AutomationRuleSet] {
+	return pulumix.Output[AutomationRuleSet]{
+		OutputState: i.ToAutomationRuleSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutomationRuleSetArrayInput is an input type that accepts AutomationRuleSetArray and AutomationRuleSetArrayOutput values.
 // You can construct a concrete instance of `AutomationRuleSetArrayInput` via:
 //
@@ -135,6 +142,12 @@ func (i AutomationRuleSetArray) ToAutomationRuleSetArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleSetArrayOutput)
 }
 
+func (i AutomationRuleSetArray) ToOutput(ctx context.Context) pulumix.Output[[]AutomationRuleSet] {
+	return pulumix.Output[[]AutomationRuleSet]{
+		OutputState: i.ToAutomationRuleSetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A rule set which evaluates all its rules upon an event interception. Only when all the included rules in the rule set will be evaluated as 'true', will the event trigger the defined actions.
 type AutomationRuleSetOutput struct{ *pulumi.OutputState }
 
@@ -148,6 +161,12 @@ func (o AutomationRuleSetOutput) ToAutomationRuleSetOutput() AutomationRuleSetOu
 
 func (o AutomationRuleSetOutput) ToAutomationRuleSetOutputWithContext(ctx context.Context) AutomationRuleSetOutput {
 	return o
+}
+
+func (o AutomationRuleSetOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRuleSet] {
+	return pulumix.Output[AutomationRuleSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutomationRuleSetOutput) Rules() AutomationTriggeringRuleArrayOutput {
@@ -166,6 +185,12 @@ func (o AutomationRuleSetArrayOutput) ToAutomationRuleSetArrayOutput() Automatio
 
 func (o AutomationRuleSetArrayOutput) ToAutomationRuleSetArrayOutputWithContext(ctx context.Context) AutomationRuleSetArrayOutput {
 	return o
+}
+
+func (o AutomationRuleSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationRuleSet] {
+	return pulumix.Output[[]AutomationRuleSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutomationRuleSetArrayOutput) Index(i pulumi.IntInput) AutomationRuleSetOutput {
@@ -194,6 +219,12 @@ func (o AutomationRuleSetResponseOutput) ToAutomationRuleSetResponseOutputWithCo
 	return o
 }
 
+func (o AutomationRuleSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRuleSetResponse] {
+	return pulumix.Output[AutomationRuleSetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutomationRuleSetResponseOutput) Rules() AutomationTriggeringRuleResponseArrayOutput {
 	return o.ApplyT(func(v AutomationRuleSetResponse) []AutomationTriggeringRuleResponse { return v.Rules }).(AutomationTriggeringRuleResponseArrayOutput)
 }
@@ -210,6 +241,12 @@ func (o AutomationRuleSetResponseArrayOutput) ToAutomationRuleSetResponseArrayOu
 
 func (o AutomationRuleSetResponseArrayOutput) ToAutomationRuleSetResponseArrayOutputWithContext(ctx context.Context) AutomationRuleSetResponseArrayOutput {
 	return o
+}
+
+func (o AutomationRuleSetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationRuleSetResponse] {
+	return pulumix.Output[[]AutomationRuleSetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutomationRuleSetResponseArrayOutput) Index(i pulumi.IntInput) AutomationRuleSetResponseOutput {
@@ -257,6 +294,12 @@ func (i AutomationScopeArgs) ToAutomationScopeOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationScopeOutput)
 }
 
+func (i AutomationScopeArgs) ToOutput(ctx context.Context) pulumix.Output[AutomationScope] {
+	return pulumix.Output[AutomationScope]{
+		OutputState: i.ToAutomationScopeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutomationScopeArrayInput is an input type that accepts AutomationScopeArray and AutomationScopeArrayOutput values.
 // You can construct a concrete instance of `AutomationScopeArrayInput` via:
 //
@@ -282,6 +325,12 @@ func (i AutomationScopeArray) ToAutomationScopeArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationScopeArrayOutput)
 }
 
+func (i AutomationScopeArray) ToOutput(ctx context.Context) pulumix.Output[[]AutomationScope] {
+	return pulumix.Output[[]AutomationScope]{
+		OutputState: i.ToAutomationScopeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A single automation scope.
 type AutomationScopeOutput struct{ *pulumi.OutputState }
 
@@ -295,6 +344,12 @@ func (o AutomationScopeOutput) ToAutomationScopeOutput() AutomationScopeOutput {
 
 func (o AutomationScopeOutput) ToAutomationScopeOutputWithContext(ctx context.Context) AutomationScopeOutput {
 	return o
+}
+
+func (o AutomationScopeOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationScope] {
+	return pulumix.Output[AutomationScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resources scope description.
@@ -319,6 +374,12 @@ func (o AutomationScopeArrayOutput) ToAutomationScopeArrayOutput() AutomationSco
 
 func (o AutomationScopeArrayOutput) ToAutomationScopeArrayOutputWithContext(ctx context.Context) AutomationScopeArrayOutput {
 	return o
+}
+
+func (o AutomationScopeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationScope] {
+	return pulumix.Output[[]AutomationScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutomationScopeArrayOutput) Index(i pulumi.IntInput) AutomationScopeOutput {
@@ -350,6 +411,12 @@ func (o AutomationScopeResponseOutput) ToAutomationScopeResponseOutputWithContex
 	return o
 }
 
+func (o AutomationScopeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationScopeResponse] {
+	return pulumix.Output[AutomationScopeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resources scope description.
 func (o AutomationScopeResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutomationScopeResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -372,6 +439,12 @@ func (o AutomationScopeResponseArrayOutput) ToAutomationScopeResponseArrayOutput
 
 func (o AutomationScopeResponseArrayOutput) ToAutomationScopeResponseArrayOutputWithContext(ctx context.Context) AutomationScopeResponseArrayOutput {
 	return o
+}
+
+func (o AutomationScopeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationScopeResponse] {
+	return pulumix.Output[[]AutomationScopeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutomationScopeResponseArrayOutput) Index(i pulumi.IntInput) AutomationScopeResponseOutput {
@@ -419,6 +492,12 @@ func (i AutomationSourceArgs) ToAutomationSourceOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationSourceOutput)
 }
 
+func (i AutomationSourceArgs) ToOutput(ctx context.Context) pulumix.Output[AutomationSource] {
+	return pulumix.Output[AutomationSource]{
+		OutputState: i.ToAutomationSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutomationSourceArrayInput is an input type that accepts AutomationSourceArray and AutomationSourceArrayOutput values.
 // You can construct a concrete instance of `AutomationSourceArrayInput` via:
 //
@@ -444,6 +523,12 @@ func (i AutomationSourceArray) ToAutomationSourceArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationSourceArrayOutput)
 }
 
+func (i AutomationSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]AutomationSource] {
+	return pulumix.Output[[]AutomationSource]{
+		OutputState: i.ToAutomationSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The source event types which evaluate the security automation set of rules. For example - security alerts and security assessments. To learn more about the supported security events data models schemas - please visit https://aka.ms/ASCAutomationSchemas.
 type AutomationSourceOutput struct{ *pulumi.OutputState }
 
@@ -457,6 +542,12 @@ func (o AutomationSourceOutput) ToAutomationSourceOutput() AutomationSourceOutpu
 
 func (o AutomationSourceOutput) ToAutomationSourceOutputWithContext(ctx context.Context) AutomationSourceOutput {
 	return o
+}
+
+func (o AutomationSourceOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationSource] {
+	return pulumix.Output[AutomationSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A valid event source type.
@@ -481,6 +572,12 @@ func (o AutomationSourceArrayOutput) ToAutomationSourceArrayOutput() AutomationS
 
 func (o AutomationSourceArrayOutput) ToAutomationSourceArrayOutputWithContext(ctx context.Context) AutomationSourceArrayOutput {
 	return o
+}
+
+func (o AutomationSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationSource] {
+	return pulumix.Output[[]AutomationSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutomationSourceArrayOutput) Index(i pulumi.IntInput) AutomationSourceOutput {
@@ -512,6 +609,12 @@ func (o AutomationSourceResponseOutput) ToAutomationSourceResponseOutputWithCont
 	return o
 }
 
+func (o AutomationSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationSourceResponse] {
+	return pulumix.Output[AutomationSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A valid event source type.
 func (o AutomationSourceResponseOutput) EventSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutomationSourceResponse) *string { return v.EventSource }).(pulumi.StringPtrOutput)
@@ -534,6 +637,12 @@ func (o AutomationSourceResponseArrayOutput) ToAutomationSourceResponseArrayOutp
 
 func (o AutomationSourceResponseArrayOutput) ToAutomationSourceResponseArrayOutputWithContext(ctx context.Context) AutomationSourceResponseArrayOutput {
 	return o
+}
+
+func (o AutomationSourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationSourceResponse] {
+	return pulumix.Output[[]AutomationSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutomationSourceResponseArrayOutput) Index(i pulumi.IntInput) AutomationSourceResponseOutput {
@@ -589,6 +698,12 @@ func (i AutomationTriggeringRuleArgs) ToAutomationTriggeringRuleOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationTriggeringRuleOutput)
 }
 
+func (i AutomationTriggeringRuleArgs) ToOutput(ctx context.Context) pulumix.Output[AutomationTriggeringRule] {
+	return pulumix.Output[AutomationTriggeringRule]{
+		OutputState: i.ToAutomationTriggeringRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutomationTriggeringRuleArrayInput is an input type that accepts AutomationTriggeringRuleArray and AutomationTriggeringRuleArrayOutput values.
 // You can construct a concrete instance of `AutomationTriggeringRuleArrayInput` via:
 //
@@ -614,6 +729,12 @@ func (i AutomationTriggeringRuleArray) ToAutomationTriggeringRuleArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationTriggeringRuleArrayOutput)
 }
 
+func (i AutomationTriggeringRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]AutomationTriggeringRule] {
+	return pulumix.Output[[]AutomationTriggeringRule]{
+		OutputState: i.ToAutomationTriggeringRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A rule which is evaluated upon event interception. The rule is configured by comparing a specific value from the event model to an expected value. This comparison is done by using one of the supported operators set.
 type AutomationTriggeringRuleOutput struct{ *pulumi.OutputState }
 
@@ -627,6 +748,12 @@ func (o AutomationTriggeringRuleOutput) ToAutomationTriggeringRuleOutput() Autom
 
 func (o AutomationTriggeringRuleOutput) ToAutomationTriggeringRuleOutputWithContext(ctx context.Context) AutomationTriggeringRuleOutput {
 	return o
+}
+
+func (o AutomationTriggeringRuleOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationTriggeringRule] {
+	return pulumix.Output[AutomationTriggeringRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The expected value.
@@ -663,6 +790,12 @@ func (o AutomationTriggeringRuleArrayOutput) ToAutomationTriggeringRuleArrayOutp
 	return o
 }
 
+func (o AutomationTriggeringRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationTriggeringRule] {
+	return pulumix.Output[[]AutomationTriggeringRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutomationTriggeringRuleArrayOutput) Index(i pulumi.IntInput) AutomationTriggeringRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutomationTriggeringRule {
 		return vs[0].([]AutomationTriggeringRule)[vs[1].(int)]
@@ -694,6 +827,12 @@ func (o AutomationTriggeringRuleResponseOutput) ToAutomationTriggeringRuleRespon
 
 func (o AutomationTriggeringRuleResponseOutput) ToAutomationTriggeringRuleResponseOutputWithContext(ctx context.Context) AutomationTriggeringRuleResponseOutput {
 	return o
+}
+
+func (o AutomationTriggeringRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationTriggeringRuleResponse] {
+	return pulumix.Output[AutomationTriggeringRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The expected value.
@@ -728,6 +867,12 @@ func (o AutomationTriggeringRuleResponseArrayOutput) ToAutomationTriggeringRuleR
 
 func (o AutomationTriggeringRuleResponseArrayOutput) ToAutomationTriggeringRuleResponseArrayOutputWithContext(ctx context.Context) AutomationTriggeringRuleResponseArrayOutput {
 	return o
+}
+
+func (o AutomationTriggeringRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationTriggeringRuleResponse] {
+	return pulumix.Output[[]AutomationTriggeringRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutomationTriggeringRuleResponseArrayOutput) Index(i pulumi.IntInput) AutomationTriggeringRuleResponseOutput {
@@ -771,6 +916,12 @@ func (i ScopeElementArgs) ToScopeElementOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeElementOutput)
 }
 
+func (i ScopeElementArgs) ToOutput(ctx context.Context) pulumix.Output[ScopeElement] {
+	return pulumix.Output[ScopeElement]{
+		OutputState: i.ToScopeElementOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScopeElementArrayInput is an input type that accepts ScopeElementArray and ScopeElementArrayOutput values.
 // You can construct a concrete instance of `ScopeElementArrayInput` via:
 //
@@ -796,6 +947,12 @@ func (i ScopeElementArray) ToScopeElementArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeElementArrayOutput)
 }
 
+func (i ScopeElementArray) ToOutput(ctx context.Context) pulumix.Output[[]ScopeElement] {
+	return pulumix.Output[[]ScopeElement]{
+		OutputState: i.ToScopeElementArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A more specific scope used to identify the alerts to suppress.
 type ScopeElementOutput struct{ *pulumi.OutputState }
 
@@ -809,6 +966,12 @@ func (o ScopeElementOutput) ToScopeElementOutput() ScopeElementOutput {
 
 func (o ScopeElementOutput) ToScopeElementOutputWithContext(ctx context.Context) ScopeElementOutput {
 	return o
+}
+
+func (o ScopeElementOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeElement] {
+	return pulumix.Output[ScopeElement]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alert entity type to suppress by.
@@ -828,6 +991,12 @@ func (o ScopeElementArrayOutput) ToScopeElementArrayOutput() ScopeElementArrayOu
 
 func (o ScopeElementArrayOutput) ToScopeElementArrayOutputWithContext(ctx context.Context) ScopeElementArrayOutput {
 	return o
+}
+
+func (o ScopeElementArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScopeElement] {
+	return pulumix.Output[[]ScopeElement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeElementArrayOutput) Index(i pulumi.IntInput) ScopeElementOutput {
@@ -857,6 +1026,12 @@ func (o ScopeElementResponseOutput) ToScopeElementResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o ScopeElementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeElementResponse] {
+	return pulumix.Output[ScopeElementResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The alert entity type to suppress by.
 func (o ScopeElementResponseOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScopeElementResponse) *string { return v.Field }).(pulumi.StringPtrOutput)
@@ -874,6 +1049,12 @@ func (o ScopeElementResponseArrayOutput) ToScopeElementResponseArrayOutput() Sco
 
 func (o ScopeElementResponseArrayOutput) ToScopeElementResponseArrayOutputWithContext(ctx context.Context) ScopeElementResponseArrayOutput {
 	return o
+}
+
+func (o ScopeElementResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScopeElementResponse] {
+	return pulumix.Output[[]ScopeElementResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeElementResponseArrayOutput) Index(i pulumi.IntInput) ScopeElementResponseOutput {
@@ -913,6 +1094,12 @@ func (i SuppressionAlertsScopeArgs) ToSuppressionAlertsScopeOutput() Suppression
 
 func (i SuppressionAlertsScopeArgs) ToSuppressionAlertsScopeOutputWithContext(ctx context.Context) SuppressionAlertsScopeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SuppressionAlertsScopeOutput)
+}
+
+func (i SuppressionAlertsScopeArgs) ToOutput(ctx context.Context) pulumix.Output[SuppressionAlertsScope] {
+	return pulumix.Output[SuppressionAlertsScope]{
+		OutputState: i.ToSuppressionAlertsScopeOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i SuppressionAlertsScopeArgs) ToSuppressionAlertsScopePtrOutput() SuppressionAlertsScopePtrOutput {
@@ -956,6 +1143,12 @@ func (i *suppressionAlertsScopePtrType) ToSuppressionAlertsScopePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(SuppressionAlertsScopePtrOutput)
 }
 
+func (i *suppressionAlertsScopePtrType) ToOutput(ctx context.Context) pulumix.Output[*SuppressionAlertsScope] {
+	return pulumix.Output[*SuppressionAlertsScope]{
+		OutputState: i.ToSuppressionAlertsScopePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SuppressionAlertsScopeOutput struct{ *pulumi.OutputState }
 
 func (SuppressionAlertsScopeOutput) ElementType() reflect.Type {
@@ -980,6 +1173,12 @@ func (o SuppressionAlertsScopeOutput) ToSuppressionAlertsScopePtrOutputWithConte
 	}).(SuppressionAlertsScopePtrOutput)
 }
 
+func (o SuppressionAlertsScopeOutput) ToOutput(ctx context.Context) pulumix.Output[SuppressionAlertsScope] {
+	return pulumix.Output[SuppressionAlertsScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 // All the conditions inside need to be true in order to suppress the alert
 func (o SuppressionAlertsScopeOutput) AllOf() ScopeElementArrayOutput {
 	return o.ApplyT(func(v SuppressionAlertsScope) []ScopeElement { return v.AllOf }).(ScopeElementArrayOutput)
@@ -997,6 +1196,12 @@ func (o SuppressionAlertsScopePtrOutput) ToSuppressionAlertsScopePtrOutput() Sup
 
 func (o SuppressionAlertsScopePtrOutput) ToSuppressionAlertsScopePtrOutputWithContext(ctx context.Context) SuppressionAlertsScopePtrOutput {
 	return o
+}
+
+func (o SuppressionAlertsScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SuppressionAlertsScope] {
+	return pulumix.Output[*SuppressionAlertsScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SuppressionAlertsScopePtrOutput) Elem() SuppressionAlertsScopeOutput {
@@ -1038,6 +1243,12 @@ func (o SuppressionAlertsScopeResponseOutput) ToSuppressionAlertsScopeResponseOu
 	return o
 }
 
+func (o SuppressionAlertsScopeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SuppressionAlertsScopeResponse] {
+	return pulumix.Output[SuppressionAlertsScopeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // All the conditions inside need to be true in order to suppress the alert
 func (o SuppressionAlertsScopeResponseOutput) AllOf() ScopeElementResponseArrayOutput {
 	return o.ApplyT(func(v SuppressionAlertsScopeResponse) []ScopeElementResponse { return v.AllOf }).(ScopeElementResponseArrayOutput)
@@ -1055,6 +1266,12 @@ func (o SuppressionAlertsScopeResponsePtrOutput) ToSuppressionAlertsScopeRespons
 
 func (o SuppressionAlertsScopeResponsePtrOutput) ToSuppressionAlertsScopeResponsePtrOutputWithContext(ctx context.Context) SuppressionAlertsScopeResponsePtrOutput {
 	return o
+}
+
+func (o SuppressionAlertsScopeResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SuppressionAlertsScopeResponse] {
+	return pulumix.Output[*SuppressionAlertsScopeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SuppressionAlertsScopeResponsePtrOutput) Elem() SuppressionAlertsScopeResponseOutput {

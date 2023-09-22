@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Auto-tracking configuration.
@@ -79,6 +80,12 @@ func (o AutoTrackingConfigurationOutput) ToAutoTrackingConfigurationPtrOutputWit
 	}).(AutoTrackingConfigurationPtrOutput)
 }
 
+func (o AutoTrackingConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[AutoTrackingConfiguration] {
+	return pulumix.Output[AutoTrackingConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoTrackingConfigurationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -112,6 +119,12 @@ func (o AutoTrackingConfigurationPtrOutput) ToAutoTrackingConfigurationPtrOutput
 
 func (o AutoTrackingConfigurationPtrOutput) ToAutoTrackingConfigurationPtrOutputWithContext(ctx context.Context) AutoTrackingConfigurationPtrOutput {
 	return o
+}
+
+func (o AutoTrackingConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoTrackingConfiguration] {
+	return pulumix.Output[*AutoTrackingConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoTrackingConfigurationPtrOutput) Elem() AutoTrackingConfigurationOutput {
@@ -174,6 +187,12 @@ func (in *autoTrackingConfigurationPtr) ToAutoTrackingConfigurationPtrOutput() A
 
 func (in *autoTrackingConfigurationPtr) ToAutoTrackingConfigurationPtrOutputWithContext(ctx context.Context) AutoTrackingConfigurationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoTrackingConfigurationPtrOutput)
+}
+
+func (in *autoTrackingConfigurationPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoTrackingConfiguration] {
+	return pulumix.Output[*AutoTrackingConfiguration]{
+		OutputState: in.ToAutoTrackingConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Direction (Uplink or Downlink).

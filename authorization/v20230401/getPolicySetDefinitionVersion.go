@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This operation retrieves the policy set definition version in the given subscription with the given name and version.
@@ -94,6 +95,12 @@ func (o LookupPolicySetDefinitionVersionResultOutput) ToLookupPolicySetDefinitio
 
 func (o LookupPolicySetDefinitionVersionResultOutput) ToLookupPolicySetDefinitionVersionResultOutputWithContext(ctx context.Context) LookupPolicySetDefinitionVersionResultOutput {
 	return o
+}
+
+func (o LookupPolicySetDefinitionVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPolicySetDefinitionVersionResult] {
+	return pulumix.Output[LookupPolicySetDefinitionVersionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The policy set definition description.

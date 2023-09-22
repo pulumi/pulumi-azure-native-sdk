@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Authorization Provider contract.
@@ -142,6 +143,12 @@ func (i *AuthorizationProvider) ToAuthorizationProviderOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationProviderOutput)
 }
 
+func (i *AuthorizationProvider) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationProvider] {
+	return pulumix.Output[*AuthorizationProvider]{
+		OutputState: i.ToAuthorizationProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthorizationProviderOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationProviderOutput) ElementType() reflect.Type {
@@ -154,6 +161,12 @@ func (o AuthorizationProviderOutput) ToAuthorizationProviderOutput() Authorizati
 
 func (o AuthorizationProviderOutput) ToAuthorizationProviderOutputWithContext(ctx context.Context) AuthorizationProviderOutput {
 	return o
+}
+
+func (o AuthorizationProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationProvider] {
+	return pulumix.Output[*AuthorizationProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authorization Provider name. Must be 1 to 300 characters long.

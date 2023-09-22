@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The alert rule resource.
@@ -175,6 +176,12 @@ func (i *AlertRule) ToAlertRuleOutputWithContext(ctx context.Context) AlertRuleO
 	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleOutput)
 }
 
+func (i *AlertRule) ToOutput(ctx context.Context) pulumix.Output[*AlertRule] {
+	return pulumix.Output[*AlertRule]{
+		OutputState: i.ToAlertRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertRuleOutput struct{ *pulumi.OutputState }
 
 func (AlertRuleOutput) ElementType() reflect.Type {
@@ -187,6 +194,12 @@ func (o AlertRuleOutput) ToAlertRuleOutput() AlertRuleOutput {
 
 func (o AlertRuleOutput) ToAlertRuleOutputWithContext(ctx context.Context) AlertRuleOutput {
 	return o
+}
+
+func (o AlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertRule] {
+	return pulumix.Output[*AlertRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // action that is performed when the alert rule becomes active, and when an alert condition is resolved.

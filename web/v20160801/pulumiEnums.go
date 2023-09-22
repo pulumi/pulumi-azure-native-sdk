@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Predefined action to be taken.
@@ -79,6 +80,12 @@ func (o AutoHealActionTypeOutput) ToAutoHealActionTypePtrOutputWithContext(ctx c
 	}).(AutoHealActionTypePtrOutput)
 }
 
+func (o AutoHealActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AutoHealActionType] {
+	return pulumix.Output[AutoHealActionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoHealActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -112,6 +119,12 @@ func (o AutoHealActionTypePtrOutput) ToAutoHealActionTypePtrOutput() AutoHealAct
 
 func (o AutoHealActionTypePtrOutput) ToAutoHealActionTypePtrOutputWithContext(ctx context.Context) AutoHealActionTypePtrOutput {
 	return o
+}
+
+func (o AutoHealActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoHealActionType] {
+	return pulumix.Output[*AutoHealActionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoHealActionTypePtrOutput) Elem() AutoHealActionTypeOutput {
@@ -174,6 +187,12 @@ func (in *autoHealActionTypePtr) ToAutoHealActionTypePtrOutput() AutoHealActionT
 
 func (in *autoHealActionTypePtr) ToAutoHealActionTypePtrOutputWithContext(ctx context.Context) AutoHealActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoHealActionTypePtrOutput)
+}
+
+func (in *autoHealActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AutoHealActionType] {
+	return pulumix.Output[*AutoHealActionType]{
+		OutputState: in.ToAutoHealActionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of the backup.
@@ -246,6 +265,12 @@ func (o BackupRestoreOperationTypeOutput) ToBackupRestoreOperationTypePtrOutputW
 	}).(BackupRestoreOperationTypePtrOutput)
 }
 
+func (o BackupRestoreOperationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[BackupRestoreOperationType] {
+	return pulumix.Output[BackupRestoreOperationType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackupRestoreOperationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -279,6 +304,12 @@ func (o BackupRestoreOperationTypePtrOutput) ToBackupRestoreOperationTypePtrOutp
 
 func (o BackupRestoreOperationTypePtrOutput) ToBackupRestoreOperationTypePtrOutputWithContext(ctx context.Context) BackupRestoreOperationTypePtrOutput {
 	return o
+}
+
+func (o BackupRestoreOperationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupRestoreOperationType] {
+	return pulumix.Output[*BackupRestoreOperationType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupRestoreOperationTypePtrOutput) Elem() BackupRestoreOperationTypeOutput {
@@ -341,6 +372,12 @@ func (in *backupRestoreOperationTypePtr) ToBackupRestoreOperationTypePtrOutput()
 
 func (in *backupRestoreOperationTypePtr) ToBackupRestoreOperationTypePtrOutputWithContext(ctx context.Context) BackupRestoreOperationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackupRestoreOperationTypePtrOutput)
+}
+
+func (in *backupRestoreOperationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BackupRestoreOperationType] {
+	return pulumix.Output[*BackupRestoreOperationType]{
+		OutputState: in.ToBackupRestoreOperationTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of database.
@@ -420,6 +457,12 @@ func (o ConnectionStringTypeOutput) ToConnectionStringTypePtrOutputWithContext(c
 	}).(ConnectionStringTypePtrOutput)
 }
 
+func (o ConnectionStringTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionStringType] {
+	return pulumix.Output[ConnectionStringType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionStringTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -453,6 +496,12 @@ func (o ConnectionStringTypePtrOutput) ToConnectionStringTypePtrOutput() Connect
 
 func (o ConnectionStringTypePtrOutput) ToConnectionStringTypePtrOutputWithContext(ctx context.Context) ConnectionStringTypePtrOutput {
 	return o
+}
+
+func (o ConnectionStringTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionStringType] {
+	return pulumix.Output[*ConnectionStringType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionStringTypePtrOutput) Elem() ConnectionStringTypeOutput {
@@ -515,6 +564,12 @@ func (in *connectionStringTypePtr) ToConnectionStringTypePtrOutput() ConnectionS
 
 func (in *connectionStringTypePtr) ToConnectionStringTypePtrOutputWithContext(ctx context.Context) ConnectionStringTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionStringTypePtrOutput)
+}
+
+func (in *connectionStringTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionStringType] {
+	return pulumix.Output[*ConnectionStringType]{
+		OutputState: in.ToConnectionStringTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Database type (e.g. SqlAzure / MySql).
@@ -595,6 +650,12 @@ func (o FrequencyUnitOutput) ToFrequencyUnitPtrOutputWithContext(ctx context.Con
 	}).(FrequencyUnitPtrOutput)
 }
 
+func (o FrequencyUnitOutput) ToOutput(ctx context.Context) pulumix.Output[FrequencyUnit] {
+	return pulumix.Output[FrequencyUnit]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FrequencyUnitOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -628,6 +689,12 @@ func (o FrequencyUnitPtrOutput) ToFrequencyUnitPtrOutput() FrequencyUnitPtrOutpu
 
 func (o FrequencyUnitPtrOutput) ToFrequencyUnitPtrOutputWithContext(ctx context.Context) FrequencyUnitPtrOutput {
 	return o
+}
+
+func (o FrequencyUnitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FrequencyUnit] {
+	return pulumix.Output[*FrequencyUnit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FrequencyUnitPtrOutput) Elem() FrequencyUnitOutput {
@@ -690,6 +757,12 @@ func (in *frequencyUnitPtr) ToFrequencyUnitPtrOutput() FrequencyUnitPtrOutput {
 
 func (in *frequencyUnitPtr) ToFrequencyUnitPtrOutputWithContext(ctx context.Context) FrequencyUnitPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FrequencyUnitPtrOutput)
+}
+
+func (in *frequencyUnitPtr) ToOutput(ctx context.Context) pulumix.Output[*FrequencyUnit] {
+	return pulumix.Output[*FrequencyUnit]{
+		OutputState: in.ToFrequencyUnitPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates whether the hostname is a standard or repository hostname.
@@ -760,6 +833,12 @@ func (o HostTypeOutput) ToHostTypePtrOutputWithContext(ctx context.Context) Host
 	}).(HostTypePtrOutput)
 }
 
+func (o HostTypeOutput) ToOutput(ctx context.Context) pulumix.Output[HostType] {
+	return pulumix.Output[HostType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -793,6 +872,12 @@ func (o HostTypePtrOutput) ToHostTypePtrOutput() HostTypePtrOutput {
 
 func (o HostTypePtrOutput) ToHostTypePtrOutputWithContext(ctx context.Context) HostTypePtrOutput {
 	return o
+}
+
+func (o HostTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostType] {
+	return pulumix.Output[*HostType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostTypePtrOutput) Elem() HostTypeOutput {
@@ -855,6 +940,12 @@ func (in *hostTypePtr) ToHostTypePtrOutput() HostTypePtrOutput {
 
 func (in *hostTypePtr) ToHostTypePtrOutputWithContext(ctx context.Context) HostTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HostTypePtrOutput)
+}
+
+func (in *hostTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HostType] {
+	return pulumix.Output[*HostType]{
+		OutputState: in.ToHostTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Managed pipeline mode.
@@ -925,6 +1016,12 @@ func (o ManagedPipelineModeOutput) ToManagedPipelineModePtrOutputWithContext(ctx
 	}).(ManagedPipelineModePtrOutput)
 }
 
+func (o ManagedPipelineModeOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedPipelineMode] {
+	return pulumix.Output[ManagedPipelineMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ManagedPipelineModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -958,6 +1055,12 @@ func (o ManagedPipelineModePtrOutput) ToManagedPipelineModePtrOutput() ManagedPi
 
 func (o ManagedPipelineModePtrOutput) ToManagedPipelineModePtrOutputWithContext(ctx context.Context) ManagedPipelineModePtrOutput {
 	return o
+}
+
+func (o ManagedPipelineModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedPipelineMode] {
+	return pulumix.Output[*ManagedPipelineMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedPipelineModePtrOutput) Elem() ManagedPipelineModeOutput {
@@ -1020,6 +1123,12 @@ func (in *managedPipelineModePtr) ToManagedPipelineModePtrOutput() ManagedPipeli
 
 func (in *managedPipelineModePtr) ToManagedPipelineModePtrOutputWithContext(ctx context.Context) ManagedPipelineModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedPipelineModePtrOutput)
+}
+
+func (in *managedPipelineModePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedPipelineMode] {
+	return pulumix.Output[*ManagedPipelineMode]{
+		OutputState: in.ToManagedPipelineModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of managed service identity.
@@ -1119,6 +1228,12 @@ func (o SiteLoadBalancingOutput) ToSiteLoadBalancingPtrOutputWithContext(ctx con
 	}).(SiteLoadBalancingPtrOutput)
 }
 
+func (o SiteLoadBalancingOutput) ToOutput(ctx context.Context) pulumix.Output[SiteLoadBalancing] {
+	return pulumix.Output[SiteLoadBalancing]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SiteLoadBalancingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1152,6 +1267,12 @@ func (o SiteLoadBalancingPtrOutput) ToSiteLoadBalancingPtrOutput() SiteLoadBalan
 
 func (o SiteLoadBalancingPtrOutput) ToSiteLoadBalancingPtrOutputWithContext(ctx context.Context) SiteLoadBalancingPtrOutput {
 	return o
+}
+
+func (o SiteLoadBalancingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SiteLoadBalancing] {
+	return pulumix.Output[*SiteLoadBalancing]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SiteLoadBalancingPtrOutput) Elem() SiteLoadBalancingOutput {
@@ -1214,6 +1335,12 @@ func (in *siteLoadBalancingPtr) ToSiteLoadBalancingPtrOutput() SiteLoadBalancing
 
 func (in *siteLoadBalancingPtr) ToSiteLoadBalancingPtrOutputWithContext(ctx context.Context) SiteLoadBalancingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SiteLoadBalancingPtrOutput)
+}
+
+func (in *siteLoadBalancingPtr) ToOutput(ctx context.Context) pulumix.Output[*SiteLoadBalancing] {
+	return pulumix.Output[*SiteLoadBalancing]{
+		OutputState: in.ToSiteLoadBalancingPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SSL type.
@@ -1285,6 +1412,12 @@ func (o SslStateOutput) ToSslStatePtrOutputWithContext(ctx context.Context) SslS
 	}).(SslStatePtrOutput)
 }
 
+func (o SslStateOutput) ToOutput(ctx context.Context) pulumix.Output[SslState] {
+	return pulumix.Output[SslState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SslStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1318,6 +1451,12 @@ func (o SslStatePtrOutput) ToSslStatePtrOutput() SslStatePtrOutput {
 
 func (o SslStatePtrOutput) ToSslStatePtrOutputWithContext(ctx context.Context) SslStatePtrOutput {
 	return o
+}
+
+func (o SslStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslState] {
+	return pulumix.Output[*SslState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SslStatePtrOutput) Elem() SslStateOutput {
@@ -1380,6 +1519,12 @@ func (in *sslStatePtr) ToSslStatePtrOutput() SslStatePtrOutput {
 
 func (in *sslStatePtr) ToSslStatePtrOutputWithContext(ctx context.Context) SslStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslStatePtrOutput)
+}
+
+func (in *sslStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SslState] {
+	return pulumix.Output[*SslState]{
+		OutputState: in.ToSslStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MinTlsVersion: configures the minimum version of TLS required for SSL requests

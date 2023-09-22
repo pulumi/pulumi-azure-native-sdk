@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Pool
@@ -110,6 +111,12 @@ func (o LookupPoolResultOutput) ToLookupPoolResultOutput() LookupPoolResultOutpu
 
 func (o LookupPoolResultOutput) ToLookupPoolResultOutputWithContext(ctx context.Context) LookupPoolResultOutput {
 	return o
+}
+
+func (o LookupPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPoolResult] {
+	return pulumix.Output[LookupPoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.

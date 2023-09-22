@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ExpressRoute Circuit Authorization
@@ -88,6 +89,12 @@ func (o LookupAuthorizationResultOutput) ToLookupAuthorizationResultOutput() Loo
 
 func (o LookupAuthorizationResultOutput) ToLookupAuthorizationResultOutputWithContext(ctx context.Context) LookupAuthorizationResultOutput {
 	return o
+}
+
+func (o LookupAuthorizationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAuthorizationResult] {
+	return pulumix.Output[LookupAuthorizationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the ExpressRoute Circuit Authorization

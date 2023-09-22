@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The kind of the service.
@@ -79,6 +80,12 @@ func (o KindOutput) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutpu
 	}).(KindPtrOutput)
 }
 
+func (o KindOutput) ToOutput(ctx context.Context) pulumix.Output[Kind] {
+	return pulumix.Output[Kind]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -112,6 +119,12 @@ func (o KindPtrOutput) ToKindPtrOutput() KindPtrOutput {
 
 func (o KindPtrOutput) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput {
 	return o
+}
+
+func (o KindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
+	return pulumix.Output[*Kind]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KindPtrOutput) Elem() KindOutput {
@@ -174,6 +187,12 @@ func (in *kindPtr) ToKindPtrOutput() KindPtrOutput {
 
 func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
+}
+
+func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
+	return pulumix.Output[*Kind]{
+		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of identity being specified, currently SystemAssigned and None are allowed.

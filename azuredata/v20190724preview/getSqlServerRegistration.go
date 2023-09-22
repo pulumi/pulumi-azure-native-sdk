@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a SQL Server registration.
@@ -88,6 +89,12 @@ func (o LookupSqlServerRegistrationResultOutput) ToLookupSqlServerRegistrationRe
 
 func (o LookupSqlServerRegistrationResultOutput) ToLookupSqlServerRegistrationResultOutputWithContext(ctx context.Context) LookupSqlServerRegistrationResultOutput {
 	return o
+}
+
+func (o LookupSqlServerRegistrationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlServerRegistrationResult] {
+	return pulumix.Output[LookupSqlServerRegistrationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

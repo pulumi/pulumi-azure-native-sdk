@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
@@ -132,6 +133,12 @@ func (o OperatingSystemTypesOutput) ToOperatingSystemTypesPtrOutputWithContext(c
 	}).(OperatingSystemTypesPtrOutput)
 }
 
+func (o OperatingSystemTypesOutput) ToOutput(ctx context.Context) pulumix.Output[OperatingSystemTypes] {
+	return pulumix.Output[OperatingSystemTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OperatingSystemTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -165,6 +172,12 @@ func (o OperatingSystemTypesPtrOutput) ToOperatingSystemTypesPtrOutput() Operati
 
 func (o OperatingSystemTypesPtrOutput) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return o
+}
+
+func (o OperatingSystemTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
+	return pulumix.Output[*OperatingSystemTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OperatingSystemTypesPtrOutput) Elem() OperatingSystemTypesOutput {
@@ -227,6 +240,12 @@ func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutput() OperatingSy
 
 func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypesPtrOutput)
+}
+
+func (in *operatingSystemTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
+	return pulumix.Output[*OperatingSystemTypes]{
+		OutputState: in.ToOperatingSystemTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The guest agent provisioning action.
@@ -305,6 +324,12 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
+func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
+	return pulumix.Output[ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -338,6 +363,12 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -400,6 +431,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+}
+
+func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.

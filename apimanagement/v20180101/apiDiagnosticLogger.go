@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Logger details.
@@ -138,6 +139,12 @@ func (i *ApiDiagnosticLogger) ToApiDiagnosticLoggerOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticLoggerOutput)
 }
 
+func (i *ApiDiagnosticLogger) ToOutput(ctx context.Context) pulumix.Output[*ApiDiagnosticLogger] {
+	return pulumix.Output[*ApiDiagnosticLogger]{
+		OutputState: i.ToApiDiagnosticLoggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiDiagnosticLoggerOutput struct{ *pulumi.OutputState }
 
 func (ApiDiagnosticLoggerOutput) ElementType() reflect.Type {
@@ -150,6 +157,12 @@ func (o ApiDiagnosticLoggerOutput) ToApiDiagnosticLoggerOutput() ApiDiagnosticLo
 
 func (o ApiDiagnosticLoggerOutput) ToApiDiagnosticLoggerOutputWithContext(ctx context.Context) ApiDiagnosticLoggerOutput {
 	return o
+}
+
+func (o ApiDiagnosticLoggerOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiDiagnosticLogger] {
+	return pulumix.Output[*ApiDiagnosticLogger]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name and SendRule connection string of the event hub for azureEventHub logger.

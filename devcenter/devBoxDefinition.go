@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a definition for a Developer Machine.
@@ -183,6 +184,12 @@ func (i *DevBoxDefinition) ToDevBoxDefinitionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DevBoxDefinitionOutput)
 }
 
+func (i *DevBoxDefinition) ToOutput(ctx context.Context) pulumix.Output[*DevBoxDefinition] {
+	return pulumix.Output[*DevBoxDefinition]{
+		OutputState: i.ToDevBoxDefinitionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DevBoxDefinitionOutput struct{ *pulumi.OutputState }
 
 func (DevBoxDefinitionOutput) ElementType() reflect.Type {
@@ -195,6 +202,12 @@ func (o DevBoxDefinitionOutput) ToDevBoxDefinitionOutput() DevBoxDefinitionOutpu
 
 func (o DevBoxDefinitionOutput) ToDevBoxDefinitionOutputWithContext(ctx context.Context) DevBoxDefinitionOutput {
 	return o
+}
+
+func (o DevBoxDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[*DevBoxDefinition] {
+	return pulumix.Output[*DevBoxDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Image reference information for the currently active image (only populated during updates).

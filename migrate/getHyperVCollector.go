@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Hyper-V collector.
@@ -78,6 +79,12 @@ func (o LookupHyperVCollectorResultOutput) ToLookupHyperVCollectorResultOutput()
 
 func (o LookupHyperVCollectorResultOutput) ToLookupHyperVCollectorResultOutputWithContext(ctx context.Context) LookupHyperVCollectorResultOutput {
 	return o
+}
+
+func (o LookupHyperVCollectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHyperVCollectorResult] {
+	return pulumix.Output[LookupHyperVCollectorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupHyperVCollectorResultOutput) ETag() pulumi.StringPtrOutput {

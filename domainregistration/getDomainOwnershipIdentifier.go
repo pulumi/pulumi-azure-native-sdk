@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Get ownership identifier for domain
@@ -85,6 +86,12 @@ func (o LookupDomainOwnershipIdentifierResultOutput) ToLookupDomainOwnershipIden
 
 func (o LookupDomainOwnershipIdentifierResultOutput) ToLookupDomainOwnershipIdentifierResultOutputWithContext(ctx context.Context) LookupDomainOwnershipIdentifierResultOutput {
 	return o
+}
+
+func (o LookupDomainOwnershipIdentifierResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDomainOwnershipIdentifierResult] {
+	return pulumix.Output[LookupDomainOwnershipIdentifierResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id.

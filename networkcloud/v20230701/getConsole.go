@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of the provided virtual machine console.
@@ -102,6 +103,12 @@ func (o LookupConsoleResultOutput) ToLookupConsoleResultOutput() LookupConsoleRe
 
 func (o LookupConsoleResultOutput) ToLookupConsoleResultOutputWithContext(ctx context.Context) LookupConsoleResultOutput {
 	return o
+}
+
+func (o LookupConsoleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConsoleResult] {
+	return pulumix.Output[LookupConsoleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The more detailed status of the console.

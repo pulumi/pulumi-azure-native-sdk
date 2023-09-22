@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets compute definition by its name. Any secrets (storage keys, service credentials, etc) are not returned - use 'keys' nested resource to get them.
@@ -92,6 +93,12 @@ func (o LookupMachineLearningComputeResultOutput) ToLookupMachineLearningCompute
 
 func (o LookupMachineLearningComputeResultOutput) ToLookupMachineLearningComputeResultOutputWithContext(ctx context.Context) LookupMachineLearningComputeResultOutput {
 	return o
+}
+
+func (o LookupMachineLearningComputeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMachineLearningComputeResult] {
+	return pulumix.Output[LookupMachineLearningComputeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the resource ID.

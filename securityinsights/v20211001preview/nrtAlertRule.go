@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents NRT alert rule.
@@ -311,6 +312,12 @@ func (i *NrtAlertRule) ToNrtAlertRuleOutputWithContext(ctx context.Context) NrtA
 	return pulumi.ToOutputWithContext(ctx, i).(NrtAlertRuleOutput)
 }
 
+func (i *NrtAlertRule) ToOutput(ctx context.Context) pulumix.Output[*NrtAlertRule] {
+	return pulumix.Output[*NrtAlertRule]{
+		OutputState: i.ToNrtAlertRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NrtAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (NrtAlertRuleOutput) ElementType() reflect.Type {
@@ -323,6 +330,12 @@ func (o NrtAlertRuleOutput) ToNrtAlertRuleOutput() NrtAlertRuleOutput {
 
 func (o NrtAlertRuleOutput) ToNrtAlertRuleOutputWithContext(ctx context.Context) NrtAlertRuleOutput {
 	return o
+}
+
+func (o NrtAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*NrtAlertRule] {
+	return pulumix.Output[*NrtAlertRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alert details override settings

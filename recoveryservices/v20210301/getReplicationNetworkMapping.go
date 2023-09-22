@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of an ASR network mapping
@@ -92,6 +93,12 @@ func (o LookupReplicationNetworkMappingResultOutput) ToLookupReplicationNetworkM
 
 func (o LookupReplicationNetworkMappingResultOutput) ToLookupReplicationNetworkMappingResultOutputWithContext(ctx context.Context) LookupReplicationNetworkMappingResultOutput {
 	return o
+}
+
+func (o LookupReplicationNetworkMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReplicationNetworkMappingResult] {
+	return pulumix.Output[LookupReplicationNetworkMappingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id

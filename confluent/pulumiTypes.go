@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -64,6 +65,12 @@ func (i OfferDetailArgs) ToOfferDetailOutputWithContext(ctx context.Context) Off
 	return pulumi.ToOutputWithContext(ctx, i).(OfferDetailOutput)
 }
 
+func (i OfferDetailArgs) ToOutput(ctx context.Context) pulumix.Output[OfferDetail] {
+	return pulumix.Output[OfferDetail]{
+		OutputState: i.ToOfferDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Confluent Offer detail
 type OfferDetailOutput struct{ *pulumi.OutputState }
 
@@ -77,6 +84,12 @@ func (o OfferDetailOutput) ToOfferDetailOutput() OfferDetailOutput {
 
 func (o OfferDetailOutput) ToOfferDetailOutputWithContext(ctx context.Context) OfferDetailOutput {
 	return o
+}
+
+func (o OfferDetailOutput) ToOutput(ctx context.Context) pulumix.Output[OfferDetail] {
+	return pulumix.Output[OfferDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Offer Id
@@ -133,6 +146,12 @@ func (o OfferDetailResponseOutput) ToOfferDetailResponseOutput() OfferDetailResp
 
 func (o OfferDetailResponseOutput) ToOfferDetailResponseOutputWithContext(ctx context.Context) OfferDetailResponseOutput {
 	return o
+}
+
+func (o OfferDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OfferDetailResponse] {
+	return pulumix.Output[OfferDetailResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Offer Id
@@ -194,6 +213,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -269,6 +294,12 @@ func (i UserDetailArgs) ToUserDetailOutputWithContext(ctx context.Context) UserD
 	return pulumi.ToOutputWithContext(ctx, i).(UserDetailOutput)
 }
 
+func (i UserDetailArgs) ToOutput(ctx context.Context) pulumix.Output[UserDetail] {
+	return pulumix.Output[UserDetail]{
+		OutputState: i.ToUserDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Subscriber detail
 type UserDetailOutput struct{ *pulumi.OutputState }
 
@@ -282,6 +313,12 @@ func (o UserDetailOutput) ToUserDetailOutput() UserDetailOutput {
 
 func (o UserDetailOutput) ToUserDetailOutputWithContext(ctx context.Context) UserDetailOutput {
 	return o
+}
+
+func (o UserDetailOutput) ToOutput(ctx context.Context) pulumix.Output[UserDetail] {
+	return pulumix.Output[UserDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Email address
@@ -322,6 +359,12 @@ func (o UserDetailResponseOutput) ToUserDetailResponseOutput() UserDetailRespons
 
 func (o UserDetailResponseOutput) ToUserDetailResponseOutputWithContext(ctx context.Context) UserDetailResponseOutput {
 	return o
+}
+
+func (o UserDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserDetailResponse] {
+	return pulumix.Output[UserDetailResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Email address

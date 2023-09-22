@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get IoT site
@@ -79,6 +80,12 @@ func (o LookupSiteResultOutput) ToLookupSiteResultOutput() LookupSiteResultOutpu
 
 func (o LookupSiteResultOutput) ToLookupSiteResultOutputWithContext(ctx context.Context) LookupSiteResultOutput {
 	return o
+}
+
+func (o LookupSiteResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSiteResult] {
+	return pulumix.Output[LookupSiteResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Display name of the IoT site

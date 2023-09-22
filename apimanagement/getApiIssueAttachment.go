@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the issue Attachment for an API specified by its identifier.
@@ -95,6 +96,12 @@ func (o LookupApiIssueAttachmentResultOutput) ToLookupApiIssueAttachmentResultOu
 
 func (o LookupApiIssueAttachmentResultOutput) ToLookupApiIssueAttachmentResultOutputWithContext(ctx context.Context) LookupApiIssueAttachmentResultOutput {
 	return o
+}
+
+func (o LookupApiIssueAttachmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiIssueAttachmentResult] {
+	return pulumix.Output[LookupApiIssueAttachmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An HTTP link or Base64-encoded binary data.

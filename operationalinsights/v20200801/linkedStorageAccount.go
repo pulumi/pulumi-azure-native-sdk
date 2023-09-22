@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Linked storage accounts top level resource container.
@@ -129,6 +130,12 @@ func (i *LinkedStorageAccount) ToLinkedStorageAccountOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedStorageAccountOutput)
 }
 
+func (i *LinkedStorageAccount) ToOutput(ctx context.Context) pulumix.Output[*LinkedStorageAccount] {
+	return pulumix.Output[*LinkedStorageAccount]{
+		OutputState: i.ToLinkedStorageAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LinkedStorageAccountOutput struct{ *pulumi.OutputState }
 
 func (LinkedStorageAccountOutput) ElementType() reflect.Type {
@@ -141,6 +148,12 @@ func (o LinkedStorageAccountOutput) ToLinkedStorageAccountOutput() LinkedStorage
 
 func (o LinkedStorageAccountOutput) ToLinkedStorageAccountOutputWithContext(ctx context.Context) LinkedStorageAccountOutput {
 	return o
+}
+
+func (o LinkedStorageAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedStorageAccount] {
+	return pulumix.Output[*LinkedStorageAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Linked storage accounts type.

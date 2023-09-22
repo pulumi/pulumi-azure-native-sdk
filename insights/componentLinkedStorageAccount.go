@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Application Insights component linked storage accounts
@@ -122,6 +123,12 @@ func (i *ComponentLinkedStorageAccount) ToComponentLinkedStorageAccountOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ComponentLinkedStorageAccountOutput)
 }
 
+func (i *ComponentLinkedStorageAccount) ToOutput(ctx context.Context) pulumix.Output[*ComponentLinkedStorageAccount] {
+	return pulumix.Output[*ComponentLinkedStorageAccount]{
+		OutputState: i.ToComponentLinkedStorageAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ComponentLinkedStorageAccountOutput struct{ *pulumi.OutputState }
 
 func (ComponentLinkedStorageAccountOutput) ElementType() reflect.Type {
@@ -134,6 +141,12 @@ func (o ComponentLinkedStorageAccountOutput) ToComponentLinkedStorageAccountOutp
 
 func (o ComponentLinkedStorageAccountOutput) ToComponentLinkedStorageAccountOutputWithContext(ctx context.Context) ComponentLinkedStorageAccountOutput {
 	return o
+}
+
+func (o ComponentLinkedStorageAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*ComponentLinkedStorageAccount] {
+	return pulumix.Output[*ComponentLinkedStorageAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Linked storage account resource ID

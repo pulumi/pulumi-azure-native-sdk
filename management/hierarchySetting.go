@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Settings defined at the Management Group scope.
@@ -131,6 +132,12 @@ func (i *HierarchySetting) ToHierarchySettingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(HierarchySettingOutput)
 }
 
+func (i *HierarchySetting) ToOutput(ctx context.Context) pulumix.Output[*HierarchySetting] {
+	return pulumix.Output[*HierarchySetting]{
+		OutputState: i.ToHierarchySettingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HierarchySettingOutput struct{ *pulumi.OutputState }
 
 func (HierarchySettingOutput) ElementType() reflect.Type {
@@ -143,6 +150,12 @@ func (o HierarchySettingOutput) ToHierarchySettingOutput() HierarchySettingOutpu
 
 func (o HierarchySettingOutput) ToHierarchySettingOutputWithContext(ctx context.Context) HierarchySettingOutput {
 	return o
+}
+
+func (o HierarchySettingOutput) ToOutput(ctx context.Context) pulumix.Output[*HierarchySetting] {
+	return pulumix.Output[*HierarchySetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup

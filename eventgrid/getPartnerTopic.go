@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of a partner topic.
@@ -103,6 +104,12 @@ func (o LookupPartnerTopicResultOutput) ToLookupPartnerTopicResultOutput() Looku
 
 func (o LookupPartnerTopicResultOutput) ToLookupPartnerTopicResultOutputWithContext(ctx context.Context) LookupPartnerTopicResultOutput {
 	return o
+}
+
+func (o LookupPartnerTopicResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPartnerTopicResult] {
+	return pulumix.Output[LookupPartnerTopicResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Activation state of the partner topic.

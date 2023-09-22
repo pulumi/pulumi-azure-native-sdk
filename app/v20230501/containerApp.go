@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Container App.
@@ -211,6 +212,12 @@ func (i *ContainerApp) ToContainerAppOutputWithContext(ctx context.Context) Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerAppOutput)
 }
 
+func (i *ContainerApp) ToOutput(ctx context.Context) pulumix.Output[*ContainerApp] {
+	return pulumix.Output[*ContainerApp]{
+		OutputState: i.ToContainerAppOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerAppOutput struct{ *pulumi.OutputState }
 
 func (ContainerAppOutput) ElementType() reflect.Type {
@@ -223,6 +230,12 @@ func (o ContainerAppOutput) ToContainerAppOutput() ContainerAppOutput {
 
 func (o ContainerAppOutput) ToContainerAppOutputWithContext(ctx context.Context) ContainerAppOutput {
 	return o
+}
+
+func (o ContainerAppOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerApp] {
+	return pulumix.Output[*ContainerApp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Non versioned Container App configuration properties.

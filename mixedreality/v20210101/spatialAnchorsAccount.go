@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SpatialAnchorsAccount Response.
@@ -168,6 +169,12 @@ func (i *SpatialAnchorsAccount) ToSpatialAnchorsAccountOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SpatialAnchorsAccountOutput)
 }
 
+func (i *SpatialAnchorsAccount) ToOutput(ctx context.Context) pulumix.Output[*SpatialAnchorsAccount] {
+	return pulumix.Output[*SpatialAnchorsAccount]{
+		OutputState: i.ToSpatialAnchorsAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SpatialAnchorsAccountOutput struct{ *pulumi.OutputState }
 
 func (SpatialAnchorsAccountOutput) ElementType() reflect.Type {
@@ -180,6 +187,12 @@ func (o SpatialAnchorsAccountOutput) ToSpatialAnchorsAccountOutput() SpatialAnch
 
 func (o SpatialAnchorsAccountOutput) ToSpatialAnchorsAccountOutputWithContext(ctx context.Context) SpatialAnchorsAccountOutput {
 	return o
+}
+
+func (o SpatialAnchorsAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*SpatialAnchorsAccount] {
+	return pulumix.Output[*SpatialAnchorsAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Correspond domain name of certain Spatial Anchors Account

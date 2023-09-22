@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i AgentPoolUpgradeSettingsArgs) ToAgentPoolUpgradeSettingsOutput() AgentPo
 
 func (i AgentPoolUpgradeSettingsArgs) ToAgentPoolUpgradeSettingsOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolUpgradeSettingsOutput)
+}
+
+func (i AgentPoolUpgradeSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AgentPoolUpgradeSettings] {
+	return pulumix.Output[AgentPoolUpgradeSettings]{
+		OutputState: i.ToAgentPoolUpgradeSettingsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i AgentPoolUpgradeSettingsArgs) ToAgentPoolUpgradeSettingsPtrOutput() AgentPoolUpgradeSettingsPtrOutput {
@@ -89,6 +96,12 @@ func (i *agentPoolUpgradeSettingsPtrType) ToAgentPoolUpgradeSettingsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolUpgradeSettingsPtrOutput)
 }
 
+func (i *agentPoolUpgradeSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolUpgradeSettings] {
+	return pulumix.Output[*AgentPoolUpgradeSettings]{
+		OutputState: i.ToAgentPoolUpgradeSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings for upgrading an agentpool
 type AgentPoolUpgradeSettingsOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o AgentPoolUpgradeSettingsOutput) ToAgentPoolUpgradeSettingsPtrOutputWithC
 	}).(AgentPoolUpgradeSettingsPtrOutput)
 }
 
+func (o AgentPoolUpgradeSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AgentPoolUpgradeSettings] {
+	return pulumix.Output[AgentPoolUpgradeSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
 func (o AgentPoolUpgradeSettingsOutput) MaxSurge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentPoolUpgradeSettings) *string { return v.MaxSurge }).(pulumi.StringPtrOutput)
@@ -131,6 +150,12 @@ func (o AgentPoolUpgradeSettingsPtrOutput) ToAgentPoolUpgradeSettingsPtrOutput()
 
 func (o AgentPoolUpgradeSettingsPtrOutput) ToAgentPoolUpgradeSettingsPtrOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsPtrOutput {
 	return o
+}
+
+func (o AgentPoolUpgradeSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolUpgradeSettings] {
+	return pulumix.Output[*AgentPoolUpgradeSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AgentPoolUpgradeSettingsPtrOutput) Elem() AgentPoolUpgradeSettingsOutput {
@@ -174,6 +199,12 @@ func (o AgentPoolUpgradeSettingsResponseOutput) ToAgentPoolUpgradeSettingsRespon
 	return o
 }
 
+func (o AgentPoolUpgradeSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AgentPoolUpgradeSettingsResponse] {
+	return pulumix.Output[AgentPoolUpgradeSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
 func (o AgentPoolUpgradeSettingsResponseOutput) MaxSurge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentPoolUpgradeSettingsResponse) *string { return v.MaxSurge }).(pulumi.StringPtrOutput)
@@ -191,6 +222,12 @@ func (o AgentPoolUpgradeSettingsResponsePtrOutput) ToAgentPoolUpgradeSettingsRes
 
 func (o AgentPoolUpgradeSettingsResponsePtrOutput) ToAgentPoolUpgradeSettingsResponsePtrOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsResponsePtrOutput {
 	return o
+}
+
+func (o AgentPoolUpgradeSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolUpgradeSettingsResponse] {
+	return pulumix.Output[*AgentPoolUpgradeSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AgentPoolUpgradeSettingsResponsePtrOutput) Elem() AgentPoolUpgradeSettingsResponseOutput {
@@ -248,6 +285,12 @@ func (i CreationDataArgs) ToCreationDataOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CreationDataOutput)
 }
 
+func (i CreationDataArgs) ToOutput(ctx context.Context) pulumix.Output[CreationData] {
+	return pulumix.Output[CreationData]{
+		OutputState: i.ToCreationDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CreationDataArgs) ToCreationDataPtrOutput() CreationDataPtrOutput {
 	return i.ToCreationDataPtrOutputWithContext(context.Background())
 }
@@ -289,6 +332,12 @@ func (i *creationDataPtrType) ToCreationDataPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(CreationDataPtrOutput)
 }
 
+func (i *creationDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*CreationData] {
+	return pulumix.Output[*CreationData]{
+		OutputState: i.ToCreationDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Data used when creating a target resource from a source resource.
 type CreationDataOutput struct{ *pulumi.OutputState }
 
@@ -314,6 +363,12 @@ func (o CreationDataOutput) ToCreationDataPtrOutputWithContext(ctx context.Conte
 	}).(CreationDataPtrOutput)
 }
 
+func (o CreationDataOutput) ToOutput(ctx context.Context) pulumix.Output[CreationData] {
+	return pulumix.Output[CreationData]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This is the ARM ID of the source object to be used to create the target object.
 func (o CreationDataOutput) SourceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CreationData) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
@@ -331,6 +386,12 @@ func (o CreationDataPtrOutput) ToCreationDataPtrOutput() CreationDataPtrOutput {
 
 func (o CreationDataPtrOutput) ToCreationDataPtrOutputWithContext(ctx context.Context) CreationDataPtrOutput {
 	return o
+}
+
+func (o CreationDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreationData] {
+	return pulumix.Output[*CreationData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CreationDataPtrOutput) Elem() CreationDataOutput {
@@ -374,6 +435,12 @@ func (o CreationDataResponseOutput) ToCreationDataResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o CreationDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CreationDataResponse] {
+	return pulumix.Output[CreationDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This is the ARM ID of the source object to be used to create the target object.
 func (o CreationDataResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CreationDataResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
@@ -391,6 +458,12 @@ func (o CreationDataResponsePtrOutput) ToCreationDataResponsePtrOutput() Creatio
 
 func (o CreationDataResponsePtrOutput) ToCreationDataResponsePtrOutputWithContext(ctx context.Context) CreationDataResponsePtrOutput {
 	return o
+}
+
+func (o CreationDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreationDataResponse] {
+	return pulumix.Output[*CreationDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CreationDataResponsePtrOutput) Elem() CreationDataResponseOutput {
@@ -488,6 +561,12 @@ func (i KubeletConfigArgs) ToKubeletConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(KubeletConfigOutput)
 }
 
+func (i KubeletConfigArgs) ToOutput(ctx context.Context) pulumix.Output[KubeletConfig] {
+	return pulumix.Output[KubeletConfig]{
+		OutputState: i.ToKubeletConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KubeletConfigArgs) ToKubeletConfigPtrOutput() KubeletConfigPtrOutput {
 	return i.ToKubeletConfigPtrOutputWithContext(context.Background())
 }
@@ -529,6 +608,12 @@ func (i *kubeletConfigPtrType) ToKubeletConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(KubeletConfigPtrOutput)
 }
 
+func (i *kubeletConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*KubeletConfig] {
+	return pulumix.Output[*KubeletConfig]{
+		OutputState: i.ToKubeletConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
 type KubeletConfigOutput struct{ *pulumi.OutputState }
 
@@ -552,6 +637,12 @@ func (o KubeletConfigOutput) ToKubeletConfigPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeletConfig) *KubeletConfig {
 		return &v
 	}).(KubeletConfigPtrOutput)
+}
+
+func (o KubeletConfigOutput) ToOutput(ctx context.Context) pulumix.Output[KubeletConfig] {
+	return pulumix.Output[KubeletConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed list of unsafe sysctls or unsafe sysctl patterns (ending in `*`).
@@ -621,6 +712,12 @@ func (o KubeletConfigPtrOutput) ToKubeletConfigPtrOutput() KubeletConfigPtrOutpu
 
 func (o KubeletConfigPtrOutput) ToKubeletConfigPtrOutputWithContext(ctx context.Context) KubeletConfigPtrOutput {
 	return o
+}
+
+func (o KubeletConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KubeletConfig] {
+	return pulumix.Output[*KubeletConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KubeletConfigPtrOutput) Elem() KubeletConfigOutput {
@@ -784,6 +881,12 @@ func (o KubeletConfigResponseOutput) ToKubeletConfigResponseOutputWithContext(ct
 	return o
 }
 
+func (o KubeletConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KubeletConfigResponse] {
+	return pulumix.Output[KubeletConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Allowed list of unsafe sysctls or unsafe sysctl patterns (ending in `*`).
 func (o KubeletConfigResponseOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubeletConfigResponse) []string { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
@@ -851,6 +954,12 @@ func (o KubeletConfigResponsePtrOutput) ToKubeletConfigResponsePtrOutput() Kubel
 
 func (o KubeletConfigResponsePtrOutput) ToKubeletConfigResponsePtrOutputWithContext(ctx context.Context) KubeletConfigResponsePtrOutput {
 	return o
+}
+
+func (o KubeletConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KubeletConfigResponse] {
+	return pulumix.Output[*KubeletConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KubeletConfigResponsePtrOutput) Elem() KubeletConfigResponseOutput {
@@ -1020,6 +1129,12 @@ func (i LinuxOSConfigArgs) ToLinuxOSConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(LinuxOSConfigOutput)
 }
 
+func (i LinuxOSConfigArgs) ToOutput(ctx context.Context) pulumix.Output[LinuxOSConfig] {
+	return pulumix.Output[LinuxOSConfig]{
+		OutputState: i.ToLinuxOSConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LinuxOSConfigArgs) ToLinuxOSConfigPtrOutput() LinuxOSConfigPtrOutput {
 	return i.ToLinuxOSConfigPtrOutputWithContext(context.Background())
 }
@@ -1061,6 +1176,12 @@ func (i *linuxOSConfigPtrType) ToLinuxOSConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(LinuxOSConfigPtrOutput)
 }
 
+func (i *linuxOSConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*LinuxOSConfig] {
+	return pulumix.Output[*LinuxOSConfig]{
+		OutputState: i.ToLinuxOSConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
 type LinuxOSConfigOutput struct{ *pulumi.OutputState }
 
@@ -1084,6 +1205,12 @@ func (o LinuxOSConfigOutput) ToLinuxOSConfigPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinuxOSConfig) *LinuxOSConfig {
 		return &v
 	}).(LinuxOSConfigPtrOutput)
+}
+
+func (o LinuxOSConfigOutput) ToOutput(ctx context.Context) pulumix.Output[LinuxOSConfig] {
+	return pulumix.Output[LinuxOSConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The size in MB of a swap file that will be created on each node.
@@ -1118,6 +1245,12 @@ func (o LinuxOSConfigPtrOutput) ToLinuxOSConfigPtrOutput() LinuxOSConfigPtrOutpu
 
 func (o LinuxOSConfigPtrOutput) ToLinuxOSConfigPtrOutputWithContext(ctx context.Context) LinuxOSConfigPtrOutput {
 	return o
+}
+
+func (o LinuxOSConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinuxOSConfig] {
+	return pulumix.Output[*LinuxOSConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LinuxOSConfigPtrOutput) Elem() LinuxOSConfigOutput {
@@ -1197,6 +1330,12 @@ func (o LinuxOSConfigResponseOutput) ToLinuxOSConfigResponseOutputWithContext(ct
 	return o
 }
 
+func (o LinuxOSConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinuxOSConfigResponse] {
+	return pulumix.Output[LinuxOSConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The size in MB of a swap file that will be created on each node.
 func (o LinuxOSConfigResponseOutput) SwapFileSizeMB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LinuxOSConfigResponse) *int { return v.SwapFileSizeMB }).(pulumi.IntPtrOutput)
@@ -1229,6 +1368,12 @@ func (o LinuxOSConfigResponsePtrOutput) ToLinuxOSConfigResponsePtrOutput() Linux
 
 func (o LinuxOSConfigResponsePtrOutput) ToLinuxOSConfigResponsePtrOutputWithContext(ctx context.Context) LinuxOSConfigResponsePtrOutput {
 	return o
+}
+
+func (o LinuxOSConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinuxOSConfigResponse] {
+	return pulumix.Output[*LinuxOSConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LinuxOSConfigResponsePtrOutput) Elem() LinuxOSConfigResponseOutput {
@@ -1300,6 +1445,12 @@ func (o PowerStateResponseOutput) ToPowerStateResponseOutput() PowerStateRespons
 
 func (o PowerStateResponseOutput) ToPowerStateResponseOutputWithContext(ctx context.Context) PowerStateResponseOutput {
 	return o
+}
+
+func (o PowerStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PowerStateResponse] {
+	return pulumix.Output[PowerStateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Tells whether the cluster is Running or Stopped
@@ -1450,6 +1601,12 @@ func (i SysctlConfigArgs) ToSysctlConfigOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SysctlConfigOutput)
 }
 
+func (i SysctlConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SysctlConfig] {
+	return pulumix.Output[SysctlConfig]{
+		OutputState: i.ToSysctlConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SysctlConfigArgs) ToSysctlConfigPtrOutput() SysctlConfigPtrOutput {
 	return i.ToSysctlConfigPtrOutputWithContext(context.Background())
 }
@@ -1491,6 +1648,12 @@ func (i *sysctlConfigPtrType) ToSysctlConfigPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SysctlConfigPtrOutput)
 }
 
+func (i *sysctlConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SysctlConfig] {
+	return pulumix.Output[*SysctlConfig]{
+		OutputState: i.ToSysctlConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Sysctl settings for Linux agent nodes.
 type SysctlConfigOutput struct{ *pulumi.OutputState }
 
@@ -1514,6 +1677,12 @@ func (o SysctlConfigOutput) ToSysctlConfigPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SysctlConfig) *SysctlConfig {
 		return &v
 	}).(SysctlConfigPtrOutput)
+}
+
+func (o SysctlConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SysctlConfig] {
+	return pulumix.Output[SysctlConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Sysctl setting fs.aio-max-nr.
@@ -1668,6 +1837,12 @@ func (o SysctlConfigPtrOutput) ToSysctlConfigPtrOutput() SysctlConfigPtrOutput {
 
 func (o SysctlConfigPtrOutput) ToSysctlConfigPtrOutputWithContext(ctx context.Context) SysctlConfigPtrOutput {
 	return o
+}
+
+func (o SysctlConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SysctlConfig] {
+	return pulumix.Output[*SysctlConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SysctlConfigPtrOutput) Elem() SysctlConfigOutput {
@@ -2035,6 +2210,12 @@ func (o SysctlConfigResponseOutput) ToSysctlConfigResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o SysctlConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SysctlConfigResponse] {
+	return pulumix.Output[SysctlConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Sysctl setting fs.aio-max-nr.
 func (o SysctlConfigResponseOutput) FsAioMaxNr() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SysctlConfigResponse) *int { return v.FsAioMaxNr }).(pulumi.IntPtrOutput)
@@ -2187,6 +2368,12 @@ func (o SysctlConfigResponsePtrOutput) ToSysctlConfigResponsePtrOutput() SysctlC
 
 func (o SysctlConfigResponsePtrOutput) ToSysctlConfigResponsePtrOutputWithContext(ctx context.Context) SysctlConfigResponsePtrOutput {
 	return o
+}
+
+func (o SysctlConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SysctlConfigResponse] {
+	return pulumix.Output[*SysctlConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SysctlConfigResponsePtrOutput) Elem() SysctlConfigResponseOutput {

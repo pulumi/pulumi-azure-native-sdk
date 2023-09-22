@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the properties of a Lab Plan.
@@ -115,6 +116,12 @@ func (o LookupLabPlanResultOutput) ToLookupLabPlanResultOutput() LookupLabPlanRe
 
 func (o LookupLabPlanResultOutput) ToLookupLabPlanResultOutputWithContext(ctx context.Context) LookupLabPlanResultOutput {
 	return o
+}
+
+func (o LookupLabPlanResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLabPlanResult] {
+	return pulumix.Output[LookupLabPlanResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The allowed regions for the lab creator to use when creating labs using this lab plan.

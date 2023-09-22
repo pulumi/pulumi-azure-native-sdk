@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the tenant configuration.
@@ -75,6 +76,12 @@ func (o LookupTenantConfigurationResultOutput) ToLookupTenantConfigurationResult
 
 func (o LookupTenantConfigurationResultOutput) ToLookupTenantConfigurationResultOutputWithContext(ctx context.Context) LookupTenantConfigurationResultOutput {
 	return o
+}
+
+func (o LookupTenantConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTenantConfigurationResult] {
+	return pulumix.Output[LookupTenantConfigurationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.

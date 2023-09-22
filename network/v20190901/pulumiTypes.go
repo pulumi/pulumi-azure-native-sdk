@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i ConnectionMonitorDestinationArgs) ToConnectionMonitorDestinationOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionMonitorDestinationOutput)
 }
 
+func (i ConnectionMonitorDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionMonitorDestination] {
+	return pulumix.Output[ConnectionMonitorDestination]{
+		OutputState: i.ToConnectionMonitorDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the destination of connection monitor.
 type ConnectionMonitorDestinationOutput struct{ *pulumi.OutputState }
 
@@ -69,6 +76,12 @@ func (o ConnectionMonitorDestinationOutput) ToConnectionMonitorDestinationOutput
 
 func (o ConnectionMonitorDestinationOutput) ToConnectionMonitorDestinationOutputWithContext(ctx context.Context) ConnectionMonitorDestinationOutput {
 	return o
+}
+
+func (o ConnectionMonitorDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionMonitorDestination] {
+	return pulumix.Output[ConnectionMonitorDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Address of the connection monitor destination (IP or domain name).
@@ -109,6 +122,12 @@ func (o ConnectionMonitorDestinationResponseOutput) ToConnectionMonitorDestinati
 
 func (o ConnectionMonitorDestinationResponseOutput) ToConnectionMonitorDestinationResponseOutputWithContext(ctx context.Context) ConnectionMonitorDestinationResponseOutput {
 	return o
+}
+
+func (o ConnectionMonitorDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionMonitorDestinationResponse] {
+	return pulumix.Output[ConnectionMonitorDestinationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Address of the connection monitor destination (IP or domain name).
@@ -165,6 +184,12 @@ func (i ConnectionMonitorSourceArgs) ToConnectionMonitorSourceOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionMonitorSourceOutput)
 }
 
+func (i ConnectionMonitorSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionMonitorSource] {
+	return pulumix.Output[ConnectionMonitorSource]{
+		OutputState: i.ToConnectionMonitorSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the source of connection monitor.
 type ConnectionMonitorSourceOutput struct{ *pulumi.OutputState }
 
@@ -178,6 +203,12 @@ func (o ConnectionMonitorSourceOutput) ToConnectionMonitorSourceOutput() Connect
 
 func (o ConnectionMonitorSourceOutput) ToConnectionMonitorSourceOutputWithContext(ctx context.Context) ConnectionMonitorSourceOutput {
 	return o
+}
+
+func (o ConnectionMonitorSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionMonitorSource] {
+	return pulumix.Output[ConnectionMonitorSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The source port used by connection monitor.
@@ -211,6 +242,12 @@ func (o ConnectionMonitorSourceResponseOutput) ToConnectionMonitorSourceResponse
 
 func (o ConnectionMonitorSourceResponseOutput) ToConnectionMonitorSourceResponseOutputWithContext(ctx context.Context) ConnectionMonitorSourceResponseOutput {
 	return o
+}
+
+func (o ConnectionMonitorSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionMonitorSourceResponse] {
+	return pulumix.Output[ConnectionMonitorSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The source port used by connection monitor.

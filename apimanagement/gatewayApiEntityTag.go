@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // API details.
@@ -202,6 +203,12 @@ func (i *GatewayApiEntityTag) ToGatewayApiEntityTagOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayApiEntityTagOutput)
 }
 
+func (i *GatewayApiEntityTag) ToOutput(ctx context.Context) pulumix.Output[*GatewayApiEntityTag] {
+	return pulumix.Output[*GatewayApiEntityTag]{
+		OutputState: i.ToGatewayApiEntityTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GatewayApiEntityTagOutput struct{ *pulumi.OutputState }
 
 func (GatewayApiEntityTagOutput) ElementType() reflect.Type {
@@ -214,6 +221,12 @@ func (o GatewayApiEntityTagOutput) ToGatewayApiEntityTagOutput() GatewayApiEntit
 
 func (o GatewayApiEntityTagOutput) ToGatewayApiEntityTagOutputWithContext(ctx context.Context) GatewayApiEntityTagOutput {
 	return o
+}
+
+func (o GatewayApiEntityTagOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayApiEntityTag] {
+	return pulumix.Output[*GatewayApiEntityTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the revision of the API. If no value is provided, default revision 1 is created

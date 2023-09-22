@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a backup policy belonging to a backup vault
@@ -82,6 +83,12 @@ func (o LookupBackupPolicyResultOutput) ToLookupBackupPolicyResultOutput() Looku
 
 func (o LookupBackupPolicyResultOutput) ToLookupBackupPolicyResultOutputWithContext(ctx context.Context) LookupBackupPolicyResultOutput {
 	return o
+}
+
+func (o LookupBackupPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackupPolicyResult] {
+	return pulumix.Output[LookupBackupPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id represents the complete path to the resource.

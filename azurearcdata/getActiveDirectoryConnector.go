@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves an Active Directory connector resource
@@ -96,6 +97,12 @@ func (o LookupActiveDirectoryConnectorResultOutput) ToLookupActiveDirectoryConne
 
 func (o LookupActiveDirectoryConnectorResultOutput) ToLookupActiveDirectoryConnectorResultOutputWithContext(ctx context.Context) LookupActiveDirectoryConnectorResultOutput {
 	return o
+}
+
+func (o LookupActiveDirectoryConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupActiveDirectoryConnectorResult] {
+	return pulumix.Output[LookupActiveDirectoryConnectorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

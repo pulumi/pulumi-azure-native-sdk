@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the specified private endpoint connection
@@ -90,6 +91,12 @@ func (o LookupSignalRPrivateEndpointConnectionResultOutput) ToLookupSignalRPriva
 
 func (o LookupSignalRPrivateEndpointConnectionResultOutput) ToLookupSignalRPrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupSignalRPrivateEndpointConnectionResultOutput {
 	return o
+}
+
+func (o LookupSignalRPrivateEndpointConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSignalRPrivateEndpointConnectionResult] {
+	return pulumix.Output[LookupSignalRPrivateEndpointConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Group IDs

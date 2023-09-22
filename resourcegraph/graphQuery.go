@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Graph Query entity definition.
@@ -143,6 +144,12 @@ func (i *GraphQuery) ToGraphQueryOutputWithContext(ctx context.Context) GraphQue
 	return pulumi.ToOutputWithContext(ctx, i).(GraphQueryOutput)
 }
 
+func (i *GraphQuery) ToOutput(ctx context.Context) pulumix.Output[*GraphQuery] {
+	return pulumix.Output[*GraphQuery]{
+		OutputState: i.ToGraphQueryOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GraphQueryOutput struct{ *pulumi.OutputState }
 
 func (GraphQueryOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o GraphQueryOutput) ToGraphQueryOutput() GraphQueryOutput {
 
 func (o GraphQueryOutput) ToGraphQueryOutputWithContext(ctx context.Context) GraphQueryOutput {
 	return o
+}
+
+func (o GraphQueryOutput) ToOutput(ctx context.Context) pulumix.Output[*GraphQuery] {
+	return pulumix.Output[*GraphQuery]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of a graph query.

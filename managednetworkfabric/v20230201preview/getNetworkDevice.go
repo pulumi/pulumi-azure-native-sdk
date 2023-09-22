@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the Network Device resource details.
@@ -98,6 +99,12 @@ func (o LookupNetworkDeviceResultOutput) ToLookupNetworkDeviceResultOutput() Loo
 
 func (o LookupNetworkDeviceResultOutput) ToLookupNetworkDeviceResultOutputWithContext(ctx context.Context) LookupNetworkDeviceResultOutput {
 	return o
+}
+
+func (o LookupNetworkDeviceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkDeviceResult] {
+	return pulumix.Output[LookupNetworkDeviceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Switch configuration description.

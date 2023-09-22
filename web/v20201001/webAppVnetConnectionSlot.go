@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Virtual Network information contract.
@@ -205,6 +206,12 @@ func (i *WebAppVnetConnectionSlot) ToWebAppVnetConnectionSlotOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppVnetConnectionSlotOutput)
 }
 
+func (i *WebAppVnetConnectionSlot) ToOutput(ctx context.Context) pulumix.Output[*WebAppVnetConnectionSlot] {
+	return pulumix.Output[*WebAppVnetConnectionSlot]{
+		OutputState: i.ToWebAppVnetConnectionSlotOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppVnetConnectionSlotOutput struct{ *pulumi.OutputState }
 
 func (WebAppVnetConnectionSlotOutput) ElementType() reflect.Type {
@@ -217,6 +224,12 @@ func (o WebAppVnetConnectionSlotOutput) ToWebAppVnetConnectionSlotOutput() WebAp
 
 func (o WebAppVnetConnectionSlotOutput) ToWebAppVnetConnectionSlotOutputWithContext(ctx context.Context) WebAppVnetConnectionSlotOutput {
 	return o
+}
+
+func (o WebAppVnetConnectionSlotOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppVnetConnectionSlot] {
+	return pulumix.Output[*WebAppVnetConnectionSlot]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A certificate file (.cer) blob containing the public key of the private key used to authenticate a

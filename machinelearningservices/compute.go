@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Machine Learning compute object wrapped into ARM resource envelope.
@@ -232,6 +233,12 @@ func (i *Compute) ToComputeOutputWithContext(ctx context.Context) ComputeOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeOutput)
 }
 
+func (i *Compute) ToOutput(ctx context.Context) pulumix.Output[*Compute] {
+	return pulumix.Output[*Compute]{
+		OutputState: i.ToComputeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ComputeOutput struct{ *pulumi.OutputState }
 
 func (ComputeOutput) ElementType() reflect.Type {
@@ -244,6 +251,12 @@ func (o ComputeOutput) ToComputeOutput() ComputeOutput {
 
 func (o ComputeOutput) ToComputeOutputWithContext(ctx context.Context) ComputeOutput {
 	return o
+}
+
+func (o ComputeOutput) ToOutput(ctx context.Context) pulumix.Output[*Compute] {
+	return pulumix.Output[*Compute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The identity of the resource.

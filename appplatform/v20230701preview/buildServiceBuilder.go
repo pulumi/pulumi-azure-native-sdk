@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // KPack Builder resource
@@ -163,6 +164,12 @@ func (i *BuildServiceBuilder) ToBuildServiceBuilderOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(BuildServiceBuilderOutput)
 }
 
+func (i *BuildServiceBuilder) ToOutput(ctx context.Context) pulumix.Output[*BuildServiceBuilder] {
+	return pulumix.Output[*BuildServiceBuilder]{
+		OutputState: i.ToBuildServiceBuilderOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BuildServiceBuilderOutput struct{ *pulumi.OutputState }
 
 func (BuildServiceBuilderOutput) ElementType() reflect.Type {
@@ -175,6 +182,12 @@ func (o BuildServiceBuilderOutput) ToBuildServiceBuilderOutput() BuildServiceBui
 
 func (o BuildServiceBuilderOutput) ToBuildServiceBuilderOutputWithContext(ctx context.Context) BuildServiceBuilderOutput {
 	return o
+}
+
+func (o BuildServiceBuilderOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildServiceBuilder] {
+	return pulumix.Output[*BuildServiceBuilder]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource.

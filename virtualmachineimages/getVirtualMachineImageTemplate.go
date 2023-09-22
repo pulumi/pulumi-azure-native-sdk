@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a virtual machine image template
@@ -126,6 +127,12 @@ func (o LookupVirtualMachineImageTemplateResultOutput) ToLookupVirtualMachineIma
 
 func (o LookupVirtualMachineImageTemplateResultOutput) ToLookupVirtualMachineImageTemplateResultOutputWithContext(ctx context.Context) LookupVirtualMachineImageTemplateResultOutput {
 	return o
+}
+
+func (o LookupVirtualMachineImageTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualMachineImageTemplateResult] {
+	return pulumix.Output[LookupVirtualMachineImageTemplateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).

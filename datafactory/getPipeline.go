@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a pipeline.
@@ -101,6 +102,12 @@ func (o LookupPipelineResultOutput) ToLookupPipelineResultOutput() LookupPipelin
 
 func (o LookupPipelineResultOutput) ToLookupPipelineResultOutputWithContext(ctx context.Context) LookupPipelineResultOutput {
 	return o
+}
+
+func (o LookupPipelineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPipelineResult] {
+	return pulumix.Output[LookupPipelineResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of activities in pipeline.

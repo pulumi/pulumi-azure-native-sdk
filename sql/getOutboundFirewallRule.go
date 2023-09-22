@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an outbound firewall rule.
@@ -81,6 +82,12 @@ func (o LookupOutboundFirewallRuleResultOutput) ToLookupOutboundFirewallRuleResu
 
 func (o LookupOutboundFirewallRuleResultOutput) ToLookupOutboundFirewallRuleResultOutputWithContext(ctx context.Context) LookupOutboundFirewallRuleResultOutput {
 	return o
+}
+
+func (o LookupOutboundFirewallRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOutboundFirewallRuleResult] {
+	return pulumix.Output[LookupOutboundFirewallRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.

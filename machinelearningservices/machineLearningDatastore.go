@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Machine Learning datastore object wrapped into ARM resource envelope.
@@ -292,6 +293,12 @@ func (i *MachineLearningDatastore) ToMachineLearningDatastoreOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(MachineLearningDatastoreOutput)
 }
 
+func (i *MachineLearningDatastore) ToOutput(ctx context.Context) pulumix.Output[*MachineLearningDatastore] {
+	return pulumix.Output[*MachineLearningDatastore]{
+		OutputState: i.ToMachineLearningDatastoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MachineLearningDatastoreOutput struct{ *pulumi.OutputState }
 
 func (MachineLearningDatastoreOutput) ElementType() reflect.Type {
@@ -304,6 +311,12 @@ func (o MachineLearningDatastoreOutput) ToMachineLearningDatastoreOutput() Machi
 
 func (o MachineLearningDatastoreOutput) ToMachineLearningDatastoreOutputWithContext(ctx context.Context) MachineLearningDatastoreOutput {
 	return o
+}
+
+func (o MachineLearningDatastoreOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineLearningDatastore] {
+	return pulumix.Output[*MachineLearningDatastore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The identity of the resource.

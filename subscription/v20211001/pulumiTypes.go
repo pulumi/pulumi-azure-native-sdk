@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i PutAliasRequestAdditionalPropertiesArgs) ToPutAliasRequestAdditionalProp
 	return pulumi.ToOutputWithContext(ctx, i).(PutAliasRequestAdditionalPropertiesOutput)
 }
 
+func (i PutAliasRequestAdditionalPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[PutAliasRequestAdditionalProperties] {
+	return pulumix.Output[PutAliasRequestAdditionalProperties]{
+		OutputState: i.ToPutAliasRequestAdditionalPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PutAliasRequestAdditionalPropertiesArgs) ToPutAliasRequestAdditionalPropertiesPtrOutput() PutAliasRequestAdditionalPropertiesPtrOutput {
 	return i.ToPutAliasRequestAdditionalPropertiesPtrOutputWithContext(context.Background())
 }
@@ -101,6 +108,12 @@ func (i *putAliasRequestAdditionalPropertiesPtrType) ToPutAliasRequestAdditional
 	return pulumi.ToOutputWithContext(ctx, i).(PutAliasRequestAdditionalPropertiesPtrOutput)
 }
 
+func (i *putAliasRequestAdditionalPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*PutAliasRequestAdditionalProperties] {
+	return pulumix.Output[*PutAliasRequestAdditionalProperties]{
+		OutputState: i.ToPutAliasRequestAdditionalPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Put subscription additional properties.
 type PutAliasRequestAdditionalPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -124,6 +137,12 @@ func (o PutAliasRequestAdditionalPropertiesOutput) ToPutAliasRequestAdditionalPr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PutAliasRequestAdditionalProperties) *PutAliasRequestAdditionalProperties {
 		return &v
 	}).(PutAliasRequestAdditionalPropertiesPtrOutput)
+}
+
+func (o PutAliasRequestAdditionalPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PutAliasRequestAdditionalProperties] {
+	return pulumix.Output[PutAliasRequestAdditionalProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Management group Id for the subscription.
@@ -158,6 +177,12 @@ func (o PutAliasRequestAdditionalPropertiesPtrOutput) ToPutAliasRequestAdditiona
 
 func (o PutAliasRequestAdditionalPropertiesPtrOutput) ToPutAliasRequestAdditionalPropertiesPtrOutputWithContext(ctx context.Context) PutAliasRequestAdditionalPropertiesPtrOutput {
 	return o
+}
+
+func (o PutAliasRequestAdditionalPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PutAliasRequestAdditionalProperties] {
+	return pulumix.Output[*PutAliasRequestAdditionalProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PutAliasRequestAdditionalPropertiesPtrOutput) Elem() PutAliasRequestAdditionalPropertiesOutput {
@@ -271,6 +296,12 @@ func (i PutAliasRequestPropertiesArgs) ToPutAliasRequestPropertiesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PutAliasRequestPropertiesOutput)
 }
 
+func (i PutAliasRequestPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[PutAliasRequestProperties] {
+	return pulumix.Output[PutAliasRequestProperties]{
+		OutputState: i.ToPutAliasRequestPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PutAliasRequestPropertiesArgs) ToPutAliasRequestPropertiesPtrOutput() PutAliasRequestPropertiesPtrOutput {
 	return i.ToPutAliasRequestPropertiesPtrOutputWithContext(context.Background())
 }
@@ -312,6 +343,12 @@ func (i *putAliasRequestPropertiesPtrType) ToPutAliasRequestPropertiesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(PutAliasRequestPropertiesPtrOutput)
 }
 
+func (i *putAliasRequestPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*PutAliasRequestProperties] {
+	return pulumix.Output[*PutAliasRequestProperties]{
+		OutputState: i.ToPutAliasRequestPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Put subscription properties.
 type PutAliasRequestPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -335,6 +372,12 @@ func (o PutAliasRequestPropertiesOutput) ToPutAliasRequestPropertiesPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PutAliasRequestProperties) *PutAliasRequestProperties {
 		return &v
 	}).(PutAliasRequestPropertiesPtrOutput)
+}
+
+func (o PutAliasRequestPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PutAliasRequestProperties] {
+	return pulumix.Output[PutAliasRequestProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Put alias request additional properties.
@@ -382,6 +425,12 @@ func (o PutAliasRequestPropertiesPtrOutput) ToPutAliasRequestPropertiesPtrOutput
 
 func (o PutAliasRequestPropertiesPtrOutput) ToPutAliasRequestPropertiesPtrOutputWithContext(ctx context.Context) PutAliasRequestPropertiesPtrOutput {
 	return o
+}
+
+func (o PutAliasRequestPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PutAliasRequestProperties] {
+	return pulumix.Output[*PutAliasRequestProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PutAliasRequestPropertiesPtrOutput) Elem() PutAliasRequestPropertiesOutput {
@@ -503,6 +552,12 @@ func (o SubscriptionAliasResponsePropertiesResponseOutput) ToSubscriptionAliasRe
 	return o
 }
 
+func (o SubscriptionAliasResponsePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionAliasResponsePropertiesResponse] {
+	return pulumix.Output[SubscriptionAliasResponsePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The accept ownership state of the resource.
 func (o SubscriptionAliasResponsePropertiesResponseOutput) AcceptOwnershipState() pulumi.StringOutput {
 	return o.ApplyT(func(v SubscriptionAliasResponsePropertiesResponse) string { return v.AcceptOwnershipState }).(pulumi.StringOutput)
@@ -595,6 +650,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

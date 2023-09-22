@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i ACRArgs) ToACROutputWithContext(ctx context.Context) ACROutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ACROutput)
 }
 
+func (i ACRArgs) ToOutput(ctx context.Context) pulumix.Output[ACR] {
+	return pulumix.Output[ACR]{
+		OutputState: i.ToACROutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ACRArgs) ToACRPtrOutput() ACRPtrOutput {
 	return i.ToACRPtrOutputWithContext(context.Background())
 }
@@ -101,6 +108,12 @@ func (i *acrPtrType) ToACRPtrOutputWithContext(ctx context.Context) ACRPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ACRPtrOutput)
 }
 
+func (i *acrPtrType) ToOutput(ctx context.Context) pulumix.Output[*ACR] {
+	return pulumix.Output[*ACR]{
+		OutputState: i.ToACRPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information on the azure container registry
 type ACROutput struct{ *pulumi.OutputState }
 
@@ -124,6 +137,12 @@ func (o ACROutput) ToACRPtrOutputWithContext(ctx context.Context) ACRPtrOutput {
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ACR) *ACR {
 		return &v
 	}).(ACRPtrOutput)
+}
+
+func (o ACROutput) ToOutput(ctx context.Context) pulumix.Output[ACR] {
+	return pulumix.Output[ACR]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ACR registry
@@ -158,6 +177,12 @@ func (o ACRPtrOutput) ToACRPtrOutput() ACRPtrOutput {
 
 func (o ACRPtrOutput) ToACRPtrOutputWithContext(ctx context.Context) ACRPtrOutput {
 	return o
+}
+
+func (o ACRPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ACR] {
+	return pulumix.Output[*ACR]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ACRPtrOutput) Elem() ACROutput {
@@ -237,6 +262,12 @@ func (o ACRResponseOutput) ToACRResponseOutputWithContext(ctx context.Context) A
 	return o
 }
 
+func (o ACRResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ACRResponse] {
+	return pulumix.Output[ACRResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // ACR registry
 func (o ACRResponseOutput) AcrRegistryName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ACRResponse) *string { return v.AcrRegistryName }).(pulumi.StringPtrOutput)
@@ -269,6 +300,12 @@ func (o ACRResponsePtrOutput) ToACRResponsePtrOutput() ACRResponsePtrOutput {
 
 func (o ACRResponsePtrOutput) ToACRResponsePtrOutputWithContext(ctx context.Context) ACRResponsePtrOutput {
 	return o
+}
+
+func (o ACRResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ACRResponse] {
+	return pulumix.Output[*ACRResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ACRResponsePtrOutput) Elem() ACRResponseOutput {
@@ -368,6 +405,12 @@ func (i DeploymentPropertiesArgs) ToDeploymentPropertiesOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentPropertiesOutput)
 }
 
+func (i DeploymentPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[DeploymentProperties] {
+	return pulumix.Output[DeploymentProperties]{
+		OutputState: i.ToDeploymentPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeploymentPropertiesArgs) ToDeploymentPropertiesPtrOutput() DeploymentPropertiesPtrOutput {
 	return i.ToDeploymentPropertiesPtrOutputWithContext(context.Background())
 }
@@ -409,6 +452,12 @@ func (i *deploymentPropertiesPtrType) ToDeploymentPropertiesPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentPropertiesPtrOutput)
 }
 
+func (i *deploymentPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeploymentProperties] {
+	return pulumix.Output[*DeploymentProperties]{
+		OutputState: i.ToDeploymentPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeploymentPropertiesOutput struct{ *pulumi.OutputState }
 
 func (DeploymentPropertiesOutput) ElementType() reflect.Type {
@@ -431,6 +480,12 @@ func (o DeploymentPropertiesOutput) ToDeploymentPropertiesPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentProperties) *DeploymentProperties {
 		return &v
 	}).(DeploymentPropertiesPtrOutput)
+}
+
+func (o DeploymentPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentProperties] {
+	return pulumix.Output[DeploymentProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Helm chart directory path in repository.
@@ -469,6 +524,12 @@ func (o DeploymentPropertiesPtrOutput) ToDeploymentPropertiesPtrOutput() Deploym
 
 func (o DeploymentPropertiesPtrOutput) ToDeploymentPropertiesPtrOutputWithContext(ctx context.Context) DeploymentPropertiesPtrOutput {
 	return o
+}
+
+func (o DeploymentPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentProperties] {
+	return pulumix.Output[*DeploymentProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeploymentPropertiesPtrOutput) Elem() DeploymentPropertiesOutput {
@@ -556,6 +617,12 @@ func (o DeploymentPropertiesResponseOutput) ToDeploymentPropertiesResponseOutput
 	return o
 }
 
+func (o DeploymentPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentPropertiesResponse] {
+	return pulumix.Output[DeploymentPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Helm chart directory path in repository.
 func (o DeploymentPropertiesResponseOutput) HelmChartPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentPropertiesResponse) *string { return v.HelmChartPath }).(pulumi.StringPtrOutput)
@@ -592,6 +659,12 @@ func (o DeploymentPropertiesResponsePtrOutput) ToDeploymentPropertiesResponsePtr
 
 func (o DeploymentPropertiesResponsePtrOutput) ToDeploymentPropertiesResponsePtrOutputWithContext(ctx context.Context) DeploymentPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o DeploymentPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentPropertiesResponse] {
+	return pulumix.Output[*DeploymentPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeploymentPropertiesResponsePtrOutput) Elem() DeploymentPropertiesResponseOutput {
@@ -692,6 +765,12 @@ func (i GitHubWorkflowProfileOidcCredentialsArgs) ToGitHubWorkflowProfileOidcCre
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubWorkflowProfileOidcCredentialsOutput)
 }
 
+func (i GitHubWorkflowProfileOidcCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[GitHubWorkflowProfileOidcCredentials] {
+	return pulumix.Output[GitHubWorkflowProfileOidcCredentials]{
+		OutputState: i.ToGitHubWorkflowProfileOidcCredentialsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GitHubWorkflowProfileOidcCredentialsArgs) ToGitHubWorkflowProfileOidcCredentialsPtrOutput() GitHubWorkflowProfileOidcCredentialsPtrOutput {
 	return i.ToGitHubWorkflowProfileOidcCredentialsPtrOutputWithContext(context.Background())
 }
@@ -733,6 +812,12 @@ func (i *gitHubWorkflowProfileOidcCredentialsPtrType) ToGitHubWorkflowProfileOid
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubWorkflowProfileOidcCredentialsPtrOutput)
 }
 
+func (i *gitHubWorkflowProfileOidcCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GitHubWorkflowProfileOidcCredentials] {
+	return pulumix.Output[*GitHubWorkflowProfileOidcCredentials]{
+		OutputState: i.ToGitHubWorkflowProfileOidcCredentialsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The fields needed for OIDC with GitHub.
 type GitHubWorkflowProfileOidcCredentialsOutput struct{ *pulumi.OutputState }
 
@@ -758,6 +843,12 @@ func (o GitHubWorkflowProfileOidcCredentialsOutput) ToGitHubWorkflowProfileOidcC
 	}).(GitHubWorkflowProfileOidcCredentialsPtrOutput)
 }
 
+func (o GitHubWorkflowProfileOidcCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubWorkflowProfileOidcCredentials] {
+	return pulumix.Output[GitHubWorkflowProfileOidcCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Azure Application Client ID
 func (o GitHubWorkflowProfileOidcCredentialsOutput) AzureClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitHubWorkflowProfileOidcCredentials) *string { return v.AzureClientId }).(pulumi.StringPtrOutput)
@@ -780,6 +871,12 @@ func (o GitHubWorkflowProfileOidcCredentialsPtrOutput) ToGitHubWorkflowProfileOi
 
 func (o GitHubWorkflowProfileOidcCredentialsPtrOutput) ToGitHubWorkflowProfileOidcCredentialsPtrOutputWithContext(ctx context.Context) GitHubWorkflowProfileOidcCredentialsPtrOutput {
 	return o
+}
+
+func (o GitHubWorkflowProfileOidcCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitHubWorkflowProfileOidcCredentials] {
+	return pulumix.Output[*GitHubWorkflowProfileOidcCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GitHubWorkflowProfileOidcCredentialsPtrOutput) Elem() GitHubWorkflowProfileOidcCredentialsOutput {
@@ -835,6 +932,12 @@ func (o GitHubWorkflowProfileResponseOidcCredentialsOutput) ToGitHubWorkflowProf
 	return o
 }
 
+func (o GitHubWorkflowProfileResponseOidcCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubWorkflowProfileResponseOidcCredentials] {
+	return pulumix.Output[GitHubWorkflowProfileResponseOidcCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Azure Application Client ID
 func (o GitHubWorkflowProfileResponseOidcCredentialsOutput) AzureClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitHubWorkflowProfileResponseOidcCredentials) *string { return v.AzureClientId }).(pulumi.StringPtrOutput)
@@ -857,6 +960,12 @@ func (o GitHubWorkflowProfileResponseOidcCredentialsPtrOutput) ToGitHubWorkflowP
 
 func (o GitHubWorkflowProfileResponseOidcCredentialsPtrOutput) ToGitHubWorkflowProfileResponseOidcCredentialsPtrOutputWithContext(ctx context.Context) GitHubWorkflowProfileResponseOidcCredentialsPtrOutput {
 	return o
+}
+
+func (o GitHubWorkflowProfileResponseOidcCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitHubWorkflowProfileResponseOidcCredentials] {
+	return pulumix.Output[*GitHubWorkflowProfileResponseOidcCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GitHubWorkflowProfileResponseOidcCredentialsPtrOutput) Elem() GitHubWorkflowProfileResponseOidcCredentialsOutput {
@@ -918,6 +1027,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -983,6 +1098,12 @@ func (i WorkflowRunArgs) ToWorkflowRunOutputWithContext(ctx context.Context) Wor
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowRunOutput)
 }
 
+func (i WorkflowRunArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowRun] {
+	return pulumix.Output[WorkflowRun]{
+		OutputState: i.ToWorkflowRunOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkflowRunArgs) ToWorkflowRunPtrOutput() WorkflowRunPtrOutput {
 	return i.ToWorkflowRunPtrOutputWithContext(context.Background())
 }
@@ -1024,6 +1145,12 @@ func (i *workflowRunPtrType) ToWorkflowRunPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowRunPtrOutput)
 }
 
+func (i *workflowRunPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkflowRun] {
+	return pulumix.Output[*WorkflowRun]{
+		OutputState: i.ToWorkflowRunPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkflowRunOutput struct{ *pulumi.OutputState }
 
 func (WorkflowRunOutput) ElementType() reflect.Type {
@@ -1048,6 +1175,12 @@ func (o WorkflowRunOutput) ToWorkflowRunPtrOutputWithContext(ctx context.Context
 	}).(WorkflowRunPtrOutput)
 }
 
+func (o WorkflowRunOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowRun] {
+	return pulumix.Output[WorkflowRun]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Describes the status of the workflow run
 func (o WorkflowRunOutput) WorkflowRunStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowRun) *string { return v.WorkflowRunStatus }).(pulumi.StringPtrOutput)
@@ -1065,6 +1198,12 @@ func (o WorkflowRunPtrOutput) ToWorkflowRunPtrOutput() WorkflowRunPtrOutput {
 
 func (o WorkflowRunPtrOutput) ToWorkflowRunPtrOutputWithContext(ctx context.Context) WorkflowRunPtrOutput {
 	return o
+}
+
+func (o WorkflowRunPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowRun] {
+	return pulumix.Output[*WorkflowRun]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkflowRunPtrOutput) Elem() WorkflowRunOutput {
@@ -1112,6 +1251,12 @@ func (o WorkflowRunResponseOutput) ToWorkflowRunResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o WorkflowRunResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowRunResponse] {
+	return pulumix.Output[WorkflowRunResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The timestamp of the last workflow run.
 func (o WorkflowRunResponseOutput) LastRunAt() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowRunResponse) string { return v.LastRunAt }).(pulumi.StringOutput)
@@ -1144,6 +1289,12 @@ func (o WorkflowRunResponsePtrOutput) ToWorkflowRunResponsePtrOutput() WorkflowR
 
 func (o WorkflowRunResponsePtrOutput) ToWorkflowRunResponsePtrOutputWithContext(ctx context.Context) WorkflowRunResponsePtrOutput {
 	return o
+}
+
+func (o WorkflowRunResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowRunResponse] {
+	return pulumix.Output[*WorkflowRunResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkflowRunResponsePtrOutput) Elem() WorkflowRunResponseOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Container App SourceControl.
@@ -164,6 +165,12 @@ func (i *ContainerAppsSourceControl) ToContainerAppsSourceControlOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerAppsSourceControlOutput)
 }
 
+func (i *ContainerAppsSourceControl) ToOutput(ctx context.Context) pulumix.Output[*ContainerAppsSourceControl] {
+	return pulumix.Output[*ContainerAppsSourceControl]{
+		OutputState: i.ToContainerAppsSourceControlOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerAppsSourceControlOutput struct{ *pulumi.OutputState }
 
 func (ContainerAppsSourceControlOutput) ElementType() reflect.Type {
@@ -176,6 +183,12 @@ func (o ContainerAppsSourceControlOutput) ToContainerAppsSourceControlOutput() C
 
 func (o ContainerAppsSourceControlOutput) ToContainerAppsSourceControlOutputWithContext(ctx context.Context) ContainerAppsSourceControlOutput {
 	return o
+}
+
+func (o ContainerAppsSourceControlOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerAppsSourceControl] {
+	return pulumix.Output[*ContainerAppsSourceControl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The branch which will trigger the auto deployment

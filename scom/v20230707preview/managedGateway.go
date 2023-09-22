@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A gateway resource.
@@ -119,6 +120,12 @@ func (i *ManagedGateway) ToManagedGatewayOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedGatewayOutput)
 }
 
+func (i *ManagedGateway) ToOutput(ctx context.Context) pulumix.Output[*ManagedGateway] {
+	return pulumix.Output[*ManagedGateway]{
+		OutputState: i.ToManagedGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedGatewayOutput struct{ *pulumi.OutputState }
 
 func (ManagedGatewayOutput) ElementType() reflect.Type {
@@ -131,6 +138,12 @@ func (o ManagedGatewayOutput) ToManagedGatewayOutput() ManagedGatewayOutput {
 
 func (o ManagedGatewayOutput) ToManagedGatewayOutputWithContext(ctx context.Context) ManagedGatewayOutput {
 	return o
+}
+
+func (o ManagedGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedGateway] {
+	return pulumix.Output[*ManagedGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

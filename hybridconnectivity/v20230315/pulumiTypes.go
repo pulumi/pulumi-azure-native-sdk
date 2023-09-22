@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i EndpointPropertiesArgs) ToEndpointPropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesOutput)
 }
 
+func (i EndpointPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointProperties] {
+	return pulumix.Output[EndpointProperties]{
+		OutputState: i.ToEndpointPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EndpointPropertiesArgs) ToEndpointPropertiesPtrOutput() EndpointPropertiesPtrOutput {
 	return i.ToEndpointPropertiesPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *endpointPropertiesPtrType) ToEndpointPropertiesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesPtrOutput)
 }
 
+func (i *endpointPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*EndpointProperties] {
+	return pulumix.Output[*EndpointProperties]{
+		OutputState: i.ToEndpointPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Endpoint details
 type EndpointPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o EndpointPropertiesOutput) ToEndpointPropertiesPtrOutputWithContext(ctx c
 	}).(EndpointPropertiesPtrOutput)
 }
 
+func (o EndpointPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointProperties] {
+	return pulumix.Output[EndpointProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource Id of the connectivity endpoint (optional).
 func (o EndpointPropertiesOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointProperties) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -140,6 +159,12 @@ func (o EndpointPropertiesPtrOutput) ToEndpointPropertiesPtrOutput() EndpointPro
 
 func (o EndpointPropertiesPtrOutput) ToEndpointPropertiesPtrOutputWithContext(ctx context.Context) EndpointPropertiesPtrOutput {
 	return o
+}
+
+func (o EndpointPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointProperties] {
+	return pulumix.Output[*EndpointProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointPropertiesPtrOutput) Elem() EndpointPropertiesOutput {
@@ -197,6 +222,12 @@ func (o EndpointPropertiesResponseOutput) ToEndpointPropertiesResponseOutputWith
 	return o
 }
 
+func (o EndpointPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPropertiesResponse] {
+	return pulumix.Output[EndpointPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource provisioning state.
 func (o EndpointPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -241,6 +272,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

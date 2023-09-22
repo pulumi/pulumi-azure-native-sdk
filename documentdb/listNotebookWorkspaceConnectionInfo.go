@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the connection info for the notebook workspace
@@ -79,6 +80,12 @@ func (o ListNotebookWorkspaceConnectionInfoResultOutput) ToListNotebookWorkspace
 
 func (o ListNotebookWorkspaceConnectionInfoResultOutput) ToListNotebookWorkspaceConnectionInfoResultOutputWithContext(ctx context.Context) ListNotebookWorkspaceConnectionInfoResultOutput {
 	return o
+}
+
+func (o ListNotebookWorkspaceConnectionInfoResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListNotebookWorkspaceConnectionInfoResult] {
+	return pulumix.Output[ListNotebookWorkspaceConnectionInfoResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies auth token used for connecting to Notebook server (uses token-based auth).

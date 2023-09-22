@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An elastic pool.
@@ -229,6 +230,12 @@ func (i *ElasticPool) ToElasticPoolOutputWithContext(ctx context.Context) Elasti
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticPoolOutput)
 }
 
+func (i *ElasticPool) ToOutput(ctx context.Context) pulumix.Output[*ElasticPool] {
+	return pulumix.Output[*ElasticPool]{
+		OutputState: i.ToElasticPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElasticPoolOutput struct{ *pulumi.OutputState }
 
 func (ElasticPoolOutput) ElementType() reflect.Type {
@@ -241,6 +248,12 @@ func (o ElasticPoolOutput) ToElasticPoolOutput() ElasticPoolOutput {
 
 func (o ElasticPoolOutput) ToElasticPoolOutputWithContext(ctx context.Context) ElasticPoolOutput {
 	return o
+}
+
+func (o ElasticPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*ElasticPool] {
+	return pulumix.Output[*ElasticPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation date of the elastic pool (ISO8601 format).

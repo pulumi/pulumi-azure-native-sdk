@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the Private Endpoint Connection specified by its identifier.
@@ -86,6 +87,12 @@ func (o LookupPrivateEndpointConnectionByNameResultOutput) ToLookupPrivateEndpoi
 
 func (o LookupPrivateEndpointConnectionByNameResultOutput) ToLookupPrivateEndpointConnectionByNameResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionByNameResultOutput {
 	return o
+}
+
+func (o LookupPrivateEndpointConnectionByNameResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateEndpointConnectionByNameResult] {
+	return pulumix.Output[LookupPrivateEndpointConnectionByNameResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

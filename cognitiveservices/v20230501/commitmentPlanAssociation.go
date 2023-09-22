@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The commitment plan association.
@@ -128,6 +129,12 @@ func (i *CommitmentPlanAssociation) ToCommitmentPlanAssociationOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(CommitmentPlanAssociationOutput)
 }
 
+func (i *CommitmentPlanAssociation) ToOutput(ctx context.Context) pulumix.Output[*CommitmentPlanAssociation] {
+	return pulumix.Output[*CommitmentPlanAssociation]{
+		OutputState: i.ToCommitmentPlanAssociationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CommitmentPlanAssociationOutput struct{ *pulumi.OutputState }
 
 func (CommitmentPlanAssociationOutput) ElementType() reflect.Type {
@@ -140,6 +147,12 @@ func (o CommitmentPlanAssociationOutput) ToCommitmentPlanAssociationOutput() Com
 
 func (o CommitmentPlanAssociationOutput) ToCommitmentPlanAssociationOutputWithContext(ctx context.Context) CommitmentPlanAssociationOutput {
 	return o
+}
+
+func (o CommitmentPlanAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*CommitmentPlanAssociation] {
+	return pulumix.Output[*CommitmentPlanAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Azure resource id of the account.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Information about a partner registration.
@@ -241,6 +242,12 @@ func (i *PartnerRegistration) ToPartnerRegistrationOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(PartnerRegistrationOutput)
 }
 
+func (i *PartnerRegistration) ToOutput(ctx context.Context) pulumix.Output[*PartnerRegistration] {
+	return pulumix.Output[*PartnerRegistration]{
+		OutputState: i.ToPartnerRegistrationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PartnerRegistrationOutput struct{ *pulumi.OutputState }
 
 func (PartnerRegistrationOutput) ElementType() reflect.Type {
@@ -253,6 +260,12 @@ func (o PartnerRegistrationOutput) ToPartnerRegistrationOutput() PartnerRegistra
 
 func (o PartnerRegistrationOutput) ToPartnerRegistrationOutputWithContext(ctx context.Context) PartnerRegistrationOutput {
 	return o
+}
+
+func (o PartnerRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[*PartnerRegistration] {
+	return pulumix.Output[*PartnerRegistration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of Azure subscription Ids that are authorized to create a partner namespace

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Hybrid Connection contract. This is used to configure a Hybrid Connection.
@@ -216,6 +217,12 @@ func (i *WebAppHybridConnection) ToWebAppHybridConnectionOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppHybridConnectionOutput)
 }
 
+func (i *WebAppHybridConnection) ToOutput(ctx context.Context) pulumix.Output[*WebAppHybridConnection] {
+	return pulumix.Output[*WebAppHybridConnection]{
+		OutputState: i.ToWebAppHybridConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppHybridConnectionOutput struct{ *pulumi.OutputState }
 
 func (WebAppHybridConnectionOutput) ElementType() reflect.Type {
@@ -228,6 +235,12 @@ func (o WebAppHybridConnectionOutput) ToWebAppHybridConnectionOutput() WebAppHyb
 
 func (o WebAppHybridConnectionOutput) ToWebAppHybridConnectionOutputWithContext(ctx context.Context) WebAppHybridConnectionOutput {
 	return o
+}
+
+func (o WebAppHybridConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppHybridConnection] {
+	return pulumix.Output[*WebAppHybridConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The hostname of the endpoint.

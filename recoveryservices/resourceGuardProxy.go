@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-02-01-preview
@@ -182,6 +183,12 @@ func (i *ResourceGuardProxy) ToResourceGuardProxyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGuardProxyOutput)
 }
 
+func (i *ResourceGuardProxy) ToOutput(ctx context.Context) pulumix.Output[*ResourceGuardProxy] {
+	return pulumix.Output[*ResourceGuardProxy]{
+		OutputState: i.ToResourceGuardProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceGuardProxyOutput struct{ *pulumi.OutputState }
 
 func (ResourceGuardProxyOutput) ElementType() reflect.Type {
@@ -194,6 +201,12 @@ func (o ResourceGuardProxyOutput) ToResourceGuardProxyOutput() ResourceGuardProx
 
 func (o ResourceGuardProxyOutput) ToResourceGuardProxyOutputWithContext(ctx context.Context) ResourceGuardProxyOutput {
 	return o
+}
+
+func (o ResourceGuardProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceGuardProxy] {
+	return pulumix.Output[*ResourceGuardProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional ETag.

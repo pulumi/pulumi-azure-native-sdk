@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an IpFilterRule for a Namespace by rule name.
@@ -86,6 +87,12 @@ func (o LookupNamespaceIpFilterRuleResultOutput) ToLookupNamespaceIpFilterRuleRe
 
 func (o LookupNamespaceIpFilterRuleResultOutput) ToLookupNamespaceIpFilterRuleResultOutputWithContext(ctx context.Context) LookupNamespaceIpFilterRuleResultOutput {
 	return o
+}
+
+func (o LookupNamespaceIpFilterRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNamespaceIpFilterRuleResult] {
+	return pulumix.Output[LookupNamespaceIpFilterRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP Filter Action

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the token that is used for correlating ingested telemetry with the resources in the subscription.
@@ -69,6 +70,12 @@ func (o ListIngestionSettingTokensResultOutput) ToListIngestionSettingTokensResu
 
 func (o ListIngestionSettingTokensResultOutput) ToListIngestionSettingTokensResultOutputWithContext(ctx context.Context) ListIngestionSettingTokensResultOutput {
 	return o
+}
+
+func (o ListIngestionSettingTokensResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListIngestionSettingTokensResult] {
+	return pulumix.Output[ListIngestionSettingTokensResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The token is used for correlating security data and logs with the resources in the subscription.

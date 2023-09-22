@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Generates a streaming token which can be used for accessing content from video content URLs, for a video resource with the given name.
@@ -79,6 +80,12 @@ func (o ListVideoContentTokenResultOutput) ToListVideoContentTokenResultOutput()
 
 func (o ListVideoContentTokenResultOutput) ToListVideoContentTokenResultOutputWithContext(ctx context.Context) ListVideoContentTokenResultOutput {
 	return o
+}
+
+func (o ListVideoContentTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListVideoContentTokenResult] {
+	return pulumix.Output[ListVideoContentTokenResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The content token expiration date in ISO8601 format (eg. 2021-01-01T00:00:00Z).

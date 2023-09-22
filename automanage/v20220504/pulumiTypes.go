@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i ConfigurationProfileAssignmentPropertiesArgs) ToConfigurationProfileAssi
 
 func (i ConfigurationProfileAssignmentPropertiesArgs) ToConfigurationProfileAssignmentPropertiesOutputWithContext(ctx context.Context) ConfigurationProfileAssignmentPropertiesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfileAssignmentPropertiesOutput)
+}
+
+func (i ConfigurationProfileAssignmentPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfileAssignmentProperties] {
+	return pulumix.Output[ConfigurationProfileAssignmentProperties]{
+		OutputState: i.ToConfigurationProfileAssignmentPropertiesOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ConfigurationProfileAssignmentPropertiesArgs) ToConfigurationProfileAssignmentPropertiesPtrOutput() ConfigurationProfileAssignmentPropertiesPtrOutput {
@@ -89,6 +96,12 @@ func (i *configurationProfileAssignmentPropertiesPtrType) ToConfigurationProfile
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfileAssignmentPropertiesPtrOutput)
 }
 
+func (i *configurationProfileAssignmentPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfileAssignmentProperties] {
+	return pulumix.Output[*ConfigurationProfileAssignmentProperties]{
+		OutputState: i.ToConfigurationProfileAssignmentPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Automanage configuration profile assignment properties.
 type ConfigurationProfileAssignmentPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o ConfigurationProfileAssignmentPropertiesOutput) ToConfigurationProfileAs
 	}).(ConfigurationProfileAssignmentPropertiesPtrOutput)
 }
 
+func (o ConfigurationProfileAssignmentPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfileAssignmentProperties] {
+	return pulumix.Output[ConfigurationProfileAssignmentProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Automanage configurationProfile ARM Resource URI.
 func (o ConfigurationProfileAssignmentPropertiesOutput) ConfigurationProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigurationProfileAssignmentProperties) *string { return v.ConfigurationProfile }).(pulumi.StringPtrOutput)
@@ -131,6 +150,12 @@ func (o ConfigurationProfileAssignmentPropertiesPtrOutput) ToConfigurationProfil
 
 func (o ConfigurationProfileAssignmentPropertiesPtrOutput) ToConfigurationProfileAssignmentPropertiesPtrOutputWithContext(ctx context.Context) ConfigurationProfileAssignmentPropertiesPtrOutput {
 	return o
+}
+
+func (o ConfigurationProfileAssignmentPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfileAssignmentProperties] {
+	return pulumix.Output[*ConfigurationProfileAssignmentProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigurationProfileAssignmentPropertiesPtrOutput) Elem() ConfigurationProfileAssignmentPropertiesOutput {
@@ -176,6 +201,12 @@ func (o ConfigurationProfileAssignmentPropertiesResponseOutput) ToConfigurationP
 
 func (o ConfigurationProfileAssignmentPropertiesResponseOutput) ToConfigurationProfileAssignmentPropertiesResponseOutputWithContext(ctx context.Context) ConfigurationProfileAssignmentPropertiesResponseOutput {
 	return o
+}
+
+func (o ConfigurationProfileAssignmentPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfileAssignmentPropertiesResponse] {
+	return pulumix.Output[ConfigurationProfileAssignmentPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Automanage configurationProfile ARM Resource URI.
@@ -228,6 +259,12 @@ func (i ConfigurationProfilePropertiesArgs) ToConfigurationProfilePropertiesOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfilePropertiesOutput)
 }
 
+func (i ConfigurationProfilePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfileProperties] {
+	return pulumix.Output[ConfigurationProfileProperties]{
+		OutputState: i.ToConfigurationProfilePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConfigurationProfilePropertiesArgs) ToConfigurationProfilePropertiesPtrOutput() ConfigurationProfilePropertiesPtrOutput {
 	return i.ToConfigurationProfilePropertiesPtrOutputWithContext(context.Background())
 }
@@ -269,6 +306,12 @@ func (i *configurationProfilePropertiesPtrType) ToConfigurationProfileProperties
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfilePropertiesPtrOutput)
 }
 
+func (i *configurationProfilePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfileProperties] {
+	return pulumix.Output[*ConfigurationProfileProperties]{
+		OutputState: i.ToConfigurationProfilePropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Automanage configuration profile properties.
 type ConfigurationProfilePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -294,6 +337,12 @@ func (o ConfigurationProfilePropertiesOutput) ToConfigurationProfilePropertiesPt
 	}).(ConfigurationProfilePropertiesPtrOutput)
 }
 
+func (o ConfigurationProfilePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfileProperties] {
+	return pulumix.Output[ConfigurationProfileProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // configuration dictionary of the configuration profile.
 func (o ConfigurationProfilePropertiesOutput) Configuration() pulumi.AnyOutput {
 	return o.ApplyT(func(v ConfigurationProfileProperties) interface{} { return v.Configuration }).(pulumi.AnyOutput)
@@ -311,6 +360,12 @@ func (o ConfigurationProfilePropertiesPtrOutput) ToConfigurationProfilePropertie
 
 func (o ConfigurationProfilePropertiesPtrOutput) ToConfigurationProfilePropertiesPtrOutputWithContext(ctx context.Context) ConfigurationProfilePropertiesPtrOutput {
 	return o
+}
+
+func (o ConfigurationProfilePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfileProperties] {
+	return pulumix.Output[*ConfigurationProfileProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigurationProfilePropertiesPtrOutput) Elem() ConfigurationProfilePropertiesOutput {
@@ -354,6 +409,12 @@ func (o ConfigurationProfilePropertiesResponseOutput) ToConfigurationProfileProp
 	return o
 }
 
+func (o ConfigurationProfilePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfilePropertiesResponse] {
+	return pulumix.Output[ConfigurationProfilePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // configuration dictionary of the configuration profile.
 func (o ConfigurationProfilePropertiesResponseOutput) Configuration() pulumi.AnyOutput {
 	return o.ApplyT(func(v ConfigurationProfilePropertiesResponse) interface{} { return v.Configuration }).(pulumi.AnyOutput)
@@ -388,6 +449,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

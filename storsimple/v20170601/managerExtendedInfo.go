@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The extended info of the manager.
@@ -164,6 +165,12 @@ func (i *ManagerExtendedInfo) ToManagerExtendedInfoOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ManagerExtendedInfoOutput)
 }
 
+func (i *ManagerExtendedInfo) ToOutput(ctx context.Context) pulumix.Output[*ManagerExtendedInfo] {
+	return pulumix.Output[*ManagerExtendedInfo]{
+		OutputState: i.ToManagerExtendedInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagerExtendedInfoOutput struct{ *pulumi.OutputState }
 
 func (ManagerExtendedInfoOutput) ElementType() reflect.Type {
@@ -176,6 +183,12 @@ func (o ManagerExtendedInfoOutput) ToManagerExtendedInfoOutput() ManagerExtended
 
 func (o ManagerExtendedInfoOutput) ToManagerExtendedInfoOutputWithContext(ctx context.Context) ManagerExtendedInfoOutput {
 	return o
+}
+
+func (o ManagerExtendedInfoOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagerExtendedInfo] {
+	return pulumix.Output[*ManagerExtendedInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents the encryption algorithm used to encrypt the keys. None - if Key is saved in plain text format. Algorithm name - if key is encrypted

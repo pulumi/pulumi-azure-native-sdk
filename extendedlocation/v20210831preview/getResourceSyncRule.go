@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the resourceSyncRule with a specified resource group, subscription id Custom Location resource name and Resource Sync Rule name.
@@ -94,6 +95,12 @@ func (o LookupResourceSyncRuleResultOutput) ToLookupResourceSyncRuleResultOutput
 
 func (o LookupResourceSyncRuleResultOutput) ToLookupResourceSyncRuleResultOutputWithContext(ctx context.Context) LookupResourceSyncRuleResultOutput {
 	return o
+}
+
+func (o LookupResourceSyncRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResourceSyncRuleResult] {
+	return pulumix.Output[LookupResourceSyncRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

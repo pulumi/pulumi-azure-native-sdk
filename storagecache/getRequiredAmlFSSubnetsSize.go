@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the number of available IP addresses needed for the AML file system information provided.
@@ -73,6 +74,12 @@ func (o GetRequiredAmlFSSubnetsSizeResultOutput) ToGetRequiredAmlFSSubnetsSizeRe
 
 func (o GetRequiredAmlFSSubnetsSizeResultOutput) ToGetRequiredAmlFSSubnetsSizeResultOutputWithContext(ctx context.Context) GetRequiredAmlFSSubnetsSizeResultOutput {
 	return o
+}
+
+func (o GetRequiredAmlFSSubnetsSizeResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRequiredAmlFSSubnetsSizeResult] {
+	return pulumix.Output[GetRequiredAmlFSSubnetsSizeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of available IP addresses that are required for the AML file system.

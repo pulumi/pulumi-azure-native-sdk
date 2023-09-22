@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the keys to use with the Maps APIs. A key is used to authenticate and authorize access to the Maps REST APIs. Only one key is needed at a time; two are given to provide seamless key regeneration.
@@ -79,6 +80,12 @@ func (o ListAccountKeysResultOutput) ToListAccountKeysResultOutput() ListAccount
 
 func (o ListAccountKeysResultOutput) ToListAccountKeysResultOutputWithContext(ctx context.Context) ListAccountKeysResultOutput {
 	return o
+}
+
+func (o ListAccountKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListAccountKeysResult] {
+	return pulumix.Output[ListAccountKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The primary key for accessing the Maps REST APIs.

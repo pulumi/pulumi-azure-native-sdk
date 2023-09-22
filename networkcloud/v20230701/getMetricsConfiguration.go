@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get metrics configuration of the provided cluster.
@@ -98,6 +99,12 @@ func (o LookupMetricsConfigurationResultOutput) ToLookupMetricsConfigurationResu
 
 func (o LookupMetricsConfigurationResultOutput) ToLookupMetricsConfigurationResultOutputWithContext(ctx context.Context) LookupMetricsConfigurationResultOutput {
 	return o
+}
+
+func (o LookupMetricsConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMetricsConfigurationResult] {
+	return pulumix.Output[LookupMetricsConfigurationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The interval in minutes by which metrics will be collected.

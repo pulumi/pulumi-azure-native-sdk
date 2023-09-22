@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a file test result for the matching test
@@ -95,6 +96,12 @@ func (o GetTestResultFileResultOutput) ToGetTestResultFileResultOutput() GetTest
 
 func (o GetTestResultFileResultOutput) ToGetTestResultFileResultOutputWithContext(ctx context.Context) GetTestResultFileResultOutput {
 	return o
+}
+
+func (o GetTestResultFileResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTestResultFileResult] {
+	return pulumix.Output[GetTestResultFileResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // File contents.

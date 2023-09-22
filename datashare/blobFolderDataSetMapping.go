@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Blob folder data set mapping.
@@ -208,6 +209,12 @@ func (i *BlobFolderDataSetMapping) ToBlobFolderDataSetMappingOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(BlobFolderDataSetMappingOutput)
 }
 
+func (i *BlobFolderDataSetMapping) ToOutput(ctx context.Context) pulumix.Output[*BlobFolderDataSetMapping] {
+	return pulumix.Output[*BlobFolderDataSetMapping]{
+		OutputState: i.ToBlobFolderDataSetMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BlobFolderDataSetMappingOutput struct{ *pulumi.OutputState }
 
 func (BlobFolderDataSetMappingOutput) ElementType() reflect.Type {
@@ -220,6 +227,12 @@ func (o BlobFolderDataSetMappingOutput) ToBlobFolderDataSetMappingOutput() BlobF
 
 func (o BlobFolderDataSetMappingOutput) ToBlobFolderDataSetMappingOutputWithContext(ctx context.Context) BlobFolderDataSetMappingOutput {
 	return o
+}
+
+func (o BlobFolderDataSetMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*BlobFolderDataSetMapping] {
+	return pulumix.Output[*BlobFolderDataSetMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Container that has the file path.

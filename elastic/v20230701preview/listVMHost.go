@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response of a list operation.
@@ -74,6 +75,12 @@ func (o ListVMHostResultOutput) ToListVMHostResultOutput() ListVMHostResultOutpu
 
 func (o ListVMHostResultOutput) ToListVMHostResultOutputWithContext(ctx context.Context) ListVMHostResultOutput {
 	return o
+}
+
+func (o ListVMHostResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListVMHostResult] {
+	return pulumix.Output[ListVMHostResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Link to the next Vm resource Id, if any.

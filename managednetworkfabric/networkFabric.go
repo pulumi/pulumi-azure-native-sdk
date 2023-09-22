@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The NetworkFabric resource definition.
@@ -220,6 +221,12 @@ func (i *NetworkFabric) ToNetworkFabricOutputWithContext(ctx context.Context) Ne
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFabricOutput)
 }
 
+func (i *NetworkFabric) ToOutput(ctx context.Context) pulumix.Output[*NetworkFabric] {
+	return pulumix.Output[*NetworkFabric]{
+		OutputState: i.ToNetworkFabricOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkFabricOutput struct{ *pulumi.OutputState }
 
 func (NetworkFabricOutput) ElementType() reflect.Type {
@@ -232,6 +239,12 @@ func (o NetworkFabricOutput) ToNetworkFabricOutput() NetworkFabricOutput {
 
 func (o NetworkFabricOutput) ToNetworkFabricOutputWithContext(ctx context.Context) NetworkFabricOutput {
 	return o
+}
+
+func (o NetworkFabricOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkFabric] {
+	return pulumix.Output[*NetworkFabric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Switch configuration description.

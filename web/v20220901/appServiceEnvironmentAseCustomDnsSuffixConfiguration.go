@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Full view of the custom domain suffix configuration for ASEv3.
@@ -140,6 +141,12 @@ func (i *AppServiceEnvironmentAseCustomDnsSuffixConfiguration) ToAppServiceEnvir
 	return pulumi.ToOutputWithContext(ctx, i).(AppServiceEnvironmentAseCustomDnsSuffixConfigurationOutput)
 }
 
+func (i *AppServiceEnvironmentAseCustomDnsSuffixConfiguration) ToOutput(ctx context.Context) pulumix.Output[*AppServiceEnvironmentAseCustomDnsSuffixConfiguration] {
+	return pulumix.Output[*AppServiceEnvironmentAseCustomDnsSuffixConfiguration]{
+		OutputState: i.ToAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppServiceEnvironmentAseCustomDnsSuffixConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AppServiceEnvironmentAseCustomDnsSuffixConfigurationOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o AppServiceEnvironmentAseCustomDnsSuffixConfigurationOutput) ToAppService
 
 func (o AppServiceEnvironmentAseCustomDnsSuffixConfigurationOutput) ToAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutputWithContext(ctx context.Context) AppServiceEnvironmentAseCustomDnsSuffixConfigurationOutput {
 	return o
+}
+
+func (o AppServiceEnvironmentAseCustomDnsSuffixConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*AppServiceEnvironmentAseCustomDnsSuffixConfiguration] {
+	return pulumix.Output[*AppServiceEnvironmentAseCustomDnsSuffixConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.

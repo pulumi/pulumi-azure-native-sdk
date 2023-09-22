@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of the provided bare metal machine.
@@ -138,6 +139,12 @@ func (o LookupBareMetalMachineResultOutput) ToLookupBareMetalMachineResultOutput
 
 func (o LookupBareMetalMachineResultOutput) ToLookupBareMetalMachineResultOutputWithContext(ctx context.Context) LookupBareMetalMachineResultOutput {
 	return o
+}
+
+func (o LookupBareMetalMachineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBareMetalMachineResult] {
+	return pulumix.Output[LookupBareMetalMachineResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.

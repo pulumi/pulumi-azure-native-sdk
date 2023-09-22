@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Dapr Component.
@@ -112,6 +113,12 @@ func (o LookupConnectedEnvironmentsDaprComponentResultOutput) ToLookupConnectedE
 
 func (o LookupConnectedEnvironmentsDaprComponentResultOutput) ToLookupConnectedEnvironmentsDaprComponentResultOutputWithContext(ctx context.Context) LookupConnectedEnvironmentsDaprComponentResultOutput {
 	return o
+}
+
+func (o LookupConnectedEnvironmentsDaprComponentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectedEnvironmentsDaprComponentResult] {
+	return pulumix.Output[LookupConnectedEnvironmentsDaprComponentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Component type

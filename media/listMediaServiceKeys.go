@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the keys for a Media Service.
@@ -81,6 +82,12 @@ func (o ListMediaServiceKeysResultOutput) ToListMediaServiceKeysResultOutput() L
 
 func (o ListMediaServiceKeysResultOutput) ToListMediaServiceKeysResultOutputWithContext(ctx context.Context) ListMediaServiceKeysResultOutput {
 	return o
+}
+
+func (o ListMediaServiceKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListMediaServiceKeysResult] {
+	return pulumix.Output[ListMediaServiceKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The primary authorization endpoint.

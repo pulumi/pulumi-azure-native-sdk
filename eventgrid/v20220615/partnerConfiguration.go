@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Partner configuration information
@@ -136,6 +137,12 @@ func (i *PartnerConfiguration) ToPartnerConfigurationOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PartnerConfigurationOutput)
 }
 
+func (i *PartnerConfiguration) ToOutput(ctx context.Context) pulumix.Output[*PartnerConfiguration] {
+	return pulumix.Output[*PartnerConfiguration]{
+		OutputState: i.ToPartnerConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PartnerConfigurationOutput struct{ *pulumi.OutputState }
 
 func (PartnerConfigurationOutput) ElementType() reflect.Type {
@@ -148,6 +155,12 @@ func (o PartnerConfigurationOutput) ToPartnerConfigurationOutput() PartnerConfig
 
 func (o PartnerConfigurationOutput) ToPartnerConfigurationOutputWithContext(ctx context.Context) PartnerConfigurationOutput {
 	return o
+}
+
+func (o PartnerConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*PartnerConfiguration] {
+	return pulumix.Output[*PartnerConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Location of the resource.

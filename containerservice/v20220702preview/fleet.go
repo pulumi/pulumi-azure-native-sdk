@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Fleet resource which contains multiple Kubernetes clusters as its members.
@@ -144,6 +145,12 @@ func (i *Fleet) ToFleetOutputWithContext(ctx context.Context) FleetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FleetOutput)
 }
 
+func (i *Fleet) ToOutput(ctx context.Context) pulumix.Output[*Fleet] {
+	return pulumix.Output[*Fleet]{
+		OutputState: i.ToFleetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FleetOutput struct{ *pulumi.OutputState }
 
 func (FleetOutput) ElementType() reflect.Type {
@@ -156,6 +163,12 @@ func (o FleetOutput) ToFleetOutput() FleetOutput {
 
 func (o FleetOutput) ToFleetOutputWithContext(ctx context.Context) FleetOutput {
 	return o
+}
+
+func (o FleetOutput) ToOutput(ctx context.Context) pulumix.Output[*Fleet] {
+	return pulumix.Output[*Fleet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Etag.

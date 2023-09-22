@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a single workbook template by its resourceName.
@@ -90,6 +91,12 @@ func (o LookupWorkbookTemplateResultOutput) ToLookupWorkbookTemplateResultOutput
 
 func (o LookupWorkbookTemplateResultOutput) ToLookupWorkbookTemplateResultOutputWithContext(ctx context.Context) LookupWorkbookTemplateResultOutput {
 	return o
+}
+
+func (o LookupWorkbookTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkbookTemplateResult] {
+	return pulumix.Output[LookupWorkbookTemplateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Information about the author of the workbook template.

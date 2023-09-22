@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a workspace manager assignment
@@ -92,6 +93,12 @@ func (o LookupWorkspaceManagerAssignmentResultOutput) ToLookupWorkspaceManagerAs
 
 func (o LookupWorkspaceManagerAssignmentResultOutput) ToLookupWorkspaceManagerAssignmentResultOutputWithContext(ctx context.Context) LookupWorkspaceManagerAssignmentResultOutput {
 	return o
+}
+
+func (o LookupWorkspaceManagerAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceManagerAssignmentResult] {
+	return pulumix.Output[LookupWorkspaceManagerAssignmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Etag.

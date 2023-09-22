@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the SQL trigger under an existing Azure Cosmos DB database account.
@@ -93,6 +94,12 @@ func (o LookupSqlResourceSqlTriggerResultOutput) ToLookupSqlResourceSqlTriggerRe
 
 func (o LookupSqlResourceSqlTriggerResultOutput) ToLookupSqlResourceSqlTriggerResultOutputWithContext(ctx context.Context) LookupSqlResourceSqlTriggerResultOutput {
 	return o
+}
+
+func (o LookupSqlResourceSqlTriggerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlResourceSqlTriggerResult] {
+	return pulumix.Output[LookupSqlResourceSqlTriggerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The unique resource identifier of the ARM resource.

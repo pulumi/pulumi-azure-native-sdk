@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a workflow access key.
@@ -82,6 +83,12 @@ func (o LookupWorkflowAccessKeyResultOutput) ToLookupWorkflowAccessKeyResultOutp
 
 func (o LookupWorkflowAccessKeyResultOutput) ToLookupWorkflowAccessKeyResultOutputWithContext(ctx context.Context) LookupWorkflowAccessKeyResultOutput {
 	return o
+}
+
+func (o LookupWorkflowAccessKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkflowAccessKeyResult] {
+	return pulumix.Output[LookupWorkflowAccessKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the resource id.

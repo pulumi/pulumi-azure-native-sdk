@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the move collection.
@@ -89,6 +90,12 @@ func (o LookupMoveCollectionResultOutput) ToLookupMoveCollectionResultOutput() L
 
 func (o LookupMoveCollectionResultOutput) ToLookupMoveCollectionResultOutputWithContext(ctx context.Context) LookupMoveCollectionResultOutput {
 	return o
+}
+
+func (o LookupMoveCollectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMoveCollectionResult] {
+	return pulumix.Output[LookupMoveCollectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The etag of the resource.

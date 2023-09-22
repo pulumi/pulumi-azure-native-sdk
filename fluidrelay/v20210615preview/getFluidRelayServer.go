@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A FluidRelay Server.
@@ -90,6 +91,12 @@ func (o LookupFluidRelayServerResultOutput) ToLookupFluidRelayServerResultOutput
 
 func (o LookupFluidRelayServerResultOutput) ToLookupFluidRelayServerResultOutputWithContext(ctx context.Context) LookupFluidRelayServerResultOutput {
 	return o
+}
+
+func (o LookupFluidRelayServerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFluidRelayServerResult] {
+	return pulumix.Output[LookupFluidRelayServerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Fluid Relay Service endpoints for this server.

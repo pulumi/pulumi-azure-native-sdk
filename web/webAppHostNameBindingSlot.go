@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A hostname binding object.
@@ -221,6 +222,12 @@ func (i *WebAppHostNameBindingSlot) ToWebAppHostNameBindingSlotOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppHostNameBindingSlotOutput)
 }
 
+func (i *WebAppHostNameBindingSlot) ToOutput(ctx context.Context) pulumix.Output[*WebAppHostNameBindingSlot] {
+	return pulumix.Output[*WebAppHostNameBindingSlot]{
+		OutputState: i.ToWebAppHostNameBindingSlotOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppHostNameBindingSlotOutput struct{ *pulumi.OutputState }
 
 func (WebAppHostNameBindingSlotOutput) ElementType() reflect.Type {
@@ -233,6 +240,12 @@ func (o WebAppHostNameBindingSlotOutput) ToWebAppHostNameBindingSlotOutput() Web
 
 func (o WebAppHostNameBindingSlotOutput) ToWebAppHostNameBindingSlotOutputWithContext(ctx context.Context) WebAppHostNameBindingSlotOutput {
 	return o
+}
+
+func (o WebAppHostNameBindingSlotOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppHostNameBindingSlot] {
+	return pulumix.Output[*WebAppHostNameBindingSlot]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure resource name.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Job Definition resource.
@@ -115,6 +116,12 @@ func (o LookupJobDefinitionResultOutput) ToLookupJobDefinitionResultOutput() Loo
 
 func (o LookupJobDefinitionResultOutput) ToLookupJobDefinitionResultOutputWithContext(ctx context.Context) LookupJobDefinitionResultOutput {
 	return o
+}
+
+func (o LookupJobDefinitionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJobDefinitionResult] {
+	return pulumix.Output[LookupJobDefinitionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the Agent to assign for new Job Runs of this Job Definition.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -30,6 +31,12 @@ func (o UserApiKeyResponsePropertiesResponseOutput) ToUserApiKeyResponseProperti
 
 func (o UserApiKeyResponsePropertiesResponseOutput) ToUserApiKeyResponsePropertiesResponseOutputWithContext(ctx context.Context) UserApiKeyResponsePropertiesResponseOutput {
 	return o
+}
+
+func (o UserApiKeyResponsePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserApiKeyResponsePropertiesResponse] {
+	return pulumix.Output[UserApiKeyResponsePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The User Api Key Generated based on GenerateApiKey flag. This is applicable for non-Portal clients only.

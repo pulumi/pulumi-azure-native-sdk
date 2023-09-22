@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data flow resource type.
@@ -126,6 +127,12 @@ func (i *DataFlow) ToDataFlowOutputWithContext(ctx context.Context) DataFlowOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DataFlowOutput)
 }
 
+func (i *DataFlow) ToOutput(ctx context.Context) pulumix.Output[*DataFlow] {
+	return pulumix.Output[*DataFlow]{
+		OutputState: i.ToDataFlowOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataFlowOutput struct{ *pulumi.OutputState }
 
 func (DataFlowOutput) ElementType() reflect.Type {
@@ -138,6 +145,12 @@ func (o DataFlowOutput) ToDataFlowOutput() DataFlowOutput {
 
 func (o DataFlowOutput) ToDataFlowOutputWithContext(ctx context.Context) DataFlowOutput {
 	return o
+}
+
+func (o DataFlowOutput) ToOutput(ctx context.Context) pulumix.Output[*DataFlow] {
+	return pulumix.Output[*DataFlow]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Etag identifies change in the resource.

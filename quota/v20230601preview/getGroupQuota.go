@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the GroupQuotas for the name passed. It will return the GroupQuotas properties only. The details on groupQuota can be access from the groupQuota APIs.
@@ -80,6 +81,12 @@ func (o LookupGroupQuotaResultOutput) ToLookupGroupQuotaResultOutput() LookupGro
 
 func (o LookupGroupQuotaResultOutput) ToLookupGroupQuotaResultOutputWithContext(ctx context.Context) LookupGroupQuotaResultOutput {
 	return o
+}
+
+func (o LookupGroupQuotaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGroupQuotaResult] {
+	return pulumix.Output[LookupGroupQuotaResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

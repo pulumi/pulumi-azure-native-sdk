@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // User details.
@@ -183,6 +184,12 @@ func (i *GroupUser) ToGroupUserOutputWithContext(ctx context.Context) GroupUserO
 	return pulumi.ToOutputWithContext(ctx, i).(GroupUserOutput)
 }
 
+func (i *GroupUser) ToOutput(ctx context.Context) pulumix.Output[*GroupUser] {
+	return pulumix.Output[*GroupUser]{
+		OutputState: i.ToGroupUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupUserOutput struct{ *pulumi.OutputState }
 
 func (GroupUserOutput) ElementType() reflect.Type {
@@ -195,6 +202,12 @@ func (o GroupUserOutput) ToGroupUserOutput() GroupUserOutput {
 
 func (o GroupUserOutput) ToGroupUserOutputWithContext(ctx context.Context) GroupUserOutput {
 	return o
+}
+
+func (o GroupUserOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupUser] {
+	return pulumix.Output[*GroupUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Email address.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A single API Management service resource in List or Get response.
@@ -270,6 +271,12 @@ func (i *ApiManagementService) ToApiManagementServiceOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ApiManagementServiceOutput)
 }
 
+func (i *ApiManagementService) ToOutput(ctx context.Context) pulumix.Output[*ApiManagementService] {
+	return pulumix.Output[*ApiManagementService]{
+		OutputState: i.ToApiManagementServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiManagementServiceOutput struct{ *pulumi.OutputState }
 
 func (ApiManagementServiceOutput) ElementType() reflect.Type {
@@ -282,6 +289,12 @@ func (o ApiManagementServiceOutput) ToApiManagementServiceOutput() ApiManagement
 
 func (o ApiManagementServiceOutput) ToApiManagementServiceOutputWithContext(ctx context.Context) ApiManagementServiceOutput {
 	return o
+}
+
+func (o ApiManagementServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiManagementService] {
+	return pulumix.Output[*ApiManagementService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional datacenter locations of the API Management service.

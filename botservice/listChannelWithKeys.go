@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists a Channel registration for a Bot Service including secrets
@@ -116,6 +117,12 @@ func (o ListChannelWithKeysResultOutput) ToListChannelWithKeysResultOutput() Lis
 
 func (o ListChannelWithKeysResultOutput) ToListChannelWithKeysResultOutputWithContext(ctx context.Context) ListChannelWithKeysResultOutput {
 	return o
+}
+
+func (o ListChannelWithKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListChannelWithKeysResult] {
+	return pulumix.Output[ListChannelWithKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Changed time of the resource

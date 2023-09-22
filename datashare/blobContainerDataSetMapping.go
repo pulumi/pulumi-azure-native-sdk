@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Blob container data set mapping.
@@ -199,6 +200,12 @@ func (i *BlobContainerDataSetMapping) ToBlobContainerDataSetMappingOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(BlobContainerDataSetMappingOutput)
 }
 
+func (i *BlobContainerDataSetMapping) ToOutput(ctx context.Context) pulumix.Output[*BlobContainerDataSetMapping] {
+	return pulumix.Output[*BlobContainerDataSetMapping]{
+		OutputState: i.ToBlobContainerDataSetMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BlobContainerDataSetMappingOutput struct{ *pulumi.OutputState }
 
 func (BlobContainerDataSetMappingOutput) ElementType() reflect.Type {
@@ -211,6 +218,12 @@ func (o BlobContainerDataSetMappingOutput) ToBlobContainerDataSetMappingOutput()
 
 func (o BlobContainerDataSetMappingOutput) ToBlobContainerDataSetMappingOutputWithContext(ctx context.Context) BlobContainerDataSetMappingOutput {
 	return o
+}
+
+func (o BlobContainerDataSetMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*BlobContainerDataSetMapping] {
+	return pulumix.Output[*BlobContainerDataSetMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // BLOB Container name.

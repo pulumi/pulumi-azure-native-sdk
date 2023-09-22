@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details for a specific student in the specified lab by student alias
@@ -109,6 +110,12 @@ func (o LookupStudentResultOutput) ToLookupStudentResultOutput() LookupStudentRe
 
 func (o LookupStudentResultOutput) ToLookupStudentResultOutputWithContext(ctx context.Context) LookupStudentResultOutput {
 	return o
+}
+
+func (o LookupStudentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStudentResult] {
+	return pulumix.Output[LookupStudentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Student Budget

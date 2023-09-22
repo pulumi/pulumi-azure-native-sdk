@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines the vCenter.
@@ -179,6 +180,12 @@ func (i *VCenter) ToVCenterOutputWithContext(ctx context.Context) VCenterOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(VCenterOutput)
 }
 
+func (i *VCenter) ToOutput(ctx context.Context) pulumix.Output[*VCenter] {
+	return pulumix.Output[*VCenter]{
+		OutputState: i.ToVCenterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VCenterOutput struct{ *pulumi.OutputState }
 
 func (VCenterOutput) ElementType() reflect.Type {
@@ -191,6 +198,12 @@ func (o VCenterOutput) ToVCenterOutput() VCenterOutput {
 
 func (o VCenterOutput) ToVCenterOutputWithContext(ctx context.Context) VCenterOutput {
 	return o
+}
+
+func (o VCenterOutput) ToOutput(ctx context.Context) pulumix.Output[*VCenter] {
+	return pulumix.Output[*VCenter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the connection status to the vCenter.

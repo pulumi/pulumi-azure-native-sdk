@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified load balancer inbound nat rule.
@@ -104,6 +105,12 @@ func (o LookupInboundNatRuleResultOutput) ToLookupInboundNatRuleResultOutput() L
 
 func (o LookupInboundNatRuleResultOutput) ToLookupInboundNatRuleResultOutputWithContext(ctx context.Context) LookupInboundNatRuleResultOutput {
 	return o
+}
+
+func (o LookupInboundNatRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInboundNatRuleResult] {
+	return pulumix.Output[LookupInboundNatRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A reference to a private IP address defined on a network interface of a VM. Traffic sent to the frontend port of each of the frontend IP configurations is forwarded to the backend IP.

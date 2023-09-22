@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Workload classifier operations for a data warehouse
@@ -187,6 +188,12 @@ func (i *SqlPoolWorkloadClassifier) ToSqlPoolWorkloadClassifierOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolWorkloadClassifierOutput)
 }
 
+func (i *SqlPoolWorkloadClassifier) ToOutput(ctx context.Context) pulumix.Output[*SqlPoolWorkloadClassifier] {
+	return pulumix.Output[*SqlPoolWorkloadClassifier]{
+		OutputState: i.ToSqlPoolWorkloadClassifierOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlPoolWorkloadClassifierOutput struct{ *pulumi.OutputState }
 
 func (SqlPoolWorkloadClassifierOutput) ElementType() reflect.Type {
@@ -199,6 +206,12 @@ func (o SqlPoolWorkloadClassifierOutput) ToSqlPoolWorkloadClassifierOutput() Sql
 
 func (o SqlPoolWorkloadClassifierOutput) ToSqlPoolWorkloadClassifierOutputWithContext(ctx context.Context) SqlPoolWorkloadClassifierOutput {
 	return o
+}
+
+func (o SqlPoolWorkloadClassifierOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlPoolWorkloadClassifier] {
+	return pulumix.Output[*SqlPoolWorkloadClassifier]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The workload classifier context.

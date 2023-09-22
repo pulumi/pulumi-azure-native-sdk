@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get environment.
@@ -104,6 +105,12 @@ func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutput() LookupE
 
 func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContext(ctx context.Context) LookupEnvironmentResultOutput {
 	return o
+}
+
+func (o LookupEnvironmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEnvironmentResult] {
+	return pulumix.Output[LookupEnvironmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The display name of the Azure Resource Manager template that produced the environment.

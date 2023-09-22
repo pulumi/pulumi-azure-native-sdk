@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified container group in the specified subscription and resource group. The operation returns the properties of each container group including containers, image registry credentials, restart policy, IP address type, OS type, state, and volumes.
@@ -132,6 +133,12 @@ func (o LookupContainerGroupResultOutput) ToLookupContainerGroupResultOutput() L
 
 func (o LookupContainerGroupResultOutput) ToLookupContainerGroupResultOutputWithContext(ctx context.Context) LookupContainerGroupResultOutput {
 	return o
+}
+
+func (o LookupContainerGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContainerGroupResult] {
+	return pulumix.Output[LookupContainerGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The properties for confidential container group

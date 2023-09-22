@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the invoice sections for which the user has permission to create Azure subscriptions. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.
@@ -70,6 +71,12 @@ func (o ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOut
 
 func (o ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput) ToListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutputWithContext(ctx context.Context) ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput {
 	return o
+}
+
+func (o ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult] {
+	return pulumix.Output[ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The link (url) to the next page of results.

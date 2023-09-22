@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the information about the secret resource with the given name. The information include the description and other properties of the secret.
@@ -83,6 +84,12 @@ func (o LookupSecretResultOutput) ToLookupSecretResultOutput() LookupSecretResul
 
 func (o LookupSecretResultOutput) ToLookupSecretResultOutputWithContext(ctx context.Context) LookupSecretResultOutput {
 	return o
+}
+
+func (o LookupSecretResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecretResult] {
+	return pulumix.Output[LookupSecretResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified identifier for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i StreamingLocatorUserDefinedContentKeyArgs) ToStreamingLocatorUserDefined
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingLocatorUserDefinedContentKeyOutput)
 }
 
+func (i StreamingLocatorUserDefinedContentKeyArgs) ToOutput(ctx context.Context) pulumix.Output[StreamingLocatorUserDefinedContentKey] {
+	return pulumix.Output[StreamingLocatorUserDefinedContentKey]{
+		OutputState: i.ToStreamingLocatorUserDefinedContentKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StreamingLocatorUserDefinedContentKeyArrayInput is an input type that accepts StreamingLocatorUserDefinedContentKeyArray and StreamingLocatorUserDefinedContentKeyArrayOutput values.
 // You can construct a concrete instance of `StreamingLocatorUserDefinedContentKeyArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i StreamingLocatorUserDefinedContentKeyArray) ToStreamingLocatorUserDefine
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingLocatorUserDefinedContentKeyArrayOutput)
 }
 
+func (i StreamingLocatorUserDefinedContentKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamingLocatorUserDefinedContentKey] {
+	return pulumix.Output[[]StreamingLocatorUserDefinedContentKey]{
+		OutputState: i.ToStreamingLocatorUserDefinedContentKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the properties of a user-defined content key in the Streaming Locator
 type StreamingLocatorUserDefinedContentKeyOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o StreamingLocatorUserDefinedContentKeyOutput) ToStreamingLocatorUserDefin
 
 func (o StreamingLocatorUserDefinedContentKeyOutput) ToStreamingLocatorUserDefinedContentKeyOutputWithContext(ctx context.Context) StreamingLocatorUserDefinedContentKeyOutput {
 	return o
+}
+
+func (o StreamingLocatorUserDefinedContentKeyOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingLocatorUserDefinedContentKey] {
+	return pulumix.Output[StreamingLocatorUserDefinedContentKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of Content Key
@@ -123,6 +142,12 @@ func (o StreamingLocatorUserDefinedContentKeyArrayOutput) ToStreamingLocatorUser
 
 func (o StreamingLocatorUserDefinedContentKeyArrayOutput) ToStreamingLocatorUserDefinedContentKeyArrayOutputWithContext(ctx context.Context) StreamingLocatorUserDefinedContentKeyArrayOutput {
 	return o
+}
+
+func (o StreamingLocatorUserDefinedContentKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamingLocatorUserDefinedContentKey] {
+	return pulumix.Output[[]StreamingLocatorUserDefinedContentKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingLocatorUserDefinedContentKeyArrayOutput) Index(i pulumi.IntInput) StreamingLocatorUserDefinedContentKeyOutput {
@@ -156,6 +181,12 @@ func (o StreamingLocatorUserDefinedContentKeyResponseOutput) ToStreamingLocatorU
 	return o
 }
 
+func (o StreamingLocatorUserDefinedContentKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingLocatorUserDefinedContentKeyResponse] {
+	return pulumix.Output[StreamingLocatorUserDefinedContentKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // ID of Content Key
 func (o StreamingLocatorUserDefinedContentKeyResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamingLocatorUserDefinedContentKeyResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -183,6 +214,12 @@ func (o StreamingLocatorUserDefinedContentKeyResponseArrayOutput) ToStreamingLoc
 
 func (o StreamingLocatorUserDefinedContentKeyResponseArrayOutput) ToStreamingLocatorUserDefinedContentKeyResponseArrayOutputWithContext(ctx context.Context) StreamingLocatorUserDefinedContentKeyResponseArrayOutput {
 	return o
+}
+
+func (o StreamingLocatorUserDefinedContentKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamingLocatorUserDefinedContentKeyResponse] {
+	return pulumix.Output[[]StreamingLocatorUserDefinedContentKeyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamingLocatorUserDefinedContentKeyResponseArrayOutput) Index(i pulumi.IntInput) StreamingLocatorUserDefinedContentKeyResponseOutput {

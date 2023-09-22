@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Custom Assessment Automation
@@ -149,6 +150,12 @@ func (i *CustomAssessmentAutomation) ToCustomAssessmentAutomationOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(CustomAssessmentAutomationOutput)
 }
 
+func (i *CustomAssessmentAutomation) ToOutput(ctx context.Context) pulumix.Output[*CustomAssessmentAutomation] {
+	return pulumix.Output[*CustomAssessmentAutomation]{
+		OutputState: i.ToCustomAssessmentAutomationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomAssessmentAutomationOutput struct{ *pulumi.OutputState }
 
 func (CustomAssessmentAutomationOutput) ElementType() reflect.Type {
@@ -161,6 +168,12 @@ func (o CustomAssessmentAutomationOutput) ToCustomAssessmentAutomationOutput() C
 
 func (o CustomAssessmentAutomationOutput) ToCustomAssessmentAutomationOutputWithContext(ctx context.Context) CustomAssessmentAutomationOutput {
 	return o
+}
+
+func (o CustomAssessmentAutomationOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomAssessmentAutomation] {
+	return pulumix.Output[*CustomAssessmentAutomation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The assessment metadata key used when an assessment is generated for this assessment automation.

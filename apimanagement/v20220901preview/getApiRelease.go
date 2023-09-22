@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the details of an API release.
@@ -92,6 +93,12 @@ func (o LookupApiReleaseResultOutput) ToLookupApiReleaseResultOutput() LookupApi
 
 func (o LookupApiReleaseResultOutput) ToLookupApiReleaseResultOutputWithContext(ctx context.Context) LookupApiReleaseResultOutput {
 	return o
+}
+
+func (o LookupApiReleaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiReleaseResult] {
+	return pulumix.Output[LookupApiReleaseResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier of the API the release belongs to.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets status of a web app backup that may be in progress, including secrets associated with the backup, such as the Azure Storage SAS URL. Also can be used to update the SAS URL for the backup if a new URL is passed in the request body.
@@ -143,6 +144,12 @@ func (o ListWebAppBackupStatusSecretsResultOutput) ToListWebAppBackupStatusSecre
 
 func (o ListWebAppBackupStatusSecretsResultOutput) ToListWebAppBackupStatusSecretsResultOutputWithContext(ctx context.Context) ListWebAppBackupStatusSecretsResultOutput {
 	return o
+}
+
+func (o ListWebAppBackupStatusSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppBackupStatusSecretsResult] {
+	return pulumix.Output[ListWebAppBackupStatusSecretsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Id of the backup.

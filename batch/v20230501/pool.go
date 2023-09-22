@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Contains information about a pool.
@@ -272,6 +273,12 @@ func (i *Pool) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PoolOutput)
 }
 
+func (i *Pool) ToOutput(ctx context.Context) pulumix.Output[*Pool] {
+	return pulumix.Output[*Pool]{
+		OutputState: i.ToPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PoolOutput struct{ *pulumi.OutputState }
 
 func (PoolOutput) ElementType() reflect.Type {
@@ -284,6 +291,12 @@ func (o PoolOutput) ToPoolOutput() PoolOutput {
 
 func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return o
+}
+
+func (o PoolOutput) ToOutput(ctx context.Context) pulumix.Output[*Pool] {
+	return pulumix.Output[*Pool]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PoolOutput) AllocationState() pulumi.StringOutput {

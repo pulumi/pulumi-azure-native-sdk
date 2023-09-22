@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A class represent a resource.
@@ -314,6 +315,12 @@ func (i *SignalR) ToSignalROutputWithContext(ctx context.Context) SignalROutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SignalROutput)
 }
 
+func (i *SignalR) ToOutput(ctx context.Context) pulumix.Output[*SignalR] {
+	return pulumix.Output[*SignalR]{
+		OutputState: i.ToSignalROutputWithContext(ctx).OutputState,
+	}
+}
+
 type SignalROutput struct{ *pulumi.OutputState }
 
 func (SignalROutput) ElementType() reflect.Type {
@@ -326,6 +333,12 @@ func (o SignalROutput) ToSignalROutput() SignalROutput {
 
 func (o SignalROutput) ToSignalROutputWithContext(ctx context.Context) SignalROutput {
 	return o
+}
+
+func (o SignalROutput) ToOutput(ctx context.Context) pulumix.Output[*SignalR] {
+	return pulumix.Output[*SignalR]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cross-Origin Resource Sharing (CORS) settings.

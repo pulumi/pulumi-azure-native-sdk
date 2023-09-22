@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve a hybrid runbook worker.
@@ -98,6 +99,12 @@ func (o LookupHybridRunbookWorkerResultOutput) ToLookupHybridRunbookWorkerResult
 
 func (o LookupHybridRunbookWorkerResultOutput) ToLookupHybridRunbookWorkerResultOutputWithContext(ctx context.Context) LookupHybridRunbookWorkerResultOutput {
 	return o
+}
+
+func (o LookupHybridRunbookWorkerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHybridRunbookWorkerResult] {
+	return pulumix.Output[LookupHybridRunbookWorkerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource

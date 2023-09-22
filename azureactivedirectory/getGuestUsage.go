@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Guest Usages resource for the Microsoft.AzureActiveDirectory resource provider
@@ -85,6 +86,12 @@ func (o LookupGuestUsageResultOutput) ToLookupGuestUsageResultOutput() LookupGue
 
 func (o LookupGuestUsageResultOutput) ToLookupGuestUsageResultOutputWithContext(ctx context.Context) LookupGuestUsageResultOutput {
 	return o
+}
+
+func (o LookupGuestUsageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGuestUsageResult] {
+	return pulumix.Output[LookupGuestUsageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An identifier that represents the Guest Usages resource.

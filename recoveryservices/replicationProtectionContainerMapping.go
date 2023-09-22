@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Protection container mapping object.
@@ -207,6 +208,12 @@ func (i *ReplicationProtectionContainerMapping) ToReplicationProtectionContainer
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationProtectionContainerMappingOutput)
 }
 
+func (i *ReplicationProtectionContainerMapping) ToOutput(ctx context.Context) pulumix.Output[*ReplicationProtectionContainerMapping] {
+	return pulumix.Output[*ReplicationProtectionContainerMapping]{
+		OutputState: i.ToReplicationProtectionContainerMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReplicationProtectionContainerMappingOutput struct{ *pulumi.OutputState }
 
 func (ReplicationProtectionContainerMappingOutput) ElementType() reflect.Type {
@@ -219,6 +226,12 @@ func (o ReplicationProtectionContainerMappingOutput) ToReplicationProtectionCont
 
 func (o ReplicationProtectionContainerMappingOutput) ToReplicationProtectionContainerMappingOutputWithContext(ctx context.Context) ReplicationProtectionContainerMappingOutput {
 	return o
+}
+
+func (o ReplicationProtectionContainerMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationProtectionContainerMapping] {
+	return pulumix.Output[*ReplicationProtectionContainerMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Location

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the custom resource provider manifest.
@@ -89,6 +90,12 @@ func (o LookupCustomResourceProviderResultOutput) ToLookupCustomResourceProvider
 
 func (o LookupCustomResourceProviderResultOutput) ToLookupCustomResourceProviderResultOutputWithContext(ctx context.Context) LookupCustomResourceProviderResultOutput {
 	return o
+}
+
+func (o LookupCustomResourceProviderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomResourceProviderResult] {
+	return pulumix.Output[LookupCustomResourceProviderResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of actions that the custom resource provider implements.

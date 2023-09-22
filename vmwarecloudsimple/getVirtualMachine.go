@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get virtual machine
@@ -125,6 +126,12 @@ func (o LookupVirtualMachineResultOutput) ToLookupVirtualMachineResultOutput() L
 
 func (o LookupVirtualMachineResultOutput) ToLookupVirtualMachineResultOutputWithContext(ctx context.Context) LookupVirtualMachineResultOutput {
 	return o
+}
+
+func (o LookupVirtualMachineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualMachineResult] {
+	return pulumix.Output[LookupVirtualMachineResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The amount of memory

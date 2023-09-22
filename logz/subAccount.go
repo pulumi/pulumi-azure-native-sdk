@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2020-10-01
@@ -138,6 +139,12 @@ func (i *SubAccount) ToSubAccountOutputWithContext(ctx context.Context) SubAccou
 	return pulumi.ToOutputWithContext(ctx, i).(SubAccountOutput)
 }
 
+func (i *SubAccount) ToOutput(ctx context.Context) pulumix.Output[*SubAccount] {
+	return pulumix.Output[*SubAccount]{
+		OutputState: i.ToSubAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SubAccountOutput struct{ *pulumi.OutputState }
 
 func (SubAccountOutput) ElementType() reflect.Type {
@@ -150,6 +157,12 @@ func (o SubAccountOutput) ToSubAccountOutput() SubAccountOutput {
 
 func (o SubAccountOutput) ToSubAccountOutputWithContext(ctx context.Context) SubAccountOutput {
 	return o
+}
+
+func (o SubAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*SubAccount] {
+	return pulumix.Output[*SubAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubAccountOutput) Identity() IdentityPropertiesResponsePtrOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gateway certificate authority details.
@@ -155,6 +156,12 @@ func (i *GatewayCertificateAuthority) ToGatewayCertificateAuthorityOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayCertificateAuthorityOutput)
 }
 
+func (i *GatewayCertificateAuthority) ToOutput(ctx context.Context) pulumix.Output[*GatewayCertificateAuthority] {
+	return pulumix.Output[*GatewayCertificateAuthority]{
+		OutputState: i.ToGatewayCertificateAuthorityOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GatewayCertificateAuthorityOutput struct{ *pulumi.OutputState }
 
 func (GatewayCertificateAuthorityOutput) ElementType() reflect.Type {
@@ -167,6 +174,12 @@ func (o GatewayCertificateAuthorityOutput) ToGatewayCertificateAuthorityOutput()
 
 func (o GatewayCertificateAuthorityOutput) ToGatewayCertificateAuthorityOutputWithContext(ctx context.Context) GatewayCertificateAuthorityOutput {
 	return o
+}
+
+func (o GatewayCertificateAuthorityOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayCertificateAuthority] {
+	return pulumix.Output[*GatewayCertificateAuthority]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Determines whether certificate authority is trusted.

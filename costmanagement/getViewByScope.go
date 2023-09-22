@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the view for the defined scope by view name.
@@ -109,6 +110,12 @@ func (o LookupViewByScopeResultOutput) ToLookupViewByScopeResultOutput() LookupV
 
 func (o LookupViewByScopeResultOutput) ToLookupViewByScopeResultOutputWithContext(ctx context.Context) LookupViewByScopeResultOutput {
 	return o
+}
+
+func (o LookupViewByScopeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupViewByScopeResult] {
+	return pulumix.Output[LookupViewByScopeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Show costs accumulated over time.

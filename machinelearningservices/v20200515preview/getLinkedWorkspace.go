@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the detail of a linked workspace.
@@ -82,6 +83,12 @@ func (o LookupLinkedWorkspaceResultOutput) ToLookupLinkedWorkspaceResultOutput()
 
 func (o LookupLinkedWorkspaceResultOutput) ToLookupLinkedWorkspaceResultOutputWithContext(ctx context.Context) LookupLinkedWorkspaceResultOutput {
 	return o
+}
+
+func (o LookupLinkedWorkspaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLinkedWorkspaceResult] {
+	return pulumix.Output[LookupLinkedWorkspaceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ResourceId of the link of the linked workspace.

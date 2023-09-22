@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An assessment created for a group in the Migration project.
@@ -137,6 +138,12 @@ func (i *Assessment) ToAssessmentOutputWithContext(ctx context.Context) Assessme
 	return pulumi.ToOutputWithContext(ctx, i).(AssessmentOutput)
 }
 
+func (i *Assessment) ToOutput(ctx context.Context) pulumix.Output[*Assessment] {
+	return pulumix.Output[*Assessment]{
+		OutputState: i.ToAssessmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AssessmentOutput struct{ *pulumi.OutputState }
 
 func (AssessmentOutput) ElementType() reflect.Type {
@@ -149,6 +156,12 @@ func (o AssessmentOutput) ToAssessmentOutput() AssessmentOutput {
 
 func (o AssessmentOutput) ToAssessmentOutputWithContext(ctx context.Context) AssessmentOutput {
 	return o
+}
+
+func (o AssessmentOutput) ToOutput(ctx context.Context) pulumix.Output[*Assessment] {
+	return pulumix.Output[*Assessment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // For optimistic concurrency control.

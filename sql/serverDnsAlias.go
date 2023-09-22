@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A server DNS alias.
@@ -157,6 +158,12 @@ func (i *ServerDnsAlias) ToServerDnsAliasOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ServerDnsAliasOutput)
 }
 
+func (i *ServerDnsAlias) ToOutput(ctx context.Context) pulumix.Output[*ServerDnsAlias] {
+	return pulumix.Output[*ServerDnsAlias]{
+		OutputState: i.ToServerDnsAliasOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerDnsAliasOutput struct{ *pulumi.OutputState }
 
 func (ServerDnsAliasOutput) ElementType() reflect.Type {
@@ -169,6 +176,12 @@ func (o ServerDnsAliasOutput) ToServerDnsAliasOutput() ServerDnsAliasOutput {
 
 func (o ServerDnsAliasOutput) ToServerDnsAliasOutputWithContext(ctx context.Context) ServerDnsAliasOutput {
 	return o
+}
+
+func (o ServerDnsAliasOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerDnsAlias] {
+	return pulumix.Output[*ServerDnsAlias]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The fully qualified DNS record for alias

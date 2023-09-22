@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log profile resource.
@@ -152,6 +153,12 @@ func (i *LogProfile) ToLogProfileOutputWithContext(ctx context.Context) LogProfi
 	return pulumi.ToOutputWithContext(ctx, i).(LogProfileOutput)
 }
 
+func (i *LogProfile) ToOutput(ctx context.Context) pulumix.Output[*LogProfile] {
+	return pulumix.Output[*LogProfile]{
+		OutputState: i.ToLogProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LogProfileOutput struct{ *pulumi.OutputState }
 
 func (LogProfileOutput) ElementType() reflect.Type {
@@ -164,6 +171,12 @@ func (o LogProfileOutput) ToLogProfileOutput() LogProfileOutput {
 
 func (o LogProfileOutput) ToLogProfileOutputWithContext(ctx context.Context) LogProfileOutput {
 	return o
+}
+
+func (o LogProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*LogProfile] {
+	return pulumix.Output[*LogProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the categories of the logs. These categories are created as is convenient to the user. Some values are: 'Write', 'Delete', and/or 'Action.'

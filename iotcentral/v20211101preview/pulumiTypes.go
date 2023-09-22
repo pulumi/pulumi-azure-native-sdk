@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i AppSkuInfoArgs) ToAppSkuInfoOutputWithContext(ctx context.Context) AppSk
 	return pulumi.ToOutputWithContext(ctx, i).(AppSkuInfoOutput)
 }
 
+func (i AppSkuInfoArgs) ToOutput(ctx context.Context) pulumix.Output[AppSkuInfo] {
+	return pulumix.Output[AppSkuInfo]{
+		OutputState: i.ToAppSkuInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information about the SKU of the IoT Central application.
 type AppSkuInfoOutput struct{ *pulumi.OutputState }
 
@@ -61,6 +68,12 @@ func (o AppSkuInfoOutput) ToAppSkuInfoOutput() AppSkuInfoOutput {
 
 func (o AppSkuInfoOutput) ToAppSkuInfoOutputWithContext(ctx context.Context) AppSkuInfoOutput {
 	return o
+}
+
+func (o AppSkuInfoOutput) ToOutput(ctx context.Context) pulumix.Output[AppSkuInfo] {
+	return pulumix.Output[AppSkuInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the SKU.
@@ -87,6 +100,12 @@ func (o AppSkuInfoResponseOutput) ToAppSkuInfoResponseOutput() AppSkuInfoRespons
 
 func (o AppSkuInfoResponseOutput) ToAppSkuInfoResponseOutputWithContext(ctx context.Context) AppSkuInfoResponseOutput {
 	return o
+}
+
+func (o AppSkuInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppSkuInfoResponse] {
+	return pulumix.Output[AppSkuInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the SKU.
@@ -133,6 +152,12 @@ func (i NetworkRuleSetIpRuleArgs) ToNetworkRuleSetIpRuleOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetIpRuleOutput)
 }
 
+func (i NetworkRuleSetIpRuleArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSetIpRule] {
+	return pulumix.Output[NetworkRuleSetIpRule]{
+		OutputState: i.ToNetworkRuleSetIpRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkRuleSetIpRuleArrayInput is an input type that accepts NetworkRuleSetIpRuleArray and NetworkRuleSetIpRuleArrayOutput values.
 // You can construct a concrete instance of `NetworkRuleSetIpRuleArrayInput` via:
 //
@@ -158,6 +183,12 @@ func (i NetworkRuleSetIpRuleArray) ToNetworkRuleSetIpRuleArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetIpRuleArrayOutput)
 }
 
+func (i NetworkRuleSetIpRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]NetworkRuleSetIpRule] {
+	return pulumix.Output[[]NetworkRuleSetIpRule]{
+		OutputState: i.ToNetworkRuleSetIpRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An object for an IP range that will be allowed access.
 type NetworkRuleSetIpRuleOutput struct{ *pulumi.OutputState }
 
@@ -171,6 +202,12 @@ func (o NetworkRuleSetIpRuleOutput) ToNetworkRuleSetIpRuleOutput() NetworkRuleSe
 
 func (o NetworkRuleSetIpRuleOutput) ToNetworkRuleSetIpRuleOutputWithContext(ctx context.Context) NetworkRuleSetIpRuleOutput {
 	return o
+}
+
+func (o NetworkRuleSetIpRuleOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSetIpRule] {
+	return pulumix.Output[NetworkRuleSetIpRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The readable name of the IP rule.
@@ -195,6 +232,12 @@ func (o NetworkRuleSetIpRuleArrayOutput) ToNetworkRuleSetIpRuleArrayOutput() Net
 
 func (o NetworkRuleSetIpRuleArrayOutput) ToNetworkRuleSetIpRuleArrayOutputWithContext(ctx context.Context) NetworkRuleSetIpRuleArrayOutput {
 	return o
+}
+
+func (o NetworkRuleSetIpRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkRuleSetIpRule] {
+	return pulumix.Output[[]NetworkRuleSetIpRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkRuleSetIpRuleArrayOutput) Index(i pulumi.IntInput) NetworkRuleSetIpRuleOutput {
@@ -228,6 +271,12 @@ func (o NetworkRuleSetIpRuleResponseOutput) ToNetworkRuleSetIpRuleResponseOutput
 	return o
 }
 
+func (o NetworkRuleSetIpRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSetIpRuleResponse] {
+	return pulumix.Output[NetworkRuleSetIpRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The network action for the IP mask.
 func (o NetworkRuleSetIpRuleResponseOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkRuleSetIpRuleResponse) string { return v.Action }).(pulumi.StringOutput)
@@ -255,6 +304,12 @@ func (o NetworkRuleSetIpRuleResponseArrayOutput) ToNetworkRuleSetIpRuleResponseA
 
 func (o NetworkRuleSetIpRuleResponseArrayOutput) ToNetworkRuleSetIpRuleResponseArrayOutputWithContext(ctx context.Context) NetworkRuleSetIpRuleResponseArrayOutput {
 	return o
+}
+
+func (o NetworkRuleSetIpRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkRuleSetIpRuleResponse] {
+	return pulumix.Output[[]NetworkRuleSetIpRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkRuleSetIpRuleResponseArrayOutput) Index(i pulumi.IntInput) NetworkRuleSetIpRuleResponseOutput {
@@ -341,6 +396,12 @@ func (i NetworkRuleSetsArgs) ToNetworkRuleSetsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetsOutput)
 }
 
+func (i NetworkRuleSetsArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSets] {
+	return pulumix.Output[NetworkRuleSets]{
+		OutputState: i.ToNetworkRuleSetsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NetworkRuleSetsArgs) ToNetworkRuleSetsPtrOutput() NetworkRuleSetsPtrOutput {
 	return i.ToNetworkRuleSetsPtrOutputWithContext(context.Background())
 }
@@ -382,6 +443,12 @@ func (i *networkRuleSetsPtrType) ToNetworkRuleSetsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetsPtrOutput)
 }
 
+func (i *networkRuleSetsPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleSets] {
+	return pulumix.Output[*NetworkRuleSets]{
+		OutputState: i.ToNetworkRuleSetsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Network Rule Set Properties of this IoT Central application.
 type NetworkRuleSetsOutput struct{ *pulumi.OutputState }
 
@@ -405,6 +472,12 @@ func (o NetworkRuleSetsOutput) ToNetworkRuleSetsPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkRuleSets) *NetworkRuleSets {
 		return &v
 	}).(NetworkRuleSetsPtrOutput)
+}
+
+func (o NetworkRuleSetsOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSets] {
+	return pulumix.Output[NetworkRuleSets]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
@@ -439,6 +512,12 @@ func (o NetworkRuleSetsPtrOutput) ToNetworkRuleSetsPtrOutput() NetworkRuleSetsPt
 
 func (o NetworkRuleSetsPtrOutput) ToNetworkRuleSetsPtrOutputWithContext(ctx context.Context) NetworkRuleSetsPtrOutput {
 	return o
+}
+
+func (o NetworkRuleSetsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleSets] {
+	return pulumix.Output[*NetworkRuleSets]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkRuleSetsPtrOutput) Elem() NetworkRuleSetsOutput {
@@ -535,6 +614,12 @@ func (o NetworkRuleSetsResponseOutput) ToNetworkRuleSetsResponseOutputWithContex
 	return o
 }
 
+func (o NetworkRuleSetsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSetsResponse] {
+	return pulumix.Output[NetworkRuleSetsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
 func (o NetworkRuleSetsResponseOutput) ApplyToDevices() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkRuleSetsResponse) *bool { return v.ApplyToDevices }).(pulumi.BoolPtrOutput)
@@ -567,6 +652,12 @@ func (o NetworkRuleSetsResponsePtrOutput) ToNetworkRuleSetsResponsePtrOutput() N
 
 func (o NetworkRuleSetsResponsePtrOutput) ToNetworkRuleSetsResponsePtrOutputWithContext(ctx context.Context) NetworkRuleSetsResponsePtrOutput {
 	return o
+}
+
+func (o NetworkRuleSetsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleSetsResponse] {
+	return pulumix.Output[*NetworkRuleSetsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkRuleSetsResponsePtrOutput) Elem() NetworkRuleSetsResponseOutput {
@@ -654,6 +745,12 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
+	return pulumix.Output[PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The group ids for the private endpoint resource.
 func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
@@ -710,6 +807,12 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
+	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -737,6 +840,12 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
+func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
+	return pulumix.Output[PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ARM identifier for private endpoint.
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -754,6 +863,12 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
+	return pulumix.Output[*PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -819,6 +934,12 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
+func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -832,6 +953,12 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -872,6 +999,12 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
+	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -924,6 +1057,12 @@ func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityOutput)
 }
 
+func (i SystemAssignedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[SystemAssignedServiceIdentity] {
+	return pulumix.Output[SystemAssignedServiceIdentity]{
+		OutputState: i.ToSystemAssignedServiceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
 	return i.ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -965,6 +1104,12 @@ func (i *systemAssignedServiceIdentityPtrType) ToSystemAssignedServiceIdentityPt
 	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityPtrOutput)
 }
 
+func (i *systemAssignedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentity] {
+	return pulumix.Output[*SystemAssignedServiceIdentity]{
+		OutputState: i.ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed service identity (either system assigned, or none)
 type SystemAssignedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -990,6 +1135,12 @@ func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityPtrO
 	}).(SystemAssignedServiceIdentityPtrOutput)
 }
 
+func (o SystemAssignedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[SystemAssignedServiceIdentity] {
+	return pulumix.Output[SystemAssignedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Type of managed service identity (either system assigned, or none).
 func (o SystemAssignedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SystemAssignedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -1007,6 +1158,12 @@ func (o SystemAssignedServiceIdentityPtrOutput) ToSystemAssignedServiceIdentityP
 
 func (o SystemAssignedServiceIdentityPtrOutput) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
 	return o
+}
+
+func (o SystemAssignedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentity] {
+	return pulumix.Output[*SystemAssignedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SystemAssignedServiceIdentityPtrOutput) Elem() SystemAssignedServiceIdentityOutput {
@@ -1054,6 +1211,12 @@ func (o SystemAssignedServiceIdentityResponseOutput) ToSystemAssignedServiceIden
 	return o
 }
 
+func (o SystemAssignedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemAssignedServiceIdentityResponse] {
+	return pulumix.Output[SystemAssignedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o SystemAssignedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v SystemAssignedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1081,6 +1244,12 @@ func (o SystemAssignedServiceIdentityResponsePtrOutput) ToSystemAssignedServiceI
 
 func (o SystemAssignedServiceIdentityResponsePtrOutput) ToSystemAssignedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityResponsePtrOutput {
 	return o
+}
+
+func (o SystemAssignedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentityResponse] {
+	return pulumix.Output[*SystemAssignedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SystemAssignedServiceIdentityResponsePtrOutput) Elem() SystemAssignedServiceIdentityResponseOutput {
@@ -1152,6 +1321,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

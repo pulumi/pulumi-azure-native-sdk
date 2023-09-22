@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Define the virtualMachineTemplate.
@@ -197,6 +198,12 @@ func (i *VirtualMachineTemplate) ToVirtualMachineTemplateOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineTemplateOutput)
 }
 
+func (i *VirtualMachineTemplate) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineTemplate] {
+	return pulumix.Output[*VirtualMachineTemplate]{
+		OutputState: i.ToVirtualMachineTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachineTemplateOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineTemplateOutput) ElementType() reflect.Type {
@@ -209,6 +216,12 @@ func (o VirtualMachineTemplateOutput) ToVirtualMachineTemplateOutput() VirtualMa
 
 func (o VirtualMachineTemplateOutput) ToVirtualMachineTemplateOutputWithContext(ctx context.Context) VirtualMachineTemplateOutput {
 	return o
+}
+
+func (o VirtualMachineTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineTemplate] {
+	return pulumix.Output[*VirtualMachineTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the name of the corresponding resource in Kubernetes.

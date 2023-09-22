@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -64,6 +65,12 @@ func (i AddVCenterRequestPropertiesArgs) ToAddVCenterRequestPropertiesOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AddVCenterRequestPropertiesOutput)
 }
 
+func (i AddVCenterRequestPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AddVCenterRequestProperties] {
+	return pulumix.Output[AddVCenterRequestProperties]{
+		OutputState: i.ToAddVCenterRequestPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AddVCenterRequestPropertiesArgs) ToAddVCenterRequestPropertiesPtrOutput() AddVCenterRequestPropertiesPtrOutput {
 	return i.ToAddVCenterRequestPropertiesPtrOutputWithContext(context.Background())
 }
@@ -105,6 +112,12 @@ func (i *addVCenterRequestPropertiesPtrType) ToAddVCenterRequestPropertiesPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(AddVCenterRequestPropertiesPtrOutput)
 }
 
+func (i *addVCenterRequestPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AddVCenterRequestProperties] {
+	return pulumix.Output[*AddVCenterRequestProperties]{
+		OutputState: i.ToAddVCenterRequestPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The properties of an add vCenter request.
 type AddVCenterRequestPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -128,6 +141,12 @@ func (o AddVCenterRequestPropertiesOutput) ToAddVCenterRequestPropertiesPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddVCenterRequestProperties) *AddVCenterRequestProperties {
 		return &v
 	}).(AddVCenterRequestPropertiesPtrOutput)
+}
+
+func (o AddVCenterRequestPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AddVCenterRequestProperties] {
+	return pulumix.Output[AddVCenterRequestProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The friendly name of the vCenter.
@@ -167,6 +186,12 @@ func (o AddVCenterRequestPropertiesPtrOutput) ToAddVCenterRequestPropertiesPtrOu
 
 func (o AddVCenterRequestPropertiesPtrOutput) ToAddVCenterRequestPropertiesPtrOutputWithContext(ctx context.Context) AddVCenterRequestPropertiesPtrOutput {
 	return o
+}
+
+func (o AddVCenterRequestPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddVCenterRequestProperties] {
+	return pulumix.Output[*AddVCenterRequestProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddVCenterRequestPropertiesPtrOutput) Elem() AddVCenterRequestPropertiesOutput {
@@ -292,6 +317,12 @@ func (i CreateNetworkMappingInputPropertiesArgs) ToCreateNetworkMappingInputProp
 	return pulumi.ToOutputWithContext(ctx, i).(CreateNetworkMappingInputPropertiesOutput)
 }
 
+func (i CreateNetworkMappingInputPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[CreateNetworkMappingInputProperties] {
+	return pulumix.Output[CreateNetworkMappingInputProperties]{
+		OutputState: i.ToCreateNetworkMappingInputPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CreateNetworkMappingInputPropertiesArgs) ToCreateNetworkMappingInputPropertiesPtrOutput() CreateNetworkMappingInputPropertiesPtrOutput {
 	return i.ToCreateNetworkMappingInputPropertiesPtrOutputWithContext(context.Background())
 }
@@ -333,6 +364,12 @@ func (i *createNetworkMappingInputPropertiesPtrType) ToCreateNetworkMappingInput
 	return pulumi.ToOutputWithContext(ctx, i).(CreateNetworkMappingInputPropertiesPtrOutput)
 }
 
+func (i *createNetworkMappingInputPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*CreateNetworkMappingInputProperties] {
+	return pulumix.Output[*CreateNetworkMappingInputProperties]{
+		OutputState: i.ToCreateNetworkMappingInputPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Common input details for network mapping operation.
 type CreateNetworkMappingInputPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -356,6 +393,12 @@ func (o CreateNetworkMappingInputPropertiesOutput) ToCreateNetworkMappingInputPr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CreateNetworkMappingInputProperties) *CreateNetworkMappingInputProperties {
 		return &v
 	}).(CreateNetworkMappingInputPropertiesPtrOutput)
+}
+
+func (o CreateNetworkMappingInputPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[CreateNetworkMappingInputProperties] {
+	return pulumix.Output[CreateNetworkMappingInputProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fabric specific input properties.
@@ -385,6 +428,12 @@ func (o CreateNetworkMappingInputPropertiesPtrOutput) ToCreateNetworkMappingInpu
 
 func (o CreateNetworkMappingInputPropertiesPtrOutput) ToCreateNetworkMappingInputPropertiesPtrOutputWithContext(ctx context.Context) CreateNetworkMappingInputPropertiesPtrOutput {
 	return o
+}
+
+func (o CreateNetworkMappingInputPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreateNetworkMappingInputProperties] {
+	return pulumix.Output[*CreateNetworkMappingInputProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CreateNetworkMappingInputPropertiesPtrOutput) Elem() CreateNetworkMappingInputPropertiesOutput {
@@ -476,6 +525,12 @@ func (o HealthErrorResponseOutput) ToHealthErrorResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o HealthErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HealthErrorResponse] {
+	return pulumix.Output[HealthErrorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Error creation time (UTC)
 func (o HealthErrorResponseOutput) CreationTimeUtc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthErrorResponse) *string { return v.CreationTimeUtc }).(pulumi.StringPtrOutput)
@@ -565,6 +620,12 @@ func (o HealthErrorResponseArrayOutput) ToHealthErrorResponseArrayOutputWithCont
 	return o
 }
 
+func (o HealthErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HealthErrorResponse] {
+	return pulumix.Output[[]HealthErrorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HealthErrorResponseArrayOutput) Index(i pulumi.IntInput) HealthErrorResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HealthErrorResponse {
 		return vs[0].([]HealthErrorResponse)[vs[1].(int)]
@@ -612,6 +673,12 @@ func (o InnerHealthErrorResponseOutput) ToInnerHealthErrorResponseOutput() Inner
 
 func (o InnerHealthErrorResponseOutput) ToInnerHealthErrorResponseOutputWithContext(ctx context.Context) InnerHealthErrorResponseOutput {
 	return o
+}
+
+func (o InnerHealthErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InnerHealthErrorResponse] {
+	return pulumix.Output[InnerHealthErrorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Error creation time (UTC)
@@ -688,6 +755,12 @@ func (o InnerHealthErrorResponseArrayOutput) ToInnerHealthErrorResponseArrayOutp
 	return o
 }
 
+func (o InnerHealthErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InnerHealthErrorResponse] {
+	return pulumix.Output[[]InnerHealthErrorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InnerHealthErrorResponseArrayOutput) Index(i pulumi.IntInput) InnerHealthErrorResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InnerHealthErrorResponse {
 		return vs[0].([]InnerHealthErrorResponse)[vs[1].(int)]
@@ -729,6 +802,12 @@ func (o NetworkMappingPropertiesResponseOutput) ToNetworkMappingPropertiesRespon
 
 func (o NetworkMappingPropertiesResponseOutput) ToNetworkMappingPropertiesResponseOutputWithContext(ctx context.Context) NetworkMappingPropertiesResponseOutput {
 	return o
+}
+
+func (o NetworkMappingPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkMappingPropertiesResponse] {
+	return pulumix.Output[NetworkMappingPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The fabric specific settings.
@@ -815,6 +894,12 @@ func (o VCenterPropertiesResponseOutput) ToVCenterPropertiesResponseOutput() VCe
 
 func (o VCenterPropertiesResponseOutput) ToVCenterPropertiesResponseOutputWithContext(ctx context.Context) VCenterPropertiesResponseOutput {
 	return o
+}
+
+func (o VCenterPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VCenterPropertiesResponse] {
+	return pulumix.Output[VCenterPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The VCenter discovery status.

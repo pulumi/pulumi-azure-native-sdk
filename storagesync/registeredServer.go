@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Registered Server resource.
@@ -226,6 +227,12 @@ func (i *RegisteredServer) ToRegisteredServerOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegisteredServerOutput)
 }
 
+func (i *RegisteredServer) ToOutput(ctx context.Context) pulumix.Output[*RegisteredServer] {
+	return pulumix.Output[*RegisteredServer]{
+		OutputState: i.ToRegisteredServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegisteredServerOutput struct{ *pulumi.OutputState }
 
 func (RegisteredServerOutput) ElementType() reflect.Type {
@@ -238,6 +245,12 @@ func (o RegisteredServerOutput) ToRegisteredServerOutput() RegisteredServerOutpu
 
 func (o RegisteredServerOutput) ToRegisteredServerOutputWithContext(ctx context.Context) RegisteredServerOutput {
 	return o
+}
+
+func (o RegisteredServerOutput) ToOutput(ctx context.Context) pulumix.Output[*RegisteredServer] {
+	return pulumix.Output[*RegisteredServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Registered Server Agent Version

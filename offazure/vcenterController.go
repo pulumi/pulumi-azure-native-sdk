@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A vcenter resource belonging to a site resource.
@@ -166,6 +167,12 @@ func (i *VcenterController) ToVcenterControllerOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(VcenterControllerOutput)
 }
 
+func (i *VcenterController) ToOutput(ctx context.Context) pulumix.Output[*VcenterController] {
+	return pulumix.Output[*VcenterController]{
+		OutputState: i.ToVcenterControllerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VcenterControllerOutput struct{ *pulumi.OutputState }
 
 func (VcenterControllerOutput) ElementType() reflect.Type {
@@ -178,6 +185,12 @@ func (o VcenterControllerOutput) ToVcenterControllerOutput() VcenterControllerOu
 
 func (o VcenterControllerOutput) ToVcenterControllerOutputWithContext(ctx context.Context) VcenterControllerOutput {
 	return o
+}
+
+func (o VcenterControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*VcenterController] {
+	return pulumix.Output[*VcenterController]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the timestamp marking vCenter creation.

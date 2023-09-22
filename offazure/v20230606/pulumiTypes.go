@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (o HealthErrorDetailsResponseOutput) ToHealthErrorDetailsResponseOutput() H
 
 func (o HealthErrorDetailsResponseOutput) ToHealthErrorDetailsResponseOutputWithContext(ctx context.Context) HealthErrorDetailsResponseOutput {
 	return o
+}
+
+func (o HealthErrorDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HealthErrorDetailsResponse] {
+	return pulumix.Output[HealthErrorDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the appliance name.
@@ -137,6 +144,12 @@ func (o HealthErrorDetailsResponseArrayOutput) ToHealthErrorDetailsResponseArray
 	return o
 }
 
+func (o HealthErrorDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HealthErrorDetailsResponse] {
+	return pulumix.Output[[]HealthErrorDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HealthErrorDetailsResponseArrayOutput) Index(i pulumi.IntInput) HealthErrorDetailsResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HealthErrorDetailsResponse {
 		return vs[0].([]HealthErrorDetailsResponse)[vs[1].(int)]
@@ -176,6 +189,12 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 
 func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
+	return pulumix.Output[PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // array of group ids
@@ -234,6 +253,12 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
+	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -283,6 +308,12 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
+func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
 	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
 }
@@ -324,6 +355,12 @@ func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectio
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePtrOutput)
 }
 
+func (i *privateLinkServiceConnectionStatePtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionState] {
+	return pulumix.Output[*PrivateLinkServiceConnectionState]{
+		OutputState: i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Service Connection State
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -347,6 +384,12 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkServiceConnectionState) *PrivateLinkServiceConnectionState {
 		return &v
 	}).(PrivateLinkServiceConnectionStatePtrOutput)
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // actions required
@@ -376,6 +419,12 @@ func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnecti
 
 func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionState] {
+	return pulumix.Output[*PrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateLinkServiceConnectionStateOutput {
@@ -443,6 +492,12 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 	return o
 }
 
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
+	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // actions required
 func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
@@ -470,6 +525,12 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkService
 
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkServiceConnectionStateResponsePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponsePtrOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStateResponse] {
+	return pulumix.Output[*PrivateLinkServiceConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Elem() PrivateLinkServiceConnectionStateResponseOutput {
@@ -533,6 +594,12 @@ func (o ResourceIdResponseOutput) ToResourceIdResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o ResourceIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdResponse] {
+	return pulumix.Output[ResourceIdResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // id name
 func (o ResourceIdResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -577,6 +644,12 @@ func (i SiteAgentPropertiesArgs) ToSiteAgentPropertiesOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SiteAgentPropertiesOutput)
 }
 
+func (i SiteAgentPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SiteAgentProperties] {
+	return pulumix.Output[SiteAgentProperties]{
+		OutputState: i.ToSiteAgentPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SiteAgentPropertiesArgs) ToSiteAgentPropertiesPtrOutput() SiteAgentPropertiesPtrOutput {
 	return i.ToSiteAgentPropertiesPtrOutputWithContext(context.Background())
 }
@@ -618,6 +691,12 @@ func (i *siteAgentPropertiesPtrType) ToSiteAgentPropertiesPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(SiteAgentPropertiesPtrOutput)
 }
 
+func (i *siteAgentPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SiteAgentProperties] {
+	return pulumix.Output[*SiteAgentProperties]{
+		OutputState: i.ToSiteAgentPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class for site agent properties.
 type SiteAgentPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -643,6 +722,12 @@ func (o SiteAgentPropertiesOutput) ToSiteAgentPropertiesPtrOutputWithContext(ctx
 	}).(SiteAgentPropertiesPtrOutput)
 }
 
+func (o SiteAgentPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SiteAgentProperties] {
+	return pulumix.Output[SiteAgentProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the key vault ARM Id.
 func (o SiteAgentPropertiesOutput) KeyVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteAgentProperties) *string { return v.KeyVaultId }).(pulumi.StringPtrOutput)
@@ -665,6 +750,12 @@ func (o SiteAgentPropertiesPtrOutput) ToSiteAgentPropertiesPtrOutput() SiteAgent
 
 func (o SiteAgentPropertiesPtrOutput) ToSiteAgentPropertiesPtrOutputWithContext(ctx context.Context) SiteAgentPropertiesPtrOutput {
 	return o
+}
+
+func (o SiteAgentPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SiteAgentProperties] {
+	return pulumix.Output[*SiteAgentProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SiteAgentPropertiesPtrOutput) Elem() SiteAgentPropertiesOutput {
@@ -726,6 +817,12 @@ func (o SiteAgentPropertiesResponseOutput) ToSiteAgentPropertiesResponseOutputWi
 	return o
 }
 
+func (o SiteAgentPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SiteAgentPropertiesResponse] {
+	return pulumix.Output[SiteAgentPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets the ID of the agent.
 func (o SiteAgentPropertiesResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v SiteAgentPropertiesResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -763,6 +860,12 @@ func (o SiteAgentPropertiesResponsePtrOutput) ToSiteAgentPropertiesResponsePtrOu
 
 func (o SiteAgentPropertiesResponsePtrOutput) ToSiteAgentPropertiesResponsePtrOutputWithContext(ctx context.Context) SiteAgentPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o SiteAgentPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SiteAgentPropertiesResponse] {
+	return pulumix.Output[*SiteAgentPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SiteAgentPropertiesResponsePtrOutput) Elem() SiteAgentPropertiesResponseOutput {
@@ -868,6 +971,12 @@ func (i SiteAppliancePropertiesArgs) ToSiteAppliancePropertiesOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SiteAppliancePropertiesOutput)
 }
 
+func (i SiteAppliancePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SiteApplianceProperties] {
+	return pulumix.Output[SiteApplianceProperties]{
+		OutputState: i.ToSiteAppliancePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SiteAppliancePropertiesArrayInput is an input type that accepts SiteAppliancePropertiesArray and SiteAppliancePropertiesArrayOutput values.
 // You can construct a concrete instance of `SiteAppliancePropertiesArrayInput` via:
 //
@@ -893,6 +1002,12 @@ func (i SiteAppliancePropertiesArray) ToSiteAppliancePropertiesArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(SiteAppliancePropertiesArrayOutput)
 }
 
+func (i SiteAppliancePropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]SiteApplianceProperties] {
+	return pulumix.Output[[]SiteApplianceProperties]{
+		OutputState: i.ToSiteAppliancePropertiesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class for site appliance properties.
 type SiteAppliancePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -906,6 +1021,12 @@ func (o SiteAppliancePropertiesOutput) ToSiteAppliancePropertiesOutput() SiteApp
 
 func (o SiteAppliancePropertiesOutput) ToSiteAppliancePropertiesOutputWithContext(ctx context.Context) SiteAppliancePropertiesOutput {
 	return o
+}
+
+func (o SiteAppliancePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SiteApplianceProperties] {
+	return pulumix.Output[SiteApplianceProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the on-premises agent details.
@@ -935,6 +1056,12 @@ func (o SiteAppliancePropertiesArrayOutput) ToSiteAppliancePropertiesArrayOutput
 
 func (o SiteAppliancePropertiesArrayOutput) ToSiteAppliancePropertiesArrayOutputWithContext(ctx context.Context) SiteAppliancePropertiesArrayOutput {
 	return o
+}
+
+func (o SiteAppliancePropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SiteApplianceProperties] {
+	return pulumix.Output[[]SiteApplianceProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SiteAppliancePropertiesArrayOutput) Index(i pulumi.IntInput) SiteAppliancePropertiesOutput {
@@ -968,6 +1095,12 @@ func (o SiteAppliancePropertiesResponseOutput) ToSiteAppliancePropertiesResponse
 	return o
 }
 
+func (o SiteAppliancePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SiteAppliancePropertiesResponse] {
+	return pulumix.Output[SiteAppliancePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the on-premises agent details.
 func (o SiteAppliancePropertiesResponseOutput) AgentDetails() SiteAgentPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v SiteAppliancePropertiesResponse) *SiteAgentPropertiesResponse { return v.AgentDetails }).(SiteAgentPropertiesResponsePtrOutput)
@@ -997,6 +1130,12 @@ func (o SiteAppliancePropertiesResponseArrayOutput) ToSiteAppliancePropertiesRes
 
 func (o SiteAppliancePropertiesResponseArrayOutput) ToSiteAppliancePropertiesResponseArrayOutputWithContext(ctx context.Context) SiteAppliancePropertiesResponseArrayOutput {
 	return o
+}
+
+func (o SiteAppliancePropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SiteAppliancePropertiesResponse] {
+	return pulumix.Output[[]SiteAppliancePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SiteAppliancePropertiesResponseArrayOutput) Index(i pulumi.IntInput) SiteAppliancePropertiesResponseOutput {
@@ -1046,6 +1185,12 @@ func (o SiteHealthSummaryResponseOutput) ToSiteHealthSummaryResponseOutput() Sit
 
 func (o SiteHealthSummaryResponseOutput) ToSiteHealthSummaryResponseOutputWithContext(ctx context.Context) SiteHealthSummaryResponseOutput {
 	return o
+}
+
+func (o SiteHealthSummaryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SiteHealthSummaryResponse] {
+	return pulumix.Output[SiteHealthSummaryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the count of affected objects.
@@ -1120,6 +1265,12 @@ func (o SiteHealthSummaryResponseArrayOutput) ToSiteHealthSummaryResponseArrayOu
 
 func (o SiteHealthSummaryResponseArrayOutput) ToSiteHealthSummaryResponseArrayOutputWithContext(ctx context.Context) SiteHealthSummaryResponseArrayOutput {
 	return o
+}
+
+func (o SiteHealthSummaryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SiteHealthSummaryResponse] {
+	return pulumix.Output[[]SiteHealthSummaryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SiteHealthSummaryResponseArrayOutput) Index(i pulumi.IntInput) SiteHealthSummaryResponseOutput {
@@ -1207,6 +1358,12 @@ func (i SiteSpnPropertiesArgs) ToSiteSpnPropertiesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SiteSpnPropertiesOutput)
 }
 
+func (i SiteSpnPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SiteSpnProperties] {
+	return pulumix.Output[SiteSpnProperties]{
+		OutputState: i.ToSiteSpnPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SiteSpnPropertiesArgs) ToSiteSpnPropertiesPtrOutput() SiteSpnPropertiesPtrOutput {
 	return i.ToSiteSpnPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1248,6 +1405,12 @@ func (i *siteSpnPropertiesPtrType) ToSiteSpnPropertiesPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SiteSpnPropertiesPtrOutput)
 }
 
+func (i *siteSpnPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SiteSpnProperties] {
+	return pulumix.Output[*SiteSpnProperties]{
+		OutputState: i.ToSiteSpnPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class for site properties.
 type SiteSpnPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1271,6 +1434,12 @@ func (o SiteSpnPropertiesOutput) ToSiteSpnPropertiesPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteSpnProperties) *SiteSpnProperties {
 		return &v
 	}).(SiteSpnPropertiesPtrOutput)
+}
+
+func (o SiteSpnPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SiteSpnProperties] {
+	return pulumix.Output[SiteSpnProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the AAD Authority URL which was used to request the token for
@@ -1334,6 +1503,12 @@ func (o SiteSpnPropertiesPtrOutput) ToSiteSpnPropertiesPtrOutput() SiteSpnProper
 
 func (o SiteSpnPropertiesPtrOutput) ToSiteSpnPropertiesPtrOutputWithContext(ctx context.Context) SiteSpnPropertiesPtrOutput {
 	return o
+}
+
+func (o SiteSpnPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SiteSpnProperties] {
+	return pulumix.Output[*SiteSpnProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SiteSpnPropertiesPtrOutput) Elem() SiteSpnPropertiesOutput {
@@ -1468,6 +1643,12 @@ func (o SiteSpnPropertiesResponseOutput) ToSiteSpnPropertiesResponseOutputWithCo
 	return o
 }
 
+func (o SiteSpnPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SiteSpnPropertiesResponse] {
+	return pulumix.Output[SiteSpnPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the AAD Authority URL which was used to request the token for
 // the
 //
@@ -1529,6 +1710,12 @@ func (o SiteSpnPropertiesResponsePtrOutput) ToSiteSpnPropertiesResponsePtrOutput
 
 func (o SiteSpnPropertiesResponsePtrOutput) ToSiteSpnPropertiesResponsePtrOutputWithContext(ctx context.Context) SiteSpnPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o SiteSpnPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SiteSpnPropertiesResponse] {
+	return pulumix.Output[*SiteSpnPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SiteSpnPropertiesResponsePtrOutput) Elem() SiteSpnPropertiesResponseOutput {
@@ -1649,6 +1836,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Friendly RuleSet name mapping to the any RuleSet or secret related information.
@@ -135,6 +136,12 @@ func (i *RuleSet) ToRuleSetOutputWithContext(ctx context.Context) RuleSetOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RuleSetOutput)
 }
 
+func (i *RuleSet) ToOutput(ctx context.Context) pulumix.Output[*RuleSet] {
+	return pulumix.Output[*RuleSet]{
+		OutputState: i.ToRuleSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuleSetOutput struct{ *pulumi.OutputState }
 
 func (RuleSetOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o RuleSetOutput) ToRuleSetOutput() RuleSetOutput {
 
 func (o RuleSetOutput) ToRuleSetOutputWithContext(ctx context.Context) RuleSetOutput {
 	return o
+}
+
+func (o RuleSetOutput) ToOutput(ctx context.Context) pulumix.Output[*RuleSet] {
+	return pulumix.Output[*RuleSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuleSetOutput) DeploymentStatus() pulumi.StringOutput {

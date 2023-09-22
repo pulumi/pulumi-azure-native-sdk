@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A custom domain
@@ -152,6 +153,12 @@ func (i *SignalRCustomDomain) ToSignalRCustomDomainOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SignalRCustomDomainOutput)
 }
 
+func (i *SignalRCustomDomain) ToOutput(ctx context.Context) pulumix.Output[*SignalRCustomDomain] {
+	return pulumix.Output[*SignalRCustomDomain]{
+		OutputState: i.ToSignalRCustomDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SignalRCustomDomainOutput struct{ *pulumi.OutputState }
 
 func (SignalRCustomDomainOutput) ElementType() reflect.Type {
@@ -164,6 +171,12 @@ func (o SignalRCustomDomainOutput) ToSignalRCustomDomainOutput() SignalRCustomDo
 
 func (o SignalRCustomDomainOutput) ToSignalRCustomDomainOutputWithContext(ctx context.Context) SignalRCustomDomainOutput {
 	return o
+}
+
+func (o SignalRCustomDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*SignalRCustomDomain] {
+	return pulumix.Output[*SignalRCustomDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Reference to a resource.

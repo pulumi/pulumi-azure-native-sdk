@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List keys of a notebook.
@@ -71,6 +72,12 @@ func (o ListWorkspaceNotebookKeysResultOutput) ToListWorkspaceNotebookKeysResult
 
 func (o ListWorkspaceNotebookKeysResultOutput) ToListWorkspaceNotebookKeysResultOutputWithContext(ctx context.Context) ListWorkspaceNotebookKeysResultOutput {
 	return o
+}
+
+func (o ListWorkspaceNotebookKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWorkspaceNotebookKeysResult] {
+	return pulumix.Output[ListWorkspaceNotebookKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListWorkspaceNotebookKeysResultOutput) PrimaryAccessKey() pulumi.StringOutput {

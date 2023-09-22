@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the report for a department by report name.
@@ -86,6 +87,12 @@ func (o LookupReportByDepartmentResultOutput) ToLookupReportByDepartmentResultOu
 
 func (o LookupReportByDepartmentResultOutput) ToLookupReportByDepartmentResultOutputWithContext(ctx context.Context) LookupReportByDepartmentResultOutput {
 	return o
+}
+
+func (o LookupReportByDepartmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReportByDepartmentResult] {
+	return pulumix.Output[LookupReportByDepartmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Has definition for the report.

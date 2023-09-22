@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List Both of the 2 Keys of a Remote Rendering Account
@@ -74,6 +75,12 @@ func (o ListRemoteRenderingAccountKeysResultOutput) ToListRemoteRenderingAccount
 
 func (o ListRemoteRenderingAccountKeysResultOutput) ToListRemoteRenderingAccountKeysResultOutputWithContext(ctx context.Context) ListRemoteRenderingAccountKeysResultOutput {
 	return o
+}
+
+func (o ListRemoteRenderingAccountKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListRemoteRenderingAccountKeysResult] {
+	return pulumix.Output[ListRemoteRenderingAccountKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // value of primary key.

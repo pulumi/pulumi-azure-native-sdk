@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Deployment and its properties.
@@ -104,6 +105,12 @@ func (o LookupDeploymentResultOutput) ToLookupDeploymentResultOutput() LookupDep
 
 func (o LookupDeploymentResultOutput) ToLookupDeploymentResultOutputWithContext(ctx context.Context) LookupDeploymentResultOutput {
 	return o
+}
+
+func (o LookupDeploymentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeploymentResult] {
+	return pulumix.Output[LookupDeploymentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

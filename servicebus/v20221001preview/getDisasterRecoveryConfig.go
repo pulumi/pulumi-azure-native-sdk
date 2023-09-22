@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
@@ -94,6 +95,12 @@ func (o LookupDisasterRecoveryConfigResultOutput) ToLookupDisasterRecoveryConfig
 
 func (o LookupDisasterRecoveryConfigResultOutput) ToLookupDisasterRecoveryConfigResultOutputWithContext(ctx context.Context) LookupDisasterRecoveryConfigResultOutput {
 	return o
+}
+
+func (o LookupDisasterRecoveryConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDisasterRecoveryConfigResult] {
+	return pulumix.Output[LookupDisasterRecoveryConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Primary/Secondary eventhub namespace name, which is part of GEO DR pairing

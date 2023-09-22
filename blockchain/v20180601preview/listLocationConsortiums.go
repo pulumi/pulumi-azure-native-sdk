@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the available consortiums for a subscription.
@@ -68,6 +69,12 @@ func (o ListLocationConsortiumsResultOutput) ToListLocationConsortiumsResultOutp
 
 func (o ListLocationConsortiumsResultOutput) ToListLocationConsortiumsResultOutputWithContext(ctx context.Context) ListLocationConsortiumsResultOutput {
 	return o
+}
+
+func (o ListLocationConsortiumsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListLocationConsortiumsResult] {
+	return pulumix.Output[ListLocationConsortiumsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the collection of consortiums.

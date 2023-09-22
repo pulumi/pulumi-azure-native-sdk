@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Prometheus rule group resource.
@@ -168,6 +169,12 @@ func (i *PrometheusRuleGroup) ToPrometheusRuleGroupOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusRuleGroupOutput)
 }
 
+func (i *PrometheusRuleGroup) ToOutput(ctx context.Context) pulumix.Output[*PrometheusRuleGroup] {
+	return pulumix.Output[*PrometheusRuleGroup]{
+		OutputState: i.ToPrometheusRuleGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrometheusRuleGroupOutput struct{ *pulumi.OutputState }
 
 func (PrometheusRuleGroupOutput) ElementType() reflect.Type {
@@ -180,6 +187,12 @@ func (o PrometheusRuleGroupOutput) ToPrometheusRuleGroupOutput() PrometheusRuleG
 
 func (o PrometheusRuleGroupOutput) ToPrometheusRuleGroupOutputWithContext(ctx context.Context) PrometheusRuleGroupOutput {
 	return o
+}
+
+func (o PrometheusRuleGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*PrometheusRuleGroup] {
+	return pulumix.Output[*PrometheusRuleGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Apply rule to data from a specific cluster.

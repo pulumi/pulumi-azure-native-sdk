@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i AADBasedSecurityPrincipalArgs) ToAADBasedSecurityPrincipalOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AADBasedSecurityPrincipalOutput)
 }
 
+func (i AADBasedSecurityPrincipalArgs) ToOutput(ctx context.Context) pulumix.Output[AADBasedSecurityPrincipal] {
+	return pulumix.Output[AADBasedSecurityPrincipal]{
+		OutputState: i.ToAADBasedSecurityPrincipalOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AADBasedSecurityPrincipalArrayInput is an input type that accepts AADBasedSecurityPrincipalArray and AADBasedSecurityPrincipalArrayOutput values.
 // You can construct a concrete instance of `AADBasedSecurityPrincipalArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i AADBasedSecurityPrincipalArray) ToAADBasedSecurityPrincipalArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AADBasedSecurityPrincipalArrayOutput)
 }
 
+func (i AADBasedSecurityPrincipalArray) ToOutput(ctx context.Context) pulumix.Output[[]AADBasedSecurityPrincipal] {
+	return pulumix.Output[[]AADBasedSecurityPrincipal]{
+		OutputState: i.ToAADBasedSecurityPrincipalArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AAD based security principal with associated Ledger RoleName
 type AADBasedSecurityPrincipalOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o AADBasedSecurityPrincipalOutput) ToAADBasedSecurityPrincipalOutput() AAD
 
 func (o AADBasedSecurityPrincipalOutput) ToAADBasedSecurityPrincipalOutputWithContext(ctx context.Context) AADBasedSecurityPrincipalOutput {
 	return o
+}
+
+func (o AADBasedSecurityPrincipalOutput) ToOutput(ctx context.Context) pulumix.Output[AADBasedSecurityPrincipal] {
+	return pulumix.Output[AADBasedSecurityPrincipal]{
+		OutputState: o.OutputState,
+	}
 }
 
 // LedgerRole associated with the Security Principal of Ledger
@@ -123,6 +142,12 @@ func (o AADBasedSecurityPrincipalArrayOutput) ToAADBasedSecurityPrincipalArrayOu
 
 func (o AADBasedSecurityPrincipalArrayOutput) ToAADBasedSecurityPrincipalArrayOutputWithContext(ctx context.Context) AADBasedSecurityPrincipalArrayOutput {
 	return o
+}
+
+func (o AADBasedSecurityPrincipalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AADBasedSecurityPrincipal] {
+	return pulumix.Output[[]AADBasedSecurityPrincipal]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AADBasedSecurityPrincipalArrayOutput) Index(i pulumi.IntInput) AADBasedSecurityPrincipalOutput {
@@ -156,6 +181,12 @@ func (o AADBasedSecurityPrincipalResponseOutput) ToAADBasedSecurityPrincipalResp
 	return o
 }
 
+func (o AADBasedSecurityPrincipalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AADBasedSecurityPrincipalResponse] {
+	return pulumix.Output[AADBasedSecurityPrincipalResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // LedgerRole associated with the Security Principal of Ledger
 func (o AADBasedSecurityPrincipalResponseOutput) LedgerRoleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AADBasedSecurityPrincipalResponse) *string { return v.LedgerRoleName }).(pulumi.StringPtrOutput)
@@ -183,6 +214,12 @@ func (o AADBasedSecurityPrincipalResponseArrayOutput) ToAADBasedSecurityPrincipa
 
 func (o AADBasedSecurityPrincipalResponseArrayOutput) ToAADBasedSecurityPrincipalResponseArrayOutputWithContext(ctx context.Context) AADBasedSecurityPrincipalResponseArrayOutput {
 	return o
+}
+
+func (o AADBasedSecurityPrincipalResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AADBasedSecurityPrincipalResponse] {
+	return pulumix.Output[[]AADBasedSecurityPrincipalResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AADBasedSecurityPrincipalResponseArrayOutput) Index(i pulumi.IntInput) AADBasedSecurityPrincipalResponseOutput {
@@ -230,6 +267,12 @@ func (i CertBasedSecurityPrincipalArgs) ToCertBasedSecurityPrincipalOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CertBasedSecurityPrincipalOutput)
 }
 
+func (i CertBasedSecurityPrincipalArgs) ToOutput(ctx context.Context) pulumix.Output[CertBasedSecurityPrincipal] {
+	return pulumix.Output[CertBasedSecurityPrincipal]{
+		OutputState: i.ToCertBasedSecurityPrincipalOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CertBasedSecurityPrincipalArrayInput is an input type that accepts CertBasedSecurityPrincipalArray and CertBasedSecurityPrincipalArrayOutput values.
 // You can construct a concrete instance of `CertBasedSecurityPrincipalArrayInput` via:
 //
@@ -255,6 +298,12 @@ func (i CertBasedSecurityPrincipalArray) ToCertBasedSecurityPrincipalArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CertBasedSecurityPrincipalArrayOutput)
 }
 
+func (i CertBasedSecurityPrincipalArray) ToOutput(ctx context.Context) pulumix.Output[[]CertBasedSecurityPrincipal] {
+	return pulumix.Output[[]CertBasedSecurityPrincipal]{
+		OutputState: i.ToCertBasedSecurityPrincipalArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cert based security principal with Ledger RoleName
 type CertBasedSecurityPrincipalOutput struct{ *pulumi.OutputState }
 
@@ -268,6 +317,12 @@ func (o CertBasedSecurityPrincipalOutput) ToCertBasedSecurityPrincipalOutput() C
 
 func (o CertBasedSecurityPrincipalOutput) ToCertBasedSecurityPrincipalOutputWithContext(ctx context.Context) CertBasedSecurityPrincipalOutput {
 	return o
+}
+
+func (o CertBasedSecurityPrincipalOutput) ToOutput(ctx context.Context) pulumix.Output[CertBasedSecurityPrincipal] {
+	return pulumix.Output[CertBasedSecurityPrincipal]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Public key of the user cert (.pem or .cer)
@@ -292,6 +347,12 @@ func (o CertBasedSecurityPrincipalArrayOutput) ToCertBasedSecurityPrincipalArray
 
 func (o CertBasedSecurityPrincipalArrayOutput) ToCertBasedSecurityPrincipalArrayOutputWithContext(ctx context.Context) CertBasedSecurityPrincipalArrayOutput {
 	return o
+}
+
+func (o CertBasedSecurityPrincipalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CertBasedSecurityPrincipal] {
+	return pulumix.Output[[]CertBasedSecurityPrincipal]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertBasedSecurityPrincipalArrayOutput) Index(i pulumi.IntInput) CertBasedSecurityPrincipalOutput {
@@ -323,6 +384,12 @@ func (o CertBasedSecurityPrincipalResponseOutput) ToCertBasedSecurityPrincipalRe
 	return o
 }
 
+func (o CertBasedSecurityPrincipalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertBasedSecurityPrincipalResponse] {
+	return pulumix.Output[CertBasedSecurityPrincipalResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Public key of the user cert (.pem or .cer)
 func (o CertBasedSecurityPrincipalResponseOutput) Cert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertBasedSecurityPrincipalResponse) *string { return v.Cert }).(pulumi.StringPtrOutput)
@@ -345,6 +412,12 @@ func (o CertBasedSecurityPrincipalResponseArrayOutput) ToCertBasedSecurityPrinci
 
 func (o CertBasedSecurityPrincipalResponseArrayOutput) ToCertBasedSecurityPrincipalResponseArrayOutputWithContext(ctx context.Context) CertBasedSecurityPrincipalResponseArrayOutput {
 	return o
+}
+
+func (o CertBasedSecurityPrincipalResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CertBasedSecurityPrincipalResponse] {
+	return pulumix.Output[[]CertBasedSecurityPrincipalResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertBasedSecurityPrincipalResponseArrayOutput) Index(i pulumi.IntInput) CertBasedSecurityPrincipalResponseOutput {
@@ -388,6 +461,12 @@ func (i CertificateTagsArgs) ToCertificateTagsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateTagsOutput)
 }
 
+func (i CertificateTagsArgs) ToOutput(ctx context.Context) pulumix.Output[CertificateTags] {
+	return pulumix.Output[CertificateTags]{
+		OutputState: i.ToCertificateTagsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CertificateTagsArrayInput is an input type that accepts CertificateTagsArray and CertificateTagsArrayOutput values.
 // You can construct a concrete instance of `CertificateTagsArrayInput` via:
 //
@@ -413,6 +492,12 @@ func (i CertificateTagsArray) ToCertificateTagsArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateTagsArrayOutput)
 }
 
+func (i CertificateTagsArray) ToOutput(ctx context.Context) pulumix.Output[[]CertificateTags] {
+	return pulumix.Output[[]CertificateTags]{
+		OutputState: i.ToCertificateTagsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Tags for Managed CCF Certificates
 type CertificateTagsOutput struct{ *pulumi.OutputState }
 
@@ -426,6 +511,12 @@ func (o CertificateTagsOutput) ToCertificateTagsOutput() CertificateTagsOutput {
 
 func (o CertificateTagsOutput) ToCertificateTagsOutputWithContext(ctx context.Context) CertificateTagsOutput {
 	return o
+}
+
+func (o CertificateTagsOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateTags] {
+	return pulumix.Output[CertificateTags]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional tags for Managed CCF Certificates
@@ -445,6 +536,12 @@ func (o CertificateTagsArrayOutput) ToCertificateTagsArrayOutput() CertificateTa
 
 func (o CertificateTagsArrayOutput) ToCertificateTagsArrayOutputWithContext(ctx context.Context) CertificateTagsArrayOutput {
 	return o
+}
+
+func (o CertificateTagsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CertificateTags] {
+	return pulumix.Output[[]CertificateTags]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateTagsArrayOutput) Index(i pulumi.IntInput) CertificateTagsOutput {
@@ -474,6 +571,12 @@ func (o CertificateTagsResponseOutput) ToCertificateTagsResponseOutputWithContex
 	return o
 }
 
+func (o CertificateTagsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateTagsResponse] {
+	return pulumix.Output[CertificateTagsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Additional tags for Managed CCF Certificates
 func (o CertificateTagsResponseOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CertificateTagsResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
@@ -491,6 +594,12 @@ func (o CertificateTagsResponseArrayOutput) ToCertificateTagsResponseArrayOutput
 
 func (o CertificateTagsResponseArrayOutput) ToCertificateTagsResponseArrayOutputWithContext(ctx context.Context) CertificateTagsResponseArrayOutput {
 	return o
+}
+
+func (o CertificateTagsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CertificateTagsResponse] {
+	return pulumix.Output[[]CertificateTagsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateTagsResponseArrayOutput) Index(i pulumi.IntInput) CertificateTagsResponseOutput {
@@ -538,6 +647,12 @@ func (i DeploymentTypeArgs) ToDeploymentTypeOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTypeOutput)
 }
 
+func (i DeploymentTypeArgs) ToOutput(ctx context.Context) pulumix.Output[DeploymentType] {
+	return pulumix.Output[DeploymentType]{
+		OutputState: i.ToDeploymentTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeploymentTypeArgs) ToDeploymentTypePtrOutput() DeploymentTypePtrOutput {
 	return i.ToDeploymentTypePtrOutputWithContext(context.Background())
 }
@@ -579,6 +694,12 @@ func (i *deploymentTypePtrType) ToDeploymentTypePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTypePtrOutput)
 }
 
+func (i *deploymentTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*DeploymentType] {
+	return pulumix.Output[*DeploymentType]{
+		OutputState: i.ToDeploymentTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Object representing DeploymentType for Managed CCF.
 type DeploymentTypeOutput struct{ *pulumi.OutputState }
 
@@ -604,6 +725,12 @@ func (o DeploymentTypeOutput) ToDeploymentTypePtrOutputWithContext(ctx context.C
 	}).(DeploymentTypePtrOutput)
 }
 
+func (o DeploymentTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentType] {
+	return pulumix.Output[DeploymentType]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Source Uri containing ManagedCCF code
 func (o DeploymentTypeOutput) AppSourceUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentType) *string { return v.AppSourceUri }).(pulumi.StringPtrOutput)
@@ -626,6 +753,12 @@ func (o DeploymentTypePtrOutput) ToDeploymentTypePtrOutput() DeploymentTypePtrOu
 
 func (o DeploymentTypePtrOutput) ToDeploymentTypePtrOutputWithContext(ctx context.Context) DeploymentTypePtrOutput {
 	return o
+}
+
+func (o DeploymentTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentType] {
+	return pulumix.Output[*DeploymentType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeploymentTypePtrOutput) Elem() DeploymentTypeOutput {
@@ -681,6 +814,12 @@ func (o DeploymentTypeResponseOutput) ToDeploymentTypeResponseOutputWithContext(
 	return o
 }
 
+func (o DeploymentTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentTypeResponse] {
+	return pulumix.Output[DeploymentTypeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Source Uri containing ManagedCCF code
 func (o DeploymentTypeResponseOutput) AppSourceUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentTypeResponse) *string { return v.AppSourceUri }).(pulumi.StringPtrOutput)
@@ -703,6 +842,12 @@ func (o DeploymentTypeResponsePtrOutput) ToDeploymentTypeResponsePtrOutput() Dep
 
 func (o DeploymentTypeResponsePtrOutput) ToDeploymentTypeResponsePtrOutputWithContext(ctx context.Context) DeploymentTypeResponsePtrOutput {
 	return o
+}
+
+func (o DeploymentTypeResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentTypeResponse] {
+	return pulumix.Output[*DeploymentTypeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeploymentTypeResponsePtrOutput) Elem() DeploymentTypeResponseOutput {
@@ -782,6 +927,12 @@ func (i LedgerPropertiesArgs) ToLedgerPropertiesOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(LedgerPropertiesOutput)
 }
 
+func (i LedgerPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[LedgerProperties] {
+	return pulumix.Output[LedgerProperties]{
+		OutputState: i.ToLedgerPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LedgerPropertiesArgs) ToLedgerPropertiesPtrOutput() LedgerPropertiesPtrOutput {
 	return i.ToLedgerPropertiesPtrOutputWithContext(context.Background())
 }
@@ -823,6 +974,12 @@ func (i *ledgerPropertiesPtrType) ToLedgerPropertiesPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(LedgerPropertiesPtrOutput)
 }
 
+func (i *ledgerPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*LedgerProperties] {
+	return pulumix.Output[*LedgerProperties]{
+		OutputState: i.ToLedgerPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Additional Confidential Ledger properties.
 type LedgerPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -846,6 +1003,12 @@ func (o LedgerPropertiesOutput) ToLedgerPropertiesPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LedgerProperties) *LedgerProperties {
 		return &v
 	}).(LedgerPropertiesPtrOutput)
+}
+
+func (o LedgerPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[LedgerProperties] {
+	return pulumix.Output[LedgerProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Array of all AAD based Security Principals.
@@ -880,6 +1043,12 @@ func (o LedgerPropertiesPtrOutput) ToLedgerPropertiesPtrOutput() LedgerPropertie
 
 func (o LedgerPropertiesPtrOutput) ToLedgerPropertiesPtrOutputWithContext(ctx context.Context) LedgerPropertiesPtrOutput {
 	return o
+}
+
+func (o LedgerPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LedgerProperties] {
+	return pulumix.Output[*LedgerProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LedgerPropertiesPtrOutput) Elem() LedgerPropertiesOutput {
@@ -967,6 +1136,12 @@ func (o LedgerPropertiesResponseOutput) ToLedgerPropertiesResponseOutput() Ledge
 
 func (o LedgerPropertiesResponseOutput) ToLedgerPropertiesResponseOutputWithContext(ctx context.Context) LedgerPropertiesResponseOutput {
 	return o
+}
+
+func (o LedgerPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LedgerPropertiesResponse] {
+	return pulumix.Output[LedgerPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Array of all AAD based Security Principals.
@@ -1061,6 +1236,12 @@ func (i ManagedCCFPropertiesArgs) ToManagedCCFPropertiesOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedCCFPropertiesOutput)
 }
 
+func (i ManagedCCFPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedCCFProperties] {
+	return pulumix.Output[ManagedCCFProperties]{
+		OutputState: i.ToManagedCCFPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedCCFPropertiesArgs) ToManagedCCFPropertiesPtrOutput() ManagedCCFPropertiesPtrOutput {
 	return i.ToManagedCCFPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1102,6 +1283,12 @@ func (i *managedCCFPropertiesPtrType) ToManagedCCFPropertiesPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedCCFPropertiesPtrOutput)
 }
 
+func (i *managedCCFPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedCCFProperties] {
+	return pulumix.Output[*ManagedCCFProperties]{
+		OutputState: i.ToManagedCCFPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Additional Managed CCF properties.
 type ManagedCCFPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1125,6 +1312,12 @@ func (o ManagedCCFPropertiesOutput) ToManagedCCFPropertiesPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedCCFProperties) *ManagedCCFProperties {
 		return &v
 	}).(ManagedCCFPropertiesPtrOutput)
+}
+
+func (o ManagedCCFPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedCCFProperties] {
+	return pulumix.Output[ManagedCCFProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Deployment Type of Managed CCF
@@ -1154,6 +1347,12 @@ func (o ManagedCCFPropertiesPtrOutput) ToManagedCCFPropertiesPtrOutput() Managed
 
 func (o ManagedCCFPropertiesPtrOutput) ToManagedCCFPropertiesPtrOutputWithContext(ctx context.Context) ManagedCCFPropertiesPtrOutput {
 	return o
+}
+
+func (o ManagedCCFPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedCCFProperties] {
+	return pulumix.Output[*ManagedCCFProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedCCFPropertiesPtrOutput) Elem() ManagedCCFPropertiesOutput {
@@ -1227,6 +1426,12 @@ func (o ManagedCCFPropertiesResponseOutput) ToManagedCCFPropertiesResponseOutput
 
 func (o ManagedCCFPropertiesResponseOutput) ToManagedCCFPropertiesResponseOutputWithContext(ctx context.Context) ManagedCCFPropertiesResponseOutput {
 	return o
+}
+
+func (o ManagedCCFPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedCCFPropertiesResponse] {
+	return pulumix.Output[ManagedCCFPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique name for the Managed CCF.
@@ -1307,6 +1512,12 @@ func (i MemberIdentityCertificateArgs) ToMemberIdentityCertificateOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(MemberIdentityCertificateOutput)
 }
 
+func (i MemberIdentityCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[MemberIdentityCertificate] {
+	return pulumix.Output[MemberIdentityCertificate]{
+		OutputState: i.ToMemberIdentityCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MemberIdentityCertificateArrayInput is an input type that accepts MemberIdentityCertificateArray and MemberIdentityCertificateArrayOutput values.
 // You can construct a concrete instance of `MemberIdentityCertificateArrayInput` via:
 //
@@ -1332,6 +1543,12 @@ func (i MemberIdentityCertificateArray) ToMemberIdentityCertificateArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MemberIdentityCertificateArrayOutput)
 }
 
+func (i MemberIdentityCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]MemberIdentityCertificate] {
+	return pulumix.Output[[]MemberIdentityCertificate]{
+		OutputState: i.ToMemberIdentityCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Object representing MemberIdentityCertificate for Managed CCF.
 type MemberIdentityCertificateOutput struct{ *pulumi.OutputState }
 
@@ -1345,6 +1562,12 @@ func (o MemberIdentityCertificateOutput) ToMemberIdentityCertificateOutput() Mem
 
 func (o MemberIdentityCertificateOutput) ToMemberIdentityCertificateOutputWithContext(ctx context.Context) MemberIdentityCertificateOutput {
 	return o
+}
+
+func (o MemberIdentityCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[MemberIdentityCertificate] {
+	return pulumix.Output[MemberIdentityCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Member Identity Certificate
@@ -1373,6 +1596,12 @@ func (o MemberIdentityCertificateArrayOutput) ToMemberIdentityCertificateArrayOu
 
 func (o MemberIdentityCertificateArrayOutput) ToMemberIdentityCertificateArrayOutputWithContext(ctx context.Context) MemberIdentityCertificateArrayOutput {
 	return o
+}
+
+func (o MemberIdentityCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MemberIdentityCertificate] {
+	return pulumix.Output[[]MemberIdentityCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MemberIdentityCertificateArrayOutput) Index(i pulumi.IntInput) MemberIdentityCertificateOutput {
@@ -1405,6 +1634,12 @@ func (o MemberIdentityCertificateResponseOutput) ToMemberIdentityCertificateResp
 	return o
 }
 
+func (o MemberIdentityCertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MemberIdentityCertificateResponse] {
+	return pulumix.Output[MemberIdentityCertificateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Member Identity Certificate
 func (o MemberIdentityCertificateResponseOutput) Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MemberIdentityCertificateResponse) *string { return v.Certificate }).(pulumi.StringPtrOutput)
@@ -1431,6 +1666,12 @@ func (o MemberIdentityCertificateResponseArrayOutput) ToMemberIdentityCertificat
 
 func (o MemberIdentityCertificateResponseArrayOutput) ToMemberIdentityCertificateResponseArrayOutputWithContext(ctx context.Context) MemberIdentityCertificateResponseArrayOutput {
 	return o
+}
+
+func (o MemberIdentityCertificateResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MemberIdentityCertificateResponse] {
+	return pulumix.Output[[]MemberIdentityCertificateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MemberIdentityCertificateResponseArrayOutput) Index(i pulumi.IntInput) MemberIdentityCertificateResponseOutput {
@@ -1468,6 +1709,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

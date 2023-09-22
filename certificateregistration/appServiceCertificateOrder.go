@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SSL certificate purchase order.
@@ -243,6 +244,12 @@ func (i *AppServiceCertificateOrder) ToAppServiceCertificateOrderOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AppServiceCertificateOrderOutput)
 }
 
+func (i *AppServiceCertificateOrder) ToOutput(ctx context.Context) pulumix.Output[*AppServiceCertificateOrder] {
+	return pulumix.Output[*AppServiceCertificateOrder]{
+		OutputState: i.ToAppServiceCertificateOrderOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppServiceCertificateOrderOutput struct{ *pulumi.OutputState }
 
 func (AppServiceCertificateOrderOutput) ElementType() reflect.Type {
@@ -255,6 +262,12 @@ func (o AppServiceCertificateOrderOutput) ToAppServiceCertificateOrderOutput() A
 
 func (o AppServiceCertificateOrderOutput) ToAppServiceCertificateOrderOutputWithContext(ctx context.Context) AppServiceCertificateOrderOutput {
 	return o
+}
+
+func (o AppServiceCertificateOrderOutput) ToOutput(ctx context.Context) pulumix.Output[*AppServiceCertificateOrder] {
+	return pulumix.Output[*AppServiceCertificateOrder]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Reasons why App Service Certificate is not renewable at the current moment.

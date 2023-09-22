@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an resource upload URL for an App, which may be artifacts or source archive.
@@ -79,6 +80,12 @@ func (o GetAppResourceUploadUrlResultOutput) ToGetAppResourceUploadUrlResultOutp
 
 func (o GetAppResourceUploadUrlResultOutput) ToGetAppResourceUploadUrlResultOutputWithContext(ctx context.Context) GetAppResourceUploadUrlResultOutput {
 	return o
+}
+
+func (o GetAppResourceUploadUrlResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppResourceUploadUrlResult] {
+	return pulumix.Output[GetAppResourceUploadUrlResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Source relative path

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get batch operation status
@@ -73,6 +74,12 @@ func (o GetGlobalUserOperationBatchStatusResultOutput) ToGetGlobalUserOperationB
 
 func (o GetGlobalUserOperationBatchStatusResultOutput) ToGetGlobalUserOperationBatchStatusResultOutputWithContext(ctx context.Context) GetGlobalUserOperationBatchStatusResultOutput {
 	return o
+}
+
+func (o GetGlobalUserOperationBatchStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalUserOperationBatchStatusResult] {
+	return pulumix.Output[GetGlobalUserOperationBatchStatusResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets a collection of items that contain the operation url and status.

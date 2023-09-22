@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data Manager For Agriculture ARM Resource.
@@ -153,6 +154,12 @@ func (i *DataManagerForAgricultureResource) ToDataManagerForAgricultureResourceO
 	return pulumi.ToOutputWithContext(ctx, i).(DataManagerForAgricultureResourceOutput)
 }
 
+func (i *DataManagerForAgricultureResource) ToOutput(ctx context.Context) pulumix.Output[*DataManagerForAgricultureResource] {
+	return pulumix.Output[*DataManagerForAgricultureResource]{
+		OutputState: i.ToDataManagerForAgricultureResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataManagerForAgricultureResourceOutput struct{ *pulumi.OutputState }
 
 func (DataManagerForAgricultureResourceOutput) ElementType() reflect.Type {
@@ -165,6 +172,12 @@ func (o DataManagerForAgricultureResourceOutput) ToDataManagerForAgricultureReso
 
 func (o DataManagerForAgricultureResourceOutput) ToDataManagerForAgricultureResourceOutputWithContext(ctx context.Context) DataManagerForAgricultureResourceOutput {
 	return o
+}
+
+func (o DataManagerForAgricultureResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*DataManagerForAgricultureResource] {
+	return pulumix.Output[*DataManagerForAgricultureResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identity for the resource.

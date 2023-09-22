@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The bandwidth schedule details.
@@ -198,6 +199,12 @@ func (i *BandwidthSchedule) ToBandwidthScheduleOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthScheduleOutput)
 }
 
+func (i *BandwidthSchedule) ToOutput(ctx context.Context) pulumix.Output[*BandwidthSchedule] {
+	return pulumix.Output[*BandwidthSchedule]{
+		OutputState: i.ToBandwidthScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BandwidthScheduleOutput struct{ *pulumi.OutputState }
 
 func (BandwidthScheduleOutput) ElementType() reflect.Type {
@@ -210,6 +217,12 @@ func (o BandwidthScheduleOutput) ToBandwidthScheduleOutput() BandwidthScheduleOu
 
 func (o BandwidthScheduleOutput) ToBandwidthScheduleOutputWithContext(ctx context.Context) BandwidthScheduleOutput {
 	return o
+}
+
+func (o BandwidthScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*BandwidthSchedule] {
+	return pulumix.Output[*BandwidthSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The days of the week when this schedule is applicable.

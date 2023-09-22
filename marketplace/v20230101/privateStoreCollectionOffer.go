@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The privateStore offer data structure.
@@ -171,6 +172,12 @@ func (i *PrivateStoreCollectionOffer) ToPrivateStoreCollectionOfferOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateStoreCollectionOfferOutput)
 }
 
+func (i *PrivateStoreCollectionOffer) ToOutput(ctx context.Context) pulumix.Output[*PrivateStoreCollectionOffer] {
+	return pulumix.Output[*PrivateStoreCollectionOffer]{
+		OutputState: i.ToPrivateStoreCollectionOfferOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateStoreCollectionOfferOutput struct{ *pulumi.OutputState }
 
 func (PrivateStoreCollectionOfferOutput) ElementType() reflect.Type {
@@ -183,6 +190,12 @@ func (o PrivateStoreCollectionOfferOutput) ToPrivateStoreCollectionOfferOutput()
 
 func (o PrivateStoreCollectionOfferOutput) ToPrivateStoreCollectionOfferOutputWithContext(ctx context.Context) PrivateStoreCollectionOfferOutput {
 	return o
+}
+
+func (o PrivateStoreCollectionOfferOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateStoreCollectionOffer] {
+	return pulumix.Output[*PrivateStoreCollectionOffer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Private store offer creation date

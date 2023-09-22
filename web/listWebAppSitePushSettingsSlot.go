@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Gets the Push settings associated with web app.
@@ -94,6 +95,12 @@ func (o ListWebAppSitePushSettingsSlotResultOutput) ToListWebAppSitePushSettings
 
 func (o ListWebAppSitePushSettingsSlotResultOutput) ToListWebAppSitePushSettingsSlotResultOutputWithContext(ctx context.Context) ListWebAppSitePushSettingsSlotResultOutput {
 	return o
+}
+
+func (o ListWebAppSitePushSettingsSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppSitePushSettingsSlotResult] {
+	return pulumix.Output[ListWebAppSitePushSettingsSlotResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.

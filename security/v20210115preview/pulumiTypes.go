@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o IngestionConnectionStringResponseOutput) ToIngestionConnectionStringResp
 	return o
 }
 
+func (o IngestionConnectionStringResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IngestionConnectionStringResponse] {
+	return pulumix.Output[IngestionConnectionStringResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The region where ingested logs and data resides
 func (o IngestionConnectionStringResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v IngestionConnectionStringResponse) string { return v.Location }).(pulumi.StringOutput)
@@ -58,6 +65,12 @@ func (o IngestionConnectionStringResponseArrayOutput) ToIngestionConnectionStrin
 
 func (o IngestionConnectionStringResponseArrayOutput) ToIngestionConnectionStringResponseArrayOutputWithContext(ctx context.Context) IngestionConnectionStringResponseArrayOutput {
 	return o
+}
+
+func (o IngestionConnectionStringResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IngestionConnectionStringResponse] {
+	return pulumix.Output[[]IngestionConnectionStringResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IngestionConnectionStringResponseArrayOutput) Index(i pulumi.IntInput) IngestionConnectionStringResponseOutput {

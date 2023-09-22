@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the logger specified by its identifier.
@@ -89,6 +90,12 @@ func (o LookupLoggerResultOutput) ToLookupLoggerResultOutput() LookupLoggerResul
 
 func (o LookupLoggerResultOutput) ToLookupLoggerResultOutputWithContext(ctx context.Context) LookupLoggerResultOutput {
 	return o
+}
+
+func (o LookupLoggerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLoggerResult] {
+	return pulumix.Output[LookupLoggerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name and SendRule connection string of the event hub for azureEventHub logger.

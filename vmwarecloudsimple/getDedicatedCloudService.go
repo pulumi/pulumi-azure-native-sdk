@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns Dedicate Cloud Service
@@ -89,6 +90,12 @@ func (o LookupDedicatedCloudServiceResultOutput) ToLookupDedicatedCloudServiceRe
 
 func (o LookupDedicatedCloudServiceResultOutput) ToLookupDedicatedCloudServiceResultOutputWithContext(ctx context.Context) LookupDedicatedCloudServiceResultOutput {
 	return o
+}
+
+func (o LookupDedicatedCloudServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDedicatedCloudServiceResult] {
+	return pulumix.Output[LookupDedicatedCloudServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // gateway Subnet for the account. It will collect the subnet address and always treat it as /28

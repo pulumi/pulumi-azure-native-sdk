@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Domain service.
@@ -231,6 +232,12 @@ func (i *DomainService) ToDomainServiceOutputWithContext(ctx context.Context) Do
 	return pulumi.ToOutputWithContext(ctx, i).(DomainServiceOutput)
 }
 
+func (i *DomainService) ToOutput(ctx context.Context) pulumix.Output[*DomainService] {
+	return pulumix.Output[*DomainService]{
+		OutputState: i.ToDomainServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainServiceOutput struct{ *pulumi.OutputState }
 
 func (DomainServiceOutput) ElementType() reflect.Type {
@@ -243,6 +250,12 @@ func (o DomainServiceOutput) ToDomainServiceOutput() DomainServiceOutput {
 
 func (o DomainServiceOutput) ToDomainServiceOutputWithContext(ctx context.Context) DomainServiceOutput {
 	return o
+}
+
+func (o DomainServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainService] {
+	return pulumix.Output[*DomainService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration diagnostics data containing latest execution from client.
