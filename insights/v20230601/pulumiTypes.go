@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -42,6 +43,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -97,6 +104,12 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
+func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
+	return pulumix.Output[UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -119,6 +132,12 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
+	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
@@ -166,6 +185,12 @@ func (i WorkbookResourceIdentityArgs) ToWorkbookResourceIdentityOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(WorkbookResourceIdentityOutput)
 }
 
+func (i WorkbookResourceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[WorkbookResourceIdentity] {
+	return pulumix.Output[WorkbookResourceIdentity]{
+		OutputState: i.ToWorkbookResourceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkbookResourceIdentityArgs) ToWorkbookResourceIdentityPtrOutput() WorkbookResourceIdentityPtrOutput {
 	return i.ToWorkbookResourceIdentityPtrOutputWithContext(context.Background())
 }
@@ -207,6 +232,12 @@ func (i *workbookResourceIdentityPtrType) ToWorkbookResourceIdentityPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(WorkbookResourceIdentityPtrOutput)
 }
 
+func (i *workbookResourceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkbookResourceIdentity] {
+	return pulumix.Output[*WorkbookResourceIdentity]{
+		OutputState: i.ToWorkbookResourceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity used for BYOS
 type WorkbookResourceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -232,6 +263,12 @@ func (o WorkbookResourceIdentityOutput) ToWorkbookResourceIdentityPtrOutputWithC
 	}).(WorkbookResourceIdentityPtrOutput)
 }
 
+func (o WorkbookResourceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[WorkbookResourceIdentity] {
+	return pulumix.Output[WorkbookResourceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 func (o WorkbookResourceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkbookResourceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -254,6 +291,12 @@ func (o WorkbookResourceIdentityPtrOutput) ToWorkbookResourceIdentityPtrOutput()
 
 func (o WorkbookResourceIdentityPtrOutput) ToWorkbookResourceIdentityPtrOutputWithContext(ctx context.Context) WorkbookResourceIdentityPtrOutput {
 	return o
+}
+
+func (o WorkbookResourceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkbookResourceIdentity] {
+	return pulumix.Output[*WorkbookResourceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkbookResourceIdentityPtrOutput) Elem() WorkbookResourceIdentityOutput {
@@ -313,6 +356,12 @@ func (o WorkbookResourceResponseIdentityOutput) ToWorkbookResourceResponseIdenti
 	return o
 }
 
+func (o WorkbookResourceResponseIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[WorkbookResourceResponseIdentity] {
+	return pulumix.Output[WorkbookResourceResponseIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o WorkbookResourceResponseIdentityOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkbookResourceResponseIdentity) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -347,6 +396,12 @@ func (o WorkbookResourceResponseIdentityPtrOutput) ToWorkbookResourceResponseIde
 
 func (o WorkbookResourceResponseIdentityPtrOutput) ToWorkbookResourceResponseIdentityPtrOutputWithContext(ctx context.Context) WorkbookResourceResponseIdentityPtrOutput {
 	return o
+}
+
+func (o WorkbookResourceResponseIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkbookResourceResponseIdentity] {
+	return pulumix.Output[*WorkbookResourceResponseIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkbookResourceResponseIdentityPtrOutput) Elem() WorkbookResourceResponseIdentityOutput {

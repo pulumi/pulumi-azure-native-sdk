@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Properties that define a Continuous Export configuration.
@@ -185,6 +186,12 @@ func (i *ExportConfiguration) ToExportConfigurationOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ExportConfigurationOutput)
 }
 
+func (i *ExportConfiguration) ToOutput(ctx context.Context) pulumix.Output[*ExportConfiguration] {
+	return pulumix.Output[*ExportConfiguration]{
+		OutputState: i.ToExportConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ExportConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ExportConfigurationOutput) ElementType() reflect.Type {
@@ -197,6 +204,12 @@ func (o ExportConfigurationOutput) ToExportConfigurationOutput() ExportConfigura
 
 func (o ExportConfigurationOutput) ToExportConfigurationOutputWithContext(ctx context.Context) ExportConfigurationOutput {
 	return o
+}
+
+func (o ExportConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportConfiguration] {
+	return pulumix.Output[*ExportConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Application Insights component.

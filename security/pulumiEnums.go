@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of the action that will be triggered by the Automation
@@ -502,6 +503,12 @@ func (o StandardSupportedCloudsOutput) ToStandardSupportedCloudsPtrOutputWithCon
 	}).(StandardSupportedCloudsPtrOutput)
 }
 
+func (o StandardSupportedCloudsOutput) ToOutput(ctx context.Context) pulumix.Output[StandardSupportedClouds] {
+	return pulumix.Output[StandardSupportedClouds]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StandardSupportedCloudsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -535,6 +542,12 @@ func (o StandardSupportedCloudsPtrOutput) ToStandardSupportedCloudsPtrOutput() S
 
 func (o StandardSupportedCloudsPtrOutput) ToStandardSupportedCloudsPtrOutputWithContext(ctx context.Context) StandardSupportedCloudsPtrOutput {
 	return o
+}
+
+func (o StandardSupportedCloudsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardSupportedClouds] {
+	return pulumix.Output[*StandardSupportedClouds]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StandardSupportedCloudsPtrOutput) Elem() StandardSupportedCloudsOutput {
@@ -599,6 +612,12 @@ func (in *standardSupportedCloudsPtr) ToStandardSupportedCloudsPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(StandardSupportedCloudsPtrOutput)
 }
 
+func (in *standardSupportedCloudsPtr) ToOutput(ctx context.Context) pulumix.Output[*StandardSupportedClouds] {
+	return pulumix.Output[*StandardSupportedClouds]{
+		OutputState: in.ToStandardSupportedCloudsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StandardSupportedCloudsArrayInput is an input type that accepts StandardSupportedCloudsArray and StandardSupportedCloudsArrayOutput values.
 // You can construct a concrete instance of `StandardSupportedCloudsArrayInput` via:
 //
@@ -624,6 +643,12 @@ func (i StandardSupportedCloudsArray) ToStandardSupportedCloudsArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(StandardSupportedCloudsArrayOutput)
 }
 
+func (i StandardSupportedCloudsArray) ToOutput(ctx context.Context) pulumix.Output[[]StandardSupportedClouds] {
+	return pulumix.Output[[]StandardSupportedClouds]{
+		OutputState: i.ToStandardSupportedCloudsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StandardSupportedCloudsArrayOutput struct{ *pulumi.OutputState }
 
 func (StandardSupportedCloudsArrayOutput) ElementType() reflect.Type {
@@ -636,6 +661,12 @@ func (o StandardSupportedCloudsArrayOutput) ToStandardSupportedCloudsArrayOutput
 
 func (o StandardSupportedCloudsArrayOutput) ToStandardSupportedCloudsArrayOutputWithContext(ctx context.Context) StandardSupportedCloudsArrayOutput {
 	return o
+}
+
+func (o StandardSupportedCloudsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StandardSupportedClouds] {
+	return pulumix.Output[[]StandardSupportedClouds]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StandardSupportedCloudsArrayOutput) Index(i pulumi.IntInput) StandardSupportedCloudsOutput {

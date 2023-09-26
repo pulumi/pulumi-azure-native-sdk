@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o PrivateLinkScopedResourceResponseOutput) ToPrivateLinkScopedResourceResp
 	return o
 }
 
+func (o PrivateLinkScopedResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkScopedResourceResponse] {
+	return pulumix.Output[PrivateLinkScopedResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The full resource Id of the private link scope resource.
 func (o PrivateLinkScopedResourceResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkScopedResourceResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -58,6 +65,12 @@ func (o PrivateLinkScopedResourceResponseArrayOutput) ToPrivateLinkScopedResourc
 
 func (o PrivateLinkScopedResourceResponseArrayOutput) ToPrivateLinkScopedResourceResponseArrayOutputWithContext(ctx context.Context) PrivateLinkScopedResourceResponseArrayOutput {
 	return o
+}
+
+func (o PrivateLinkScopedResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateLinkScopedResourceResponse] {
+	return pulumix.Output[[]PrivateLinkScopedResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateLinkScopedResourceResponseArrayOutput) Index(i pulumi.IntInput) PrivateLinkScopedResourceResponseOutput {

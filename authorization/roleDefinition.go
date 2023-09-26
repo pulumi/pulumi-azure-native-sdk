@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Role definition.
@@ -156,6 +157,12 @@ func (i *RoleDefinition) ToRoleDefinitionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(RoleDefinitionOutput)
 }
 
+func (i *RoleDefinition) ToOutput(ctx context.Context) pulumix.Output[*RoleDefinition] {
+	return pulumix.Output[*RoleDefinition]{
+		OutputState: i.ToRoleDefinitionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RoleDefinitionOutput struct{ *pulumi.OutputState }
 
 func (RoleDefinitionOutput) ElementType() reflect.Type {
@@ -168,6 +175,12 @@ func (o RoleDefinitionOutput) ToRoleDefinitionOutput() RoleDefinitionOutput {
 
 func (o RoleDefinitionOutput) ToRoleDefinitionOutputWithContext(ctx context.Context) RoleDefinitionOutput {
 	return o
+}
+
+func (o RoleDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[*RoleDefinition] {
+	return pulumix.Output[*RoleDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Role definition assignable scopes.

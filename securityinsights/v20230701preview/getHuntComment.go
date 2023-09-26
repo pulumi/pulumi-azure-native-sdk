@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a hunt comment
@@ -90,6 +91,12 @@ func (o LookupHuntCommentResultOutput) ToLookupHuntCommentResultOutput() LookupH
 
 func (o LookupHuntCommentResultOutput) ToLookupHuntCommentResultOutputWithContext(ctx context.Context) LookupHuntCommentResultOutput {
 	return o
+}
+
+func (o LookupHuntCommentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHuntCommentResult] {
+	return pulumix.Output[LookupHuntCommentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Etag of the azure resource

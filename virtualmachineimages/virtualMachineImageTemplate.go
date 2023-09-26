@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Image template is an ARM resource managed by Microsoft.VirtualMachineImages provider
@@ -221,6 +222,12 @@ func (i *VirtualMachineImageTemplate) ToVirtualMachineImageTemplateOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineImageTemplateOutput)
 }
 
+func (i *VirtualMachineImageTemplate) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineImageTemplate] {
+	return pulumix.Output[*VirtualMachineImageTemplate]{
+		OutputState: i.ToVirtualMachineImageTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachineImageTemplateOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineImageTemplateOutput) ElementType() reflect.Type {
@@ -233,6 +240,12 @@ func (o VirtualMachineImageTemplateOutput) ToVirtualMachineImageTemplateOutput()
 
 func (o VirtualMachineImageTemplateOutput) ToVirtualMachineImageTemplateOutputWithContext(ctx context.Context) VirtualMachineImageTemplateOutput {
 	return o
+}
+
+func (o VirtualMachineImageTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineImageTemplate] {
+	return pulumix.Output[*VirtualMachineImageTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).

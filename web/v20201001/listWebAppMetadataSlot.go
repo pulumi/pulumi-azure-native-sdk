@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the metadata of an app.
@@ -86,6 +87,12 @@ func (o ListWebAppMetadataSlotResultOutput) ToListWebAppMetadataSlotResultOutput
 
 func (o ListWebAppMetadataSlotResultOutput) ToListWebAppMetadataSlotResultOutputWithContext(ctx context.Context) ListWebAppMetadataSlotResultOutput {
 	return o
+}
+
+func (o ListWebAppMetadataSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppMetadataSlotResult] {
+	return pulumix.Output[ListWebAppMetadataSlotResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id.

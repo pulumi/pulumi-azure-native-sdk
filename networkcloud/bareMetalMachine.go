@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview
@@ -263,6 +264,12 @@ func (i *BareMetalMachine) ToBareMetalMachineOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalMachineOutput)
 }
 
+func (i *BareMetalMachine) ToOutput(ctx context.Context) pulumix.Output[*BareMetalMachine] {
+	return pulumix.Output[*BareMetalMachine]{
+		OutputState: i.ToBareMetalMachineOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BareMetalMachineOutput struct{ *pulumi.OutputState }
 
 func (BareMetalMachineOutput) ElementType() reflect.Type {
@@ -275,6 +282,12 @@ func (o BareMetalMachineOutput) ToBareMetalMachineOutput() BareMetalMachineOutpu
 
 func (o BareMetalMachineOutput) ToBareMetalMachineOutputWithContext(ctx context.Context) BareMetalMachineOutput {
 	return o
+}
+
+func (o BareMetalMachineOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalMachine] {
+	return pulumix.Output[*BareMetalMachine]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.

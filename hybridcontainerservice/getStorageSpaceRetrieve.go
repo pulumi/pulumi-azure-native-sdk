@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Hybrid AKS storage space object
@@ -86,6 +87,12 @@ func (o LookupStorageSpaceRetrieveResultOutput) ToLookupStorageSpaceRetrieveResu
 
 func (o LookupStorageSpaceRetrieveResultOutput) ToLookupStorageSpaceRetrieveResultOutputWithContext(ctx context.Context) LookupStorageSpaceRetrieveResultOutput {
 	return o
+}
+
+func (o LookupStorageSpaceRetrieveResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStorageSpaceRetrieveResult] {
+	return pulumix.Output[LookupStorageSpaceRetrieveResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupStorageSpaceRetrieveResultOutput) ExtendedLocation() StorageSpacesResponseExtendedLocationPtrOutput {

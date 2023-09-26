@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i DiskArgs) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskOutput)
 }
 
+func (i DiskArgs) ToOutput(ctx context.Context) pulumix.Output[Disk] {
+	return pulumix.Output[Disk]{
+		OutputState: i.ToDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DiskArrayInput is an input type that accepts DiskArray and DiskArrayOutput values.
 // You can construct a concrete instance of `DiskArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i DiskArray) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(DiskArrayOutput)
 }
 
+func (i DiskArray) ToOutput(ctx context.Context) pulumix.Output[[]Disk] {
+	return pulumix.Output[[]Disk]{
+		OutputState: i.ToDiskArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the disk information for the HANA instance
 type DiskOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o DiskOutput) ToDiskOutput() DiskOutput {
 
 func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
+}
+
+func (o DiskOutput) ToOutput(ctx context.Context) pulumix.Output[Disk] {
+	return pulumix.Output[Disk]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the size of an empty data disk in gigabytes.
@@ -114,6 +133,12 @@ func (o DiskArrayOutput) ToDiskArrayOutput() DiskArrayOutput {
 
 func (o DiskArrayOutput) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOutput {
 	return o
+}
+
+func (o DiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Disk] {
+	return pulumix.Output[[]Disk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskArrayOutput) Index(i pulumi.IntInput) DiskOutput {
@@ -147,6 +172,12 @@ func (o DiskResponseOutput) ToDiskResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o DiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskResponse] {
+	return pulumix.Output[DiskResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the size of an empty data disk in gigabytes.
 func (o DiskResponseOutput) DiskSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DiskResponse) *int { return v.DiskSizeGB }).(pulumi.IntPtrOutput)
@@ -174,6 +205,12 @@ func (o DiskResponseArrayOutput) ToDiskResponseArrayOutput() DiskResponseArrayOu
 
 func (o DiskResponseArrayOutput) ToDiskResponseArrayOutputWithContext(ctx context.Context) DiskResponseArrayOutput {
 	return o
+}
+
+func (o DiskResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiskResponse] {
+	return pulumix.Output[[]DiskResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskResponseArrayOutput) Index(i pulumi.IntInput) DiskResponseOutput {
@@ -205,6 +242,12 @@ func (o HardwareProfileResponseOutput) ToHardwareProfileResponseOutputWithContex
 	return o
 }
 
+func (o HardwareProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HardwareProfileResponse] {
+	return pulumix.Output[HardwareProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the HANA instance SKU.
 func (o HardwareProfileResponseOutput) HanaInstanceSize() pulumi.StringOutput {
 	return o.ApplyT(func(v HardwareProfileResponse) string { return v.HanaInstanceSize }).(pulumi.StringOutput)
@@ -227,6 +270,12 @@ func (o HardwareProfileResponsePtrOutput) ToHardwareProfileResponsePtrOutput() H
 
 func (o HardwareProfileResponsePtrOutput) ToHardwareProfileResponsePtrOutputWithContext(ctx context.Context) HardwareProfileResponsePtrOutput {
 	return o
+}
+
+func (o HardwareProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HardwareProfileResponse] {
+	return pulumix.Output[*HardwareProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HardwareProfileResponsePtrOutput) Elem() HardwareProfileResponseOutput {
@@ -294,6 +343,12 @@ func (i IpAddressArgs) ToIpAddressOutputWithContext(ctx context.Context) IpAddre
 	return pulumi.ToOutputWithContext(ctx, i).(IpAddressOutput)
 }
 
+func (i IpAddressArgs) ToOutput(ctx context.Context) pulumix.Output[IpAddress] {
+	return pulumix.Output[IpAddress]{
+		OutputState: i.ToIpAddressOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpAddressArrayInput is an input type that accepts IpAddressArray and IpAddressArrayOutput values.
 // You can construct a concrete instance of `IpAddressArrayInput` via:
 //
@@ -319,6 +374,12 @@ func (i IpAddressArray) ToIpAddressArrayOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(IpAddressArrayOutput)
 }
 
+func (i IpAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]IpAddress] {
+	return pulumix.Output[[]IpAddress]{
+		OutputState: i.ToIpAddressArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the IP address of the network interface.
 type IpAddressOutput struct{ *pulumi.OutputState }
 
@@ -332,6 +393,12 @@ func (o IpAddressOutput) ToIpAddressOutput() IpAddressOutput {
 
 func (o IpAddressOutput) ToIpAddressOutputWithContext(ctx context.Context) IpAddressOutput {
 	return o
+}
+
+func (o IpAddressOutput) ToOutput(ctx context.Context) pulumix.Output[IpAddress] {
+	return pulumix.Output[IpAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the IP address of the network interface.
@@ -351,6 +418,12 @@ func (o IpAddressArrayOutput) ToIpAddressArrayOutput() IpAddressArrayOutput {
 
 func (o IpAddressArrayOutput) ToIpAddressArrayOutputWithContext(ctx context.Context) IpAddressArrayOutput {
 	return o
+}
+
+func (o IpAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpAddress] {
+	return pulumix.Output[[]IpAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpAddressArrayOutput) Index(i pulumi.IntInput) IpAddressOutput {
@@ -380,6 +453,12 @@ func (o IpAddressResponseOutput) ToIpAddressResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o IpAddressResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IpAddressResponse] {
+	return pulumix.Output[IpAddressResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the IP address of the network interface.
 func (o IpAddressResponseOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpAddressResponse) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
@@ -397,6 +476,12 @@ func (o IpAddressResponseArrayOutput) ToIpAddressResponseArrayOutput() IpAddress
 
 func (o IpAddressResponseArrayOutput) ToIpAddressResponseArrayOutputWithContext(ctx context.Context) IpAddressResponseArrayOutput {
 	return o
+}
+
+func (o IpAddressResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpAddressResponse] {
+	return pulumix.Output[[]IpAddressResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpAddressResponseArrayOutput) Index(i pulumi.IntInput) IpAddressResponseOutput {
@@ -440,6 +525,12 @@ func (i NetworkProfileArgs) ToNetworkProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfileOutput)
 }
 
+func (i NetworkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkProfile] {
+	return pulumix.Output[NetworkProfile]{
+		OutputState: i.ToNetworkProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NetworkProfileArgs) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
 	return i.ToNetworkProfilePtrOutputWithContext(context.Background())
 }
@@ -481,6 +572,12 @@ func (i *networkProfilePtrType) ToNetworkProfilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfilePtrOutput)
 }
 
+func (i *networkProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkProfile] {
+	return pulumix.Output[*NetworkProfile]{
+		OutputState: i.ToNetworkProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the network settings for the HANA instance disks.
 type NetworkProfileOutput struct{ *pulumi.OutputState }
 
@@ -506,6 +603,12 @@ func (o NetworkProfileOutput) ToNetworkProfilePtrOutputWithContext(ctx context.C
 	}).(NetworkProfilePtrOutput)
 }
 
+func (o NetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkProfile] {
+	return pulumix.Output[NetworkProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the network interfaces for the HANA instance.
 func (o NetworkProfileOutput) NetworkInterfaces() IpAddressArrayOutput {
 	return o.ApplyT(func(v NetworkProfile) []IpAddress { return v.NetworkInterfaces }).(IpAddressArrayOutput)
@@ -523,6 +626,12 @@ func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutput() NetworkProfilePtrOu
 
 func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
 	return o
+}
+
+func (o NetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkProfile] {
+	return pulumix.Output[*NetworkProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkProfilePtrOutput) Elem() NetworkProfileOutput {
@@ -568,6 +677,12 @@ func (o NetworkProfileResponseOutput) ToNetworkProfileResponseOutputWithContext(
 	return o
 }
 
+func (o NetworkProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkProfileResponse] {
+	return pulumix.Output[NetworkProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the circuit id for connecting to express route.
 func (o NetworkProfileResponseOutput) CircuitId() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkProfileResponse) string { return v.CircuitId }).(pulumi.StringOutput)
@@ -590,6 +705,12 @@ func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutput() Net
 
 func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutputWithContext(ctx context.Context) NetworkProfileResponsePtrOutput {
 	return o
+}
+
+func (o NetworkProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkProfileResponse] {
+	return pulumix.Output[*NetworkProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkProfileResponsePtrOutput) Elem() NetworkProfileResponseOutput {
@@ -661,6 +782,12 @@ func (i OSProfileArgs) ToOSProfileOutputWithContext(ctx context.Context) OSProfi
 	return pulumi.ToOutputWithContext(ctx, i).(OSProfileOutput)
 }
 
+func (i OSProfileArgs) ToOutput(ctx context.Context) pulumix.Output[OSProfile] {
+	return pulumix.Output[OSProfile]{
+		OutputState: i.ToOSProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSProfileArgs) ToOSProfilePtrOutput() OSProfilePtrOutput {
 	return i.ToOSProfilePtrOutputWithContext(context.Background())
 }
@@ -702,6 +829,12 @@ func (i *osprofilePtrType) ToOSProfilePtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(OSProfilePtrOutput)
 }
 
+func (i *osprofilePtrType) ToOutput(ctx context.Context) pulumix.Output[*OSProfile] {
+	return pulumix.Output[*OSProfile]{
+		OutputState: i.ToOSProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the operating system settings for the HANA instance.
 type OSProfileOutput struct{ *pulumi.OutputState }
 
@@ -727,6 +860,12 @@ func (o OSProfileOutput) ToOSProfilePtrOutputWithContext(ctx context.Context) OS
 	}).(OSProfilePtrOutput)
 }
 
+func (o OSProfileOutput) ToOutput(ctx context.Context) pulumix.Output[OSProfile] {
+	return pulumix.Output[OSProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the host OS name of the HANA instance.
 func (o OSProfileOutput) ComputerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSProfile) *string { return v.ComputerName }).(pulumi.StringPtrOutput)
@@ -749,6 +888,12 @@ func (o OSProfilePtrOutput) ToOSProfilePtrOutput() OSProfilePtrOutput {
 
 func (o OSProfilePtrOutput) ToOSProfilePtrOutputWithContext(ctx context.Context) OSProfilePtrOutput {
 	return o
+}
+
+func (o OSProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSProfile] {
+	return pulumix.Output[*OSProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSProfilePtrOutput) Elem() OSProfileOutput {
@@ -808,6 +953,12 @@ func (o OSProfileResponseOutput) ToOSProfileResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o OSProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSProfileResponse] {
+	return pulumix.Output[OSProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the host OS name of the HANA instance.
 func (o OSProfileResponseOutput) ComputerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSProfileResponse) *string { return v.ComputerName }).(pulumi.StringPtrOutput)
@@ -840,6 +991,12 @@ func (o OSProfileResponsePtrOutput) ToOSProfileResponsePtrOutput() OSProfileResp
 
 func (o OSProfileResponsePtrOutput) ToOSProfileResponsePtrOutputWithContext(ctx context.Context) OSProfileResponsePtrOutput {
 	return o
+}
+
+func (o OSProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSProfileResponse] {
+	return pulumix.Output[*OSProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSProfileResponsePtrOutput) Elem() OSProfileResponseOutput {
@@ -939,6 +1096,12 @@ func (i SAPSystemIDArgs) ToSAPSystemIDOutputWithContext(ctx context.Context) SAP
 	return pulumi.ToOutputWithContext(ctx, i).(SAPSystemIDOutput)
 }
 
+func (i SAPSystemIDArgs) ToOutput(ctx context.Context) pulumix.Output[SAPSystemID] {
+	return pulumix.Output[SAPSystemID]{
+		OutputState: i.ToSAPSystemIDOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SAPSystemIDArrayInput is an input type that accepts SAPSystemIDArray and SAPSystemIDArrayOutput values.
 // You can construct a concrete instance of `SAPSystemIDArrayInput` via:
 //
@@ -964,6 +1127,12 @@ func (i SAPSystemIDArray) ToSAPSystemIDArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SAPSystemIDArrayOutput)
 }
 
+func (i SAPSystemIDArray) ToOutput(ctx context.Context) pulumix.Output[[]SAPSystemID] {
+	return pulumix.Output[[]SAPSystemID]{
+		OutputState: i.ToSAPSystemIDArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies information related to a SAP system ID
 type SAPSystemIDOutput struct{ *pulumi.OutputState }
 
@@ -977,6 +1146,12 @@ func (o SAPSystemIDOutput) ToSAPSystemIDOutput() SAPSystemIDOutput {
 
 func (o SAPSystemIDOutput) ToSAPSystemIDOutputWithContext(ctx context.Context) SAPSystemIDOutput {
 	return o
+}
+
+func (o SAPSystemIDOutput) ToOutput(ctx context.Context) pulumix.Output[SAPSystemID] {
+	return pulumix.Output[SAPSystemID]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Group ID of the HANA database user.
@@ -1013,6 +1188,12 @@ func (o SAPSystemIDArrayOutput) ToSAPSystemIDArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o SAPSystemIDArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SAPSystemID] {
+	return pulumix.Output[[]SAPSystemID]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SAPSystemIDArrayOutput) Index(i pulumi.IntInput) SAPSystemIDOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SAPSystemID {
 		return vs[0].([]SAPSystemID)[vs[1].(int)]
@@ -1046,6 +1227,12 @@ func (o SAPSystemIDResponseOutput) ToSAPSystemIDResponseOutput() SAPSystemIDResp
 
 func (o SAPSystemIDResponseOutput) ToSAPSystemIDResponseOutputWithContext(ctx context.Context) SAPSystemIDResponseOutput {
 	return o
+}
+
+func (o SAPSystemIDResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SAPSystemIDResponse] {
+	return pulumix.Output[SAPSystemIDResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Group ID of the HANA database user.
@@ -1085,6 +1272,12 @@ func (o SAPSystemIDResponseArrayOutput) ToSAPSystemIDResponseArrayOutput() SAPSy
 
 func (o SAPSystemIDResponseArrayOutput) ToSAPSystemIDResponseArrayOutputWithContext(ctx context.Context) SAPSystemIDResponseArrayOutput {
 	return o
+}
+
+func (o SAPSystemIDResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SAPSystemIDResponse] {
+	return pulumix.Output[[]SAPSystemIDResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SAPSystemIDResponseArrayOutput) Index(i pulumi.IntInput) SAPSystemIDResponseOutput {
@@ -1132,6 +1325,12 @@ func (i StorageProfileArgs) ToStorageProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageProfileOutput)
 }
 
+func (i StorageProfileArgs) ToOutput(ctx context.Context) pulumix.Output[StorageProfile] {
+	return pulumix.Output[StorageProfile]{
+		OutputState: i.ToStorageProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StorageProfileArgs) ToStorageProfilePtrOutput() StorageProfilePtrOutput {
 	return i.ToStorageProfilePtrOutputWithContext(context.Background())
 }
@@ -1173,6 +1372,12 @@ func (i *storageProfilePtrType) ToStorageProfilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(StorageProfilePtrOutput)
 }
 
+func (i *storageProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageProfile] {
+	return pulumix.Output[*StorageProfile]{
+		OutputState: i.ToStorageProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the storage settings for the HANA instance disks.
 type StorageProfileOutput struct{ *pulumi.OutputState }
 
@@ -1198,6 +1403,12 @@ func (o StorageProfileOutput) ToStorageProfilePtrOutputWithContext(ctx context.C
 	}).(StorageProfilePtrOutput)
 }
 
+func (o StorageProfileOutput) ToOutput(ctx context.Context) pulumix.Output[StorageProfile] {
+	return pulumix.Output[StorageProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies information related to SAP system IDs for the hana instance.
 func (o StorageProfileOutput) HanaSids() SAPSystemIDArrayOutput {
 	return o.ApplyT(func(v StorageProfile) []SAPSystemID { return v.HanaSids }).(SAPSystemIDArrayOutput)
@@ -1220,6 +1431,12 @@ func (o StorageProfilePtrOutput) ToStorageProfilePtrOutput() StorageProfilePtrOu
 
 func (o StorageProfilePtrOutput) ToStorageProfilePtrOutputWithContext(ctx context.Context) StorageProfilePtrOutput {
 	return o
+}
+
+func (o StorageProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageProfile] {
+	return pulumix.Output[*StorageProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageProfilePtrOutput) Elem() StorageProfileOutput {
@@ -1277,6 +1494,12 @@ func (o StorageProfileResponseOutput) ToStorageProfileResponseOutputWithContext(
 	return o
 }
 
+func (o StorageProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageProfileResponse] {
+	return pulumix.Output[StorageProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies information related to SAP system IDs for the hana instance.
 func (o StorageProfileResponseOutput) HanaSids() SAPSystemIDResponseArrayOutput {
 	return o.ApplyT(func(v StorageProfileResponse) []SAPSystemIDResponse { return v.HanaSids }).(SAPSystemIDResponseArrayOutput)
@@ -1304,6 +1527,12 @@ func (o StorageProfileResponsePtrOutput) ToStorageProfileResponsePtrOutput() Sto
 
 func (o StorageProfileResponsePtrOutput) ToStorageProfileResponsePtrOutputWithContext(ctx context.Context) StorageProfileResponsePtrOutput {
 	return o
+}
+
+func (o StorageProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageProfileResponse] {
+	return pulumix.Output[*StorageProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageProfileResponsePtrOutput) Elem() StorageProfileResponseOutput {

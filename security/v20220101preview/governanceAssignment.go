@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Governance assignment over a given scope
@@ -154,6 +155,12 @@ func (i *GovernanceAssignment) ToGovernanceAssignmentOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GovernanceAssignmentOutput)
 }
 
+func (i *GovernanceAssignment) ToOutput(ctx context.Context) pulumix.Output[*GovernanceAssignment] {
+	return pulumix.Output[*GovernanceAssignment]{
+		OutputState: i.ToGovernanceAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GovernanceAssignmentOutput struct{ *pulumi.OutputState }
 
 func (GovernanceAssignmentOutput) ElementType() reflect.Type {
@@ -166,6 +173,12 @@ func (o GovernanceAssignmentOutput) ToGovernanceAssignmentOutput() GovernanceAss
 
 func (o GovernanceAssignmentOutput) ToGovernanceAssignmentOutputWithContext(ctx context.Context) GovernanceAssignmentOutput {
 	return o
+}
+
+func (o GovernanceAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*GovernanceAssignment] {
+	return pulumix.Output[*GovernanceAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The additional data for the governance assignment - e.g. links to ticket (optional), see example

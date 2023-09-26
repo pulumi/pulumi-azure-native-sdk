@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the JIT request.
@@ -99,6 +100,12 @@ func (o LookupJitRequestResultOutput) ToLookupJitRequestResultOutput() LookupJit
 
 func (o LookupJitRequestResultOutput) ToLookupJitRequestResultOutputWithContext(ctx context.Context) LookupJitRequestResultOutput {
 	return o
+}
+
+func (o LookupJitRequestResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJitRequestResult] {
+	return pulumix.Output[LookupJitRequestResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The parent application id.

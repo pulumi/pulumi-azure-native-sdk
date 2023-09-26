@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the API Operation specified by its identifier.
@@ -101,6 +102,12 @@ func (o LookupApiOperationResultOutput) ToLookupApiOperationResultOutput() Looku
 
 func (o LookupApiOperationResultOutput) ToLookupApiOperationResultOutputWithContext(ctx context.Context) LookupApiOperationResultOutput {
 	return o
+}
+
+func (o LookupApiOperationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiOperationResult] {
+	return pulumix.Output[LookupApiOperationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of the operation. May include HTML formatting tags.

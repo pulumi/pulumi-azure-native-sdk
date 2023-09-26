@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns dedicated cloud node
@@ -108,6 +109,12 @@ func (o LookupDedicatedCloudNodeResultOutput) ToLookupDedicatedCloudNodeResultOu
 
 func (o LookupDedicatedCloudNodeResultOutput) ToLookupDedicatedCloudNodeResultOutputWithContext(ctx context.Context) LookupDedicatedCloudNodeResultOutput {
 	return o
+}
+
+func (o LookupDedicatedCloudNodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDedicatedCloudNodeResult] {
+	return pulumix.Output[LookupDedicatedCloudNodeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Availability Zone id, e.g. "az1"

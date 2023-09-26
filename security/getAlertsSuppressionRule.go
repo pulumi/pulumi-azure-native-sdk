@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
@@ -87,6 +88,12 @@ func (o LookupAlertsSuppressionRuleResultOutput) ToLookupAlertsSuppressionRuleRe
 
 func (o LookupAlertsSuppressionRuleResultOutput) ToLookupAlertsSuppressionRuleResultOutputWithContext(ctx context.Context) LookupAlertsSuppressionRuleResultOutput {
 	return o
+}
+
+func (o LookupAlertsSuppressionRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAlertsSuppressionRuleResult] {
+	return pulumix.Output[LookupAlertsSuppressionRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Type of the alert to automatically suppress. For all alert types, use '*'

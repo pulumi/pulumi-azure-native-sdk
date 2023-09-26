@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Trigger details.
@@ -200,6 +201,12 @@ func (i *FileEventTrigger) ToFileEventTriggerOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(FileEventTriggerOutput)
 }
 
+func (i *FileEventTrigger) ToOutput(ctx context.Context) pulumix.Output[*FileEventTrigger] {
+	return pulumix.Output[*FileEventTrigger]{
+		OutputState: i.ToFileEventTriggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FileEventTriggerOutput struct{ *pulumi.OutputState }
 
 func (FileEventTriggerOutput) ElementType() reflect.Type {
@@ -212,6 +219,12 @@ func (o FileEventTriggerOutput) ToFileEventTriggerOutput() FileEventTriggerOutpu
 
 func (o FileEventTriggerOutput) ToFileEventTriggerOutputWithContext(ctx context.Context) FileEventTriggerOutput {
 	return o
+}
+
+func (o FileEventTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[*FileEventTrigger] {
+	return pulumix.Output[*FileEventTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.

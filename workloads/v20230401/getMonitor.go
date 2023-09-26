@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets properties of a SAP monitor for the specified subscription, resource group, and resource name.
@@ -104,6 +105,12 @@ func (o LookupMonitorResultOutput) ToLookupMonitorResultOutput() LookupMonitorRe
 
 func (o LookupMonitorResultOutput) ToLookupMonitorResultOutputWithContext(ctx context.Context) LookupMonitorResultOutput {
 	return o
+}
+
+func (o LookupMonitorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMonitorResult] {
+	return pulumix.Output[LookupMonitorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SAP monitor resources will be deployed in the SAP monitoring region. The subnet region should be same as the SAP monitoring region.

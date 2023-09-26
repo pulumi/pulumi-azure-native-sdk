@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a share on the  Data Box Edge/Gateway device.
@@ -227,6 +228,12 @@ func (i *Share) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareOutput)
 }
 
+func (i *Share) ToOutput(ctx context.Context) pulumix.Output[*Share] {
+	return pulumix.Output[*Share]{
+		OutputState: i.ToShareOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ShareOutput struct{ *pulumi.OutputState }
 
 func (ShareOutput) ElementType() reflect.Type {
@@ -239,6 +246,12 @@ func (o ShareOutput) ToShareOutput() ShareOutput {
 
 func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return o
+}
+
+func (o ShareOutput) ToOutput(ctx context.Context) pulumix.Output[*Share] {
+	return pulumix.Output[*Share]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access protocol to be used by the share.

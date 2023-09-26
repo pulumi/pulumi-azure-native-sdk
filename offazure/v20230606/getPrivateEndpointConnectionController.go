@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the private link resource.
@@ -90,6 +91,12 @@ func (o LookupPrivateEndpointConnectionControllerResultOutput) ToLookupPrivateEn
 
 func (o LookupPrivateEndpointConnectionControllerResultOutput) ToLookupPrivateEndpointConnectionControllerResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionControllerResultOutput {
 	return o
+}
+
+func (o LookupPrivateEndpointConnectionControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateEndpointConnectionControllerResult] {
+	return pulumix.Output[LookupPrivateEndpointConnectionControllerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // array of group ids

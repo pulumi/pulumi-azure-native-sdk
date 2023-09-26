@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Neighbor Group.
@@ -92,6 +93,12 @@ func (o LookupNeighborGroupResultOutput) ToLookupNeighborGroupResultOutput() Loo
 
 func (o LookupNeighborGroupResultOutput) ToLookupNeighborGroupResultOutputWithContext(ctx context.Context) LookupNeighborGroupResultOutput {
 	return o
+}
+
+func (o LookupNeighborGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNeighborGroupResult] {
+	return pulumix.Output[LookupNeighborGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Switch configuration description.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A paginated list of Feature entities.
@@ -91,6 +92,12 @@ func (o ListFeaturesetVersionFeaturesResultOutput) ToListFeaturesetVersionFeatur
 
 func (o ListFeaturesetVersionFeaturesResultOutput) ToListFeaturesetVersionFeaturesResultOutputWithContext(ctx context.Context) ListFeaturesetVersionFeaturesResultOutput {
 	return o
+}
+
+func (o ListFeaturesetVersionFeaturesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListFeaturesetVersionFeaturesResult] {
+	return pulumix.Output[ListFeaturesetVersionFeaturesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The link to the next page of Feature objects. If null, there are no additional pages.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DataSet in a share
@@ -97,6 +98,12 @@ func (o LookupADLSGen2StorageAccountDataSetResultOutput) ToLookupADLSGen2Storage
 
 func (o LookupADLSGen2StorageAccountDataSetResultOutput) ToLookupADLSGen2StorageAccountDataSetResultOutputWithContext(ctx context.Context) LookupADLSGen2StorageAccountDataSetResultOutput {
 	return o
+}
+
+func (o LookupADLSGen2StorageAccountDataSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupADLSGen2StorageAccountDataSetResult] {
+	return pulumix.Output[LookupADLSGen2StorageAccountDataSetResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique id for identifying a data set resource

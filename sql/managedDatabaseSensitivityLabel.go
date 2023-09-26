@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A sensitivity label.
@@ -220,6 +221,12 @@ func (i *ManagedDatabaseSensitivityLabel) ToManagedDatabaseSensitivityLabelOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedDatabaseSensitivityLabelOutput)
 }
 
+func (i *ManagedDatabaseSensitivityLabel) ToOutput(ctx context.Context) pulumix.Output[*ManagedDatabaseSensitivityLabel] {
+	return pulumix.Output[*ManagedDatabaseSensitivityLabel]{
+		OutputState: i.ToManagedDatabaseSensitivityLabelOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedDatabaseSensitivityLabelOutput struct{ *pulumi.OutputState }
 
 func (ManagedDatabaseSensitivityLabelOutput) ElementType() reflect.Type {
@@ -232,6 +239,12 @@ func (o ManagedDatabaseSensitivityLabelOutput) ToManagedDatabaseSensitivityLabel
 
 func (o ManagedDatabaseSensitivityLabelOutput) ToManagedDatabaseSensitivityLabelOutputWithContext(ctx context.Context) ManagedDatabaseSensitivityLabelOutput {
 	return o
+}
+
+func (o ManagedDatabaseSensitivityLabelOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedDatabaseSensitivityLabel] {
+	return pulumix.Output[*ManagedDatabaseSensitivityLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The column name.

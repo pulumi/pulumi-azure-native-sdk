@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i ConnectionStateArgs) ToConnectionStateOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionStateOutput)
 }
 
+func (i ConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionState] {
+	return pulumix.Output[ConnectionState]{
+		OutputState: i.ToConnectionStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionStateArgs) ToConnectionStatePtrOutput() ConnectionStatePtrOutput {
 	return i.ToConnectionStatePtrOutputWithContext(context.Background())
 }
@@ -97,6 +104,12 @@ func (i *connectionStatePtrType) ToConnectionStatePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionStatePtrOutput)
 }
 
+func (i *connectionStatePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionState] {
+	return pulumix.Output[*ConnectionState]{
+		OutputState: i.ToConnectionStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConnectionState information.
 type ConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -120,6 +133,12 @@ func (o ConnectionStateOutput) ToConnectionStatePtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionState) *ConnectionState {
 		return &v
 	}).(ConnectionStatePtrOutput)
+}
+
+func (o ConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionState] {
+	return pulumix.Output[ConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Actions required (if any).
@@ -149,6 +168,12 @@ func (o ConnectionStatePtrOutput) ToConnectionStatePtrOutput() ConnectionStatePt
 
 func (o ConnectionStatePtrOutput) ToConnectionStatePtrOutputWithContext(ctx context.Context) ConnectionStatePtrOutput {
 	return o
+}
+
+func (o ConnectionStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionState] {
+	return pulumix.Output[*ConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionStatePtrOutput) Elem() ConnectionStateOutput {
@@ -216,6 +241,12 @@ func (o ConnectionStateResponseOutput) ToConnectionStateResponseOutputWithContex
 	return o
 }
 
+func (o ConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionStateResponse] {
+	return pulumix.Output[ConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Actions required (if any).
 func (o ConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
@@ -243,6 +274,12 @@ func (o ConnectionStateResponsePtrOutput) ToConnectionStateResponsePtrOutput() C
 
 func (o ConnectionStateResponsePtrOutput) ToConnectionStateResponsePtrOutputWithContext(ctx context.Context) ConnectionStateResponsePtrOutput {
 	return o
+}
+
+func (o ConnectionStateResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionStateResponse] {
+	return pulumix.Output[*ConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionStateResponsePtrOutput) Elem() ConnectionStateResponseOutput {
@@ -318,6 +355,12 @@ func (i PrivateEndpointArgs) ToPrivateEndpointOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointOutput)
 }
 
+func (i PrivateEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpoint] {
+	return pulumix.Output[PrivateEndpoint]{
+		OutputState: i.ToPrivateEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivateEndpointArgs) ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput {
 	return i.ToPrivateEndpointPtrOutputWithContext(context.Background())
 }
@@ -359,6 +402,12 @@ func (i *privateEndpointPtrType) ToPrivateEndpointPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointPtrOutput)
 }
 
+func (i *privateEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpoint] {
+	return pulumix.Output[*PrivateEndpoint]{
+		OutputState: i.ToPrivateEndpointPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateEndpointOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointOutput) ElementType() reflect.Type {
@@ -383,6 +432,12 @@ func (o PrivateEndpointOutput) ToPrivateEndpointPtrOutputWithContext(ctx context
 	}).(PrivateEndpointPtrOutput)
 }
 
+func (o PrivateEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpoint] {
+	return pulumix.Output[PrivateEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the id of private endpoint.
 func (o PrivateEndpointOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEndpoint) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -400,6 +455,12 @@ func (o PrivateEndpointPtrOutput) ToPrivateEndpointPtrOutput() PrivateEndpointPt
 
 func (o PrivateEndpointPtrOutput) ToPrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointPtrOutput {
 	return o
+}
+
+func (o PrivateEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpoint] {
+	return pulumix.Output[*PrivateEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointPtrOutput) Elem() PrivateEndpointOutput {
@@ -463,6 +524,12 @@ func (i PrivateEndpointConnectionTypeArgs) ToPrivateEndpointConnectionTypeOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionTypeOutput)
 }
 
+func (i PrivateEndpointConnectionTypeArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionType] {
+	return pulumix.Output[PrivateEndpointConnectionType]{
+		OutputState: i.ToPrivateEndpointConnectionTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateEndpointConnectionTypeArrayInput is an input type that accepts PrivateEndpointConnectionTypeArray and PrivateEndpointConnectionTypeArrayOutput values.
 // You can construct a concrete instance of `PrivateEndpointConnectionTypeArrayInput` via:
 //
@@ -488,6 +555,12 @@ func (i PrivateEndpointConnectionTypeArray) ToPrivateEndpointConnectionTypeArray
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionTypeArrayOutput)
 }
 
+func (i PrivateEndpointConnectionTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionType] {
+	return pulumix.Output[[]PrivateEndpointConnectionType]{
+		OutputState: i.ToPrivateEndpointConnectionTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateEndpointConnectionTypeOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionTypeOutput) ElementType() reflect.Type {
@@ -500,6 +573,12 @@ func (o PrivateEndpointConnectionTypeOutput) ToPrivateEndpointConnectionTypeOutp
 
 func (o PrivateEndpointConnectionTypeOutput) ToPrivateEndpointConnectionTypeOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionType] {
+	return pulumix.Output[PrivateEndpointConnectionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the private endpoint.
@@ -529,6 +608,12 @@ func (o PrivateEndpointConnectionTypeArrayOutput) ToPrivateEndpointConnectionTyp
 
 func (o PrivateEndpointConnectionTypeArrayOutput) ToPrivateEndpointConnectionTypeArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeArrayOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionType] {
+	return pulumix.Output[[]PrivateEndpointConnectionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointConnectionTypeArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionTypeOutput {
@@ -566,6 +651,12 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 
 func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
+	return pulumix.Output[PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the id of the resource.
@@ -619,6 +710,12 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
+	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -644,6 +741,12 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
+func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
+	return pulumix.Output[PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the id of private endpoint.
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -661,6 +764,12 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
+	return pulumix.Output[*PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -712,6 +821,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

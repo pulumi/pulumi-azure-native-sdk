@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Details of an Update run
@@ -214,6 +215,12 @@ func (i *UpdateRun) ToUpdateRunOutputWithContext(ctx context.Context) UpdateRunO
 	return pulumi.ToOutputWithContext(ctx, i).(UpdateRunOutput)
 }
 
+func (i *UpdateRun) ToOutput(ctx context.Context) pulumix.Output[*UpdateRun] {
+	return pulumix.Output[*UpdateRun]{
+		OutputState: i.ToUpdateRunOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UpdateRunOutput struct{ *pulumi.OutputState }
 
 func (UpdateRunOutput) ElementType() reflect.Type {
@@ -226,6 +233,12 @@ func (o UpdateRunOutput) ToUpdateRunOutput() UpdateRunOutput {
 
 func (o UpdateRunOutput) ToUpdateRunOutputWithContext(ctx context.Context) UpdateRunOutput {
 	return o
+}
+
+func (o UpdateRunOutput) ToOutput(ctx context.Context) pulumix.Output[*UpdateRun] {
+	return pulumix.Output[*UpdateRun]{
+		OutputState: o.OutputState,
+	}
 }
 
 // More detailed description of the step.

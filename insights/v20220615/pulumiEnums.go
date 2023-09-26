@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The kind of web test this is, valid choices are ping, multistep and standard.
@@ -79,6 +80,12 @@ func (o WebTestKindOutput) ToWebTestKindPtrOutputWithContext(ctx context.Context
 	}).(WebTestKindPtrOutput)
 }
 
+func (o WebTestKindOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestKind] {
+	return pulumix.Output[WebTestKind]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WebTestKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -112,6 +119,12 @@ func (o WebTestKindPtrOutput) ToWebTestKindPtrOutput() WebTestKindPtrOutput {
 
 func (o WebTestKindPtrOutput) ToWebTestKindPtrOutputWithContext(ctx context.Context) WebTestKindPtrOutput {
 	return o
+}
+
+func (o WebTestKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTestKind] {
+	return pulumix.Output[*WebTestKind]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebTestKindPtrOutput) Elem() WebTestKindOutput {
@@ -174,6 +187,12 @@ func (in *webTestKindPtr) ToWebTestKindPtrOutput() WebTestKindPtrOutput {
 
 func (in *webTestKindPtr) ToWebTestKindPtrOutputWithContext(ctx context.Context) WebTestKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WebTestKindPtrOutput)
+}
+
+func (in *webTestKindPtr) ToOutput(ctx context.Context) pulumix.Output[*WebTestKind] {
+	return pulumix.Output[*WebTestKind]{
+		OutputState: in.ToWebTestKindPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

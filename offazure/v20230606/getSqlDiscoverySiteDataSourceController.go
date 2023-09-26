@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a SqlDiscoverySiteDataSource
@@ -90,6 +91,12 @@ func (o LookupSqlDiscoverySiteDataSourceControllerResultOutput) ToLookupSqlDisco
 
 func (o LookupSqlDiscoverySiteDataSourceControllerResultOutput) ToLookupSqlDiscoverySiteDataSourceControllerResultOutputWithContext(ctx context.Context) LookupSqlDiscoverySiteDataSourceControllerResultOutput {
 	return o
+}
+
+func (o LookupSqlDiscoverySiteDataSourceControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlDiscoverySiteDataSourceControllerResult] {
+	return pulumix.Output[LookupSqlDiscoverySiteDataSourceControllerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the discovery site Id.

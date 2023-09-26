@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-04-01.
@@ -99,6 +100,12 @@ func (o GetOnlineDeploymentLogsResultOutput) ToGetOnlineDeploymentLogsResultOutp
 
 func (o GetOnlineDeploymentLogsResultOutput) ToGetOnlineDeploymentLogsResultOutputWithContext(ctx context.Context) GetOnlineDeploymentLogsResultOutput {
 	return o
+}
+
+func (o GetOnlineDeploymentLogsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOnlineDeploymentLogsResult] {
+	return pulumix.Output[GetOnlineDeploymentLogsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The retrieved online deployment logs.

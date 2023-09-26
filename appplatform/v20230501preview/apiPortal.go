@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // API portal resource
@@ -165,6 +166,12 @@ func (i *ApiPortal) ToApiPortalOutputWithContext(ctx context.Context) ApiPortalO
 	return pulumi.ToOutputWithContext(ctx, i).(ApiPortalOutput)
 }
 
+func (i *ApiPortal) ToOutput(ctx context.Context) pulumix.Output[*ApiPortal] {
+	return pulumix.Output[*ApiPortal]{
+		OutputState: i.ToApiPortalOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiPortalOutput struct{ *pulumi.OutputState }
 
 func (ApiPortalOutput) ElementType() reflect.Type {
@@ -177,6 +184,12 @@ func (o ApiPortalOutput) ToApiPortalOutput() ApiPortalOutput {
 
 func (o ApiPortalOutput) ToApiPortalOutputWithContext(ctx context.Context) ApiPortalOutput {
 	return o
+}
+
+func (o ApiPortalOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiPortal] {
+	return pulumix.Output[*ApiPortal]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource.

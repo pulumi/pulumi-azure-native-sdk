@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Access Review History Definition.
@@ -172,6 +173,12 @@ func (i *AccessReviewHistoryDefinitionById) ToAccessReviewHistoryDefinitionByIdO
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewHistoryDefinitionByIdOutput)
 }
 
+func (i *AccessReviewHistoryDefinitionById) ToOutput(ctx context.Context) pulumix.Output[*AccessReviewHistoryDefinitionById] {
+	return pulumix.Output[*AccessReviewHistoryDefinitionById]{
+		OutputState: i.ToAccessReviewHistoryDefinitionByIdOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessReviewHistoryDefinitionByIdOutput struct{ *pulumi.OutputState }
 
 func (AccessReviewHistoryDefinitionByIdOutput) ElementType() reflect.Type {
@@ -184,6 +191,12 @@ func (o AccessReviewHistoryDefinitionByIdOutput) ToAccessReviewHistoryDefinition
 
 func (o AccessReviewHistoryDefinitionByIdOutput) ToAccessReviewHistoryDefinitionByIdOutputWithContext(ctx context.Context) AccessReviewHistoryDefinitionByIdOutput {
 	return o
+}
+
+func (o AccessReviewHistoryDefinitionByIdOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessReviewHistoryDefinitionById] {
+	return pulumix.Output[*AccessReviewHistoryDefinitionById]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Date time when history definition was created

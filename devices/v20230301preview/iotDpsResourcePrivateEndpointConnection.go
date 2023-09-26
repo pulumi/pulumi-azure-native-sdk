@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The private endpoint connection of a provisioning service
@@ -141,6 +142,12 @@ func (i *IotDpsResourcePrivateEndpointConnection) ToIotDpsResourcePrivateEndpoin
 	return pulumi.ToOutputWithContext(ctx, i).(IotDpsResourcePrivateEndpointConnectionOutput)
 }
 
+func (i *IotDpsResourcePrivateEndpointConnection) ToOutput(ctx context.Context) pulumix.Output[*IotDpsResourcePrivateEndpointConnection] {
+	return pulumix.Output[*IotDpsResourcePrivateEndpointConnection]{
+		OutputState: i.ToIotDpsResourcePrivateEndpointConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IotDpsResourcePrivateEndpointConnectionOutput struct{ *pulumi.OutputState }
 
 func (IotDpsResourcePrivateEndpointConnectionOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o IotDpsResourcePrivateEndpointConnectionOutput) ToIotDpsResourcePrivateEn
 
 func (o IotDpsResourcePrivateEndpointConnectionOutput) ToIotDpsResourcePrivateEndpointConnectionOutputWithContext(ctx context.Context) IotDpsResourcePrivateEndpointConnectionOutput {
 	return o
+}
+
+func (o IotDpsResourcePrivateEndpointConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*IotDpsResourcePrivateEndpointConnection] {
+	return pulumix.Output[*IotDpsResourcePrivateEndpointConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource name.

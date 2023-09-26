@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The customer's prefix that is registered by the peering service provider.
@@ -150,6 +151,12 @@ func (i *RegisteredPrefix) ToRegisteredPrefixOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegisteredPrefixOutput)
 }
 
+func (i *RegisteredPrefix) ToOutput(ctx context.Context) pulumix.Output[*RegisteredPrefix] {
+	return pulumix.Output[*RegisteredPrefix]{
+		OutputState: i.ToRegisteredPrefixOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegisteredPrefixOutput struct{ *pulumi.OutputState }
 
 func (RegisteredPrefixOutput) ElementType() reflect.Type {
@@ -162,6 +169,12 @@ func (o RegisteredPrefixOutput) ToRegisteredPrefixOutput() RegisteredPrefixOutpu
 
 func (o RegisteredPrefixOutput) ToRegisteredPrefixOutputWithContext(ctx context.Context) RegisteredPrefixOutput {
 	return o
+}
+
+func (o RegisteredPrefixOutput) ToOutput(ctx context.Context) pulumix.Output[*RegisteredPrefix] {
+	return pulumix.Output[*RegisteredPrefix]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The error message associated with the validation state, if any.

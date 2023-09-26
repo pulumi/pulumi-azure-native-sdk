@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -102,6 +103,12 @@ func (i AzureDevOpsResourceInfoArgs) ToAzureDevOpsResourceInfoOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsResourceInfoOutput)
 }
 
+func (i AzureDevOpsResourceInfoArgs) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsResourceInfo] {
+	return pulumix.Output[AzureDevOpsResourceInfo]{
+		OutputState: i.ToAzureDevOpsResourceInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AzureDevOpsResourceInfoArgs) ToAzureDevOpsResourceInfoPtrOutput() AzureDevOpsResourceInfoPtrOutput {
 	return i.ToAzureDevOpsResourceInfoPtrOutputWithContext(context.Background())
 }
@@ -143,6 +150,12 @@ func (i *azureDevOpsResourceInfoPtrType) ToAzureDevOpsResourceInfoPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsResourceInfoPtrOutput)
 }
 
+func (i *azureDevOpsResourceInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureDevOpsResourceInfo] {
+	return pulumix.Output[*AzureDevOpsResourceInfo]{
+		OutputState: i.ToAzureDevOpsResourceInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Resources created in Azure DevOps repository.
 type AzureDevOpsResourceInfoOutput struct{ *pulumi.OutputState }
 
@@ -168,6 +181,12 @@ func (o AzureDevOpsResourceInfoOutput) ToAzureDevOpsResourceInfoPtrOutputWithCon
 	}).(AzureDevOpsResourceInfoPtrOutput)
 }
 
+func (o AzureDevOpsResourceInfoOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsResourceInfo] {
+	return pulumix.Output[AzureDevOpsResourceInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Id of the pipeline created for the source-control.
 func (o AzureDevOpsResourceInfoOutput) PipelineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureDevOpsResourceInfo) *string { return v.PipelineId }).(pulumi.StringPtrOutput)
@@ -190,6 +209,12 @@ func (o AzureDevOpsResourceInfoPtrOutput) ToAzureDevOpsResourceInfoPtrOutput() A
 
 func (o AzureDevOpsResourceInfoPtrOutput) ToAzureDevOpsResourceInfoPtrOutputWithContext(ctx context.Context) AzureDevOpsResourceInfoPtrOutput {
 	return o
+}
+
+func (o AzureDevOpsResourceInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureDevOpsResourceInfo] {
+	return pulumix.Output[*AzureDevOpsResourceInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureDevOpsResourceInfoPtrOutput) Elem() AzureDevOpsResourceInfoOutput {
@@ -245,6 +270,12 @@ func (o AzureDevOpsResourceInfoResponseOutput) ToAzureDevOpsResourceInfoResponse
 	return o
 }
 
+func (o AzureDevOpsResourceInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsResourceInfoResponse] {
+	return pulumix.Output[AzureDevOpsResourceInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Id of the pipeline created for the source-control.
 func (o AzureDevOpsResourceInfoResponseOutput) PipelineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureDevOpsResourceInfoResponse) *string { return v.PipelineId }).(pulumi.StringPtrOutput)
@@ -267,6 +298,12 @@ func (o AzureDevOpsResourceInfoResponsePtrOutput) ToAzureDevOpsResourceInfoRespo
 
 func (o AzureDevOpsResourceInfoResponsePtrOutput) ToAzureDevOpsResourceInfoResponsePtrOutputWithContext(ctx context.Context) AzureDevOpsResourceInfoResponsePtrOutput {
 	return o
+}
+
+func (o AzureDevOpsResourceInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureDevOpsResourceInfoResponse] {
+	return pulumix.Output[*AzureDevOpsResourceInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureDevOpsResourceInfoResponsePtrOutput) Elem() AzureDevOpsResourceInfoResponseOutput {
@@ -361,6 +398,12 @@ func (i ContentPathMapArgs) ToContentPathMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ContentPathMapOutput)
 }
 
+func (i ContentPathMapArgs) ToOutput(ctx context.Context) pulumix.Output[ContentPathMap] {
+	return pulumix.Output[ContentPathMap]{
+		OutputState: i.ToContentPathMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContentPathMapArrayInput is an input type that accepts ContentPathMapArray and ContentPathMapArrayOutput values.
 // You can construct a concrete instance of `ContentPathMapArrayInput` via:
 //
@@ -386,6 +429,12 @@ func (i ContentPathMapArray) ToContentPathMapArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ContentPathMapArrayOutput)
 }
 
+func (i ContentPathMapArray) ToOutput(ctx context.Context) pulumix.Output[[]ContentPathMap] {
+	return pulumix.Output[[]ContentPathMap]{
+		OutputState: i.ToContentPathMapArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The mapping of content type to a repo path.
 type ContentPathMapOutput struct{ *pulumi.OutputState }
 
@@ -399,6 +448,12 @@ func (o ContentPathMapOutput) ToContentPathMapOutput() ContentPathMapOutput {
 
 func (o ContentPathMapOutput) ToContentPathMapOutputWithContext(ctx context.Context) ContentPathMapOutput {
 	return o
+}
+
+func (o ContentPathMapOutput) ToOutput(ctx context.Context) pulumix.Output[ContentPathMap] {
+	return pulumix.Output[ContentPathMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Content type.
@@ -423,6 +478,12 @@ func (o ContentPathMapArrayOutput) ToContentPathMapArrayOutput() ContentPathMapA
 
 func (o ContentPathMapArrayOutput) ToContentPathMapArrayOutputWithContext(ctx context.Context) ContentPathMapArrayOutput {
 	return o
+}
+
+func (o ContentPathMapArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContentPathMap] {
+	return pulumix.Output[[]ContentPathMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContentPathMapArrayOutput) Index(i pulumi.IntInput) ContentPathMapOutput {
@@ -454,6 +515,12 @@ func (o ContentPathMapResponseOutput) ToContentPathMapResponseOutputWithContext(
 	return o
 }
 
+func (o ContentPathMapResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContentPathMapResponse] {
+	return pulumix.Output[ContentPathMapResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Content type.
 func (o ContentPathMapResponseOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentPathMapResponse) *string { return v.ContentType }).(pulumi.StringPtrOutput)
@@ -476,6 +543,12 @@ func (o ContentPathMapResponseArrayOutput) ToContentPathMapResponseArrayOutput()
 
 func (o ContentPathMapResponseArrayOutput) ToContentPathMapResponseArrayOutputWithContext(ctx context.Context) ContentPathMapResponseArrayOutput {
 	return o
+}
+
+func (o ContentPathMapResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContentPathMapResponse] {
+	return pulumix.Output[[]ContentPathMapResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContentPathMapResponseArrayOutput) Index(i pulumi.IntInput) ContentPathMapResponseOutput {
@@ -535,6 +608,12 @@ func (i DeploymentArgs) ToDeploymentOutputWithContext(ctx context.Context) Deplo
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentOutput)
 }
 
+func (i DeploymentArgs) ToOutput(ctx context.Context) pulumix.Output[Deployment] {
+	return pulumix.Output[Deployment]{
+		OutputState: i.ToDeploymentOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeploymentArgs) ToDeploymentPtrOutput() DeploymentPtrOutput {
 	return i.ToDeploymentPtrOutputWithContext(context.Background())
 }
@@ -576,6 +655,12 @@ func (i *deploymentPtrType) ToDeploymentPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentPtrOutput)
 }
 
+func (i *deploymentPtrType) ToOutput(ctx context.Context) pulumix.Output[*Deployment] {
+	return pulumix.Output[*Deployment]{
+		OutputState: i.ToDeploymentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Description about a deployment.
 type DeploymentOutput struct{ *pulumi.OutputState }
 
@@ -599,6 +684,12 @@ func (o DeploymentOutput) ToDeploymentPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Deployment) *Deployment {
 		return &v
 	}).(DeploymentPtrOutput)
+}
+
+func (o DeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[Deployment] {
+	return pulumix.Output[Deployment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Deployment identifier.
@@ -638,6 +729,12 @@ func (o DeploymentPtrOutput) ToDeploymentPtrOutput() DeploymentPtrOutput {
 
 func (o DeploymentPtrOutput) ToDeploymentPtrOutputWithContext(ctx context.Context) DeploymentPtrOutput {
 	return o
+}
+
+func (o DeploymentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Deployment] {
+	return pulumix.Output[*Deployment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeploymentPtrOutput) Elem() DeploymentOutput {
@@ -743,6 +840,12 @@ func (i DeploymentInfoArgs) ToDeploymentInfoOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentInfoOutput)
 }
 
+func (i DeploymentInfoArgs) ToOutput(ctx context.Context) pulumix.Output[DeploymentInfo] {
+	return pulumix.Output[DeploymentInfo]{
+		OutputState: i.ToDeploymentInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeploymentInfoArgs) ToDeploymentInfoPtrOutput() DeploymentInfoPtrOutput {
 	return i.ToDeploymentInfoPtrOutputWithContext(context.Background())
 }
@@ -784,6 +887,12 @@ func (i *deploymentInfoPtrType) ToDeploymentInfoPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentInfoPtrOutput)
 }
 
+func (i *deploymentInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeploymentInfo] {
+	return pulumix.Output[*DeploymentInfo]{
+		OutputState: i.ToDeploymentInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information regarding a deployment.
 type DeploymentInfoOutput struct{ *pulumi.OutputState }
 
@@ -807,6 +916,12 @@ func (o DeploymentInfoOutput) ToDeploymentInfoPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentInfo) *DeploymentInfo {
 		return &v
 	}).(DeploymentInfoPtrOutput)
+}
+
+func (o DeploymentInfoOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentInfo] {
+	return pulumix.Output[DeploymentInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Deployment information.
@@ -836,6 +951,12 @@ func (o DeploymentInfoPtrOutput) ToDeploymentInfoPtrOutput() DeploymentInfoPtrOu
 
 func (o DeploymentInfoPtrOutput) ToDeploymentInfoPtrOutputWithContext(ctx context.Context) DeploymentInfoPtrOutput {
 	return o
+}
+
+func (o DeploymentInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentInfo] {
+	return pulumix.Output[*DeploymentInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeploymentInfoPtrOutput) Elem() DeploymentInfoOutput {
@@ -903,6 +1024,12 @@ func (o DeploymentInfoResponseOutput) ToDeploymentInfoResponseOutputWithContext(
 	return o
 }
 
+func (o DeploymentInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentInfoResponse] {
+	return pulumix.Output[DeploymentInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Deployment information.
 func (o DeploymentInfoResponseOutput) Deployment() DeploymentResponsePtrOutput {
 	return o.ApplyT(func(v DeploymentInfoResponse) *DeploymentResponse { return v.Deployment }).(DeploymentResponsePtrOutput)
@@ -930,6 +1057,12 @@ func (o DeploymentInfoResponsePtrOutput) ToDeploymentInfoResponsePtrOutput() Dep
 
 func (o DeploymentInfoResponsePtrOutput) ToDeploymentInfoResponsePtrOutputWithContext(ctx context.Context) DeploymentInfoResponsePtrOutput {
 	return o
+}
+
+func (o DeploymentInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentInfoResponse] {
+	return pulumix.Output[*DeploymentInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeploymentInfoResponsePtrOutput) Elem() DeploymentInfoResponseOutput {
@@ -1001,6 +1134,12 @@ func (o DeploymentResponseOutput) ToDeploymentResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o DeploymentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentResponse] {
+	return pulumix.Output[DeploymentResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Deployment identifier.
 func (o DeploymentResponseOutput) DeploymentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentResponse) *string { return v.DeploymentId }).(pulumi.StringPtrOutput)
@@ -1038,6 +1177,12 @@ func (o DeploymentResponsePtrOutput) ToDeploymentResponsePtrOutput() DeploymentR
 
 func (o DeploymentResponsePtrOutput) ToDeploymentResponsePtrOutputWithContext(ctx context.Context) DeploymentResponsePtrOutput {
 	return o
+}
+
+func (o DeploymentResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentResponse] {
+	return pulumix.Output[*DeploymentResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeploymentResponsePtrOutput) Elem() DeploymentResponseOutput {
@@ -1127,6 +1272,12 @@ func (o EntityInsightItemResponseOutput) ToEntityInsightItemResponseOutputWithCo
 	return o
 }
 
+func (o EntityInsightItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EntityInsightItemResponse] {
+	return pulumix.Output[EntityInsightItemResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Query results for table insights query.
 func (o EntityInsightItemResponseOutput) ChartQueryResults() InsightsTableResultResponseArrayOutput {
 	return o.ApplyT(func(v EntityInsightItemResponse) []InsightsTableResultResponse { return v.ChartQueryResults }).(InsightsTableResultResponseArrayOutput)
@@ -1163,6 +1314,12 @@ func (o EntityInsightItemResponseArrayOutput) ToEntityInsightItemResponseArrayOu
 	return o
 }
 
+func (o EntityInsightItemResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EntityInsightItemResponse] {
+	return pulumix.Output[[]EntityInsightItemResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityInsightItemResponseArrayOutput) Index(i pulumi.IntInput) EntityInsightItemResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityInsightItemResponse {
 		return vs[0].([]EntityInsightItemResponse)[vs[1].(int)]
@@ -1192,6 +1349,12 @@ func (o EntityInsightItemResponseQueryTimeIntervalOutput) ToEntityInsightItemRes
 	return o
 }
 
+func (o EntityInsightItemResponseQueryTimeIntervalOutput) ToOutput(ctx context.Context) pulumix.Output[EntityInsightItemResponseQueryTimeInterval] {
+	return pulumix.Output[EntityInsightItemResponseQueryTimeInterval]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Insight query end time
 func (o EntityInsightItemResponseQueryTimeIntervalOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntityInsightItemResponseQueryTimeInterval) *string { return v.EndTime }).(pulumi.StringPtrOutput)
@@ -1214,6 +1377,12 @@ func (o EntityInsightItemResponseQueryTimeIntervalPtrOutput) ToEntityInsightItem
 
 func (o EntityInsightItemResponseQueryTimeIntervalPtrOutput) ToEntityInsightItemResponseQueryTimeIntervalPtrOutputWithContext(ctx context.Context) EntityInsightItemResponseQueryTimeIntervalPtrOutput {
 	return o
+}
+
+func (o EntityInsightItemResponseQueryTimeIntervalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityInsightItemResponseQueryTimeInterval] {
+	return pulumix.Output[*EntityInsightItemResponseQueryTimeInterval]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityInsightItemResponseQueryTimeIntervalPtrOutput) Elem() EntityInsightItemResponseQueryTimeIntervalOutput {
@@ -1271,6 +1440,12 @@ func (o GetInsightsErrorKindResponseOutput) ToGetInsightsErrorKindResponseOutput
 	return o
 }
 
+func (o GetInsightsErrorKindResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GetInsightsErrorKindResponse] {
+	return pulumix.Output[GetInsightsErrorKindResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the error message
 func (o GetInsightsErrorKindResponseOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInsightsErrorKindResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
@@ -1298,6 +1473,12 @@ func (o GetInsightsErrorKindResponseArrayOutput) ToGetInsightsErrorKindResponseA
 
 func (o GetInsightsErrorKindResponseArrayOutput) ToGetInsightsErrorKindResponseArrayOutputWithContext(ctx context.Context) GetInsightsErrorKindResponseArrayOutput {
 	return o
+}
+
+func (o GetInsightsErrorKindResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInsightsErrorKindResponse] {
+	return pulumix.Output[[]GetInsightsErrorKindResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInsightsErrorKindResponseArrayOutput) Index(i pulumi.IntInput) GetInsightsErrorKindResponseOutput {
@@ -1329,6 +1510,12 @@ func (o GetInsightsResultsMetadataResponseOutput) ToGetInsightsResultsMetadataRe
 	return o
 }
 
+func (o GetInsightsResultsMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GetInsightsResultsMetadataResponse] {
+	return pulumix.Output[GetInsightsResultsMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // information about the failed queries
 func (o GetInsightsResultsMetadataResponseOutput) Errors() GetInsightsErrorKindResponseArrayOutput {
 	return o.ApplyT(func(v GetInsightsResultsMetadataResponse) []GetInsightsErrorKindResponse { return v.Errors }).(GetInsightsErrorKindResponseArrayOutput)
@@ -1351,6 +1538,12 @@ func (o GetInsightsResultsMetadataResponsePtrOutput) ToGetInsightsResultsMetadat
 
 func (o GetInsightsResultsMetadataResponsePtrOutput) ToGetInsightsResultsMetadataResponsePtrOutputWithContext(ctx context.Context) GetInsightsResultsMetadataResponsePtrOutput {
 	return o
+}
+
+func (o GetInsightsResultsMetadataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetInsightsResultsMetadataResponse] {
+	return pulumix.Output[*GetInsightsResultsMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInsightsResultsMetadataResponsePtrOutput) Elem() GetInsightsResultsMetadataResponseOutput {
@@ -1418,6 +1611,12 @@ func (i GitHubResourceInfoArgs) ToGitHubResourceInfoOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubResourceInfoOutput)
 }
 
+func (i GitHubResourceInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GitHubResourceInfo] {
+	return pulumix.Output[GitHubResourceInfo]{
+		OutputState: i.ToGitHubResourceInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GitHubResourceInfoArgs) ToGitHubResourceInfoPtrOutput() GitHubResourceInfoPtrOutput {
 	return i.ToGitHubResourceInfoPtrOutputWithContext(context.Background())
 }
@@ -1459,6 +1658,12 @@ func (i *gitHubResourceInfoPtrType) ToGitHubResourceInfoPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubResourceInfoPtrOutput)
 }
 
+func (i *gitHubResourceInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GitHubResourceInfo] {
+	return pulumix.Output[*GitHubResourceInfo]{
+		OutputState: i.ToGitHubResourceInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Resources created in GitHub repository.
 type GitHubResourceInfoOutput struct{ *pulumi.OutputState }
 
@@ -1484,6 +1689,12 @@ func (o GitHubResourceInfoOutput) ToGitHubResourceInfoPtrOutputWithContext(ctx c
 	}).(GitHubResourceInfoPtrOutput)
 }
 
+func (o GitHubResourceInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubResourceInfo] {
+	return pulumix.Output[GitHubResourceInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // GitHub application installation id.
 func (o GitHubResourceInfoOutput) AppInstallationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitHubResourceInfo) *string { return v.AppInstallationId }).(pulumi.StringPtrOutput)
@@ -1501,6 +1712,12 @@ func (o GitHubResourceInfoPtrOutput) ToGitHubResourceInfoPtrOutput() GitHubResou
 
 func (o GitHubResourceInfoPtrOutput) ToGitHubResourceInfoPtrOutputWithContext(ctx context.Context) GitHubResourceInfoPtrOutput {
 	return o
+}
+
+func (o GitHubResourceInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitHubResourceInfo] {
+	return pulumix.Output[*GitHubResourceInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GitHubResourceInfoPtrOutput) Elem() GitHubResourceInfoOutput {
@@ -1544,6 +1761,12 @@ func (o GitHubResourceInfoResponseOutput) ToGitHubResourceInfoResponseOutputWith
 	return o
 }
 
+func (o GitHubResourceInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubResourceInfoResponse] {
+	return pulumix.Output[GitHubResourceInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // GitHub application installation id.
 func (o GitHubResourceInfoResponseOutput) AppInstallationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitHubResourceInfoResponse) *string { return v.AppInstallationId }).(pulumi.StringPtrOutput)
@@ -1561,6 +1784,12 @@ func (o GitHubResourceInfoResponsePtrOutput) ToGitHubResourceInfoResponsePtrOutp
 
 func (o GitHubResourceInfoResponsePtrOutput) ToGitHubResourceInfoResponsePtrOutputWithContext(ctx context.Context) GitHubResourceInfoResponsePtrOutput {
 	return o
+}
+
+func (o GitHubResourceInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitHubResourceInfoResponse] {
+	return pulumix.Output[*GitHubResourceInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GitHubResourceInfoResponsePtrOutput) Elem() GitHubResourceInfoResponseOutput {
@@ -1606,6 +1835,12 @@ func (o InsightsTableResultResponseOutput) ToInsightsTableResultResponseOutputWi
 	return o
 }
 
+func (o InsightsTableResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InsightsTableResultResponse] {
+	return pulumix.Output[InsightsTableResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Columns Metadata of the table
 func (o InsightsTableResultResponseOutput) Columns() InsightsTableResultResponseColumnsArrayOutput {
 	return o.ApplyT(func(v InsightsTableResultResponse) []InsightsTableResultResponseColumns { return v.Columns }).(InsightsTableResultResponseColumnsArrayOutput)
@@ -1628,6 +1863,12 @@ func (o InsightsTableResultResponsePtrOutput) ToInsightsTableResultResponsePtrOu
 
 func (o InsightsTableResultResponsePtrOutput) ToInsightsTableResultResponsePtrOutputWithContext(ctx context.Context) InsightsTableResultResponsePtrOutput {
 	return o
+}
+
+func (o InsightsTableResultResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InsightsTableResultResponse] {
+	return pulumix.Output[*InsightsTableResultResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InsightsTableResultResponsePtrOutput) Elem() InsightsTableResultResponseOutput {
@@ -1674,6 +1915,12 @@ func (o InsightsTableResultResponseArrayOutput) ToInsightsTableResultResponseArr
 	return o
 }
 
+func (o InsightsTableResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InsightsTableResultResponse] {
+	return pulumix.Output[[]InsightsTableResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InsightsTableResultResponseArrayOutput) Index(i pulumi.IntInput) InsightsTableResultResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InsightsTableResultResponse {
 		return vs[0].([]InsightsTableResultResponse)[vs[1].(int)]
@@ -1701,6 +1948,12 @@ func (o InsightsTableResultResponseColumnsOutput) ToInsightsTableResultResponseC
 	return o
 }
 
+func (o InsightsTableResultResponseColumnsOutput) ToOutput(ctx context.Context) pulumix.Output[InsightsTableResultResponseColumns] {
+	return pulumix.Output[InsightsTableResultResponseColumns]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the name of the colum
 func (o InsightsTableResultResponseColumnsOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InsightsTableResultResponseColumns) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1723,6 +1976,12 @@ func (o InsightsTableResultResponseColumnsArrayOutput) ToInsightsTableResultResp
 
 func (o InsightsTableResultResponseColumnsArrayOutput) ToInsightsTableResultResponseColumnsArrayOutputWithContext(ctx context.Context) InsightsTableResultResponseColumnsArrayOutput {
 	return o
+}
+
+func (o InsightsTableResultResponseColumnsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InsightsTableResultResponseColumns] {
+	return pulumix.Output[[]InsightsTableResultResponseColumns]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InsightsTableResultResponseColumnsArrayOutput) Index(i pulumi.IntInput) InsightsTableResultResponseColumnsOutput {
@@ -1756,6 +2015,12 @@ func (o RepoResponseOutput) ToRepoResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o RepoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RepoResponse] {
+	return pulumix.Output[RepoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Array of branches.
 func (o RepoResponseOutput) Branches() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RepoResponse) []string { return v.Branches }).(pulumi.StringArrayOutput)
@@ -1783,6 +2048,12 @@ func (o RepoResponseArrayOutput) ToRepoResponseArrayOutput() RepoResponseArrayOu
 
 func (o RepoResponseArrayOutput) ToRepoResponseArrayOutputWithContext(ctx context.Context) RepoResponseArrayOutput {
 	return o
+}
+
+func (o RepoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepoResponse] {
+	return pulumix.Output[[]RepoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RepoResponseArrayOutput) Index(i pulumi.IntInput) RepoResponseOutput {
@@ -1842,6 +2113,12 @@ func (i RepositoryArgs) ToRepositoryOutputWithContext(ctx context.Context) Repos
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryOutput)
 }
 
+func (i RepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[Repository] {
+	return pulumix.Output[Repository]{
+		OutputState: i.ToRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // metadata of a repository.
 type RepositoryOutput struct{ *pulumi.OutputState }
 
@@ -1855,6 +2132,12 @@ func (o RepositoryOutput) ToRepositoryOutput() RepositoryOutput {
 
 func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) RepositoryOutput {
 	return o
+}
+
+func (o RepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[Repository] {
+	return pulumix.Output[Repository]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Branch name of repository.
@@ -1925,6 +2208,12 @@ func (i RepositoryResourceInfoArgs) ToRepositoryResourceInfoOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryResourceInfoOutput)
 }
 
+func (i RepositoryResourceInfoArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryResourceInfo] {
+	return pulumix.Output[RepositoryResourceInfo]{
+		OutputState: i.ToRepositoryResourceInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RepositoryResourceInfoArgs) ToRepositoryResourceInfoPtrOutput() RepositoryResourceInfoPtrOutput {
 	return i.ToRepositoryResourceInfoPtrOutputWithContext(context.Background())
 }
@@ -1966,6 +2255,12 @@ func (i *repositoryResourceInfoPtrType) ToRepositoryResourceInfoPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryResourceInfoPtrOutput)
 }
 
+func (i *repositoryResourceInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryResourceInfo] {
+	return pulumix.Output[*RepositoryResourceInfo]{
+		OutputState: i.ToRepositoryResourceInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Resources created in user's repository for the source-control.
 type RepositoryResourceInfoOutput struct{ *pulumi.OutputState }
 
@@ -1989,6 +2284,12 @@ func (o RepositoryResourceInfoOutput) ToRepositoryResourceInfoPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryResourceInfo) *RepositoryResourceInfo {
 		return &v
 	}).(RepositoryResourceInfoPtrOutput)
+}
+
+func (o RepositoryResourceInfoOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryResourceInfo] {
+	return pulumix.Output[RepositoryResourceInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resources created in Azure DevOps for this source-control.
@@ -2018,6 +2319,12 @@ func (o RepositoryResourceInfoPtrOutput) ToRepositoryResourceInfoPtrOutput() Rep
 
 func (o RepositoryResourceInfoPtrOutput) ToRepositoryResourceInfoPtrOutputWithContext(ctx context.Context) RepositoryResourceInfoPtrOutput {
 	return o
+}
+
+func (o RepositoryResourceInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryResourceInfo] {
+	return pulumix.Output[*RepositoryResourceInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RepositoryResourceInfoPtrOutput) Elem() RepositoryResourceInfoOutput {
@@ -2085,6 +2392,12 @@ func (o RepositoryResourceInfoResponseOutput) ToRepositoryResourceInfoResponseOu
 	return o
 }
 
+func (o RepositoryResourceInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryResourceInfoResponse] {
+	return pulumix.Output[RepositoryResourceInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resources created in Azure DevOps for this source-control.
 func (o RepositoryResourceInfoResponseOutput) AzureDevOpsResourceInfo() AzureDevOpsResourceInfoResponsePtrOutput {
 	return o.ApplyT(func(v RepositoryResourceInfoResponse) *AzureDevOpsResourceInfoResponse {
@@ -2114,6 +2427,12 @@ func (o RepositoryResourceInfoResponsePtrOutput) ToRepositoryResourceInfoRespons
 
 func (o RepositoryResourceInfoResponsePtrOutput) ToRepositoryResourceInfoResponsePtrOutputWithContext(ctx context.Context) RepositoryResourceInfoResponsePtrOutput {
 	return o
+}
+
+func (o RepositoryResourceInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryResourceInfoResponse] {
+	return pulumix.Output[*RepositoryResourceInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RepositoryResourceInfoResponsePtrOutput) Elem() RepositoryResourceInfoResponseOutput {
@@ -2183,6 +2502,12 @@ func (o RepositoryResponseOutput) ToRepositoryResponseOutput() RepositoryRespons
 
 func (o RepositoryResponseOutput) ToRepositoryResponseOutputWithContext(ctx context.Context) RepositoryResponseOutput {
 	return o
+}
+
+func (o RepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryResponse] {
+	return pulumix.Output[RepositoryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Branch name of repository.
@@ -2270,6 +2595,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -2323,6 +2654,12 @@ func (o TimelineAggregationResponseOutput) ToTimelineAggregationResponseOutputWi
 	return o
 }
 
+func (o TimelineAggregationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimelineAggregationResponse] {
+	return pulumix.Output[TimelineAggregationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the total items found for a kind
 func (o TimelineAggregationResponseOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v TimelineAggregationResponse) int { return v.Count }).(pulumi.IntOutput)
@@ -2345,6 +2682,12 @@ func (o TimelineAggregationResponseArrayOutput) ToTimelineAggregationResponseArr
 
 func (o TimelineAggregationResponseArrayOutput) ToTimelineAggregationResponseArrayOutputWithContext(ctx context.Context) TimelineAggregationResponseArrayOutput {
 	return o
+}
+
+func (o TimelineAggregationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimelineAggregationResponse] {
+	return pulumix.Output[[]TimelineAggregationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimelineAggregationResponseArrayOutput) Index(i pulumi.IntInput) TimelineAggregationResponseOutput {
@@ -2378,6 +2721,12 @@ func (o TimelineErrorResponseOutput) ToTimelineErrorResponseOutputWithContext(ct
 	return o
 }
 
+func (o TimelineErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimelineErrorResponse] {
+	return pulumix.Output[TimelineErrorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the error message
 func (o TimelineErrorResponseOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v TimelineErrorResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
@@ -2405,6 +2754,12 @@ func (o TimelineErrorResponseArrayOutput) ToTimelineErrorResponseArrayOutput() T
 
 func (o TimelineErrorResponseArrayOutput) ToTimelineErrorResponseArrayOutputWithContext(ctx context.Context) TimelineErrorResponseArrayOutput {
 	return o
+}
+
+func (o TimelineErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimelineErrorResponse] {
+	return pulumix.Output[[]TimelineErrorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimelineErrorResponseArrayOutput) Index(i pulumi.IntInput) TimelineErrorResponseOutput {
@@ -2438,6 +2793,12 @@ func (o TimelineResultsMetadataResponseOutput) ToTimelineResultsMetadataResponse
 	return o
 }
 
+func (o TimelineResultsMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimelineResultsMetadataResponse] {
+	return pulumix.Output[TimelineResultsMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // timeline aggregation per kind
 func (o TimelineResultsMetadataResponseOutput) Aggregations() TimelineAggregationResponseArrayOutput {
 	return o.ApplyT(func(v TimelineResultsMetadataResponse) []TimelineAggregationResponse { return v.Aggregations }).(TimelineAggregationResponseArrayOutput)
@@ -2465,6 +2826,12 @@ func (o TimelineResultsMetadataResponsePtrOutput) ToTimelineResultsMetadataRespo
 
 func (o TimelineResultsMetadataResponsePtrOutput) ToTimelineResultsMetadataResponsePtrOutputWithContext(ctx context.Context) TimelineResultsMetadataResponsePtrOutput {
 	return o
+}
+
+func (o TimelineResultsMetadataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimelineResultsMetadataResponse] {
+	return pulumix.Output[*TimelineResultsMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimelineResultsMetadataResponsePtrOutput) Elem() TimelineResultsMetadataResponseOutput {
@@ -2564,6 +2931,12 @@ func (i WebhookArgs) ToWebhookOutputWithContext(ctx context.Context) WebhookOutp
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookOutput)
 }
 
+func (i WebhookArgs) ToOutput(ctx context.Context) pulumix.Output[Webhook] {
+	return pulumix.Output[Webhook]{
+		OutputState: i.ToWebhookOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WebhookArgs) ToWebhookPtrOutput() WebhookPtrOutput {
 	return i.ToWebhookPtrOutputWithContext(context.Background())
 }
@@ -2605,6 +2978,12 @@ func (i *webhookPtrType) ToWebhookPtrOutputWithContext(ctx context.Context) Webh
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookPtrOutput)
 }
 
+func (i *webhookPtrType) ToOutput(ctx context.Context) pulumix.Output[*Webhook] {
+	return pulumix.Output[*Webhook]{
+		OutputState: i.ToWebhookPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Detail about the webhook object.
 type WebhookOutput struct{ *pulumi.OutputState }
 
@@ -2628,6 +3007,12 @@ func (o WebhookOutput) ToWebhookPtrOutputWithContext(ctx context.Context) Webhoo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Webhook) *Webhook {
 		return &v
 	}).(WebhookPtrOutput)
+}
+
+func (o WebhookOutput) ToOutput(ctx context.Context) pulumix.Output[Webhook] {
+	return pulumix.Output[Webhook]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A flag to instruct the backend service to rotate webhook secret.
@@ -2662,6 +3047,12 @@ func (o WebhookPtrOutput) ToWebhookPtrOutput() WebhookPtrOutput {
 
 func (o WebhookPtrOutput) ToWebhookPtrOutputWithContext(ctx context.Context) WebhookPtrOutput {
 	return o
+}
+
+func (o WebhookPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Webhook] {
+	return pulumix.Output[*Webhook]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebhookPtrOutput) Elem() WebhookOutput {
@@ -2741,6 +3132,12 @@ func (o WebhookResponseOutput) ToWebhookResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o WebhookResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookResponse] {
+	return pulumix.Output[WebhookResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A flag to instruct the backend service to rotate webhook secret.
 func (o WebhookResponseOutput) RotateWebhookSecret() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WebhookResponse) *bool { return v.RotateWebhookSecret }).(pulumi.BoolPtrOutput)
@@ -2773,6 +3170,12 @@ func (o WebhookResponsePtrOutput) ToWebhookResponsePtrOutput() WebhookResponsePt
 
 func (o WebhookResponsePtrOutput) ToWebhookResponsePtrOutputWithContext(ctx context.Context) WebhookResponsePtrOutput {
 	return o
+}
+
+func (o WebhookResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebhookResponse] {
+	return pulumix.Output[*WebhookResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebhookResponsePtrOutput) Elem() WebhookResponseOutput {

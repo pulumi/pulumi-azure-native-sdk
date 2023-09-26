@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The service account provisioning mode for this Active Directory connector.
@@ -193,6 +194,12 @@ func (o InfrastructureOutput) ToInfrastructurePtrOutputWithContext(ctx context.C
 	}).(InfrastructurePtrOutput)
 }
 
+func (o InfrastructureOutput) ToOutput(ctx context.Context) pulumix.Output[Infrastructure] {
+	return pulumix.Output[Infrastructure]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InfrastructureOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -226,6 +233,12 @@ func (o InfrastructurePtrOutput) ToInfrastructurePtrOutput() InfrastructurePtrOu
 
 func (o InfrastructurePtrOutput) ToInfrastructurePtrOutputWithContext(ctx context.Context) InfrastructurePtrOutput {
 	return o
+}
+
+func (o InfrastructurePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Infrastructure] {
+	return pulumix.Output[*Infrastructure]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InfrastructurePtrOutput) Elem() InfrastructureOutput {
@@ -288,6 +301,12 @@ func (in *infrastructurePtr) ToInfrastructurePtrOutput() InfrastructurePtrOutput
 
 func (in *infrastructurePtr) ToInfrastructurePtrOutputWithContext(ctx context.Context) InfrastructurePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InfrastructurePtrOutput)
+}
+
+func (in *infrastructurePtr) ToOutput(ctx context.Context) pulumix.Output[*Infrastructure] {
+	return pulumix.Output[*Infrastructure]{
+		OutputState: in.ToInfrastructurePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The role of the SQL managed instance in this failover group.
@@ -367,6 +386,12 @@ func (o PostgresInstanceSkuTierOutput) ToPostgresInstanceSkuTierPtrOutputWithCon
 	}).(PostgresInstanceSkuTierPtrOutput)
 }
 
+func (o PostgresInstanceSkuTierOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresInstanceSkuTier] {
+	return pulumix.Output[PostgresInstanceSkuTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PostgresInstanceSkuTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -400,6 +425,12 @@ func (o PostgresInstanceSkuTierPtrOutput) ToPostgresInstanceSkuTierPtrOutput() P
 
 func (o PostgresInstanceSkuTierPtrOutput) ToPostgresInstanceSkuTierPtrOutputWithContext(ctx context.Context) PostgresInstanceSkuTierPtrOutput {
 	return o
+}
+
+func (o PostgresInstanceSkuTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PostgresInstanceSkuTier] {
+	return pulumix.Output[*PostgresInstanceSkuTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PostgresInstanceSkuTierPtrOutput) Elem() PostgresInstanceSkuTierOutput {
@@ -462,6 +493,12 @@ func (in *postgresInstanceSkuTierPtr) ToPostgresInstanceSkuTierPtrOutput() Postg
 
 func (in *postgresInstanceSkuTierPtr) ToPostgresInstanceSkuTierPtrOutputWithContext(ctx context.Context) PostgresInstanceSkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PostgresInstanceSkuTierPtrOutput)
+}
+
+func (in *postgresInstanceSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*PostgresInstanceSkuTier] {
+	return pulumix.Output[*PostgresInstanceSkuTier]{
+		OutputState: in.ToPostgresInstanceSkuTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Status of the database.
@@ -540,6 +577,12 @@ func (o SqlManagedInstanceSkuNameOutput) ToSqlManagedInstanceSkuNamePtrOutputWit
 	}).(SqlManagedInstanceSkuNamePtrOutput)
 }
 
+func (o SqlManagedInstanceSkuNameOutput) ToOutput(ctx context.Context) pulumix.Output[SqlManagedInstanceSkuName] {
+	return pulumix.Output[SqlManagedInstanceSkuName]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SqlManagedInstanceSkuNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -573,6 +616,12 @@ func (o SqlManagedInstanceSkuNamePtrOutput) ToSqlManagedInstanceSkuNamePtrOutput
 
 func (o SqlManagedInstanceSkuNamePtrOutput) ToSqlManagedInstanceSkuNamePtrOutputWithContext(ctx context.Context) SqlManagedInstanceSkuNamePtrOutput {
 	return o
+}
+
+func (o SqlManagedInstanceSkuNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlManagedInstanceSkuName] {
+	return pulumix.Output[*SqlManagedInstanceSkuName]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SqlManagedInstanceSkuNamePtrOutput) Elem() SqlManagedInstanceSkuNameOutput {
@@ -635,6 +684,12 @@ func (in *sqlManagedInstanceSkuNamePtr) ToSqlManagedInstanceSkuNamePtrOutput() S
 
 func (in *sqlManagedInstanceSkuNamePtr) ToSqlManagedInstanceSkuNamePtrOutputWithContext(ctx context.Context) SqlManagedInstanceSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SqlManagedInstanceSkuNamePtrOutput)
+}
+
+func (in *sqlManagedInstanceSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SqlManagedInstanceSkuName] {
+	return pulumix.Output[*SqlManagedInstanceSkuName]{
+		OutputState: in.ToSqlManagedInstanceSkuNamePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The pricing tier for the instance.
@@ -705,6 +760,12 @@ func (o SqlManagedInstanceSkuTierOutput) ToSqlManagedInstanceSkuTierPtrOutputWit
 	}).(SqlManagedInstanceSkuTierPtrOutput)
 }
 
+func (o SqlManagedInstanceSkuTierOutput) ToOutput(ctx context.Context) pulumix.Output[SqlManagedInstanceSkuTier] {
+	return pulumix.Output[SqlManagedInstanceSkuTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SqlManagedInstanceSkuTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -738,6 +799,12 @@ func (o SqlManagedInstanceSkuTierPtrOutput) ToSqlManagedInstanceSkuTierPtrOutput
 
 func (o SqlManagedInstanceSkuTierPtrOutput) ToSqlManagedInstanceSkuTierPtrOutputWithContext(ctx context.Context) SqlManagedInstanceSkuTierPtrOutput {
 	return o
+}
+
+func (o SqlManagedInstanceSkuTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlManagedInstanceSkuTier] {
+	return pulumix.Output[*SqlManagedInstanceSkuTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SqlManagedInstanceSkuTierPtrOutput) Elem() SqlManagedInstanceSkuTierOutput {
@@ -800,6 +867,12 @@ func (in *sqlManagedInstanceSkuTierPtr) ToSqlManagedInstanceSkuTierPtrOutput() S
 
 func (in *sqlManagedInstanceSkuTierPtr) ToSqlManagedInstanceSkuTierPtrOutputWithContext(ctx context.Context) SqlManagedInstanceSkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SqlManagedInstanceSkuTierPtrOutput)
+}
+
+func (in *sqlManagedInstanceSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SqlManagedInstanceSkuTier] {
+	return pulumix.Output[*SqlManagedInstanceSkuTier]{
+		OutputState: in.ToSqlManagedInstanceSkuTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SQL Server version.

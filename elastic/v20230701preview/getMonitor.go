@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Monitor resource.
@@ -88,6 +89,12 @@ func (o LookupMonitorResultOutput) ToLookupMonitorResultOutput() LookupMonitorRe
 
 func (o LookupMonitorResultOutput) ToLookupMonitorResultOutputWithContext(ctx context.Context) LookupMonitorResultOutput {
 	return o
+}
+
+func (o LookupMonitorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMonitorResult] {
+	return pulumix.Output[LookupMonitorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ARM id of the monitor resource.

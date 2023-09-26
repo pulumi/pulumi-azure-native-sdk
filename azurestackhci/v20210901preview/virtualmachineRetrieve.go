@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The virtual machine resource definition.
@@ -203,6 +204,12 @@ func (i *VirtualmachineRetrieve) ToVirtualmachineRetrieveOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualmachineRetrieveOutput)
 }
 
+func (i *VirtualmachineRetrieve) ToOutput(ctx context.Context) pulumix.Output[*VirtualmachineRetrieve] {
+	return pulumix.Output[*VirtualmachineRetrieve]{
+		OutputState: i.ToVirtualmachineRetrieveOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualmachineRetrieveOutput struct{ *pulumi.OutputState }
 
 func (VirtualmachineRetrieveOutput) ElementType() reflect.Type {
@@ -215,6 +222,12 @@ func (o VirtualmachineRetrieveOutput) ToVirtualmachineRetrieveOutput() Virtualma
 
 func (o VirtualmachineRetrieveOutput) ToVirtualmachineRetrieveOutputWithContext(ctx context.Context) VirtualmachineRetrieveOutput {
 	return o
+}
+
+func (o VirtualmachineRetrieveOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualmachineRetrieve] {
+	return pulumix.Output[*VirtualmachineRetrieve]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The extendedLocation of the resource.

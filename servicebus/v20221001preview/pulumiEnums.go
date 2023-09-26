@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessRights string
@@ -78,6 +79,12 @@ func (o AccessRightsOutput) ToAccessRightsPtrOutputWithContext(ctx context.Conte
 	}).(AccessRightsPtrOutput)
 }
 
+func (o AccessRightsOutput) ToOutput(ctx context.Context) pulumix.Output[AccessRights] {
+	return pulumix.Output[AccessRights]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessRightsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o AccessRightsPtrOutput) ToAccessRightsPtrOutput() AccessRightsPtrOutput {
 
 func (o AccessRightsPtrOutput) ToAccessRightsPtrOutputWithContext(ctx context.Context) AccessRightsPtrOutput {
 	return o
+}
+
+func (o AccessRightsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessRights] {
+	return pulumix.Output[*AccessRights]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessRightsPtrOutput) Elem() AccessRightsOutput {
@@ -175,6 +188,12 @@ func (in *accessRightsPtr) ToAccessRightsPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(AccessRightsPtrOutput)
 }
 
+func (in *accessRightsPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessRights] {
+	return pulumix.Output[*AccessRights]{
+		OutputState: in.ToAccessRightsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessRightsArrayInput is an input type that accepts AccessRightsArray and AccessRightsArrayOutput values.
 // You can construct a concrete instance of `AccessRightsArrayInput` via:
 //
@@ -200,6 +219,12 @@ func (i AccessRightsArray) ToAccessRightsArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AccessRightsArrayOutput)
 }
 
+func (i AccessRightsArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessRights] {
+	return pulumix.Output[[]AccessRights]{
+		OutputState: i.ToAccessRightsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessRightsArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessRightsArrayOutput) ElementType() reflect.Type {
@@ -212,6 +237,12 @@ func (o AccessRightsArrayOutput) ToAccessRightsArrayOutput() AccessRightsArrayOu
 
 func (o AccessRightsArrayOutput) ToAccessRightsArrayOutputWithContext(ctx context.Context) AccessRightsArrayOutput {
 	return o
+}
+
+func (o AccessRightsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessRights] {
+	return pulumix.Output[[]AccessRights]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessRightsArrayOutput) Index(i pulumi.IntInput) AccessRightsOutput {
@@ -315,6 +346,12 @@ func (o EntityStatusOutput) ToEntityStatusPtrOutputWithContext(ctx context.Conte
 	}).(EntityStatusPtrOutput)
 }
 
+func (o EntityStatusOutput) ToOutput(ctx context.Context) pulumix.Output[EntityStatus] {
+	return pulumix.Output[EntityStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -348,6 +385,12 @@ func (o EntityStatusPtrOutput) ToEntityStatusPtrOutput() EntityStatusPtrOutput {
 
 func (o EntityStatusPtrOutput) ToEntityStatusPtrOutputWithContext(ctx context.Context) EntityStatusPtrOutput {
 	return o
+}
+
+func (o EntityStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityStatus] {
+	return pulumix.Output[*EntityStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityStatusPtrOutput) Elem() EntityStatusOutput {
@@ -410,6 +453,12 @@ func (in *entityStatusPtr) ToEntityStatusPtrOutput() EntityStatusPtrOutput {
 
 func (in *entityStatusPtr) ToEntityStatusPtrOutputWithContext(ctx context.Context) EntityStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityStatusPtrOutput)
+}
+
+func (in *entityStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityStatus] {
+	return pulumix.Output[*EntityStatus]{
+		OutputState: in.ToEntityStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Filter type that is evaluated against a BrokeredMessage.
@@ -480,6 +529,12 @@ func (o FilterTypeOutput) ToFilterTypePtrOutputWithContext(ctx context.Context) 
 	}).(FilterTypePtrOutput)
 }
 
+func (o FilterTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FilterType] {
+	return pulumix.Output[FilterType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FilterTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -513,6 +568,12 @@ func (o FilterTypePtrOutput) ToFilterTypePtrOutput() FilterTypePtrOutput {
 
 func (o FilterTypePtrOutput) ToFilterTypePtrOutputWithContext(ctx context.Context) FilterTypePtrOutput {
 	return o
+}
+
+func (o FilterTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FilterType] {
+	return pulumix.Output[*FilterType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FilterTypePtrOutput) Elem() FilterTypeOutput {
@@ -575,6 +636,12 @@ func (in *filterTypePtr) ToFilterTypePtrOutput() FilterTypePtrOutput {
 
 func (in *filterTypePtr) ToFilterTypePtrOutputWithContext(ctx context.Context) FilterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FilterTypePtrOutput)
+}
+
+func (in *filterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FilterType] {
+	return pulumix.Output[*FilterType]{
+		OutputState: in.ToFilterTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Enumerates the possible value of keySource for Encryption
@@ -644,6 +711,12 @@ func (o KeySourceOutput) ToKeySourcePtrOutputWithContext(ctx context.Context) Ke
 	}).(KeySourcePtrOutput)
 }
 
+func (o KeySourceOutput) ToOutput(ctx context.Context) pulumix.Output[KeySource] {
+	return pulumix.Output[KeySource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeySourceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -677,6 +750,12 @@ func (o KeySourcePtrOutput) ToKeySourcePtrOutput() KeySourcePtrOutput {
 
 func (o KeySourcePtrOutput) ToKeySourcePtrOutputWithContext(ctx context.Context) KeySourcePtrOutput {
 	return o
+}
+
+func (o KeySourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
+	return pulumix.Output[*KeySource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeySourcePtrOutput) Elem() KeySourceOutput {
@@ -739,6 +818,12 @@ func (in *keySourcePtr) ToKeySourcePtrOutput() KeySourcePtrOutput {
 
 func (in *keySourcePtr) ToKeySourcePtrOutputWithContext(ctx context.Context) KeySourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeySourcePtrOutput)
+}
+
+func (in *keySourcePtr) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
+	return pulumix.Output[*KeySource]{
+		OutputState: in.ToKeySourcePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of managed service identity.
@@ -811,6 +896,12 @@ func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypePtrOutputW
 	}).(ManagedServiceIdentityTypePtrOutput)
 }
 
+func (o ManagedServiceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityType] {
+	return pulumix.Output[ManagedServiceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ManagedServiceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -844,6 +935,12 @@ func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutp
 
 func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
+	return pulumix.Output[*ManagedServiceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityTypePtrOutput) Elem() ManagedServiceIdentityTypeOutput {
@@ -906,6 +1003,12 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
+}
+
+func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
+	return pulumix.Output[*ManagedServiceIdentityType]{
+		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The IP Filter Action
@@ -1011,6 +1114,12 @@ func (o SkuNameOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNam
 	}).(SkuNamePtrOutput)
 }
 
+func (o SkuNameOutput) ToOutput(ctx context.Context) pulumix.Output[SkuName] {
+	return pulumix.Output[SkuName]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SkuNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1044,6 +1153,12 @@ func (o SkuNamePtrOutput) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (o SkuNamePtrOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return o
+}
+
+func (o SkuNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
+	return pulumix.Output[*SkuName]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuNamePtrOutput) Elem() SkuNameOutput {
@@ -1106,6 +1221,12 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
+}
+
+func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
+	return pulumix.Output[*SkuName]{
+		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The billing tier of this particular SKU.
@@ -1177,6 +1298,12 @@ func (o SkuTierOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTie
 	}).(SkuTierPtrOutput)
 }
 
+func (o SkuTierOutput) ToOutput(ctx context.Context) pulumix.Output[SkuTier] {
+	return pulumix.Output[SkuTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SkuTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1210,6 +1337,12 @@ func (o SkuTierPtrOutput) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (o SkuTierPtrOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return o
+}
+
+func (o SkuTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
+	return pulumix.Output[*SkuTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuTierPtrOutput) Elem() SkuTierOutput {
@@ -1272,6 +1405,12 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
+}
+
+func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
+	return pulumix.Output[*SkuTier]{
+		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The minimum TLS version for the cluster to support, e.g. '1.2'

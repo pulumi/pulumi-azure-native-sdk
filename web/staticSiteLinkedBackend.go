@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Static Site Linked Backend ARM resource.
@@ -141,6 +142,12 @@ func (i *StaticSiteLinkedBackend) ToStaticSiteLinkedBackendOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(StaticSiteLinkedBackendOutput)
 }
 
+func (i *StaticSiteLinkedBackend) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteLinkedBackend] {
+	return pulumix.Output[*StaticSiteLinkedBackend]{
+		OutputState: i.ToStaticSiteLinkedBackendOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StaticSiteLinkedBackendOutput struct{ *pulumi.OutputState }
 
 func (StaticSiteLinkedBackendOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o StaticSiteLinkedBackendOutput) ToStaticSiteLinkedBackendOutput() StaticS
 
 func (o StaticSiteLinkedBackendOutput) ToStaticSiteLinkedBackendOutputWithContext(ctx context.Context) StaticSiteLinkedBackendOutput {
 	return o
+}
+
+func (o StaticSiteLinkedBackendOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteLinkedBackend] {
+	return pulumix.Output[*StaticSiteLinkedBackend]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource id of the backend linked to the static site

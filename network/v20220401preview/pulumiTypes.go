@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -128,6 +129,12 @@ func (i AddressPrefixItemArgs) ToAddressPrefixItemOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AddressPrefixItemOutput)
 }
 
+func (i AddressPrefixItemArgs) ToOutput(ctx context.Context) pulumix.Output[AddressPrefixItem] {
+	return pulumix.Output[AddressPrefixItem]{
+		OutputState: i.ToAddressPrefixItemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AddressPrefixItemArrayInput is an input type that accepts AddressPrefixItemArray and AddressPrefixItemArrayOutput values.
 // You can construct a concrete instance of `AddressPrefixItemArrayInput` via:
 //
@@ -153,6 +160,12 @@ func (i AddressPrefixItemArray) ToAddressPrefixItemArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AddressPrefixItemArrayOutput)
 }
 
+func (i AddressPrefixItemArray) ToOutput(ctx context.Context) pulumix.Output[[]AddressPrefixItem] {
+	return pulumix.Output[[]AddressPrefixItem]{
+		OutputState: i.ToAddressPrefixItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Address prefix item.
 type AddressPrefixItemOutput struct{ *pulumi.OutputState }
 
@@ -166,6 +179,12 @@ func (o AddressPrefixItemOutput) ToAddressPrefixItemOutput() AddressPrefixItemOu
 
 func (o AddressPrefixItemOutput) ToAddressPrefixItemOutputWithContext(ctx context.Context) AddressPrefixItemOutput {
 	return o
+}
+
+func (o AddressPrefixItemOutput) ToOutput(ctx context.Context) pulumix.Output[AddressPrefixItem] {
+	return pulumix.Output[AddressPrefixItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Address prefix.
@@ -190,6 +209,12 @@ func (o AddressPrefixItemArrayOutput) ToAddressPrefixItemArrayOutput() AddressPr
 
 func (o AddressPrefixItemArrayOutput) ToAddressPrefixItemArrayOutputWithContext(ctx context.Context) AddressPrefixItemArrayOutput {
 	return o
+}
+
+func (o AddressPrefixItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AddressPrefixItem] {
+	return pulumix.Output[[]AddressPrefixItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressPrefixItemArrayOutput) Index(i pulumi.IntInput) AddressPrefixItemOutput {
@@ -221,6 +246,12 @@ func (o AddressPrefixItemResponseOutput) ToAddressPrefixItemResponseOutputWithCo
 	return o
 }
 
+func (o AddressPrefixItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AddressPrefixItemResponse] {
+	return pulumix.Output[AddressPrefixItemResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Address prefix.
 func (o AddressPrefixItemResponseOutput) AddressPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AddressPrefixItemResponse) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
@@ -243,6 +274,12 @@ func (o AddressPrefixItemResponseArrayOutput) ToAddressPrefixItemResponseArrayOu
 
 func (o AddressPrefixItemResponseArrayOutput) ToAddressPrefixItemResponseArrayOutputWithContext(ctx context.Context) AddressPrefixItemResponseArrayOutput {
 	return o
+}
+
+func (o AddressPrefixItemResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AddressPrefixItemResponse] {
+	return pulumix.Output[[]AddressPrefixItemResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressPrefixItemResponseArrayOutput) Index(i pulumi.IntInput) AddressPrefixItemResponseOutput {
@@ -276,6 +313,12 @@ func (o ConfigurationGroupResponseOutput) ToConfigurationGroupResponseOutput() C
 
 func (o ConfigurationGroupResponseOutput) ToConfigurationGroupResponseOutputWithContext(ctx context.Context) ConfigurationGroupResponseOutput {
 	return o
+}
+
+func (o ConfigurationGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationGroupResponse] {
+	return pulumix.Output[ConfigurationGroupResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A description of the network group.
@@ -312,6 +355,12 @@ func (o ConfigurationGroupResponseArrayOutput) ToConfigurationGroupResponseArray
 	return o
 }
 
+func (o ConfigurationGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigurationGroupResponse] {
+	return pulumix.Output[[]ConfigurationGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConfigurationGroupResponseArrayOutput) Index(i pulumi.IntInput) ConfigurationGroupResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigurationGroupResponse {
 		return vs[0].([]ConfigurationGroupResponse)[vs[1].(int)]
@@ -343,6 +392,12 @@ func (o ConnectivityGroupItemResponseOutput) ToConnectivityGroupItemResponseOutp
 
 func (o ConnectivityGroupItemResponseOutput) ToConnectivityGroupItemResponseOutputWithContext(ctx context.Context) ConnectivityGroupItemResponseOutput {
 	return o
+}
+
+func (o ConnectivityGroupItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectivityGroupItemResponse] {
+	return pulumix.Output[ConnectivityGroupItemResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Group connectivity type.
@@ -377,6 +432,12 @@ func (o ConnectivityGroupItemResponseArrayOutput) ToConnectivityGroupItemRespons
 
 func (o ConnectivityGroupItemResponseArrayOutput) ToConnectivityGroupItemResponseArrayOutputWithContext(ctx context.Context) ConnectivityGroupItemResponseArrayOutput {
 	return o
+}
+
+func (o ConnectivityGroupItemResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectivityGroupItemResponse] {
+	return pulumix.Output[[]ConnectivityGroupItemResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectivityGroupItemResponseArrayOutput) Index(i pulumi.IntInput) ConnectivityGroupItemResponseOutput {
@@ -424,6 +485,12 @@ func (i DnsConfigArgs) ToDnsConfigOutputWithContext(ctx context.Context) DnsConf
 	return pulumi.ToOutputWithContext(ctx, i).(DnsConfigOutput)
 }
 
+func (i DnsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DnsConfig] {
+	return pulumix.Output[DnsConfig]{
+		OutputState: i.ToDnsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DnsConfigArgs) ToDnsConfigPtrOutput() DnsConfigPtrOutput {
 	return i.ToDnsConfigPtrOutputWithContext(context.Background())
 }
@@ -465,6 +532,12 @@ func (i *dnsConfigPtrType) ToDnsConfigPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DnsConfigPtrOutput)
 }
 
+func (i *dnsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DnsConfig] {
+	return pulumix.Output[*DnsConfig]{
+		OutputState: i.ToDnsConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class containing DNS settings in a Traffic Manager profile.
 type DnsConfigOutput struct{ *pulumi.OutputState }
 
@@ -490,6 +563,12 @@ func (o DnsConfigOutput) ToDnsConfigPtrOutputWithContext(ctx context.Context) Dn
 	}).(DnsConfigPtrOutput)
 }
 
+func (o DnsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DnsConfig] {
+	return pulumix.Output[DnsConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The relative DNS name provided by this Traffic Manager profile. This value is combined with the DNS domain name used by Azure Traffic Manager to form the fully-qualified domain name (FQDN) of the profile.
 func (o DnsConfigOutput) RelativeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsConfig) *string { return v.RelativeName }).(pulumi.StringPtrOutput)
@@ -512,6 +591,12 @@ func (o DnsConfigPtrOutput) ToDnsConfigPtrOutput() DnsConfigPtrOutput {
 
 func (o DnsConfigPtrOutput) ToDnsConfigPtrOutputWithContext(ctx context.Context) DnsConfigPtrOutput {
 	return o
+}
+
+func (o DnsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsConfig] {
+	return pulumix.Output[*DnsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DnsConfigPtrOutput) Elem() DnsConfigOutput {
@@ -569,6 +654,12 @@ func (o DnsConfigResponseOutput) ToDnsConfigResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o DnsConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DnsConfigResponse] {
+	return pulumix.Output[DnsConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The fully-qualified domain name (FQDN) of the Traffic Manager profile. This is formed from the concatenation of the RelativeName with the DNS domain used by Azure Traffic Manager.
 func (o DnsConfigResponseOutput) Fqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v DnsConfigResponse) string { return v.Fqdn }).(pulumi.StringOutput)
@@ -596,6 +687,12 @@ func (o DnsConfigResponsePtrOutput) ToDnsConfigResponsePtrOutput() DnsConfigResp
 
 func (o DnsConfigResponsePtrOutput) ToDnsConfigResponsePtrOutputWithContext(ctx context.Context) DnsConfigResponsePtrOutput {
 	return o
+}
+
+func (o DnsConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsConfigResponse] {
+	return pulumix.Output[*DnsConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DnsConfigResponsePtrOutput) Elem() DnsConfigResponseOutput {
@@ -675,6 +772,12 @@ func (o EffectiveConnectivityConfigurationResponseOutput) ToEffectiveConnectivit
 	return o
 }
 
+func (o EffectiveConnectivityConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EffectiveConnectivityConfigurationResponse] {
+	return pulumix.Output[EffectiveConnectivityConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Groups for configuration
 func (o EffectiveConnectivityConfigurationResponseOutput) AppliesToGroups() ConnectivityGroupItemResponseArrayOutput {
 	return o.ApplyT(func(v EffectiveConnectivityConfigurationResponse) []ConnectivityGroupItemResponse {
@@ -736,6 +839,12 @@ func (o EffectiveConnectivityConfigurationResponseArrayOutput) ToEffectiveConnec
 
 func (o EffectiveConnectivityConfigurationResponseArrayOutput) ToEffectiveConnectivityConfigurationResponseArrayOutputWithContext(ctx context.Context) EffectiveConnectivityConfigurationResponseArrayOutput {
 	return o
+}
+
+func (o EffectiveConnectivityConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EffectiveConnectivityConfigurationResponse] {
+	return pulumix.Output[[]EffectiveConnectivityConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EffectiveConnectivityConfigurationResponseArrayOutput) Index(i pulumi.IntInput) EffectiveConnectivityConfigurationResponseOutput {
@@ -845,6 +954,12 @@ func (o EffectiveVirtualNetworkResponseOutput) ToEffectiveVirtualNetworkResponse
 	return o
 }
 
+func (o EffectiveVirtualNetworkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EffectiveVirtualNetworkResponse] {
+	return pulumix.Output[EffectiveVirtualNetworkResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Effective vnet Id.
 func (o EffectiveVirtualNetworkResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EffectiveVirtualNetworkResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -872,6 +987,12 @@ func (o EffectiveVirtualNetworkResponseArrayOutput) ToEffectiveVirtualNetworkRes
 
 func (o EffectiveVirtualNetworkResponseArrayOutput) ToEffectiveVirtualNetworkResponseArrayOutputWithContext(ctx context.Context) EffectiveVirtualNetworkResponseArrayOutput {
 	return o
+}
+
+func (o EffectiveVirtualNetworkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EffectiveVirtualNetworkResponse] {
+	return pulumix.Output[[]EffectiveVirtualNetworkResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EffectiveVirtualNetworkResponseArrayOutput) Index(i pulumi.IntInput) EffectiveVirtualNetworkResponseOutput {
@@ -979,6 +1100,12 @@ func (i EndpointTypeArgs) ToEndpointTypeOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointTypeOutput)
 }
 
+func (i EndpointTypeArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointType] {
+	return pulumix.Output[EndpointType]{
+		OutputState: i.ToEndpointTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EndpointTypeArrayInput is an input type that accepts EndpointTypeArray and EndpointTypeArrayOutput values.
 // You can construct a concrete instance of `EndpointTypeArrayInput` via:
 //
@@ -1004,6 +1131,12 @@ func (i EndpointTypeArray) ToEndpointTypeArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointTypeArrayOutput)
 }
 
+func (i EndpointTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]EndpointType] {
+	return pulumix.Output[[]EndpointType]{
+		OutputState: i.ToEndpointTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class representing a Traffic Manager endpoint.
 type EndpointTypeOutput struct{ *pulumi.OutputState }
 
@@ -1017,6 +1150,12 @@ func (o EndpointTypeOutput) ToEndpointTypeOutput() EndpointTypeOutput {
 
 func (o EndpointTypeOutput) ToEndpointTypeOutputWithContext(ctx context.Context) EndpointTypeOutput {
 	return o
+}
+
+func (o EndpointTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointType] {
+	return pulumix.Output[EndpointType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
@@ -1118,6 +1257,12 @@ func (o EndpointTypeArrayOutput) ToEndpointTypeArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o EndpointTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointType] {
+	return pulumix.Output[[]EndpointType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EndpointTypeArrayOutput) Index(i pulumi.IntInput) EndpointTypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointType {
 		return vs[0].([]EndpointType)[vs[1].(int)]
@@ -1163,6 +1308,12 @@ func (i EndpointPropertiesCustomHeadersArgs) ToEndpointPropertiesCustomHeadersOu
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesCustomHeadersOutput)
 }
 
+func (i EndpointPropertiesCustomHeadersArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointPropertiesCustomHeaders] {
+	return pulumix.Output[EndpointPropertiesCustomHeaders]{
+		OutputState: i.ToEndpointPropertiesCustomHeadersOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EndpointPropertiesCustomHeadersArrayInput is an input type that accepts EndpointPropertiesCustomHeadersArray and EndpointPropertiesCustomHeadersArrayOutput values.
 // You can construct a concrete instance of `EndpointPropertiesCustomHeadersArrayInput` via:
 //
@@ -1188,6 +1339,12 @@ func (i EndpointPropertiesCustomHeadersArray) ToEndpointPropertiesCustomHeadersA
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesCustomHeadersArrayOutput)
 }
 
+func (i EndpointPropertiesCustomHeadersArray) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPropertiesCustomHeaders] {
+	return pulumix.Output[[]EndpointPropertiesCustomHeaders]{
+		OutputState: i.ToEndpointPropertiesCustomHeadersArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Custom header name and value.
 type EndpointPropertiesCustomHeadersOutput struct{ *pulumi.OutputState }
 
@@ -1201,6 +1358,12 @@ func (o EndpointPropertiesCustomHeadersOutput) ToEndpointPropertiesCustomHeaders
 
 func (o EndpointPropertiesCustomHeadersOutput) ToEndpointPropertiesCustomHeadersOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersOutput {
 	return o
+}
+
+func (o EndpointPropertiesCustomHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPropertiesCustomHeaders] {
+	return pulumix.Output[EndpointPropertiesCustomHeaders]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Header name.
@@ -1225,6 +1388,12 @@ func (o EndpointPropertiesCustomHeadersArrayOutput) ToEndpointPropertiesCustomHe
 
 func (o EndpointPropertiesCustomHeadersArrayOutput) ToEndpointPropertiesCustomHeadersArrayOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersArrayOutput {
 	return o
+}
+
+func (o EndpointPropertiesCustomHeadersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPropertiesCustomHeaders] {
+	return pulumix.Output[[]EndpointPropertiesCustomHeaders]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointPropertiesCustomHeadersArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesCustomHeadersOutput {
@@ -1256,6 +1425,12 @@ func (o EndpointPropertiesResponseCustomHeadersOutput) ToEndpointPropertiesRespo
 	return o
 }
 
+func (o EndpointPropertiesResponseCustomHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPropertiesResponseCustomHeaders] {
+	return pulumix.Output[EndpointPropertiesResponseCustomHeaders]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Header name.
 func (o EndpointPropertiesResponseCustomHeadersOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointPropertiesResponseCustomHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1278,6 +1453,12 @@ func (o EndpointPropertiesResponseCustomHeadersArrayOutput) ToEndpointProperties
 
 func (o EndpointPropertiesResponseCustomHeadersArrayOutput) ToEndpointPropertiesResponseCustomHeadersArrayOutputWithContext(ctx context.Context) EndpointPropertiesResponseCustomHeadersArrayOutput {
 	return o
+}
+
+func (o EndpointPropertiesResponseCustomHeadersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPropertiesResponseCustomHeaders] {
+	return pulumix.Output[[]EndpointPropertiesResponseCustomHeaders]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointPropertiesResponseCustomHeadersArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesResponseCustomHeadersOutput {
@@ -1311,6 +1492,12 @@ func (o EndpointPropertiesResponseSubnetsOutput) ToEndpointPropertiesResponseSub
 	return o
 }
 
+func (o EndpointPropertiesResponseSubnetsOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPropertiesResponseSubnets] {
+	return pulumix.Output[EndpointPropertiesResponseSubnets]{
+		OutputState: o.OutputState,
+	}
+}
+
 // First address in the subnet.
 func (o EndpointPropertiesResponseSubnetsOutput) First() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointPropertiesResponseSubnets) *string { return v.First }).(pulumi.StringPtrOutput)
@@ -1338,6 +1525,12 @@ func (o EndpointPropertiesResponseSubnetsArrayOutput) ToEndpointPropertiesRespon
 
 func (o EndpointPropertiesResponseSubnetsArrayOutput) ToEndpointPropertiesResponseSubnetsArrayOutputWithContext(ctx context.Context) EndpointPropertiesResponseSubnetsArrayOutput {
 	return o
+}
+
+func (o EndpointPropertiesResponseSubnetsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPropertiesResponseSubnets] {
+	return pulumix.Output[[]EndpointPropertiesResponseSubnets]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointPropertiesResponseSubnetsArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesResponseSubnetsOutput {
@@ -1389,6 +1582,12 @@ func (i EndpointPropertiesSubnetsArgs) ToEndpointPropertiesSubnetsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesSubnetsOutput)
 }
 
+func (i EndpointPropertiesSubnetsArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointPropertiesSubnets] {
+	return pulumix.Output[EndpointPropertiesSubnets]{
+		OutputState: i.ToEndpointPropertiesSubnetsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EndpointPropertiesSubnetsArrayInput is an input type that accepts EndpointPropertiesSubnetsArray and EndpointPropertiesSubnetsArrayOutput values.
 // You can construct a concrete instance of `EndpointPropertiesSubnetsArrayInput` via:
 //
@@ -1414,6 +1613,12 @@ func (i EndpointPropertiesSubnetsArray) ToEndpointPropertiesSubnetsArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesSubnetsArrayOutput)
 }
 
+func (i EndpointPropertiesSubnetsArray) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPropertiesSubnets] {
+	return pulumix.Output[[]EndpointPropertiesSubnets]{
+		OutputState: i.ToEndpointPropertiesSubnetsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Subnet first address, scope, and/or last address.
 type EndpointPropertiesSubnetsOutput struct{ *pulumi.OutputState }
 
@@ -1427,6 +1632,12 @@ func (o EndpointPropertiesSubnetsOutput) ToEndpointPropertiesSubnetsOutput() End
 
 func (o EndpointPropertiesSubnetsOutput) ToEndpointPropertiesSubnetsOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsOutput {
 	return o
+}
+
+func (o EndpointPropertiesSubnetsOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPropertiesSubnets] {
+	return pulumix.Output[EndpointPropertiesSubnets]{
+		OutputState: o.OutputState,
+	}
 }
 
 // First address in the subnet.
@@ -1456,6 +1667,12 @@ func (o EndpointPropertiesSubnetsArrayOutput) ToEndpointPropertiesSubnetsArrayOu
 
 func (o EndpointPropertiesSubnetsArrayOutput) ToEndpointPropertiesSubnetsArrayOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsArrayOutput {
 	return o
+}
+
+func (o EndpointPropertiesSubnetsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPropertiesSubnets] {
+	return pulumix.Output[[]EndpointPropertiesSubnets]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointPropertiesSubnetsArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesSubnetsOutput {
@@ -1515,6 +1732,12 @@ func (o EndpointResponseOutput) ToEndpointResponseOutput() EndpointResponseOutpu
 
 func (o EndpointResponseOutput) ToEndpointResponseOutputWithContext(ctx context.Context) EndpointResponseOutput {
 	return o
+}
+
+func (o EndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointResponse] {
+	return pulumix.Output[EndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
@@ -1616,6 +1839,12 @@ func (o EndpointResponseArrayOutput) ToEndpointResponseArrayOutputWithContext(ct
 	return o
 }
 
+func (o EndpointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointResponse] {
+	return pulumix.Output[[]EndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EndpointResponseArrayOutput) Index(i pulumi.IntInput) EndpointResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointResponse {
 		return vs[0].([]EndpointResponse)[vs[1].(int)]
@@ -1645,6 +1874,12 @@ func (o HubResponseOutput) ToHubResponseOutputWithContext(ctx context.Context) H
 	return o
 }
 
+func (o HubResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HubResponse] {
+	return pulumix.Output[HubResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource Id.
 func (o HubResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HubResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -1667,6 +1902,12 @@ func (o HubResponseArrayOutput) ToHubResponseArrayOutput() HubResponseArrayOutpu
 
 func (o HubResponseArrayOutput) ToHubResponseArrayOutputWithContext(ctx context.Context) HubResponseArrayOutput {
 	return o
+}
+
+func (o HubResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HubResponse] {
+	return pulumix.Output[[]HubResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HubResponseArrayOutput) Index(i pulumi.IntInput) HubResponseOutput {
@@ -1742,6 +1983,12 @@ func (i MonitorConfigArgs) ToMonitorConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigOutput)
 }
 
+func (i MonitorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MonitorConfig] {
+	return pulumix.Output[MonitorConfig]{
+		OutputState: i.ToMonitorConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MonitorConfigArgs) ToMonitorConfigPtrOutput() MonitorConfigPtrOutput {
 	return i.ToMonitorConfigPtrOutputWithContext(context.Background())
 }
@@ -1783,6 +2030,12 @@ func (i *monitorConfigPtrType) ToMonitorConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigPtrOutput)
 }
 
+func (i *monitorConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MonitorConfig] {
+	return pulumix.Output[*MonitorConfig]{
+		OutputState: i.ToMonitorConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Class containing endpoint monitoring settings in a Traffic Manager profile.
 type MonitorConfigOutput struct{ *pulumi.OutputState }
 
@@ -1806,6 +2059,12 @@ func (o MonitorConfigOutput) ToMonitorConfigPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorConfig) *MonitorConfig {
 		return &v
 	}).(MonitorConfigPtrOutput)
+}
+
+func (o MonitorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorConfig] {
+	return pulumix.Output[MonitorConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of custom headers.
@@ -1865,6 +2124,12 @@ func (o MonitorConfigPtrOutput) ToMonitorConfigPtrOutput() MonitorConfigPtrOutpu
 
 func (o MonitorConfigPtrOutput) ToMonitorConfigPtrOutputWithContext(ctx context.Context) MonitorConfigPtrOutput {
 	return o
+}
+
+func (o MonitorConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitorConfig] {
+	return pulumix.Output[*MonitorConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MonitorConfigPtrOutput) Elem() MonitorConfigOutput {
@@ -2006,6 +2271,12 @@ func (i MonitorConfigCustomHeadersArgs) ToMonitorConfigCustomHeadersOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigCustomHeadersOutput)
 }
 
+func (i MonitorConfigCustomHeadersArgs) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigCustomHeaders] {
+	return pulumix.Output[MonitorConfigCustomHeaders]{
+		OutputState: i.ToMonitorConfigCustomHeadersOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MonitorConfigCustomHeadersArrayInput is an input type that accepts MonitorConfigCustomHeadersArray and MonitorConfigCustomHeadersArrayOutput values.
 // You can construct a concrete instance of `MonitorConfigCustomHeadersArrayInput` via:
 //
@@ -2031,6 +2302,12 @@ func (i MonitorConfigCustomHeadersArray) ToMonitorConfigCustomHeadersArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigCustomHeadersArrayOutput)
 }
 
+func (i MonitorConfigCustomHeadersArray) ToOutput(ctx context.Context) pulumix.Output[[]MonitorConfigCustomHeaders] {
+	return pulumix.Output[[]MonitorConfigCustomHeaders]{
+		OutputState: i.ToMonitorConfigCustomHeadersArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Custom header name and value.
 type MonitorConfigCustomHeadersOutput struct{ *pulumi.OutputState }
 
@@ -2044,6 +2321,12 @@ func (o MonitorConfigCustomHeadersOutput) ToMonitorConfigCustomHeadersOutput() M
 
 func (o MonitorConfigCustomHeadersOutput) ToMonitorConfigCustomHeadersOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersOutput {
 	return o
+}
+
+func (o MonitorConfigCustomHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigCustomHeaders] {
+	return pulumix.Output[MonitorConfigCustomHeaders]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Header name.
@@ -2068,6 +2351,12 @@ func (o MonitorConfigCustomHeadersArrayOutput) ToMonitorConfigCustomHeadersArray
 
 func (o MonitorConfigCustomHeadersArrayOutput) ToMonitorConfigCustomHeadersArrayOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersArrayOutput {
 	return o
+}
+
+func (o MonitorConfigCustomHeadersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitorConfigCustomHeaders] {
+	return pulumix.Output[[]MonitorConfigCustomHeaders]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MonitorConfigCustomHeadersArrayOutput) Index(i pulumi.IntInput) MonitorConfigCustomHeadersOutput {
@@ -2115,6 +2404,12 @@ func (i MonitorConfigExpectedStatusCodeRangesArgs) ToMonitorConfigExpectedStatus
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigExpectedStatusCodeRangesOutput)
 }
 
+func (i MonitorConfigExpectedStatusCodeRangesArgs) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigExpectedStatusCodeRanges] {
+	return pulumix.Output[MonitorConfigExpectedStatusCodeRanges]{
+		OutputState: i.ToMonitorConfigExpectedStatusCodeRangesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MonitorConfigExpectedStatusCodeRangesArrayInput is an input type that accepts MonitorConfigExpectedStatusCodeRangesArray and MonitorConfigExpectedStatusCodeRangesArrayOutput values.
 // You can construct a concrete instance of `MonitorConfigExpectedStatusCodeRangesArrayInput` via:
 //
@@ -2140,6 +2435,12 @@ func (i MonitorConfigExpectedStatusCodeRangesArray) ToMonitorConfigExpectedStatu
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigExpectedStatusCodeRangesArrayOutput)
 }
 
+func (i MonitorConfigExpectedStatusCodeRangesArray) ToOutput(ctx context.Context) pulumix.Output[[]MonitorConfigExpectedStatusCodeRanges] {
+	return pulumix.Output[[]MonitorConfigExpectedStatusCodeRanges]{
+		OutputState: i.ToMonitorConfigExpectedStatusCodeRangesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Min and max value of a status code range.
 type MonitorConfigExpectedStatusCodeRangesOutput struct{ *pulumi.OutputState }
 
@@ -2153,6 +2454,12 @@ func (o MonitorConfigExpectedStatusCodeRangesOutput) ToMonitorConfigExpectedStat
 
 func (o MonitorConfigExpectedStatusCodeRangesOutput) ToMonitorConfigExpectedStatusCodeRangesOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesOutput {
 	return o
+}
+
+func (o MonitorConfigExpectedStatusCodeRangesOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigExpectedStatusCodeRanges] {
+	return pulumix.Output[MonitorConfigExpectedStatusCodeRanges]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Max status code.
@@ -2177,6 +2484,12 @@ func (o MonitorConfigExpectedStatusCodeRangesArrayOutput) ToMonitorConfigExpecte
 
 func (o MonitorConfigExpectedStatusCodeRangesArrayOutput) ToMonitorConfigExpectedStatusCodeRangesArrayOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesArrayOutput {
 	return o
+}
+
+func (o MonitorConfigExpectedStatusCodeRangesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitorConfigExpectedStatusCodeRanges] {
+	return pulumix.Output[[]MonitorConfigExpectedStatusCodeRanges]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MonitorConfigExpectedStatusCodeRangesArrayOutput) Index(i pulumi.IntInput) MonitorConfigExpectedStatusCodeRangesOutput {
@@ -2220,6 +2533,12 @@ func (o MonitorConfigResponseOutput) ToMonitorConfigResponseOutput() MonitorConf
 
 func (o MonitorConfigResponseOutput) ToMonitorConfigResponseOutputWithContext(ctx context.Context) MonitorConfigResponseOutput {
 	return o
+}
+
+func (o MonitorConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigResponse] {
+	return pulumix.Output[MonitorConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of custom headers.
@@ -2281,6 +2600,12 @@ func (o MonitorConfigResponsePtrOutput) ToMonitorConfigResponsePtrOutput() Monit
 
 func (o MonitorConfigResponsePtrOutput) ToMonitorConfigResponsePtrOutputWithContext(ctx context.Context) MonitorConfigResponsePtrOutput {
 	return o
+}
+
+func (o MonitorConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitorConfigResponse] {
+	return pulumix.Output[*MonitorConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MonitorConfigResponsePtrOutput) Elem() MonitorConfigResponseOutput {
@@ -2406,6 +2731,12 @@ func (o MonitorConfigResponseCustomHeadersOutput) ToMonitorConfigResponseCustomH
 	return o
 }
 
+func (o MonitorConfigResponseCustomHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigResponseCustomHeaders] {
+	return pulumix.Output[MonitorConfigResponseCustomHeaders]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Header name.
 func (o MonitorConfigResponseCustomHeadersOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitorConfigResponseCustomHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2428,6 +2759,12 @@ func (o MonitorConfigResponseCustomHeadersArrayOutput) ToMonitorConfigResponseCu
 
 func (o MonitorConfigResponseCustomHeadersArrayOutput) ToMonitorConfigResponseCustomHeadersArrayOutputWithContext(ctx context.Context) MonitorConfigResponseCustomHeadersArrayOutput {
 	return o
+}
+
+func (o MonitorConfigResponseCustomHeadersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitorConfigResponseCustomHeaders] {
+	return pulumix.Output[[]MonitorConfigResponseCustomHeaders]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MonitorConfigResponseCustomHeadersArrayOutput) Index(i pulumi.IntInput) MonitorConfigResponseCustomHeadersOutput {
@@ -2459,6 +2796,12 @@ func (o MonitorConfigResponseExpectedStatusCodeRangesOutput) ToMonitorConfigResp
 	return o
 }
 
+func (o MonitorConfigResponseExpectedStatusCodeRangesOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigResponseExpectedStatusCodeRanges] {
+	return pulumix.Output[MonitorConfigResponseExpectedStatusCodeRanges]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Max status code.
 func (o MonitorConfigResponseExpectedStatusCodeRangesOutput) Max() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MonitorConfigResponseExpectedStatusCodeRanges) *int { return v.Max }).(pulumi.IntPtrOutput)
@@ -2481,6 +2824,12 @@ func (o MonitorConfigResponseExpectedStatusCodeRangesArrayOutput) ToMonitorConfi
 
 func (o MonitorConfigResponseExpectedStatusCodeRangesArrayOutput) ToMonitorConfigResponseExpectedStatusCodeRangesArrayOutputWithContext(ctx context.Context) MonitorConfigResponseExpectedStatusCodeRangesArrayOutput {
 	return o
+}
+
+func (o MonitorConfigResponseExpectedStatusCodeRangesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitorConfigResponseExpectedStatusCodeRanges] {
+	return pulumix.Output[[]MonitorConfigResponseExpectedStatusCodeRanges]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MonitorConfigResponseExpectedStatusCodeRangesArrayOutput) Index(i pulumi.IntInput) MonitorConfigResponseExpectedStatusCodeRangesOutput {
@@ -2524,6 +2873,12 @@ func (i NetworkManagerSecurityGroupItemArgs) ToNetworkManagerSecurityGroupItemOu
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkManagerSecurityGroupItemOutput)
 }
 
+func (i NetworkManagerSecurityGroupItemArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkManagerSecurityGroupItem] {
+	return pulumix.Output[NetworkManagerSecurityGroupItem]{
+		OutputState: i.ToNetworkManagerSecurityGroupItemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkManagerSecurityGroupItemArrayInput is an input type that accepts NetworkManagerSecurityGroupItemArray and NetworkManagerSecurityGroupItemArrayOutput values.
 // You can construct a concrete instance of `NetworkManagerSecurityGroupItemArrayInput` via:
 //
@@ -2549,6 +2904,12 @@ func (i NetworkManagerSecurityGroupItemArray) ToNetworkManagerSecurityGroupItemA
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkManagerSecurityGroupItemArrayOutput)
 }
 
+func (i NetworkManagerSecurityGroupItemArray) ToOutput(ctx context.Context) pulumix.Output[[]NetworkManagerSecurityGroupItem] {
+	return pulumix.Output[[]NetworkManagerSecurityGroupItem]{
+		OutputState: i.ToNetworkManagerSecurityGroupItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Network manager security group item.
 type NetworkManagerSecurityGroupItemOutput struct{ *pulumi.OutputState }
 
@@ -2562,6 +2923,12 @@ func (o NetworkManagerSecurityGroupItemOutput) ToNetworkManagerSecurityGroupItem
 
 func (o NetworkManagerSecurityGroupItemOutput) ToNetworkManagerSecurityGroupItemOutputWithContext(ctx context.Context) NetworkManagerSecurityGroupItemOutput {
 	return o
+}
+
+func (o NetworkManagerSecurityGroupItemOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkManagerSecurityGroupItem] {
+	return pulumix.Output[NetworkManagerSecurityGroupItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Network manager group Id.
@@ -2581,6 +2948,12 @@ func (o NetworkManagerSecurityGroupItemArrayOutput) ToNetworkManagerSecurityGrou
 
 func (o NetworkManagerSecurityGroupItemArrayOutput) ToNetworkManagerSecurityGroupItemArrayOutputWithContext(ctx context.Context) NetworkManagerSecurityGroupItemArrayOutput {
 	return o
+}
+
+func (o NetworkManagerSecurityGroupItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkManagerSecurityGroupItem] {
+	return pulumix.Output[[]NetworkManagerSecurityGroupItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkManagerSecurityGroupItemArrayOutput) Index(i pulumi.IntInput) NetworkManagerSecurityGroupItemOutput {
@@ -2610,6 +2983,12 @@ func (o NetworkManagerSecurityGroupItemResponseOutput) ToNetworkManagerSecurityG
 	return o
 }
 
+func (o NetworkManagerSecurityGroupItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkManagerSecurityGroupItemResponse] {
+	return pulumix.Output[NetworkManagerSecurityGroupItemResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Network manager group Id.
 func (o NetworkManagerSecurityGroupItemResponseOutput) NetworkGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkManagerSecurityGroupItemResponse) string { return v.NetworkGroupId }).(pulumi.StringOutput)
@@ -2627,6 +3006,12 @@ func (o NetworkManagerSecurityGroupItemResponseArrayOutput) ToNetworkManagerSecu
 
 func (o NetworkManagerSecurityGroupItemResponseArrayOutput) ToNetworkManagerSecurityGroupItemResponseArrayOutputWithContext(ctx context.Context) NetworkManagerSecurityGroupItemResponseArrayOutput {
 	return o
+}
+
+func (o NetworkManagerSecurityGroupItemResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkManagerSecurityGroupItemResponse] {
+	return pulumix.Output[[]NetworkManagerSecurityGroupItemResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkManagerSecurityGroupItemResponseArrayOutput) Index(i pulumi.IntInput) NetworkManagerSecurityGroupItemResponseOutput {
@@ -2664,6 +3049,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

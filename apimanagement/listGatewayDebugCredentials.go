@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create new debug credentials for gateway.
@@ -89,6 +90,12 @@ func (o ListGatewayDebugCredentialsResultOutput) ToListGatewayDebugCredentialsRe
 
 func (o ListGatewayDebugCredentialsResultOutput) ToListGatewayDebugCredentialsResultOutputWithContext(ctx context.Context) ListGatewayDebugCredentialsResultOutput {
 	return o
+}
+
+func (o ListGatewayDebugCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListGatewayDebugCredentialsResult] {
+	return pulumix.Output[ListGatewayDebugCredentialsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gateway debug token.

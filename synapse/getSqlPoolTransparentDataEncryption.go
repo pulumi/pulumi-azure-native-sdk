@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a SQL pool's transparent data encryption configuration.
@@ -89,6 +90,12 @@ func (o LookupSqlPoolTransparentDataEncryptionResultOutput) ToLookupSqlPoolTrans
 
 func (o LookupSqlPoolTransparentDataEncryptionResultOutput) ToLookupSqlPoolTransparentDataEncryptionResultOutputWithContext(ctx context.Context) LookupSqlPoolTransparentDataEncryptionResultOutput {
 	return o
+}
+
+func (o LookupSqlPoolTransparentDataEncryptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlPoolTransparentDataEncryptionResult] {
+	return pulumix.Output[LookupSqlPoolTransparentDataEncryptionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

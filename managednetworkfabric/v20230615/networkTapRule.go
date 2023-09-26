@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The NetworkTapRule resource definition.
@@ -174,6 +175,12 @@ func (i *NetworkTapRule) ToNetworkTapRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkTapRuleOutput)
 }
 
+func (i *NetworkTapRule) ToOutput(ctx context.Context) pulumix.Output[*NetworkTapRule] {
+	return pulumix.Output[*NetworkTapRule]{
+		OutputState: i.ToNetworkTapRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkTapRuleOutput struct{ *pulumi.OutputState }
 
 func (NetworkTapRuleOutput) ElementType() reflect.Type {
@@ -186,6 +193,12 @@ func (o NetworkTapRuleOutput) ToNetworkTapRuleOutput() NetworkTapRuleOutput {
 
 func (o NetworkTapRuleOutput) ToNetworkTapRuleOutputWithContext(ctx context.Context) NetworkTapRuleOutput {
 	return o
+}
+
+func (o NetworkTapRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkTapRule] {
+	return pulumix.Output[*NetworkTapRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Administrative state of the resource.

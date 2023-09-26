@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ProfessionalService REST API resource definition.
@@ -133,6 +134,12 @@ func (i *ProfessionalServiceSubscriptionLevel) ToProfessionalServiceSubscription
 	return pulumi.ToOutputWithContext(ctx, i).(ProfessionalServiceSubscriptionLevelOutput)
 }
 
+func (i *ProfessionalServiceSubscriptionLevel) ToOutput(ctx context.Context) pulumix.Output[*ProfessionalServiceSubscriptionLevel] {
+	return pulumix.Output[*ProfessionalServiceSubscriptionLevel]{
+		OutputState: i.ToProfessionalServiceSubscriptionLevelOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProfessionalServiceSubscriptionLevelOutput struct{ *pulumi.OutputState }
 
 func (ProfessionalServiceSubscriptionLevelOutput) ElementType() reflect.Type {
@@ -145,6 +152,12 @@ func (o ProfessionalServiceSubscriptionLevelOutput) ToProfessionalServiceSubscri
 
 func (o ProfessionalServiceSubscriptionLevelOutput) ToProfessionalServiceSubscriptionLevelOutputWithContext(ctx context.Context) ProfessionalServiceSubscriptionLevelOutput {
 	return o
+}
+
+func (o ProfessionalServiceSubscriptionLevelOutput) ToOutput(ctx context.Context) pulumix.Output[*ProfessionalServiceSubscriptionLevel] {
+	return pulumix.Output[*ProfessionalServiceSubscriptionLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

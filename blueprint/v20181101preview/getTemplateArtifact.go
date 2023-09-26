@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a blueprint artifact.
@@ -95,6 +96,12 @@ func (o LookupTemplateArtifactResultOutput) ToLookupTemplateArtifactResultOutput
 
 func (o LookupTemplateArtifactResultOutput) ToLookupTemplateArtifactResultOutputWithContext(ctx context.Context) LookupTemplateArtifactResultOutput {
 	return o
+}
+
+func (o LookupTemplateArtifactResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTemplateArtifactResult] {
+	return pulumix.Output[LookupTemplateArtifactResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Artifacts which need to be deployed before the specified artifact.

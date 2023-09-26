@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details about the specified output.
@@ -92,6 +93,12 @@ func (o LookupOutputResultOutput) ToLookupOutputResultOutput() LookupOutputResul
 
 func (o LookupOutputResultOutput) ToLookupOutputResultOutputWithContext(ctx context.Context) LookupOutputResultOutput {
 	return o
+}
+
+func (o LookupOutputResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOutputResult] {
+	return pulumix.Output[LookupOutputResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.

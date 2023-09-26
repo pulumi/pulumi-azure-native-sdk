@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the CommunicationService and its properties.
@@ -96,6 +97,12 @@ func (o LookupCommunicationServiceResultOutput) ToLookupCommunicationServiceResu
 
 func (o LookupCommunicationServiceResultOutput) ToLookupCommunicationServiceResultOutputWithContext(ctx context.Context) LookupCommunicationServiceResultOutput {
 	return o
+}
+
+func (o LookupCommunicationServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCommunicationServiceResult] {
+	return pulumix.Output[LookupCommunicationServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location where the communication service stores its data at rest.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i ConnectionStateRequestBodyPropertiesArgs) ToConnectionStateRequestBodyPr
 
 func (i ConnectionStateRequestBodyPropertiesArgs) ToConnectionStateRequestBodyPropertiesOutputWithContext(ctx context.Context) ConnectionStateRequestBodyPropertiesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionStateRequestBodyPropertiesOutput)
+}
+
+func (i ConnectionStateRequestBodyPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionStateRequestBodyProperties] {
+	return pulumix.Output[ConnectionStateRequestBodyProperties]{
+		OutputState: i.ToConnectionStateRequestBodyPropertiesOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ConnectionStateRequestBodyPropertiesArgs) ToConnectionStateRequestBodyPropertiesPtrOutput() ConnectionStateRequestBodyPropertiesPtrOutput {
@@ -89,6 +96,12 @@ func (i *connectionStateRequestBodyPropertiesPtrType) ToConnectionStateRequestBo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionStateRequestBodyPropertiesPtrOutput)
 }
 
+func (i *connectionStateRequestBodyPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionStateRequestBodyProperties] {
+	return pulumix.Output[*ConnectionStateRequestBodyProperties]{
+		OutputState: i.ToConnectionStateRequestBodyPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties of Connection state request.
 type ConnectionStateRequestBodyPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o ConnectionStateRequestBodyPropertiesOutput) ToConnectionStateRequestBody
 	}).(ConnectionStateRequestBodyPropertiesPtrOutput)
 }
 
+func (o ConnectionStateRequestBodyPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionStateRequestBodyProperties] {
+	return pulumix.Output[ConnectionStateRequestBodyProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Private endpoint connection state.
 func (o ConnectionStateRequestBodyPropertiesOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStatePtrOutput {
 	return o.ApplyT(func(v ConnectionStateRequestBodyProperties) *PrivateLinkServiceConnectionState {
@@ -133,6 +152,12 @@ func (o ConnectionStateRequestBodyPropertiesPtrOutput) ToConnectionStateRequestB
 
 func (o ConnectionStateRequestBodyPropertiesPtrOutput) ToConnectionStateRequestBodyPropertiesPtrOutputWithContext(ctx context.Context) ConnectionStateRequestBodyPropertiesPtrOutput {
 	return o
+}
+
+func (o ConnectionStateRequestBodyPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionStateRequestBodyProperties] {
+	return pulumix.Output[*ConnectionStateRequestBodyProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionStateRequestBodyPropertiesPtrOutput) Elem() ConnectionStateRequestBodyPropertiesOutput {
@@ -198,6 +223,12 @@ func (i MigrateProjectPropertiesArgs) ToMigrateProjectPropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(MigrateProjectPropertiesOutput)
 }
 
+func (i MigrateProjectPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MigrateProjectProperties] {
+	return pulumix.Output[MigrateProjectProperties]{
+		OutputState: i.ToMigrateProjectPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MigrateProjectPropertiesArgs) ToMigrateProjectPropertiesPtrOutput() MigrateProjectPropertiesPtrOutput {
 	return i.ToMigrateProjectPropertiesPtrOutputWithContext(context.Background())
 }
@@ -239,6 +270,12 @@ func (i *migrateProjectPropertiesPtrType) ToMigrateProjectPropertiesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(MigrateProjectPropertiesPtrOutput)
 }
 
+func (i *migrateProjectPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MigrateProjectProperties] {
+	return pulumix.Output[*MigrateProjectProperties]{
+		OutputState: i.ToMigrateProjectPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties of a migrate project.
 type MigrateProjectPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -262,6 +299,12 @@ func (o MigrateProjectPropertiesOutput) ToMigrateProjectPropertiesPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrateProjectProperties) *MigrateProjectProperties {
 		return &v
 	}).(MigrateProjectPropertiesPtrOutput)
+}
+
+func (o MigrateProjectPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MigrateProjectProperties] {
+	return pulumix.Output[MigrateProjectProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the state of public network access.
@@ -291,6 +334,12 @@ func (o MigrateProjectPropertiesPtrOutput) ToMigrateProjectPropertiesPtrOutput()
 
 func (o MigrateProjectPropertiesPtrOutput) ToMigrateProjectPropertiesPtrOutputWithContext(ctx context.Context) MigrateProjectPropertiesPtrOutput {
 	return o
+}
+
+func (o MigrateProjectPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrateProjectProperties] {
+	return pulumix.Output[*MigrateProjectProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MigrateProjectPropertiesPtrOutput) Elem() MigrateProjectPropertiesOutput {
@@ -368,6 +417,12 @@ func (o MigrateProjectPropertiesResponseOutput) ToMigrateProjectPropertiesRespon
 	return o
 }
 
+func (o MigrateProjectPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MigrateProjectPropertiesResponse] {
+	return pulumix.Output[MigrateProjectPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Last summary refresh time.
 func (o MigrateProjectPropertiesResponseOutput) LastSummaryRefreshedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MigrateProjectPropertiesResponse) string { return v.LastSummaryRefreshedTime }).(pulumi.StringOutput)
@@ -434,6 +489,12 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConn
 	return o
 }
 
+func (o PrivateEndpointConnectionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionPropertiesResponse] {
+	return pulumix.Output[PrivateEndpointConnectionPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateEndpointConnectionPropertiesResponseOutput) PrivateEndpoint() ResourceIdResponseOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) ResourceIdResponse { return v.PrivateEndpoint }).(ResourceIdResponseOutput)
 }
@@ -481,6 +542,12 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
+	return pulumix.Output[PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets the tag for optimistic concurrency control.
 func (o PrivateEndpointConnectionResponseOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ETag }).(pulumi.StringOutput)
@@ -525,6 +592,12 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 
 func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
+	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
@@ -576,6 +649,12 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
+func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
 	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
 }
@@ -617,6 +696,12 @@ func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectio
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePtrOutput)
 }
 
+func (i *privateLinkServiceConnectionStatePtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionState] {
+	return pulumix.Output[*PrivateLinkServiceConnectionState]{
+		OutputState: i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Private endpoint connection state.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -640,6 +725,12 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkServiceConnectionState) *PrivateLinkServiceConnectionState {
 		return &v
 	}).(PrivateLinkServiceConnectionStatePtrOutput)
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Action required.
@@ -669,6 +760,12 @@ func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnecti
 
 func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionState] {
+	return pulumix.Output[*PrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateLinkServiceConnectionStateOutput {
@@ -736,6 +833,12 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 	return o
 }
 
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
+	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Action required.
 func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
@@ -763,6 +866,12 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkService
 
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkServiceConnectionStateResponsePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponsePtrOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStateResponse] {
+	return pulumix.Output[*PrivateLinkServiceConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Elem() PrivateLinkServiceConnectionStateResponseOutput {
@@ -832,6 +941,12 @@ func (o ProjectSummaryResponseOutput) ToProjectSummaryResponseOutputWithContext(
 	return o
 }
 
+func (o ProjectSummaryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectSummaryResponse] {
+	return pulumix.Output[ProjectSummaryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Extended summary.
 func (o ProjectSummaryResponseOutput) ExtendedSummary() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ProjectSummaryResponse) map[string]string { return v.ExtendedSummary }).(pulumi.StringMapOutput)
@@ -866,6 +981,12 @@ func (o ProjectSummaryResponseMapOutput) ToProjectSummaryResponseMapOutputWithCo
 	return o
 }
 
+func (o ProjectSummaryResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ProjectSummaryResponse] {
+	return pulumix.Output[map[string]ProjectSummaryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectSummaryResponseMapOutput) MapIndex(k pulumi.StringInput) ProjectSummaryResponseOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectSummaryResponse {
 		return vs[0].(map[string]ProjectSummaryResponse)[vs[1].(string)]
@@ -888,6 +1009,12 @@ func (o ResourceIdResponseOutput) ToResourceIdResponseOutput() ResourceIdRespons
 
 func (o ResourceIdResponseOutput) ToResourceIdResponseOutputWithContext(ctx context.Context) ResourceIdResponseOutput {
 	return o
+}
+
+func (o ResourceIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdResponse] {
+	return pulumix.Output[ResourceIdResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdResponseOutput) Id() pulumi.StringOutput {
@@ -923,6 +1050,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

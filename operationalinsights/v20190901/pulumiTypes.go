@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i LogAnalyticsQueryPackQueryPropertiesRelatedArgs) ToLogAnalyticsQueryPack
 	return pulumi.ToOutputWithContext(ctx, i).(LogAnalyticsQueryPackQueryPropertiesRelatedOutput)
 }
 
+func (i LogAnalyticsQueryPackQueryPropertiesRelatedArgs) ToOutput(ctx context.Context) pulumix.Output[LogAnalyticsQueryPackQueryPropertiesRelated] {
+	return pulumix.Output[LogAnalyticsQueryPackQueryPropertiesRelated]{
+		OutputState: i.ToLogAnalyticsQueryPackQueryPropertiesRelatedOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LogAnalyticsQueryPackQueryPropertiesRelatedArgs) ToLogAnalyticsQueryPackQueryPropertiesRelatedPtrOutput() LogAnalyticsQueryPackQueryPropertiesRelatedPtrOutput {
 	return i.ToLogAnalyticsQueryPackQueryPropertiesRelatedPtrOutputWithContext(context.Background())
 }
@@ -97,6 +104,12 @@ func (i *logAnalyticsQueryPackQueryPropertiesRelatedPtrType) ToLogAnalyticsQuery
 	return pulumi.ToOutputWithContext(ctx, i).(LogAnalyticsQueryPackQueryPropertiesRelatedPtrOutput)
 }
 
+func (i *logAnalyticsQueryPackQueryPropertiesRelatedPtrType) ToOutput(ctx context.Context) pulumix.Output[*LogAnalyticsQueryPackQueryPropertiesRelated] {
+	return pulumix.Output[*LogAnalyticsQueryPackQueryPropertiesRelated]{
+		OutputState: i.ToLogAnalyticsQueryPackQueryPropertiesRelatedPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The related metadata items for the function.
 type LogAnalyticsQueryPackQueryPropertiesRelatedOutput struct{ *pulumi.OutputState }
 
@@ -120,6 +133,12 @@ func (o LogAnalyticsQueryPackQueryPropertiesRelatedOutput) ToLogAnalyticsQueryPa
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogAnalyticsQueryPackQueryPropertiesRelated) *LogAnalyticsQueryPackQueryPropertiesRelated {
 		return &v
 	}).(LogAnalyticsQueryPackQueryPropertiesRelatedPtrOutput)
+}
+
+func (o LogAnalyticsQueryPackQueryPropertiesRelatedOutput) ToOutput(ctx context.Context) pulumix.Output[LogAnalyticsQueryPackQueryPropertiesRelated] {
+	return pulumix.Output[LogAnalyticsQueryPackQueryPropertiesRelated]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The related categories for the function.
@@ -149,6 +168,12 @@ func (o LogAnalyticsQueryPackQueryPropertiesRelatedPtrOutput) ToLogAnalyticsQuer
 
 func (o LogAnalyticsQueryPackQueryPropertiesRelatedPtrOutput) ToLogAnalyticsQueryPackQueryPropertiesRelatedPtrOutputWithContext(ctx context.Context) LogAnalyticsQueryPackQueryPropertiesRelatedPtrOutput {
 	return o
+}
+
+func (o LogAnalyticsQueryPackQueryPropertiesRelatedPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogAnalyticsQueryPackQueryPropertiesRelated] {
+	return pulumix.Output[*LogAnalyticsQueryPackQueryPropertiesRelated]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogAnalyticsQueryPackQueryPropertiesRelatedPtrOutput) Elem() LogAnalyticsQueryPackQueryPropertiesRelatedOutput {
@@ -216,6 +241,12 @@ func (o LogAnalyticsQueryPackQueryPropertiesResponseRelatedOutput) ToLogAnalytic
 	return o
 }
 
+func (o LogAnalyticsQueryPackQueryPropertiesResponseRelatedOutput) ToOutput(ctx context.Context) pulumix.Output[LogAnalyticsQueryPackQueryPropertiesResponseRelated] {
+	return pulumix.Output[LogAnalyticsQueryPackQueryPropertiesResponseRelated]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The related categories for the function.
 func (o LogAnalyticsQueryPackQueryPropertiesResponseRelatedOutput) Categories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LogAnalyticsQueryPackQueryPropertiesResponseRelated) []string { return v.Categories }).(pulumi.StringArrayOutput)
@@ -243,6 +274,12 @@ func (o LogAnalyticsQueryPackQueryPropertiesResponseRelatedPtrOutput) ToLogAnaly
 
 func (o LogAnalyticsQueryPackQueryPropertiesResponseRelatedPtrOutput) ToLogAnalyticsQueryPackQueryPropertiesResponseRelatedPtrOutputWithContext(ctx context.Context) LogAnalyticsQueryPackQueryPropertiesResponseRelatedPtrOutput {
 	return o
+}
+
+func (o LogAnalyticsQueryPackQueryPropertiesResponseRelatedPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogAnalyticsQueryPackQueryPropertiesResponseRelated] {
+	return pulumix.Output[*LogAnalyticsQueryPackQueryPropertiesResponseRelated]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogAnalyticsQueryPackQueryPropertiesResponseRelatedPtrOutput) Elem() LogAnalyticsQueryPackQueryPropertiesResponseRelatedOutput {
@@ -314,6 +351,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC)

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of identity used for the cache
@@ -78,6 +79,12 @@ func (o CacheIdentityTypeOutput) ToCacheIdentityTypePtrOutputWithContext(ctx con
 	}).(CacheIdentityTypePtrOutput)
 }
 
+func (o CacheIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CacheIdentityType] {
+	return pulumix.Output[CacheIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CacheIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o CacheIdentityTypePtrOutput) ToCacheIdentityTypePtrOutput() CacheIdentity
 
 func (o CacheIdentityTypePtrOutput) ToCacheIdentityTypePtrOutputWithContext(ctx context.Context) CacheIdentityTypePtrOutput {
 	return o
+}
+
+func (o CacheIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheIdentityType] {
+	return pulumix.Output[*CacheIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CacheIdentityTypePtrOutput) Elem() CacheIdentityTypeOutput {
@@ -173,6 +186,12 @@ func (in *cacheIdentityTypePtr) ToCacheIdentityTypePtrOutput() CacheIdentityType
 
 func (in *cacheIdentityTypePtr) ToCacheIdentityTypePtrOutputWithContext(ctx context.Context) CacheIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CacheIdentityTypePtrOutput)
+}
+
+func (in *cacheIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CacheIdentityType] {
+	return pulumix.Output[*CacheIdentityType]{
+		OutputState: in.ToCacheIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Access allowed by this rule.

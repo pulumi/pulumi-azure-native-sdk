@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Instance of an Azure ML Operationalization Cluster resource.
@@ -182,6 +183,12 @@ func (i *OperationalizationCluster) ToOperationalizationClusterOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(OperationalizationClusterOutput)
 }
 
+func (i *OperationalizationCluster) ToOutput(ctx context.Context) pulumix.Output[*OperationalizationCluster] {
+	return pulumix.Output[*OperationalizationCluster]{
+		OutputState: i.ToOperationalizationClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OperationalizationClusterOutput struct{ *pulumi.OutputState }
 
 func (OperationalizationClusterOutput) ElementType() reflect.Type {
@@ -194,6 +201,12 @@ func (o OperationalizationClusterOutput) ToOperationalizationClusterOutput() Ope
 
 func (o OperationalizationClusterOutput) ToOperationalizationClusterOutputWithContext(ctx context.Context) OperationalizationClusterOutput {
 	return o
+}
+
+func (o OperationalizationClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*OperationalizationCluster] {
+	return pulumix.Output[*OperationalizationCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AppInsights configuration.

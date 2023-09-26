@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Whether to enable Azure front door
@@ -87,6 +88,12 @@ func (o DatabaseTierOutput) ToDatabaseTierPtrOutputWithContext(ctx context.Conte
 	}).(DatabaseTierPtrOutput)
 }
 
+func (o DatabaseTierOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseTier] {
+	return pulumix.Output[DatabaseTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,6 +127,12 @@ func (o DatabaseTierPtrOutput) ToDatabaseTierPtrOutput() DatabaseTierPtrOutput {
 
 func (o DatabaseTierPtrOutput) ToDatabaseTierPtrOutputWithContext(ctx context.Context) DatabaseTierPtrOutput {
 	return o
+}
+
+func (o DatabaseTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTier] {
+	return pulumix.Output[*DatabaseTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseTierPtrOutput) Elem() DatabaseTierOutput {
@@ -182,6 +195,12 @@ func (in *databaseTierPtr) ToDatabaseTierPtrOutput() DatabaseTierPtrOutput {
 
 func (in *databaseTierPtr) ToDatabaseTierPtrOutputWithContext(ctx context.Context) DatabaseTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTierPtrOutput)
+}
+
+func (in *databaseTierPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTier] {
+	return pulumix.Output[*DatabaseTier]{
+		OutputState: in.ToDatabaseTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Database type
@@ -260,6 +279,12 @@ func (o DiskStorageTypeOutput) ToDiskStorageTypePtrOutputWithContext(ctx context
 	}).(DiskStorageTypePtrOutput)
 }
 
+func (o DiskStorageTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DiskStorageType] {
+	return pulumix.Output[DiskStorageType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DiskStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -293,6 +318,12 @@ func (o DiskStorageTypePtrOutput) ToDiskStorageTypePtrOutput() DiskStorageTypePt
 
 func (o DiskStorageTypePtrOutput) ToDiskStorageTypePtrOutputWithContext(ctx context.Context) DiskStorageTypePtrOutput {
 	return o
+}
+
+func (o DiskStorageTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskStorageType] {
+	return pulumix.Output[*DiskStorageType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskStorageTypePtrOutput) Elem() DiskStorageTypeOutput {
@@ -355,6 +386,12 @@ func (in *diskStorageTypePtr) ToDiskStorageTypePtrOutput() DiskStorageTypePtrOut
 
 func (in *diskStorageTypePtr) ToDiskStorageTypePtrOutputWithContext(ctx context.Context) DiskStorageTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskStorageTypePtrOutput)
+}
+
+func (in *diskStorageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskStorageType] {
+	return pulumix.Output[*DiskStorageType]{
+		OutputState: in.ToDiskStorageTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Whether to enable Azure backup for the workload
@@ -586,6 +623,12 @@ func (o SkuTierOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTie
 	}).(SkuTierPtrOutput)
 }
 
+func (o SkuTierOutput) ToOutput(ctx context.Context) pulumix.Output[SkuTier] {
+	return pulumix.Output[SkuTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SkuTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -619,6 +662,12 @@ func (o SkuTierPtrOutput) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (o SkuTierPtrOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return o
+}
+
+func (o SkuTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
+	return pulumix.Output[*SkuTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuTierPtrOutput) Elem() SkuTierOutput {
@@ -681,6 +730,12 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
+}
+
+func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
+	return pulumix.Output[*SkuTier]{
+		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Application version

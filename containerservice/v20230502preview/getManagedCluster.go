@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Managed cluster.
@@ -189,6 +190,12 @@ func (o LookupManagedClusterResultOutput) ToLookupManagedClusterResultOutput() L
 
 func (o LookupManagedClusterResultOutput) ToLookupManagedClusterResultOutputWithContext(ctx context.Context) LookupManagedClusterResultOutput {
 	return o
+}
+
+func (o LookupManagedClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedClusterResult] {
+	return pulumix.Output[LookupManagedClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Azure Active Directory configuration.

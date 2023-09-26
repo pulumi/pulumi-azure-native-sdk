@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A vulnerability assessments setting on Azure servers in the defined scope.
@@ -125,6 +126,12 @@ func (i *AzureServersSetting) ToAzureServersSettingOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AzureServersSettingOutput)
 }
 
+func (i *AzureServersSetting) ToOutput(ctx context.Context) pulumix.Output[*AzureServersSetting] {
+	return pulumix.Output[*AzureServersSetting]{
+		OutputState: i.ToAzureServersSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AzureServersSettingOutput struct{ *pulumi.OutputState }
 
 func (AzureServersSettingOutput) ElementType() reflect.Type {
@@ -137,6 +144,12 @@ func (o AzureServersSettingOutput) ToAzureServersSettingOutput() AzureServersSet
 
 func (o AzureServersSettingOutput) ToAzureServersSettingOutputWithContext(ctx context.Context) AzureServersSettingOutput {
 	return o
+}
+
+func (o AzureServersSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureServersSetting] {
+	return pulumix.Output[*AzureServersSetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The kind of the server vulnerability assessments setting

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a mongo cluster firewall rule.
@@ -88,6 +89,12 @@ func (o LookupMongoClusterFirewallRuleResultOutput) ToLookupMongoClusterFirewall
 
 func (o LookupMongoClusterFirewallRuleResultOutput) ToLookupMongoClusterFirewallRuleResultOutputWithContext(ctx context.Context) LookupMongoClusterFirewallRuleResultOutput {
 	return o
+}
+
+func (o LookupMongoClusterFirewallRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMongoClusterFirewallRuleResult] {
+	return pulumix.Output[LookupMongoClusterFirewallRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The end IP address of the mongo cluster firewall rule. Must be IPv4 format.

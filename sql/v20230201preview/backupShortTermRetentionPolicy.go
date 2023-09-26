@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A short term retention policy.
@@ -173,6 +174,12 @@ func (i *BackupShortTermRetentionPolicy) ToBackupShortTermRetentionPolicyOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(BackupShortTermRetentionPolicyOutput)
 }
 
+func (i *BackupShortTermRetentionPolicy) ToOutput(ctx context.Context) pulumix.Output[*BackupShortTermRetentionPolicy] {
+	return pulumix.Output[*BackupShortTermRetentionPolicy]{
+		OutputState: i.ToBackupShortTermRetentionPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupShortTermRetentionPolicyOutput struct{ *pulumi.OutputState }
 
 func (BackupShortTermRetentionPolicyOutput) ElementType() reflect.Type {
@@ -185,6 +192,12 @@ func (o BackupShortTermRetentionPolicyOutput) ToBackupShortTermRetentionPolicyOu
 
 func (o BackupShortTermRetentionPolicyOutput) ToBackupShortTermRetentionPolicyOutputWithContext(ctx context.Context) BackupShortTermRetentionPolicyOutput {
 	return o
+}
+
+func (o BackupShortTermRetentionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupShortTermRetentionPolicy] {
+	return pulumix.Output[*BackupShortTermRetentionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.

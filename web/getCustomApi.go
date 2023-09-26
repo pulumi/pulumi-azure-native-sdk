@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a custom API by name for a specific subscription and resource group
@@ -89,6 +90,12 @@ func (o LookupCustomApiResultOutput) ToLookupCustomApiResultOutput() LookupCusto
 
 func (o LookupCustomApiResultOutput) ToLookupCustomApiResultOutputWithContext(ctx context.Context) LookupCustomApiResultOutput {
 	return o
+}
+
+func (o LookupCustomApiResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomApiResult] {
+	return pulumix.Output[LookupCustomApiResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ETag

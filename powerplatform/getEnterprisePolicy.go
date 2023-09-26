@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about an EnterprisePolicy
@@ -97,6 +98,12 @@ func (o LookupEnterprisePolicyResultOutput) ToLookupEnterprisePolicyResultOutput
 
 func (o LookupEnterprisePolicyResultOutput) ToLookupEnterprisePolicyResultOutputWithContext(ctx context.Context) LookupEnterprisePolicyResultOutput {
 	return o
+}
+
+func (o LookupEnterprisePolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEnterprisePolicyResult] {
+	return pulumix.Output[LookupEnterprisePolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The encryption settings for a configuration store.

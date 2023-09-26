@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A class represent a replica resource.
@@ -144,6 +145,12 @@ func (i *SignalRReplica) ToSignalRReplicaOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SignalRReplicaOutput)
 }
 
+func (i *SignalRReplica) ToOutput(ctx context.Context) pulumix.Output[*SignalRReplica] {
+	return pulumix.Output[*SignalRReplica]{
+		OutputState: i.ToSignalRReplicaOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SignalRReplicaOutput struct{ *pulumi.OutputState }
 
 func (SignalRReplicaOutput) ElementType() reflect.Type {
@@ -156,6 +163,12 @@ func (o SignalRReplicaOutput) ToSignalRReplicaOutput() SignalRReplicaOutput {
 
 func (o SignalRReplicaOutput) ToSignalRReplicaOutputWithContext(ctx context.Context) SignalRReplicaOutput {
 	return o
+}
+
+func (o SignalRReplicaOutput) ToOutput(ctx context.Context) pulumix.Output[*SignalRReplica] {
+	return pulumix.Output[*SignalRReplica]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The geo-location where the resource lives

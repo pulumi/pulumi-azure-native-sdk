@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the Application Live  and its properties.
@@ -96,6 +97,12 @@ func (o LookupDevToolPortalResultOutput) ToLookupDevToolPortalResultOutput() Loo
 
 func (o LookupDevToolPortalResultOutput) ToLookupDevToolPortalResultOutputWithContext(ctx context.Context) LookupDevToolPortalResultOutput {
 	return o
+}
+
+func (o LookupDevToolPortalResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDevToolPortalResult] {
+	return pulumix.Output[LookupDevToolPortalResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

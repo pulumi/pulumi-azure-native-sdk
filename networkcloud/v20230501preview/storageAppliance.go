@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type StorageAppliance struct {
@@ -199,6 +200,12 @@ func (i *StorageAppliance) ToStorageApplianceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(StorageApplianceOutput)
 }
 
+func (i *StorageAppliance) ToOutput(ctx context.Context) pulumix.Output[*StorageAppliance] {
+	return pulumix.Output[*StorageAppliance]{
+		OutputState: i.ToStorageApplianceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StorageApplianceOutput struct{ *pulumi.OutputState }
 
 func (StorageApplianceOutput) ElementType() reflect.Type {
@@ -211,6 +218,12 @@ func (o StorageApplianceOutput) ToStorageApplianceOutput() StorageApplianceOutpu
 
 func (o StorageApplianceOutput) ToStorageApplianceOutputWithContext(ctx context.Context) StorageApplianceOutput {
 	return o
+}
+
+func (o StorageApplianceOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageAppliance] {
+	return pulumix.Output[*StorageAppliance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The credentials of the administrative interface on this storage appliance.

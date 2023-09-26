@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -76,6 +77,12 @@ func (i AutoscaleNotificationArgs) ToAutoscaleNotificationOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleNotificationOutput)
 }
 
+func (i AutoscaleNotificationArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscaleNotification] {
+	return pulumix.Output[AutoscaleNotification]{
+		OutputState: i.ToAutoscaleNotificationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutoscaleNotificationArrayInput is an input type that accepts AutoscaleNotificationArray and AutoscaleNotificationArrayOutput values.
 // You can construct a concrete instance of `AutoscaleNotificationArrayInput` via:
 //
@@ -101,6 +108,12 @@ func (i AutoscaleNotificationArray) ToAutoscaleNotificationArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleNotificationArrayOutput)
 }
 
+func (i AutoscaleNotificationArray) ToOutput(ctx context.Context) pulumix.Output[[]AutoscaleNotification] {
+	return pulumix.Output[[]AutoscaleNotification]{
+		OutputState: i.ToAutoscaleNotificationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Autoscale notification.
 type AutoscaleNotificationOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o AutoscaleNotificationOutput) ToAutoscaleNotificationOutput() AutoscaleNo
 
 func (o AutoscaleNotificationOutput) ToAutoscaleNotificationOutputWithContext(ctx context.Context) AutoscaleNotificationOutput {
 	return o
+}
+
+func (o AutoscaleNotificationOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscaleNotification] {
+	return pulumix.Output[AutoscaleNotification]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the email notification.
@@ -143,6 +162,12 @@ func (o AutoscaleNotificationArrayOutput) ToAutoscaleNotificationArrayOutput() A
 
 func (o AutoscaleNotificationArrayOutput) ToAutoscaleNotificationArrayOutputWithContext(ctx context.Context) AutoscaleNotificationArrayOutput {
 	return o
+}
+
+func (o AutoscaleNotificationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutoscaleNotification] {
+	return pulumix.Output[[]AutoscaleNotification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoscaleNotificationArrayOutput) Index(i pulumi.IntInput) AutoscaleNotificationOutput {
@@ -187,6 +212,12 @@ func (o AutoscaleNotificationResponseOutput) ToAutoscaleNotificationResponseOutp
 	return o
 }
 
+func (o AutoscaleNotificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscaleNotificationResponse] {
+	return pulumix.Output[AutoscaleNotificationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the email notification.
 func (o AutoscaleNotificationResponseOutput) Email() EmailNotificationResponsePtrOutput {
 	return o.ApplyT(func(v AutoscaleNotificationResponse) *EmailNotificationResponse { return v.Email }).(EmailNotificationResponsePtrOutput)
@@ -214,6 +245,12 @@ func (o AutoscaleNotificationResponseArrayOutput) ToAutoscaleNotificationRespons
 
 func (o AutoscaleNotificationResponseArrayOutput) ToAutoscaleNotificationResponseArrayOutputWithContext(ctx context.Context) AutoscaleNotificationResponseArrayOutput {
 	return o
+}
+
+func (o AutoscaleNotificationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutoscaleNotificationResponse] {
+	return pulumix.Output[[]AutoscaleNotificationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoscaleNotificationResponseArrayOutput) Index(i pulumi.IntInput) AutoscaleNotificationResponseOutput {
@@ -273,6 +310,12 @@ func (i AutoscaleProfileArgs) ToAutoscaleProfileOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleProfileOutput)
 }
 
+func (i AutoscaleProfileArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscaleProfile] {
+	return pulumix.Output[AutoscaleProfile]{
+		OutputState: i.ToAutoscaleProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutoscaleProfileArrayInput is an input type that accepts AutoscaleProfileArray and AutoscaleProfileArrayOutput values.
 // You can construct a concrete instance of `AutoscaleProfileArrayInput` via:
 //
@@ -298,6 +341,12 @@ func (i AutoscaleProfileArray) ToAutoscaleProfileArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleProfileArrayOutput)
 }
 
+func (i AutoscaleProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]AutoscaleProfile] {
+	return pulumix.Output[[]AutoscaleProfile]{
+		OutputState: i.ToAutoscaleProfileArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Autoscale profile.
 type AutoscaleProfileOutput struct{ *pulumi.OutputState }
 
@@ -311,6 +360,12 @@ func (o AutoscaleProfileOutput) ToAutoscaleProfileOutput() AutoscaleProfileOutpu
 
 func (o AutoscaleProfileOutput) ToAutoscaleProfileOutputWithContext(ctx context.Context) AutoscaleProfileOutput {
 	return o
+}
+
+func (o AutoscaleProfileOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscaleProfile] {
+	return pulumix.Output[AutoscaleProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the number of instances that can be used during this profile.
@@ -352,6 +407,12 @@ func (o AutoscaleProfileArrayOutput) ToAutoscaleProfileArrayOutputWithContext(ct
 	return o
 }
 
+func (o AutoscaleProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutoscaleProfile] {
+	return pulumix.Output[[]AutoscaleProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoscaleProfileArrayOutput) Index(i pulumi.IntInput) AutoscaleProfileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoscaleProfile {
 		return vs[0].([]AutoscaleProfile)[vs[1].(int)]
@@ -385,6 +446,12 @@ func (o AutoscaleProfileResponseOutput) ToAutoscaleProfileResponseOutput() Autos
 
 func (o AutoscaleProfileResponseOutput) ToAutoscaleProfileResponseOutputWithContext(ctx context.Context) AutoscaleProfileResponseOutput {
 	return o
+}
+
+func (o AutoscaleProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscaleProfileResponse] {
+	return pulumix.Output[AutoscaleProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the number of instances that can be used during this profile.
@@ -424,6 +491,12 @@ func (o AutoscaleProfileResponseArrayOutput) ToAutoscaleProfileResponseArrayOutp
 
 func (o AutoscaleProfileResponseArrayOutput) ToAutoscaleProfileResponseArrayOutputWithContext(ctx context.Context) AutoscaleProfileResponseArrayOutput {
 	return o
+}
+
+func (o AutoscaleProfileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutoscaleProfileResponse] {
+	return pulumix.Output[[]AutoscaleProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoscaleProfileResponseArrayOutput) Index(i pulumi.IntInput) AutoscaleProfileResponseOutput {
@@ -506,6 +579,12 @@ func (i EmailNotificationArgs) ToEmailNotificationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(EmailNotificationOutput)
 }
 
+func (i EmailNotificationArgs) ToOutput(ctx context.Context) pulumix.Output[EmailNotification] {
+	return pulumix.Output[EmailNotification]{
+		OutputState: i.ToEmailNotificationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EmailNotificationArgs) ToEmailNotificationPtrOutput() EmailNotificationPtrOutput {
 	return i.ToEmailNotificationPtrOutputWithContext(context.Background())
 }
@@ -547,6 +626,12 @@ func (i *emailNotificationPtrType) ToEmailNotificationPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(EmailNotificationPtrOutput)
 }
 
+func (i *emailNotificationPtrType) ToOutput(ctx context.Context) pulumix.Output[*EmailNotification] {
+	return pulumix.Output[*EmailNotification]{
+		OutputState: i.ToEmailNotificationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Email notification of an autoscale event.
 type EmailNotificationOutput struct{ *pulumi.OutputState }
 
@@ -570,6 +655,12 @@ func (o EmailNotificationOutput) ToEmailNotificationPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailNotification) *EmailNotification {
 		return &v
 	}).(EmailNotificationPtrOutput)
+}
+
+func (o EmailNotificationOutput) ToOutput(ctx context.Context) pulumix.Output[EmailNotification] {
+	return pulumix.Output[EmailNotification]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the custom e-mails list. This value can be null or empty, in which case this attribute will be ignored.
@@ -599,6 +690,12 @@ func (o EmailNotificationPtrOutput) ToEmailNotificationPtrOutput() EmailNotifica
 
 func (o EmailNotificationPtrOutput) ToEmailNotificationPtrOutputWithContext(ctx context.Context) EmailNotificationPtrOutput {
 	return o
+}
+
+func (o EmailNotificationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailNotification] {
+	return pulumix.Output[*EmailNotification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EmailNotificationPtrOutput) Elem() EmailNotificationOutput {
@@ -683,6 +780,12 @@ func (o EmailNotificationResponseOutput) ToEmailNotificationResponseOutputWithCo
 	return o
 }
 
+func (o EmailNotificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EmailNotificationResponse] {
+	return pulumix.Output[EmailNotificationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the custom e-mails list. This value can be null or empty, in which case this attribute will be ignored.
 func (o EmailNotificationResponseOutput) CustomEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EmailNotificationResponse) []string { return v.CustomEmails }).(pulumi.StringArrayOutput)
@@ -710,6 +813,12 @@ func (o EmailNotificationResponsePtrOutput) ToEmailNotificationResponsePtrOutput
 
 func (o EmailNotificationResponsePtrOutput) ToEmailNotificationResponsePtrOutputWithContext(ctx context.Context) EmailNotificationResponsePtrOutput {
 	return o
+}
+
+func (o EmailNotificationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailNotificationResponse] {
+	return pulumix.Output[*EmailNotificationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EmailNotificationResponsePtrOutput) Elem() EmailNotificationResponseOutput {
@@ -831,6 +940,12 @@ func (i MetricTriggerArgs) ToMetricTriggerOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MetricTriggerOutput)
 }
 
+func (i MetricTriggerArgs) ToOutput(ctx context.Context) pulumix.Output[MetricTrigger] {
+	return pulumix.Output[MetricTrigger]{
+		OutputState: i.ToMetricTriggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The trigger that results in a scaling action.
 type MetricTriggerOutput struct{ *pulumi.OutputState }
 
@@ -844,6 +959,12 @@ func (o MetricTriggerOutput) ToMetricTriggerOutput() MetricTriggerOutput {
 
 func (o MetricTriggerOutput) ToMetricTriggerOutputWithContext(ctx context.Context) MetricTriggerOutput {
 	return o
+}
+
+func (o MetricTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[MetricTrigger] {
+	return pulumix.Output[MetricTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of dimension conditions. For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
@@ -949,6 +1070,12 @@ func (o MetricTriggerResponseOutput) ToMetricTriggerResponseOutputWithContext(ct
 	return o
 }
 
+func (o MetricTriggerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetricTriggerResponse] {
+	return pulumix.Output[MetricTriggerResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of dimension conditions. For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
 func (o MetricTriggerResponseOutput) Dimensions() ScaleRuleMetricDimensionResponseArrayOutput {
 	return o.ApplyT(func(v MetricTriggerResponse) []ScaleRuleMetricDimensionResponse { return v.Dimensions }).(ScaleRuleMetricDimensionResponseArrayOutput)
@@ -1048,6 +1175,12 @@ func (i PredictiveAutoscalePolicyArgs) ToPredictiveAutoscalePolicyOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PredictiveAutoscalePolicyOutput)
 }
 
+func (i PredictiveAutoscalePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[PredictiveAutoscalePolicy] {
+	return pulumix.Output[PredictiveAutoscalePolicy]{
+		OutputState: i.ToPredictiveAutoscalePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PredictiveAutoscalePolicyArgs) ToPredictiveAutoscalePolicyPtrOutput() PredictiveAutoscalePolicyPtrOutput {
 	return i.ToPredictiveAutoscalePolicyPtrOutputWithContext(context.Background())
 }
@@ -1089,6 +1222,12 @@ func (i *predictiveAutoscalePolicyPtrType) ToPredictiveAutoscalePolicyPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(PredictiveAutoscalePolicyPtrOutput)
 }
 
+func (i *predictiveAutoscalePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PredictiveAutoscalePolicy] {
+	return pulumix.Output[*PredictiveAutoscalePolicy]{
+		OutputState: i.ToPredictiveAutoscalePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The parameters for enabling predictive autoscale.
 type PredictiveAutoscalePolicyOutput struct{ *pulumi.OutputState }
 
@@ -1114,6 +1253,12 @@ func (o PredictiveAutoscalePolicyOutput) ToPredictiveAutoscalePolicyPtrOutputWit
 	}).(PredictiveAutoscalePolicyPtrOutput)
 }
 
+func (o PredictiveAutoscalePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[PredictiveAutoscalePolicy] {
+	return pulumix.Output[PredictiveAutoscalePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the amount of time to specify by which instances are launched in advance. It must be between 1 minute and 60 minutes in ISO 8601 format.
 func (o PredictiveAutoscalePolicyOutput) ScaleLookAheadTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PredictiveAutoscalePolicy) *string { return v.ScaleLookAheadTime }).(pulumi.StringPtrOutput)
@@ -1136,6 +1281,12 @@ func (o PredictiveAutoscalePolicyPtrOutput) ToPredictiveAutoscalePolicyPtrOutput
 
 func (o PredictiveAutoscalePolicyPtrOutput) ToPredictiveAutoscalePolicyPtrOutputWithContext(ctx context.Context) PredictiveAutoscalePolicyPtrOutput {
 	return o
+}
+
+func (o PredictiveAutoscalePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PredictiveAutoscalePolicy] {
+	return pulumix.Output[*PredictiveAutoscalePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PredictiveAutoscalePolicyPtrOutput) Elem() PredictiveAutoscalePolicyOutput {
@@ -1191,6 +1342,12 @@ func (o PredictiveAutoscalePolicyResponseOutput) ToPredictiveAutoscalePolicyResp
 	return o
 }
 
+func (o PredictiveAutoscalePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PredictiveAutoscalePolicyResponse] {
+	return pulumix.Output[PredictiveAutoscalePolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the amount of time to specify by which instances are launched in advance. It must be between 1 minute and 60 minutes in ISO 8601 format.
 func (o PredictiveAutoscalePolicyResponseOutput) ScaleLookAheadTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PredictiveAutoscalePolicyResponse) *string { return v.ScaleLookAheadTime }).(pulumi.StringPtrOutput)
@@ -1213,6 +1370,12 @@ func (o PredictiveAutoscalePolicyResponsePtrOutput) ToPredictiveAutoscalePolicyR
 
 func (o PredictiveAutoscalePolicyResponsePtrOutput) ToPredictiveAutoscalePolicyResponsePtrOutputWithContext(ctx context.Context) PredictiveAutoscalePolicyResponsePtrOutput {
 	return o
+}
+
+func (o PredictiveAutoscalePolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PredictiveAutoscalePolicyResponse] {
+	return pulumix.Output[*PredictiveAutoscalePolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PredictiveAutoscalePolicyResponsePtrOutput) Elem() PredictiveAutoscalePolicyResponseOutput {
@@ -1284,6 +1447,12 @@ func (i RecurrenceArgs) ToRecurrenceOutputWithContext(ctx context.Context) Recur
 	return pulumi.ToOutputWithContext(ctx, i).(RecurrenceOutput)
 }
 
+func (i RecurrenceArgs) ToOutput(ctx context.Context) pulumix.Output[Recurrence] {
+	return pulumix.Output[Recurrence]{
+		OutputState: i.ToRecurrenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RecurrenceArgs) ToRecurrencePtrOutput() RecurrencePtrOutput {
 	return i.ToRecurrencePtrOutputWithContext(context.Background())
 }
@@ -1325,6 +1494,12 @@ func (i *recurrencePtrType) ToRecurrencePtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(RecurrencePtrOutput)
 }
 
+func (i *recurrencePtrType) ToOutput(ctx context.Context) pulumix.Output[*Recurrence] {
+	return pulumix.Output[*Recurrence]{
+		OutputState: i.ToRecurrencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The repeating times at which this profile begins. This element is not used if the FixedDate element is used.
 type RecurrenceOutput struct{ *pulumi.OutputState }
 
@@ -1350,6 +1525,12 @@ func (o RecurrenceOutput) ToRecurrencePtrOutputWithContext(ctx context.Context) 
 	}).(RecurrencePtrOutput)
 }
 
+func (o RecurrenceOutput) ToOutput(ctx context.Context) pulumix.Output[Recurrence] {
+	return pulumix.Output[Recurrence]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the recurrence frequency. How often the schedule profile should take effect. This value must be Week, meaning each week will have the same set of profiles. For example, to set a daily schedule, set **schedule** to every day of the week. The frequency property specifies that the schedule is repeated weekly.
 func (o RecurrenceOutput) Frequency() RecurrenceFrequencyOutput {
 	return o.ApplyT(func(v Recurrence) RecurrenceFrequency { return v.Frequency }).(RecurrenceFrequencyOutput)
@@ -1372,6 +1553,12 @@ func (o RecurrencePtrOutput) ToRecurrencePtrOutput() RecurrencePtrOutput {
 
 func (o RecurrencePtrOutput) ToRecurrencePtrOutputWithContext(ctx context.Context) RecurrencePtrOutput {
 	return o
+}
+
+func (o RecurrencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Recurrence] {
+	return pulumix.Output[*Recurrence]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecurrencePtrOutput) Elem() RecurrenceOutput {
@@ -1427,6 +1614,12 @@ func (o RecurrenceResponseOutput) ToRecurrenceResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o RecurrenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RecurrenceResponse] {
+	return pulumix.Output[RecurrenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the recurrence frequency. How often the schedule profile should take effect. This value must be Week, meaning each week will have the same set of profiles. For example, to set a daily schedule, set **schedule** to every day of the week. The frequency property specifies that the schedule is repeated weekly.
 func (o RecurrenceResponseOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v RecurrenceResponse) string { return v.Frequency }).(pulumi.StringOutput)
@@ -1449,6 +1642,12 @@ func (o RecurrenceResponsePtrOutput) ToRecurrenceResponsePtrOutput() RecurrenceR
 
 func (o RecurrenceResponsePtrOutput) ToRecurrenceResponsePtrOutputWithContext(ctx context.Context) RecurrenceResponsePtrOutput {
 	return o
+}
+
+func (o RecurrenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceResponse] {
+	return pulumix.Output[*RecurrenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecurrenceResponsePtrOutput) Elem() RecurrenceResponseOutput {
@@ -1528,6 +1727,12 @@ func (i RecurrentScheduleArgs) ToRecurrentScheduleOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RecurrentScheduleOutput)
 }
 
+func (i RecurrentScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[RecurrentSchedule] {
+	return pulumix.Output[RecurrentSchedule]{
+		OutputState: i.ToRecurrentScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RecurrentScheduleArgs) ToRecurrentSchedulePtrOutput() RecurrentSchedulePtrOutput {
 	return i.ToRecurrentSchedulePtrOutputWithContext(context.Background())
 }
@@ -1569,6 +1774,12 @@ func (i *recurrentSchedulePtrType) ToRecurrentSchedulePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RecurrentSchedulePtrOutput)
 }
 
+func (i *recurrentSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*RecurrentSchedule] {
+	return pulumix.Output[*RecurrentSchedule]{
+		OutputState: i.ToRecurrentSchedulePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The scheduling constraints for when the profile begins.
 type RecurrentScheduleOutput struct{ *pulumi.OutputState }
 
@@ -1592,6 +1803,12 @@ func (o RecurrentScheduleOutput) ToRecurrentSchedulePtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecurrentSchedule) *RecurrentSchedule {
 		return &v
 	}).(RecurrentSchedulePtrOutput)
+}
+
+func (o RecurrentScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[RecurrentSchedule] {
+	return pulumix.Output[RecurrentSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the collection of days that the profile takes effect on. Possible values are Sunday through Saturday.
@@ -1626,6 +1843,12 @@ func (o RecurrentSchedulePtrOutput) ToRecurrentSchedulePtrOutput() RecurrentSche
 
 func (o RecurrentSchedulePtrOutput) ToRecurrentSchedulePtrOutputWithContext(ctx context.Context) RecurrentSchedulePtrOutput {
 	return o
+}
+
+func (o RecurrentSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecurrentSchedule] {
+	return pulumix.Output[*RecurrentSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecurrentSchedulePtrOutput) Elem() RecurrentScheduleOutput {
@@ -1705,6 +1928,12 @@ func (o RecurrentScheduleResponseOutput) ToRecurrentScheduleResponseOutputWithCo
 	return o
 }
 
+func (o RecurrentScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RecurrentScheduleResponse] {
+	return pulumix.Output[RecurrentScheduleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the collection of days that the profile takes effect on. Possible values are Sunday through Saturday.
 func (o RecurrentScheduleResponseOutput) Days() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RecurrentScheduleResponse) []string { return v.Days }).(pulumi.StringArrayOutput)
@@ -1737,6 +1966,12 @@ func (o RecurrentScheduleResponsePtrOutput) ToRecurrentScheduleResponsePtrOutput
 
 func (o RecurrentScheduleResponsePtrOutput) ToRecurrentScheduleResponsePtrOutputWithContext(ctx context.Context) RecurrentScheduleResponsePtrOutput {
 	return o
+}
+
+func (o RecurrentScheduleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecurrentScheduleResponse] {
+	return pulumix.Output[*RecurrentScheduleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecurrentScheduleResponsePtrOutput) Elem() RecurrentScheduleResponseOutput {
@@ -1860,6 +2095,12 @@ func (i ScaleActionArgs) ToScaleActionOutputWithContext(ctx context.Context) Sca
 	return pulumi.ToOutputWithContext(ctx, i).(ScaleActionOutput)
 }
 
+func (i ScaleActionArgs) ToOutput(ctx context.Context) pulumix.Output[ScaleAction] {
+	return pulumix.Output[ScaleAction]{
+		OutputState: i.ToScaleActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The parameters for the scaling action.
 type ScaleActionOutput struct{ *pulumi.OutputState }
 
@@ -1873,6 +2114,12 @@ func (o ScaleActionOutput) ToScaleActionOutput() ScaleActionOutput {
 
 func (o ScaleActionOutput) ToScaleActionOutputWithContext(ctx context.Context) ScaleActionOutput {
 	return o
+}
+
+func (o ScaleActionOutput) ToOutput(ctx context.Context) pulumix.Output[ScaleAction] {
+	return pulumix.Output[ScaleAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the amount of time to wait since the last scaling action before this action occurs. It must be between 1 week and 1 minute in ISO 8601 format.
@@ -1933,6 +2180,12 @@ func (o ScaleActionResponseOutput) ToScaleActionResponseOutput() ScaleActionResp
 
 func (o ScaleActionResponseOutput) ToScaleActionResponseOutputWithContext(ctx context.Context) ScaleActionResponseOutput {
 	return o
+}
+
+func (o ScaleActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScaleActionResponse] {
+	return pulumix.Output[ScaleActionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the amount of time to wait since the last scaling action before this action occurs. It must be between 1 week and 1 minute in ISO 8601 format.
@@ -1998,6 +2251,12 @@ func (i ScaleCapacityArgs) ToScaleCapacityOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ScaleCapacityOutput)
 }
 
+func (i ScaleCapacityArgs) ToOutput(ctx context.Context) pulumix.Output[ScaleCapacity] {
+	return pulumix.Output[ScaleCapacity]{
+		OutputState: i.ToScaleCapacityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The number of instances that can be used during this profile.
 type ScaleCapacityOutput struct{ *pulumi.OutputState }
 
@@ -2011,6 +2270,12 @@ func (o ScaleCapacityOutput) ToScaleCapacityOutput() ScaleCapacityOutput {
 
 func (o ScaleCapacityOutput) ToScaleCapacityOutputWithContext(ctx context.Context) ScaleCapacityOutput {
 	return o
+}
+
+func (o ScaleCapacityOutput) ToOutput(ctx context.Context) pulumix.Output[ScaleCapacity] {
+	return pulumix.Output[ScaleCapacity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the number of instances that will be set if metrics are not available for evaluation. The default is only used if the current instance count is lower than the default.
@@ -2051,6 +2316,12 @@ func (o ScaleCapacityResponseOutput) ToScaleCapacityResponseOutput() ScaleCapaci
 
 func (o ScaleCapacityResponseOutput) ToScaleCapacityResponseOutputWithContext(ctx context.Context) ScaleCapacityResponseOutput {
 	return o
+}
+
+func (o ScaleCapacityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScaleCapacityResponse] {
+	return pulumix.Output[ScaleCapacityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the number of instances that will be set if metrics are not available for evaluation. The default is only used if the current instance count is lower than the default.
@@ -2127,6 +2398,12 @@ func (i ScaleRuleArgs) ToScaleRuleOutputWithContext(ctx context.Context) ScaleRu
 	return pulumi.ToOutputWithContext(ctx, i).(ScaleRuleOutput)
 }
 
+func (i ScaleRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ScaleRule] {
+	return pulumix.Output[ScaleRule]{
+		OutputState: i.ToScaleRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScaleRuleArrayInput is an input type that accepts ScaleRuleArray and ScaleRuleArrayOutput values.
 // You can construct a concrete instance of `ScaleRuleArrayInput` via:
 //
@@ -2152,6 +2429,12 @@ func (i ScaleRuleArray) ToScaleRuleArrayOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(ScaleRuleArrayOutput)
 }
 
+func (i ScaleRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ScaleRule] {
+	return pulumix.Output[[]ScaleRule]{
+		OutputState: i.ToScaleRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A rule that provide the triggers and parameters for the scaling action.
 type ScaleRuleOutput struct{ *pulumi.OutputState }
 
@@ -2165,6 +2448,12 @@ func (o ScaleRuleOutput) ToScaleRuleOutput() ScaleRuleOutput {
 
 func (o ScaleRuleOutput) ToScaleRuleOutputWithContext(ctx context.Context) ScaleRuleOutput {
 	return o
+}
+
+func (o ScaleRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ScaleRule] {
+	return pulumix.Output[ScaleRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the trigger that results in a scaling action.
@@ -2189,6 +2478,12 @@ func (o ScaleRuleArrayOutput) ToScaleRuleArrayOutput() ScaleRuleArrayOutput {
 
 func (o ScaleRuleArrayOutput) ToScaleRuleArrayOutputWithContext(ctx context.Context) ScaleRuleArrayOutput {
 	return o
+}
+
+func (o ScaleRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScaleRule] {
+	return pulumix.Output[[]ScaleRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScaleRuleArrayOutput) Index(i pulumi.IntInput) ScaleRuleOutput {
@@ -2240,6 +2535,12 @@ func (i ScaleRuleMetricDimensionArgs) ToScaleRuleMetricDimensionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ScaleRuleMetricDimensionOutput)
 }
 
+func (i ScaleRuleMetricDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[ScaleRuleMetricDimension] {
+	return pulumix.Output[ScaleRuleMetricDimension]{
+		OutputState: i.ToScaleRuleMetricDimensionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScaleRuleMetricDimensionArrayInput is an input type that accepts ScaleRuleMetricDimensionArray and ScaleRuleMetricDimensionArrayOutput values.
 // You can construct a concrete instance of `ScaleRuleMetricDimensionArrayInput` via:
 //
@@ -2265,6 +2566,12 @@ func (i ScaleRuleMetricDimensionArray) ToScaleRuleMetricDimensionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ScaleRuleMetricDimensionArrayOutput)
 }
 
+func (i ScaleRuleMetricDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]ScaleRuleMetricDimension] {
+	return pulumix.Output[[]ScaleRuleMetricDimension]{
+		OutputState: i.ToScaleRuleMetricDimensionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies an auto scale rule metric dimension.
 type ScaleRuleMetricDimensionOutput struct{ *pulumi.OutputState }
 
@@ -2278,6 +2585,12 @@ func (o ScaleRuleMetricDimensionOutput) ToScaleRuleMetricDimensionOutput() Scale
 
 func (o ScaleRuleMetricDimensionOutput) ToScaleRuleMetricDimensionOutputWithContext(ctx context.Context) ScaleRuleMetricDimensionOutput {
 	return o
+}
+
+func (o ScaleRuleMetricDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[ScaleRuleMetricDimension] {
+	return pulumix.Output[ScaleRuleMetricDimension]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the dimension.
@@ -2307,6 +2620,12 @@ func (o ScaleRuleMetricDimensionArrayOutput) ToScaleRuleMetricDimensionArrayOutp
 
 func (o ScaleRuleMetricDimensionArrayOutput) ToScaleRuleMetricDimensionArrayOutputWithContext(ctx context.Context) ScaleRuleMetricDimensionArrayOutput {
 	return o
+}
+
+func (o ScaleRuleMetricDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScaleRuleMetricDimension] {
+	return pulumix.Output[[]ScaleRuleMetricDimension]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScaleRuleMetricDimensionArrayOutput) Index(i pulumi.IntInput) ScaleRuleMetricDimensionOutput {
@@ -2340,6 +2659,12 @@ func (o ScaleRuleMetricDimensionResponseOutput) ToScaleRuleMetricDimensionRespon
 	return o
 }
 
+func (o ScaleRuleMetricDimensionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScaleRuleMetricDimensionResponse] {
+	return pulumix.Output[ScaleRuleMetricDimensionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the dimension.
 func (o ScaleRuleMetricDimensionResponseOutput) DimensionName() pulumi.StringOutput {
 	return o.ApplyT(func(v ScaleRuleMetricDimensionResponse) string { return v.DimensionName }).(pulumi.StringOutput)
@@ -2367,6 +2692,12 @@ func (o ScaleRuleMetricDimensionResponseArrayOutput) ToScaleRuleMetricDimensionR
 
 func (o ScaleRuleMetricDimensionResponseArrayOutput) ToScaleRuleMetricDimensionResponseArrayOutputWithContext(ctx context.Context) ScaleRuleMetricDimensionResponseArrayOutput {
 	return o
+}
+
+func (o ScaleRuleMetricDimensionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScaleRuleMetricDimensionResponse] {
+	return pulumix.Output[[]ScaleRuleMetricDimensionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScaleRuleMetricDimensionResponseArrayOutput) Index(i pulumi.IntInput) ScaleRuleMetricDimensionResponseOutput {
@@ -2409,6 +2740,12 @@ func (o ScaleRuleResponseOutput) ToScaleRuleResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o ScaleRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScaleRuleResponse] {
+	return pulumix.Output[ScaleRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the trigger that results in a scaling action.
 func (o ScaleRuleResponseOutput) MetricTrigger() MetricTriggerResponseOutput {
 	return o.ApplyT(func(v ScaleRuleResponse) MetricTriggerResponse { return v.MetricTrigger }).(MetricTriggerResponseOutput)
@@ -2431,6 +2768,12 @@ func (o ScaleRuleResponseArrayOutput) ToScaleRuleResponseArrayOutput() ScaleRule
 
 func (o ScaleRuleResponseArrayOutput) ToScaleRuleResponseArrayOutputWithContext(ctx context.Context) ScaleRuleResponseArrayOutput {
 	return o
+}
+
+func (o ScaleRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScaleRuleResponse] {
+	return pulumix.Output[[]ScaleRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScaleRuleResponseArrayOutput) Index(i pulumi.IntInput) ScaleRuleResponseOutput {
@@ -2468,6 +2811,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -2543,6 +2892,12 @@ func (i TimeWindowArgs) ToTimeWindowOutputWithContext(ctx context.Context) TimeW
 	return pulumi.ToOutputWithContext(ctx, i).(TimeWindowOutput)
 }
 
+func (i TimeWindowArgs) ToOutput(ctx context.Context) pulumix.Output[TimeWindow] {
+	return pulumix.Output[TimeWindow]{
+		OutputState: i.ToTimeWindowOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TimeWindowArgs) ToTimeWindowPtrOutput() TimeWindowPtrOutput {
 	return i.ToTimeWindowPtrOutputWithContext(context.Background())
 }
@@ -2584,6 +2939,12 @@ func (i *timeWindowPtrType) ToTimeWindowPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TimeWindowPtrOutput)
 }
 
+func (i *timeWindowPtrType) ToOutput(ctx context.Context) pulumix.Output[*TimeWindow] {
+	return pulumix.Output[*TimeWindow]{
+		OutputState: i.ToTimeWindowPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A specific date-time for the profile.
 type TimeWindowOutput struct{ *pulumi.OutputState }
 
@@ -2607,6 +2968,12 @@ func (o TimeWindowOutput) ToTimeWindowPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeWindow) *TimeWindow {
 		return &v
 	}).(TimeWindowPtrOutput)
+}
+
+func (o TimeWindowOutput) ToOutput(ctx context.Context) pulumix.Output[TimeWindow] {
+	return pulumix.Output[TimeWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the end time for the profile in ISO 8601 format.
@@ -2636,6 +3003,12 @@ func (o TimeWindowPtrOutput) ToTimeWindowPtrOutput() TimeWindowPtrOutput {
 
 func (o TimeWindowPtrOutput) ToTimeWindowPtrOutputWithContext(ctx context.Context) TimeWindowPtrOutput {
 	return o
+}
+
+func (o TimeWindowPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeWindow] {
+	return pulumix.Output[*TimeWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimeWindowPtrOutput) Elem() TimeWindowOutput {
@@ -2703,6 +3076,12 @@ func (o TimeWindowResponseOutput) ToTimeWindowResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o TimeWindowResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeWindowResponse] {
+	return pulumix.Output[TimeWindowResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the end time for the profile in ISO 8601 format.
 func (o TimeWindowResponseOutput) End() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeWindowResponse) string { return v.End }).(pulumi.StringOutput)
@@ -2730,6 +3109,12 @@ func (o TimeWindowResponsePtrOutput) ToTimeWindowResponsePtrOutput() TimeWindowR
 
 func (o TimeWindowResponsePtrOutput) ToTimeWindowResponsePtrOutputWithContext(ctx context.Context) TimeWindowResponsePtrOutput {
 	return o
+}
+
+func (o TimeWindowResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeWindowResponse] {
+	return pulumix.Output[*TimeWindowResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimeWindowResponsePtrOutput) Elem() TimeWindowResponseOutput {
@@ -2811,6 +3196,12 @@ func (i WebhookNotificationArgs) ToWebhookNotificationOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookNotificationOutput)
 }
 
+func (i WebhookNotificationArgs) ToOutput(ctx context.Context) pulumix.Output[WebhookNotification] {
+	return pulumix.Output[WebhookNotification]{
+		OutputState: i.ToWebhookNotificationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WebhookNotificationArrayInput is an input type that accepts WebhookNotificationArray and WebhookNotificationArrayOutput values.
 // You can construct a concrete instance of `WebhookNotificationArrayInput` via:
 //
@@ -2836,6 +3227,12 @@ func (i WebhookNotificationArray) ToWebhookNotificationArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookNotificationArrayOutput)
 }
 
+func (i WebhookNotificationArray) ToOutput(ctx context.Context) pulumix.Output[[]WebhookNotification] {
+	return pulumix.Output[[]WebhookNotification]{
+		OutputState: i.ToWebhookNotificationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Webhook notification of an autoscale event.
 type WebhookNotificationOutput struct{ *pulumi.OutputState }
 
@@ -2849,6 +3246,12 @@ func (o WebhookNotificationOutput) ToWebhookNotificationOutput() WebhookNotifica
 
 func (o WebhookNotificationOutput) ToWebhookNotificationOutputWithContext(ctx context.Context) WebhookNotificationOutput {
 	return o
+}
+
+func (o WebhookNotificationOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookNotification] {
+	return pulumix.Output[WebhookNotification]{
+		OutputState: o.OutputState,
+	}
 }
 
 // a property bag of settings. This value can be empty.
@@ -2873,6 +3276,12 @@ func (o WebhookNotificationArrayOutput) ToWebhookNotificationArrayOutput() Webho
 
 func (o WebhookNotificationArrayOutput) ToWebhookNotificationArrayOutputWithContext(ctx context.Context) WebhookNotificationArrayOutput {
 	return o
+}
+
+func (o WebhookNotificationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WebhookNotification] {
+	return pulumix.Output[[]WebhookNotification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebhookNotificationArrayOutput) Index(i pulumi.IntInput) WebhookNotificationOutput {
@@ -2904,6 +3313,12 @@ func (o WebhookNotificationResponseOutput) ToWebhookNotificationResponseOutputWi
 	return o
 }
 
+func (o WebhookNotificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookNotificationResponse] {
+	return pulumix.Output[WebhookNotificationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // a property bag of settings. This value can be empty.
 func (o WebhookNotificationResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WebhookNotificationResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
@@ -2926,6 +3341,12 @@ func (o WebhookNotificationResponseArrayOutput) ToWebhookNotificationResponseArr
 
 func (o WebhookNotificationResponseArrayOutput) ToWebhookNotificationResponseArrayOutputWithContext(ctx context.Context) WebhookNotificationResponseArrayOutput {
 	return o
+}
+
+func (o WebhookNotificationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WebhookNotificationResponse] {
+	return pulumix.Output[[]WebhookNotificationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebhookNotificationResponseArrayOutput) Index(i pulumi.IntInput) WebhookNotificationResponseOutput {

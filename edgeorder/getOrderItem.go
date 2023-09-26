@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an order item.
@@ -95,6 +96,12 @@ func (o LookupOrderItemResultOutput) ToLookupOrderItemResultOutput() LookupOrder
 
 func (o LookupOrderItemResultOutput) ToLookupOrderItemResultOutputWithContext(ctx context.Context) LookupOrderItemResultOutput {
 	return o
+}
+
+func (o LookupOrderItemResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrderItemResult] {
+	return pulumix.Output[LookupOrderItemResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents shipping and return address for order item.

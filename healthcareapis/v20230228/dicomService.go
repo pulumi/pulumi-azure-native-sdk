@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The description of Dicom Service
@@ -176,6 +177,12 @@ func (i *DicomService) ToDicomServiceOutputWithContext(ctx context.Context) Dico
 	return pulumi.ToOutputWithContext(ctx, i).(DicomServiceOutput)
 }
 
+func (i *DicomService) ToOutput(ctx context.Context) pulumix.Output[*DicomService] {
+	return pulumix.Output[*DicomService]{
+		OutputState: i.ToDicomServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DicomServiceOutput struct{ *pulumi.OutputState }
 
 func (DicomServiceOutput) ElementType() reflect.Type {
@@ -188,6 +195,12 @@ func (o DicomServiceOutput) ToDicomServiceOutput() DicomServiceOutput {
 
 func (o DicomServiceOutput) ToDicomServiceOutputWithContext(ctx context.Context) DicomServiceOutput {
 	return o
+}
+
+func (o DicomServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*DicomService] {
+	return pulumix.Output[*DicomService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Dicom Service authentication configuration.

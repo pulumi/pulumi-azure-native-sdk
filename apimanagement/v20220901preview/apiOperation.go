@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // API Operation details.
@@ -230,6 +231,12 @@ func (i *ApiOperation) ToApiOperationOutputWithContext(ctx context.Context) ApiO
 	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationOutput)
 }
 
+func (i *ApiOperation) ToOutput(ctx context.Context) pulumix.Output[*ApiOperation] {
+	return pulumix.Output[*ApiOperation]{
+		OutputState: i.ToApiOperationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiOperationOutput struct{ *pulumi.OutputState }
 
 func (ApiOperationOutput) ElementType() reflect.Type {
@@ -242,6 +249,12 @@ func (o ApiOperationOutput) ToApiOperationOutput() ApiOperationOutput {
 
 func (o ApiOperationOutput) ToApiOperationOutputWithContext(ctx context.Context) ApiOperationOutput {
 	return o
+}
+
+func (o ApiOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiOperation] {
+	return pulumix.Output[*ApiOperation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of the operation. May include HTML formatting tags.

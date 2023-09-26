@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a specific pipeline topology by name. If a topology with that name has been previously created, the call will return the JSON representation of that topology.
@@ -106,6 +107,12 @@ func (o LookupPipelineTopologyResultOutput) ToLookupPipelineTopologyResultOutput
 
 func (o LookupPipelineTopologyResultOutput) ToLookupPipelineTopologyResultOutputWithContext(ctx context.Context) LookupPipelineTopologyResultOutput {
 	return o
+}
+
+func (o LookupPipelineTopologyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPipelineTopologyResult] {
+	return pulumix.Output[LookupPipelineTopologyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description of the pipeline topology. It is recommended that the expected use of the topology to be described here.

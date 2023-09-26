@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Container App Auth Token.
@@ -87,6 +88,12 @@ func (o GetContainerAppAuthTokenResultOutput) ToGetContainerAppAuthTokenResultOu
 
 func (o GetContainerAppAuthTokenResultOutput) ToGetContainerAppAuthTokenResultOutputWithContext(ctx context.Context) GetContainerAppAuthTokenResultOutput {
 	return o
+}
+
+func (o GetContainerAppAuthTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerAppAuthTokenResult] {
+	return pulumix.Output[GetContainerAppAuthTokenResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Token expiration date.

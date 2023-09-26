@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // EnterpriseKnowledgeGraph resource definition
@@ -132,6 +133,12 @@ func (i *EnterpriseKnowledgeGraph) ToEnterpriseKnowledgeGraphOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKnowledgeGraphOutput)
 }
 
+func (i *EnterpriseKnowledgeGraph) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseKnowledgeGraph] {
+	return pulumix.Output[*EnterpriseKnowledgeGraph]{
+		OutputState: i.ToEnterpriseKnowledgeGraphOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseKnowledgeGraphOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseKnowledgeGraphOutput) ElementType() reflect.Type {
@@ -144,6 +151,12 @@ func (o EnterpriseKnowledgeGraphOutput) ToEnterpriseKnowledgeGraphOutput() Enter
 
 func (o EnterpriseKnowledgeGraphOutput) ToEnterpriseKnowledgeGraphOutputWithContext(ctx context.Context) EnterpriseKnowledgeGraphOutput {
 	return o
+}
+
+func (o EnterpriseKnowledgeGraphOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseKnowledgeGraph] {
+	return pulumix.Output[*EnterpriseKnowledgeGraph]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the location of the resource.

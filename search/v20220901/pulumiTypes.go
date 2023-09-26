@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i DataPlaneAadOrApiKeyAuthOptionArgs) ToDataPlaneAadOrApiKeyAuthOptionOutp
 
 func (i DataPlaneAadOrApiKeyAuthOptionArgs) ToDataPlaneAadOrApiKeyAuthOptionOutputWithContext(ctx context.Context) DataPlaneAadOrApiKeyAuthOptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataPlaneAadOrApiKeyAuthOptionOutput)
+}
+
+func (i DataPlaneAadOrApiKeyAuthOptionArgs) ToOutput(ctx context.Context) pulumix.Output[DataPlaneAadOrApiKeyAuthOption] {
+	return pulumix.Output[DataPlaneAadOrApiKeyAuthOption]{
+		OutputState: i.ToDataPlaneAadOrApiKeyAuthOptionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i DataPlaneAadOrApiKeyAuthOptionArgs) ToDataPlaneAadOrApiKeyAuthOptionPtrOutput() DataPlaneAadOrApiKeyAuthOptionPtrOutput {
@@ -89,6 +96,12 @@ func (i *dataPlaneAadOrApiKeyAuthOptionPtrType) ToDataPlaneAadOrApiKeyAuthOption
 	return pulumi.ToOutputWithContext(ctx, i).(DataPlaneAadOrApiKeyAuthOptionPtrOutput)
 }
 
+func (i *dataPlaneAadOrApiKeyAuthOptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataPlaneAadOrApiKeyAuthOption] {
+	return pulumix.Output[*DataPlaneAadOrApiKeyAuthOption]{
+		OutputState: i.ToDataPlaneAadOrApiKeyAuthOptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
 type DataPlaneAadOrApiKeyAuthOptionOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o DataPlaneAadOrApiKeyAuthOptionOutput) ToDataPlaneAadOrApiKeyAuthOptionPt
 	}).(DataPlaneAadOrApiKeyAuthOptionPtrOutput)
 }
 
+func (o DataPlaneAadOrApiKeyAuthOptionOutput) ToOutput(ctx context.Context) pulumix.Output[DataPlaneAadOrApiKeyAuthOption] {
+	return pulumix.Output[DataPlaneAadOrApiKeyAuthOption]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Describes what response the data plane API of a Search service would send for requests that failed authentication.
 func (o DataPlaneAadOrApiKeyAuthOptionOutput) AadAuthFailureMode() AadAuthFailureModePtrOutput {
 	return o.ApplyT(func(v DataPlaneAadOrApiKeyAuthOption) *AadAuthFailureMode { return v.AadAuthFailureMode }).(AadAuthFailureModePtrOutput)
@@ -131,6 +150,12 @@ func (o DataPlaneAadOrApiKeyAuthOptionPtrOutput) ToDataPlaneAadOrApiKeyAuthOptio
 
 func (o DataPlaneAadOrApiKeyAuthOptionPtrOutput) ToDataPlaneAadOrApiKeyAuthOptionPtrOutputWithContext(ctx context.Context) DataPlaneAadOrApiKeyAuthOptionPtrOutput {
 	return o
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPlaneAadOrApiKeyAuthOption] {
+	return pulumix.Output[*DataPlaneAadOrApiKeyAuthOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataPlaneAadOrApiKeyAuthOptionPtrOutput) Elem() DataPlaneAadOrApiKeyAuthOptionOutput {
@@ -174,6 +199,12 @@ func (o DataPlaneAadOrApiKeyAuthOptionResponseOutput) ToDataPlaneAadOrApiKeyAuth
 	return o
 }
 
+func (o DataPlaneAadOrApiKeyAuthOptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataPlaneAadOrApiKeyAuthOptionResponse] {
+	return pulumix.Output[DataPlaneAadOrApiKeyAuthOptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Describes what response the data plane API of a Search service would send for requests that failed authentication.
 func (o DataPlaneAadOrApiKeyAuthOptionResponseOutput) AadAuthFailureMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataPlaneAadOrApiKeyAuthOptionResponse) *string { return v.AadAuthFailureMode }).(pulumi.StringPtrOutput)
@@ -191,6 +222,12 @@ func (o DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput) ToDataPlaneAadOrApiKeyA
 
 func (o DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput) ToDataPlaneAadOrApiKeyAuthOptionResponsePtrOutputWithContext(ctx context.Context) DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput {
 	return o
+}
+
+func (o DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPlaneAadOrApiKeyAuthOptionResponse] {
+	return pulumix.Output[*DataPlaneAadOrApiKeyAuthOptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput) Elem() DataPlaneAadOrApiKeyAuthOptionResponseOutput {
@@ -252,6 +289,12 @@ func (i DataPlaneAuthOptionsArgs) ToDataPlaneAuthOptionsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DataPlaneAuthOptionsOutput)
 }
 
+func (i DataPlaneAuthOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DataPlaneAuthOptions] {
+	return pulumix.Output[DataPlaneAuthOptions]{
+		OutputState: i.ToDataPlaneAuthOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DataPlaneAuthOptionsArgs) ToDataPlaneAuthOptionsPtrOutput() DataPlaneAuthOptionsPtrOutput {
 	return i.ToDataPlaneAuthOptionsPtrOutputWithContext(context.Background())
 }
@@ -293,6 +336,12 @@ func (i *dataPlaneAuthOptionsPtrType) ToDataPlaneAuthOptionsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(DataPlaneAuthOptionsPtrOutput)
 }
 
+func (i *dataPlaneAuthOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataPlaneAuthOptions] {
+	return pulumix.Output[*DataPlaneAuthOptions]{
+		OutputState: i.ToDataPlaneAuthOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines the options for how the data plane API of a Search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
 type DataPlaneAuthOptionsOutput struct{ *pulumi.OutputState }
 
@@ -318,6 +367,12 @@ func (o DataPlaneAuthOptionsOutput) ToDataPlaneAuthOptionsPtrOutputWithContext(c
 	}).(DataPlaneAuthOptionsPtrOutput)
 }
 
+func (o DataPlaneAuthOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DataPlaneAuthOptions] {
+	return pulumix.Output[DataPlaneAuthOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
 func (o DataPlaneAuthOptionsOutput) AadOrApiKey() DataPlaneAadOrApiKeyAuthOptionPtrOutput {
 	return o.ApplyT(func(v DataPlaneAuthOptions) *DataPlaneAadOrApiKeyAuthOption { return v.AadOrApiKey }).(DataPlaneAadOrApiKeyAuthOptionPtrOutput)
@@ -340,6 +395,12 @@ func (o DataPlaneAuthOptionsPtrOutput) ToDataPlaneAuthOptionsPtrOutput() DataPla
 
 func (o DataPlaneAuthOptionsPtrOutput) ToDataPlaneAuthOptionsPtrOutputWithContext(ctx context.Context) DataPlaneAuthOptionsPtrOutput {
 	return o
+}
+
+func (o DataPlaneAuthOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPlaneAuthOptions] {
+	return pulumix.Output[*DataPlaneAuthOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataPlaneAuthOptionsPtrOutput) Elem() DataPlaneAuthOptionsOutput {
@@ -395,6 +456,12 @@ func (o DataPlaneAuthOptionsResponseOutput) ToDataPlaneAuthOptionsResponseOutput
 	return o
 }
 
+func (o DataPlaneAuthOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataPlaneAuthOptionsResponse] {
+	return pulumix.Output[DataPlaneAuthOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
 func (o DataPlaneAuthOptionsResponseOutput) AadOrApiKey() DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput {
 	return o.ApplyT(func(v DataPlaneAuthOptionsResponse) *DataPlaneAadOrApiKeyAuthOptionResponse { return v.AadOrApiKey }).(DataPlaneAadOrApiKeyAuthOptionResponsePtrOutput)
@@ -417,6 +484,12 @@ func (o DataPlaneAuthOptionsResponsePtrOutput) ToDataPlaneAuthOptionsResponsePtr
 
 func (o DataPlaneAuthOptionsResponsePtrOutput) ToDataPlaneAuthOptionsResponsePtrOutputWithContext(ctx context.Context) DataPlaneAuthOptionsResponsePtrOutput {
 	return o
+}
+
+func (o DataPlaneAuthOptionsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPlaneAuthOptionsResponse] {
+	return pulumix.Output[*DataPlaneAuthOptionsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataPlaneAuthOptionsResponsePtrOutput) Elem() DataPlaneAuthOptionsResponseOutput {
@@ -484,6 +557,12 @@ func (i EncryptionWithCmkArgs) ToEncryptionWithCmkOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionWithCmkOutput)
 }
 
+func (i EncryptionWithCmkArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionWithCmk] {
+	return pulumix.Output[EncryptionWithCmk]{
+		OutputState: i.ToEncryptionWithCmkOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EncryptionWithCmkArgs) ToEncryptionWithCmkPtrOutput() EncryptionWithCmkPtrOutput {
 	return i.ToEncryptionWithCmkPtrOutputWithContext(context.Background())
 }
@@ -525,6 +604,12 @@ func (i *encryptionWithCmkPtrType) ToEncryptionWithCmkPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionWithCmkPtrOutput)
 }
 
+func (i *encryptionWithCmkPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionWithCmk] {
+	return pulumix.Output[*EncryptionWithCmk]{
+		OutputState: i.ToEncryptionWithCmkPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a policy that determines how resources within the search service are to be encrypted with Customer Managed Keys.
 type EncryptionWithCmkOutput struct{ *pulumi.OutputState }
 
@@ -550,6 +635,12 @@ func (o EncryptionWithCmkOutput) ToEncryptionWithCmkPtrOutputWithContext(ctx con
 	}).(EncryptionWithCmkPtrOutput)
 }
 
+func (o EncryptionWithCmkOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionWithCmk] {
+	return pulumix.Output[EncryptionWithCmk]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Describes how a search service should enforce having one or more non customer encrypted resources.
 func (o EncryptionWithCmkOutput) Enforcement() SearchEncryptionWithCmkPtrOutput {
 	return o.ApplyT(func(v EncryptionWithCmk) *SearchEncryptionWithCmk { return v.Enforcement }).(SearchEncryptionWithCmkPtrOutput)
@@ -567,6 +658,12 @@ func (o EncryptionWithCmkPtrOutput) ToEncryptionWithCmkPtrOutput() EncryptionWit
 
 func (o EncryptionWithCmkPtrOutput) ToEncryptionWithCmkPtrOutputWithContext(ctx context.Context) EncryptionWithCmkPtrOutput {
 	return o
+}
+
+func (o EncryptionWithCmkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionWithCmk] {
+	return pulumix.Output[*EncryptionWithCmk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionWithCmkPtrOutput) Elem() EncryptionWithCmkOutput {
@@ -612,6 +709,12 @@ func (o EncryptionWithCmkResponseOutput) ToEncryptionWithCmkResponseOutputWithCo
 	return o
 }
 
+func (o EncryptionWithCmkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionWithCmkResponse] {
+	return pulumix.Output[EncryptionWithCmkResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Describes whether the search service is compliant or not with respect to having non customer encrypted resources. If a service has more than one non customer encrypted resource and 'Enforcement' is 'enabled' then the service will be marked as 'nonCompliant'.
 func (o EncryptionWithCmkResponseOutput) EncryptionComplianceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionWithCmkResponse) string { return v.EncryptionComplianceStatus }).(pulumi.StringOutput)
@@ -634,6 +737,12 @@ func (o EncryptionWithCmkResponsePtrOutput) ToEncryptionWithCmkResponsePtrOutput
 
 func (o EncryptionWithCmkResponsePtrOutput) ToEncryptionWithCmkResponsePtrOutputWithContext(ctx context.Context) EncryptionWithCmkResponsePtrOutput {
 	return o
+}
+
+func (o EncryptionWithCmkResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionWithCmkResponse] {
+	return pulumix.Output[*EncryptionWithCmkResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionWithCmkResponsePtrOutput) Elem() EncryptionWithCmkResponseOutput {
@@ -701,6 +810,12 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
+func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
 	return i.ToIdentityPtrOutputWithContext(context.Background())
 }
@@ -742,6 +857,12 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
+func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity for the resource.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -767,6 +888,12 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
+func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o IdentityOutput) Type() IdentityTypeOutput {
 	return o.ApplyT(func(v Identity) IdentityType { return v.Type }).(IdentityTypeOutput)
@@ -784,6 +911,12 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
+}
+
+func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -831,6 +964,12 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
+	return pulumix.Output[IdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal ID of the system-assigned identity of the search service.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -858,6 +997,12 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
+}
+
+func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
+	return pulumix.Output[*IdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -935,6 +1080,12 @@ func (i IpRuleArgs) ToIpRuleOutputWithContext(ctx context.Context) IpRuleOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(IpRuleOutput)
 }
 
+func (i IpRuleArgs) ToOutput(ctx context.Context) pulumix.Output[IpRule] {
+	return pulumix.Output[IpRule]{
+		OutputState: i.ToIpRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpRuleArrayInput is an input type that accepts IpRuleArray and IpRuleArrayOutput values.
 // You can construct a concrete instance of `IpRuleArrayInput` via:
 //
@@ -960,6 +1111,12 @@ func (i IpRuleArray) ToIpRuleArrayOutputWithContext(ctx context.Context) IpRuleA
 	return pulumi.ToOutputWithContext(ctx, i).(IpRuleArrayOutput)
 }
 
+func (i IpRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]IpRule] {
+	return pulumix.Output[[]IpRule]{
+		OutputState: i.ToIpRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The IP restriction rule of the Azure Cognitive Search service.
 type IpRuleOutput struct{ *pulumi.OutputState }
 
@@ -973,6 +1130,12 @@ func (o IpRuleOutput) ToIpRuleOutput() IpRuleOutput {
 
 func (o IpRuleOutput) ToIpRuleOutputWithContext(ctx context.Context) IpRuleOutput {
 	return o
+}
+
+func (o IpRuleOutput) ToOutput(ctx context.Context) pulumix.Output[IpRule] {
+	return pulumix.Output[IpRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Value corresponding to a single IPv4 address (eg., 123.1.2.3) or an IP range in CIDR format (eg., 123.1.2.3/24) to be allowed.
@@ -992,6 +1155,12 @@ func (o IpRuleArrayOutput) ToIpRuleArrayOutput() IpRuleArrayOutput {
 
 func (o IpRuleArrayOutput) ToIpRuleArrayOutputWithContext(ctx context.Context) IpRuleArrayOutput {
 	return o
+}
+
+func (o IpRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpRule] {
+	return pulumix.Output[[]IpRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpRuleArrayOutput) Index(i pulumi.IntInput) IpRuleOutput {
@@ -1021,6 +1190,12 @@ func (o IpRuleResponseOutput) ToIpRuleResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o IpRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IpRuleResponse] {
+	return pulumix.Output[IpRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Value corresponding to a single IPv4 address (eg., 123.1.2.3) or an IP range in CIDR format (eg., 123.1.2.3/24) to be allowed.
 func (o IpRuleResponseOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpRuleResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
@@ -1038,6 +1213,12 @@ func (o IpRuleResponseArrayOutput) ToIpRuleResponseArrayOutput() IpRuleResponseA
 
 func (o IpRuleResponseArrayOutput) ToIpRuleResponseArrayOutputWithContext(ctx context.Context) IpRuleResponseArrayOutput {
 	return o
+}
+
+func (o IpRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpRuleResponse] {
+	return pulumix.Output[[]IpRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpRuleResponseArrayOutput) Index(i pulumi.IntInput) IpRuleResponseOutput {
@@ -1081,6 +1262,12 @@ func (i NetworkRuleSetArgs) ToNetworkRuleSetOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetOutput)
 }
 
+func (i NetworkRuleSetArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSet] {
+	return pulumix.Output[NetworkRuleSet]{
+		OutputState: i.ToNetworkRuleSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NetworkRuleSetArgs) ToNetworkRuleSetPtrOutput() NetworkRuleSetPtrOutput {
 	return i.ToNetworkRuleSetPtrOutputWithContext(context.Background())
 }
@@ -1122,6 +1309,12 @@ func (i *networkRuleSetPtrType) ToNetworkRuleSetPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetPtrOutput)
 }
 
+func (i *networkRuleSetPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleSet] {
+	return pulumix.Output[*NetworkRuleSet]{
+		OutputState: i.ToNetworkRuleSetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Network specific rules that determine how the Azure Cognitive Search service may be reached.
 type NetworkRuleSetOutput struct{ *pulumi.OutputState }
 
@@ -1147,6 +1340,12 @@ func (o NetworkRuleSetOutput) ToNetworkRuleSetPtrOutputWithContext(ctx context.C
 	}).(NetworkRuleSetPtrOutput)
 }
 
+func (o NetworkRuleSetOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSet] {
+	return pulumix.Output[NetworkRuleSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of IP restriction rules that defines the inbound network(s) with allowing access to the search service endpoint. At the meantime, all other public IP networks are blocked by the firewall. These restriction rules are applied only when the 'publicNetworkAccess' of the search service is 'enabled'; otherwise, traffic over public interface is not allowed even with any public IP rules, and private endpoint connections would be the exclusive access method.
 func (o NetworkRuleSetOutput) IpRules() IpRuleArrayOutput {
 	return o.ApplyT(func(v NetworkRuleSet) []IpRule { return v.IpRules }).(IpRuleArrayOutput)
@@ -1164,6 +1363,12 @@ func (o NetworkRuleSetPtrOutput) ToNetworkRuleSetPtrOutput() NetworkRuleSetPtrOu
 
 func (o NetworkRuleSetPtrOutput) ToNetworkRuleSetPtrOutputWithContext(ctx context.Context) NetworkRuleSetPtrOutput {
 	return o
+}
+
+func (o NetworkRuleSetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleSet] {
+	return pulumix.Output[*NetworkRuleSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkRuleSetPtrOutput) Elem() NetworkRuleSetOutput {
@@ -1207,6 +1412,12 @@ func (o NetworkRuleSetResponseOutput) ToNetworkRuleSetResponseOutputWithContext(
 	return o
 }
 
+func (o NetworkRuleSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSetResponse] {
+	return pulumix.Output[NetworkRuleSetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of IP restriction rules that defines the inbound network(s) with allowing access to the search service endpoint. At the meantime, all other public IP networks are blocked by the firewall. These restriction rules are applied only when the 'publicNetworkAccess' of the search service is 'enabled'; otherwise, traffic over public interface is not allowed even with any public IP rules, and private endpoint connections would be the exclusive access method.
 func (o NetworkRuleSetResponseOutput) IpRules() IpRuleResponseArrayOutput {
 	return o.ApplyT(func(v NetworkRuleSetResponse) []IpRuleResponse { return v.IpRules }).(IpRuleResponseArrayOutput)
@@ -1224,6 +1435,12 @@ func (o NetworkRuleSetResponsePtrOutput) ToNetworkRuleSetResponsePtrOutput() Net
 
 func (o NetworkRuleSetResponsePtrOutput) ToNetworkRuleSetResponsePtrOutputWithContext(ctx context.Context) NetworkRuleSetResponsePtrOutput {
 	return o
+}
+
+func (o NetworkRuleSetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleSetResponse] {
+	return pulumix.Output[*NetworkRuleSetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkRuleSetResponsePtrOutput) Elem() NetworkRuleSetResponseOutput {
@@ -1313,6 +1530,12 @@ func (i PrivateEndpointConnectionPropertiesArgs) ToPrivateEndpointConnectionProp
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesOutput)
 }
 
+func (i PrivateEndpointConnectionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionProperties] {
+	return pulumix.Output[PrivateEndpointConnectionProperties]{
+		OutputState: i.ToPrivateEndpointConnectionPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivateEndpointConnectionPropertiesArgs) ToPrivateEndpointConnectionPropertiesPtrOutput() PrivateEndpointConnectionPropertiesPtrOutput {
 	return i.ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1354,6 +1577,12 @@ func (i *privateEndpointConnectionPropertiesPtrType) ToPrivateEndpointConnection
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesPtrOutput)
 }
 
+func (i *privateEndpointConnectionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionProperties] {
+	return pulumix.Output[*PrivateEndpointConnectionProperties]{
+		OutputState: i.ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
 type PrivateEndpointConnectionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1377,6 +1606,12 @@ func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointConnectionProperties) *PrivateEndpointConnectionProperties {
 		return &v
 	}).(PrivateEndpointConnectionPropertiesPtrOutput)
+}
+
+func (o PrivateEndpointConnectionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionProperties] {
+	return pulumix.Output[PrivateEndpointConnectionProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The group id from the provider of resource the private link service connection is for.
@@ -1415,6 +1650,12 @@ func (o PrivateEndpointConnectionPropertiesPtrOutput) ToPrivateEndpointConnectio
 
 func (o PrivateEndpointConnectionPropertiesPtrOutput) ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesPtrOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionProperties] {
+	return pulumix.Output[*PrivateEndpointConnectionProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointConnectionPropertiesPtrOutput) Elem() PrivateEndpointConnectionPropertiesOutput {
@@ -1502,6 +1743,12 @@ func (i PrivateEndpointConnectionPropertiesPrivateEndpointArgs) ToPrivateEndpoin
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesPrivateEndpointOutput)
 }
 
+func (i PrivateEndpointConnectionPropertiesPrivateEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionPropertiesPrivateEndpoint] {
+	return pulumix.Output[PrivateEndpointConnectionPropertiesPrivateEndpoint]{
+		OutputState: i.ToPrivateEndpointConnectionPropertiesPrivateEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivateEndpointConnectionPropertiesPrivateEndpointArgs) ToPrivateEndpointConnectionPropertiesPrivateEndpointPtrOutput() PrivateEndpointConnectionPropertiesPrivateEndpointPtrOutput {
 	return i.ToPrivateEndpointConnectionPropertiesPrivateEndpointPtrOutputWithContext(context.Background())
 }
@@ -1543,6 +1790,12 @@ func (i *privateEndpointConnectionPropertiesPrivateEndpointPtrType) ToPrivateEnd
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesPrivateEndpointPtrOutput)
 }
 
+func (i *privateEndpointConnectionPropertiesPrivateEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionPropertiesPrivateEndpoint] {
+	return pulumix.Output[*PrivateEndpointConnectionPropertiesPrivateEndpoint]{
+		OutputState: i.ToPrivateEndpointConnectionPropertiesPrivateEndpointPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The private endpoint resource from Microsoft.Network provider.
 type PrivateEndpointConnectionPropertiesPrivateEndpointOutput struct{ *pulumi.OutputState }
 
@@ -1568,6 +1821,12 @@ func (o PrivateEndpointConnectionPropertiesPrivateEndpointOutput) ToPrivateEndpo
 	}).(PrivateEndpointConnectionPropertiesPrivateEndpointPtrOutput)
 }
 
+func (o PrivateEndpointConnectionPropertiesPrivateEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionPropertiesPrivateEndpoint] {
+	return pulumix.Output[PrivateEndpointConnectionPropertiesPrivateEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource id of the private endpoint resource from Microsoft.Network provider.
 func (o PrivateEndpointConnectionPropertiesPrivateEndpointOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesPrivateEndpoint) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -1585,6 +1844,12 @@ func (o PrivateEndpointConnectionPropertiesPrivateEndpointPtrOutput) ToPrivateEn
 
 func (o PrivateEndpointConnectionPropertiesPrivateEndpointPtrOutput) ToPrivateEndpointConnectionPropertiesPrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesPrivateEndpointPtrOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesPrivateEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionPropertiesPrivateEndpoint] {
+	return pulumix.Output[*PrivateEndpointConnectionPropertiesPrivateEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointConnectionPropertiesPrivateEndpointPtrOutput) Elem() PrivateEndpointConnectionPropertiesPrivateEndpointOutput {
@@ -1674,6 +1939,12 @@ func (i PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateArgs
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateOutput)
 }
 
+func (i PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState]{
+		OutputState: i.ToPrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateArgs) ToPrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput() PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput {
 	return i.ToPrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
 }
@@ -1715,6 +1986,12 @@ func (i *privateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtr
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput)
 }
 
+func (i *privateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState] {
+	return pulumix.Output[*PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState]{
+		OutputState: i.ToPrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the current state of an existing Private Link Service connection to the Azure Private Endpoint.
 type PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -1738,6 +2015,12 @@ func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateOutp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState) *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState {
 		return &v
 	}).(PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput)
+}
+
+func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A description of any extra actions that may be required.
@@ -1773,6 +2056,12 @@ func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrO
 
 func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput) ToPrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState] {
+	return pulumix.Output[*PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateOutput {
@@ -1853,6 +2142,12 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConn
 	return o
 }
 
+func (o PrivateEndpointConnectionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionPropertiesResponse] {
+	return pulumix.Output[PrivateEndpointConnectionPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The group id from the provider of resource the private link service connection is for.
 func (o PrivateEndpointConnectionPropertiesResponseOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) *string { return v.GroupId }).(pulumi.StringPtrOutput)
@@ -1889,6 +2184,12 @@ func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) ToPrivateEndpointC
 
 func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) ToPrivateEndpointConnectionPropertiesResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionPropertiesResponse] {
+	return pulumix.Output[*PrivateEndpointConnectionPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) Elem() PrivateEndpointConnectionPropertiesResponseOutput {
@@ -1962,6 +2263,12 @@ func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput) ToPriv
 	return o
 }
 
+func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionPropertiesResponsePrivateEndpoint] {
+	return pulumix.Output[PrivateEndpointConnectionPropertiesResponsePrivateEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource id of the private endpoint resource from Microsoft.Network provider.
 func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponsePrivateEndpoint) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -1979,6 +2286,12 @@ func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput) ToP
 
 func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput) ToPrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionPropertiesResponsePrivateEndpoint] {
+	return pulumix.Output[*PrivateEndpointConnectionPropertiesResponsePrivateEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput) Elem() PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput {
@@ -2039,6 +2352,12 @@ func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionS
 	return o
 }
 
+func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A description of any extra actions that may be required.
 func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState) *string {
@@ -2072,6 +2391,12 @@ func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionS
 
 func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) ToPrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState] {
+	return pulumix.Output[*PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput {
@@ -2152,6 +2477,12 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
+	return pulumix.Output[PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -2188,6 +2519,12 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
+	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -2217,6 +2554,12 @@ func (o QueryKeyResponseOutput) ToQueryKeyResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o QueryKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueryKeyResponse] {
+	return pulumix.Output[QueryKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The value of the query API key.
 func (o QueryKeyResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryKeyResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -2239,6 +2582,12 @@ func (o QueryKeyResponseArrayOutput) ToQueryKeyResponseArrayOutput() QueryKeyRes
 
 func (o QueryKeyResponseArrayOutput) ToQueryKeyResponseArrayOutputWithContext(ctx context.Context) QueryKeyResponseArrayOutput {
 	return o
+}
+
+func (o QueryKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]QueryKeyResponse] {
+	return pulumix.Output[[]QueryKeyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QueryKeyResponseArrayOutput) Index(i pulumi.IntInput) QueryKeyResponseOutput {
@@ -2302,6 +2651,12 @@ func (i SharedPrivateLinkResourcePropertiesArgs) ToSharedPrivateLinkResourceProp
 	return pulumi.ToOutputWithContext(ctx, i).(SharedPrivateLinkResourcePropertiesOutput)
 }
 
+func (i SharedPrivateLinkResourcePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SharedPrivateLinkResourceProperties] {
+	return pulumix.Output[SharedPrivateLinkResourceProperties]{
+		OutputState: i.ToSharedPrivateLinkResourcePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SharedPrivateLinkResourcePropertiesArgs) ToSharedPrivateLinkResourcePropertiesPtrOutput() SharedPrivateLinkResourcePropertiesPtrOutput {
 	return i.ToSharedPrivateLinkResourcePropertiesPtrOutputWithContext(context.Background())
 }
@@ -2343,6 +2698,12 @@ func (i *sharedPrivateLinkResourcePropertiesPtrType) ToSharedPrivateLinkResource
 	return pulumi.ToOutputWithContext(ctx, i).(SharedPrivateLinkResourcePropertiesPtrOutput)
 }
 
+func (i *sharedPrivateLinkResourcePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SharedPrivateLinkResourceProperties] {
+	return pulumix.Output[*SharedPrivateLinkResourceProperties]{
+		OutputState: i.ToSharedPrivateLinkResourcePropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the properties of an existing Shared Private Link Resource managed by the Azure Cognitive Search service.
 type SharedPrivateLinkResourcePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2366,6 +2727,12 @@ func (o SharedPrivateLinkResourcePropertiesOutput) ToSharedPrivateLinkResourcePr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SharedPrivateLinkResourceProperties) *SharedPrivateLinkResourceProperties {
 		return &v
 	}).(SharedPrivateLinkResourcePropertiesPtrOutput)
+}
+
+func (o SharedPrivateLinkResourcePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SharedPrivateLinkResourceProperties] {
+	return pulumix.Output[SharedPrivateLinkResourceProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The group id from the provider of resource the shared private link resource is for.
@@ -2412,6 +2779,12 @@ func (o SharedPrivateLinkResourcePropertiesPtrOutput) ToSharedPrivateLinkResourc
 
 func (o SharedPrivateLinkResourcePropertiesPtrOutput) ToSharedPrivateLinkResourcePropertiesPtrOutputWithContext(ctx context.Context) SharedPrivateLinkResourcePropertiesPtrOutput {
 	return o
+}
+
+func (o SharedPrivateLinkResourcePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SharedPrivateLinkResourceProperties] {
+	return pulumix.Output[*SharedPrivateLinkResourceProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SharedPrivateLinkResourcePropertiesPtrOutput) Elem() SharedPrivateLinkResourcePropertiesOutput {
@@ -2515,6 +2888,12 @@ func (o SharedPrivateLinkResourcePropertiesResponseOutput) ToSharedPrivateLinkRe
 	return o
 }
 
+func (o SharedPrivateLinkResourcePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SharedPrivateLinkResourcePropertiesResponse] {
+	return pulumix.Output[SharedPrivateLinkResourcePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The group id from the provider of resource the shared private link resource is for.
 func (o SharedPrivateLinkResourcePropertiesResponseOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourcePropertiesResponse) *string { return v.GroupId }).(pulumi.StringPtrOutput)
@@ -2557,6 +2936,12 @@ func (o SharedPrivateLinkResourcePropertiesResponsePtrOutput) ToSharedPrivateLin
 
 func (o SharedPrivateLinkResourcePropertiesResponsePtrOutput) ToSharedPrivateLinkResourcePropertiesResponsePtrOutputWithContext(ctx context.Context) SharedPrivateLinkResourcePropertiesResponsePtrOutput {
 	return o
+}
+
+func (o SharedPrivateLinkResourcePropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SharedPrivateLinkResourcePropertiesResponse] {
+	return pulumix.Output[*SharedPrivateLinkResourcePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SharedPrivateLinkResourcePropertiesResponsePtrOutput) Elem() SharedPrivateLinkResourcePropertiesResponseOutput {
@@ -2656,6 +3041,12 @@ func (o SharedPrivateLinkResourceResponseOutput) ToSharedPrivateLinkResourceResp
 	return o
 }
 
+func (o SharedPrivateLinkResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SharedPrivateLinkResourceResponse] {
+	return pulumix.Output[SharedPrivateLinkResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o SharedPrivateLinkResourceResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -2690,6 +3081,12 @@ func (o SharedPrivateLinkResourceResponseArrayOutput) ToSharedPrivateLinkResourc
 
 func (o SharedPrivateLinkResourceResponseArrayOutput) ToSharedPrivateLinkResourceResponseArrayOutputWithContext(ctx context.Context) SharedPrivateLinkResourceResponseArrayOutput {
 	return o
+}
+
+func (o SharedPrivateLinkResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SharedPrivateLinkResourceResponse] {
+	return pulumix.Output[[]SharedPrivateLinkResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SharedPrivateLinkResourceResponseArrayOutput) Index(i pulumi.IntInput) SharedPrivateLinkResourceResponseOutput {
@@ -2733,6 +3130,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -2774,6 +3177,12 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
+func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines the SKU of an Azure Cognitive Search Service, which determines price tier and capacity limits.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -2799,6 +3208,12 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The SKU of the search service. Valid values include: 'free': Shared service. 'basic': Dedicated service with up to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12 replicas. 'standard2': Similar to standard, but with more capacity per search unit. 'standard3': The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity'). 'storage_optimized_l1': Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2': Supports 2TB per partition, up to 12 partitions.'
 func (o SkuOutput) Name() SkuNamePtrOutput {
 	return o.ApplyT(func(v Sku) *SkuName { return v.Name }).(SkuNamePtrOutput)
@@ -2816,6 +3231,12 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
+}
+
+func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -2859,6 +3280,12 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The SKU of the search service. Valid values include: 'free': Shared service. 'basic': Dedicated service with up to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12 replicas. 'standard2': Similar to standard, but with more capacity per search unit. 'standard3': The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity'). 'storage_optimized_l1': Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2': Supports 2TB per partition, up to 12 partitions.'
 func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2876,6 +3303,12 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
+}
+
+func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
+	return pulumix.Output[*SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {

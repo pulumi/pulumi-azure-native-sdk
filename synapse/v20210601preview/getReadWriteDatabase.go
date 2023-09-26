@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a database.
@@ -101,6 +102,12 @@ func (o LookupReadWriteDatabaseResultOutput) ToLookupReadWriteDatabaseResultOutp
 
 func (o LookupReadWriteDatabaseResultOutput) ToLookupReadWriteDatabaseResultOutputWithContext(ctx context.Context) LookupReadWriteDatabaseResultOutput {
 	return o
+}
+
+func (o LookupReadWriteDatabaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReadWriteDatabaseResult] {
+	return pulumix.Output[LookupReadWriteDatabaseResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the data should be kept in cache for fast queries in TimeSpan.

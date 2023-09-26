@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Static Site Database Connection resource.
@@ -161,6 +162,12 @@ func (i *StaticSiteBuildDatabaseConnection) ToStaticSiteBuildDatabaseConnectionO
 	return pulumi.ToOutputWithContext(ctx, i).(StaticSiteBuildDatabaseConnectionOutput)
 }
 
+func (i *StaticSiteBuildDatabaseConnection) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteBuildDatabaseConnection] {
+	return pulumix.Output[*StaticSiteBuildDatabaseConnection]{
+		OutputState: i.ToStaticSiteBuildDatabaseConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StaticSiteBuildDatabaseConnectionOutput struct{ *pulumi.OutputState }
 
 func (StaticSiteBuildDatabaseConnectionOutput) ElementType() reflect.Type {
@@ -173,6 +180,12 @@ func (o StaticSiteBuildDatabaseConnectionOutput) ToStaticSiteBuildDatabaseConnec
 
 func (o StaticSiteBuildDatabaseConnectionOutput) ToStaticSiteBuildDatabaseConnectionOutputWithContext(ctx context.Context) StaticSiteBuildDatabaseConnectionOutput {
 	return o
+}
+
+func (o StaticSiteBuildDatabaseConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteBuildDatabaseConnection] {
+	return pulumix.Output[*StaticSiteBuildDatabaseConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of configuration files associated with this database connection.

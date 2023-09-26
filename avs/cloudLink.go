@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A cloud link resource
@@ -133,6 +134,12 @@ func (i *CloudLink) ToCloudLinkOutputWithContext(ctx context.Context) CloudLinkO
 	return pulumi.ToOutputWithContext(ctx, i).(CloudLinkOutput)
 }
 
+func (i *CloudLink) ToOutput(ctx context.Context) pulumix.Output[*CloudLink] {
+	return pulumix.Output[*CloudLink]{
+		OutputState: i.ToCloudLinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CloudLinkOutput struct{ *pulumi.OutputState }
 
 func (CloudLinkOutput) ElementType() reflect.Type {
@@ -145,6 +152,12 @@ func (o CloudLinkOutput) ToCloudLinkOutput() CloudLinkOutput {
 
 func (o CloudLinkOutput) ToCloudLinkOutputWithContext(ctx context.Context) CloudLinkOutput {
 	return o
+}
+
+func (o CloudLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudLink] {
+	return pulumix.Output[*CloudLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier of the other private cloud participating in the link.

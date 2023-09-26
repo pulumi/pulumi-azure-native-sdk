@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get service runner.
@@ -86,6 +87,12 @@ func (o LookupServiceRunnerResultOutput) ToLookupServiceRunnerResultOutput() Loo
 
 func (o LookupServiceRunnerResultOutput) ToLookupServiceRunnerResultOutputWithContext(ctx context.Context) LookupServiceRunnerResultOutput {
 	return o
+}
+
+func (o LookupServiceRunnerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceRunnerResult] {
+	return pulumix.Output[LookupServiceRunnerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The identifier of the resource.

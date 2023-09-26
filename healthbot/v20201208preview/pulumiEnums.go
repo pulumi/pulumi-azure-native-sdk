@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The name of the HealthBot SKU
@@ -79,6 +80,12 @@ func (o SkuNameOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNam
 	}).(SkuNamePtrOutput)
 }
 
+func (o SkuNameOutput) ToOutput(ctx context.Context) pulumix.Output[SkuName] {
+	return pulumix.Output[SkuName]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SkuNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -112,6 +119,12 @@ func (o SkuNamePtrOutput) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (o SkuNamePtrOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return o
+}
+
+func (o SkuNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
+	return pulumix.Output[*SkuName]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuNamePtrOutput) Elem() SkuNameOutput {
@@ -174,6 +187,12 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
+}
+
+func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
+	return pulumix.Output[*SkuName]{
+		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
@@ -244,6 +263,12 @@ func (o SkuTierOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTie
 	}).(SkuTierPtrOutput)
 }
 
+func (o SkuTierOutput) ToOutput(ctx context.Context) pulumix.Output[SkuTier] {
+	return pulumix.Output[SkuTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SkuTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -277,6 +302,12 @@ func (o SkuTierPtrOutput) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (o SkuTierPtrOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return o
+}
+
+func (o SkuTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
+	return pulumix.Output[*SkuTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuTierPtrOutput) Elem() SkuTierOutput {
@@ -339,6 +370,12 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
+}
+
+func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
+	return pulumix.Output[*SkuTier]{
+		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

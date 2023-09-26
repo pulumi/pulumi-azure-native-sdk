@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Device. Use '.unassigned' or '.default' for the device group and product names when a device does not belong to a device group and product.
@@ -105,6 +106,12 @@ func (o LookupDeviceResultOutput) ToLookupDeviceResultOutput() LookupDeviceResul
 
 func (o LookupDeviceResultOutput) ToLookupDeviceResultOutputWithContext(ctx context.Context) LookupDeviceResultOutput {
 	return o
+}
+
+func (o LookupDeviceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeviceResult] {
+	return pulumix.Output[LookupDeviceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // SKU of the chip

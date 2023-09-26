@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents OfficeATP (Office 365 Advanced Threat Protection) data connector.
@@ -229,6 +230,12 @@ func (i *OfficeATPDataConnector) ToOfficeATPDataConnectorOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(OfficeATPDataConnectorOutput)
 }
 
+func (i *OfficeATPDataConnector) ToOutput(ctx context.Context) pulumix.Output[*OfficeATPDataConnector] {
+	return pulumix.Output[*OfficeATPDataConnector]{
+		OutputState: i.ToOfficeATPDataConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OfficeATPDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (OfficeATPDataConnectorOutput) ElementType() reflect.Type {
@@ -241,6 +248,12 @@ func (o OfficeATPDataConnectorOutput) ToOfficeATPDataConnectorOutput() OfficeATP
 
 func (o OfficeATPDataConnectorOutput) ToOfficeATPDataConnectorOutputWithContext(ctx context.Context) OfficeATPDataConnectorOutput {
 	return o
+}
+
+func (o OfficeATPDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*OfficeATPDataConnector] {
+	return pulumix.Output[*OfficeATPDataConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available data types for the connector.

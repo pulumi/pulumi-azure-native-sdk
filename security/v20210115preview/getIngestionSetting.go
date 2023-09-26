@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Settings for ingesting security data and logs to correlate with resources associated with the subscription.
@@ -72,6 +73,12 @@ func (o LookupIngestionSettingResultOutput) ToLookupIngestionSettingResultOutput
 
 func (o LookupIngestionSettingResultOutput) ToLookupIngestionSettingResultOutputWithContext(ctx context.Context) LookupIngestionSettingResultOutput {
 	return o
+}
+
+func (o LookupIngestionSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIngestionSettingResult] {
+	return pulumix.Output[LookupIngestionSettingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The top level storage insight resource container.
@@ -157,6 +158,12 @@ func (i *StorageInsightConfig) ToStorageInsightConfigOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(StorageInsightConfigOutput)
 }
 
+func (i *StorageInsightConfig) ToOutput(ctx context.Context) pulumix.Output[*StorageInsightConfig] {
+	return pulumix.Output[*StorageInsightConfig]{
+		OutputState: i.ToStorageInsightConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StorageInsightConfigOutput struct{ *pulumi.OutputState }
 
 func (StorageInsightConfigOutput) ElementType() reflect.Type {
@@ -169,6 +176,12 @@ func (o StorageInsightConfigOutput) ToStorageInsightConfigOutput() StorageInsigh
 
 func (o StorageInsightConfigOutput) ToStorageInsightConfigOutputWithContext(ctx context.Context) StorageInsightConfigOutput {
 	return o
+}
+
+func (o StorageInsightConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageInsightConfig] {
+	return pulumix.Output[*StorageInsightConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The names of the blob containers that the workspace should read

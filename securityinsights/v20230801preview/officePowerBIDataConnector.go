@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Office Microsoft PowerBI data connector.
@@ -225,6 +226,12 @@ func (i *OfficePowerBIDataConnector) ToOfficePowerBIDataConnectorOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(OfficePowerBIDataConnectorOutput)
 }
 
+func (i *OfficePowerBIDataConnector) ToOutput(ctx context.Context) pulumix.Output[*OfficePowerBIDataConnector] {
+	return pulumix.Output[*OfficePowerBIDataConnector]{
+		OutputState: i.ToOfficePowerBIDataConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OfficePowerBIDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (OfficePowerBIDataConnectorOutput) ElementType() reflect.Type {
@@ -237,6 +244,12 @@ func (o OfficePowerBIDataConnectorOutput) ToOfficePowerBIDataConnectorOutput() O
 
 func (o OfficePowerBIDataConnectorOutput) ToOfficePowerBIDataConnectorOutputWithContext(ctx context.Context) OfficePowerBIDataConnectorOutput {
 	return o
+}
+
+func (o OfficePowerBIDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*OfficePowerBIDataConnector] {
+	return pulumix.Output[*OfficePowerBIDataConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available data types for the connector.

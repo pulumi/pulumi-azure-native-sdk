@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Security Application over a given scope
@@ -137,6 +138,12 @@ func (i *SecurityConnectorApplication) ToSecurityConnectorApplicationOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityConnectorApplicationOutput)
 }
 
+func (i *SecurityConnectorApplication) ToOutput(ctx context.Context) pulumix.Output[*SecurityConnectorApplication] {
+	return pulumix.Output[*SecurityConnectorApplication]{
+		OutputState: i.ToSecurityConnectorApplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecurityConnectorApplicationOutput struct{ *pulumi.OutputState }
 
 func (SecurityConnectorApplicationOutput) ElementType() reflect.Type {
@@ -149,6 +156,12 @@ func (o SecurityConnectorApplicationOutput) ToSecurityConnectorApplicationOutput
 
 func (o SecurityConnectorApplicationOutput) ToSecurityConnectorApplicationOutputWithContext(ctx context.Context) SecurityConnectorApplicationOutput {
 	return o
+}
+
+func (o SecurityConnectorApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityConnectorApplication] {
+	return pulumix.Output[*SecurityConnectorApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // description of the application

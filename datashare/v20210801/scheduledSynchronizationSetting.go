@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A type of synchronization setting based on schedule
@@ -173,6 +174,12 @@ func (i *ScheduledSynchronizationSetting) ToScheduledSynchronizationSettingOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSynchronizationSettingOutput)
 }
 
+func (i *ScheduledSynchronizationSetting) ToOutput(ctx context.Context) pulumix.Output[*ScheduledSynchronizationSetting] {
+	return pulumix.Output[*ScheduledSynchronizationSetting]{
+		OutputState: i.ToScheduledSynchronizationSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScheduledSynchronizationSettingOutput struct{ *pulumi.OutputState }
 
 func (ScheduledSynchronizationSettingOutput) ElementType() reflect.Type {
@@ -185,6 +192,12 @@ func (o ScheduledSynchronizationSettingOutput) ToScheduledSynchronizationSetting
 
 func (o ScheduledSynchronizationSettingOutput) ToScheduledSynchronizationSettingOutputWithContext(ctx context.Context) ScheduledSynchronizationSettingOutput {
 	return o
+}
+
+func (o ScheduledSynchronizationSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduledSynchronizationSetting] {
+	return pulumix.Output[*ScheduledSynchronizationSetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time at which the synchronization setting was created.

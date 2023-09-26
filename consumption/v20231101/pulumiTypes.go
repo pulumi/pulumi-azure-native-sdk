@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i BudgetComparisonExpressionArgs) ToBudgetComparisonExpressionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetComparisonExpressionOutput)
 }
 
+func (i BudgetComparisonExpressionArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetComparisonExpression] {
+	return pulumix.Output[BudgetComparisonExpression]{
+		OutputState: i.ToBudgetComparisonExpressionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BudgetComparisonExpressionArgs) ToBudgetComparisonExpressionPtrOutput() BudgetComparisonExpressionPtrOutput {
 	return i.ToBudgetComparisonExpressionPtrOutputWithContext(context.Background())
 }
@@ -97,6 +104,12 @@ func (i *budgetComparisonExpressionPtrType) ToBudgetComparisonExpressionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetComparisonExpressionPtrOutput)
 }
 
+func (i *budgetComparisonExpressionPtrType) ToOutput(ctx context.Context) pulumix.Output[*BudgetComparisonExpression] {
+	return pulumix.Output[*BudgetComparisonExpression]{
+		OutputState: i.ToBudgetComparisonExpressionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The comparison expression to be used in the budgets.
 type BudgetComparisonExpressionOutput struct{ *pulumi.OutputState }
 
@@ -120,6 +133,12 @@ func (o BudgetComparisonExpressionOutput) ToBudgetComparisonExpressionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetComparisonExpression) *BudgetComparisonExpression {
 		return &v
 	}).(BudgetComparisonExpressionPtrOutput)
+}
+
+func (o BudgetComparisonExpressionOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetComparisonExpression] {
+	return pulumix.Output[BudgetComparisonExpression]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the column to use in comparison.
@@ -149,6 +168,12 @@ func (o BudgetComparisonExpressionPtrOutput) ToBudgetComparisonExpressionPtrOutp
 
 func (o BudgetComparisonExpressionPtrOutput) ToBudgetComparisonExpressionPtrOutputWithContext(ctx context.Context) BudgetComparisonExpressionPtrOutput {
 	return o
+}
+
+func (o BudgetComparisonExpressionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetComparisonExpression] {
+	return pulumix.Output[*BudgetComparisonExpression]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetComparisonExpressionPtrOutput) Elem() BudgetComparisonExpressionOutput {
@@ -216,6 +241,12 @@ func (o BudgetComparisonExpressionResponseOutput) ToBudgetComparisonExpressionRe
 	return o
 }
 
+func (o BudgetComparisonExpressionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetComparisonExpressionResponse] {
+	return pulumix.Output[BudgetComparisonExpressionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the column to use in comparison.
 func (o BudgetComparisonExpressionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BudgetComparisonExpressionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -243,6 +274,12 @@ func (o BudgetComparisonExpressionResponsePtrOutput) ToBudgetComparisonExpressio
 
 func (o BudgetComparisonExpressionResponsePtrOutput) ToBudgetComparisonExpressionResponsePtrOutputWithContext(ctx context.Context) BudgetComparisonExpressionResponsePtrOutput {
 	return o
+}
+
+func (o BudgetComparisonExpressionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetComparisonExpressionResponse] {
+	return pulumix.Output[*BudgetComparisonExpressionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetComparisonExpressionResponsePtrOutput) Elem() BudgetComparisonExpressionResponseOutput {
@@ -328,6 +365,12 @@ func (i BudgetFilterArgs) ToBudgetFilterOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetFilterOutput)
 }
 
+func (i BudgetFilterArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetFilter] {
+	return pulumix.Output[BudgetFilter]{
+		OutputState: i.ToBudgetFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BudgetFilterArgs) ToBudgetFilterPtrOutput() BudgetFilterPtrOutput {
 	return i.ToBudgetFilterPtrOutputWithContext(context.Background())
 }
@@ -369,6 +412,12 @@ func (i *budgetFilterPtrType) ToBudgetFilterPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetFilterPtrOutput)
 }
 
+func (i *budgetFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*BudgetFilter] {
+	return pulumix.Output[*BudgetFilter]{
+		OutputState: i.ToBudgetFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // May be used to filter budgets by resource group, resource, or meter.
 type BudgetFilterOutput struct{ *pulumi.OutputState }
 
@@ -392,6 +441,12 @@ func (o BudgetFilterOutput) ToBudgetFilterPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetFilter) *BudgetFilter {
 		return &v
 	}).(BudgetFilterPtrOutput)
+}
+
+func (o BudgetFilterOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetFilter] {
+	return pulumix.Output[BudgetFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The logical "AND" expression. Must have at least 2 items.
@@ -421,6 +476,12 @@ func (o BudgetFilterPtrOutput) ToBudgetFilterPtrOutput() BudgetFilterPtrOutput {
 
 func (o BudgetFilterPtrOutput) ToBudgetFilterPtrOutputWithContext(ctx context.Context) BudgetFilterPtrOutput {
 	return o
+}
+
+func (o BudgetFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetFilter] {
+	return pulumix.Output[*BudgetFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetFilterPtrOutput) Elem() BudgetFilterOutput {
@@ -502,6 +563,12 @@ func (i BudgetFilterPropertiesArgs) ToBudgetFilterPropertiesOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetFilterPropertiesOutput)
 }
 
+func (i BudgetFilterPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetFilterProperties] {
+	return pulumix.Output[BudgetFilterProperties]{
+		OutputState: i.ToBudgetFilterPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BudgetFilterPropertiesArrayInput is an input type that accepts BudgetFilterPropertiesArray and BudgetFilterPropertiesArrayOutput values.
 // You can construct a concrete instance of `BudgetFilterPropertiesArrayInput` via:
 //
@@ -527,6 +594,12 @@ func (i BudgetFilterPropertiesArray) ToBudgetFilterPropertiesArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetFilterPropertiesArrayOutput)
 }
 
+func (i BudgetFilterPropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]BudgetFilterProperties] {
+	return pulumix.Output[[]BudgetFilterProperties]{
+		OutputState: i.ToBudgetFilterPropertiesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Dimensions or Tags to filter a budget by.
 type BudgetFilterPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -540,6 +613,12 @@ func (o BudgetFilterPropertiesOutput) ToBudgetFilterPropertiesOutput() BudgetFil
 
 func (o BudgetFilterPropertiesOutput) ToBudgetFilterPropertiesOutputWithContext(ctx context.Context) BudgetFilterPropertiesOutput {
 	return o
+}
+
+func (o BudgetFilterPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetFilterProperties] {
+	return pulumix.Output[BudgetFilterProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Has comparison expression for a dimension
@@ -564,6 +643,12 @@ func (o BudgetFilterPropertiesArrayOutput) ToBudgetFilterPropertiesArrayOutput()
 
 func (o BudgetFilterPropertiesArrayOutput) ToBudgetFilterPropertiesArrayOutputWithContext(ctx context.Context) BudgetFilterPropertiesArrayOutput {
 	return o
+}
+
+func (o BudgetFilterPropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BudgetFilterProperties] {
+	return pulumix.Output[[]BudgetFilterProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetFilterPropertiesArrayOutput) Index(i pulumi.IntInput) BudgetFilterPropertiesOutput {
@@ -595,6 +680,12 @@ func (o BudgetFilterPropertiesResponseOutput) ToBudgetFilterPropertiesResponseOu
 	return o
 }
 
+func (o BudgetFilterPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetFilterPropertiesResponse] {
+	return pulumix.Output[BudgetFilterPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Has comparison expression for a dimension
 func (o BudgetFilterPropertiesResponseOutput) Dimensions() BudgetComparisonExpressionResponsePtrOutput {
 	return o.ApplyT(func(v BudgetFilterPropertiesResponse) *BudgetComparisonExpressionResponse { return v.Dimensions }).(BudgetComparisonExpressionResponsePtrOutput)
@@ -617,6 +708,12 @@ func (o BudgetFilterPropertiesResponseArrayOutput) ToBudgetFilterPropertiesRespo
 
 func (o BudgetFilterPropertiesResponseArrayOutput) ToBudgetFilterPropertiesResponseArrayOutputWithContext(ctx context.Context) BudgetFilterPropertiesResponseArrayOutput {
 	return o
+}
+
+func (o BudgetFilterPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BudgetFilterPropertiesResponse] {
+	return pulumix.Output[[]BudgetFilterPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetFilterPropertiesResponseArrayOutput) Index(i pulumi.IntInput) BudgetFilterPropertiesResponseOutput {
@@ -650,6 +747,12 @@ func (o BudgetFilterResponseOutput) ToBudgetFilterResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o BudgetFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetFilterResponse] {
+	return pulumix.Output[BudgetFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The logical "AND" expression. Must have at least 2 items.
 func (o BudgetFilterResponseOutput) And() BudgetFilterPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v BudgetFilterResponse) []BudgetFilterPropertiesResponse { return v.And }).(BudgetFilterPropertiesResponseArrayOutput)
@@ -677,6 +780,12 @@ func (o BudgetFilterResponsePtrOutput) ToBudgetFilterResponsePtrOutput() BudgetF
 
 func (o BudgetFilterResponsePtrOutput) ToBudgetFilterResponsePtrOutputWithContext(ctx context.Context) BudgetFilterResponsePtrOutput {
 	return o
+}
+
+func (o BudgetFilterResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetFilterResponse] {
+	return pulumix.Output[*BudgetFilterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetFilterResponsePtrOutput) Elem() BudgetFilterResponseOutput {
@@ -758,6 +867,12 @@ func (i BudgetTimePeriodArgs) ToBudgetTimePeriodOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetTimePeriodOutput)
 }
 
+func (i BudgetTimePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetTimePeriod] {
+	return pulumix.Output[BudgetTimePeriod]{
+		OutputState: i.ToBudgetTimePeriodOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The start and end date for a budget.
 type BudgetTimePeriodOutput struct{ *pulumi.OutputState }
 
@@ -771,6 +886,12 @@ func (o BudgetTimePeriodOutput) ToBudgetTimePeriodOutput() BudgetTimePeriodOutpu
 
 func (o BudgetTimePeriodOutput) ToBudgetTimePeriodOutputWithContext(ctx context.Context) BudgetTimePeriodOutput {
 	return o
+}
+
+func (o BudgetTimePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetTimePeriod] {
+	return pulumix.Output[BudgetTimePeriod]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The end date for the budget. If not provided, we default this to 10 years from the start date.
@@ -806,6 +927,12 @@ func (o BudgetTimePeriodResponseOutput) ToBudgetTimePeriodResponseOutputWithCont
 	return o
 }
 
+func (o BudgetTimePeriodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetTimePeriodResponse] {
+	return pulumix.Output[BudgetTimePeriodResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The end date for the budget. If not provided, we default this to 10 years from the start date.
 func (o BudgetTimePeriodResponseOutput) EndDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetTimePeriodResponse) *string { return v.EndDate }).(pulumi.StringPtrOutput)
@@ -839,6 +966,12 @@ func (o CurrentSpendResponseOutput) ToCurrentSpendResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o CurrentSpendResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CurrentSpendResponse] {
+	return pulumix.Output[CurrentSpendResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The total amount of cost which is being tracked by the budget.
 func (o CurrentSpendResponseOutput) Amount() pulumi.Float64Output {
 	return o.ApplyT(func(v CurrentSpendResponse) float64 { return v.Amount }).(pulumi.Float64Output)
@@ -870,6 +1003,12 @@ func (o ForecastSpendResponseOutput) ToForecastSpendResponseOutput() ForecastSpe
 
 func (o ForecastSpendResponseOutput) ToForecastSpendResponseOutputWithContext(ctx context.Context) ForecastSpendResponseOutput {
 	return o
+}
+
+func (o ForecastSpendResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ForecastSpendResponse] {
+	return pulumix.Output[ForecastSpendResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The forecasted cost for the total time period which is being tracked by the budget. This value is only provided if the budget contains a forecast alert type.
@@ -969,6 +1108,12 @@ func (i NotificationArgs) ToNotificationOutputWithContext(ctx context.Context) N
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationOutput)
 }
 
+func (i NotificationArgs) ToOutput(ctx context.Context) pulumix.Output[Notification] {
+	return pulumix.Output[Notification]{
+		OutputState: i.ToNotificationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NotificationMapInput is an input type that accepts NotificationMap and NotificationMapOutput values.
 // You can construct a concrete instance of `NotificationMapInput` via:
 //
@@ -994,6 +1139,12 @@ func (i NotificationMap) ToNotificationMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationMapOutput)
 }
 
+func (i NotificationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]Notification] {
+	return pulumix.Output[map[string]Notification]{
+		OutputState: i.ToNotificationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The notification associated with a budget.
 type NotificationOutput struct{ *pulumi.OutputState }
 
@@ -1007,6 +1158,12 @@ func (o NotificationOutput) ToNotificationOutput() NotificationOutput {
 
 func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context) NotificationOutput {
 	return o
+}
+
+func (o NotificationOutput) ToOutput(ctx context.Context) pulumix.Output[Notification] {
+	return pulumix.Output[Notification]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Email addresses to send the budget notification to when the threshold is exceeded. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
@@ -1063,6 +1220,12 @@ func (o NotificationMapOutput) ToNotificationMapOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o NotificationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]Notification] {
+	return pulumix.Output[map[string]Notification]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NotificationMapOutput) MapIndex(k pulumi.StringInput) NotificationOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Notification {
 		return vs[0].(map[string]Notification)[vs[1].(string)]
@@ -1117,6 +1280,12 @@ func (o NotificationResponseOutput) ToNotificationResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o NotificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationResponse] {
+	return pulumix.Output[NotificationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Email addresses to send the budget notification to when the threshold is exceeded. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
 func (o NotificationResponseOutput) ContactEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationResponse) []string { return v.ContactEmails }).(pulumi.StringArrayOutput)
@@ -1169,6 +1338,12 @@ func (o NotificationResponseMapOutput) ToNotificationResponseMapOutput() Notific
 
 func (o NotificationResponseMapOutput) ToNotificationResponseMapOutputWithContext(ctx context.Context) NotificationResponseMapOutput {
 	return o
+}
+
+func (o NotificationResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]NotificationResponse] {
+	return pulumix.Output[map[string]NotificationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationResponseMapOutput) MapIndex(k pulumi.StringInput) NotificationResponseOutput {

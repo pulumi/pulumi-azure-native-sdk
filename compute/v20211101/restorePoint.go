@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Restore Point details.
@@ -165,6 +166,12 @@ func (i *RestorePoint) ToRestorePointOutputWithContext(ctx context.Context) Rest
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePointOutput)
 }
 
+func (i *RestorePoint) ToOutput(ctx context.Context) pulumix.Output[*RestorePoint] {
+	return pulumix.Output[*RestorePoint]{
+		OutputState: i.ToRestorePointOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RestorePointOutput struct{ *pulumi.OutputState }
 
 func (RestorePointOutput) ElementType() reflect.Type {
@@ -177,6 +184,12 @@ func (o RestorePointOutput) ToRestorePointOutput() RestorePointOutput {
 
 func (o RestorePointOutput) ToRestorePointOutputWithContext(ctx context.Context) RestorePointOutput {
 	return o
+}
+
+func (o RestorePointOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePoint] {
+	return pulumix.Output[*RestorePoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the consistency mode for the restore point. Please refer to https://aka.ms/RestorePoints for more details.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the credentials for the specified cluster such as Storage, ACR and ACS credentials. This is a long running operation because it fetches keys from dependencies.
@@ -94,6 +95,12 @@ func (o ListOperationalizationClusterKeysResultOutput) ToListOperationalizationC
 
 func (o ListOperationalizationClusterKeysResultOutput) ToListOperationalizationClusterKeysResultOutputWithContext(ctx context.Context) ListOperationalizationClusterKeysResultOutput {
 	return o
+}
+
+func (o ListOperationalizationClusterKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListOperationalizationClusterKeysResult] {
+	return pulumix.Output[ListOperationalizationClusterKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Credentials for Azure AppInsights.

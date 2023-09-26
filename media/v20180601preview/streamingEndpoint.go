@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The StreamingEndpoint.
@@ -227,6 +228,12 @@ func (i *StreamingEndpoint) ToStreamingEndpointOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingEndpointOutput)
 }
 
+func (i *StreamingEndpoint) ToOutput(ctx context.Context) pulumix.Output[*StreamingEndpoint] {
+	return pulumix.Output[*StreamingEndpoint]{
+		OutputState: i.ToStreamingEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StreamingEndpointOutput struct{ *pulumi.OutputState }
 
 func (StreamingEndpointOutput) ElementType() reflect.Type {
@@ -239,6 +246,12 @@ func (o StreamingEndpointOutput) ToStreamingEndpointOutput() StreamingEndpointOu
 
 func (o StreamingEndpointOutput) ToStreamingEndpointOutputWithContext(ctx context.Context) StreamingEndpointOutput {
 	return o
+}
+
+func (o StreamingEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingEndpoint] {
+	return pulumix.Output[*StreamingEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access control definition of the StreamingEndpoint.

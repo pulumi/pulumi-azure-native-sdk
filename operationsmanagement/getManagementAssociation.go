@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the user ManagementAssociation.
@@ -93,6 +94,12 @@ func (o LookupManagementAssociationResultOutput) ToLookupManagementAssociationRe
 
 func (o LookupManagementAssociationResultOutput) ToLookupManagementAssociationResultOutputWithContext(ctx context.Context) LookupManagementAssociationResultOutput {
 	return o
+}
+
+func (o LookupManagementAssociationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagementAssociationResult] {
+	return pulumix.Output[LookupManagementAssociationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.

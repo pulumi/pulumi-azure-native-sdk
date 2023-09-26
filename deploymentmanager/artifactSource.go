@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The resource that defines the source location where the artifacts are located.
@@ -148,6 +149,12 @@ func (i *ArtifactSource) ToArtifactSourceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactSourceOutput)
 }
 
+func (i *ArtifactSource) ToOutput(ctx context.Context) pulumix.Output[*ArtifactSource] {
+	return pulumix.Output[*ArtifactSource]{
+		OutputState: i.ToArtifactSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ArtifactSourceOutput struct{ *pulumi.OutputState }
 
 func (ArtifactSourceOutput) ElementType() reflect.Type {
@@ -160,6 +167,12 @@ func (o ArtifactSourceOutput) ToArtifactSourceOutput() ArtifactSourceOutput {
 
 func (o ArtifactSourceOutput) ToArtifactSourceOutputWithContext(ctx context.Context) ArtifactSourceOutput {
 	return o
+}
+
+func (o ArtifactSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*ArtifactSource] {
+	return pulumix.Output[*ArtifactSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The path from the location that the 'authentication' property [say, a SAS URI to the blob container] refers to, to the location of the artifacts. This can be used to differentiate different versions of the artifacts. Or, different types of artifacts like binaries or templates. The location referenced by the authentication property concatenated with this optional artifactRoot path forms the artifact source location where the artifacts are expected to be found.

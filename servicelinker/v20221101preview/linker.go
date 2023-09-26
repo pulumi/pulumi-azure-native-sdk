@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Linker of source and target resource
@@ -169,6 +170,12 @@ func (i *Linker) ToLinkerOutputWithContext(ctx context.Context) LinkerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkerOutput)
 }
 
+func (i *Linker) ToOutput(ctx context.Context) pulumix.Output[*Linker] {
+	return pulumix.Output[*Linker]{
+		OutputState: i.ToLinkerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LinkerOutput struct{ *pulumi.OutputState }
 
 func (LinkerOutput) ElementType() reflect.Type {
@@ -181,6 +188,12 @@ func (o LinkerOutput) ToLinkerOutput() LinkerOutput {
 
 func (o LinkerOutput) ToLinkerOutputWithContext(ctx context.Context) LinkerOutput {
 	return o
+}
+
+func (o LinkerOutput) ToOutput(ctx context.Context) pulumix.Output[*Linker] {
+	return pulumix.Output[*Linker]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication type.

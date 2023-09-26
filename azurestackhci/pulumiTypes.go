@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i ArcConnectivityPropertiesArgs) ToArcConnectivityPropertiesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ArcConnectivityPropertiesOutput)
 }
 
+func (i ArcConnectivityPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ArcConnectivityProperties] {
+	return pulumix.Output[ArcConnectivityProperties]{
+		OutputState: i.ToArcConnectivityPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ArcConnectivityPropertiesArrayInput is an input type that accepts ArcConnectivityPropertiesArray and ArcConnectivityPropertiesArrayOutput values.
 // You can construct a concrete instance of `ArcConnectivityPropertiesArrayInput` via:
 //
@@ -73,6 +80,12 @@ func (i ArcConnectivityPropertiesArray) ToArcConnectivityPropertiesArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ArcConnectivityPropertiesArrayOutput)
 }
 
+func (i ArcConnectivityPropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]ArcConnectivityProperties] {
+	return pulumix.Output[[]ArcConnectivityProperties]{
+		OutputState: i.ToArcConnectivityPropertiesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Connectivity related configuration required by arc server.
 type ArcConnectivityPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -86,6 +99,12 @@ func (o ArcConnectivityPropertiesOutput) ToArcConnectivityPropertiesOutput() Arc
 
 func (o ArcConnectivityPropertiesOutput) ToArcConnectivityPropertiesOutputWithContext(ctx context.Context) ArcConnectivityPropertiesOutput {
 	return o
+}
+
+func (o ArcConnectivityPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ArcConnectivityProperties] {
+	return pulumix.Output[ArcConnectivityProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // True indicates ARC connectivity is enabled
@@ -105,6 +124,12 @@ func (o ArcConnectivityPropertiesArrayOutput) ToArcConnectivityPropertiesArrayOu
 
 func (o ArcConnectivityPropertiesArrayOutput) ToArcConnectivityPropertiesArrayOutputWithContext(ctx context.Context) ArcConnectivityPropertiesArrayOutput {
 	return o
+}
+
+func (o ArcConnectivityPropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ArcConnectivityProperties] {
+	return pulumix.Output[[]ArcConnectivityProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ArcConnectivityPropertiesArrayOutput) Index(i pulumi.IntInput) ArcConnectivityPropertiesOutput {
@@ -134,6 +159,12 @@ func (o ArcConnectivityPropertiesResponseOutput) ToArcConnectivityPropertiesResp
 	return o
 }
 
+func (o ArcConnectivityPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ArcConnectivityPropertiesResponse] {
+	return pulumix.Output[ArcConnectivityPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // True indicates ARC connectivity is enabled
 func (o ArcConnectivityPropertiesResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ArcConnectivityPropertiesResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -151,6 +182,12 @@ func (o ArcConnectivityPropertiesResponseArrayOutput) ToArcConnectivityPropertie
 
 func (o ArcConnectivityPropertiesResponseArrayOutput) ToArcConnectivityPropertiesResponseArrayOutputWithContext(ctx context.Context) ArcConnectivityPropertiesResponseArrayOutput {
 	return o
+}
+
+func (o ArcConnectivityPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ArcConnectivityPropertiesResponse] {
+	return pulumix.Output[[]ArcConnectivityPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ArcConnectivityPropertiesResponseArrayOutput) Index(i pulumi.IntInput) ArcConnectivityPropertiesResponseOutput {
@@ -198,6 +235,12 @@ func (i ClusterDesiredPropertiesArgs) ToClusterDesiredPropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterDesiredPropertiesOutput)
 }
 
+func (i ClusterDesiredPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterDesiredProperties] {
+	return pulumix.Output[ClusterDesiredProperties]{
+		OutputState: i.ToClusterDesiredPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ClusterDesiredPropertiesArgs) ToClusterDesiredPropertiesPtrOutput() ClusterDesiredPropertiesPtrOutput {
 	return i.ToClusterDesiredPropertiesPtrOutputWithContext(context.Background())
 }
@@ -239,6 +282,12 @@ func (i *clusterDesiredPropertiesPtrType) ToClusterDesiredPropertiesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterDesiredPropertiesPtrOutput)
 }
 
+func (i *clusterDesiredPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterDesiredProperties] {
+	return pulumix.Output[*ClusterDesiredProperties]{
+		OutputState: i.ToClusterDesiredPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Desired properties of the cluster.
 type ClusterDesiredPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -264,6 +313,12 @@ func (o ClusterDesiredPropertiesOutput) ToClusterDesiredPropertiesPtrOutputWithC
 	}).(ClusterDesiredPropertiesPtrOutput)
 }
 
+func (o ClusterDesiredPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterDesiredProperties] {
+	return pulumix.Output[ClusterDesiredProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Desired level of diagnostic data emitted by the cluster.
 func (o ClusterDesiredPropertiesOutput) DiagnosticLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDesiredProperties) *string { return v.DiagnosticLevel }).(pulumi.StringPtrOutput)
@@ -286,6 +341,12 @@ func (o ClusterDesiredPropertiesPtrOutput) ToClusterDesiredPropertiesPtrOutput()
 
 func (o ClusterDesiredPropertiesPtrOutput) ToClusterDesiredPropertiesPtrOutputWithContext(ctx context.Context) ClusterDesiredPropertiesPtrOutput {
 	return o
+}
+
+func (o ClusterDesiredPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterDesiredProperties] {
+	return pulumix.Output[*ClusterDesiredProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterDesiredPropertiesPtrOutput) Elem() ClusterDesiredPropertiesOutput {
@@ -341,6 +402,12 @@ func (o ClusterDesiredPropertiesResponseOutput) ToClusterDesiredPropertiesRespon
 	return o
 }
 
+func (o ClusterDesiredPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterDesiredPropertiesResponse] {
+	return pulumix.Output[ClusterDesiredPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Desired level of diagnostic data emitted by the cluster.
 func (o ClusterDesiredPropertiesResponseOutput) DiagnosticLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDesiredPropertiesResponse) *string { return v.DiagnosticLevel }).(pulumi.StringPtrOutput)
@@ -363,6 +430,12 @@ func (o ClusterDesiredPropertiesResponsePtrOutput) ToClusterDesiredPropertiesRes
 
 func (o ClusterDesiredPropertiesResponsePtrOutput) ToClusterDesiredPropertiesResponsePtrOutputWithContext(ctx context.Context) ClusterDesiredPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o ClusterDesiredPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterDesiredPropertiesResponse] {
+	return pulumix.Output[*ClusterDesiredPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterDesiredPropertiesResponsePtrOutput) Elem() ClusterDesiredPropertiesResponseOutput {
@@ -440,6 +513,12 @@ func (o ClusterNodeResponseOutput) ToClusterNodeResponseOutput() ClusterNodeResp
 
 func (o ClusterNodeResponseOutput) ToClusterNodeResponseOutputWithContext(ctx context.Context) ClusterNodeResponseOutput {
 	return o
+}
+
+func (o ClusterNodeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterNodeResponse] {
+	return pulumix.Output[ClusterNodeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Number of physical cores on the cluster node.
@@ -526,6 +605,12 @@ func (o ClusterNodeResponseArrayOutput) ToClusterNodeResponseArrayOutputWithCont
 	return o
 }
 
+func (o ClusterNodeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterNodeResponse] {
+	return pulumix.Output[[]ClusterNodeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClusterNodeResponseArrayOutput) Index(i pulumi.IntInput) ClusterNodeResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeResponse {
 		return vs[0].([]ClusterNodeResponse)[vs[1].(int)]
@@ -569,6 +654,12 @@ func (o ClusterReportedPropertiesResponseOutput) ToClusterReportedPropertiesResp
 
 func (o ClusterReportedPropertiesResponseOutput) ToClusterReportedPropertiesResponseOutputWithContext(ctx context.Context) ClusterReportedPropertiesResponseOutput {
 	return o
+}
+
+func (o ClusterReportedPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterReportedPropertiesResponse] {
+	return pulumix.Output[ClusterReportedPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique id generated by the on-prem cluster.
@@ -644,6 +735,12 @@ func (o DefaultExtensionDetailsResponseOutput) ToDefaultExtensionDetailsResponse
 	return o
 }
 
+func (o DefaultExtensionDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DefaultExtensionDetailsResponse] {
+	return pulumix.Output[DefaultExtensionDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Default extension category
 func (o DefaultExtensionDetailsResponseOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v DefaultExtensionDetailsResponse) string { return v.Category }).(pulumi.StringOutput)
@@ -666,6 +763,12 @@ func (o DefaultExtensionDetailsResponseArrayOutput) ToDefaultExtensionDetailsRes
 
 func (o DefaultExtensionDetailsResponseArrayOutput) ToDefaultExtensionDetailsResponseArrayOutputWithContext(ctx context.Context) DefaultExtensionDetailsResponseArrayOutput {
 	return o
+}
+
+func (o DefaultExtensionDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DefaultExtensionDetailsResponse] {
+	return pulumix.Output[[]DefaultExtensionDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DefaultExtensionDetailsResponseArrayOutput) Index(i pulumi.IntInput) DefaultExtensionDetailsResponseOutput {
@@ -697,6 +800,12 @@ func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWi
 	return o
 }
 
+func (o ErrorAdditionalInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorAdditionalInfoResponse] {
+	return pulumix.Output[ErrorAdditionalInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The additional info.
 func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
 	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
@@ -719,6 +828,12 @@ func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArr
 
 func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
 	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorAdditionalInfoResponse] {
+	return pulumix.Output[[]ErrorAdditionalInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
@@ -754,6 +869,12 @@ func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutput() ErrorDetailResp
 
 func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx context.Context) ErrorDetailResponseOutput {
 	return o
+}
+
+func (o ErrorDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorDetailResponse] {
+	return pulumix.Output[ErrorDetailResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The error additional info.
@@ -793,6 +914,12 @@ func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutput() Error
 
 func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithContext(ctx context.Context) ErrorDetailResponseArrayOutput {
 	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorDetailResponse] {
+	return pulumix.Output[[]ErrorDetailResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
@@ -840,6 +967,12 @@ func (i ExtendedLocationArgs) ToExtendedLocationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput)
 }
 
+func (i ExtendedLocationArgs) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocation] {
+	return pulumix.Output[ExtendedLocation]{
+		OutputState: i.ToExtendedLocationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExtendedLocationArgs) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
 	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
 }
@@ -881,6 +1014,12 @@ func (i *extendedLocationPtrType) ToExtendedLocationPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationPtrOutput)
 }
 
+func (i *extendedLocationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocation] {
+	return pulumix.Output[*ExtendedLocation]{
+		OutputState: i.ToExtendedLocationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The complex type of the extended location.
 type ExtendedLocationOutput struct{ *pulumi.OutputState }
 
@@ -906,6 +1045,12 @@ func (o ExtendedLocationOutput) ToExtendedLocationPtrOutputWithContext(ctx conte
 	}).(ExtendedLocationPtrOutput)
 }
 
+func (o ExtendedLocationOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocation] {
+	return pulumix.Output[ExtendedLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the extended location.
 func (o ExtendedLocationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtendedLocation) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -928,6 +1073,12 @@ func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutput() ExtendedLocatio
 
 func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
 	return o
+}
+
+func (o ExtendedLocationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocation] {
+	return pulumix.Output[*ExtendedLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtendedLocationPtrOutput) Elem() ExtendedLocationOutput {
@@ -983,6 +1134,12 @@ func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutputWithCont
 	return o
 }
 
+func (o ExtendedLocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocationResponse] {
+	return pulumix.Output[ExtendedLocationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the extended location.
 func (o ExtendedLocationResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtendedLocationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1005,6 +1162,12 @@ func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutput()
 
 func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutputWithContext(ctx context.Context) ExtendedLocationResponsePtrOutput {
 	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationResponse] {
+	return pulumix.Output[*ExtendedLocationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtendedLocationResponsePtrOutput) Elem() ExtendedLocationResponseOutput {
@@ -1064,6 +1227,12 @@ func (o ExtensionInstanceViewResponseOutput) ToExtensionInstanceViewResponseOutp
 	return o
 }
 
+func (o ExtensionInstanceViewResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionInstanceViewResponse] {
+	return pulumix.Output[ExtensionInstanceViewResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The extension name.
 func (o ExtensionInstanceViewResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtensionInstanceViewResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1113,6 +1282,12 @@ func (o ExtensionInstanceViewResponseStatusOutput) ToExtensionInstanceViewRespon
 	return o
 }
 
+func (o ExtensionInstanceViewResponseStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionInstanceViewResponseStatus] {
+	return pulumix.Output[ExtensionInstanceViewResponseStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The status code.
 func (o ExtensionInstanceViewResponseStatusOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtensionInstanceViewResponseStatus) *string { return v.Code }).(pulumi.StringPtrOutput)
@@ -1150,6 +1325,12 @@ func (o ExtensionInstanceViewResponseStatusPtrOutput) ToExtensionInstanceViewRes
 
 func (o ExtensionInstanceViewResponseStatusPtrOutput) ToExtensionInstanceViewResponseStatusPtrOutputWithContext(ctx context.Context) ExtensionInstanceViewResponseStatusPtrOutput {
 	return o
+}
+
+func (o ExtensionInstanceViewResponseStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionInstanceViewResponseStatus] {
+	return pulumix.Output[*ExtensionInstanceViewResponseStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtensionInstanceViewResponseStatusPtrOutput) Elem() ExtensionInstanceViewResponseStatusOutput {
@@ -1255,6 +1436,12 @@ func (i GalleryImageIdentifierArgs) ToGalleryImageIdentifierOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageIdentifierOutput)
 }
 
+func (i GalleryImageIdentifierArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryImageIdentifier] {
+	return pulumix.Output[GalleryImageIdentifier]{
+		OutputState: i.ToGalleryImageIdentifierOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GalleryImageIdentifierArgs) ToGalleryImageIdentifierPtrOutput() GalleryImageIdentifierPtrOutput {
 	return i.ToGalleryImageIdentifierPtrOutputWithContext(context.Background())
 }
@@ -1296,6 +1483,12 @@ func (i *galleryImageIdentifierPtrType) ToGalleryImageIdentifierPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageIdentifierPtrOutput)
 }
 
+func (i *galleryImageIdentifierPtrType) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageIdentifier] {
+	return pulumix.Output[*GalleryImageIdentifier]{
+		OutputState: i.ToGalleryImageIdentifierPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This is the gallery image definition identifier.
 type GalleryImageIdentifierOutput struct{ *pulumi.OutputState }
 
@@ -1319,6 +1512,12 @@ func (o GalleryImageIdentifierOutput) ToGalleryImageIdentifierPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GalleryImageIdentifier) *GalleryImageIdentifier {
 		return &v
 	}).(GalleryImageIdentifierPtrOutput)
+}
+
+func (o GalleryImageIdentifierOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageIdentifier] {
+	return pulumix.Output[GalleryImageIdentifier]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the gallery image definition offer.
@@ -1348,6 +1547,12 @@ func (o GalleryImageIdentifierPtrOutput) ToGalleryImageIdentifierPtrOutput() Gal
 
 func (o GalleryImageIdentifierPtrOutput) ToGalleryImageIdentifierPtrOutputWithContext(ctx context.Context) GalleryImageIdentifierPtrOutput {
 	return o
+}
+
+func (o GalleryImageIdentifierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageIdentifier] {
+	return pulumix.Output[*GalleryImageIdentifier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryImageIdentifierPtrOutput) Elem() GalleryImageIdentifierOutput {
@@ -1415,6 +1620,12 @@ func (o GalleryImageIdentifierResponseOutput) ToGalleryImageIdentifierResponseOu
 	return o
 }
 
+func (o GalleryImageIdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageIdentifierResponse] {
+	return pulumix.Output[GalleryImageIdentifierResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the gallery image definition offer.
 func (o GalleryImageIdentifierResponseOutput) Offer() pulumi.StringOutput {
 	return o.ApplyT(func(v GalleryImageIdentifierResponse) string { return v.Offer }).(pulumi.StringOutput)
@@ -1442,6 +1653,12 @@ func (o GalleryImageIdentifierResponsePtrOutput) ToGalleryImageIdentifierRespons
 
 func (o GalleryImageIdentifierResponsePtrOutput) ToGalleryImageIdentifierResponsePtrOutputWithContext(ctx context.Context) GalleryImageIdentifierResponsePtrOutput {
 	return o
+}
+
+func (o GalleryImageIdentifierResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageIdentifierResponse] {
+	return pulumix.Output[*GalleryImageIdentifierResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryImageIdentifierResponsePtrOutput) Elem() GalleryImageIdentifierResponseOutput {
@@ -1512,6 +1729,12 @@ func (o GalleryImageStatusResponseOutput) ToGalleryImageStatusResponseOutputWith
 	return o
 }
 
+func (o GalleryImageStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageStatusResponse] {
+	return pulumix.Output[GalleryImageStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The download status of the gallery image
 func (o GalleryImageStatusResponseOutput) DownloadStatus() GalleryImageStatusResponseDownloadStatusPtrOutput {
 	return o.ApplyT(func(v GalleryImageStatusResponse) *GalleryImageStatusResponseDownloadStatus { return v.DownloadStatus }).(GalleryImageStatusResponseDownloadStatusPtrOutput)
@@ -1559,6 +1782,12 @@ func (o GalleryImageStatusResponseDownloadStatusOutput) ToGalleryImageStatusResp
 	return o
 }
 
+func (o GalleryImageStatusResponseDownloadStatusOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageStatusResponseDownloadStatus] {
+	return pulumix.Output[GalleryImageStatusResponseDownloadStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The downloaded sized of the image in MB
 func (o GalleryImageStatusResponseDownloadStatusOutput) DownloadSizeInMB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GalleryImageStatusResponseDownloadStatus) *float64 { return v.DownloadSizeInMB }).(pulumi.Float64PtrOutput)
@@ -1576,6 +1805,12 @@ func (o GalleryImageStatusResponseDownloadStatusPtrOutput) ToGalleryImageStatusR
 
 func (o GalleryImageStatusResponseDownloadStatusPtrOutput) ToGalleryImageStatusResponseDownloadStatusPtrOutputWithContext(ctx context.Context) GalleryImageStatusResponseDownloadStatusPtrOutput {
 	return o
+}
+
+func (o GalleryImageStatusResponseDownloadStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageStatusResponseDownloadStatus] {
+	return pulumix.Output[*GalleryImageStatusResponseDownloadStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryImageStatusResponseDownloadStatusPtrOutput) Elem() GalleryImageStatusResponseDownloadStatusOutput {
@@ -1619,6 +1854,12 @@ func (o GalleryImageStatusResponseProvisioningStatusOutput) ToGalleryImageStatus
 	return o
 }
 
+func (o GalleryImageStatusResponseProvisioningStatusOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageStatusResponseProvisioningStatus] {
+	return pulumix.Output[GalleryImageStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the operation performed on the gallery image
 func (o GalleryImageStatusResponseProvisioningStatusOutput) OperationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GalleryImageStatusResponseProvisioningStatus) *string { return v.OperationId }).(pulumi.StringPtrOutput)
@@ -1641,6 +1882,12 @@ func (o GalleryImageStatusResponseProvisioningStatusPtrOutput) ToGalleryImageSta
 
 func (o GalleryImageStatusResponseProvisioningStatusPtrOutput) ToGalleryImageStatusResponseProvisioningStatusPtrOutputWithContext(ctx context.Context) GalleryImageStatusResponseProvisioningStatusPtrOutput {
 	return o
+}
+
+func (o GalleryImageStatusResponseProvisioningStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageStatusResponseProvisioningStatus] {
+	return pulumix.Output[*GalleryImageStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryImageStatusResponseProvisioningStatusPtrOutput) Elem() GalleryImageStatusResponseProvisioningStatusOutput {
@@ -1708,6 +1955,12 @@ func (i GalleryImageVersionArgs) ToGalleryImageVersionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageVersionOutput)
 }
 
+func (i GalleryImageVersionArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryImageVersion] {
+	return pulumix.Output[GalleryImageVersion]{
+		OutputState: i.ToGalleryImageVersionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GalleryImageVersionArgs) ToGalleryImageVersionPtrOutput() GalleryImageVersionPtrOutput {
 	return i.ToGalleryImageVersionPtrOutputWithContext(context.Background())
 }
@@ -1749,6 +2002,12 @@ func (i *galleryImageVersionPtrType) ToGalleryImageVersionPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageVersionPtrOutput)
 }
 
+func (i *galleryImageVersionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageVersion] {
+	return pulumix.Output[*GalleryImageVersion]{
+		OutputState: i.ToGalleryImageVersionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies information about the gallery image version that you want to create or update.
 type GalleryImageVersionOutput struct{ *pulumi.OutputState }
 
@@ -1774,6 +2033,12 @@ func (o GalleryImageVersionOutput) ToGalleryImageVersionPtrOutputWithContext(ctx
 	}).(GalleryImageVersionPtrOutput)
 }
 
+func (o GalleryImageVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageVersion] {
+	return pulumix.Output[GalleryImageVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This is the version of the gallery image.
 func (o GalleryImageVersionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GalleryImageVersion) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1791,6 +2056,12 @@ func (o GalleryImageVersionPtrOutput) ToGalleryImageVersionPtrOutput() GalleryIm
 
 func (o GalleryImageVersionPtrOutput) ToGalleryImageVersionPtrOutputWithContext(ctx context.Context) GalleryImageVersionPtrOutput {
 	return o
+}
+
+func (o GalleryImageVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageVersion] {
+	return pulumix.Output[*GalleryImageVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryImageVersionPtrOutput) Elem() GalleryImageVersionOutput {
@@ -1836,6 +2107,12 @@ func (o GalleryImageVersionResponseOutput) ToGalleryImageVersionResponseOutputWi
 	return o
 }
 
+func (o GalleryImageVersionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageVersionResponse] {
+	return pulumix.Output[GalleryImageVersionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This is the version of the gallery image.
 func (o GalleryImageVersionResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GalleryImageVersionResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1858,6 +2135,12 @@ func (o GalleryImageVersionResponsePtrOutput) ToGalleryImageVersionResponsePtrOu
 
 func (o GalleryImageVersionResponsePtrOutput) ToGalleryImageVersionResponsePtrOutputWithContext(ctx context.Context) GalleryImageVersionResponsePtrOutput {
 	return o
+}
+
+func (o GalleryImageVersionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageVersionResponse] {
+	return pulumix.Output[*GalleryImageVersionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryImageVersionResponsePtrOutput) Elem() GalleryImageVersionResponseOutput {
@@ -1911,6 +2194,12 @@ func (o GalleryImageVersionStorageProfileResponseOutput) ToGalleryImageVersionSt
 	return o
 }
 
+func (o GalleryImageVersionStorageProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageVersionStorageProfileResponse] {
+	return pulumix.Output[GalleryImageVersionStorageProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This is the OS disk image.
 func (o GalleryImageVersionStorageProfileResponseOutput) OsDiskImage() GalleryOSDiskImageResponsePtrOutput {
 	return o.ApplyT(func(v GalleryImageVersionStorageProfileResponse) *GalleryOSDiskImageResponse { return v.OsDiskImage }).(GalleryOSDiskImageResponsePtrOutput)
@@ -1928,6 +2217,12 @@ func (o GalleryImageVersionStorageProfileResponsePtrOutput) ToGalleryImageVersio
 
 func (o GalleryImageVersionStorageProfileResponsePtrOutput) ToGalleryImageVersionStorageProfileResponsePtrOutputWithContext(ctx context.Context) GalleryImageVersionStorageProfileResponsePtrOutput {
 	return o
+}
+
+func (o GalleryImageVersionStorageProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageVersionStorageProfileResponse] {
+	return pulumix.Output[*GalleryImageVersionStorageProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryImageVersionStorageProfileResponsePtrOutput) Elem() GalleryImageVersionStorageProfileResponseOutput {
@@ -1971,6 +2266,12 @@ func (o GalleryOSDiskImageResponseOutput) ToGalleryOSDiskImageResponseOutputWith
 	return o
 }
 
+func (o GalleryOSDiskImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryOSDiskImageResponse] {
+	return pulumix.Output[GalleryOSDiskImageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This property indicates the size of the VHD to be created.
 func (o GalleryOSDiskImageResponseOutput) SizeInMB() pulumi.Float64Output {
 	return o.ApplyT(func(v GalleryOSDiskImageResponse) float64 { return v.SizeInMB }).(pulumi.Float64Output)
@@ -1988,6 +2289,12 @@ func (o GalleryOSDiskImageResponsePtrOutput) ToGalleryOSDiskImageResponsePtrOutp
 
 func (o GalleryOSDiskImageResponsePtrOutput) ToGalleryOSDiskImageResponsePtrOutputWithContext(ctx context.Context) GalleryOSDiskImageResponsePtrOutput {
 	return o
+}
+
+func (o GalleryOSDiskImageResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryOSDiskImageResponse] {
+	return pulumix.Output[*GalleryOSDiskImageResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryOSDiskImageResponsePtrOutput) Elem() GalleryOSDiskImageResponseOutput {
@@ -2039,6 +2346,12 @@ func (o GuestAgentInstallStatusResponseOutput) ToGuestAgentInstallStatusResponse
 	return o
 }
 
+func (o GuestAgentInstallStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GuestAgentInstallStatusResponse] {
+	return pulumix.Output[GuestAgentInstallStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The hybrid machine agent full version.
 func (o GuestAgentInstallStatusResponseOutput) AgentVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestAgentInstallStatusResponse) string { return v.AgentVersion }).(pulumi.StringOutput)
@@ -2076,6 +2389,12 @@ func (o GuestAgentInstallStatusResponsePtrOutput) ToGuestAgentInstallStatusRespo
 
 func (o GuestAgentInstallStatusResponsePtrOutput) ToGuestAgentInstallStatusResponsePtrOutputWithContext(ctx context.Context) GuestAgentInstallStatusResponsePtrOutput {
 	return o
+}
+
+func (o GuestAgentInstallStatusResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestAgentInstallStatusResponse] {
+	return pulumix.Output[*GuestAgentInstallStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GuestAgentInstallStatusResponsePtrOutput) Elem() GuestAgentInstallStatusResponseOutput {
@@ -2167,6 +2486,12 @@ func (o GuestAgentProfileResponseOutput) ToGuestAgentProfileResponseOutputWithCo
 	return o
 }
 
+func (o GuestAgentProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GuestAgentProfileResponse] {
+	return pulumix.Output[GuestAgentProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The hybrid machine agent full version.
 func (o GuestAgentProfileResponseOutput) AgentVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestAgentProfileResponse) string { return v.AgentVersion }).(pulumi.StringOutput)
@@ -2204,6 +2529,12 @@ func (o GuestAgentProfileResponsePtrOutput) ToGuestAgentProfileResponsePtrOutput
 
 func (o GuestAgentProfileResponsePtrOutput) ToGuestAgentProfileResponsePtrOutputWithContext(ctx context.Context) GuestAgentProfileResponsePtrOutput {
 	return o
+}
+
+func (o GuestAgentProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestAgentProfileResponse] {
+	return pulumix.Output[*GuestAgentProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GuestAgentProfileResponsePtrOutput) Elem() GuestAgentProfileResponseOutput {
@@ -2305,6 +2636,12 @@ func (i GuestCredentialArgs) ToGuestCredentialOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GuestCredentialOutput)
 }
 
+func (i GuestCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[GuestCredential] {
+	return pulumix.Output[GuestCredential]{
+		OutputState: i.ToGuestCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GuestCredentialArgs) ToGuestCredentialPtrOutput() GuestCredentialPtrOutput {
 	return i.ToGuestCredentialPtrOutputWithContext(context.Background())
 }
@@ -2346,6 +2683,12 @@ func (i *guestCredentialPtrType) ToGuestCredentialPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GuestCredentialPtrOutput)
 }
 
+func (i *guestCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestCredential] {
+	return pulumix.Output[*GuestCredential]{
+		OutputState: i.ToGuestCredentialPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Username / Password Credentials to connect to guest.
 type GuestCredentialOutput struct{ *pulumi.OutputState }
 
@@ -2371,6 +2714,12 @@ func (o GuestCredentialOutput) ToGuestCredentialPtrOutputWithContext(ctx context
 	}).(GuestCredentialPtrOutput)
 }
 
+func (o GuestCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[GuestCredential] {
+	return pulumix.Output[GuestCredential]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The password to connect with the guest.
 func (o GuestCredentialOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestCredential) *string { return v.Password }).(pulumi.StringPtrOutput)
@@ -2393,6 +2742,12 @@ func (o GuestCredentialPtrOutput) ToGuestCredentialPtrOutput() GuestCredentialPt
 
 func (o GuestCredentialPtrOutput) ToGuestCredentialPtrOutputWithContext(ctx context.Context) GuestCredentialPtrOutput {
 	return o
+}
+
+func (o GuestCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestCredential] {
+	return pulumix.Output[*GuestCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GuestCredentialPtrOutput) Elem() GuestCredentialOutput {
@@ -2446,6 +2801,12 @@ func (o GuestCredentialResponseOutput) ToGuestCredentialResponseOutputWithContex
 	return o
 }
 
+func (o GuestCredentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GuestCredentialResponse] {
+	return pulumix.Output[GuestCredentialResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The username to connect with the guest.
 func (o GuestCredentialResponseOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestCredentialResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
@@ -2463,6 +2824,12 @@ func (o GuestCredentialResponsePtrOutput) ToGuestCredentialResponsePtrOutput() G
 
 func (o GuestCredentialResponsePtrOutput) ToGuestCredentialResponsePtrOutputWithContext(ctx context.Context) GuestCredentialResponsePtrOutput {
 	return o
+}
+
+func (o GuestCredentialResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestCredentialResponse] {
+	return pulumix.Output[*GuestCredentialResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GuestCredentialResponsePtrOutput) Elem() GuestCredentialResponseOutput {
@@ -2520,6 +2887,12 @@ func (i HttpProxyConfigurationArgs) ToHttpProxyConfigurationOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(HttpProxyConfigurationOutput)
 }
 
+func (i HttpProxyConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[HttpProxyConfiguration] {
+	return pulumix.Output[HttpProxyConfiguration]{
+		OutputState: i.ToHttpProxyConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpProxyConfigurationArgs) ToHttpProxyConfigurationPtrOutput() HttpProxyConfigurationPtrOutput {
 	return i.ToHttpProxyConfigurationPtrOutputWithContext(context.Background())
 }
@@ -2561,6 +2934,12 @@ func (i *httpProxyConfigurationPtrType) ToHttpProxyConfigurationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(HttpProxyConfigurationPtrOutput)
 }
 
+func (i *httpProxyConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpProxyConfiguration] {
+	return pulumix.Output[*HttpProxyConfiguration]{
+		OutputState: i.ToHttpProxyConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HTTP Proxy configuration for the VM.
 type HttpProxyConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -2586,6 +2965,12 @@ func (o HttpProxyConfigurationOutput) ToHttpProxyConfigurationPtrOutputWithConte
 	}).(HttpProxyConfigurationPtrOutput)
 }
 
+func (o HttpProxyConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[HttpProxyConfiguration] {
+	return pulumix.Output[HttpProxyConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The httpsProxy url.
 func (o HttpProxyConfigurationOutput) HttpsProxy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpProxyConfiguration) *string { return v.HttpsProxy }).(pulumi.StringPtrOutput)
@@ -2603,6 +2988,12 @@ func (o HttpProxyConfigurationPtrOutput) ToHttpProxyConfigurationPtrOutput() Htt
 
 func (o HttpProxyConfigurationPtrOutput) ToHttpProxyConfigurationPtrOutputWithContext(ctx context.Context) HttpProxyConfigurationPtrOutput {
 	return o
+}
+
+func (o HttpProxyConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpProxyConfiguration] {
+	return pulumix.Output[*HttpProxyConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpProxyConfigurationPtrOutput) Elem() HttpProxyConfigurationOutput {
@@ -2646,6 +3037,12 @@ func (o HttpProxyConfigurationResponseOutput) ToHttpProxyConfigurationResponseOu
 	return o
 }
 
+func (o HttpProxyConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpProxyConfigurationResponse] {
+	return pulumix.Output[HttpProxyConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The httpsProxy url.
 func (o HttpProxyConfigurationResponseOutput) HttpsProxy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpProxyConfigurationResponse) *string { return v.HttpsProxy }).(pulumi.StringPtrOutput)
@@ -2663,6 +3060,12 @@ func (o HttpProxyConfigurationResponsePtrOutput) ToHttpProxyConfigurationRespons
 
 func (o HttpProxyConfigurationResponsePtrOutput) ToHttpProxyConfigurationResponsePtrOutputWithContext(ctx context.Context) HttpProxyConfigurationResponsePtrOutput {
 	return o
+}
+
+func (o HttpProxyConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpProxyConfigurationResponse] {
+	return pulumix.Output[*HttpProxyConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpProxyConfigurationResponsePtrOutput) Elem() HttpProxyConfigurationResponseOutput {
@@ -2724,6 +3127,12 @@ func (i IPConfigurationArgs) ToIPConfigurationOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(IPConfigurationOutput)
 }
 
+func (i IPConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[IPConfiguration] {
+	return pulumix.Output[IPConfiguration]{
+		OutputState: i.ToIPConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IPConfigurationArrayInput is an input type that accepts IPConfigurationArray and IPConfigurationArrayOutput values.
 // You can construct a concrete instance of `IPConfigurationArrayInput` via:
 //
@@ -2749,6 +3158,12 @@ func (i IPConfigurationArray) ToIPConfigurationArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(IPConfigurationArrayOutput)
 }
 
+func (i IPConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]IPConfiguration] {
+	return pulumix.Output[[]IPConfiguration]{
+		OutputState: i.ToIPConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InterfaceIPConfiguration iPConfiguration in a network interface.
 type IPConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -2762,6 +3177,12 @@ func (o IPConfigurationOutput) ToIPConfigurationOutput() IPConfigurationOutput {
 
 func (o IPConfigurationOutput) ToIPConfigurationOutputWithContext(ctx context.Context) IPConfigurationOutput {
 	return o
+}
+
+func (o IPConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[IPConfiguration] {
+	return pulumix.Output[IPConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -2786,6 +3207,12 @@ func (o IPConfigurationArrayOutput) ToIPConfigurationArrayOutput() IPConfigurati
 
 func (o IPConfigurationArrayOutput) ToIPConfigurationArrayOutputWithContext(ctx context.Context) IPConfigurationArrayOutput {
 	return o
+}
+
+func (o IPConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPConfiguration] {
+	return pulumix.Output[[]IPConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPConfigurationArrayOutput) Index(i pulumi.IntInput) IPConfigurationOutput {
@@ -2841,6 +3268,12 @@ func (i IPConfigurationPropertiesArgs) ToIPConfigurationPropertiesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(IPConfigurationPropertiesOutput)
 }
 
+func (i IPConfigurationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[IPConfigurationProperties] {
+	return pulumix.Output[IPConfigurationProperties]{
+		OutputState: i.ToIPConfigurationPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IPConfigurationPropertiesArgs) ToIPConfigurationPropertiesPtrOutput() IPConfigurationPropertiesPtrOutput {
 	return i.ToIPConfigurationPropertiesPtrOutputWithContext(context.Background())
 }
@@ -2882,6 +3315,12 @@ func (i *ipconfigurationPropertiesPtrType) ToIPConfigurationPropertiesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(IPConfigurationPropertiesPtrOutput)
 }
 
+func (i *ipconfigurationPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*IPConfigurationProperties] {
+	return pulumix.Output[*IPConfigurationProperties]{
+		OutputState: i.ToIPConfigurationPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InterfaceIPConfigurationPropertiesFormat properties of IP configuration.
 type IPConfigurationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2905,6 +3344,12 @@ func (o IPConfigurationPropertiesOutput) ToIPConfigurationPropertiesPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IPConfigurationProperties) *IPConfigurationProperties {
 		return &v
 	}).(IPConfigurationPropertiesPtrOutput)
+}
+
+func (o IPConfigurationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[IPConfigurationProperties] {
+	return pulumix.Output[IPConfigurationProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // prefixLength for network interface
@@ -2939,6 +3384,12 @@ func (o IPConfigurationPropertiesPtrOutput) ToIPConfigurationPropertiesPtrOutput
 
 func (o IPConfigurationPropertiesPtrOutput) ToIPConfigurationPropertiesPtrOutputWithContext(ctx context.Context) IPConfigurationPropertiesPtrOutput {
 	return o
+}
+
+func (o IPConfigurationPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPConfigurationProperties] {
+	return pulumix.Output[*IPConfigurationProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPConfigurationPropertiesPtrOutput) Elem() IPConfigurationPropertiesOutput {
@@ -3014,6 +3465,12 @@ func (o IPConfigurationResponseOutput) ToIPConfigurationResponseOutputWithContex
 	return o
 }
 
+func (o IPConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IPConfigurationResponse] {
+	return pulumix.Output[IPConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o IPConfigurationResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPConfigurationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -3036,6 +3493,12 @@ func (o IPConfigurationResponseArrayOutput) ToIPConfigurationResponseArrayOutput
 
 func (o IPConfigurationResponseArrayOutput) ToIPConfigurationResponseArrayOutputWithContext(ctx context.Context) IPConfigurationResponseArrayOutput {
 	return o
+}
+
+func (o IPConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPConfigurationResponse] {
+	return pulumix.Output[[]IPConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPConfigurationResponseArrayOutput) Index(i pulumi.IntInput) IPConfigurationResponseOutput {
@@ -3071,6 +3534,12 @@ func (o IPConfigurationResponsePropertiesOutput) ToIPConfigurationResponseProper
 	return o
 }
 
+func (o IPConfigurationResponsePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[IPConfigurationResponseProperties] {
+	return pulumix.Output[IPConfigurationResponseProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // prefixLength for network interface
 func (o IPConfigurationResponsePropertiesOutput) PrefixLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPConfigurationResponseProperties) *string { return v.PrefixLength }).(pulumi.StringPtrOutput)
@@ -3103,6 +3572,12 @@ func (o IPConfigurationResponsePropertiesPtrOutput) ToIPConfigurationResponsePro
 
 func (o IPConfigurationResponsePropertiesPtrOutput) ToIPConfigurationResponsePropertiesPtrOutputWithContext(ctx context.Context) IPConfigurationResponsePropertiesPtrOutput {
 	return o
+}
+
+func (o IPConfigurationResponsePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPConfigurationResponseProperties] {
+	return pulumix.Output[*IPConfigurationResponseProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPConfigurationResponsePropertiesPtrOutput) Elem() IPConfigurationResponsePropertiesOutput {
@@ -3176,6 +3651,12 @@ func (o IPConfigurationResponseSubnetOutput) ToIPConfigurationResponseSubnetOutp
 	return o
 }
 
+func (o IPConfigurationResponseSubnetOutput) ToOutput(ctx context.Context) pulumix.Output[IPConfigurationResponseSubnet] {
+	return pulumix.Output[IPConfigurationResponseSubnet]{
+		OutputState: o.OutputState,
+	}
+}
+
 // ID - The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
 func (o IPConfigurationResponseSubnetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPConfigurationResponseSubnet) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -3193,6 +3674,12 @@ func (o IPConfigurationResponseSubnetPtrOutput) ToIPConfigurationResponseSubnetP
 
 func (o IPConfigurationResponseSubnetPtrOutput) ToIPConfigurationResponseSubnetPtrOutputWithContext(ctx context.Context) IPConfigurationResponseSubnetPtrOutput {
 	return o
+}
+
+func (o IPConfigurationResponseSubnetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPConfigurationResponseSubnet] {
+	return pulumix.Output[*IPConfigurationResponseSubnet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPConfigurationResponseSubnetPtrOutput) Elem() IPConfigurationResponseSubnetOutput {
@@ -3250,6 +3737,12 @@ func (i IPConfigurationSubnetArgs) ToIPConfigurationSubnetOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(IPConfigurationSubnetOutput)
 }
 
+func (i IPConfigurationSubnetArgs) ToOutput(ctx context.Context) pulumix.Output[IPConfigurationSubnet] {
+	return pulumix.Output[IPConfigurationSubnet]{
+		OutputState: i.ToIPConfigurationSubnetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IPConfigurationSubnetArgs) ToIPConfigurationSubnetPtrOutput() IPConfigurationSubnetPtrOutput {
 	return i.ToIPConfigurationSubnetPtrOutputWithContext(context.Background())
 }
@@ -3291,6 +3784,12 @@ func (i *ipconfigurationSubnetPtrType) ToIPConfigurationSubnetPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(IPConfigurationSubnetPtrOutput)
 }
 
+func (i *ipconfigurationSubnetPtrType) ToOutput(ctx context.Context) pulumix.Output[*IPConfigurationSubnet] {
+	return pulumix.Output[*IPConfigurationSubnet]{
+		OutputState: i.ToIPConfigurationSubnetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Subnet - Name of Subnet bound to the IP configuration.
 type IPConfigurationSubnetOutput struct{ *pulumi.OutputState }
 
@@ -3316,6 +3815,12 @@ func (o IPConfigurationSubnetOutput) ToIPConfigurationSubnetPtrOutputWithContext
 	}).(IPConfigurationSubnetPtrOutput)
 }
 
+func (o IPConfigurationSubnetOutput) ToOutput(ctx context.Context) pulumix.Output[IPConfigurationSubnet] {
+	return pulumix.Output[IPConfigurationSubnet]{
+		OutputState: o.OutputState,
+	}
+}
+
 // ID - The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
 func (o IPConfigurationSubnetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPConfigurationSubnet) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -3333,6 +3838,12 @@ func (o IPConfigurationSubnetPtrOutput) ToIPConfigurationSubnetPtrOutput() IPCon
 
 func (o IPConfigurationSubnetPtrOutput) ToIPConfigurationSubnetPtrOutputWithContext(ctx context.Context) IPConfigurationSubnetPtrOutput {
 	return o
+}
+
+func (o IPConfigurationSubnetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPConfigurationSubnet] {
+	return pulumix.Output[*IPConfigurationSubnet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPConfigurationSubnetPtrOutput) Elem() IPConfigurationSubnetOutput {
@@ -3396,6 +3907,12 @@ func (i IPPoolArgs) ToIPPoolOutputWithContext(ctx context.Context) IPPoolOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(IPPoolOutput)
 }
 
+func (i IPPoolArgs) ToOutput(ctx context.Context) pulumix.Output[IPPool] {
+	return pulumix.Output[IPPool]{
+		OutputState: i.ToIPPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IPPoolArrayInput is an input type that accepts IPPoolArray and IPPoolArrayOutput values.
 // You can construct a concrete instance of `IPPoolArrayInput` via:
 //
@@ -3421,6 +3938,12 @@ func (i IPPoolArray) ToIPPoolArrayOutputWithContext(ctx context.Context) IPPoolA
 	return pulumi.ToOutputWithContext(ctx, i).(IPPoolArrayOutput)
 }
 
+func (i IPPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]IPPool] {
+	return pulumix.Output[[]IPPool]{
+		OutputState: i.ToIPPoolArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IPPoolOutput struct{ *pulumi.OutputState }
 
 func (IPPoolOutput) ElementType() reflect.Type {
@@ -3433,6 +3956,12 @@ func (o IPPoolOutput) ToIPPoolOutput() IPPoolOutput {
 
 func (o IPPoolOutput) ToIPPoolOutputWithContext(ctx context.Context) IPPoolOutput {
 	return o
+}
+
+func (o IPPoolOutput) ToOutput(ctx context.Context) pulumix.Output[IPPool] {
+	return pulumix.Output[IPPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // end of the ip address pool
@@ -3464,6 +3993,12 @@ func (o IPPoolArrayOutput) ToIPPoolArrayOutputWithContext(ctx context.Context) I
 	return o
 }
 
+func (o IPPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPPool] {
+	return pulumix.Output[[]IPPool]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IPPoolArrayOutput) Index(i pulumi.IntInput) IPPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IPPool {
 		return vs[0].([]IPPool)[vs[1].(int)]
@@ -3491,6 +4026,12 @@ func (o IPPoolInfoResponseOutput) ToIPPoolInfoResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o IPPoolInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IPPoolInfoResponse] {
+	return pulumix.Output[IPPoolInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // no. of ip addresses available in the ip pool
 func (o IPPoolInfoResponseOutput) Available() pulumi.StringOutput {
 	return o.ApplyT(func(v IPPoolInfoResponse) string { return v.Available }).(pulumi.StringOutput)
@@ -3513,6 +4054,12 @@ func (o IPPoolInfoResponsePtrOutput) ToIPPoolInfoResponsePtrOutput() IPPoolInfoR
 
 func (o IPPoolInfoResponsePtrOutput) ToIPPoolInfoResponsePtrOutputWithContext(ctx context.Context) IPPoolInfoResponsePtrOutput {
 	return o
+}
+
+func (o IPPoolInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPPoolInfoResponse] {
+	return pulumix.Output[*IPPoolInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPPoolInfoResponsePtrOutput) Elem() IPPoolInfoResponseOutput {
@@ -3569,6 +4116,12 @@ func (o IPPoolResponseOutput) ToIPPoolResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o IPPoolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IPPoolResponse] {
+	return pulumix.Output[IPPoolResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // end of the ip address pool
 func (o IPPoolResponseOutput) End() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPPoolResponse) *string { return v.End }).(pulumi.StringPtrOutput)
@@ -3600,6 +4153,12 @@ func (o IPPoolResponseArrayOutput) ToIPPoolResponseArrayOutput() IPPoolResponseA
 
 func (o IPPoolResponseArrayOutput) ToIPPoolResponseArrayOutputWithContext(ctx context.Context) IPPoolResponseArrayOutput {
 	return o
+}
+
+func (o IPPoolResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPPoolResponse] {
+	return pulumix.Output[[]IPPoolResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPPoolResponseArrayOutput) Index(i pulumi.IntInput) IPPoolResponseOutput {
@@ -3643,6 +4202,12 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
+func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
 	return i.ToIdentityPtrOutputWithContext(context.Background())
 }
@@ -3684,6 +4249,12 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
+func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity for the resource.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -3709,6 +4280,12 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
+func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v Identity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -3726,6 +4303,12 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
+}
+
+func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -3773,6 +4356,12 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
+	return pulumix.Output[IdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal ID of resource identity.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -3800,6 +4389,12 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
+}
+
+func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
+	return pulumix.Output[*IdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -3871,6 +4466,12 @@ func (o InstanceViewStatusResponseOutput) ToInstanceViewStatusResponseOutputWith
 	return o
 }
 
+func (o InstanceViewStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceViewStatusResponse] {
+	return pulumix.Output[InstanceViewStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The status code.
 func (o InstanceViewStatusResponseOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceViewStatusResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
@@ -3910,6 +4511,12 @@ func (o InstanceViewStatusResponseArrayOutput) ToInstanceViewStatusResponseArray
 	return o
 }
 
+func (o InstanceViewStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceViewStatusResponse] {
+	return pulumix.Output[[]InstanceViewStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceViewStatusResponseArrayOutput) Index(i pulumi.IntInput) InstanceViewStatusResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceViewStatusResponse {
 		return vs[0].([]InstanceViewStatusResponse)[vs[1].(int)]
@@ -3947,6 +4554,12 @@ func (i InterfaceDNSSettingsArgs) ToInterfaceDNSSettingsOutput() InterfaceDNSSet
 
 func (i InterfaceDNSSettingsArgs) ToInterfaceDNSSettingsOutputWithContext(ctx context.Context) InterfaceDNSSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InterfaceDNSSettingsOutput)
+}
+
+func (i InterfaceDNSSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[InterfaceDNSSettings] {
+	return pulumix.Output[InterfaceDNSSettings]{
+		OutputState: i.ToInterfaceDNSSettingsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i InterfaceDNSSettingsArgs) ToInterfaceDNSSettingsPtrOutput() InterfaceDNSSettingsPtrOutput {
@@ -3990,6 +4603,12 @@ func (i *interfaceDNSSettingsPtrType) ToInterfaceDNSSettingsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(InterfaceDNSSettingsPtrOutput)
 }
 
+func (i *interfaceDNSSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*InterfaceDNSSettings] {
+	return pulumix.Output[*InterfaceDNSSettings]{
+		OutputState: i.ToInterfaceDNSSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InterfaceDNSSettingsOutput struct{ *pulumi.OutputState }
 
 func (InterfaceDNSSettingsOutput) ElementType() reflect.Type {
@@ -4014,6 +4633,12 @@ func (o InterfaceDNSSettingsOutput) ToInterfaceDNSSettingsPtrOutputWithContext(c
 	}).(InterfaceDNSSettingsPtrOutput)
 }
 
+func (o InterfaceDNSSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[InterfaceDNSSettings] {
+	return pulumix.Output[InterfaceDNSSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of DNS server IP Addresses for the interface
 func (o InterfaceDNSSettingsOutput) DnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InterfaceDNSSettings) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
@@ -4031,6 +4656,12 @@ func (o InterfaceDNSSettingsPtrOutput) ToInterfaceDNSSettingsPtrOutput() Interfa
 
 func (o InterfaceDNSSettingsPtrOutput) ToInterfaceDNSSettingsPtrOutputWithContext(ctx context.Context) InterfaceDNSSettingsPtrOutput {
 	return o
+}
+
+func (o InterfaceDNSSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InterfaceDNSSettings] {
+	return pulumix.Output[*InterfaceDNSSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterfaceDNSSettingsPtrOutput) Elem() InterfaceDNSSettingsOutput {
@@ -4072,6 +4703,12 @@ func (o InterfaceDNSSettingsResponseOutput) ToInterfaceDNSSettingsResponseOutput
 	return o
 }
 
+func (o InterfaceDNSSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InterfaceDNSSettingsResponse] {
+	return pulumix.Output[InterfaceDNSSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of DNS server IP Addresses for the interface
 func (o InterfaceDNSSettingsResponseOutput) DnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InterfaceDNSSettingsResponse) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
@@ -4089,6 +4726,12 @@ func (o InterfaceDNSSettingsResponsePtrOutput) ToInterfaceDNSSettingsResponsePtr
 
 func (o InterfaceDNSSettingsResponsePtrOutput) ToInterfaceDNSSettingsResponsePtrOutputWithContext(ctx context.Context) InterfaceDNSSettingsResponsePtrOutput {
 	return o
+}
+
+func (o InterfaceDNSSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InterfaceDNSSettingsResponse] {
+	return pulumix.Output[*InterfaceDNSSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterfaceDNSSettingsResponsePtrOutput) Elem() InterfaceDNSSettingsResponseOutput {
@@ -4140,6 +4783,12 @@ func (o MachineExtensionInstanceViewResponseStatusOutput) ToMachineExtensionInst
 	return o
 }
 
+func (o MachineExtensionInstanceViewResponseStatusOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionInstanceViewResponseStatus] {
+	return pulumix.Output[MachineExtensionInstanceViewResponseStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The status code.
 func (o MachineExtensionInstanceViewResponseStatusOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v MachineExtensionInstanceViewResponseStatus) string { return v.Code }).(pulumi.StringOutput)
@@ -4177,6 +4826,12 @@ func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToMachineExtensionI
 
 func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToMachineExtensionInstanceViewResponseStatusPtrOutputWithContext(ctx context.Context) MachineExtensionInstanceViewResponseStatusPtrOutput {
 	return o
+}
+
+func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionInstanceViewResponseStatus] {
+	return pulumix.Output[*MachineExtensionInstanceViewResponseStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MachineExtensionInstanceViewResponseStatusPtrOutput) Elem() MachineExtensionInstanceViewResponseStatusOutput {
@@ -4266,6 +4921,12 @@ func (o MachineExtensionPropertiesResponseInstanceViewOutput) ToMachineExtension
 	return o
 }
 
+func (o MachineExtensionPropertiesResponseInstanceViewOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionPropertiesResponseInstanceView] {
+	return pulumix.Output[MachineExtensionPropertiesResponseInstanceView]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The machine extension name.
 func (o MachineExtensionPropertiesResponseInstanceViewOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MachineExtensionPropertiesResponseInstanceView) string { return v.Name }).(pulumi.StringOutput)
@@ -4300,6 +4961,12 @@ func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) ToMachineExtens
 
 func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) ToMachineExtensionPropertiesResponseInstanceViewPtrOutputWithContext(ctx context.Context) MachineExtensionPropertiesResponseInstanceViewPtrOutput {
 	return o
+}
+
+func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionPropertiesResponseInstanceView] {
+	return pulumix.Output[*MachineExtensionPropertiesResponseInstanceView]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) Elem() MachineExtensionPropertiesResponseInstanceViewOutput {
@@ -4380,6 +5047,12 @@ func (o MarketplaceGalleryImageStatusResponseOutput) ToMarketplaceGalleryImageSt
 	return o
 }
 
+func (o MarketplaceGalleryImageStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MarketplaceGalleryImageStatusResponse] {
+	return pulumix.Output[MarketplaceGalleryImageStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The download status of the gallery image
 func (o MarketplaceGalleryImageStatusResponseOutput) DownloadStatus() MarketplaceGalleryImageStatusResponseDownloadStatusPtrOutput {
 	return o.ApplyT(func(v MarketplaceGalleryImageStatusResponse) *MarketplaceGalleryImageStatusResponseDownloadStatus {
@@ -4429,6 +5102,12 @@ func (o MarketplaceGalleryImageStatusResponseDownloadStatusOutput) ToMarketplace
 	return o
 }
 
+func (o MarketplaceGalleryImageStatusResponseDownloadStatusOutput) ToOutput(ctx context.Context) pulumix.Output[MarketplaceGalleryImageStatusResponseDownloadStatus] {
+	return pulumix.Output[MarketplaceGalleryImageStatusResponseDownloadStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The downloaded sized of the image in MB
 func (o MarketplaceGalleryImageStatusResponseDownloadStatusOutput) DownloadSizeInMB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MarketplaceGalleryImageStatusResponseDownloadStatus) *float64 { return v.DownloadSizeInMB }).(pulumi.Float64PtrOutput)
@@ -4446,6 +5125,12 @@ func (o MarketplaceGalleryImageStatusResponseDownloadStatusPtrOutput) ToMarketpl
 
 func (o MarketplaceGalleryImageStatusResponseDownloadStatusPtrOutput) ToMarketplaceGalleryImageStatusResponseDownloadStatusPtrOutputWithContext(ctx context.Context) MarketplaceGalleryImageStatusResponseDownloadStatusPtrOutput {
 	return o
+}
+
+func (o MarketplaceGalleryImageStatusResponseDownloadStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MarketplaceGalleryImageStatusResponseDownloadStatus] {
+	return pulumix.Output[*MarketplaceGalleryImageStatusResponseDownloadStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MarketplaceGalleryImageStatusResponseDownloadStatusPtrOutput) Elem() MarketplaceGalleryImageStatusResponseDownloadStatusOutput {
@@ -4489,6 +5174,12 @@ func (o MarketplaceGalleryImageStatusResponseProvisioningStatusOutput) ToMarketp
 	return o
 }
 
+func (o MarketplaceGalleryImageStatusResponseProvisioningStatusOutput) ToOutput(ctx context.Context) pulumix.Output[MarketplaceGalleryImageStatusResponseProvisioningStatus] {
+	return pulumix.Output[MarketplaceGalleryImageStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the operation performed on the gallery image
 func (o MarketplaceGalleryImageStatusResponseProvisioningStatusOutput) OperationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MarketplaceGalleryImageStatusResponseProvisioningStatus) *string { return v.OperationId }).(pulumi.StringPtrOutput)
@@ -4511,6 +5202,12 @@ func (o MarketplaceGalleryImageStatusResponseProvisioningStatusPtrOutput) ToMark
 
 func (o MarketplaceGalleryImageStatusResponseProvisioningStatusPtrOutput) ToMarketplaceGalleryImageStatusResponseProvisioningStatusPtrOutputWithContext(ctx context.Context) MarketplaceGalleryImageStatusResponseProvisioningStatusPtrOutput {
 	return o
+}
+
+func (o MarketplaceGalleryImageStatusResponseProvisioningStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MarketplaceGalleryImageStatusResponseProvisioningStatus] {
+	return pulumix.Output[*MarketplaceGalleryImageStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MarketplaceGalleryImageStatusResponseProvisioningStatusPtrOutput) Elem() MarketplaceGalleryImageStatusResponseProvisioningStatusOutput {
@@ -4567,6 +5264,12 @@ func (o NetworkInterfaceStatusResponseOutput) ToNetworkInterfaceStatusResponseOu
 	return o
 }
 
+func (o NetworkInterfaceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkInterfaceStatusResponse] {
+	return pulumix.Output[NetworkInterfaceStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // NetworkInterface provisioning error code
 func (o NetworkInterfaceStatusResponseOutput) ErrorCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkInterfaceStatusResponse) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
@@ -4604,6 +5307,12 @@ func (o NetworkInterfaceStatusResponseProvisioningStatusOutput) ToNetworkInterfa
 	return o
 }
 
+func (o NetworkInterfaceStatusResponseProvisioningStatusOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkInterfaceStatusResponseProvisioningStatus] {
+	return pulumix.Output[NetworkInterfaceStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the operation performed on the network interface
 func (o NetworkInterfaceStatusResponseProvisioningStatusOutput) OperationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkInterfaceStatusResponseProvisioningStatus) *string { return v.OperationId }).(pulumi.StringPtrOutput)
@@ -4626,6 +5335,12 @@ func (o NetworkInterfaceStatusResponseProvisioningStatusPtrOutput) ToNetworkInte
 
 func (o NetworkInterfaceStatusResponseProvisioningStatusPtrOutput) ToNetworkInterfaceStatusResponseProvisioningStatusPtrOutputWithContext(ctx context.Context) NetworkInterfaceStatusResponseProvisioningStatusPtrOutput {
 	return o
+}
+
+func (o NetworkInterfaceStatusResponseProvisioningStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceStatusResponseProvisioningStatus] {
+	return pulumix.Output[*NetworkInterfaceStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkInterfaceStatusResponseProvisioningStatusPtrOutput) Elem() NetworkInterfaceStatusResponseProvisioningStatusOutput {
@@ -4687,6 +5402,12 @@ func (o PerNodeExtensionStateResponseOutput) ToPerNodeExtensionStateResponseOutp
 	return o
 }
 
+func (o PerNodeExtensionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PerNodeExtensionStateResponse] {
+	return pulumix.Output[PerNodeExtensionStateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully qualified resource ID for the particular Arc Extension on this node.
 func (o PerNodeExtensionStateResponseOutput) Extension() pulumi.StringOutput {
 	return o.ApplyT(func(v PerNodeExtensionStateResponse) string { return v.Extension }).(pulumi.StringOutput)
@@ -4726,6 +5447,12 @@ func (o PerNodeExtensionStateResponseArrayOutput) ToPerNodeExtensionStateRespons
 	return o
 }
 
+func (o PerNodeExtensionStateResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PerNodeExtensionStateResponse] {
+	return pulumix.Output[[]PerNodeExtensionStateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PerNodeExtensionStateResponseArrayOutput) Index(i pulumi.IntInput) PerNodeExtensionStateResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PerNodeExtensionStateResponse {
 		return vs[0].([]PerNodeExtensionStateResponse)[vs[1].(int)]
@@ -4757,6 +5484,12 @@ func (o PerNodeStateResponseOutput) ToPerNodeStateResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o PerNodeStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PerNodeStateResponse] {
+	return pulumix.Output[PerNodeStateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully qualified resource ID for the Arc agent of this node.
 func (o PerNodeStateResponseOutput) ArcInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v PerNodeStateResponse) string { return v.ArcInstance }).(pulumi.StringOutput)
@@ -4784,6 +5517,12 @@ func (o PerNodeStateResponseArrayOutput) ToPerNodeStateResponseArrayOutput() Per
 
 func (o PerNodeStateResponseArrayOutput) ToPerNodeStateResponseArrayOutputWithContext(ctx context.Context) PerNodeStateResponseArrayOutput {
 	return o
+}
+
+func (o PerNodeStateResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PerNodeStateResponse] {
+	return pulumix.Output[[]PerNodeStateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PerNodeStateResponseArrayOutput) Index(i pulumi.IntInput) PerNodeStateResponseOutput {
@@ -4831,6 +5570,12 @@ func (i SoftwareAssurancePropertiesArgs) ToSoftwareAssurancePropertiesOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareAssurancePropertiesOutput)
 }
 
+func (i SoftwareAssurancePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareAssuranceProperties] {
+	return pulumix.Output[SoftwareAssuranceProperties]{
+		OutputState: i.ToSoftwareAssurancePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SoftwareAssurancePropertiesArgs) ToSoftwareAssurancePropertiesPtrOutput() SoftwareAssurancePropertiesPtrOutput {
 	return i.ToSoftwareAssurancePropertiesPtrOutputWithContext(context.Background())
 }
@@ -4872,6 +5617,12 @@ func (i *softwareAssurancePropertiesPtrType) ToSoftwareAssurancePropertiesPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareAssurancePropertiesPtrOutput)
 }
 
+func (i *softwareAssurancePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SoftwareAssuranceProperties] {
+	return pulumix.Output[*SoftwareAssuranceProperties]{
+		OutputState: i.ToSoftwareAssurancePropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Software Assurance properties of the cluster.
 type SoftwareAssurancePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -4897,6 +5648,12 @@ func (o SoftwareAssurancePropertiesOutput) ToSoftwareAssurancePropertiesPtrOutpu
 	}).(SoftwareAssurancePropertiesPtrOutput)
 }
 
+func (o SoftwareAssurancePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareAssuranceProperties] {
+	return pulumix.Output[SoftwareAssuranceProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Customer Intent for Software Assurance Benefit.
 func (o SoftwareAssurancePropertiesOutput) SoftwareAssuranceIntent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SoftwareAssuranceProperties) *string { return v.SoftwareAssuranceIntent }).(pulumi.StringPtrOutput)
@@ -4919,6 +5676,12 @@ func (o SoftwareAssurancePropertiesPtrOutput) ToSoftwareAssurancePropertiesPtrOu
 
 func (o SoftwareAssurancePropertiesPtrOutput) ToSoftwareAssurancePropertiesPtrOutputWithContext(ctx context.Context) SoftwareAssurancePropertiesPtrOutput {
 	return o
+}
+
+func (o SoftwareAssurancePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareAssuranceProperties] {
+	return pulumix.Output[*SoftwareAssuranceProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SoftwareAssurancePropertiesPtrOutput) Elem() SoftwareAssurancePropertiesOutput {
@@ -4976,6 +5739,12 @@ func (o SoftwareAssurancePropertiesResponseOutput) ToSoftwareAssuranceProperties
 	return o
 }
 
+func (o SoftwareAssurancePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareAssurancePropertiesResponse] {
+	return pulumix.Output[SoftwareAssurancePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // TimeStamp denoting the latest SA benefit applicability is validated.
 func (o SoftwareAssurancePropertiesResponseOutput) LastUpdated() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareAssurancePropertiesResponse) string { return v.LastUpdated }).(pulumi.StringOutput)
@@ -5003,6 +5772,12 @@ func (o SoftwareAssurancePropertiesResponsePtrOutput) ToSoftwareAssurancePropert
 
 func (o SoftwareAssurancePropertiesResponsePtrOutput) ToSoftwareAssurancePropertiesResponsePtrOutputWithContext(ctx context.Context) SoftwareAssurancePropertiesResponsePtrOutput {
 	return o
+}
+
+func (o SoftwareAssurancePropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareAssurancePropertiesResponse] {
+	return pulumix.Output[*SoftwareAssurancePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SoftwareAssurancePropertiesResponsePtrOutput) Elem() SoftwareAssurancePropertiesResponseOutput {
@@ -5080,6 +5855,12 @@ func (i SshConfigurationArgs) ToSshConfigurationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SshConfigurationOutput)
 }
 
+func (i SshConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[SshConfiguration] {
+	return pulumix.Output[SshConfiguration]{
+		OutputState: i.ToSshConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SshConfigurationArgs) ToSshConfigurationPtrOutput() SshConfigurationPtrOutput {
 	return i.ToSshConfigurationPtrOutputWithContext(context.Background())
 }
@@ -5121,6 +5902,12 @@ func (i *sshConfigurationPtrType) ToSshConfigurationPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SshConfigurationPtrOutput)
 }
 
+func (i *sshConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*SshConfiguration] {
+	return pulumix.Output[*SshConfiguration]{
+		OutputState: i.ToSshConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SSH configuration for Linux based VMs running on Azure
 type SshConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -5146,6 +5933,12 @@ func (o SshConfigurationOutput) ToSshConfigurationPtrOutputWithContext(ctx conte
 	}).(SshConfigurationPtrOutput)
 }
 
+func (o SshConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[SshConfiguration] {
+	return pulumix.Output[SshConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of SSH public keys used to authenticate with linux based VMs.
 func (o SshConfigurationOutput) PublicKeys() SshPublicKeyArrayOutput {
 	return o.ApplyT(func(v SshConfiguration) []SshPublicKey { return v.PublicKeys }).(SshPublicKeyArrayOutput)
@@ -5163,6 +5956,12 @@ func (o SshConfigurationPtrOutput) ToSshConfigurationPtrOutput() SshConfiguratio
 
 func (o SshConfigurationPtrOutput) ToSshConfigurationPtrOutputWithContext(ctx context.Context) SshConfigurationPtrOutput {
 	return o
+}
+
+func (o SshConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SshConfiguration] {
+	return pulumix.Output[*SshConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SshConfigurationPtrOutput) Elem() SshConfigurationOutput {
@@ -5206,6 +6005,12 @@ func (o SshConfigurationResponseOutput) ToSshConfigurationResponseOutputWithCont
 	return o
 }
 
+func (o SshConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SshConfigurationResponse] {
+	return pulumix.Output[SshConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of SSH public keys used to authenticate with linux based VMs.
 func (o SshConfigurationResponseOutput) PublicKeys() SshPublicKeyResponseArrayOutput {
 	return o.ApplyT(func(v SshConfigurationResponse) []SshPublicKeyResponse { return v.PublicKeys }).(SshPublicKeyResponseArrayOutput)
@@ -5223,6 +6028,12 @@ func (o SshConfigurationResponsePtrOutput) ToSshConfigurationResponsePtrOutput()
 
 func (o SshConfigurationResponsePtrOutput) ToSshConfigurationResponsePtrOutputWithContext(ctx context.Context) SshConfigurationResponsePtrOutput {
 	return o
+}
+
+func (o SshConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SshConfigurationResponse] {
+	return pulumix.Output[*SshConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SshConfigurationResponsePtrOutput) Elem() SshConfigurationResponseOutput {
@@ -5284,6 +6095,12 @@ func (i SshPublicKeyArgs) ToSshPublicKeyOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyOutput)
 }
 
+func (i SshPublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[SshPublicKey] {
+	return pulumix.Output[SshPublicKey]{
+		OutputState: i.ToSshPublicKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SshPublicKeyArrayInput is an input type that accepts SshPublicKeyArray and SshPublicKeyArrayOutput values.
 // You can construct a concrete instance of `SshPublicKeyArrayInput` via:
 //
@@ -5309,6 +6126,12 @@ func (i SshPublicKeyArray) ToSshPublicKeyArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyArrayOutput)
 }
 
+func (i SshPublicKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]SshPublicKey] {
+	return pulumix.Output[[]SshPublicKey]{
+		OutputState: i.ToSshPublicKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
 type SshPublicKeyOutput struct{ *pulumi.OutputState }
 
@@ -5322,6 +6145,12 @@ func (o SshPublicKeyOutput) ToSshPublicKeyOutput() SshPublicKeyOutput {
 
 func (o SshPublicKeyOutput) ToSshPublicKeyOutputWithContext(ctx context.Context) SshPublicKeyOutput {
 	return o
+}
+
+func (o SshPublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[SshPublicKey] {
+	return pulumix.Output[SshPublicKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
@@ -5346,6 +6175,12 @@ func (o SshPublicKeyArrayOutput) ToSshPublicKeyArrayOutput() SshPublicKeyArrayOu
 
 func (o SshPublicKeyArrayOutput) ToSshPublicKeyArrayOutputWithContext(ctx context.Context) SshPublicKeyArrayOutput {
 	return o
+}
+
+func (o SshPublicKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SshPublicKey] {
+	return pulumix.Output[[]SshPublicKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SshPublicKeyArrayOutput) Index(i pulumi.IntInput) SshPublicKeyOutput {
@@ -5377,6 +6212,12 @@ func (o SshPublicKeyResponseOutput) ToSshPublicKeyResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o SshPublicKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SshPublicKeyResponse] {
+	return pulumix.Output[SshPublicKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 func (o SshPublicKeyResponseOutput) KeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshPublicKeyResponse) *string { return v.KeyData }).(pulumi.StringPtrOutput)
@@ -5399,6 +6240,12 @@ func (o SshPublicKeyResponseArrayOutput) ToSshPublicKeyResponseArrayOutput() Ssh
 
 func (o SshPublicKeyResponseArrayOutput) ToSshPublicKeyResponseArrayOutputWithContext(ctx context.Context) SshPublicKeyResponseArrayOutput {
 	return o
+}
+
+func (o SshPublicKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SshPublicKeyResponse] {
+	return pulumix.Output[[]SshPublicKeyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SshPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) SshPublicKeyResponseOutput {
@@ -5470,6 +6317,12 @@ func (i StepArgs) ToStepOutputWithContext(ctx context.Context) StepOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StepOutput)
 }
 
+func (i StepArgs) ToOutput(ctx context.Context) pulumix.Output[Step] {
+	return pulumix.Output[Step]{
+		OutputState: i.ToStepOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StepArrayInput is an input type that accepts StepArray and StepArrayOutput values.
 // You can construct a concrete instance of `StepArrayInput` via:
 //
@@ -5495,6 +6348,12 @@ func (i StepArray) ToStepArrayOutputWithContext(ctx context.Context) StepArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(StepArrayOutput)
 }
 
+func (i StepArray) ToOutput(ctx context.Context) pulumix.Output[[]Step] {
+	return pulumix.Output[[]Step]{
+		OutputState: i.ToStepArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Progress representation of the update run steps.
 type StepOutput struct{ *pulumi.OutputState }
 
@@ -5508,6 +6367,12 @@ func (o StepOutput) ToStepOutput() StepOutput {
 
 func (o StepOutput) ToStepOutputWithContext(ctx context.Context) StepOutput {
 	return o
+}
+
+func (o StepOutput) ToOutput(ctx context.Context) pulumix.Output[Step] {
+	return pulumix.Output[Step]{
+		OutputState: o.OutputState,
+	}
 }
 
 // More detailed description of the step.
@@ -5564,6 +6429,12 @@ func (o StepArrayOutput) ToStepArrayOutputWithContext(ctx context.Context) StepA
 	return o
 }
 
+func (o StepArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Step] {
+	return pulumix.Output[[]Step]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StepArrayOutput) Index(i pulumi.IntInput) StepOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Step {
 		return vs[0].([]Step)[vs[1].(int)]
@@ -5603,6 +6474,12 @@ func (o StepResponseOutput) ToStepResponseOutput() StepResponseOutput {
 
 func (o StepResponseOutput) ToStepResponseOutputWithContext(ctx context.Context) StepResponseOutput {
 	return o
+}
+
+func (o StepResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StepResponse] {
+	return pulumix.Output[StepResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // More detailed description of the step.
@@ -5659,6 +6536,12 @@ func (o StepResponseArrayOutput) ToStepResponseArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o StepResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StepResponse] {
+	return pulumix.Output[[]StepResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StepResponseArrayOutput) Index(i pulumi.IntInput) StepResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StepResponse {
 		return vs[0].([]StepResponse)[vs[1].(int)]
@@ -5691,6 +6574,12 @@ func (o StorageContainerStatusResponseOutput) ToStorageContainerStatusResponseOu
 
 func (o StorageContainerStatusResponseOutput) ToStorageContainerStatusResponseOutputWithContext(ctx context.Context) StorageContainerStatusResponseOutput {
 	return o
+}
+
+func (o StorageContainerStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageContainerStatusResponse] {
+	return pulumix.Output[StorageContainerStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Amount of space available on the disk in MB
@@ -5740,6 +6629,12 @@ func (o StorageContainerStatusResponseProvisioningStatusOutput) ToStorageContain
 	return o
 }
 
+func (o StorageContainerStatusResponseProvisioningStatusOutput) ToOutput(ctx context.Context) pulumix.Output[StorageContainerStatusResponseProvisioningStatus] {
+	return pulumix.Output[StorageContainerStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the operation performed on the storage container
 func (o StorageContainerStatusResponseProvisioningStatusOutput) OperationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageContainerStatusResponseProvisioningStatus) *string { return v.OperationId }).(pulumi.StringPtrOutput)
@@ -5762,6 +6657,12 @@ func (o StorageContainerStatusResponseProvisioningStatusPtrOutput) ToStorageCont
 
 func (o StorageContainerStatusResponseProvisioningStatusPtrOutput) ToStorageContainerStatusResponseProvisioningStatusPtrOutputWithContext(ctx context.Context) StorageContainerStatusResponseProvisioningStatusPtrOutput {
 	return o
+}
+
+func (o StorageContainerStatusResponseProvisioningStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageContainerStatusResponseProvisioningStatus] {
+	return pulumix.Output[*StorageContainerStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageContainerStatusResponseProvisioningStatusPtrOutput) Elem() StorageContainerStatusResponseProvisioningStatusOutput {
@@ -5823,6 +6724,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -5898,6 +6805,12 @@ func (i UpdatePrerequisiteArgs) ToUpdatePrerequisiteOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(UpdatePrerequisiteOutput)
 }
 
+func (i UpdatePrerequisiteArgs) ToOutput(ctx context.Context) pulumix.Output[UpdatePrerequisite] {
+	return pulumix.Output[UpdatePrerequisite]{
+		OutputState: i.ToUpdatePrerequisiteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UpdatePrerequisiteArrayInput is an input type that accepts UpdatePrerequisiteArray and UpdatePrerequisiteArrayOutput values.
 // You can construct a concrete instance of `UpdatePrerequisiteArrayInput` via:
 //
@@ -5923,6 +6836,12 @@ func (i UpdatePrerequisiteArray) ToUpdatePrerequisiteArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(UpdatePrerequisiteArrayOutput)
 }
 
+func (i UpdatePrerequisiteArray) ToOutput(ctx context.Context) pulumix.Output[[]UpdatePrerequisite] {
+	return pulumix.Output[[]UpdatePrerequisite]{
+		OutputState: i.ToUpdatePrerequisiteArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.
 type UpdatePrerequisiteOutput struct{ *pulumi.OutputState }
 
@@ -5936,6 +6855,12 @@ func (o UpdatePrerequisiteOutput) ToUpdatePrerequisiteOutput() UpdatePrerequisit
 
 func (o UpdatePrerequisiteOutput) ToUpdatePrerequisiteOutputWithContext(ctx context.Context) UpdatePrerequisiteOutput {
 	return o
+}
+
+func (o UpdatePrerequisiteOutput) ToOutput(ctx context.Context) pulumix.Output[UpdatePrerequisite] {
+	return pulumix.Output[UpdatePrerequisite]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Friendly name of the prerequisite.
@@ -5965,6 +6890,12 @@ func (o UpdatePrerequisiteArrayOutput) ToUpdatePrerequisiteArrayOutput() UpdateP
 
 func (o UpdatePrerequisiteArrayOutput) ToUpdatePrerequisiteArrayOutputWithContext(ctx context.Context) UpdatePrerequisiteArrayOutput {
 	return o
+}
+
+func (o UpdatePrerequisiteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UpdatePrerequisite] {
+	return pulumix.Output[[]UpdatePrerequisite]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpdatePrerequisiteArrayOutput) Index(i pulumi.IntInput) UpdatePrerequisiteOutput {
@@ -5998,6 +6929,12 @@ func (o UpdatePrerequisiteResponseOutput) ToUpdatePrerequisiteResponseOutputWith
 	return o
 }
 
+func (o UpdatePrerequisiteResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpdatePrerequisiteResponse] {
+	return pulumix.Output[UpdatePrerequisiteResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Friendly name of the prerequisite.
 func (o UpdatePrerequisiteResponseOutput) PackageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UpdatePrerequisiteResponse) *string { return v.PackageName }).(pulumi.StringPtrOutput)
@@ -6025,6 +6962,12 @@ func (o UpdatePrerequisiteResponseArrayOutput) ToUpdatePrerequisiteResponseArray
 
 func (o UpdatePrerequisiteResponseArrayOutput) ToUpdatePrerequisiteResponseArrayOutputWithContext(ctx context.Context) UpdatePrerequisiteResponseArrayOutput {
 	return o
+}
+
+func (o UpdatePrerequisiteResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UpdatePrerequisiteResponse] {
+	return pulumix.Output[[]UpdatePrerequisiteResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpdatePrerequisiteResponseArrayOutput) Index(i pulumi.IntInput) UpdatePrerequisiteResponseOutput {
@@ -6056,6 +6999,12 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
+func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
+	return pulumix.Output[UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -6078,6 +7027,12 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
+	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
@@ -6108,6 +7063,12 @@ func (o VirtualHardDiskStatusResponseOutput) ToVirtualHardDiskStatusResponseOutp
 
 func (o VirtualHardDiskStatusResponseOutput) ToVirtualHardDiskStatusResponseOutputWithContext(ctx context.Context) VirtualHardDiskStatusResponseOutput {
 	return o
+}
+
+func (o VirtualHardDiskStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualHardDiskStatusResponse] {
+	return pulumix.Output[VirtualHardDiskStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // VirtualHardDisk provisioning error code
@@ -6147,6 +7108,12 @@ func (o VirtualHardDiskStatusResponseProvisioningStatusOutput) ToVirtualHardDisk
 	return o
 }
 
+func (o VirtualHardDiskStatusResponseProvisioningStatusOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualHardDiskStatusResponseProvisioningStatus] {
+	return pulumix.Output[VirtualHardDiskStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the operation performed on the virtual hard disk
 func (o VirtualHardDiskStatusResponseProvisioningStatusOutput) OperationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualHardDiskStatusResponseProvisioningStatus) *string { return v.OperationId }).(pulumi.StringPtrOutput)
@@ -6169,6 +7136,12 @@ func (o VirtualHardDiskStatusResponseProvisioningStatusPtrOutput) ToVirtualHardD
 
 func (o VirtualHardDiskStatusResponseProvisioningStatusPtrOutput) ToVirtualHardDiskStatusResponseProvisioningStatusPtrOutputWithContext(ctx context.Context) VirtualHardDiskStatusResponseProvisioningStatusPtrOutput {
 	return o
+}
+
+func (o VirtualHardDiskStatusResponseProvisioningStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualHardDiskStatusResponseProvisioningStatus] {
+	return pulumix.Output[*VirtualHardDiskStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualHardDiskStatusResponseProvisioningStatusPtrOutput) Elem() VirtualHardDiskStatusResponseProvisioningStatusOutput {
@@ -6234,6 +7207,12 @@ func (i VirtualMachineInstancePropertiesDataDisksArgs) ToVirtualMachineInstanceP
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesDataDisksOutput)
 }
 
+func (i VirtualMachineInstancePropertiesDataDisksArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesDataDisks] {
+	return pulumix.Output[VirtualMachineInstancePropertiesDataDisks]{
+		OutputState: i.ToVirtualMachineInstancePropertiesDataDisksOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualMachineInstancePropertiesDataDisksArrayInput is an input type that accepts VirtualMachineInstancePropertiesDataDisksArray and VirtualMachineInstancePropertiesDataDisksArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineInstancePropertiesDataDisksArrayInput` via:
 //
@@ -6259,6 +7238,12 @@ func (i VirtualMachineInstancePropertiesDataDisksArray) ToVirtualMachineInstance
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesDataDisksArrayOutput)
 }
 
+func (i VirtualMachineInstancePropertiesDataDisksArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineInstancePropertiesDataDisks] {
+	return pulumix.Output[[]VirtualMachineInstancePropertiesDataDisks]{
+		OutputState: i.ToVirtualMachineInstancePropertiesDataDisksArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachineInstancePropertiesDataDisksOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineInstancePropertiesDataDisksOutput) ElementType() reflect.Type {
@@ -6271,6 +7256,12 @@ func (o VirtualMachineInstancePropertiesDataDisksOutput) ToVirtualMachineInstanc
 
 func (o VirtualMachineInstancePropertiesDataDisksOutput) ToVirtualMachineInstancePropertiesDataDisksOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesDataDisksOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesDataDisksOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesDataDisks] {
+	return pulumix.Output[VirtualMachineInstancePropertiesDataDisks]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID of the data disk
@@ -6290,6 +7281,12 @@ func (o VirtualMachineInstancePropertiesDataDisksArrayOutput) ToVirtualMachineIn
 
 func (o VirtualMachineInstancePropertiesDataDisksArrayOutput) ToVirtualMachineInstancePropertiesDataDisksArrayOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesDataDisksArrayOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesDataDisksArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineInstancePropertiesDataDisks] {
+	return pulumix.Output[[]VirtualMachineInstancePropertiesDataDisks]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesDataDisksArrayOutput) Index(i pulumi.IntInput) VirtualMachineInstancePropertiesDataDisksOutput {
@@ -6335,6 +7332,12 @@ func (i VirtualMachineInstancePropertiesDynamicMemoryConfigArgs) ToVirtualMachin
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesDynamicMemoryConfigOutput)
 }
 
+func (i VirtualMachineInstancePropertiesDynamicMemoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesDynamicMemoryConfig] {
+	return pulumix.Output[VirtualMachineInstancePropertiesDynamicMemoryConfig]{
+		OutputState: i.ToVirtualMachineInstancePropertiesDynamicMemoryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachineInstancePropertiesDynamicMemoryConfigArgs) ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput() VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput {
 	return i.ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutputWithContext(context.Background())
 }
@@ -6376,6 +7379,12 @@ func (i *virtualMachineInstancePropertiesDynamicMemoryConfigPtrType) ToVirtualMa
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput)
 }
 
+func (i *virtualMachineInstancePropertiesDynamicMemoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesDynamicMemoryConfig] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesDynamicMemoryConfig]{
+		OutputState: i.ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachineInstancePropertiesDynamicMemoryConfigOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineInstancePropertiesDynamicMemoryConfigOutput) ElementType() reflect.Type {
@@ -6398,6 +7407,12 @@ func (o VirtualMachineInstancePropertiesDynamicMemoryConfigOutput) ToVirtualMach
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesDynamicMemoryConfig) *VirtualMachineInstancePropertiesDynamicMemoryConfig {
 		return &v
 	}).(VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesDynamicMemoryConfig] {
+	return pulumix.Output[VirtualMachineInstancePropertiesDynamicMemoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesDynamicMemoryConfigOutput) MaximumMemoryMB() pulumi.Float64PtrOutput {
@@ -6425,6 +7440,12 @@ func (o VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput) ToVirtualM
 
 func (o VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput) ToVirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesDynamicMemoryConfig] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesDynamicMemoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput) Elem() VirtualMachineInstancePropertiesDynamicMemoryConfigOutput {
@@ -6532,6 +7553,12 @@ func (i VirtualMachineInstancePropertiesHardwareProfileArgs) ToVirtualMachineIns
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesHardwareProfileOutput)
 }
 
+func (i VirtualMachineInstancePropertiesHardwareProfileArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesHardwareProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesHardwareProfile]{
+		OutputState: i.ToVirtualMachineInstancePropertiesHardwareProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachineInstancePropertiesHardwareProfileArgs) ToVirtualMachineInstancePropertiesHardwareProfilePtrOutput() VirtualMachineInstancePropertiesHardwareProfilePtrOutput {
 	return i.ToVirtualMachineInstancePropertiesHardwareProfilePtrOutputWithContext(context.Background())
 }
@@ -6573,6 +7600,12 @@ func (i *virtualMachineInstancePropertiesHardwareProfilePtrType) ToVirtualMachin
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesHardwareProfilePtrOutput)
 }
 
+func (i *virtualMachineInstancePropertiesHardwareProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesHardwareProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesHardwareProfile]{
+		OutputState: i.ToVirtualMachineInstancePropertiesHardwareProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HardwareProfile - Specifies the hardware settings for the virtual machine instance.
 type VirtualMachineInstancePropertiesHardwareProfileOutput struct{ *pulumi.OutputState }
 
@@ -6596,6 +7629,12 @@ func (o VirtualMachineInstancePropertiesHardwareProfileOutput) ToVirtualMachineI
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesHardwareProfile) *VirtualMachineInstancePropertiesHardwareProfile {
 		return &v
 	}).(VirtualMachineInstancePropertiesHardwareProfilePtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesHardwareProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesHardwareProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesHardwareProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesHardwareProfileOutput) DynamicMemoryConfig() VirtualMachineInstancePropertiesDynamicMemoryConfigPtrOutput {
@@ -6630,6 +7669,12 @@ func (o VirtualMachineInstancePropertiesHardwareProfilePtrOutput) ToVirtualMachi
 
 func (o VirtualMachineInstancePropertiesHardwareProfilePtrOutput) ToVirtualMachineInstancePropertiesHardwareProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesHardwareProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesHardwareProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesHardwareProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesHardwareProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesHardwareProfilePtrOutput) Elem() VirtualMachineInstancePropertiesHardwareProfileOutput {
@@ -6715,6 +7760,12 @@ func (i VirtualMachineInstancePropertiesImageReferenceArgs) ToVirtualMachineInst
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesImageReferenceOutput)
 }
 
+func (i VirtualMachineInstancePropertiesImageReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesImageReference] {
+	return pulumix.Output[VirtualMachineInstancePropertiesImageReference]{
+		OutputState: i.ToVirtualMachineInstancePropertiesImageReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachineInstancePropertiesImageReferenceArgs) ToVirtualMachineInstancePropertiesImageReferencePtrOutput() VirtualMachineInstancePropertiesImageReferencePtrOutput {
 	return i.ToVirtualMachineInstancePropertiesImageReferencePtrOutputWithContext(context.Background())
 }
@@ -6756,6 +7807,12 @@ func (i *virtualMachineInstancePropertiesImageReferencePtrType) ToVirtualMachine
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesImageReferencePtrOutput)
 }
 
+func (i *virtualMachineInstancePropertiesImageReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesImageReference] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesImageReference]{
+		OutputState: i.ToVirtualMachineInstancePropertiesImageReferencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Which Image to use for the virtual machine instance
 type VirtualMachineInstancePropertiesImageReferenceOutput struct{ *pulumi.OutputState }
 
@@ -6781,6 +7838,12 @@ func (o VirtualMachineInstancePropertiesImageReferenceOutput) ToVirtualMachineIn
 	}).(VirtualMachineInstancePropertiesImageReferencePtrOutput)
 }
 
+func (o VirtualMachineInstancePropertiesImageReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesImageReference] {
+	return pulumix.Output[VirtualMachineInstancePropertiesImageReference]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the image
 func (o VirtualMachineInstancePropertiesImageReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesImageReference) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -6798,6 +7861,12 @@ func (o VirtualMachineInstancePropertiesImageReferencePtrOutput) ToVirtualMachin
 
 func (o VirtualMachineInstancePropertiesImageReferencePtrOutput) ToVirtualMachineInstancePropertiesImageReferencePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesImageReferencePtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesImageReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesImageReference] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesImageReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesImageReferencePtrOutput) Elem() VirtualMachineInstancePropertiesImageReferenceOutput {
@@ -6898,6 +7967,12 @@ func (i VirtualMachineInstancePropertiesLinuxConfigurationArgs) ToVirtualMachine
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesLinuxConfigurationOutput)
 }
 
+func (i VirtualMachineInstancePropertiesLinuxConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesLinuxConfiguration] {
+	return pulumix.Output[VirtualMachineInstancePropertiesLinuxConfiguration]{
+		OutputState: i.ToVirtualMachineInstancePropertiesLinuxConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachineInstancePropertiesLinuxConfigurationArgs) ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutput() VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput {
 	return i.ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutputWithContext(context.Background())
 }
@@ -6939,6 +8014,12 @@ func (i *virtualMachineInstancePropertiesLinuxConfigurationPtrType) ToVirtualMac
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput)
 }
 
+func (i *virtualMachineInstancePropertiesLinuxConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesLinuxConfiguration] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesLinuxConfiguration]{
+		OutputState: i.ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LinuxConfiguration - linux specific configuration values for the virtual machine instance
 type VirtualMachineInstancePropertiesLinuxConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -6962,6 +8043,12 @@ func (o VirtualMachineInstancePropertiesLinuxConfigurationOutput) ToVirtualMachi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesLinuxConfiguration) *VirtualMachineInstancePropertiesLinuxConfiguration {
 		return &v
 	}).(VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesLinuxConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesLinuxConfiguration] {
+	return pulumix.Output[VirtualMachineInstancePropertiesLinuxConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // DisablePasswordAuthentication - whether password authentication should be disabled
@@ -6998,6 +8085,12 @@ func (o VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput) ToVirtualMa
 
 func (o VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput) ToVirtualMachineInstancePropertiesLinuxConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesLinuxConfiguration] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesLinuxConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesLinuxConfigurationPtrOutput) Elem() VirtualMachineInstancePropertiesLinuxConfigurationOutput {
@@ -7083,6 +8176,12 @@ func (i VirtualMachineInstancePropertiesNetworkInterfacesArgs) ToVirtualMachineI
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesNetworkInterfacesOutput)
 }
 
+func (i VirtualMachineInstancePropertiesNetworkInterfacesArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesNetworkInterfaces] {
+	return pulumix.Output[VirtualMachineInstancePropertiesNetworkInterfaces]{
+		OutputState: i.ToVirtualMachineInstancePropertiesNetworkInterfacesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualMachineInstancePropertiesNetworkInterfacesArrayInput is an input type that accepts VirtualMachineInstancePropertiesNetworkInterfacesArray and VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineInstancePropertiesNetworkInterfacesArrayInput` via:
 //
@@ -7108,6 +8207,12 @@ func (i VirtualMachineInstancePropertiesNetworkInterfacesArray) ToVirtualMachine
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput)
 }
 
+func (i VirtualMachineInstancePropertiesNetworkInterfacesArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineInstancePropertiesNetworkInterfaces] {
+	return pulumix.Output[[]VirtualMachineInstancePropertiesNetworkInterfaces]{
+		OutputState: i.ToVirtualMachineInstancePropertiesNetworkInterfacesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachineInstancePropertiesNetworkInterfacesOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineInstancePropertiesNetworkInterfacesOutput) ElementType() reflect.Type {
@@ -7120,6 +8225,12 @@ func (o VirtualMachineInstancePropertiesNetworkInterfacesOutput) ToVirtualMachin
 
 func (o VirtualMachineInstancePropertiesNetworkInterfacesOutput) ToVirtualMachineInstancePropertiesNetworkInterfacesOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesNetworkInterfacesOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesNetworkInterfacesOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesNetworkInterfaces] {
+	return pulumix.Output[VirtualMachineInstancePropertiesNetworkInterfaces]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID - Resource Id of the network interface
@@ -7139,6 +8250,12 @@ func (o VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput) ToVirtualM
 
 func (o VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput) ToVirtualMachineInstancePropertiesNetworkInterfacesArrayOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineInstancePropertiesNetworkInterfaces] {
+	return pulumix.Output[[]VirtualMachineInstancePropertiesNetworkInterfaces]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput) Index(i pulumi.IntInput) VirtualMachineInstancePropertiesNetworkInterfacesOutput {
@@ -7182,6 +8299,12 @@ func (i VirtualMachineInstancePropertiesNetworkProfileArgs) ToVirtualMachineInst
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesNetworkProfileOutput)
 }
 
+func (i VirtualMachineInstancePropertiesNetworkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesNetworkProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesNetworkProfile]{
+		OutputState: i.ToVirtualMachineInstancePropertiesNetworkProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachineInstancePropertiesNetworkProfileArgs) ToVirtualMachineInstancePropertiesNetworkProfilePtrOutput() VirtualMachineInstancePropertiesNetworkProfilePtrOutput {
 	return i.ToVirtualMachineInstancePropertiesNetworkProfilePtrOutputWithContext(context.Background())
 }
@@ -7223,6 +8346,12 @@ func (i *virtualMachineInstancePropertiesNetworkProfilePtrType) ToVirtualMachine
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesNetworkProfilePtrOutput)
 }
 
+func (i *virtualMachineInstancePropertiesNetworkProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesNetworkProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesNetworkProfile]{
+		OutputState: i.ToVirtualMachineInstancePropertiesNetworkProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkProfile - describes the network configuration the virtual machine instance
 type VirtualMachineInstancePropertiesNetworkProfileOutput struct{ *pulumi.OutputState }
 
@@ -7248,6 +8377,12 @@ func (o VirtualMachineInstancePropertiesNetworkProfileOutput) ToVirtualMachineIn
 	}).(VirtualMachineInstancePropertiesNetworkProfilePtrOutput)
 }
 
+func (o VirtualMachineInstancePropertiesNetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesNetworkProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesNetworkProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
 func (o VirtualMachineInstancePropertiesNetworkProfileOutput) NetworkInterfaces() VirtualMachineInstancePropertiesNetworkInterfacesArrayOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesNetworkProfile) []VirtualMachineInstancePropertiesNetworkInterfaces {
@@ -7267,6 +8402,12 @@ func (o VirtualMachineInstancePropertiesNetworkProfilePtrOutput) ToVirtualMachin
 
 func (o VirtualMachineInstancePropertiesNetworkProfilePtrOutput) ToVirtualMachineInstancePropertiesNetworkProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesNetworkProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesNetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesNetworkProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesNetworkProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesNetworkProfilePtrOutput) Elem() VirtualMachineInstancePropertiesNetworkProfileOutput {
@@ -7328,6 +8469,12 @@ func (i VirtualMachineInstancePropertiesOsDiskArgs) ToVirtualMachineInstanceProp
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesOsDiskOutput)
 }
 
+func (i VirtualMachineInstancePropertiesOsDiskArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesOsDisk] {
+	return pulumix.Output[VirtualMachineInstancePropertiesOsDisk]{
+		OutputState: i.ToVirtualMachineInstancePropertiesOsDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachineInstancePropertiesOsDiskArgs) ToVirtualMachineInstancePropertiesOsDiskPtrOutput() VirtualMachineInstancePropertiesOsDiskPtrOutput {
 	return i.ToVirtualMachineInstancePropertiesOsDiskPtrOutputWithContext(context.Background())
 }
@@ -7369,6 +8516,12 @@ func (i *virtualMachineInstancePropertiesOsDiskPtrType) ToVirtualMachineInstance
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesOsDiskPtrOutput)
 }
 
+func (i *virtualMachineInstancePropertiesOsDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesOsDisk] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesOsDisk]{
+		OutputState: i.ToVirtualMachineInstancePropertiesOsDiskPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VHD to attach as OS disk
 type VirtualMachineInstancePropertiesOsDiskOutput struct{ *pulumi.OutputState }
 
@@ -7394,6 +8547,12 @@ func (o VirtualMachineInstancePropertiesOsDiskOutput) ToVirtualMachineInstancePr
 	}).(VirtualMachineInstancePropertiesOsDiskPtrOutput)
 }
 
+func (o VirtualMachineInstancePropertiesOsDiskOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesOsDisk] {
+	return pulumix.Output[VirtualMachineInstancePropertiesOsDisk]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the OS disk
 func (o VirtualMachineInstancePropertiesOsDiskOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesOsDisk) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -7416,6 +8575,12 @@ func (o VirtualMachineInstancePropertiesOsDiskPtrOutput) ToVirtualMachineInstanc
 
 func (o VirtualMachineInstancePropertiesOsDiskPtrOutput) ToVirtualMachineInstancePropertiesOsDiskPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsDiskPtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesOsDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesOsDisk] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesOsDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesOsDiskPtrOutput) Elem() VirtualMachineInstancePropertiesOsDiskOutput {
@@ -7521,6 +8686,12 @@ func (i VirtualMachineInstancePropertiesOsProfileArgs) ToVirtualMachineInstanceP
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesOsProfileOutput)
 }
 
+func (i VirtualMachineInstancePropertiesOsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesOsProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesOsProfile]{
+		OutputState: i.ToVirtualMachineInstancePropertiesOsProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachineInstancePropertiesOsProfileArgs) ToVirtualMachineInstancePropertiesOsProfilePtrOutput() VirtualMachineInstancePropertiesOsProfilePtrOutput {
 	return i.ToVirtualMachineInstancePropertiesOsProfilePtrOutputWithContext(context.Background())
 }
@@ -7562,6 +8733,12 @@ func (i *virtualMachineInstancePropertiesOsProfilePtrType) ToVirtualMachineInsta
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesOsProfilePtrOutput)
 }
 
+func (i *virtualMachineInstancePropertiesOsProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesOsProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesOsProfile]{
+		OutputState: i.ToVirtualMachineInstancePropertiesOsProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OsProfile - describes the configuration of the operating system and sets login data
 type VirtualMachineInstancePropertiesOsProfileOutput struct{ *pulumi.OutputState }
 
@@ -7585,6 +8762,12 @@ func (o VirtualMachineInstancePropertiesOsProfileOutput) ToVirtualMachineInstanc
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesOsProfile) *VirtualMachineInstancePropertiesOsProfile {
 		return &v
 	}).(VirtualMachineInstancePropertiesOsProfilePtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesOsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesOsProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesOsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AdminPassword - admin password
@@ -7628,6 +8811,12 @@ func (o VirtualMachineInstancePropertiesOsProfilePtrOutput) ToVirtualMachineInst
 
 func (o VirtualMachineInstancePropertiesOsProfilePtrOutput) ToVirtualMachineInstancePropertiesOsProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesOsProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesOsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesOsProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesOsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesOsProfilePtrOutput) Elem() VirtualMachineInstancePropertiesOsProfileOutput {
@@ -7709,6 +8898,12 @@ func (o VirtualMachineInstancePropertiesResponseDataDisksOutput) ToVirtualMachin
 	return o
 }
 
+func (o VirtualMachineInstancePropertiesResponseDataDisksOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesResponseDataDisks] {
+	return pulumix.Output[VirtualMachineInstancePropertiesResponseDataDisks]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the data disk
 func (o VirtualMachineInstancePropertiesResponseDataDisksOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseDataDisks) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -7726,6 +8921,12 @@ func (o VirtualMachineInstancePropertiesResponseDataDisksArrayOutput) ToVirtualM
 
 func (o VirtualMachineInstancePropertiesResponseDataDisksArrayOutput) ToVirtualMachineInstancePropertiesResponseDataDisksArrayOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseDataDisksArrayOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseDataDisksArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineInstancePropertiesResponseDataDisks] {
+	return pulumix.Output[[]VirtualMachineInstancePropertiesResponseDataDisks]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesResponseDataDisksArrayOutput) Index(i pulumi.IntInput) VirtualMachineInstancePropertiesResponseDataDisksOutput {
@@ -7755,6 +8956,12 @@ func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput) ToVir
 	return o
 }
 
+func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesResponseDynamicMemoryConfig] {
+	return pulumix.Output[VirtualMachineInstancePropertiesResponseDynamicMemoryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput) MaximumMemoryMB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseDynamicMemoryConfig) *float64 { return v.MaximumMemoryMB }).(pulumi.Float64PtrOutput)
 }
@@ -7780,6 +8987,12 @@ func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput) To
 
 func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput) ToVirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesResponseDynamicMemoryConfig] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesResponseDynamicMemoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput) Elem() VirtualMachineInstancePropertiesResponseDynamicMemoryConfigOutput {
@@ -7858,6 +9071,12 @@ func (o VirtualMachineInstancePropertiesResponseHardwareProfileOutput) ToVirtual
 	return o
 }
 
+func (o VirtualMachineInstancePropertiesResponseHardwareProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesResponseHardwareProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesResponseHardwareProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualMachineInstancePropertiesResponseHardwareProfileOutput) DynamicMemoryConfig() VirtualMachineInstancePropertiesResponseDynamicMemoryConfigPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseHardwareProfile) *VirtualMachineInstancePropertiesResponseDynamicMemoryConfig {
 		return v.DynamicMemoryConfig
@@ -7890,6 +9109,12 @@ func (o VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput) ToVirt
 
 func (o VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseHardwareProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesResponseHardwareProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesResponseHardwareProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput) Elem() VirtualMachineInstancePropertiesResponseHardwareProfileOutput {
@@ -7961,6 +9186,12 @@ func (o VirtualMachineInstancePropertiesResponseImageReferenceOutput) ToVirtualM
 	return o
 }
 
+func (o VirtualMachineInstancePropertiesResponseImageReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesResponseImageReference] {
+	return pulumix.Output[VirtualMachineInstancePropertiesResponseImageReference]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the image
 func (o VirtualMachineInstancePropertiesResponseImageReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseImageReference) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -7978,6 +9209,12 @@ func (o VirtualMachineInstancePropertiesResponseImageReferencePtrOutput) ToVirtu
 
 func (o VirtualMachineInstancePropertiesResponseImageReferencePtrOutput) ToVirtualMachineInstancePropertiesResponseImageReferencePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseImageReferencePtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseImageReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesResponseImageReference] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesResponseImageReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesResponseImageReferencePtrOutput) Elem() VirtualMachineInstancePropertiesResponseImageReferenceOutput {
@@ -8044,6 +9281,12 @@ func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput) ToVirt
 	return o
 }
 
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesResponseLinuxConfiguration] {
+	return pulumix.Output[VirtualMachineInstancePropertiesResponseLinuxConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // DisablePasswordAuthentication - whether password authentication should be disabled
 func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput) DisablePasswordAuthentication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseLinuxConfiguration) *bool {
@@ -8082,6 +9325,12 @@ func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput) ToV
 
 func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput) ToVirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesResponseLinuxConfiguration] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesResponseLinuxConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesResponseLinuxConfigurationPtrOutput) Elem() VirtualMachineInstancePropertiesResponseLinuxConfigurationOutput {
@@ -8153,6 +9402,12 @@ func (o VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput) ToVirtu
 	return o
 }
 
+func (o VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesResponseNetworkInterfaces] {
+	return pulumix.Output[VirtualMachineInstancePropertiesResponseNetworkInterfaces]{
+		OutputState: o.OutputState,
+	}
+}
+
 // ID - Resource Id of the network interface
 func (o VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseNetworkInterfaces) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -8170,6 +9425,12 @@ func (o VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput) To
 
 func (o VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput) ToVirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineInstancePropertiesResponseNetworkInterfaces] {
+	return pulumix.Output[[]VirtualMachineInstancePropertiesResponseNetworkInterfaces]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput) Index(i pulumi.IntInput) VirtualMachineInstancePropertiesResponseNetworkInterfacesOutput {
@@ -8199,6 +9460,12 @@ func (o VirtualMachineInstancePropertiesResponseNetworkProfileOutput) ToVirtualM
 	return o
 }
 
+func (o VirtualMachineInstancePropertiesResponseNetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesResponseNetworkProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesResponseNetworkProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
 func (o VirtualMachineInstancePropertiesResponseNetworkProfileOutput) NetworkInterfaces() VirtualMachineInstancePropertiesResponseNetworkInterfacesArrayOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseNetworkProfile) []VirtualMachineInstancePropertiesResponseNetworkInterfaces {
@@ -8218,6 +9485,12 @@ func (o VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput) ToVirtu
 
 func (o VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseNetworkProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesResponseNetworkProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesResponseNetworkProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput) Elem() VirtualMachineInstancePropertiesResponseNetworkProfileOutput {
@@ -8263,6 +9536,12 @@ func (o VirtualMachineInstancePropertiesResponseOsDiskOutput) ToVirtualMachineIn
 	return o
 }
 
+func (o VirtualMachineInstancePropertiesResponseOsDiskOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesResponseOsDisk] {
+	return pulumix.Output[VirtualMachineInstancePropertiesResponseOsDisk]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the OS disk
 func (o VirtualMachineInstancePropertiesResponseOsDiskOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseOsDisk) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -8285,6 +9564,12 @@ func (o VirtualMachineInstancePropertiesResponseOsDiskPtrOutput) ToVirtualMachin
 
 func (o VirtualMachineInstancePropertiesResponseOsDiskPtrOutput) ToVirtualMachineInstancePropertiesResponseOsDiskPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseOsDiskPtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseOsDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesResponseOsDisk] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesResponseOsDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesResponseOsDiskPtrOutput) Elem() VirtualMachineInstancePropertiesResponseOsDiskOutput {
@@ -8357,6 +9642,12 @@ func (o VirtualMachineInstancePropertiesResponseOsProfileOutput) ToVirtualMachin
 	return o
 }
 
+func (o VirtualMachineInstancePropertiesResponseOsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesResponseOsProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesResponseOsProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // AdminUsername - admin username
 func (o VirtualMachineInstancePropertiesResponseOsProfileOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseOsProfile) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
@@ -8393,6 +9684,12 @@ func (o VirtualMachineInstancePropertiesResponseOsProfilePtrOutput) ToVirtualMac
 
 func (o VirtualMachineInstancePropertiesResponseOsProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseOsProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseOsProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseOsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesResponseOsProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesResponseOsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesResponseOsProfilePtrOutput) Elem() VirtualMachineInstancePropertiesResponseOsProfileOutput {
@@ -8483,6 +9780,12 @@ func (o VirtualMachineInstancePropertiesResponseSecurityProfileOutput) ToVirtual
 	return o
 }
 
+func (o VirtualMachineInstancePropertiesResponseSecurityProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesResponseSecurityProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesResponseSecurityProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualMachineInstancePropertiesResponseSecurityProfileOutput) EnableTPM() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseSecurityProfile) *bool { return v.EnableTPM }).(pulumi.BoolPtrOutput)
 }
@@ -8510,6 +9813,12 @@ func (o VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput) ToVirt
 
 func (o VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseSecurityProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesResponseSecurityProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesResponseSecurityProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput) Elem() VirtualMachineInstancePropertiesResponseSecurityProfileOutput {
@@ -8577,6 +9886,12 @@ func (o VirtualMachineInstancePropertiesResponseStorageProfileOutput) ToVirtualM
 	return o
 }
 
+func (o VirtualMachineInstancePropertiesResponseStorageProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesResponseStorageProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesResponseStorageProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // adds data disks to the virtual machine instance
 func (o VirtualMachineInstancePropertiesResponseStorageProfileOutput) DataDisks() VirtualMachineInstancePropertiesResponseDataDisksArrayOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseStorageProfile) []VirtualMachineInstancePropertiesResponseDataDisks {
@@ -8615,6 +9930,12 @@ func (o VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput) ToVirtu
 
 func (o VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput) ToVirtualMachineInstancePropertiesResponseStorageProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesResponseStorageProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesResponseStorageProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput) Elem() VirtualMachineInstancePropertiesResponseStorageProfileOutput {
@@ -8699,6 +10020,12 @@ func (o VirtualMachineInstancePropertiesResponseUefiSettingsOutput) ToVirtualMac
 	return o
 }
 
+func (o VirtualMachineInstancePropertiesResponseUefiSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesResponseUefiSettings] {
+	return pulumix.Output[VirtualMachineInstancePropertiesResponseUefiSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies whether secure boot should be enabled on the virtual machine instance.
 func (o VirtualMachineInstancePropertiesResponseUefiSettingsOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseUefiSettings) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
@@ -8716,6 +10043,12 @@ func (o VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput) ToVirtual
 
 func (o VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput) ToVirtualMachineInstancePropertiesResponseUefiSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesResponseUefiSettings] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesResponseUefiSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesResponseUefiSettingsPtrOutput) Elem() VirtualMachineInstancePropertiesResponseUefiSettingsOutput {
@@ -8784,6 +10117,12 @@ func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput) ToVi
 	return o
 }
 
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesResponseWindowsConfiguration] {
+	return pulumix.Output[VirtualMachineInstancePropertiesResponseWindowsConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether to EnableAutomaticUpdates on the machine
 func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput) EnableAutomaticUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesResponseWindowsConfiguration) *bool {
@@ -8827,6 +10166,12 @@ func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput) T
 
 func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput) ToVirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesResponseWindowsConfiguration] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesResponseWindowsConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesResponseWindowsConfigurationPtrOutput) Elem() VirtualMachineInstancePropertiesResponseWindowsConfigurationOutput {
@@ -8955,6 +10300,12 @@ func (i VirtualMachineInstancePropertiesSecurityProfileArgs) ToVirtualMachineIns
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesSecurityProfileOutput)
 }
 
+func (i VirtualMachineInstancePropertiesSecurityProfileArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesSecurityProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesSecurityProfile]{
+		OutputState: i.ToVirtualMachineInstancePropertiesSecurityProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachineInstancePropertiesSecurityProfileArgs) ToVirtualMachineInstancePropertiesSecurityProfilePtrOutput() VirtualMachineInstancePropertiesSecurityProfilePtrOutput {
 	return i.ToVirtualMachineInstancePropertiesSecurityProfilePtrOutputWithContext(context.Background())
 }
@@ -8996,6 +10347,12 @@ func (i *virtualMachineInstancePropertiesSecurityProfilePtrType) ToVirtualMachin
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesSecurityProfilePtrOutput)
 }
 
+func (i *virtualMachineInstancePropertiesSecurityProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesSecurityProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesSecurityProfile]{
+		OutputState: i.ToVirtualMachineInstancePropertiesSecurityProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecurityProfile - Specifies the security settings for the virtual machine instance.
 type VirtualMachineInstancePropertiesSecurityProfileOutput struct{ *pulumi.OutputState }
 
@@ -9019,6 +10376,12 @@ func (o VirtualMachineInstancePropertiesSecurityProfileOutput) ToVirtualMachineI
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesSecurityProfile) *VirtualMachineInstancePropertiesSecurityProfile {
 		return &v
 	}).(VirtualMachineInstancePropertiesSecurityProfilePtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesSecurityProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesSecurityProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesSecurityProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesSecurityProfileOutput) EnableTPM() pulumi.BoolPtrOutput {
@@ -9048,6 +10411,12 @@ func (o VirtualMachineInstancePropertiesSecurityProfilePtrOutput) ToVirtualMachi
 
 func (o VirtualMachineInstancePropertiesSecurityProfilePtrOutput) ToVirtualMachineInstancePropertiesSecurityProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesSecurityProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesSecurityProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesSecurityProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesSecurityProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesSecurityProfilePtrOutput) Elem() VirtualMachineInstancePropertiesSecurityProfileOutput {
@@ -9135,6 +10504,12 @@ func (i VirtualMachineInstancePropertiesStorageProfileArgs) ToVirtualMachineInst
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesStorageProfileOutput)
 }
 
+func (i VirtualMachineInstancePropertiesStorageProfileArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesStorageProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesStorageProfile]{
+		OutputState: i.ToVirtualMachineInstancePropertiesStorageProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachineInstancePropertiesStorageProfileArgs) ToVirtualMachineInstancePropertiesStorageProfilePtrOutput() VirtualMachineInstancePropertiesStorageProfilePtrOutput {
 	return i.ToVirtualMachineInstancePropertiesStorageProfilePtrOutputWithContext(context.Background())
 }
@@ -9176,6 +10551,12 @@ func (i *virtualMachineInstancePropertiesStorageProfilePtrType) ToVirtualMachine
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesStorageProfilePtrOutput)
 }
 
+func (i *virtualMachineInstancePropertiesStorageProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesStorageProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesStorageProfile]{
+		OutputState: i.ToVirtualMachineInstancePropertiesStorageProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StorageProfile - contains information about the disks and storage information for the virtual machine instance
 type VirtualMachineInstancePropertiesStorageProfileOutput struct{ *pulumi.OutputState }
 
@@ -9199,6 +10580,12 @@ func (o VirtualMachineInstancePropertiesStorageProfileOutput) ToVirtualMachineIn
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesStorageProfile) *VirtualMachineInstancePropertiesStorageProfile {
 		return &v
 	}).(VirtualMachineInstancePropertiesStorageProfilePtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesStorageProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesStorageProfile] {
+	return pulumix.Output[VirtualMachineInstancePropertiesStorageProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // adds data disks to the virtual machine instance
@@ -9239,6 +10626,12 @@ func (o VirtualMachineInstancePropertiesStorageProfilePtrOutput) ToVirtualMachin
 
 func (o VirtualMachineInstancePropertiesStorageProfilePtrOutput) ToVirtualMachineInstancePropertiesStorageProfilePtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesStorageProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesStorageProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesStorageProfile] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesStorageProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesStorageProfilePtrOutput) Elem() VirtualMachineInstancePropertiesStorageProfileOutput {
@@ -9348,6 +10741,12 @@ func (i VirtualMachineInstancePropertiesUefiSettingsArgs) ToVirtualMachineInstan
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesUefiSettingsOutput)
 }
 
+func (i VirtualMachineInstancePropertiesUefiSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesUefiSettings] {
+	return pulumix.Output[VirtualMachineInstancePropertiesUefiSettings]{
+		OutputState: i.ToVirtualMachineInstancePropertiesUefiSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachineInstancePropertiesUefiSettingsArgs) ToVirtualMachineInstancePropertiesUefiSettingsPtrOutput() VirtualMachineInstancePropertiesUefiSettingsPtrOutput {
 	return i.ToVirtualMachineInstancePropertiesUefiSettingsPtrOutputWithContext(context.Background())
 }
@@ -9389,6 +10788,12 @@ func (i *virtualMachineInstancePropertiesUefiSettingsPtrType) ToVirtualMachineIn
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesUefiSettingsPtrOutput)
 }
 
+func (i *virtualMachineInstancePropertiesUefiSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesUefiSettings] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesUefiSettings]{
+		OutputState: i.ToVirtualMachineInstancePropertiesUefiSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachineInstancePropertiesUefiSettingsOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineInstancePropertiesUefiSettingsOutput) ElementType() reflect.Type {
@@ -9413,6 +10818,12 @@ func (o VirtualMachineInstancePropertiesUefiSettingsOutput) ToVirtualMachineInst
 	}).(VirtualMachineInstancePropertiesUefiSettingsPtrOutput)
 }
 
+func (o VirtualMachineInstancePropertiesUefiSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesUefiSettings] {
+	return pulumix.Output[VirtualMachineInstancePropertiesUefiSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies whether secure boot should be enabled on the virtual machine instance.
 func (o VirtualMachineInstancePropertiesUefiSettingsOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstancePropertiesUefiSettings) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
@@ -9430,6 +10841,12 @@ func (o VirtualMachineInstancePropertiesUefiSettingsPtrOutput) ToVirtualMachineI
 
 func (o VirtualMachineInstancePropertiesUefiSettingsPtrOutput) ToVirtualMachineInstancePropertiesUefiSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesUefiSettingsPtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesUefiSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesUefiSettings] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesUefiSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesUefiSettingsPtrOutput) Elem() VirtualMachineInstancePropertiesUefiSettingsOutput {
@@ -9534,6 +10951,12 @@ func (i VirtualMachineInstancePropertiesWindowsConfigurationArgs) ToVirtualMachi
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesWindowsConfigurationOutput)
 }
 
+func (i VirtualMachineInstancePropertiesWindowsConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesWindowsConfiguration] {
+	return pulumix.Output[VirtualMachineInstancePropertiesWindowsConfiguration]{
+		OutputState: i.ToVirtualMachineInstancePropertiesWindowsConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachineInstancePropertiesWindowsConfigurationArgs) ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutput() VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput {
 	return i.ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutputWithContext(context.Background())
 }
@@ -9575,6 +10998,12 @@ func (i *virtualMachineInstancePropertiesWindowsConfigurationPtrType) ToVirtualM
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput)
 }
 
+func (i *virtualMachineInstancePropertiesWindowsConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesWindowsConfiguration] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesWindowsConfiguration]{
+		OutputState: i.ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Windows Configuration for the virtual machine instance
 type VirtualMachineInstancePropertiesWindowsConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -9598,6 +11027,12 @@ func (o VirtualMachineInstancePropertiesWindowsConfigurationOutput) ToVirtualMac
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineInstancePropertiesWindowsConfiguration) *VirtualMachineInstancePropertiesWindowsConfiguration {
 		return &v
 	}).(VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput)
+}
+
+func (o VirtualMachineInstancePropertiesWindowsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstancePropertiesWindowsConfiguration] {
+	return pulumix.Output[VirtualMachineInstancePropertiesWindowsConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to EnableAutomaticUpdates on the machine
@@ -9637,6 +11072,12 @@ func (o VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput) ToVirtual
 
 func (o VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput) ToVirtualMachineInstancePropertiesWindowsConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstancePropertiesWindowsConfiguration] {
+	return pulumix.Output[*VirtualMachineInstancePropertiesWindowsConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstancePropertiesWindowsConfigurationPtrOutput) Elem() VirtualMachineInstancePropertiesWindowsConfigurationOutput {
@@ -9725,6 +11166,12 @@ func (o VirtualMachineInstanceStatusResponseOutput) ToVirtualMachineInstanceStat
 	return o
 }
 
+func (o VirtualMachineInstanceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstanceStatusResponse] {
+	return pulumix.Output[VirtualMachineInstanceStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // VirtualMachine provisioning error code
 func (o VirtualMachineInstanceStatusResponseOutput) ErrorCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstanceStatusResponse) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
@@ -9767,6 +11214,12 @@ func (o VirtualMachineInstanceStatusResponseProvisioningStatusOutput) ToVirtualM
 	return o
 }
 
+func (o VirtualMachineInstanceStatusResponseProvisioningStatusOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstanceStatusResponseProvisioningStatus] {
+	return pulumix.Output[VirtualMachineInstanceStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the operation performed on the virtual machine instance
 func (o VirtualMachineInstanceStatusResponseProvisioningStatusOutput) OperationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstanceStatusResponseProvisioningStatus) *string { return v.OperationId }).(pulumi.StringPtrOutput)
@@ -9789,6 +11242,12 @@ func (o VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput) ToVirtu
 
 func (o VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput) ToVirtualMachineInstanceStatusResponseProvisioningStatusPtrOutputWithContext(ctx context.Context) VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput {
 	return o
+}
+
+func (o VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstanceStatusResponseProvisioningStatus] {
+	return pulumix.Output[*VirtualMachineInstanceStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineInstanceStatusResponseProvisioningStatusPtrOutput) Elem() VirtualMachineInstanceStatusResponseProvisioningStatusOutput {
@@ -9842,6 +11301,12 @@ func (o VirtualMachineInstanceViewResponseOutput) ToVirtualMachineInstanceViewRe
 	return o
 }
 
+func (o VirtualMachineInstanceViewResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineInstanceViewResponse] {
+	return pulumix.Output[VirtualMachineInstanceViewResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The VM Config Agent running on the virtual machine.
 func (o VirtualMachineInstanceViewResponseOutput) VmAgent() VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineInstanceViewResponse) *VirtualMachineVMConfigAgentInstanceViewResponse {
@@ -9882,6 +11347,12 @@ func (i VirtualMachinePropertiesDataDisksArgs) ToVirtualMachinePropertiesDataDis
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesDataDisksOutput)
 }
 
+func (i VirtualMachinePropertiesDataDisksArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesDataDisks] {
+	return pulumix.Output[VirtualMachinePropertiesDataDisks]{
+		OutputState: i.ToVirtualMachinePropertiesDataDisksOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualMachinePropertiesDataDisksArrayInput is an input type that accepts VirtualMachinePropertiesDataDisksArray and VirtualMachinePropertiesDataDisksArrayOutput values.
 // You can construct a concrete instance of `VirtualMachinePropertiesDataDisksArrayInput` via:
 //
@@ -9907,6 +11378,12 @@ func (i VirtualMachinePropertiesDataDisksArray) ToVirtualMachinePropertiesDataDi
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesDataDisksArrayOutput)
 }
 
+func (i VirtualMachinePropertiesDataDisksArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachinePropertiesDataDisks] {
+	return pulumix.Output[[]VirtualMachinePropertiesDataDisks]{
+		OutputState: i.ToVirtualMachinePropertiesDataDisksArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachinePropertiesDataDisksOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachinePropertiesDataDisksOutput) ElementType() reflect.Type {
@@ -9919,6 +11396,12 @@ func (o VirtualMachinePropertiesDataDisksOutput) ToVirtualMachinePropertiesDataD
 
 func (o VirtualMachinePropertiesDataDisksOutput) ToVirtualMachinePropertiesDataDisksOutputWithContext(ctx context.Context) VirtualMachinePropertiesDataDisksOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesDataDisksOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesDataDisks] {
+	return pulumix.Output[VirtualMachinePropertiesDataDisks]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID of the data disk
@@ -9938,6 +11421,12 @@ func (o VirtualMachinePropertiesDataDisksArrayOutput) ToVirtualMachineProperties
 
 func (o VirtualMachinePropertiesDataDisksArrayOutput) ToVirtualMachinePropertiesDataDisksArrayOutputWithContext(ctx context.Context) VirtualMachinePropertiesDataDisksArrayOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesDataDisksArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachinePropertiesDataDisks] {
+	return pulumix.Output[[]VirtualMachinePropertiesDataDisks]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesDataDisksArrayOutput) Index(i pulumi.IntInput) VirtualMachinePropertiesDataDisksOutput {
@@ -9983,6 +11472,12 @@ func (i VirtualMachinePropertiesDynamicMemoryConfigArgs) ToVirtualMachinePropert
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesDynamicMemoryConfigOutput)
 }
 
+func (i VirtualMachinePropertiesDynamicMemoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesDynamicMemoryConfig] {
+	return pulumix.Output[VirtualMachinePropertiesDynamicMemoryConfig]{
+		OutputState: i.ToVirtualMachinePropertiesDynamicMemoryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePropertiesDynamicMemoryConfigArgs) ToVirtualMachinePropertiesDynamicMemoryConfigPtrOutput() VirtualMachinePropertiesDynamicMemoryConfigPtrOutput {
 	return i.ToVirtualMachinePropertiesDynamicMemoryConfigPtrOutputWithContext(context.Background())
 }
@@ -10024,6 +11519,12 @@ func (i *virtualMachinePropertiesDynamicMemoryConfigPtrType) ToVirtualMachinePro
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesDynamicMemoryConfigPtrOutput)
 }
 
+func (i *virtualMachinePropertiesDynamicMemoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesDynamicMemoryConfig] {
+	return pulumix.Output[*VirtualMachinePropertiesDynamicMemoryConfig]{
+		OutputState: i.ToVirtualMachinePropertiesDynamicMemoryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachinePropertiesDynamicMemoryConfigOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachinePropertiesDynamicMemoryConfigOutput) ElementType() reflect.Type {
@@ -10046,6 +11547,12 @@ func (o VirtualMachinePropertiesDynamicMemoryConfigOutput) ToVirtualMachinePrope
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachinePropertiesDynamicMemoryConfig) *VirtualMachinePropertiesDynamicMemoryConfig {
 		return &v
 	}).(VirtualMachinePropertiesDynamicMemoryConfigPtrOutput)
+}
+
+func (o VirtualMachinePropertiesDynamicMemoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesDynamicMemoryConfig] {
+	return pulumix.Output[VirtualMachinePropertiesDynamicMemoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesDynamicMemoryConfigOutput) MaximumMemoryMB() pulumi.Float64PtrOutput {
@@ -10073,6 +11580,12 @@ func (o VirtualMachinePropertiesDynamicMemoryConfigPtrOutput) ToVirtualMachinePr
 
 func (o VirtualMachinePropertiesDynamicMemoryConfigPtrOutput) ToVirtualMachinePropertiesDynamicMemoryConfigPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesDynamicMemoryConfigPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesDynamicMemoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesDynamicMemoryConfig] {
+	return pulumix.Output[*VirtualMachinePropertiesDynamicMemoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesDynamicMemoryConfigPtrOutput) Elem() VirtualMachinePropertiesDynamicMemoryConfigOutput {
@@ -10180,6 +11693,12 @@ func (i VirtualMachinePropertiesHardwareProfileArgs) ToVirtualMachinePropertiesH
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesHardwareProfileOutput)
 }
 
+func (i VirtualMachinePropertiesHardwareProfileArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesHardwareProfile] {
+	return pulumix.Output[VirtualMachinePropertiesHardwareProfile]{
+		OutputState: i.ToVirtualMachinePropertiesHardwareProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePropertiesHardwareProfileArgs) ToVirtualMachinePropertiesHardwareProfilePtrOutput() VirtualMachinePropertiesHardwareProfilePtrOutput {
 	return i.ToVirtualMachinePropertiesHardwareProfilePtrOutputWithContext(context.Background())
 }
@@ -10221,6 +11740,12 @@ func (i *virtualMachinePropertiesHardwareProfilePtrType) ToVirtualMachinePropert
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesHardwareProfilePtrOutput)
 }
 
+func (i *virtualMachinePropertiesHardwareProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesHardwareProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesHardwareProfile]{
+		OutputState: i.ToVirtualMachinePropertiesHardwareProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HardwareProfile - Specifies the hardware settings for the virtual machine.
 type VirtualMachinePropertiesHardwareProfileOutput struct{ *pulumi.OutputState }
 
@@ -10244,6 +11769,12 @@ func (o VirtualMachinePropertiesHardwareProfileOutput) ToVirtualMachinePropertie
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachinePropertiesHardwareProfile) *VirtualMachinePropertiesHardwareProfile {
 		return &v
 	}).(VirtualMachinePropertiesHardwareProfilePtrOutput)
+}
+
+func (o VirtualMachinePropertiesHardwareProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesHardwareProfile] {
+	return pulumix.Output[VirtualMachinePropertiesHardwareProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesHardwareProfileOutput) DynamicMemoryConfig() VirtualMachinePropertiesDynamicMemoryConfigPtrOutput {
@@ -10278,6 +11809,12 @@ func (o VirtualMachinePropertiesHardwareProfilePtrOutput) ToVirtualMachineProper
 
 func (o VirtualMachinePropertiesHardwareProfilePtrOutput) ToVirtualMachinePropertiesHardwareProfilePtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesHardwareProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesHardwareProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesHardwareProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesHardwareProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesHardwareProfilePtrOutput) Elem() VirtualMachinePropertiesHardwareProfileOutput {
@@ -10363,6 +11900,12 @@ func (i VirtualMachinePropertiesImageReferenceArgs) ToVirtualMachinePropertiesIm
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesImageReferenceOutput)
 }
 
+func (i VirtualMachinePropertiesImageReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesImageReference] {
+	return pulumix.Output[VirtualMachinePropertiesImageReference]{
+		OutputState: i.ToVirtualMachinePropertiesImageReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePropertiesImageReferenceArgs) ToVirtualMachinePropertiesImageReferencePtrOutput() VirtualMachinePropertiesImageReferencePtrOutput {
 	return i.ToVirtualMachinePropertiesImageReferencePtrOutputWithContext(context.Background())
 }
@@ -10404,6 +11947,12 @@ func (i *virtualMachinePropertiesImageReferencePtrType) ToVirtualMachineProperti
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesImageReferencePtrOutput)
 }
 
+func (i *virtualMachinePropertiesImageReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesImageReference] {
+	return pulumix.Output[*VirtualMachinePropertiesImageReference]{
+		OutputState: i.ToVirtualMachinePropertiesImageReferencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Which Image to use for the virtual machine
 type VirtualMachinePropertiesImageReferenceOutput struct{ *pulumi.OutputState }
 
@@ -10429,6 +11978,12 @@ func (o VirtualMachinePropertiesImageReferenceOutput) ToVirtualMachineProperties
 	}).(VirtualMachinePropertiesImageReferencePtrOutput)
 }
 
+func (o VirtualMachinePropertiesImageReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesImageReference] {
+	return pulumix.Output[VirtualMachinePropertiesImageReference]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the image
 func (o VirtualMachinePropertiesImageReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesImageReference) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -10446,6 +12001,12 @@ func (o VirtualMachinePropertiesImageReferencePtrOutput) ToVirtualMachinePropert
 
 func (o VirtualMachinePropertiesImageReferencePtrOutput) ToVirtualMachinePropertiesImageReferencePtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesImageReferencePtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesImageReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesImageReference] {
+	return pulumix.Output[*VirtualMachinePropertiesImageReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesImageReferencePtrOutput) Elem() VirtualMachinePropertiesImageReferenceOutput {
@@ -10511,6 +12072,12 @@ func (i VirtualMachinePropertiesLinuxConfigurationArgs) ToVirtualMachineProperti
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesLinuxConfigurationOutput)
 }
 
+func (i VirtualMachinePropertiesLinuxConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesLinuxConfiguration] {
+	return pulumix.Output[VirtualMachinePropertiesLinuxConfiguration]{
+		OutputState: i.ToVirtualMachinePropertiesLinuxConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePropertiesLinuxConfigurationArgs) ToVirtualMachinePropertiesLinuxConfigurationPtrOutput() VirtualMachinePropertiesLinuxConfigurationPtrOutput {
 	return i.ToVirtualMachinePropertiesLinuxConfigurationPtrOutputWithContext(context.Background())
 }
@@ -10552,6 +12119,12 @@ func (i *virtualMachinePropertiesLinuxConfigurationPtrType) ToVirtualMachineProp
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesLinuxConfigurationPtrOutput)
 }
 
+func (i *virtualMachinePropertiesLinuxConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesLinuxConfiguration] {
+	return pulumix.Output[*VirtualMachinePropertiesLinuxConfiguration]{
+		OutputState: i.ToVirtualMachinePropertiesLinuxConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LinuxConfiguration - linux specific configuration values for the virtual machine
 type VirtualMachinePropertiesLinuxConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -10575,6 +12148,12 @@ func (o VirtualMachinePropertiesLinuxConfigurationOutput) ToVirtualMachineProper
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachinePropertiesLinuxConfiguration) *VirtualMachinePropertiesLinuxConfiguration {
 		return &v
 	}).(VirtualMachinePropertiesLinuxConfigurationPtrOutput)
+}
+
+func (o VirtualMachinePropertiesLinuxConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesLinuxConfiguration] {
+	return pulumix.Output[VirtualMachinePropertiesLinuxConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // DisablePasswordAuthentication - whether password authentication should be disabled
@@ -10604,6 +12183,12 @@ func (o VirtualMachinePropertiesLinuxConfigurationPtrOutput) ToVirtualMachinePro
 
 func (o VirtualMachinePropertiesLinuxConfigurationPtrOutput) ToVirtualMachinePropertiesLinuxConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesLinuxConfigurationPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesLinuxConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesLinuxConfiguration] {
+	return pulumix.Output[*VirtualMachinePropertiesLinuxConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesLinuxConfigurationPtrOutput) Elem() VirtualMachinePropertiesLinuxConfigurationOutput {
@@ -10679,6 +12264,12 @@ func (i VirtualMachinePropertiesNetworkInterfacesArgs) ToVirtualMachinePropertie
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesNetworkInterfacesOutput)
 }
 
+func (i VirtualMachinePropertiesNetworkInterfacesArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesNetworkInterfaces] {
+	return pulumix.Output[VirtualMachinePropertiesNetworkInterfaces]{
+		OutputState: i.ToVirtualMachinePropertiesNetworkInterfacesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualMachinePropertiesNetworkInterfacesArrayInput is an input type that accepts VirtualMachinePropertiesNetworkInterfacesArray and VirtualMachinePropertiesNetworkInterfacesArrayOutput values.
 // You can construct a concrete instance of `VirtualMachinePropertiesNetworkInterfacesArrayInput` via:
 //
@@ -10704,6 +12295,12 @@ func (i VirtualMachinePropertiesNetworkInterfacesArray) ToVirtualMachineProperti
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesNetworkInterfacesArrayOutput)
 }
 
+func (i VirtualMachinePropertiesNetworkInterfacesArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachinePropertiesNetworkInterfaces] {
+	return pulumix.Output[[]VirtualMachinePropertiesNetworkInterfaces]{
+		OutputState: i.ToVirtualMachinePropertiesNetworkInterfacesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachinePropertiesNetworkInterfacesOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachinePropertiesNetworkInterfacesOutput) ElementType() reflect.Type {
@@ -10716,6 +12313,12 @@ func (o VirtualMachinePropertiesNetworkInterfacesOutput) ToVirtualMachinePropert
 
 func (o VirtualMachinePropertiesNetworkInterfacesOutput) ToVirtualMachinePropertiesNetworkInterfacesOutputWithContext(ctx context.Context) VirtualMachinePropertiesNetworkInterfacesOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesNetworkInterfacesOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesNetworkInterfaces] {
+	return pulumix.Output[VirtualMachinePropertiesNetworkInterfaces]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID - Resource Id of the network interface
@@ -10735,6 +12338,12 @@ func (o VirtualMachinePropertiesNetworkInterfacesArrayOutput) ToVirtualMachinePr
 
 func (o VirtualMachinePropertiesNetworkInterfacesArrayOutput) ToVirtualMachinePropertiesNetworkInterfacesArrayOutputWithContext(ctx context.Context) VirtualMachinePropertiesNetworkInterfacesArrayOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesNetworkInterfacesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachinePropertiesNetworkInterfaces] {
+	return pulumix.Output[[]VirtualMachinePropertiesNetworkInterfaces]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesNetworkInterfacesArrayOutput) Index(i pulumi.IntInput) VirtualMachinePropertiesNetworkInterfacesOutput {
@@ -10778,6 +12387,12 @@ func (i VirtualMachinePropertiesNetworkProfileArgs) ToVirtualMachinePropertiesNe
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesNetworkProfileOutput)
 }
 
+func (i VirtualMachinePropertiesNetworkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesNetworkProfile] {
+	return pulumix.Output[VirtualMachinePropertiesNetworkProfile]{
+		OutputState: i.ToVirtualMachinePropertiesNetworkProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePropertiesNetworkProfileArgs) ToVirtualMachinePropertiesNetworkProfilePtrOutput() VirtualMachinePropertiesNetworkProfilePtrOutput {
 	return i.ToVirtualMachinePropertiesNetworkProfilePtrOutputWithContext(context.Background())
 }
@@ -10819,6 +12434,12 @@ func (i *virtualMachinePropertiesNetworkProfilePtrType) ToVirtualMachineProperti
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesNetworkProfilePtrOutput)
 }
 
+func (i *virtualMachinePropertiesNetworkProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesNetworkProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesNetworkProfile]{
+		OutputState: i.ToVirtualMachinePropertiesNetworkProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkProfile - describes the network configuration the virtual machine
 type VirtualMachinePropertiesNetworkProfileOutput struct{ *pulumi.OutputState }
 
@@ -10844,6 +12465,12 @@ func (o VirtualMachinePropertiesNetworkProfileOutput) ToVirtualMachineProperties
 	}).(VirtualMachinePropertiesNetworkProfilePtrOutput)
 }
 
+func (o VirtualMachinePropertiesNetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesNetworkProfile] {
+	return pulumix.Output[VirtualMachinePropertiesNetworkProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // NetworkInterfaces - list of network interfaces to be attached to the virtual machine
 func (o VirtualMachinePropertiesNetworkProfileOutput) NetworkInterfaces() VirtualMachinePropertiesNetworkInterfacesArrayOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesNetworkProfile) []VirtualMachinePropertiesNetworkInterfaces {
@@ -10863,6 +12490,12 @@ func (o VirtualMachinePropertiesNetworkProfilePtrOutput) ToVirtualMachinePropert
 
 func (o VirtualMachinePropertiesNetworkProfilePtrOutput) ToVirtualMachinePropertiesNetworkProfilePtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesNetworkProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesNetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesNetworkProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesNetworkProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesNetworkProfilePtrOutput) Elem() VirtualMachinePropertiesNetworkProfileOutput {
@@ -10920,6 +12553,12 @@ func (i VirtualMachinePropertiesOsDiskArgs) ToVirtualMachinePropertiesOsDiskOutp
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesOsDiskOutput)
 }
 
+func (i VirtualMachinePropertiesOsDiskArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesOsDisk] {
+	return pulumix.Output[VirtualMachinePropertiesOsDisk]{
+		OutputState: i.ToVirtualMachinePropertiesOsDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePropertiesOsDiskArgs) ToVirtualMachinePropertiesOsDiskPtrOutput() VirtualMachinePropertiesOsDiskPtrOutput {
 	return i.ToVirtualMachinePropertiesOsDiskPtrOutputWithContext(context.Background())
 }
@@ -10961,6 +12600,12 @@ func (i *virtualMachinePropertiesOsDiskPtrType) ToVirtualMachinePropertiesOsDisk
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesOsDiskPtrOutput)
 }
 
+func (i *virtualMachinePropertiesOsDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesOsDisk] {
+	return pulumix.Output[*VirtualMachinePropertiesOsDisk]{
+		OutputState: i.ToVirtualMachinePropertiesOsDiskPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VHD to attach as OS disk
 type VirtualMachinePropertiesOsDiskOutput struct{ *pulumi.OutputState }
 
@@ -10986,6 +12631,12 @@ func (o VirtualMachinePropertiesOsDiskOutput) ToVirtualMachinePropertiesOsDiskPt
 	}).(VirtualMachinePropertiesOsDiskPtrOutput)
 }
 
+func (o VirtualMachinePropertiesOsDiskOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesOsDisk] {
+	return pulumix.Output[VirtualMachinePropertiesOsDisk]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the OS disk
 func (o VirtualMachinePropertiesOsDiskOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesOsDisk) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -11003,6 +12654,12 @@ func (o VirtualMachinePropertiesOsDiskPtrOutput) ToVirtualMachinePropertiesOsDis
 
 func (o VirtualMachinePropertiesOsDiskPtrOutput) ToVirtualMachinePropertiesOsDiskPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesOsDiskPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesOsDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesOsDisk] {
+	return pulumix.Output[*VirtualMachinePropertiesOsDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesOsDiskPtrOutput) Elem() VirtualMachinePropertiesOsDiskOutput {
@@ -11080,6 +12737,12 @@ func (i VirtualMachinePropertiesOsProfileArgs) ToVirtualMachinePropertiesOsProfi
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesOsProfileOutput)
 }
 
+func (i VirtualMachinePropertiesOsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesOsProfile] {
+	return pulumix.Output[VirtualMachinePropertiesOsProfile]{
+		OutputState: i.ToVirtualMachinePropertiesOsProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePropertiesOsProfileArgs) ToVirtualMachinePropertiesOsProfilePtrOutput() VirtualMachinePropertiesOsProfilePtrOutput {
 	return i.ToVirtualMachinePropertiesOsProfilePtrOutputWithContext(context.Background())
 }
@@ -11121,6 +12784,12 @@ func (i *virtualMachinePropertiesOsProfilePtrType) ToVirtualMachinePropertiesOsP
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesOsProfilePtrOutput)
 }
 
+func (i *virtualMachinePropertiesOsProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesOsProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesOsProfile]{
+		OutputState: i.ToVirtualMachinePropertiesOsProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OsProfile - describes the configuration of the operating system and sets login data
 type VirtualMachinePropertiesOsProfileOutput struct{ *pulumi.OutputState }
 
@@ -11144,6 +12813,12 @@ func (o VirtualMachinePropertiesOsProfileOutput) ToVirtualMachinePropertiesOsPro
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachinePropertiesOsProfile) *VirtualMachinePropertiesOsProfile {
 		return &v
 	}).(VirtualMachinePropertiesOsProfilePtrOutput)
+}
+
+func (o VirtualMachinePropertiesOsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesOsProfile] {
+	return pulumix.Output[VirtualMachinePropertiesOsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AdminPassword - admin password
@@ -11192,6 +12867,12 @@ func (o VirtualMachinePropertiesOsProfilePtrOutput) ToVirtualMachinePropertiesOs
 
 func (o VirtualMachinePropertiesOsProfilePtrOutput) ToVirtualMachinePropertiesOsProfilePtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesOsProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesOsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesOsProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesOsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesOsProfilePtrOutput) Elem() VirtualMachinePropertiesOsProfileOutput {
@@ -11301,6 +12982,12 @@ func (i VirtualMachinePropertiesPublicKeysArgs) ToVirtualMachinePropertiesPublic
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesPublicKeysOutput)
 }
 
+func (i VirtualMachinePropertiesPublicKeysArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesPublicKeys] {
+	return pulumix.Output[VirtualMachinePropertiesPublicKeys]{
+		OutputState: i.ToVirtualMachinePropertiesPublicKeysOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualMachinePropertiesPublicKeysArrayInput is an input type that accepts VirtualMachinePropertiesPublicKeysArray and VirtualMachinePropertiesPublicKeysArrayOutput values.
 // You can construct a concrete instance of `VirtualMachinePropertiesPublicKeysArrayInput` via:
 //
@@ -11326,6 +13013,12 @@ func (i VirtualMachinePropertiesPublicKeysArray) ToVirtualMachinePropertiesPubli
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesPublicKeysArrayOutput)
 }
 
+func (i VirtualMachinePropertiesPublicKeysArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachinePropertiesPublicKeys] {
+	return pulumix.Output[[]VirtualMachinePropertiesPublicKeys]{
+		OutputState: i.ToVirtualMachinePropertiesPublicKeysArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachinePropertiesPublicKeysOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachinePropertiesPublicKeysOutput) ElementType() reflect.Type {
@@ -11338,6 +13031,12 @@ func (o VirtualMachinePropertiesPublicKeysOutput) ToVirtualMachinePropertiesPubl
 
 func (o VirtualMachinePropertiesPublicKeysOutput) ToVirtualMachinePropertiesPublicKeysOutputWithContext(ctx context.Context) VirtualMachinePropertiesPublicKeysOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesPublicKeysOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesPublicKeys] {
+	return pulumix.Output[VirtualMachinePropertiesPublicKeys]{
+		OutputState: o.OutputState,
+	}
 }
 
 // KeyData - SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Li      nux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -11362,6 +13061,12 @@ func (o VirtualMachinePropertiesPublicKeysArrayOutput) ToVirtualMachinePropertie
 
 func (o VirtualMachinePropertiesPublicKeysArrayOutput) ToVirtualMachinePropertiesPublicKeysArrayOutputWithContext(ctx context.Context) VirtualMachinePropertiesPublicKeysArrayOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesPublicKeysArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachinePropertiesPublicKeys] {
+	return pulumix.Output[[]VirtualMachinePropertiesPublicKeys]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesPublicKeysArrayOutput) Index(i pulumi.IntInput) VirtualMachinePropertiesPublicKeysOutput {
@@ -11407,6 +13112,12 @@ func (i VirtualMachinePropertiesPublicKeysPublicKeysArgs) ToVirtualMachineProper
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesPublicKeysPublicKeysOutput)
 }
 
+func (i VirtualMachinePropertiesPublicKeysPublicKeysArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesPublicKeysPublicKeys] {
+	return pulumix.Output[VirtualMachinePropertiesPublicKeysPublicKeys]{
+		OutputState: i.ToVirtualMachinePropertiesPublicKeysPublicKeysOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualMachinePropertiesPublicKeysPublicKeysArrayInput is an input type that accepts VirtualMachinePropertiesPublicKeysPublicKeysArray and VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput values.
 // You can construct a concrete instance of `VirtualMachinePropertiesPublicKeysPublicKeysArrayInput` via:
 //
@@ -11432,6 +13143,12 @@ func (i VirtualMachinePropertiesPublicKeysPublicKeysArray) ToVirtualMachinePrope
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput)
 }
 
+func (i VirtualMachinePropertiesPublicKeysPublicKeysArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachinePropertiesPublicKeysPublicKeys] {
+	return pulumix.Output[[]VirtualMachinePropertiesPublicKeysPublicKeys]{
+		OutputState: i.ToVirtualMachinePropertiesPublicKeysPublicKeysArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachinePropertiesPublicKeysPublicKeysOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachinePropertiesPublicKeysPublicKeysOutput) ElementType() reflect.Type {
@@ -11444,6 +13161,12 @@ func (o VirtualMachinePropertiesPublicKeysPublicKeysOutput) ToVirtualMachineProp
 
 func (o VirtualMachinePropertiesPublicKeysPublicKeysOutput) ToVirtualMachinePropertiesPublicKeysPublicKeysOutputWithContext(ctx context.Context) VirtualMachinePropertiesPublicKeysPublicKeysOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesPublicKeysPublicKeysOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesPublicKeysPublicKeys] {
+	return pulumix.Output[VirtualMachinePropertiesPublicKeysPublicKeys]{
+		OutputState: o.OutputState,
+	}
 }
 
 // KeyData - SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Li      nux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -11468,6 +13191,12 @@ func (o VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput) ToVirtualMachin
 
 func (o VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput) ToVirtualMachinePropertiesPublicKeysPublicKeysArrayOutputWithContext(ctx context.Context) VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachinePropertiesPublicKeysPublicKeys] {
+	return pulumix.Output[[]VirtualMachinePropertiesPublicKeysPublicKeys]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput) Index(i pulumi.IntInput) VirtualMachinePropertiesPublicKeysPublicKeysOutput {
@@ -11495,6 +13224,12 @@ func (o VirtualMachinePropertiesResponseDataDisksOutput) ToVirtualMachinePropert
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseDataDisksOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseDataDisks] {
+	return pulumix.Output[VirtualMachinePropertiesResponseDataDisks]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the data disk
 func (o VirtualMachinePropertiesResponseDataDisksOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseDataDisks) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -11512,6 +13247,12 @@ func (o VirtualMachinePropertiesResponseDataDisksArrayOutput) ToVirtualMachinePr
 
 func (o VirtualMachinePropertiesResponseDataDisksArrayOutput) ToVirtualMachinePropertiesResponseDataDisksArrayOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseDataDisksArrayOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseDataDisksArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachinePropertiesResponseDataDisks] {
+	return pulumix.Output[[]VirtualMachinePropertiesResponseDataDisks]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseDataDisksArrayOutput) Index(i pulumi.IntInput) VirtualMachinePropertiesResponseDataDisksOutput {
@@ -11541,6 +13282,12 @@ func (o VirtualMachinePropertiesResponseDynamicMemoryConfigOutput) ToVirtualMach
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseDynamicMemoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseDynamicMemoryConfig] {
+	return pulumix.Output[VirtualMachinePropertiesResponseDynamicMemoryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualMachinePropertiesResponseDynamicMemoryConfigOutput) MaximumMemoryMB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseDynamicMemoryConfig) *float64 { return v.MaximumMemoryMB }).(pulumi.Float64PtrOutput)
 }
@@ -11566,6 +13313,12 @@ func (o VirtualMachinePropertiesResponseDynamicMemoryConfigPtrOutput) ToVirtualM
 
 func (o VirtualMachinePropertiesResponseDynamicMemoryConfigPtrOutput) ToVirtualMachinePropertiesResponseDynamicMemoryConfigPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseDynamicMemoryConfigPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseDynamicMemoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesResponseDynamicMemoryConfig] {
+	return pulumix.Output[*VirtualMachinePropertiesResponseDynamicMemoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseDynamicMemoryConfigPtrOutput) Elem() VirtualMachinePropertiesResponseDynamicMemoryConfigOutput {
@@ -11644,6 +13397,12 @@ func (o VirtualMachinePropertiesResponseHardwareProfileOutput) ToVirtualMachineP
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseHardwareProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseHardwareProfile] {
+	return pulumix.Output[VirtualMachinePropertiesResponseHardwareProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualMachinePropertiesResponseHardwareProfileOutput) DynamicMemoryConfig() VirtualMachinePropertiesResponseDynamicMemoryConfigPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseHardwareProfile) *VirtualMachinePropertiesResponseDynamicMemoryConfig {
 		return v.DynamicMemoryConfig
@@ -11676,6 +13435,12 @@ func (o VirtualMachinePropertiesResponseHardwareProfilePtrOutput) ToVirtualMachi
 
 func (o VirtualMachinePropertiesResponseHardwareProfilePtrOutput) ToVirtualMachinePropertiesResponseHardwareProfilePtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseHardwareProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseHardwareProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesResponseHardwareProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesResponseHardwareProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseHardwareProfilePtrOutput) Elem() VirtualMachinePropertiesResponseHardwareProfileOutput {
@@ -11747,6 +13512,12 @@ func (o VirtualMachinePropertiesResponseImageReferenceOutput) ToVirtualMachinePr
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseImageReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseImageReference] {
+	return pulumix.Output[VirtualMachinePropertiesResponseImageReference]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the image
 func (o VirtualMachinePropertiesResponseImageReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseImageReference) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -11764,6 +13535,12 @@ func (o VirtualMachinePropertiesResponseImageReferencePtrOutput) ToVirtualMachin
 
 func (o VirtualMachinePropertiesResponseImageReferencePtrOutput) ToVirtualMachinePropertiesResponseImageReferencePtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseImageReferencePtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseImageReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesResponseImageReference] {
+	return pulumix.Output[*VirtualMachinePropertiesResponseImageReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseImageReferencePtrOutput) Elem() VirtualMachinePropertiesResponseImageReferenceOutput {
@@ -11811,6 +13588,12 @@ func (o VirtualMachinePropertiesResponseLinuxConfigurationOutput) ToVirtualMachi
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseLinuxConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseLinuxConfiguration] {
+	return pulumix.Output[VirtualMachinePropertiesResponseLinuxConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // DisablePasswordAuthentication - whether password authentication should be disabled
 func (o VirtualMachinePropertiesResponseLinuxConfigurationOutput) DisablePasswordAuthentication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseLinuxConfiguration) *bool {
@@ -11842,6 +13625,12 @@ func (o VirtualMachinePropertiesResponseLinuxConfigurationPtrOutput) ToVirtualMa
 
 func (o VirtualMachinePropertiesResponseLinuxConfigurationPtrOutput) ToVirtualMachinePropertiesResponseLinuxConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseLinuxConfigurationPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseLinuxConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesResponseLinuxConfiguration] {
+	return pulumix.Output[*VirtualMachinePropertiesResponseLinuxConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseLinuxConfigurationPtrOutput) Elem() VirtualMachinePropertiesResponseLinuxConfigurationOutput {
@@ -11903,6 +13692,12 @@ func (o VirtualMachinePropertiesResponseNetworkInterfacesOutput) ToVirtualMachin
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseNetworkInterfacesOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseNetworkInterfaces] {
+	return pulumix.Output[VirtualMachinePropertiesResponseNetworkInterfaces]{
+		OutputState: o.OutputState,
+	}
+}
+
 // ID - Resource Id of the network interface
 func (o VirtualMachinePropertiesResponseNetworkInterfacesOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseNetworkInterfaces) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -11920,6 +13715,12 @@ func (o VirtualMachinePropertiesResponseNetworkInterfacesArrayOutput) ToVirtualM
 
 func (o VirtualMachinePropertiesResponseNetworkInterfacesArrayOutput) ToVirtualMachinePropertiesResponseNetworkInterfacesArrayOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseNetworkInterfacesArrayOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseNetworkInterfacesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachinePropertiesResponseNetworkInterfaces] {
+	return pulumix.Output[[]VirtualMachinePropertiesResponseNetworkInterfaces]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseNetworkInterfacesArrayOutput) Index(i pulumi.IntInput) VirtualMachinePropertiesResponseNetworkInterfacesOutput {
@@ -11949,6 +13750,12 @@ func (o VirtualMachinePropertiesResponseNetworkProfileOutput) ToVirtualMachinePr
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseNetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseNetworkProfile] {
+	return pulumix.Output[VirtualMachinePropertiesResponseNetworkProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // NetworkInterfaces - list of network interfaces to be attached to the virtual machine
 func (o VirtualMachinePropertiesResponseNetworkProfileOutput) NetworkInterfaces() VirtualMachinePropertiesResponseNetworkInterfacesArrayOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseNetworkProfile) []VirtualMachinePropertiesResponseNetworkInterfaces {
@@ -11968,6 +13775,12 @@ func (o VirtualMachinePropertiesResponseNetworkProfilePtrOutput) ToVirtualMachin
 
 func (o VirtualMachinePropertiesResponseNetworkProfilePtrOutput) ToVirtualMachinePropertiesResponseNetworkProfilePtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseNetworkProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseNetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesResponseNetworkProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesResponseNetworkProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseNetworkProfilePtrOutput) Elem() VirtualMachinePropertiesResponseNetworkProfileOutput {
@@ -12011,6 +13824,12 @@ func (o VirtualMachinePropertiesResponseOsDiskOutput) ToVirtualMachineProperties
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseOsDiskOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseOsDisk] {
+	return pulumix.Output[VirtualMachinePropertiesResponseOsDisk]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of the OS disk
 func (o VirtualMachinePropertiesResponseOsDiskOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseOsDisk) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -12028,6 +13847,12 @@ func (o VirtualMachinePropertiesResponseOsDiskPtrOutput) ToVirtualMachinePropert
 
 func (o VirtualMachinePropertiesResponseOsDiskPtrOutput) ToVirtualMachinePropertiesResponseOsDiskPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseOsDiskPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseOsDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesResponseOsDisk] {
+	return pulumix.Output[*VirtualMachinePropertiesResponseOsDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseOsDiskPtrOutput) Elem() VirtualMachinePropertiesResponseOsDiskOutput {
@@ -12079,6 +13904,12 @@ func (o VirtualMachinePropertiesResponseOsProfileOutput) ToVirtualMachinePropert
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseOsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseOsProfile] {
+	return pulumix.Output[VirtualMachinePropertiesResponseOsProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // AdminUsername - admin username
 func (o VirtualMachinePropertiesResponseOsProfileOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseOsProfile) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
@@ -12120,6 +13951,12 @@ func (o VirtualMachinePropertiesResponseOsProfilePtrOutput) ToVirtualMachineProp
 
 func (o VirtualMachinePropertiesResponseOsProfilePtrOutput) ToVirtualMachinePropertiesResponseOsProfilePtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseOsProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseOsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesResponseOsProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesResponseOsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseOsProfilePtrOutput) Elem() VirtualMachinePropertiesResponseOsProfileOutput {
@@ -12203,6 +14040,12 @@ func (o VirtualMachinePropertiesResponsePublicKeysOutput) ToVirtualMachineProper
 	return o
 }
 
+func (o VirtualMachinePropertiesResponsePublicKeysOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponsePublicKeys] {
+	return pulumix.Output[VirtualMachinePropertiesResponsePublicKeys]{
+		OutputState: o.OutputState,
+	}
+}
+
 // KeyData - SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Li      nux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 func (o VirtualMachinePropertiesResponsePublicKeysOutput) KeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponsePublicKeys) *string { return v.KeyData }).(pulumi.StringPtrOutput)
@@ -12225,6 +14068,12 @@ func (o VirtualMachinePropertiesResponsePublicKeysArrayOutput) ToVirtualMachineP
 
 func (o VirtualMachinePropertiesResponsePublicKeysArrayOutput) ToVirtualMachinePropertiesResponsePublicKeysArrayOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponsePublicKeysArrayOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponsePublicKeysArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachinePropertiesResponsePublicKeys] {
+	return pulumix.Output[[]VirtualMachinePropertiesResponsePublicKeys]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponsePublicKeysArrayOutput) Index(i pulumi.IntInput) VirtualMachinePropertiesResponsePublicKeysOutput {
@@ -12254,6 +14103,12 @@ func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput) ToVirtualMac
 	return o
 }
 
+func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponsePublicKeysPublicKeys] {
+	return pulumix.Output[VirtualMachinePropertiesResponsePublicKeysPublicKeys]{
+		OutputState: o.OutputState,
+	}
+}
+
 // KeyData - SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Li      nux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput) KeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponsePublicKeysPublicKeys) *string { return v.KeyData }).(pulumi.StringPtrOutput)
@@ -12276,6 +14131,12 @@ func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput) ToVirtu
 
 func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput) ToVirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachinePropertiesResponsePublicKeysPublicKeys] {
+	return pulumix.Output[[]VirtualMachinePropertiesResponsePublicKeysPublicKeys]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput) Index(i pulumi.IntInput) VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput {
@@ -12320,6 +14181,12 @@ func (o VirtualMachinePropertiesResponseSecurityProfileOutput) ToVirtualMachineP
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseSecurityProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseSecurityProfile] {
+	return pulumix.Output[VirtualMachinePropertiesResponseSecurityProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualMachinePropertiesResponseSecurityProfileOutput) EnableTPM() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseSecurityProfile) *bool { return v.EnableTPM }).(pulumi.BoolPtrOutput)
 }
@@ -12342,6 +14209,12 @@ func (o VirtualMachinePropertiesResponseSecurityProfilePtrOutput) ToVirtualMachi
 
 func (o VirtualMachinePropertiesResponseSecurityProfilePtrOutput) ToVirtualMachinePropertiesResponseSecurityProfilePtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseSecurityProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseSecurityProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesResponseSecurityProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesResponseSecurityProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseSecurityProfilePtrOutput) Elem() VirtualMachinePropertiesResponseSecurityProfileOutput {
@@ -12393,6 +14266,12 @@ func (o VirtualMachinePropertiesResponseSshOutput) ToVirtualMachinePropertiesRes
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseSshOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseSsh] {
+	return pulumix.Output[VirtualMachinePropertiesResponseSsh]{
+		OutputState: o.OutputState,
+	}
+}
+
 // PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
 func (o VirtualMachinePropertiesResponseSshOutput) PublicKeys() VirtualMachinePropertiesResponsePublicKeysArrayOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseSsh) []VirtualMachinePropertiesResponsePublicKeys {
@@ -12412,6 +14291,12 @@ func (o VirtualMachinePropertiesResponseSshPtrOutput) ToVirtualMachineProperties
 
 func (o VirtualMachinePropertiesResponseSshPtrOutput) ToVirtualMachinePropertiesResponseSshPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseSshPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseSshPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesResponseSsh] {
+	return pulumix.Output[*VirtualMachinePropertiesResponseSsh]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseSshPtrOutput) Elem() VirtualMachinePropertiesResponseSshOutput {
@@ -12455,6 +14340,12 @@ func (o VirtualMachinePropertiesResponseSshSshOutput) ToVirtualMachineProperties
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseSshSshOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseSshSsh] {
+	return pulumix.Output[VirtualMachinePropertiesResponseSshSsh]{
+		OutputState: o.OutputState,
+	}
+}
+
 // PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
 func (o VirtualMachinePropertiesResponseSshSshOutput) PublicKeys() VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseSshSsh) []VirtualMachinePropertiesResponsePublicKeysPublicKeys {
@@ -12474,6 +14365,12 @@ func (o VirtualMachinePropertiesResponseSshSshPtrOutput) ToVirtualMachinePropert
 
 func (o VirtualMachinePropertiesResponseSshSshPtrOutput) ToVirtualMachinePropertiesResponseSshSshPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseSshSshPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseSshSshPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesResponseSshSsh] {
+	return pulumix.Output[*VirtualMachinePropertiesResponseSshSsh]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseSshSshPtrOutput) Elem() VirtualMachinePropertiesResponseSshSshOutput {
@@ -12523,6 +14420,12 @@ func (o VirtualMachinePropertiesResponseStorageProfileOutput) ToVirtualMachinePr
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseStorageProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseStorageProfile] {
+	return pulumix.Output[VirtualMachinePropertiesResponseStorageProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // adds data disks to the virtual machine
 func (o VirtualMachinePropertiesResponseStorageProfileOutput) DataDisks() VirtualMachinePropertiesResponseDataDisksArrayOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseStorageProfile) []VirtualMachinePropertiesResponseDataDisks {
@@ -12561,6 +14464,12 @@ func (o VirtualMachinePropertiesResponseStorageProfilePtrOutput) ToVirtualMachin
 
 func (o VirtualMachinePropertiesResponseStorageProfilePtrOutput) ToVirtualMachinePropertiesResponseStorageProfilePtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseStorageProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseStorageProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesResponseStorageProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesResponseStorageProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseStorageProfilePtrOutput) Elem() VirtualMachinePropertiesResponseStorageProfileOutput {
@@ -12645,6 +14554,12 @@ func (o VirtualMachinePropertiesResponseUefiSettingsOutput) ToVirtualMachineProp
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseUefiSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseUefiSettings] {
+	return pulumix.Output[VirtualMachinePropertiesResponseUefiSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies whether secure boot should be enabled on the virtual machine.
 func (o VirtualMachinePropertiesResponseUefiSettingsOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseUefiSettings) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
@@ -12662,6 +14577,12 @@ func (o VirtualMachinePropertiesResponseUefiSettingsPtrOutput) ToVirtualMachineP
 
 func (o VirtualMachinePropertiesResponseUefiSettingsPtrOutput) ToVirtualMachinePropertiesResponseUefiSettingsPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseUefiSettingsPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseUefiSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesResponseUefiSettings] {
+	return pulumix.Output[*VirtualMachinePropertiesResponseUefiSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseUefiSettingsPtrOutput) Elem() VirtualMachinePropertiesResponseUefiSettingsOutput {
@@ -12711,6 +14632,12 @@ func (o VirtualMachinePropertiesResponseWindowsConfigurationOutput) ToVirtualMac
 	return o
 }
 
+func (o VirtualMachinePropertiesResponseWindowsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesResponseWindowsConfiguration] {
+	return pulumix.Output[VirtualMachinePropertiesResponseWindowsConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether to EnableAutomaticUpdates on the machine
 func (o VirtualMachinePropertiesResponseWindowsConfigurationOutput) EnableAutomaticUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesResponseWindowsConfiguration) *bool { return v.EnableAutomaticUpdates }).(pulumi.BoolPtrOutput)
@@ -12745,6 +14672,12 @@ func (o VirtualMachinePropertiesResponseWindowsConfigurationPtrOutput) ToVirtual
 
 func (o VirtualMachinePropertiesResponseWindowsConfigurationPtrOutput) ToVirtualMachinePropertiesResponseWindowsConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseWindowsConfigurationPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesResponseWindowsConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesResponseWindowsConfiguration] {
+	return pulumix.Output[*VirtualMachinePropertiesResponseWindowsConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesResponseWindowsConfigurationPtrOutput) Elem() VirtualMachinePropertiesResponseWindowsConfigurationOutput {
@@ -12859,6 +14792,12 @@ func (i VirtualMachinePropertiesSecurityProfileArgs) ToVirtualMachinePropertiesS
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesSecurityProfileOutput)
 }
 
+func (i VirtualMachinePropertiesSecurityProfileArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesSecurityProfile] {
+	return pulumix.Output[VirtualMachinePropertiesSecurityProfile]{
+		OutputState: i.ToVirtualMachinePropertiesSecurityProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePropertiesSecurityProfileArgs) ToVirtualMachinePropertiesSecurityProfilePtrOutput() VirtualMachinePropertiesSecurityProfilePtrOutput {
 	return i.ToVirtualMachinePropertiesSecurityProfilePtrOutputWithContext(context.Background())
 }
@@ -12900,6 +14839,12 @@ func (i *virtualMachinePropertiesSecurityProfilePtrType) ToVirtualMachinePropert
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesSecurityProfilePtrOutput)
 }
 
+func (i *virtualMachinePropertiesSecurityProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesSecurityProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesSecurityProfile]{
+		OutputState: i.ToVirtualMachinePropertiesSecurityProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecurityProfile - Specifies the security settings for the virtual machine.
 type VirtualMachinePropertiesSecurityProfileOutput struct{ *pulumi.OutputState }
 
@@ -12925,6 +14870,12 @@ func (o VirtualMachinePropertiesSecurityProfileOutput) ToVirtualMachinePropertie
 	}).(VirtualMachinePropertiesSecurityProfilePtrOutput)
 }
 
+func (o VirtualMachinePropertiesSecurityProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesSecurityProfile] {
+	return pulumix.Output[VirtualMachinePropertiesSecurityProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualMachinePropertiesSecurityProfileOutput) EnableTPM() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesSecurityProfile) *bool { return v.EnableTPM }).(pulumi.BoolPtrOutput)
 }
@@ -12947,6 +14898,12 @@ func (o VirtualMachinePropertiesSecurityProfilePtrOutput) ToVirtualMachineProper
 
 func (o VirtualMachinePropertiesSecurityProfilePtrOutput) ToVirtualMachinePropertiesSecurityProfilePtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesSecurityProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesSecurityProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesSecurityProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesSecurityProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesSecurityProfilePtrOutput) Elem() VirtualMachinePropertiesSecurityProfileOutput {
@@ -13012,6 +14969,12 @@ func (i VirtualMachinePropertiesSshArgs) ToVirtualMachinePropertiesSshOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesSshOutput)
 }
 
+func (i VirtualMachinePropertiesSshArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesSsh] {
+	return pulumix.Output[VirtualMachinePropertiesSsh]{
+		OutputState: i.ToVirtualMachinePropertiesSshOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePropertiesSshArgs) ToVirtualMachinePropertiesSshPtrOutput() VirtualMachinePropertiesSshPtrOutput {
 	return i.ToVirtualMachinePropertiesSshPtrOutputWithContext(context.Background())
 }
@@ -13053,6 +15016,12 @@ func (i *virtualMachinePropertiesSshPtrType) ToVirtualMachinePropertiesSshPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesSshPtrOutput)
 }
 
+func (i *virtualMachinePropertiesSshPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesSsh] {
+	return pulumix.Output[*VirtualMachinePropertiesSsh]{
+		OutputState: i.ToVirtualMachinePropertiesSshPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SSH - contains settings related to ssh configuration
 type VirtualMachinePropertiesSshOutput struct{ *pulumi.OutputState }
 
@@ -13078,6 +15047,12 @@ func (o VirtualMachinePropertiesSshOutput) ToVirtualMachinePropertiesSshPtrOutpu
 	}).(VirtualMachinePropertiesSshPtrOutput)
 }
 
+func (o VirtualMachinePropertiesSshOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesSsh] {
+	return pulumix.Output[VirtualMachinePropertiesSsh]{
+		OutputState: o.OutputState,
+	}
+}
+
 // PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
 func (o VirtualMachinePropertiesSshOutput) PublicKeys() VirtualMachinePropertiesPublicKeysArrayOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesSsh) []VirtualMachinePropertiesPublicKeys { return v.PublicKeys }).(VirtualMachinePropertiesPublicKeysArrayOutput)
@@ -13095,6 +15070,12 @@ func (o VirtualMachinePropertiesSshPtrOutput) ToVirtualMachinePropertiesSshPtrOu
 
 func (o VirtualMachinePropertiesSshPtrOutput) ToVirtualMachinePropertiesSshPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesSshPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesSshPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesSsh] {
+	return pulumix.Output[*VirtualMachinePropertiesSsh]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesSshPtrOutput) Elem() VirtualMachinePropertiesSshOutput {
@@ -13152,6 +15133,12 @@ func (i VirtualMachinePropertiesSshSshArgs) ToVirtualMachinePropertiesSshSshOutp
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesSshSshOutput)
 }
 
+func (i VirtualMachinePropertiesSshSshArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesSshSsh] {
+	return pulumix.Output[VirtualMachinePropertiesSshSsh]{
+		OutputState: i.ToVirtualMachinePropertiesSshSshOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePropertiesSshSshArgs) ToVirtualMachinePropertiesSshSshPtrOutput() VirtualMachinePropertiesSshSshPtrOutput {
 	return i.ToVirtualMachinePropertiesSshSshPtrOutputWithContext(context.Background())
 }
@@ -13193,6 +15180,12 @@ func (i *virtualMachinePropertiesSshSshPtrType) ToVirtualMachinePropertiesSshSsh
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesSshSshPtrOutput)
 }
 
+func (i *virtualMachinePropertiesSshSshPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesSshSsh] {
+	return pulumix.Output[*VirtualMachinePropertiesSshSsh]{
+		OutputState: i.ToVirtualMachinePropertiesSshSshPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SSH Configuration
 type VirtualMachinePropertiesSshSshOutput struct{ *pulumi.OutputState }
 
@@ -13218,6 +15211,12 @@ func (o VirtualMachinePropertiesSshSshOutput) ToVirtualMachinePropertiesSshSshPt
 	}).(VirtualMachinePropertiesSshSshPtrOutput)
 }
 
+func (o VirtualMachinePropertiesSshSshOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesSshSsh] {
+	return pulumix.Output[VirtualMachinePropertiesSshSsh]{
+		OutputState: o.OutputState,
+	}
+}
+
 // PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
 func (o VirtualMachinePropertiesSshSshOutput) PublicKeys() VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesSshSsh) []VirtualMachinePropertiesPublicKeysPublicKeys {
@@ -13237,6 +15236,12 @@ func (o VirtualMachinePropertiesSshSshPtrOutput) ToVirtualMachinePropertiesSshSs
 
 func (o VirtualMachinePropertiesSshSshPtrOutput) ToVirtualMachinePropertiesSshSshPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesSshSshPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesSshSshPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesSshSsh] {
+	return pulumix.Output[*VirtualMachinePropertiesSshSsh]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesSshSshPtrOutput) Elem() VirtualMachinePropertiesSshSshOutput {
@@ -13306,6 +15311,12 @@ func (i VirtualMachinePropertiesStorageProfileArgs) ToVirtualMachinePropertiesSt
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesStorageProfileOutput)
 }
 
+func (i VirtualMachinePropertiesStorageProfileArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesStorageProfile] {
+	return pulumix.Output[VirtualMachinePropertiesStorageProfile]{
+		OutputState: i.ToVirtualMachinePropertiesStorageProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePropertiesStorageProfileArgs) ToVirtualMachinePropertiesStorageProfilePtrOutput() VirtualMachinePropertiesStorageProfilePtrOutput {
 	return i.ToVirtualMachinePropertiesStorageProfilePtrOutputWithContext(context.Background())
 }
@@ -13347,6 +15358,12 @@ func (i *virtualMachinePropertiesStorageProfilePtrType) ToVirtualMachineProperti
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesStorageProfilePtrOutput)
 }
 
+func (i *virtualMachinePropertiesStorageProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesStorageProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesStorageProfile]{
+		OutputState: i.ToVirtualMachinePropertiesStorageProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StorageProfile - contains information about the disks and storage information for the virtual machine
 type VirtualMachinePropertiesStorageProfileOutput struct{ *pulumi.OutputState }
 
@@ -13370,6 +15387,12 @@ func (o VirtualMachinePropertiesStorageProfileOutput) ToVirtualMachineProperties
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachinePropertiesStorageProfile) *VirtualMachinePropertiesStorageProfile {
 		return &v
 	}).(VirtualMachinePropertiesStorageProfilePtrOutput)
+}
+
+func (o VirtualMachinePropertiesStorageProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesStorageProfile] {
+	return pulumix.Output[VirtualMachinePropertiesStorageProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // adds data disks to the virtual machine
@@ -13406,6 +15429,12 @@ func (o VirtualMachinePropertiesStorageProfilePtrOutput) ToVirtualMachinePropert
 
 func (o VirtualMachinePropertiesStorageProfilePtrOutput) ToVirtualMachinePropertiesStorageProfilePtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesStorageProfilePtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesStorageProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesStorageProfile] {
+	return pulumix.Output[*VirtualMachinePropertiesStorageProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesStorageProfilePtrOutput) Elem() VirtualMachinePropertiesStorageProfileOutput {
@@ -13515,6 +15544,12 @@ func (i VirtualMachinePropertiesUefiSettingsArgs) ToVirtualMachinePropertiesUefi
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesUefiSettingsOutput)
 }
 
+func (i VirtualMachinePropertiesUefiSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesUefiSettings] {
+	return pulumix.Output[VirtualMachinePropertiesUefiSettings]{
+		OutputState: i.ToVirtualMachinePropertiesUefiSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePropertiesUefiSettingsArgs) ToVirtualMachinePropertiesUefiSettingsPtrOutput() VirtualMachinePropertiesUefiSettingsPtrOutput {
 	return i.ToVirtualMachinePropertiesUefiSettingsPtrOutputWithContext(context.Background())
 }
@@ -13556,6 +15591,12 @@ func (i *virtualMachinePropertiesUefiSettingsPtrType) ToVirtualMachineProperties
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesUefiSettingsPtrOutput)
 }
 
+func (i *virtualMachinePropertiesUefiSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesUefiSettings] {
+	return pulumix.Output[*VirtualMachinePropertiesUefiSettings]{
+		OutputState: i.ToVirtualMachinePropertiesUefiSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachinePropertiesUefiSettingsOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachinePropertiesUefiSettingsOutput) ElementType() reflect.Type {
@@ -13580,6 +15621,12 @@ func (o VirtualMachinePropertiesUefiSettingsOutput) ToVirtualMachinePropertiesUe
 	}).(VirtualMachinePropertiesUefiSettingsPtrOutput)
 }
 
+func (o VirtualMachinePropertiesUefiSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesUefiSettings] {
+	return pulumix.Output[VirtualMachinePropertiesUefiSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies whether secure boot should be enabled on the virtual machine.
 func (o VirtualMachinePropertiesUefiSettingsOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePropertiesUefiSettings) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
@@ -13597,6 +15644,12 @@ func (o VirtualMachinePropertiesUefiSettingsPtrOutput) ToVirtualMachinePropertie
 
 func (o VirtualMachinePropertiesUefiSettingsPtrOutput) ToVirtualMachinePropertiesUefiSettingsPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesUefiSettingsPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesUefiSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesUefiSettings] {
+	return pulumix.Output[*VirtualMachinePropertiesUefiSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesUefiSettingsPtrOutput) Elem() VirtualMachinePropertiesUefiSettingsOutput {
@@ -13666,6 +15719,12 @@ func (i VirtualMachinePropertiesWindowsConfigurationArgs) ToVirtualMachineProper
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesWindowsConfigurationOutput)
 }
 
+func (i VirtualMachinePropertiesWindowsConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesWindowsConfiguration] {
+	return pulumix.Output[VirtualMachinePropertiesWindowsConfiguration]{
+		OutputState: i.ToVirtualMachinePropertiesWindowsConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePropertiesWindowsConfigurationArgs) ToVirtualMachinePropertiesWindowsConfigurationPtrOutput() VirtualMachinePropertiesWindowsConfigurationPtrOutput {
 	return i.ToVirtualMachinePropertiesWindowsConfigurationPtrOutputWithContext(context.Background())
 }
@@ -13707,6 +15766,12 @@ func (i *virtualMachinePropertiesWindowsConfigurationPtrType) ToVirtualMachinePr
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesWindowsConfigurationPtrOutput)
 }
 
+func (i *virtualMachinePropertiesWindowsConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesWindowsConfiguration] {
+	return pulumix.Output[*VirtualMachinePropertiesWindowsConfiguration]{
+		OutputState: i.ToVirtualMachinePropertiesWindowsConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Windows Configuration for the virtual machine
 type VirtualMachinePropertiesWindowsConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -13730,6 +15795,12 @@ func (o VirtualMachinePropertiesWindowsConfigurationOutput) ToVirtualMachineProp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachinePropertiesWindowsConfiguration) *VirtualMachinePropertiesWindowsConfiguration {
 		return &v
 	}).(VirtualMachinePropertiesWindowsConfigurationPtrOutput)
+}
+
+func (o VirtualMachinePropertiesWindowsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePropertiesWindowsConfiguration] {
+	return pulumix.Output[VirtualMachinePropertiesWindowsConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to EnableAutomaticUpdates on the machine
@@ -13764,6 +15835,12 @@ func (o VirtualMachinePropertiesWindowsConfigurationPtrOutput) ToVirtualMachineP
 
 func (o VirtualMachinePropertiesWindowsConfigurationPtrOutput) ToVirtualMachinePropertiesWindowsConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesWindowsConfigurationPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePropertiesWindowsConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePropertiesWindowsConfiguration] {
+	return pulumix.Output[*VirtualMachinePropertiesWindowsConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePropertiesWindowsConfigurationPtrOutput) Elem() VirtualMachinePropertiesWindowsConfigurationOutput {
@@ -13842,6 +15919,12 @@ func (o VirtualMachineStatusResponseOutput) ToVirtualMachineStatusResponseOutput
 	return o
 }
 
+func (o VirtualMachineStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineStatusResponse] {
+	return pulumix.Output[VirtualMachineStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // VirtualMachine provisioning error code
 func (o VirtualMachineStatusResponseOutput) ErrorCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineStatusResponse) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
@@ -13884,6 +15967,12 @@ func (o VirtualMachineStatusResponseProvisioningStatusOutput) ToVirtualMachineSt
 	return o
 }
 
+func (o VirtualMachineStatusResponseProvisioningStatusOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineStatusResponseProvisioningStatus] {
+	return pulumix.Output[VirtualMachineStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the operation performed on the virtual machine
 func (o VirtualMachineStatusResponseProvisioningStatusOutput) OperationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineStatusResponseProvisioningStatus) *string { return v.OperationId }).(pulumi.StringPtrOutput)
@@ -13906,6 +15995,12 @@ func (o VirtualMachineStatusResponseProvisioningStatusPtrOutput) ToVirtualMachin
 
 func (o VirtualMachineStatusResponseProvisioningStatusPtrOutput) ToVirtualMachineStatusResponseProvisioningStatusPtrOutputWithContext(ctx context.Context) VirtualMachineStatusResponseProvisioningStatusPtrOutput {
 	return o
+}
+
+func (o VirtualMachineStatusResponseProvisioningStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineStatusResponseProvisioningStatus] {
+	return pulumix.Output[*VirtualMachineStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineStatusResponseProvisioningStatusPtrOutput) Elem() VirtualMachineStatusResponseProvisioningStatusOutput {
@@ -13961,6 +16056,12 @@ func (o VirtualMachineVMConfigAgentInstanceViewResponseOutput) ToVirtualMachineV
 	return o
 }
 
+func (o VirtualMachineVMConfigAgentInstanceViewResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineVMConfigAgentInstanceViewResponse] {
+	return pulumix.Output[VirtualMachineVMConfigAgentInstanceViewResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource status information.
 func (o VirtualMachineVMConfigAgentInstanceViewResponseOutput) Statuses() InstanceViewStatusResponseArrayOutput {
 	return o.ApplyT(func(v VirtualMachineVMConfigAgentInstanceViewResponse) []InstanceViewStatusResponse {
@@ -13985,6 +16086,12 @@ func (o VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput) ToVirtualMachi
 
 func (o VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput) ToVirtualMachineVMConfigAgentInstanceViewResponsePtrOutputWithContext(ctx context.Context) VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput {
 	return o
+}
+
+func (o VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineVMConfigAgentInstanceViewResponse] {
+	return pulumix.Output[*VirtualMachineVMConfigAgentInstanceViewResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineVMConfigAgentInstanceViewResponsePtrOutput) Elem() VirtualMachineVMConfigAgentInstanceViewResponseOutput {
@@ -14052,6 +16159,12 @@ func (i VirtualNetworkPropertiesDhcpOptionsArgs) ToVirtualNetworkPropertiesDhcpO
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesDhcpOptionsOutput)
 }
 
+func (i VirtualNetworkPropertiesDhcpOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesDhcpOptions] {
+	return pulumix.Output[VirtualNetworkPropertiesDhcpOptions]{
+		OutputState: i.ToVirtualNetworkPropertiesDhcpOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualNetworkPropertiesDhcpOptionsArgs) ToVirtualNetworkPropertiesDhcpOptionsPtrOutput() VirtualNetworkPropertiesDhcpOptionsPtrOutput {
 	return i.ToVirtualNetworkPropertiesDhcpOptionsPtrOutputWithContext(context.Background())
 }
@@ -14093,6 +16206,12 @@ func (i *virtualNetworkPropertiesDhcpOptionsPtrType) ToVirtualNetworkPropertiesD
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesDhcpOptionsPtrOutput)
 }
 
+func (i *virtualNetworkPropertiesDhcpOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkPropertiesDhcpOptions] {
+	return pulumix.Output[*VirtualNetworkPropertiesDhcpOptions]{
+		OutputState: i.ToVirtualNetworkPropertiesDhcpOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
 type VirtualNetworkPropertiesDhcpOptionsOutput struct{ *pulumi.OutputState }
 
@@ -14118,6 +16237,12 @@ func (o VirtualNetworkPropertiesDhcpOptionsOutput) ToVirtualNetworkPropertiesDhc
 	}).(VirtualNetworkPropertiesDhcpOptionsPtrOutput)
 }
 
+func (o VirtualNetworkPropertiesDhcpOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesDhcpOptions] {
+	return pulumix.Output[VirtualNetworkPropertiesDhcpOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of DNS servers IP addresses.
 func (o VirtualNetworkPropertiesDhcpOptionsOutput) DnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualNetworkPropertiesDhcpOptions) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
@@ -14135,6 +16260,12 @@ func (o VirtualNetworkPropertiesDhcpOptionsPtrOutput) ToVirtualNetworkProperties
 
 func (o VirtualNetworkPropertiesDhcpOptionsPtrOutput) ToVirtualNetworkPropertiesDhcpOptionsPtrOutputWithContext(ctx context.Context) VirtualNetworkPropertiesDhcpOptionsPtrOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesDhcpOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkPropertiesDhcpOptions] {
+	return pulumix.Output[*VirtualNetworkPropertiesDhcpOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkPropertiesDhcpOptionsPtrOutput) Elem() VirtualNetworkPropertiesDhcpOptionsOutput {
@@ -14192,6 +16323,12 @@ func (i VirtualNetworkPropertiesIpConfigurationReferencesArgs) ToVirtualNetworkP
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesIpConfigurationReferencesOutput)
 }
 
+func (i VirtualNetworkPropertiesIpConfigurationReferencesArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesIpConfigurationReferences] {
+	return pulumix.Output[VirtualNetworkPropertiesIpConfigurationReferences]{
+		OutputState: i.ToVirtualNetworkPropertiesIpConfigurationReferencesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualNetworkPropertiesIpConfigurationReferencesArrayInput is an input type that accepts VirtualNetworkPropertiesIpConfigurationReferencesArray and VirtualNetworkPropertiesIpConfigurationReferencesArrayOutput values.
 // You can construct a concrete instance of `VirtualNetworkPropertiesIpConfigurationReferencesArrayInput` via:
 //
@@ -14217,6 +16354,12 @@ func (i VirtualNetworkPropertiesIpConfigurationReferencesArray) ToVirtualNetwork
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesIpConfigurationReferencesArrayOutput)
 }
 
+func (i VirtualNetworkPropertiesIpConfigurationReferencesArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkPropertiesIpConfigurationReferences] {
+	return pulumix.Output[[]VirtualNetworkPropertiesIpConfigurationReferences]{
+		OutputState: i.ToVirtualNetworkPropertiesIpConfigurationReferencesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IPConfigurationReference - Describes a IPConfiguration under the virtual network
 type VirtualNetworkPropertiesIpConfigurationReferencesOutput struct{ *pulumi.OutputState }
 
@@ -14230,6 +16373,12 @@ func (o VirtualNetworkPropertiesIpConfigurationReferencesOutput) ToVirtualNetwor
 
 func (o VirtualNetworkPropertiesIpConfigurationReferencesOutput) ToVirtualNetworkPropertiesIpConfigurationReferencesOutputWithContext(ctx context.Context) VirtualNetworkPropertiesIpConfigurationReferencesOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesIpConfigurationReferencesOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesIpConfigurationReferences] {
+	return pulumix.Output[VirtualNetworkPropertiesIpConfigurationReferences]{
+		OutputState: o.OutputState,
+	}
 }
 
 // IPConfigurationID
@@ -14249,6 +16398,12 @@ func (o VirtualNetworkPropertiesIpConfigurationReferencesArrayOutput) ToVirtualN
 
 func (o VirtualNetworkPropertiesIpConfigurationReferencesArrayOutput) ToVirtualNetworkPropertiesIpConfigurationReferencesArrayOutputWithContext(ctx context.Context) VirtualNetworkPropertiesIpConfigurationReferencesArrayOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesIpConfigurationReferencesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkPropertiesIpConfigurationReferences] {
+	return pulumix.Output[[]VirtualNetworkPropertiesIpConfigurationReferences]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkPropertiesIpConfigurationReferencesArrayOutput) Index(i pulumi.IntInput) VirtualNetworkPropertiesIpConfigurationReferencesOutput {
@@ -14278,6 +16433,12 @@ func (o VirtualNetworkPropertiesResponseDhcpOptionsOutput) ToVirtualNetworkPrope
 	return o
 }
 
+func (o VirtualNetworkPropertiesResponseDhcpOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesResponseDhcpOptions] {
+	return pulumix.Output[VirtualNetworkPropertiesResponseDhcpOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of DNS servers IP addresses.
 func (o VirtualNetworkPropertiesResponseDhcpOptionsOutput) DnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualNetworkPropertiesResponseDhcpOptions) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
@@ -14295,6 +16456,12 @@ func (o VirtualNetworkPropertiesResponseDhcpOptionsPtrOutput) ToVirtualNetworkPr
 
 func (o VirtualNetworkPropertiesResponseDhcpOptionsPtrOutput) ToVirtualNetworkPropertiesResponseDhcpOptionsPtrOutputWithContext(ctx context.Context) VirtualNetworkPropertiesResponseDhcpOptionsPtrOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesResponseDhcpOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkPropertiesResponseDhcpOptions] {
+	return pulumix.Output[*VirtualNetworkPropertiesResponseDhcpOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkPropertiesResponseDhcpOptionsPtrOutput) Elem() VirtualNetworkPropertiesResponseDhcpOptionsOutput {
@@ -14338,6 +16505,12 @@ func (o VirtualNetworkPropertiesResponseIpConfigurationReferencesOutput) ToVirtu
 	return o
 }
 
+func (o VirtualNetworkPropertiesResponseIpConfigurationReferencesOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesResponseIpConfigurationReferences] {
+	return pulumix.Output[VirtualNetworkPropertiesResponseIpConfigurationReferences]{
+		OutputState: o.OutputState,
+	}
+}
+
 // IPConfigurationID
 func (o VirtualNetworkPropertiesResponseIpConfigurationReferencesOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkPropertiesResponseIpConfigurationReferences) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -14355,6 +16528,12 @@ func (o VirtualNetworkPropertiesResponseIpConfigurationReferencesArrayOutput) To
 
 func (o VirtualNetworkPropertiesResponseIpConfigurationReferencesArrayOutput) ToVirtualNetworkPropertiesResponseIpConfigurationReferencesArrayOutputWithContext(ctx context.Context) VirtualNetworkPropertiesResponseIpConfigurationReferencesArrayOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesResponseIpConfigurationReferencesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkPropertiesResponseIpConfigurationReferences] {
+	return pulumix.Output[[]VirtualNetworkPropertiesResponseIpConfigurationReferences]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkPropertiesResponseIpConfigurationReferencesArrayOutput) Index(i pulumi.IntInput) VirtualNetworkPropertiesResponseIpConfigurationReferencesOutput {
@@ -14388,6 +16567,12 @@ func (o VirtualNetworkPropertiesResponseRouteTableOutput) ToVirtualNetworkProper
 
 func (o VirtualNetworkPropertiesResponseRouteTableOutput) ToVirtualNetworkPropertiesResponseRouteTableOutputWithContext(ctx context.Context) VirtualNetworkPropertiesResponseRouteTableOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesResponseRouteTableOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesResponseRouteTable] {
+	return pulumix.Output[VirtualNetworkPropertiesResponseRouteTable]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Etag - Gets a unique read-only string that changes whenever the resource is updated.
@@ -14424,6 +16609,12 @@ func (o VirtualNetworkPropertiesResponseRouteTablePtrOutput) ToVirtualNetworkPro
 
 func (o VirtualNetworkPropertiesResponseRouteTablePtrOutput) ToVirtualNetworkPropertiesResponseRouteTablePtrOutputWithContext(ctx context.Context) VirtualNetworkPropertiesResponseRouteTablePtrOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesResponseRouteTablePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkPropertiesResponseRouteTable] {
+	return pulumix.Output[*VirtualNetworkPropertiesResponseRouteTable]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkPropertiesResponseRouteTablePtrOutput) Elem() VirtualNetworkPropertiesResponseRouteTableOutput {
@@ -14501,6 +16692,12 @@ func (o VirtualNetworkPropertiesResponseRoutesOutput) ToVirtualNetworkProperties
 	return o
 }
 
+func (o VirtualNetworkPropertiesResponseRoutesOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesResponseRoutes] {
+	return pulumix.Output[VirtualNetworkPropertiesResponseRoutes]{
+		OutputState: o.OutputState,
+	}
+}
+
 // AddressPrefix - The destination CIDR to which the route applies.
 func (o VirtualNetworkPropertiesResponseRoutesOutput) AddressPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkPropertiesResponseRoutes) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
@@ -14528,6 +16725,12 @@ func (o VirtualNetworkPropertiesResponseRoutesArrayOutput) ToVirtualNetworkPrope
 
 func (o VirtualNetworkPropertiesResponseRoutesArrayOutput) ToVirtualNetworkPropertiesResponseRoutesArrayOutputWithContext(ctx context.Context) VirtualNetworkPropertiesResponseRoutesArrayOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesResponseRoutesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkPropertiesResponseRoutes] {
+	return pulumix.Output[[]VirtualNetworkPropertiesResponseRoutes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkPropertiesResponseRoutesArrayOutput) Index(i pulumi.IntInput) VirtualNetworkPropertiesResponseRoutesOutput {
@@ -14569,6 +16772,12 @@ func (o VirtualNetworkPropertiesResponseSubnetsOutput) ToVirtualNetworkPropertie
 
 func (o VirtualNetworkPropertiesResponseSubnetsOutput) ToVirtualNetworkPropertiesResponseSubnetsOutputWithContext(ctx context.Context) VirtualNetworkPropertiesResponseSubnetsOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesResponseSubnetsOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesResponseSubnets] {
+	return pulumix.Output[VirtualNetworkPropertiesResponseSubnets]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cidr for this subnet - IPv4, IPv6
@@ -14629,6 +16838,12 @@ func (o VirtualNetworkPropertiesResponseSubnetsArrayOutput) ToVirtualNetworkProp
 	return o
 }
 
+func (o VirtualNetworkPropertiesResponseSubnetsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkPropertiesResponseSubnets] {
+	return pulumix.Output[[]VirtualNetworkPropertiesResponseSubnets]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualNetworkPropertiesResponseSubnetsArrayOutput) Index(i pulumi.IntInput) VirtualNetworkPropertiesResponseSubnetsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkPropertiesResponseSubnets {
 		return vs[0].([]VirtualNetworkPropertiesResponseSubnets)[vs[1].(int)]
@@ -14682,6 +16897,12 @@ func (i VirtualNetworkPropertiesRouteTableArgs) ToVirtualNetworkPropertiesRouteT
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesRouteTableOutput)
 }
 
+func (i VirtualNetworkPropertiesRouteTableArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesRouteTable] {
+	return pulumix.Output[VirtualNetworkPropertiesRouteTable]{
+		OutputState: i.ToVirtualNetworkPropertiesRouteTableOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualNetworkPropertiesRouteTableArgs) ToVirtualNetworkPropertiesRouteTablePtrOutput() VirtualNetworkPropertiesRouteTablePtrOutput {
 	return i.ToVirtualNetworkPropertiesRouteTablePtrOutputWithContext(context.Background())
 }
@@ -14723,6 +16944,12 @@ func (i *virtualNetworkPropertiesRouteTablePtrType) ToVirtualNetworkPropertiesRo
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesRouteTablePtrOutput)
 }
 
+func (i *virtualNetworkPropertiesRouteTablePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkPropertiesRouteTable] {
+	return pulumix.Output[*VirtualNetworkPropertiesRouteTable]{
+		OutputState: i.ToVirtualNetworkPropertiesRouteTablePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RouteTable for the subnet
 type VirtualNetworkPropertiesRouteTableOutput struct{ *pulumi.OutputState }
 
@@ -14746,6 +16973,12 @@ func (o VirtualNetworkPropertiesRouteTableOutput) ToVirtualNetworkPropertiesRout
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualNetworkPropertiesRouteTable) *VirtualNetworkPropertiesRouteTable {
 		return &v
 	}).(VirtualNetworkPropertiesRouteTablePtrOutput)
+}
+
+func (o VirtualNetworkPropertiesRouteTableOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesRouteTable] {
+	return pulumix.Output[VirtualNetworkPropertiesRouteTable]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Etag - Gets a unique read-only string that changes whenever the resource is updated.
@@ -14780,6 +17013,12 @@ func (o VirtualNetworkPropertiesRouteTablePtrOutput) ToVirtualNetworkPropertiesR
 
 func (o VirtualNetworkPropertiesRouteTablePtrOutput) ToVirtualNetworkPropertiesRouteTablePtrOutputWithContext(ctx context.Context) VirtualNetworkPropertiesRouteTablePtrOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesRouteTablePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkPropertiesRouteTable] {
+	return pulumix.Output[*VirtualNetworkPropertiesRouteTable]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkPropertiesRouteTablePtrOutput) Elem() VirtualNetworkPropertiesRouteTableOutput {
@@ -14875,6 +17114,12 @@ func (i VirtualNetworkPropertiesRoutesArgs) ToVirtualNetworkPropertiesRoutesOutp
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesRoutesOutput)
 }
 
+func (i VirtualNetworkPropertiesRoutesArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesRoutes] {
+	return pulumix.Output[VirtualNetworkPropertiesRoutes]{
+		OutputState: i.ToVirtualNetworkPropertiesRoutesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualNetworkPropertiesRoutesArrayInput is an input type that accepts VirtualNetworkPropertiesRoutesArray and VirtualNetworkPropertiesRoutesArrayOutput values.
 // You can construct a concrete instance of `VirtualNetworkPropertiesRoutesArrayInput` via:
 //
@@ -14900,6 +17145,12 @@ func (i VirtualNetworkPropertiesRoutesArray) ToVirtualNetworkPropertiesRoutesArr
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesRoutesArrayOutput)
 }
 
+func (i VirtualNetworkPropertiesRoutesArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkPropertiesRoutes] {
+	return pulumix.Output[[]VirtualNetworkPropertiesRoutes]{
+		OutputState: i.ToVirtualNetworkPropertiesRoutesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Route is associated with a subnet.
 type VirtualNetworkPropertiesRoutesOutput struct{ *pulumi.OutputState }
 
@@ -14913,6 +17164,12 @@ func (o VirtualNetworkPropertiesRoutesOutput) ToVirtualNetworkPropertiesRoutesOu
 
 func (o VirtualNetworkPropertiesRoutesOutput) ToVirtualNetworkPropertiesRoutesOutputWithContext(ctx context.Context) VirtualNetworkPropertiesRoutesOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesRoutesOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesRoutes] {
+	return pulumix.Output[VirtualNetworkPropertiesRoutes]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AddressPrefix - The destination CIDR to which the route applies.
@@ -14942,6 +17199,12 @@ func (o VirtualNetworkPropertiesRoutesArrayOutput) ToVirtualNetworkPropertiesRou
 
 func (o VirtualNetworkPropertiesRoutesArrayOutput) ToVirtualNetworkPropertiesRoutesArrayOutputWithContext(ctx context.Context) VirtualNetworkPropertiesRoutesArrayOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesRoutesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkPropertiesRoutes] {
+	return pulumix.Output[[]VirtualNetworkPropertiesRoutes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkPropertiesRoutesArrayOutput) Index(i pulumi.IntInput) VirtualNetworkPropertiesRoutesOutput {
@@ -15013,6 +17276,12 @@ func (i VirtualNetworkPropertiesSubnetsArgs) ToVirtualNetworkPropertiesSubnetsOu
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesSubnetsOutput)
 }
 
+func (i VirtualNetworkPropertiesSubnetsArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesSubnets] {
+	return pulumix.Output[VirtualNetworkPropertiesSubnets]{
+		OutputState: i.ToVirtualNetworkPropertiesSubnetsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualNetworkPropertiesSubnetsArrayInput is an input type that accepts VirtualNetworkPropertiesSubnetsArray and VirtualNetworkPropertiesSubnetsArrayOutput values.
 // You can construct a concrete instance of `VirtualNetworkPropertiesSubnetsArrayInput` via:
 //
@@ -15038,6 +17307,12 @@ func (i VirtualNetworkPropertiesSubnetsArray) ToVirtualNetworkPropertiesSubnetsA
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesSubnetsArrayOutput)
 }
 
+func (i VirtualNetworkPropertiesSubnetsArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkPropertiesSubnets] {
+	return pulumix.Output[[]VirtualNetworkPropertiesSubnets]{
+		OutputState: i.ToVirtualNetworkPropertiesSubnetsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Subnet subnet in a virtual network resource.
 type VirtualNetworkPropertiesSubnetsOutput struct{ *pulumi.OutputState }
 
@@ -15051,6 +17326,12 @@ func (o VirtualNetworkPropertiesSubnetsOutput) ToVirtualNetworkPropertiesSubnets
 
 func (o VirtualNetworkPropertiesSubnetsOutput) ToVirtualNetworkPropertiesSubnetsOutputWithContext(ctx context.Context) VirtualNetworkPropertiesSubnetsOutput {
 	return o
+}
+
+func (o VirtualNetworkPropertiesSubnetsOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkPropertiesSubnets] {
+	return pulumix.Output[VirtualNetworkPropertiesSubnets]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cidr for this subnet - IPv4, IPv6
@@ -15109,6 +17390,12 @@ func (o VirtualNetworkPropertiesSubnetsArrayOutput) ToVirtualNetworkPropertiesSu
 	return o
 }
 
+func (o VirtualNetworkPropertiesSubnetsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkPropertiesSubnets] {
+	return pulumix.Output[[]VirtualNetworkPropertiesSubnets]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualNetworkPropertiesSubnetsArrayOutput) Index(i pulumi.IntInput) VirtualNetworkPropertiesSubnetsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkPropertiesSubnets {
 		return vs[0].([]VirtualNetworkPropertiesSubnets)[vs[1].(int)]
@@ -15137,6 +17424,12 @@ func (o VirtualNetworkStatusResponseOutput) ToVirtualNetworkStatusResponseOutput
 
 func (o VirtualNetworkStatusResponseOutput) ToVirtualNetworkStatusResponseOutputWithContext(ctx context.Context) VirtualNetworkStatusResponseOutput {
 	return o
+}
+
+func (o VirtualNetworkStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkStatusResponse] {
+	return pulumix.Output[VirtualNetworkStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // VirtualNetwork provisioning error code
@@ -15176,6 +17469,12 @@ func (o VirtualNetworkStatusResponseProvisioningStatusOutput) ToVirtualNetworkSt
 	return o
 }
 
+func (o VirtualNetworkStatusResponseProvisioningStatusOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkStatusResponseProvisioningStatus] {
+	return pulumix.Output[VirtualNetworkStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the operation performed on the virtual network
 func (o VirtualNetworkStatusResponseProvisioningStatusOutput) OperationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkStatusResponseProvisioningStatus) *string { return v.OperationId }).(pulumi.StringPtrOutput)
@@ -15198,6 +17497,12 @@ func (o VirtualNetworkStatusResponseProvisioningStatusPtrOutput) ToVirtualNetwor
 
 func (o VirtualNetworkStatusResponseProvisioningStatusPtrOutput) ToVirtualNetworkStatusResponseProvisioningStatusPtrOutputWithContext(ctx context.Context) VirtualNetworkStatusResponseProvisioningStatusPtrOutput {
 	return o
+}
+
+func (o VirtualNetworkStatusResponseProvisioningStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkStatusResponseProvisioningStatus] {
+	return pulumix.Output[*VirtualNetworkStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkStatusResponseProvisioningStatusPtrOutput) Elem() VirtualNetworkStatusResponseProvisioningStatusOutput {

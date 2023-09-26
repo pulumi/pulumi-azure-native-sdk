@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Application Insights component billing features
@@ -119,6 +120,12 @@ func (i *ComponentCurrentBillingFeature) ToComponentCurrentBillingFeatureOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ComponentCurrentBillingFeatureOutput)
 }
 
+func (i *ComponentCurrentBillingFeature) ToOutput(ctx context.Context) pulumix.Output[*ComponentCurrentBillingFeature] {
+	return pulumix.Output[*ComponentCurrentBillingFeature]{
+		OutputState: i.ToComponentCurrentBillingFeatureOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ComponentCurrentBillingFeatureOutput struct{ *pulumi.OutputState }
 
 func (ComponentCurrentBillingFeatureOutput) ElementType() reflect.Type {
@@ -131,6 +138,12 @@ func (o ComponentCurrentBillingFeatureOutput) ToComponentCurrentBillingFeatureOu
 
 func (o ComponentCurrentBillingFeatureOutput) ToComponentCurrentBillingFeatureOutputWithContext(ctx context.Context) ComponentCurrentBillingFeatureOutput {
 	return o
+}
+
+func (o ComponentCurrentBillingFeatureOutput) ToOutput(ctx context.Context) pulumix.Output[*ComponentCurrentBillingFeature] {
+	return pulumix.Output[*ComponentCurrentBillingFeature]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Current enabled pricing plan. When the component is in the Enterprise plan, this will list both 'Basic' and 'Application Insights Enterprise'.

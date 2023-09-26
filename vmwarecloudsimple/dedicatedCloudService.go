@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Dedicated cloud service model
@@ -136,6 +137,12 @@ func (i *DedicatedCloudService) ToDedicatedCloudServiceOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedCloudServiceOutput)
 }
 
+func (i *DedicatedCloudService) ToOutput(ctx context.Context) pulumix.Output[*DedicatedCloudService] {
+	return pulumix.Output[*DedicatedCloudService]{
+		OutputState: i.ToDedicatedCloudServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DedicatedCloudServiceOutput struct{ *pulumi.OutputState }
 
 func (DedicatedCloudServiceOutput) ElementType() reflect.Type {
@@ -148,6 +155,12 @@ func (o DedicatedCloudServiceOutput) ToDedicatedCloudServiceOutput() DedicatedCl
 
 func (o DedicatedCloudServiceOutput) ToDedicatedCloudServiceOutputWithContext(ctx context.Context) DedicatedCloudServiceOutput {
 	return o
+}
+
+func (o DedicatedCloudServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*DedicatedCloudService] {
+	return pulumix.Output[*DedicatedCloudService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // gateway Subnet for the account. It will collect the subnet address and always treat it as /28

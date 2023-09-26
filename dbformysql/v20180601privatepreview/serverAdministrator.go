@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a and external administrator to be created.
@@ -150,6 +151,12 @@ func (i *ServerAdministrator) ToServerAdministratorOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ServerAdministratorOutput)
 }
 
+func (i *ServerAdministrator) ToOutput(ctx context.Context) pulumix.Output[*ServerAdministrator] {
+	return pulumix.Output[*ServerAdministrator]{
+		OutputState: i.ToServerAdministratorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerAdministratorOutput struct{ *pulumi.OutputState }
 
 func (ServerAdministratorOutput) ElementType() reflect.Type {
@@ -162,6 +169,12 @@ func (o ServerAdministratorOutput) ToServerAdministratorOutput() ServerAdministr
 
 func (o ServerAdministratorOutput) ToServerAdministratorOutputWithContext(ctx context.Context) ServerAdministratorOutput {
 	return o
+}
+
+func (o ServerAdministratorOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerAdministrator] {
+	return pulumix.Output[*ServerAdministrator]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of administrator.

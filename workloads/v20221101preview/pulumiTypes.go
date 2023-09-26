@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -44,6 +45,12 @@ func (o DiskDetailsResponseOutput) ToDiskDetailsResponseOutput() DiskDetailsResp
 
 func (o DiskDetailsResponseOutput) ToDiskDetailsResponseOutputWithContext(ctx context.Context) DiskDetailsResponseOutput {
 	return o
+}
+
+func (o DiskDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskDetailsResponse] {
+	return pulumix.Output[DiskDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The disk tier, e.g. P10, E10.
@@ -95,6 +102,12 @@ func (o DiskDetailsResponseArrayOutput) ToDiskDetailsResponseArrayOutputWithCont
 	return o
 }
 
+func (o DiskDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiskDetailsResponse] {
+	return pulumix.Output[[]DiskDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DiskDetailsResponseArrayOutput) Index(i pulumi.IntInput) DiskDetailsResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskDetailsResponse {
 		return vs[0].([]DiskDetailsResponse)[vs[1].(int)]
@@ -122,6 +135,12 @@ func (o DiskSkuResponseOutput) ToDiskSkuResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o DiskSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskSkuResponse] {
+	return pulumix.Output[DiskSkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Defines the disk sku name.
 func (o DiskSkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskSkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -139,6 +158,12 @@ func (o DiskSkuResponsePtrOutput) ToDiskSkuResponsePtrOutput() DiskSkuResponsePt
 
 func (o DiskSkuResponsePtrOutput) ToDiskSkuResponsePtrOutputWithContext(ctx context.Context) DiskSkuResponsePtrOutput {
 	return o
+}
+
+func (o DiskSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskSkuResponse] {
+	return pulumix.Output[*DiskSkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskSkuResponsePtrOutput) Elem() DiskSkuResponseOutput {
@@ -186,6 +211,12 @@ func (o DiskVolumeConfigurationResponseOutput) ToDiskVolumeConfigurationResponse
 	return o
 }
 
+func (o DiskVolumeConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskVolumeConfigurationResponse] {
+	return pulumix.Output[DiskVolumeConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The total number of disks required for the concerned volume.
 func (o DiskVolumeConfigurationResponseOutput) Count() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v DiskVolumeConfigurationResponse) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
@@ -213,6 +244,12 @@ func (o DiskVolumeConfigurationResponsePtrOutput) ToDiskVolumeConfigurationRespo
 
 func (o DiskVolumeConfigurationResponsePtrOutput) ToDiskVolumeConfigurationResponsePtrOutputWithContext(ctx context.Context) DiskVolumeConfigurationResponsePtrOutput {
 	return o
+}
+
+func (o DiskVolumeConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskVolumeConfigurationResponse] {
+	return pulumix.Output[*DiskVolumeConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskVolumeConfigurationResponsePtrOutput) Elem() DiskVolumeConfigurationResponseOutput {
@@ -278,6 +315,12 @@ func (o SAPAvailabilityZonePairResponseOutput) ToSAPAvailabilityZonePairResponse
 	return o
 }
 
+func (o SAPAvailabilityZonePairResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SAPAvailabilityZonePairResponse] {
+	return pulumix.Output[SAPAvailabilityZonePairResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The zone A.
 func (o SAPAvailabilityZonePairResponseOutput) ZoneA() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SAPAvailabilityZonePairResponse) *float64 { return v.ZoneA }).(pulumi.Float64PtrOutput)
@@ -300,6 +343,12 @@ func (o SAPAvailabilityZonePairResponseArrayOutput) ToSAPAvailabilityZonePairRes
 
 func (o SAPAvailabilityZonePairResponseArrayOutput) ToSAPAvailabilityZonePairResponseArrayOutputWithContext(ctx context.Context) SAPAvailabilityZonePairResponseArrayOutput {
 	return o
+}
+
+func (o SAPAvailabilityZonePairResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SAPAvailabilityZonePairResponse] {
+	return pulumix.Output[[]SAPAvailabilityZonePairResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SAPAvailabilityZonePairResponseArrayOutput) Index(i pulumi.IntInput) SAPAvailabilityZonePairResponseOutput {
@@ -331,6 +380,12 @@ func (o SAPDiskConfigurationResponseOutput) ToSAPDiskConfigurationResponseOutput
 	return o
 }
 
+func (o SAPDiskConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SAPDiskConfigurationResponse] {
+	return pulumix.Output[SAPDiskConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The recommended disk details for a given VM Sku.
 func (o SAPDiskConfigurationResponseOutput) RecommendedConfiguration() DiskVolumeConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v SAPDiskConfigurationResponse) *DiskVolumeConfigurationResponse {
@@ -355,6 +410,12 @@ func (o SAPDiskConfigurationResponseMapOutput) ToSAPDiskConfigurationResponseMap
 
 func (o SAPDiskConfigurationResponseMapOutput) ToSAPDiskConfigurationResponseMapOutputWithContext(ctx context.Context) SAPDiskConfigurationResponseMapOutput {
 	return o
+}
+
+func (o SAPDiskConfigurationResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]SAPDiskConfigurationResponse] {
+	return pulumix.Output[map[string]SAPDiskConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SAPDiskConfigurationResponseMapOutput) MapIndex(k pulumi.StringInput) SAPDiskConfigurationResponseOutput {
@@ -388,6 +449,12 @@ func (o SAPSupportedSkuResponseOutput) ToSAPSupportedSkuResponseOutputWithContex
 	return o
 }
 
+func (o SAPSupportedSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SAPSupportedSkuResponse] {
+	return pulumix.Output[SAPSupportedSkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // True if the Sku is certified for App server in the SAP system.
 func (o SAPSupportedSkuResponseOutput) IsAppServerCertified() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SAPSupportedSkuResponse) *bool { return v.IsAppServerCertified }).(pulumi.BoolPtrOutput)
@@ -415,6 +482,12 @@ func (o SAPSupportedSkuResponseArrayOutput) ToSAPSupportedSkuResponseArrayOutput
 
 func (o SAPSupportedSkuResponseArrayOutput) ToSAPSupportedSkuResponseArrayOutputWithContext(ctx context.Context) SAPSupportedSkuResponseArrayOutput {
 	return o
+}
+
+func (o SAPSupportedSkuResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SAPSupportedSkuResponse] {
+	return pulumix.Output[[]SAPSupportedSkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SAPSupportedSkuResponseArrayOutput) Index(i pulumi.IntInput) SAPSupportedSkuResponseOutput {

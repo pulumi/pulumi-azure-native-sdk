@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Replication extension model.
@@ -126,6 +127,12 @@ func (i *ReplicationExtension) ToReplicationExtensionOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationExtensionOutput)
 }
 
+func (i *ReplicationExtension) ToOutput(ctx context.Context) pulumix.Output[*ReplicationExtension] {
+	return pulumix.Output[*ReplicationExtension]{
+		OutputState: i.ToReplicationExtensionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReplicationExtensionOutput struct{ *pulumi.OutputState }
 
 func (ReplicationExtensionOutput) ElementType() reflect.Type {
@@ -138,6 +145,12 @@ func (o ReplicationExtensionOutput) ToReplicationExtensionOutput() ReplicationEx
 
 func (o ReplicationExtensionOutput) ToReplicationExtensionOutputWithContext(ctx context.Context) ReplicationExtensionOutput {
 	return o
+}
+
+func (o ReplicationExtensionOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationExtension] {
+	return pulumix.Output[*ReplicationExtension]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the name of the resource.

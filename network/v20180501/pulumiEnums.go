@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of this DNS zone (Public or Private).
@@ -78,6 +79,12 @@ func (o ZoneTypeOutput) ToZoneTypePtrOutputWithContext(ctx context.Context) Zone
 	}).(ZoneTypePtrOutput)
 }
 
+func (o ZoneTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ZoneType] {
+	return pulumix.Output[ZoneType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ZoneTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o ZoneTypePtrOutput) ToZoneTypePtrOutput() ZoneTypePtrOutput {
 
 func (o ZoneTypePtrOutput) ToZoneTypePtrOutputWithContext(ctx context.Context) ZoneTypePtrOutput {
 	return o
+}
+
+func (o ZoneTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneType] {
+	return pulumix.Output[*ZoneType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneTypePtrOutput) Elem() ZoneTypeOutput {
@@ -173,6 +186,12 @@ func (in *zoneTypePtr) ToZoneTypePtrOutput() ZoneTypePtrOutput {
 
 func (in *zoneTypePtr) ToZoneTypePtrOutputWithContext(ctx context.Context) ZoneTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ZoneTypePtrOutput)
+}
+
+func (in *zoneTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ZoneType] {
+	return pulumix.Output[*ZoneType]{
+		OutputState: in.ToZoneTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

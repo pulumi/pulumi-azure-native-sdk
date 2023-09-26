@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Define the virtualMachineInstance.
@@ -156,6 +157,12 @@ func (i *VirtualMachineInstance) ToVirtualMachineInstanceOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstanceOutput)
 }
 
+func (i *VirtualMachineInstance) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstance] {
+	return pulumix.Output[*VirtualMachineInstance]{
+		OutputState: i.ToVirtualMachineInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachineInstanceOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineInstanceOutput) ElementType() reflect.Type {
@@ -168,6 +175,12 @@ func (o VirtualMachineInstanceOutput) ToVirtualMachineInstanceOutput() VirtualMa
 
 func (o VirtualMachineInstanceOutput) ToVirtualMachineInstanceOutputWithContext(ctx context.Context) VirtualMachineInstanceOutput {
 	return o
+}
+
+func (o VirtualMachineInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstance] {
+	return pulumix.Output[*VirtualMachineInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Availability Sets in vm.

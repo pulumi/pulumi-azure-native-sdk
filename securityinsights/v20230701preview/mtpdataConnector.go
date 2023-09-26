@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents MTP (Microsoft Threat Protection) data connector.
@@ -231,6 +232,12 @@ func (i *MTPDataConnector) ToMTPDataConnectorOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MTPDataConnectorOutput)
 }
 
+func (i *MTPDataConnector) ToOutput(ctx context.Context) pulumix.Output[*MTPDataConnector] {
+	return pulumix.Output[*MTPDataConnector]{
+		OutputState: i.ToMTPDataConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MTPDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (MTPDataConnectorOutput) ElementType() reflect.Type {
@@ -243,6 +250,12 @@ func (o MTPDataConnectorOutput) ToMTPDataConnectorOutput() MTPDataConnectorOutpu
 
 func (o MTPDataConnectorOutput) ToMTPDataConnectorOutputWithContext(ctx context.Context) MTPDataConnectorOutput {
 	return o
+}
+
+func (o MTPDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*MTPDataConnector] {
+	return pulumix.Output[*MTPDataConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available data types for the connector.

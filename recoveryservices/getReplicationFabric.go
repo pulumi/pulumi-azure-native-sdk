@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of an Azure Site Recovery fabric.
@@ -89,6 +90,12 @@ func (o LookupReplicationFabricResultOutput) ToLookupReplicationFabricResultOutp
 
 func (o LookupReplicationFabricResultOutput) ToLookupReplicationFabricResultOutputWithContext(ctx context.Context) LookupReplicationFabricResultOutput {
 	return o
+}
+
+func (o LookupReplicationFabricResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReplicationFabricResult] {
+	return pulumix.Output[LookupReplicationFabricResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id

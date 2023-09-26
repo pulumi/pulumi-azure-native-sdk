@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Recipient Email details.
@@ -134,6 +135,12 @@ func (i *WorkspaceNotificationRecipientEmail) ToWorkspaceNotificationRecipientEm
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceNotificationRecipientEmailOutput)
 }
 
+func (i *WorkspaceNotificationRecipientEmail) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceNotificationRecipientEmail] {
+	return pulumix.Output[*WorkspaceNotificationRecipientEmail]{
+		OutputState: i.ToWorkspaceNotificationRecipientEmailOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceNotificationRecipientEmailOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceNotificationRecipientEmailOutput) ElementType() reflect.Type {
@@ -146,6 +153,12 @@ func (o WorkspaceNotificationRecipientEmailOutput) ToWorkspaceNotificationRecipi
 
 func (o WorkspaceNotificationRecipientEmailOutput) ToWorkspaceNotificationRecipientEmailOutputWithContext(ctx context.Context) WorkspaceNotificationRecipientEmailOutput {
 	return o
+}
+
+func (o WorkspaceNotificationRecipientEmailOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceNotificationRecipientEmail] {
+	return pulumix.Output[*WorkspaceNotificationRecipientEmail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User Email subscribed to notification.

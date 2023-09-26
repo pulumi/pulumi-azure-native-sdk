@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The NetworkRack resource definition.
@@ -153,6 +154,12 @@ func (i *NetworkRack) ToNetworkRackOutputWithContext(ctx context.Context) Networ
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRackOutput)
 }
 
+func (i *NetworkRack) ToOutput(ctx context.Context) pulumix.Output[*NetworkRack] {
+	return pulumix.Output[*NetworkRack]{
+		OutputState: i.ToNetworkRackOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkRackOutput struct{ *pulumi.OutputState }
 
 func (NetworkRackOutput) ElementType() reflect.Type {
@@ -165,6 +172,12 @@ func (o NetworkRackOutput) ToNetworkRackOutput() NetworkRackOutput {
 
 func (o NetworkRackOutput) ToNetworkRackOutputWithContext(ctx context.Context) NetworkRackOutput {
 	return o
+}
+
+func (o NetworkRackOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkRack] {
+	return pulumix.Output[*NetworkRack]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Switch configuration description.

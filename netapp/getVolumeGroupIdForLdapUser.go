@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the list of group Ids for a specific LDAP User
@@ -85,6 +86,12 @@ func (o GetVolumeGroupIdForLdapUserResultOutput) ToGetVolumeGroupIdForLdapUserRe
 
 func (o GetVolumeGroupIdForLdapUserResultOutput) ToGetVolumeGroupIdForLdapUserResultOutputWithContext(ctx context.Context) GetVolumeGroupIdForLdapUserResultOutput {
 	return o
+}
+
+func (o GetVolumeGroupIdForLdapUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVolumeGroupIdForLdapUserResult] {
+	return pulumix.Output[GetVolumeGroupIdForLdapUserResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Group Id list

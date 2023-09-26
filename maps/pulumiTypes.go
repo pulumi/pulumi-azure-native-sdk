@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i CreatorPropertiesArgs) ToCreatorPropertiesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CreatorPropertiesOutput)
 }
 
+func (i CreatorPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[CreatorProperties] {
+	return pulumix.Output[CreatorProperties]{
+		OutputState: i.ToCreatorPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Creator resource properties
 type CreatorPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -61,6 +68,12 @@ func (o CreatorPropertiesOutput) ToCreatorPropertiesOutput() CreatorPropertiesOu
 
 func (o CreatorPropertiesOutput) ToCreatorPropertiesOutputWithContext(ctx context.Context) CreatorPropertiesOutput {
 	return o
+}
+
+func (o CreatorPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[CreatorProperties] {
+	return pulumix.Output[CreatorProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The storage units to be allocated. Integer values from 1 to 100, inclusive.
@@ -89,6 +102,12 @@ func (o CreatorPropertiesResponseOutput) ToCreatorPropertiesResponseOutput() Cre
 
 func (o CreatorPropertiesResponseOutput) ToCreatorPropertiesResponseOutputWithContext(ctx context.Context) CreatorPropertiesResponseOutput {
 	return o
+}
+
+func (o CreatorPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CreatorPropertiesResponse] {
+	return pulumix.Output[CreatorPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled
@@ -160,6 +179,12 @@ func (i MapsAccountPropertiesArgs) ToMapsAccountPropertiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MapsAccountPropertiesOutput)
 }
 
+func (i MapsAccountPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MapsAccountProperties] {
+	return pulumix.Output[MapsAccountProperties]{
+		OutputState: i.ToMapsAccountPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MapsAccountPropertiesArgs) ToMapsAccountPropertiesPtrOutput() MapsAccountPropertiesPtrOutput {
 	return i.ToMapsAccountPropertiesPtrOutputWithContext(context.Background())
 }
@@ -201,6 +226,12 @@ func (i *mapsAccountPropertiesPtrType) ToMapsAccountPropertiesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(MapsAccountPropertiesPtrOutput)
 }
 
+func (i *mapsAccountPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MapsAccountProperties] {
+	return pulumix.Output[*MapsAccountProperties]{
+		OutputState: i.ToMapsAccountPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Additional Map account properties
 type MapsAccountPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -226,6 +257,12 @@ func (o MapsAccountPropertiesOutput) ToMapsAccountPropertiesPtrOutputWithContext
 	}).(MapsAccountPropertiesPtrOutput)
 }
 
+func (o MapsAccountPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MapsAccountProperties] {
+	return pulumix.Output[MapsAccountProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys authentication from any usage.
 func (o MapsAccountPropertiesOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MapsAccountProperties) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
@@ -243,6 +280,12 @@ func (o MapsAccountPropertiesPtrOutput) ToMapsAccountPropertiesPtrOutput() MapsA
 
 func (o MapsAccountPropertiesPtrOutput) ToMapsAccountPropertiesPtrOutputWithContext(ctx context.Context) MapsAccountPropertiesPtrOutput {
 	return o
+}
+
+func (o MapsAccountPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MapsAccountProperties] {
+	return pulumix.Output[*MapsAccountProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MapsAccountPropertiesPtrOutput) Elem() MapsAccountPropertiesOutput {
@@ -303,6 +346,12 @@ func (o MapsAccountPropertiesResponseOutput) ToMapsAccountPropertiesResponseOutp
 	return o
 }
 
+func (o MapsAccountPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapsAccountPropertiesResponse] {
+	return pulumix.Output[MapsAccountPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys authentication from any usage.
 func (o MapsAccountPropertiesResponseOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MapsAccountPropertiesResponse) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
@@ -337,6 +386,12 @@ func (o PrivateAtlasPropertiesResponseOutput) ToPrivateAtlasPropertiesResponseOu
 
 func (o PrivateAtlasPropertiesResponseOutput) ToPrivateAtlasPropertiesResponseOutputWithContext(ctx context.Context) PrivateAtlasPropertiesResponseOutput {
 	return o
+}
+
+func (o PrivateAtlasPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateAtlasPropertiesResponse] {
+	return pulumix.Output[PrivateAtlasPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled
@@ -379,6 +434,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The SKU of the Maps Account.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -392,6 +453,12 @@ func (o SkuOutput) ToSkuOutput() SkuOutput {
 
 func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
+}
+
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the SKU, in standard format (such as S0).
@@ -420,6 +487,12 @@ func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
 
 func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
 	return o
+}
+
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the SKU, in standard format (such as S0).
@@ -461,6 +534,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The mode to create a new MySQL server.
@@ -88,6 +89,12 @@ func (o DataEncryptionTypeOutput) ToDataEncryptionTypePtrOutputWithContext(ctx c
 	}).(DataEncryptionTypePtrOutput)
 }
 
+func (o DataEncryptionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DataEncryptionType] {
+	return pulumix.Output[DataEncryptionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DataEncryptionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -121,6 +128,12 @@ func (o DataEncryptionTypePtrOutput) ToDataEncryptionTypePtrOutput() DataEncrypt
 
 func (o DataEncryptionTypePtrOutput) ToDataEncryptionTypePtrOutputWithContext(ctx context.Context) DataEncryptionTypePtrOutput {
 	return o
+}
+
+func (o DataEncryptionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataEncryptionType] {
+	return pulumix.Output[*DataEncryptionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataEncryptionTypePtrOutput) Elem() DataEncryptionTypeOutput {
@@ -183,6 +196,12 @@ func (in *dataEncryptionTypePtr) ToDataEncryptionTypePtrOutput() DataEncryptionT
 
 func (in *dataEncryptionTypePtr) ToDataEncryptionTypePtrOutputWithContext(ctx context.Context) DataEncryptionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataEncryptionTypePtrOutput)
+}
+
+func (in *dataEncryptionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataEncryptionType] {
+	return pulumix.Output[*DataEncryptionType]{
+		OutputState: in.ToDataEncryptionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Enable Log On Disk or not.

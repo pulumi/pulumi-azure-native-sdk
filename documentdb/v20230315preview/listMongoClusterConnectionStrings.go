@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List mongo cluster connection strings. This includes the default connection string using SCRAM-SHA-256, as well as other connection strings supported by the cluster.
@@ -72,6 +73,12 @@ func (o ListMongoClusterConnectionStringsResultOutput) ToListMongoClusterConnect
 
 func (o ListMongoClusterConnectionStringsResultOutput) ToListMongoClusterConnectionStringsResultOutputWithContext(ctx context.Context) ListMongoClusterConnectionStringsResultOutput {
 	return o
+}
+
+func (o ListMongoClusterConnectionStringsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListMongoClusterConnectionStringsResult] {
+	return pulumix.Output[ListMongoClusterConnectionStringsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An array that contains the connection strings for a mongo cluster.

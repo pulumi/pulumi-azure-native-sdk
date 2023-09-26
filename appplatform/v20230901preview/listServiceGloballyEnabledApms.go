@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List globally enabled APMs for a Service.
@@ -72,6 +73,12 @@ func (o ListServiceGloballyEnabledApmsResultOutput) ToListServiceGloballyEnabled
 
 func (o ListServiceGloballyEnabledApmsResultOutput) ToListServiceGloballyEnabledApmsResultOutputWithContext(ctx context.Context) ListServiceGloballyEnabledApmsResultOutput {
 	return o
+}
+
+func (o ListServiceGloballyEnabledApmsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListServiceGloballyEnabledApmsResult] {
+	return pulumix.Output[ListServiceGloballyEnabledApmsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Collection of the globally enabled APMs

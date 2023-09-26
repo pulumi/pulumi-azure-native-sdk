@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cloud shell console
@@ -106,6 +107,12 @@ func (i *ConsoleWithLocation) ToConsoleWithLocationOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ConsoleWithLocationOutput)
 }
 
+func (i *ConsoleWithLocation) ToOutput(ctx context.Context) pulumix.Output[*ConsoleWithLocation] {
+	return pulumix.Output[*ConsoleWithLocation]{
+		OutputState: i.ToConsoleWithLocationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConsoleWithLocationOutput struct{ *pulumi.OutputState }
 
 func (ConsoleWithLocationOutput) ElementType() reflect.Type {
@@ -118,6 +125,12 @@ func (o ConsoleWithLocationOutput) ToConsoleWithLocationOutput() ConsoleWithLoca
 
 func (o ConsoleWithLocationOutput) ToConsoleWithLocationOutputWithContext(ctx context.Context) ConsoleWithLocationOutput {
 	return o
+}
+
+func (o ConsoleWithLocationOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsoleWithLocation] {
+	return pulumix.Output[*ConsoleWithLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cloud shell console properties.

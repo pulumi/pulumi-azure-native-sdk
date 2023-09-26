@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Get the named hostname binding for an app (or deployment slot, if specified).
@@ -101,6 +102,12 @@ func (o LookupWebAppHostNameBindingResultOutput) ToLookupWebAppHostNameBindingRe
 
 func (o LookupWebAppHostNameBindingResultOutput) ToLookupWebAppHostNameBindingResultOutputWithContext(ctx context.Context) LookupWebAppHostNameBindingResultOutput {
 	return o
+}
+
+func (o LookupWebAppHostNameBindingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppHostNameBindingResult] {
+	return pulumix.Output[LookupWebAppHostNameBindingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure resource name.

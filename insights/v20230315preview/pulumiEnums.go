@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The criteria operator. Relevant and required only for rules of the kind LogAlert.
@@ -98,6 +99,12 @@ func (o IdentityTypeOutput) ToIdentityTypePtrOutputWithContext(ctx context.Conte
 	}).(IdentityTypePtrOutput)
 }
 
+func (o IdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityType] {
+	return pulumix.Output[IdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -131,6 +138,12 @@ func (o IdentityTypePtrOutput) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (o IdentityTypePtrOutput) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return o
+}
+
+func (o IdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
+	return pulumix.Output[*IdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityTypePtrOutput) Elem() IdentityTypeOutput {
@@ -193,6 +206,12 @@ func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
+}
+
+func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
+	return pulumix.Output[*IdentityType]{
+		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates the type of scheduled query rule. The default is LogAlert.

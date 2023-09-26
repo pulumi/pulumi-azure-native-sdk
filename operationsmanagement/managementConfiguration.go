@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The container for solution.
@@ -121,6 +122,12 @@ func (i *ManagementConfiguration) ToManagementConfigurationOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementConfigurationOutput)
 }
 
+func (i *ManagementConfiguration) ToOutput(ctx context.Context) pulumix.Output[*ManagementConfiguration] {
+	return pulumix.Output[*ManagementConfiguration]{
+		OutputState: i.ToManagementConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagementConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ManagementConfigurationOutput) ElementType() reflect.Type {
@@ -133,6 +140,12 @@ func (o ManagementConfigurationOutput) ToManagementConfigurationOutput() Managem
 
 func (o ManagementConfigurationOutput) ToManagementConfigurationOutputWithContext(ctx context.Context) ManagementConfigurationOutput {
 	return o
+}
+
+func (o ManagementConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementConfiguration] {
+	return pulumix.Output[*ManagementConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource location

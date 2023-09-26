@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A server firewall rule.
@@ -173,6 +174,12 @@ func (i *FirewallRule) ToFirewallRuleOutputWithContext(ctx context.Context) Fire
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleOutput)
 }
 
+func (i *FirewallRule) ToOutput(ctx context.Context) pulumix.Output[*FirewallRule] {
+	return pulumix.Output[*FirewallRule]{
+		OutputState: i.ToFirewallRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallRuleOutput struct{ *pulumi.OutputState }
 
 func (FirewallRuleOutput) ElementType() reflect.Type {
@@ -185,6 +192,12 @@ func (o FirewallRuleOutput) ToFirewallRuleOutput() FirewallRuleOutput {
 
 func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
 	return o
+}
+
+func (o FirewallRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallRule] {
+	return pulumix.Output[*FirewallRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress. Use value '0.0.0.0' for all Azure-internal IP addresses.

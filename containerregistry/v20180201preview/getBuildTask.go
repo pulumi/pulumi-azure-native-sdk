@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the properties of a specified build task.
@@ -113,6 +114,12 @@ func (o LookupBuildTaskResultOutput) ToLookupBuildTaskResultOutput() LookupBuild
 
 func (o LookupBuildTaskResultOutput) ToLookupBuildTaskResultOutputWithContext(ctx context.Context) LookupBuildTaskResultOutput {
 	return o
+}
+
+func (o LookupBuildTaskResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBuildTaskResult] {
+	return pulumix.Output[LookupBuildTaskResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alternative updatable name for a build task.

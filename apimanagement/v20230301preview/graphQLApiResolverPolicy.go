@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Policy Contract details.
@@ -153,6 +154,12 @@ func (i *GraphQLApiResolverPolicy) ToGraphQLApiResolverPolicyOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiResolverPolicyOutput)
 }
 
+func (i *GraphQLApiResolverPolicy) ToOutput(ctx context.Context) pulumix.Output[*GraphQLApiResolverPolicy] {
+	return pulumix.Output[*GraphQLApiResolverPolicy]{
+		OutputState: i.ToGraphQLApiResolverPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GraphQLApiResolverPolicyOutput struct{ *pulumi.OutputState }
 
 func (GraphQLApiResolverPolicyOutput) ElementType() reflect.Type {
@@ -165,6 +172,12 @@ func (o GraphQLApiResolverPolicyOutput) ToGraphQLApiResolverPolicyOutput() Graph
 
 func (o GraphQLApiResolverPolicyOutput) ToGraphQLApiResolverPolicyOutputWithContext(ctx context.Context) GraphQLApiResolverPolicyOutput {
 	return o
+}
+
+func (o GraphQLApiResolverPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*GraphQLApiResolverPolicy] {
+	return pulumix.Output[*GraphQLApiResolverPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Format of the policyContent.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment with the given Id.
@@ -87,6 +88,12 @@ func (o LookupSqlResourceSqlRoleAssignmentResultOutput) ToLookupSqlResourceSqlRo
 
 func (o LookupSqlResourceSqlRoleAssignmentResultOutput) ToLookupSqlResourceSqlRoleAssignmentResultOutputWithContext(ctx context.Context) LookupSqlResourceSqlRoleAssignmentResultOutput {
 	return o
+}
+
+func (o LookupSqlResourceSqlRoleAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlResourceSqlRoleAssignmentResult] {
+	return pulumix.Output[LookupSqlResourceSqlRoleAssignmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The unique resource identifier of the database account.

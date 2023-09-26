@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Update classifications included in the software update configuration.
@@ -88,6 +89,12 @@ func (o OperatingSystemTypeOutput) ToOperatingSystemTypePtrOutputWithContext(ctx
 	}).(OperatingSystemTypePtrOutput)
 }
 
+func (o OperatingSystemTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OperatingSystemType] {
+	return pulumix.Output[OperatingSystemType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OperatingSystemTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -121,6 +128,12 @@ func (o OperatingSystemTypePtrOutput) ToOperatingSystemTypePtrOutput() Operating
 
 func (o OperatingSystemTypePtrOutput) ToOperatingSystemTypePtrOutputWithContext(ctx context.Context) OperatingSystemTypePtrOutput {
 	return o
+}
+
+func (o OperatingSystemTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemType] {
+	return pulumix.Output[*OperatingSystemType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OperatingSystemTypePtrOutput) Elem() OperatingSystemTypeOutput {
@@ -183,6 +196,12 @@ func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutput() OperatingSyst
 
 func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutputWithContext(ctx context.Context) OperatingSystemTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypePtrOutput)
+}
+
+func (in *operatingSystemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemType] {
+	return pulumix.Output[*OperatingSystemType]{
+		OutputState: in.ToOperatingSystemTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
@@ -279,6 +298,12 @@ func (o TagOperatorsOutput) ToTagOperatorsPtrOutputWithContext(ctx context.Conte
 	}).(TagOperatorsPtrOutput)
 }
 
+func (o TagOperatorsOutput) ToOutput(ctx context.Context) pulumix.Output[TagOperators] {
+	return pulumix.Output[TagOperators]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TagOperatorsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -312,6 +337,12 @@ func (o TagOperatorsPtrOutput) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
 
 func (o TagOperatorsPtrOutput) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
 	return o
+}
+
+func (o TagOperatorsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagOperators] {
+	return pulumix.Output[*TagOperators]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagOperatorsPtrOutput) Elem() TagOperatorsOutput {
@@ -374,6 +405,12 @@ func (in *tagOperatorsPtr) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
 
 func (in *tagOperatorsPtr) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TagOperatorsPtrOutput)
+}
+
+func (in *tagOperatorsPtr) ToOutput(ctx context.Context) pulumix.Output[*TagOperators] {
+	return pulumix.Output[*TagOperators]{
+		OutputState: in.ToTagOperatorsPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Update classification included in the software update configuration. A comma separated string with required values

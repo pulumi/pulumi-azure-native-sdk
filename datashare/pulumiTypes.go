@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
+func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity of resource
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -61,6 +68,12 @@ func (o IdentityOutput) ToIdentityOutput() IdentityOutput {
 
 func (o IdentityOutput) ToIdentityOutputWithContext(ctx context.Context) IdentityOutput {
 	return o
+}
+
+func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identity Type
@@ -91,6 +104,12 @@ func (o IdentityResponseOutput) ToIdentityResponseOutput() IdentityResponseOutpu
 
 func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.Context) IdentityResponseOutput {
 	return o
+}
+
+func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
+	return pulumix.Output[IdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // service principal Id
@@ -134,6 +153,12 @@ func (o ScheduledSourceSynchronizationSettingResponseOutput) ToScheduledSourceSy
 	return o
 }
 
+func (o ScheduledSourceSynchronizationSettingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduledSourceSynchronizationSettingResponse] {
+	return pulumix.Output[ScheduledSourceSynchronizationSettingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Kind of synchronization setting on share.
 // Expected value is 'ScheduleBased'.
 func (o ScheduledSourceSynchronizationSettingResponseOutput) Kind() pulumi.StringOutput {
@@ -162,6 +187,12 @@ func (o ScheduledSourceSynchronizationSettingResponseArrayOutput) ToScheduledSou
 
 func (o ScheduledSourceSynchronizationSettingResponseArrayOutput) ToScheduledSourceSynchronizationSettingResponseArrayOutputWithContext(ctx context.Context) ScheduledSourceSynchronizationSettingResponseArrayOutput {
 	return o
+}
+
+func (o ScheduledSourceSynchronizationSettingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScheduledSourceSynchronizationSettingResponse] {
+	return pulumix.Output[[]ScheduledSourceSynchronizationSettingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScheduledSourceSynchronizationSettingResponseArrayOutput) Index(i pulumi.IntInput) ScheduledSourceSynchronizationSettingResponseOutput {
@@ -201,6 +232,12 @@ func (o ShareSubscriptionSynchronizationResponseOutput) ToShareSubscriptionSynch
 
 func (o ShareSubscriptionSynchronizationResponseOutput) ToShareSubscriptionSynchronizationResponseOutputWithContext(ctx context.Context) ShareSubscriptionSynchronizationResponseOutput {
 	return o
+}
+
+func (o ShareSubscriptionSynchronizationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ShareSubscriptionSynchronizationResponse] {
+	return pulumix.Output[ShareSubscriptionSynchronizationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Synchronization duration
@@ -252,6 +289,12 @@ func (o ShareSubscriptionSynchronizationResponseArrayOutput) ToShareSubscription
 	return o
 }
 
+func (o ShareSubscriptionSynchronizationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ShareSubscriptionSynchronizationResponse] {
+	return pulumix.Output[[]ShareSubscriptionSynchronizationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ShareSubscriptionSynchronizationResponseArrayOutput) Index(i pulumi.IntInput) ShareSubscriptionSynchronizationResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShareSubscriptionSynchronizationResponse {
 		return vs[0].([]ShareSubscriptionSynchronizationResponse)[vs[1].(int)]
@@ -295,6 +338,12 @@ func (o ShareSynchronizationResponseOutput) ToShareSynchronizationResponseOutput
 
 func (o ShareSynchronizationResponseOutput) ToShareSynchronizationResponseOutputWithContext(ctx context.Context) ShareSynchronizationResponseOutput {
 	return o
+}
+
+func (o ShareSynchronizationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ShareSynchronizationResponse] {
+	return pulumix.Output[ShareSynchronizationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Email of the user who created the synchronization
@@ -361,6 +410,12 @@ func (o ShareSynchronizationResponseArrayOutput) ToShareSynchronizationResponseA
 	return o
 }
 
+func (o ShareSynchronizationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ShareSynchronizationResponse] {
+	return pulumix.Output[[]ShareSynchronizationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ShareSynchronizationResponseArrayOutput) Index(i pulumi.IntInput) ShareSynchronizationResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShareSynchronizationResponse {
 		return vs[0].([]ShareSynchronizationResponse)[vs[1].(int)]
@@ -414,6 +469,12 @@ func (o SynchronizationDetailsResponseOutput) ToSynchronizationDetailsResponseOu
 
 func (o SynchronizationDetailsResponseOutput) ToSynchronizationDetailsResponseOutputWithContext(ctx context.Context) SynchronizationDetailsResponseOutput {
 	return o
+}
+
+func (o SynchronizationDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SynchronizationDetailsResponse] {
+	return pulumix.Output[SynchronizationDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Id of data set
@@ -505,6 +566,12 @@ func (o SynchronizationDetailsResponseArrayOutput) ToSynchronizationDetailsRespo
 	return o
 }
 
+func (o SynchronizationDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SynchronizationDetailsResponse] {
+	return pulumix.Output[[]SynchronizationDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SynchronizationDetailsResponseArrayOutput) Index(i pulumi.IntInput) SynchronizationDetailsResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SynchronizationDetailsResponse {
 		return vs[0].([]SynchronizationDetailsResponse)[vs[1].(int)]
@@ -540,6 +607,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -627,6 +700,12 @@ func (i TableLevelSharingPropertiesArgs) ToTableLevelSharingPropertiesOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TableLevelSharingPropertiesOutput)
 }
 
+func (i TableLevelSharingPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[TableLevelSharingProperties] {
+	return pulumix.Output[TableLevelSharingProperties]{
+		OutputState: i.ToTableLevelSharingPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Table level sharing properties dto for kusto data set properties
 type TableLevelSharingPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -640,6 +719,12 @@ func (o TableLevelSharingPropertiesOutput) ToTableLevelSharingPropertiesOutput()
 
 func (o TableLevelSharingPropertiesOutput) ToTableLevelSharingPropertiesOutputWithContext(ctx context.Context) TableLevelSharingPropertiesOutput {
 	return o
+}
+
+func (o TableLevelSharingPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[TableLevelSharingProperties] {
+	return pulumix.Output[TableLevelSharingProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // External tables to be excluded in the data set
@@ -701,6 +786,12 @@ func (o TableLevelSharingPropertiesResponseOutput) ToTableLevelSharingProperties
 
 func (o TableLevelSharingPropertiesResponseOutput) ToTableLevelSharingPropertiesResponseOutputWithContext(ctx context.Context) TableLevelSharingPropertiesResponseOutput {
 	return o
+}
+
+func (o TableLevelSharingPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TableLevelSharingPropertiesResponse] {
+	return pulumix.Output[TableLevelSharingPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // External tables to be excluded in the data set

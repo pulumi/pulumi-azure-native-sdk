@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the event source with the specified name in the specified environment.
@@ -107,6 +108,12 @@ func (o LookupEventHubEventSourceResultOutput) ToLookupEventHubEventSourceResult
 
 func (o LookupEventHubEventSourceResultOutput) ToLookupEventHubEventSourceResultOutputWithContext(ctx context.Context) LookupEventHubEventSourceResultOutput {
 	return o
+}
+
+func (o LookupEventHubEventSourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEventHubEventSourceResult] {
+	return pulumix.Output[LookupEventHubEventSourceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the event hub's consumer group that holds the partitions from which events will be read.

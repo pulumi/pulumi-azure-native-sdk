@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of hybrid runbook worker.
@@ -148,6 +149,12 @@ func (i *HybridRunbookWorker) ToHybridRunbookWorkerOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(HybridRunbookWorkerOutput)
 }
 
+func (i *HybridRunbookWorker) ToOutput(ctx context.Context) pulumix.Output[*HybridRunbookWorker] {
+	return pulumix.Output[*HybridRunbookWorker]{
+		OutputState: i.ToHybridRunbookWorkerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HybridRunbookWorkerOutput struct{ *pulumi.OutputState }
 
 func (HybridRunbookWorkerOutput) ElementType() reflect.Type {
@@ -160,6 +167,12 @@ func (o HybridRunbookWorkerOutput) ToHybridRunbookWorkerOutput() HybridRunbookWo
 
 func (o HybridRunbookWorkerOutput) ToHybridRunbookWorkerOutputWithContext(ctx context.Context) HybridRunbookWorkerOutput {
 	return o
+}
+
+func (o HybridRunbookWorkerOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridRunbookWorker] {
+	return pulumix.Output[*HybridRunbookWorker]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the assigned machine IP address.

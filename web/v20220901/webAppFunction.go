@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Function information.
@@ -238,6 +239,12 @@ func (i *WebAppFunction) ToWebAppFunctionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppFunctionOutput)
 }
 
+func (i *WebAppFunction) ToOutput(ctx context.Context) pulumix.Output[*WebAppFunction] {
+	return pulumix.Output[*WebAppFunction]{
+		OutputState: i.ToWebAppFunctionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppFunctionOutput struct{ *pulumi.OutputState }
 
 func (WebAppFunctionOutput) ElementType() reflect.Type {
@@ -250,6 +257,12 @@ func (o WebAppFunctionOutput) ToWebAppFunctionOutput() WebAppFunctionOutput {
 
 func (o WebAppFunctionOutput) ToWebAppFunctionOutputWithContext(ctx context.Context) WebAppFunctionOutput {
 	return o
+}
+
+func (o WebAppFunctionOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppFunction] {
+	return pulumix.Output[*WebAppFunction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Config information.

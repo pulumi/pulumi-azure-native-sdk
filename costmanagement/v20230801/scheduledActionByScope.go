@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Scheduled action definition.
@@ -192,6 +193,12 @@ func (i *ScheduledActionByScope) ToScheduledActionByScopeOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledActionByScopeOutput)
 }
 
+func (i *ScheduledActionByScope) ToOutput(ctx context.Context) pulumix.Output[*ScheduledActionByScope] {
+	return pulumix.Output[*ScheduledActionByScope]{
+		OutputState: i.ToScheduledActionByScopeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScheduledActionByScopeOutput struct{ *pulumi.OutputState }
 
 func (ScheduledActionByScopeOutput) ElementType() reflect.Type {
@@ -204,6 +211,12 @@ func (o ScheduledActionByScopeOutput) ToScheduledActionByScopeOutput() Scheduled
 
 func (o ScheduledActionByScopeOutput) ToScheduledActionByScopeOutputWithContext(ctx context.Context) ScheduledActionByScopeOutput {
 	return o
+}
+
+func (o ScheduledActionByScopeOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduledActionByScope] {
+	return pulumix.Output[*ScheduledActionByScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Scheduled action name.

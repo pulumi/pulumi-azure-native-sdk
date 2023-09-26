@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details about the specified Analysis Services server.
@@ -125,6 +126,12 @@ func (o LookupServerDetailsResultOutput) ToLookupServerDetailsResultOutput() Loo
 
 func (o LookupServerDetailsResultOutput) ToLookupServerDetailsResultOutputWithContext(ctx context.Context) LookupServerDetailsResultOutput {
 	return o
+}
+
+func (o LookupServerDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServerDetailsResult] {
+	return pulumix.Output[LookupServerDetailsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A collection of AS server administrators

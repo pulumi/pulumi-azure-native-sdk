@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Single item in a List or Get VirtualNetworkRules operation
@@ -122,6 +123,12 @@ func (i *NamespaceVirtualNetworkRule) ToNamespaceVirtualNetworkRuleOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceVirtualNetworkRuleOutput)
 }
 
+func (i *NamespaceVirtualNetworkRule) ToOutput(ctx context.Context) pulumix.Output[*NamespaceVirtualNetworkRule] {
+	return pulumix.Output[*NamespaceVirtualNetworkRule]{
+		OutputState: i.ToNamespaceVirtualNetworkRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamespaceVirtualNetworkRuleOutput struct{ *pulumi.OutputState }
 
 func (NamespaceVirtualNetworkRuleOutput) ElementType() reflect.Type {
@@ -134,6 +141,12 @@ func (o NamespaceVirtualNetworkRuleOutput) ToNamespaceVirtualNetworkRuleOutput()
 
 func (o NamespaceVirtualNetworkRuleOutput) ToNamespaceVirtualNetworkRuleOutputWithContext(ctx context.Context) NamespaceVirtualNetworkRuleOutput {
 	return o
+}
+
+func (o NamespaceVirtualNetworkRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceVirtualNetworkRule] {
+	return pulumix.Output[*NamespaceVirtualNetworkRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

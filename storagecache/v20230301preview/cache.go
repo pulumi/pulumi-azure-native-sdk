@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
@@ -242,6 +243,12 @@ func (i *Cache) ToCacheOutputWithContext(ctx context.Context) CacheOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CacheOutput)
 }
 
+func (i *Cache) ToOutput(ctx context.Context) pulumix.Output[*Cache] {
+	return pulumix.Output[*Cache]{
+		OutputState: i.ToCacheOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CacheOutput struct{ *pulumi.OutputState }
 
 func (CacheOutput) ElementType() reflect.Type {
@@ -254,6 +261,12 @@ func (o CacheOutput) ToCacheOutput() CacheOutput {
 
 func (o CacheOutput) ToCacheOutputWithContext(ctx context.Context) CacheOutput {
 	return o
+}
+
+func (o CacheOutput) ToOutput(ctx context.Context) pulumix.Output[*Cache] {
+	return pulumix.Output[*Cache]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The size of this cache, in GB, when scalingFactor is 1.0. Values depend on the cache SKU - <a href="https://learn.microsoft.com/en-us/rest/api/storagecache/skus/list?tabs=HTTP">List SKUs</a>.

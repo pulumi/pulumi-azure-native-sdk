@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Peerings in a VirtualNetwork resource
@@ -194,6 +195,12 @@ func (i *VNetPeering) ToVNetPeeringOutputWithContext(ctx context.Context) VNetPe
 	return pulumi.ToOutputWithContext(ctx, i).(VNetPeeringOutput)
 }
 
+func (i *VNetPeering) ToOutput(ctx context.Context) pulumix.Output[*VNetPeering] {
+	return pulumix.Output[*VNetPeering]{
+		OutputState: i.ToVNetPeeringOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VNetPeeringOutput struct{ *pulumi.OutputState }
 
 func (VNetPeeringOutput) ElementType() reflect.Type {
@@ -206,6 +213,12 @@ func (o VNetPeeringOutput) ToVNetPeeringOutput() VNetPeeringOutput {
 
 func (o VNetPeeringOutput) ToVNetPeeringOutputWithContext(ctx context.Context) VNetPeeringOutput {
 	return o
+}
+
+func (o VNetPeeringOutput) ToOutput(ctx context.Context) pulumix.Output[*VNetPeering] {
+	return pulumix.Output[*VNetPeering]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.

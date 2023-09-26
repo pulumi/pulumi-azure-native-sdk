@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -114,6 +115,12 @@ func (i HttpRequestArgs) ToHttpRequestOutputWithContext(ctx context.Context) Htt
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRequestOutput)
 }
 
+func (i HttpRequestArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRequest] {
+	return pulumix.Output[HttpRequest]{
+		OutputState: i.ToHttpRequestOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRequestArgs) ToHttpRequestPtrOutput() HttpRequestPtrOutput {
 	return i.ToHttpRequestPtrOutputWithContext(context.Background())
 }
@@ -155,6 +162,12 @@ func (i *httpRequestPtrType) ToHttpRequestPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRequestPtrOutput)
 }
 
+func (i *httpRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRequest] {
+	return pulumix.Output[*HttpRequest]{
+		OutputState: i.ToHttpRequestPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRequestOutput struct{ *pulumi.OutputState }
 
 func (HttpRequestOutput) ElementType() reflect.Type {
@@ -177,6 +190,12 @@ func (o HttpRequestOutput) ToHttpRequestPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRequest) *HttpRequest {
 		return &v
 	}).(HttpRequestPtrOutput)
+}
+
+func (o HttpRequestOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRequest] {
+	return pulumix.Output[HttpRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the authentication method of the request.
@@ -216,6 +235,12 @@ func (o HttpRequestPtrOutput) ToHttpRequestPtrOutput() HttpRequestPtrOutput {
 
 func (o HttpRequestPtrOutput) ToHttpRequestPtrOutputWithContext(ctx context.Context) HttpRequestPtrOutput {
 	return o
+}
+
+func (o HttpRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRequest] {
+	return pulumix.Output[*HttpRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRequestPtrOutput) Elem() HttpRequestOutput {
@@ -305,6 +330,12 @@ func (o HttpRequestResponseOutput) ToHttpRequestResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o HttpRequestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRequestResponse] {
+	return pulumix.Output[HttpRequestResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the authentication method of the request.
 func (o HttpRequestResponseOutput) Authentication() pulumi.AnyOutput {
 	return o.ApplyT(func(v HttpRequestResponse) interface{} { return v.Authentication }).(pulumi.AnyOutput)
@@ -342,6 +373,12 @@ func (o HttpRequestResponsePtrOutput) ToHttpRequestResponsePtrOutput() HttpReque
 
 func (o HttpRequestResponsePtrOutput) ToHttpRequestResponsePtrOutputWithContext(ctx context.Context) HttpRequestResponsePtrOutput {
 	return o
+}
+
+func (o HttpRequestResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRequestResponse] {
+	return pulumix.Output[*HttpRequestResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRequestResponsePtrOutput) Elem() HttpRequestResponseOutput {
@@ -461,6 +498,12 @@ func (i JobActionArgs) ToJobActionOutputWithContext(ctx context.Context) JobActi
 	return pulumi.ToOutputWithContext(ctx, i).(JobActionOutput)
 }
 
+func (i JobActionArgs) ToOutput(ctx context.Context) pulumix.Output[JobAction] {
+	return pulumix.Output[JobAction]{
+		OutputState: i.ToJobActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobActionArgs) ToJobActionPtrOutput() JobActionPtrOutput {
 	return i.ToJobActionPtrOutputWithContext(context.Background())
 }
@@ -502,6 +545,12 @@ func (i *jobActionPtrType) ToJobActionPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(JobActionPtrOutput)
 }
 
+func (i *jobActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobAction] {
+	return pulumix.Output[*JobAction]{
+		OutputState: i.ToJobActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobActionOutput struct{ *pulumi.OutputState }
 
 func (JobActionOutput) ElementType() reflect.Type {
@@ -524,6 +573,12 @@ func (o JobActionOutput) ToJobActionPtrOutputWithContext(ctx context.Context) Jo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobAction) *JobAction {
 		return &v
 	}).(JobActionPtrOutput)
+}
+
+func (o JobActionOutput) ToOutput(ctx context.Context) pulumix.Output[JobAction] {
+	return pulumix.Output[JobAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the error action.
@@ -573,6 +628,12 @@ func (o JobActionPtrOutput) ToJobActionPtrOutput() JobActionPtrOutput {
 
 func (o JobActionPtrOutput) ToJobActionPtrOutputWithContext(ctx context.Context) JobActionPtrOutput {
 	return o
+}
+
+func (o JobActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobAction] {
+	return pulumix.Output[*JobAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobActionPtrOutput) Elem() JobActionOutput {
@@ -686,6 +747,12 @@ func (o JobActionResponseOutput) ToJobActionResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o JobActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobActionResponse] {
+	return pulumix.Output[JobActionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the error action.
 func (o JobActionResponseOutput) ErrorAction() JobErrorActionResponsePtrOutput {
 	return o.ApplyT(func(v JobActionResponse) *JobErrorActionResponse { return v.ErrorAction }).(JobErrorActionResponsePtrOutput)
@@ -733,6 +800,12 @@ func (o JobActionResponsePtrOutput) ToJobActionResponsePtrOutput() JobActionResp
 
 func (o JobActionResponsePtrOutput) ToJobActionResponsePtrOutputWithContext(ctx context.Context) JobActionResponsePtrOutput {
 	return o
+}
+
+func (o JobActionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobActionResponse] {
+	return pulumix.Output[*JobActionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobActionResponsePtrOutput) Elem() JobActionResponseOutput {
@@ -856,6 +929,12 @@ func (i JobCollectionPropertiesArgs) ToJobCollectionPropertiesOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(JobCollectionPropertiesOutput)
 }
 
+func (i JobCollectionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[JobCollectionProperties] {
+	return pulumix.Output[JobCollectionProperties]{
+		OutputState: i.ToJobCollectionPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobCollectionPropertiesArgs) ToJobCollectionPropertiesPtrOutput() JobCollectionPropertiesPtrOutput {
 	return i.ToJobCollectionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -897,6 +976,12 @@ func (i *jobCollectionPropertiesPtrType) ToJobCollectionPropertiesPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(JobCollectionPropertiesPtrOutput)
 }
 
+func (i *jobCollectionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobCollectionProperties] {
+	return pulumix.Output[*JobCollectionProperties]{
+		OutputState: i.ToJobCollectionPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobCollectionPropertiesOutput struct{ *pulumi.OutputState }
 
 func (JobCollectionPropertiesOutput) ElementType() reflect.Type {
@@ -919,6 +1004,12 @@ func (o JobCollectionPropertiesOutput) ToJobCollectionPropertiesPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobCollectionProperties) *JobCollectionProperties {
 		return &v
 	}).(JobCollectionPropertiesPtrOutput)
+}
+
+func (o JobCollectionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[JobCollectionProperties] {
+	return pulumix.Output[JobCollectionProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the job collection quota.
@@ -948,6 +1039,12 @@ func (o JobCollectionPropertiesPtrOutput) ToJobCollectionPropertiesPtrOutput() J
 
 func (o JobCollectionPropertiesPtrOutput) ToJobCollectionPropertiesPtrOutputWithContext(ctx context.Context) JobCollectionPropertiesPtrOutput {
 	return o
+}
+
+func (o JobCollectionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobCollectionProperties] {
+	return pulumix.Output[*JobCollectionProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobCollectionPropertiesPtrOutput) Elem() JobCollectionPropertiesOutput {
@@ -1013,6 +1110,12 @@ func (o JobCollectionPropertiesResponseOutput) ToJobCollectionPropertiesResponse
 	return o
 }
 
+func (o JobCollectionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobCollectionPropertiesResponse] {
+	return pulumix.Output[JobCollectionPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the job collection quota.
 func (o JobCollectionPropertiesResponseOutput) Quota() JobCollectionQuotaResponsePtrOutput {
 	return o.ApplyT(func(v JobCollectionPropertiesResponse) *JobCollectionQuotaResponse { return v.Quota }).(JobCollectionQuotaResponsePtrOutput)
@@ -1069,6 +1172,12 @@ func (i JobCollectionQuotaArgs) ToJobCollectionQuotaOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(JobCollectionQuotaOutput)
 }
 
+func (i JobCollectionQuotaArgs) ToOutput(ctx context.Context) pulumix.Output[JobCollectionQuota] {
+	return pulumix.Output[JobCollectionQuota]{
+		OutputState: i.ToJobCollectionQuotaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobCollectionQuotaArgs) ToJobCollectionQuotaPtrOutput() JobCollectionQuotaPtrOutput {
 	return i.ToJobCollectionQuotaPtrOutputWithContext(context.Background())
 }
@@ -1110,6 +1219,12 @@ func (i *jobCollectionQuotaPtrType) ToJobCollectionQuotaPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(JobCollectionQuotaPtrOutput)
 }
 
+func (i *jobCollectionQuotaPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobCollectionQuota] {
+	return pulumix.Output[*JobCollectionQuota]{
+		OutputState: i.ToJobCollectionQuotaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobCollectionQuotaOutput struct{ *pulumi.OutputState }
 
 func (JobCollectionQuotaOutput) ElementType() reflect.Type {
@@ -1132,6 +1247,12 @@ func (o JobCollectionQuotaOutput) ToJobCollectionQuotaPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobCollectionQuota) *JobCollectionQuota {
 		return &v
 	}).(JobCollectionQuotaPtrOutput)
+}
+
+func (o JobCollectionQuotaOutput) ToOutput(ctx context.Context) pulumix.Output[JobCollectionQuota] {
+	return pulumix.Output[JobCollectionQuota]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or set the maximum job count.
@@ -1161,6 +1282,12 @@ func (o JobCollectionQuotaPtrOutput) ToJobCollectionQuotaPtrOutput() JobCollecti
 
 func (o JobCollectionQuotaPtrOutput) ToJobCollectionQuotaPtrOutputWithContext(ctx context.Context) JobCollectionQuotaPtrOutput {
 	return o
+}
+
+func (o JobCollectionQuotaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobCollectionQuota] {
+	return pulumix.Output[*JobCollectionQuota]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobCollectionQuotaPtrOutput) Elem() JobCollectionQuotaOutput {
@@ -1226,6 +1353,12 @@ func (o JobCollectionQuotaResponseOutput) ToJobCollectionQuotaResponseOutputWith
 	return o
 }
 
+func (o JobCollectionQuotaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobCollectionQuotaResponse] {
+	return pulumix.Output[JobCollectionQuotaResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or set the maximum job count.
 func (o JobCollectionQuotaResponseOutput) MaxJobCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobCollectionQuotaResponse) *int { return v.MaxJobCount }).(pulumi.IntPtrOutput)
@@ -1253,6 +1386,12 @@ func (o JobCollectionQuotaResponsePtrOutput) ToJobCollectionQuotaResponsePtrOutp
 
 func (o JobCollectionQuotaResponsePtrOutput) ToJobCollectionQuotaResponsePtrOutputWithContext(ctx context.Context) JobCollectionQuotaResponsePtrOutput {
 	return o
+}
+
+func (o JobCollectionQuotaResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobCollectionQuotaResponse] {
+	return pulumix.Output[*JobCollectionQuotaResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobCollectionQuotaResponsePtrOutput) Elem() JobCollectionQuotaResponseOutput {
@@ -1348,6 +1487,12 @@ func (i JobErrorActionArgs) ToJobErrorActionOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(JobErrorActionOutput)
 }
 
+func (i JobErrorActionArgs) ToOutput(ctx context.Context) pulumix.Output[JobErrorAction] {
+	return pulumix.Output[JobErrorAction]{
+		OutputState: i.ToJobErrorActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobErrorActionArgs) ToJobErrorActionPtrOutput() JobErrorActionPtrOutput {
 	return i.ToJobErrorActionPtrOutputWithContext(context.Background())
 }
@@ -1389,6 +1534,12 @@ func (i *jobErrorActionPtrType) ToJobErrorActionPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(JobErrorActionPtrOutput)
 }
 
+func (i *jobErrorActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobErrorAction] {
+	return pulumix.Output[*JobErrorAction]{
+		OutputState: i.ToJobErrorActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobErrorActionOutput struct{ *pulumi.OutputState }
 
 func (JobErrorActionOutput) ElementType() reflect.Type {
@@ -1411,6 +1562,12 @@ func (o JobErrorActionOutput) ToJobErrorActionPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobErrorAction) *JobErrorAction {
 		return &v
 	}).(JobErrorActionPtrOutput)
+}
+
+func (o JobErrorActionOutput) ToOutput(ctx context.Context) pulumix.Output[JobErrorAction] {
+	return pulumix.Output[JobErrorAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the storage queue message.
@@ -1455,6 +1612,12 @@ func (o JobErrorActionPtrOutput) ToJobErrorActionPtrOutput() JobErrorActionPtrOu
 
 func (o JobErrorActionPtrOutput) ToJobErrorActionPtrOutputWithContext(ctx context.Context) JobErrorActionPtrOutput {
 	return o
+}
+
+func (o JobErrorActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobErrorAction] {
+	return pulumix.Output[*JobErrorAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobErrorActionPtrOutput) Elem() JobErrorActionOutput {
@@ -1556,6 +1719,12 @@ func (o JobErrorActionResponseOutput) ToJobErrorActionResponseOutputWithContext(
 	return o
 }
 
+func (o JobErrorActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobErrorActionResponse] {
+	return pulumix.Output[JobErrorActionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the storage queue message.
 func (o JobErrorActionResponseOutput) QueueMessage() StorageQueueMessageResponsePtrOutput {
 	return o.ApplyT(func(v JobErrorActionResponse) *StorageQueueMessageResponse { return v.QueueMessage }).(StorageQueueMessageResponsePtrOutput)
@@ -1598,6 +1767,12 @@ func (o JobErrorActionResponsePtrOutput) ToJobErrorActionResponsePtrOutput() Job
 
 func (o JobErrorActionResponsePtrOutput) ToJobErrorActionResponsePtrOutputWithContext(ctx context.Context) JobErrorActionResponsePtrOutput {
 	return o
+}
+
+func (o JobErrorActionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobErrorActionResponse] {
+	return pulumix.Output[*JobErrorActionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobErrorActionResponsePtrOutput) Elem() JobErrorActionResponseOutput {
@@ -1707,6 +1882,12 @@ func (i JobMaxRecurrenceArgs) ToJobMaxRecurrenceOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(JobMaxRecurrenceOutput)
 }
 
+func (i JobMaxRecurrenceArgs) ToOutput(ctx context.Context) pulumix.Output[JobMaxRecurrence] {
+	return pulumix.Output[JobMaxRecurrence]{
+		OutputState: i.ToJobMaxRecurrenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobMaxRecurrenceArgs) ToJobMaxRecurrencePtrOutput() JobMaxRecurrencePtrOutput {
 	return i.ToJobMaxRecurrencePtrOutputWithContext(context.Background())
 }
@@ -1748,6 +1929,12 @@ func (i *jobMaxRecurrencePtrType) ToJobMaxRecurrencePtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(JobMaxRecurrencePtrOutput)
 }
 
+func (i *jobMaxRecurrencePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobMaxRecurrence] {
+	return pulumix.Output[*JobMaxRecurrence]{
+		OutputState: i.ToJobMaxRecurrencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobMaxRecurrenceOutput struct{ *pulumi.OutputState }
 
 func (JobMaxRecurrenceOutput) ElementType() reflect.Type {
@@ -1772,6 +1959,12 @@ func (o JobMaxRecurrenceOutput) ToJobMaxRecurrencePtrOutputWithContext(ctx conte
 	}).(JobMaxRecurrencePtrOutput)
 }
 
+func (o JobMaxRecurrenceOutput) ToOutput(ctx context.Context) pulumix.Output[JobMaxRecurrence] {
+	return pulumix.Output[JobMaxRecurrence]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the frequency of recurrence (second, minute, hour, day, week, month).
 func (o JobMaxRecurrenceOutput) Frequency() RecurrenceFrequencyPtrOutput {
 	return o.ApplyT(func(v JobMaxRecurrence) *RecurrenceFrequency { return v.Frequency }).(RecurrenceFrequencyPtrOutput)
@@ -1794,6 +1987,12 @@ func (o JobMaxRecurrencePtrOutput) ToJobMaxRecurrencePtrOutput() JobMaxRecurrenc
 
 func (o JobMaxRecurrencePtrOutput) ToJobMaxRecurrencePtrOutputWithContext(ctx context.Context) JobMaxRecurrencePtrOutput {
 	return o
+}
+
+func (o JobMaxRecurrencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobMaxRecurrence] {
+	return pulumix.Output[*JobMaxRecurrence]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobMaxRecurrencePtrOutput) Elem() JobMaxRecurrenceOutput {
@@ -1847,6 +2046,12 @@ func (o JobMaxRecurrenceResponseOutput) ToJobMaxRecurrenceResponseOutputWithCont
 	return o
 }
 
+func (o JobMaxRecurrenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobMaxRecurrenceResponse] {
+	return pulumix.Output[JobMaxRecurrenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the frequency of recurrence (second, minute, hour, day, week, month).
 func (o JobMaxRecurrenceResponseOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobMaxRecurrenceResponse) *string { return v.Frequency }).(pulumi.StringPtrOutput)
@@ -1869,6 +2074,12 @@ func (o JobMaxRecurrenceResponsePtrOutput) ToJobMaxRecurrenceResponsePtrOutput()
 
 func (o JobMaxRecurrenceResponsePtrOutput) ToJobMaxRecurrenceResponsePtrOutputWithContext(ctx context.Context) JobMaxRecurrenceResponsePtrOutput {
 	return o
+}
+
+func (o JobMaxRecurrenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobMaxRecurrenceResponse] {
+	return pulumix.Output[*JobMaxRecurrenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobMaxRecurrenceResponsePtrOutput) Elem() JobMaxRecurrenceResponseOutput {
@@ -1946,6 +2157,12 @@ func (i JobPropertiesArgs) ToJobPropertiesOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(JobPropertiesOutput)
 }
 
+func (i JobPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[JobProperties] {
+	return pulumix.Output[JobProperties]{
+		OutputState: i.ToJobPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobPropertiesArgs) ToJobPropertiesPtrOutput() JobPropertiesPtrOutput {
 	return i.ToJobPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1987,6 +2204,12 @@ func (i *jobPropertiesPtrType) ToJobPropertiesPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(JobPropertiesPtrOutput)
 }
 
+func (i *jobPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobProperties] {
+	return pulumix.Output[*JobProperties]{
+		OutputState: i.ToJobPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobPropertiesOutput struct{ *pulumi.OutputState }
 
 func (JobPropertiesOutput) ElementType() reflect.Type {
@@ -2009,6 +2232,12 @@ func (o JobPropertiesOutput) ToJobPropertiesPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobProperties) *JobProperties {
 		return &v
 	}).(JobPropertiesPtrOutput)
+}
+
+func (o JobPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[JobProperties] {
+	return pulumix.Output[JobProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the job action.
@@ -2043,6 +2272,12 @@ func (o JobPropertiesPtrOutput) ToJobPropertiesPtrOutput() JobPropertiesPtrOutpu
 
 func (o JobPropertiesPtrOutput) ToJobPropertiesPtrOutputWithContext(ctx context.Context) JobPropertiesPtrOutput {
 	return o
+}
+
+func (o JobPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobProperties] {
+	return pulumix.Output[*JobProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobPropertiesPtrOutput) Elem() JobPropertiesOutput {
@@ -2122,6 +2357,12 @@ func (o JobPropertiesResponseOutput) ToJobPropertiesResponseOutputWithContext(ct
 	return o
 }
 
+func (o JobPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobPropertiesResponse] {
+	return pulumix.Output[JobPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the job action.
 func (o JobPropertiesResponseOutput) Action() JobActionResponsePtrOutput {
 	return o.ApplyT(func(v JobPropertiesResponse) *JobActionResponse { return v.Action }).(JobActionResponsePtrOutput)
@@ -2194,6 +2435,12 @@ func (i JobRecurrenceArgs) ToJobRecurrenceOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(JobRecurrenceOutput)
 }
 
+func (i JobRecurrenceArgs) ToOutput(ctx context.Context) pulumix.Output[JobRecurrence] {
+	return pulumix.Output[JobRecurrence]{
+		OutputState: i.ToJobRecurrenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobRecurrenceArgs) ToJobRecurrencePtrOutput() JobRecurrencePtrOutput {
 	return i.ToJobRecurrencePtrOutputWithContext(context.Background())
 }
@@ -2235,6 +2482,12 @@ func (i *jobRecurrencePtrType) ToJobRecurrencePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(JobRecurrencePtrOutput)
 }
 
+func (i *jobRecurrencePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobRecurrence] {
+	return pulumix.Output[*JobRecurrence]{
+		OutputState: i.ToJobRecurrencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobRecurrenceOutput struct{ *pulumi.OutputState }
 
 func (JobRecurrenceOutput) ElementType() reflect.Type {
@@ -2257,6 +2510,12 @@ func (o JobRecurrenceOutput) ToJobRecurrencePtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobRecurrence) *JobRecurrence {
 		return &v
 	}).(JobRecurrencePtrOutput)
+}
+
+func (o JobRecurrenceOutput) ToOutput(ctx context.Context) pulumix.Output[JobRecurrence] {
+	return pulumix.Output[JobRecurrence]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the maximum number of times that the job should run.
@@ -2295,6 +2554,12 @@ func (o JobRecurrencePtrOutput) ToJobRecurrencePtrOutput() JobRecurrencePtrOutpu
 
 func (o JobRecurrencePtrOutput) ToJobRecurrencePtrOutputWithContext(ctx context.Context) JobRecurrencePtrOutput {
 	return o
+}
+
+func (o JobRecurrencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobRecurrence] {
+	return pulumix.Output[*JobRecurrence]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobRecurrencePtrOutput) Elem() JobRecurrenceOutput {
@@ -2382,6 +2647,12 @@ func (o JobRecurrenceResponseOutput) ToJobRecurrenceResponseOutputWithContext(ct
 	return o
 }
 
+func (o JobRecurrenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobRecurrenceResponse] {
+	return pulumix.Output[JobRecurrenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the maximum number of times that the job should run.
 func (o JobRecurrenceResponseOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobRecurrenceResponse) *int { return v.Count }).(pulumi.IntPtrOutput)
@@ -2418,6 +2689,12 @@ func (o JobRecurrenceResponsePtrOutput) ToJobRecurrenceResponsePtrOutput() JobRe
 
 func (o JobRecurrenceResponsePtrOutput) ToJobRecurrenceResponsePtrOutputWithContext(ctx context.Context) JobRecurrenceResponsePtrOutput {
 	return o
+}
+
+func (o JobRecurrenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobRecurrenceResponse] {
+	return pulumix.Output[*JobRecurrenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobRecurrenceResponsePtrOutput) Elem() JobRecurrenceResponseOutput {
@@ -2528,6 +2805,12 @@ func (i JobRecurrenceScheduleArgs) ToJobRecurrenceScheduleOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(JobRecurrenceScheduleOutput)
 }
 
+func (i JobRecurrenceScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[JobRecurrenceSchedule] {
+	return pulumix.Output[JobRecurrenceSchedule]{
+		OutputState: i.ToJobRecurrenceScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobRecurrenceScheduleArgs) ToJobRecurrenceSchedulePtrOutput() JobRecurrenceSchedulePtrOutput {
 	return i.ToJobRecurrenceSchedulePtrOutputWithContext(context.Background())
 }
@@ -2569,6 +2852,12 @@ func (i *jobRecurrenceSchedulePtrType) ToJobRecurrenceSchedulePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(JobRecurrenceSchedulePtrOutput)
 }
 
+func (i *jobRecurrenceSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobRecurrenceSchedule] {
+	return pulumix.Output[*JobRecurrenceSchedule]{
+		OutputState: i.ToJobRecurrenceSchedulePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobRecurrenceScheduleOutput struct{ *pulumi.OutputState }
 
 func (JobRecurrenceScheduleOutput) ElementType() reflect.Type {
@@ -2591,6 +2880,12 @@ func (o JobRecurrenceScheduleOutput) ToJobRecurrenceSchedulePtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobRecurrenceSchedule) *JobRecurrenceSchedule {
 		return &v
 	}).(JobRecurrenceSchedulePtrOutput)
+}
+
+func (o JobRecurrenceScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[JobRecurrenceSchedule] {
+	return pulumix.Output[JobRecurrenceSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the hours of the day that the job should execute at.
@@ -2630,6 +2925,12 @@ func (o JobRecurrenceSchedulePtrOutput) ToJobRecurrenceSchedulePtrOutput() JobRe
 
 func (o JobRecurrenceSchedulePtrOutput) ToJobRecurrenceSchedulePtrOutputWithContext(ctx context.Context) JobRecurrenceSchedulePtrOutput {
 	return o
+}
+
+func (o JobRecurrenceSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobRecurrenceSchedule] {
+	return pulumix.Output[*JobRecurrenceSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobRecurrenceSchedulePtrOutput) Elem() JobRecurrenceScheduleOutput {
@@ -2729,6 +3030,12 @@ func (i JobRecurrenceScheduleMonthlyOccurrenceArgs) ToJobRecurrenceScheduleMonth
 	return pulumi.ToOutputWithContext(ctx, i).(JobRecurrenceScheduleMonthlyOccurrenceOutput)
 }
 
+func (i JobRecurrenceScheduleMonthlyOccurrenceArgs) ToOutput(ctx context.Context) pulumix.Output[JobRecurrenceScheduleMonthlyOccurrence] {
+	return pulumix.Output[JobRecurrenceScheduleMonthlyOccurrence]{
+		OutputState: i.ToJobRecurrenceScheduleMonthlyOccurrenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobRecurrenceScheduleMonthlyOccurrenceArrayInput is an input type that accepts JobRecurrenceScheduleMonthlyOccurrenceArray and JobRecurrenceScheduleMonthlyOccurrenceArrayOutput values.
 // You can construct a concrete instance of `JobRecurrenceScheduleMonthlyOccurrenceArrayInput` via:
 //
@@ -2754,6 +3061,12 @@ func (i JobRecurrenceScheduleMonthlyOccurrenceArray) ToJobRecurrenceScheduleMont
 	return pulumi.ToOutputWithContext(ctx, i).(JobRecurrenceScheduleMonthlyOccurrenceArrayOutput)
 }
 
+func (i JobRecurrenceScheduleMonthlyOccurrenceArray) ToOutput(ctx context.Context) pulumix.Output[[]JobRecurrenceScheduleMonthlyOccurrence] {
+	return pulumix.Output[[]JobRecurrenceScheduleMonthlyOccurrence]{
+		OutputState: i.ToJobRecurrenceScheduleMonthlyOccurrenceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobRecurrenceScheduleMonthlyOccurrenceOutput struct{ *pulumi.OutputState }
 
 func (JobRecurrenceScheduleMonthlyOccurrenceOutput) ElementType() reflect.Type {
@@ -2766,6 +3079,12 @@ func (o JobRecurrenceScheduleMonthlyOccurrenceOutput) ToJobRecurrenceScheduleMon
 
 func (o JobRecurrenceScheduleMonthlyOccurrenceOutput) ToJobRecurrenceScheduleMonthlyOccurrenceOutputWithContext(ctx context.Context) JobRecurrenceScheduleMonthlyOccurrenceOutput {
 	return o
+}
+
+func (o JobRecurrenceScheduleMonthlyOccurrenceOutput) ToOutput(ctx context.Context) pulumix.Output[JobRecurrenceScheduleMonthlyOccurrence] {
+	return pulumix.Output[JobRecurrenceScheduleMonthlyOccurrence]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
@@ -2790,6 +3109,12 @@ func (o JobRecurrenceScheduleMonthlyOccurrenceArrayOutput) ToJobRecurrenceSchedu
 
 func (o JobRecurrenceScheduleMonthlyOccurrenceArrayOutput) ToJobRecurrenceScheduleMonthlyOccurrenceArrayOutputWithContext(ctx context.Context) JobRecurrenceScheduleMonthlyOccurrenceArrayOutput {
 	return o
+}
+
+func (o JobRecurrenceScheduleMonthlyOccurrenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobRecurrenceScheduleMonthlyOccurrence] {
+	return pulumix.Output[[]JobRecurrenceScheduleMonthlyOccurrence]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobRecurrenceScheduleMonthlyOccurrenceArrayOutput) Index(i pulumi.IntInput) JobRecurrenceScheduleMonthlyOccurrenceOutput {
@@ -2819,6 +3144,12 @@ func (o JobRecurrenceScheduleMonthlyOccurrenceResponseOutput) ToJobRecurrenceSch
 	return o
 }
 
+func (o JobRecurrenceScheduleMonthlyOccurrenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobRecurrenceScheduleMonthlyOccurrenceResponse] {
+	return pulumix.Output[JobRecurrenceScheduleMonthlyOccurrenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
 func (o JobRecurrenceScheduleMonthlyOccurrenceResponseOutput) Day() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobRecurrenceScheduleMonthlyOccurrenceResponse) *string { return v.Day }).(pulumi.StringPtrOutput)
@@ -2841,6 +3172,12 @@ func (o JobRecurrenceScheduleMonthlyOccurrenceResponseArrayOutput) ToJobRecurren
 
 func (o JobRecurrenceScheduleMonthlyOccurrenceResponseArrayOutput) ToJobRecurrenceScheduleMonthlyOccurrenceResponseArrayOutputWithContext(ctx context.Context) JobRecurrenceScheduleMonthlyOccurrenceResponseArrayOutput {
 	return o
+}
+
+func (o JobRecurrenceScheduleMonthlyOccurrenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobRecurrenceScheduleMonthlyOccurrenceResponse] {
+	return pulumix.Output[[]JobRecurrenceScheduleMonthlyOccurrenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobRecurrenceScheduleMonthlyOccurrenceResponseArrayOutput) Index(i pulumi.IntInput) JobRecurrenceScheduleMonthlyOccurrenceResponseOutput {
@@ -2874,6 +3211,12 @@ func (o JobRecurrenceScheduleResponseOutput) ToJobRecurrenceScheduleResponseOutp
 
 func (o JobRecurrenceScheduleResponseOutput) ToJobRecurrenceScheduleResponseOutputWithContext(ctx context.Context) JobRecurrenceScheduleResponseOutput {
 	return o
+}
+
+func (o JobRecurrenceScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobRecurrenceScheduleResponse] {
+	return pulumix.Output[JobRecurrenceScheduleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the hours of the day that the job should execute at.
@@ -2915,6 +3258,12 @@ func (o JobRecurrenceScheduleResponsePtrOutput) ToJobRecurrenceScheduleResponseP
 
 func (o JobRecurrenceScheduleResponsePtrOutput) ToJobRecurrenceScheduleResponsePtrOutputWithContext(ctx context.Context) JobRecurrenceScheduleResponsePtrOutput {
 	return o
+}
+
+func (o JobRecurrenceScheduleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobRecurrenceScheduleResponse] {
+	return pulumix.Output[*JobRecurrenceScheduleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobRecurrenceScheduleResponsePtrOutput) Elem() JobRecurrenceScheduleResponseOutput {
@@ -3002,6 +3351,12 @@ func (o JobStatusResponseOutput) ToJobStatusResponseOutput() JobStatusResponseOu
 
 func (o JobStatusResponseOutput) ToJobStatusResponseOutputWithContext(ctx context.Context) JobStatusResponseOutput {
 	return o
+}
+
+func (o JobStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobStatusResponse] {
+	return pulumix.Output[JobStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the number of times this job has executed.
@@ -3098,6 +3453,12 @@ func (i RetryPolicyArgs) ToRetryPolicyOutputWithContext(ctx context.Context) Ret
 	return pulumi.ToOutputWithContext(ctx, i).(RetryPolicyOutput)
 }
 
+func (i RetryPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[RetryPolicy] {
+	return pulumix.Output[RetryPolicy]{
+		OutputState: i.ToRetryPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RetryPolicyArgs) ToRetryPolicyPtrOutput() RetryPolicyPtrOutput {
 	return i.ToRetryPolicyPtrOutputWithContext(context.Background())
 }
@@ -3139,6 +3500,12 @@ func (i *retryPolicyPtrType) ToRetryPolicyPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RetryPolicyPtrOutput)
 }
 
+func (i *retryPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*RetryPolicy] {
+	return pulumix.Output[*RetryPolicy]{
+		OutputState: i.ToRetryPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RetryPolicyOutput struct{ *pulumi.OutputState }
 
 func (RetryPolicyOutput) ElementType() reflect.Type {
@@ -3161,6 +3528,12 @@ func (o RetryPolicyOutput) ToRetryPolicyPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryPolicy) *RetryPolicy {
 		return &v
 	}).(RetryPolicyPtrOutput)
+}
+
+func (o RetryPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RetryPolicy] {
+	return pulumix.Output[RetryPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the number of times a retry should be attempted.
@@ -3190,6 +3563,12 @@ func (o RetryPolicyPtrOutput) ToRetryPolicyPtrOutput() RetryPolicyPtrOutput {
 
 func (o RetryPolicyPtrOutput) ToRetryPolicyPtrOutputWithContext(ctx context.Context) RetryPolicyPtrOutput {
 	return o
+}
+
+func (o RetryPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetryPolicy] {
+	return pulumix.Output[*RetryPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RetryPolicyPtrOutput) Elem() RetryPolicyOutput {
@@ -3255,6 +3634,12 @@ func (o RetryPolicyResponseOutput) ToRetryPolicyResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o RetryPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RetryPolicyResponse] {
+	return pulumix.Output[RetryPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the number of times a retry should be attempted.
 func (o RetryPolicyResponseOutput) RetryCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetryPolicyResponse) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
@@ -3282,6 +3667,12 @@ func (o RetryPolicyResponsePtrOutput) ToRetryPolicyResponsePtrOutput() RetryPoli
 
 func (o RetryPolicyResponsePtrOutput) ToRetryPolicyResponsePtrOutputWithContext(ctx context.Context) RetryPolicyResponsePtrOutput {
 	return o
+}
+
+func (o RetryPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetryPolicyResponse] {
+	return pulumix.Output[*RetryPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RetryPolicyResponsePtrOutput) Elem() RetryPolicyResponseOutput {
@@ -3365,6 +3756,12 @@ func (i ServiceBusAuthenticationArgs) ToServiceBusAuthenticationOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusAuthenticationOutput)
 }
 
+func (i ServiceBusAuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceBusAuthentication] {
+	return pulumix.Output[ServiceBusAuthentication]{
+		OutputState: i.ToServiceBusAuthenticationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceBusAuthenticationArgs) ToServiceBusAuthenticationPtrOutput() ServiceBusAuthenticationPtrOutput {
 	return i.ToServiceBusAuthenticationPtrOutputWithContext(context.Background())
 }
@@ -3406,6 +3803,12 @@ func (i *serviceBusAuthenticationPtrType) ToServiceBusAuthenticationPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusAuthenticationPtrOutput)
 }
 
+func (i *serviceBusAuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusAuthentication] {
+	return pulumix.Output[*ServiceBusAuthentication]{
+		OutputState: i.ToServiceBusAuthenticationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceBusAuthenticationOutput struct{ *pulumi.OutputState }
 
 func (ServiceBusAuthenticationOutput) ElementType() reflect.Type {
@@ -3428,6 +3831,12 @@ func (o ServiceBusAuthenticationOutput) ToServiceBusAuthenticationPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceBusAuthentication) *ServiceBusAuthentication {
 		return &v
 	}).(ServiceBusAuthenticationPtrOutput)
+}
+
+func (o ServiceBusAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceBusAuthentication] {
+	return pulumix.Output[ServiceBusAuthentication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the SAS key.
@@ -3457,6 +3866,12 @@ func (o ServiceBusAuthenticationPtrOutput) ToServiceBusAuthenticationPtrOutput()
 
 func (o ServiceBusAuthenticationPtrOutput) ToServiceBusAuthenticationPtrOutputWithContext(ctx context.Context) ServiceBusAuthenticationPtrOutput {
 	return o
+}
+
+func (o ServiceBusAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusAuthentication] {
+	return pulumix.Output[*ServiceBusAuthentication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceBusAuthenticationPtrOutput) Elem() ServiceBusAuthenticationOutput {
@@ -3522,6 +3937,12 @@ func (o ServiceBusAuthenticationResponseOutput) ToServiceBusAuthenticationRespon
 	return o
 }
 
+func (o ServiceBusAuthenticationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceBusAuthenticationResponse] {
+	return pulumix.Output[ServiceBusAuthenticationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the SAS key.
 func (o ServiceBusAuthenticationResponseOutput) SasKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceBusAuthenticationResponse) *string { return v.SasKey }).(pulumi.StringPtrOutput)
@@ -3549,6 +3970,12 @@ func (o ServiceBusAuthenticationResponsePtrOutput) ToServiceBusAuthenticationRes
 
 func (o ServiceBusAuthenticationResponsePtrOutput) ToServiceBusAuthenticationResponsePtrOutputWithContext(ctx context.Context) ServiceBusAuthenticationResponsePtrOutput {
 	return o
+}
+
+func (o ServiceBusAuthenticationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusAuthenticationResponse] {
+	return pulumix.Output[*ServiceBusAuthenticationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceBusAuthenticationResponsePtrOutput) Elem() ServiceBusAuthenticationResponseOutput {
@@ -3672,6 +4099,12 @@ func (i ServiceBusBrokeredMessagePropertiesArgs) ToServiceBusBrokeredMessageProp
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusBrokeredMessagePropertiesOutput)
 }
 
+func (i ServiceBusBrokeredMessagePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceBusBrokeredMessageProperties] {
+	return pulumix.Output[ServiceBusBrokeredMessageProperties]{
+		OutputState: i.ToServiceBusBrokeredMessagePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceBusBrokeredMessagePropertiesArgs) ToServiceBusBrokeredMessagePropertiesPtrOutput() ServiceBusBrokeredMessagePropertiesPtrOutput {
 	return i.ToServiceBusBrokeredMessagePropertiesPtrOutputWithContext(context.Background())
 }
@@ -3713,6 +4146,12 @@ func (i *serviceBusBrokeredMessagePropertiesPtrType) ToServiceBusBrokeredMessage
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusBrokeredMessagePropertiesPtrOutput)
 }
 
+func (i *serviceBusBrokeredMessagePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusBrokeredMessageProperties] {
+	return pulumix.Output[*ServiceBusBrokeredMessageProperties]{
+		OutputState: i.ToServiceBusBrokeredMessagePropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceBusBrokeredMessagePropertiesOutput struct{ *pulumi.OutputState }
 
 func (ServiceBusBrokeredMessagePropertiesOutput) ElementType() reflect.Type {
@@ -3735,6 +4174,12 @@ func (o ServiceBusBrokeredMessagePropertiesOutput) ToServiceBusBrokeredMessagePr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceBusBrokeredMessageProperties) *ServiceBusBrokeredMessageProperties {
 		return &v
 	}).(ServiceBusBrokeredMessagePropertiesPtrOutput)
+}
+
+func (o ServiceBusBrokeredMessagePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceBusBrokeredMessageProperties] {
+	return pulumix.Output[ServiceBusBrokeredMessageProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the content type.
@@ -3814,6 +4259,12 @@ func (o ServiceBusBrokeredMessagePropertiesPtrOutput) ToServiceBusBrokeredMessag
 
 func (o ServiceBusBrokeredMessagePropertiesPtrOutput) ToServiceBusBrokeredMessagePropertiesPtrOutputWithContext(ctx context.Context) ServiceBusBrokeredMessagePropertiesPtrOutput {
 	return o
+}
+
+func (o ServiceBusBrokeredMessagePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusBrokeredMessageProperties] {
+	return pulumix.Output[*ServiceBusBrokeredMessageProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceBusBrokeredMessagePropertiesPtrOutput) Elem() ServiceBusBrokeredMessagePropertiesOutput {
@@ -3999,6 +4450,12 @@ func (o ServiceBusBrokeredMessagePropertiesResponseOutput) ToServiceBusBrokeredM
 	return o
 }
 
+func (o ServiceBusBrokeredMessagePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceBusBrokeredMessagePropertiesResponse] {
+	return pulumix.Output[ServiceBusBrokeredMessagePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the content type.
 func (o ServiceBusBrokeredMessagePropertiesResponseOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceBusBrokeredMessagePropertiesResponse) *string { return v.ContentType }).(pulumi.StringPtrOutput)
@@ -4076,6 +4533,12 @@ func (o ServiceBusBrokeredMessagePropertiesResponsePtrOutput) ToServiceBusBroker
 
 func (o ServiceBusBrokeredMessagePropertiesResponsePtrOutput) ToServiceBusBrokeredMessagePropertiesResponsePtrOutputWithContext(ctx context.Context) ServiceBusBrokeredMessagePropertiesResponsePtrOutput {
 	return o
+}
+
+func (o ServiceBusBrokeredMessagePropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusBrokeredMessagePropertiesResponse] {
+	return pulumix.Output[*ServiceBusBrokeredMessagePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceBusBrokeredMessagePropertiesResponsePtrOutput) Elem() ServiceBusBrokeredMessagePropertiesResponseOutput {
@@ -4275,6 +4738,12 @@ func (i ServiceBusQueueMessageArgs) ToServiceBusQueueMessageOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusQueueMessageOutput)
 }
 
+func (i ServiceBusQueueMessageArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceBusQueueMessage] {
+	return pulumix.Output[ServiceBusQueueMessage]{
+		OutputState: i.ToServiceBusQueueMessageOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceBusQueueMessageArgs) ToServiceBusQueueMessagePtrOutput() ServiceBusQueueMessagePtrOutput {
 	return i.ToServiceBusQueueMessagePtrOutputWithContext(context.Background())
 }
@@ -4316,6 +4785,12 @@ func (i *serviceBusQueueMessagePtrType) ToServiceBusQueueMessagePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusQueueMessagePtrOutput)
 }
 
+func (i *serviceBusQueueMessagePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusQueueMessage] {
+	return pulumix.Output[*ServiceBusQueueMessage]{
+		OutputState: i.ToServiceBusQueueMessagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceBusQueueMessageOutput struct{ *pulumi.OutputState }
 
 func (ServiceBusQueueMessageOutput) ElementType() reflect.Type {
@@ -4338,6 +4813,12 @@ func (o ServiceBusQueueMessageOutput) ToServiceBusQueueMessagePtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceBusQueueMessage) *ServiceBusQueueMessage {
 		return &v
 	}).(ServiceBusQueueMessagePtrOutput)
+}
+
+func (o ServiceBusQueueMessageOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceBusQueueMessage] {
+	return pulumix.Output[ServiceBusQueueMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the Service Bus authentication.
@@ -4389,6 +4870,12 @@ func (o ServiceBusQueueMessagePtrOutput) ToServiceBusQueueMessagePtrOutput() Ser
 
 func (o ServiceBusQueueMessagePtrOutput) ToServiceBusQueueMessagePtrOutputWithContext(ctx context.Context) ServiceBusQueueMessagePtrOutput {
 	return o
+}
+
+func (o ServiceBusQueueMessagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusQueueMessage] {
+	return pulumix.Output[*ServiceBusQueueMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceBusQueueMessagePtrOutput) Elem() ServiceBusQueueMessageOutput {
@@ -4502,6 +4989,12 @@ func (o ServiceBusQueueMessageResponseOutput) ToServiceBusQueueMessageResponseOu
 	return o
 }
 
+func (o ServiceBusQueueMessageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceBusQueueMessageResponse] {
+	return pulumix.Output[ServiceBusQueueMessageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the Service Bus authentication.
 func (o ServiceBusQueueMessageResponseOutput) Authentication() ServiceBusAuthenticationResponsePtrOutput {
 	return o.ApplyT(func(v ServiceBusQueueMessageResponse) *ServiceBusAuthenticationResponse { return v.Authentication }).(ServiceBusAuthenticationResponsePtrOutput)
@@ -4551,6 +5044,12 @@ func (o ServiceBusQueueMessageResponsePtrOutput) ToServiceBusQueueMessageRespons
 
 func (o ServiceBusQueueMessageResponsePtrOutput) ToServiceBusQueueMessageResponsePtrOutputWithContext(ctx context.Context) ServiceBusQueueMessageResponsePtrOutput {
 	return o
+}
+
+func (o ServiceBusQueueMessageResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusQueueMessageResponse] {
+	return pulumix.Output[*ServiceBusQueueMessageResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceBusQueueMessageResponsePtrOutput) Elem() ServiceBusQueueMessageResponseOutput {
@@ -4690,6 +5189,12 @@ func (i ServiceBusTopicMessageArgs) ToServiceBusTopicMessageOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusTopicMessageOutput)
 }
 
+func (i ServiceBusTopicMessageArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceBusTopicMessage] {
+	return pulumix.Output[ServiceBusTopicMessage]{
+		OutputState: i.ToServiceBusTopicMessageOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceBusTopicMessageArgs) ToServiceBusTopicMessagePtrOutput() ServiceBusTopicMessagePtrOutput {
 	return i.ToServiceBusTopicMessagePtrOutputWithContext(context.Background())
 }
@@ -4731,6 +5236,12 @@ func (i *serviceBusTopicMessagePtrType) ToServiceBusTopicMessagePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusTopicMessagePtrOutput)
 }
 
+func (i *serviceBusTopicMessagePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusTopicMessage] {
+	return pulumix.Output[*ServiceBusTopicMessage]{
+		OutputState: i.ToServiceBusTopicMessagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceBusTopicMessageOutput struct{ *pulumi.OutputState }
 
 func (ServiceBusTopicMessageOutput) ElementType() reflect.Type {
@@ -4753,6 +5264,12 @@ func (o ServiceBusTopicMessageOutput) ToServiceBusTopicMessagePtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceBusTopicMessage) *ServiceBusTopicMessage {
 		return &v
 	}).(ServiceBusTopicMessagePtrOutput)
+}
+
+func (o ServiceBusTopicMessageOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceBusTopicMessage] {
+	return pulumix.Output[ServiceBusTopicMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the Service Bus authentication.
@@ -4804,6 +5321,12 @@ func (o ServiceBusTopicMessagePtrOutput) ToServiceBusTopicMessagePtrOutput() Ser
 
 func (o ServiceBusTopicMessagePtrOutput) ToServiceBusTopicMessagePtrOutputWithContext(ctx context.Context) ServiceBusTopicMessagePtrOutput {
 	return o
+}
+
+func (o ServiceBusTopicMessagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusTopicMessage] {
+	return pulumix.Output[*ServiceBusTopicMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceBusTopicMessagePtrOutput) Elem() ServiceBusTopicMessageOutput {
@@ -4917,6 +5440,12 @@ func (o ServiceBusTopicMessageResponseOutput) ToServiceBusTopicMessageResponseOu
 	return o
 }
 
+func (o ServiceBusTopicMessageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceBusTopicMessageResponse] {
+	return pulumix.Output[ServiceBusTopicMessageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the Service Bus authentication.
 func (o ServiceBusTopicMessageResponseOutput) Authentication() ServiceBusAuthenticationResponsePtrOutput {
 	return o.ApplyT(func(v ServiceBusTopicMessageResponse) *ServiceBusAuthenticationResponse { return v.Authentication }).(ServiceBusAuthenticationResponsePtrOutput)
@@ -4966,6 +5495,12 @@ func (o ServiceBusTopicMessageResponsePtrOutput) ToServiceBusTopicMessageRespons
 
 func (o ServiceBusTopicMessageResponsePtrOutput) ToServiceBusTopicMessageResponsePtrOutputWithContext(ctx context.Context) ServiceBusTopicMessageResponsePtrOutput {
 	return o
+}
+
+func (o ServiceBusTopicMessageResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusTopicMessageResponse] {
+	return pulumix.Output[*ServiceBusTopicMessageResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceBusTopicMessageResponsePtrOutput) Elem() ServiceBusTopicMessageResponseOutput {
@@ -5081,6 +5616,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -5122,6 +5663,12 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
+func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SkuOutput struct{ *pulumi.OutputState }
 
 func (SkuOutput) ElementType() reflect.Type {
@@ -5146,6 +5693,12 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or set the SKU.
 func (o SkuOutput) Name() SkuDefinitionPtrOutput {
 	return o.ApplyT(func(v Sku) *SkuDefinition { return v.Name }).(SkuDefinitionPtrOutput)
@@ -5163,6 +5716,12 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
+}
+
+func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -5204,6 +5763,12 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or set the SKU.
 func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -5221,6 +5786,12 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
+}
+
+func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
+	return pulumix.Output[*SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -5288,6 +5859,12 @@ func (i StorageQueueMessageArgs) ToStorageQueueMessageOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(StorageQueueMessageOutput)
 }
 
+func (i StorageQueueMessageArgs) ToOutput(ctx context.Context) pulumix.Output[StorageQueueMessage] {
+	return pulumix.Output[StorageQueueMessage]{
+		OutputState: i.ToStorageQueueMessageOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StorageQueueMessageArgs) ToStorageQueueMessagePtrOutput() StorageQueueMessagePtrOutput {
 	return i.ToStorageQueueMessagePtrOutputWithContext(context.Background())
 }
@@ -5329,6 +5906,12 @@ func (i *storageQueueMessagePtrType) ToStorageQueueMessagePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(StorageQueueMessagePtrOutput)
 }
 
+func (i *storageQueueMessagePtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageQueueMessage] {
+	return pulumix.Output[*StorageQueueMessage]{
+		OutputState: i.ToStorageQueueMessagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StorageQueueMessageOutput struct{ *pulumi.OutputState }
 
 func (StorageQueueMessageOutput) ElementType() reflect.Type {
@@ -5351,6 +5934,12 @@ func (o StorageQueueMessageOutput) ToStorageQueueMessagePtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageQueueMessage) *StorageQueueMessage {
 		return &v
 	}).(StorageQueueMessagePtrOutput)
+}
+
+func (o StorageQueueMessageOutput) ToOutput(ctx context.Context) pulumix.Output[StorageQueueMessage] {
+	return pulumix.Output[StorageQueueMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the message.
@@ -5385,6 +5974,12 @@ func (o StorageQueueMessagePtrOutput) ToStorageQueueMessagePtrOutput() StorageQu
 
 func (o StorageQueueMessagePtrOutput) ToStorageQueueMessagePtrOutputWithContext(ctx context.Context) StorageQueueMessagePtrOutput {
 	return o
+}
+
+func (o StorageQueueMessagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageQueueMessage] {
+	return pulumix.Output[*StorageQueueMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageQueueMessagePtrOutput) Elem() StorageQueueMessageOutput {
@@ -5462,6 +6057,12 @@ func (o StorageQueueMessageResponseOutput) ToStorageQueueMessageResponseOutputWi
 	return o
 }
 
+func (o StorageQueueMessageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageQueueMessageResponse] {
+	return pulumix.Output[StorageQueueMessageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the message.
 func (o StorageQueueMessageResponseOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageQueueMessageResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
@@ -5494,6 +6095,12 @@ func (o StorageQueueMessageResponsePtrOutput) ToStorageQueueMessageResponsePtrOu
 
 func (o StorageQueueMessageResponsePtrOutput) ToStorageQueueMessageResponsePtrOutputWithContext(ctx context.Context) StorageQueueMessageResponsePtrOutput {
 	return o
+}
+
+func (o StorageQueueMessageResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageQueueMessageResponse] {
+	return pulumix.Output[*StorageQueueMessageResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageQueueMessageResponsePtrOutput) Elem() StorageQueueMessageResponseOutput {

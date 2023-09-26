@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i DataPoolEncryptionArgs) ToDataPoolEncryptionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DataPoolEncryptionOutput)
 }
 
+func (i DataPoolEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[DataPoolEncryption] {
+	return pulumix.Output[DataPoolEncryption]{
+		OutputState: i.ToDataPoolEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DataPoolEncryptionArgs) ToDataPoolEncryptionPtrOutput() DataPoolEncryptionPtrOutput {
 	return i.ToDataPoolEncryptionPtrOutputWithContext(context.Background())
 }
@@ -101,6 +108,12 @@ func (i *dataPoolEncryptionPtrType) ToDataPoolEncryptionPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(DataPoolEncryptionPtrOutput)
 }
 
+func (i *dataPoolEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataPoolEncryption] {
+	return pulumix.Output[*DataPoolEncryption]{
+		OutputState: i.ToDataPoolEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Encryption properties of a Data Pool
 type DataPoolEncryptionOutput struct{ *pulumi.OutputState }
 
@@ -124,6 +137,12 @@ func (o DataPoolEncryptionOutput) ToDataPoolEncryptionPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataPoolEncryption) *DataPoolEncryption {
 		return &v
 	}).(DataPoolEncryptionPtrOutput)
+}
+
+func (o DataPoolEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[DataPoolEncryption] {
+	return pulumix.Output[DataPoolEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of Key Vault key
@@ -158,6 +177,12 @@ func (o DataPoolEncryptionPtrOutput) ToDataPoolEncryptionPtrOutput() DataPoolEnc
 
 func (o DataPoolEncryptionPtrOutput) ToDataPoolEncryptionPtrOutputWithContext(ctx context.Context) DataPoolEncryptionPtrOutput {
 	return o
+}
+
+func (o DataPoolEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPoolEncryption] {
+	return pulumix.Output[*DataPoolEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataPoolEncryptionPtrOutput) Elem() DataPoolEncryptionOutput {
@@ -237,6 +262,12 @@ func (o DataPoolEncryptionResponseOutput) ToDataPoolEncryptionResponseOutputWith
 	return o
 }
 
+func (o DataPoolEncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataPoolEncryptionResponse] {
+	return pulumix.Output[DataPoolEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of Key Vault key
 func (o DataPoolEncryptionResponseOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v DataPoolEncryptionResponse) string { return v.KeyName }).(pulumi.StringOutput)
@@ -269,6 +300,12 @@ func (o DataPoolEncryptionResponsePtrOutput) ToDataPoolEncryptionResponsePtrOutp
 
 func (o DataPoolEncryptionResponsePtrOutput) ToDataPoolEncryptionResponsePtrOutputWithContext(ctx context.Context) DataPoolEncryptionResponsePtrOutput {
 	return o
+}
+
+func (o DataPoolEncryptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPoolEncryptionResponse] {
+	return pulumix.Output[*DataPoolEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataPoolEncryptionResponsePtrOutput) Elem() DataPoolEncryptionResponseOutput {
@@ -368,6 +405,12 @@ func (i DataPoolLocationArgs) ToDataPoolLocationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DataPoolLocationOutput)
 }
 
+func (i DataPoolLocationArgs) ToOutput(ctx context.Context) pulumix.Output[DataPoolLocation] {
+	return pulumix.Output[DataPoolLocation]{
+		OutputState: i.ToDataPoolLocationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DataPoolLocationArrayInput is an input type that accepts DataPoolLocationArray and DataPoolLocationArrayOutput values.
 // You can construct a concrete instance of `DataPoolLocationArrayInput` via:
 //
@@ -393,6 +436,12 @@ func (i DataPoolLocationArray) ToDataPoolLocationArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DataPoolLocationArrayOutput)
 }
 
+func (i DataPoolLocationArray) ToOutput(ctx context.Context) pulumix.Output[[]DataPoolLocation] {
+	return pulumix.Output[[]DataPoolLocation]{
+		OutputState: i.ToDataPoolLocationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Location of a Data Pool
 type DataPoolLocationOutput struct{ *pulumi.OutputState }
 
@@ -406,6 +455,12 @@ func (o DataPoolLocationOutput) ToDataPoolLocationOutput() DataPoolLocationOutpu
 
 func (o DataPoolLocationOutput) ToDataPoolLocationOutputWithContext(ctx context.Context) DataPoolLocationOutput {
 	return o
+}
+
+func (o DataPoolLocationOutput) ToOutput(ctx context.Context) pulumix.Output[DataPoolLocation] {
+	return pulumix.Output[DataPoolLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Encryption properties of a Data Pool location
@@ -442,6 +497,12 @@ func (o DataPoolLocationArrayOutput) ToDataPoolLocationArrayOutputWithContext(ct
 	return o
 }
 
+func (o DataPoolLocationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataPoolLocation] {
+	return pulumix.Output[[]DataPoolLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DataPoolLocationArrayOutput) Index(i pulumi.IntInput) DataPoolLocationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataPoolLocation {
 		return vs[0].([]DataPoolLocation)[vs[1].(int)]
@@ -473,6 +534,12 @@ func (o DataPoolLocationResponseOutput) ToDataPoolLocationResponseOutput() DataP
 
 func (o DataPoolLocationResponseOutput) ToDataPoolLocationResponseOutputWithContext(ctx context.Context) DataPoolLocationResponseOutput {
 	return o
+}
+
+func (o DataPoolLocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataPoolLocationResponse] {
+	return pulumix.Output[DataPoolLocationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Encryption properties of a Data Pool location
@@ -507,6 +574,12 @@ func (o DataPoolLocationResponseArrayOutput) ToDataPoolLocationResponseArrayOutp
 
 func (o DataPoolLocationResponseArrayOutput) ToDataPoolLocationResponseArrayOutputWithContext(ctx context.Context) DataPoolLocationResponseArrayOutput {
 	return o
+}
+
+func (o DataPoolLocationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataPoolLocationResponse] {
+	return pulumix.Output[[]DataPoolLocationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataPoolLocationResponseArrayOutput) Index(i pulumi.IntInput) DataPoolLocationResponseOutput {
@@ -550,6 +623,12 @@ func (i StorageSkuArgs) ToStorageSkuOutputWithContext(ctx context.Context) Stora
 	return pulumi.ToOutputWithContext(ctx, i).(StorageSkuOutput)
 }
 
+func (i StorageSkuArgs) ToOutput(ctx context.Context) pulumix.Output[StorageSku] {
+	return pulumix.Output[StorageSku]{
+		OutputState: i.ToStorageSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StorageSkuArgs) ToStorageSkuPtrOutput() StorageSkuPtrOutput {
 	return i.ToStorageSkuPtrOutputWithContext(context.Background())
 }
@@ -591,6 +670,12 @@ func (i *storageSkuPtrType) ToStorageSkuPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(StorageSkuPtrOutput)
 }
 
+func (i *storageSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageSku] {
+	return pulumix.Output[*StorageSku]{
+		OutputState: i.ToStorageSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Storage SKU.
 type StorageSkuOutput struct{ *pulumi.OutputState }
 
@@ -616,6 +701,12 @@ func (o StorageSkuOutput) ToStorageSkuPtrOutputWithContext(ctx context.Context) 
 	}).(StorageSkuPtrOutput)
 }
 
+func (o StorageSkuOutput) ToOutput(ctx context.Context) pulumix.Output[StorageSku] {
+	return pulumix.Output[StorageSku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The SKU name
 func (o StorageSkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSku) string { return v.Name }).(pulumi.StringOutput)
@@ -633,6 +724,12 @@ func (o StorageSkuPtrOutput) ToStorageSkuPtrOutput() StorageSkuPtrOutput {
 
 func (o StorageSkuPtrOutput) ToStorageSkuPtrOutputWithContext(ctx context.Context) StorageSkuPtrOutput {
 	return o
+}
+
+func (o StorageSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageSku] {
+	return pulumix.Output[*StorageSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageSkuPtrOutput) Elem() StorageSkuOutput {
@@ -676,6 +773,12 @@ func (o StorageSkuResponseOutput) ToStorageSkuResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o StorageSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageSkuResponse] {
+	return pulumix.Output[StorageSkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The SKU name
 func (o StorageSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSkuResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -693,6 +796,12 @@ func (o StorageSkuResponsePtrOutput) ToStorageSkuResponsePtrOutput() StorageSkuR
 
 func (o StorageSkuResponsePtrOutput) ToStorageSkuResponsePtrOutputWithContext(ctx context.Context) StorageSkuResponsePtrOutput {
 	return o
+}
+
+func (o StorageSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageSkuResponse] {
+	return pulumix.Output[*StorageSkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageSkuResponsePtrOutput) Elem() StorageSkuResponseOutput {
@@ -744,6 +853,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Pipeline topology describes the processing steps to be applied when processing content for a particular outcome. The topology should be defined according to the scenario to be achieved and can be reused across many pipeline instances which share the same processing characteristics. For instance, a pipeline topology which captures content from a RTSP camera and archives the content can be reused across many different cameras, as long as the same processing is to be applied across all the cameras. Individual instance properties can be defined through the use of user-defined parameters, which allow for a topology to be parameterized. This allows  individual pipelines refer to different values, such as individual cameras' RTSP endpoints and credentials. Overall a topology is composed of the following:
@@ -176,6 +177,12 @@ func (i *PipelineTopology) ToPipelineTopologyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineTopologyOutput)
 }
 
+func (i *PipelineTopology) ToOutput(ctx context.Context) pulumix.Output[*PipelineTopology] {
+	return pulumix.Output[*PipelineTopology]{
+		OutputState: i.ToPipelineTopologyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PipelineTopologyOutput struct{ *pulumi.OutputState }
 
 func (PipelineTopologyOutput) ElementType() reflect.Type {
@@ -188,6 +195,12 @@ func (o PipelineTopologyOutput) ToPipelineTopologyOutput() PipelineTopologyOutpu
 
 func (o PipelineTopologyOutput) ToPipelineTopologyOutputWithContext(ctx context.Context) PipelineTopologyOutput {
 	return o
+}
+
+func (o PipelineTopologyOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineTopology] {
+	return pulumix.Output[*PipelineTopology]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description of the pipeline topology. It is recommended that the expected use of the topology to be described here.

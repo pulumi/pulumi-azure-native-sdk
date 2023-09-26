@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2015-02-01-preview. Prior API version in Azure Native 1.x: 2015-02-01-preview
@@ -131,6 +132,12 @@ func (i *WorkflowAccessKey) ToWorkflowAccessKeyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowAccessKeyOutput)
 }
 
+func (i *WorkflowAccessKey) ToOutput(ctx context.Context) pulumix.Output[*WorkflowAccessKey] {
+	return pulumix.Output[*WorkflowAccessKey]{
+		OutputState: i.ToWorkflowAccessKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkflowAccessKeyOutput struct{ *pulumi.OutputState }
 
 func (WorkflowAccessKeyOutput) ElementType() reflect.Type {
@@ -143,6 +150,12 @@ func (o WorkflowAccessKeyOutput) ToWorkflowAccessKeyOutput() WorkflowAccessKeyOu
 
 func (o WorkflowAccessKeyOutput) ToWorkflowAccessKeyOutputWithContext(ctx context.Context) WorkflowAccessKeyOutput {
 	return o
+}
+
+func (o WorkflowAccessKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowAccessKey] {
+	return pulumix.Output[*WorkflowAccessKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the workflow access key name.

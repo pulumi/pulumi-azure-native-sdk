@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the subscriptionId along with its provisioning state for being associated with the GroupQuotasEntity.
@@ -80,6 +81,12 @@ func (o LookupGroupQuotaSubscriptionResultOutput) ToLookupGroupQuotaSubscription
 
 func (o LookupGroupQuotaSubscriptionResultOutput) ToLookupGroupQuotaSubscriptionResultOutputWithContext(ctx context.Context) LookupGroupQuotaSubscriptionResultOutput {
 	return o
+}
+
+func (o LookupGroupQuotaSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGroupQuotaSubscriptionResult] {
+	return pulumix.Output[LookupGroupQuotaSubscriptionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -38,6 +39,12 @@ func (o AzureResourceErrorInfoResponseOutput) ToAzureResourceErrorInfoResponseOu
 	return o
 }
 
+func (o AzureResourceErrorInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureResourceErrorInfoResponse] {
+	return pulumix.Output[AzureResourceErrorInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The error code.
 func (o AzureResourceErrorInfoResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureResourceErrorInfoResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -65,6 +72,12 @@ func (o AzureResourceErrorInfoResponsePtrOutput) ToAzureResourceErrorInfoRespons
 
 func (o AzureResourceErrorInfoResponsePtrOutput) ToAzureResourceErrorInfoResponsePtrOutputWithContext(ctx context.Context) AzureResourceErrorInfoResponsePtrOutput {
 	return o
+}
+
+func (o AzureResourceErrorInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureResourceErrorInfoResponse] {
+	return pulumix.Output[*AzureResourceErrorInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureResourceErrorInfoResponsePtrOutput) Elem() AzureResourceErrorInfoResponseOutput {
@@ -121,6 +134,12 @@ func (o AzureResourceErrorInfoResponseArrayOutput) ToAzureResourceErrorInfoRespo
 	return o
 }
 
+func (o AzureResourceErrorInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureResourceErrorInfoResponse] {
+	return pulumix.Output[[]AzureResourceErrorInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AzureResourceErrorInfoResponseArrayOutput) Index(i pulumi.IntInput) AzureResourceErrorInfoResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureResourceErrorInfoResponse {
 		return vs[0].([]AzureResourceErrorInfoResponse)[vs[1].(int)]
@@ -147,6 +166,12 @@ func (o ExpressionResponseOutput) ToExpressionResponseOutput() ExpressionRespons
 
 func (o ExpressionResponseOutput) ToExpressionResponseOutputWithContext(ctx context.Context) ExpressionResponseOutput {
 	return o
+}
+
+func (o ExpressionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressionResponse] {
+	return pulumix.Output[ExpressionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The azure resource error info.
@@ -180,6 +205,12 @@ func (o ExpressionResponseArrayOutput) ToExpressionResponseArrayOutputWithContex
 	return o
 }
 
+func (o ExpressionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExpressionResponse] {
+	return pulumix.Output[[]ExpressionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ExpressionResponseArrayOutput) Index(i pulumi.IntInput) ExpressionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressionResponse {
 		return vs[0].([]ExpressionResponse)[vs[1].(int)]
@@ -208,6 +239,12 @@ func (o ExpressionRootResponseOutput) ToExpressionRootResponseOutput() Expressio
 
 func (o ExpressionRootResponseOutput) ToExpressionRootResponseOutputWithContext(ctx context.Context) ExpressionRootResponseOutput {
 	return o
+}
+
+func (o ExpressionRootResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressionRootResponse] {
+	return pulumix.Output[ExpressionRootResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The azure resource error info.
@@ -244,6 +281,12 @@ func (o ExpressionRootResponseArrayOutput) ToExpressionRootResponseArrayOutput()
 
 func (o ExpressionRootResponseArrayOutput) ToExpressionRootResponseArrayOutputWithContext(ctx context.Context) ExpressionRootResponseArrayOutput {
 	return o
+}
+
+func (o ExpressionRootResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExpressionRootResponse] {
+	return pulumix.Output[[]ExpressionRootResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExpressionRootResponseArrayOutput) Index(i pulumi.IntInput) ExpressionRootResponseOutput {
@@ -287,6 +330,12 @@ func (i ResourceReferenceArgs) ToResourceReferenceOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceReferenceOutput)
 }
 
+func (i ResourceReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceReference] {
+	return pulumix.Output[ResourceReference]{
+		OutputState: i.ToResourceReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceReferenceArgs) ToResourceReferencePtrOutput() ResourceReferencePtrOutput {
 	return i.ToResourceReferencePtrOutputWithContext(context.Background())
 }
@@ -328,6 +377,12 @@ func (i *resourceReferencePtrType) ToResourceReferencePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceReferencePtrOutput)
 }
 
+func (i *resourceReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceReference] {
+	return pulumix.Output[*ResourceReference]{
+		OutputState: i.ToResourceReferencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The resource reference.
 type ResourceReferenceOutput struct{ *pulumi.OutputState }
 
@@ -353,6 +408,12 @@ func (o ResourceReferenceOutput) ToResourceReferencePtrOutputWithContext(ctx con
 	}).(ResourceReferencePtrOutput)
 }
 
+func (o ResourceReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceReference] {
+	return pulumix.Output[ResourceReference]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource id.
 func (o ResourceReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceReference) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -370,6 +431,12 @@ func (o ResourceReferencePtrOutput) ToResourceReferencePtrOutput() ResourceRefer
 
 func (o ResourceReferencePtrOutput) ToResourceReferencePtrOutputWithContext(ctx context.Context) ResourceReferencePtrOutput {
 	return o
+}
+
+func (o ResourceReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceReference] {
+	return pulumix.Output[*ResourceReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceReferencePtrOutput) Elem() ResourceReferenceOutput {
@@ -417,6 +484,12 @@ func (o ResourceReferenceResponseOutput) ToResourceReferenceResponseOutputWithCo
 	return o
 }
 
+func (o ResourceReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceReferenceResponse] {
+	return pulumix.Output[ResourceReferenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource id.
 func (o ResourceReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -444,6 +517,12 @@ func (o ResourceReferenceResponsePtrOutput) ToResourceReferenceResponsePtrOutput
 
 func (o ResourceReferenceResponsePtrOutput) ToResourceReferenceResponsePtrOutputWithContext(ctx context.Context) ResourceReferenceResponsePtrOutput {
 	return o
+}
+
+func (o ResourceReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceReferenceResponse] {
+	return pulumix.Output[*ResourceReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceReferenceResponsePtrOutput) Elem() ResourceReferenceResponseOutput {
@@ -525,6 +604,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -566,6 +651,12 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
+func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The sku type.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -591,6 +682,12 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name.
 func (o SkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
@@ -613,6 +710,12 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
+}
+
+func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -668,6 +771,12 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name.
 func (o SkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -690,6 +799,12 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
+}
+
+func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
+	return pulumix.Output[*SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -769,6 +884,12 @@ func (i WorkflowParameterArgs) ToWorkflowParameterOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowParameterOutput)
 }
 
+func (i WorkflowParameterArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowParameter] {
+	return pulumix.Output[WorkflowParameter]{
+		OutputState: i.ToWorkflowParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkflowParameterMapInput is an input type that accepts WorkflowParameterMap and WorkflowParameterMapOutput values.
 // You can construct a concrete instance of `WorkflowParameterMapInput` via:
 //
@@ -794,6 +915,12 @@ func (i WorkflowParameterMap) ToWorkflowParameterMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowParameterMapOutput)
 }
 
+func (i WorkflowParameterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]WorkflowParameter] {
+	return pulumix.Output[map[string]WorkflowParameter]{
+		OutputState: i.ToWorkflowParameterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The workflow parameters.
 type WorkflowParameterOutput struct{ *pulumi.OutputState }
 
@@ -807,6 +934,12 @@ func (o WorkflowParameterOutput) ToWorkflowParameterOutput() WorkflowParameterOu
 
 func (o WorkflowParameterOutput) ToWorkflowParameterOutputWithContext(ctx context.Context) WorkflowParameterOutput {
 	return o
+}
+
+func (o WorkflowParameterOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowParameter] {
+	return pulumix.Output[WorkflowParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description.
@@ -843,6 +976,12 @@ func (o WorkflowParameterMapOutput) ToWorkflowParameterMapOutputWithContext(ctx 
 	return o
 }
 
+func (o WorkflowParameterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]WorkflowParameter] {
+	return pulumix.Output[map[string]WorkflowParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkflowParameterMapOutput) MapIndex(k pulumi.StringInput) WorkflowParameterOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkflowParameter {
 		return vs[0].(map[string]WorkflowParameter)[vs[1].(string)]
@@ -874,6 +1013,12 @@ func (o WorkflowParameterResponseOutput) ToWorkflowParameterResponseOutput() Wor
 
 func (o WorkflowParameterResponseOutput) ToWorkflowParameterResponseOutputWithContext(ctx context.Context) WorkflowParameterResponseOutput {
 	return o
+}
+
+func (o WorkflowParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowParameterResponse] {
+	return pulumix.Output[WorkflowParameterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description.
@@ -910,6 +1055,12 @@ func (o WorkflowParameterResponseMapOutput) ToWorkflowParameterResponseMapOutput
 	return o
 }
 
+func (o WorkflowParameterResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]WorkflowParameterResponse] {
+	return pulumix.Output[map[string]WorkflowParameterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkflowParameterResponseMapOutput) MapIndex(k pulumi.StringInput) WorkflowParameterResponseOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkflowParameterResponse {
 		return vs[0].(map[string]WorkflowParameterResponse)[vs[1].(string)]
@@ -943,6 +1094,12 @@ func (o WorkflowTriggerListCallbackUrlQueriesResponseOutput) ToWorkflowTriggerLi
 
 func (o WorkflowTriggerListCallbackUrlQueriesResponseOutput) ToWorkflowTriggerListCallbackUrlQueriesResponseOutputWithContext(ctx context.Context) WorkflowTriggerListCallbackUrlQueriesResponseOutput {
 	return o
+}
+
+func (o WorkflowTriggerListCallbackUrlQueriesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowTriggerListCallbackUrlQueriesResponse] {
+	return pulumix.Output[WorkflowTriggerListCallbackUrlQueriesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The api version.
@@ -982,6 +1139,12 @@ func (o WorkflowTriggerListCallbackUrlQueriesResponsePtrOutput) ToWorkflowTrigge
 
 func (o WorkflowTriggerListCallbackUrlQueriesResponsePtrOutput) ToWorkflowTriggerListCallbackUrlQueriesResponsePtrOutputWithContext(ctx context.Context) WorkflowTriggerListCallbackUrlQueriesResponsePtrOutput {
 	return o
+}
+
+func (o WorkflowTriggerListCallbackUrlQueriesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTriggerListCallbackUrlQueriesResponse] {
+	return pulumix.Output[*WorkflowTriggerListCallbackUrlQueriesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkflowTriggerListCallbackUrlQueriesResponsePtrOutput) Elem() WorkflowTriggerListCallbackUrlQueriesResponseOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Monitoring Setting resource
@@ -165,6 +166,12 @@ func (i *MonitoringSetting) ToMonitoringSettingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringSettingOutput)
 }
 
+func (i *MonitoringSetting) ToOutput(ctx context.Context) pulumix.Output[*MonitoringSetting] {
+	return pulumix.Output[*MonitoringSetting]{
+		OutputState: i.ToMonitoringSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MonitoringSettingOutput struct{ *pulumi.OutputState }
 
 func (MonitoringSettingOutput) ElementType() reflect.Type {
@@ -177,6 +184,12 @@ func (o MonitoringSettingOutput) ToMonitoringSettingOutput() MonitoringSettingOu
 
 func (o MonitoringSettingOutput) ToMonitoringSettingOutputWithContext(ctx context.Context) MonitoringSettingOutput {
 	return o
+}
+
+func (o MonitoringSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoringSetting] {
+	return pulumix.Output[*MonitoringSetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource.

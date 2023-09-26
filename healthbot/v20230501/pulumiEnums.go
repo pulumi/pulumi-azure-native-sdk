@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The identity type. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the Azure Health Bot
@@ -80,6 +81,12 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
+func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
+	return pulumix.Output[ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -175,6 +188,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+}
+
+func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The name of the Azure Health Bot SKU
@@ -247,6 +266,12 @@ func (o SkuNameOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNam
 	}).(SkuNamePtrOutput)
 }
 
+func (o SkuNameOutput) ToOutput(ctx context.Context) pulumix.Output[SkuName] {
+	return pulumix.Output[SkuName]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SkuNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -280,6 +305,12 @@ func (o SkuNamePtrOutput) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (o SkuNamePtrOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return o
+}
+
+func (o SkuNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
+	return pulumix.Output[*SkuName]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuNamePtrOutput) Elem() SkuNameOutput {
@@ -342,6 +373,12 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
+}
+
+func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
+	return pulumix.Output[*SkuName]{
+		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A TestLine resource
@@ -156,6 +157,12 @@ func (i *TestLine) ToTestLineOutputWithContext(ctx context.Context) TestLineOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TestLineOutput)
 }
 
+func (i *TestLine) ToOutput(ctx context.Context) pulumix.Output[*TestLine] {
+	return pulumix.Output[*TestLine]{
+		OutputState: i.ToTestLineOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TestLineOutput struct{ *pulumi.OutputState }
 
 func (TestLineOutput) ElementType() reflect.Type {
@@ -168,6 +175,12 @@ func (o TestLineOutput) ToTestLineOutput() TestLineOutput {
 
 func (o TestLineOutput) ToTestLineOutputWithContext(ctx context.Context) TestLineOutput {
 	return o
+}
+
+func (o TestLineOutput) ToOutput(ctx context.Context) pulumix.Output[*TestLine] {
+	return pulumix.Output[*TestLine]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The geo-location where the resource lives

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an entity query.
@@ -109,6 +110,12 @@ func (o LookupActivityCustomEntityQueryResultOutput) ToLookupActivityCustomEntit
 
 func (o LookupActivityCustomEntityQueryResultOutput) ToLookupActivityCustomEntityQueryResultOutputWithContext(ctx context.Context) LookupActivityCustomEntityQueryResultOutput {
 	return o
+}
+
+func (o LookupActivityCustomEntityQueryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupActivityCustomEntityQueryResult] {
+	return pulumix.Output[LookupActivityCustomEntityQueryResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The entity query content to display in timeline

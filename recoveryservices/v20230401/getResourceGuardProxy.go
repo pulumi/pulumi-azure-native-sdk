@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns ResourceGuardProxy under vault and with the name referenced in request
@@ -84,6 +85,12 @@ func (o LookupResourceGuardProxyResultOutput) ToLookupResourceGuardProxyResultOu
 
 func (o LookupResourceGuardProxyResultOutput) ToLookupResourceGuardProxyResultOutputWithContext(ctx context.Context) LookupResourceGuardProxyResultOutput {
 	return o
+}
+
+func (o LookupResourceGuardProxyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResourceGuardProxyResult] {
+	return pulumix.Output[LookupResourceGuardProxyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional ETag.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a workspace manager group
@@ -90,6 +91,12 @@ func (o LookupWorkspaceManagerGroupResultOutput) ToLookupWorkspaceManagerGroupRe
 
 func (o LookupWorkspaceManagerGroupResultOutput) ToLookupWorkspaceManagerGroupResultOutputWithContext(ctx context.Context) LookupWorkspaceManagerGroupResultOutput {
 	return o
+}
+
+func (o LookupWorkspaceManagerGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceManagerGroupResult] {
+	return pulumix.Output[LookupWorkspaceManagerGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the workspace manager group

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the secrets for an existing static site.
@@ -80,6 +81,12 @@ func (o ListStaticSiteSecretsResultOutput) ToListStaticSiteSecretsResultOutput()
 
 func (o ListStaticSiteSecretsResultOutput) ToListStaticSiteSecretsResultOutputWithContext(ctx context.Context) ListStaticSiteSecretsResultOutput {
 	return o
+}
+
+func (o ListStaticSiteSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListStaticSiteSecretsResult] {
+	return pulumix.Output[ListStaticSiteSecretsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Contains information about an Azure Batch account.
@@ -226,6 +227,12 @@ func (i *BatchAccount) ToBatchAccountOutputWithContext(ctx context.Context) Batc
 	return pulumi.ToOutputWithContext(ctx, i).(BatchAccountOutput)
 }
 
+func (i *BatchAccount) ToOutput(ctx context.Context) pulumix.Output[*BatchAccount] {
+	return pulumix.Output[*BatchAccount]{
+		OutputState: i.ToBatchAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BatchAccountOutput struct{ *pulumi.OutputState }
 
 func (BatchAccountOutput) ElementType() reflect.Type {
@@ -238,6 +245,12 @@ func (o BatchAccountOutput) ToBatchAccountOutput() BatchAccountOutput {
 
 func (o BatchAccountOutput) ToBatchAccountOutputWithContext(ctx context.Context) BatchAccountOutput {
 	return o
+}
+
+func (o BatchAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*BatchAccount] {
+	return pulumix.Output[*BatchAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account endpoint used to interact with the Batch service.

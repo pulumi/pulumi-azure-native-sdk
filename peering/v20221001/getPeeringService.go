@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing peering service with the specified name under the given subscription and resource group.
@@ -94,6 +95,12 @@ func (o LookupPeeringServiceResultOutput) ToLookupPeeringServiceResultOutput() L
 
 func (o LookupPeeringServiceResultOutput) ToLookupPeeringServiceResultOutputWithContext(ctx context.Context) LookupPeeringServiceResultOutput {
 	return o
+}
+
+func (o LookupPeeringServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPeeringServiceResult] {
+	return pulumix.Output[LookupPeeringServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the resource.

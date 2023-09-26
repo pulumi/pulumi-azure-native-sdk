@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns whether Scm basic auth is allowed on the site or not.
@@ -82,6 +83,12 @@ func (o LookupWebAppScmAllowedResultOutput) ToLookupWebAppScmAllowedResultOutput
 
 func (o LookupWebAppScmAllowedResultOutput) ToLookupWebAppScmAllowedResultOutputWithContext(ctx context.Context) LookupWebAppScmAllowedResultOutput {
 	return o
+}
+
+func (o LookupWebAppScmAllowedResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppScmAllowedResult] {
+	return pulumix.Output[LookupWebAppScmAllowedResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.

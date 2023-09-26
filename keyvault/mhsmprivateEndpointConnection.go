@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Private endpoint connection resource.
@@ -169,6 +170,12 @@ func (i *MHSMPrivateEndpointConnection) ToMHSMPrivateEndpointConnectionOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(MHSMPrivateEndpointConnectionOutput)
 }
 
+func (i *MHSMPrivateEndpointConnection) ToOutput(ctx context.Context) pulumix.Output[*MHSMPrivateEndpointConnection] {
+	return pulumix.Output[*MHSMPrivateEndpointConnection]{
+		OutputState: i.ToMHSMPrivateEndpointConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MHSMPrivateEndpointConnectionOutput struct{ *pulumi.OutputState }
 
 func (MHSMPrivateEndpointConnectionOutput) ElementType() reflect.Type {
@@ -181,6 +188,12 @@ func (o MHSMPrivateEndpointConnectionOutput) ToMHSMPrivateEndpointConnectionOutp
 
 func (o MHSMPrivateEndpointConnectionOutput) ToMHSMPrivateEndpointConnectionOutputWithContext(ctx context.Context) MHSMPrivateEndpointConnectionOutput {
 	return o
+}
+
+func (o MHSMPrivateEndpointConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*MHSMPrivateEndpointConnection] {
+	return pulumix.Output[*MHSMPrivateEndpointConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Modified whenever there is a change in the state of private endpoint connection.

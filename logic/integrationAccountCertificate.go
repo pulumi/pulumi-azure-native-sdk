@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The integration account certificate.
@@ -159,6 +160,12 @@ func (i *IntegrationAccountCertificate) ToIntegrationAccountCertificateOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountCertificateOutput)
 }
 
+func (i *IntegrationAccountCertificate) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountCertificate] {
+	return pulumix.Output[*IntegrationAccountCertificate]{
+		OutputState: i.ToIntegrationAccountCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationAccountCertificateOutput struct{ *pulumi.OutputState }
 
 func (IntegrationAccountCertificateOutput) ElementType() reflect.Type {
@@ -171,6 +178,12 @@ func (o IntegrationAccountCertificateOutput) ToIntegrationAccountCertificateOutp
 
 func (o IntegrationAccountCertificateOutput) ToIntegrationAccountCertificateOutputWithContext(ctx context.Context) IntegrationAccountCertificateOutput {
 	return o
+}
+
+func (o IntegrationAccountCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountCertificate] {
+	return pulumix.Output[*IntegrationAccountCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The changed time.

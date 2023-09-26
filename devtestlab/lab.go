@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A lab.
@@ -208,6 +209,12 @@ func (i *Lab) ToLabOutputWithContext(ctx context.Context) LabOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LabOutput)
 }
 
+func (i *Lab) ToOutput(ctx context.Context) pulumix.Output[*Lab] {
+	return pulumix.Output[*Lab]{
+		OutputState: i.ToLabOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LabOutput struct{ *pulumi.OutputState }
 
 func (LabOutput) ElementType() reflect.Type {
@@ -220,6 +227,12 @@ func (o LabOutput) ToLabOutput() LabOutput {
 
 func (o LabOutput) ToLabOutputWithContext(ctx context.Context) LabOutput {
 	return o
+}
+
+func (o LabOutput) ToOutput(ctx context.Context) pulumix.Output[*Lab] {
+	return pulumix.Output[*Lab]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The properties of any lab announcement associated with this lab

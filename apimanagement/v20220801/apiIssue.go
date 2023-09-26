@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Issue Contract details.
@@ -208,6 +209,12 @@ func (i *ApiIssue) ToApiIssueOutputWithContext(ctx context.Context) ApiIssueOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIssueOutput)
 }
 
+func (i *ApiIssue) ToOutput(ctx context.Context) pulumix.Output[*ApiIssue] {
+	return pulumix.Output[*ApiIssue]{
+		OutputState: i.ToApiIssueOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiIssueOutput struct{ *pulumi.OutputState }
 
 func (ApiIssueOutput) ElementType() reflect.Type {
@@ -220,6 +227,12 @@ func (o ApiIssueOutput) ToApiIssueOutput() ApiIssueOutput {
 
 func (o ApiIssueOutput) ToApiIssueOutputWithContext(ctx context.Context) ApiIssueOutput {
 	return o
+}
+
+func (o ApiIssueOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiIssue] {
+	return pulumix.Output[*ApiIssue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A resource identifier for the API the issue was created for.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a license profile in a hybrid machine.
@@ -147,6 +148,12 @@ func (i *LicenseProfile) ToLicenseProfileOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(LicenseProfileOutput)
 }
 
+func (i *LicenseProfile) ToOutput(ctx context.Context) pulumix.Output[*LicenseProfile] {
+	return pulumix.Output[*LicenseProfile]{
+		OutputState: i.ToLicenseProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LicenseProfileOutput struct{ *pulumi.OutputState }
 
 func (LicenseProfileOutput) ElementType() reflect.Type {
@@ -159,6 +166,12 @@ func (o LicenseProfileOutput) ToLicenseProfileOutput() LicenseProfileOutput {
 
 func (o LicenseProfileOutput) ToLicenseProfileOutputWithContext(ctx context.Context) LicenseProfileOutput {
 	return o
+}
+
+func (o LicenseProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*LicenseProfile] {
+	return pulumix.Output[*LicenseProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource id of the license.

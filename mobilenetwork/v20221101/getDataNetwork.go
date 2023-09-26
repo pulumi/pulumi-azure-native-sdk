@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified data network.
@@ -90,6 +91,12 @@ func (o LookupDataNetworkResultOutput) ToLookupDataNetworkResultOutput() LookupD
 
 func (o LookupDataNetworkResultOutput) ToLookupDataNetworkResultOutputWithContext(ctx context.Context) LookupDataNetworkResultOutput {
 	return o
+}
+
+func (o LookupDataNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataNetworkResult] {
+	return pulumix.Output[LookupDataNetworkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description for this data network.

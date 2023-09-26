@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a single graph query by its resourceName.
@@ -93,6 +94,12 @@ func (o LookupGraphQueryResultOutput) ToLookupGraphQueryResultOutput() LookupGra
 
 func (o LookupGraphQueryResultOutput) ToLookupGraphQueryResultOutputWithContext(ctx context.Context) LookupGraphQueryResultOutput {
 	return o
+}
+
+func (o LookupGraphQueryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGraphQueryResult] {
+	return pulumix.Output[LookupGraphQueryResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of a graph query.

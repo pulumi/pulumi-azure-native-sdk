@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the AppComplianceAutomation report and its properties.
@@ -76,6 +77,12 @@ func (o LookupReportResultOutput) ToLookupReportResultOutput() LookupReportResul
 
 func (o LookupReportResultOutput) ToLookupReportResultOutputWithContext(ctx context.Context) LookupReportResultOutput {
 	return o
+}
+
+func (o LookupReportResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReportResult] {
+	return pulumix.Output[LookupReportResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

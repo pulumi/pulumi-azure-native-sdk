@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ADP Data Pool
@@ -143,6 +144,12 @@ func (i *DataPool) ToDataPoolOutputWithContext(ctx context.Context) DataPoolOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DataPoolOutput)
 }
 
+func (i *DataPool) ToOutput(ctx context.Context) pulumix.Output[*DataPool] {
+	return pulumix.Output[*DataPool]{
+		OutputState: i.ToDataPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataPoolOutput struct{ *pulumi.OutputState }
 
 func (DataPoolOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o DataPoolOutput) ToDataPoolOutput() DataPoolOutput {
 
 func (o DataPoolOutput) ToDataPoolOutputWithContext(ctx context.Context) DataPoolOutput {
 	return o
+}
+
+func (o DataPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPool] {
+	return pulumix.Output[*DataPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Data Pool's data-plane ID

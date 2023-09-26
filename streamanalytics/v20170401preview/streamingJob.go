@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A streaming job object, containing all information associated with the named streaming job.
@@ -255,6 +256,12 @@ func (i *StreamingJob) ToStreamingJobOutputWithContext(ctx context.Context) Stre
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingJobOutput)
 }
 
+func (i *StreamingJob) ToOutput(ctx context.Context) pulumix.Output[*StreamingJob] {
+	return pulumix.Output[*StreamingJob]{
+		OutputState: i.ToStreamingJobOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StreamingJobOutput struct{ *pulumi.OutputState }
 
 func (StreamingJobOutput) ElementType() reflect.Type {
@@ -267,6 +274,12 @@ func (o StreamingJobOutput) ToStreamingJobOutput() StreamingJobOutput {
 
 func (o StreamingJobOutput) ToStreamingJobOutputWithContext(ctx context.Context) StreamingJobOutput {
 	return o
+}
+
+func (o StreamingJobOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingJob] {
+	return pulumix.Output[*StreamingJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The cluster which streaming jobs will run on.

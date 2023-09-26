@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The workspace manager configuration
@@ -140,6 +141,12 @@ func (i *WorkspaceManagerConfiguration) ToWorkspaceManagerConfigurationOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceManagerConfigurationOutput)
 }
 
+func (i *WorkspaceManagerConfiguration) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceManagerConfiguration] {
+	return pulumix.Output[*WorkspaceManagerConfiguration]{
+		OutputState: i.ToWorkspaceManagerConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceManagerConfigurationOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceManagerConfigurationOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o WorkspaceManagerConfigurationOutput) ToWorkspaceManagerConfigurationOutp
 
 func (o WorkspaceManagerConfigurationOutput) ToWorkspaceManagerConfigurationOutputWithContext(ctx context.Context) WorkspaceManagerConfigurationOutput {
 	return o
+}
+
+func (o WorkspaceManagerConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceManagerConfiguration] {
+	return pulumix.Output[*WorkspaceManagerConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Etag.

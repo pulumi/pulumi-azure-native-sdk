@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // FarmBeats ARM Resource.
@@ -138,6 +139,12 @@ func (i *FarmBeatsModel) ToFarmBeatsModelOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(FarmBeatsModelOutput)
 }
 
+func (i *FarmBeatsModel) ToOutput(ctx context.Context) pulumix.Output[*FarmBeatsModel] {
+	return pulumix.Output[*FarmBeatsModel]{
+		OutputState: i.ToFarmBeatsModelOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FarmBeatsModelOutput struct{ *pulumi.OutputState }
 
 func (FarmBeatsModelOutput) ElementType() reflect.Type {
@@ -150,6 +157,12 @@ func (o FarmBeatsModelOutput) ToFarmBeatsModelOutput() FarmBeatsModelOutput {
 
 func (o FarmBeatsModelOutput) ToFarmBeatsModelOutputWithContext(ctx context.Context) FarmBeatsModelOutput {
 	return o
+}
+
+func (o FarmBeatsModelOutput) ToOutput(ctx context.Context) pulumix.Output[*FarmBeatsModel] {
+	return pulumix.Output[*FarmBeatsModel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Uri of the FarmBeats instance.

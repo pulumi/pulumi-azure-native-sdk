@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a classic metric alert rule
@@ -95,6 +96,12 @@ func (o LookupAlertRuleResultOutput) ToLookupAlertRuleResultOutput() LookupAlert
 
 func (o LookupAlertRuleResultOutput) ToLookupAlertRuleResultOutputWithContext(ctx context.Context) LookupAlertRuleResultOutput {
 	return o
+}
+
+func (o LookupAlertRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAlertRuleResult] {
+	return pulumix.Output[LookupAlertRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // action that is performed when the alert rule becomes active, and when an alert condition is resolved.

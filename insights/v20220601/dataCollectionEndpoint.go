@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of ARM tracked top level resource.
@@ -174,6 +175,12 @@ func (i *DataCollectionEndpoint) ToDataCollectionEndpointOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DataCollectionEndpointOutput)
 }
 
+func (i *DataCollectionEndpoint) ToOutput(ctx context.Context) pulumix.Output[*DataCollectionEndpoint] {
+	return pulumix.Output[*DataCollectionEndpoint]{
+		OutputState: i.ToDataCollectionEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataCollectionEndpointOutput struct{ *pulumi.OutputState }
 
 func (DataCollectionEndpointOutput) ElementType() reflect.Type {
@@ -186,6 +193,12 @@ func (o DataCollectionEndpointOutput) ToDataCollectionEndpointOutput() DataColle
 
 func (o DataCollectionEndpointOutput) ToDataCollectionEndpointOutputWithContext(ctx context.Context) DataCollectionEndpointOutput {
 	return o
+}
+
+func (o DataCollectionEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*DataCollectionEndpoint] {
+	return pulumix.Output[*DataCollectionEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The endpoint used by clients to access their configuration.

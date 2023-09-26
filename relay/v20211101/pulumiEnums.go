@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessRights string
@@ -117,6 +118,12 @@ func (o RelaytypeOutput) ToRelaytypePtrOutputWithContext(ctx context.Context) Re
 	}).(RelaytypePtrOutput)
 }
 
+func (o RelaytypeOutput) ToOutput(ctx context.Context) pulumix.Output[Relaytype] {
+	return pulumix.Output[Relaytype]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RelaytypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -150,6 +157,12 @@ func (o RelaytypePtrOutput) ToRelaytypePtrOutput() RelaytypePtrOutput {
 
 func (o RelaytypePtrOutput) ToRelaytypePtrOutputWithContext(ctx context.Context) RelaytypePtrOutput {
 	return o
+}
+
+func (o RelaytypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Relaytype] {
+	return pulumix.Output[*Relaytype]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RelaytypePtrOutput) Elem() RelaytypeOutput {
@@ -212,6 +225,12 @@ func (in *relaytypePtr) ToRelaytypePtrOutput() RelaytypePtrOutput {
 
 func (in *relaytypePtr) ToRelaytypePtrOutputWithContext(ctx context.Context) RelaytypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RelaytypePtrOutput)
+}
+
+func (in *relaytypePtr) ToOutput(ctx context.Context) pulumix.Output[*Relaytype] {
+	return pulumix.Output[*Relaytype]{
+		OutputState: in.ToRelaytypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Name of this SKU.

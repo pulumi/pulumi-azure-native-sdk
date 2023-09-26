@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -68,6 +69,12 @@ func (i AddressArgs) ToAddressOutputWithContext(ctx context.Context) AddressOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AddressOutput)
 }
 
+func (i AddressArgs) ToOutput(ctx context.Context) pulumix.Output[Address] {
+	return pulumix.Output[Address]{
+		OutputState: i.ToAddressOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AddressArgs) ToAddressPtrOutput() AddressPtrOutput {
 	return i.ToAddressPtrOutputWithContext(context.Background())
 }
@@ -109,6 +116,12 @@ func (i *addressPtrType) ToAddressPtrOutputWithContext(ctx context.Context) Addr
 	return pulumi.ToOutputWithContext(ctx, i).(AddressPtrOutput)
 }
 
+func (i *addressPtrType) ToOutput(ctx context.Context) pulumix.Output[*Address] {
+	return pulumix.Output[*Address]{
+		OutputState: i.ToAddressPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Address information for domain registration.
 type AddressOutput struct{ *pulumi.OutputState }
 
@@ -132,6 +145,12 @@ func (o AddressOutput) ToAddressPtrOutputWithContext(ctx context.Context) Addres
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Address) *Address {
 		return &v
 	}).(AddressPtrOutput)
+}
+
+func (o AddressOutput) ToOutput(ctx context.Context) pulumix.Output[Address] {
+	return pulumix.Output[Address]{
+		OutputState: o.OutputState,
+	}
 }
 
 // First line of an Address.
@@ -176,6 +195,12 @@ func (o AddressPtrOutput) ToAddressPtrOutput() AddressPtrOutput {
 
 func (o AddressPtrOutput) ToAddressPtrOutputWithContext(ctx context.Context) AddressPtrOutput {
 	return o
+}
+
+func (o AddressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Address] {
+	return pulumix.Output[*Address]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressPtrOutput) Elem() AddressOutput {
@@ -317,6 +342,12 @@ func (i ContactArgs) ToContactOutputWithContext(ctx context.Context) ContactOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ContactOutput)
 }
 
+func (i ContactArgs) ToOutput(ctx context.Context) pulumix.Output[Contact] {
+	return pulumix.Output[Contact]{
+		OutputState: i.ToContactOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contact information for domain registration. If 'Domain Privacy' option is not selected then the contact information is made publicly available through the Whois
 // directories as per ICANN requirements.
 type ContactOutput struct{ *pulumi.OutputState }
@@ -331,6 +362,12 @@ func (o ContactOutput) ToContactOutput() ContactOutput {
 
 func (o ContactOutput) ToContactOutputWithContext(ctx context.Context) ContactOutput {
 	return o
+}
+
+func (o ContactOutput) ToOutput(ctx context.Context) pulumix.Output[Contact] {
+	return pulumix.Output[Contact]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Mailing address.
@@ -421,6 +458,12 @@ func (i DomainPurchaseConsentArgs) ToDomainPurchaseConsentOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DomainPurchaseConsentOutput)
 }
 
+func (i DomainPurchaseConsentArgs) ToOutput(ctx context.Context) pulumix.Output[DomainPurchaseConsent] {
+	return pulumix.Output[DomainPurchaseConsent]{
+		OutputState: i.ToDomainPurchaseConsentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Domain purchase consent object, representing acceptance of applicable legal agreements.
 type DomainPurchaseConsentOutput struct{ *pulumi.OutputState }
 
@@ -434,6 +477,12 @@ func (o DomainPurchaseConsentOutput) ToDomainPurchaseConsentOutput() DomainPurch
 
 func (o DomainPurchaseConsentOutput) ToDomainPurchaseConsentOutputWithContext(ctx context.Context) DomainPurchaseConsentOutput {
 	return o
+}
+
+func (o DomainPurchaseConsentOutput) ToOutput(ctx context.Context) pulumix.Output[DomainPurchaseConsent] {
+	return pulumix.Output[DomainPurchaseConsent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Timestamp when the agreements were accepted.
@@ -482,6 +531,12 @@ func (o HostNameResponseOutput) ToHostNameResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o HostNameResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HostNameResponse] {
+	return pulumix.Output[HostNameResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the Azure resource the hostname is assigned to. If it is assigned to a Traffic Manager then it will be the Traffic Manager name otherwise it will be the app name.
 func (o HostNameResponseOutput) AzureResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HostNameResponse) *string { return v.AzureResourceName }).(pulumi.StringPtrOutput)
@@ -526,6 +581,12 @@ func (o HostNameResponseArrayOutput) ToHostNameResponseArrayOutputWithContext(ct
 	return o
 }
 
+func (o HostNameResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HostNameResponse] {
+	return pulumix.Output[[]HostNameResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostNameResponseArrayOutput) Index(i pulumi.IntInput) HostNameResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostNameResponse {
 		return vs[0].([]HostNameResponse)[vs[1].(int)]
@@ -553,6 +614,12 @@ func (o NameIdentifierResponseOutput) ToNameIdentifierResponseOutputWithContext(
 	return o
 }
 
+func (o NameIdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NameIdentifierResponse] {
+	return pulumix.Output[NameIdentifierResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the object.
 func (o NameIdentifierResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NameIdentifierResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -570,6 +637,12 @@ func (o NameIdentifierResponseArrayOutput) ToNameIdentifierResponseArrayOutput()
 
 func (o NameIdentifierResponseArrayOutput) ToNameIdentifierResponseArrayOutputWithContext(ctx context.Context) NameIdentifierResponseArrayOutput {
 	return o
+}
+
+func (o NameIdentifierResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NameIdentifierResponse] {
+	return pulumix.Output[[]NameIdentifierResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NameIdentifierResponseArrayOutput) Index(i pulumi.IntInput) NameIdentifierResponseOutput {
@@ -605,6 +678,12 @@ func (o TldLegalAgreementResponseOutput) ToTldLegalAgreementResponseOutputWithCo
 	return o
 }
 
+func (o TldLegalAgreementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TldLegalAgreementResponse] {
+	return pulumix.Output[TldLegalAgreementResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Unique identifier for the agreement.
 func (o TldLegalAgreementResponseOutput) AgreementKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TldLegalAgreementResponse) string { return v.AgreementKey }).(pulumi.StringOutput)
@@ -637,6 +716,12 @@ func (o TldLegalAgreementResponseArrayOutput) ToTldLegalAgreementResponseArrayOu
 
 func (o TldLegalAgreementResponseArrayOutput) ToTldLegalAgreementResponseArrayOutputWithContext(ctx context.Context) TldLegalAgreementResponseArrayOutput {
 	return o
+}
+
+func (o TldLegalAgreementResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TldLegalAgreementResponse] {
+	return pulumix.Output[[]TldLegalAgreementResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TldLegalAgreementResponseArrayOutput) Index(i pulumi.IntInput) TldLegalAgreementResponseOutput {

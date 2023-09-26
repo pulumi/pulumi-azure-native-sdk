@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Database.
@@ -145,6 +146,12 @@ func (i *Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseOutput)
 }
 
+func (i *Database) ToOutput(ctx context.Context) pulumix.Output[*Database] {
+	return pulumix.Output[*Database]{
+		OutputState: i.ToDatabaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseOutput struct{ *pulumi.OutputState }
 
 func (DatabaseOutput) ElementType() reflect.Type {
@@ -157,6 +164,12 @@ func (o DatabaseOutput) ToDatabaseOutput() DatabaseOutput {
 
 func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
 	return o
+}
+
+func (o DatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*Database] {
+	return pulumix.Output[*Database]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The charset of the database.

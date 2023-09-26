@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a specific role by name.
@@ -95,6 +96,12 @@ func (o LookupCloudEdgeManagementRoleResultOutput) ToLookupCloudEdgeManagementRo
 
 func (o LookupCloudEdgeManagementRoleResultOutput) ToLookupCloudEdgeManagementRoleResultOutputWithContext(ctx context.Context) LookupCloudEdgeManagementRoleResultOutput {
 	return o
+}
+
+func (o LookupCloudEdgeManagementRoleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCloudEdgeManagementRoleResult] {
+	return pulumix.Output[LookupCloudEdgeManagementRoleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Edge Profile of the resource

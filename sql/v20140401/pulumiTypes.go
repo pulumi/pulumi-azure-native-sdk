@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -38,6 +39,12 @@ func (o OperationImpactResponseOutput) ToOperationImpactResponseOutput() Operati
 
 func (o OperationImpactResponseOutput) ToOperationImpactResponseOutputWithContext(ctx context.Context) OperationImpactResponseOutput {
 	return o
+}
+
+func (o OperationImpactResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OperationImpactResponse] {
+	return pulumix.Output[OperationImpactResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The absolute impact to dimension.
@@ -72,6 +79,12 @@ func (o OperationImpactResponseArrayOutput) ToOperationImpactResponseArrayOutput
 
 func (o OperationImpactResponseArrayOutput) ToOperationImpactResponseArrayOutputWithContext(ctx context.Context) OperationImpactResponseArrayOutput {
 	return o
+}
+
+func (o OperationImpactResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OperationImpactResponse] {
+	return pulumix.Output[[]OperationImpactResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OperationImpactResponseArrayOutput) Index(i pulumi.IntInput) OperationImpactResponseOutput {
@@ -127,6 +140,12 @@ func (o RecommendedIndexResponseOutput) ToRecommendedIndexResponseOutput() Recom
 
 func (o RecommendedIndexResponseOutput) ToRecommendedIndexResponseOutputWithContext(ctx context.Context) RecommendedIndexResponseOutput {
 	return o
+}
+
+func (o RecommendedIndexResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RecommendedIndexResponse] {
+	return pulumix.Output[RecommendedIndexResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The proposed index action. You can create a missing index, drop an unused index, or rebuild an existing index to improve its performance.
@@ -218,6 +237,12 @@ func (o RecommendedIndexResponseArrayOutput) ToRecommendedIndexResponseArrayOutp
 	return o
 }
 
+func (o RecommendedIndexResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RecommendedIndexResponse] {
+	return pulumix.Output[[]RecommendedIndexResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RecommendedIndexResponseArrayOutput) Index(i pulumi.IntInput) RecommendedIndexResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecommendedIndexResponse {
 		return vs[0].([]RecommendedIndexResponse)[vs[1].(int)]
@@ -285,6 +310,12 @@ func (o ServiceTierAdvisorResponseOutput) ToServiceTierAdvisorResponseOutput() S
 
 func (o ServiceTierAdvisorResponseOutput) ToServiceTierAdvisorResponseOutputWithContext(ctx context.Context) ServiceTierAdvisorResponseOutput {
 	return o
+}
+
+func (o ServiceTierAdvisorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTierAdvisorResponse] {
+	return pulumix.Output[ServiceTierAdvisorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The activeTimeRatio for service tier advisor.
@@ -421,6 +452,12 @@ func (o ServiceTierAdvisorResponseArrayOutput) ToServiceTierAdvisorResponseArray
 	return o
 }
 
+func (o ServiceTierAdvisorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTierAdvisorResponse] {
+	return pulumix.Output[[]ServiceTierAdvisorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceTierAdvisorResponseArrayOutput) Index(i pulumi.IntInput) ServiceTierAdvisorResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTierAdvisorResponse {
 		return vs[0].([]ServiceTierAdvisorResponse)[vs[1].(int)]
@@ -452,6 +489,12 @@ func (o SloUsageMetricResponseOutput) ToSloUsageMetricResponseOutputWithContext(
 	return o
 }
 
+func (o SloUsageMetricResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SloUsageMetricResponse] {
+	return pulumix.Output[SloUsageMetricResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets inRangeTimeRatio for SLO usage metric.
 func (o SloUsageMetricResponseOutput) InRangeTimeRatio() pulumi.Float64Output {
 	return o.ApplyT(func(v SloUsageMetricResponse) float64 { return v.InRangeTimeRatio }).(pulumi.Float64Output)
@@ -479,6 +522,12 @@ func (o SloUsageMetricResponseArrayOutput) ToSloUsageMetricResponseArrayOutput()
 
 func (o SloUsageMetricResponseArrayOutput) ToSloUsageMetricResponseArrayOutputWithContext(ctx context.Context) SloUsageMetricResponseArrayOutput {
 	return o
+}
+
+func (o SloUsageMetricResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SloUsageMetricResponse] {
+	return pulumix.Output[[]SloUsageMetricResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloUsageMetricResponseArrayOutput) Index(i pulumi.IntInput) SloUsageMetricResponseOutput {
@@ -514,6 +563,12 @@ func (o TransparentDataEncryptionResponseOutput) ToTransparentDataEncryptionResp
 
 func (o TransparentDataEncryptionResponseOutput) ToTransparentDataEncryptionResponseOutputWithContext(ctx context.Context) TransparentDataEncryptionResponseOutput {
 	return o
+}
+
+func (o TransparentDataEncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TransparentDataEncryptionResponse] {
+	return pulumix.Output[TransparentDataEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.
@@ -553,6 +608,12 @@ func (o TransparentDataEncryptionResponseArrayOutput) ToTransparentDataEncryptio
 
 func (o TransparentDataEncryptionResponseArrayOutput) ToTransparentDataEncryptionResponseArrayOutputWithContext(ctx context.Context) TransparentDataEncryptionResponseArrayOutput {
 	return o
+}
+
+func (o TransparentDataEncryptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransparentDataEncryptionResponse] {
+	return pulumix.Output[[]TransparentDataEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransparentDataEncryptionResponseArrayOutput) Index(i pulumi.IntInput) TransparentDataEncryptionResponseOutput {

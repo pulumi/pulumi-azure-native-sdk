@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Supported protocols for the customer's endpoint.
@@ -105,6 +106,12 @@ func (o AfdMinimumTlsVersionOutput) ToAfdMinimumTlsVersionPtrOutputWithContext(c
 	}).(AfdMinimumTlsVersionPtrOutput)
 }
 
+func (o AfdMinimumTlsVersionOutput) ToOutput(ctx context.Context) pulumix.Output[AfdMinimumTlsVersion] {
+	return pulumix.Output[AfdMinimumTlsVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AfdMinimumTlsVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -138,6 +145,12 @@ func (o AfdMinimumTlsVersionPtrOutput) ToAfdMinimumTlsVersionPtrOutput() AfdMini
 
 func (o AfdMinimumTlsVersionPtrOutput) ToAfdMinimumTlsVersionPtrOutputWithContext(ctx context.Context) AfdMinimumTlsVersionPtrOutput {
 	return o
+}
+
+func (o AfdMinimumTlsVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AfdMinimumTlsVersion] {
+	return pulumix.Output[*AfdMinimumTlsVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AfdMinimumTlsVersionPtrOutput) Elem() AfdMinimumTlsVersionOutput {
@@ -200,6 +213,12 @@ func (in *afdMinimumTlsVersionPtr) ToAfdMinimumTlsVersionPtrOutput() AfdMinimumT
 
 func (in *afdMinimumTlsVersionPtr) ToAfdMinimumTlsVersionPtrOutputWithContext(ctx context.Context) AfdMinimumTlsVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AfdMinimumTlsVersionPtrOutput)
+}
+
+func (in *afdMinimumTlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*AfdMinimumTlsVersion] {
+	return pulumix.Output[*AfdMinimumTlsVersion]{
+		OutputState: in.ToAfdMinimumTlsVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
@@ -394,6 +413,12 @@ func (o GeoFilterActionsOutput) ToGeoFilterActionsPtrOutputWithContext(ctx conte
 	}).(GeoFilterActionsPtrOutput)
 }
 
+func (o GeoFilterActionsOutput) ToOutput(ctx context.Context) pulumix.Output[GeoFilterActions] {
+	return pulumix.Output[GeoFilterActions]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GeoFilterActionsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -427,6 +452,12 @@ func (o GeoFilterActionsPtrOutput) ToGeoFilterActionsPtrOutput() GeoFilterAction
 
 func (o GeoFilterActionsPtrOutput) ToGeoFilterActionsPtrOutputWithContext(ctx context.Context) GeoFilterActionsPtrOutput {
 	return o
+}
+
+func (o GeoFilterActionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GeoFilterActions] {
+	return pulumix.Output[*GeoFilterActions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GeoFilterActionsPtrOutput) Elem() GeoFilterActionsOutput {
@@ -489,6 +520,12 @@ func (in *geoFilterActionsPtr) ToGeoFilterActionsPtrOutput() GeoFilterActionsPtr
 
 func (in *geoFilterActionsPtr) ToGeoFilterActionsPtrOutputWithContext(ctx context.Context) GeoFilterActionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GeoFilterActionsPtrOutput)
+}
+
+func (in *geoFilterActionsPtr) ToOutput(ctx context.Context) pulumix.Output[*GeoFilterActions] {
+	return pulumix.Output[*GeoFilterActions]{
+		OutputState: in.ToGeoFilterActionsPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Action to perform
@@ -569,6 +606,12 @@ func (o HealthProbeRequestTypeOutput) ToHealthProbeRequestTypePtrOutputWithConte
 	}).(HealthProbeRequestTypePtrOutput)
 }
 
+func (o HealthProbeRequestTypeOutput) ToOutput(ctx context.Context) pulumix.Output[HealthProbeRequestType] {
+	return pulumix.Output[HealthProbeRequestType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HealthProbeRequestTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -602,6 +645,12 @@ func (o HealthProbeRequestTypePtrOutput) ToHealthProbeRequestTypePtrOutput() Hea
 
 func (o HealthProbeRequestTypePtrOutput) ToHealthProbeRequestTypePtrOutputWithContext(ctx context.Context) HealthProbeRequestTypePtrOutput {
 	return o
+}
+
+func (o HealthProbeRequestTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HealthProbeRequestType] {
+	return pulumix.Output[*HealthProbeRequestType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HealthProbeRequestTypePtrOutput) Elem() HealthProbeRequestTypeOutput {
@@ -664,6 +713,12 @@ func (in *healthProbeRequestTypePtr) ToHealthProbeRequestTypePtrOutput() HealthP
 
 func (in *healthProbeRequestTypePtr) ToHealthProbeRequestTypePtrOutputWithContext(ctx context.Context) HealthProbeRequestTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HealthProbeRequestTypePtrOutput)
+}
+
+func (in *healthProbeRequestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HealthProbeRequestType] {
+	return pulumix.Output[*HealthProbeRequestType]{
+		OutputState: in.ToHealthProbeRequestTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Describes operator to be matched
@@ -902,6 +957,12 @@ func (o ProbeProtocolOutput) ToProbeProtocolPtrOutputWithContext(ctx context.Con
 	}).(ProbeProtocolPtrOutput)
 }
 
+func (o ProbeProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[ProbeProtocol] {
+	return pulumix.Output[ProbeProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProbeProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -935,6 +996,12 @@ func (o ProbeProtocolPtrOutput) ToProbeProtocolPtrOutput() ProbeProtocolPtrOutpu
 
 func (o ProbeProtocolPtrOutput) ToProbeProtocolPtrOutputWithContext(ctx context.Context) ProbeProtocolPtrOutput {
 	return o
+}
+
+func (o ProbeProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProbeProtocol] {
+	return pulumix.Output[*ProbeProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProbeProtocolPtrOutput) Elem() ProbeProtocolOutput {
@@ -997,6 +1064,12 @@ func (in *probeProtocolPtr) ToProbeProtocolPtrOutput() ProbeProtocolPtrOutput {
 
 func (in *probeProtocolPtr) ToProbeProtocolPtrOutputWithContext(ctx context.Context) ProbeProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProbeProtocolPtrOutput)
+}
+
+func (in *probeProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ProbeProtocol] {
+	return pulumix.Output[*ProbeProtocol]{
+		OutputState: in.ToProbeProtocolPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Caching behavior for the requests
@@ -1079,6 +1152,12 @@ func (o QueryStringCachingBehaviorOutput) ToQueryStringCachingBehaviorPtrOutputW
 	}).(QueryStringCachingBehaviorPtrOutput)
 }
 
+func (o QueryStringCachingBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[QueryStringCachingBehavior] {
+	return pulumix.Output[QueryStringCachingBehavior]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o QueryStringCachingBehaviorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1112,6 +1191,12 @@ func (o QueryStringCachingBehaviorPtrOutput) ToQueryStringCachingBehaviorPtrOutp
 
 func (o QueryStringCachingBehaviorPtrOutput) ToQueryStringCachingBehaviorPtrOutputWithContext(ctx context.Context) QueryStringCachingBehaviorPtrOutput {
 	return o
+}
+
+func (o QueryStringCachingBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryStringCachingBehavior] {
+	return pulumix.Output[*QueryStringCachingBehavior]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QueryStringCachingBehaviorPtrOutput) Elem() QueryStringCachingBehaviorOutput {
@@ -1174,6 +1259,12 @@ func (in *queryStringCachingBehaviorPtr) ToQueryStringCachingBehaviorPtrOutput()
 
 func (in *queryStringCachingBehaviorPtr) ToQueryStringCachingBehaviorPtrOutputWithContext(ctx context.Context) QueryStringCachingBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(QueryStringCachingBehaviorPtrOutput)
+}
+
+func (in *queryStringCachingBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*QueryStringCachingBehavior] {
+	return pulumix.Output[*QueryStringCachingBehavior]{
+		OutputState: in.ToQueryStringCachingBehaviorPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Describes operator to be matched
@@ -1335,6 +1426,12 @@ func (o ResponseBasedDetectedErrorTypesOutput) ToResponseBasedDetectedErrorTypes
 	}).(ResponseBasedDetectedErrorTypesPtrOutput)
 }
 
+func (o ResponseBasedDetectedErrorTypesOutput) ToOutput(ctx context.Context) pulumix.Output[ResponseBasedDetectedErrorTypes] {
+	return pulumix.Output[ResponseBasedDetectedErrorTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResponseBasedDetectedErrorTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1368,6 +1465,12 @@ func (o ResponseBasedDetectedErrorTypesPtrOutput) ToResponseBasedDetectedErrorTy
 
 func (o ResponseBasedDetectedErrorTypesPtrOutput) ToResponseBasedDetectedErrorTypesPtrOutputWithContext(ctx context.Context) ResponseBasedDetectedErrorTypesPtrOutput {
 	return o
+}
+
+func (o ResponseBasedDetectedErrorTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResponseBasedDetectedErrorTypes] {
+	return pulumix.Output[*ResponseBasedDetectedErrorTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResponseBasedDetectedErrorTypesPtrOutput) Elem() ResponseBasedDetectedErrorTypesOutput {
@@ -1430,6 +1533,12 @@ func (in *responseBasedDetectedErrorTypesPtr) ToResponseBasedDetectedErrorTypesP
 
 func (in *responseBasedDetectedErrorTypesPtr) ToResponseBasedDetectedErrorTypesPtrOutputWithContext(ctx context.Context) ResponseBasedDetectedErrorTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResponseBasedDetectedErrorTypesPtrOutput)
+}
+
+func (in *responseBasedDetectedErrorTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ResponseBasedDetectedErrorTypes] {
+	return pulumix.Output[*ResponseBasedDetectedErrorTypes]{
+		OutputState: in.ToResponseBasedDetectedErrorTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Caching behavior for the requests
@@ -1563,6 +1672,12 @@ func (o SharedPrivateLinkResourceStatusOutput) ToSharedPrivateLinkResourceStatus
 	}).(SharedPrivateLinkResourceStatusPtrOutput)
 }
 
+func (o SharedPrivateLinkResourceStatusOutput) ToOutput(ctx context.Context) pulumix.Output[SharedPrivateLinkResourceStatus] {
+	return pulumix.Output[SharedPrivateLinkResourceStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SharedPrivateLinkResourceStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1596,6 +1711,12 @@ func (o SharedPrivateLinkResourceStatusPtrOutput) ToSharedPrivateLinkResourceSta
 
 func (o SharedPrivateLinkResourceStatusPtrOutput) ToSharedPrivateLinkResourceStatusPtrOutputWithContext(ctx context.Context) SharedPrivateLinkResourceStatusPtrOutput {
 	return o
+}
+
+func (o SharedPrivateLinkResourceStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SharedPrivateLinkResourceStatus] {
+	return pulumix.Output[*SharedPrivateLinkResourceStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SharedPrivateLinkResourceStatusPtrOutput) Elem() SharedPrivateLinkResourceStatusOutput {
@@ -1658,6 +1779,12 @@ func (in *sharedPrivateLinkResourceStatusPtr) ToSharedPrivateLinkResourceStatusP
 
 func (in *sharedPrivateLinkResourceStatusPtr) ToSharedPrivateLinkResourceStatusPtrOutputWithContext(ctx context.Context) SharedPrivateLinkResourceStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SharedPrivateLinkResourceStatusPtrOutput)
+}
+
+func (in *sharedPrivateLinkResourceStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SharedPrivateLinkResourceStatus] {
+	return pulumix.Output[*SharedPrivateLinkResourceStatus]{
+		OutputState: in.ToSharedPrivateLinkResourceStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Name of the pricing tier.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A workspace key
@@ -146,6 +147,12 @@ func (i *Key) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyOutput)
 }
 
+func (i *Key) ToOutput(ctx context.Context) pulumix.Output[*Key] {
+	return pulumix.Output[*Key]{
+		OutputState: i.ToKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeyOutput struct{ *pulumi.OutputState }
 
 func (KeyOutput) ElementType() reflect.Type {
@@ -158,6 +165,12 @@ func (o KeyOutput) ToKeyOutput() KeyOutput {
 
 func (o KeyOutput) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 	return o
+}
+
+func (o KeyOutput) ToOutput(ctx context.Context) pulumix.Output[*Key] {
+	return pulumix.Output[*Key]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Used to activate the workspace after a customer managed key is provided.

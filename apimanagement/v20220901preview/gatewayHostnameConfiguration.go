@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gateway hostname configuration details.
@@ -191,6 +192,12 @@ func (i *GatewayHostnameConfiguration) ToGatewayHostnameConfigurationOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayHostnameConfigurationOutput)
 }
 
+func (i *GatewayHostnameConfiguration) ToOutput(ctx context.Context) pulumix.Output[*GatewayHostnameConfiguration] {
+	return pulumix.Output[*GatewayHostnameConfiguration]{
+		OutputState: i.ToGatewayHostnameConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GatewayHostnameConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GatewayHostnameConfigurationOutput) ElementType() reflect.Type {
@@ -203,6 +210,12 @@ func (o GatewayHostnameConfigurationOutput) ToGatewayHostnameConfigurationOutput
 
 func (o GatewayHostnameConfigurationOutput) ToGatewayHostnameConfigurationOutputWithContext(ctx context.Context) GatewayHostnameConfigurationOutput {
 	return o
+}
+
+func (o GatewayHostnameConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayHostnameConfiguration] {
+	return pulumix.Output[*GatewayHostnameConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier of Certificate entity that will be used for TLS connection establishment

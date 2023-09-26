@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties for an Azure Dev Spaces Controller.
@@ -91,6 +92,12 @@ func (o LookupControllerResultOutput) ToLookupControllerResultOutput() LookupCon
 
 func (o LookupControllerResultOutput) ToLookupControllerResultOutputWithContext(ctx context.Context) LookupControllerResultOutput {
 	return o
+}
+
+func (o LookupControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupControllerResult] {
+	return pulumix.Output[LookupControllerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // DNS name for accessing DataPlane services

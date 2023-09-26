@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified product.
@@ -118,6 +119,12 @@ func (o GetProductResultOutput) ToGetProductResultOutput() GetProductResultOutpu
 
 func (o GetProductResultOutput) ToGetProductResultOutputWithContext(ctx context.Context) GetProductResultOutput {
 	return o
+}
+
+func (o GetProductResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProductResult] {
+	return pulumix.Output[GetProductResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The part number used for billing purposes.

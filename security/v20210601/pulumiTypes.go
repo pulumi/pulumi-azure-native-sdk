@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -32,6 +33,12 @@ func (o AssessmentLinksResponseOutput) ToAssessmentLinksResponseOutput() Assessm
 
 func (o AssessmentLinksResponseOutput) ToAssessmentLinksResponseOutputWithContext(ctx context.Context) AssessmentLinksResponseOutput {
 	return o
+}
+
+func (o AssessmentLinksResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssessmentLinksResponse] {
+	return pulumix.Output[AssessmentLinksResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Link to assessment in Azure Portal
@@ -82,6 +89,12 @@ func (i AssessmentStatusArgs) ToAssessmentStatusOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AssessmentStatusOutput)
 }
 
+func (i AssessmentStatusArgs) ToOutput(ctx context.Context) pulumix.Output[AssessmentStatus] {
+	return pulumix.Output[AssessmentStatus]{
+		OutputState: i.ToAssessmentStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The result of the assessment
 type AssessmentStatusOutput struct{ *pulumi.OutputState }
 
@@ -95,6 +108,12 @@ func (o AssessmentStatusOutput) ToAssessmentStatusOutput() AssessmentStatusOutpu
 
 func (o AssessmentStatusOutput) ToAssessmentStatusOutputWithContext(ctx context.Context) AssessmentStatusOutput {
 	return o
+}
+
+func (o AssessmentStatusOutput) ToOutput(ctx context.Context) pulumix.Output[AssessmentStatus] {
+	return pulumix.Output[AssessmentStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Programmatic code for the cause of the assessment status
@@ -139,6 +158,12 @@ func (o AssessmentStatusResponseResponseOutput) ToAssessmentStatusResponseRespon
 
 func (o AssessmentStatusResponseResponseOutput) ToAssessmentStatusResponseResponseOutputWithContext(ctx context.Context) AssessmentStatusResponseResponseOutput {
 	return o
+}
+
+func (o AssessmentStatusResponseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssessmentStatusResponseResponse] {
+	return pulumix.Output[AssessmentStatusResponseResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Programmatic code for the cause of the assessment status
@@ -293,6 +318,12 @@ func (i SecurityAssessmentMetadataPartnerDataArgs) ToSecurityAssessmentMetadataP
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentMetadataPartnerDataOutput)
 }
 
+func (i SecurityAssessmentMetadataPartnerDataArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataPartnerData] {
+	return pulumix.Output[SecurityAssessmentMetadataPartnerData]{
+		OutputState: i.ToSecurityAssessmentMetadataPartnerDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecurityAssessmentMetadataPartnerDataArgs) ToSecurityAssessmentMetadataPartnerDataPtrOutput() SecurityAssessmentMetadataPartnerDataPtrOutput {
 	return i.ToSecurityAssessmentMetadataPartnerDataPtrOutputWithContext(context.Background())
 }
@@ -334,6 +365,12 @@ func (i *securityAssessmentMetadataPartnerDataPtrType) ToSecurityAssessmentMetad
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentMetadataPartnerDataPtrOutput)
 }
 
+func (i *securityAssessmentMetadataPartnerDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataPartnerData] {
+	return pulumix.Output[*SecurityAssessmentMetadataPartnerData]{
+		OutputState: i.ToSecurityAssessmentMetadataPartnerDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the partner that created the assessment
 type SecurityAssessmentMetadataPartnerDataOutput struct{ *pulumi.OutputState }
 
@@ -357,6 +394,12 @@ func (o SecurityAssessmentMetadataPartnerDataOutput) ToSecurityAssessmentMetadat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityAssessmentMetadataPartnerData) *SecurityAssessmentMetadataPartnerData {
 		return &v
 	}).(SecurityAssessmentMetadataPartnerDataPtrOutput)
+}
+
+func (o SecurityAssessmentMetadataPartnerDataOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataPartnerData] {
+	return pulumix.Output[SecurityAssessmentMetadataPartnerData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the company of the partner
@@ -386,6 +429,12 @@ func (o SecurityAssessmentMetadataPartnerDataPtrOutput) ToSecurityAssessmentMeta
 
 func (o SecurityAssessmentMetadataPartnerDataPtrOutput) ToSecurityAssessmentMetadataPartnerDataPtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPartnerDataPtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentMetadataPartnerDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataPartnerData] {
+	return pulumix.Output[*SecurityAssessmentMetadataPartnerData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentMetadataPartnerDataPtrOutput) Elem() SecurityAssessmentMetadataPartnerDataOutput {
@@ -453,6 +502,12 @@ func (o SecurityAssessmentMetadataPartnerDataResponseOutput) ToSecurityAssessmen
 	return o
 }
 
+func (o SecurityAssessmentMetadataPartnerDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataPartnerDataResponse] {
+	return pulumix.Output[SecurityAssessmentMetadataPartnerDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the company of the partner
 func (o SecurityAssessmentMetadataPartnerDataResponseOutput) PartnerName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityAssessmentMetadataPartnerDataResponse) string { return v.PartnerName }).(pulumi.StringOutput)
@@ -480,6 +535,12 @@ func (o SecurityAssessmentMetadataPartnerDataResponsePtrOutput) ToSecurityAssess
 
 func (o SecurityAssessmentMetadataPartnerDataResponsePtrOutput) ToSecurityAssessmentMetadataPartnerDataResponsePtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPartnerDataResponsePtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentMetadataPartnerDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataPartnerDataResponse] {
+	return pulumix.Output[*SecurityAssessmentMetadataPartnerDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentMetadataPartnerDataResponsePtrOutput) Elem() SecurityAssessmentMetadataPartnerDataResponseOutput {
@@ -593,6 +654,12 @@ func (i SecurityAssessmentMetadataPropertiesArgs) ToSecurityAssessmentMetadataPr
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentMetadataPropertiesOutput)
 }
 
+func (i SecurityAssessmentMetadataPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataProperties] {
+	return pulumix.Output[SecurityAssessmentMetadataProperties]{
+		OutputState: i.ToSecurityAssessmentMetadataPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecurityAssessmentMetadataPropertiesArgs) ToSecurityAssessmentMetadataPropertiesPtrOutput() SecurityAssessmentMetadataPropertiesPtrOutput {
 	return i.ToSecurityAssessmentMetadataPropertiesPtrOutputWithContext(context.Background())
 }
@@ -634,6 +701,12 @@ func (i *securityAssessmentMetadataPropertiesPtrType) ToSecurityAssessmentMetada
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentMetadataPropertiesPtrOutput)
 }
 
+func (i *securityAssessmentMetadataPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataProperties] {
+	return pulumix.Output[*SecurityAssessmentMetadataProperties]{
+		OutputState: i.ToSecurityAssessmentMetadataPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes properties of an assessment metadata.
 type SecurityAssessmentMetadataPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -657,6 +730,12 @@ func (o SecurityAssessmentMetadataPropertiesOutput) ToSecurityAssessmentMetadata
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityAssessmentMetadataProperties) *SecurityAssessmentMetadataProperties {
 		return &v
 	}).(SecurityAssessmentMetadataPropertiesPtrOutput)
+}
+
+func (o SecurityAssessmentMetadataPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataProperties] {
+	return pulumix.Output[SecurityAssessmentMetadataProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
@@ -726,6 +805,12 @@ func (o SecurityAssessmentMetadataPropertiesPtrOutput) ToSecurityAssessmentMetad
 
 func (o SecurityAssessmentMetadataPropertiesPtrOutput) ToSecurityAssessmentMetadataPropertiesPtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesPtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataProperties] {
+	return pulumix.Output[*SecurityAssessmentMetadataProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentMetadataPropertiesPtrOutput) Elem() SecurityAssessmentMetadataPropertiesOutput {
@@ -887,6 +972,12 @@ func (o SecurityAssessmentMetadataPropertiesResponseOutput) ToSecurityAssessment
 	return o
 }
 
+func (o SecurityAssessmentMetadataPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataPropertiesResponse] {
+	return pulumix.Output[SecurityAssessmentMetadataPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
 func (o SecurityAssessmentMetadataPropertiesResponseOutput) AssessmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityAssessmentMetadataPropertiesResponse) string { return v.AssessmentType }).(pulumi.StringOutput)
@@ -959,6 +1050,12 @@ func (o SecurityAssessmentMetadataPropertiesResponsePtrOutput) ToSecurityAssessm
 
 func (o SecurityAssessmentMetadataPropertiesResponsePtrOutput) ToSecurityAssessmentMetadataPropertiesResponsePtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataPropertiesResponse] {
+	return pulumix.Output[*SecurityAssessmentMetadataPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentMetadataPropertiesResponsePtrOutput) Elem() SecurityAssessmentMetadataPropertiesResponseOutput {
@@ -1122,6 +1219,12 @@ func (i SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs) ToSecurity
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput)
 }
 
+func (i SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataPropertiesResponsePublishDates] {
+	return pulumix.Output[SecurityAssessmentMetadataPropertiesResponsePublishDates]{
+		OutputState: i.ToSecurityAssessmentMetadataPropertiesResponsePublishDatesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput() SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput {
 	return i.ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutputWithContext(context.Background())
 }
@@ -1163,6 +1266,12 @@ func (i *securityAssessmentMetadataPropertiesResponsePublishDatesPtrType) ToSecu
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput)
 }
 
+func (i *securityAssessmentMetadataPropertiesResponsePublishDatesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataPropertiesResponsePublishDates] {
+	return pulumix.Output[*SecurityAssessmentMetadataPropertiesResponsePublishDates]{
+		OutputState: i.ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput struct{ *pulumi.OutputState }
 
 func (SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput) ElementType() reflect.Type {
@@ -1187,6 +1296,12 @@ func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput) ToSecuri
 	}).(SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput)
 }
 
+func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataPropertiesResponsePublishDates] {
+	return pulumix.Output[SecurityAssessmentMetadataPropertiesResponsePublishDates]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput) GA() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityAssessmentMetadataPropertiesResponsePublishDates) *string { return v.GA }).(pulumi.StringPtrOutput)
 }
@@ -1207,6 +1322,12 @@ func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput) ToSec
 
 func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput) ToSecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataPropertiesResponsePublishDates] {
+	return pulumix.Output[*SecurityAssessmentMetadataPropertiesResponsePublishDates]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentMetadataPropertiesResponsePublishDatesPtrOutput) Elem() SecurityAssessmentMetadataPropertiesResponsePublishDatesOutput {
@@ -1256,6 +1377,12 @@ func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput) 
 	return o
 }
 
+func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentMetadataPropertiesResponseResponsePublishDates] {
+	return pulumix.Output[SecurityAssessmentMetadataPropertiesResponseResponsePublishDates]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput) GA() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityAssessmentMetadataPropertiesResponseResponsePublishDates) *string { return v.GA }).(pulumi.StringPtrOutput)
 }
@@ -1276,6 +1403,12 @@ func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutpu
 
 func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput) ToSecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutputWithContext(ctx context.Context) SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentMetadataPropertiesResponseResponsePublishDates] {
+	return pulumix.Output[*SecurityAssessmentMetadataPropertiesResponseResponsePublishDates]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesPtrOutput) Elem() SecurityAssessmentMetadataPropertiesResponseResponsePublishDatesOutput {
@@ -1345,6 +1478,12 @@ func (i SecurityAssessmentPartnerDataArgs) ToSecurityAssessmentPartnerDataOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentPartnerDataOutput)
 }
 
+func (i SecurityAssessmentPartnerDataArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentPartnerData] {
+	return pulumix.Output[SecurityAssessmentPartnerData]{
+		OutputState: i.ToSecurityAssessmentPartnerDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecurityAssessmentPartnerDataArgs) ToSecurityAssessmentPartnerDataPtrOutput() SecurityAssessmentPartnerDataPtrOutput {
 	return i.ToSecurityAssessmentPartnerDataPtrOutputWithContext(context.Background())
 }
@@ -1386,6 +1525,12 @@ func (i *securityAssessmentPartnerDataPtrType) ToSecurityAssessmentPartnerDataPt
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityAssessmentPartnerDataPtrOutput)
 }
 
+func (i *securityAssessmentPartnerDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentPartnerData] {
+	return pulumix.Output[*SecurityAssessmentPartnerData]{
+		OutputState: i.ToSecurityAssessmentPartnerDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Data regarding 3rd party partner integration
 type SecurityAssessmentPartnerDataOutput struct{ *pulumi.OutputState }
 
@@ -1411,6 +1556,12 @@ func (o SecurityAssessmentPartnerDataOutput) ToSecurityAssessmentPartnerDataPtrO
 	}).(SecurityAssessmentPartnerDataPtrOutput)
 }
 
+func (o SecurityAssessmentPartnerDataOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentPartnerData] {
+	return pulumix.Output[SecurityAssessmentPartnerData]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the company of the partner
 func (o SecurityAssessmentPartnerDataOutput) PartnerName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityAssessmentPartnerData) string { return v.PartnerName }).(pulumi.StringOutput)
@@ -1433,6 +1584,12 @@ func (o SecurityAssessmentPartnerDataPtrOutput) ToSecurityAssessmentPartnerDataP
 
 func (o SecurityAssessmentPartnerDataPtrOutput) ToSecurityAssessmentPartnerDataPtrOutputWithContext(ctx context.Context) SecurityAssessmentPartnerDataPtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentPartnerDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentPartnerData] {
+	return pulumix.Output[*SecurityAssessmentPartnerData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentPartnerDataPtrOutput) Elem() SecurityAssessmentPartnerDataOutput {
@@ -1488,6 +1645,12 @@ func (o SecurityAssessmentPartnerDataResponseOutput) ToSecurityAssessmentPartner
 	return o
 }
 
+func (o SecurityAssessmentPartnerDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAssessmentPartnerDataResponse] {
+	return pulumix.Output[SecurityAssessmentPartnerDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the company of the partner
 func (o SecurityAssessmentPartnerDataResponseOutput) PartnerName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityAssessmentPartnerDataResponse) string { return v.PartnerName }).(pulumi.StringOutput)
@@ -1510,6 +1673,12 @@ func (o SecurityAssessmentPartnerDataResponsePtrOutput) ToSecurityAssessmentPart
 
 func (o SecurityAssessmentPartnerDataResponsePtrOutput) ToSecurityAssessmentPartnerDataResponsePtrOutputWithContext(ctx context.Context) SecurityAssessmentPartnerDataResponsePtrOutput {
 	return o
+}
+
+func (o SecurityAssessmentPartnerDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAssessmentPartnerDataResponse] {
+	return pulumix.Output[*SecurityAssessmentPartnerDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityAssessmentPartnerDataResponsePtrOutput) Elem() SecurityAssessmentPartnerDataResponseOutput {

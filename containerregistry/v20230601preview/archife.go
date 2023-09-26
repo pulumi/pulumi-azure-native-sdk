@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An object that represents a archive for a container registry.
@@ -145,6 +146,12 @@ func (i *Archife) ToArchifeOutputWithContext(ctx context.Context) ArchifeOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ArchifeOutput)
 }
 
+func (i *Archife) ToOutput(ctx context.Context) pulumix.Output[*Archife] {
+	return pulumix.Output[*Archife]{
+		OutputState: i.ToArchifeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ArchifeOutput struct{ *pulumi.OutputState }
 
 func (ArchifeOutput) ElementType() reflect.Type {
@@ -157,6 +164,12 @@ func (o ArchifeOutput) ToArchifeOutput() ArchifeOutput {
 
 func (o ArchifeOutput) ToArchifeOutputWithContext(ctx context.Context) ArchifeOutput {
 	return o
+}
+
+func (o ArchifeOutput) ToOutput(ctx context.Context) pulumix.Output[*Archife] {
+	return pulumix.Output[*Archife]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource.

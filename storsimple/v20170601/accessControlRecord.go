@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The access control record.
@@ -135,6 +136,12 @@ func (i *AccessControlRecord) ToAccessControlRecordOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AccessControlRecordOutput)
 }
 
+func (i *AccessControlRecord) ToOutput(ctx context.Context) pulumix.Output[*AccessControlRecord] {
+	return pulumix.Output[*AccessControlRecord]{
+		OutputState: i.ToAccessControlRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessControlRecordOutput struct{ *pulumi.OutputState }
 
 func (AccessControlRecordOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o AccessControlRecordOutput) ToAccessControlRecordOutput() AccessControlRe
 
 func (o AccessControlRecordOutput) ToAccessControlRecordOutputWithContext(ctx context.Context) AccessControlRecordOutput {
 	return o
+}
+
+func (o AccessControlRecordOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessControlRecord] {
+	return pulumix.Output[*AccessControlRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The iSCSI initiator name (IQN).

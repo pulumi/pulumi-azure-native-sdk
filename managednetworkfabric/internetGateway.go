@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Internet Gateway resource definition.
@@ -157,6 +158,12 @@ func (i *InternetGateway) ToInternetGatewayOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(InternetGatewayOutput)
 }
 
+func (i *InternetGateway) ToOutput(ctx context.Context) pulumix.Output[*InternetGateway] {
+	return pulumix.Output[*InternetGateway]{
+		OutputState: i.ToInternetGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InternetGatewayOutput struct{ *pulumi.OutputState }
 
 func (InternetGatewayOutput) ElementType() reflect.Type {
@@ -169,6 +176,12 @@ func (o InternetGatewayOutput) ToInternetGatewayOutput() InternetGatewayOutput {
 
 func (o InternetGatewayOutput) ToInternetGatewayOutputWithContext(ctx context.Context) InternetGatewayOutput {
 	return o
+}
+
+func (o InternetGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*InternetGateway] {
+	return pulumix.Output[*InternetGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Switch configuration description.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // REST model used to encapsulate the user visible state of a PrivateEndpoint.
@@ -129,6 +130,12 @@ func (i *PrivateEndpointConnectionControllerPrivateEndpointConnection) ToPrivate
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionControllerPrivateEndpointConnectionOutput)
 }
 
+func (i *PrivateEndpointConnectionControllerPrivateEndpointConnection) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionControllerPrivateEndpointConnection] {
+	return pulumix.Output[*PrivateEndpointConnectionControllerPrivateEndpointConnection]{
+		OutputState: i.ToPrivateEndpointConnectionControllerPrivateEndpointConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateEndpointConnectionControllerPrivateEndpointConnectionOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionControllerPrivateEndpointConnectionOutput) ElementType() reflect.Type {
@@ -141,6 +148,12 @@ func (o PrivateEndpointConnectionControllerPrivateEndpointConnectionOutput) ToPr
 
 func (o PrivateEndpointConnectionControllerPrivateEndpointConnectionOutput) ToPrivateEndpointConnectionControllerPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionControllerPrivateEndpointConnectionOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionControllerPrivateEndpointConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionControllerPrivateEndpointConnection] {
+	return pulumix.Output[*PrivateEndpointConnectionControllerPrivateEndpointConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the tag for optimistic concurrency control.

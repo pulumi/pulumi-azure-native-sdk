@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the frequency at which data is written to disk.
@@ -109,6 +110,12 @@ func (o DayOfWeekOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Da
 	}).(DayOfWeekPtrOutput)
 }
 
+func (o DayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[DayOfWeek] {
+	return pulumix.Output[DayOfWeek]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -142,6 +149,12 @@ func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return o
+}
+
+func (o DayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
+	return pulumix.Output[*DayOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DayOfWeekPtrOutput) Elem() DayOfWeekOutput {
@@ -204,6 +217,12 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
+}
+
+func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
+	return pulumix.Output[*DayOfWeek]{
+		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Redis eviction policy - default is VolatileLRU
@@ -332,6 +351,12 @@ func (o ReplicationRoleOutput) ToReplicationRolePtrOutputWithContext(ctx context
 	}).(ReplicationRolePtrOutput)
 }
 
+func (o ReplicationRoleOutput) ToOutput(ctx context.Context) pulumix.Output[ReplicationRole] {
+	return pulumix.Output[ReplicationRole]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReplicationRoleOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -365,6 +390,12 @@ func (o ReplicationRolePtrOutput) ToReplicationRolePtrOutput() ReplicationRolePt
 
 func (o ReplicationRolePtrOutput) ToReplicationRolePtrOutputWithContext(ctx context.Context) ReplicationRolePtrOutput {
 	return o
+}
+
+func (o ReplicationRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationRole] {
+	return pulumix.Output[*ReplicationRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReplicationRolePtrOutput) Elem() ReplicationRoleOutput {
@@ -427,6 +458,12 @@ func (in *replicationRolePtr) ToReplicationRolePtrOutput() ReplicationRolePtrOut
 
 func (in *replicationRolePtr) ToReplicationRolePtrOutputWithContext(ctx context.Context) ReplicationRolePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationRolePtrOutput)
+}
+
+func (in *replicationRolePtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicationRole] {
+	return pulumix.Output[*ReplicationRole]{
+		OutputState: in.ToReplicationRolePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P = Premium).

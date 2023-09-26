@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Key Vault container ARM resource for a certificate that is purchased through Azure.
@@ -184,6 +185,12 @@ func (i *AppServiceCertificateOrderCertificate) ToAppServiceCertificateOrderCert
 	return pulumi.ToOutputWithContext(ctx, i).(AppServiceCertificateOrderCertificateOutput)
 }
 
+func (i *AppServiceCertificateOrderCertificate) ToOutput(ctx context.Context) pulumix.Output[*AppServiceCertificateOrderCertificate] {
+	return pulumix.Output[*AppServiceCertificateOrderCertificate]{
+		OutputState: i.ToAppServiceCertificateOrderCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppServiceCertificateOrderCertificateOutput struct{ *pulumi.OutputState }
 
 func (AppServiceCertificateOrderCertificateOutput) ElementType() reflect.Type {
@@ -196,6 +203,12 @@ func (o AppServiceCertificateOrderCertificateOutput) ToAppServiceCertificateOrde
 
 func (o AppServiceCertificateOrderCertificateOutput) ToAppServiceCertificateOrderCertificateOutputWithContext(ctx context.Context) AppServiceCertificateOrderCertificateOutput {
 	return o
+}
+
+func (o AppServiceCertificateOrderCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*AppServiceCertificateOrderCertificate] {
+	return pulumix.Output[*AppServiceCertificateOrderCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Key Vault resource Id.

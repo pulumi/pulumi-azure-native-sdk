@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the integration account's Key Vault keys.
@@ -82,6 +83,12 @@ func (o ListIntegrationAccountKeyVaultKeysResultOutput) ToListIntegrationAccount
 
 func (o ListIntegrationAccountKeyVaultKeysResultOutput) ToListIntegrationAccountKeyVaultKeysResultOutputWithContext(ctx context.Context) ListIntegrationAccountKeyVaultKeysResultOutput {
 	return o
+}
+
+func (o ListIntegrationAccountKeyVaultKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListIntegrationAccountKeyVaultKeysResult] {
+	return pulumix.Output[ListIntegrationAccountKeyVaultKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The skip token.

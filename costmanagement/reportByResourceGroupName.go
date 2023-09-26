@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A report resource.
@@ -141,6 +142,12 @@ func (i *ReportByResourceGroupName) ToReportByResourceGroupNameOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ReportByResourceGroupNameOutput)
 }
 
+func (i *ReportByResourceGroupName) ToOutput(ctx context.Context) pulumix.Output[*ReportByResourceGroupName] {
+	return pulumix.Output[*ReportByResourceGroupName]{
+		OutputState: i.ToReportByResourceGroupNameOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReportByResourceGroupNameOutput struct{ *pulumi.OutputState }
 
 func (ReportByResourceGroupNameOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o ReportByResourceGroupNameOutput) ToReportByResourceGroupNameOutput() Rep
 
 func (o ReportByResourceGroupNameOutput) ToReportByResourceGroupNameOutputWithContext(ctx context.Context) ReportByResourceGroupNameOutput {
 	return o
+}
+
+func (o ReportByResourceGroupNameOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportByResourceGroupName] {
+	return pulumix.Output[*ReportByResourceGroupName]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Has definition for the report.

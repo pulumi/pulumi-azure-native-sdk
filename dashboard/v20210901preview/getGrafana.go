@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The grafana resource type.
@@ -88,6 +89,12 @@ func (o LookupGrafanaResultOutput) ToLookupGrafanaResultOutput() LookupGrafanaRe
 
 func (o LookupGrafanaResultOutput) ToLookupGrafanaResultOutputWithContext(ctx context.Context) LookupGrafanaResultOutput {
 	return o
+}
+
+func (o LookupGrafanaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGrafanaResult] {
+	return pulumix.Output[LookupGrafanaResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ARM id of the grafana resource

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an iSCSI Target.
@@ -104,6 +105,12 @@ func (o LookupIscsiTargetResultOutput) ToLookupIscsiTargetResultOutput() LookupI
 
 func (o LookupIscsiTargetResultOutput) ToLookupIscsiTargetResultOutputWithContext(ctx context.Context) LookupIscsiTargetResultOutput {
 	return o
+}
+
+func (o LookupIscsiTargetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIscsiTargetResult] {
+	return pulumix.Output[LookupIscsiTargetResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Mode for Target connectivity.

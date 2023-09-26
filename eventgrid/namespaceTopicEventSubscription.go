@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Event Subscription.
@@ -145,6 +146,12 @@ func (i *NamespaceTopicEventSubscription) ToNamespaceTopicEventSubscriptionOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceTopicEventSubscriptionOutput)
 }
 
+func (i *NamespaceTopicEventSubscription) ToOutput(ctx context.Context) pulumix.Output[*NamespaceTopicEventSubscription] {
+	return pulumix.Output[*NamespaceTopicEventSubscription]{
+		OutputState: i.ToNamespaceTopicEventSubscriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamespaceTopicEventSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (NamespaceTopicEventSubscriptionOutput) ElementType() reflect.Type {
@@ -157,6 +164,12 @@ func (o NamespaceTopicEventSubscriptionOutput) ToNamespaceTopicEventSubscription
 
 func (o NamespaceTopicEventSubscriptionOutput) ToNamespaceTopicEventSubscriptionOutputWithContext(ctx context.Context) NamespaceTopicEventSubscriptionOutput {
 	return o
+}
+
+func (o NamespaceTopicEventSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceTopicEventSubscription] {
+	return pulumix.Output[*NamespaceTopicEventSubscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Information about the delivery configuration of the event subscription.

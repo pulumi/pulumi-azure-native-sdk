@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A SQL virtual machine group.
@@ -167,6 +168,12 @@ func (i *SqlVirtualMachineGroup) ToSqlVirtualMachineGroupOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SqlVirtualMachineGroupOutput)
 }
 
+func (i *SqlVirtualMachineGroup) ToOutput(ctx context.Context) pulumix.Output[*SqlVirtualMachineGroup] {
+	return pulumix.Output[*SqlVirtualMachineGroup]{
+		OutputState: i.ToSqlVirtualMachineGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlVirtualMachineGroupOutput struct{ *pulumi.OutputState }
 
 func (SqlVirtualMachineGroupOutput) ElementType() reflect.Type {
@@ -179,6 +186,12 @@ func (o SqlVirtualMachineGroupOutput) ToSqlVirtualMachineGroupOutput() SqlVirtua
 
 func (o SqlVirtualMachineGroupOutput) ToSqlVirtualMachineGroupOutputWithContext(ctx context.Context) SqlVirtualMachineGroupOutput {
 	return o
+}
+
+func (o SqlVirtualMachineGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlVirtualMachineGroup] {
+	return pulumix.Output[*SqlVirtualMachineGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cluster type.

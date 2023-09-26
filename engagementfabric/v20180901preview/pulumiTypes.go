@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -38,6 +39,12 @@ func (o ChannelTypeDescriptionResponseOutput) ToChannelTypeDescriptionResponseOu
 	return o
 }
 
+func (o ChannelTypeDescriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ChannelTypeDescriptionResponse] {
+	return pulumix.Output[ChannelTypeDescriptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Text description for the channel
 func (o ChannelTypeDescriptionResponseOutput) ChannelDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ChannelTypeDescriptionResponse) *string { return v.ChannelDescription }).(pulumi.StringPtrOutput)
@@ -65,6 +72,12 @@ func (o ChannelTypeDescriptionResponseArrayOutput) ToChannelTypeDescriptionRespo
 
 func (o ChannelTypeDescriptionResponseArrayOutput) ToChannelTypeDescriptionResponseArrayOutputWithContext(ctx context.Context) ChannelTypeDescriptionResponseArrayOutput {
 	return o
+}
+
+func (o ChannelTypeDescriptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ChannelTypeDescriptionResponse] {
+	return pulumix.Output[[]ChannelTypeDescriptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ChannelTypeDescriptionResponseArrayOutput) Index(i pulumi.IntInput) ChannelTypeDescriptionResponseOutput {
@@ -98,6 +111,12 @@ func (o KeyDescriptionResponseOutput) ToKeyDescriptionResponseOutputWithContext(
 	return o
 }
 
+func (o KeyDescriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyDescriptionResponse] {
+	return pulumix.Output[KeyDescriptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the key
 func (o KeyDescriptionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyDescriptionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -125,6 +144,12 @@ func (o KeyDescriptionResponseArrayOutput) ToKeyDescriptionResponseArrayOutput()
 
 func (o KeyDescriptionResponseArrayOutput) ToKeyDescriptionResponseArrayOutputWithContext(ctx context.Context) KeyDescriptionResponseArrayOutput {
 	return o
+}
+
+func (o KeyDescriptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeyDescriptionResponse] {
+	return pulumix.Output[[]KeyDescriptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyDescriptionResponseArrayOutput) Index(i pulumi.IntInput) KeyDescriptionResponseOutput {
@@ -172,6 +197,12 @@ func (i SKUArgs) ToSKUOutputWithContext(ctx context.Context) SKUOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SKUOutput)
 }
 
+func (i SKUArgs) ToOutput(ctx context.Context) pulumix.Output[SKU] {
+	return pulumix.Output[SKU]{
+		OutputState: i.ToSKUOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The EngagementFabric SKU
 type SKUOutput struct{ *pulumi.OutputState }
 
@@ -185,6 +216,12 @@ func (o SKUOutput) ToSKUOutput() SKUOutput {
 
 func (o SKUOutput) ToSKUOutputWithContext(ctx context.Context) SKUOutput {
 	return o
+}
+
+func (o SKUOutput) ToOutput(ctx context.Context) pulumix.Output[SKU] {
+	return pulumix.Output[SKU]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the SKU
@@ -218,6 +255,12 @@ func (o SKUResponseOutput) ToSKUResponseOutput() SKUResponseOutput {
 
 func (o SKUResponseOutput) ToSKUResponseOutputWithContext(ctx context.Context) SKUResponseOutput {
 	return o
+}
+
+func (o SKUResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SKUResponse] {
+	return pulumix.Output[SKUResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the SKU

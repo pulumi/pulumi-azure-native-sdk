@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o AssignmentInfoResponseOutput) ToAssignmentInfoResponseOutputWithContext(
 	return o
 }
 
+func (o AssignmentInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentInfoResponse] {
+	return pulumix.Output[AssignmentInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Information about the configuration.
 func (o AssignmentInfoResponseOutput) Configuration() ConfigurationInfoResponsePtrOutput {
 	return o.ApplyT(func(v AssignmentInfoResponse) *ConfigurationInfoResponse { return v.Configuration }).(ConfigurationInfoResponsePtrOutput)
@@ -58,6 +65,12 @@ func (o AssignmentInfoResponsePtrOutput) ToAssignmentInfoResponsePtrOutput() Ass
 
 func (o AssignmentInfoResponsePtrOutput) ToAssignmentInfoResponsePtrOutputWithContext(ctx context.Context) AssignmentInfoResponsePtrOutput {
 	return o
+}
+
+func (o AssignmentInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssignmentInfoResponse] {
+	return pulumix.Output[*AssignmentInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AssignmentInfoResponsePtrOutput) Elem() AssignmentInfoResponseOutput {
@@ -113,6 +126,12 @@ func (o AssignmentReportResourceComplianceReasonResponseOutput) ToAssignmentRepo
 	return o
 }
 
+func (o AssignmentReportResourceComplianceReasonResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentReportResourceComplianceReasonResponse] {
+	return pulumix.Output[AssignmentReportResourceComplianceReasonResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Code for the compliance of the guest configuration assignment resource.
 func (o AssignmentReportResourceComplianceReasonResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v AssignmentReportResourceComplianceReasonResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -135,6 +154,12 @@ func (o AssignmentReportResourceComplianceReasonResponseArrayOutput) ToAssignmen
 
 func (o AssignmentReportResourceComplianceReasonResponseArrayOutput) ToAssignmentReportResourceComplianceReasonResponseArrayOutputWithContext(ctx context.Context) AssignmentReportResourceComplianceReasonResponseArrayOutput {
 	return o
+}
+
+func (o AssignmentReportResourceComplianceReasonResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssignmentReportResourceComplianceReasonResponse] {
+	return pulumix.Output[[]AssignmentReportResourceComplianceReasonResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AssignmentReportResourceComplianceReasonResponseArrayOutput) Index(i pulumi.IntInput) AssignmentReportResourceComplianceReasonResponseOutput {
@@ -168,6 +193,12 @@ func (o AssignmentReportResourceResponseOutput) ToAssignmentReportResourceRespon
 
 func (o AssignmentReportResourceResponseOutput) ToAssignmentReportResourceResponseOutputWithContext(ctx context.Context) AssignmentReportResourceResponseOutput {
 	return o
+}
+
+func (o AssignmentReportResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentReportResourceResponse] {
+	return pulumix.Output[AssignmentReportResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A value indicating compliance status of the machine for the assigned guest configuration.
@@ -204,6 +235,12 @@ func (o AssignmentReportResourceResponseArrayOutput) ToAssignmentReportResourceR
 
 func (o AssignmentReportResourceResponseArrayOutput) ToAssignmentReportResourceResponseArrayOutputWithContext(ctx context.Context) AssignmentReportResourceResponseArrayOutput {
 	return o
+}
+
+func (o AssignmentReportResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssignmentReportResourceResponse] {
+	return pulumix.Output[[]AssignmentReportResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AssignmentReportResourceResponseArrayOutput) Index(i pulumi.IntInput) AssignmentReportResourceResponseOutput {
@@ -245,6 +282,12 @@ func (o AssignmentReportResponseOutput) ToAssignmentReportResponseOutput() Assig
 
 func (o AssignmentReportResponseOutput) ToAssignmentReportResponseOutputWithContext(ctx context.Context) AssignmentReportResponseOutput {
 	return o
+}
+
+func (o AssignmentReportResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentReportResponse] {
+	return pulumix.Output[AssignmentReportResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration details of the guest configuration assignment.
@@ -304,6 +347,12 @@ func (o AssignmentReportResponsePtrOutput) ToAssignmentReportResponsePtrOutput()
 
 func (o AssignmentReportResponsePtrOutput) ToAssignmentReportResponsePtrOutputWithContext(ctx context.Context) AssignmentReportResponsePtrOutput {
 	return o
+}
+
+func (o AssignmentReportResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssignmentReportResponse] {
+	return pulumix.Output[*AssignmentReportResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AssignmentReportResponsePtrOutput) Elem() AssignmentReportResponseOutput {
@@ -429,6 +478,12 @@ func (o ConfigurationInfoResponseOutput) ToConfigurationInfoResponseOutputWithCo
 	return o
 }
 
+func (o ConfigurationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationInfoResponse] {
+	return pulumix.Output[ConfigurationInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the configuration.
 func (o ConfigurationInfoResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigurationInfoResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -451,6 +506,12 @@ func (o ConfigurationInfoResponsePtrOutput) ToConfigurationInfoResponsePtrOutput
 
 func (o ConfigurationInfoResponsePtrOutput) ToConfigurationInfoResponsePtrOutputWithContext(ctx context.Context) ConfigurationInfoResponsePtrOutput {
 	return o
+}
+
+func (o ConfigurationInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationInfoResponse] {
+	return pulumix.Output[*ConfigurationInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigurationInfoResponsePtrOutput) Elem() ConfigurationInfoResponseOutput {
@@ -522,6 +583,12 @@ func (i ConfigurationParameterArgs) ToConfigurationParameterOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationParameterOutput)
 }
 
+func (i ConfigurationParameterArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigurationParameter] {
+	return pulumix.Output[ConfigurationParameter]{
+		OutputState: i.ToConfigurationParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConfigurationParameterArrayInput is an input type that accepts ConfigurationParameterArray and ConfigurationParameterArrayOutput values.
 // You can construct a concrete instance of `ConfigurationParameterArrayInput` via:
 //
@@ -547,6 +614,12 @@ func (i ConfigurationParameterArray) ToConfigurationParameterArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationParameterArrayOutput)
 }
 
+func (i ConfigurationParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigurationParameter] {
+	return pulumix.Output[[]ConfigurationParameter]{
+		OutputState: i.ToConfigurationParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a configuration parameter.
 type ConfigurationParameterOutput struct{ *pulumi.OutputState }
 
@@ -560,6 +633,12 @@ func (o ConfigurationParameterOutput) ToConfigurationParameterOutput() Configura
 
 func (o ConfigurationParameterOutput) ToConfigurationParameterOutputWithContext(ctx context.Context) ConfigurationParameterOutput {
 	return o
+}
+
+func (o ConfigurationParameterOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationParameter] {
+	return pulumix.Output[ConfigurationParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the configuration parameter.
@@ -584,6 +663,12 @@ func (o ConfigurationParameterArrayOutput) ToConfigurationParameterArrayOutput()
 
 func (o ConfigurationParameterArrayOutput) ToConfigurationParameterArrayOutputWithContext(ctx context.Context) ConfigurationParameterArrayOutput {
 	return o
+}
+
+func (o ConfigurationParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigurationParameter] {
+	return pulumix.Output[[]ConfigurationParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigurationParameterArrayOutput) Index(i pulumi.IntInput) ConfigurationParameterOutput {
@@ -615,6 +700,12 @@ func (o ConfigurationParameterResponseOutput) ToConfigurationParameterResponseOu
 	return o
 }
 
+func (o ConfigurationParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationParameterResponse] {
+	return pulumix.Output[ConfigurationParameterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the configuration parameter.
 func (o ConfigurationParameterResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigurationParameterResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -637,6 +728,12 @@ func (o ConfigurationParameterResponseArrayOutput) ToConfigurationParameterRespo
 
 func (o ConfigurationParameterResponseArrayOutput) ToConfigurationParameterResponseArrayOutputWithContext(ctx context.Context) ConfigurationParameterResponseArrayOutput {
 	return o
+}
+
+func (o ConfigurationParameterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigurationParameterResponse] {
+	return pulumix.Output[[]ConfigurationParameterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigurationParameterResponseArrayOutput) Index(i pulumi.IntInput) ConfigurationParameterResponseOutput {
@@ -691,6 +788,12 @@ func (o ConfigurationSettingResponseOutput) ToConfigurationSettingResponseOutput
 	return o
 }
 
+func (o ConfigurationSettingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationSettingResponse] {
+	return pulumix.Output[ConfigurationSettingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
 func (o ConfigurationSettingResponseOutput) ActionAfterReboot() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigurationSettingResponse) string { return v.ActionAfterReboot }).(pulumi.StringOutput)
@@ -733,6 +836,12 @@ func (o ConfigurationSettingResponsePtrOutput) ToConfigurationSettingResponsePtr
 
 func (o ConfigurationSettingResponsePtrOutput) ToConfigurationSettingResponsePtrOutputWithContext(ctx context.Context) ConfigurationSettingResponsePtrOutput {
 	return o
+}
+
+func (o ConfigurationSettingResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationSettingResponse] {
+	return pulumix.Output[*ConfigurationSettingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigurationSettingResponsePtrOutput) Elem() ConfigurationSettingResponseOutput {
@@ -844,6 +953,12 @@ func (i GuestConfigurationAssignmentPropertiesArgs) ToGuestConfigurationAssignme
 	return pulumi.ToOutputWithContext(ctx, i).(GuestConfigurationAssignmentPropertiesOutput)
 }
 
+func (i GuestConfigurationAssignmentPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[GuestConfigurationAssignmentProperties] {
+	return pulumix.Output[GuestConfigurationAssignmentProperties]{
+		OutputState: i.ToGuestConfigurationAssignmentPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GuestConfigurationAssignmentPropertiesArgs) ToGuestConfigurationAssignmentPropertiesPtrOutput() GuestConfigurationAssignmentPropertiesPtrOutput {
 	return i.ToGuestConfigurationAssignmentPropertiesPtrOutputWithContext(context.Background())
 }
@@ -885,6 +1000,12 @@ func (i *guestConfigurationAssignmentPropertiesPtrType) ToGuestConfigurationAssi
 	return pulumi.ToOutputWithContext(ctx, i).(GuestConfigurationAssignmentPropertiesPtrOutput)
 }
 
+func (i *guestConfigurationAssignmentPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestConfigurationAssignmentProperties] {
+	return pulumix.Output[*GuestConfigurationAssignmentProperties]{
+		OutputState: i.ToGuestConfigurationAssignmentPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Guest configuration assignment properties.
 type GuestConfigurationAssignmentPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -908,6 +1029,12 @@ func (o GuestConfigurationAssignmentPropertiesOutput) ToGuestConfigurationAssign
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestConfigurationAssignmentProperties) *GuestConfigurationAssignmentProperties {
 		return &v
 	}).(GuestConfigurationAssignmentPropertiesPtrOutput)
+}
+
+func (o GuestConfigurationAssignmentPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[GuestConfigurationAssignmentProperties] {
+	return pulumix.Output[GuestConfigurationAssignmentProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The source which initiated the guest configuration assignment. Ex: Azure Policy
@@ -934,6 +1061,12 @@ func (o GuestConfigurationAssignmentPropertiesPtrOutput) ToGuestConfigurationAss
 
 func (o GuestConfigurationAssignmentPropertiesPtrOutput) ToGuestConfigurationAssignmentPropertiesPtrOutputWithContext(ctx context.Context) GuestConfigurationAssignmentPropertiesPtrOutput {
 	return o
+}
+
+func (o GuestConfigurationAssignmentPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestConfigurationAssignmentProperties] {
+	return pulumix.Output[*GuestConfigurationAssignmentProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GuestConfigurationAssignmentPropertiesPtrOutput) Elem() GuestConfigurationAssignmentPropertiesOutput {
@@ -1018,6 +1151,12 @@ func (o GuestConfigurationAssignmentPropertiesResponseOutput) ToGuestConfigurati
 
 func (o GuestConfigurationAssignmentPropertiesResponseOutput) ToGuestConfigurationAssignmentPropertiesResponseOutputWithContext(ctx context.Context) GuestConfigurationAssignmentPropertiesResponseOutput {
 	return o
+}
+
+func (o GuestConfigurationAssignmentPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GuestConfigurationAssignmentPropertiesResponse] {
+	return pulumix.Output[GuestConfigurationAssignmentPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Combined hash of the configuration package and parameters.
@@ -1147,6 +1286,12 @@ func (i GuestConfigurationNavigationArgs) ToGuestConfigurationNavigationOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GuestConfigurationNavigationOutput)
 }
 
+func (i GuestConfigurationNavigationArgs) ToOutput(ctx context.Context) pulumix.Output[GuestConfigurationNavigation] {
+	return pulumix.Output[GuestConfigurationNavigation]{
+		OutputState: i.ToGuestConfigurationNavigationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GuestConfigurationNavigationArgs) ToGuestConfigurationNavigationPtrOutput() GuestConfigurationNavigationPtrOutput {
 	return i.ToGuestConfigurationNavigationPtrOutputWithContext(context.Background())
 }
@@ -1188,6 +1333,12 @@ func (i *guestConfigurationNavigationPtrType) ToGuestConfigurationNavigationPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(GuestConfigurationNavigationPtrOutput)
 }
 
+func (i *guestConfigurationNavigationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestConfigurationNavigation] {
+	return pulumix.Output[*GuestConfigurationNavigation]{
+		OutputState: i.ToGuestConfigurationNavigationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
 type GuestConfigurationNavigationOutput struct{ *pulumi.OutputState }
 
@@ -1211,6 +1362,12 @@ func (o GuestConfigurationNavigationOutput) ToGuestConfigurationNavigationPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestConfigurationNavigation) *GuestConfigurationNavigation {
 		return &v
 	}).(GuestConfigurationNavigationPtrOutput)
+}
+
+func (o GuestConfigurationNavigationOutput) ToOutput(ctx context.Context) pulumix.Output[GuestConfigurationNavigation] {
+	return pulumix.Output[GuestConfigurationNavigation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
@@ -1267,6 +1424,12 @@ func (o GuestConfigurationNavigationPtrOutput) ToGuestConfigurationNavigationPtr
 
 func (o GuestConfigurationNavigationPtrOutput) ToGuestConfigurationNavigationPtrOutputWithContext(ctx context.Context) GuestConfigurationNavigationPtrOutput {
 	return o
+}
+
+func (o GuestConfigurationNavigationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestConfigurationNavigation] {
+	return pulumix.Output[*GuestConfigurationNavigation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GuestConfigurationNavigationPtrOutput) Elem() GuestConfigurationNavigationOutput {
@@ -1411,6 +1574,12 @@ func (o GuestConfigurationNavigationResponseOutput) ToGuestConfigurationNavigati
 	return o
 }
 
+func (o GuestConfigurationNavigationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GuestConfigurationNavigationResponse] {
+	return pulumix.Output[GuestConfigurationNavigationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the origin of the configuration.
 func (o GuestConfigurationNavigationResponseOutput) AssignmentSource() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestConfigurationNavigationResponse) string { return v.AssignmentSource }).(pulumi.StringOutput)
@@ -1484,6 +1653,12 @@ func (o GuestConfigurationNavigationResponsePtrOutput) ToGuestConfigurationNavig
 
 func (o GuestConfigurationNavigationResponsePtrOutput) ToGuestConfigurationNavigationResponsePtrOutputWithContext(ctx context.Context) GuestConfigurationNavigationResponsePtrOutput {
 	return o
+}
+
+func (o GuestConfigurationNavigationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestConfigurationNavigationResponse] {
+	return pulumix.Output[*GuestConfigurationNavigationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GuestConfigurationNavigationResponsePtrOutput) Elem() GuestConfigurationNavigationResponseOutput {
@@ -1637,6 +1812,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -1690,6 +1871,12 @@ func (o VMInfoResponseOutput) ToVMInfoResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o VMInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VMInfoResponse] {
+	return pulumix.Output[VMInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Azure resource Id of the VM.
 func (o VMInfoResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v VMInfoResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1712,6 +1899,12 @@ func (o VMInfoResponsePtrOutput) ToVMInfoResponsePtrOutput() VMInfoResponsePtrOu
 
 func (o VMInfoResponsePtrOutput) ToVMInfoResponsePtrOutputWithContext(ctx context.Context) VMInfoResponsePtrOutput {
 	return o
+}
+
+func (o VMInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMInfoResponse] {
+	return pulumix.Output[*VMInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VMInfoResponsePtrOutput) Elem() VMInfoResponseOutput {
@@ -1773,6 +1966,12 @@ func (o VMSSVMInfoResponseOutput) ToVMSSVMInfoResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o VMSSVMInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VMSSVMInfoResponse] {
+	return pulumix.Output[VMSSVMInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A value indicating compliance status of the machine for the assigned guest configuration.
 func (o VMSSVMInfoResponseOutput) ComplianceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v VMSSVMInfoResponse) string { return v.ComplianceStatus }).(pulumi.StringOutput)
@@ -1810,6 +2009,12 @@ func (o VMSSVMInfoResponseArrayOutput) ToVMSSVMInfoResponseArrayOutput() VMSSVMI
 
 func (o VMSSVMInfoResponseArrayOutput) ToVMSSVMInfoResponseArrayOutputWithContext(ctx context.Context) VMSSVMInfoResponseArrayOutput {
 	return o
+}
+
+func (o VMSSVMInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMSSVMInfoResponse] {
+	return pulumix.Output[[]VMSSVMInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VMSSVMInfoResponseArrayOutput) Index(i pulumi.IntInput) VMSSVMInfoResponseOutput {

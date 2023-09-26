@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a KPI in the hub.
@@ -119,6 +120,12 @@ func (o LookupKpiResultOutput) ToLookupKpiResultOutput() LookupKpiResultOutput {
 
 func (o LookupKpiResultOutput) ToLookupKpiResultOutputWithContext(ctx context.Context) LookupKpiResultOutput {
 	return o
+}
+
+func (o LookupKpiResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKpiResult] {
+	return pulumix.Output[LookupKpiResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The aliases.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The description of the provisioning service.
@@ -187,6 +188,12 @@ func (i *IotDpsResource) ToIotDpsResourceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(IotDpsResourceOutput)
 }
 
+func (i *IotDpsResource) ToOutput(ctx context.Context) pulumix.Output[*IotDpsResource] {
+	return pulumix.Output[*IotDpsResource]{
+		OutputState: i.ToIotDpsResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IotDpsResourceOutput struct{ *pulumi.OutputState }
 
 func (IotDpsResourceOutput) ElementType() reflect.Type {
@@ -199,6 +206,12 @@ func (o IotDpsResourceOutput) ToIotDpsResourceOutput() IotDpsResourceOutput {
 
 func (o IotDpsResourceOutput) ToIotDpsResourceOutputWithContext(ctx context.Context) IotDpsResourceOutput {
 	return o
+}
+
+func (o IotDpsResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*IotDpsResource] {
+	return pulumix.Output[*IotDpsResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.

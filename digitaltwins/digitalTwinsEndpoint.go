@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // DigitalTwinsInstance endpoint resource.
@@ -145,6 +146,12 @@ func (i *DigitalTwinsEndpoint) ToDigitalTwinsEndpointOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DigitalTwinsEndpointOutput)
 }
 
+func (i *DigitalTwinsEndpoint) ToOutput(ctx context.Context) pulumix.Output[*DigitalTwinsEndpoint] {
+	return pulumix.Output[*DigitalTwinsEndpoint]{
+		OutputState: i.ToDigitalTwinsEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DigitalTwinsEndpointOutput struct{ *pulumi.OutputState }
 
 func (DigitalTwinsEndpointOutput) ElementType() reflect.Type {
@@ -157,6 +164,12 @@ func (o DigitalTwinsEndpointOutput) ToDigitalTwinsEndpointOutput() DigitalTwinsE
 
 func (o DigitalTwinsEndpointOutput) ToDigitalTwinsEndpointOutputWithContext(ctx context.Context) DigitalTwinsEndpointOutput {
 	return o
+}
+
+func (o DigitalTwinsEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*DigitalTwinsEndpoint] {
+	return pulumix.Output[*DigitalTwinsEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Extension resource name.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview
@@ -181,6 +182,12 @@ func (i *Rack) ToRackOutputWithContext(ctx context.Context) RackOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RackOutput)
 }
 
+func (i *Rack) ToOutput(ctx context.Context) pulumix.Output[*Rack] {
+	return pulumix.Output[*Rack]{
+		OutputState: i.ToRackOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RackOutput struct{ *pulumi.OutputState }
 
 func (RackOutput) ElementType() reflect.Type {
@@ -193,6 +200,12 @@ func (o RackOutput) ToRackOutput() RackOutput {
 
 func (o RackOutput) ToRackOutputWithContext(ctx context.Context) RackOutput {
 	return o
+}
+
+func (o RackOutput) ToOutput(ctx context.Context) pulumix.Output[*Rack] {
+	return pulumix.Output[*Rack]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value that will be used for machines in this rack to represent the availability zones that can be referenced by Hybrid AKS Clusters for node arrangement.

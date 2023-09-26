@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
@@ -67,6 +68,12 @@ func (o GetOrganizationApiKeyResultOutput) ToGetOrganizationApiKeyResultOutput()
 
 func (o GetOrganizationApiKeyResultOutput) ToGetOrganizationApiKeyResultOutputWithContext(ctx context.Context) GetOrganizationApiKeyResultOutput {
 	return o
+}
+
+func (o GetOrganizationApiKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOrganizationApiKeyResult] {
+	return pulumix.Output[GetOrganizationApiKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetOrganizationApiKeyResultOutput) Properties() UserApiKeyResponsePropertiesResponseOutput {

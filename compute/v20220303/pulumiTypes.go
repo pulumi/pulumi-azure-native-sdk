@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i CommunityGalleryInfoArgs) ToCommunityGalleryInfoOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CommunityGalleryInfoOutput)
 }
 
+func (i CommunityGalleryInfoArgs) ToOutput(ctx context.Context) pulumix.Output[CommunityGalleryInfo] {
+	return pulumix.Output[CommunityGalleryInfo]{
+		OutputState: i.ToCommunityGalleryInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CommunityGalleryInfoArgs) ToCommunityGalleryInfoPtrOutput() CommunityGalleryInfoPtrOutput {
 	return i.ToCommunityGalleryInfoPtrOutputWithContext(context.Background())
 }
@@ -101,6 +108,12 @@ func (i *communityGalleryInfoPtrType) ToCommunityGalleryInfoPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(CommunityGalleryInfoPtrOutput)
 }
 
+func (i *communityGalleryInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*CommunityGalleryInfo] {
+	return pulumix.Output[*CommunityGalleryInfo]{
+		OutputState: i.ToCommunityGalleryInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information of community gallery if current gallery is shared to community
 type CommunityGalleryInfoOutput struct{ *pulumi.OutputState }
 
@@ -124,6 +137,12 @@ func (o CommunityGalleryInfoOutput) ToCommunityGalleryInfoPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommunityGalleryInfo) *CommunityGalleryInfo {
 		return &v
 	}).(CommunityGalleryInfoPtrOutput)
+}
+
+func (o CommunityGalleryInfoOutput) ToOutput(ctx context.Context) pulumix.Output[CommunityGalleryInfo] {
+	return pulumix.Output[CommunityGalleryInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // End-user license agreement for community gallery image.
@@ -158,6 +177,12 @@ func (o CommunityGalleryInfoPtrOutput) ToCommunityGalleryInfoPtrOutput() Communi
 
 func (o CommunityGalleryInfoPtrOutput) ToCommunityGalleryInfoPtrOutputWithContext(ctx context.Context) CommunityGalleryInfoPtrOutput {
 	return o
+}
+
+func (o CommunityGalleryInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CommunityGalleryInfo] {
+	return pulumix.Output[*CommunityGalleryInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CommunityGalleryInfoPtrOutput) Elem() CommunityGalleryInfoOutput {
@@ -241,6 +266,12 @@ func (o CommunityGalleryInfoResponseOutput) ToCommunityGalleryInfoResponseOutput
 	return o
 }
 
+func (o CommunityGalleryInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CommunityGalleryInfoResponse] {
+	return pulumix.Output[CommunityGalleryInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Contains info about whether community gallery sharing is enabled.
 func (o CommunityGalleryInfoResponseOutput) CommunityGalleryEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v CommunityGalleryInfoResponse) bool { return v.CommunityGalleryEnabled }).(pulumi.BoolOutput)
@@ -283,6 +314,12 @@ func (o CommunityGalleryInfoResponsePtrOutput) ToCommunityGalleryInfoResponsePtr
 
 func (o CommunityGalleryInfoResponsePtrOutput) ToCommunityGalleryInfoResponsePtrOutputWithContext(ctx context.Context) CommunityGalleryInfoResponsePtrOutput {
 	return o
+}
+
+func (o CommunityGalleryInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CommunityGalleryInfoResponse] {
+	return pulumix.Output[*CommunityGalleryInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CommunityGalleryInfoResponsePtrOutput) Elem() CommunityGalleryInfoResponseOutput {
@@ -394,6 +431,12 @@ func (i DataDiskImageEncryptionArgs) ToDataDiskImageEncryptionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DataDiskImageEncryptionOutput)
 }
 
+func (i DataDiskImageEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[DataDiskImageEncryption] {
+	return pulumix.Output[DataDiskImageEncryption]{
+		OutputState: i.ToDataDiskImageEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DataDiskImageEncryptionArrayInput is an input type that accepts DataDiskImageEncryptionArray and DataDiskImageEncryptionArrayOutput values.
 // You can construct a concrete instance of `DataDiskImageEncryptionArrayInput` via:
 //
@@ -419,6 +462,12 @@ func (i DataDiskImageEncryptionArray) ToDataDiskImageEncryptionArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DataDiskImageEncryptionArrayOutput)
 }
 
+func (i DataDiskImageEncryptionArray) ToOutput(ctx context.Context) pulumix.Output[[]DataDiskImageEncryption] {
+	return pulumix.Output[[]DataDiskImageEncryption]{
+		OutputState: i.ToDataDiskImageEncryptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains encryption settings for a data disk image.
 type DataDiskImageEncryptionOutput struct{ *pulumi.OutputState }
 
@@ -432,6 +481,12 @@ func (o DataDiskImageEncryptionOutput) ToDataDiskImageEncryptionOutput() DataDis
 
 func (o DataDiskImageEncryptionOutput) ToDataDiskImageEncryptionOutputWithContext(ctx context.Context) DataDiskImageEncryptionOutput {
 	return o
+}
+
+func (o DataDiskImageEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[DataDiskImageEncryption] {
+	return pulumix.Output[DataDiskImageEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A relative URI containing the resource ID of the disk encryption set.
@@ -456,6 +511,12 @@ func (o DataDiskImageEncryptionArrayOutput) ToDataDiskImageEncryptionArrayOutput
 
 func (o DataDiskImageEncryptionArrayOutput) ToDataDiskImageEncryptionArrayOutputWithContext(ctx context.Context) DataDiskImageEncryptionArrayOutput {
 	return o
+}
+
+func (o DataDiskImageEncryptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataDiskImageEncryption] {
+	return pulumix.Output[[]DataDiskImageEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataDiskImageEncryptionArrayOutput) Index(i pulumi.IntInput) DataDiskImageEncryptionOutput {
@@ -487,6 +548,12 @@ func (o DataDiskImageEncryptionResponseOutput) ToDataDiskImageEncryptionResponse
 	return o
 }
 
+func (o DataDiskImageEncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataDiskImageEncryptionResponse] {
+	return pulumix.Output[DataDiskImageEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A relative URI containing the resource ID of the disk encryption set.
 func (o DataDiskImageEncryptionResponseOutput) DiskEncryptionSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataDiskImageEncryptionResponse) *string { return v.DiskEncryptionSetId }).(pulumi.StringPtrOutput)
@@ -509,6 +576,12 @@ func (o DataDiskImageEncryptionResponseArrayOutput) ToDataDiskImageEncryptionRes
 
 func (o DataDiskImageEncryptionResponseArrayOutput) ToDataDiskImageEncryptionResponseArrayOutputWithContext(ctx context.Context) DataDiskImageEncryptionResponseArrayOutput {
 	return o
+}
+
+func (o DataDiskImageEncryptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataDiskImageEncryptionResponse] {
+	return pulumix.Output[[]DataDiskImageEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataDiskImageEncryptionResponseArrayOutput) Index(i pulumi.IntInput) DataDiskImageEncryptionResponseOutput {
@@ -552,6 +625,12 @@ func (i DisallowedArgs) ToDisallowedOutputWithContext(ctx context.Context) Disal
 	return pulumi.ToOutputWithContext(ctx, i).(DisallowedOutput)
 }
 
+func (i DisallowedArgs) ToOutput(ctx context.Context) pulumix.Output[Disallowed] {
+	return pulumix.Output[Disallowed]{
+		OutputState: i.ToDisallowedOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DisallowedArgs) ToDisallowedPtrOutput() DisallowedPtrOutput {
 	return i.ToDisallowedPtrOutputWithContext(context.Background())
 }
@@ -593,6 +672,12 @@ func (i *disallowedPtrType) ToDisallowedPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DisallowedPtrOutput)
 }
 
+func (i *disallowedPtrType) ToOutput(ctx context.Context) pulumix.Output[*Disallowed] {
+	return pulumix.Output[*Disallowed]{
+		OutputState: i.ToDisallowedPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the disallowed disk types.
 type DisallowedOutput struct{ *pulumi.OutputState }
 
@@ -618,6 +703,12 @@ func (o DisallowedOutput) ToDisallowedPtrOutputWithContext(ctx context.Context) 
 	}).(DisallowedPtrOutput)
 }
 
+func (o DisallowedOutput) ToOutput(ctx context.Context) pulumix.Output[Disallowed] {
+	return pulumix.Output[Disallowed]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of disk types.
 func (o DisallowedOutput) DiskTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Disallowed) []string { return v.DiskTypes }).(pulumi.StringArrayOutput)
@@ -635,6 +726,12 @@ func (o DisallowedPtrOutput) ToDisallowedPtrOutput() DisallowedPtrOutput {
 
 func (o DisallowedPtrOutput) ToDisallowedPtrOutputWithContext(ctx context.Context) DisallowedPtrOutput {
 	return o
+}
+
+func (o DisallowedPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Disallowed] {
+	return pulumix.Output[*Disallowed]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DisallowedPtrOutput) Elem() DisallowedOutput {
@@ -678,6 +775,12 @@ func (o DisallowedResponseOutput) ToDisallowedResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o DisallowedResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DisallowedResponse] {
+	return pulumix.Output[DisallowedResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of disk types.
 func (o DisallowedResponseOutput) DiskTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DisallowedResponse) []string { return v.DiskTypes }).(pulumi.StringArrayOutput)
@@ -695,6 +798,12 @@ func (o DisallowedResponsePtrOutput) ToDisallowedResponsePtrOutput() DisallowedR
 
 func (o DisallowedResponsePtrOutput) ToDisallowedResponsePtrOutputWithContext(ctx context.Context) DisallowedResponsePtrOutput {
 	return o
+}
+
+func (o DisallowedResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DisallowedResponse] {
+	return pulumix.Output[*DisallowedResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DisallowedResponsePtrOutput) Elem() DisallowedResponseOutput {
@@ -756,6 +865,12 @@ func (i EncryptionImagesArgs) ToEncryptionImagesOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionImagesOutput)
 }
 
+func (i EncryptionImagesArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionImages] {
+	return pulumix.Output[EncryptionImages]{
+		OutputState: i.ToEncryptionImagesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EncryptionImagesArgs) ToEncryptionImagesPtrOutput() EncryptionImagesPtrOutput {
 	return i.ToEncryptionImagesPtrOutputWithContext(context.Background())
 }
@@ -797,6 +912,12 @@ func (i *encryptionImagesPtrType) ToEncryptionImagesPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionImagesPtrOutput)
 }
 
+func (i *encryptionImagesPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionImages] {
+	return pulumix.Output[*EncryptionImages]{
+		OutputState: i.ToEncryptionImagesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
 type EncryptionImagesOutput struct{ *pulumi.OutputState }
 
@@ -822,6 +943,12 @@ func (o EncryptionImagesOutput) ToEncryptionImagesPtrOutputWithContext(ctx conte
 	}).(EncryptionImagesPtrOutput)
 }
 
+func (o EncryptionImagesOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionImages] {
+	return pulumix.Output[EncryptionImages]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of encryption specifications for data disk images.
 func (o EncryptionImagesOutput) DataDiskImages() DataDiskImageEncryptionArrayOutput {
 	return o.ApplyT(func(v EncryptionImages) []DataDiskImageEncryption { return v.DataDiskImages }).(DataDiskImageEncryptionArrayOutput)
@@ -844,6 +971,12 @@ func (o EncryptionImagesPtrOutput) ToEncryptionImagesPtrOutput() EncryptionImage
 
 func (o EncryptionImagesPtrOutput) ToEncryptionImagesPtrOutputWithContext(ctx context.Context) EncryptionImagesPtrOutput {
 	return o
+}
+
+func (o EncryptionImagesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionImages] {
+	return pulumix.Output[*EncryptionImages]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionImagesPtrOutput) Elem() EncryptionImagesOutput {
@@ -899,6 +1032,12 @@ func (o EncryptionImagesResponseOutput) ToEncryptionImagesResponseOutputWithCont
 	return o
 }
 
+func (o EncryptionImagesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionImagesResponse] {
+	return pulumix.Output[EncryptionImagesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of encryption specifications for data disk images.
 func (o EncryptionImagesResponseOutput) DataDiskImages() DataDiskImageEncryptionResponseArrayOutput {
 	return o.ApplyT(func(v EncryptionImagesResponse) []DataDiskImageEncryptionResponse { return v.DataDiskImages }).(DataDiskImageEncryptionResponseArrayOutput)
@@ -921,6 +1060,12 @@ func (o EncryptionImagesResponsePtrOutput) ToEncryptionImagesResponsePtrOutput()
 
 func (o EncryptionImagesResponsePtrOutput) ToEncryptionImagesResponsePtrOutputWithContext(ctx context.Context) EncryptionImagesResponsePtrOutput {
 	return o
+}
+
+func (o EncryptionImagesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionImagesResponse] {
+	return pulumix.Output[*EncryptionImagesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionImagesResponsePtrOutput) Elem() EncryptionImagesResponseOutput {
@@ -1000,6 +1145,12 @@ func (i GalleryApplicationCustomActionArgs) ToGalleryApplicationCustomActionOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryApplicationCustomActionOutput)
 }
 
+func (i GalleryApplicationCustomActionArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryApplicationCustomAction] {
+	return pulumix.Output[GalleryApplicationCustomAction]{
+		OutputState: i.ToGalleryApplicationCustomActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GalleryApplicationCustomActionArrayInput is an input type that accepts GalleryApplicationCustomActionArray and GalleryApplicationCustomActionArrayOutput values.
 // You can construct a concrete instance of `GalleryApplicationCustomActionArrayInput` via:
 //
@@ -1025,6 +1176,12 @@ func (i GalleryApplicationCustomActionArray) ToGalleryApplicationCustomActionArr
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryApplicationCustomActionArrayOutput)
 }
 
+func (i GalleryApplicationCustomActionArray) ToOutput(ctx context.Context) pulumix.Output[[]GalleryApplicationCustomAction] {
+	return pulumix.Output[[]GalleryApplicationCustomAction]{
+		OutputState: i.ToGalleryApplicationCustomActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A custom action that can be performed with a Gallery Application Version.
 type GalleryApplicationCustomActionOutput struct{ *pulumi.OutputState }
 
@@ -1038,6 +1195,12 @@ func (o GalleryApplicationCustomActionOutput) ToGalleryApplicationCustomActionOu
 
 func (o GalleryApplicationCustomActionOutput) ToGalleryApplicationCustomActionOutputWithContext(ctx context.Context) GalleryApplicationCustomActionOutput {
 	return o
+}
+
+func (o GalleryApplicationCustomActionOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryApplicationCustomAction] {
+	return pulumix.Output[GalleryApplicationCustomAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description to help the users understand what this custom action does.
@@ -1072,6 +1235,12 @@ func (o GalleryApplicationCustomActionArrayOutput) ToGalleryApplicationCustomAct
 
 func (o GalleryApplicationCustomActionArrayOutput) ToGalleryApplicationCustomActionArrayOutputWithContext(ctx context.Context) GalleryApplicationCustomActionArrayOutput {
 	return o
+}
+
+func (o GalleryApplicationCustomActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GalleryApplicationCustomAction] {
+	return pulumix.Output[[]GalleryApplicationCustomAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryApplicationCustomActionArrayOutput) Index(i pulumi.IntInput) GalleryApplicationCustomActionOutput {
@@ -1131,6 +1300,12 @@ func (i GalleryApplicationCustomActionParameterArgs) ToGalleryApplicationCustomA
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryApplicationCustomActionParameterOutput)
 }
 
+func (i GalleryApplicationCustomActionParameterArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryApplicationCustomActionParameter] {
+	return pulumix.Output[GalleryApplicationCustomActionParameter]{
+		OutputState: i.ToGalleryApplicationCustomActionParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GalleryApplicationCustomActionParameterArrayInput is an input type that accepts GalleryApplicationCustomActionParameterArray and GalleryApplicationCustomActionParameterArrayOutput values.
 // You can construct a concrete instance of `GalleryApplicationCustomActionParameterArrayInput` via:
 //
@@ -1156,6 +1331,12 @@ func (i GalleryApplicationCustomActionParameterArray) ToGalleryApplicationCustom
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryApplicationCustomActionParameterArrayOutput)
 }
 
+func (i GalleryApplicationCustomActionParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]GalleryApplicationCustomActionParameter] {
+	return pulumix.Output[[]GalleryApplicationCustomActionParameter]{
+		OutputState: i.ToGalleryApplicationCustomActionParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The definition of a parameter that can be passed to a custom action of a Gallery Application Version.
 type GalleryApplicationCustomActionParameterOutput struct{ *pulumi.OutputState }
 
@@ -1169,6 +1350,12 @@ func (o GalleryApplicationCustomActionParameterOutput) ToGalleryApplicationCusto
 
 func (o GalleryApplicationCustomActionParameterOutput) ToGalleryApplicationCustomActionParameterOutputWithContext(ctx context.Context) GalleryApplicationCustomActionParameterOutput {
 	return o
+}
+
+func (o GalleryApplicationCustomActionParameterOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryApplicationCustomActionParameter] {
+	return pulumix.Output[GalleryApplicationCustomActionParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The default value of the parameter.  Only applies to string types
@@ -1212,6 +1399,12 @@ func (o GalleryApplicationCustomActionParameterArrayOutput) ToGalleryApplication
 	return o
 }
 
+func (o GalleryApplicationCustomActionParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GalleryApplicationCustomActionParameter] {
+	return pulumix.Output[[]GalleryApplicationCustomActionParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GalleryApplicationCustomActionParameterArrayOutput) Index(i pulumi.IntInput) GalleryApplicationCustomActionParameterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GalleryApplicationCustomActionParameter {
 		return vs[0].([]GalleryApplicationCustomActionParameter)[vs[1].(int)]
@@ -1245,6 +1438,12 @@ func (o GalleryApplicationCustomActionParameterResponseOutput) ToGalleryApplicat
 
 func (o GalleryApplicationCustomActionParameterResponseOutput) ToGalleryApplicationCustomActionParameterResponseOutputWithContext(ctx context.Context) GalleryApplicationCustomActionParameterResponseOutput {
 	return o
+}
+
+func (o GalleryApplicationCustomActionParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryApplicationCustomActionParameterResponse] {
+	return pulumix.Output[GalleryApplicationCustomActionParameterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The default value of the parameter.  Only applies to string types
@@ -1286,6 +1485,12 @@ func (o GalleryApplicationCustomActionParameterResponseArrayOutput) ToGalleryApp
 	return o
 }
 
+func (o GalleryApplicationCustomActionParameterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GalleryApplicationCustomActionParameterResponse] {
+	return pulumix.Output[[]GalleryApplicationCustomActionParameterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GalleryApplicationCustomActionParameterResponseArrayOutput) Index(i pulumi.IntInput) GalleryApplicationCustomActionParameterResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GalleryApplicationCustomActionParameterResponse {
 		return vs[0].([]GalleryApplicationCustomActionParameterResponse)[vs[1].(int)]
@@ -1317,6 +1522,12 @@ func (o GalleryApplicationCustomActionResponseOutput) ToGalleryApplicationCustom
 
 func (o GalleryApplicationCustomActionResponseOutput) ToGalleryApplicationCustomActionResponseOutputWithContext(ctx context.Context) GalleryApplicationCustomActionResponseOutput {
 	return o
+}
+
+func (o GalleryApplicationCustomActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryApplicationCustomActionResponse] {
+	return pulumix.Output[GalleryApplicationCustomActionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description to help the users understand what this custom action does.
@@ -1353,6 +1564,12 @@ func (o GalleryApplicationCustomActionResponseArrayOutput) ToGalleryApplicationC
 
 func (o GalleryApplicationCustomActionResponseArrayOutput) ToGalleryApplicationCustomActionResponseArrayOutputWithContext(ctx context.Context) GalleryApplicationCustomActionResponseArrayOutput {
 	return o
+}
+
+func (o GalleryApplicationCustomActionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GalleryApplicationCustomActionResponse] {
+	return pulumix.Output[[]GalleryApplicationCustomActionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryApplicationCustomActionResponseArrayOutput) Index(i pulumi.IntInput) GalleryApplicationCustomActionResponseOutput {
@@ -1442,6 +1659,12 @@ func (i GalleryApplicationVersionPublishingProfileArgs) ToGalleryApplicationVers
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryApplicationVersionPublishingProfileOutput)
 }
 
+func (i GalleryApplicationVersionPublishingProfileArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryApplicationVersionPublishingProfile] {
+	return pulumix.Output[GalleryApplicationVersionPublishingProfile]{
+		OutputState: i.ToGalleryApplicationVersionPublishingProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The publishing profile of a gallery image version.
 type GalleryApplicationVersionPublishingProfileOutput struct{ *pulumi.OutputState }
 
@@ -1455,6 +1678,12 @@ func (o GalleryApplicationVersionPublishingProfileOutput) ToGalleryApplicationVe
 
 func (o GalleryApplicationVersionPublishingProfileOutput) ToGalleryApplicationVersionPublishingProfileOutputWithContext(ctx context.Context) GalleryApplicationVersionPublishingProfileOutput {
 	return o
+}
+
+func (o GalleryApplicationVersionPublishingProfileOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryApplicationVersionPublishingProfile] {
+	return pulumix.Output[GalleryApplicationVersionPublishingProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Additional settings to pass to the vm-application-manager extension. For advanced use only.
@@ -1569,6 +1798,12 @@ func (o GalleryApplicationVersionPublishingProfileResponseOutput) ToGalleryAppli
 
 func (o GalleryApplicationVersionPublishingProfileResponseOutput) ToGalleryApplicationVersionPublishingProfileResponseOutputWithContext(ctx context.Context) GalleryApplicationVersionPublishingProfileResponseOutput {
 	return o
+}
+
+func (o GalleryApplicationVersionPublishingProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryApplicationVersionPublishingProfileResponse] {
+	return pulumix.Output[GalleryApplicationVersionPublishingProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Additional settings to pass to the vm-application-manager extension. For advanced use only.
@@ -1687,6 +1922,12 @@ func (i GalleryApplicationVersionSafetyProfileArgs) ToGalleryApplicationVersionS
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryApplicationVersionSafetyProfileOutput)
 }
 
+func (i GalleryApplicationVersionSafetyProfileArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryApplicationVersionSafetyProfile] {
+	return pulumix.Output[GalleryApplicationVersionSafetyProfile]{
+		OutputState: i.ToGalleryApplicationVersionSafetyProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GalleryApplicationVersionSafetyProfileArgs) ToGalleryApplicationVersionSafetyProfilePtrOutput() GalleryApplicationVersionSafetyProfilePtrOutput {
 	return i.ToGalleryApplicationVersionSafetyProfilePtrOutputWithContext(context.Background())
 }
@@ -1728,6 +1969,12 @@ func (i *galleryApplicationVersionSafetyProfilePtrType) ToGalleryApplicationVers
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryApplicationVersionSafetyProfilePtrOutput)
 }
 
+func (i *galleryApplicationVersionSafetyProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*GalleryApplicationVersionSafetyProfile] {
+	return pulumix.Output[*GalleryApplicationVersionSafetyProfile]{
+		OutputState: i.ToGalleryApplicationVersionSafetyProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The safety profile of the Gallery Application Version.
 type GalleryApplicationVersionSafetyProfileOutput struct{ *pulumi.OutputState }
 
@@ -1753,6 +2000,12 @@ func (o GalleryApplicationVersionSafetyProfileOutput) ToGalleryApplicationVersio
 	}).(GalleryApplicationVersionSafetyProfilePtrOutput)
 }
 
+func (o GalleryApplicationVersionSafetyProfileOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryApplicationVersionSafetyProfile] {
+	return pulumix.Output[GalleryApplicationVersionSafetyProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.
 func (o GalleryApplicationVersionSafetyProfileOutput) AllowDeletionOfReplicatedLocations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GalleryApplicationVersionSafetyProfile) *bool { return v.AllowDeletionOfReplicatedLocations }).(pulumi.BoolPtrOutput)
@@ -1770,6 +2023,12 @@ func (o GalleryApplicationVersionSafetyProfilePtrOutput) ToGalleryApplicationVer
 
 func (o GalleryApplicationVersionSafetyProfilePtrOutput) ToGalleryApplicationVersionSafetyProfilePtrOutputWithContext(ctx context.Context) GalleryApplicationVersionSafetyProfilePtrOutput {
 	return o
+}
+
+func (o GalleryApplicationVersionSafetyProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryApplicationVersionSafetyProfile] {
+	return pulumix.Output[*GalleryApplicationVersionSafetyProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryApplicationVersionSafetyProfilePtrOutput) Elem() GalleryApplicationVersionSafetyProfileOutput {
@@ -1813,6 +2072,12 @@ func (o GalleryApplicationVersionSafetyProfileResponseOutput) ToGalleryApplicati
 	return o
 }
 
+func (o GalleryApplicationVersionSafetyProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryApplicationVersionSafetyProfileResponse] {
+	return pulumix.Output[GalleryApplicationVersionSafetyProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.
 func (o GalleryApplicationVersionSafetyProfileResponseOutput) AllowDeletionOfReplicatedLocations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GalleryApplicationVersionSafetyProfileResponse) *bool {
@@ -1832,6 +2097,12 @@ func (o GalleryApplicationVersionSafetyProfileResponsePtrOutput) ToGalleryApplic
 
 func (o GalleryApplicationVersionSafetyProfileResponsePtrOutput) ToGalleryApplicationVersionSafetyProfileResponsePtrOutputWithContext(ctx context.Context) GalleryApplicationVersionSafetyProfileResponsePtrOutput {
 	return o
+}
+
+func (o GalleryApplicationVersionSafetyProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryApplicationVersionSafetyProfileResponse] {
+	return pulumix.Output[*GalleryApplicationVersionSafetyProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryApplicationVersionSafetyProfileResponsePtrOutput) Elem() GalleryApplicationVersionSafetyProfileResponseOutput {
@@ -1893,6 +2164,12 @@ func (i GalleryArtifactVersionFullSourceArgs) ToGalleryArtifactVersionFullSource
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryArtifactVersionFullSourceOutput)
 }
 
+func (i GalleryArtifactVersionFullSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryArtifactVersionFullSource] {
+	return pulumix.Output[GalleryArtifactVersionFullSource]{
+		OutputState: i.ToGalleryArtifactVersionFullSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GalleryArtifactVersionFullSourceArgs) ToGalleryArtifactVersionFullSourcePtrOutput() GalleryArtifactVersionFullSourcePtrOutput {
 	return i.ToGalleryArtifactVersionFullSourcePtrOutputWithContext(context.Background())
 }
@@ -1934,6 +2211,12 @@ func (i *galleryArtifactVersionFullSourcePtrType) ToGalleryArtifactVersionFullSo
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryArtifactVersionFullSourcePtrOutput)
 }
 
+func (i *galleryArtifactVersionFullSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GalleryArtifactVersionFullSource] {
+	return pulumix.Output[*GalleryArtifactVersionFullSource]{
+		OutputState: i.ToGalleryArtifactVersionFullSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The source of the gallery artifact version.
 type GalleryArtifactVersionFullSourceOutput struct{ *pulumi.OutputState }
 
@@ -1959,6 +2242,12 @@ func (o GalleryArtifactVersionFullSourceOutput) ToGalleryArtifactVersionFullSour
 	}).(GalleryArtifactVersionFullSourcePtrOutput)
 }
 
+func (o GalleryArtifactVersionFullSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryArtifactVersionFullSource] {
+	return pulumix.Output[GalleryArtifactVersionFullSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource Id of the source Community Gallery Image.  Only required when using Community Gallery Image as a source.
 func (o GalleryArtifactVersionFullSourceOutput) CommunityGalleryImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GalleryArtifactVersionFullSource) *string { return v.CommunityGalleryImageId }).(pulumi.StringPtrOutput)
@@ -1981,6 +2270,12 @@ func (o GalleryArtifactVersionFullSourcePtrOutput) ToGalleryArtifactVersionFullS
 
 func (o GalleryArtifactVersionFullSourcePtrOutput) ToGalleryArtifactVersionFullSourcePtrOutputWithContext(ctx context.Context) GalleryArtifactVersionFullSourcePtrOutput {
 	return o
+}
+
+func (o GalleryArtifactVersionFullSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryArtifactVersionFullSource] {
+	return pulumix.Output[*GalleryArtifactVersionFullSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryArtifactVersionFullSourcePtrOutput) Elem() GalleryArtifactVersionFullSourceOutput {
@@ -2036,6 +2331,12 @@ func (o GalleryArtifactVersionFullSourceResponseOutput) ToGalleryArtifactVersion
 	return o
 }
 
+func (o GalleryArtifactVersionFullSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryArtifactVersionFullSourceResponse] {
+	return pulumix.Output[GalleryArtifactVersionFullSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource Id of the source Community Gallery Image.  Only required when using Community Gallery Image as a source.
 func (o GalleryArtifactVersionFullSourceResponseOutput) CommunityGalleryImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GalleryArtifactVersionFullSourceResponse) *string { return v.CommunityGalleryImageId }).(pulumi.StringPtrOutput)
@@ -2058,6 +2359,12 @@ func (o GalleryArtifactVersionFullSourceResponsePtrOutput) ToGalleryArtifactVers
 
 func (o GalleryArtifactVersionFullSourceResponsePtrOutput) ToGalleryArtifactVersionFullSourceResponsePtrOutputWithContext(ctx context.Context) GalleryArtifactVersionFullSourceResponsePtrOutput {
 	return o
+}
+
+func (o GalleryArtifactVersionFullSourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryArtifactVersionFullSourceResponse] {
+	return pulumix.Output[*GalleryArtifactVersionFullSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryArtifactVersionFullSourceResponsePtrOutput) Elem() GalleryArtifactVersionFullSourceResponseOutput {
@@ -2133,6 +2440,12 @@ func (i GalleryDataDiskImageArgs) ToGalleryDataDiskImageOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryDataDiskImageOutput)
 }
 
+func (i GalleryDataDiskImageArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryDataDiskImage] {
+	return pulumix.Output[GalleryDataDiskImage]{
+		OutputState: i.ToGalleryDataDiskImageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GalleryDataDiskImageArrayInput is an input type that accepts GalleryDataDiskImageArray and GalleryDataDiskImageArrayOutput values.
 // You can construct a concrete instance of `GalleryDataDiskImageArrayInput` via:
 //
@@ -2158,6 +2471,12 @@ func (i GalleryDataDiskImageArray) ToGalleryDataDiskImageArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryDataDiskImageArrayOutput)
 }
 
+func (i GalleryDataDiskImageArray) ToOutput(ctx context.Context) pulumix.Output[[]GalleryDataDiskImage] {
+	return pulumix.Output[[]GalleryDataDiskImage]{
+		OutputState: i.ToGalleryDataDiskImageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This is the data disk image.
 type GalleryDataDiskImageOutput struct{ *pulumi.OutputState }
 
@@ -2171,6 +2490,12 @@ func (o GalleryDataDiskImageOutput) ToGalleryDataDiskImageOutput() GalleryDataDi
 
 func (o GalleryDataDiskImageOutput) ToGalleryDataDiskImageOutputWithContext(ctx context.Context) GalleryDataDiskImageOutput {
 	return o
+}
+
+func (o GalleryDataDiskImageOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryDataDiskImage] {
+	return pulumix.Output[GalleryDataDiskImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
@@ -2200,6 +2525,12 @@ func (o GalleryDataDiskImageArrayOutput) ToGalleryDataDiskImageArrayOutput() Gal
 
 func (o GalleryDataDiskImageArrayOutput) ToGalleryDataDiskImageArrayOutputWithContext(ctx context.Context) GalleryDataDiskImageArrayOutput {
 	return o
+}
+
+func (o GalleryDataDiskImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GalleryDataDiskImage] {
+	return pulumix.Output[[]GalleryDataDiskImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryDataDiskImageArrayOutput) Index(i pulumi.IntInput) GalleryDataDiskImageOutput {
@@ -2235,6 +2566,12 @@ func (o GalleryDataDiskImageResponseOutput) ToGalleryDataDiskImageResponseOutput
 	return o
 }
 
+func (o GalleryDataDiskImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryDataDiskImageResponse] {
+	return pulumix.Output[GalleryDataDiskImageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
 func (o GalleryDataDiskImageResponseOutput) HostCaching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GalleryDataDiskImageResponse) *string { return v.HostCaching }).(pulumi.StringPtrOutput)
@@ -2267,6 +2604,12 @@ func (o GalleryDataDiskImageResponseArrayOutput) ToGalleryDataDiskImageResponseA
 
 func (o GalleryDataDiskImageResponseArrayOutput) ToGalleryDataDiskImageResponseArrayOutputWithContext(ctx context.Context) GalleryDataDiskImageResponseArrayOutput {
 	return o
+}
+
+func (o GalleryDataDiskImageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GalleryDataDiskImageResponse] {
+	return pulumix.Output[[]GalleryDataDiskImageResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryDataDiskImageResponseArrayOutput) Index(i pulumi.IntInput) GalleryDataDiskImageResponseOutput {
@@ -2318,6 +2661,12 @@ func (i GalleryDiskImageSourceArgs) ToGalleryDiskImageSourceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryDiskImageSourceOutput)
 }
 
+func (i GalleryDiskImageSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryDiskImageSource] {
+	return pulumix.Output[GalleryDiskImageSource]{
+		OutputState: i.ToGalleryDiskImageSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GalleryDiskImageSourceArgs) ToGalleryDiskImageSourcePtrOutput() GalleryDiskImageSourcePtrOutput {
 	return i.ToGalleryDiskImageSourcePtrOutputWithContext(context.Background())
 }
@@ -2359,6 +2708,12 @@ func (i *galleryDiskImageSourcePtrType) ToGalleryDiskImageSourcePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryDiskImageSourcePtrOutput)
 }
 
+func (i *galleryDiskImageSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GalleryDiskImageSource] {
+	return pulumix.Output[*GalleryDiskImageSource]{
+		OutputState: i.ToGalleryDiskImageSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The source for the disk image.
 type GalleryDiskImageSourceOutput struct{ *pulumi.OutputState }
 
@@ -2382,6 +2737,12 @@ func (o GalleryDiskImageSourceOutput) ToGalleryDiskImageSourcePtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GalleryDiskImageSource) *GalleryDiskImageSource {
 		return &v
 	}).(GalleryDiskImageSourcePtrOutput)
+}
+
+func (o GalleryDiskImageSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryDiskImageSource] {
+	return pulumix.Output[GalleryDiskImageSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the gallery artifact version source. Can specify a disk uri, snapshot uri, user image or storage account resource.
@@ -2411,6 +2772,12 @@ func (o GalleryDiskImageSourcePtrOutput) ToGalleryDiskImageSourcePtrOutput() Gal
 
 func (o GalleryDiskImageSourcePtrOutput) ToGalleryDiskImageSourcePtrOutputWithContext(ctx context.Context) GalleryDiskImageSourcePtrOutput {
 	return o
+}
+
+func (o GalleryDiskImageSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryDiskImageSource] {
+	return pulumix.Output[*GalleryDiskImageSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryDiskImageSourcePtrOutput) Elem() GalleryDiskImageSourceOutput {
@@ -2478,6 +2845,12 @@ func (o GalleryDiskImageSourceResponseOutput) ToGalleryDiskImageSourceResponseOu
 	return o
 }
 
+func (o GalleryDiskImageSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryDiskImageSourceResponse] {
+	return pulumix.Output[GalleryDiskImageSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The id of the gallery artifact version source. Can specify a disk uri, snapshot uri, user image or storage account resource.
 func (o GalleryDiskImageSourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GalleryDiskImageSourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2505,6 +2878,12 @@ func (o GalleryDiskImageSourceResponsePtrOutput) ToGalleryDiskImageSourceRespons
 
 func (o GalleryDiskImageSourceResponsePtrOutput) ToGalleryDiskImageSourceResponsePtrOutputWithContext(ctx context.Context) GalleryDiskImageSourceResponsePtrOutput {
 	return o
+}
+
+func (o GalleryDiskImageSourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryDiskImageSourceResponse] {
+	return pulumix.Output[*GalleryDiskImageSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryDiskImageSourceResponsePtrOutput) Elem() GalleryDiskImageSourceResponseOutput {
@@ -2584,6 +2963,12 @@ func (i GalleryExtendedLocationArgs) ToGalleryExtendedLocationOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryExtendedLocationOutput)
 }
 
+func (i GalleryExtendedLocationArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryExtendedLocation] {
+	return pulumix.Output[GalleryExtendedLocation]{
+		OutputState: i.ToGalleryExtendedLocationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GalleryExtendedLocationArgs) ToGalleryExtendedLocationPtrOutput() GalleryExtendedLocationPtrOutput {
 	return i.ToGalleryExtendedLocationPtrOutputWithContext(context.Background())
 }
@@ -2625,6 +3010,12 @@ func (i *galleryExtendedLocationPtrType) ToGalleryExtendedLocationPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryExtendedLocationPtrOutput)
 }
 
+func (i *galleryExtendedLocationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GalleryExtendedLocation] {
+	return pulumix.Output[*GalleryExtendedLocation]{
+		OutputState: i.ToGalleryExtendedLocationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The name of the extended location.
 type GalleryExtendedLocationOutput struct{ *pulumi.OutputState }
 
@@ -2650,6 +3041,12 @@ func (o GalleryExtendedLocationOutput) ToGalleryExtendedLocationPtrOutputWithCon
 	}).(GalleryExtendedLocationPtrOutput)
 }
 
+func (o GalleryExtendedLocationOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryExtendedLocation] {
+	return pulumix.Output[GalleryExtendedLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GalleryExtendedLocationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GalleryExtendedLocation) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -2671,6 +3068,12 @@ func (o GalleryExtendedLocationPtrOutput) ToGalleryExtendedLocationPtrOutput() G
 
 func (o GalleryExtendedLocationPtrOutput) ToGalleryExtendedLocationPtrOutputWithContext(ctx context.Context) GalleryExtendedLocationPtrOutput {
 	return o
+}
+
+func (o GalleryExtendedLocationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryExtendedLocation] {
+	return pulumix.Output[*GalleryExtendedLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryExtendedLocationPtrOutput) Elem() GalleryExtendedLocationOutput {
@@ -2724,6 +3127,12 @@ func (o GalleryExtendedLocationResponseOutput) ToGalleryExtendedLocationResponse
 	return o
 }
 
+func (o GalleryExtendedLocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryExtendedLocationResponse] {
+	return pulumix.Output[GalleryExtendedLocationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GalleryExtendedLocationResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GalleryExtendedLocationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -2745,6 +3154,12 @@ func (o GalleryExtendedLocationResponsePtrOutput) ToGalleryExtendedLocationRespo
 
 func (o GalleryExtendedLocationResponsePtrOutput) ToGalleryExtendedLocationResponsePtrOutputWithContext(ctx context.Context) GalleryExtendedLocationResponsePtrOutput {
 	return o
+}
+
+func (o GalleryExtendedLocationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryExtendedLocationResponse] {
+	return pulumix.Output[*GalleryExtendedLocationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryExtendedLocationResponsePtrOutput) Elem() GalleryExtendedLocationResponseOutput {
@@ -2797,6 +3212,12 @@ func (o GalleryIdentifierResponseOutput) ToGalleryIdentifierResponseOutputWithCo
 	return o
 }
 
+func (o GalleryIdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryIdentifierResponse] {
+	return pulumix.Output[GalleryIdentifierResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The unique name of the Shared Image Gallery. This name is generated automatically by Azure.
 func (o GalleryIdentifierResponseOutput) UniqueName() pulumi.StringOutput {
 	return o.ApplyT(func(v GalleryIdentifierResponse) string { return v.UniqueName }).(pulumi.StringOutput)
@@ -2814,6 +3235,12 @@ func (o GalleryIdentifierResponsePtrOutput) ToGalleryIdentifierResponsePtrOutput
 
 func (o GalleryIdentifierResponsePtrOutput) ToGalleryIdentifierResponsePtrOutputWithContext(ctx context.Context) GalleryIdentifierResponsePtrOutput {
 	return o
+}
+
+func (o GalleryIdentifierResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryIdentifierResponse] {
+	return pulumix.Output[*GalleryIdentifierResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryIdentifierResponsePtrOutput) Elem() GalleryIdentifierResponseOutput {
@@ -2875,6 +3302,12 @@ func (i GalleryImageFeatureArgs) ToGalleryImageFeatureOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageFeatureOutput)
 }
 
+func (i GalleryImageFeatureArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryImageFeature] {
+	return pulumix.Output[GalleryImageFeature]{
+		OutputState: i.ToGalleryImageFeatureOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GalleryImageFeatureArrayInput is an input type that accepts GalleryImageFeatureArray and GalleryImageFeatureArrayOutput values.
 // You can construct a concrete instance of `GalleryImageFeatureArrayInput` via:
 //
@@ -2900,6 +3333,12 @@ func (i GalleryImageFeatureArray) ToGalleryImageFeatureArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageFeatureArrayOutput)
 }
 
+func (i GalleryImageFeatureArray) ToOutput(ctx context.Context) pulumix.Output[[]GalleryImageFeature] {
+	return pulumix.Output[[]GalleryImageFeature]{
+		OutputState: i.ToGalleryImageFeatureArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A feature for gallery image.
 type GalleryImageFeatureOutput struct{ *pulumi.OutputState }
 
@@ -2913,6 +3352,12 @@ func (o GalleryImageFeatureOutput) ToGalleryImageFeatureOutput() GalleryImageFea
 
 func (o GalleryImageFeatureOutput) ToGalleryImageFeatureOutputWithContext(ctx context.Context) GalleryImageFeatureOutput {
 	return o
+}
+
+func (o GalleryImageFeatureOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageFeature] {
+	return pulumix.Output[GalleryImageFeature]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the gallery image feature.
@@ -2937,6 +3382,12 @@ func (o GalleryImageFeatureArrayOutput) ToGalleryImageFeatureArrayOutput() Galle
 
 func (o GalleryImageFeatureArrayOutput) ToGalleryImageFeatureArrayOutputWithContext(ctx context.Context) GalleryImageFeatureArrayOutput {
 	return o
+}
+
+func (o GalleryImageFeatureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GalleryImageFeature] {
+	return pulumix.Output[[]GalleryImageFeature]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryImageFeatureArrayOutput) Index(i pulumi.IntInput) GalleryImageFeatureOutput {
@@ -2968,6 +3419,12 @@ func (o GalleryImageFeatureResponseOutput) ToGalleryImageFeatureResponseOutputWi
 	return o
 }
 
+func (o GalleryImageFeatureResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageFeatureResponse] {
+	return pulumix.Output[GalleryImageFeatureResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the gallery image feature.
 func (o GalleryImageFeatureResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GalleryImageFeatureResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2990,6 +3447,12 @@ func (o GalleryImageFeatureResponseArrayOutput) ToGalleryImageFeatureResponseArr
 
 func (o GalleryImageFeatureResponseArrayOutput) ToGalleryImageFeatureResponseArrayOutputWithContext(ctx context.Context) GalleryImageFeatureResponseArrayOutput {
 	return o
+}
+
+func (o GalleryImageFeatureResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GalleryImageFeatureResponse] {
+	return pulumix.Output[[]GalleryImageFeatureResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryImageFeatureResponseArrayOutput) Index(i pulumi.IntInput) GalleryImageFeatureResponseOutput {
@@ -3041,6 +3504,12 @@ func (i GalleryImageIdentifierArgs) ToGalleryImageIdentifierOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageIdentifierOutput)
 }
 
+func (i GalleryImageIdentifierArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryImageIdentifier] {
+	return pulumix.Output[GalleryImageIdentifier]{
+		OutputState: i.ToGalleryImageIdentifierOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This is the gallery image definition identifier.
 type GalleryImageIdentifierOutput struct{ *pulumi.OutputState }
 
@@ -3054,6 +3523,12 @@ func (o GalleryImageIdentifierOutput) ToGalleryImageIdentifierOutput() GalleryIm
 
 func (o GalleryImageIdentifierOutput) ToGalleryImageIdentifierOutputWithContext(ctx context.Context) GalleryImageIdentifierOutput {
 	return o
+}
+
+func (o GalleryImageIdentifierOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageIdentifier] {
+	return pulumix.Output[GalleryImageIdentifier]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the gallery image definition offer.
@@ -3094,6 +3569,12 @@ func (o GalleryImageIdentifierResponseOutput) ToGalleryImageIdentifierResponseOu
 
 func (o GalleryImageIdentifierResponseOutput) ToGalleryImageIdentifierResponseOutputWithContext(ctx context.Context) GalleryImageIdentifierResponseOutput {
 	return o
+}
+
+func (o GalleryImageIdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageIdentifierResponse] {
+	return pulumix.Output[GalleryImageIdentifierResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the gallery image definition offer.
@@ -3170,6 +3651,12 @@ func (i GalleryImageVersionPublishingProfileArgs) ToGalleryImageVersionPublishin
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageVersionPublishingProfileOutput)
 }
 
+func (i GalleryImageVersionPublishingProfileArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryImageVersionPublishingProfile] {
+	return pulumix.Output[GalleryImageVersionPublishingProfile]{
+		OutputState: i.ToGalleryImageVersionPublishingProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GalleryImageVersionPublishingProfileArgs) ToGalleryImageVersionPublishingProfilePtrOutput() GalleryImageVersionPublishingProfilePtrOutput {
 	return i.ToGalleryImageVersionPublishingProfilePtrOutputWithContext(context.Background())
 }
@@ -3211,6 +3698,12 @@ func (i *galleryImageVersionPublishingProfilePtrType) ToGalleryImageVersionPubli
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageVersionPublishingProfilePtrOutput)
 }
 
+func (i *galleryImageVersionPublishingProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageVersionPublishingProfile] {
+	return pulumix.Output[*GalleryImageVersionPublishingProfile]{
+		OutputState: i.ToGalleryImageVersionPublishingProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The publishing profile of a gallery image Version.
 type GalleryImageVersionPublishingProfileOutput struct{ *pulumi.OutputState }
 
@@ -3234,6 +3727,12 @@ func (o GalleryImageVersionPublishingProfileOutput) ToGalleryImageVersionPublish
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GalleryImageVersionPublishingProfile) *GalleryImageVersionPublishingProfile {
 		return &v
 	}).(GalleryImageVersionPublishingProfilePtrOutput)
+}
+
+func (o GalleryImageVersionPublishingProfileOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageVersionPublishingProfile] {
+	return pulumix.Output[GalleryImageVersionPublishingProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The end of life date of the gallery image version. This property can be used for decommissioning purposes. This property is updatable.
@@ -3285,6 +3784,12 @@ func (o GalleryImageVersionPublishingProfilePtrOutput) ToGalleryImageVersionPubl
 
 func (o GalleryImageVersionPublishingProfilePtrOutput) ToGalleryImageVersionPublishingProfilePtrOutputWithContext(ctx context.Context) GalleryImageVersionPublishingProfilePtrOutput {
 	return o
+}
+
+func (o GalleryImageVersionPublishingProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageVersionPublishingProfile] {
+	return pulumix.Output[*GalleryImageVersionPublishingProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryImageVersionPublishingProfilePtrOutput) Elem() GalleryImageVersionPublishingProfileOutput {
@@ -3402,6 +3907,12 @@ func (o GalleryImageVersionPublishingProfileResponseOutput) ToGalleryImageVersio
 	return o
 }
 
+func (o GalleryImageVersionPublishingProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageVersionPublishingProfileResponse] {
+	return pulumix.Output[GalleryImageVersionPublishingProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The end of life date of the gallery image version. This property can be used for decommissioning purposes. This property is updatable.
 func (o GalleryImageVersionPublishingProfileResponseOutput) EndOfLifeDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GalleryImageVersionPublishingProfileResponse) *string { return v.EndOfLifeDate }).(pulumi.StringPtrOutput)
@@ -3456,6 +3967,12 @@ func (o GalleryImageVersionPublishingProfileResponsePtrOutput) ToGalleryImageVer
 
 func (o GalleryImageVersionPublishingProfileResponsePtrOutput) ToGalleryImageVersionPublishingProfileResponsePtrOutputWithContext(ctx context.Context) GalleryImageVersionPublishingProfileResponsePtrOutput {
 	return o
+}
+
+func (o GalleryImageVersionPublishingProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageVersionPublishingProfileResponse] {
+	return pulumix.Output[*GalleryImageVersionPublishingProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryImageVersionPublishingProfileResponsePtrOutput) Elem() GalleryImageVersionPublishingProfileResponseOutput {
@@ -3583,6 +4100,12 @@ func (i GalleryImageVersionSafetyProfileArgs) ToGalleryImageVersionSafetyProfile
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageVersionSafetyProfileOutput)
 }
 
+func (i GalleryImageVersionSafetyProfileArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryImageVersionSafetyProfile] {
+	return pulumix.Output[GalleryImageVersionSafetyProfile]{
+		OutputState: i.ToGalleryImageVersionSafetyProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GalleryImageVersionSafetyProfileArgs) ToGalleryImageVersionSafetyProfilePtrOutput() GalleryImageVersionSafetyProfilePtrOutput {
 	return i.ToGalleryImageVersionSafetyProfilePtrOutputWithContext(context.Background())
 }
@@ -3624,6 +4147,12 @@ func (i *galleryImageVersionSafetyProfilePtrType) ToGalleryImageVersionSafetyPro
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageVersionSafetyProfilePtrOutput)
 }
 
+func (i *galleryImageVersionSafetyProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageVersionSafetyProfile] {
+	return pulumix.Output[*GalleryImageVersionSafetyProfile]{
+		OutputState: i.ToGalleryImageVersionSafetyProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This is the safety profile of the Gallery Image Version.
 type GalleryImageVersionSafetyProfileOutput struct{ *pulumi.OutputState }
 
@@ -3649,6 +4178,12 @@ func (o GalleryImageVersionSafetyProfileOutput) ToGalleryImageVersionSafetyProfi
 	}).(GalleryImageVersionSafetyProfilePtrOutput)
 }
 
+func (o GalleryImageVersionSafetyProfileOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageVersionSafetyProfile] {
+	return pulumix.Output[GalleryImageVersionSafetyProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.
 func (o GalleryImageVersionSafetyProfileOutput) AllowDeletionOfReplicatedLocations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GalleryImageVersionSafetyProfile) *bool { return v.AllowDeletionOfReplicatedLocations }).(pulumi.BoolPtrOutput)
@@ -3666,6 +4201,12 @@ func (o GalleryImageVersionSafetyProfilePtrOutput) ToGalleryImageVersionSafetyPr
 
 func (o GalleryImageVersionSafetyProfilePtrOutput) ToGalleryImageVersionSafetyProfilePtrOutputWithContext(ctx context.Context) GalleryImageVersionSafetyProfilePtrOutput {
 	return o
+}
+
+func (o GalleryImageVersionSafetyProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageVersionSafetyProfile] {
+	return pulumix.Output[*GalleryImageVersionSafetyProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryImageVersionSafetyProfilePtrOutput) Elem() GalleryImageVersionSafetyProfileOutput {
@@ -3713,6 +4254,12 @@ func (o GalleryImageVersionSafetyProfileResponseOutput) ToGalleryImageVersionSaf
 	return o
 }
 
+func (o GalleryImageVersionSafetyProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageVersionSafetyProfileResponse] {
+	return pulumix.Output[GalleryImageVersionSafetyProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.
 func (o GalleryImageVersionSafetyProfileResponseOutput) AllowDeletionOfReplicatedLocations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GalleryImageVersionSafetyProfileResponse) *bool { return v.AllowDeletionOfReplicatedLocations }).(pulumi.BoolPtrOutput)
@@ -3740,6 +4287,12 @@ func (o GalleryImageVersionSafetyProfileResponsePtrOutput) ToGalleryImageVersion
 
 func (o GalleryImageVersionSafetyProfileResponsePtrOutput) ToGalleryImageVersionSafetyProfileResponsePtrOutputWithContext(ctx context.Context) GalleryImageVersionSafetyProfileResponsePtrOutput {
 	return o
+}
+
+func (o GalleryImageVersionSafetyProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryImageVersionSafetyProfileResponse] {
+	return pulumix.Output[*GalleryImageVersionSafetyProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryImageVersionSafetyProfileResponsePtrOutput) Elem() GalleryImageVersionSafetyProfileResponseOutput {
@@ -3825,6 +4378,12 @@ func (i GalleryImageVersionStorageProfileArgs) ToGalleryImageVersionStorageProfi
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageVersionStorageProfileOutput)
 }
 
+func (i GalleryImageVersionStorageProfileArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryImageVersionStorageProfile] {
+	return pulumix.Output[GalleryImageVersionStorageProfile]{
+		OutputState: i.ToGalleryImageVersionStorageProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This is the storage profile of a Gallery Image Version.
 type GalleryImageVersionStorageProfileOutput struct{ *pulumi.OutputState }
 
@@ -3838,6 +4397,12 @@ func (o GalleryImageVersionStorageProfileOutput) ToGalleryImageVersionStoragePro
 
 func (o GalleryImageVersionStorageProfileOutput) ToGalleryImageVersionStorageProfileOutputWithContext(ctx context.Context) GalleryImageVersionStorageProfileOutput {
 	return o
+}
+
+func (o GalleryImageVersionStorageProfileOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageVersionStorageProfile] {
+	return pulumix.Output[GalleryImageVersionStorageProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of data disk images.
@@ -3878,6 +4443,12 @@ func (o GalleryImageVersionStorageProfileResponseOutput) ToGalleryImageVersionSt
 
 func (o GalleryImageVersionStorageProfileResponseOutput) ToGalleryImageVersionStorageProfileResponseOutputWithContext(ctx context.Context) GalleryImageVersionStorageProfileResponseOutput {
 	return o
+}
+
+func (o GalleryImageVersionStorageProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageVersionStorageProfileResponse] {
+	return pulumix.Output[GalleryImageVersionStorageProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of data disk images.
@@ -3938,6 +4509,12 @@ func (i GalleryOSDiskImageArgs) ToGalleryOSDiskImageOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryOSDiskImageOutput)
 }
 
+func (i GalleryOSDiskImageArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryOSDiskImage] {
+	return pulumix.Output[GalleryOSDiskImage]{
+		OutputState: i.ToGalleryOSDiskImageOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GalleryOSDiskImageArgs) ToGalleryOSDiskImagePtrOutput() GalleryOSDiskImagePtrOutput {
 	return i.ToGalleryOSDiskImagePtrOutputWithContext(context.Background())
 }
@@ -3979,6 +4556,12 @@ func (i *galleryOSDiskImagePtrType) ToGalleryOSDiskImagePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryOSDiskImagePtrOutput)
 }
 
+func (i *galleryOSDiskImagePtrType) ToOutput(ctx context.Context) pulumix.Output[*GalleryOSDiskImage] {
+	return pulumix.Output[*GalleryOSDiskImage]{
+		OutputState: i.ToGalleryOSDiskImagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This is the OS disk image.
 type GalleryOSDiskImageOutput struct{ *pulumi.OutputState }
 
@@ -4004,6 +4587,12 @@ func (o GalleryOSDiskImageOutput) ToGalleryOSDiskImagePtrOutputWithContext(ctx c
 	}).(GalleryOSDiskImagePtrOutput)
 }
 
+func (o GalleryOSDiskImageOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryOSDiskImage] {
+	return pulumix.Output[GalleryOSDiskImage]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
 func (o GalleryOSDiskImageOutput) HostCaching() HostCachingPtrOutput {
 	return o.ApplyT(func(v GalleryOSDiskImage) *HostCaching { return v.HostCaching }).(HostCachingPtrOutput)
@@ -4026,6 +4615,12 @@ func (o GalleryOSDiskImagePtrOutput) ToGalleryOSDiskImagePtrOutput() GalleryOSDi
 
 func (o GalleryOSDiskImagePtrOutput) ToGalleryOSDiskImagePtrOutputWithContext(ctx context.Context) GalleryOSDiskImagePtrOutput {
 	return o
+}
+
+func (o GalleryOSDiskImagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryOSDiskImage] {
+	return pulumix.Output[*GalleryOSDiskImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryOSDiskImagePtrOutput) Elem() GalleryOSDiskImageOutput {
@@ -4083,6 +4678,12 @@ func (o GalleryOSDiskImageResponseOutput) ToGalleryOSDiskImageResponseOutputWith
 	return o
 }
 
+func (o GalleryOSDiskImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryOSDiskImageResponse] {
+	return pulumix.Output[GalleryOSDiskImageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
 func (o GalleryOSDiskImageResponseOutput) HostCaching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GalleryOSDiskImageResponse) *string { return v.HostCaching }).(pulumi.StringPtrOutput)
@@ -4110,6 +4711,12 @@ func (o GalleryOSDiskImageResponsePtrOutput) ToGalleryOSDiskImageResponsePtrOutp
 
 func (o GalleryOSDiskImageResponsePtrOutput) ToGalleryOSDiskImageResponsePtrOutputWithContext(ctx context.Context) GalleryOSDiskImageResponsePtrOutput {
 	return o
+}
+
+func (o GalleryOSDiskImageResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryOSDiskImageResponse] {
+	return pulumix.Output[*GalleryOSDiskImageResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryOSDiskImageResponsePtrOutput) Elem() GalleryOSDiskImageResponseOutput {
@@ -4201,6 +4808,12 @@ func (i GalleryTargetExtendedLocationArgs) ToGalleryTargetExtendedLocationOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryTargetExtendedLocationOutput)
 }
 
+func (i GalleryTargetExtendedLocationArgs) ToOutput(ctx context.Context) pulumix.Output[GalleryTargetExtendedLocation] {
+	return pulumix.Output[GalleryTargetExtendedLocation]{
+		OutputState: i.ToGalleryTargetExtendedLocationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GalleryTargetExtendedLocationArrayInput is an input type that accepts GalleryTargetExtendedLocationArray and GalleryTargetExtendedLocationArrayOutput values.
 // You can construct a concrete instance of `GalleryTargetExtendedLocationArrayInput` via:
 //
@@ -4226,6 +4839,12 @@ func (i GalleryTargetExtendedLocationArray) ToGalleryTargetExtendedLocationArray
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryTargetExtendedLocationArrayOutput)
 }
 
+func (i GalleryTargetExtendedLocationArray) ToOutput(ctx context.Context) pulumix.Output[[]GalleryTargetExtendedLocation] {
+	return pulumix.Output[[]GalleryTargetExtendedLocation]{
+		OutputState: i.ToGalleryTargetExtendedLocationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GalleryTargetExtendedLocationOutput struct{ *pulumi.OutputState }
 
 func (GalleryTargetExtendedLocationOutput) ElementType() reflect.Type {
@@ -4238,6 +4857,12 @@ func (o GalleryTargetExtendedLocationOutput) ToGalleryTargetExtendedLocationOutp
 
 func (o GalleryTargetExtendedLocationOutput) ToGalleryTargetExtendedLocationOutputWithContext(ctx context.Context) GalleryTargetExtendedLocationOutput {
 	return o
+}
+
+func (o GalleryTargetExtendedLocationOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryTargetExtendedLocation] {
+	return pulumix.Output[GalleryTargetExtendedLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
@@ -4279,6 +4904,12 @@ func (o GalleryTargetExtendedLocationArrayOutput) ToGalleryTargetExtendedLocatio
 	return o
 }
 
+func (o GalleryTargetExtendedLocationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GalleryTargetExtendedLocation] {
+	return pulumix.Output[[]GalleryTargetExtendedLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GalleryTargetExtendedLocationArrayOutput) Index(i pulumi.IntInput) GalleryTargetExtendedLocationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GalleryTargetExtendedLocation {
 		return vs[0].([]GalleryTargetExtendedLocation)[vs[1].(int)]
@@ -4310,6 +4941,12 @@ func (o GalleryTargetExtendedLocationResponseOutput) ToGalleryTargetExtendedLoca
 
 func (o GalleryTargetExtendedLocationResponseOutput) ToGalleryTargetExtendedLocationResponseOutputWithContext(ctx context.Context) GalleryTargetExtendedLocationResponseOutput {
 	return o
+}
+
+func (o GalleryTargetExtendedLocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryTargetExtendedLocationResponse] {
+	return pulumix.Output[GalleryTargetExtendedLocationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
@@ -4351,6 +4988,12 @@ func (o GalleryTargetExtendedLocationResponseArrayOutput) ToGalleryTargetExtende
 
 func (o GalleryTargetExtendedLocationResponseArrayOutput) ToGalleryTargetExtendedLocationResponseArrayOutputWithContext(ctx context.Context) GalleryTargetExtendedLocationResponseArrayOutput {
 	return o
+}
+
+func (o GalleryTargetExtendedLocationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GalleryTargetExtendedLocationResponse] {
+	return pulumix.Output[[]GalleryTargetExtendedLocationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryTargetExtendedLocationResponseArrayOutput) Index(i pulumi.IntInput) GalleryTargetExtendedLocationResponseOutput {
@@ -4402,6 +5045,12 @@ func (i ImagePurchasePlanArgs) ToImagePurchasePlanOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ImagePurchasePlanOutput)
 }
 
+func (i ImagePurchasePlanArgs) ToOutput(ctx context.Context) pulumix.Output[ImagePurchasePlan] {
+	return pulumix.Output[ImagePurchasePlan]{
+		OutputState: i.ToImagePurchasePlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ImagePurchasePlanArgs) ToImagePurchasePlanPtrOutput() ImagePurchasePlanPtrOutput {
 	return i.ToImagePurchasePlanPtrOutputWithContext(context.Background())
 }
@@ -4443,6 +5092,12 @@ func (i *imagePurchasePlanPtrType) ToImagePurchasePlanPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ImagePurchasePlanPtrOutput)
 }
 
+func (i *imagePurchasePlanPtrType) ToOutput(ctx context.Context) pulumix.Output[*ImagePurchasePlan] {
+	return pulumix.Output[*ImagePurchasePlan]{
+		OutputState: i.ToImagePurchasePlanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the gallery image definition purchase plan. This is used by marketplace images.
 type ImagePurchasePlanOutput struct{ *pulumi.OutputState }
 
@@ -4466,6 +5121,12 @@ func (o ImagePurchasePlanOutput) ToImagePurchasePlanPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImagePurchasePlan) *ImagePurchasePlan {
 		return &v
 	}).(ImagePurchasePlanPtrOutput)
+}
+
+func (o ImagePurchasePlanOutput) ToOutput(ctx context.Context) pulumix.Output[ImagePurchasePlan] {
+	return pulumix.Output[ImagePurchasePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The plan ID.
@@ -4495,6 +5156,12 @@ func (o ImagePurchasePlanPtrOutput) ToImagePurchasePlanPtrOutput() ImagePurchase
 
 func (o ImagePurchasePlanPtrOutput) ToImagePurchasePlanPtrOutputWithContext(ctx context.Context) ImagePurchasePlanPtrOutput {
 	return o
+}
+
+func (o ImagePurchasePlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImagePurchasePlan] {
+	return pulumix.Output[*ImagePurchasePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImagePurchasePlanPtrOutput) Elem() ImagePurchasePlanOutput {
@@ -4562,6 +5229,12 @@ func (o ImagePurchasePlanResponseOutput) ToImagePurchasePlanResponseOutputWithCo
 	return o
 }
 
+func (o ImagePurchasePlanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImagePurchasePlanResponse] {
+	return pulumix.Output[ImagePurchasePlanResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The plan ID.
 func (o ImagePurchasePlanResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImagePurchasePlanResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -4589,6 +5262,12 @@ func (o ImagePurchasePlanResponsePtrOutput) ToImagePurchasePlanResponsePtrOutput
 
 func (o ImagePurchasePlanResponsePtrOutput) ToImagePurchasePlanResponsePtrOutputWithContext(ctx context.Context) ImagePurchasePlanResponsePtrOutput {
 	return o
+}
+
+func (o ImagePurchasePlanResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImagePurchasePlanResponse] {
+	return pulumix.Output[*ImagePurchasePlanResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImagePurchasePlanResponsePtrOutput) Elem() ImagePurchasePlanResponseOutput {
@@ -4670,6 +5349,12 @@ func (i OSDiskImageEncryptionArgs) ToOSDiskImageEncryptionOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(OSDiskImageEncryptionOutput)
 }
 
+func (i OSDiskImageEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[OSDiskImageEncryption] {
+	return pulumix.Output[OSDiskImageEncryption]{
+		OutputState: i.ToOSDiskImageEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSDiskImageEncryptionArgs) ToOSDiskImageEncryptionPtrOutput() OSDiskImageEncryptionPtrOutput {
 	return i.ToOSDiskImageEncryptionPtrOutputWithContext(context.Background())
 }
@@ -4711,6 +5396,12 @@ func (i *osdiskImageEncryptionPtrType) ToOSDiskImageEncryptionPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(OSDiskImageEncryptionPtrOutput)
 }
 
+func (i *osdiskImageEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSDiskImageEncryption] {
+	return pulumix.Output[*OSDiskImageEncryption]{
+		OutputState: i.ToOSDiskImageEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains encryption settings for an OS disk image.
 type OSDiskImageEncryptionOutput struct{ *pulumi.OutputState }
 
@@ -4736,6 +5427,12 @@ func (o OSDiskImageEncryptionOutput) ToOSDiskImageEncryptionPtrOutputWithContext
 	}).(OSDiskImageEncryptionPtrOutput)
 }
 
+func (o OSDiskImageEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[OSDiskImageEncryption] {
+	return pulumix.Output[OSDiskImageEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A relative URI containing the resource ID of the disk encryption set.
 func (o OSDiskImageEncryptionOutput) DiskEncryptionSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSDiskImageEncryption) *string { return v.DiskEncryptionSetId }).(pulumi.StringPtrOutput)
@@ -4758,6 +5455,12 @@ func (o OSDiskImageEncryptionPtrOutput) ToOSDiskImageEncryptionPtrOutput() OSDis
 
 func (o OSDiskImageEncryptionPtrOutput) ToOSDiskImageEncryptionPtrOutputWithContext(ctx context.Context) OSDiskImageEncryptionPtrOutput {
 	return o
+}
+
+func (o OSDiskImageEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSDiskImageEncryption] {
+	return pulumix.Output[*OSDiskImageEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSDiskImageEncryptionPtrOutput) Elem() OSDiskImageEncryptionOutput {
@@ -4813,6 +5516,12 @@ func (o OSDiskImageEncryptionResponseOutput) ToOSDiskImageEncryptionResponseOutp
 	return o
 }
 
+func (o OSDiskImageEncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSDiskImageEncryptionResponse] {
+	return pulumix.Output[OSDiskImageEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A relative URI containing the resource ID of the disk encryption set.
 func (o OSDiskImageEncryptionResponseOutput) DiskEncryptionSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSDiskImageEncryptionResponse) *string { return v.DiskEncryptionSetId }).(pulumi.StringPtrOutput)
@@ -4835,6 +5544,12 @@ func (o OSDiskImageEncryptionResponsePtrOutput) ToOSDiskImageEncryptionResponseP
 
 func (o OSDiskImageEncryptionResponsePtrOutput) ToOSDiskImageEncryptionResponsePtrOutputWithContext(ctx context.Context) OSDiskImageEncryptionResponsePtrOutput {
 	return o
+}
+
+func (o OSDiskImageEncryptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSDiskImageEncryptionResponse] {
+	return pulumix.Output[*OSDiskImageEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSDiskImageEncryptionResponsePtrOutput) Elem() OSDiskImageEncryptionResponseOutput {
@@ -4906,6 +5621,12 @@ func (i OSDiskImageSecurityProfileArgs) ToOSDiskImageSecurityProfileOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(OSDiskImageSecurityProfileOutput)
 }
 
+func (i OSDiskImageSecurityProfileArgs) ToOutput(ctx context.Context) pulumix.Output[OSDiskImageSecurityProfile] {
+	return pulumix.Output[OSDiskImageSecurityProfile]{
+		OutputState: i.ToOSDiskImageSecurityProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSDiskImageSecurityProfileArgs) ToOSDiskImageSecurityProfilePtrOutput() OSDiskImageSecurityProfilePtrOutput {
 	return i.ToOSDiskImageSecurityProfilePtrOutputWithContext(context.Background())
 }
@@ -4947,6 +5668,12 @@ func (i *osdiskImageSecurityProfilePtrType) ToOSDiskImageSecurityProfilePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(OSDiskImageSecurityProfilePtrOutput)
 }
 
+func (i *osdiskImageSecurityProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*OSDiskImageSecurityProfile] {
+	return pulumix.Output[*OSDiskImageSecurityProfile]{
+		OutputState: i.ToOSDiskImageSecurityProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains security profile for an OS disk image.
 type OSDiskImageSecurityProfileOutput struct{ *pulumi.OutputState }
 
@@ -4972,6 +5699,12 @@ func (o OSDiskImageSecurityProfileOutput) ToOSDiskImageSecurityProfilePtrOutputW
 	}).(OSDiskImageSecurityProfilePtrOutput)
 }
 
+func (o OSDiskImageSecurityProfileOutput) ToOutput(ctx context.Context) pulumix.Output[OSDiskImageSecurityProfile] {
+	return pulumix.Output[OSDiskImageSecurityProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // confidential VM encryption types
 func (o OSDiskImageSecurityProfileOutput) ConfidentialVMEncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSDiskImageSecurityProfile) *string { return v.ConfidentialVMEncryptionType }).(pulumi.StringPtrOutput)
@@ -4994,6 +5727,12 @@ func (o OSDiskImageSecurityProfilePtrOutput) ToOSDiskImageSecurityProfilePtrOutp
 
 func (o OSDiskImageSecurityProfilePtrOutput) ToOSDiskImageSecurityProfilePtrOutputWithContext(ctx context.Context) OSDiskImageSecurityProfilePtrOutput {
 	return o
+}
+
+func (o OSDiskImageSecurityProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSDiskImageSecurityProfile] {
+	return pulumix.Output[*OSDiskImageSecurityProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSDiskImageSecurityProfilePtrOutput) Elem() OSDiskImageSecurityProfileOutput {
@@ -5049,6 +5788,12 @@ func (o OSDiskImageSecurityProfileResponseOutput) ToOSDiskImageSecurityProfileRe
 	return o
 }
 
+func (o OSDiskImageSecurityProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSDiskImageSecurityProfileResponse] {
+	return pulumix.Output[OSDiskImageSecurityProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // confidential VM encryption types
 func (o OSDiskImageSecurityProfileResponseOutput) ConfidentialVMEncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSDiskImageSecurityProfileResponse) *string { return v.ConfidentialVMEncryptionType }).(pulumi.StringPtrOutput)
@@ -5071,6 +5816,12 @@ func (o OSDiskImageSecurityProfileResponsePtrOutput) ToOSDiskImageSecurityProfil
 
 func (o OSDiskImageSecurityProfileResponsePtrOutput) ToOSDiskImageSecurityProfileResponsePtrOutputWithContext(ctx context.Context) OSDiskImageSecurityProfileResponsePtrOutput {
 	return o
+}
+
+func (o OSDiskImageSecurityProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSDiskImageSecurityProfileResponse] {
+	return pulumix.Output[*OSDiskImageSecurityProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSDiskImageSecurityProfileResponsePtrOutput) Elem() OSDiskImageSecurityProfileResponseOutput {
@@ -5126,6 +5877,12 @@ func (o PolicyViolationResponseOutput) ToPolicyViolationResponseOutputWithContex
 	return o
 }
 
+func (o PolicyViolationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyViolationResponse] {
+	return pulumix.Output[PolicyViolationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Describes the nature of the policy violation.
 func (o PolicyViolationResponseOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyViolationResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
@@ -5148,6 +5905,12 @@ func (o PolicyViolationResponseArrayOutput) ToPolicyViolationResponseArrayOutput
 
 func (o PolicyViolationResponseArrayOutput) ToPolicyViolationResponseArrayOutputWithContext(ctx context.Context) PolicyViolationResponseArrayOutput {
 	return o
+}
+
+func (o PolicyViolationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyViolationResponse] {
+	return pulumix.Output[[]PolicyViolationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyViolationResponseArrayOutput) Index(i pulumi.IntInput) PolicyViolationResponseOutput {
@@ -5195,6 +5958,12 @@ func (i RecommendedMachineConfigurationArgs) ToRecommendedMachineConfigurationOu
 	return pulumi.ToOutputWithContext(ctx, i).(RecommendedMachineConfigurationOutput)
 }
 
+func (i RecommendedMachineConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[RecommendedMachineConfiguration] {
+	return pulumix.Output[RecommendedMachineConfiguration]{
+		OutputState: i.ToRecommendedMachineConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RecommendedMachineConfigurationArgs) ToRecommendedMachineConfigurationPtrOutput() RecommendedMachineConfigurationPtrOutput {
 	return i.ToRecommendedMachineConfigurationPtrOutputWithContext(context.Background())
 }
@@ -5236,6 +6005,12 @@ func (i *recommendedMachineConfigurationPtrType) ToRecommendedMachineConfigurati
 	return pulumi.ToOutputWithContext(ctx, i).(RecommendedMachineConfigurationPtrOutput)
 }
 
+func (i *recommendedMachineConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*RecommendedMachineConfiguration] {
+	return pulumix.Output[*RecommendedMachineConfiguration]{
+		OutputState: i.ToRecommendedMachineConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The properties describe the recommended machine configuration for this Image Definition. These properties are updatable.
 type RecommendedMachineConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -5261,6 +6036,12 @@ func (o RecommendedMachineConfigurationOutput) ToRecommendedMachineConfiguration
 	}).(RecommendedMachineConfigurationPtrOutput)
 }
 
+func (o RecommendedMachineConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[RecommendedMachineConfiguration] {
+	return pulumix.Output[RecommendedMachineConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Describes the resource range.
 func (o RecommendedMachineConfigurationOutput) Memory() ResourceRangePtrOutput {
 	return o.ApplyT(func(v RecommendedMachineConfiguration) *ResourceRange { return v.Memory }).(ResourceRangePtrOutput)
@@ -5283,6 +6064,12 @@ func (o RecommendedMachineConfigurationPtrOutput) ToRecommendedMachineConfigurat
 
 func (o RecommendedMachineConfigurationPtrOutput) ToRecommendedMachineConfigurationPtrOutputWithContext(ctx context.Context) RecommendedMachineConfigurationPtrOutput {
 	return o
+}
+
+func (o RecommendedMachineConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecommendedMachineConfiguration] {
+	return pulumix.Output[*RecommendedMachineConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecommendedMachineConfigurationPtrOutput) Elem() RecommendedMachineConfigurationOutput {
@@ -5338,6 +6125,12 @@ func (o RecommendedMachineConfigurationResponseOutput) ToRecommendedMachineConfi
 	return o
 }
 
+func (o RecommendedMachineConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RecommendedMachineConfigurationResponse] {
+	return pulumix.Output[RecommendedMachineConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Describes the resource range.
 func (o RecommendedMachineConfigurationResponseOutput) Memory() ResourceRangeResponsePtrOutput {
 	return o.ApplyT(func(v RecommendedMachineConfigurationResponse) *ResourceRangeResponse { return v.Memory }).(ResourceRangeResponsePtrOutput)
@@ -5360,6 +6153,12 @@ func (o RecommendedMachineConfigurationResponsePtrOutput) ToRecommendedMachineCo
 
 func (o RecommendedMachineConfigurationResponsePtrOutput) ToRecommendedMachineConfigurationResponsePtrOutputWithContext(ctx context.Context) RecommendedMachineConfigurationResponsePtrOutput {
 	return o
+}
+
+func (o RecommendedMachineConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecommendedMachineConfigurationResponse] {
+	return pulumix.Output[*RecommendedMachineConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecommendedMachineConfigurationResponsePtrOutput) Elem() RecommendedMachineConfigurationResponseOutput {
@@ -5419,6 +6218,12 @@ func (o RegionalReplicationStatusResponseOutput) ToRegionalReplicationStatusResp
 	return o
 }
 
+func (o RegionalReplicationStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RegionalReplicationStatusResponse] {
+	return pulumix.Output[RegionalReplicationStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The details of the replication status.
 func (o RegionalReplicationStatusResponseOutput) Details() pulumi.StringOutput {
 	return o.ApplyT(func(v RegionalReplicationStatusResponse) string { return v.Details }).(pulumi.StringOutput)
@@ -5453,6 +6258,12 @@ func (o RegionalReplicationStatusResponseArrayOutput) ToRegionalReplicationStatu
 	return o
 }
 
+func (o RegionalReplicationStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RegionalReplicationStatusResponse] {
+	return pulumix.Output[[]RegionalReplicationStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionalReplicationStatusResponseArrayOutput) Index(i pulumi.IntInput) RegionalReplicationStatusResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionalReplicationStatusResponse {
 		return vs[0].([]RegionalReplicationStatusResponse)[vs[1].(int)]
@@ -5484,6 +6295,12 @@ func (o RegionalSharingStatusResponseOutput) ToRegionalSharingStatusResponseOutp
 	return o
 }
 
+func (o RegionalSharingStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RegionalSharingStatusResponse] {
+	return pulumix.Output[RegionalSharingStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Details of gallery regional sharing failure.
 func (o RegionalSharingStatusResponseOutput) Details() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionalSharingStatusResponse) *string { return v.Details }).(pulumi.StringPtrOutput)
@@ -5513,6 +6330,12 @@ func (o RegionalSharingStatusResponseArrayOutput) ToRegionalSharingStatusRespons
 	return o
 }
 
+func (o RegionalSharingStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RegionalSharingStatusResponse] {
+	return pulumix.Output[[]RegionalSharingStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionalSharingStatusResponseArrayOutput) Index(i pulumi.IntInput) RegionalSharingStatusResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionalSharingStatusResponse {
 		return vs[0].([]RegionalSharingStatusResponse)[vs[1].(int)]
@@ -5540,6 +6363,12 @@ func (o ReplicationStatusResponseOutput) ToReplicationStatusResponseOutput() Rep
 
 func (o ReplicationStatusResponseOutput) ToReplicationStatusResponseOutputWithContext(ctx context.Context) ReplicationStatusResponseOutput {
 	return o
+}
+
+func (o ReplicationStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReplicationStatusResponse] {
+	return pulumix.Output[ReplicationStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This is the aggregated replication status based on all the regional replication status flags.
@@ -5591,6 +6420,12 @@ func (i ResourceRangeArgs) ToResourceRangeOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRangeOutput)
 }
 
+func (i ResourceRangeArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceRange] {
+	return pulumix.Output[ResourceRange]{
+		OutputState: i.ToResourceRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceRangeArgs) ToResourceRangePtrOutput() ResourceRangePtrOutput {
 	return i.ToResourceRangePtrOutputWithContext(context.Background())
 }
@@ -5632,6 +6467,12 @@ func (i *resourceRangePtrType) ToResourceRangePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRangePtrOutput)
 }
 
+func (i *resourceRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceRange] {
+	return pulumix.Output[*ResourceRange]{
+		OutputState: i.ToResourceRangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the resource range.
 type ResourceRangeOutput struct{ *pulumi.OutputState }
 
@@ -5657,6 +6498,12 @@ func (o ResourceRangeOutput) ToResourceRangePtrOutputWithContext(ctx context.Con
 	}).(ResourceRangePtrOutput)
 }
 
+func (o ResourceRangeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceRange] {
+	return pulumix.Output[ResourceRange]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The maximum number of the resource.
 func (o ResourceRangeOutput) Max() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceRange) *int { return v.Max }).(pulumi.IntPtrOutput)
@@ -5679,6 +6526,12 @@ func (o ResourceRangePtrOutput) ToResourceRangePtrOutput() ResourceRangePtrOutpu
 
 func (o ResourceRangePtrOutput) ToResourceRangePtrOutputWithContext(ctx context.Context) ResourceRangePtrOutput {
 	return o
+}
+
+func (o ResourceRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceRange] {
+	return pulumix.Output[*ResourceRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceRangePtrOutput) Elem() ResourceRangeOutput {
@@ -5734,6 +6587,12 @@ func (o ResourceRangeResponseOutput) ToResourceRangeResponseOutputWithContext(ct
 	return o
 }
 
+func (o ResourceRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceRangeResponse] {
+	return pulumix.Output[ResourceRangeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The maximum number of the resource.
 func (o ResourceRangeResponseOutput) Max() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceRangeResponse) *int { return v.Max }).(pulumi.IntPtrOutput)
@@ -5756,6 +6615,12 @@ func (o ResourceRangeResponsePtrOutput) ToResourceRangeResponsePtrOutput() Resou
 
 func (o ResourceRangeResponsePtrOutput) ToResourceRangeResponsePtrOutputWithContext(ctx context.Context) ResourceRangeResponsePtrOutput {
 	return o
+}
+
+func (o ResourceRangeResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceRangeResponse] {
+	return pulumix.Output[*ResourceRangeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceRangeResponsePtrOutput) Elem() ResourceRangeResponseOutput {
@@ -5827,6 +6692,12 @@ func (i SharingProfileArgs) ToSharingProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SharingProfileOutput)
 }
 
+func (i SharingProfileArgs) ToOutput(ctx context.Context) pulumix.Output[SharingProfile] {
+	return pulumix.Output[SharingProfile]{
+		OutputState: i.ToSharingProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SharingProfileArgs) ToSharingProfilePtrOutput() SharingProfilePtrOutput {
 	return i.ToSharingProfilePtrOutputWithContext(context.Background())
 }
@@ -5868,6 +6739,12 @@ func (i *sharingProfilePtrType) ToSharingProfilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SharingProfilePtrOutput)
 }
 
+func (i *sharingProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*SharingProfile] {
+	return pulumix.Output[*SharingProfile]{
+		OutputState: i.ToSharingProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Profile for gallery sharing to subscription or tenant
 type SharingProfileOutput struct{ *pulumi.OutputState }
 
@@ -5893,6 +6770,12 @@ func (o SharingProfileOutput) ToSharingProfilePtrOutputWithContext(ctx context.C
 	}).(SharingProfilePtrOutput)
 }
 
+func (o SharingProfileOutput) ToOutput(ctx context.Context) pulumix.Output[SharingProfile] {
+	return pulumix.Output[SharingProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Information of community gallery if current gallery is shared to community.
 func (o SharingProfileOutput) CommunityGalleryInfo() CommunityGalleryInfoPtrOutput {
 	return o.ApplyT(func(v SharingProfile) *CommunityGalleryInfo { return v.CommunityGalleryInfo }).(CommunityGalleryInfoPtrOutput)
@@ -5915,6 +6798,12 @@ func (o SharingProfilePtrOutput) ToSharingProfilePtrOutput() SharingProfilePtrOu
 
 func (o SharingProfilePtrOutput) ToSharingProfilePtrOutputWithContext(ctx context.Context) SharingProfilePtrOutput {
 	return o
+}
+
+func (o SharingProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SharingProfile] {
+	return pulumix.Output[*SharingProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SharingProfilePtrOutput) Elem() SharingProfileOutput {
@@ -5970,6 +6859,12 @@ func (o SharingProfileGroupResponseOutput) ToSharingProfileGroupResponseOutputWi
 	return o
 }
 
+func (o SharingProfileGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SharingProfileGroupResponse] {
+	return pulumix.Output[SharingProfileGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of subscription/tenant ids the gallery is aimed to be shared to.
 func (o SharingProfileGroupResponseOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SharingProfileGroupResponse) []string { return v.Ids }).(pulumi.StringArrayOutput)
@@ -5992,6 +6887,12 @@ func (o SharingProfileGroupResponseArrayOutput) ToSharingProfileGroupResponseArr
 
 func (o SharingProfileGroupResponseArrayOutput) ToSharingProfileGroupResponseArrayOutputWithContext(ctx context.Context) SharingProfileGroupResponseArrayOutput {
 	return o
+}
+
+func (o SharingProfileGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SharingProfileGroupResponse] {
+	return pulumix.Output[[]SharingProfileGroupResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SharingProfileGroupResponseArrayOutput) Index(i pulumi.IntInput) SharingProfileGroupResponseOutput {
@@ -6025,6 +6926,12 @@ func (o SharingProfileResponseOutput) ToSharingProfileResponseOutputWithContext(
 	return o
 }
 
+func (o SharingProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SharingProfileResponse] {
+	return pulumix.Output[SharingProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Information of community gallery if current gallery is shared to community.
 func (o SharingProfileResponseOutput) CommunityGalleryInfo() CommunityGalleryInfoResponsePtrOutput {
 	return o.ApplyT(func(v SharingProfileResponse) *CommunityGalleryInfoResponse { return v.CommunityGalleryInfo }).(CommunityGalleryInfoResponsePtrOutput)
@@ -6052,6 +6959,12 @@ func (o SharingProfileResponsePtrOutput) ToSharingProfileResponsePtrOutput() Sha
 
 func (o SharingProfileResponsePtrOutput) ToSharingProfileResponsePtrOutputWithContext(ctx context.Context) SharingProfileResponsePtrOutput {
 	return o
+}
+
+func (o SharingProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SharingProfileResponse] {
+	return pulumix.Output[*SharingProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SharingProfileResponsePtrOutput) Elem() SharingProfileResponseOutput {
@@ -6117,6 +7030,12 @@ func (o SharingStatusResponseOutput) ToSharingStatusResponseOutputWithContext(ct
 	return o
 }
 
+func (o SharingStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SharingStatusResponse] {
+	return pulumix.Output[SharingStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Aggregated sharing state of current gallery.
 func (o SharingStatusResponseOutput) AggregatedState() pulumi.StringOutput {
 	return o.ApplyT(func(v SharingStatusResponse) string { return v.AggregatedState }).(pulumi.StringOutput)
@@ -6162,6 +7081,12 @@ func (i SoftDeletePolicyArgs) ToSoftDeletePolicyOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SoftDeletePolicyOutput)
 }
 
+func (i SoftDeletePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[SoftDeletePolicy] {
+	return pulumix.Output[SoftDeletePolicy]{
+		OutputState: i.ToSoftDeletePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SoftDeletePolicyArgs) ToSoftDeletePolicyPtrOutput() SoftDeletePolicyPtrOutput {
 	return i.ToSoftDeletePolicyPtrOutputWithContext(context.Background())
 }
@@ -6203,6 +7128,12 @@ func (i *softDeletePolicyPtrType) ToSoftDeletePolicyPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SoftDeletePolicyPtrOutput)
 }
 
+func (i *softDeletePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*SoftDeletePolicy] {
+	return pulumix.Output[*SoftDeletePolicy]{
+		OutputState: i.ToSoftDeletePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains information about the soft deletion policy of the gallery.
 type SoftDeletePolicyOutput struct{ *pulumi.OutputState }
 
@@ -6228,6 +7159,12 @@ func (o SoftDeletePolicyOutput) ToSoftDeletePolicyPtrOutputWithContext(ctx conte
 	}).(SoftDeletePolicyPtrOutput)
 }
 
+func (o SoftDeletePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[SoftDeletePolicy] {
+	return pulumix.Output[SoftDeletePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Enables soft-deletion for resources in this gallery, allowing them to be recovered within retention time.
 func (o SoftDeletePolicyOutput) IsSoftDeleteEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SoftDeletePolicy) *bool { return v.IsSoftDeleteEnabled }).(pulumi.BoolPtrOutput)
@@ -6245,6 +7182,12 @@ func (o SoftDeletePolicyPtrOutput) ToSoftDeletePolicyPtrOutput() SoftDeletePolic
 
 func (o SoftDeletePolicyPtrOutput) ToSoftDeletePolicyPtrOutputWithContext(ctx context.Context) SoftDeletePolicyPtrOutput {
 	return o
+}
+
+func (o SoftDeletePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftDeletePolicy] {
+	return pulumix.Output[*SoftDeletePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SoftDeletePolicyPtrOutput) Elem() SoftDeletePolicyOutput {
@@ -6288,6 +7231,12 @@ func (o SoftDeletePolicyResponseOutput) ToSoftDeletePolicyResponseOutputWithCont
 	return o
 }
 
+func (o SoftDeletePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftDeletePolicyResponse] {
+	return pulumix.Output[SoftDeletePolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Enables soft-deletion for resources in this gallery, allowing them to be recovered within retention time.
 func (o SoftDeletePolicyResponseOutput) IsSoftDeleteEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SoftDeletePolicyResponse) *bool { return v.IsSoftDeleteEnabled }).(pulumi.BoolPtrOutput)
@@ -6305,6 +7254,12 @@ func (o SoftDeletePolicyResponsePtrOutput) ToSoftDeletePolicyResponsePtrOutput()
 
 func (o SoftDeletePolicyResponsePtrOutput) ToSoftDeletePolicyResponsePtrOutputWithContext(ctx context.Context) SoftDeletePolicyResponsePtrOutput {
 	return o
+}
+
+func (o SoftDeletePolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftDeletePolicyResponse] {
+	return pulumix.Output[*SoftDeletePolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SoftDeletePolicyResponsePtrOutput) Elem() SoftDeletePolicyResponseOutput {
@@ -6378,6 +7333,12 @@ func (i TargetRegionArgs) ToTargetRegionOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TargetRegionOutput)
 }
 
+func (i TargetRegionArgs) ToOutput(ctx context.Context) pulumix.Output[TargetRegion] {
+	return pulumix.Output[TargetRegion]{
+		OutputState: i.ToTargetRegionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TargetRegionArrayInput is an input type that accepts TargetRegionArray and TargetRegionArrayOutput values.
 // You can construct a concrete instance of `TargetRegionArrayInput` via:
 //
@@ -6403,6 +7364,12 @@ func (i TargetRegionArray) ToTargetRegionArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TargetRegionArrayOutput)
 }
 
+func (i TargetRegionArray) ToOutput(ctx context.Context) pulumix.Output[[]TargetRegion] {
+	return pulumix.Output[[]TargetRegion]{
+		OutputState: i.ToTargetRegionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the target region information.
 type TargetRegionOutput struct{ *pulumi.OutputState }
 
@@ -6416,6 +7383,12 @@ func (o TargetRegionOutput) ToTargetRegionOutput() TargetRegionOutput {
 
 func (o TargetRegionOutput) ToTargetRegionOutputWithContext(ctx context.Context) TargetRegionOutput {
 	return o
+}
+
+func (o TargetRegionOutput) ToOutput(ctx context.Context) pulumix.Output[TargetRegion] {
+	return pulumix.Output[TargetRegion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
@@ -6457,6 +7430,12 @@ func (o TargetRegionArrayOutput) ToTargetRegionArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o TargetRegionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetRegion] {
+	return pulumix.Output[[]TargetRegion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TargetRegionArrayOutput) Index(i pulumi.IntInput) TargetRegionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetRegion {
 		return vs[0].([]TargetRegion)[vs[1].(int)]
@@ -6490,6 +7469,12 @@ func (o TargetRegionResponseOutput) ToTargetRegionResponseOutput() TargetRegionR
 
 func (o TargetRegionResponseOutput) ToTargetRegionResponseOutputWithContext(ctx context.Context) TargetRegionResponseOutput {
 	return o
+}
+
+func (o TargetRegionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetRegionResponse] {
+	return pulumix.Output[TargetRegionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
@@ -6529,6 +7514,12 @@ func (o TargetRegionResponseArrayOutput) ToTargetRegionResponseArrayOutput() Tar
 
 func (o TargetRegionResponseArrayOutput) ToTargetRegionResponseArrayOutputWithContext(ctx context.Context) TargetRegionResponseArrayOutput {
 	return o
+}
+
+func (o TargetRegionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetRegionResponse] {
+	return pulumix.Output[[]TargetRegionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetRegionResponseArrayOutput) Index(i pulumi.IntInput) TargetRegionResponseOutput {
@@ -6578,6 +7569,12 @@ func (i UserArtifactManageArgs) ToUserArtifactManageOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(UserArtifactManageOutput)
 }
 
+func (i UserArtifactManageArgs) ToOutput(ctx context.Context) pulumix.Output[UserArtifactManage] {
+	return pulumix.Output[UserArtifactManage]{
+		OutputState: i.ToUserArtifactManageOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UserArtifactManageArgs) ToUserArtifactManagePtrOutput() UserArtifactManagePtrOutput {
 	return i.ToUserArtifactManagePtrOutputWithContext(context.Background())
 }
@@ -6619,6 +7616,12 @@ func (i *userArtifactManagePtrType) ToUserArtifactManagePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(UserArtifactManagePtrOutput)
 }
 
+func (i *userArtifactManagePtrType) ToOutput(ctx context.Context) pulumix.Output[*UserArtifactManage] {
+	return pulumix.Output[*UserArtifactManage]{
+		OutputState: i.ToUserArtifactManagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UserArtifactManageOutput struct{ *pulumi.OutputState }
 
 func (UserArtifactManageOutput) ElementType() reflect.Type {
@@ -6641,6 +7644,12 @@ func (o UserArtifactManageOutput) ToUserArtifactManagePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserArtifactManage) *UserArtifactManage {
 		return &v
 	}).(UserArtifactManagePtrOutput)
+}
+
+func (o UserArtifactManageOutput) ToOutput(ctx context.Context) pulumix.Output[UserArtifactManage] {
+	return pulumix.Output[UserArtifactManage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
@@ -6670,6 +7679,12 @@ func (o UserArtifactManagePtrOutput) ToUserArtifactManagePtrOutput() UserArtifac
 
 func (o UserArtifactManagePtrOutput) ToUserArtifactManagePtrOutputWithContext(ctx context.Context) UserArtifactManagePtrOutput {
 	return o
+}
+
+func (o UserArtifactManagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserArtifactManage] {
+	return pulumix.Output[*UserArtifactManage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserArtifactManagePtrOutput) Elem() UserArtifactManageOutput {
@@ -6735,6 +7750,12 @@ func (o UserArtifactManageResponseOutput) ToUserArtifactManageResponseOutputWith
 	return o
 }
 
+func (o UserArtifactManageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserArtifactManageResponse] {
+	return pulumix.Output[UserArtifactManageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
 func (o UserArtifactManageResponseOutput) Install() pulumi.StringOutput {
 	return o.ApplyT(func(v UserArtifactManageResponse) string { return v.Install }).(pulumi.StringOutput)
@@ -6762,6 +7783,12 @@ func (o UserArtifactManageResponsePtrOutput) ToUserArtifactManageResponsePtrOutp
 
 func (o UserArtifactManageResponsePtrOutput) ToUserArtifactManageResponsePtrOutputWithContext(ctx context.Context) UserArtifactManageResponsePtrOutput {
 	return o
+}
+
+func (o UserArtifactManageResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserArtifactManageResponse] {
+	return pulumix.Output[*UserArtifactManageResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserArtifactManageResponsePtrOutput) Elem() UserArtifactManageResponseOutput {
@@ -6843,6 +7870,12 @@ func (i UserArtifactSettingsArgs) ToUserArtifactSettingsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(UserArtifactSettingsOutput)
 }
 
+func (i UserArtifactSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[UserArtifactSettings] {
+	return pulumix.Output[UserArtifactSettings]{
+		OutputState: i.ToUserArtifactSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UserArtifactSettingsArgs) ToUserArtifactSettingsPtrOutput() UserArtifactSettingsPtrOutput {
 	return i.ToUserArtifactSettingsPtrOutputWithContext(context.Background())
 }
@@ -6884,6 +7917,12 @@ func (i *userArtifactSettingsPtrType) ToUserArtifactSettingsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(UserArtifactSettingsPtrOutput)
 }
 
+func (i *userArtifactSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserArtifactSettings] {
+	return pulumix.Output[*UserArtifactSettings]{
+		OutputState: i.ToUserArtifactSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Additional settings for the VM app that contains the target package and config file name when it is deployed to target VM or VM scale set.
 type UserArtifactSettingsOutput struct{ *pulumi.OutputState }
 
@@ -6909,6 +7948,12 @@ func (o UserArtifactSettingsOutput) ToUserArtifactSettingsPtrOutputWithContext(c
 	}).(UserArtifactSettingsPtrOutput)
 }
 
+func (o UserArtifactSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[UserArtifactSettings] {
+	return pulumix.Output[UserArtifactSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The name to assign the downloaded config file on the VM. This is limited to 4096 characters. If not specified, the config file will be named the Gallery Application name appended with "_config".
 func (o UserArtifactSettingsOutput) ConfigFileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserArtifactSettings) *string { return v.ConfigFileName }).(pulumi.StringPtrOutput)
@@ -6931,6 +7976,12 @@ func (o UserArtifactSettingsPtrOutput) ToUserArtifactSettingsPtrOutput() UserArt
 
 func (o UserArtifactSettingsPtrOutput) ToUserArtifactSettingsPtrOutputWithContext(ctx context.Context) UserArtifactSettingsPtrOutput {
 	return o
+}
+
+func (o UserArtifactSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserArtifactSettings] {
+	return pulumix.Output[*UserArtifactSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserArtifactSettingsPtrOutput) Elem() UserArtifactSettingsOutput {
@@ -6986,6 +8037,12 @@ func (o UserArtifactSettingsResponseOutput) ToUserArtifactSettingsResponseOutput
 	return o
 }
 
+func (o UserArtifactSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserArtifactSettingsResponse] {
+	return pulumix.Output[UserArtifactSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The name to assign the downloaded config file on the VM. This is limited to 4096 characters. If not specified, the config file will be named the Gallery Application name appended with "_config".
 func (o UserArtifactSettingsResponseOutput) ConfigFileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserArtifactSettingsResponse) *string { return v.ConfigFileName }).(pulumi.StringPtrOutput)
@@ -7008,6 +8065,12 @@ func (o UserArtifactSettingsResponsePtrOutput) ToUserArtifactSettingsResponsePtr
 
 func (o UserArtifactSettingsResponsePtrOutput) ToUserArtifactSettingsResponsePtrOutputWithContext(ctx context.Context) UserArtifactSettingsResponsePtrOutput {
 	return o
+}
+
+func (o UserArtifactSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserArtifactSettingsResponse] {
+	return pulumix.Output[*UserArtifactSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserArtifactSettingsResponsePtrOutput) Elem() UserArtifactSettingsResponseOutput {
@@ -7079,6 +8142,12 @@ func (i UserArtifactSourceArgs) ToUserArtifactSourceOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(UserArtifactSourceOutput)
 }
 
+func (i UserArtifactSourceArgs) ToOutput(ctx context.Context) pulumix.Output[UserArtifactSource] {
+	return pulumix.Output[UserArtifactSource]{
+		OutputState: i.ToUserArtifactSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The source image from which the Image Version is going to be created.
 type UserArtifactSourceOutput struct{ *pulumi.OutputState }
 
@@ -7092,6 +8161,12 @@ func (o UserArtifactSourceOutput) ToUserArtifactSourceOutput() UserArtifactSourc
 
 func (o UserArtifactSourceOutput) ToUserArtifactSourceOutputWithContext(ctx context.Context) UserArtifactSourceOutput {
 	return o
+}
+
+func (o UserArtifactSourceOutput) ToOutput(ctx context.Context) pulumix.Output[UserArtifactSource] {
+	return pulumix.Output[UserArtifactSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
@@ -7125,6 +8200,12 @@ func (o UserArtifactSourceResponseOutput) ToUserArtifactSourceResponseOutput() U
 
 func (o UserArtifactSourceResponseOutput) ToUserArtifactSourceResponseOutputWithContext(ctx context.Context) UserArtifactSourceResponseOutput {
 	return o
+}
+
+func (o UserArtifactSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserArtifactSourceResponse] {
+	return pulumix.Output[UserArtifactSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.

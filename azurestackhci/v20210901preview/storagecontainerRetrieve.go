@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The storage container resource definition.
@@ -162,6 +163,12 @@ func (i *StoragecontainerRetrieve) ToStoragecontainerRetrieveOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(StoragecontainerRetrieveOutput)
 }
 
+func (i *StoragecontainerRetrieve) ToOutput(ctx context.Context) pulumix.Output[*StoragecontainerRetrieve] {
+	return pulumix.Output[*StoragecontainerRetrieve]{
+		OutputState: i.ToStoragecontainerRetrieveOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StoragecontainerRetrieveOutput struct{ *pulumi.OutputState }
 
 func (StoragecontainerRetrieveOutput) ElementType() reflect.Type {
@@ -174,6 +181,12 @@ func (o StoragecontainerRetrieveOutput) ToStoragecontainerRetrieveOutput() Stora
 
 func (o StoragecontainerRetrieveOutput) ToStoragecontainerRetrieveOutputWithContext(ctx context.Context) StoragecontainerRetrieveOutput {
 	return o
+}
+
+func (o StoragecontainerRetrieveOutput) ToOutput(ctx context.Context) pulumix.Output[*StoragecontainerRetrieve] {
+	return pulumix.Output[*StoragecontainerRetrieve]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Amount of space available on the disk in MB

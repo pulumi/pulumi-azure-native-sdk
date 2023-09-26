@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The integration service environment.
@@ -139,6 +140,12 @@ func (i *IntegrationServiceEnvironment) ToIntegrationServiceEnvironmentOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationServiceEnvironmentOutput)
 }
 
+func (i *IntegrationServiceEnvironment) ToOutput(ctx context.Context) pulumix.Output[*IntegrationServiceEnvironment] {
+	return pulumix.Output[*IntegrationServiceEnvironment]{
+		OutputState: i.ToIntegrationServiceEnvironmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationServiceEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (IntegrationServiceEnvironmentOutput) ElementType() reflect.Type {
@@ -151,6 +158,12 @@ func (o IntegrationServiceEnvironmentOutput) ToIntegrationServiceEnvironmentOutp
 
 func (o IntegrationServiceEnvironmentOutput) ToIntegrationServiceEnvironmentOutputWithContext(ctx context.Context) IntegrationServiceEnvironmentOutput {
 	return o
+}
+
+func (o IntegrationServiceEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationServiceEnvironment] {
+	return pulumix.Output[*IntegrationServiceEnvironment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Managed service identity properties.

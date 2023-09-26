@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a buildpack binding by name.
@@ -93,6 +94,12 @@ func (o LookupBuildpackBindingResultOutput) ToLookupBuildpackBindingResultOutput
 
 func (o LookupBuildpackBindingResultOutput) ToLookupBuildpackBindingResultOutputWithContext(ctx context.Context) LookupBuildpackBindingResultOutput {
 	return o
+}
+
+func (o LookupBuildpackBindingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBuildpackBindingResult] {
+	return pulumix.Output[LookupBuildpackBindingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

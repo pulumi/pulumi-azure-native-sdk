@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Hunt Comment in Azure Security Insights
@@ -147,6 +148,12 @@ func (i *HuntComment) ToHuntCommentOutputWithContext(ctx context.Context) HuntCo
 	return pulumi.ToOutputWithContext(ctx, i).(HuntCommentOutput)
 }
 
+func (i *HuntComment) ToOutput(ctx context.Context) pulumix.Output[*HuntComment] {
+	return pulumix.Output[*HuntComment]{
+		OutputState: i.ToHuntCommentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HuntCommentOutput struct{ *pulumi.OutputState }
 
 func (HuntCommentOutput) ElementType() reflect.Type {
@@ -159,6 +166,12 @@ func (o HuntCommentOutput) ToHuntCommentOutput() HuntCommentOutput {
 
 func (o HuntCommentOutput) ToHuntCommentOutputWithContext(ctx context.Context) HuntCommentOutput {
 	return o
+}
+
+func (o HuntCommentOutput) ToOutput(ctx context.Context) pulumix.Output[*HuntComment] {
+	return pulumix.Output[*HuntComment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Etag of the azure resource

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents OfficeIRM (Microsoft Insider Risk Management) data connector.
@@ -222,6 +223,12 @@ func (i *OfficeIRMDataConnector) ToOfficeIRMDataConnectorOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(OfficeIRMDataConnectorOutput)
 }
 
+func (i *OfficeIRMDataConnector) ToOutput(ctx context.Context) pulumix.Output[*OfficeIRMDataConnector] {
+	return pulumix.Output[*OfficeIRMDataConnector]{
+		OutputState: i.ToOfficeIRMDataConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OfficeIRMDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (OfficeIRMDataConnectorOutput) ElementType() reflect.Type {
@@ -234,6 +241,12 @@ func (o OfficeIRMDataConnectorOutput) ToOfficeIRMDataConnectorOutput() OfficeIRM
 
 func (o OfficeIRMDataConnectorOutput) ToOfficeIRMDataConnectorOutputWithContext(ctx context.Context) OfficeIRMDataConnectorOutput {
 	return o
+}
+
+func (o OfficeIRMDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*OfficeIRMDataConnector] {
+	return pulumix.Output[*OfficeIRMDataConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available data types for the connector.

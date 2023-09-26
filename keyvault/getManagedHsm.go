@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified managed HSM Pool.
@@ -98,6 +99,12 @@ func (o LookupManagedHsmResultOutput) ToLookupManagedHsmResultOutput() LookupMan
 
 func (o LookupManagedHsmResultOutput) ToLookupManagedHsmResultOutputWithContext(ctx context.Context) LookupManagedHsmResultOutput {
 	return o
+}
+
+func (o LookupManagedHsmResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedHsmResult] {
+	return pulumix.Output[LookupManagedHsmResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Azure Resource Manager resource ID for the managed HSM Pool.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a data flow.
@@ -84,6 +85,12 @@ func (o LookupDataFlowResultOutput) ToLookupDataFlowResultOutput() LookupDataFlo
 
 func (o LookupDataFlowResultOutput) ToLookupDataFlowResultOutputWithContext(ctx context.Context) LookupDataFlowResultOutput {
 	return o
+}
+
+func (o LookupDataFlowResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataFlowResult] {
+	return pulumix.Output[LookupDataFlowResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Etag identifies change in the resource.

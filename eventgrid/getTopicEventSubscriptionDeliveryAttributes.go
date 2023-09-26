@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get all delivery attributes for an event subscription for topic.
@@ -77,6 +78,12 @@ func (o GetTopicEventSubscriptionDeliveryAttributesResultOutput) ToGetTopicEvent
 
 func (o GetTopicEventSubscriptionDeliveryAttributesResultOutput) ToGetTopicEventSubscriptionDeliveryAttributesResultOutputWithContext(ctx context.Context) GetTopicEventSubscriptionDeliveryAttributesResultOutput {
 	return o
+}
+
+func (o GetTopicEventSubscriptionDeliveryAttributesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTopicEventSubscriptionDeliveryAttributesResult] {
+	return pulumix.Output[GetTopicEventSubscriptionDeliveryAttributesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A collection of DeliveryAttributeMapping

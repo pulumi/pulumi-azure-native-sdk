@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A SqlManagedInstance.
@@ -166,6 +167,12 @@ func (i *SqlManagedInstance) ToSqlManagedInstanceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SqlManagedInstanceOutput)
 }
 
+func (i *SqlManagedInstance) ToOutput(ctx context.Context) pulumix.Output[*SqlManagedInstance] {
+	return pulumix.Output[*SqlManagedInstance]{
+		OutputState: i.ToSqlManagedInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlManagedInstanceOutput struct{ *pulumi.OutputState }
 
 func (SqlManagedInstanceOutput) ElementType() reflect.Type {
@@ -178,6 +185,12 @@ func (o SqlManagedInstanceOutput) ToSqlManagedInstanceOutput() SqlManagedInstanc
 
 func (o SqlManagedInstanceOutput) ToSqlManagedInstanceOutputWithContext(ctx context.Context) SqlManagedInstanceOutput {
 	return o
+}
+
+func (o SqlManagedInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlManagedInstance] {
+	return pulumix.Output[*SqlManagedInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The extendedLocation of the resource.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Test Base Account resource.
@@ -145,6 +146,12 @@ func (i *TestBaseAccount) ToTestBaseAccountOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TestBaseAccountOutput)
 }
 
+func (i *TestBaseAccount) ToOutput(ctx context.Context) pulumix.Output[*TestBaseAccount] {
+	return pulumix.Output[*TestBaseAccount]{
+		OutputState: i.ToTestBaseAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TestBaseAccountOutput struct{ *pulumi.OutputState }
 
 func (TestBaseAccountOutput) ElementType() reflect.Type {
@@ -157,6 +164,12 @@ func (o TestBaseAccountOutput) ToTestBaseAccountOutput() TestBaseAccountOutput {
 
 func (o TestBaseAccountOutput) ToTestBaseAccountOutputWithContext(ctx context.Context) TestBaseAccountOutput {
 	return o
+}
+
+func (o TestBaseAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*TestBaseAccount] {
+	return pulumix.Output[*TestBaseAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access level of the Test Base Account.

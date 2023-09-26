@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Custom domain analysis.
@@ -99,6 +100,12 @@ func (o ListContainerAppCustomHostNameAnalysisResultOutput) ToListContainerAppCu
 
 func (o ListContainerAppCustomHostNameAnalysisResultOutput) ToListContainerAppCustomHostNameAnalysisResultOutputWithContext(ctx context.Context) ListContainerAppCustomHostNameAnalysisResultOutput {
 	return o
+}
+
+func (o ListContainerAppCustomHostNameAnalysisResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListContainerAppCustomHostNameAnalysisResult] {
+	return pulumix.Output[ListContainerAppCustomHostNameAnalysisResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A records visible for this hostname.

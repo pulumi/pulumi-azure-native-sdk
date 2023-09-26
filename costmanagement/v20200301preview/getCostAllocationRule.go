@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a cost allocation rule by rule name and billing account or enterprise enrollment.
@@ -78,6 +79,12 @@ func (o LookupCostAllocationRuleResultOutput) ToLookupCostAllocationRuleResultOu
 
 func (o LookupCostAllocationRuleResultOutput) ToLookupCostAllocationRuleResultOutputWithContext(ctx context.Context) LookupCostAllocationRuleResultOutput {
 	return o
+}
+
+func (o LookupCostAllocationRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCostAllocationRuleResult] {
+	return pulumix.Output[LookupCostAllocationRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure Resource Manager Id for the rule. This is a read ony value.

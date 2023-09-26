@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i AuthorizationInfoArgs) ToAuthorizationInfoOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationInfoOutput)
 }
 
+func (i AuthorizationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[AuthorizationInfo] {
+	return pulumix.Output[AuthorizationInfo]{
+		OutputState: i.ToAuthorizationInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AuthorizationInfoArgs) ToAuthorizationInfoPtrOutput() AuthorizationInfoPtrOutput {
 	return i.ToAuthorizationInfoPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *authorizationInfoPtrType) ToAuthorizationInfoPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationInfoPtrOutput)
 }
 
+func (i *authorizationInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationInfo] {
+	return pulumix.Output[*AuthorizationInfo]{
+		OutputState: i.ToAuthorizationInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthorizationInfoOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationInfoOutput) ElementType() reflect.Type {
@@ -117,6 +130,12 @@ func (o AuthorizationInfoOutput) ToAuthorizationInfoPtrOutputWithContext(ctx con
 	}).(AuthorizationInfoPtrOutput)
 }
 
+func (o AuthorizationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationInfo] {
+	return pulumix.Output[AuthorizationInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets one-time OAuth code to exchange for refresh and access tokens.
 //
 // Only used during PUT operations. The secret is cleared during GET.
@@ -137,6 +156,12 @@ func (o AuthorizationInfoPtrOutput) ToAuthorizationInfoPtrOutput() Authorization
 
 func (o AuthorizationInfoPtrOutput) ToAuthorizationInfoPtrOutputWithContext(ctx context.Context) AuthorizationInfoPtrOutput {
 	return o
+}
+
+func (o AuthorizationInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationInfo] {
+	return pulumix.Output[*AuthorizationInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthorizationInfoPtrOutput) Elem() AuthorizationInfoOutput {
@@ -184,6 +209,12 @@ func (o AuthorizationInfoResponseOutput) ToAuthorizationInfoResponseOutputWithCo
 	return o
 }
 
+func (o AuthorizationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationInfoResponse] {
+	return pulumix.Output[AuthorizationInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets one-time OAuth code to exchange for refresh and access tokens.
 //
 // Only used during PUT operations. The secret is cleared during GET.
@@ -204,6 +235,12 @@ func (o AuthorizationInfoResponsePtrOutput) ToAuthorizationInfoResponsePtrOutput
 
 func (o AuthorizationInfoResponsePtrOutput) ToAuthorizationInfoResponsePtrOutputWithContext(ctx context.Context) AuthorizationInfoResponsePtrOutput {
 	return o
+}
+
+func (o AuthorizationInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationInfoResponse] {
+	return pulumix.Output[*AuthorizationInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthorizationInfoResponsePtrOutput) Elem() AuthorizationInfoResponseOutput {
@@ -264,6 +301,12 @@ func (i AzureDevOpsConnectorPropertiesArgs) ToAzureDevOpsConnectorPropertiesOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsConnectorPropertiesOutput)
 }
 
+func (i AzureDevOpsConnectorPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsConnectorProperties] {
+	return pulumix.Output[AzureDevOpsConnectorProperties]{
+		OutputState: i.ToAzureDevOpsConnectorPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AzureDevOpsConnectorPropertiesArgs) ToAzureDevOpsConnectorPropertiesPtrOutput() AzureDevOpsConnectorPropertiesPtrOutput {
 	return i.ToAzureDevOpsConnectorPropertiesPtrOutputWithContext(context.Background())
 }
@@ -305,6 +348,12 @@ func (i *azureDevOpsConnectorPropertiesPtrType) ToAzureDevOpsConnectorProperties
 	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsConnectorPropertiesPtrOutput)
 }
 
+func (i *azureDevOpsConnectorPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureDevOpsConnectorProperties] {
+	return pulumix.Output[*AzureDevOpsConnectorProperties]{
+		OutputState: i.ToAzureDevOpsConnectorPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AzureDevOpsConnectorPropertiesOutput struct{ *pulumi.OutputState }
 
 func (AzureDevOpsConnectorPropertiesOutput) ElementType() reflect.Type {
@@ -329,6 +378,12 @@ func (o AzureDevOpsConnectorPropertiesOutput) ToAzureDevOpsConnectorPropertiesPt
 	}).(AzureDevOpsConnectorPropertiesPtrOutput)
 }
 
+func (o AzureDevOpsConnectorPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsConnectorProperties] {
+	return pulumix.Output[AzureDevOpsConnectorProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AzureDevOpsConnectorPropertiesOutput) Authorization() AuthorizationInfoPtrOutput {
 	return o.ApplyT(func(v AzureDevOpsConnectorProperties) *AuthorizationInfo { return v.Authorization }).(AuthorizationInfoPtrOutput)
 }
@@ -350,6 +405,12 @@ func (o AzureDevOpsConnectorPropertiesPtrOutput) ToAzureDevOpsConnectorPropertie
 
 func (o AzureDevOpsConnectorPropertiesPtrOutput) ToAzureDevOpsConnectorPropertiesPtrOutputWithContext(ctx context.Context) AzureDevOpsConnectorPropertiesPtrOutput {
 	return o
+}
+
+func (o AzureDevOpsConnectorPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureDevOpsConnectorProperties] {
+	return pulumix.Output[*AzureDevOpsConnectorProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureDevOpsConnectorPropertiesPtrOutput) Elem() AzureDevOpsConnectorPropertiesOutput {
@@ -400,6 +461,12 @@ func (o AzureDevOpsConnectorPropertiesResponseOutput) ToAzureDevOpsConnectorProp
 
 func (o AzureDevOpsConnectorPropertiesResponseOutput) ToAzureDevOpsConnectorPropertiesResponseOutputWithContext(ctx context.Context) AzureDevOpsConnectorPropertiesResponseOutput {
 	return o
+}
+
+func (o AzureDevOpsConnectorPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsConnectorPropertiesResponse] {
+	return pulumix.Output[AzureDevOpsConnectorPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureDevOpsConnectorPropertiesResponseOutput) Authorization() AuthorizationInfoResponsePtrOutput {
@@ -454,6 +521,12 @@ func (i AzureDevOpsOrgMetadataArgs) ToAzureDevOpsOrgMetadataOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsOrgMetadataOutput)
 }
 
+func (i AzureDevOpsOrgMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsOrgMetadata] {
+	return pulumix.Output[AzureDevOpsOrgMetadata]{
+		OutputState: i.ToAzureDevOpsOrgMetadataOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AzureDevOpsOrgMetadataArrayInput is an input type that accepts AzureDevOpsOrgMetadataArray and AzureDevOpsOrgMetadataArrayOutput values.
 // You can construct a concrete instance of `AzureDevOpsOrgMetadataArrayInput` via:
 //
@@ -479,6 +552,12 @@ func (i AzureDevOpsOrgMetadataArray) ToAzureDevOpsOrgMetadataArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsOrgMetadataArrayOutput)
 }
 
+func (i AzureDevOpsOrgMetadataArray) ToOutput(ctx context.Context) pulumix.Output[[]AzureDevOpsOrgMetadata] {
+	return pulumix.Output[[]AzureDevOpsOrgMetadata]{
+		OutputState: i.ToAzureDevOpsOrgMetadataArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Org onboarding info.
 type AzureDevOpsOrgMetadataOutput struct{ *pulumi.OutputState }
 
@@ -492,6 +571,12 @@ func (o AzureDevOpsOrgMetadataOutput) ToAzureDevOpsOrgMetadataOutput() AzureDevO
 
 func (o AzureDevOpsOrgMetadataOutput) ToAzureDevOpsOrgMetadataOutputWithContext(ctx context.Context) AzureDevOpsOrgMetadataOutput {
 	return o
+}
+
+func (o AzureDevOpsOrgMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsOrgMetadata] {
+	return pulumix.Output[AzureDevOpsOrgMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureDevOpsOrgMetadataOutput) AutoDiscovery() pulumi.StringPtrOutput {
@@ -519,6 +604,12 @@ func (o AzureDevOpsOrgMetadataArrayOutput) ToAzureDevOpsOrgMetadataArrayOutput()
 
 func (o AzureDevOpsOrgMetadataArrayOutput) ToAzureDevOpsOrgMetadataArrayOutputWithContext(ctx context.Context) AzureDevOpsOrgMetadataArrayOutput {
 	return o
+}
+
+func (o AzureDevOpsOrgMetadataArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureDevOpsOrgMetadata] {
+	return pulumix.Output[[]AzureDevOpsOrgMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureDevOpsOrgMetadataArrayOutput) Index(i pulumi.IntInput) AzureDevOpsOrgMetadataOutput {
@@ -550,6 +641,12 @@ func (o AzureDevOpsOrgMetadataResponseOutput) ToAzureDevOpsOrgMetadataResponseOu
 	return o
 }
 
+func (o AzureDevOpsOrgMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsOrgMetadataResponse] {
+	return pulumix.Output[AzureDevOpsOrgMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AzureDevOpsOrgMetadataResponseOutput) AutoDiscovery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureDevOpsOrgMetadataResponse) *string { return v.AutoDiscovery }).(pulumi.StringPtrOutput)
 }
@@ -575,6 +672,12 @@ func (o AzureDevOpsOrgMetadataResponseArrayOutput) ToAzureDevOpsOrgMetadataRespo
 
 func (o AzureDevOpsOrgMetadataResponseArrayOutput) ToAzureDevOpsOrgMetadataResponseArrayOutputWithContext(ctx context.Context) AzureDevOpsOrgMetadataResponseArrayOutput {
 	return o
+}
+
+func (o AzureDevOpsOrgMetadataResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureDevOpsOrgMetadataResponse] {
+	return pulumix.Output[[]AzureDevOpsOrgMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureDevOpsOrgMetadataResponseArrayOutput) Index(i pulumi.IntInput) AzureDevOpsOrgMetadataResponseOutput {
@@ -624,6 +727,12 @@ func (i AzureDevOpsProjectMetadataArgs) ToAzureDevOpsProjectMetadataOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsProjectMetadataOutput)
 }
 
+func (i AzureDevOpsProjectMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsProjectMetadata] {
+	return pulumix.Output[AzureDevOpsProjectMetadata]{
+		OutputState: i.ToAzureDevOpsProjectMetadataOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AzureDevOpsProjectMetadataArrayInput is an input type that accepts AzureDevOpsProjectMetadataArray and AzureDevOpsProjectMetadataArrayOutput values.
 // You can construct a concrete instance of `AzureDevOpsProjectMetadataArrayInput` via:
 //
@@ -649,6 +758,12 @@ func (i AzureDevOpsProjectMetadataArray) ToAzureDevOpsProjectMetadataArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsProjectMetadataArrayOutput)
 }
 
+func (i AzureDevOpsProjectMetadataArray) ToOutput(ctx context.Context) pulumix.Output[[]AzureDevOpsProjectMetadata] {
+	return pulumix.Output[[]AzureDevOpsProjectMetadata]{
+		OutputState: i.ToAzureDevOpsProjectMetadataArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Project onboarding info.
 type AzureDevOpsProjectMetadataOutput struct{ *pulumi.OutputState }
 
@@ -662,6 +777,12 @@ func (o AzureDevOpsProjectMetadataOutput) ToAzureDevOpsProjectMetadataOutput() A
 
 func (o AzureDevOpsProjectMetadataOutput) ToAzureDevOpsProjectMetadataOutputWithContext(ctx context.Context) AzureDevOpsProjectMetadataOutput {
 	return o
+}
+
+func (o AzureDevOpsProjectMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsProjectMetadata] {
+	return pulumix.Output[AzureDevOpsProjectMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureDevOpsProjectMetadataOutput) AutoDiscovery() pulumi.StringPtrOutput {
@@ -690,6 +811,12 @@ func (o AzureDevOpsProjectMetadataArrayOutput) ToAzureDevOpsProjectMetadataArray
 
 func (o AzureDevOpsProjectMetadataArrayOutput) ToAzureDevOpsProjectMetadataArrayOutputWithContext(ctx context.Context) AzureDevOpsProjectMetadataArrayOutput {
 	return o
+}
+
+func (o AzureDevOpsProjectMetadataArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureDevOpsProjectMetadata] {
+	return pulumix.Output[[]AzureDevOpsProjectMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureDevOpsProjectMetadataArrayOutput) Index(i pulumi.IntInput) AzureDevOpsProjectMetadataOutput {
@@ -722,6 +849,12 @@ func (o AzureDevOpsProjectMetadataResponseOutput) ToAzureDevOpsProjectMetadataRe
 	return o
 }
 
+func (o AzureDevOpsProjectMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsProjectMetadataResponse] {
+	return pulumix.Output[AzureDevOpsProjectMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AzureDevOpsProjectMetadataResponseOutput) AutoDiscovery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureDevOpsProjectMetadataResponse) *string { return v.AutoDiscovery }).(pulumi.StringPtrOutput)
 }
@@ -748,6 +881,12 @@ func (o AzureDevOpsProjectMetadataResponseArrayOutput) ToAzureDevOpsProjectMetad
 
 func (o AzureDevOpsProjectMetadataResponseArrayOutput) ToAzureDevOpsProjectMetadataResponseArrayOutputWithContext(ctx context.Context) AzureDevOpsProjectMetadataResponseArrayOutput {
 	return o
+}
+
+func (o AzureDevOpsProjectMetadataResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureDevOpsProjectMetadataResponse] {
+	return pulumix.Output[[]AzureDevOpsProjectMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureDevOpsProjectMetadataResponseArrayOutput) Index(i pulumi.IntInput) AzureDevOpsProjectMetadataResponseOutput {
@@ -797,6 +936,12 @@ func (i GitHubConnectorPropertiesArgs) ToGitHubConnectorPropertiesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubConnectorPropertiesOutput)
 }
 
+func (i GitHubConnectorPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[GitHubConnectorProperties] {
+	return pulumix.Output[GitHubConnectorProperties]{
+		OutputState: i.ToGitHubConnectorPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GitHubConnectorPropertiesArgs) ToGitHubConnectorPropertiesPtrOutput() GitHubConnectorPropertiesPtrOutput {
 	return i.ToGitHubConnectorPropertiesPtrOutputWithContext(context.Background())
 }
@@ -838,6 +983,12 @@ func (i *gitHubConnectorPropertiesPtrType) ToGitHubConnectorPropertiesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubConnectorPropertiesPtrOutput)
 }
 
+func (i *gitHubConnectorPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*GitHubConnectorProperties] {
+	return pulumix.Output[*GitHubConnectorProperties]{
+		OutputState: i.ToGitHubConnectorPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties of the ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
 type GitHubConnectorPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -863,6 +1014,12 @@ func (o GitHubConnectorPropertiesOutput) ToGitHubConnectorPropertiesPtrOutputWit
 	}).(GitHubConnectorPropertiesPtrOutput)
 }
 
+func (o GitHubConnectorPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubConnectorProperties] {
+	return pulumix.Output[GitHubConnectorProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets one-time OAuth code to exchange for refresh and access tokens.
 //
 // Only used during PUT operations. The secret is cleared during GET.
@@ -883,6 +1040,12 @@ func (o GitHubConnectorPropertiesPtrOutput) ToGitHubConnectorPropertiesPtrOutput
 
 func (o GitHubConnectorPropertiesPtrOutput) ToGitHubConnectorPropertiesPtrOutputWithContext(ctx context.Context) GitHubConnectorPropertiesPtrOutput {
 	return o
+}
+
+func (o GitHubConnectorPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitHubConnectorProperties] {
+	return pulumix.Output[*GitHubConnectorProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GitHubConnectorPropertiesPtrOutput) Elem() GitHubConnectorPropertiesOutput {
@@ -933,6 +1096,12 @@ func (o GitHubConnectorPropertiesResponseOutput) ToGitHubConnectorPropertiesResp
 	return o
 }
 
+func (o GitHubConnectorPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubConnectorPropertiesResponse] {
+	return pulumix.Output[GitHubConnectorPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets one-time OAuth code to exchange for refresh and access tokens.
 //
 // Only used during PUT operations. The secret is cleared during GET.
@@ -974,6 +1143,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

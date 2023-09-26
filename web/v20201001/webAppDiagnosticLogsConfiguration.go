@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configuration of App Service site logs.
@@ -188,6 +189,12 @@ func (i *WebAppDiagnosticLogsConfiguration) ToWebAppDiagnosticLogsConfigurationO
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppDiagnosticLogsConfigurationOutput)
 }
 
+func (i *WebAppDiagnosticLogsConfiguration) ToOutput(ctx context.Context) pulumix.Output[*WebAppDiagnosticLogsConfiguration] {
+	return pulumix.Output[*WebAppDiagnosticLogsConfiguration]{
+		OutputState: i.ToWebAppDiagnosticLogsConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppDiagnosticLogsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (WebAppDiagnosticLogsConfigurationOutput) ElementType() reflect.Type {
@@ -200,6 +207,12 @@ func (o WebAppDiagnosticLogsConfigurationOutput) ToWebAppDiagnosticLogsConfigura
 
 func (o WebAppDiagnosticLogsConfigurationOutput) ToWebAppDiagnosticLogsConfigurationOutputWithContext(ctx context.Context) WebAppDiagnosticLogsConfigurationOutput {
 	return o
+}
+
+func (o WebAppDiagnosticLogsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppDiagnosticLogsConfiguration] {
+	return pulumix.Output[*WebAppDiagnosticLogsConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Application logs configuration.

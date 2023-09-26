@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the WordPress instance resource.
@@ -88,6 +89,12 @@ func (o LookupWordpressInstanceResultOutput) ToLookupWordpressInstanceResultOutp
 
 func (o LookupWordpressInstanceResultOutput) ToLookupWordpressInstanceResultOutputWithContext(ctx context.Context) LookupWordpressInstanceResultOutput {
 	return o
+}
+
+func (o LookupWordpressInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWordpressInstanceResult] {
+	return pulumix.Output[LookupWordpressInstanceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Database name used by the application

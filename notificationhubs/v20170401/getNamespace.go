@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the description for the specified namespace.
@@ -108,6 +109,12 @@ func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutput() LookupNames
 
 func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutputWithContext(ctx context.Context) LookupNamespaceResultOutput {
 	return o
+}
+
+func (o LookupNamespaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNamespaceResult] {
+	return pulumix.Output[LookupNamespaceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the namespace was created.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i ResourceSelectorArgs) ToResourceSelectorOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSelectorOutput)
 }
 
+func (i ResourceSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSelector] {
+	return pulumix.Output[ResourceSelector]{
+		OutputState: i.ToResourceSelectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ResourceSelectorArrayInput is an input type that accepts ResourceSelectorArray and ResourceSelectorArrayOutput values.
 // You can construct a concrete instance of `ResourceSelectorArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i ResourceSelectorArray) ToResourceSelectorArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSelectorArrayOutput)
 }
 
+func (i ResourceSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]ResourceSelector] {
+	return pulumix.Output[[]ResourceSelector]{
+		OutputState: i.ToResourceSelectorArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The resource selector to filter policies by resource properties.
 type ResourceSelectorOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o ResourceSelectorOutput) ToResourceSelectorOutput() ResourceSelectorOutpu
 
 func (o ResourceSelectorOutput) ToResourceSelectorOutputWithContext(ctx context.Context) ResourceSelectorOutput {
 	return o
+}
+
+func (o ResourceSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSelector] {
+	return pulumix.Output[ResourceSelector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource selector.
@@ -114,6 +133,12 @@ func (o ResourceSelectorArrayOutput) ToResourceSelectorArrayOutput() ResourceSel
 
 func (o ResourceSelectorArrayOutput) ToResourceSelectorArrayOutputWithContext(ctx context.Context) ResourceSelectorArrayOutput {
 	return o
+}
+
+func (o ResourceSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceSelector] {
+	return pulumix.Output[[]ResourceSelector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSelectorArrayOutput) Index(i pulumi.IntInput) ResourceSelectorOutput {
@@ -145,6 +170,12 @@ func (o ResourceSelectorResponseOutput) ToResourceSelectorResponseOutputWithCont
 	return o
 }
 
+func (o ResourceSelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSelectorResponse] {
+	return pulumix.Output[ResourceSelectorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the resource selector.
 func (o ResourceSelectorResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSelectorResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -167,6 +198,12 @@ func (o ResourceSelectorResponseArrayOutput) ToResourceSelectorResponseArrayOutp
 
 func (o ResourceSelectorResponseArrayOutput) ToResourceSelectorResponseArrayOutputWithContext(ctx context.Context) ResourceSelectorResponseArrayOutput {
 	return o
+}
+
+func (o ResourceSelectorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceSelectorResponse] {
+	return pulumix.Output[[]ResourceSelectorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSelectorResponseArrayOutput) Index(i pulumi.IntInput) ResourceSelectorResponseOutput {
@@ -218,6 +255,12 @@ func (i SelectorArgs) ToSelectorOutputWithContext(ctx context.Context) SelectorO
 	return pulumi.ToOutputWithContext(ctx, i).(SelectorOutput)
 }
 
+func (i SelectorArgs) ToOutput(ctx context.Context) pulumix.Output[Selector] {
+	return pulumix.Output[Selector]{
+		OutputState: i.ToSelectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SelectorArrayInput is an input type that accepts SelectorArray and SelectorArrayOutput values.
 // You can construct a concrete instance of `SelectorArrayInput` via:
 //
@@ -243,6 +286,12 @@ func (i SelectorArray) ToSelectorArrayOutputWithContext(ctx context.Context) Sel
 	return pulumi.ToOutputWithContext(ctx, i).(SelectorArrayOutput)
 }
 
+func (i SelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]Selector] {
+	return pulumix.Output[[]Selector]{
+		OutputState: i.ToSelectorArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The selector expression.
 type SelectorOutput struct{ *pulumi.OutputState }
 
@@ -256,6 +305,12 @@ func (o SelectorOutput) ToSelectorOutput() SelectorOutput {
 
 func (o SelectorOutput) ToSelectorOutputWithContext(ctx context.Context) SelectorOutput {
 	return o
+}
+
+func (o SelectorOutput) ToOutput(ctx context.Context) pulumix.Output[Selector] {
+	return pulumix.Output[Selector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of values to filter in.
@@ -285,6 +340,12 @@ func (o SelectorArrayOutput) ToSelectorArrayOutput() SelectorArrayOutput {
 
 func (o SelectorArrayOutput) ToSelectorArrayOutputWithContext(ctx context.Context) SelectorArrayOutput {
 	return o
+}
+
+func (o SelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Selector] {
+	return pulumix.Output[[]Selector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SelectorArrayOutput) Index(i pulumi.IntInput) SelectorOutput {
@@ -318,6 +379,12 @@ func (o SelectorResponseOutput) ToSelectorResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o SelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SelectorResponse] {
+	return pulumix.Output[SelectorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of values to filter in.
 func (o SelectorResponseOutput) In() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SelectorResponse) []string { return v.In }).(pulumi.StringArrayOutput)
@@ -345,6 +412,12 @@ func (o SelectorResponseArrayOutput) ToSelectorResponseArrayOutput() SelectorRes
 
 func (o SelectorResponseArrayOutput) ToSelectorResponseArrayOutputWithContext(ctx context.Context) SelectorResponseArrayOutput {
 	return o
+}
+
+func (o SelectorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SelectorResponse] {
+	return pulumix.Output[[]SelectorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SelectorResponseArrayOutput) Index(i pulumi.IntInput) SelectorResponseOutput {
@@ -382,6 +455,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

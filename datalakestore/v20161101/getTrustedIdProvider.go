@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Data Lake Store trusted identity provider.
@@ -82,6 +83,12 @@ func (o LookupTrustedIdProviderResultOutput) ToLookupTrustedIdProviderResultOutp
 
 func (o LookupTrustedIdProviderResultOutput) ToLookupTrustedIdProviderResultOutputWithContext(ctx context.Context) LookupTrustedIdProviderResultOutput {
 	return o
+}
+
+func (o LookupTrustedIdProviderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTrustedIdProviderResult] {
+	return pulumix.Output[LookupTrustedIdProviderResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource identifier.

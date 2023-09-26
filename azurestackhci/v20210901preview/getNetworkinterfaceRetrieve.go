@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets network interfaces by resource name
@@ -93,6 +94,12 @@ func (o LookupNetworkinterfaceRetrieveResultOutput) ToLookupNetworkinterfaceRetr
 
 func (o LookupNetworkinterfaceRetrieveResultOutput) ToLookupNetworkinterfaceRetrieveResultOutputWithContext(ctx context.Context) LookupNetworkinterfaceRetrieveResultOutput {
 	return o
+}
+
+func (o LookupNetworkinterfaceRetrieveResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkinterfaceRetrieveResult] {
+	return pulumix.Output[LookupNetworkinterfaceRetrieveResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // DNS Settings for the interface

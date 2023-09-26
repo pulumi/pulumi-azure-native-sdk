@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -68,6 +69,12 @@ func (i ManagedInstanceExternalAdministratorArgs) ToManagedInstanceExternalAdmin
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceExternalAdministratorOutput)
 }
 
+func (i ManagedInstanceExternalAdministratorArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedInstanceExternalAdministrator] {
+	return pulumix.Output[ManagedInstanceExternalAdministrator]{
+		OutputState: i.ToManagedInstanceExternalAdministratorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedInstanceExternalAdministratorArgs) ToManagedInstanceExternalAdministratorPtrOutput() ManagedInstanceExternalAdministratorPtrOutput {
 	return i.ToManagedInstanceExternalAdministratorPtrOutputWithContext(context.Background())
 }
@@ -109,6 +116,12 @@ func (i *managedInstanceExternalAdministratorPtrType) ToManagedInstanceExternalA
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceExternalAdministratorPtrOutput)
 }
 
+func (i *managedInstanceExternalAdministratorPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstanceExternalAdministrator] {
+	return pulumix.Output[*ManagedInstanceExternalAdministrator]{
+		OutputState: i.ToManagedInstanceExternalAdministratorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties of a active directory administrator.
 type ManagedInstanceExternalAdministratorOutput struct{ *pulumi.OutputState }
 
@@ -132,6 +145,12 @@ func (o ManagedInstanceExternalAdministratorOutput) ToManagedInstanceExternalAdm
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedInstanceExternalAdministrator) *ManagedInstanceExternalAdministrator {
 		return &v
 	}).(ManagedInstanceExternalAdministratorPtrOutput)
+}
+
+func (o ManagedInstanceExternalAdministratorOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedInstanceExternalAdministrator] {
+	return pulumix.Output[ManagedInstanceExternalAdministrator]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Type of the sever administrator.
@@ -176,6 +195,12 @@ func (o ManagedInstanceExternalAdministratorPtrOutput) ToManagedInstanceExternal
 
 func (o ManagedInstanceExternalAdministratorPtrOutput) ToManagedInstanceExternalAdministratorPtrOutputWithContext(ctx context.Context) ManagedInstanceExternalAdministratorPtrOutput {
 	return o
+}
+
+func (o ManagedInstanceExternalAdministratorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstanceExternalAdministrator] {
+	return pulumix.Output[*ManagedInstanceExternalAdministrator]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedInstanceExternalAdministratorPtrOutput) Elem() ManagedInstanceExternalAdministratorOutput {
@@ -279,6 +304,12 @@ func (o ManagedInstanceExternalAdministratorResponseOutput) ToManagedInstanceExt
 	return o
 }
 
+func (o ManagedInstanceExternalAdministratorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedInstanceExternalAdministratorResponse] {
+	return pulumix.Output[ManagedInstanceExternalAdministratorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Type of the sever administrator.
 func (o ManagedInstanceExternalAdministratorResponseOutput) AdministratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceExternalAdministratorResponse) *string { return v.AdministratorType }).(pulumi.StringPtrOutput)
@@ -321,6 +352,12 @@ func (o ManagedInstanceExternalAdministratorResponsePtrOutput) ToManagedInstance
 
 func (o ManagedInstanceExternalAdministratorResponsePtrOutput) ToManagedInstanceExternalAdministratorResponsePtrOutputWithContext(ctx context.Context) ManagedInstanceExternalAdministratorResponsePtrOutput {
 	return o
+}
+
+func (o ManagedInstanceExternalAdministratorResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstanceExternalAdministratorResponse] {
+	return pulumix.Output[*ManagedInstanceExternalAdministratorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedInstanceExternalAdministratorResponsePtrOutput) Elem() ManagedInstanceExternalAdministratorResponseOutput {
@@ -416,6 +453,12 @@ func (o ManagedInstancePecPropertyResponseOutput) ToManagedInstancePecPropertyRe
 	return o
 }
 
+func (o ManagedInstancePecPropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedInstancePecPropertyResponse] {
+	return pulumix.Output[ManagedInstancePecPropertyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID.
 func (o ManagedInstancePecPropertyResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedInstancePecPropertyResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -440,6 +483,12 @@ func (o ManagedInstancePecPropertyResponseArrayOutput) ToManagedInstancePecPrope
 
 func (o ManagedInstancePecPropertyResponseArrayOutput) ToManagedInstancePecPropertyResponseArrayOutputWithContext(ctx context.Context) ManagedInstancePecPropertyResponseArrayOutput {
 	return o
+}
+
+func (o ManagedInstancePecPropertyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedInstancePecPropertyResponse] {
+	return pulumix.Output[[]ManagedInstancePecPropertyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedInstancePecPropertyResponseArrayOutput) Index(i pulumi.IntInput) ManagedInstancePecPropertyResponseOutput {
@@ -471,6 +520,12 @@ func (o ManagedInstancePrivateEndpointConnectionPropertiesResponseOutput) ToMana
 
 func (o ManagedInstancePrivateEndpointConnectionPropertiesResponseOutput) ToManagedInstancePrivateEndpointConnectionPropertiesResponseOutputWithContext(ctx context.Context) ManagedInstancePrivateEndpointConnectionPropertiesResponseOutput {
 	return o
+}
+
+func (o ManagedInstancePrivateEndpointConnectionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedInstancePrivateEndpointConnectionPropertiesResponse] {
+	return pulumix.Output[ManagedInstancePrivateEndpointConnectionPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Private endpoint which the connection belongs to.
@@ -511,6 +566,12 @@ func (o ManagedInstancePrivateEndpointPropertyResponseOutput) ToManagedInstanceP
 	return o
 }
 
+func (o ManagedInstancePrivateEndpointPropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedInstancePrivateEndpointPropertyResponse] {
+	return pulumix.Output[ManagedInstancePrivateEndpointPropertyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource id of the private endpoint.
 func (o ManagedInstancePrivateEndpointPropertyResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedInstancePrivateEndpointPropertyResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -528,6 +589,12 @@ func (o ManagedInstancePrivateEndpointPropertyResponsePtrOutput) ToManagedInstan
 
 func (o ManagedInstancePrivateEndpointPropertyResponsePtrOutput) ToManagedInstancePrivateEndpointPropertyResponsePtrOutputWithContext(ctx context.Context) ManagedInstancePrivateEndpointPropertyResponsePtrOutput {
 	return o
+}
+
+func (o ManagedInstancePrivateEndpointPropertyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstancePrivateEndpointPropertyResponse] {
+	return pulumix.Output[*ManagedInstancePrivateEndpointPropertyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedInstancePrivateEndpointPropertyResponsePtrOutput) Elem() ManagedInstancePrivateEndpointPropertyResponseOutput {
@@ -573,6 +640,12 @@ func (o ManagedInstancePrivateLinkServiceConnectionStatePropertyResponseOutput) 
 	return o
 }
 
+func (o ManagedInstancePrivateLinkServiceConnectionStatePropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse] {
+	return pulumix.Output[ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The private link service connection description.
 func (o ManagedInstancePrivateLinkServiceConnectionStatePropertyResponseOutput) ActionsRequired() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse) string {
@@ -602,6 +675,12 @@ func (o ManagedInstancePrivateLinkServiceConnectionStatePropertyResponsePtrOutpu
 
 func (o ManagedInstancePrivateLinkServiceConnectionStatePropertyResponsePtrOutput) ToManagedInstancePrivateLinkServiceConnectionStatePropertyResponsePtrOutputWithContext(ctx context.Context) ManagedInstancePrivateLinkServiceConnectionStatePropertyResponsePtrOutput {
 	return o
+}
+
+func (o ManagedInstancePrivateLinkServiceConnectionStatePropertyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse] {
+	return pulumix.Output[*ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedInstancePrivateLinkServiceConnectionStatePropertyResponsePtrOutput) Elem() ManagedInstancePrivateLinkServiceConnectionStatePropertyResponseOutput {
@@ -683,6 +762,12 @@ func (i ResourceIdentityArgs) ToResourceIdentityOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityOutput)
 }
 
+func (i ResourceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentity] {
+	return pulumix.Output[ResourceIdentity]{
+		OutputState: i.ToResourceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceIdentityArgs) ToResourceIdentityPtrOutput() ResourceIdentityPtrOutput {
 	return i.ToResourceIdentityPtrOutputWithContext(context.Background())
 }
@@ -724,6 +809,12 @@ func (i *resourceIdentityPtrType) ToResourceIdentityPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityPtrOutput)
 }
 
+func (i *resourceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentity] {
+	return pulumix.Output[*ResourceIdentity]{
+		OutputState: i.ToResourceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Azure Active Directory identity configuration for a resource.
 type ResourceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -749,6 +840,12 @@ func (o ResourceIdentityOutput) ToResourceIdentityPtrOutputWithContext(ctx conte
 	}).(ResourceIdentityPtrOutput)
 }
 
+func (o ResourceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentity] {
+	return pulumix.Output[ResourceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
 func (o ResourceIdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -771,6 +868,12 @@ func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutput() ResourceIdentit
 
 func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutputWithContext(ctx context.Context) ResourceIdentityPtrOutput {
 	return o
+}
+
+func (o ResourceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentity] {
+	return pulumix.Output[*ResourceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityPtrOutput) Elem() ResourceIdentityOutput {
@@ -830,6 +933,12 @@ func (o ResourceIdentityResponseOutput) ToResourceIdentityResponseOutputWithCont
 	return o
 }
 
+func (o ResourceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityResponse] {
+	return pulumix.Output[ResourceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Azure Active Directory principal id.
 func (o ResourceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -862,6 +971,12 @@ func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutput()
 
 func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutputWithContext(ctx context.Context) ResourceIdentityResponsePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityResponse] {
+	return pulumix.Output[*ResourceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityResponsePtrOutput) Elem() ResourceIdentityResponseOutput {
@@ -965,6 +1080,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -1006,6 +1127,12 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
+func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An ARM Resource SKU.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -1029,6 +1156,12 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
 		return &v
 	}).(SkuPtrOutput)
+}
+
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Capacity of the particular SKU.
@@ -1068,6 +1201,12 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
+}
+
+func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -1159,6 +1298,12 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Capacity of the particular SKU.
 func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -1196,6 +1341,12 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
+}
+
+func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
+	return pulumix.Output[*SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -1281,6 +1432,12 @@ func (o UserIdentityResponseOutput) ToUserIdentityResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o UserIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserIdentityResponse] {
+	return pulumix.Output[UserIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Azure Active Directory client id.
 func (o UserIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -1303,6 +1460,12 @@ func (o UserIdentityResponseMapOutput) ToUserIdentityResponseMapOutput() UserIde
 
 func (o UserIdentityResponseMapOutput) ToUserIdentityResponseMapOutputWithContext(ctx context.Context) UserIdentityResponseMapOutput {
 	return o
+}
+
+func (o UserIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserIdentityResponse] {
+	return pulumix.Output[map[string]UserIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserIdentityResponseOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a guest configuration assignment
@@ -97,6 +98,12 @@ func (o LookupGuestConfigurationHCRPAssignmentResultOutput) ToLookupGuestConfigu
 
 func (o LookupGuestConfigurationHCRPAssignmentResultOutput) ToLookupGuestConfigurationHCRPAssignmentResultOutputWithContext(ctx context.Context) LookupGuestConfigurationHCRPAssignmentResultOutput {
 	return o
+}
+
+func (o LookupGuestConfigurationHCRPAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGuestConfigurationHCRPAssignmentResult] {
+	return pulumix.Output[LookupGuestConfigurationHCRPAssignmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ARM resource id of the guest configuration assignment.

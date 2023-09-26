@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The cost allocation rule model definition
@@ -117,6 +118,12 @@ func (i *CostAllocationRule) ToCostAllocationRuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(CostAllocationRuleOutput)
 }
 
+func (i *CostAllocationRule) ToOutput(ctx context.Context) pulumix.Output[*CostAllocationRule] {
+	return pulumix.Output[*CostAllocationRule]{
+		OutputState: i.ToCostAllocationRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CostAllocationRuleOutput struct{ *pulumi.OutputState }
 
 func (CostAllocationRuleOutput) ElementType() reflect.Type {
@@ -129,6 +136,12 @@ func (o CostAllocationRuleOutput) ToCostAllocationRuleOutput() CostAllocationRul
 
 func (o CostAllocationRuleOutput) ToCostAllocationRuleOutputWithContext(ctx context.Context) CostAllocationRuleOutput {
 	return o
+}
+
+func (o CostAllocationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*CostAllocationRule] {
+	return pulumix.Output[*CostAllocationRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the rule. This is a read only value.

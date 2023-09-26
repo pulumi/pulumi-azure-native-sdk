@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The security automation resource.
@@ -159,6 +160,12 @@ func (i *Automation) ToAutomationOutputWithContext(ctx context.Context) Automati
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationOutput)
 }
 
+func (i *Automation) ToOutput(ctx context.Context) pulumix.Output[*Automation] {
+	return pulumix.Output[*Automation]{
+		OutputState: i.ToAutomationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AutomationOutput struct{ *pulumi.OutputState }
 
 func (AutomationOutput) ElementType() reflect.Type {
@@ -171,6 +178,12 @@ func (o AutomationOutput) ToAutomationOutput() AutomationOutput {
 
 func (o AutomationOutput) ToAutomationOutputWithContext(ctx context.Context) AutomationOutput {
 	return o
+}
+
+func (o AutomationOutput) ToOutput(ctx context.Context) pulumix.Output[*Automation] {
+	return pulumix.Output[*Automation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.

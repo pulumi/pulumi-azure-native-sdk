@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets configuration values for Single Pane Of Glass for SAP monitor for the specified subscription, resource group, and resource name.
@@ -84,6 +85,12 @@ func (o LookupSapLandscapeMonitorResultOutput) ToLookupSapLandscapeMonitorResult
 
 func (o LookupSapLandscapeMonitorResultOutput) ToLookupSapLandscapeMonitorResultOutputWithContext(ctx context.Context) LookupSapLandscapeMonitorResultOutput {
 	return o
+}
+
+func (o LookupSapLandscapeMonitorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSapLandscapeMonitorResult] {
+	return pulumix.Output[LookupSapLandscapeMonitorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the SID groupings by landscape and Environment.

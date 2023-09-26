@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An ADLS Gen 1 file data set.
@@ -190,6 +191,12 @@ func (i *ADLSGen1FileDataSet) ToADLSGen1FileDataSetOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ADLSGen1FileDataSetOutput)
 }
 
+func (i *ADLSGen1FileDataSet) ToOutput(ctx context.Context) pulumix.Output[*ADLSGen1FileDataSet] {
+	return pulumix.Output[*ADLSGen1FileDataSet]{
+		OutputState: i.ToADLSGen1FileDataSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ADLSGen1FileDataSetOutput struct{ *pulumi.OutputState }
 
 func (ADLSGen1FileDataSetOutput) ElementType() reflect.Type {
@@ -202,6 +209,12 @@ func (o ADLSGen1FileDataSetOutput) ToADLSGen1FileDataSetOutput() ADLSGen1FileDat
 
 func (o ADLSGen1FileDataSetOutput) ToADLSGen1FileDataSetOutputWithContext(ctx context.Context) ADLSGen1FileDataSetOutput {
 	return o
+}
+
+func (o ADLSGen1FileDataSetOutput) ToOutput(ctx context.Context) pulumix.Output[*ADLSGen1FileDataSet] {
+	return pulumix.Output[*ADLSGen1FileDataSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ADLS account name.

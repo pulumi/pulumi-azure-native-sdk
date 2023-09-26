@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An application package which represents a particular version of an application.
@@ -179,6 +180,12 @@ func (i *ApplicationPackage) ToApplicationPackageOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPackageOutput)
 }
 
+func (i *ApplicationPackage) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPackage] {
+	return pulumix.Output[*ApplicationPackage]{
+		OutputState: i.ToApplicationPackageOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationPackageOutput struct{ *pulumi.OutputState }
 
 func (ApplicationPackageOutput) ElementType() reflect.Type {
@@ -191,6 +198,12 @@ func (o ApplicationPackageOutput) ToApplicationPackageOutput() ApplicationPackag
 
 func (o ApplicationPackageOutput) ToApplicationPackageOutputWithContext(ctx context.Context) ApplicationPackageOutput {
 	return o
+}
+
+func (o ApplicationPackageOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPackage] {
+	return pulumix.Output[*ApplicationPackage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ETag of the resource, used for concurrency statements.

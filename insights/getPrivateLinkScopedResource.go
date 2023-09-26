@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a scoped resource in a private link scope.
@@ -87,6 +88,12 @@ func (o LookupPrivateLinkScopedResourceResultOutput) ToLookupPrivateLinkScopedRe
 
 func (o LookupPrivateLinkScopedResourceResultOutput) ToLookupPrivateLinkScopedResourceResultOutputWithContext(ctx context.Context) LookupPrivateLinkScopedResourceResultOutput {
 	return o
+}
+
+func (o LookupPrivateLinkScopedResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateLinkScopedResourceResult] {
+	return pulumix.Output[LookupPrivateLinkScopedResourceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

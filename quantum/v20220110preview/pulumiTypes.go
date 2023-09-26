@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -68,6 +69,12 @@ func (i ProviderArgs) ToProviderOutputWithContext(ctx context.Context) ProviderO
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
+func (i ProviderArgs) ToOutput(ctx context.Context) pulumix.Output[Provider] {
+	return pulumix.Output[Provider]{
+		OutputState: i.ToProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProviderArrayInput is an input type that accepts ProviderArray and ProviderArrayOutput values.
 // You can construct a concrete instance of `ProviderArrayInput` via:
 //
@@ -93,6 +100,12 @@ func (i ProviderArray) ToProviderArrayOutputWithContext(ctx context.Context) Pro
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderArrayOutput)
 }
 
+func (i ProviderArray) ToOutput(ctx context.Context) pulumix.Output[[]Provider] {
+	return pulumix.Output[[]Provider]{
+		OutputState: i.ToProviderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information about a Provider. A Provider is an entity that offers Targets to run Azure Quantum Jobs.
 type ProviderOutput struct{ *pulumi.OutputState }
 
@@ -106,6 +119,12 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+func (o ProviderOutput) ToOutput(ctx context.Context) pulumix.Output[Provider] {
+	return pulumix.Output[Provider]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider's marketplace application display name.
@@ -152,6 +171,12 @@ func (o ProviderArrayOutput) ToProviderArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ProviderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Provider] {
+	return pulumix.Output[[]Provider]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProviderArrayOutput) Index(i pulumi.IntInput) ProviderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Provider {
 		return vs[0].([]Provider)[vs[1].(int)]
@@ -187,6 +212,12 @@ func (o ProviderResponseOutput) ToProviderResponseOutput() ProviderResponseOutpu
 
 func (o ProviderResponseOutput) ToProviderResponseOutputWithContext(ctx context.Context) ProviderResponseOutput {
 	return o
+}
+
+func (o ProviderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProviderResponse] {
+	return pulumix.Output[ProviderResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider's marketplace application display name.
@@ -233,6 +264,12 @@ func (o ProviderResponseArrayOutput) ToProviderResponseArrayOutputWithContext(ct
 	return o
 }
 
+func (o ProviderResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProviderResponse] {
+	return pulumix.Output[[]ProviderResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProviderResponseArrayOutput) Index(i pulumi.IntInput) ProviderResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProviderResponse {
 		return vs[0].([]ProviderResponse)[vs[1].(int)]
@@ -272,6 +309,12 @@ func (i QuantumWorkspaceIdentityArgs) ToQuantumWorkspaceIdentityOutput() Quantum
 
 func (i QuantumWorkspaceIdentityArgs) ToQuantumWorkspaceIdentityOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QuantumWorkspaceIdentityOutput)
+}
+
+func (i QuantumWorkspaceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[QuantumWorkspaceIdentity] {
+	return pulumix.Output[QuantumWorkspaceIdentity]{
+		OutputState: i.ToQuantumWorkspaceIdentityOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i QuantumWorkspaceIdentityArgs) ToQuantumWorkspaceIdentityPtrOutput() QuantumWorkspaceIdentityPtrOutput {
@@ -315,6 +358,12 @@ func (i *quantumWorkspaceIdentityPtrType) ToQuantumWorkspaceIdentityPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(QuantumWorkspaceIdentityPtrOutput)
 }
 
+func (i *quantumWorkspaceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*QuantumWorkspaceIdentity] {
+	return pulumix.Output[*QuantumWorkspaceIdentity]{
+		OutputState: i.ToQuantumWorkspaceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed Identity information.
 type QuantumWorkspaceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -340,6 +389,12 @@ func (o QuantumWorkspaceIdentityOutput) ToQuantumWorkspaceIdentityPtrOutputWithC
 	}).(QuantumWorkspaceIdentityPtrOutput)
 }
 
+func (o QuantumWorkspaceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[QuantumWorkspaceIdentity] {
+	return pulumix.Output[QuantumWorkspaceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o QuantumWorkspaceIdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QuantumWorkspaceIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -357,6 +412,12 @@ func (o QuantumWorkspaceIdentityPtrOutput) ToQuantumWorkspaceIdentityPtrOutput()
 
 func (o QuantumWorkspaceIdentityPtrOutput) ToQuantumWorkspaceIdentityPtrOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityPtrOutput {
 	return o
+}
+
+func (o QuantumWorkspaceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QuantumWorkspaceIdentity] {
+	return pulumix.Output[*QuantumWorkspaceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QuantumWorkspaceIdentityPtrOutput) Elem() QuantumWorkspaceIdentityOutput {
@@ -404,6 +465,12 @@ func (o QuantumWorkspaceResponseIdentityOutput) ToQuantumWorkspaceResponseIdenti
 	return o
 }
 
+func (o QuantumWorkspaceResponseIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[QuantumWorkspaceResponseIdentity] {
+	return pulumix.Output[QuantumWorkspaceResponseIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal ID of resource identity.
 func (o QuantumWorkspaceResponseIdentityOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v QuantumWorkspaceResponseIdentity) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -431,6 +498,12 @@ func (o QuantumWorkspaceResponseIdentityPtrOutput) ToQuantumWorkspaceResponseIde
 
 func (o QuantumWorkspaceResponseIdentityPtrOutput) ToQuantumWorkspaceResponseIdentityPtrOutputWithContext(ctx context.Context) QuantumWorkspaceResponseIdentityPtrOutput {
 	return o
+}
+
+func (o QuantumWorkspaceResponseIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QuantumWorkspaceResponseIdentity] {
+	return pulumix.Output[*QuantumWorkspaceResponseIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QuantumWorkspaceResponseIdentityPtrOutput) Elem() QuantumWorkspaceResponseIdentityOutput {
@@ -502,6 +575,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i EncryptionPropertiesArgs) ToEncryptionPropertiesOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPropertiesOutput)
 }
 
+func (i EncryptionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionProperties] {
+	return pulumix.Output[EncryptionProperties]{
+		OutputState: i.ToEncryptionPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EncryptionPropertiesArgs) ToEncryptionPropertiesPtrOutput() EncryptionPropertiesPtrOutput {
 	return i.ToEncryptionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *encryptionPropertiesPtrType) ToEncryptionPropertiesPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPropertiesPtrOutput)
 }
 
+func (i *encryptionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionProperties] {
+	return pulumix.Output[*EncryptionProperties]{
+		OutputState: i.ToEncryptionPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Key and identity details for Customer Managed Key encryption of load test resource
 type EncryptionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o EncryptionPropertiesOutput) ToEncryptionPropertiesPtrOutputWithContext(c
 	}).(EncryptionPropertiesPtrOutput)
 }
 
+func (o EncryptionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionProperties] {
+	return pulumix.Output[EncryptionProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
 func (o EncryptionPropertiesOutput) Identity() EncryptionPropertiesIdentityPtrOutput {
 	return o.ApplyT(func(v EncryptionProperties) *EncryptionPropertiesIdentity { return v.Identity }).(EncryptionPropertiesIdentityPtrOutput)
@@ -140,6 +159,12 @@ func (o EncryptionPropertiesPtrOutput) ToEncryptionPropertiesPtrOutput() Encrypt
 
 func (o EncryptionPropertiesPtrOutput) ToEncryptionPropertiesPtrOutputWithContext(ctx context.Context) EncryptionPropertiesPtrOutput {
 	return o
+}
+
+func (o EncryptionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionProperties] {
+	return pulumix.Output[*EncryptionProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionPropertiesPtrOutput) Elem() EncryptionPropertiesOutput {
@@ -211,6 +236,12 @@ func (i EncryptionPropertiesIdentityArgs) ToEncryptionPropertiesIdentityOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPropertiesIdentityOutput)
 }
 
+func (i EncryptionPropertiesIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionPropertiesIdentity] {
+	return pulumix.Output[EncryptionPropertiesIdentity]{
+		OutputState: i.ToEncryptionPropertiesIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EncryptionPropertiesIdentityArgs) ToEncryptionPropertiesIdentityPtrOutput() EncryptionPropertiesIdentityPtrOutput {
 	return i.ToEncryptionPropertiesIdentityPtrOutputWithContext(context.Background())
 }
@@ -252,6 +283,12 @@ func (i *encryptionPropertiesIdentityPtrType) ToEncryptionPropertiesIdentityPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPropertiesIdentityPtrOutput)
 }
 
+func (i *encryptionPropertiesIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionPropertiesIdentity] {
+	return pulumix.Output[*EncryptionPropertiesIdentity]{
+		OutputState: i.ToEncryptionPropertiesIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
 type EncryptionPropertiesIdentityOutput struct{ *pulumi.OutputState }
 
@@ -277,6 +314,12 @@ func (o EncryptionPropertiesIdentityOutput) ToEncryptionPropertiesIdentityPtrOut
 	}).(EncryptionPropertiesIdentityPtrOutput)
 }
 
+func (o EncryptionPropertiesIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionPropertiesIdentity] {
+	return pulumix.Output[EncryptionPropertiesIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId
 func (o EncryptionPropertiesIdentityOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionPropertiesIdentity) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -299,6 +342,12 @@ func (o EncryptionPropertiesIdentityPtrOutput) ToEncryptionPropertiesIdentityPtr
 
 func (o EncryptionPropertiesIdentityPtrOutput) ToEncryptionPropertiesIdentityPtrOutputWithContext(ctx context.Context) EncryptionPropertiesIdentityPtrOutput {
 	return o
+}
+
+func (o EncryptionPropertiesIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionPropertiesIdentity] {
+	return pulumix.Output[*EncryptionPropertiesIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionPropertiesIdentityPtrOutput) Elem() EncryptionPropertiesIdentityOutput {
@@ -354,6 +403,12 @@ func (o EncryptionPropertiesResponseOutput) ToEncryptionPropertiesResponseOutput
 	return o
 }
 
+func (o EncryptionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionPropertiesResponse] {
+	return pulumix.Output[EncryptionPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
 func (o EncryptionPropertiesResponseOutput) Identity() EncryptionPropertiesResponseIdentityPtrOutput {
 	return o.ApplyT(func(v EncryptionPropertiesResponse) *EncryptionPropertiesResponseIdentity { return v.Identity }).(EncryptionPropertiesResponseIdentityPtrOutput)
@@ -376,6 +431,12 @@ func (o EncryptionPropertiesResponsePtrOutput) ToEncryptionPropertiesResponsePtr
 
 func (o EncryptionPropertiesResponsePtrOutput) ToEncryptionPropertiesResponsePtrOutputWithContext(ctx context.Context) EncryptionPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o EncryptionPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionPropertiesResponse] {
+	return pulumix.Output[*EncryptionPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionPropertiesResponsePtrOutput) Elem() EncryptionPropertiesResponseOutput {
@@ -431,6 +492,12 @@ func (o EncryptionPropertiesResponseIdentityOutput) ToEncryptionPropertiesRespon
 	return o
 }
 
+func (o EncryptionPropertiesResponseIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionPropertiesResponseIdentity] {
+	return pulumix.Output[EncryptionPropertiesResponseIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId
 func (o EncryptionPropertiesResponseIdentityOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionPropertiesResponseIdentity) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -453,6 +520,12 @@ func (o EncryptionPropertiesResponseIdentityPtrOutput) ToEncryptionPropertiesRes
 
 func (o EncryptionPropertiesResponseIdentityPtrOutput) ToEncryptionPropertiesResponseIdentityPtrOutputWithContext(ctx context.Context) EncryptionPropertiesResponseIdentityPtrOutput {
 	return o
+}
+
+func (o EncryptionPropertiesResponseIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionPropertiesResponseIdentity] {
+	return pulumix.Output[*EncryptionPropertiesResponseIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionPropertiesResponseIdentityPtrOutput) Elem() EncryptionPropertiesResponseIdentityOutput {
@@ -524,6 +597,12 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
+func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
 	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -565,6 +644,12 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
+func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -590,6 +675,12 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
+func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -612,6 +703,12 @@ func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() Man
 
 func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
@@ -671,6 +768,12 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
+func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
+	return pulumix.Output[ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -705,6 +808,12 @@ func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityRespons
 
 func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
+	return pulumix.Output[*ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
@@ -788,6 +897,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -841,6 +956,12 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
+func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
+	return pulumix.Output[UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -863,6 +984,12 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
+	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {

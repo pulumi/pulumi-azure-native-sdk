@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get details of the specified quota rule
@@ -102,6 +103,12 @@ func (o LookupVolumeQuotaRuleResultOutput) ToLookupVolumeQuotaRuleResultOutput()
 
 func (o LookupVolumeQuotaRuleResultOutput) ToLookupVolumeQuotaRuleResultOutputWithContext(ctx context.Context) LookupVolumeQuotaRuleResultOutput {
 	return o
+}
+
+func (o LookupVolumeQuotaRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVolumeQuotaRuleResult] {
+	return pulumix.Output[LookupVolumeQuotaRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

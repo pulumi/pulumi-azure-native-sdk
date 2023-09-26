@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get access review history definition by definition Id
@@ -109,6 +110,12 @@ func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) ToLookupScopeA
 
 func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) ToLookupScopeAccessReviewHistoryDefinitionByIdResultOutputWithContext(ctx context.Context) LookupScopeAccessReviewHistoryDefinitionByIdResultOutput {
 	return o
+}
+
+func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScopeAccessReviewHistoryDefinitionByIdResult] {
+	return pulumix.Output[LookupScopeAccessReviewHistoryDefinitionByIdResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Date time when history definition was created

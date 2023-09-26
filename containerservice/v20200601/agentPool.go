@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Agent Pool.
@@ -421,6 +422,12 @@ func (i *AgentPool) ToAgentPoolOutputWithContext(ctx context.Context) AgentPoolO
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolOutput)
 }
 
+func (i *AgentPool) ToOutput(ctx context.Context) pulumix.Output[*AgentPool] {
+	return pulumix.Output[*AgentPool]{
+		OutputState: i.ToAgentPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AgentPoolOutput struct{ *pulumi.OutputState }
 
 func (AgentPoolOutput) ElementType() reflect.Type {
@@ -433,6 +440,12 @@ func (o AgentPoolOutput) ToAgentPoolOutput() AgentPoolOutput {
 
 func (o AgentPoolOutput) ToAgentPoolOutputWithContext(ctx context.Context) AgentPoolOutput {
 	return o
+}
+
+func (o AgentPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPool] {
+	return pulumix.Output[*AgentPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Availability zones for nodes. Must use VirtualMachineScaleSets AgentPoolType.

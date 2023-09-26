@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure SQL Database sync agent.
@@ -171,6 +172,12 @@ func (i *SyncAgent) ToSyncAgentOutputWithContext(ctx context.Context) SyncAgentO
 	return pulumi.ToOutputWithContext(ctx, i).(SyncAgentOutput)
 }
 
+func (i *SyncAgent) ToOutput(ctx context.Context) pulumix.Output[*SyncAgent] {
+	return pulumix.Output[*SyncAgent]{
+		OutputState: i.ToSyncAgentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SyncAgentOutput struct{ *pulumi.OutputState }
 
 func (SyncAgentOutput) ElementType() reflect.Type {
@@ -183,6 +190,12 @@ func (o SyncAgentOutput) ToSyncAgentOutput() SyncAgentOutput {
 
 func (o SyncAgentOutput) ToSyncAgentOutputWithContext(ctx context.Context) SyncAgentOutput {
 	return o
+}
+
+func (o SyncAgentOutput) ToOutput(ctx context.Context) pulumix.Output[*SyncAgent] {
+	return pulumix.Output[*SyncAgent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Expiration time of the sync agent version.

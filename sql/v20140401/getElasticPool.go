@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an elastic pool.
@@ -102,6 +103,12 @@ func (o LookupElasticPoolResultOutput) ToLookupElasticPoolResultOutput() LookupE
 
 func (o LookupElasticPoolResultOutput) ToLookupElasticPoolResultOutputWithContext(ctx context.Context) LookupElasticPoolResultOutput {
 	return o
+}
+
+func (o LookupElasticPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupElasticPoolResult] {
+	return pulumix.Output[LookupElasticPoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation date of the elastic pool (ISO8601 format).

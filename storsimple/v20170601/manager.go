@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The StorSimple Manager.
@@ -143,6 +144,12 @@ func (i *Manager) ToManagerOutputWithContext(ctx context.Context) ManagerOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ManagerOutput)
 }
 
+func (i *Manager) ToOutput(ctx context.Context) pulumix.Output[*Manager] {
+	return pulumix.Output[*Manager]{
+		OutputState: i.ToManagerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagerOutput struct{ *pulumi.OutputState }
 
 func (ManagerOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o ManagerOutput) ToManagerOutput() ManagerOutput {
 
 func (o ManagerOutput) ToManagerOutputWithContext(ctx context.Context) ManagerOutput {
 	return o
+}
+
+func (o ManagerOutput) ToOutput(ctx context.Context) pulumix.Output[*Manager] {
+	return pulumix.Output[*Manager]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents the type of StorSimple Manager.

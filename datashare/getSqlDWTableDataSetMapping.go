@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DataSetMapping in a shareSubscription
@@ -104,6 +105,12 @@ func (o LookupSqlDWTableDataSetMappingResultOutput) ToLookupSqlDWTableDataSetMap
 
 func (o LookupSqlDWTableDataSetMappingResultOutput) ToLookupSqlDWTableDataSetMappingResultOutputWithContext(ctx context.Context) LookupSqlDWTableDataSetMappingResultOutput {
 	return o
+}
+
+func (o LookupSqlDWTableDataSetMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlDWTableDataSetMappingResult] {
+	return pulumix.Output[LookupSqlDWTableDataSetMappingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the source data set.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SyncIdentityProvider represents a SyncIdentityProvider
@@ -127,6 +128,12 @@ func (i *SyncIdentityProvider) ToSyncIdentityProviderOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SyncIdentityProviderOutput)
 }
 
+func (i *SyncIdentityProvider) ToOutput(ctx context.Context) pulumix.Output[*SyncIdentityProvider] {
+	return pulumix.Output[*SyncIdentityProvider]{
+		OutputState: i.ToSyncIdentityProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SyncIdentityProviderOutput struct{ *pulumi.OutputState }
 
 func (SyncIdentityProviderOutput) ElementType() reflect.Type {
@@ -139,6 +146,12 @@ func (o SyncIdentityProviderOutput) ToSyncIdentityProviderOutput() SyncIdentityP
 
 func (o SyncIdentityProviderOutput) ToSyncIdentityProviderOutputWithContext(ctx context.Context) SyncIdentityProviderOutput {
 	return o
+}
+
+func (o SyncIdentityProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*SyncIdentityProvider] {
+	return pulumix.Output[*SyncIdentityProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

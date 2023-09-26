@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A SQL DB Table data set mapping.
@@ -198,6 +199,12 @@ func (i *SqlDBTableDataSetMapping) ToSqlDBTableDataSetMappingOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(SqlDBTableDataSetMappingOutput)
 }
 
+func (i *SqlDBTableDataSetMapping) ToOutput(ctx context.Context) pulumix.Output[*SqlDBTableDataSetMapping] {
+	return pulumix.Output[*SqlDBTableDataSetMapping]{
+		OutputState: i.ToSqlDBTableDataSetMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlDBTableDataSetMappingOutput struct{ *pulumi.OutputState }
 
 func (SqlDBTableDataSetMappingOutput) ElementType() reflect.Type {
@@ -210,6 +217,12 @@ func (o SqlDBTableDataSetMappingOutput) ToSqlDBTableDataSetMappingOutput() SqlDB
 
 func (o SqlDBTableDataSetMappingOutput) ToSqlDBTableDataSetMappingOutputWithContext(ctx context.Context) SqlDBTableDataSetMappingOutput {
 	return o
+}
+
+func (o SqlDBTableDataSetMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlDBTableDataSetMapping] {
+	return pulumix.Output[*SqlDBTableDataSetMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the source data set.

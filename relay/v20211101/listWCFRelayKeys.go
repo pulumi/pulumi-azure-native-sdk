@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Primary and secondary connection strings to the WCF relay.
@@ -88,6 +89,12 @@ func (o ListWCFRelayKeysResultOutput) ToListWCFRelayKeysResultOutput() ListWCFRe
 
 func (o ListWCFRelayKeysResultOutput) ToListWCFRelayKeysResultOutputWithContext(ctx context.Context) ListWCFRelayKeysResultOutput {
 	return o
+}
+
+func (o ListWCFRelayKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWCFRelayKeysResult] {
+	return pulumix.Output[ListWCFRelayKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A string that describes the authorization rule.

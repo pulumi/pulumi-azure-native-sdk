@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes what response the data plane API of a Search service would send for requests that failed authentication.
@@ -80,6 +81,12 @@ func (o AadAuthFailureModeOutput) ToAadAuthFailureModePtrOutputWithContext(ctx c
 	}).(AadAuthFailureModePtrOutput)
 }
 
+func (o AadAuthFailureModeOutput) ToOutput(ctx context.Context) pulumix.Output[AadAuthFailureMode] {
+	return pulumix.Output[AadAuthFailureMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AadAuthFailureModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o AadAuthFailureModePtrOutput) ToAadAuthFailureModePtrOutput() AadAuthFail
 
 func (o AadAuthFailureModePtrOutput) ToAadAuthFailureModePtrOutputWithContext(ctx context.Context) AadAuthFailureModePtrOutput {
 	return o
+}
+
+func (o AadAuthFailureModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AadAuthFailureMode] {
+	return pulumix.Output[*AadAuthFailureMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AadAuthFailureModePtrOutput) Elem() AadAuthFailureModeOutput {
@@ -175,6 +188,12 @@ func (in *aadAuthFailureModePtr) ToAadAuthFailureModePtrOutput() AadAuthFailureM
 
 func (in *aadAuthFailureModePtr) ToAadAuthFailureModePtrOutputWithContext(ctx context.Context) AadAuthFailureModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AadAuthFailureModePtrOutput)
+}
+
+func (in *aadAuthFailureModePtr) ToOutput(ctx context.Context) pulumix.Output[*AadAuthFailureMode] {
+	return pulumix.Output[*AadAuthFailureMode]{
+		OutputState: in.ToAadAuthFailureModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
@@ -247,6 +266,12 @@ func (o HostingModeOutput) ToHostingModePtrOutputWithContext(ctx context.Context
 	}).(HostingModePtrOutput)
 }
 
+func (o HostingModeOutput) ToOutput(ctx context.Context) pulumix.Output[HostingMode] {
+	return pulumix.Output[HostingMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostingModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -280,6 +305,12 @@ func (o HostingModePtrOutput) ToHostingModePtrOutput() HostingModePtrOutput {
 
 func (o HostingModePtrOutput) ToHostingModePtrOutputWithContext(ctx context.Context) HostingModePtrOutput {
 	return o
+}
+
+func (o HostingModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostingMode] {
+	return pulumix.Output[*HostingMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostingModePtrOutput) Elem() HostingModeOutput {
@@ -342,6 +373,12 @@ func (in *hostingModePtr) ToHostingModePtrOutput() HostingModePtrOutput {
 
 func (in *hostingModePtr) ToHostingModePtrOutputWithContext(ctx context.Context) HostingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HostingModePtrOutput)
+}
+
+func (in *hostingModePtr) ToOutput(ctx context.Context) pulumix.Output[*HostingMode] {
+	return pulumix.Output[*HostingMode]{
+		OutputState: in.ToHostingModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an identity created by the system and a set of user assigned identities. The type 'None' will remove all identities from the service.
@@ -458,6 +495,12 @@ func (o SearchEncryptionWithCmkOutput) ToSearchEncryptionWithCmkPtrOutputWithCon
 	}).(SearchEncryptionWithCmkPtrOutput)
 }
 
+func (o SearchEncryptionWithCmkOutput) ToOutput(ctx context.Context) pulumix.Output[SearchEncryptionWithCmk] {
+	return pulumix.Output[SearchEncryptionWithCmk]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SearchEncryptionWithCmkOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -491,6 +534,12 @@ func (o SearchEncryptionWithCmkPtrOutput) ToSearchEncryptionWithCmkPtrOutput() S
 
 func (o SearchEncryptionWithCmkPtrOutput) ToSearchEncryptionWithCmkPtrOutputWithContext(ctx context.Context) SearchEncryptionWithCmkPtrOutput {
 	return o
+}
+
+func (o SearchEncryptionWithCmkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SearchEncryptionWithCmk] {
+	return pulumix.Output[*SearchEncryptionWithCmk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SearchEncryptionWithCmkPtrOutput) Elem() SearchEncryptionWithCmkOutput {
@@ -553,6 +602,12 @@ func (in *searchEncryptionWithCmkPtr) ToSearchEncryptionWithCmkPtrOutput() Searc
 
 func (in *searchEncryptionWithCmkPtr) ToSearchEncryptionWithCmkPtrOutputWithContext(ctx context.Context) SearchEncryptionWithCmkPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SearchEncryptionWithCmkPtrOutput)
+}
+
+func (in *searchEncryptionWithCmkPtr) ToOutput(ctx context.Context) pulumix.Output[*SearchEncryptionWithCmk] {
+	return pulumix.Output[*SearchEncryptionWithCmk]{
+		OutputState: in.ToSearchEncryptionWithCmkPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Sets options that control the availability of semantic search. This configuration is only possible for certain Azure Cognitive Search SKUs in certain locations.

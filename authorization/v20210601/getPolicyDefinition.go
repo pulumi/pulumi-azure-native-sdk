@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This operation retrieves the policy definition in the given subscription with the given name.
@@ -101,6 +102,12 @@ func (o LookupPolicyDefinitionResultOutput) ToLookupPolicyDefinitionResultOutput
 
 func (o LookupPolicyDefinitionResultOutput) ToLookupPolicyDefinitionResultOutputWithContext(ctx context.Context) LookupPolicyDefinitionResultOutput {
 	return o
+}
+
+func (o LookupPolicyDefinitionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPolicyDefinitionResult] {
+	return pulumix.Output[LookupPolicyDefinitionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The policy definition description.

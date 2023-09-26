@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the Application Live  and its properties.
@@ -84,6 +85,12 @@ func (o LookupApplicationLiveViewResultOutput) ToLookupApplicationLiveViewResult
 
 func (o LookupApplicationLiveViewResultOutput) ToLookupApplicationLiveViewResultOutputWithContext(ctx context.Context) LookupApplicationLiveViewResultOutput {
 	return o
+}
+
+func (o LookupApplicationLiveViewResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApplicationLiveViewResult] {
+	return pulumix.Output[LookupApplicationLiveViewResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

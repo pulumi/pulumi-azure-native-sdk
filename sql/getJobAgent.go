@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a job agent.
@@ -91,6 +92,12 @@ func (o LookupJobAgentResultOutput) ToLookupJobAgentResultOutput() LookupJobAgen
 
 func (o LookupJobAgentResultOutput) ToLookupJobAgentResultOutputWithContext(ctx context.Context) LookupJobAgentResultOutput {
 	return o
+}
+
+func (o LookupJobAgentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJobAgentResult] {
+	return pulumix.Output[LookupJobAgentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID of the database to store job metadata in.

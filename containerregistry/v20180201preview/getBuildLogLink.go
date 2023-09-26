@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a link to download the build logs.
@@ -76,6 +77,12 @@ func (o GetBuildLogLinkResultOutput) ToGetBuildLogLinkResultOutput() GetBuildLog
 
 func (o GetBuildLogLinkResultOutput) ToGetBuildLogLinkResultOutputWithContext(ctx context.Context) GetBuildLogLinkResultOutput {
 	return o
+}
+
+func (o GetBuildLogLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBuildLogLinkResult] {
+	return pulumix.Output[GetBuildLogLinkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The link to logs for a azure container registry build.

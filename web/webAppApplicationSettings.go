@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // String dictionary resource.
@@ -166,6 +167,12 @@ func (i *WebAppApplicationSettings) ToWebAppApplicationSettingsOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppApplicationSettingsOutput)
 }
 
+func (i *WebAppApplicationSettings) ToOutput(ctx context.Context) pulumix.Output[*WebAppApplicationSettings] {
+	return pulumix.Output[*WebAppApplicationSettings]{
+		OutputState: i.ToWebAppApplicationSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppApplicationSettingsOutput struct{ *pulumi.OutputState }
 
 func (WebAppApplicationSettingsOutput) ElementType() reflect.Type {
@@ -178,6 +185,12 @@ func (o WebAppApplicationSettingsOutput) ToWebAppApplicationSettingsOutput() Web
 
 func (o WebAppApplicationSettingsOutput) ToWebAppApplicationSettingsOutputWithContext(ctx context.Context) WebAppApplicationSettingsOutput {
 	return o
+}
+
+func (o WebAppApplicationSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppApplicationSettings] {
+	return pulumix.Output[*WebAppApplicationSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Kind of resource.

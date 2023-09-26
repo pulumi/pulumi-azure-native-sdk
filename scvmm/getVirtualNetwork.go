@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements VirtualNetwork GET method.
@@ -95,6 +96,12 @@ func (o LookupVirtualNetworkResultOutput) ToLookupVirtualNetworkResultOutput() L
 
 func (o LookupVirtualNetworkResultOutput) ToLookupVirtualNetworkResultOutputWithContext(ctx context.Context) LookupVirtualNetworkResultOutput {
 	return o
+}
+
+func (o LookupVirtualNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualNetworkResult] {
+	return pulumix.Output[LookupVirtualNetworkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The extended location.

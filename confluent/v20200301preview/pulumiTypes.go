@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -64,6 +65,12 @@ func (i OrganizationResourcePropertiesOfferDetailArgs) ToOrganizationResourcePro
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationResourcePropertiesOfferDetailOutput)
 }
 
+func (i OrganizationResourcePropertiesOfferDetailArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationResourcePropertiesOfferDetail] {
+	return pulumix.Output[OrganizationResourcePropertiesOfferDetail]{
+		OutputState: i.ToOrganizationResourcePropertiesOfferDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OrganizationResourcePropertiesOfferDetailArgs) ToOrganizationResourcePropertiesOfferDetailPtrOutput() OrganizationResourcePropertiesOfferDetailPtrOutput {
 	return i.ToOrganizationResourcePropertiesOfferDetailPtrOutputWithContext(context.Background())
 }
@@ -105,6 +112,12 @@ func (i *organizationResourcePropertiesOfferDetailPtrType) ToOrganizationResourc
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationResourcePropertiesOfferDetailPtrOutput)
 }
 
+func (i *organizationResourcePropertiesOfferDetailPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationResourcePropertiesOfferDetail] {
+	return pulumix.Output[*OrganizationResourcePropertiesOfferDetail]{
+		OutputState: i.ToOrganizationResourcePropertiesOfferDetailPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Confluent offer detail
 type OrganizationResourcePropertiesOfferDetailOutput struct{ *pulumi.OutputState }
 
@@ -128,6 +141,12 @@ func (o OrganizationResourcePropertiesOfferDetailOutput) ToOrganizationResourceP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationResourcePropertiesOfferDetail) *OrganizationResourcePropertiesOfferDetail {
 		return &v
 	}).(OrganizationResourcePropertiesOfferDetailPtrOutput)
+}
+
+func (o OrganizationResourcePropertiesOfferDetailOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationResourcePropertiesOfferDetail] {
+	return pulumix.Output[OrganizationResourcePropertiesOfferDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Offer Id
@@ -167,6 +186,12 @@ func (o OrganizationResourcePropertiesOfferDetailPtrOutput) ToOrganizationResour
 
 func (o OrganizationResourcePropertiesOfferDetailPtrOutput) ToOrganizationResourcePropertiesOfferDetailPtrOutputWithContext(ctx context.Context) OrganizationResourcePropertiesOfferDetailPtrOutput {
 	return o
+}
+
+func (o OrganizationResourcePropertiesOfferDetailPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationResourcePropertiesOfferDetail] {
+	return pulumix.Output[*OrganizationResourcePropertiesOfferDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationResourcePropertiesOfferDetailPtrOutput) Elem() OrganizationResourcePropertiesOfferDetailOutput {
@@ -260,6 +285,12 @@ func (o OrganizationResourcePropertiesResponseOfferDetailOutput) ToOrganizationR
 	return o
 }
 
+func (o OrganizationResourcePropertiesResponseOfferDetailOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationResourcePropertiesResponseOfferDetail] {
+	return pulumix.Output[OrganizationResourcePropertiesResponseOfferDetail]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Offer Id
 func (o OrganizationResourcePropertiesResponseOfferDetailOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OrganizationResourcePropertiesResponseOfferDetail) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -302,6 +333,12 @@ func (o OrganizationResourcePropertiesResponseOfferDetailPtrOutput) ToOrganizati
 
 func (o OrganizationResourcePropertiesResponseOfferDetailPtrOutput) ToOrganizationResourcePropertiesResponseOfferDetailPtrOutputWithContext(ctx context.Context) OrganizationResourcePropertiesResponseOfferDetailPtrOutput {
 	return o
+}
+
+func (o OrganizationResourcePropertiesResponseOfferDetailPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationResourcePropertiesResponseOfferDetail] {
+	return pulumix.Output[*OrganizationResourcePropertiesResponseOfferDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationResourcePropertiesResponseOfferDetailPtrOutput) Elem() OrganizationResourcePropertiesResponseOfferDetailOutput {
@@ -399,6 +436,12 @@ func (o OrganizationResourcePropertiesResponseUserDetailOutput) ToOrganizationRe
 	return o
 }
 
+func (o OrganizationResourcePropertiesResponseUserDetailOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationResourcePropertiesResponseUserDetail] {
+	return pulumix.Output[OrganizationResourcePropertiesResponseUserDetail]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Email address
 func (o OrganizationResourcePropertiesResponseUserDetailOutput) EmailAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OrganizationResourcePropertiesResponseUserDetail) *string { return v.EmailAddress }).(pulumi.StringPtrOutput)
@@ -426,6 +469,12 @@ func (o OrganizationResourcePropertiesResponseUserDetailPtrOutput) ToOrganizatio
 
 func (o OrganizationResourcePropertiesResponseUserDetailPtrOutput) ToOrganizationResourcePropertiesResponseUserDetailPtrOutputWithContext(ctx context.Context) OrganizationResourcePropertiesResponseUserDetailPtrOutput {
 	return o
+}
+
+func (o OrganizationResourcePropertiesResponseUserDetailPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationResourcePropertiesResponseUserDetail] {
+	return pulumix.Output[*OrganizationResourcePropertiesResponseUserDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationResourcePropertiesResponseUserDetailPtrOutput) Elem() OrganizationResourcePropertiesResponseUserDetailOutput {
@@ -511,6 +560,12 @@ func (i OrganizationResourcePropertiesUserDetailArgs) ToOrganizationResourceProp
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationResourcePropertiesUserDetailOutput)
 }
 
+func (i OrganizationResourcePropertiesUserDetailArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationResourcePropertiesUserDetail] {
+	return pulumix.Output[OrganizationResourcePropertiesUserDetail]{
+		OutputState: i.ToOrganizationResourcePropertiesUserDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OrganizationResourcePropertiesUserDetailArgs) ToOrganizationResourcePropertiesUserDetailPtrOutput() OrganizationResourcePropertiesUserDetailPtrOutput {
 	return i.ToOrganizationResourcePropertiesUserDetailPtrOutputWithContext(context.Background())
 }
@@ -552,6 +607,12 @@ func (i *organizationResourcePropertiesUserDetailPtrType) ToOrganizationResource
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationResourcePropertiesUserDetailPtrOutput)
 }
 
+func (i *organizationResourcePropertiesUserDetailPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationResourcePropertiesUserDetail] {
+	return pulumix.Output[*OrganizationResourcePropertiesUserDetail]{
+		OutputState: i.ToOrganizationResourcePropertiesUserDetailPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Subscriber detail
 type OrganizationResourcePropertiesUserDetailOutput struct{ *pulumi.OutputState }
 
@@ -575,6 +636,12 @@ func (o OrganizationResourcePropertiesUserDetailOutput) ToOrganizationResourcePr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationResourcePropertiesUserDetail) *OrganizationResourcePropertiesUserDetail {
 		return &v
 	}).(OrganizationResourcePropertiesUserDetailPtrOutput)
+}
+
+func (o OrganizationResourcePropertiesUserDetailOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationResourcePropertiesUserDetail] {
+	return pulumix.Output[OrganizationResourcePropertiesUserDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Email address
@@ -604,6 +671,12 @@ func (o OrganizationResourcePropertiesUserDetailPtrOutput) ToOrganizationResourc
 
 func (o OrganizationResourcePropertiesUserDetailPtrOutput) ToOrganizationResourcePropertiesUserDetailPtrOutputWithContext(ctx context.Context) OrganizationResourcePropertiesUserDetailPtrOutput {
 	return o
+}
+
+func (o OrganizationResourcePropertiesUserDetailPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationResourcePropertiesUserDetail] {
+	return pulumix.Output[*OrganizationResourcePropertiesUserDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationResourcePropertiesUserDetailPtrOutput) Elem() OrganizationResourcePropertiesUserDetailOutput {

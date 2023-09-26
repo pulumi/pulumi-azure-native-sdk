@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The operation returns properties of a MachinePool.
@@ -83,6 +84,12 @@ func (o LookupMachinePoolResultOutput) ToLookupMachinePoolResultOutput() LookupM
 
 func (o LookupMachinePoolResultOutput) ToLookupMachinePoolResultOutputWithContext(ctx context.Context) LookupMachinePoolResultOutput {
 	return o
+}
+
+func (o LookupMachinePoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMachinePoolResult] {
+	return pulumix.Output[LookupMachinePoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

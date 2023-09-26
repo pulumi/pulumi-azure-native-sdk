@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Details of a particular extension in HCI Cluster.
@@ -250,6 +251,12 @@ func (i *Extension) ToExtensionOutputWithContext(ctx context.Context) ExtensionO
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionOutput)
 }
 
+func (i *Extension) ToOutput(ctx context.Context) pulumix.Output[*Extension] {
+	return pulumix.Output[*Extension]{
+		OutputState: i.ToExtensionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ExtensionOutput struct{ *pulumi.OutputState }
 
 func (ExtensionOutput) ElementType() reflect.Type {
@@ -262,6 +269,12 @@ func (o ExtensionOutput) ToExtensionOutput() ExtensionOutput {
 
 func (o ExtensionOutput) ToExtensionOutputWithContext(ctx context.Context) ExtensionOutput {
 	return o
+}
+
+func (o ExtensionOutput) ToOutput(ctx context.Context) pulumix.Output[*Extension] {
+	return pulumix.Output[*Extension]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Aggregate state of Arc Extensions across the nodes in this HCI cluster.

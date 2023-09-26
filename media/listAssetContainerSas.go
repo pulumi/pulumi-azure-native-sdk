@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists storage container URLs with shared access signatures (SAS) for uploading and downloading Asset content. The signatures are derived from the storage account keys.
@@ -85,6 +86,12 @@ func (o ListAssetContainerSasResultOutput) ToListAssetContainerSasResultOutput()
 
 func (o ListAssetContainerSasResultOutput) ToListAssetContainerSasResultOutputWithContext(ctx context.Context) ListAssetContainerSasResultOutput {
 	return o
+}
+
+func (o ListAssetContainerSasResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListAssetContainerSasResult] {
+	return pulumix.Output[ListAssetContainerSasResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of Asset container SAS URLs.

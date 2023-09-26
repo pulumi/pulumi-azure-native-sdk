@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a privateLinkHub
@@ -84,6 +85,12 @@ func (o LookupPrivateLinkHubResultOutput) ToLookupPrivateLinkHubResultOutput() L
 
 func (o LookupPrivateLinkHubResultOutput) ToLookupPrivateLinkHubResultOutputWithContext(ctx context.Context) LookupPrivateLinkHubResultOutput {
 	return o
+}
+
+func (o LookupPrivateLinkHubResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateLinkHubResult] {
+	return pulumix.Output[LookupPrivateLinkHubResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

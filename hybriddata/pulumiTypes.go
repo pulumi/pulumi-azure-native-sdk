@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i CustomerSecretArgs) ToCustomerSecretOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerSecretOutput)
 }
 
+func (i CustomerSecretArgs) ToOutput(ctx context.Context) pulumix.Output[CustomerSecret] {
+	return pulumix.Output[CustomerSecret]{
+		OutputState: i.ToCustomerSecretOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CustomerSecretArrayInput is an input type that accepts CustomerSecretArray and CustomerSecretArrayOutput values.
 // You can construct a concrete instance of `CustomerSecretArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i CustomerSecretArray) ToCustomerSecretArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerSecretArrayOutput)
 }
 
+func (i CustomerSecretArray) ToOutput(ctx context.Context) pulumix.Output[[]CustomerSecret] {
+	return pulumix.Output[[]CustomerSecret]{
+		OutputState: i.ToCustomerSecretArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The pair of customer secret.
 type CustomerSecretOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o CustomerSecretOutput) ToCustomerSecretOutput() CustomerSecretOutput {
 
 func (o CustomerSecretOutput) ToCustomerSecretOutputWithContext(ctx context.Context) CustomerSecretOutput {
 	return o
+}
+
+func (o CustomerSecretOutput) ToOutput(ctx context.Context) pulumix.Output[CustomerSecret] {
+	return pulumix.Output[CustomerSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The encryption algorithm used to encrypt data.
@@ -123,6 +142,12 @@ func (o CustomerSecretArrayOutput) ToCustomerSecretArrayOutput() CustomerSecretA
 
 func (o CustomerSecretArrayOutput) ToCustomerSecretArrayOutputWithContext(ctx context.Context) CustomerSecretArrayOutput {
 	return o
+}
+
+func (o CustomerSecretArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CustomerSecret] {
+	return pulumix.Output[[]CustomerSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomerSecretArrayOutput) Index(i pulumi.IntInput) CustomerSecretOutput {
@@ -156,6 +181,12 @@ func (o CustomerSecretResponseOutput) ToCustomerSecretResponseOutputWithContext(
 	return o
 }
 
+func (o CustomerSecretResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomerSecretResponse] {
+	return pulumix.Output[CustomerSecretResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The encryption algorithm used to encrypt data.
 func (o CustomerSecretResponseOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerSecretResponse) string { return v.Algorithm }).(pulumi.StringOutput)
@@ -183,6 +214,12 @@ func (o CustomerSecretResponseArrayOutput) ToCustomerSecretResponseArrayOutput()
 
 func (o CustomerSecretResponseArrayOutput) ToCustomerSecretResponseArrayOutputWithContext(ctx context.Context) CustomerSecretResponseArrayOutput {
 	return o
+}
+
+func (o CustomerSecretResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CustomerSecretResponse] {
+	return pulumix.Output[[]CustomerSecretResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomerSecretResponseArrayOutput) Index(i pulumi.IntInput) CustomerSecretResponseOutput {
@@ -230,6 +267,12 @@ func (i ScheduleArgs) ToScheduleOutputWithContext(ctx context.Context) ScheduleO
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
 }
 
+func (i ScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
+	return pulumix.Output[Schedule]{
+		OutputState: i.ToScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScheduleArrayInput is an input type that accepts ScheduleArray and ScheduleArrayOutput values.
 // You can construct a concrete instance of `ScheduleArrayInput` via:
 //
@@ -255,6 +298,12 @@ func (i ScheduleArray) ToScheduleArrayOutputWithContext(ctx context.Context) Sch
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleArrayOutput)
 }
 
+func (i ScheduleArray) ToOutput(ctx context.Context) pulumix.Output[[]Schedule] {
+	return pulumix.Output[[]Schedule]{
+		OutputState: i.ToScheduleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Schedule for the job run.
 type ScheduleOutput struct{ *pulumi.OutputState }
 
@@ -268,6 +317,12 @@ func (o ScheduleOutput) ToScheduleOutput() ScheduleOutput {
 
 func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
 	return o
+}
+
+func (o ScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
+	return pulumix.Output[Schedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the schedule.
@@ -292,6 +347,12 @@ func (o ScheduleArrayOutput) ToScheduleArrayOutput() ScheduleArrayOutput {
 
 func (o ScheduleArrayOutput) ToScheduleArrayOutputWithContext(ctx context.Context) ScheduleArrayOutput {
 	return o
+}
+
+func (o ScheduleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Schedule] {
+	return pulumix.Output[[]Schedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScheduleArrayOutput) Index(i pulumi.IntInput) ScheduleOutput {
@@ -323,6 +384,12 @@ func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o ScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleResponse] {
+	return pulumix.Output[ScheduleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the schedule.
 func (o ScheduleResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduleResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -345,6 +412,12 @@ func (o ScheduleResponseArrayOutput) ToScheduleResponseArrayOutput() ScheduleRes
 
 func (o ScheduleResponseArrayOutput) ToScheduleResponseArrayOutputWithContext(ctx context.Context) ScheduleResponseArrayOutput {
 	return o
+}
+
+func (o ScheduleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScheduleResponse] {
+	return pulumix.Output[[]ScheduleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScheduleResponseArrayOutput) Index(i pulumi.IntInput) ScheduleResponseOutput {
@@ -392,6 +465,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -433,6 +512,12 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
+func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The sku type.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -458,6 +543,12 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The sku name. Required for data manager creation, optional for update.
 func (o SkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Sku) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -480,6 +571,12 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
+}
+
+func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -535,6 +632,12 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The sku name. Required for data manager creation, optional for update.
 func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -557,6 +660,12 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
+}
+
+func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
+	return pulumix.Output[*SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {

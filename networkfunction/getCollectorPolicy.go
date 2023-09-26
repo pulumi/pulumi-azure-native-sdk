@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the collector policy in a specified Traffic Collector
@@ -95,6 +96,12 @@ func (o LookupCollectorPolicyResultOutput) ToLookupCollectorPolicyResultOutput()
 
 func (o LookupCollectorPolicyResultOutput) ToLookupCollectorPolicyResultOutputWithContext(ctx context.Context) LookupCollectorPolicyResultOutput {
 	return o
+}
+
+func (o LookupCollectorPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCollectorPolicyResult] {
+	return pulumix.Output[LookupCollectorPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Emission policies.

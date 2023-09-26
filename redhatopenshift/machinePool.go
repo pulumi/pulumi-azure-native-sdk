@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MachinePool represents a MachinePool
@@ -127,6 +128,12 @@ func (i *MachinePool) ToMachinePoolOutputWithContext(ctx context.Context) Machin
 	return pulumi.ToOutputWithContext(ctx, i).(MachinePoolOutput)
 }
 
+func (i *MachinePool) ToOutput(ctx context.Context) pulumix.Output[*MachinePool] {
+	return pulumix.Output[*MachinePool]{
+		OutputState: i.ToMachinePoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MachinePoolOutput struct{ *pulumi.OutputState }
 
 func (MachinePoolOutput) ElementType() reflect.Type {
@@ -139,6 +146,12 @@ func (o MachinePoolOutput) ToMachinePoolOutput() MachinePoolOutput {
 
 func (o MachinePoolOutput) ToMachinePoolOutputWithContext(ctx context.Context) MachinePoolOutput {
 	return o
+}
+
+func (o MachinePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*MachinePool] {
+	return pulumix.Output[*MachinePool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

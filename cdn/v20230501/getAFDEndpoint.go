@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
@@ -97,6 +98,12 @@ func (o LookupAFDEndpointResultOutput) ToLookupAFDEndpointResultOutput() LookupA
 
 func (o LookupAFDEndpointResultOutput) ToLookupAFDEndpointResultOutputWithContext(ctx context.Context) LookupAFDEndpointResultOutput {
 	return o
+}
+
+func (o LookupAFDEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAFDEndpointResult] {
+	return pulumix.Output[LookupAFDEndpointResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates the endpoint name reuse scope. The default value is TenantReuse.

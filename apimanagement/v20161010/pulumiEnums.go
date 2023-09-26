@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Hostname type.
@@ -80,6 +81,12 @@ func (o HostnameTypeOutput) ToHostnameTypePtrOutputWithContext(ctx context.Conte
 	}).(HostnameTypePtrOutput)
 }
 
+func (o HostnameTypeOutput) ToOutput(ctx context.Context) pulumix.Output[HostnameType] {
+	return pulumix.Output[HostnameType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostnameTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o HostnameTypePtrOutput) ToHostnameTypePtrOutput() HostnameTypePtrOutput {
 
 func (o HostnameTypePtrOutput) ToHostnameTypePtrOutputWithContext(ctx context.Context) HostnameTypePtrOutput {
 	return o
+}
+
+func (o HostnameTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostnameType] {
+	return pulumix.Output[*HostnameType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostnameTypePtrOutput) Elem() HostnameTypeOutput {
@@ -175,6 +188,12 @@ func (in *hostnameTypePtr) ToHostnameTypePtrOutput() HostnameTypePtrOutput {
 
 func (in *hostnameTypePtr) ToHostnameTypePtrOutputWithContext(ctx context.Context) HostnameTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HostnameTypePtrOutput)
+}
+
+func (in *hostnameTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HostnameType] {
+	return pulumix.Output[*HostnameType]{
+		OutputState: in.ToHostnameTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The Key to be used to generate token for user.
@@ -245,6 +264,12 @@ func (o KeyTypeContractOutput) ToKeyTypeContractPtrOutputWithContext(ctx context
 	}).(KeyTypeContractPtrOutput)
 }
 
+func (o KeyTypeContractOutput) ToOutput(ctx context.Context) pulumix.Output[KeyTypeContract] {
+	return pulumix.Output[KeyTypeContract]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeyTypeContractOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -278,6 +303,12 @@ func (o KeyTypeContractPtrOutput) ToKeyTypeContractPtrOutput() KeyTypeContractPt
 
 func (o KeyTypeContractPtrOutput) ToKeyTypeContractPtrOutputWithContext(ctx context.Context) KeyTypeContractPtrOutput {
 	return o
+}
+
+func (o KeyTypeContractPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyTypeContract] {
+	return pulumix.Output[*KeyTypeContract]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyTypeContractPtrOutput) Elem() KeyTypeContractOutput {
@@ -340,6 +371,12 @@ func (in *keyTypeContractPtr) ToKeyTypeContractPtrOutput() KeyTypeContractPtrOut
 
 func (in *keyTypeContractPtr) ToKeyTypeContractPtrOutputWithContext(ctx context.Context) KeyTypeContractPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyTypeContractPtrOutput)
+}
+
+func (in *keyTypeContractPtr) ToOutput(ctx context.Context) pulumix.Output[*KeyTypeContract] {
+	return pulumix.Output[*KeyTypeContract]{
+		OutputState: in.ToKeyTypeContractPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Name of the Sku.
@@ -411,6 +448,12 @@ func (o SkuTypeOutput) ToSkuTypePtrOutputWithContext(ctx context.Context) SkuTyp
 	}).(SkuTypePtrOutput)
 }
 
+func (o SkuTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SkuType] {
+	return pulumix.Output[SkuType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SkuTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -444,6 +487,12 @@ func (o SkuTypePtrOutput) ToSkuTypePtrOutput() SkuTypePtrOutput {
 
 func (o SkuTypePtrOutput) ToSkuTypePtrOutputWithContext(ctx context.Context) SkuTypePtrOutput {
 	return o
+}
+
+func (o SkuTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuType] {
+	return pulumix.Output[*SkuType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuTypePtrOutput) Elem() SkuTypeOutput {
@@ -506,6 +555,12 @@ func (in *skuTypePtr) ToSkuTypePtrOutput() SkuTypePtrOutput {
 
 func (in *skuTypePtr) ToSkuTypePtrOutputWithContext(ctx context.Context) SkuTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTypePtrOutput)
+}
+
+func (in *skuTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuType] {
+	return pulumix.Output[*SkuType]{
+		OutputState: in.ToSkuTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
@@ -577,6 +632,12 @@ func (o VirtualNetworkTypeOutput) ToVirtualNetworkTypePtrOutputWithContext(ctx c
 	}).(VirtualNetworkTypePtrOutput)
 }
 
+func (o VirtualNetworkTypeOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkType] {
+	return pulumix.Output[VirtualNetworkType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualNetworkTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -610,6 +671,12 @@ func (o VirtualNetworkTypePtrOutput) ToVirtualNetworkTypePtrOutput() VirtualNetw
 
 func (o VirtualNetworkTypePtrOutput) ToVirtualNetworkTypePtrOutputWithContext(ctx context.Context) VirtualNetworkTypePtrOutput {
 	return o
+}
+
+func (o VirtualNetworkTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkType] {
+	return pulumix.Output[*VirtualNetworkType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNetworkTypePtrOutput) Elem() VirtualNetworkTypeOutput {
@@ -672,6 +739,12 @@ func (in *virtualNetworkTypePtr) ToVirtualNetworkTypePtrOutput() VirtualNetworkT
 
 func (in *virtualNetworkTypePtr) ToVirtualNetworkTypePtrOutputWithContext(ctx context.Context) VirtualNetworkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualNetworkTypePtrOutput)
+}
+
+func (in *virtualNetworkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkType] {
+	return pulumix.Output[*VirtualNetworkType]{
+		OutputState: in.ToVirtualNetworkTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

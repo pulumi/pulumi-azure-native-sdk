@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the specified storage classification mapping.
@@ -92,6 +93,12 @@ func (o LookupReplicationStorageClassificationMappingResultOutput) ToLookupRepli
 
 func (o LookupReplicationStorageClassificationMappingResultOutput) ToLookupReplicationStorageClassificationMappingResultOutputWithContext(ctx context.Context) LookupReplicationStorageClassificationMappingResultOutput {
 	return o
+}
+
+func (o LookupReplicationStorageClassificationMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReplicationStorageClassificationMappingResult] {
+	return pulumix.Output[LookupReplicationStorageClassificationMappingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id

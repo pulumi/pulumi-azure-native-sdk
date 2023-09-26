@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i ElseConditionArgs) ToElseConditionOutput() ElseConditionOutput {
 
 func (i ElseConditionArgs) ToElseConditionOutputWithContext(ctx context.Context) ElseConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElseConditionOutput)
+}
+
+func (i ElseConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ElseCondition] {
+	return pulumix.Output[ElseCondition]{
+		OutputState: i.ToElseConditionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ElseConditionArgs) ToElseConditionPtrOutput() ElseConditionPtrOutput {
@@ -89,6 +96,12 @@ func (i *elseConditionPtrType) ToElseConditionPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ElseConditionPtrOutput)
 }
 
+func (i *elseConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElseCondition] {
+	return pulumix.Output[*ElseCondition]{
+		OutputState: i.ToElseConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The else block of storage task operation
 type ElseConditionOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o ElseConditionOutput) ToElseConditionPtrOutputWithContext(ctx context.Con
 	}).(ElseConditionPtrOutput)
 }
 
+func (o ElseConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ElseCondition] {
+	return pulumix.Output[ElseCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of operations to execute in the else block
 func (o ElseConditionOutput) Operations() StorageTaskOperationArrayOutput {
 	return o.ApplyT(func(v ElseCondition) []StorageTaskOperation { return v.Operations }).(StorageTaskOperationArrayOutput)
@@ -131,6 +150,12 @@ func (o ElseConditionPtrOutput) ToElseConditionPtrOutput() ElseConditionPtrOutpu
 
 func (o ElseConditionPtrOutput) ToElseConditionPtrOutputWithContext(ctx context.Context) ElseConditionPtrOutput {
 	return o
+}
+
+func (o ElseConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElseCondition] {
+	return pulumix.Output[*ElseCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElseConditionPtrOutput) Elem() ElseConditionOutput {
@@ -174,6 +199,12 @@ func (o ElseConditionResponseOutput) ToElseConditionResponseOutputWithContext(ct
 	return o
 }
 
+func (o ElseConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ElseConditionResponse] {
+	return pulumix.Output[ElseConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of operations to execute in the else block
 func (o ElseConditionResponseOutput) Operations() StorageTaskOperationResponseArrayOutput {
 	return o.ApplyT(func(v ElseConditionResponse) []StorageTaskOperationResponse { return v.Operations }).(StorageTaskOperationResponseArrayOutput)
@@ -191,6 +222,12 @@ func (o ElseConditionResponsePtrOutput) ToElseConditionResponsePtrOutput() ElseC
 
 func (o ElseConditionResponsePtrOutput) ToElseConditionResponsePtrOutputWithContext(ctx context.Context) ElseConditionResponsePtrOutput {
 	return o
+}
+
+func (o ElseConditionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElseConditionResponse] {
+	return pulumix.Output[*ElseConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElseConditionResponsePtrOutput) Elem() ElseConditionResponseOutput {
@@ -252,6 +289,12 @@ func (i IfConditionArgs) ToIfConditionOutputWithContext(ctx context.Context) IfC
 	return pulumi.ToOutputWithContext(ctx, i).(IfConditionOutput)
 }
 
+func (i IfConditionArgs) ToOutput(ctx context.Context) pulumix.Output[IfCondition] {
+	return pulumix.Output[IfCondition]{
+		OutputState: i.ToIfConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The if block of storage task operation
 type IfConditionOutput struct{ *pulumi.OutputState }
 
@@ -265,6 +308,12 @@ func (o IfConditionOutput) ToIfConditionOutput() IfConditionOutput {
 
 func (o IfConditionOutput) ToIfConditionOutputWithContext(ctx context.Context) IfConditionOutput {
 	return o
+}
+
+func (o IfConditionOutput) ToOutput(ctx context.Context) pulumix.Output[IfCondition] {
+	return pulumix.Output[IfCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition predicate which is composed of object properties, eg: blob and container properties.
@@ -298,6 +347,12 @@ func (o IfConditionResponseOutput) ToIfConditionResponseOutput() IfConditionResp
 
 func (o IfConditionResponseOutput) ToIfConditionResponseOutputWithContext(ctx context.Context) IfConditionResponseOutput {
 	return o
+}
+
+func (o IfConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IfConditionResponse] {
+	return pulumix.Output[IfConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition predicate which is composed of object properties, eg: blob and container properties.
@@ -349,6 +404,12 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
+func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
 	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -390,6 +451,12 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
+func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -415,6 +482,12 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
+func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -437,6 +510,12 @@ func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() Man
 
 func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
@@ -496,6 +575,12 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
+func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
+	return pulumix.Output[ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -530,6 +615,12 @@ func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityRespons
 
 func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
+	return pulumix.Output[*ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
@@ -621,6 +712,12 @@ func (i StorageTaskActionArgs) ToStorageTaskActionOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(StorageTaskActionOutput)
 }
 
+func (i StorageTaskActionArgs) ToOutput(ctx context.Context) pulumix.Output[StorageTaskAction] {
+	return pulumix.Output[StorageTaskAction]{
+		OutputState: i.ToStorageTaskActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The storage task action represents conditional statements and operations to be performed on target objects.
 type StorageTaskActionOutput struct{ *pulumi.OutputState }
 
@@ -634,6 +731,12 @@ func (o StorageTaskActionOutput) ToStorageTaskActionOutput() StorageTaskActionOu
 
 func (o StorageTaskActionOutput) ToStorageTaskActionOutputWithContext(ctx context.Context) StorageTaskActionOutput {
 	return o
+}
+
+func (o StorageTaskActionOutput) ToOutput(ctx context.Context) pulumix.Output[StorageTaskAction] {
+	return pulumix.Output[StorageTaskAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The else block of storage task operation
@@ -667,6 +770,12 @@ func (o StorageTaskActionResponseOutput) ToStorageTaskActionResponseOutput() Sto
 
 func (o StorageTaskActionResponseOutput) ToStorageTaskActionResponseOutputWithContext(ctx context.Context) StorageTaskActionResponseOutput {
 	return o
+}
+
+func (o StorageTaskActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageTaskActionResponse] {
+	return pulumix.Output[StorageTaskActionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The else block of storage task operation
@@ -726,6 +835,12 @@ func (i StorageTaskOperationArgs) ToStorageTaskOperationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(StorageTaskOperationOutput)
 }
 
+func (i StorageTaskOperationArgs) ToOutput(ctx context.Context) pulumix.Output[StorageTaskOperation] {
+	return pulumix.Output[StorageTaskOperation]{
+		OutputState: i.ToStorageTaskOperationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StorageTaskOperationArrayInput is an input type that accepts StorageTaskOperationArray and StorageTaskOperationArrayOutput values.
 // You can construct a concrete instance of `StorageTaskOperationArrayInput` via:
 //
@@ -751,6 +866,12 @@ func (i StorageTaskOperationArray) ToStorageTaskOperationArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(StorageTaskOperationArrayOutput)
 }
 
+func (i StorageTaskOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]StorageTaskOperation] {
+	return pulumix.Output[[]StorageTaskOperation]{
+		OutputState: i.ToStorageTaskOperationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents an operation to be performed on the object
 type StorageTaskOperationOutput struct{ *pulumi.OutputState }
 
@@ -764,6 +885,12 @@ func (o StorageTaskOperationOutput) ToStorageTaskOperationOutput() StorageTaskOp
 
 func (o StorageTaskOperationOutput) ToStorageTaskOperationOutputWithContext(ctx context.Context) StorageTaskOperationOutput {
 	return o
+}
+
+func (o StorageTaskOperationOutput) ToOutput(ctx context.Context) pulumix.Output[StorageTaskOperation] {
+	return pulumix.Output[StorageTaskOperation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The operation to be performed on the object.
@@ -800,6 +927,12 @@ func (o StorageTaskOperationArrayOutput) ToStorageTaskOperationArrayOutputWithCo
 	return o
 }
 
+func (o StorageTaskOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageTaskOperation] {
+	return pulumix.Output[[]StorageTaskOperation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StorageTaskOperationArrayOutput) Index(i pulumi.IntInput) StorageTaskOperationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageTaskOperation {
 		return vs[0].([]StorageTaskOperation)[vs[1].(int)]
@@ -831,6 +964,12 @@ func (o StorageTaskOperationResponseOutput) ToStorageTaskOperationResponseOutput
 
 func (o StorageTaskOperationResponseOutput) ToStorageTaskOperationResponseOutputWithContext(ctx context.Context) StorageTaskOperationResponseOutput {
 	return o
+}
+
+func (o StorageTaskOperationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageTaskOperationResponse] {
+	return pulumix.Output[StorageTaskOperationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The operation to be performed on the object.
@@ -865,6 +1004,12 @@ func (o StorageTaskOperationResponseArrayOutput) ToStorageTaskOperationResponseA
 
 func (o StorageTaskOperationResponseArrayOutput) ToStorageTaskOperationResponseArrayOutputWithContext(ctx context.Context) StorageTaskOperationResponseArrayOutput {
 	return o
+}
+
+func (o StorageTaskOperationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageTaskOperationResponse] {
+	return pulumix.Output[[]StorageTaskOperationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageTaskOperationResponseArrayOutput) Index(i pulumi.IntInput) StorageTaskOperationResponseOutput {
@@ -902,6 +1047,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -957,6 +1108,12 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
+func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
+	return pulumix.Output[UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -979,6 +1136,12 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
+	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {

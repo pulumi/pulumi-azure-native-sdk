@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Azure dedicated HSM.
@@ -96,6 +97,12 @@ func (o LookupDedicatedHsmResultOutput) ToLookupDedicatedHsmResultOutput() Looku
 
 func (o LookupDedicatedHsmResultOutput) ToLookupDedicatedHsmResultOutputWithContext(ctx context.Context) LookupDedicatedHsmResultOutput {
 	return o
+}
+
+func (o LookupDedicatedHsmResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDedicatedHsmResult] {
+	return pulumix.Output[LookupDedicatedHsmResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Azure Resource Manager resource ID for the dedicated HSM.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i CrossSiteAccessPoliciesArgs) ToCrossSiteAccessPoliciesOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(CrossSiteAccessPoliciesOutput)
 }
 
+func (i CrossSiteAccessPoliciesArgs) ToOutput(ctx context.Context) pulumix.Output[CrossSiteAccessPolicies] {
+	return pulumix.Output[CrossSiteAccessPolicies]{
+		OutputState: i.ToCrossSiteAccessPoliciesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CrossSiteAccessPoliciesArgs) ToCrossSiteAccessPoliciesPtrOutput() CrossSiteAccessPoliciesPtrOutput {
 	return i.ToCrossSiteAccessPoliciesPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *crossSiteAccessPoliciesPtrType) ToCrossSiteAccessPoliciesPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(CrossSiteAccessPoliciesPtrOutput)
 }
 
+func (i *crossSiteAccessPoliciesPtrType) ToOutput(ctx context.Context) pulumix.Output[*CrossSiteAccessPolicies] {
+	return pulumix.Output[*CrossSiteAccessPolicies]{
+		OutputState: i.ToCrossSiteAccessPoliciesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The client access policy.
 type CrossSiteAccessPoliciesOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o CrossSiteAccessPoliciesOutput) ToCrossSiteAccessPoliciesPtrOutputWithCon
 	}).(CrossSiteAccessPoliciesPtrOutput)
 }
 
+func (o CrossSiteAccessPoliciesOutput) ToOutput(ctx context.Context) pulumix.Output[CrossSiteAccessPolicies] {
+	return pulumix.Output[CrossSiteAccessPolicies]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The content of clientaccesspolicy.xml used by Silverlight.
 func (o CrossSiteAccessPoliciesOutput) ClientAccessPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CrossSiteAccessPolicies) *string { return v.ClientAccessPolicy }).(pulumi.StringPtrOutput)
@@ -140,6 +159,12 @@ func (o CrossSiteAccessPoliciesPtrOutput) ToCrossSiteAccessPoliciesPtrOutput() C
 
 func (o CrossSiteAccessPoliciesPtrOutput) ToCrossSiteAccessPoliciesPtrOutputWithContext(ctx context.Context) CrossSiteAccessPoliciesPtrOutput {
 	return o
+}
+
+func (o CrossSiteAccessPoliciesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CrossSiteAccessPolicies] {
+	return pulumix.Output[*CrossSiteAccessPolicies]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CrossSiteAccessPoliciesPtrOutput) Elem() CrossSiteAccessPoliciesOutput {
@@ -195,6 +220,12 @@ func (o CrossSiteAccessPoliciesResponseOutput) ToCrossSiteAccessPoliciesResponse
 	return o
 }
 
+func (o CrossSiteAccessPoliciesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CrossSiteAccessPoliciesResponse] {
+	return pulumix.Output[CrossSiteAccessPoliciesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The content of clientaccesspolicy.xml used by Silverlight.
 func (o CrossSiteAccessPoliciesResponseOutput) ClientAccessPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CrossSiteAccessPoliciesResponse) *string { return v.ClientAccessPolicy }).(pulumi.StringPtrOutput)
@@ -217,6 +248,12 @@ func (o CrossSiteAccessPoliciesResponsePtrOutput) ToCrossSiteAccessPoliciesRespo
 
 func (o CrossSiteAccessPoliciesResponsePtrOutput) ToCrossSiteAccessPoliciesResponsePtrOutputWithContext(ctx context.Context) CrossSiteAccessPoliciesResponsePtrOutput {
 	return o
+}
+
+func (o CrossSiteAccessPoliciesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CrossSiteAccessPoliciesResponse] {
+	return pulumix.Output[*CrossSiteAccessPoliciesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CrossSiteAccessPoliciesResponsePtrOutput) Elem() CrossSiteAccessPoliciesResponseOutput {
@@ -284,6 +321,12 @@ func (i IPAccessControlArgs) ToIPAccessControlOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(IPAccessControlOutput)
 }
 
+func (i IPAccessControlArgs) ToOutput(ctx context.Context) pulumix.Output[IPAccessControl] {
+	return pulumix.Output[IPAccessControl]{
+		OutputState: i.ToIPAccessControlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IPAccessControlArgs) ToIPAccessControlPtrOutput() IPAccessControlPtrOutput {
 	return i.ToIPAccessControlPtrOutputWithContext(context.Background())
 }
@@ -325,6 +368,12 @@ func (i *ipaccessControlPtrType) ToIPAccessControlPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(IPAccessControlPtrOutput)
 }
 
+func (i *ipaccessControlPtrType) ToOutput(ctx context.Context) pulumix.Output[*IPAccessControl] {
+	return pulumix.Output[*IPAccessControl]{
+		OutputState: i.ToIPAccessControlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The IP access control.
 type IPAccessControlOutput struct{ *pulumi.OutputState }
 
@@ -350,6 +399,12 @@ func (o IPAccessControlOutput) ToIPAccessControlPtrOutputWithContext(ctx context
 	}).(IPAccessControlPtrOutput)
 }
 
+func (o IPAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[IPAccessControl] {
+	return pulumix.Output[IPAccessControl]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP allow list.
 func (o IPAccessControlOutput) Allow() IPRangeArrayOutput {
 	return o.ApplyT(func(v IPAccessControl) []IPRange { return v.Allow }).(IPRangeArrayOutput)
@@ -367,6 +422,12 @@ func (o IPAccessControlPtrOutput) ToIPAccessControlPtrOutput() IPAccessControlPt
 
 func (o IPAccessControlPtrOutput) ToIPAccessControlPtrOutputWithContext(ctx context.Context) IPAccessControlPtrOutput {
 	return o
+}
+
+func (o IPAccessControlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPAccessControl] {
+	return pulumix.Output[*IPAccessControl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPAccessControlPtrOutput) Elem() IPAccessControlOutput {
@@ -410,6 +471,12 @@ func (o IPAccessControlResponseOutput) ToIPAccessControlResponseOutputWithContex
 	return o
 }
 
+func (o IPAccessControlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IPAccessControlResponse] {
+	return pulumix.Output[IPAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP allow list.
 func (o IPAccessControlResponseOutput) Allow() IPRangeResponseArrayOutput {
 	return o.ApplyT(func(v IPAccessControlResponse) []IPRangeResponse { return v.Allow }).(IPRangeResponseArrayOutput)
@@ -427,6 +494,12 @@ func (o IPAccessControlResponsePtrOutput) ToIPAccessControlResponsePtrOutput() I
 
 func (o IPAccessControlResponsePtrOutput) ToIPAccessControlResponsePtrOutputWithContext(ctx context.Context) IPAccessControlResponsePtrOutput {
 	return o
+}
+
+func (o IPAccessControlResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPAccessControlResponse] {
+	return pulumix.Output[*IPAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPAccessControlResponsePtrOutput) Elem() IPAccessControlResponseOutput {
@@ -492,6 +565,12 @@ func (i IPRangeArgs) ToIPRangeOutputWithContext(ctx context.Context) IPRangeOutp
 	return pulumi.ToOutputWithContext(ctx, i).(IPRangeOutput)
 }
 
+func (i IPRangeArgs) ToOutput(ctx context.Context) pulumix.Output[IPRange] {
+	return pulumix.Output[IPRange]{
+		OutputState: i.ToIPRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IPRangeArrayInput is an input type that accepts IPRangeArray and IPRangeArrayOutput values.
 // You can construct a concrete instance of `IPRangeArrayInput` via:
 //
@@ -517,6 +596,12 @@ func (i IPRangeArray) ToIPRangeArrayOutputWithContext(ctx context.Context) IPRan
 	return pulumi.ToOutputWithContext(ctx, i).(IPRangeArrayOutput)
 }
 
+func (i IPRangeArray) ToOutput(ctx context.Context) pulumix.Output[[]IPRange] {
+	return pulumix.Output[[]IPRange]{
+		OutputState: i.ToIPRangeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The IP address range in the CIDR scheme.
 type IPRangeOutput struct{ *pulumi.OutputState }
 
@@ -530,6 +615,12 @@ func (o IPRangeOutput) ToIPRangeOutput() IPRangeOutput {
 
 func (o IPRangeOutput) ToIPRangeOutputWithContext(ctx context.Context) IPRangeOutput {
 	return o
+}
+
+func (o IPRangeOutput) ToOutput(ctx context.Context) pulumix.Output[IPRange] {
+	return pulumix.Output[IPRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address.
@@ -559,6 +650,12 @@ func (o IPRangeArrayOutput) ToIPRangeArrayOutput() IPRangeArrayOutput {
 
 func (o IPRangeArrayOutput) ToIPRangeArrayOutputWithContext(ctx context.Context) IPRangeArrayOutput {
 	return o
+}
+
+func (o IPRangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPRange] {
+	return pulumix.Output[[]IPRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPRangeArrayOutput) Index(i pulumi.IntInput) IPRangeOutput {
@@ -592,6 +689,12 @@ func (o IPRangeResponseOutput) ToIPRangeResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o IPRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IPRangeResponse] {
+	return pulumix.Output[IPRangeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP address.
 func (o IPRangeResponseOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPRangeResponse) *string { return v.Address }).(pulumi.StringPtrOutput)
@@ -619,6 +722,12 @@ func (o IPRangeResponseArrayOutput) ToIPRangeResponseArrayOutput() IPRangeRespon
 
 func (o IPRangeResponseArrayOutput) ToIPRangeResponseArrayOutputWithContext(ctx context.Context) IPRangeResponseArrayOutput {
 	return o
+}
+
+func (o IPRangeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPRangeResponse] {
+	return pulumix.Output[[]IPRangeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPRangeResponseArrayOutput) Index(i pulumi.IntInput) IPRangeResponseOutput {
@@ -666,6 +775,12 @@ func (i LiveEventEncodingArgs) ToLiveEventEncodingOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventEncodingOutput)
 }
 
+func (i LiveEventEncodingArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventEncoding] {
+	return pulumix.Output[LiveEventEncoding]{
+		OutputState: i.ToLiveEventEncodingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LiveEventEncodingArgs) ToLiveEventEncodingPtrOutput() LiveEventEncodingPtrOutput {
 	return i.ToLiveEventEncodingPtrOutputWithContext(context.Background())
 }
@@ -707,6 +822,12 @@ func (i *liveEventEncodingPtrType) ToLiveEventEncodingPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventEncodingPtrOutput)
 }
 
+func (i *liveEventEncodingPtrType) ToOutput(ctx context.Context) pulumix.Output[*LiveEventEncoding] {
+	return pulumix.Output[*LiveEventEncoding]{
+		OutputState: i.ToLiveEventEncodingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Live Event encoding.
 type LiveEventEncodingOutput struct{ *pulumi.OutputState }
 
@@ -732,6 +853,12 @@ func (o LiveEventEncodingOutput) ToLiveEventEncodingPtrOutputWithContext(ctx con
 	}).(LiveEventEncodingPtrOutput)
 }
 
+func (o LiveEventEncodingOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventEncoding] {
+	return pulumix.Output[LiveEventEncoding]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The encoding type for Live Event.  This value is specified at creation time and cannot be updated.
 func (o LiveEventEncodingOutput) EncodingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LiveEventEncoding) *string { return v.EncodingType }).(pulumi.StringPtrOutput)
@@ -754,6 +881,12 @@ func (o LiveEventEncodingPtrOutput) ToLiveEventEncodingPtrOutput() LiveEventEnco
 
 func (o LiveEventEncodingPtrOutput) ToLiveEventEncodingPtrOutputWithContext(ctx context.Context) LiveEventEncodingPtrOutput {
 	return o
+}
+
+func (o LiveEventEncodingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventEncoding] {
+	return pulumix.Output[*LiveEventEncoding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventEncodingPtrOutput) Elem() LiveEventEncodingOutput {
@@ -809,6 +942,12 @@ func (o LiveEventEncodingResponseOutput) ToLiveEventEncodingResponseOutputWithCo
 	return o
 }
 
+func (o LiveEventEncodingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventEncodingResponse] {
+	return pulumix.Output[LiveEventEncodingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The encoding type for Live Event.  This value is specified at creation time and cannot be updated.
 func (o LiveEventEncodingResponseOutput) EncodingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LiveEventEncodingResponse) *string { return v.EncodingType }).(pulumi.StringPtrOutput)
@@ -831,6 +970,12 @@ func (o LiveEventEncodingResponsePtrOutput) ToLiveEventEncodingResponsePtrOutput
 
 func (o LiveEventEncodingResponsePtrOutput) ToLiveEventEncodingResponsePtrOutputWithContext(ctx context.Context) LiveEventEncodingResponsePtrOutput {
 	return o
+}
+
+func (o LiveEventEncodingResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventEncodingResponse] {
+	return pulumix.Output[*LiveEventEncodingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventEncodingResponsePtrOutput) Elem() LiveEventEncodingResponseOutput {
@@ -902,6 +1047,12 @@ func (i LiveEventEndpointArgs) ToLiveEventEndpointOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventEndpointOutput)
 }
 
+func (i LiveEventEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventEndpoint] {
+	return pulumix.Output[LiveEventEndpoint]{
+		OutputState: i.ToLiveEventEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LiveEventEndpointArrayInput is an input type that accepts LiveEventEndpointArray and LiveEventEndpointArrayOutput values.
 // You can construct a concrete instance of `LiveEventEndpointArrayInput` via:
 //
@@ -927,6 +1078,12 @@ func (i LiveEventEndpointArray) ToLiveEventEndpointArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventEndpointArrayOutput)
 }
 
+func (i LiveEventEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventEndpoint] {
+	return pulumix.Output[[]LiveEventEndpoint]{
+		OutputState: i.ToLiveEventEndpointArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Live Event endpoint.
 type LiveEventEndpointOutput struct{ *pulumi.OutputState }
 
@@ -940,6 +1097,12 @@ func (o LiveEventEndpointOutput) ToLiveEventEndpointOutput() LiveEventEndpointOu
 
 func (o LiveEventEndpointOutput) ToLiveEventEndpointOutputWithContext(ctx context.Context) LiveEventEndpointOutput {
 	return o
+}
+
+func (o LiveEventEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventEndpoint] {
+	return pulumix.Output[LiveEventEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The endpoint protocol.
@@ -964,6 +1127,12 @@ func (o LiveEventEndpointArrayOutput) ToLiveEventEndpointArrayOutput() LiveEvent
 
 func (o LiveEventEndpointArrayOutput) ToLiveEventEndpointArrayOutputWithContext(ctx context.Context) LiveEventEndpointArrayOutput {
 	return o
+}
+
+func (o LiveEventEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventEndpoint] {
+	return pulumix.Output[[]LiveEventEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventEndpointArrayOutput) Index(i pulumi.IntInput) LiveEventEndpointOutput {
@@ -995,6 +1164,12 @@ func (o LiveEventEndpointResponseOutput) ToLiveEventEndpointResponseOutputWithCo
 	return o
 }
 
+func (o LiveEventEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventEndpointResponse] {
+	return pulumix.Output[LiveEventEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The endpoint protocol.
 func (o LiveEventEndpointResponseOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LiveEventEndpointResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
@@ -1017,6 +1192,12 @@ func (o LiveEventEndpointResponseArrayOutput) ToLiveEventEndpointResponseArrayOu
 
 func (o LiveEventEndpointResponseArrayOutput) ToLiveEventEndpointResponseArrayOutputWithContext(ctx context.Context) LiveEventEndpointResponseArrayOutput {
 	return o
+}
+
+func (o LiveEventEndpointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventEndpointResponse] {
+	return pulumix.Output[[]LiveEventEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventEndpointResponseArrayOutput) Index(i pulumi.IntInput) LiveEventEndpointResponseOutput {
@@ -1076,6 +1257,12 @@ func (i LiveEventInputTypeArgs) ToLiveEventInputTypeOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventInputTypeOutput)
 }
 
+func (i LiveEventInputTypeArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputType] {
+	return pulumix.Output[LiveEventInputType]{
+		OutputState: i.ToLiveEventInputTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Live Event input.
 type LiveEventInputTypeOutput struct{ *pulumi.OutputState }
 
@@ -1089,6 +1276,12 @@ func (o LiveEventInputTypeOutput) ToLiveEventInputTypeOutput() LiveEventInputTyp
 
 func (o LiveEventInputTypeOutput) ToLiveEventInputTypeOutputWithContext(ctx context.Context) LiveEventInputTypeOutput {
 	return o
+}
+
+func (o LiveEventInputTypeOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputType] {
+	return pulumix.Output[LiveEventInputType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access control for LiveEvent Input.
@@ -1151,6 +1344,12 @@ func (i LiveEventInputAccessControlArgs) ToLiveEventInputAccessControlOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventInputAccessControlOutput)
 }
 
+func (i LiveEventInputAccessControlArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputAccessControl] {
+	return pulumix.Output[LiveEventInputAccessControl]{
+		OutputState: i.ToLiveEventInputAccessControlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LiveEventInputAccessControlArgs) ToLiveEventInputAccessControlPtrOutput() LiveEventInputAccessControlPtrOutput {
 	return i.ToLiveEventInputAccessControlPtrOutputWithContext(context.Background())
 }
@@ -1192,6 +1391,12 @@ func (i *liveEventInputAccessControlPtrType) ToLiveEventInputAccessControlPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventInputAccessControlPtrOutput)
 }
 
+func (i *liveEventInputAccessControlPtrType) ToOutput(ctx context.Context) pulumix.Output[*LiveEventInputAccessControl] {
+	return pulumix.Output[*LiveEventInputAccessControl]{
+		OutputState: i.ToLiveEventInputAccessControlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The IP access control for Live Event Input.
 type LiveEventInputAccessControlOutput struct{ *pulumi.OutputState }
 
@@ -1217,6 +1422,12 @@ func (o LiveEventInputAccessControlOutput) ToLiveEventInputAccessControlPtrOutpu
 	}).(LiveEventInputAccessControlPtrOutput)
 }
 
+func (o LiveEventInputAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputAccessControl] {
+	return pulumix.Output[LiveEventInputAccessControl]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP access control properties.
 func (o LiveEventInputAccessControlOutput) Ip() IPAccessControlPtrOutput {
 	return o.ApplyT(func(v LiveEventInputAccessControl) *IPAccessControl { return v.Ip }).(IPAccessControlPtrOutput)
@@ -1234,6 +1445,12 @@ func (o LiveEventInputAccessControlPtrOutput) ToLiveEventInputAccessControlPtrOu
 
 func (o LiveEventInputAccessControlPtrOutput) ToLiveEventInputAccessControlPtrOutputWithContext(ctx context.Context) LiveEventInputAccessControlPtrOutput {
 	return o
+}
+
+func (o LiveEventInputAccessControlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventInputAccessControl] {
+	return pulumix.Output[*LiveEventInputAccessControl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventInputAccessControlPtrOutput) Elem() LiveEventInputAccessControlOutput {
@@ -1277,6 +1494,12 @@ func (o LiveEventInputAccessControlResponseOutput) ToLiveEventInputAccessControl
 	return o
 }
 
+func (o LiveEventInputAccessControlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputAccessControlResponse] {
+	return pulumix.Output[LiveEventInputAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP access control properties.
 func (o LiveEventInputAccessControlResponseOutput) Ip() IPAccessControlResponsePtrOutput {
 	return o.ApplyT(func(v LiveEventInputAccessControlResponse) *IPAccessControlResponse { return v.Ip }).(IPAccessControlResponsePtrOutput)
@@ -1294,6 +1517,12 @@ func (o LiveEventInputAccessControlResponsePtrOutput) ToLiveEventInputAccessCont
 
 func (o LiveEventInputAccessControlResponsePtrOutput) ToLiveEventInputAccessControlResponsePtrOutputWithContext(ctx context.Context) LiveEventInputAccessControlResponsePtrOutput {
 	return o
+}
+
+func (o LiveEventInputAccessControlResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventInputAccessControlResponse] {
+	return pulumix.Output[*LiveEventInputAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventInputAccessControlResponsePtrOutput) Elem() LiveEventInputAccessControlResponseOutput {
@@ -1343,6 +1572,12 @@ func (o LiveEventInputResponseOutput) ToLiveEventInputResponseOutput() LiveEvent
 
 func (o LiveEventInputResponseOutput) ToLiveEventInputResponseOutputWithContext(ctx context.Context) LiveEventInputResponseOutput {
 	return o
+}
+
+func (o LiveEventInputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputResponse] {
+	return pulumix.Output[LiveEventInputResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access control for LiveEvent Input.
@@ -1413,6 +1648,12 @@ func (i LiveEventInputTrackSelectionArgs) ToLiveEventInputTrackSelectionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventInputTrackSelectionOutput)
 }
 
+func (i LiveEventInputTrackSelectionArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputTrackSelection] {
+	return pulumix.Output[LiveEventInputTrackSelection]{
+		OutputState: i.ToLiveEventInputTrackSelectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LiveEventInputTrackSelectionArrayInput is an input type that accepts LiveEventInputTrackSelectionArray and LiveEventInputTrackSelectionArrayOutput values.
 // You can construct a concrete instance of `LiveEventInputTrackSelectionArrayInput` via:
 //
@@ -1438,6 +1679,12 @@ func (i LiveEventInputTrackSelectionArray) ToLiveEventInputTrackSelectionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventInputTrackSelectionArrayOutput)
 }
 
+func (i LiveEventInputTrackSelectionArray) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventInputTrackSelection] {
+	return pulumix.Output[[]LiveEventInputTrackSelection]{
+		OutputState: i.ToLiveEventInputTrackSelectionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A track selection condition.
 type LiveEventInputTrackSelectionOutput struct{ *pulumi.OutputState }
 
@@ -1451,6 +1698,12 @@ func (o LiveEventInputTrackSelectionOutput) ToLiveEventInputTrackSelectionOutput
 
 func (o LiveEventInputTrackSelectionOutput) ToLiveEventInputTrackSelectionOutputWithContext(ctx context.Context) LiveEventInputTrackSelectionOutput {
 	return o
+}
+
+func (o LiveEventInputTrackSelectionOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputTrackSelection] {
+	return pulumix.Output[LiveEventInputTrackSelection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Comparing operation.
@@ -1480,6 +1733,12 @@ func (o LiveEventInputTrackSelectionArrayOutput) ToLiveEventInputTrackSelectionA
 
 func (o LiveEventInputTrackSelectionArrayOutput) ToLiveEventInputTrackSelectionArrayOutputWithContext(ctx context.Context) LiveEventInputTrackSelectionArrayOutput {
 	return o
+}
+
+func (o LiveEventInputTrackSelectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventInputTrackSelection] {
+	return pulumix.Output[[]LiveEventInputTrackSelection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventInputTrackSelectionArrayOutput) Index(i pulumi.IntInput) LiveEventInputTrackSelectionOutput {
@@ -1513,6 +1772,12 @@ func (o LiveEventInputTrackSelectionResponseOutput) ToLiveEventInputTrackSelecti
 	return o
 }
 
+func (o LiveEventInputTrackSelectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputTrackSelectionResponse] {
+	return pulumix.Output[LiveEventInputTrackSelectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Comparing operation.
 func (o LiveEventInputTrackSelectionResponseOutput) Operation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LiveEventInputTrackSelectionResponse) *string { return v.Operation }).(pulumi.StringPtrOutput)
@@ -1540,6 +1805,12 @@ func (o LiveEventInputTrackSelectionResponseArrayOutput) ToLiveEventInputTrackSe
 
 func (o LiveEventInputTrackSelectionResponseArrayOutput) ToLiveEventInputTrackSelectionResponseArrayOutputWithContext(ctx context.Context) LiveEventInputTrackSelectionResponseArrayOutput {
 	return o
+}
+
+func (o LiveEventInputTrackSelectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventInputTrackSelectionResponse] {
+	return pulumix.Output[[]LiveEventInputTrackSelectionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventInputTrackSelectionResponseArrayOutput) Index(i pulumi.IntInput) LiveEventInputTrackSelectionResponseOutput {
@@ -1583,6 +1854,12 @@ func (i LiveEventOutputTranscriptionTrackArgs) ToLiveEventOutputTranscriptionTra
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventOutputTranscriptionTrackOutput)
 }
 
+func (i LiveEventOutputTranscriptionTrackArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventOutputTranscriptionTrack] {
+	return pulumix.Output[LiveEventOutputTranscriptionTrack]{
+		OutputState: i.ToLiveEventOutputTranscriptionTrackOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LiveEventOutputTranscriptionTrackArgs) ToLiveEventOutputTranscriptionTrackPtrOutput() LiveEventOutputTranscriptionTrackPtrOutput {
 	return i.ToLiveEventOutputTranscriptionTrackPtrOutputWithContext(context.Background())
 }
@@ -1624,6 +1901,12 @@ func (i *liveEventOutputTranscriptionTrackPtrType) ToLiveEventOutputTranscriptio
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventOutputTranscriptionTrackPtrOutput)
 }
 
+func (i *liveEventOutputTranscriptionTrackPtrType) ToOutput(ctx context.Context) pulumix.Output[*LiveEventOutputTranscriptionTrack] {
+	return pulumix.Output[*LiveEventOutputTranscriptionTrack]{
+		OutputState: i.ToLiveEventOutputTranscriptionTrackPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a transcription track in the output of a Live Event, generated using speech-to-text transcription.
 type LiveEventOutputTranscriptionTrackOutput struct{ *pulumi.OutputState }
 
@@ -1649,6 +1932,12 @@ func (o LiveEventOutputTranscriptionTrackOutput) ToLiveEventOutputTranscriptionT
 	}).(LiveEventOutputTranscriptionTrackPtrOutput)
 }
 
+func (o LiveEventOutputTranscriptionTrackOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventOutputTranscriptionTrack] {
+	return pulumix.Output[LiveEventOutputTranscriptionTrack]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The output track name.
 func (o LiveEventOutputTranscriptionTrackOutput) TrackName() pulumi.StringOutput {
 	return o.ApplyT(func(v LiveEventOutputTranscriptionTrack) string { return v.TrackName }).(pulumi.StringOutput)
@@ -1666,6 +1955,12 @@ func (o LiveEventOutputTranscriptionTrackPtrOutput) ToLiveEventOutputTranscripti
 
 func (o LiveEventOutputTranscriptionTrackPtrOutput) ToLiveEventOutputTranscriptionTrackPtrOutputWithContext(ctx context.Context) LiveEventOutputTranscriptionTrackPtrOutput {
 	return o
+}
+
+func (o LiveEventOutputTranscriptionTrackPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventOutputTranscriptionTrack] {
+	return pulumix.Output[*LiveEventOutputTranscriptionTrack]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventOutputTranscriptionTrackPtrOutput) Elem() LiveEventOutputTranscriptionTrackOutput {
@@ -1709,6 +2004,12 @@ func (o LiveEventOutputTranscriptionTrackResponseOutput) ToLiveEventOutputTransc
 	return o
 }
 
+func (o LiveEventOutputTranscriptionTrackResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventOutputTranscriptionTrackResponse] {
+	return pulumix.Output[LiveEventOutputTranscriptionTrackResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The output track name.
 func (o LiveEventOutputTranscriptionTrackResponseOutput) TrackName() pulumi.StringOutput {
 	return o.ApplyT(func(v LiveEventOutputTranscriptionTrackResponse) string { return v.TrackName }).(pulumi.StringOutput)
@@ -1726,6 +2027,12 @@ func (o LiveEventOutputTranscriptionTrackResponsePtrOutput) ToLiveEventOutputTra
 
 func (o LiveEventOutputTranscriptionTrackResponsePtrOutput) ToLiveEventOutputTranscriptionTrackResponsePtrOutputWithContext(ctx context.Context) LiveEventOutputTranscriptionTrackResponsePtrOutput {
 	return o
+}
+
+func (o LiveEventOutputTranscriptionTrackResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventOutputTranscriptionTrackResponse] {
+	return pulumix.Output[*LiveEventOutputTranscriptionTrackResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventOutputTranscriptionTrackResponsePtrOutput) Elem() LiveEventOutputTranscriptionTrackResponseOutput {
@@ -1799,6 +2106,12 @@ func (i LiveEventPreviewArgs) ToLiveEventPreviewOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventPreviewOutput)
 }
 
+func (i LiveEventPreviewArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventPreview] {
+	return pulumix.Output[LiveEventPreview]{
+		OutputState: i.ToLiveEventPreviewOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LiveEventPreviewArgs) ToLiveEventPreviewPtrOutput() LiveEventPreviewPtrOutput {
 	return i.ToLiveEventPreviewPtrOutputWithContext(context.Background())
 }
@@ -1840,6 +2153,12 @@ func (i *liveEventPreviewPtrType) ToLiveEventPreviewPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventPreviewPtrOutput)
 }
 
+func (i *liveEventPreviewPtrType) ToOutput(ctx context.Context) pulumix.Output[*LiveEventPreview] {
+	return pulumix.Output[*LiveEventPreview]{
+		OutputState: i.ToLiveEventPreviewPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Live Event preview.
 type LiveEventPreviewOutput struct{ *pulumi.OutputState }
 
@@ -1863,6 +2182,12 @@ func (o LiveEventPreviewOutput) ToLiveEventPreviewPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiveEventPreview) *LiveEventPreview {
 		return &v
 	}).(LiveEventPreviewPtrOutput)
+}
+
+func (o LiveEventPreviewOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventPreview] {
+	return pulumix.Output[LiveEventPreview]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access control for LiveEvent preview.
@@ -1902,6 +2227,12 @@ func (o LiveEventPreviewPtrOutput) ToLiveEventPreviewPtrOutput() LiveEventPrevie
 
 func (o LiveEventPreviewPtrOutput) ToLiveEventPreviewPtrOutputWithContext(ctx context.Context) LiveEventPreviewPtrOutput {
 	return o
+}
+
+func (o LiveEventPreviewPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventPreview] {
+	return pulumix.Output[*LiveEventPreview]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventPreviewPtrOutput) Elem() LiveEventPreviewOutput {
@@ -1999,6 +2330,12 @@ func (i LiveEventPreviewAccessControlArgs) ToLiveEventPreviewAccessControlOutput
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventPreviewAccessControlOutput)
 }
 
+func (i LiveEventPreviewAccessControlArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventPreviewAccessControl] {
+	return pulumix.Output[LiveEventPreviewAccessControl]{
+		OutputState: i.ToLiveEventPreviewAccessControlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LiveEventPreviewAccessControlArgs) ToLiveEventPreviewAccessControlPtrOutput() LiveEventPreviewAccessControlPtrOutput {
 	return i.ToLiveEventPreviewAccessControlPtrOutputWithContext(context.Background())
 }
@@ -2040,6 +2377,12 @@ func (i *liveEventPreviewAccessControlPtrType) ToLiveEventPreviewAccessControlPt
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventPreviewAccessControlPtrOutput)
 }
 
+func (i *liveEventPreviewAccessControlPtrType) ToOutput(ctx context.Context) pulumix.Output[*LiveEventPreviewAccessControl] {
+	return pulumix.Output[*LiveEventPreviewAccessControl]{
+		OutputState: i.ToLiveEventPreviewAccessControlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The IP access control for Live Event preview.
 type LiveEventPreviewAccessControlOutput struct{ *pulumi.OutputState }
 
@@ -2065,6 +2408,12 @@ func (o LiveEventPreviewAccessControlOutput) ToLiveEventPreviewAccessControlPtrO
 	}).(LiveEventPreviewAccessControlPtrOutput)
 }
 
+func (o LiveEventPreviewAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventPreviewAccessControl] {
+	return pulumix.Output[LiveEventPreviewAccessControl]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP access control properties.
 func (o LiveEventPreviewAccessControlOutput) Ip() IPAccessControlPtrOutput {
 	return o.ApplyT(func(v LiveEventPreviewAccessControl) *IPAccessControl { return v.Ip }).(IPAccessControlPtrOutput)
@@ -2082,6 +2431,12 @@ func (o LiveEventPreviewAccessControlPtrOutput) ToLiveEventPreviewAccessControlP
 
 func (o LiveEventPreviewAccessControlPtrOutput) ToLiveEventPreviewAccessControlPtrOutputWithContext(ctx context.Context) LiveEventPreviewAccessControlPtrOutput {
 	return o
+}
+
+func (o LiveEventPreviewAccessControlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventPreviewAccessControl] {
+	return pulumix.Output[*LiveEventPreviewAccessControl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventPreviewAccessControlPtrOutput) Elem() LiveEventPreviewAccessControlOutput {
@@ -2125,6 +2480,12 @@ func (o LiveEventPreviewAccessControlResponseOutput) ToLiveEventPreviewAccessCon
 	return o
 }
 
+func (o LiveEventPreviewAccessControlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventPreviewAccessControlResponse] {
+	return pulumix.Output[LiveEventPreviewAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP access control properties.
 func (o LiveEventPreviewAccessControlResponseOutput) Ip() IPAccessControlResponsePtrOutput {
 	return o.ApplyT(func(v LiveEventPreviewAccessControlResponse) *IPAccessControlResponse { return v.Ip }).(IPAccessControlResponsePtrOutput)
@@ -2142,6 +2503,12 @@ func (o LiveEventPreviewAccessControlResponsePtrOutput) ToLiveEventPreviewAccess
 
 func (o LiveEventPreviewAccessControlResponsePtrOutput) ToLiveEventPreviewAccessControlResponsePtrOutputWithContext(ctx context.Context) LiveEventPreviewAccessControlResponsePtrOutput {
 	return o
+}
+
+func (o LiveEventPreviewAccessControlResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventPreviewAccessControlResponse] {
+	return pulumix.Output[*LiveEventPreviewAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventPreviewAccessControlResponsePtrOutput) Elem() LiveEventPreviewAccessControlResponseOutput {
@@ -2193,6 +2560,12 @@ func (o LiveEventPreviewResponseOutput) ToLiveEventPreviewResponseOutputWithCont
 	return o
 }
 
+func (o LiveEventPreviewResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventPreviewResponse] {
+	return pulumix.Output[LiveEventPreviewResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The access control for LiveEvent preview.
 func (o LiveEventPreviewResponseOutput) AccessControl() LiveEventPreviewAccessControlResponsePtrOutput {
 	return o.ApplyT(func(v LiveEventPreviewResponse) *LiveEventPreviewAccessControlResponse { return v.AccessControl }).(LiveEventPreviewAccessControlResponsePtrOutput)
@@ -2230,6 +2603,12 @@ func (o LiveEventPreviewResponsePtrOutput) ToLiveEventPreviewResponsePtrOutput()
 
 func (o LiveEventPreviewResponsePtrOutput) ToLiveEventPreviewResponsePtrOutputWithContext(ctx context.Context) LiveEventPreviewResponsePtrOutput {
 	return o
+}
+
+func (o LiveEventPreviewResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventPreviewResponse] {
+	return pulumix.Output[*LiveEventPreviewResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventPreviewResponsePtrOutput) Elem() LiveEventPreviewResponseOutput {
@@ -2335,6 +2714,12 @@ func (i LiveEventTranscriptionArgs) ToLiveEventTranscriptionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventTranscriptionOutput)
 }
 
+func (i LiveEventTranscriptionArgs) ToOutput(ctx context.Context) pulumix.Output[LiveEventTranscription] {
+	return pulumix.Output[LiveEventTranscription]{
+		OutputState: i.ToLiveEventTranscriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LiveEventTranscriptionArrayInput is an input type that accepts LiveEventTranscriptionArray and LiveEventTranscriptionArrayOutput values.
 // You can construct a concrete instance of `LiveEventTranscriptionArrayInput` via:
 //
@@ -2360,6 +2745,12 @@ func (i LiveEventTranscriptionArray) ToLiveEventTranscriptionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventTranscriptionArrayOutput)
 }
 
+func (i LiveEventTranscriptionArray) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventTranscription] {
+	return pulumix.Output[[]LiveEventTranscription]{
+		OutputState: i.ToLiveEventTranscriptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the transcription tracks in the output of a Live Event, generated using speech-to-text transcription.
 type LiveEventTranscriptionOutput struct{ *pulumi.OutputState }
 
@@ -2373,6 +2764,12 @@ func (o LiveEventTranscriptionOutput) ToLiveEventTranscriptionOutput() LiveEvent
 
 func (o LiveEventTranscriptionOutput) ToLiveEventTranscriptionOutputWithContext(ctx context.Context) LiveEventTranscriptionOutput {
 	return o
+}
+
+func (o LiveEventTranscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventTranscription] {
+	return pulumix.Output[LiveEventTranscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Provides a mechanism to select the audio track in the input live feed, to which speech-to-text transcription is applied.
@@ -2402,6 +2799,12 @@ func (o LiveEventTranscriptionArrayOutput) ToLiveEventTranscriptionArrayOutput()
 
 func (o LiveEventTranscriptionArrayOutput) ToLiveEventTranscriptionArrayOutputWithContext(ctx context.Context) LiveEventTranscriptionArrayOutput {
 	return o
+}
+
+func (o LiveEventTranscriptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventTranscription] {
+	return pulumix.Output[[]LiveEventTranscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventTranscriptionArrayOutput) Index(i pulumi.IntInput) LiveEventTranscriptionOutput {
@@ -2435,6 +2838,12 @@ func (o LiveEventTranscriptionResponseOutput) ToLiveEventTranscriptionResponseOu
 	return o
 }
 
+func (o LiveEventTranscriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventTranscriptionResponse] {
+	return pulumix.Output[LiveEventTranscriptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Provides a mechanism to select the audio track in the input live feed, to which speech-to-text transcription is applied.
 func (o LiveEventTranscriptionResponseOutput) InputTrackSelection() LiveEventInputTrackSelectionResponseArrayOutput {
 	return o.ApplyT(func(v LiveEventTranscriptionResponse) []LiveEventInputTrackSelectionResponse {
@@ -2466,6 +2875,12 @@ func (o LiveEventTranscriptionResponseArrayOutput) ToLiveEventTranscriptionRespo
 
 func (o LiveEventTranscriptionResponseArrayOutput) ToLiveEventTranscriptionResponseArrayOutputWithContext(ctx context.Context) LiveEventTranscriptionResponseArrayOutput {
 	return o
+}
+
+func (o LiveEventTranscriptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LiveEventTranscriptionResponse] {
+	return pulumix.Output[[]LiveEventTranscriptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiveEventTranscriptionResponseArrayOutput) Index(i pulumi.IntInput) LiveEventTranscriptionResponseOutput {

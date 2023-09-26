@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The scheduled query rule resource.
@@ -233,6 +234,12 @@ func (i *ScheduledQueryRule) ToScheduledQueryRuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRuleOutput)
 }
 
+func (i *ScheduledQueryRule) ToOutput(ctx context.Context) pulumix.Output[*ScheduledQueryRule] {
+	return pulumix.Output[*ScheduledQueryRule]{
+		OutputState: i.ToScheduledQueryRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScheduledQueryRuleOutput struct{ *pulumi.OutputState }
 
 func (ScheduledQueryRuleOutput) ElementType() reflect.Type {
@@ -245,6 +252,12 @@ func (o ScheduledQueryRuleOutput) ToScheduledQueryRuleOutput() ScheduledQueryRul
 
 func (o ScheduledQueryRuleOutput) ToScheduledQueryRuleOutputWithContext(ctx context.Context) ScheduledQueryRuleOutput {
 	return o
+}
+
+func (o ScheduledQueryRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduledQueryRule] {
+	return pulumix.Output[*ScheduledQueryRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScheduledQueryRuleOutput) Actions() ActionResponseArrayOutput {

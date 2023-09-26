@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a BotService Channel registration specified by the parameters.
@@ -95,6 +96,12 @@ func (o LookupChannelResultOutput) ToLookupChannelResultOutput() LookupChannelRe
 
 func (o LookupChannelResultOutput) ToLookupChannelResultOutputWithContext(ctx context.Context) LookupChannelResultOutput {
 	return o
+}
+
+func (o LookupChannelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupChannelResult] {
+	return pulumix.Output[LookupChannelResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Entity Tag.

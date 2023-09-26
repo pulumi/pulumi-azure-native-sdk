@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the shared private link resource managed by the search service in the given resource group.
@@ -82,6 +83,12 @@ func (o LookupSharedPrivateLinkResourceResultOutput) ToLookupSharedPrivateLinkRe
 
 func (o LookupSharedPrivateLinkResourceResultOutput) ToLookupSharedPrivateLinkResourceResultOutputWithContext(ctx context.Context) LookupSharedPrivateLinkResourceResultOutput {
 	return o
+}
+
+func (o LookupSharedPrivateLinkResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSharedPrivateLinkResourceResult] {
+	return pulumix.Output[LookupSharedPrivateLinkResourceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

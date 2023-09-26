@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Amazon Web Services S3 data connector.
@@ -243,6 +244,12 @@ func (i *AwsS3DataConnector) ToAwsS3DataConnectorOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AwsS3DataConnectorOutput)
 }
 
+func (i *AwsS3DataConnector) ToOutput(ctx context.Context) pulumix.Output[*AwsS3DataConnector] {
+	return pulumix.Output[*AwsS3DataConnector]{
+		OutputState: i.ToAwsS3DataConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AwsS3DataConnectorOutput struct{ *pulumi.OutputState }
 
 func (AwsS3DataConnectorOutput) ElementType() reflect.Type {
@@ -255,6 +262,12 @@ func (o AwsS3DataConnectorOutput) ToAwsS3DataConnectorOutput() AwsS3DataConnecto
 
 func (o AwsS3DataConnectorOutput) ToAwsS3DataConnectorOutputWithContext(ctx context.Context) AwsS3DataConnectorOutput {
 	return o
+}
+
+func (o AwsS3DataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsS3DataConnector] {
+	return pulumix.Output[*AwsS3DataConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available data types for the connector.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an action group.
@@ -119,6 +120,12 @@ func (o LookupActionGroupResultOutput) ToLookupActionGroupResultOutput() LookupA
 
 func (o LookupActionGroupResultOutput) ToLookupActionGroupResultOutputWithContext(ctx context.Context) LookupActionGroupResultOutput {
 	return o
+}
+
+func (o LookupActionGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupActionGroupResult] {
+	return pulumix.Output[LookupActionGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of ARM role receivers that are part of this action group. Roles are Azure RBAC roles and only built-in roles are supported.

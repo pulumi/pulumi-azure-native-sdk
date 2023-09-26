@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of a CA certificate.
@@ -92,6 +93,12 @@ func (o LookupCaCertificateResultOutput) ToLookupCaCertificateResultOutput() Loo
 
 func (o LookupCaCertificateResultOutput) ToLookupCaCertificateResultOutputWithContext(ctx context.Context) LookupCaCertificateResultOutput {
 	return o
+}
+
+func (o LookupCaCertificateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCaCertificateResult] {
+	return pulumix.Output[LookupCaCertificateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description for the CA Certificate resource.

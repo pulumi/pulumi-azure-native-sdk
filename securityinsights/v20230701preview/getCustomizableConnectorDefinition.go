@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a data connector definition.
@@ -95,6 +96,12 @@ func (o LookupCustomizableConnectorDefinitionResultOutput) ToLookupCustomizableC
 
 func (o LookupCustomizableConnectorDefinitionResultOutput) ToLookupCustomizableConnectorDefinitionResultOutputWithContext(ctx context.Context) LookupCustomizableConnectorDefinitionResultOutput {
 	return o
+}
+
+func (o LookupCustomizableConnectorDefinitionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomizableConnectorDefinitionResult] {
+	return pulumix.Output[LookupCustomizableConnectorDefinitionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The UiConfig for 'Customizable' connector definition kind.

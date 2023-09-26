@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the properties of a managed Cassandra cluster.
@@ -84,6 +85,12 @@ func (o LookupCassandraClusterResultOutput) ToLookupCassandraClusterResultOutput
 
 func (o LookupCassandraClusterResultOutput) ToLookupCassandraClusterResultOutputWithContext(ctx context.Context) LookupCassandraClusterResultOutput {
 	return o
+}
+
+func (o LookupCassandraClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCassandraClusterResult] {
+	return pulumix.Output[LookupCassandraClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The unique resource identifier of the ARM resource.

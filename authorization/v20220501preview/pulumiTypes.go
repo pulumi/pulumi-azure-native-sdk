@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i PermissionArgs) ToPermissionOutputWithContext(ctx context.Context) Permi
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionOutput)
 }
 
+func (i PermissionArgs) ToOutput(ctx context.Context) pulumix.Output[Permission] {
+	return pulumix.Output[Permission]{
+		OutputState: i.ToPermissionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PermissionArrayInput is an input type that accepts PermissionArray and PermissionArrayOutput values.
 // You can construct a concrete instance of `PermissionArrayInput` via:
 //
@@ -85,6 +92,12 @@ func (i PermissionArray) ToPermissionArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionArrayOutput)
 }
 
+func (i PermissionArray) ToOutput(ctx context.Context) pulumix.Output[[]Permission] {
+	return pulumix.Output[[]Permission]{
+		OutputState: i.ToPermissionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Role definition permissions.
 type PermissionOutput struct{ *pulumi.OutputState }
 
@@ -98,6 +111,12 @@ func (o PermissionOutput) ToPermissionOutput() PermissionOutput {
 
 func (o PermissionOutput) ToPermissionOutputWithContext(ctx context.Context) PermissionOutput {
 	return o
+}
+
+func (o PermissionOutput) ToOutput(ctx context.Context) pulumix.Output[Permission] {
+	return pulumix.Output[Permission]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed actions.
@@ -132,6 +151,12 @@ func (o PermissionArrayOutput) ToPermissionArrayOutput() PermissionArrayOutput {
 
 func (o PermissionArrayOutput) ToPermissionArrayOutputWithContext(ctx context.Context) PermissionArrayOutput {
 	return o
+}
+
+func (o PermissionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Permission] {
+	return pulumix.Output[[]Permission]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PermissionArrayOutput) Index(i pulumi.IntInput) PermissionOutput {
@@ -169,6 +194,12 @@ func (o PermissionResponseOutput) ToPermissionResponseOutput() PermissionRespons
 
 func (o PermissionResponseOutput) ToPermissionResponseOutputWithContext(ctx context.Context) PermissionResponseOutput {
 	return o
+}
+
+func (o PermissionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PermissionResponse] {
+	return pulumix.Output[PermissionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed actions.
@@ -213,6 +244,12 @@ func (o PermissionResponseArrayOutput) ToPermissionResponseArrayOutput() Permiss
 
 func (o PermissionResponseArrayOutput) ToPermissionResponseArrayOutputWithContext(ctx context.Context) PermissionResponseArrayOutput {
 	return o
+}
+
+func (o PermissionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PermissionResponse] {
+	return pulumix.Output[[]PermissionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PermissionResponseArrayOutput) Index(i pulumi.IntInput) PermissionResponseOutput {

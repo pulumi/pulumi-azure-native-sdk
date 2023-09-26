@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing an event hub connection.
@@ -168,6 +169,12 @@ func (i *EventHubConnection) ToEventHubConnectionOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubConnectionOutput)
 }
 
+func (i *EventHubConnection) ToOutput(ctx context.Context) pulumix.Output[*EventHubConnection] {
+	return pulumix.Output[*EventHubConnection]{
+		OutputState: i.ToEventHubConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EventHubConnectionOutput struct{ *pulumi.OutputState }
 
 func (EventHubConnectionOutput) ElementType() reflect.Type {
@@ -180,6 +187,12 @@ func (o EventHubConnectionOutput) ToEventHubConnectionOutput() EventHubConnectio
 
 func (o EventHubConnectionOutput) ToEventHubConnectionOutputWithContext(ctx context.Context) EventHubConnectionOutput {
 	return o
+}
+
+func (o EventHubConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*EventHubConnection] {
+	return pulumix.Output[*EventHubConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The event hub consumer group.

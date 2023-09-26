@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves details of this Network Packet Broker.
@@ -94,6 +95,12 @@ func (o LookupNetworkPacketBrokerResultOutput) ToLookupNetworkPacketBrokerResult
 
 func (o LookupNetworkPacketBrokerResultOutput) ToLookupNetworkPacketBrokerResultOutputWithContext(ctx context.Context) LookupNetworkPacketBrokerResultOutput {
 	return o
+}
+
+func (o LookupNetworkPacketBrokerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkPacketBrokerResult] {
+	return pulumix.Output[LookupNetworkPacketBrokerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

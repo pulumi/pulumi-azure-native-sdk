@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the Monitoring Setting and its properties.
@@ -80,6 +81,12 @@ func (o LookupMonitoringSettingResultOutput) ToLookupMonitoringSettingResultOutp
 
 func (o LookupMonitoringSettingResultOutput) ToLookupMonitoringSettingResultOutputWithContext(ctx context.Context) LookupMonitoringSettingResultOutput {
 	return o
+}
+
+func (o LookupMonitoringSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMonitoringSettingResult] {
+	return pulumix.Output[LookupMonitoringSettingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -75,6 +76,12 @@ func (i RecommendationConfigurationPropertiesArgs) ToRecommendationConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(RecommendationConfigurationPropertiesOutput)
 }
 
+func (i RecommendationConfigurationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[RecommendationConfigurationProperties] {
+	return pulumix.Output[RecommendationConfigurationProperties]{
+		OutputState: i.ToRecommendationConfigurationPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RecommendationConfigurationPropertiesArrayInput is an input type that accepts RecommendationConfigurationPropertiesArray and RecommendationConfigurationPropertiesArrayOutput values.
 // You can construct a concrete instance of `RecommendationConfigurationPropertiesArrayInput` via:
 //
@@ -100,6 +107,12 @@ func (i RecommendationConfigurationPropertiesArray) ToRecommendationConfiguratio
 	return pulumi.ToOutputWithContext(ctx, i).(RecommendationConfigurationPropertiesArrayOutput)
 }
 
+func (i RecommendationConfigurationPropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]RecommendationConfigurationProperties] {
+	return pulumix.Output[[]RecommendationConfigurationProperties]{
+		OutputState: i.ToRecommendationConfigurationPropertiesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Recommendation configuration
 type RecommendationConfigurationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -113,6 +126,12 @@ func (o RecommendationConfigurationPropertiesOutput) ToRecommendationConfigurati
 
 func (o RecommendationConfigurationPropertiesOutput) ToRecommendationConfigurationPropertiesOutputWithContext(ctx context.Context) RecommendationConfigurationPropertiesOutput {
 	return o
+}
+
+func (o RecommendationConfigurationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[RecommendationConfigurationProperties] {
+	return pulumix.Output[RecommendationConfigurationProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The recommendation type.
@@ -137,6 +156,12 @@ func (o RecommendationConfigurationPropertiesArrayOutput) ToRecommendationConfig
 
 func (o RecommendationConfigurationPropertiesArrayOutput) ToRecommendationConfigurationPropertiesArrayOutputWithContext(ctx context.Context) RecommendationConfigurationPropertiesArrayOutput {
 	return o
+}
+
+func (o RecommendationConfigurationPropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RecommendationConfigurationProperties] {
+	return pulumix.Output[[]RecommendationConfigurationProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecommendationConfigurationPropertiesArrayOutput) Index(i pulumi.IntInput) RecommendationConfigurationPropertiesOutput {
@@ -181,6 +206,12 @@ func (o RecommendationConfigurationPropertiesResponseOutput) ToRecommendationCon
 	return o
 }
 
+func (o RecommendationConfigurationPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RecommendationConfigurationPropertiesResponse] {
+	return pulumix.Output[RecommendationConfigurationPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RecommendationConfigurationPropertiesResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RecommendationConfigurationPropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -207,6 +238,12 @@ func (o RecommendationConfigurationPropertiesResponseArrayOutput) ToRecommendati
 
 func (o RecommendationConfigurationPropertiesResponseArrayOutput) ToRecommendationConfigurationPropertiesResponseArrayOutputWithContext(ctx context.Context) RecommendationConfigurationPropertiesResponseArrayOutput {
 	return o
+}
+
+func (o RecommendationConfigurationPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RecommendationConfigurationPropertiesResponse] {
+	return pulumix.Output[[]RecommendationConfigurationPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecommendationConfigurationPropertiesResponseArrayOutput) Index(i pulumi.IntInput) RecommendationConfigurationPropertiesResponseOutput {
@@ -254,6 +291,12 @@ func (i UserDefinedResourcesPropertiesArgs) ToUserDefinedResourcesPropertiesOutp
 	return pulumi.ToOutputWithContext(ctx, i).(UserDefinedResourcesPropertiesOutput)
 }
 
+func (i UserDefinedResourcesPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[UserDefinedResourcesProperties] {
+	return pulumix.Output[UserDefinedResourcesProperties]{
+		OutputState: i.ToUserDefinedResourcesPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UserDefinedResourcesPropertiesArgs) ToUserDefinedResourcesPropertiesPtrOutput() UserDefinedResourcesPropertiesPtrOutput {
 	return i.ToUserDefinedResourcesPropertiesPtrOutputWithContext(context.Background())
 }
@@ -295,6 +338,12 @@ func (i *userDefinedResourcesPropertiesPtrType) ToUserDefinedResourcesProperties
 	return pulumi.ToOutputWithContext(ctx, i).(UserDefinedResourcesPropertiesPtrOutput)
 }
 
+func (i *userDefinedResourcesPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserDefinedResourcesProperties] {
+	return pulumix.Output[*UserDefinedResourcesProperties]{
+		OutputState: i.ToUserDefinedResourcesPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties of the solution's user defined resources.
 type UserDefinedResourcesPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -320,6 +369,12 @@ func (o UserDefinedResourcesPropertiesOutput) ToUserDefinedResourcesPropertiesPt
 	}).(UserDefinedResourcesPropertiesPtrOutput)
 }
 
+func (o UserDefinedResourcesPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[UserDefinedResourcesProperties] {
+	return pulumix.Output[UserDefinedResourcesProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Azure Resource Graph query which represents the security solution's user defined resources. Required to start with "where type != "Microsoft.Devices/IotHubs""
 func (o UserDefinedResourcesPropertiesOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v UserDefinedResourcesProperties) string { return v.Query }).(pulumi.StringOutput)
@@ -342,6 +397,12 @@ func (o UserDefinedResourcesPropertiesPtrOutput) ToUserDefinedResourcesPropertie
 
 func (o UserDefinedResourcesPropertiesPtrOutput) ToUserDefinedResourcesPropertiesPtrOutputWithContext(ctx context.Context) UserDefinedResourcesPropertiesPtrOutput {
 	return o
+}
+
+func (o UserDefinedResourcesPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserDefinedResourcesProperties] {
+	return pulumix.Output[*UserDefinedResourcesProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserDefinedResourcesPropertiesPtrOutput) Elem() UserDefinedResourcesPropertiesOutput {
@@ -397,6 +458,12 @@ func (o UserDefinedResourcesPropertiesResponseOutput) ToUserDefinedResourcesProp
 	return o
 }
 
+func (o UserDefinedResourcesPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserDefinedResourcesPropertiesResponse] {
+	return pulumix.Output[UserDefinedResourcesPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Azure Resource Graph query which represents the security solution's user defined resources. Required to start with "where type != "Microsoft.Devices/IotHubs""
 func (o UserDefinedResourcesPropertiesResponseOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v UserDefinedResourcesPropertiesResponse) string { return v.Query }).(pulumi.StringOutput)
@@ -419,6 +486,12 @@ func (o UserDefinedResourcesPropertiesResponsePtrOutput) ToUserDefinedResourcesP
 
 func (o UserDefinedResourcesPropertiesResponsePtrOutput) ToUserDefinedResourcesPropertiesResponsePtrOutputWithContext(ctx context.Context) UserDefinedResourcesPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o UserDefinedResourcesPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserDefinedResourcesPropertiesResponse] {
+	return pulumix.Output[*UserDefinedResourcesPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserDefinedResourcesPropertiesResponsePtrOutput) Elem() UserDefinedResourcesPropertiesResponseOutput {

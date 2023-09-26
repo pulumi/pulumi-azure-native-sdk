@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Policy fragment contract details.
@@ -150,6 +151,12 @@ func (i *WorkspacePolicyFragment) ToWorkspacePolicyFragmentOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspacePolicyFragmentOutput)
 }
 
+func (i *WorkspacePolicyFragment) ToOutput(ctx context.Context) pulumix.Output[*WorkspacePolicyFragment] {
+	return pulumix.Output[*WorkspacePolicyFragment]{
+		OutputState: i.ToWorkspacePolicyFragmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspacePolicyFragmentOutput struct{ *pulumi.OutputState }
 
 func (WorkspacePolicyFragmentOutput) ElementType() reflect.Type {
@@ -162,6 +169,12 @@ func (o WorkspacePolicyFragmentOutput) ToWorkspacePolicyFragmentOutput() Workspa
 
 func (o WorkspacePolicyFragmentOutput) ToWorkspacePolicyFragmentOutputWithContext(ctx context.Context) WorkspacePolicyFragmentOutput {
 	return o
+}
+
+func (o WorkspacePolicyFragmentOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspacePolicyFragment] {
+	return pulumix.Output[*WorkspacePolicyFragment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Policy fragment description.

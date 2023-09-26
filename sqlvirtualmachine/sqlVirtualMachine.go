@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A SQL virtual machine.
@@ -233,6 +234,12 @@ func (i *SqlVirtualMachine) ToSqlVirtualMachineOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SqlVirtualMachineOutput)
 }
 
+func (i *SqlVirtualMachine) ToOutput(ctx context.Context) pulumix.Output[*SqlVirtualMachine] {
+	return pulumix.Output[*SqlVirtualMachine]{
+		OutputState: i.ToSqlVirtualMachineOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlVirtualMachineOutput struct{ *pulumi.OutputState }
 
 func (SqlVirtualMachineOutput) ElementType() reflect.Type {
@@ -245,6 +252,12 @@ func (o SqlVirtualMachineOutput) ToSqlVirtualMachineOutput() SqlVirtualMachineOu
 
 func (o SqlVirtualMachineOutput) ToSqlVirtualMachineOutputWithContext(ctx context.Context) SqlVirtualMachineOutput {
 	return o
+}
+
+func (o SqlVirtualMachineOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlVirtualMachine] {
+	return pulumix.Output[*SqlVirtualMachine]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Assessment Settings.

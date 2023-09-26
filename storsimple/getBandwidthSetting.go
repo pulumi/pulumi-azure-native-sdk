@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the properties of the specified bandwidth setting name.
@@ -87,6 +88,12 @@ func (o LookupBandwidthSettingResultOutput) ToLookupBandwidthSettingResultOutput
 
 func (o LookupBandwidthSettingResultOutput) ToLookupBandwidthSettingResultOutputWithContext(ctx context.Context) LookupBandwidthSettingResultOutput {
 	return o
+}
+
+func (o LookupBandwidthSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBandwidthSettingResult] {
+	return pulumix.Output[LookupBandwidthSettingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The path ID that uniquely identifies the object.

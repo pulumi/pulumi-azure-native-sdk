@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
@@ -255,6 +256,12 @@ func (i *MaintenanceConfiguration) ToMaintenanceConfigurationOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceConfigurationOutput)
 }
 
+func (i *MaintenanceConfiguration) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceConfiguration] {
+	return pulumix.Output[*MaintenanceConfiguration]{
+		OutputState: i.ToMaintenanceConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MaintenanceConfigurationOutput struct{ *pulumi.OutputState }
 
 func (MaintenanceConfigurationOutput) ElementType() reflect.Type {
@@ -267,6 +274,12 @@ func (o MaintenanceConfigurationOutput) ToMaintenanceConfigurationOutput() Maint
 
 func (o MaintenanceConfigurationOutput) ToMaintenanceConfigurationOutputWithContext(ctx context.Context) MaintenanceConfigurationOutput {
 	return o
+}
+
+func (o MaintenanceConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceConfiguration] {
+	return pulumix.Output[*MaintenanceConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.

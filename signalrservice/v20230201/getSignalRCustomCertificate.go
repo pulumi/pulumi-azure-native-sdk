@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a custom certificate.
@@ -90,6 +91,12 @@ func (o LookupSignalRCustomCertificateResultOutput) ToLookupSignalRCustomCertifi
 
 func (o LookupSignalRCustomCertificateResultOutput) ToLookupSignalRCustomCertificateResultOutputWithContext(ctx context.Context) LookupSignalRCustomCertificateResultOutput {
 	return o
+}
+
+func (o LookupSignalRCustomCertificateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSignalRCustomCertificateResult] {
+	return pulumix.Output[LookupSignalRCustomCertificateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

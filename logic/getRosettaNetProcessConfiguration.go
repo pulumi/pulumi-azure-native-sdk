@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an integration account RosettaNetProcessConfiguration.
@@ -105,6 +106,12 @@ func (o LookupRosettaNetProcessConfigurationResultOutput) ToLookupRosettaNetProc
 
 func (o LookupRosettaNetProcessConfigurationResultOutput) ToLookupRosettaNetProcessConfigurationResultOutputWithContext(ctx context.Context) LookupRosettaNetProcessConfigurationResultOutput {
 	return o
+}
+
+func (o LookupRosettaNetProcessConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRosettaNetProcessConfigurationResult] {
+	return pulumix.Output[LookupRosettaNetProcessConfigurationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The RosettaNet process configuration activity settings.

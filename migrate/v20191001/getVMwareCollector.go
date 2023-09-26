@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a VMware collector.
@@ -77,6 +78,12 @@ func (o LookupVMwareCollectorResultOutput) ToLookupVMwareCollectorResultOutput()
 
 func (o LookupVMwareCollectorResultOutput) ToLookupVMwareCollectorResultOutputWithContext(ctx context.Context) LookupVMwareCollectorResultOutput {
 	return o
+}
+
+func (o LookupVMwareCollectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVMwareCollectorResult] {
+	return pulumix.Output[LookupVMwareCollectorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupVMwareCollectorResultOutput) ETag() pulumi.StringPtrOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An ADLSGen2 storage account data set.
@@ -171,6 +172,12 @@ func (i *ADLSGen2StorageAccountDataSet) ToADLSGen2StorageAccountDataSetOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ADLSGen2StorageAccountDataSetOutput)
 }
 
+func (i *ADLSGen2StorageAccountDataSet) ToOutput(ctx context.Context) pulumix.Output[*ADLSGen2StorageAccountDataSet] {
+	return pulumix.Output[*ADLSGen2StorageAccountDataSet]{
+		OutputState: i.ToADLSGen2StorageAccountDataSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ADLSGen2StorageAccountDataSetOutput struct{ *pulumi.OutputState }
 
 func (ADLSGen2StorageAccountDataSetOutput) ElementType() reflect.Type {
@@ -183,6 +190,12 @@ func (o ADLSGen2StorageAccountDataSetOutput) ToADLSGen2StorageAccountDataSetOutp
 
 func (o ADLSGen2StorageAccountDataSetOutput) ToADLSGen2StorageAccountDataSetOutputWithContext(ctx context.Context) ADLSGen2StorageAccountDataSetOutput {
 	return o
+}
+
+func (o ADLSGen2StorageAccountDataSetOutput) ToOutput(ctx context.Context) pulumix.Output[*ADLSGen2StorageAccountDataSet] {
+	return pulumix.Output[*ADLSGen2StorageAccountDataSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique id for identifying a data set resource

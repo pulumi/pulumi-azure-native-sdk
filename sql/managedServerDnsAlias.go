@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A managed server DNS alias.
@@ -143,6 +144,12 @@ func (i *ManagedServerDnsAlias) ToManagedServerDnsAliasOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServerDnsAliasOutput)
 }
 
+func (i *ManagedServerDnsAlias) ToOutput(ctx context.Context) pulumix.Output[*ManagedServerDnsAlias] {
+	return pulumix.Output[*ManagedServerDnsAlias]{
+		OutputState: i.ToManagedServerDnsAliasOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedServerDnsAliasOutput struct{ *pulumi.OutputState }
 
 func (ManagedServerDnsAliasOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o ManagedServerDnsAliasOutput) ToManagedServerDnsAliasOutput() ManagedServ
 
 func (o ManagedServerDnsAliasOutput) ToManagedServerDnsAliasOutputWithContext(ctx context.Context) ManagedServerDnsAliasOutput {
 	return o
+}
+
+func (o ManagedServerDnsAliasOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServerDnsAlias] {
+	return pulumix.Output[*ManagedServerDnsAlias]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The fully qualified DNS record for managed server alias

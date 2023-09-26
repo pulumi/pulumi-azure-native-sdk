@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List all the subscriptions in the private store context
@@ -67,6 +68,12 @@ func (o ListPrivateStoreSubscriptionsContextResultOutput) ToListPrivateStoreSubs
 
 func (o ListPrivateStoreSubscriptionsContextResultOutput) ToListPrivateStoreSubscriptionsContextResultOutputWithContext(ctx context.Context) ListPrivateStoreSubscriptionsContextResultOutput {
 	return o
+}
+
+func (o ListPrivateStoreSubscriptionsContextResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListPrivateStoreSubscriptionsContextResult] {
+	return pulumix.Output[ListPrivateStoreSubscriptionsContextResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListPrivateStoreSubscriptionsContextResultOutput) SubscriptionsIds() pulumi.StringArrayOutput {

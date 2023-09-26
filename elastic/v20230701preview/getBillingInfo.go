@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Marketplace Subscription and Organization details to which resource gets billed into.
@@ -74,6 +75,12 @@ func (o GetBillingInfoResultOutput) ToGetBillingInfoResultOutput() GetBillingInf
 
 func (o GetBillingInfoResultOutput) ToGetBillingInfoResultOutputWithContext(ctx context.Context) GetBillingInfoResultOutput {
 	return o
+}
+
+func (o GetBillingInfoResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBillingInfoResult] {
+	return pulumix.Output[GetBillingInfoResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Marketplace Subscription details

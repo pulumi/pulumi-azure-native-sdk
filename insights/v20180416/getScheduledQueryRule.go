@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an Log Search rule
@@ -119,6 +120,12 @@ func (o LookupScheduledQueryRuleResultOutput) ToLookupScheduledQueryRuleResultOu
 
 func (o LookupScheduledQueryRuleResultOutput) ToLookupScheduledQueryRuleResultOutputWithContext(ctx context.Context) LookupScheduledQueryRuleResultOutput {
 	return o
+}
+
+func (o LookupScheduledQueryRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScheduledQueryRuleResult] {
+	return pulumix.Output[LookupScheduledQueryRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Action needs to be taken on rule execution.

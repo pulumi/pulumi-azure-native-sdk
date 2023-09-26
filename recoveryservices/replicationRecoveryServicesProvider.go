@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provider details.
@@ -200,6 +201,12 @@ func (i *ReplicationRecoveryServicesProvider) ToReplicationRecoveryServicesProvi
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationRecoveryServicesProviderOutput)
 }
 
+func (i *ReplicationRecoveryServicesProvider) ToOutput(ctx context.Context) pulumix.Output[*ReplicationRecoveryServicesProvider] {
+	return pulumix.Output[*ReplicationRecoveryServicesProvider]{
+		OutputState: i.ToReplicationRecoveryServicesProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReplicationRecoveryServicesProviderOutput struct{ *pulumi.OutputState }
 
 func (ReplicationRecoveryServicesProviderOutput) ElementType() reflect.Type {
@@ -212,6 +219,12 @@ func (o ReplicationRecoveryServicesProviderOutput) ToReplicationRecoveryServices
 
 func (o ReplicationRecoveryServicesProviderOutput) ToReplicationRecoveryServicesProviderOutputWithContext(ctx context.Context) ReplicationRecoveryServicesProviderOutput {
 	return o
+}
+
+func (o ReplicationRecoveryServicesProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationRecoveryServicesProvider] {
+	return pulumix.Output[*ReplicationRecoveryServicesProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Location

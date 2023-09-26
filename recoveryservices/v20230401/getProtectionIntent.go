@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides the details of the protection intent up item. This is an asynchronous operation. To know the status of the operation,
@@ -93,6 +94,12 @@ func (o LookupProtectionIntentResultOutput) ToLookupProtectionIntentResultOutput
 
 func (o LookupProtectionIntentResultOutput) ToLookupProtectionIntentResultOutputWithContext(ctx context.Context) LookupProtectionIntentResultOutput {
 	return o
+}
+
+func (o LookupProtectionIntentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProtectionIntentResult] {
+	return pulumix.Output[LookupProtectionIntentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional ETag.

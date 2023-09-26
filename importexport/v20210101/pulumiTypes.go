@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i DeliveryPackageInformationArgs) ToDeliveryPackageInformationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPackageInformationOutput)
 }
 
+func (i DeliveryPackageInformationArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryPackageInformation] {
+	return pulumix.Output[DeliveryPackageInformation]{
+		OutputState: i.ToDeliveryPackageInformationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeliveryPackageInformationArgs) ToDeliveryPackageInformationPtrOutput() DeliveryPackageInformationPtrOutput {
 	return i.ToDeliveryPackageInformationPtrOutputWithContext(context.Background())
 }
@@ -101,6 +108,12 @@ func (i *deliveryPackageInformationPtrType) ToDeliveryPackageInformationPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPackageInformationPtrOutput)
 }
 
+func (i *deliveryPackageInformationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPackageInformation] {
+	return pulumix.Output[*DeliveryPackageInformation]{
+		OutputState: i.ToDeliveryPackageInformationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains information about the delivery package being shipped by the customer to the Microsoft data center.
 type DeliveryPackageInformationOutput struct{ *pulumi.OutputState }
 
@@ -124,6 +137,12 @@ func (o DeliveryPackageInformationOutput) ToDeliveryPackageInformationPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPackageInformation) *DeliveryPackageInformation {
 		return &v
 	}).(DeliveryPackageInformationPtrOutput)
+}
+
+func (o DeliveryPackageInformationOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPackageInformation] {
+	return pulumix.Output[DeliveryPackageInformation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the carrier that is used to ship the import or export drives.
@@ -158,6 +177,12 @@ func (o DeliveryPackageInformationPtrOutput) ToDeliveryPackageInformationPtrOutp
 
 func (o DeliveryPackageInformationPtrOutput) ToDeliveryPackageInformationPtrOutputWithContext(ctx context.Context) DeliveryPackageInformationPtrOutput {
 	return o
+}
+
+func (o DeliveryPackageInformationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPackageInformation] {
+	return pulumix.Output[*DeliveryPackageInformation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeliveryPackageInformationPtrOutput) Elem() DeliveryPackageInformationOutput {
@@ -237,6 +262,12 @@ func (o DeliveryPackageInformationResponseOutput) ToDeliveryPackageInformationRe
 	return o
 }
 
+func (o DeliveryPackageInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPackageInformationResponse] {
+	return pulumix.Output[DeliveryPackageInformationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the carrier that is used to ship the import or export drives.
 func (o DeliveryPackageInformationResponseOutput) CarrierName() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryPackageInformationResponse) string { return v.CarrierName }).(pulumi.StringOutput)
@@ -269,6 +300,12 @@ func (o DeliveryPackageInformationResponsePtrOutput) ToDeliveryPackageInformatio
 
 func (o DeliveryPackageInformationResponsePtrOutput) ToDeliveryPackageInformationResponsePtrOutputWithContext(ctx context.Context) DeliveryPackageInformationResponsePtrOutput {
 	return o
+}
+
+func (o DeliveryPackageInformationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPackageInformationResponse] {
+	return pulumix.Output[*DeliveryPackageInformationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeliveryPackageInformationResponsePtrOutput) Elem() DeliveryPackageInformationResponseOutput {
@@ -344,6 +381,12 @@ func (o DriveBitLockerKeyResponseOutput) ToDriveBitLockerKeyResponseOutputWithCo
 	return o
 }
 
+func (o DriveBitLockerKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DriveBitLockerKeyResponse] {
+	return pulumix.Output[DriveBitLockerKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // BitLocker recovery key or password
 func (o DriveBitLockerKeyResponseOutput) BitLockerKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DriveBitLockerKeyResponse) *string { return v.BitLockerKey }).(pulumi.StringPtrOutput)
@@ -366,6 +409,12 @@ func (o DriveBitLockerKeyResponseArrayOutput) ToDriveBitLockerKeyResponseArrayOu
 
 func (o DriveBitLockerKeyResponseArrayOutput) ToDriveBitLockerKeyResponseArrayOutputWithContext(ctx context.Context) DriveBitLockerKeyResponseArrayOutput {
 	return o
+}
+
+func (o DriveBitLockerKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DriveBitLockerKeyResponse] {
+	return pulumix.Output[[]DriveBitLockerKeyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DriveBitLockerKeyResponseArrayOutput) Index(i pulumi.IntInput) DriveBitLockerKeyResponseOutput {
@@ -477,6 +526,12 @@ func (i DriveStatusArgs) ToDriveStatusOutputWithContext(ctx context.Context) Dri
 	return pulumi.ToOutputWithContext(ctx, i).(DriveStatusOutput)
 }
 
+func (i DriveStatusArgs) ToOutput(ctx context.Context) pulumix.Output[DriveStatus] {
+	return pulumix.Output[DriveStatus]{
+		OutputState: i.ToDriveStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DriveStatusArrayInput is an input type that accepts DriveStatusArray and DriveStatusArrayOutput values.
 // You can construct a concrete instance of `DriveStatusArrayInput` via:
 //
@@ -502,6 +557,12 @@ func (i DriveStatusArray) ToDriveStatusArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DriveStatusArrayOutput)
 }
 
+func (i DriveStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]DriveStatus] {
+	return pulumix.Output[[]DriveStatus]{
+		OutputState: i.ToDriveStatusArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides information about the drive's status
 type DriveStatusOutput struct{ *pulumi.OutputState }
 
@@ -515,6 +576,12 @@ func (o DriveStatusOutput) ToDriveStatusOutput() DriveStatusOutput {
 
 func (o DriveStatusOutput) ToDriveStatusOutputWithContext(ctx context.Context) DriveStatusOutput {
 	return o
+}
+
+func (o DriveStatusOutput) ToOutput(ctx context.Context) pulumix.Output[DriveStatus] {
+	return pulumix.Output[DriveStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The BitLocker key used to encrypt the drive.
@@ -591,6 +658,12 @@ func (o DriveStatusArrayOutput) ToDriveStatusArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o DriveStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DriveStatus] {
+	return pulumix.Output[[]DriveStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DriveStatusArrayOutput) Index(i pulumi.IntInput) DriveStatusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DriveStatus {
 		return vs[0].([]DriveStatus)[vs[1].(int)]
@@ -651,6 +724,12 @@ func (o DriveStatusResponseOutput) ToDriveStatusResponseOutput() DriveStatusResp
 
 func (o DriveStatusResponseOutput) ToDriveStatusResponseOutputWithContext(ctx context.Context) DriveStatusResponseOutput {
 	return o
+}
+
+func (o DriveStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DriveStatusResponse] {
+	return pulumix.Output[DriveStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The BitLocker key used to encrypt the drive.
@@ -727,6 +806,12 @@ func (o DriveStatusResponseArrayOutput) ToDriveStatusResponseArrayOutputWithCont
 	return o
 }
 
+func (o DriveStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DriveStatusResponse] {
+	return pulumix.Output[[]DriveStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DriveStatusResponseArrayOutput) Index(i pulumi.IntInput) DriveStatusResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DriveStatusResponse {
 		return vs[0].([]DriveStatusResponse)[vs[1].(int)]
@@ -800,6 +885,12 @@ func (i EncryptionKeyDetailsArgs) ToEncryptionKeyDetailsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyDetailsOutput)
 }
 
+func (i EncryptionKeyDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionKeyDetails] {
+	return pulumix.Output[EncryptionKeyDetails]{
+		OutputState: i.ToEncryptionKeyDetailsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EncryptionKeyDetailsArgs) ToEncryptionKeyDetailsPtrOutput() EncryptionKeyDetailsPtrOutput {
 	return i.ToEncryptionKeyDetailsPtrOutputWithContext(context.Background())
 }
@@ -841,6 +932,12 @@ func (i *encryptionKeyDetailsPtrType) ToEncryptionKeyDetailsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyDetailsPtrOutput)
 }
 
+func (i *encryptionKeyDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeyDetails] {
+	return pulumix.Output[*EncryptionKeyDetails]{
+		OutputState: i.ToEncryptionKeyDetailsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the encryption key properties
 type EncryptionKeyDetailsOutput struct{ *pulumi.OutputState }
 
@@ -864,6 +961,12 @@ func (o EncryptionKeyDetailsOutput) ToEncryptionKeyDetailsPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionKeyDetails) *EncryptionKeyDetails {
 		return &v
 	}).(EncryptionKeyDetailsPtrOutput)
+}
+
+func (o EncryptionKeyDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionKeyDetails] {
+	return pulumix.Output[EncryptionKeyDetails]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of kek encryption key
@@ -893,6 +996,12 @@ func (o EncryptionKeyDetailsPtrOutput) ToEncryptionKeyDetailsPtrOutput() Encrypt
 
 func (o EncryptionKeyDetailsPtrOutput) ToEncryptionKeyDetailsPtrOutputWithContext(ctx context.Context) EncryptionKeyDetailsPtrOutput {
 	return o
+}
+
+func (o EncryptionKeyDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeyDetails] {
+	return pulumix.Output[*EncryptionKeyDetails]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionKeyDetailsPtrOutput) Elem() EncryptionKeyDetailsOutput {
@@ -973,6 +1082,12 @@ func (o EncryptionKeyDetailsResponseOutput) ToEncryptionKeyDetailsResponseOutput
 	return o
 }
 
+func (o EncryptionKeyDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionKeyDetailsResponse] {
+	return pulumix.Output[EncryptionKeyDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The type of kek encryption key
 func (o EncryptionKeyDetailsResponseOutput) KekType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionKeyDetailsResponse) *string { return v.KekType }).(pulumi.StringPtrOutput)
@@ -1000,6 +1115,12 @@ func (o EncryptionKeyDetailsResponsePtrOutput) ToEncryptionKeyDetailsResponsePtr
 
 func (o EncryptionKeyDetailsResponsePtrOutput) ToEncryptionKeyDetailsResponsePtrOutputWithContext(ctx context.Context) EncryptionKeyDetailsResponsePtrOutput {
 	return o
+}
+
+func (o EncryptionKeyDetailsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeyDetailsResponse] {
+	return pulumix.Output[*EncryptionKeyDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionKeyDetailsResponsePtrOutput) Elem() EncryptionKeyDetailsResponseOutput {
@@ -1085,6 +1206,12 @@ func (i ExportArgs) ToExportOutputWithContext(ctx context.Context) ExportOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ExportOutput)
 }
 
+func (i ExportArgs) ToOutput(ctx context.Context) pulumix.Output[Export] {
+	return pulumix.Output[Export]{
+		OutputState: i.ToExportOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExportArgs) ToExportPtrOutput() ExportPtrOutput {
 	return i.ToExportPtrOutputWithContext(context.Background())
 }
@@ -1126,6 +1253,12 @@ func (i *exportPtrType) ToExportPtrOutputWithContext(ctx context.Context) Export
 	return pulumi.ToOutputWithContext(ctx, i).(ExportPtrOutput)
 }
 
+func (i *exportPtrType) ToOutput(ctx context.Context) pulumix.Output[*Export] {
+	return pulumix.Output[*Export]{
+		OutputState: i.ToExportPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A property containing information about the blobs to be exported for an export job. This property is required for export jobs, but must not be specified for import jobs.
 type ExportOutput struct{ *pulumi.OutputState }
 
@@ -1149,6 +1282,12 @@ func (o ExportOutput) ToExportPtrOutputWithContext(ctx context.Context) ExportPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Export) *Export {
 		return &v
 	}).(ExportPtrOutput)
+}
+
+func (o ExportOutput) ToOutput(ctx context.Context) pulumix.Output[Export] {
+	return pulumix.Output[Export]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root.
@@ -1178,6 +1317,12 @@ func (o ExportPtrOutput) ToExportPtrOutput() ExportPtrOutput {
 
 func (o ExportPtrOutput) ToExportPtrOutputWithContext(ctx context.Context) ExportPtrOutput {
 	return o
+}
+
+func (o ExportPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Export] {
+	return pulumix.Output[*Export]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExportPtrOutput) Elem() ExportOutput {
@@ -1245,6 +1390,12 @@ func (o ExportResponseOutput) ToExportResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ExportResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportResponse] {
+	return pulumix.Output[ExportResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root.
 func (o ExportResponseOutput) BlobListBlobPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExportResponse) *string { return v.BlobListBlobPath }).(pulumi.StringPtrOutput)
@@ -1272,6 +1423,12 @@ func (o ExportResponsePtrOutput) ToExportResponsePtrOutput() ExportResponsePtrOu
 
 func (o ExportResponsePtrOutput) ToExportResponsePtrOutputWithContext(ctx context.Context) ExportResponsePtrOutput {
 	return o
+}
+
+func (o ExportResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportResponse] {
+	return pulumix.Output[*ExportResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExportResponsePtrOutput) Elem() ExportResponseOutput {
@@ -1352,6 +1509,12 @@ func (o IdentityDetailsResponseOutput) ToIdentityDetailsResponseOutputWithContex
 	return o
 }
 
+func (o IdentityDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityDetailsResponse] {
+	return pulumix.Output[IdentityDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the principal id for the identity for the job.
 func (o IdentityDetailsResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityDetailsResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1379,6 +1542,12 @@ func (o IdentityDetailsResponsePtrOutput) ToIdentityDetailsResponsePtrOutput() I
 
 func (o IdentityDetailsResponsePtrOutput) ToIdentityDetailsResponsePtrOutputWithContext(ctx context.Context) IdentityDetailsResponsePtrOutput {
 	return o
+}
+
+func (o IdentityDetailsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityDetailsResponse] {
+	return pulumix.Output[*IdentityDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityDetailsResponsePtrOutput) Elem() IdentityDetailsResponseOutput {
@@ -1565,6 +1734,12 @@ func (i JobDetailsArgs) ToJobDetailsOutputWithContext(ctx context.Context) JobDe
 	return pulumi.ToOutputWithContext(ctx, i).(JobDetailsOutput)
 }
 
+func (i JobDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[JobDetails] {
+	return pulumix.Output[JobDetails]{
+		OutputState: i.ToJobDetailsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobDetailsArgs) ToJobDetailsPtrOutput() JobDetailsPtrOutput {
 	return i.ToJobDetailsPtrOutputWithContext(context.Background())
 }
@@ -1606,6 +1781,12 @@ func (i *jobDetailsPtrType) ToJobDetailsPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(JobDetailsPtrOutput)
 }
 
+func (i *jobDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobDetails] {
+	return pulumix.Output[*JobDetails]{
+		OutputState: i.ToJobDetailsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the job properties
 type JobDetailsOutput struct{ *pulumi.OutputState }
 
@@ -1629,6 +1810,12 @@ func (o JobDetailsOutput) ToJobDetailsPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobDetails) *JobDetails {
 		return &v
 	}).(JobDetailsPtrOutput)
+}
+
+func (o JobDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[JobDetails] {
+	return pulumix.Output[JobDetails]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Default value is false. Indicates whether the manifest files on the drives should be copied to block blobs.
@@ -1733,6 +1920,12 @@ func (o JobDetailsPtrOutput) ToJobDetailsPtrOutput() JobDetailsPtrOutput {
 
 func (o JobDetailsPtrOutput) ToJobDetailsPtrOutputWithContext(ctx context.Context) JobDetailsPtrOutput {
 	return o
+}
+
+func (o JobDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobDetails] {
+	return pulumix.Output[*JobDetails]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobDetailsPtrOutput) Elem() JobDetailsOutput {
@@ -2003,6 +2196,12 @@ func (o JobDetailsResponseOutput) ToJobDetailsResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o JobDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobDetailsResponse] {
+	return pulumix.Output[JobDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Default value is false. Indicates whether the manifest files on the drives should be copied to block blobs.
 func (o JobDetailsResponseOutput) BackupDriveManifest() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobDetailsResponse) *bool { return v.BackupDriveManifest }).(pulumi.BoolPtrOutput)
@@ -2140,6 +2339,12 @@ func (i PackageInformationArgs) ToPackageInformationOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PackageInformationOutput)
 }
 
+func (i PackageInformationArgs) ToOutput(ctx context.Context) pulumix.Output[PackageInformation] {
+	return pulumix.Output[PackageInformation]{
+		OutputState: i.ToPackageInformationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PackageInformationArgs) ToPackageInformationPtrOutput() PackageInformationPtrOutput {
 	return i.ToPackageInformationPtrOutputWithContext(context.Background())
 }
@@ -2181,6 +2386,12 @@ func (i *packageInformationPtrType) ToPackageInformationPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(PackageInformationPtrOutput)
 }
 
+func (i *packageInformationPtrType) ToOutput(ctx context.Context) pulumix.Output[*PackageInformation] {
+	return pulumix.Output[*PackageInformation]{
+		OutputState: i.ToPackageInformationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains information about the package being shipped by the customer to the Microsoft data center.
 type PackageInformationOutput struct{ *pulumi.OutputState }
 
@@ -2204,6 +2415,12 @@ func (o PackageInformationOutput) ToPackageInformationPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageInformation) *PackageInformation {
 		return &v
 	}).(PackageInformationPtrOutput)
+}
+
+func (o PackageInformationOutput) ToOutput(ctx context.Context) pulumix.Output[PackageInformation] {
+	return pulumix.Output[PackageInformation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the carrier that is used to ship the import or export drives.
@@ -2238,6 +2455,12 @@ func (o PackageInformationPtrOutput) ToPackageInformationPtrOutput() PackageInfo
 
 func (o PackageInformationPtrOutput) ToPackageInformationPtrOutputWithContext(ctx context.Context) PackageInformationPtrOutput {
 	return o
+}
+
+func (o PackageInformationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PackageInformation] {
+	return pulumix.Output[*PackageInformation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PackageInformationPtrOutput) Elem() PackageInformationOutput {
@@ -2317,6 +2540,12 @@ func (o PackageInformationResponseOutput) ToPackageInformationResponseOutputWith
 	return o
 }
 
+func (o PackageInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PackageInformationResponse] {
+	return pulumix.Output[PackageInformationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the carrier that is used to ship the import or export drives.
 func (o PackageInformationResponseOutput) CarrierName() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageInformationResponse) string { return v.CarrierName }).(pulumi.StringOutput)
@@ -2349,6 +2578,12 @@ func (o PackageInformationResponsePtrOutput) ToPackageInformationResponsePtrOutp
 
 func (o PackageInformationResponsePtrOutput) ToPackageInformationResponsePtrOutputWithContext(ctx context.Context) PackageInformationResponsePtrOutput {
 	return o
+}
+
+func (o PackageInformationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PackageInformationResponse] {
+	return pulumix.Output[*PackageInformationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PackageInformationResponsePtrOutput) Elem() PackageInformationResponseOutput {
@@ -2468,6 +2703,12 @@ func (i ReturnAddressArgs) ToReturnAddressOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ReturnAddressOutput)
 }
 
+func (i ReturnAddressArgs) ToOutput(ctx context.Context) pulumix.Output[ReturnAddress] {
+	return pulumix.Output[ReturnAddress]{
+		OutputState: i.ToReturnAddressOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ReturnAddressArgs) ToReturnAddressPtrOutput() ReturnAddressPtrOutput {
 	return i.ToReturnAddressPtrOutputWithContext(context.Background())
 }
@@ -2509,6 +2750,12 @@ func (i *returnAddressPtrType) ToReturnAddressPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ReturnAddressPtrOutput)
 }
 
+func (i *returnAddressPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReturnAddress] {
+	return pulumix.Output[*ReturnAddress]{
+		OutputState: i.ToReturnAddressPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the return address information for the job.
 type ReturnAddressOutput struct{ *pulumi.OutputState }
 
@@ -2532,6 +2779,12 @@ func (o ReturnAddressOutput) ToReturnAddressPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReturnAddress) *ReturnAddress {
 		return &v
 	}).(ReturnAddressPtrOutput)
+}
+
+func (o ReturnAddressOutput) ToOutput(ctx context.Context) pulumix.Output[ReturnAddress] {
+	return pulumix.Output[ReturnAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The city name to use when returning the drives.
@@ -2591,6 +2844,12 @@ func (o ReturnAddressPtrOutput) ToReturnAddressPtrOutput() ReturnAddressPtrOutpu
 
 func (o ReturnAddressPtrOutput) ToReturnAddressPtrOutputWithContext(ctx context.Context) ReturnAddressPtrOutput {
 	return o
+}
+
+func (o ReturnAddressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReturnAddress] {
+	return pulumix.Output[*ReturnAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReturnAddressPtrOutput) Elem() ReturnAddressOutput {
@@ -2730,6 +2989,12 @@ func (o ReturnAddressResponseOutput) ToReturnAddressResponseOutputWithContext(ct
 	return o
 }
 
+func (o ReturnAddressResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReturnAddressResponse] {
+	return pulumix.Output[ReturnAddressResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The city name to use when returning the drives.
 func (o ReturnAddressResponseOutput) City() pulumi.StringOutput {
 	return o.ApplyT(func(v ReturnAddressResponse) string { return v.City }).(pulumi.StringOutput)
@@ -2787,6 +3052,12 @@ func (o ReturnAddressResponsePtrOutput) ToReturnAddressResponsePtrOutput() Retur
 
 func (o ReturnAddressResponsePtrOutput) ToReturnAddressResponsePtrOutputWithContext(ctx context.Context) ReturnAddressResponsePtrOutput {
 	return o
+}
+
+func (o ReturnAddressResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReturnAddressResponse] {
+	return pulumix.Output[*ReturnAddressResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReturnAddressResponsePtrOutput) Elem() ReturnAddressResponseOutput {
@@ -2928,6 +3199,12 @@ func (i ReturnShippingArgs) ToReturnShippingOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ReturnShippingOutput)
 }
 
+func (i ReturnShippingArgs) ToOutput(ctx context.Context) pulumix.Output[ReturnShipping] {
+	return pulumix.Output[ReturnShipping]{
+		OutputState: i.ToReturnShippingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ReturnShippingArgs) ToReturnShippingPtrOutput() ReturnShippingPtrOutput {
 	return i.ToReturnShippingPtrOutputWithContext(context.Background())
 }
@@ -2969,6 +3246,12 @@ func (i *returnShippingPtrType) ToReturnShippingPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ReturnShippingPtrOutput)
 }
 
+func (i *returnShippingPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReturnShipping] {
+	return pulumix.Output[*ReturnShipping]{
+		OutputState: i.ToReturnShippingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the return carrier and customer's account with the carrier.
 type ReturnShippingOutput struct{ *pulumi.OutputState }
 
@@ -2994,6 +3277,12 @@ func (o ReturnShippingOutput) ToReturnShippingPtrOutputWithContext(ctx context.C
 	}).(ReturnShippingPtrOutput)
 }
 
+func (o ReturnShippingOutput) ToOutput(ctx context.Context) pulumix.Output[ReturnShipping] {
+	return pulumix.Output[ReturnShipping]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The customer's account number with the carrier.
 func (o ReturnShippingOutput) CarrierAccountNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v ReturnShipping) string { return v.CarrierAccountNumber }).(pulumi.StringOutput)
@@ -3016,6 +3305,12 @@ func (o ReturnShippingPtrOutput) ToReturnShippingPtrOutput() ReturnShippingPtrOu
 
 func (o ReturnShippingPtrOutput) ToReturnShippingPtrOutputWithContext(ctx context.Context) ReturnShippingPtrOutput {
 	return o
+}
+
+func (o ReturnShippingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReturnShipping] {
+	return pulumix.Output[*ReturnShipping]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReturnShippingPtrOutput) Elem() ReturnShippingOutput {
@@ -3071,6 +3366,12 @@ func (o ReturnShippingResponseOutput) ToReturnShippingResponseOutputWithContext(
 	return o
 }
 
+func (o ReturnShippingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReturnShippingResponse] {
+	return pulumix.Output[ReturnShippingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The customer's account number with the carrier.
 func (o ReturnShippingResponseOutput) CarrierAccountNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v ReturnShippingResponse) string { return v.CarrierAccountNumber }).(pulumi.StringOutput)
@@ -3093,6 +3394,12 @@ func (o ReturnShippingResponsePtrOutput) ToReturnShippingResponsePtrOutput() Ret
 
 func (o ReturnShippingResponsePtrOutput) ToReturnShippingResponsePtrOutputWithContext(ctx context.Context) ReturnShippingResponsePtrOutput {
 	return o
+}
+
+func (o ReturnShippingResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReturnShippingResponse] {
+	return pulumix.Output[*ReturnShippingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReturnShippingResponsePtrOutput) Elem() ReturnShippingResponseOutput {
@@ -3188,6 +3495,12 @@ func (i ShippingInformationArgs) ToShippingInformationOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ShippingInformationOutput)
 }
 
+func (i ShippingInformationArgs) ToOutput(ctx context.Context) pulumix.Output[ShippingInformation] {
+	return pulumix.Output[ShippingInformation]{
+		OutputState: i.ToShippingInformationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ShippingInformationArgs) ToShippingInformationPtrOutput() ShippingInformationPtrOutput {
 	return i.ToShippingInformationPtrOutputWithContext(context.Background())
 }
@@ -3229,6 +3542,12 @@ func (i *shippingInformationPtrType) ToShippingInformationPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ShippingInformationPtrOutput)
 }
 
+func (i *shippingInformationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ShippingInformation] {
+	return pulumix.Output[*ShippingInformation]{
+		OutputState: i.ToShippingInformationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains information about the Microsoft datacenter to which the drives should be shipped.
 type ShippingInformationOutput struct{ *pulumi.OutputState }
 
@@ -3252,6 +3571,12 @@ func (o ShippingInformationOutput) ToShippingInformationPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShippingInformation) *ShippingInformation {
 		return &v
 	}).(ShippingInformationPtrOutput)
+}
+
+func (o ShippingInformationOutput) ToOutput(ctx context.Context) pulumix.Output[ShippingInformation] {
+	return pulumix.Output[ShippingInformation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The city name to use when returning the drives.
@@ -3306,6 +3631,12 @@ func (o ShippingInformationPtrOutput) ToShippingInformationPtrOutput() ShippingI
 
 func (o ShippingInformationPtrOutput) ToShippingInformationPtrOutputWithContext(ctx context.Context) ShippingInformationPtrOutput {
 	return o
+}
+
+func (o ShippingInformationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ShippingInformation] {
+	return pulumix.Output[*ShippingInformation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ShippingInformationPtrOutput) Elem() ShippingInformationOutput {
@@ -3435,6 +3766,12 @@ func (o ShippingInformationResponseOutput) ToShippingInformationResponseOutputWi
 	return o
 }
 
+func (o ShippingInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ShippingInformationResponse] {
+	return pulumix.Output[ShippingInformationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Additional shipping information for customer, specific to datacenter to which customer should send their disks.
 func (o ShippingInformationResponseOutput) AdditionalInformation() pulumi.StringOutput {
 	return o.ApplyT(func(v ShippingInformationResponse) string { return v.AdditionalInformation }).(pulumi.StringOutput)
@@ -3492,6 +3829,12 @@ func (o ShippingInformationResponsePtrOutput) ToShippingInformationResponsePtrOu
 
 func (o ShippingInformationResponsePtrOutput) ToShippingInformationResponsePtrOutputWithContext(ctx context.Context) ShippingInformationResponsePtrOutput {
 	return o
+}
+
+func (o ShippingInformationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ShippingInformationResponse] {
+	return pulumix.Output[*ShippingInformationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ShippingInformationResponsePtrOutput) Elem() ShippingInformationResponseOutput {
@@ -3623,6 +3966,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i ContactDetailArgs) ToContactDetailOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ContactDetailOutput)
 }
 
+func (i ContactDetailArgs) ToOutput(ctx context.Context) pulumix.Output[ContactDetail] {
+	return pulumix.Output[ContactDetail]{
+		OutputState: i.ToContactDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContactDetailArrayInput is an input type that accepts ContactDetailArray and ContactDetailArrayOutput values.
 // You can construct a concrete instance of `ContactDetailArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i ContactDetailArray) ToContactDetailArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ContactDetailArrayOutput)
 }
 
+func (i ContactDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]ContactDetail] {
+	return pulumix.Output[[]ContactDetail]{
+		OutputState: i.ToContactDetailArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The contact detail class.
 type ContactDetailOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o ContactDetailOutput) ToContactDetailOutput() ContactDetailOutput {
 
 func (o ContactDetailOutput) ToContactDetailOutputWithContext(ctx context.Context) ContactDetailOutput {
 	return o
+}
+
+func (o ContactDetailOutput) ToOutput(ctx context.Context) pulumix.Output[ContactDetail] {
+	return pulumix.Output[ContactDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The e-mail address of the contact.
@@ -123,6 +142,12 @@ func (o ContactDetailArrayOutput) ToContactDetailArrayOutput() ContactDetailArra
 
 func (o ContactDetailArrayOutput) ToContactDetailArrayOutputWithContext(ctx context.Context) ContactDetailArrayOutput {
 	return o
+}
+
+func (o ContactDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContactDetail] {
+	return pulumix.Output[[]ContactDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContactDetailArrayOutput) Index(i pulumi.IntInput) ContactDetailOutput {
@@ -156,6 +181,12 @@ func (o ContactDetailResponseOutput) ToContactDetailResponseOutputWithContext(ct
 	return o
 }
 
+func (o ContactDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContactDetailResponse] {
+	return pulumix.Output[ContactDetailResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The e-mail address of the contact.
 func (o ContactDetailResponseOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContactDetailResponse) *string { return v.Email }).(pulumi.StringPtrOutput)
@@ -183,6 +214,12 @@ func (o ContactDetailResponseArrayOutput) ToContactDetailResponseArrayOutput() C
 
 func (o ContactDetailResponseArrayOutput) ToContactDetailResponseArrayOutputWithContext(ctx context.Context) ContactDetailResponseArrayOutput {
 	return o
+}
+
+func (o ContactDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContactDetailResponse] {
+	return pulumix.Output[[]ContactDetailResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContactDetailResponseArrayOutput) Index(i pulumi.IntInput) ContactDetailResponseOutput {

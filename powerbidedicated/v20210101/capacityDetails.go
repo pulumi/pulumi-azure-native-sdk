@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an instance of a Dedicated Capacity resource.
@@ -158,6 +159,12 @@ func (i *CapacityDetails) ToCapacityDetailsOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityDetailsOutput)
 }
 
+func (i *CapacityDetails) ToOutput(ctx context.Context) pulumix.Output[*CapacityDetails] {
+	return pulumix.Output[*CapacityDetails]{
+		OutputState: i.ToCapacityDetailsOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CapacityDetailsOutput struct{ *pulumi.OutputState }
 
 func (CapacityDetailsOutput) ElementType() reflect.Type {
@@ -170,6 +177,12 @@ func (o CapacityDetailsOutput) ToCapacityDetailsOutput() CapacityDetailsOutput {
 
 func (o CapacityDetailsOutput) ToCapacityDetailsOutputWithContext(ctx context.Context) CapacityDetailsOutput {
 	return o
+}
+
+func (o CapacityDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[*CapacityDetails] {
+	return pulumix.Output[*CapacityDetails]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A collection of Dedicated capacity administrators

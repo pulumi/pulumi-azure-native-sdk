@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a specific action rule
@@ -83,6 +84,12 @@ func (o LookupActionRuleByNameResultOutput) ToLookupActionRuleByNameResultOutput
 
 func (o LookupActionRuleByNameResultOutput) ToLookupActionRuleByNameResultOutputWithContext(ctx context.Context) LookupActionRuleByNameResultOutput {
 	return o
+}
+
+func (o LookupActionRuleByNameResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupActionRuleByNameResult] {
+	return pulumix.Output[LookupActionRuleByNameResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure resource Id

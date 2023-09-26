@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies for what type of messages sampling settings should not apply.
@@ -122,6 +123,12 @@ func (o AuthorizationMethodOutput) ToAuthorizationMethodPtrOutputWithContext(ctx
 	}).(AuthorizationMethodPtrOutput)
 }
 
+func (o AuthorizationMethodOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationMethod] {
+	return pulumix.Output[AuthorizationMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthorizationMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -155,6 +162,12 @@ func (o AuthorizationMethodPtrOutput) ToAuthorizationMethodPtrOutput() Authoriza
 
 func (o AuthorizationMethodPtrOutput) ToAuthorizationMethodPtrOutputWithContext(ctx context.Context) AuthorizationMethodPtrOutput {
 	return o
+}
+
+func (o AuthorizationMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationMethod] {
+	return pulumix.Output[*AuthorizationMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthorizationMethodPtrOutput) Elem() AuthorizationMethodOutput {
@@ -219,6 +232,12 @@ func (in *authorizationMethodPtr) ToAuthorizationMethodPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizationMethodPtrOutput)
 }
 
+func (in *authorizationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationMethod] {
+	return pulumix.Output[*AuthorizationMethod]{
+		OutputState: in.ToAuthorizationMethodPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuthorizationMethodArrayInput is an input type that accepts AuthorizationMethodArray and AuthorizationMethodArrayOutput values.
 // You can construct a concrete instance of `AuthorizationMethodArrayInput` via:
 //
@@ -244,6 +263,12 @@ func (i AuthorizationMethodArray) ToAuthorizationMethodArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationMethodArrayOutput)
 }
 
+func (i AuthorizationMethodArray) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationMethod] {
+	return pulumix.Output[[]AuthorizationMethod]{
+		OutputState: i.ToAuthorizationMethodArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthorizationMethodArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationMethodArrayOutput) ElementType() reflect.Type {
@@ -256,6 +281,12 @@ func (o AuthorizationMethodArrayOutput) ToAuthorizationMethodArrayOutput() Autho
 
 func (o AuthorizationMethodArrayOutput) ToAuthorizationMethodArrayOutputWithContext(ctx context.Context) AuthorizationMethodArrayOutput {
 	return o
+}
+
+func (o AuthorizationMethodArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationMethod] {
+	return pulumix.Output[[]AuthorizationMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthorizationMethodArrayOutput) Index(i pulumi.IntInput) AuthorizationMethodOutput {
@@ -479,6 +510,12 @@ func (o GroupTypeOutput) ToGroupTypePtrOutputWithContext(ctx context.Context) Gr
 	}).(GroupTypePtrOutput)
 }
 
+func (o GroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GroupType] {
+	return pulumix.Output[GroupType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GroupTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -512,6 +549,12 @@ func (o GroupTypePtrOutput) ToGroupTypePtrOutput() GroupTypePtrOutput {
 
 func (o GroupTypePtrOutput) ToGroupTypePtrOutputWithContext(ctx context.Context) GroupTypePtrOutput {
 	return o
+}
+
+func (o GroupTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupType] {
+	return pulumix.Output[*GroupType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupTypePtrOutput) Elem() GroupTypeOutput {
@@ -574,6 +617,12 @@ func (in *groupTypePtr) ToGroupTypePtrOutput() GroupTypePtrOutput {
 
 func (in *groupTypePtr) ToGroupTypePtrOutputWithContext(ctx context.Context) GroupTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GroupTypePtrOutput)
+}
+
+func (in *groupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GroupType] {
+	return pulumix.Output[*GroupType]{
+		OutputState: in.ToGroupTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Hostname type.
@@ -686,6 +735,12 @@ func (o KeyTypeOutput) ToKeyTypePtrOutputWithContext(ctx context.Context) KeyTyp
 	}).(KeyTypePtrOutput)
 }
 
+func (o KeyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[KeyType] {
+	return pulumix.Output[KeyType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -719,6 +774,12 @@ func (o KeyTypePtrOutput) ToKeyTypePtrOutput() KeyTypePtrOutput {
 
 func (o KeyTypePtrOutput) ToKeyTypePtrOutputWithContext(ctx context.Context) KeyTypePtrOutput {
 	return o
+}
+
+func (o KeyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyType] {
+	return pulumix.Output[*KeyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyTypePtrOutput) Elem() KeyTypeOutput {
@@ -781,6 +842,12 @@ func (in *keyTypePtr) ToKeyTypePtrOutput() KeyTypePtrOutput {
 
 func (in *keyTypePtr) ToKeyTypePtrOutputWithContext(ctx context.Context) KeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyTypePtrOutput)
+}
+
+func (in *keyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KeyType] {
+	return pulumix.Output[*KeyType]{
+		OutputState: in.ToKeyTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indication whether or not the legacy Configuration API (v1) should be exposed on the API Management service. Value is optional but must be 'Enabled' or 'Disabled'. If 'Disabled', legacy Configuration API (v1) will not be available for self-hosted gateways. Default value is 'Enabled'
@@ -946,6 +1013,12 @@ func (o ProductStateEnumOutput) ToProductStateEnumPtrOutputWithContext(ctx conte
 	}).(ProductStateEnumPtrOutput)
 }
 
+func (o ProductStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ProductStateEnum] {
+	return pulumix.Output[ProductStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProductStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -979,6 +1052,12 @@ func (o ProductStateEnumPtrOutput) ToProductStateEnumPtrOutput() ProductStateEnu
 
 func (o ProductStateEnumPtrOutput) ToProductStateEnumPtrOutputWithContext(ctx context.Context) ProductStateEnumPtrOutput {
 	return o
+}
+
+func (o ProductStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProductStateEnum] {
+	return pulumix.Output[*ProductStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProductStateEnumPtrOutput) Elem() ProductStateEnumOutput {
@@ -1041,6 +1120,12 @@ func (in *productStateEnumPtr) ToProductStateEnumPtrOutput() ProductStateEnumPtr
 
 func (in *productStateEnumPtr) ToProductStateEnumPtrOutputWithContext(ctx context.Context) ProductStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProductStateEnumPtrOutput)
+}
+
+func (in *productStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ProductStateEnum] {
+	return pulumix.Output[*ProductStateEnum]{
+		OutputState: in.ToProductStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type Protocol string
@@ -1119,6 +1204,12 @@ func (o ProvisioningStateOutput) ToProvisioningStatePtrOutputWithContext(ctx con
 	}).(ProvisioningStatePtrOutput)
 }
 
+func (o ProvisioningStateOutput) ToOutput(ctx context.Context) pulumix.Output[ProvisioningState] {
+	return pulumix.Output[ProvisioningState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProvisioningStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1152,6 +1243,12 @@ func (o ProvisioningStatePtrOutput) ToProvisioningStatePtrOutput() ProvisioningS
 
 func (o ProvisioningStatePtrOutput) ToProvisioningStatePtrOutputWithContext(ctx context.Context) ProvisioningStatePtrOutput {
 	return o
+}
+
+func (o ProvisioningStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
+	return pulumix.Output[*ProvisioningState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProvisioningStatePtrOutput) Elem() ProvisioningStateOutput {
@@ -1214,6 +1311,12 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutput() ProvisioningState
 
 func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx context.Context) ProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
+}
+
+func (in *provisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
+	return pulumix.Output[*ProvisioningState]{
+		OutputState: in.ToProvisioningStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Whether or not public endpoint access is allowed for this API Management service.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
@@ -1369,6 +1472,12 @@ func (o SubscriptionStateEnumOutput) ToSubscriptionStateEnumPtrOutputWithContext
 	}).(SubscriptionStateEnumPtrOutput)
 }
 
+func (o SubscriptionStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionStateEnum] {
+	return pulumix.Output[SubscriptionStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubscriptionStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1402,6 +1511,12 @@ func (o SubscriptionStateEnumPtrOutput) ToSubscriptionStateEnumPtrOutput() Subsc
 
 func (o SubscriptionStateEnumPtrOutput) ToSubscriptionStateEnumPtrOutputWithContext(ctx context.Context) SubscriptionStateEnumPtrOutput {
 	return o
+}
+
+func (o SubscriptionStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionStateEnum] {
+	return pulumix.Output[*SubscriptionStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubscriptionStateEnumPtrOutput) Elem() SubscriptionStateEnumOutput {
@@ -1464,6 +1579,12 @@ func (in *subscriptionStateEnumPtr) ToSubscriptionStateEnumPtrOutput() Subscript
 
 func (in *subscriptionStateEnumPtr) ToSubscriptionStateEnumPtrOutputWithContext(ctx context.Context) SubscriptionStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionStateEnumPtrOutput)
+}
+
+func (in *subscriptionStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionStateEnum] {
+	return pulumix.Output[*SubscriptionStateEnum]{
+		OutputState: in.ToSubscriptionStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Strategy of translating required query parameters to template ones. By default has value 'template'. Possible values: 'template', 'query'

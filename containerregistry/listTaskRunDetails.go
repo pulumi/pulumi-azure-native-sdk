@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the detailed information for a given task run that includes all secrets.
@@ -108,6 +109,12 @@ func (o ListTaskRunDetailsResultOutput) ToListTaskRunDetailsResultOutput() ListT
 
 func (o ListTaskRunDetailsResultOutput) ToListTaskRunDetailsResultOutputWithContext(ctx context.Context) ListTaskRunDetailsResultOutput {
 	return o
+}
+
+func (o ListTaskRunDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListTaskRunDetailsResult] {
+	return pulumix.Output[ListTaskRunDetailsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // How the run should be forced to rerun even if the run request configuration has not changed

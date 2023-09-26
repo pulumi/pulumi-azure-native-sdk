@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the symmetric encrypted public encryption key of the manager.
@@ -77,6 +78,12 @@ func (o ListManagerPublicEncryptionKeyResultOutput) ToListManagerPublicEncryptio
 
 func (o ListManagerPublicEncryptionKeyResultOutput) ToListManagerPublicEncryptionKeyResultOutputWithContext(ctx context.Context) ListManagerPublicEncryptionKeyResultOutput {
 	return o
+}
+
+func (o ListManagerPublicEncryptionKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListManagerPublicEncryptionKeyResult] {
+	return pulumix.Output[ListManagerPublicEncryptionKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The algorithm used to encrypt the "Value".

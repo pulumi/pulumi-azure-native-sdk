@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // On-premise IoT sensor
@@ -103,6 +104,12 @@ func (i *OnPremiseSensor) ToOnPremiseSensorOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(OnPremiseSensorOutput)
 }
 
+func (i *OnPremiseSensor) ToOutput(ctx context.Context) pulumix.Output[*OnPremiseSensor] {
+	return pulumix.Output[*OnPremiseSensor]{
+		OutputState: i.ToOnPremiseSensorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OnPremiseSensorOutput struct{ *pulumi.OutputState }
 
 func (OnPremiseSensorOutput) ElementType() reflect.Type {
@@ -115,6 +122,12 @@ func (o OnPremiseSensorOutput) ToOnPremiseSensorOutput() OnPremiseSensorOutput {
 
 func (o OnPremiseSensorOutput) ToOnPremiseSensorOutputWithContext(ctx context.Context) OnPremiseSensorOutput {
 	return o
+}
+
+func (o OnPremiseSensorOutput) ToOutput(ctx context.Context) pulumix.Output[*OnPremiseSensor] {
+	return pulumix.Output[*OnPremiseSensor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

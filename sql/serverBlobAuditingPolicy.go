@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A server blob auditing policy.
@@ -472,6 +473,12 @@ func (i *ServerBlobAuditingPolicy) ToServerBlobAuditingPolicyOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ServerBlobAuditingPolicyOutput)
 }
 
+func (i *ServerBlobAuditingPolicy) ToOutput(ctx context.Context) pulumix.Output[*ServerBlobAuditingPolicy] {
+	return pulumix.Output[*ServerBlobAuditingPolicy]{
+		OutputState: i.ToServerBlobAuditingPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerBlobAuditingPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServerBlobAuditingPolicyOutput) ElementType() reflect.Type {
@@ -484,6 +491,12 @@ func (o ServerBlobAuditingPolicyOutput) ToServerBlobAuditingPolicyOutput() Serve
 
 func (o ServerBlobAuditingPolicyOutput) ToServerBlobAuditingPolicyOutputWithContext(ctx context.Context) ServerBlobAuditingPolicyOutput {
 	return o
+}
+
+func (o ServerBlobAuditingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerBlobAuditingPolicy] {
+	return pulumix.Output[*ServerBlobAuditingPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the Actions-Groups and Actions to audit.

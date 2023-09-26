@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the properties of a Confidential Ledger.
@@ -85,6 +86,12 @@ func (o LookupLedgerResultOutput) ToLookupLedgerResultOutput() LookupLedgerResul
 
 func (o LookupLedgerResultOutput) ToLookupLedgerResultOutputWithContext(ctx context.Context) LookupLedgerResultOutput {
 	return o
+}
+
+func (o LookupLedgerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLedgerResult] {
+	return pulumix.Output[LookupLedgerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Video Analyzer account.
@@ -170,6 +171,12 @@ func (i *VideoAnalyzer) ToVideoAnalyzerOutputWithContext(ctx context.Context) Vi
 	return pulumi.ToOutputWithContext(ctx, i).(VideoAnalyzerOutput)
 }
 
+func (i *VideoAnalyzer) ToOutput(ctx context.Context) pulumix.Output[*VideoAnalyzer] {
+	return pulumix.Output[*VideoAnalyzer]{
+		OutputState: i.ToVideoAnalyzerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VideoAnalyzerOutput struct{ *pulumi.OutputState }
 
 func (VideoAnalyzerOutput) ElementType() reflect.Type {
@@ -182,6 +189,12 @@ func (o VideoAnalyzerOutput) ToVideoAnalyzerOutput() VideoAnalyzerOutput {
 
 func (o VideoAnalyzerOutput) ToVideoAnalyzerOutputWithContext(ctx context.Context) VideoAnalyzerOutput {
 	return o
+}
+
+func (o VideoAnalyzerOutput) ToOutput(ctx context.Context) pulumix.Output[*VideoAnalyzer] {
+	return pulumix.Output[*VideoAnalyzer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account encryption properties.

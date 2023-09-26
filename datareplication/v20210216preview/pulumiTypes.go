@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -122,6 +123,12 @@ func (i DraModelPropertiesArgs) ToDraModelPropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DraModelPropertiesOutput)
 }
 
+func (i DraModelPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[DraModelProperties] {
+	return pulumix.Output[DraModelProperties]{
+		OutputState: i.ToDraModelPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Dra model properties.
 type DraModelPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -135,6 +142,12 @@ func (o DraModelPropertiesOutput) ToDraModelPropertiesOutput() DraModelPropertie
 
 func (o DraModelPropertiesOutput) ToDraModelPropertiesOutputWithContext(ctx context.Context) DraModelPropertiesOutput {
 	return o
+}
+
+func (o DraModelPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[DraModelProperties] {
+	return pulumix.Output[DraModelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identity model.
@@ -201,6 +214,12 @@ func (o DraModelPropertiesResponseOutput) ToDraModelPropertiesResponseOutput() D
 
 func (o DraModelPropertiesResponseOutput) ToDraModelPropertiesResponseOutputWithContext(ctx context.Context) DraModelPropertiesResponseOutput {
 	return o
+}
+
+func (o DraModelPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DraModelPropertiesResponse] {
+	return pulumix.Output[DraModelPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identity model.
@@ -289,6 +308,12 @@ func (o DraModelResponseSystemDataOutput) ToDraModelResponseSystemDataOutputWith
 	return o
 }
 
+func (o DraModelResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[DraModelResponseSystemData] {
+	return pulumix.Output[DraModelResponseSystemData]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the timestamp of resource creation (UTC).
 func (o DraModelResponseSystemDataOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DraModelResponseSystemData) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -356,6 +381,12 @@ func (i FabricModelPropertiesArgs) ToFabricModelPropertiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(FabricModelPropertiesOutput)
 }
 
+func (i FabricModelPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[FabricModelProperties] {
+	return pulumix.Output[FabricModelProperties]{
+		OutputState: i.ToFabricModelPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Fabric model properties.
 type FabricModelPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -369,6 +400,12 @@ func (o FabricModelPropertiesOutput) ToFabricModelPropertiesOutput() FabricModel
 
 func (o FabricModelPropertiesOutput) ToFabricModelPropertiesOutputWithContext(ctx context.Context) FabricModelPropertiesOutput {
 	return o
+}
+
+func (o FabricModelPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[FabricModelProperties] {
+	return pulumix.Output[FabricModelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fabric model custom properties.
@@ -405,6 +442,12 @@ func (o FabricModelPropertiesResponseOutput) ToFabricModelPropertiesResponseOutp
 
 func (o FabricModelPropertiesResponseOutput) ToFabricModelPropertiesResponseOutputWithContext(ctx context.Context) FabricModelPropertiesResponseOutput {
 	return o
+}
+
+func (o FabricModelPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FabricModelPropertiesResponse] {
+	return pulumix.Output[FabricModelPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fabric model custom properties.
@@ -466,6 +509,12 @@ func (o FabricModelResponseSystemDataOutput) ToFabricModelResponseSystemDataOutp
 
 func (o FabricModelResponseSystemDataOutput) ToFabricModelResponseSystemDataOutputWithContext(ctx context.Context) FabricModelResponseSystemDataOutput {
 	return o
+}
+
+func (o FabricModelResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[FabricModelResponseSystemData] {
+	return pulumix.Output[FabricModelResponseSystemData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the timestamp of resource creation (UTC).
@@ -547,6 +596,12 @@ func (o HealthErrorModelResponseOutput) ToHealthErrorModelResponseOutput() Healt
 
 func (o HealthErrorModelResponseOutput) ToHealthErrorModelResponseOutputWithContext(ctx context.Context) HealthErrorModelResponseOutput {
 	return o
+}
+
+func (o HealthErrorModelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HealthErrorModelResponse] {
+	return pulumix.Output[HealthErrorModelResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the list of affected resource correlation Ids. This can be used to
@@ -633,6 +688,12 @@ func (o HealthErrorModelResponseArrayOutput) ToHealthErrorModelResponseArrayOutp
 
 func (o HealthErrorModelResponseArrayOutput) ToHealthErrorModelResponseArrayOutputWithContext(ctx context.Context) HealthErrorModelResponseArrayOutput {
 	return o
+}
+
+func (o HealthErrorModelResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HealthErrorModelResponse] {
+	return pulumix.Output[[]HealthErrorModelResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HealthErrorModelResponseArrayOutput) Index(i pulumi.IntInput) HealthErrorModelResponseOutput {
@@ -1039,6 +1100,12 @@ func (i IdentityModelArgs) ToIdentityModelOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityModelOutput)
 }
 
+func (i IdentityModelArgs) ToOutput(ctx context.Context) pulumix.Output[IdentityModel] {
+	return pulumix.Output[IdentityModel]{
+		OutputState: i.ToIdentityModelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity model.
 type IdentityModelOutput struct{ *pulumi.OutputState }
 
@@ -1052,6 +1119,12 @@ func (o IdentityModelOutput) ToIdentityModelOutput() IdentityModelOutput {
 
 func (o IdentityModelOutput) ToIdentityModelOutputWithContext(ctx context.Context) IdentityModelOutput {
 	return o
+}
+
+func (o IdentityModelOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityModel] {
+	return pulumix.Output[IdentityModel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the authority of the SPN with which Dra communicates to service.
@@ -1108,6 +1181,12 @@ func (o IdentityModelResponseOutput) ToIdentityModelResponseOutput() IdentityMod
 
 func (o IdentityModelResponseOutput) ToIdentityModelResponseOutputWithContext(ctx context.Context) IdentityModelResponseOutput {
 	return o
+}
+
+func (o IdentityModelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityModelResponse] {
+	return pulumix.Output[IdentityModelResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the authority of the SPN with which Dra communicates to service.
@@ -1175,6 +1254,12 @@ func (o InnerHealthErrorModelResponseOutput) ToInnerHealthErrorModelResponseOutp
 
 func (o InnerHealthErrorModelResponseOutput) ToInnerHealthErrorModelResponseOutputWithContext(ctx context.Context) InnerHealthErrorModelResponseOutput {
 	return o
+}
+
+func (o InnerHealthErrorModelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InnerHealthErrorModelResponse] {
+	return pulumix.Output[InnerHealthErrorModelResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the error category.
@@ -1246,6 +1331,12 @@ func (o InnerHealthErrorModelResponseArrayOutput) ToInnerHealthErrorModelRespons
 	return o
 }
 
+func (o InnerHealthErrorModelResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InnerHealthErrorModelResponse] {
+	return pulumix.Output[[]InnerHealthErrorModelResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InnerHealthErrorModelResponseArrayOutput) Index(i pulumi.IntInput) InnerHealthErrorModelResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InnerHealthErrorModelResponse {
 		return vs[0].([]InnerHealthErrorModelResponse)[vs[1].(int)]
@@ -1287,6 +1378,12 @@ func (i PolicyModelPropertiesArgs) ToPolicyModelPropertiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyModelPropertiesOutput)
 }
 
+func (i PolicyModelPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyModelProperties] {
+	return pulumix.Output[PolicyModelProperties]{
+		OutputState: i.ToPolicyModelPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Policy model properties.
 type PolicyModelPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1300,6 +1397,12 @@ func (o PolicyModelPropertiesOutput) ToPolicyModelPropertiesOutput() PolicyModel
 
 func (o PolicyModelPropertiesOutput) ToPolicyModelPropertiesOutputWithContext(ctx context.Context) PolicyModelPropertiesOutput {
 	return o
+}
+
+func (o PolicyModelPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyModelProperties] {
+	return pulumix.Output[PolicyModelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Policy model custom properties.
@@ -1328,6 +1431,12 @@ func (o PolicyModelPropertiesResponseOutput) ToPolicyModelPropertiesResponseOutp
 
 func (o PolicyModelPropertiesResponseOutput) ToPolicyModelPropertiesResponseOutputWithContext(ctx context.Context) PolicyModelPropertiesResponseOutput {
 	return o
+}
+
+func (o PolicyModelPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyModelPropertiesResponse] {
+	return pulumix.Output[PolicyModelPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Policy model custom properties.
@@ -1369,6 +1478,12 @@ func (o PolicyModelResponseSystemDataOutput) ToPolicyModelResponseSystemDataOutp
 
 func (o PolicyModelResponseSystemDataOutput) ToPolicyModelResponseSystemDataOutputWithContext(ctx context.Context) PolicyModelResponseSystemDataOutput {
 	return o
+}
+
+func (o PolicyModelResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyModelResponseSystemData] {
+	return pulumix.Output[PolicyModelResponseSystemData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the timestamp of resource creation (UTC).
@@ -1466,6 +1581,12 @@ func (i ProtectedItemModelPropertiesArgs) ToProtectedItemModelPropertiesOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectedItemModelPropertiesOutput)
 }
 
+func (i ProtectedItemModelPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ProtectedItemModelProperties] {
+	return pulumix.Output[ProtectedItemModelProperties]{
+		OutputState: i.ToProtectedItemModelPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Protected item model properties.
 type ProtectedItemModelPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1479,6 +1600,12 @@ func (o ProtectedItemModelPropertiesOutput) ToProtectedItemModelPropertiesOutput
 
 func (o ProtectedItemModelPropertiesOutput) ToProtectedItemModelPropertiesOutputWithContext(ctx context.Context) ProtectedItemModelPropertiesOutput {
 	return o
+}
+
+func (o ProtectedItemModelPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ProtectedItemModelProperties] {
+	return pulumix.Output[ProtectedItemModelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Protected item model custom properties.
@@ -1567,6 +1694,12 @@ func (o ProtectedItemModelPropertiesResponseOutput) ToProtectedItemModelProperti
 
 func (o ProtectedItemModelPropertiesResponseOutput) ToProtectedItemModelPropertiesResponseOutputWithContext(ctx context.Context) ProtectedItemModelPropertiesResponseOutput {
 	return o
+}
+
+func (o ProtectedItemModelPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProtectedItemModelPropertiesResponse] {
+	return pulumix.Output[ProtectedItemModelPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the allowed scenarios on the protected item.
@@ -1749,6 +1882,12 @@ func (o ProtectedItemModelPropertiesResponseCurrentJobOutput) ToProtectedItemMod
 	return o
 }
 
+func (o ProtectedItemModelPropertiesResponseCurrentJobOutput) ToOutput(ctx context.Context) pulumix.Output[ProtectedItemModelPropertiesResponseCurrentJob] {
+	return pulumix.Output[ProtectedItemModelPropertiesResponseCurrentJob]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the workflow friendly display name.
 func (o ProtectedItemModelPropertiesResponseCurrentJobOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v ProtectedItemModelPropertiesResponseCurrentJob) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -1813,6 +1952,12 @@ func (o ProtectedItemModelPropertiesResponseLastFailedEnableProtectionJobOutput)
 
 func (o ProtectedItemModelPropertiesResponseLastFailedEnableProtectionJobOutput) ToProtectedItemModelPropertiesResponseLastFailedEnableProtectionJobOutputWithContext(ctx context.Context) ProtectedItemModelPropertiesResponseLastFailedEnableProtectionJobOutput {
 	return o
+}
+
+func (o ProtectedItemModelPropertiesResponseLastFailedEnableProtectionJobOutput) ToOutput(ctx context.Context) pulumix.Output[ProtectedItemModelPropertiesResponseLastFailedEnableProtectionJob] {
+	return pulumix.Output[ProtectedItemModelPropertiesResponseLastFailedEnableProtectionJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the workflow friendly display name.
@@ -1883,6 +2028,12 @@ func (o ProtectedItemModelPropertiesResponseLastFailedPlannedFailoverJobOutput) 
 	return o
 }
 
+func (o ProtectedItemModelPropertiesResponseLastFailedPlannedFailoverJobOutput) ToOutput(ctx context.Context) pulumix.Output[ProtectedItemModelPropertiesResponseLastFailedPlannedFailoverJob] {
+	return pulumix.Output[ProtectedItemModelPropertiesResponseLastFailedPlannedFailoverJob]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the workflow friendly display name.
 func (o ProtectedItemModelPropertiesResponseLastFailedPlannedFailoverJobOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v ProtectedItemModelPropertiesResponseLastFailedPlannedFailoverJob) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -1949,6 +2100,12 @@ func (o ProtectedItemModelPropertiesResponseLastTestFailoverJobOutput) ToProtect
 	return o
 }
 
+func (o ProtectedItemModelPropertiesResponseLastTestFailoverJobOutput) ToOutput(ctx context.Context) pulumix.Output[ProtectedItemModelPropertiesResponseLastTestFailoverJob] {
+	return pulumix.Output[ProtectedItemModelPropertiesResponseLastTestFailoverJob]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the workflow friendly display name.
 func (o ProtectedItemModelPropertiesResponseLastTestFailoverJobOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v ProtectedItemModelPropertiesResponseLastTestFailoverJob) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -2013,6 +2170,12 @@ func (o ProtectedItemModelResponseSystemDataOutput) ToProtectedItemModelResponse
 
 func (o ProtectedItemModelResponseSystemDataOutput) ToProtectedItemModelResponseSystemDataOutputWithContext(ctx context.Context) ProtectedItemModelResponseSystemDataOutput {
 	return o
+}
+
+func (o ProtectedItemModelResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[ProtectedItemModelResponseSystemData] {
+	return pulumix.Output[ProtectedItemModelResponseSystemData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the timestamp of resource creation (UTC).
@@ -2082,6 +2245,12 @@ func (i ReplicationExtensionModelPropertiesArgs) ToReplicationExtensionModelProp
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationExtensionModelPropertiesOutput)
 }
 
+func (i ReplicationExtensionModelPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ReplicationExtensionModelProperties] {
+	return pulumix.Output[ReplicationExtensionModelProperties]{
+		OutputState: i.ToReplicationExtensionModelPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Replication extension model properties.
 type ReplicationExtensionModelPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2095,6 +2264,12 @@ func (o ReplicationExtensionModelPropertiesOutput) ToReplicationExtensionModelPr
 
 func (o ReplicationExtensionModelPropertiesOutput) ToReplicationExtensionModelPropertiesOutputWithContext(ctx context.Context) ReplicationExtensionModelPropertiesOutput {
 	return o
+}
+
+func (o ReplicationExtensionModelPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ReplicationExtensionModelProperties] {
+	return pulumix.Output[ReplicationExtensionModelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Replication extension model custom properties.
@@ -2123,6 +2298,12 @@ func (o ReplicationExtensionModelPropertiesResponseOutput) ToReplicationExtensio
 
 func (o ReplicationExtensionModelPropertiesResponseOutput) ToReplicationExtensionModelPropertiesResponseOutputWithContext(ctx context.Context) ReplicationExtensionModelPropertiesResponseOutput {
 	return o
+}
+
+func (o ReplicationExtensionModelPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReplicationExtensionModelPropertiesResponse] {
+	return pulumix.Output[ReplicationExtensionModelPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Replication extension model custom properties.
@@ -2164,6 +2345,12 @@ func (o ReplicationExtensionModelResponseSystemDataOutput) ToReplicationExtensio
 
 func (o ReplicationExtensionModelResponseSystemDataOutput) ToReplicationExtensionModelResponseSystemDataOutputWithContext(ctx context.Context) ReplicationExtensionModelResponseSystemDataOutput {
 	return o
+}
+
+func (o ReplicationExtensionModelResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[ReplicationExtensionModelResponseSystemData] {
+	return pulumix.Output[ReplicationExtensionModelResponseSystemData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the timestamp of resource creation (UTC).
@@ -2259,6 +2446,12 @@ func (i VMwareDraModelCustomPropertiesArgs) ToVMwareDraModelCustomPropertiesOutp
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareDraModelCustomPropertiesOutput)
 }
 
+func (i VMwareDraModelCustomPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareDraModelCustomProperties] {
+	return pulumix.Output[VMwareDraModelCustomProperties]{
+		OutputState: i.ToVMwareDraModelCustomPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VMware DRA model custom properties.
 type VMwareDraModelCustomPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2272,6 +2465,12 @@ func (o VMwareDraModelCustomPropertiesOutput) ToVMwareDraModelCustomPropertiesOu
 
 func (o VMwareDraModelCustomPropertiesOutput) ToVMwareDraModelCustomPropertiesOutputWithContext(ctx context.Context) VMwareDraModelCustomPropertiesOutput {
 	return o
+}
+
+func (o VMwareDraModelCustomPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareDraModelCustomProperties] {
+	return pulumix.Output[VMwareDraModelCustomProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the BIOS Id of the DRA machine.
@@ -2314,6 +2513,12 @@ func (o VMwareDraModelCustomPropertiesResponseOutput) ToVMwareDraModelCustomProp
 
 func (o VMwareDraModelCustomPropertiesResponseOutput) ToVMwareDraModelCustomPropertiesResponseOutputWithContext(ctx context.Context) VMwareDraModelCustomPropertiesResponseOutput {
 	return o
+}
+
+func (o VMwareDraModelCustomPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareDraModelCustomPropertiesResponse] {
+	return pulumix.Output[VMwareDraModelCustomPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the BIOS Id of the DRA machine.
@@ -2732,6 +2937,12 @@ func (i VaultModelPropertiesArgs) ToVaultModelPropertiesOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VaultModelPropertiesOutput)
 }
 
+func (i VaultModelPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[VaultModelProperties] {
+	return pulumix.Output[VaultModelProperties]{
+		OutputState: i.ToVaultModelPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VaultModelPropertiesArgs) ToVaultModelPropertiesPtrOutput() VaultModelPropertiesPtrOutput {
 	return i.ToVaultModelPropertiesPtrOutputWithContext(context.Background())
 }
@@ -2773,6 +2984,12 @@ func (i *vaultModelPropertiesPtrType) ToVaultModelPropertiesPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(VaultModelPropertiesPtrOutput)
 }
 
+func (i *vaultModelPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*VaultModelProperties] {
+	return pulumix.Output[*VaultModelProperties]{
+		OutputState: i.ToVaultModelPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Vault properties.
 type VaultModelPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2798,6 +3015,12 @@ func (o VaultModelPropertiesOutput) ToVaultModelPropertiesPtrOutputWithContext(c
 	}).(VaultModelPropertiesPtrOutput)
 }
 
+func (o VaultModelPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[VaultModelProperties] {
+	return pulumix.Output[VaultModelProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the type of vault.
 func (o VaultModelPropertiesOutput) VaultType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultModelProperties) *string { return v.VaultType }).(pulumi.StringPtrOutput)
@@ -2815,6 +3038,12 @@ func (o VaultModelPropertiesPtrOutput) ToVaultModelPropertiesPtrOutput() VaultMo
 
 func (o VaultModelPropertiesPtrOutput) ToVaultModelPropertiesPtrOutputWithContext(ctx context.Context) VaultModelPropertiesPtrOutput {
 	return o
+}
+
+func (o VaultModelPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VaultModelProperties] {
+	return pulumix.Output[*VaultModelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VaultModelPropertiesPtrOutput) Elem() VaultModelPropertiesOutput {
@@ -2862,6 +3091,12 @@ func (o VaultModelPropertiesResponseOutput) ToVaultModelPropertiesResponseOutput
 	return o
 }
 
+func (o VaultModelPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VaultModelPropertiesResponse] {
+	return pulumix.Output[VaultModelPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the provisioning state of the vault.
 func (o VaultModelPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v VaultModelPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -2906,6 +3141,12 @@ func (o VaultModelResponseSystemDataOutput) ToVaultModelResponseSystemDataOutput
 
 func (o VaultModelResponseSystemDataOutput) ToVaultModelResponseSystemDataOutputWithContext(ctx context.Context) VaultModelResponseSystemDataOutput {
 	return o
+}
+
+func (o VaultModelResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[VaultModelResponseSystemData] {
+	return pulumix.Output[VaultModelResponseSystemData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the timestamp of resource creation (UTC).

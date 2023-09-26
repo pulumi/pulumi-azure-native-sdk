@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a connector mapping in the connector.
@@ -114,6 +115,12 @@ func (o LookupConnectorMappingResultOutput) ToLookupConnectorMappingResultOutput
 
 func (o LookupConnectorMappingResultOutput) ToLookupConnectorMappingResultOutputWithContext(ctx context.Context) LookupConnectorMappingResultOutput {
 	return o
+}
+
+func (o LookupConnectorMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectorMappingResult] {
+	return pulumix.Output[LookupConnectorMappingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The connector mapping name

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Tag-product link details.
@@ -135,6 +136,12 @@ func (i *TagProductLink) ToTagProductLinkOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TagProductLinkOutput)
 }
 
+func (i *TagProductLink) ToOutput(ctx context.Context) pulumix.Output[*TagProductLink] {
+	return pulumix.Output[*TagProductLink]{
+		OutputState: i.ToTagProductLinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagProductLinkOutput struct{ *pulumi.OutputState }
 
 func (TagProductLinkOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o TagProductLinkOutput) ToTagProductLinkOutput() TagProductLinkOutput {
 
 func (o TagProductLinkOutput) ToTagProductLinkOutputWithContext(ctx context.Context) TagProductLinkOutput {
 	return o
+}
+
+func (o TagProductLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*TagProductLink] {
+	return pulumix.Output[*TagProductLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

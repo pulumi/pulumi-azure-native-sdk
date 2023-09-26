@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves an existing edge module resource with the given name.
@@ -85,6 +86,12 @@ func (o LookupEdgeModuleResultOutput) ToLookupEdgeModuleResultOutput() LookupEdg
 
 func (o LookupEdgeModuleResultOutput) ToLookupEdgeModuleResultOutputWithContext(ctx context.Context) LookupEdgeModuleResultOutput {
 	return o
+}
+
+func (o LookupEdgeModuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEdgeModuleResult] {
+	return pulumix.Output[LookupEdgeModuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Internal ID generated for the instance of the Video Analyzer edge module.

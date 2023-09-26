@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Primary and secondary connection strings to the queue.
@@ -92,6 +93,12 @@ func (o ListQueueKeysResultOutput) ToListQueueKeysResultOutput() ListQueueKeysRe
 
 func (o ListQueueKeysResultOutput) ToListQueueKeysResultOutputWithContext(ctx context.Context) ListQueueKeysResultOutput {
 	return o
+}
+
+func (o ListQueueKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListQueueKeysResult] {
+	return pulumix.Output[ListQueueKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Primary connection string of the alias if GEO DR is enabled

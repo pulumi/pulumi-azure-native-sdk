@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a source control byt its identifier.
@@ -100,6 +101,12 @@ func (o LookupSourceControlResultOutput) ToLookupSourceControlResultOutput() Loo
 
 func (o LookupSourceControlResultOutput) ToLookupSourceControlResultOutputWithContext(ctx context.Context) LookupSourceControlResultOutput {
 	return o
+}
+
+func (o LookupSourceControlResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSourceControlResult] {
+	return pulumix.Output[LookupSourceControlResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Array of source control content types.

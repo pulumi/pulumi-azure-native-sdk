@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // User details.
@@ -148,6 +149,12 @@ func (i *WorkspaceGroupUser) ToWorkspaceGroupUserOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceGroupUserOutput)
 }
 
+func (i *WorkspaceGroupUser) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceGroupUser] {
+	return pulumix.Output[*WorkspaceGroupUser]{
+		OutputState: i.ToWorkspaceGroupUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceGroupUserOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceGroupUserOutput) ElementType() reflect.Type {
@@ -160,6 +167,12 @@ func (o WorkspaceGroupUserOutput) ToWorkspaceGroupUserOutput() WorkspaceGroupUse
 
 func (o WorkspaceGroupUserOutput) ToWorkspaceGroupUserOutputWithContext(ctx context.Context) WorkspaceGroupUserOutput {
 	return o
+}
+
+func (o WorkspaceGroupUserOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceGroupUser] {
+	return pulumix.Output[*WorkspaceGroupUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Email address.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a server's blob auditing policy.
@@ -180,6 +181,12 @@ func (o LookupServerBlobAuditingPolicyResultOutput) ToLookupServerBlobAuditingPo
 
 func (o LookupServerBlobAuditingPolicyResultOutput) ToLookupServerBlobAuditingPolicyResultOutputWithContext(ctx context.Context) LookupServerBlobAuditingPolicyResultOutput {
 	return o
+}
+
+func (o LookupServerBlobAuditingPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServerBlobAuditingPolicyResult] {
+	return pulumix.Output[LookupServerBlobAuditingPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the Actions-Groups and Actions to audit.

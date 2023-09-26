@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified packet core data plane.
@@ -102,6 +103,12 @@ func (o LookupPacketCoreDataPlaneResultOutput) ToLookupPacketCoreDataPlaneResult
 
 func (o LookupPacketCoreDataPlaneResultOutput) ToLookupPacketCoreDataPlaneResultOutputWithContext(ctx context.Context) LookupPacketCoreDataPlaneResultOutput {
 	return o
+}
+
+func (o LookupPacketCoreDataPlaneResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPacketCoreDataPlaneResult] {
+	return pulumix.Output[LookupPacketCoreDataPlaneResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

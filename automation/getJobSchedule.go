@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the job schedule identified by job schedule name.
@@ -91,6 +92,12 @@ func (o LookupJobScheduleResultOutput) ToLookupJobScheduleResultOutput() LookupJ
 
 func (o LookupJobScheduleResultOutput) ToLookupJobScheduleResultOutputWithContext(ctx context.Context) LookupJobScheduleResultOutput {
 	return o
+}
+
+func (o LookupJobScheduleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJobScheduleResult] {
+	return pulumix.Output[LookupJobScheduleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the id of the resource.

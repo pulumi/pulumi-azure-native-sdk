@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Get the named public certificate for an app (or deployment slot, if specified).
@@ -93,6 +94,12 @@ func (o LookupWebAppPublicCertificateSlotResultOutput) ToLookupWebAppPublicCerti
 
 func (o LookupWebAppPublicCertificateSlotResultOutput) ToLookupWebAppPublicCertificateSlotResultOutputWithContext(ctx context.Context) LookupWebAppPublicCertificateSlotResultOutput {
 	return o
+}
+
+func (o LookupWebAppPublicCertificateSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppPublicCertificateSlotResult] {
+	return pulumix.Output[LookupWebAppPublicCertificateSlotResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Public Certificate byte array

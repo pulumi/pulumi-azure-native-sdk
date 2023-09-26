@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
@@ -172,6 +173,12 @@ func (i *AFDCustomDomain) ToAFDCustomDomainOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AFDCustomDomainOutput)
 }
 
+func (i *AFDCustomDomain) ToOutput(ctx context.Context) pulumix.Output[*AFDCustomDomain] {
+	return pulumix.Output[*AFDCustomDomain]{
+		OutputState: i.ToAFDCustomDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AFDCustomDomainOutput struct{ *pulumi.OutputState }
 
 func (AFDCustomDomainOutput) ElementType() reflect.Type {
@@ -184,6 +191,12 @@ func (o AFDCustomDomainOutput) ToAFDCustomDomainOutput() AFDCustomDomainOutput {
 
 func (o AFDCustomDomainOutput) ToAFDCustomDomainOutputWithContext(ctx context.Context) AFDCustomDomainOutput {
 	return o
+}
+
+func (o AFDCustomDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*AFDCustomDomain] {
+	return pulumix.Output[*AFDCustomDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource reference to the Azure DNS zone

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Blueprint artifact that applies a Role assignment.
@@ -171,6 +172,12 @@ func (i *RoleAssignmentArtifact) ToRoleAssignmentArtifactOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAssignmentArtifactOutput)
 }
 
+func (i *RoleAssignmentArtifact) ToOutput(ctx context.Context) pulumix.Output[*RoleAssignmentArtifact] {
+	return pulumix.Output[*RoleAssignmentArtifact]{
+		OutputState: i.ToRoleAssignmentArtifactOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RoleAssignmentArtifactOutput struct{ *pulumi.OutputState }
 
 func (RoleAssignmentArtifactOutput) ElementType() reflect.Type {
@@ -183,6 +190,12 @@ func (o RoleAssignmentArtifactOutput) ToRoleAssignmentArtifactOutput() RoleAssig
 
 func (o RoleAssignmentArtifactOutput) ToRoleAssignmentArtifactOutputWithContext(ctx context.Context) RoleAssignmentArtifactOutput {
 	return o
+}
+
+func (o RoleAssignmentArtifactOutput) ToOutput(ctx context.Context) pulumix.Output[*RoleAssignmentArtifact] {
+	return pulumix.Output[*RoleAssignmentArtifact]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Artifacts which need to be deployed before the specified artifact.

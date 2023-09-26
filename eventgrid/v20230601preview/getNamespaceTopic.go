@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of a namespace topic.
@@ -104,6 +105,12 @@ func (o LookupNamespaceTopicResultOutput) ToLookupNamespaceTopicResultOutput() L
 
 func (o LookupNamespaceTopicResultOutput) ToLookupNamespaceTopicResultOutputWithContext(ctx context.Context) LookupNamespaceTopicResultOutput {
 	return o
+}
+
+func (o LookupNamespaceTopicResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNamespaceTopicResult] {
+	return pulumix.Output[LookupNamespaceTopicResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Event retention for the namespace topic expressed in days. The property default value is 1 day.

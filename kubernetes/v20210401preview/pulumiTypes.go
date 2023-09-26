@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o CredentialResultResponseOutput) ToCredentialResultResponseOutputWithCont
 	return o
 }
 
+func (o CredentialResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CredentialResultResponse] {
+	return pulumix.Output[CredentialResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the credential.
 func (o CredentialResultResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CredentialResultResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -58,6 +65,12 @@ func (o CredentialResultResponseArrayOutput) ToCredentialResultResponseArrayOutp
 
 func (o CredentialResultResponseArrayOutput) ToCredentialResultResponseArrayOutputWithContext(ctx context.Context) CredentialResultResponseArrayOutput {
 	return o
+}
+
+func (o CredentialResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CredentialResultResponse] {
+	return pulumix.Output[[]CredentialResultResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CredentialResultResponseArrayOutput) Index(i pulumi.IntInput) CredentialResultResponseOutput {
@@ -91,6 +104,12 @@ func (o HybridConnectionConfigResponseOutput) ToHybridConnectionConfigResponseOu
 
 func (o HybridConnectionConfigResponseOutput) ToHybridConnectionConfigResponseOutputWithContext(ctx context.Context) HybridConnectionConfigResponseOutput {
 	return o
+}
+
+func (o HybridConnectionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HybridConnectionConfigResponse] {
+	return pulumix.Output[HybridConnectionConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Timestamp when this token will be expired.

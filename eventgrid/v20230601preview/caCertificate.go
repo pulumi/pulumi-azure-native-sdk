@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The CA Certificate resource.
@@ -135,6 +136,12 @@ func (i *CaCertificate) ToCaCertificateOutputWithContext(ctx context.Context) Ca
 	return pulumi.ToOutputWithContext(ctx, i).(CaCertificateOutput)
 }
 
+func (i *CaCertificate) ToOutput(ctx context.Context) pulumix.Output[*CaCertificate] {
+	return pulumix.Output[*CaCertificate]{
+		OutputState: i.ToCaCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CaCertificateOutput struct{ *pulumi.OutputState }
 
 func (CaCertificateOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o CaCertificateOutput) ToCaCertificateOutput() CaCertificateOutput {
 
 func (o CaCertificateOutput) ToCaCertificateOutputWithContext(ctx context.Context) CaCertificateOutput {
 	return o
+}
+
+func (o CaCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*CaCertificate] {
+	return pulumix.Output[*CaCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description for the CA Certificate resource.

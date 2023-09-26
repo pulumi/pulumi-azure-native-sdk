@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A container group.
@@ -296,6 +297,12 @@ func (i *ContainerGroup) ToContainerGroupOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupOutput)
 }
 
+func (i *ContainerGroup) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroup] {
+	return pulumix.Output[*ContainerGroup]{
+		OutputState: i.ToContainerGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupOutput) ElementType() reflect.Type {
@@ -308,6 +315,12 @@ func (o ContainerGroupOutput) ToContainerGroupOutput() ContainerGroupOutput {
 
 func (o ContainerGroupOutput) ToContainerGroupOutputWithContext(ctx context.Context) ContainerGroupOutput {
 	return o
+}
+
+func (o ContainerGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroup] {
+	return pulumix.Output[*ContainerGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The properties for confidential container group

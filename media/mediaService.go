@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Media Services account.
@@ -195,6 +196,12 @@ func (i *MediaService) ToMediaServiceOutputWithContext(ctx context.Context) Medi
 	return pulumi.ToOutputWithContext(ctx, i).(MediaServiceOutput)
 }
 
+func (i *MediaService) ToOutput(ctx context.Context) pulumix.Output[*MediaService] {
+	return pulumix.Output[*MediaService]{
+		OutputState: i.ToMediaServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MediaServiceOutput struct{ *pulumi.OutputState }
 
 func (MediaServiceOutput) ElementType() reflect.Type {
@@ -207,6 +214,12 @@ func (o MediaServiceOutput) ToMediaServiceOutput() MediaServiceOutput {
 
 func (o MediaServiceOutput) ToMediaServiceOutputWithContext(ctx context.Context) MediaServiceOutput {
 	return o
+}
+
+func (o MediaServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*MediaService] {
+	return pulumix.Output[*MediaService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account encryption properties.

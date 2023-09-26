@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB database account.
@@ -432,6 +433,12 @@ func (i *DatabaseAccount) ToDatabaseAccountOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseAccountOutput)
 }
 
+func (i *DatabaseAccount) ToOutput(ctx context.Context) pulumix.Output[*DatabaseAccount] {
+	return pulumix.Output[*DatabaseAccount]{
+		OutputState: i.ToDatabaseAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseAccountOutput struct{ *pulumi.OutputState }
 
 func (DatabaseAccountOutput) ElementType() reflect.Type {
@@ -444,6 +451,12 @@ func (o DatabaseAccountOutput) ToDatabaseAccountOutput() DatabaseAccountOutput {
 
 func (o DatabaseAccountOutput) ToDatabaseAccountOutputWithContext(ctx context.Context) DatabaseAccountOutput {
 	return o
+}
+
+func (o DatabaseAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseAccount] {
+	return pulumix.Output[*DatabaseAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Analytical storage specific properties.

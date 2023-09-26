@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the ingress gateway endpoint credentials
@@ -97,6 +98,12 @@ func (o ListEndpointIngressGatewayCredentialsResultOutput) ToListEndpointIngress
 
 func (o ListEndpointIngressGatewayCredentialsResultOutput) ToListEndpointIngressGatewayCredentialsResultOutputWithContext(ctx context.Context) ListEndpointIngressGatewayCredentialsResultOutput {
 	return o
+}
+
+func (o ListEndpointIngressGatewayCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListEndpointIngressGatewayCredentialsResult] {
+	return pulumix.Output[ListEndpointIngressGatewayCredentialsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access key for hybrid connection.

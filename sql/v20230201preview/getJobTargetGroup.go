@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a target group.
@@ -86,6 +87,12 @@ func (o LookupJobTargetGroupResultOutput) ToLookupJobTargetGroupResultOutput() L
 
 func (o LookupJobTargetGroupResultOutput) ToLookupJobTargetGroupResultOutputWithContext(ctx context.Context) LookupJobTargetGroupResultOutput {
 	return o
+}
+
+func (o LookupJobTargetGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJobTargetGroupResult] {
+	return pulumix.Output[LookupJobTargetGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.

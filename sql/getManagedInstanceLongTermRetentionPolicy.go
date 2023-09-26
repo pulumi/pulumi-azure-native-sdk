@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a managed database's long term retention policy.
@@ -93,6 +94,12 @@ func (o LookupManagedInstanceLongTermRetentionPolicyResultOutput) ToLookupManage
 
 func (o LookupManagedInstanceLongTermRetentionPolicyResultOutput) ToLookupManagedInstanceLongTermRetentionPolicyResultOutputWithContext(ctx context.Context) LookupManagedInstanceLongTermRetentionPolicyResultOutput {
 	return o
+}
+
+func (o LookupManagedInstanceLongTermRetentionPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedInstanceLongTermRetentionPolicyResult] {
+	return pulumix.Output[LookupManagedInstanceLongTermRetentionPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.

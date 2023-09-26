@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get Tag description in scope of API
@@ -94,6 +95,12 @@ func (o LookupApiTagDescriptionResultOutput) ToLookupApiTagDescriptionResultOutp
 
 func (o LookupApiTagDescriptionResultOutput) ToLookupApiTagDescriptionResultOutputWithContext(ctx context.Context) LookupApiTagDescriptionResultOutput {
 	return o
+}
+
+func (o LookupApiTagDescriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiTagDescriptionResult] {
+	return pulumix.Output[LookupApiTagDescriptionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of the Tag.

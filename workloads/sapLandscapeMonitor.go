@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // configuration associated with SAP Landscape Monitor Dashboard.
@@ -131,6 +132,12 @@ func (i *SapLandscapeMonitor) ToSapLandscapeMonitorOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorOutput)
 }
 
+func (i *SapLandscapeMonitor) ToOutput(ctx context.Context) pulumix.Output[*SapLandscapeMonitor] {
+	return pulumix.Output[*SapLandscapeMonitor]{
+		OutputState: i.ToSapLandscapeMonitorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SapLandscapeMonitorOutput struct{ *pulumi.OutputState }
 
 func (SapLandscapeMonitorOutput) ElementType() reflect.Type {
@@ -143,6 +150,12 @@ func (o SapLandscapeMonitorOutput) ToSapLandscapeMonitorOutput() SapLandscapeMon
 
 func (o SapLandscapeMonitorOutput) ToSapLandscapeMonitorOutputWithContext(ctx context.Context) SapLandscapeMonitorOutput {
 	return o
+}
+
+func (o SapLandscapeMonitorOutput) ToOutput(ctx context.Context) pulumix.Output[*SapLandscapeMonitor] {
+	return pulumix.Output[*SapLandscapeMonitor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the SID groupings by landscape and Environment.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Kusto pool.
@@ -127,6 +128,12 @@ func (o LookupKustoPoolResultOutput) ToLookupKustoPoolResultOutput() LookupKusto
 
 func (o LookupKustoPoolResultOutput) ToLookupKustoPoolResultOutputWithContext(ctx context.Context) LookupKustoPoolResultOutput {
 	return o
+}
+
+func (o LookupKustoPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKustoPoolResult] {
+	return pulumix.Output[LookupKustoPoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Kusto Pool data ingestion URI.

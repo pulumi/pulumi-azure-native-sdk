@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o HealthBotKeyResponseOutput) ToHealthBotKeyResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o HealthBotKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HealthBotKeyResponse] {
+	return pulumix.Output[HealthBotKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the key.
 func (o HealthBotKeyResponseOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthBotKeyResponse) *string { return v.KeyName }).(pulumi.StringPtrOutput)
@@ -58,6 +65,12 @@ func (o HealthBotKeyResponseArrayOutput) ToHealthBotKeyResponseArrayOutput() Hea
 
 func (o HealthBotKeyResponseArrayOutput) ToHealthBotKeyResponseArrayOutputWithContext(ctx context.Context) HealthBotKeyResponseArrayOutput {
 	return o
+}
+
+func (o HealthBotKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HealthBotKeyResponse] {
+	return pulumix.Output[[]HealthBotKeyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HealthBotKeyResponseArrayOutput) Index(i pulumi.IntInput) HealthBotKeyResponseOutput {
@@ -101,6 +114,12 @@ func (i HealthBotPropertiesArgs) ToHealthBotPropertiesOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(HealthBotPropertiesOutput)
 }
 
+func (i HealthBotPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[HealthBotProperties] {
+	return pulumix.Output[HealthBotProperties]{
+		OutputState: i.ToHealthBotPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HealthBotPropertiesArgs) ToHealthBotPropertiesPtrOutput() HealthBotPropertiesPtrOutput {
 	return i.ToHealthBotPropertiesPtrOutputWithContext(context.Background())
 }
@@ -142,6 +161,12 @@ func (i *healthBotPropertiesPtrType) ToHealthBotPropertiesPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(HealthBotPropertiesPtrOutput)
 }
 
+func (i *healthBotPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*HealthBotProperties] {
+	return pulumix.Output[*HealthBotProperties]{
+		OutputState: i.ToHealthBotPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The properties of a Azure Health Bot. The Health Bot Service is a cloud platform that empowers developers in Healthcare organizations to build and deploy their compliant, AI-powered virtual health assistants and health bots, that help them improve processes and reduce costs.
 type HealthBotPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -167,6 +192,12 @@ func (o HealthBotPropertiesOutput) ToHealthBotPropertiesPtrOutputWithContext(ctx
 	}).(HealthBotPropertiesPtrOutput)
 }
 
+func (o HealthBotPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[HealthBotProperties] {
+	return pulumix.Output[HealthBotProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // KeyVault properties for the resource encryption.
 func (o HealthBotPropertiesOutput) KeyVaultProperties() KeyVaultPropertiesPtrOutput {
 	return o.ApplyT(func(v HealthBotProperties) *KeyVaultProperties { return v.KeyVaultProperties }).(KeyVaultPropertiesPtrOutput)
@@ -184,6 +215,12 @@ func (o HealthBotPropertiesPtrOutput) ToHealthBotPropertiesPtrOutput() HealthBot
 
 func (o HealthBotPropertiesPtrOutput) ToHealthBotPropertiesPtrOutputWithContext(ctx context.Context) HealthBotPropertiesPtrOutput {
 	return o
+}
+
+func (o HealthBotPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HealthBotProperties] {
+	return pulumix.Output[*HealthBotProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HealthBotPropertiesPtrOutput) Elem() HealthBotPropertiesOutput {
@@ -229,6 +266,12 @@ func (o HealthBotPropertiesResponseOutput) ToHealthBotPropertiesResponseOutput()
 
 func (o HealthBotPropertiesResponseOutput) ToHealthBotPropertiesResponseOutputWithContext(ctx context.Context) HealthBotPropertiesResponseOutput {
 	return o
+}
+
+func (o HealthBotPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HealthBotPropertiesResponse] {
+	return pulumix.Output[HealthBotPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The link.
@@ -287,6 +330,12 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
+func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
 	return i.ToIdentityPtrOutputWithContext(context.Background())
 }
@@ -328,6 +377,12 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
+func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity for the resource.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -353,6 +408,12 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
+func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the Azure Health Bot
 func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v Identity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -376,6 +437,12 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
+}
+
+func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -437,6 +504,12 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
+	return pulumix.Output[IdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal ID of resource identity. This property will only be provided for a system assigned identity.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -470,6 +543,12 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
+}
+
+func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
+	return pulumix.Output[*IdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -570,6 +649,12 @@ func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesOutput)
 }
 
+func (i KeyVaultPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultProperties] {
+	return pulumix.Output[KeyVaultProperties]{
+		OutputState: i.ToKeyVaultPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesPtrOutput() KeyVaultPropertiesPtrOutput {
 	return i.ToKeyVaultPropertiesPtrOutputWithContext(context.Background())
 }
@@ -611,6 +696,12 @@ func (i *keyVaultPropertiesPtrType) ToKeyVaultPropertiesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesPtrOutput)
 }
 
+func (i *keyVaultPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultProperties] {
+	return pulumix.Output[*KeyVaultProperties]{
+		OutputState: i.ToKeyVaultPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Properties of the key vault.
 type KeyVaultPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -634,6 +725,12 @@ func (o KeyVaultPropertiesOutput) ToKeyVaultPropertiesPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultProperties) *KeyVaultProperties {
 		return &v
 	}).(KeyVaultPropertiesPtrOutput)
+}
+
+func (o KeyVaultPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultProperties] {
+	return pulumix.Output[KeyVaultProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the key vault key.
@@ -668,6 +765,12 @@ func (o KeyVaultPropertiesPtrOutput) ToKeyVaultPropertiesPtrOutput() KeyVaultPro
 
 func (o KeyVaultPropertiesPtrOutput) ToKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) KeyVaultPropertiesPtrOutput {
 	return o
+}
+
+func (o KeyVaultPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultProperties] {
+	return pulumix.Output[*KeyVaultProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyVaultPropertiesPtrOutput) Elem() KeyVaultPropertiesOutput {
@@ -747,6 +850,12 @@ func (o KeyVaultPropertiesResponseOutput) ToKeyVaultPropertiesResponseOutputWith
 	return o
 }
 
+func (o KeyVaultPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultPropertiesResponse] {
+	return pulumix.Output[KeyVaultPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the key vault key.
 func (o KeyVaultPropertiesResponseOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultPropertiesResponse) string { return v.KeyName }).(pulumi.StringOutput)
@@ -779,6 +888,12 @@ func (o KeyVaultPropertiesResponsePtrOutput) ToKeyVaultPropertiesResponsePtrOutp
 
 func (o KeyVaultPropertiesResponsePtrOutput) ToKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) KeyVaultPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o KeyVaultPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultPropertiesResponse] {
+	return pulumix.Output[*KeyVaultPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyVaultPropertiesResponsePtrOutput) Elem() KeyVaultPropertiesResponseOutput {
@@ -866,6 +981,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The resource model definition representing SKU
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -879,6 +1000,12 @@ func (o SkuOutput) ToSkuOutput() SkuOutput {
 
 func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
+}
+
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Azure Health Bot SKU
@@ -905,6 +1032,12 @@ func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
 
 func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
 	return o
+}
+
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Azure Health Bot SKU
@@ -941,6 +1074,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC)
@@ -996,6 +1135,12 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
+func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
+	return pulumix.Output[UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The client ID of user assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -1018,6 +1163,12 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
+	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {

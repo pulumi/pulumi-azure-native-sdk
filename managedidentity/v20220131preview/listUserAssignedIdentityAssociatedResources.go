@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the associated resources for this identity.
@@ -96,6 +97,12 @@ func (o ListUserAssignedIdentityAssociatedResourcesResultOutput) ToListUserAssig
 
 func (o ListUserAssignedIdentityAssociatedResourcesResultOutput) ToListUserAssignedIdentityAssociatedResourcesResultOutputWithContext(ctx context.Context) ListUserAssignedIdentityAssociatedResourcesResultOutput {
 	return o
+}
+
+func (o ListUserAssignedIdentityAssociatedResourcesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListUserAssignedIdentityAssociatedResourcesResult] {
+	return pulumix.Output[ListUserAssignedIdentityAssociatedResourcesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The url to get the next page of results, if any.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the recommended SAP Availability Zone Pair Details for your region.
@@ -80,6 +81,12 @@ func (o GetSAPAvailabilityZoneDetailsResultOutput) ToGetSAPAvailabilityZoneDetai
 
 func (o GetSAPAvailabilityZoneDetailsResultOutput) ToGetSAPAvailabilityZoneDetailsResultOutputWithContext(ctx context.Context) GetSAPAvailabilityZoneDetailsResultOutput {
 	return o
+}
+
+func (o GetSAPAvailabilityZoneDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSAPAvailabilityZoneDetailsResult] {
+	return pulumix.Output[GetSAPAvailabilityZoneDetailsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the list of availability zone pairs.

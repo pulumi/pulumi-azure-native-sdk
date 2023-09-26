@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Details of a specific iot security solution
@@ -111,6 +112,12 @@ func (o LookupIotSecuritySolutionResultOutput) ToLookupIotSecuritySolutionResult
 
 func (o LookupIotSecuritySolutionResultOutput) ToLookupIotSecuritySolutionResultOutputWithContext(ctx context.Context) LookupIotSecuritySolutionResultOutput {
 	return o
+}
+
+func (o LookupIotSecuritySolutionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIotSecuritySolutionResult] {
+	return pulumix.Output[LookupIotSecuritySolutionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of resources that were automatically discovered as relevant to the security solution.

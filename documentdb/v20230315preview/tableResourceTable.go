@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB Table.
@@ -242,6 +243,12 @@ func (i *TableResourceTable) ToTableResourceTableOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(TableResourceTableOutput)
 }
 
+func (i *TableResourceTable) ToOutput(ctx context.Context) pulumix.Output[*TableResourceTable] {
+	return pulumix.Output[*TableResourceTable]{
+		OutputState: i.ToTableResourceTableOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TableResourceTableOutput struct{ *pulumi.OutputState }
 
 func (TableResourceTableOutput) ElementType() reflect.Type {
@@ -254,6 +261,12 @@ func (o TableResourceTableOutput) ToTableResourceTableOutput() TableResourceTabl
 
 func (o TableResourceTableOutput) ToTableResourceTableOutputWithContext(ctx context.Context) TableResourceTableOutput {
 	return o
+}
+
+func (o TableResourceTableOutput) ToOutput(ctx context.Context) pulumix.Output[*TableResourceTable] {
+	return pulumix.Output[*TableResourceTable]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identity for the resource.

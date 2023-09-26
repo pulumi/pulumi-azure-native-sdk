@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a list of databases that are owned by this Kusto Pool and were followed by another Kusto Pool.
@@ -76,6 +77,12 @@ func (o ListKustoPoolFollowerDatabasesResultOutput) ToListKustoPoolFollowerDatab
 
 func (o ListKustoPoolFollowerDatabasesResultOutput) ToListKustoPoolFollowerDatabasesResultOutputWithContext(ctx context.Context) ListKustoPoolFollowerDatabasesResultOutput {
 	return o
+}
+
+func (o ListKustoPoolFollowerDatabasesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListKustoPoolFollowerDatabasesResult] {
+	return pulumix.Output[ListKustoPoolFollowerDatabasesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of follower database result.

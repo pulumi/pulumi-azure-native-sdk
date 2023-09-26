@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -40,6 +41,12 @@ func (o ErrorDefinitionResponseOutput) ToErrorDefinitionResponseOutput() ErrorDe
 
 func (o ErrorDefinitionResponseOutput) ToErrorDefinitionResponseOutputWithContext(ctx context.Context) ErrorDefinitionResponseOutput {
 	return o
+}
+
+func (o ErrorDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorDefinitionResponse] {
+	return pulumix.Output[ErrorDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional scenario specific error details.
@@ -81,6 +88,12 @@ func (o ErrorDefinitionResponseArrayOutput) ToErrorDefinitionResponseArrayOutput
 	return o
 }
 
+func (o ErrorDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorDefinitionResponse] {
+	return pulumix.Output[[]ErrorDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ErrorDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ErrorDefinitionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDefinitionResponse {
 		return vs[0].([]ErrorDefinitionResponse)[vs[1].(int)]
@@ -118,6 +131,12 @@ func (o RemediationDeploymentResponseOutput) ToRemediationDeploymentResponseOutp
 
 func (o RemediationDeploymentResponseOutput) ToRemediationDeploymentResponseOutputWithContext(ctx context.Context) RemediationDeploymentResponseOutput {
 	return o
+}
+
+func (o RemediationDeploymentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RemediationDeploymentResponse] {
+	return pulumix.Output[RemediationDeploymentResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time at which the remediation was created.
@@ -169,6 +188,12 @@ func (o RemediationDeploymentResponseArrayOutput) ToRemediationDeploymentRespons
 	return o
 }
 
+func (o RemediationDeploymentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RemediationDeploymentResponse] {
+	return pulumix.Output[[]RemediationDeploymentResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RemediationDeploymentResponseArrayOutput) Index(i pulumi.IntInput) RemediationDeploymentResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RemediationDeploymentResponse {
 		return vs[0].([]RemediationDeploymentResponse)[vs[1].(int)]
@@ -198,6 +223,12 @@ func (o RemediationDeploymentSummaryResponseOutput) ToRemediationDeploymentSumma
 
 func (o RemediationDeploymentSummaryResponseOutput) ToRemediationDeploymentSummaryResponseOutputWithContext(ctx context.Context) RemediationDeploymentSummaryResponseOutput {
 	return o
+}
+
+func (o RemediationDeploymentSummaryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RemediationDeploymentSummaryResponse] {
+	return pulumix.Output[RemediationDeploymentSummaryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of deployments required by the remediation that have failed.
@@ -250,6 +281,12 @@ func (i RemediationFiltersArgs) ToRemediationFiltersOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RemediationFiltersOutput)
 }
 
+func (i RemediationFiltersArgs) ToOutput(ctx context.Context) pulumix.Output[RemediationFilters] {
+	return pulumix.Output[RemediationFilters]{
+		OutputState: i.ToRemediationFiltersOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RemediationFiltersArgs) ToRemediationFiltersPtrOutput() RemediationFiltersPtrOutput {
 	return i.ToRemediationFiltersPtrOutputWithContext(context.Background())
 }
@@ -291,6 +328,12 @@ func (i *remediationFiltersPtrType) ToRemediationFiltersPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(RemediationFiltersPtrOutput)
 }
 
+func (i *remediationFiltersPtrType) ToOutput(ctx context.Context) pulumix.Output[*RemediationFilters] {
+	return pulumix.Output[*RemediationFilters]{
+		OutputState: i.ToRemediationFiltersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The filters that will be applied to determine which resources to remediate.
 type RemediationFiltersOutput struct{ *pulumi.OutputState }
 
@@ -316,6 +359,12 @@ func (o RemediationFiltersOutput) ToRemediationFiltersPtrOutputWithContext(ctx c
 	}).(RemediationFiltersPtrOutput)
 }
 
+func (o RemediationFiltersOutput) ToOutput(ctx context.Context) pulumix.Output[RemediationFilters] {
+	return pulumix.Output[RemediationFilters]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource locations that will be remediated.
 func (o RemediationFiltersOutput) Locations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RemediationFilters) []string { return v.Locations }).(pulumi.StringArrayOutput)
@@ -333,6 +382,12 @@ func (o RemediationFiltersPtrOutput) ToRemediationFiltersPtrOutput() Remediation
 
 func (o RemediationFiltersPtrOutput) ToRemediationFiltersPtrOutputWithContext(ctx context.Context) RemediationFiltersPtrOutput {
 	return o
+}
+
+func (o RemediationFiltersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RemediationFilters] {
+	return pulumix.Output[*RemediationFilters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RemediationFiltersPtrOutput) Elem() RemediationFiltersOutput {
@@ -376,6 +431,12 @@ func (o RemediationFiltersResponseOutput) ToRemediationFiltersResponseOutputWith
 	return o
 }
 
+func (o RemediationFiltersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RemediationFiltersResponse] {
+	return pulumix.Output[RemediationFiltersResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource locations that will be remediated.
 func (o RemediationFiltersResponseOutput) Locations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RemediationFiltersResponse) []string { return v.Locations }).(pulumi.StringArrayOutput)
@@ -393,6 +454,12 @@ func (o RemediationFiltersResponsePtrOutput) ToRemediationFiltersResponsePtrOutp
 
 func (o RemediationFiltersResponsePtrOutput) ToRemediationFiltersResponsePtrOutputWithContext(ctx context.Context) RemediationFiltersResponsePtrOutput {
 	return o
+}
+
+func (o RemediationFiltersResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RemediationFiltersResponse] {
+	return pulumix.Output[*RemediationFiltersResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RemediationFiltersResponsePtrOutput) Elem() RemediationFiltersResponseOutput {
@@ -450,6 +517,12 @@ func (i RemediationPropertiesFailureThresholdArgs) ToRemediationPropertiesFailur
 	return pulumi.ToOutputWithContext(ctx, i).(RemediationPropertiesFailureThresholdOutput)
 }
 
+func (i RemediationPropertiesFailureThresholdArgs) ToOutput(ctx context.Context) pulumix.Output[RemediationPropertiesFailureThreshold] {
+	return pulumix.Output[RemediationPropertiesFailureThreshold]{
+		OutputState: i.ToRemediationPropertiesFailureThresholdOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RemediationPropertiesFailureThresholdArgs) ToRemediationPropertiesFailureThresholdPtrOutput() RemediationPropertiesFailureThresholdPtrOutput {
 	return i.ToRemediationPropertiesFailureThresholdPtrOutputWithContext(context.Background())
 }
@@ -491,6 +564,12 @@ func (i *remediationPropertiesFailureThresholdPtrType) ToRemediationPropertiesFa
 	return pulumi.ToOutputWithContext(ctx, i).(RemediationPropertiesFailureThresholdPtrOutput)
 }
 
+func (i *remediationPropertiesFailureThresholdPtrType) ToOutput(ctx context.Context) pulumix.Output[*RemediationPropertiesFailureThreshold] {
+	return pulumix.Output[*RemediationPropertiesFailureThreshold]{
+		OutputState: i.ToRemediationPropertiesFailureThresholdPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The remediation failure threshold settings
 type RemediationPropertiesFailureThresholdOutput struct{ *pulumi.OutputState }
 
@@ -516,6 +595,12 @@ func (o RemediationPropertiesFailureThresholdOutput) ToRemediationPropertiesFail
 	}).(RemediationPropertiesFailureThresholdPtrOutput)
 }
 
+func (o RemediationPropertiesFailureThresholdOutput) ToOutput(ctx context.Context) pulumix.Output[RemediationPropertiesFailureThreshold] {
+	return pulumix.Output[RemediationPropertiesFailureThreshold]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A number between 0.0 to 1.0 representing the percentage failure threshold. The remediation will fail if the percentage of failed remediation operations (i.e. failed deployments) exceeds this threshold.
 func (o RemediationPropertiesFailureThresholdOutput) Percentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RemediationPropertiesFailureThreshold) *float64 { return v.Percentage }).(pulumi.Float64PtrOutput)
@@ -533,6 +618,12 @@ func (o RemediationPropertiesFailureThresholdPtrOutput) ToRemediationPropertiesF
 
 func (o RemediationPropertiesFailureThresholdPtrOutput) ToRemediationPropertiesFailureThresholdPtrOutputWithContext(ctx context.Context) RemediationPropertiesFailureThresholdPtrOutput {
 	return o
+}
+
+func (o RemediationPropertiesFailureThresholdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RemediationPropertiesFailureThreshold] {
+	return pulumix.Output[*RemediationPropertiesFailureThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RemediationPropertiesFailureThresholdPtrOutput) Elem() RemediationPropertiesFailureThresholdOutput {
@@ -576,6 +667,12 @@ func (o RemediationPropertiesResponseFailureThresholdOutput) ToRemediationProper
 	return o
 }
 
+func (o RemediationPropertiesResponseFailureThresholdOutput) ToOutput(ctx context.Context) pulumix.Output[RemediationPropertiesResponseFailureThreshold] {
+	return pulumix.Output[RemediationPropertiesResponseFailureThreshold]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A number between 0.0 to 1.0 representing the percentage failure threshold. The remediation will fail if the percentage of failed remediation operations (i.e. failed deployments) exceeds this threshold.
 func (o RemediationPropertiesResponseFailureThresholdOutput) Percentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RemediationPropertiesResponseFailureThreshold) *float64 { return v.Percentage }).(pulumi.Float64PtrOutput)
@@ -593,6 +690,12 @@ func (o RemediationPropertiesResponseFailureThresholdPtrOutput) ToRemediationPro
 
 func (o RemediationPropertiesResponseFailureThresholdPtrOutput) ToRemediationPropertiesResponseFailureThresholdPtrOutputWithContext(ctx context.Context) RemediationPropertiesResponseFailureThresholdPtrOutput {
 	return o
+}
+
+func (o RemediationPropertiesResponseFailureThresholdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RemediationPropertiesResponseFailureThreshold] {
+	return pulumix.Output[*RemediationPropertiesResponseFailureThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RemediationPropertiesResponseFailureThresholdPtrOutput) Elem() RemediationPropertiesResponseFailureThresholdOutput {
@@ -644,6 +747,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -699,6 +808,12 @@ func (o TypedErrorInfoResponseOutput) ToTypedErrorInfoResponseOutputWithContext(
 	return o
 }
 
+func (o TypedErrorInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TypedErrorInfoResponse] {
+	return pulumix.Output[TypedErrorInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The scenario specific error details.
 func (o TypedErrorInfoResponseOutput) Info() pulumi.AnyOutput {
 	return o.ApplyT(func(v TypedErrorInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
@@ -721,6 +836,12 @@ func (o TypedErrorInfoResponseArrayOutput) ToTypedErrorInfoResponseArrayOutput()
 
 func (o TypedErrorInfoResponseArrayOutput) ToTypedErrorInfoResponseArrayOutputWithContext(ctx context.Context) TypedErrorInfoResponseArrayOutput {
 	return o
+}
+
+func (o TypedErrorInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TypedErrorInfoResponse] {
+	return pulumix.Output[[]TypedErrorInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TypedErrorInfoResponseArrayOutput) Index(i pulumi.IntInput) TypedErrorInfoResponseOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get device group
@@ -79,6 +80,12 @@ func (o LookupDeviceGroupResultOutput) ToLookupDeviceGroupResultOutput() LookupD
 
 func (o LookupDeviceGroupResultOutput) ToLookupDeviceGroupResultOutputWithContext(ctx context.Context) LookupDeviceGroupResultOutput {
 	return o
+}
+
+func (o LookupDeviceGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeviceGroupResult] {
+	return pulumix.Output[LookupDeviceGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

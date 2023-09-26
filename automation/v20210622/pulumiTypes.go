@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -38,6 +39,12 @@ func (o HybridRunbookWorkerLegacyResponseOutput) ToHybridRunbookWorkerLegacyResp
 
 func (o HybridRunbookWorkerLegacyResponseOutput) ToHybridRunbookWorkerLegacyResponseOutputWithContext(ctx context.Context) HybridRunbookWorkerLegacyResponseOutput {
 	return o
+}
+
+func (o HybridRunbookWorkerLegacyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HybridRunbookWorkerLegacyResponse] {
+	return pulumix.Output[HybridRunbookWorkerLegacyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the assigned machine IP address.
@@ -72,6 +79,12 @@ func (o HybridRunbookWorkerLegacyResponseArrayOutput) ToHybridRunbookWorkerLegac
 
 func (o HybridRunbookWorkerLegacyResponseArrayOutput) ToHybridRunbookWorkerLegacyResponseArrayOutputWithContext(ctx context.Context) HybridRunbookWorkerLegacyResponseArrayOutput {
 	return o
+}
+
+func (o HybridRunbookWorkerLegacyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HybridRunbookWorkerLegacyResponse] {
+	return pulumix.Output[[]HybridRunbookWorkerLegacyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HybridRunbookWorkerLegacyResponseArrayOutput) Index(i pulumi.IntInput) HybridRunbookWorkerLegacyResponseOutput {
@@ -115,6 +128,12 @@ func (i RunAsCredentialAssociationPropertyArgs) ToRunAsCredentialAssociationProp
 	return pulumi.ToOutputWithContext(ctx, i).(RunAsCredentialAssociationPropertyOutput)
 }
 
+func (i RunAsCredentialAssociationPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[RunAsCredentialAssociationProperty] {
+	return pulumix.Output[RunAsCredentialAssociationProperty]{
+		OutputState: i.ToRunAsCredentialAssociationPropertyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RunAsCredentialAssociationPropertyArgs) ToRunAsCredentialAssociationPropertyPtrOutput() RunAsCredentialAssociationPropertyPtrOutput {
 	return i.ToRunAsCredentialAssociationPropertyPtrOutputWithContext(context.Background())
 }
@@ -156,6 +175,12 @@ func (i *runAsCredentialAssociationPropertyPtrType) ToRunAsCredentialAssociation
 	return pulumi.ToOutputWithContext(ctx, i).(RunAsCredentialAssociationPropertyPtrOutput)
 }
 
+func (i *runAsCredentialAssociationPropertyPtrType) ToOutput(ctx context.Context) pulumix.Output[*RunAsCredentialAssociationProperty] {
+	return pulumix.Output[*RunAsCredentialAssociationProperty]{
+		OutputState: i.ToRunAsCredentialAssociationPropertyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Definition of RunAs credential to use for hybrid worker.
 type RunAsCredentialAssociationPropertyOutput struct{ *pulumi.OutputState }
 
@@ -181,6 +206,12 @@ func (o RunAsCredentialAssociationPropertyOutput) ToRunAsCredentialAssociationPr
 	}).(RunAsCredentialAssociationPropertyPtrOutput)
 }
 
+func (o RunAsCredentialAssociationPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[RunAsCredentialAssociationProperty] {
+	return pulumix.Output[RunAsCredentialAssociationProperty]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the name of the credential.
 func (o RunAsCredentialAssociationPropertyOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RunAsCredentialAssociationProperty) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -198,6 +229,12 @@ func (o RunAsCredentialAssociationPropertyPtrOutput) ToRunAsCredentialAssociatio
 
 func (o RunAsCredentialAssociationPropertyPtrOutput) ToRunAsCredentialAssociationPropertyPtrOutputWithContext(ctx context.Context) RunAsCredentialAssociationPropertyPtrOutput {
 	return o
+}
+
+func (o RunAsCredentialAssociationPropertyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RunAsCredentialAssociationProperty] {
+	return pulumix.Output[*RunAsCredentialAssociationProperty]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RunAsCredentialAssociationPropertyPtrOutput) Elem() RunAsCredentialAssociationPropertyOutput {
@@ -241,6 +278,12 @@ func (o RunAsCredentialAssociationPropertyResponseOutput) ToRunAsCredentialAssoc
 	return o
 }
 
+func (o RunAsCredentialAssociationPropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RunAsCredentialAssociationPropertyResponse] {
+	return pulumix.Output[RunAsCredentialAssociationPropertyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the name of the credential.
 func (o RunAsCredentialAssociationPropertyResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RunAsCredentialAssociationPropertyResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -258,6 +301,12 @@ func (o RunAsCredentialAssociationPropertyResponsePtrOutput) ToRunAsCredentialAs
 
 func (o RunAsCredentialAssociationPropertyResponsePtrOutput) ToRunAsCredentialAssociationPropertyResponsePtrOutputWithContext(ctx context.Context) RunAsCredentialAssociationPropertyResponsePtrOutput {
 	return o
+}
+
+func (o RunAsCredentialAssociationPropertyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RunAsCredentialAssociationPropertyResponse] {
+	return pulumix.Output[*RunAsCredentialAssociationPropertyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RunAsCredentialAssociationPropertyResponsePtrOutput) Elem() RunAsCredentialAssociationPropertyResponseOutput {
@@ -309,6 +358,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

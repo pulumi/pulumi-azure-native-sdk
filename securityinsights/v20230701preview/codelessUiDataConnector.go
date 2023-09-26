@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Codeless UI data connector.
@@ -213,6 +214,12 @@ func (i *CodelessUiDataConnector) ToCodelessUiDataConnectorOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(CodelessUiDataConnectorOutput)
 }
 
+func (i *CodelessUiDataConnector) ToOutput(ctx context.Context) pulumix.Output[*CodelessUiDataConnector] {
+	return pulumix.Output[*CodelessUiDataConnector]{
+		OutputState: i.ToCodelessUiDataConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CodelessUiDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (CodelessUiDataConnectorOutput) ElementType() reflect.Type {
@@ -225,6 +232,12 @@ func (o CodelessUiDataConnectorOutput) ToCodelessUiDataConnectorOutput() Codeles
 
 func (o CodelessUiDataConnectorOutput) ToCodelessUiDataConnectorOutputWithContext(ctx context.Context) CodelessUiDataConnectorOutput {
 	return o
+}
+
+func (o CodelessUiDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*CodelessUiDataConnector] {
+	return pulumix.Output[*CodelessUiDataConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Config to describe the instructions blade

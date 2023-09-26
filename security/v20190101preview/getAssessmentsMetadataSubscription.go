@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get metadata information on an assessment type in a specific subscription
@@ -92,6 +93,12 @@ func (o LookupAssessmentsMetadataSubscriptionResultOutput) ToLookupAssessmentsMe
 
 func (o LookupAssessmentsMetadataSubscriptionResultOutput) ToLookupAssessmentsMetadataSubscriptionResultOutputWithContext(ctx context.Context) LookupAssessmentsMetadataSubscriptionResultOutput {
 	return o
+}
+
+func (o LookupAssessmentsMetadataSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAssessmentsMetadataSubscriptionResult] {
+	return pulumix.Output[LookupAssessmentsMetadataSubscriptionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition

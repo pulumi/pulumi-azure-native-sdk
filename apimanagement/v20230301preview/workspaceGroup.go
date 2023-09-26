@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Contract details.
@@ -152,6 +153,12 @@ func (i *WorkspaceGroup) ToWorkspaceGroupOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceGroupOutput)
 }
 
+func (i *WorkspaceGroup) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceGroup] {
+	return pulumix.Output[*WorkspaceGroup]{
+		OutputState: i.ToWorkspaceGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceGroupOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceGroupOutput) ElementType() reflect.Type {
@@ -164,6 +171,12 @@ func (o WorkspaceGroupOutput) ToWorkspaceGroupOutput() WorkspaceGroupOutput {
 
 func (o WorkspaceGroupOutput) ToWorkspaceGroupOutputWithContext(ctx context.Context) WorkspaceGroupOutput {
 	return o
+}
+
+func (o WorkspaceGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceGroup] {
+	return pulumix.Output[*WorkspaceGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // true if the group is one of the three system groups (Administrators, Developers, or Guests); otherwise false.

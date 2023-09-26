@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Appliances definition.
@@ -165,6 +166,12 @@ func (i *Appliance) ToApplianceOutputWithContext(ctx context.Context) ApplianceO
 	return pulumi.ToOutputWithContext(ctx, i).(ApplianceOutput)
 }
 
+func (i *Appliance) ToOutput(ctx context.Context) pulumix.Output[*Appliance] {
+	return pulumix.Output[*Appliance]{
+		OutputState: i.ToApplianceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplianceOutput struct{ *pulumi.OutputState }
 
 func (ApplianceOutput) ElementType() reflect.Type {
@@ -177,6 +184,12 @@ func (o ApplianceOutput) ToApplianceOutput() ApplianceOutput {
 
 func (o ApplianceOutput) ToApplianceOutputWithContext(ctx context.Context) ApplianceOutput {
 	return o
+}
+
+func (o ApplianceOutput) ToOutput(ctx context.Context) pulumix.Output[*Appliance] {
+	return pulumix.Output[*Appliance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents a supported Fabric/Infra. (AKSEdge etc...).

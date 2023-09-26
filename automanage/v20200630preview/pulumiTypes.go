@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i AccountIdentityArgs) ToAccountIdentityOutput() AccountIdentityOutput {
 
 func (i AccountIdentityArgs) ToAccountIdentityOutputWithContext(ctx context.Context) AccountIdentityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityOutput)
+}
+
+func (i AccountIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[AccountIdentity] {
+	return pulumix.Output[AccountIdentity]{
+		OutputState: i.ToAccountIdentityOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i AccountIdentityArgs) ToAccountIdentityPtrOutput() AccountIdentityPtrOutput {
@@ -89,6 +96,12 @@ func (i *accountIdentityPtrType) ToAccountIdentityPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityPtrOutput)
 }
 
+func (i *accountIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccountIdentity] {
+	return pulumix.Output[*AccountIdentity]{
+		OutputState: i.ToAccountIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity for the Automanage account.
 type AccountIdentityOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o AccountIdentityOutput) ToAccountIdentityPtrOutputWithContext(ctx context
 	}).(AccountIdentityPtrOutput)
 }
 
+func (o AccountIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[AccountIdentity] {
+	return pulumix.Output[AccountIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The type of identity used for the Automanage account. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
 func (o AccountIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v AccountIdentity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -131,6 +150,12 @@ func (o AccountIdentityPtrOutput) ToAccountIdentityPtrOutput() AccountIdentityPt
 
 func (o AccountIdentityPtrOutput) ToAccountIdentityPtrOutputWithContext(ctx context.Context) AccountIdentityPtrOutput {
 	return o
+}
+
+func (o AccountIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountIdentity] {
+	return pulumix.Output[*AccountIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountIdentityPtrOutput) Elem() AccountIdentityOutput {
@@ -178,6 +203,12 @@ func (o AccountIdentityResponseOutput) ToAccountIdentityResponseOutputWithContex
 	return o
 }
 
+func (o AccountIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccountIdentityResponse] {
+	return pulumix.Output[AccountIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal id of Automanage account identity.
 func (o AccountIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v AccountIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -205,6 +236,12 @@ func (o AccountIdentityResponsePtrOutput) ToAccountIdentityResponsePtrOutput() A
 
 func (o AccountIdentityResponsePtrOutput) ToAccountIdentityResponsePtrOutputWithContext(ctx context.Context) AccountIdentityResponsePtrOutput {
 	return o
+}
+
+func (o AccountIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountIdentityResponse] {
+	return pulumix.Output[*AccountIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountIdentityResponsePtrOutput) Elem() AccountIdentityResponseOutput {
@@ -302,6 +339,12 @@ func (i ConfigurationProfilePreferenceAntiMalwareArgs) ToConfigurationProfilePre
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfilePreferenceAntiMalwareOutput)
 }
 
+func (i ConfigurationProfilePreferenceAntiMalwareArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfilePreferenceAntiMalware] {
+	return pulumix.Output[ConfigurationProfilePreferenceAntiMalware]{
+		OutputState: i.ToConfigurationProfilePreferenceAntiMalwareOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConfigurationProfilePreferenceAntiMalwareArgs) ToConfigurationProfilePreferenceAntiMalwarePtrOutput() ConfigurationProfilePreferenceAntiMalwarePtrOutput {
 	return i.ToConfigurationProfilePreferenceAntiMalwarePtrOutputWithContext(context.Background())
 }
@@ -343,6 +386,12 @@ func (i *configurationProfilePreferenceAntiMalwarePtrType) ToConfigurationProfil
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfilePreferenceAntiMalwarePtrOutput)
 }
 
+func (i *configurationProfilePreferenceAntiMalwarePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfilePreferenceAntiMalware] {
+	return pulumix.Output[*ConfigurationProfilePreferenceAntiMalware]{
+		OutputState: i.ToConfigurationProfilePreferenceAntiMalwarePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Automanage configuration profile Antimalware preferences.
 type ConfigurationProfilePreferenceAntiMalwareOutput struct{ *pulumi.OutputState }
 
@@ -366,6 +415,12 @@ func (o ConfigurationProfilePreferenceAntiMalwareOutput) ToConfigurationProfileP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigurationProfilePreferenceAntiMalware) *ConfigurationProfilePreferenceAntiMalware {
 		return &v
 	}).(ConfigurationProfilePreferenceAntiMalwarePtrOutput)
+}
+
+func (o ConfigurationProfilePreferenceAntiMalwareOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfilePreferenceAntiMalware] {
+	return pulumix.Output[ConfigurationProfilePreferenceAntiMalware]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Enables or disables Real Time Protection
@@ -410,6 +465,12 @@ func (o ConfigurationProfilePreferenceAntiMalwarePtrOutput) ToConfigurationProfi
 
 func (o ConfigurationProfilePreferenceAntiMalwarePtrOutput) ToConfigurationProfilePreferenceAntiMalwarePtrOutputWithContext(ctx context.Context) ConfigurationProfilePreferenceAntiMalwarePtrOutput {
 	return o
+}
+
+func (o ConfigurationProfilePreferenceAntiMalwarePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfilePreferenceAntiMalware] {
+	return pulumix.Output[*ConfigurationProfilePreferenceAntiMalware]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigurationProfilePreferenceAntiMalwarePtrOutput) Elem() ConfigurationProfilePreferenceAntiMalwareOutput {
@@ -513,6 +574,12 @@ func (o ConfigurationProfilePreferenceAntiMalwareResponseOutput) ToConfiguration
 	return o
 }
 
+func (o ConfigurationProfilePreferenceAntiMalwareResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfilePreferenceAntiMalwareResponse] {
+	return pulumix.Output[ConfigurationProfilePreferenceAntiMalwareResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Enables or disables Real Time Protection
 func (o ConfigurationProfilePreferenceAntiMalwareResponseOutput) EnableRealTimeProtection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigurationProfilePreferenceAntiMalwareResponse) *string { return v.EnableRealTimeProtection }).(pulumi.StringPtrOutput)
@@ -555,6 +622,12 @@ func (o ConfigurationProfilePreferenceAntiMalwareResponsePtrOutput) ToConfigurat
 
 func (o ConfigurationProfilePreferenceAntiMalwareResponsePtrOutput) ToConfigurationProfilePreferenceAntiMalwareResponsePtrOutputWithContext(ctx context.Context) ConfigurationProfilePreferenceAntiMalwareResponsePtrOutput {
 	return o
+}
+
+func (o ConfigurationProfilePreferenceAntiMalwareResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfilePreferenceAntiMalwareResponse] {
+	return pulumix.Output[*ConfigurationProfilePreferenceAntiMalwareResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigurationProfilePreferenceAntiMalwareResponsePtrOutput) Elem() ConfigurationProfilePreferenceAntiMalwareResponseOutput {
@@ -666,6 +739,12 @@ func (i ConfigurationProfilePreferencePropertiesArgs) ToConfigurationProfilePref
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfilePreferencePropertiesOutput)
 }
 
+func (i ConfigurationProfilePreferencePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfilePreferenceProperties] {
+	return pulumix.Output[ConfigurationProfilePreferenceProperties]{
+		OutputState: i.ToConfigurationProfilePreferencePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConfigurationProfilePreferencePropertiesArgs) ToConfigurationProfilePreferencePropertiesPtrOutput() ConfigurationProfilePreferencePropertiesPtrOutput {
 	return i.ToConfigurationProfilePreferencePropertiesPtrOutputWithContext(context.Background())
 }
@@ -707,6 +786,12 @@ func (i *configurationProfilePreferencePropertiesPtrType) ToConfigurationProfile
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfilePreferencePropertiesPtrOutput)
 }
 
+func (i *configurationProfilePreferencePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfilePreferenceProperties] {
+	return pulumix.Output[*ConfigurationProfilePreferenceProperties]{
+		OutputState: i.ToConfigurationProfilePreferencePropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Automanage configuration profile preference properties.
 type ConfigurationProfilePreferencePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -730,6 +815,12 @@ func (o ConfigurationProfilePreferencePropertiesOutput) ToConfigurationProfilePr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigurationProfilePreferenceProperties) *ConfigurationProfilePreferenceProperties {
 		return &v
 	}).(ConfigurationProfilePreferencePropertiesPtrOutput)
+}
+
+func (o ConfigurationProfilePreferencePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfilePreferenceProperties] {
+	return pulumix.Output[ConfigurationProfilePreferenceProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The custom preferences for Azure Antimalware.
@@ -758,6 +849,12 @@ func (o ConfigurationProfilePreferencePropertiesPtrOutput) ToConfigurationProfil
 
 func (o ConfigurationProfilePreferencePropertiesPtrOutput) ToConfigurationProfilePreferencePropertiesPtrOutputWithContext(ctx context.Context) ConfigurationProfilePreferencePropertiesPtrOutput {
 	return o
+}
+
+func (o ConfigurationProfilePreferencePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfilePreferenceProperties] {
+	return pulumix.Output[*ConfigurationProfilePreferenceProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigurationProfilePreferencePropertiesPtrOutput) Elem() ConfigurationProfilePreferencePropertiesOutput {
@@ -811,6 +908,12 @@ func (o ConfigurationProfilePreferencePropertiesResponseOutput) ToConfigurationP
 
 func (o ConfigurationProfilePreferencePropertiesResponseOutput) ToConfigurationProfilePreferencePropertiesResponseOutputWithContext(ctx context.Context) ConfigurationProfilePreferencePropertiesResponseOutput {
 	return o
+}
+
+func (o ConfigurationProfilePreferencePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfilePreferencePropertiesResponse] {
+	return pulumix.Output[ConfigurationProfilePreferencePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The custom preferences for Azure Antimalware.
@@ -874,6 +977,12 @@ func (i ConfigurationProfilePreferenceVmBackupArgs) ToConfigurationProfilePrefer
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfilePreferenceVmBackupOutput)
 }
 
+func (i ConfigurationProfilePreferenceVmBackupArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfilePreferenceVmBackup] {
+	return pulumix.Output[ConfigurationProfilePreferenceVmBackup]{
+		OutputState: i.ToConfigurationProfilePreferenceVmBackupOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConfigurationProfilePreferenceVmBackupArgs) ToConfigurationProfilePreferenceVmBackupPtrOutput() ConfigurationProfilePreferenceVmBackupPtrOutput {
 	return i.ToConfigurationProfilePreferenceVmBackupPtrOutputWithContext(context.Background())
 }
@@ -915,6 +1024,12 @@ func (i *configurationProfilePreferenceVmBackupPtrType) ToConfigurationProfilePr
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfilePreferenceVmBackupPtrOutput)
 }
 
+func (i *configurationProfilePreferenceVmBackupPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfilePreferenceVmBackup] {
+	return pulumix.Output[*ConfigurationProfilePreferenceVmBackup]{
+		OutputState: i.ToConfigurationProfilePreferenceVmBackupPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Automanage configuration profile VM Backup preferences.
 type ConfigurationProfilePreferenceVmBackupOutput struct{ *pulumi.OutputState }
 
@@ -938,6 +1053,12 @@ func (o ConfigurationProfilePreferenceVmBackupOutput) ToConfigurationProfilePref
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigurationProfilePreferenceVmBackup) *ConfigurationProfilePreferenceVmBackup {
 		return &v
 	}).(ConfigurationProfilePreferenceVmBackupPtrOutput)
+}
+
+func (o ConfigurationProfilePreferenceVmBackupOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfilePreferenceVmBackup] {
+	return pulumix.Output[ConfigurationProfilePreferenceVmBackup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Instant RP retention policy range in days
@@ -972,6 +1093,12 @@ func (o ConfigurationProfilePreferenceVmBackupPtrOutput) ToConfigurationProfileP
 
 func (o ConfigurationProfilePreferenceVmBackupPtrOutput) ToConfigurationProfilePreferenceVmBackupPtrOutputWithContext(ctx context.Context) ConfigurationProfilePreferenceVmBackupPtrOutput {
 	return o
+}
+
+func (o ConfigurationProfilePreferenceVmBackupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfilePreferenceVmBackup] {
+	return pulumix.Output[*ConfigurationProfilePreferenceVmBackup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigurationProfilePreferenceVmBackupPtrOutput) Elem() ConfigurationProfilePreferenceVmBackupOutput {
@@ -1051,6 +1178,12 @@ func (o ConfigurationProfilePreferenceVmBackupResponseOutput) ToConfigurationPro
 	return o
 }
 
+func (o ConfigurationProfilePreferenceVmBackupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfilePreferenceVmBackupResponse] {
+	return pulumix.Output[ConfigurationProfilePreferenceVmBackupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Instant RP retention policy range in days
 func (o ConfigurationProfilePreferenceVmBackupResponseOutput) InstantRpRetentionRangeInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConfigurationProfilePreferenceVmBackupResponse) *int { return v.InstantRpRetentionRangeInDays }).(pulumi.IntPtrOutput)
@@ -1083,6 +1216,12 @@ func (o ConfigurationProfilePreferenceVmBackupResponsePtrOutput) ToConfiguration
 
 func (o ConfigurationProfilePreferenceVmBackupResponsePtrOutput) ToConfigurationProfilePreferenceVmBackupResponsePtrOutputWithContext(ctx context.Context) ConfigurationProfilePreferenceVmBackupResponsePtrOutput {
 	return o
+}
+
+func (o ConfigurationProfilePreferenceVmBackupResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfilePreferenceVmBackupResponse] {
+	return pulumix.Output[*ConfigurationProfilePreferenceVmBackupResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigurationProfilePreferenceVmBackupResponsePtrOutput) Elem() ConfigurationProfilePreferenceVmBackupResponseOutput {

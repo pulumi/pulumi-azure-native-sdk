@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Tenant Activity Log Alert rule resource.
@@ -162,6 +163,12 @@ func (i *TenantActivityLogAlert) ToTenantActivityLogAlertOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(TenantActivityLogAlertOutput)
 }
 
+func (i *TenantActivityLogAlert) ToOutput(ctx context.Context) pulumix.Output[*TenantActivityLogAlert] {
+	return pulumix.Output[*TenantActivityLogAlert]{
+		OutputState: i.ToTenantActivityLogAlertOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TenantActivityLogAlertOutput struct{ *pulumi.OutputState }
 
 func (TenantActivityLogAlertOutput) ElementType() reflect.Type {
@@ -174,6 +181,12 @@ func (o TenantActivityLogAlertOutput) ToTenantActivityLogAlertOutput() TenantAct
 
 func (o TenantActivityLogAlertOutput) ToTenantActivityLogAlertOutputWithContext(ctx context.Context) TenantActivityLogAlertOutput {
 	return o
+}
+
+func (o TenantActivityLogAlertOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantActivityLogAlert] {
+	return pulumix.Output[*TenantActivityLogAlert]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The actions that will activate when the condition is met.

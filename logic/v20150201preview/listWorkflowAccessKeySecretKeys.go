@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists secret keys.
@@ -76,6 +77,12 @@ func (o ListWorkflowAccessKeySecretKeysResultOutput) ToListWorkflowAccessKeySecr
 
 func (o ListWorkflowAccessKeySecretKeysResultOutput) ToListWorkflowAccessKeySecretKeysResultOutputWithContext(ctx context.Context) ListWorkflowAccessKeySecretKeysResultOutput {
 	return o
+}
+
+func (o ListWorkflowAccessKeySecretKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWorkflowAccessKeySecretKeysResult] {
+	return pulumix.Output[ListWorkflowAccessKeySecretKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the primary secret key.

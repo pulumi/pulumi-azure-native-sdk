@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a role assignment by scope and name.
@@ -117,6 +118,12 @@ func (o LookupRoleAssignmentResultOutput) ToLookupRoleAssignmentResultOutput() L
 
 func (o LookupRoleAssignmentResultOutput) ToLookupRoleAssignmentResultOutputWithContext(ctx context.Context) LookupRoleAssignmentResultOutput {
 	return o
+}
+
+func (o LookupRoleAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRoleAssignmentResult] {
+	return pulumix.Output[LookupRoleAssignmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'

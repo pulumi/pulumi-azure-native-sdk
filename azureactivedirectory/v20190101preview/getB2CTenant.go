@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the Azure AD B2C tenant resource.
@@ -84,6 +85,12 @@ func (o LookupB2CTenantResultOutput) ToLookupB2CTenantResultOutput() LookupB2CTe
 
 func (o LookupB2CTenantResultOutput) ToLookupB2CTenantResultOutputWithContext(ctx context.Context) LookupB2CTenantResultOutput {
 	return o
+}
+
+func (o LookupB2CTenantResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupB2CTenantResult] {
+	return pulumix.Output[LookupB2CTenantResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The billing configuration for the tenant.

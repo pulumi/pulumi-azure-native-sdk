@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified network security perimeter by the name.
@@ -84,6 +85,12 @@ func (o LookupNetworkSecurityPerimeterResultOutput) ToLookupNetworkSecurityPerim
 
 func (o LookupNetworkSecurityPerimeterResultOutput) ToLookupNetworkSecurityPerimeterResultOutputWithContext(ctx context.Context) LookupNetworkSecurityPerimeterResultOutput {
 	return o
+}
+
+func (o LookupNetworkSecurityPerimeterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkSecurityPerimeterResult] {
+	return pulumix.Output[LookupNetworkSecurityPerimeterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.

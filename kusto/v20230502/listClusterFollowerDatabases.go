@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a list of databases that are owned by this cluster and were followed by another cluster.
@@ -72,6 +73,12 @@ func (o ListClusterFollowerDatabasesResultOutput) ToListClusterFollowerDatabases
 
 func (o ListClusterFollowerDatabasesResultOutput) ToListClusterFollowerDatabasesResultOutputWithContext(ctx context.Context) ListClusterFollowerDatabasesResultOutput {
 	return o
+}
+
+func (o ListClusterFollowerDatabasesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListClusterFollowerDatabasesResult] {
+	return pulumix.Output[ListClusterFollowerDatabasesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of follower database result.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get specified Update
@@ -130,6 +131,12 @@ func (o LookupUpdateResultOutput) ToLookupUpdateResultOutput() LookupUpdateResul
 
 func (o LookupUpdateResultOutput) ToLookupUpdateResultOutputWithContext(ctx context.Context) LookupUpdateResultOutput {
 	return o
+}
+
+func (o LookupUpdateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupUpdateResult] {
+	return pulumix.Output[LookupUpdateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Extensible KV pairs serialized as a string. This is currently used to report the stamp OEM family and hardware model information when an update is flagged as Invalid for the stamp based on OEM type.

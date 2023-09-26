@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Gets the list of users of a static site.
@@ -78,6 +79,12 @@ func (o ListStaticSiteUsersResultOutput) ToListStaticSiteUsersResultOutput() Lis
 
 func (o ListStaticSiteUsersResultOutput) ToListStaticSiteUsersResultOutputWithContext(ctx context.Context) ListStaticSiteUsersResultOutput {
 	return o
+}
+
+func (o ListStaticSiteUsersResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListStaticSiteUsersResult] {
+	return pulumix.Output[ListStaticSiteUsersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Link to next page of resources.

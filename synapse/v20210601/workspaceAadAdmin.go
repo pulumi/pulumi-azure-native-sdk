@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Workspace active directory administrator
@@ -153,6 +154,12 @@ func (i *WorkspaceAadAdmin) ToWorkspaceAadAdminOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceAadAdminOutput)
 }
 
+func (i *WorkspaceAadAdmin) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceAadAdmin] {
+	return pulumix.Output[*WorkspaceAadAdmin]{
+		OutputState: i.ToWorkspaceAadAdminOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceAadAdminOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceAadAdminOutput) ElementType() reflect.Type {
@@ -165,6 +172,12 @@ func (o WorkspaceAadAdminOutput) ToWorkspaceAadAdminOutput() WorkspaceAadAdminOu
 
 func (o WorkspaceAadAdminOutput) ToWorkspaceAadAdminOutputWithContext(ctx context.Context) WorkspaceAadAdminOutput {
 	return o
+}
+
+func (o WorkspaceAadAdminOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceAadAdmin] {
+	return pulumix.Output[*WorkspaceAadAdmin]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Workspace active directory administrator type

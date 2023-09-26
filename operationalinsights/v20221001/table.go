@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Workspace data table definition.
@@ -168,6 +169,12 @@ func (i *Table) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableOutput)
 }
 
+func (i *Table) ToOutput(ctx context.Context) pulumix.Output[*Table] {
+	return pulumix.Output[*Table]{
+		OutputState: i.ToTableOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TableOutput struct{ *pulumi.OutputState }
 
 func (TableOutput) ElementType() reflect.Type {
@@ -180,6 +187,12 @@ func (o TableOutput) ToTableOutput() TableOutput {
 
 func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
+}
+
+func (o TableOutput) ToOutput(ctx context.Context) pulumix.Output[*Table] {
+	return pulumix.Output[*Table]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The table data archive retention in days. Calculated as (totalRetentionInDays-retentionInDays)

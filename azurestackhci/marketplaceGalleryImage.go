@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The marketplace gallery image resource definition.
@@ -175,6 +176,12 @@ func (i *MarketplaceGalleryImage) ToMarketplaceGalleryImageOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(MarketplaceGalleryImageOutput)
 }
 
+func (i *MarketplaceGalleryImage) ToOutput(ctx context.Context) pulumix.Output[*MarketplaceGalleryImage] {
+	return pulumix.Output[*MarketplaceGalleryImage]{
+		OutputState: i.ToMarketplaceGalleryImageOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MarketplaceGalleryImageOutput struct{ *pulumi.OutputState }
 
 func (MarketplaceGalleryImageOutput) ElementType() reflect.Type {
@@ -187,6 +194,12 @@ func (o MarketplaceGalleryImageOutput) ToMarketplaceGalleryImageOutput() Marketp
 
 func (o MarketplaceGalleryImageOutput) ToMarketplaceGalleryImageOutputWithContext(ctx context.Context) MarketplaceGalleryImageOutput {
 	return o
+}
+
+func (o MarketplaceGalleryImageOutput) ToOutput(ctx context.Context) pulumix.Output[*MarketplaceGalleryImage] {
+	return pulumix.Output[*MarketplaceGalleryImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]

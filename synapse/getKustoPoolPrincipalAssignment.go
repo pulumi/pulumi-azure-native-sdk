@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Kusto pool principalAssignment.
@@ -103,6 +104,12 @@ func (o LookupKustoPoolPrincipalAssignmentResultOutput) ToLookupKustoPoolPrincip
 
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) ToLookupKustoPoolPrincipalAssignmentResultOutputWithContext(ctx context.Context) LookupKustoPoolPrincipalAssignmentResultOutput {
 	return o
+}
+
+func (o LookupKustoPoolPrincipalAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKustoPoolPrincipalAssignmentResult] {
+	return pulumix.Output[LookupKustoPoolPrincipalAssignmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The service principal object id in AAD (Azure active directory)

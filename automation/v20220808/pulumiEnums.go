@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets the content source type.
@@ -86,6 +87,12 @@ func (o EncryptionKeySourceTypeOutput) ToEncryptionKeySourceTypePtrOutputWithCon
 	}).(EncryptionKeySourceTypePtrOutput)
 }
 
+func (o EncryptionKeySourceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionKeySourceType] {
+	return pulumix.Output[EncryptionKeySourceType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EncryptionKeySourceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -119,6 +126,12 @@ func (o EncryptionKeySourceTypePtrOutput) ToEncryptionKeySourceTypePtrOutput() E
 
 func (o EncryptionKeySourceTypePtrOutput) ToEncryptionKeySourceTypePtrOutputWithContext(ctx context.Context) EncryptionKeySourceTypePtrOutput {
 	return o
+}
+
+func (o EncryptionKeySourceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeySourceType] {
+	return pulumix.Output[*EncryptionKeySourceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionKeySourceTypePtrOutput) Elem() EncryptionKeySourceTypeOutput {
@@ -181,6 +194,12 @@ func (in *encryptionKeySourceTypePtr) ToEncryptionKeySourceTypePtrOutput() Encry
 
 func (in *encryptionKeySourceTypePtr) ToEncryptionKeySourceTypePtrOutputWithContext(ctx context.Context) EncryptionKeySourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionKeySourceTypePtrOutput)
+}
+
+func (in *encryptionKeySourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeySourceType] {
+	return pulumix.Output[*EncryptionKeySourceType]{
+		OutputState: in.ToEncryptionKeySourceTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The identity type.
@@ -253,6 +272,12 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
+func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
+	return pulumix.Output[ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -348,6 +379,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+}
+
+func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Gets or sets the type of the runbook.

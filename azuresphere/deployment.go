@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An deployment resource belonging to a device group resource.
@@ -148,6 +149,12 @@ func (i *Deployment) ToDeploymentOutputWithContext(ctx context.Context) Deployme
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentOutput)
 }
 
+func (i *Deployment) ToOutput(ctx context.Context) pulumix.Output[*Deployment] {
+	return pulumix.Output[*Deployment]{
+		OutputState: i.ToDeploymentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeploymentOutput struct{ *pulumi.OutputState }
 
 func (DeploymentOutput) ElementType() reflect.Type {
@@ -160,6 +167,12 @@ func (o DeploymentOutput) ToDeploymentOutput() DeploymentOutput {
 
 func (o DeploymentOutput) ToDeploymentOutputWithContext(ctx context.Context) DeploymentOutput {
 	return o
+}
+
+func (o DeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[*Deployment] {
+	return pulumix.Output[*Deployment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Images deployed
