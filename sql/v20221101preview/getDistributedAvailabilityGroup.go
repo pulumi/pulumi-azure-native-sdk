@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a distributed availability group info.
@@ -102,6 +103,12 @@ func (o LookupDistributedAvailabilityGroupResultOutput) ToLookupDistributedAvail
 
 func (o LookupDistributedAvailabilityGroupResultOutput) ToLookupDistributedAvailabilityGroupResultOutputWithContext(ctx context.Context) LookupDistributedAvailabilityGroupResultOutput {
 	return o
+}
+
+func (o LookupDistributedAvailabilityGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDistributedAvailabilityGroupResult] {
+	return pulumix.Output[LookupDistributedAvailabilityGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The distributed availability group id

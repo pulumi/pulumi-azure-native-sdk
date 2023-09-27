@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of the provided the Kubernetes cluster.
@@ -127,6 +128,12 @@ func (o LookupKubernetesClusterResultOutput) ToLookupKubernetesClusterResultOutp
 
 func (o LookupKubernetesClusterResultOutput) ToLookupKubernetesClusterResultOutputWithContext(ctx context.Context) LookupKubernetesClusterResultOutput {
 	return o
+}
+
+func (o LookupKubernetesClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKubernetesClusterResult] {
+	return pulumix.Output[LookupKubernetesClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Azure Active Directory Integration properties.

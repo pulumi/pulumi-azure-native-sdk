@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Get function information by its ID for web site, or a deployment slot.
@@ -112,6 +113,12 @@ func (o LookupWebAppInstanceFunctionSlotResultOutput) ToLookupWebAppInstanceFunc
 
 func (o LookupWebAppInstanceFunctionSlotResultOutput) ToLookupWebAppInstanceFunctionSlotResultOutputWithContext(ctx context.Context) LookupWebAppInstanceFunctionSlotResultOutput {
 	return o
+}
+
+func (o LookupWebAppInstanceFunctionSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppInstanceFunctionSlotResult] {
+	return pulumix.Output[LookupWebAppInstanceFunctionSlotResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Config information.

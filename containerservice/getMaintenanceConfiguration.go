@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
@@ -87,6 +88,12 @@ func (o LookupMaintenanceConfigurationResultOutput) ToLookupMaintenanceConfigura
 
 func (o LookupMaintenanceConfigurationResultOutput) ToLookupMaintenanceConfigurationResultOutputWithContext(ctx context.Context) LookupMaintenanceConfigurationResultOutput {
 	return o
+}
+
+func (o LookupMaintenanceConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMaintenanceConfigurationResult] {
+	return pulumix.Output[LookupMaintenanceConfigurationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.

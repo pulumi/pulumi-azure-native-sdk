@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a video resource within Azure Video Analyzer. Videos can be ingested from RTSP cameras through live pipelines or can be created by exporting sequences from existing captured video through a pipeline job. Videos ingested through live pipelines can be streamed through Azure Video Analyzer Player Widget or compatible players. Exported videos can be downloaded as MP4 files.
@@ -149,6 +150,12 @@ func (i *Video) ToVideoOutputWithContext(ctx context.Context) VideoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VideoOutput)
 }
 
+func (i *Video) ToOutput(ctx context.Context) pulumix.Output[*Video] {
+	return pulumix.Output[*Video]{
+		OutputState: i.ToVideoOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VideoOutput struct{ *pulumi.OutputState }
 
 func (VideoOutput) ElementType() reflect.Type {
@@ -161,6 +168,12 @@ func (o VideoOutput) ToVideoOutput() VideoOutput {
 
 func (o VideoOutput) ToVideoOutputWithContext(ctx context.Context) VideoOutput {
 	return o
+}
+
+func (o VideoOutput) ToOutput(ctx context.Context) pulumix.Output[*Video] {
+	return pulumix.Output[*Video]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Video archival properties.

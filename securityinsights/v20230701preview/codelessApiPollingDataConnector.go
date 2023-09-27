@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Codeless API Polling data connector.
@@ -129,6 +130,9 @@ func NewCodelessApiPollingDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:CodelessApiPollingDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:CodelessApiPollingDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -219,6 +223,12 @@ func (i *CodelessApiPollingDataConnector) ToCodelessApiPollingDataConnectorOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(CodelessApiPollingDataConnectorOutput)
 }
 
+func (i *CodelessApiPollingDataConnector) ToOutput(ctx context.Context) pulumix.Output[*CodelessApiPollingDataConnector] {
+	return pulumix.Output[*CodelessApiPollingDataConnector]{
+		OutputState: i.ToCodelessApiPollingDataConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CodelessApiPollingDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (CodelessApiPollingDataConnectorOutput) ElementType() reflect.Type {
@@ -231,6 +241,12 @@ func (o CodelessApiPollingDataConnectorOutput) ToCodelessApiPollingDataConnector
 
 func (o CodelessApiPollingDataConnectorOutput) ToCodelessApiPollingDataConnectorOutputWithContext(ctx context.Context) CodelessApiPollingDataConnectorOutput {
 	return o
+}
+
+func (o CodelessApiPollingDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*CodelessApiPollingDataConnector] {
+	return pulumix.Output[*CodelessApiPollingDataConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Config to describe the instructions blade

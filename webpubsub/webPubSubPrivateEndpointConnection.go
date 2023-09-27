@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A private endpoint connection to an azure resource
@@ -158,6 +159,12 @@ func (i *WebPubSubPrivateEndpointConnection) ToWebPubSubPrivateEndpointConnectio
 	return pulumi.ToOutputWithContext(ctx, i).(WebPubSubPrivateEndpointConnectionOutput)
 }
 
+func (i *WebPubSubPrivateEndpointConnection) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubPrivateEndpointConnection] {
+	return pulumix.Output[*WebPubSubPrivateEndpointConnection]{
+		OutputState: i.ToWebPubSubPrivateEndpointConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebPubSubPrivateEndpointConnectionOutput struct{ *pulumi.OutputState }
 
 func (WebPubSubPrivateEndpointConnectionOutput) ElementType() reflect.Type {
@@ -170,6 +177,12 @@ func (o WebPubSubPrivateEndpointConnectionOutput) ToWebPubSubPrivateEndpointConn
 
 func (o WebPubSubPrivateEndpointConnectionOutput) ToWebPubSubPrivateEndpointConnectionOutputWithContext(ctx context.Context) WebPubSubPrivateEndpointConnectionOutput {
 	return o
+}
+
+func (o WebPubSubPrivateEndpointConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubPrivateEndpointConnection] {
+	return pulumix.Output[*WebPubSubPrivateEndpointConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Group IDs

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Method to get a Web app data source in site.
@@ -91,6 +92,12 @@ func (o LookupWebAppDiscoverySiteDataSourcesControllerResultOutput) ToLookupWebA
 
 func (o LookupWebAppDiscoverySiteDataSourcesControllerResultOutput) ToLookupWebAppDiscoverySiteDataSourcesControllerResultOutputWithContext(ctx context.Context) LookupWebAppDiscoverySiteDataSourcesControllerResultOutput {
 	return o
+}
+
+func (o LookupWebAppDiscoverySiteDataSourcesControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppDiscoverySiteDataSourcesControllerResult] {
+	return pulumix.Output[LookupWebAppDiscoverySiteDataSourcesControllerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the discovery site Id.

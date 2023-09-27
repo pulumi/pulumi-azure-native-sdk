@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Push settings for the App.
@@ -193,6 +194,12 @@ func (i *WebAppSitePushSettings) ToWebAppSitePushSettingsOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppSitePushSettingsOutput)
 }
 
+func (i *WebAppSitePushSettings) ToOutput(ctx context.Context) pulumix.Output[*WebAppSitePushSettings] {
+	return pulumix.Output[*WebAppSitePushSettings]{
+		OutputState: i.ToWebAppSitePushSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppSitePushSettingsOutput struct{ *pulumi.OutputState }
 
 func (WebAppSitePushSettingsOutput) ElementType() reflect.Type {
@@ -205,6 +212,12 @@ func (o WebAppSitePushSettingsOutput) ToWebAppSitePushSettingsOutput() WebAppSit
 
 func (o WebAppSitePushSettingsOutput) ToWebAppSitePushSettingsOutputWithContext(ctx context.Context) WebAppSitePushSettingsOutput {
 	return o
+}
+
+func (o WebAppSitePushSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppSitePushSettings] {
+	return pulumix.Output[*WebAppSitePushSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.

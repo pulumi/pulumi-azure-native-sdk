@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i AssignmentPrincipalArgs) ToAssignmentPrincipalOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentPrincipalOutput)
 }
 
+func (i AssignmentPrincipalArgs) ToOutput(ctx context.Context) pulumix.Output[AssignmentPrincipal] {
+	return pulumix.Output[AssignmentPrincipal]{
+		OutputState: i.ToAssignmentPrincipalOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AssignmentPrincipalArrayInput is an input type that accepts AssignmentPrincipalArray and AssignmentPrincipalArrayOutput values.
 // You can construct a concrete instance of `AssignmentPrincipalArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i AssignmentPrincipalArray) ToAssignmentPrincipalArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentPrincipalArrayOutput)
 }
 
+func (i AssignmentPrincipalArray) ToOutput(ctx context.Context) pulumix.Output[[]AssignmentPrincipal] {
+	return pulumix.Output[[]AssignmentPrincipal]{
+		OutputState: i.ToAssignmentPrincipalArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The AssignmentPrincipal
 type AssignmentPrincipalOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o AssignmentPrincipalOutput) ToAssignmentPrincipalOutput() AssignmentPrinc
 
 func (o AssignmentPrincipalOutput) ToAssignmentPrincipalOutputWithContext(ctx context.Context) AssignmentPrincipalOutput {
 	return o
+}
+
+func (o AssignmentPrincipalOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentPrincipal] {
+	return pulumix.Output[AssignmentPrincipal]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The principal id being assigned to.
@@ -123,6 +142,12 @@ func (o AssignmentPrincipalArrayOutput) ToAssignmentPrincipalArrayOutput() Assig
 
 func (o AssignmentPrincipalArrayOutput) ToAssignmentPrincipalArrayOutputWithContext(ctx context.Context) AssignmentPrincipalArrayOutput {
 	return o
+}
+
+func (o AssignmentPrincipalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssignmentPrincipal] {
+	return pulumix.Output[[]AssignmentPrincipal]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AssignmentPrincipalArrayOutput) Index(i pulumi.IntInput) AssignmentPrincipalOutput {
@@ -156,6 +181,12 @@ func (o AssignmentPrincipalResponseOutput) ToAssignmentPrincipalResponseOutputWi
 	return o
 }
 
+func (o AssignmentPrincipalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentPrincipalResponse] {
+	return pulumix.Output[AssignmentPrincipalResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal id being assigned to.
 func (o AssignmentPrincipalResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v AssignmentPrincipalResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -183,6 +214,12 @@ func (o AssignmentPrincipalResponseArrayOutput) ToAssignmentPrincipalResponseArr
 
 func (o AssignmentPrincipalResponseArrayOutput) ToAssignmentPrincipalResponseArrayOutputWithContext(ctx context.Context) AssignmentPrincipalResponseArrayOutput {
 	return o
+}
+
+func (o AssignmentPrincipalResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssignmentPrincipalResponse] {
+	return pulumix.Output[[]AssignmentPrincipalResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AssignmentPrincipalResponseArrayOutput) Index(i pulumi.IntInput) AssignmentPrincipalResponseOutput {
@@ -214,6 +251,12 @@ func (o CanonicalProfileDefinitionResponseOutput) ToCanonicalProfileDefinitionRe
 	return o
 }
 
+func (o CanonicalProfileDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CanonicalProfileDefinitionResponse] {
+	return pulumix.Output[CanonicalProfileDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Canonical profile ID.
 func (o CanonicalProfileDefinitionResponseOutput) CanonicalProfileId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CanonicalProfileDefinitionResponse) *int { return v.CanonicalProfileId }).(pulumi.IntPtrOutput)
@@ -238,6 +281,12 @@ func (o CanonicalProfileDefinitionResponseArrayOutput) ToCanonicalProfileDefinit
 
 func (o CanonicalProfileDefinitionResponseArrayOutput) ToCanonicalProfileDefinitionResponseArrayOutputWithContext(ctx context.Context) CanonicalProfileDefinitionResponseArrayOutput {
 	return o
+}
+
+func (o CanonicalProfileDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CanonicalProfileDefinitionResponse] {
+	return pulumix.Output[[]CanonicalProfileDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CanonicalProfileDefinitionResponseArrayOutput) Index(i pulumi.IntInput) CanonicalProfileDefinitionResponseOutput {
@@ -273,6 +322,12 @@ func (o CanonicalProfileDefinitionResponsePropertiesOutput) ToCanonicalProfileDe
 
 func (o CanonicalProfileDefinitionResponsePropertiesOutput) ToCanonicalProfileDefinitionResponsePropertiesOutputWithContext(ctx context.Context) CanonicalProfileDefinitionResponsePropertiesOutput {
 	return o
+}
+
+func (o CanonicalProfileDefinitionResponsePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[CanonicalProfileDefinitionResponseProperties] {
+	return pulumix.Output[CanonicalProfileDefinitionResponseProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Profile name.
@@ -312,6 +367,12 @@ func (o CanonicalProfileDefinitionResponsePropertiesArrayOutput) ToCanonicalProf
 
 func (o CanonicalProfileDefinitionResponsePropertiesArrayOutput) ToCanonicalProfileDefinitionResponsePropertiesArrayOutputWithContext(ctx context.Context) CanonicalProfileDefinitionResponsePropertiesArrayOutput {
 	return o
+}
+
+func (o CanonicalProfileDefinitionResponsePropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CanonicalProfileDefinitionResponseProperties] {
+	return pulumix.Output[[]CanonicalProfileDefinitionResponseProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CanonicalProfileDefinitionResponsePropertiesArrayOutput) Index(i pulumi.IntInput) CanonicalProfileDefinitionResponsePropertiesOutput {
@@ -359,6 +420,12 @@ func (i ConnectorMappingAvailabilityArgs) ToConnectorMappingAvailabilityOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorMappingAvailabilityOutput)
 }
 
+func (i ConnectorMappingAvailabilityArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingAvailability] {
+	return pulumix.Output[ConnectorMappingAvailability]{
+		OutputState: i.ToConnectorMappingAvailabilityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Connector mapping property availability.
 type ConnectorMappingAvailabilityOutput struct{ *pulumi.OutputState }
 
@@ -372,6 +439,12 @@ func (o ConnectorMappingAvailabilityOutput) ToConnectorMappingAvailabilityOutput
 
 func (o ConnectorMappingAvailabilityOutput) ToConnectorMappingAvailabilityOutputWithContext(ctx context.Context) ConnectorMappingAvailabilityOutput {
 	return o
+}
+
+func (o ConnectorMappingAvailabilityOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingAvailability] {
+	return pulumix.Output[ConnectorMappingAvailability]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The frequency to update.
@@ -405,6 +478,12 @@ func (o ConnectorMappingAvailabilityResponseOutput) ToConnectorMappingAvailabili
 
 func (o ConnectorMappingAvailabilityResponseOutput) ToConnectorMappingAvailabilityResponseOutputWithContext(ctx context.Context) ConnectorMappingAvailabilityResponseOutput {
 	return o
+}
+
+func (o ConnectorMappingAvailabilityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingAvailabilityResponse] {
+	return pulumix.Output[ConnectorMappingAvailabilityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The frequency to update.
@@ -456,6 +535,12 @@ func (i ConnectorMappingCompleteOperationArgs) ToConnectorMappingCompleteOperati
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorMappingCompleteOperationOutput)
 }
 
+func (i ConnectorMappingCompleteOperationArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingCompleteOperation] {
+	return pulumix.Output[ConnectorMappingCompleteOperation]{
+		OutputState: i.ToConnectorMappingCompleteOperationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The complete operation.
 type ConnectorMappingCompleteOperationOutput struct{ *pulumi.OutputState }
 
@@ -469,6 +554,12 @@ func (o ConnectorMappingCompleteOperationOutput) ToConnectorMappingCompleteOpera
 
 func (o ConnectorMappingCompleteOperationOutput) ToConnectorMappingCompleteOperationOutputWithContext(ctx context.Context) ConnectorMappingCompleteOperationOutput {
 	return o
+}
+
+func (o ConnectorMappingCompleteOperationOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingCompleteOperation] {
+	return pulumix.Output[ConnectorMappingCompleteOperation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of completion operation.
@@ -502,6 +593,12 @@ func (o ConnectorMappingCompleteOperationResponseOutput) ToConnectorMappingCompl
 
 func (o ConnectorMappingCompleteOperationResponseOutput) ToConnectorMappingCompleteOperationResponseOutputWithContext(ctx context.Context) ConnectorMappingCompleteOperationResponseOutput {
 	return o
+}
+
+func (o ConnectorMappingCompleteOperationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingCompleteOperationResponse] {
+	return pulumix.Output[ConnectorMappingCompleteOperationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of completion operation.
@@ -553,6 +650,12 @@ func (i ConnectorMappingErrorManagementArgs) ToConnectorMappingErrorManagementOu
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorMappingErrorManagementOutput)
 }
 
+func (i ConnectorMappingErrorManagementArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingErrorManagement] {
+	return pulumix.Output[ConnectorMappingErrorManagement]{
+		OutputState: i.ToConnectorMappingErrorManagementOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The error management.
 type ConnectorMappingErrorManagementOutput struct{ *pulumi.OutputState }
 
@@ -566,6 +669,12 @@ func (o ConnectorMappingErrorManagementOutput) ToConnectorMappingErrorManagement
 
 func (o ConnectorMappingErrorManagementOutput) ToConnectorMappingErrorManagementOutputWithContext(ctx context.Context) ConnectorMappingErrorManagementOutput {
 	return o
+}
+
+func (o ConnectorMappingErrorManagementOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingErrorManagement] {
+	return pulumix.Output[ConnectorMappingErrorManagement]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The error limit allowed while importing data.
@@ -599,6 +708,12 @@ func (o ConnectorMappingErrorManagementResponseOutput) ToConnectorMappingErrorMa
 
 func (o ConnectorMappingErrorManagementResponseOutput) ToConnectorMappingErrorManagementResponseOutputWithContext(ctx context.Context) ConnectorMappingErrorManagementResponseOutput {
 	return o
+}
+
+func (o ConnectorMappingErrorManagementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingErrorManagementResponse] {
+	return pulumix.Output[ConnectorMappingErrorManagementResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The error limit allowed while importing data.
@@ -666,6 +781,12 @@ func (i ConnectorMappingFormatArgs) ToConnectorMappingFormatOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorMappingFormatOutput)
 }
 
+func (i ConnectorMappingFormatArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingFormat] {
+	return pulumix.Output[ConnectorMappingFormat]{
+		OutputState: i.ToConnectorMappingFormatOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Connector mapping property format.
 type ConnectorMappingFormatOutput struct{ *pulumi.OutputState }
 
@@ -679,6 +800,12 @@ func (o ConnectorMappingFormatOutput) ToConnectorMappingFormatOutput() Connector
 
 func (o ConnectorMappingFormatOutput) ToConnectorMappingFormatOutputWithContext(ctx context.Context) ConnectorMappingFormatOutput {
 	return o
+}
+
+func (o ConnectorMappingFormatOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingFormat] {
+	return pulumix.Output[ConnectorMappingFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The oData language.
@@ -740,6 +867,12 @@ func (o ConnectorMappingFormatResponseOutput) ToConnectorMappingFormatResponseOu
 
 func (o ConnectorMappingFormatResponseOutput) ToConnectorMappingFormatResponseOutputWithContext(ctx context.Context) ConnectorMappingFormatResponseOutput {
 	return o
+}
+
+func (o ConnectorMappingFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingFormatResponse] {
+	return pulumix.Output[ConnectorMappingFormatResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The oData language.
@@ -835,6 +968,12 @@ func (i ConnectorMappingPropertiesArgs) ToConnectorMappingPropertiesOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorMappingPropertiesOutput)
 }
 
+func (i ConnectorMappingPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingProperties] {
+	return pulumix.Output[ConnectorMappingProperties]{
+		OutputState: i.ToConnectorMappingPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The connector mapping properties.
 type ConnectorMappingPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -848,6 +987,12 @@ func (o ConnectorMappingPropertiesOutput) ToConnectorMappingPropertiesOutput() C
 
 func (o ConnectorMappingPropertiesOutput) ToConnectorMappingPropertiesOutputWithContext(ctx context.Context) ConnectorMappingPropertiesOutput {
 	return o
+}
+
+func (o ConnectorMappingPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingProperties] {
+	return pulumix.Output[ConnectorMappingProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The availability of mapping property.
@@ -923,6 +1068,12 @@ func (o ConnectorMappingPropertiesResponseOutput) ToConnectorMappingPropertiesRe
 
 func (o ConnectorMappingPropertiesResponseOutput) ToConnectorMappingPropertiesResponseOutputWithContext(ctx context.Context) ConnectorMappingPropertiesResponseOutput {
 	return o
+}
+
+func (o ConnectorMappingPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingPropertiesResponse] {
+	return pulumix.Output[ConnectorMappingPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The availability of mapping property.
@@ -1016,6 +1167,12 @@ func (i ConnectorMappingStructureArgs) ToConnectorMappingStructureOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorMappingStructureOutput)
 }
 
+func (i ConnectorMappingStructureArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingStructure] {
+	return pulumix.Output[ConnectorMappingStructure]{
+		OutputState: i.ToConnectorMappingStructureOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConnectorMappingStructureArrayInput is an input type that accepts ConnectorMappingStructureArray and ConnectorMappingStructureArrayOutput values.
 // You can construct a concrete instance of `ConnectorMappingStructureArrayInput` via:
 //
@@ -1041,6 +1198,12 @@ func (i ConnectorMappingStructureArray) ToConnectorMappingStructureArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorMappingStructureArrayOutput)
 }
 
+func (i ConnectorMappingStructureArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorMappingStructure] {
+	return pulumix.Output[[]ConnectorMappingStructure]{
+		OutputState: i.ToConnectorMappingStructureArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Connector mapping property structure.
 type ConnectorMappingStructureOutput struct{ *pulumi.OutputState }
 
@@ -1054,6 +1217,12 @@ func (o ConnectorMappingStructureOutput) ToConnectorMappingStructureOutput() Con
 
 func (o ConnectorMappingStructureOutput) ToConnectorMappingStructureOutputWithContext(ctx context.Context) ConnectorMappingStructureOutput {
 	return o
+}
+
+func (o ConnectorMappingStructureOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingStructure] {
+	return pulumix.Output[ConnectorMappingStructure]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The column name of the import file.
@@ -1090,6 +1259,12 @@ func (o ConnectorMappingStructureArrayOutput) ToConnectorMappingStructureArrayOu
 	return o
 }
 
+func (o ConnectorMappingStructureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorMappingStructure] {
+	return pulumix.Output[[]ConnectorMappingStructure]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectorMappingStructureArrayOutput) Index(i pulumi.IntInput) ConnectorMappingStructureOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorMappingStructure {
 		return vs[0].([]ConnectorMappingStructure)[vs[1].(int)]
@@ -1121,6 +1296,12 @@ func (o ConnectorMappingStructureResponseOutput) ToConnectorMappingStructureResp
 
 func (o ConnectorMappingStructureResponseOutput) ToConnectorMappingStructureResponseOutputWithContext(ctx context.Context) ConnectorMappingStructureResponseOutput {
 	return o
+}
+
+func (o ConnectorMappingStructureResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorMappingStructureResponse] {
+	return pulumix.Output[ConnectorMappingStructureResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The column name of the import file.
@@ -1155,6 +1336,12 @@ func (o ConnectorMappingStructureResponseArrayOutput) ToConnectorMappingStructur
 
 func (o ConnectorMappingStructureResponseArrayOutput) ToConnectorMappingStructureResponseArrayOutputWithContext(ctx context.Context) ConnectorMappingStructureResponseArrayOutput {
 	return o
+}
+
+func (o ConnectorMappingStructureResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorMappingStructureResponse] {
+	return pulumix.Output[[]ConnectorMappingStructureResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectorMappingStructureResponseArrayOutput) Index(i pulumi.IntInput) ConnectorMappingStructureResponseOutput {
@@ -1192,6 +1379,12 @@ func (o DataSourcePrecedenceResponseOutput) ToDataSourcePrecedenceResponseOutput
 
 func (o DataSourcePrecedenceResponseOutput) ToDataSourcePrecedenceResponseOutputWithContext(ctx context.Context) DataSourcePrecedenceResponseOutput {
 	return o
+}
+
+func (o DataSourcePrecedenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataSourcePrecedenceResponse] {
+	return pulumix.Output[DataSourcePrecedenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The data source reference id.
@@ -1236,6 +1429,12 @@ func (o DataSourcePrecedenceResponseArrayOutput) ToDataSourcePrecedenceResponseA
 
 func (o DataSourcePrecedenceResponseArrayOutput) ToDataSourcePrecedenceResponseArrayOutputWithContext(ctx context.Context) DataSourcePrecedenceResponseArrayOutput {
 	return o
+}
+
+func (o DataSourcePrecedenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataSourcePrecedenceResponse] {
+	return pulumix.Output[[]DataSourcePrecedenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataSourcePrecedenceResponseArrayOutput) Index(i pulumi.IntInput) DataSourcePrecedenceResponseOutput {
@@ -1287,6 +1486,12 @@ func (i HubBillingInfoFormatArgs) ToHubBillingInfoFormatOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HubBillingInfoFormatOutput)
 }
 
+func (i HubBillingInfoFormatArgs) ToOutput(ctx context.Context) pulumix.Output[HubBillingInfoFormat] {
+	return pulumix.Output[HubBillingInfoFormat]{
+		OutputState: i.ToHubBillingInfoFormatOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HubBillingInfoFormatArgs) ToHubBillingInfoFormatPtrOutput() HubBillingInfoFormatPtrOutput {
 	return i.ToHubBillingInfoFormatPtrOutputWithContext(context.Background())
 }
@@ -1328,6 +1533,12 @@ func (i *hubBillingInfoFormatPtrType) ToHubBillingInfoFormatPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(HubBillingInfoFormatPtrOutput)
 }
 
+func (i *hubBillingInfoFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*HubBillingInfoFormat] {
+	return pulumix.Output[*HubBillingInfoFormat]{
+		OutputState: i.ToHubBillingInfoFormatPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Hub billing info.
 type HubBillingInfoFormatOutput struct{ *pulumi.OutputState }
 
@@ -1351,6 +1562,12 @@ func (o HubBillingInfoFormatOutput) ToHubBillingInfoFormatPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HubBillingInfoFormat) *HubBillingInfoFormat {
 		return &v
 	}).(HubBillingInfoFormatPtrOutput)
+}
+
+func (o HubBillingInfoFormatOutput) ToOutput(ctx context.Context) pulumix.Output[HubBillingInfoFormat] {
+	return pulumix.Output[HubBillingInfoFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The maximum number of units can be used.  One unit is 10,000 Profiles and 100,000 Interactions.
@@ -1380,6 +1597,12 @@ func (o HubBillingInfoFormatPtrOutput) ToHubBillingInfoFormatPtrOutput() HubBill
 
 func (o HubBillingInfoFormatPtrOutput) ToHubBillingInfoFormatPtrOutputWithContext(ctx context.Context) HubBillingInfoFormatPtrOutput {
 	return o
+}
+
+func (o HubBillingInfoFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HubBillingInfoFormat] {
+	return pulumix.Output[*HubBillingInfoFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HubBillingInfoFormatPtrOutput) Elem() HubBillingInfoFormatOutput {
@@ -1447,6 +1670,12 @@ func (o HubBillingInfoFormatResponseOutput) ToHubBillingInfoFormatResponseOutput
 	return o
 }
 
+func (o HubBillingInfoFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HubBillingInfoFormatResponse] {
+	return pulumix.Output[HubBillingInfoFormatResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The maximum number of units can be used.  One unit is 10,000 Profiles and 100,000 Interactions.
 func (o HubBillingInfoFormatResponseOutput) MaxUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HubBillingInfoFormatResponse) *int { return v.MaxUnits }).(pulumi.IntPtrOutput)
@@ -1474,6 +1703,12 @@ func (o HubBillingInfoFormatResponsePtrOutput) ToHubBillingInfoFormatResponsePtr
 
 func (o HubBillingInfoFormatResponsePtrOutput) ToHubBillingInfoFormatResponsePtrOutputWithContext(ctx context.Context) HubBillingInfoFormatResponsePtrOutput {
 	return o
+}
+
+func (o HubBillingInfoFormatResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HubBillingInfoFormatResponse] {
+	return pulumix.Output[*HubBillingInfoFormatResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HubBillingInfoFormatResponsePtrOutput) Elem() HubBillingInfoFormatResponseOutput {
@@ -1555,6 +1790,12 @@ func (i KpiAliasArgs) ToKpiAliasOutputWithContext(ctx context.Context) KpiAliasO
 	return pulumi.ToOutputWithContext(ctx, i).(KpiAliasOutput)
 }
 
+func (i KpiAliasArgs) ToOutput(ctx context.Context) pulumix.Output[KpiAlias] {
+	return pulumix.Output[KpiAlias]{
+		OutputState: i.ToKpiAliasOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KpiAliasArrayInput is an input type that accepts KpiAliasArray and KpiAliasArrayOutput values.
 // You can construct a concrete instance of `KpiAliasArrayInput` via:
 //
@@ -1580,6 +1821,12 @@ func (i KpiAliasArray) ToKpiAliasArrayOutputWithContext(ctx context.Context) Kpi
 	return pulumi.ToOutputWithContext(ctx, i).(KpiAliasArrayOutput)
 }
 
+func (i KpiAliasArray) ToOutput(ctx context.Context) pulumix.Output[[]KpiAlias] {
+	return pulumix.Output[[]KpiAlias]{
+		OutputState: i.ToKpiAliasArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The KPI alias.
 type KpiAliasOutput struct{ *pulumi.OutputState }
 
@@ -1593,6 +1840,12 @@ func (o KpiAliasOutput) ToKpiAliasOutput() KpiAliasOutput {
 
 func (o KpiAliasOutput) ToKpiAliasOutputWithContext(ctx context.Context) KpiAliasOutput {
 	return o
+}
+
+func (o KpiAliasOutput) ToOutput(ctx context.Context) pulumix.Output[KpiAlias] {
+	return pulumix.Output[KpiAlias]{
+		OutputState: o.OutputState,
+	}
 }
 
 // KPI alias name.
@@ -1617,6 +1870,12 @@ func (o KpiAliasArrayOutput) ToKpiAliasArrayOutput() KpiAliasArrayOutput {
 
 func (o KpiAliasArrayOutput) ToKpiAliasArrayOutputWithContext(ctx context.Context) KpiAliasArrayOutput {
 	return o
+}
+
+func (o KpiAliasArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KpiAlias] {
+	return pulumix.Output[[]KpiAlias]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KpiAliasArrayOutput) Index(i pulumi.IntInput) KpiAliasOutput {
@@ -1648,6 +1907,12 @@ func (o KpiAliasResponseOutput) ToKpiAliasResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o KpiAliasResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KpiAliasResponse] {
+	return pulumix.Output[KpiAliasResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // KPI alias name.
 func (o KpiAliasResponseOutput) AliasName() pulumi.StringOutput {
 	return o.ApplyT(func(v KpiAliasResponse) string { return v.AliasName }).(pulumi.StringOutput)
@@ -1670,6 +1935,12 @@ func (o KpiAliasResponseArrayOutput) ToKpiAliasResponseArrayOutput() KpiAliasRes
 
 func (o KpiAliasResponseArrayOutput) ToKpiAliasResponseArrayOutputWithContext(ctx context.Context) KpiAliasResponseArrayOutput {
 	return o
+}
+
+func (o KpiAliasResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KpiAliasResponse] {
+	return pulumix.Output[[]KpiAliasResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KpiAliasResponseArrayOutput) Index(i pulumi.IntInput) KpiAliasResponseOutput {
@@ -1717,6 +1988,12 @@ func (i KpiExtractArgs) ToKpiExtractOutputWithContext(ctx context.Context) KpiEx
 	return pulumi.ToOutputWithContext(ctx, i).(KpiExtractOutput)
 }
 
+func (i KpiExtractArgs) ToOutput(ctx context.Context) pulumix.Output[KpiExtract] {
+	return pulumix.Output[KpiExtract]{
+		OutputState: i.ToKpiExtractOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KpiExtractArrayInput is an input type that accepts KpiExtractArray and KpiExtractArrayOutput values.
 // You can construct a concrete instance of `KpiExtractArrayInput` via:
 //
@@ -1742,6 +2019,12 @@ func (i KpiExtractArray) ToKpiExtractArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(KpiExtractArrayOutput)
 }
 
+func (i KpiExtractArray) ToOutput(ctx context.Context) pulumix.Output[[]KpiExtract] {
+	return pulumix.Output[[]KpiExtract]{
+		OutputState: i.ToKpiExtractArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The KPI extract.
 type KpiExtractOutput struct{ *pulumi.OutputState }
 
@@ -1755,6 +2038,12 @@ func (o KpiExtractOutput) ToKpiExtractOutput() KpiExtractOutput {
 
 func (o KpiExtractOutput) ToKpiExtractOutputWithContext(ctx context.Context) KpiExtractOutput {
 	return o
+}
+
+func (o KpiExtractOutput) ToOutput(ctx context.Context) pulumix.Output[KpiExtract] {
+	return pulumix.Output[KpiExtract]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The expression.
@@ -1779,6 +2068,12 @@ func (o KpiExtractArrayOutput) ToKpiExtractArrayOutput() KpiExtractArrayOutput {
 
 func (o KpiExtractArrayOutput) ToKpiExtractArrayOutputWithContext(ctx context.Context) KpiExtractArrayOutput {
 	return o
+}
+
+func (o KpiExtractArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KpiExtract] {
+	return pulumix.Output[[]KpiExtract]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KpiExtractArrayOutput) Index(i pulumi.IntInput) KpiExtractOutput {
@@ -1810,6 +2105,12 @@ func (o KpiExtractResponseOutput) ToKpiExtractResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o KpiExtractResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KpiExtractResponse] {
+	return pulumix.Output[KpiExtractResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The expression.
 func (o KpiExtractResponseOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v KpiExtractResponse) string { return v.Expression }).(pulumi.StringOutput)
@@ -1832,6 +2133,12 @@ func (o KpiExtractResponseArrayOutput) ToKpiExtractResponseArrayOutput() KpiExtr
 
 func (o KpiExtractResponseArrayOutput) ToKpiExtractResponseArrayOutputWithContext(ctx context.Context) KpiExtractResponseArrayOutput {
 	return o
+}
+
+func (o KpiExtractResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KpiExtractResponse] {
+	return pulumix.Output[[]KpiExtractResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KpiExtractResponseArrayOutput) Index(i pulumi.IntInput) KpiExtractResponseOutput {
@@ -1865,6 +2172,12 @@ func (o KpiGroupByMetadataResponseOutput) ToKpiGroupByMetadataResponseOutputWith
 	return o
 }
 
+func (o KpiGroupByMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KpiGroupByMetadataResponse] {
+	return pulumix.Output[KpiGroupByMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The display name.
 func (o KpiGroupByMetadataResponseOutput) DisplayName() pulumi.StringMapOutput {
 	return o.ApplyT(func(v KpiGroupByMetadataResponse) map[string]string { return v.DisplayName }).(pulumi.StringMapOutput)
@@ -1894,6 +2207,12 @@ func (o KpiGroupByMetadataResponseArrayOutput) ToKpiGroupByMetadataResponseArray
 	return o
 }
 
+func (o KpiGroupByMetadataResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KpiGroupByMetadataResponse] {
+	return pulumix.Output[[]KpiGroupByMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KpiGroupByMetadataResponseArrayOutput) Index(i pulumi.IntInput) KpiGroupByMetadataResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KpiGroupByMetadataResponse {
 		return vs[0].([]KpiGroupByMetadataResponse)[vs[1].(int)]
@@ -1921,6 +2240,12 @@ func (o KpiParticipantProfilesMetadataResponseOutput) ToKpiParticipantProfilesMe
 	return o
 }
 
+func (o KpiParticipantProfilesMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KpiParticipantProfilesMetadataResponse] {
+	return pulumix.Output[KpiParticipantProfilesMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the type.
 func (o KpiParticipantProfilesMetadataResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v KpiParticipantProfilesMetadataResponse) string { return v.TypeName }).(pulumi.StringOutput)
@@ -1938,6 +2263,12 @@ func (o KpiParticipantProfilesMetadataResponseArrayOutput) ToKpiParticipantProfi
 
 func (o KpiParticipantProfilesMetadataResponseArrayOutput) ToKpiParticipantProfilesMetadataResponseArrayOutputWithContext(ctx context.Context) KpiParticipantProfilesMetadataResponseArrayOutput {
 	return o
+}
+
+func (o KpiParticipantProfilesMetadataResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KpiParticipantProfilesMetadataResponse] {
+	return pulumix.Output[[]KpiParticipantProfilesMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KpiParticipantProfilesMetadataResponseArrayOutput) Index(i pulumi.IntInput) KpiParticipantProfilesMetadataResponseOutput {
@@ -1989,6 +2320,12 @@ func (i KpiThresholdsArgs) ToKpiThresholdsOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(KpiThresholdsOutput)
 }
 
+func (i KpiThresholdsArgs) ToOutput(ctx context.Context) pulumix.Output[KpiThresholds] {
+	return pulumix.Output[KpiThresholds]{
+		OutputState: i.ToKpiThresholdsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KpiThresholdsArgs) ToKpiThresholdsPtrOutput() KpiThresholdsPtrOutput {
 	return i.ToKpiThresholdsPtrOutputWithContext(context.Background())
 }
@@ -2030,6 +2367,12 @@ func (i *kpiThresholdsPtrType) ToKpiThresholdsPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(KpiThresholdsPtrOutput)
 }
 
+func (i *kpiThresholdsPtrType) ToOutput(ctx context.Context) pulumix.Output[*KpiThresholds] {
+	return pulumix.Output[*KpiThresholds]{
+		OutputState: i.ToKpiThresholdsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines the KPI Threshold limits.
 type KpiThresholdsOutput struct{ *pulumi.OutputState }
 
@@ -2053,6 +2396,12 @@ func (o KpiThresholdsOutput) ToKpiThresholdsPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KpiThresholds) *KpiThresholds {
 		return &v
 	}).(KpiThresholdsPtrOutput)
+}
+
+func (o KpiThresholdsOutput) ToOutput(ctx context.Context) pulumix.Output[KpiThresholds] {
+	return pulumix.Output[KpiThresholds]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether or not the KPI is an increasing KPI.
@@ -2082,6 +2431,12 @@ func (o KpiThresholdsPtrOutput) ToKpiThresholdsPtrOutput() KpiThresholdsPtrOutpu
 
 func (o KpiThresholdsPtrOutput) ToKpiThresholdsPtrOutputWithContext(ctx context.Context) KpiThresholdsPtrOutput {
 	return o
+}
+
+func (o KpiThresholdsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KpiThresholds] {
+	return pulumix.Output[*KpiThresholds]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KpiThresholdsPtrOutput) Elem() KpiThresholdsOutput {
@@ -2149,6 +2504,12 @@ func (o KpiThresholdsResponseOutput) ToKpiThresholdsResponseOutputWithContext(ct
 	return o
 }
 
+func (o KpiThresholdsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KpiThresholdsResponse] {
+	return pulumix.Output[KpiThresholdsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether or not the KPI is an increasing KPI.
 func (o KpiThresholdsResponseOutput) IncreasingKpi() pulumi.BoolOutput {
 	return o.ApplyT(func(v KpiThresholdsResponse) bool { return v.IncreasingKpi }).(pulumi.BoolOutput)
@@ -2176,6 +2537,12 @@ func (o KpiThresholdsResponsePtrOutput) ToKpiThresholdsResponsePtrOutput() KpiTh
 
 func (o KpiThresholdsResponsePtrOutput) ToKpiThresholdsResponsePtrOutputWithContext(ctx context.Context) KpiThresholdsResponsePtrOutput {
 	return o
+}
+
+func (o KpiThresholdsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KpiThresholdsResponse] {
+	return pulumix.Output[*KpiThresholdsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KpiThresholdsResponsePtrOutput) Elem() KpiThresholdsResponseOutput {
@@ -2257,6 +2624,12 @@ func (i ParticipantProfilePropertyReferenceArgs) ToParticipantProfilePropertyRef
 	return pulumi.ToOutputWithContext(ctx, i).(ParticipantProfilePropertyReferenceOutput)
 }
 
+func (i ParticipantProfilePropertyReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ParticipantProfilePropertyReference] {
+	return pulumix.Output[ParticipantProfilePropertyReference]{
+		OutputState: i.ToParticipantProfilePropertyReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ParticipantProfilePropertyReferenceArrayInput is an input type that accepts ParticipantProfilePropertyReferenceArray and ParticipantProfilePropertyReferenceArrayOutput values.
 // You can construct a concrete instance of `ParticipantProfilePropertyReferenceArrayInput` via:
 //
@@ -2282,6 +2655,12 @@ func (i ParticipantProfilePropertyReferenceArray) ToParticipantProfilePropertyRe
 	return pulumi.ToOutputWithContext(ctx, i).(ParticipantProfilePropertyReferenceArrayOutput)
 }
 
+func (i ParticipantProfilePropertyReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]ParticipantProfilePropertyReference] {
+	return pulumix.Output[[]ParticipantProfilePropertyReference]{
+		OutputState: i.ToParticipantProfilePropertyReferenceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The participant profile property reference.
 type ParticipantProfilePropertyReferenceOutput struct{ *pulumi.OutputState }
 
@@ -2295,6 +2674,12 @@ func (o ParticipantProfilePropertyReferenceOutput) ToParticipantProfilePropertyR
 
 func (o ParticipantProfilePropertyReferenceOutput) ToParticipantProfilePropertyReferenceOutputWithContext(ctx context.Context) ParticipantProfilePropertyReferenceOutput {
 	return o
+}
+
+func (o ParticipantProfilePropertyReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ParticipantProfilePropertyReference] {
+	return pulumix.Output[ParticipantProfilePropertyReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The source interaction property that maps to the target profile property.
@@ -2319,6 +2704,12 @@ func (o ParticipantProfilePropertyReferenceArrayOutput) ToParticipantProfileProp
 
 func (o ParticipantProfilePropertyReferenceArrayOutput) ToParticipantProfilePropertyReferenceArrayOutputWithContext(ctx context.Context) ParticipantProfilePropertyReferenceArrayOutput {
 	return o
+}
+
+func (o ParticipantProfilePropertyReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ParticipantProfilePropertyReference] {
+	return pulumix.Output[[]ParticipantProfilePropertyReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParticipantProfilePropertyReferenceArrayOutput) Index(i pulumi.IntInput) ParticipantProfilePropertyReferenceOutput {
@@ -2350,6 +2741,12 @@ func (o ParticipantProfilePropertyReferenceResponseOutput) ToParticipantProfileP
 	return o
 }
 
+func (o ParticipantProfilePropertyReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParticipantProfilePropertyReferenceResponse] {
+	return pulumix.Output[ParticipantProfilePropertyReferenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The source interaction property that maps to the target profile property.
 func (o ParticipantProfilePropertyReferenceResponseOutput) InteractionPropertyName() pulumi.StringOutput {
 	return o.ApplyT(func(v ParticipantProfilePropertyReferenceResponse) string { return v.InteractionPropertyName }).(pulumi.StringOutput)
@@ -2372,6 +2769,12 @@ func (o ParticipantProfilePropertyReferenceResponseArrayOutput) ToParticipantPro
 
 func (o ParticipantProfilePropertyReferenceResponseArrayOutput) ToParticipantProfilePropertyReferenceResponseArrayOutputWithContext(ctx context.Context) ParticipantProfilePropertyReferenceResponseArrayOutput {
 	return o
+}
+
+func (o ParticipantProfilePropertyReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ParticipantProfilePropertyReferenceResponse] {
+	return pulumix.Output[[]ParticipantProfilePropertyReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParticipantProfilePropertyReferenceResponseArrayOutput) Index(i pulumi.IntInput) ParticipantProfilePropertyReferenceResponseOutput {
@@ -2419,6 +2822,12 @@ func (i ParticipantPropertyReferenceArgs) ToParticipantPropertyReferenceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ParticipantPropertyReferenceOutput)
 }
 
+func (i ParticipantPropertyReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ParticipantPropertyReference] {
+	return pulumix.Output[ParticipantPropertyReference]{
+		OutputState: i.ToParticipantPropertyReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ParticipantPropertyReferenceArrayInput is an input type that accepts ParticipantPropertyReferenceArray and ParticipantPropertyReferenceArrayOutput values.
 // You can construct a concrete instance of `ParticipantPropertyReferenceArrayInput` via:
 //
@@ -2444,6 +2853,12 @@ func (i ParticipantPropertyReferenceArray) ToParticipantPropertyReferenceArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ParticipantPropertyReferenceArrayOutput)
 }
 
+func (i ParticipantPropertyReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]ParticipantPropertyReference] {
+	return pulumix.Output[[]ParticipantPropertyReference]{
+		OutputState: i.ToParticipantPropertyReferenceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The participant property reference.
 type ParticipantPropertyReferenceOutput struct{ *pulumi.OutputState }
 
@@ -2457,6 +2872,12 @@ func (o ParticipantPropertyReferenceOutput) ToParticipantPropertyReferenceOutput
 
 func (o ParticipantPropertyReferenceOutput) ToParticipantPropertyReferenceOutputWithContext(ctx context.Context) ParticipantPropertyReferenceOutput {
 	return o
+}
+
+func (o ParticipantPropertyReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ParticipantPropertyReference] {
+	return pulumix.Output[ParticipantPropertyReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The source property that maps to the target property.
@@ -2481,6 +2902,12 @@ func (o ParticipantPropertyReferenceArrayOutput) ToParticipantPropertyReferenceA
 
 func (o ParticipantPropertyReferenceArrayOutput) ToParticipantPropertyReferenceArrayOutputWithContext(ctx context.Context) ParticipantPropertyReferenceArrayOutput {
 	return o
+}
+
+func (o ParticipantPropertyReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ParticipantPropertyReference] {
+	return pulumix.Output[[]ParticipantPropertyReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParticipantPropertyReferenceArrayOutput) Index(i pulumi.IntInput) ParticipantPropertyReferenceOutput {
@@ -2512,6 +2939,12 @@ func (o ParticipantPropertyReferenceResponseOutput) ToParticipantPropertyReferen
 	return o
 }
 
+func (o ParticipantPropertyReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParticipantPropertyReferenceResponse] {
+	return pulumix.Output[ParticipantPropertyReferenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The source property that maps to the target property.
 func (o ParticipantPropertyReferenceResponseOutput) SourcePropertyName() pulumi.StringOutput {
 	return o.ApplyT(func(v ParticipantPropertyReferenceResponse) string { return v.SourcePropertyName }).(pulumi.StringOutput)
@@ -2534,6 +2967,12 @@ func (o ParticipantPropertyReferenceResponseArrayOutput) ToParticipantPropertyRe
 
 func (o ParticipantPropertyReferenceResponseArrayOutput) ToParticipantPropertyReferenceResponseArrayOutputWithContext(ctx context.Context) ParticipantPropertyReferenceResponseArrayOutput {
 	return o
+}
+
+func (o ParticipantPropertyReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ParticipantPropertyReferenceResponse] {
+	return pulumix.Output[[]ParticipantPropertyReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParticipantPropertyReferenceResponseArrayOutput) Index(i pulumi.IntInput) ParticipantPropertyReferenceResponseOutput {
@@ -2565,6 +3004,12 @@ func (o PredictionDistributionDefinitionResponseOutput) ToPredictionDistribution
 
 func (o PredictionDistributionDefinitionResponseOutput) ToPredictionDistributionDefinitionResponseOutputWithContext(ctx context.Context) PredictionDistributionDefinitionResponseOutput {
 	return o
+}
+
+func (o PredictionDistributionDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PredictionDistributionDefinitionResponse] {
+	return pulumix.Output[PredictionDistributionDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Distributions of the prediction.
@@ -2613,6 +3058,12 @@ func (o PredictionDistributionDefinitionResponseDistributionsOutput) ToPredictio
 	return o
 }
 
+func (o PredictionDistributionDefinitionResponseDistributionsOutput) ToOutput(ctx context.Context) pulumix.Output[PredictionDistributionDefinitionResponseDistributions] {
+	return pulumix.Output[PredictionDistributionDefinitionResponseDistributions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Number of negatives.
 func (o PredictionDistributionDefinitionResponseDistributionsOutput) Negatives() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v PredictionDistributionDefinitionResponseDistributions) *float64 { return v.Negatives }).(pulumi.Float64PtrOutput)
@@ -2654,6 +3105,12 @@ func (o PredictionDistributionDefinitionResponseDistributionsArrayOutput) ToPred
 
 func (o PredictionDistributionDefinitionResponseDistributionsArrayOutput) ToPredictionDistributionDefinitionResponseDistributionsArrayOutputWithContext(ctx context.Context) PredictionDistributionDefinitionResponseDistributionsArrayOutput {
 	return o
+}
+
+func (o PredictionDistributionDefinitionResponseDistributionsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PredictionDistributionDefinitionResponseDistributions] {
+	return pulumix.Output[[]PredictionDistributionDefinitionResponseDistributions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PredictionDistributionDefinitionResponseDistributionsArrayOutput) Index(i pulumi.IntInput) PredictionDistributionDefinitionResponseDistributionsOutput {
@@ -2705,6 +3162,12 @@ func (i PredictionGradesArgs) ToPredictionGradesOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PredictionGradesOutput)
 }
 
+func (i PredictionGradesArgs) ToOutput(ctx context.Context) pulumix.Output[PredictionGrades] {
+	return pulumix.Output[PredictionGrades]{
+		OutputState: i.ToPredictionGradesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PredictionGradesArrayInput is an input type that accepts PredictionGradesArray and PredictionGradesArrayOutput values.
 // You can construct a concrete instance of `PredictionGradesArrayInput` via:
 //
@@ -2730,6 +3193,12 @@ func (i PredictionGradesArray) ToPredictionGradesArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PredictionGradesArrayOutput)
 }
 
+func (i PredictionGradesArray) ToOutput(ctx context.Context) pulumix.Output[[]PredictionGrades] {
+	return pulumix.Output[[]PredictionGrades]{
+		OutputState: i.ToPredictionGradesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The definition of a prediction grade.
 type PredictionGradesOutput struct{ *pulumi.OutputState }
 
@@ -2743,6 +3212,12 @@ func (o PredictionGradesOutput) ToPredictionGradesOutput() PredictionGradesOutpu
 
 func (o PredictionGradesOutput) ToPredictionGradesOutputWithContext(ctx context.Context) PredictionGradesOutput {
 	return o
+}
+
+func (o PredictionGradesOutput) ToOutput(ctx context.Context) pulumix.Output[PredictionGrades] {
+	return pulumix.Output[PredictionGrades]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the grade.
@@ -2772,6 +3247,12 @@ func (o PredictionGradesArrayOutput) ToPredictionGradesArrayOutput() PredictionG
 
 func (o PredictionGradesArrayOutput) ToPredictionGradesArrayOutputWithContext(ctx context.Context) PredictionGradesArrayOutput {
 	return o
+}
+
+func (o PredictionGradesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PredictionGrades] {
+	return pulumix.Output[[]PredictionGrades]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PredictionGradesArrayOutput) Index(i pulumi.IntInput) PredictionGradesOutput {
@@ -2823,6 +3304,12 @@ func (i PredictionMappingsArgs) ToPredictionMappingsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PredictionMappingsOutput)
 }
 
+func (i PredictionMappingsArgs) ToOutput(ctx context.Context) pulumix.Output[PredictionMappings] {
+	return pulumix.Output[PredictionMappings]{
+		OutputState: i.ToPredictionMappingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Definition of the link mapping of prediction.
 type PredictionMappingsOutput struct{ *pulumi.OutputState }
 
@@ -2836,6 +3323,12 @@ func (o PredictionMappingsOutput) ToPredictionMappingsOutput() PredictionMapping
 
 func (o PredictionMappingsOutput) ToPredictionMappingsOutputWithContext(ctx context.Context) PredictionMappingsOutput {
 	return o
+}
+
+func (o PredictionMappingsOutput) ToOutput(ctx context.Context) pulumix.Output[PredictionMappings] {
+	return pulumix.Output[PredictionMappings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The grade of the link mapping.
@@ -2878,6 +3371,12 @@ func (o PredictionResponseGradesOutput) ToPredictionResponseGradesOutputWithCont
 	return o
 }
 
+func (o PredictionResponseGradesOutput) ToOutput(ctx context.Context) pulumix.Output[PredictionResponseGrades] {
+	return pulumix.Output[PredictionResponseGrades]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the grade.
 func (o PredictionResponseGradesOutput) GradeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PredictionResponseGrades) *string { return v.GradeName }).(pulumi.StringPtrOutput)
@@ -2905,6 +3404,12 @@ func (o PredictionResponseGradesArrayOutput) ToPredictionResponseGradesArrayOutp
 
 func (o PredictionResponseGradesArrayOutput) ToPredictionResponseGradesArrayOutputWithContext(ctx context.Context) PredictionResponseGradesArrayOutput {
 	return o
+}
+
+func (o PredictionResponseGradesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PredictionResponseGrades] {
+	return pulumix.Output[[]PredictionResponseGrades]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PredictionResponseGradesArrayOutput) Index(i pulumi.IntInput) PredictionResponseGradesOutput {
@@ -2936,6 +3441,12 @@ func (o PredictionResponseMappingsOutput) ToPredictionResponseMappingsOutput() P
 
 func (o PredictionResponseMappingsOutput) ToPredictionResponseMappingsOutputWithContext(ctx context.Context) PredictionResponseMappingsOutput {
 	return o
+}
+
+func (o PredictionResponseMappingsOutput) ToOutput(ctx context.Context) pulumix.Output[PredictionResponseMappings] {
+	return pulumix.Output[PredictionResponseMappings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The grade of the link mapping.
@@ -2976,6 +3487,12 @@ func (o PredictionResponseSystemGeneratedEntitiesOutput) ToPredictionResponseSys
 
 func (o PredictionResponseSystemGeneratedEntitiesOutput) ToPredictionResponseSystemGeneratedEntitiesOutputWithContext(ctx context.Context) PredictionResponseSystemGeneratedEntitiesOutput {
 	return o
+}
+
+func (o PredictionResponseSystemGeneratedEntitiesOutput) ToOutput(ctx context.Context) pulumix.Output[PredictionResponseSystemGeneratedEntities] {
+	return pulumix.Output[PredictionResponseSystemGeneratedEntities]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Generated interaction types.
@@ -3032,6 +3549,12 @@ func (i ProfileEnumValidValuesFormatArgs) ToProfileEnumValidValuesFormatOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ProfileEnumValidValuesFormatOutput)
 }
 
+func (i ProfileEnumValidValuesFormatArgs) ToOutput(ctx context.Context) pulumix.Output[ProfileEnumValidValuesFormat] {
+	return pulumix.Output[ProfileEnumValidValuesFormat]{
+		OutputState: i.ToProfileEnumValidValuesFormatOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProfileEnumValidValuesFormatArrayInput is an input type that accepts ProfileEnumValidValuesFormatArray and ProfileEnumValidValuesFormatArrayOutput values.
 // You can construct a concrete instance of `ProfileEnumValidValuesFormatArrayInput` via:
 //
@@ -3057,6 +3580,12 @@ func (i ProfileEnumValidValuesFormatArray) ToProfileEnumValidValuesFormatArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ProfileEnumValidValuesFormatArrayOutput)
 }
 
+func (i ProfileEnumValidValuesFormatArray) ToOutput(ctx context.Context) pulumix.Output[[]ProfileEnumValidValuesFormat] {
+	return pulumix.Output[[]ProfileEnumValidValuesFormat]{
+		OutputState: i.ToProfileEnumValidValuesFormatArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Valid enum values in case of an enum property.
 type ProfileEnumValidValuesFormatOutput struct{ *pulumi.OutputState }
 
@@ -3070,6 +3599,12 @@ func (o ProfileEnumValidValuesFormatOutput) ToProfileEnumValidValuesFormatOutput
 
 func (o ProfileEnumValidValuesFormatOutput) ToProfileEnumValidValuesFormatOutputWithContext(ctx context.Context) ProfileEnumValidValuesFormatOutput {
 	return o
+}
+
+func (o ProfileEnumValidValuesFormatOutput) ToOutput(ctx context.Context) pulumix.Output[ProfileEnumValidValuesFormat] {
+	return pulumix.Output[ProfileEnumValidValuesFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Localized names of the enum member.
@@ -3094,6 +3629,12 @@ func (o ProfileEnumValidValuesFormatArrayOutput) ToProfileEnumValidValuesFormatA
 
 func (o ProfileEnumValidValuesFormatArrayOutput) ToProfileEnumValidValuesFormatArrayOutputWithContext(ctx context.Context) ProfileEnumValidValuesFormatArrayOutput {
 	return o
+}
+
+func (o ProfileEnumValidValuesFormatArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProfileEnumValidValuesFormat] {
+	return pulumix.Output[[]ProfileEnumValidValuesFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProfileEnumValidValuesFormatArrayOutput) Index(i pulumi.IntInput) ProfileEnumValidValuesFormatOutput {
@@ -3125,6 +3666,12 @@ func (o ProfileEnumValidValuesFormatResponseOutput) ToProfileEnumValidValuesForm
 	return o
 }
 
+func (o ProfileEnumValidValuesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProfileEnumValidValuesFormatResponse] {
+	return pulumix.Output[ProfileEnumValidValuesFormatResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Localized names of the enum member.
 func (o ProfileEnumValidValuesFormatResponseOutput) LocalizedValueNames() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ProfileEnumValidValuesFormatResponse) map[string]string { return v.LocalizedValueNames }).(pulumi.StringMapOutput)
@@ -3147,6 +3694,12 @@ func (o ProfileEnumValidValuesFormatResponseArrayOutput) ToProfileEnumValidValue
 
 func (o ProfileEnumValidValuesFormatResponseArrayOutput) ToProfileEnumValidValuesFormatResponseArrayOutputWithContext(ctx context.Context) ProfileEnumValidValuesFormatResponseArrayOutput {
 	return o
+}
+
+func (o ProfileEnumValidValuesFormatResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProfileEnumValidValuesFormatResponse] {
+	return pulumix.Output[[]ProfileEnumValidValuesFormatResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProfileEnumValidValuesFormatResponseArrayOutput) Index(i pulumi.IntInput) ProfileEnumValidValuesFormatResponseOutput {
@@ -3246,6 +3799,12 @@ func (i PropertyDefinitionArgs) ToPropertyDefinitionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PropertyDefinitionOutput)
 }
 
+func (i PropertyDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[PropertyDefinition] {
+	return pulumix.Output[PropertyDefinition]{
+		OutputState: i.ToPropertyDefinitionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PropertyDefinitionArrayInput is an input type that accepts PropertyDefinitionArray and PropertyDefinitionArrayOutput values.
 // You can construct a concrete instance of `PropertyDefinitionArrayInput` via:
 //
@@ -3271,6 +3830,12 @@ func (i PropertyDefinitionArray) ToPropertyDefinitionArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(PropertyDefinitionArrayOutput)
 }
 
+func (i PropertyDefinitionArray) ToOutput(ctx context.Context) pulumix.Output[[]PropertyDefinition] {
+	return pulumix.Output[[]PropertyDefinition]{
+		OutputState: i.ToPropertyDefinitionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Property definition.
 type PropertyDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -3284,6 +3849,12 @@ func (o PropertyDefinitionOutput) ToPropertyDefinitionOutput() PropertyDefinitio
 
 func (o PropertyDefinitionOutput) ToPropertyDefinitionOutputWithContext(ctx context.Context) PropertyDefinitionOutput {
 	return o
+}
+
+func (o PropertyDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[PropertyDefinition] {
+	return pulumix.Output[PropertyDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Array value separator for properties with isArray set.
@@ -3375,6 +3946,12 @@ func (o PropertyDefinitionArrayOutput) ToPropertyDefinitionArrayOutputWithContex
 	return o
 }
 
+func (o PropertyDefinitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PropertyDefinition] {
+	return pulumix.Output[[]PropertyDefinition]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PropertyDefinitionArrayOutput) Index(i pulumi.IntInput) PropertyDefinitionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PropertyDefinition {
 		return vs[0].([]PropertyDefinition)[vs[1].(int)]
@@ -3430,6 +4007,12 @@ func (o PropertyDefinitionResponseOutput) ToPropertyDefinitionResponseOutput() P
 
 func (o PropertyDefinitionResponseOutput) ToPropertyDefinitionResponseOutputWithContext(ctx context.Context) PropertyDefinitionResponseOutput {
 	return o
+}
+
+func (o PropertyDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PropertyDefinitionResponse] {
+	return pulumix.Output[PropertyDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Array value separator for properties with isArray set.
@@ -3526,6 +4109,12 @@ func (o PropertyDefinitionResponseArrayOutput) ToPropertyDefinitionResponseArray
 	return o
 }
 
+func (o PropertyDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PropertyDefinitionResponse] {
+	return pulumix.Output[[]PropertyDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PropertyDefinitionResponseArrayOutput) Index(i pulumi.IntInput) PropertyDefinitionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PropertyDefinitionResponse {
 		return vs[0].([]PropertyDefinitionResponse)[vs[1].(int)]
@@ -3575,6 +4164,12 @@ func (i RelationshipLinkFieldMappingArgs) ToRelationshipLinkFieldMappingOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(RelationshipLinkFieldMappingOutput)
 }
 
+func (i RelationshipLinkFieldMappingArgs) ToOutput(ctx context.Context) pulumix.Output[RelationshipLinkFieldMapping] {
+	return pulumix.Output[RelationshipLinkFieldMapping]{
+		OutputState: i.ToRelationshipLinkFieldMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RelationshipLinkFieldMappingArrayInput is an input type that accepts RelationshipLinkFieldMappingArray and RelationshipLinkFieldMappingArrayOutput values.
 // You can construct a concrete instance of `RelationshipLinkFieldMappingArrayInput` via:
 //
@@ -3600,6 +4195,12 @@ func (i RelationshipLinkFieldMappingArray) ToRelationshipLinkFieldMappingArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(RelationshipLinkFieldMappingArrayOutput)
 }
 
+func (i RelationshipLinkFieldMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]RelationshipLinkFieldMapping] {
+	return pulumix.Output[[]RelationshipLinkFieldMapping]{
+		OutputState: i.ToRelationshipLinkFieldMappingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The fields mapping for Relationships.
 type RelationshipLinkFieldMappingOutput struct{ *pulumi.OutputState }
 
@@ -3613,6 +4214,12 @@ func (o RelationshipLinkFieldMappingOutput) ToRelationshipLinkFieldMappingOutput
 
 func (o RelationshipLinkFieldMappingOutput) ToRelationshipLinkFieldMappingOutputWithContext(ctx context.Context) RelationshipLinkFieldMappingOutput {
 	return o
+}
+
+func (o RelationshipLinkFieldMappingOutput) ToOutput(ctx context.Context) pulumix.Output[RelationshipLinkFieldMapping] {
+	return pulumix.Output[RelationshipLinkFieldMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The field name on the Interaction Type.
@@ -3642,6 +4249,12 @@ func (o RelationshipLinkFieldMappingArrayOutput) ToRelationshipLinkFieldMappingA
 
 func (o RelationshipLinkFieldMappingArrayOutput) ToRelationshipLinkFieldMappingArrayOutputWithContext(ctx context.Context) RelationshipLinkFieldMappingArrayOutput {
 	return o
+}
+
+func (o RelationshipLinkFieldMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RelationshipLinkFieldMapping] {
+	return pulumix.Output[[]RelationshipLinkFieldMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RelationshipLinkFieldMappingArrayOutput) Index(i pulumi.IntInput) RelationshipLinkFieldMappingOutput {
@@ -3675,6 +4288,12 @@ func (o RelationshipLinkFieldMappingResponseOutput) ToRelationshipLinkFieldMappi
 	return o
 }
 
+func (o RelationshipLinkFieldMappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RelationshipLinkFieldMappingResponse] {
+	return pulumix.Output[RelationshipLinkFieldMappingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The field name on the Interaction Type.
 func (o RelationshipLinkFieldMappingResponseOutput) InteractionFieldName() pulumi.StringOutput {
 	return o.ApplyT(func(v RelationshipLinkFieldMappingResponse) string { return v.InteractionFieldName }).(pulumi.StringOutput)
@@ -3702,6 +4321,12 @@ func (o RelationshipLinkFieldMappingResponseArrayOutput) ToRelationshipLinkField
 
 func (o RelationshipLinkFieldMappingResponseArrayOutput) ToRelationshipLinkFieldMappingResponseArrayOutputWithContext(ctx context.Context) RelationshipLinkFieldMappingResponseArrayOutput {
 	return o
+}
+
+func (o RelationshipLinkFieldMappingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RelationshipLinkFieldMappingResponse] {
+	return pulumix.Output[[]RelationshipLinkFieldMappingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RelationshipLinkFieldMappingResponseArrayOutput) Index(i pulumi.IntInput) RelationshipLinkFieldMappingResponseOutput {
@@ -3749,6 +4374,12 @@ func (i RelationshipTypeFieldMappingArgs) ToRelationshipTypeFieldMappingOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(RelationshipTypeFieldMappingOutput)
 }
 
+func (i RelationshipTypeFieldMappingArgs) ToOutput(ctx context.Context) pulumix.Output[RelationshipTypeFieldMapping] {
+	return pulumix.Output[RelationshipTypeFieldMapping]{
+		OutputState: i.ToRelationshipTypeFieldMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RelationshipTypeFieldMappingArrayInput is an input type that accepts RelationshipTypeFieldMappingArray and RelationshipTypeFieldMappingArrayOutput values.
 // You can construct a concrete instance of `RelationshipTypeFieldMappingArrayInput` via:
 //
@@ -3774,6 +4405,12 @@ func (i RelationshipTypeFieldMappingArray) ToRelationshipTypeFieldMappingArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(RelationshipTypeFieldMappingArrayOutput)
 }
 
+func (i RelationshipTypeFieldMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]RelationshipTypeFieldMapping] {
+	return pulumix.Output[[]RelationshipTypeFieldMapping]{
+		OutputState: i.ToRelationshipTypeFieldMappingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Map a field of profile to its corresponding StrongId in Related Profile.
 type RelationshipTypeFieldMappingOutput struct{ *pulumi.OutputState }
 
@@ -3787,6 +4424,12 @@ func (o RelationshipTypeFieldMappingOutput) ToRelationshipTypeFieldMappingOutput
 
 func (o RelationshipTypeFieldMappingOutput) ToRelationshipTypeFieldMappingOutputWithContext(ctx context.Context) RelationshipTypeFieldMappingOutput {
 	return o
+}
+
+func (o RelationshipTypeFieldMappingOutput) ToOutput(ctx context.Context) pulumix.Output[RelationshipTypeFieldMapping] {
+	return pulumix.Output[RelationshipTypeFieldMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the fieldName in profile.
@@ -3811,6 +4454,12 @@ func (o RelationshipTypeFieldMappingArrayOutput) ToRelationshipTypeFieldMappingA
 
 func (o RelationshipTypeFieldMappingArrayOutput) ToRelationshipTypeFieldMappingArrayOutputWithContext(ctx context.Context) RelationshipTypeFieldMappingArrayOutput {
 	return o
+}
+
+func (o RelationshipTypeFieldMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RelationshipTypeFieldMapping] {
+	return pulumix.Output[[]RelationshipTypeFieldMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RelationshipTypeFieldMappingArrayOutput) Index(i pulumi.IntInput) RelationshipTypeFieldMappingOutput {
@@ -3842,6 +4491,12 @@ func (o RelationshipTypeFieldMappingResponseOutput) ToRelationshipTypeFieldMappi
 	return o
 }
 
+func (o RelationshipTypeFieldMappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RelationshipTypeFieldMappingResponse] {
+	return pulumix.Output[RelationshipTypeFieldMappingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the fieldName in profile.
 func (o RelationshipTypeFieldMappingResponseOutput) ProfileFieldName() pulumi.StringOutput {
 	return o.ApplyT(func(v RelationshipTypeFieldMappingResponse) string { return v.ProfileFieldName }).(pulumi.StringOutput)
@@ -3864,6 +4519,12 @@ func (o RelationshipTypeFieldMappingResponseArrayOutput) ToRelationshipTypeField
 
 func (o RelationshipTypeFieldMappingResponseArrayOutput) ToRelationshipTypeFieldMappingResponseArrayOutputWithContext(ctx context.Context) RelationshipTypeFieldMappingResponseArrayOutput {
 	return o
+}
+
+func (o RelationshipTypeFieldMappingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RelationshipTypeFieldMappingResponse] {
+	return pulumix.Output[[]RelationshipTypeFieldMappingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RelationshipTypeFieldMappingResponseArrayOutput) Index(i pulumi.IntInput) RelationshipTypeFieldMappingResponseOutput {
@@ -3907,6 +4568,12 @@ func (i RelationshipTypeMappingArgs) ToRelationshipTypeMappingOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(RelationshipTypeMappingOutput)
 }
 
+func (i RelationshipTypeMappingArgs) ToOutput(ctx context.Context) pulumix.Output[RelationshipTypeMapping] {
+	return pulumix.Output[RelationshipTypeMapping]{
+		OutputState: i.ToRelationshipTypeMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RelationshipTypeMappingArrayInput is an input type that accepts RelationshipTypeMappingArray and RelationshipTypeMappingArrayOutput values.
 // You can construct a concrete instance of `RelationshipTypeMappingArrayInput` via:
 //
@@ -3932,6 +4599,12 @@ func (i RelationshipTypeMappingArray) ToRelationshipTypeMappingArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(RelationshipTypeMappingArrayOutput)
 }
 
+func (i RelationshipTypeMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]RelationshipTypeMapping] {
+	return pulumix.Output[[]RelationshipTypeMapping]{
+		OutputState: i.ToRelationshipTypeMappingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Maps fields in Profile to their corresponding StrongIds in Related Profile.
 type RelationshipTypeMappingOutput struct{ *pulumi.OutputState }
 
@@ -3945,6 +4618,12 @@ func (o RelationshipTypeMappingOutput) ToRelationshipTypeMappingOutput() Relatio
 
 func (o RelationshipTypeMappingOutput) ToRelationshipTypeMappingOutputWithContext(ctx context.Context) RelationshipTypeMappingOutput {
 	return o
+}
+
+func (o RelationshipTypeMappingOutput) ToOutput(ctx context.Context) pulumix.Output[RelationshipTypeMapping] {
+	return pulumix.Output[RelationshipTypeMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well.
@@ -3964,6 +4643,12 @@ func (o RelationshipTypeMappingArrayOutput) ToRelationshipTypeMappingArrayOutput
 
 func (o RelationshipTypeMappingArrayOutput) ToRelationshipTypeMappingArrayOutputWithContext(ctx context.Context) RelationshipTypeMappingArrayOutput {
 	return o
+}
+
+func (o RelationshipTypeMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RelationshipTypeMapping] {
+	return pulumix.Output[[]RelationshipTypeMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RelationshipTypeMappingArrayOutput) Index(i pulumi.IntInput) RelationshipTypeMappingOutput {
@@ -3993,6 +4678,12 @@ func (o RelationshipTypeMappingResponseOutput) ToRelationshipTypeMappingResponse
 	return o
 }
 
+func (o RelationshipTypeMappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RelationshipTypeMappingResponse] {
+	return pulumix.Output[RelationshipTypeMappingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well.
 func (o RelationshipTypeMappingResponseOutput) FieldMappings() RelationshipTypeFieldMappingResponseArrayOutput {
 	return o.ApplyT(func(v RelationshipTypeMappingResponse) []RelationshipTypeFieldMappingResponse { return v.FieldMappings }).(RelationshipTypeFieldMappingResponseArrayOutput)
@@ -4010,6 +4701,12 @@ func (o RelationshipTypeMappingResponseArrayOutput) ToRelationshipTypeMappingRes
 
 func (o RelationshipTypeMappingResponseArrayOutput) ToRelationshipTypeMappingResponseArrayOutputWithContext(ctx context.Context) RelationshipTypeMappingResponseArrayOutput {
 	return o
+}
+
+func (o RelationshipTypeMappingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RelationshipTypeMappingResponse] {
+	return pulumix.Output[[]RelationshipTypeMappingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RelationshipTypeMappingResponseArrayOutput) Index(i pulumi.IntInput) RelationshipTypeMappingResponseOutput {
@@ -4057,6 +4754,12 @@ func (i ResourceSetDescriptionArgs) ToResourceSetDescriptionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSetDescriptionOutput)
 }
 
+func (i ResourceSetDescriptionArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSetDescription] {
+	return pulumix.Output[ResourceSetDescription]{
+		OutputState: i.ToResourceSetDescriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSetDescriptionArgs) ToResourceSetDescriptionPtrOutput() ResourceSetDescriptionPtrOutput {
 	return i.ToResourceSetDescriptionPtrOutputWithContext(context.Background())
 }
@@ -4098,6 +4801,12 @@ func (i *resourceSetDescriptionPtrType) ToResourceSetDescriptionPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSetDescriptionPtrOutput)
 }
 
+func (i *resourceSetDescriptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSetDescription] {
+	return pulumix.Output[*ResourceSetDescription]{
+		OutputState: i.ToResourceSetDescriptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The resource set description.
 type ResourceSetDescriptionOutput struct{ *pulumi.OutputState }
 
@@ -4123,6 +4832,12 @@ func (o ResourceSetDescriptionOutput) ToResourceSetDescriptionPtrOutputWithConte
 	}).(ResourceSetDescriptionPtrOutput)
 }
 
+func (o ResourceSetDescriptionOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSetDescription] {
+	return pulumix.Output[ResourceSetDescription]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The elements included in the set.
 func (o ResourceSetDescriptionOutput) Elements() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResourceSetDescription) []string { return v.Elements }).(pulumi.StringArrayOutput)
@@ -4145,6 +4860,12 @@ func (o ResourceSetDescriptionPtrOutput) ToResourceSetDescriptionPtrOutput() Res
 
 func (o ResourceSetDescriptionPtrOutput) ToResourceSetDescriptionPtrOutputWithContext(ctx context.Context) ResourceSetDescriptionPtrOutput {
 	return o
+}
+
+func (o ResourceSetDescriptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSetDescription] {
+	return pulumix.Output[*ResourceSetDescription]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSetDescriptionPtrOutput) Elem() ResourceSetDescriptionOutput {
@@ -4200,6 +4921,12 @@ func (o ResourceSetDescriptionResponseOutput) ToResourceSetDescriptionResponseOu
 	return o
 }
 
+func (o ResourceSetDescriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSetDescriptionResponse] {
+	return pulumix.Output[ResourceSetDescriptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The elements included in the set.
 func (o ResourceSetDescriptionResponseOutput) Elements() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResourceSetDescriptionResponse) []string { return v.Elements }).(pulumi.StringArrayOutput)
@@ -4222,6 +4949,12 @@ func (o ResourceSetDescriptionResponsePtrOutput) ToResourceSetDescriptionRespons
 
 func (o ResourceSetDescriptionResponsePtrOutput) ToResourceSetDescriptionResponsePtrOutputWithContext(ctx context.Context) ResourceSetDescriptionResponsePtrOutput {
 	return o
+}
+
+func (o ResourceSetDescriptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSetDescriptionResponse] {
+	return pulumix.Output[*ResourceSetDescriptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSetDescriptionResponsePtrOutput) Elem() ResourceSetDescriptionResponseOutput {
@@ -4301,6 +5034,12 @@ func (i StrongIdArgs) ToStrongIdOutputWithContext(ctx context.Context) StrongIdO
 	return pulumi.ToOutputWithContext(ctx, i).(StrongIdOutput)
 }
 
+func (i StrongIdArgs) ToOutput(ctx context.Context) pulumix.Output[StrongId] {
+	return pulumix.Output[StrongId]{
+		OutputState: i.ToStrongIdOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StrongIdArrayInput is an input type that accepts StrongIdArray and StrongIdArrayOutput values.
 // You can construct a concrete instance of `StrongIdArrayInput` via:
 //
@@ -4326,6 +5065,12 @@ func (i StrongIdArray) ToStrongIdArrayOutputWithContext(ctx context.Context) Str
 	return pulumi.ToOutputWithContext(ctx, i).(StrongIdArrayOutput)
 }
 
+func (i StrongIdArray) ToOutput(ctx context.Context) pulumix.Output[[]StrongId] {
+	return pulumix.Output[[]StrongId]{
+		OutputState: i.ToStrongIdArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Property/Properties which represent a unique ID.
 type StrongIdOutput struct{ *pulumi.OutputState }
 
@@ -4339,6 +5084,12 @@ func (o StrongIdOutput) ToStrongIdOutput() StrongIdOutput {
 
 func (o StrongIdOutput) ToStrongIdOutputWithContext(ctx context.Context) StrongIdOutput {
 	return o
+}
+
+func (o StrongIdOutput) ToOutput(ctx context.Context) pulumix.Output[StrongId] {
+	return pulumix.Output[StrongId]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Localized descriptions.
@@ -4375,6 +5126,12 @@ func (o StrongIdArrayOutput) ToStrongIdArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o StrongIdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StrongId] {
+	return pulumix.Output[[]StrongId]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StrongIdArrayOutput) Index(i pulumi.IntInput) StrongIdOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StrongId {
 		return vs[0].([]StrongId)[vs[1].(int)]
@@ -4406,6 +5163,12 @@ func (o StrongIdResponseOutput) ToStrongIdResponseOutput() StrongIdResponseOutpu
 
 func (o StrongIdResponseOutput) ToStrongIdResponseOutputWithContext(ctx context.Context) StrongIdResponseOutput {
 	return o
+}
+
+func (o StrongIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StrongIdResponse] {
+	return pulumix.Output[StrongIdResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Localized descriptions.
@@ -4440,6 +5203,12 @@ func (o StrongIdResponseArrayOutput) ToStrongIdResponseArrayOutput() StrongIdRes
 
 func (o StrongIdResponseArrayOutput) ToStrongIdResponseArrayOutputWithContext(ctx context.Context) StrongIdResponseArrayOutput {
 	return o
+}
+
+func (o StrongIdResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StrongIdResponse] {
+	return pulumix.Output[[]StrongIdResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StrongIdResponseArrayOutput) Index(i pulumi.IntInput) StrongIdResponseOutput {
@@ -4491,6 +5260,12 @@ func (i TypePropertiesMappingArgs) ToTypePropertiesMappingOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TypePropertiesMappingOutput)
 }
 
+func (i TypePropertiesMappingArgs) ToOutput(ctx context.Context) pulumix.Output[TypePropertiesMapping] {
+	return pulumix.Output[TypePropertiesMapping]{
+		OutputState: i.ToTypePropertiesMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TypePropertiesMappingArrayInput is an input type that accepts TypePropertiesMappingArray and TypePropertiesMappingArrayOutput values.
 // You can construct a concrete instance of `TypePropertiesMappingArrayInput` via:
 //
@@ -4516,6 +5291,12 @@ func (i TypePropertiesMappingArray) ToTypePropertiesMappingArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TypePropertiesMappingArrayOutput)
 }
 
+func (i TypePropertiesMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]TypePropertiesMapping] {
+	return pulumix.Output[[]TypePropertiesMapping]{
+		OutputState: i.ToTypePropertiesMappingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Metadata for a Link's property mapping.
 type TypePropertiesMappingOutput struct{ *pulumi.OutputState }
 
@@ -4529,6 +5310,12 @@ func (o TypePropertiesMappingOutput) ToTypePropertiesMappingOutput() TypePropert
 
 func (o TypePropertiesMappingOutput) ToTypePropertiesMappingOutputWithContext(ctx context.Context) TypePropertiesMappingOutput {
 	return o
+}
+
+func (o TypePropertiesMappingOutput) ToOutput(ctx context.Context) pulumix.Output[TypePropertiesMapping] {
+	return pulumix.Output[TypePropertiesMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Link type.
@@ -4558,6 +5345,12 @@ func (o TypePropertiesMappingArrayOutput) ToTypePropertiesMappingArrayOutput() T
 
 func (o TypePropertiesMappingArrayOutput) ToTypePropertiesMappingArrayOutputWithContext(ctx context.Context) TypePropertiesMappingArrayOutput {
 	return o
+}
+
+func (o TypePropertiesMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TypePropertiesMapping] {
+	return pulumix.Output[[]TypePropertiesMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TypePropertiesMappingArrayOutput) Index(i pulumi.IntInput) TypePropertiesMappingOutput {
@@ -4591,6 +5384,12 @@ func (o TypePropertiesMappingResponseOutput) ToTypePropertiesMappingResponseOutp
 	return o
 }
 
+func (o TypePropertiesMappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TypePropertiesMappingResponse] {
+	return pulumix.Output[TypePropertiesMappingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Link type.
 func (o TypePropertiesMappingResponseOutput) LinkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TypePropertiesMappingResponse) *string { return v.LinkType }).(pulumi.StringPtrOutput)
@@ -4618,6 +5417,12 @@ func (o TypePropertiesMappingResponseArrayOutput) ToTypePropertiesMappingRespons
 
 func (o TypePropertiesMappingResponseArrayOutput) ToTypePropertiesMappingResponseArrayOutputWithContext(ctx context.Context) TypePropertiesMappingResponseArrayOutput {
 	return o
+}
+
+func (o TypePropertiesMappingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TypePropertiesMappingResponse] {
+	return pulumix.Output[[]TypePropertiesMappingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TypePropertiesMappingResponseArrayOutput) Index(i pulumi.IntInput) TypePropertiesMappingResponseOutput {

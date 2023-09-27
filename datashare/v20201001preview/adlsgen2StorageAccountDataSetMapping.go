@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ADLSGen2 storage account data set mapping.
@@ -197,6 +198,12 @@ func (i *ADLSGen2StorageAccountDataSetMapping) ToADLSGen2StorageAccountDataSetMa
 	return pulumi.ToOutputWithContext(ctx, i).(ADLSGen2StorageAccountDataSetMappingOutput)
 }
 
+func (i *ADLSGen2StorageAccountDataSetMapping) ToOutput(ctx context.Context) pulumix.Output[*ADLSGen2StorageAccountDataSetMapping] {
+	return pulumix.Output[*ADLSGen2StorageAccountDataSetMapping]{
+		OutputState: i.ToADLSGen2StorageAccountDataSetMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ADLSGen2StorageAccountDataSetMappingOutput struct{ *pulumi.OutputState }
 
 func (ADLSGen2StorageAccountDataSetMappingOutput) ElementType() reflect.Type {
@@ -209,6 +216,12 @@ func (o ADLSGen2StorageAccountDataSetMappingOutput) ToADLSGen2StorageAccountData
 
 func (o ADLSGen2StorageAccountDataSetMappingOutput) ToADLSGen2StorageAccountDataSetMappingOutputWithContext(ctx context.Context) ADLSGen2StorageAccountDataSetMappingOutput {
 	return o
+}
+
+func (o ADLSGen2StorageAccountDataSetMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*ADLSGen2StorageAccountDataSetMapping] {
+	return pulumix.Output[*ADLSGen2StorageAccountDataSetMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the container name.

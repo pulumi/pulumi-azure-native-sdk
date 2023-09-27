@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a data connection.
@@ -112,6 +113,12 @@ func (o LookupIotHubDataConnectionResultOutput) ToLookupIotHubDataConnectionResu
 
 func (o LookupIotHubDataConnectionResultOutput) ToLookupIotHubDataConnectionResultOutputWithContext(ctx context.Context) LookupIotHubDataConnectionResultOutput {
 	return o
+}
+
+func (o LookupIotHubDataConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIotHubDataConnectionResult] {
+	return pulumix.Output[LookupIotHubDataConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The iot hub consumer group.

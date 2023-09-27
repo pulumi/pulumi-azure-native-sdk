@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a registered vCenter server(Add vCenter server).
@@ -89,6 +90,12 @@ func (o LookupReplicationvCenterResultOutput) ToLookupReplicationvCenterResultOu
 
 func (o LookupReplicationvCenterResultOutput) ToLookupReplicationvCenterResultOutputWithContext(ctx context.Context) LookupReplicationvCenterResultOutput {
 	return o
+}
+
+func (o LookupReplicationvCenterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReplicationvCenterResult] {
+	return pulumix.Output[LookupReplicationvCenterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Checks if resource name is available.
@@ -87,6 +88,12 @@ func (o GetManagedEnvironmentAuthTokenResultOutput) ToGetManagedEnvironmentAuthT
 
 func (o GetManagedEnvironmentAuthTokenResultOutput) ToGetManagedEnvironmentAuthTokenResultOutputWithContext(ctx context.Context) GetManagedEnvironmentAuthTokenResultOutput {
 	return o
+}
+
+func (o GetManagedEnvironmentAuthTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetManagedEnvironmentAuthTokenResult] {
+	return pulumix.Output[GetManagedEnvironmentAuthTokenResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Token expiration date.

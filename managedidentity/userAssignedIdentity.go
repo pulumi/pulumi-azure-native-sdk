@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes an identity resource.
@@ -141,6 +142,12 @@ func (i *UserAssignedIdentity) ToUserAssignedIdentityOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityOutput)
 }
 
+func (i *UserAssignedIdentity) ToOutput(ctx context.Context) pulumix.Output[*UserAssignedIdentity] {
+	return pulumix.Output[*UserAssignedIdentity]{
+		OutputState: i.ToUserAssignedIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UserAssignedIdentityOutput struct{ *pulumi.OutputState }
 
 func (UserAssignedIdentityOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o UserAssignedIdentityOutput) ToUserAssignedIdentityOutput() UserAssignedI
 
 func (o UserAssignedIdentityOutput) ToUserAssignedIdentityOutputWithContext(ctx context.Context) UserAssignedIdentityOutput {
 	return o
+}
+
+func (o UserAssignedIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[*UserAssignedIdentity] {
+	return pulumix.Output[*UserAssignedIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the app associated with the identity. This is a random generated UUID by MSI.

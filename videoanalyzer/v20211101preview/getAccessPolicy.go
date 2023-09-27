@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves an existing access policy resource with the given name.
@@ -86,6 +87,12 @@ func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutput() Looku
 
 func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutputWithContext(ctx context.Context) LookupAccessPolicyResultOutput {
 	return o
+}
+
+func (o LookupAccessPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccessPolicyResult] {
+	return pulumix.Output[LookupAccessPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authentication method to be used when validating client API access.

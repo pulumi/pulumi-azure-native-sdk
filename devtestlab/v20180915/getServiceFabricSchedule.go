@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get schedule.
@@ -133,6 +134,12 @@ func (o LookupServiceFabricScheduleResultOutput) ToLookupServiceFabricScheduleRe
 
 func (o LookupServiceFabricScheduleResultOutput) ToLookupServiceFabricScheduleResultOutputWithContext(ctx context.Context) LookupServiceFabricScheduleResultOutput {
 	return o
+}
+
+func (o LookupServiceFabricScheduleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceFabricScheduleResult] {
+	return pulumix.Output[LookupServiceFabricScheduleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation date of the schedule.

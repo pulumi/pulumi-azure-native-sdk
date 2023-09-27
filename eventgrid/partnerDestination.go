@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Event Grid Partner Destination.
@@ -167,6 +168,12 @@ func (i *PartnerDestination) ToPartnerDestinationOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(PartnerDestinationOutput)
 }
 
+func (i *PartnerDestination) ToOutput(ctx context.Context) pulumix.Output[*PartnerDestination] {
+	return pulumix.Output[*PartnerDestination]{
+		OutputState: i.ToPartnerDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PartnerDestinationOutput struct{ *pulumi.OutputState }
 
 func (PartnerDestinationOutput) ElementType() reflect.Type {
@@ -179,6 +186,12 @@ func (o PartnerDestinationOutput) ToPartnerDestinationOutput() PartnerDestinatio
 
 func (o PartnerDestinationOutput) ToPartnerDestinationOutputWithContext(ctx context.Context) PartnerDestinationOutput {
 	return o
+}
+
+func (o PartnerDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[*PartnerDestination] {
+	return pulumix.Output[*PartnerDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Activation state of the partner destination.

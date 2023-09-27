@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Hunt Relation in Azure Security Insights.
@@ -70,6 +71,9 @@ func NewHuntRelation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230701preview:HuntRelation"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:HuntRelation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -159,6 +163,12 @@ func (i *HuntRelation) ToHuntRelationOutputWithContext(ctx context.Context) Hunt
 	return pulumi.ToOutputWithContext(ctx, i).(HuntRelationOutput)
 }
 
+func (i *HuntRelation) ToOutput(ctx context.Context) pulumix.Output[*HuntRelation] {
+	return pulumix.Output[*HuntRelation]{
+		OutputState: i.ToHuntRelationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HuntRelationOutput struct{ *pulumi.OutputState }
 
 func (HuntRelationOutput) ElementType() reflect.Type {
@@ -171,6 +181,12 @@ func (o HuntRelationOutput) ToHuntRelationOutput() HuntRelationOutput {
 
 func (o HuntRelationOutput) ToHuntRelationOutputWithContext(ctx context.Context) HuntRelationOutput {
 	return o
+}
+
+func (o HuntRelationOutput) ToOutput(ctx context.Context) pulumix.Output[*HuntRelation] {
+	return pulumix.Output[*HuntRelation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Etag of the azure resource

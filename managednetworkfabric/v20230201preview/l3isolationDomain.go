@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The L3IsolationDomain resource definition.
@@ -184,6 +185,12 @@ func (i *L3IsolationDomain) ToL3IsolationDomainOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(L3IsolationDomainOutput)
 }
 
+func (i *L3IsolationDomain) ToOutput(ctx context.Context) pulumix.Output[*L3IsolationDomain] {
+	return pulumix.Output[*L3IsolationDomain]{
+		OutputState: i.ToL3IsolationDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 type L3IsolationDomainOutput struct{ *pulumi.OutputState }
 
 func (L3IsolationDomainOutput) ElementType() reflect.Type {
@@ -196,6 +203,12 @@ func (o L3IsolationDomainOutput) ToL3IsolationDomainOutput() L3IsolationDomainOu
 
 func (o L3IsolationDomainOutput) ToL3IsolationDomainOutputWithContext(ctx context.Context) L3IsolationDomainOutput {
 	return o
+}
+
+func (o L3IsolationDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*L3IsolationDomain] {
+	return pulumix.Output[*L3IsolationDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Administrative state of the IsolationDomain. Example: Enabled | Disabled.

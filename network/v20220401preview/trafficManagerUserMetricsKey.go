@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing Traffic Manager User Metrics.
@@ -107,6 +108,12 @@ func (i *TrafficManagerUserMetricsKey) ToTrafficManagerUserMetricsKeyOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficManagerUserMetricsKeyOutput)
 }
 
+func (i *TrafficManagerUserMetricsKey) ToOutput(ctx context.Context) pulumix.Output[*TrafficManagerUserMetricsKey] {
+	return pulumix.Output[*TrafficManagerUserMetricsKey]{
+		OutputState: i.ToTrafficManagerUserMetricsKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TrafficManagerUserMetricsKeyOutput struct{ *pulumi.OutputState }
 
 func (TrafficManagerUserMetricsKeyOutput) ElementType() reflect.Type {
@@ -119,6 +126,12 @@ func (o TrafficManagerUserMetricsKeyOutput) ToTrafficManagerUserMetricsKeyOutput
 
 func (o TrafficManagerUserMetricsKeyOutput) ToTrafficManagerUserMetricsKeyOutputWithContext(ctx context.Context) TrafficManagerUserMetricsKeyOutput {
 	return o
+}
+
+func (o TrafficManagerUserMetricsKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*TrafficManagerUserMetricsKey] {
+	return pulumix.Output[*TrafficManagerUserMetricsKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The key returned by the User Metrics operation.

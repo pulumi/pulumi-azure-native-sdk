@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DataSetMapping in a shareSubscription
@@ -105,6 +106,12 @@ func (o LookupADLSGen2FolderDataSetMappingResultOutput) ToLookupADLSGen2FolderDa
 
 func (o LookupADLSGen2FolderDataSetMappingResultOutput) ToLookupADLSGen2FolderDataSetMappingResultOutputWithContext(ctx context.Context) LookupADLSGen2FolderDataSetMappingResultOutput {
 	return o
+}
+
+func (o LookupADLSGen2FolderDataSetMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupADLSGen2FolderDataSetMappingResult] {
+	return pulumix.Output[LookupADLSGen2FolderDataSetMappingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the source data set.

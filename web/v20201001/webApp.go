@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A web app, a mobile app backend, or an API app.
@@ -368,6 +369,12 @@ func (i *WebApp) ToWebAppOutputWithContext(ctx context.Context) WebAppOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppOutput)
 }
 
+func (i *WebApp) ToOutput(ctx context.Context) pulumix.Output[*WebApp] {
+	return pulumix.Output[*WebApp]{
+		OutputState: i.ToWebAppOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppOutput struct{ *pulumi.OutputState }
 
 func (WebAppOutput) ElementType() reflect.Type {
@@ -380,6 +387,12 @@ func (o WebAppOutput) ToWebAppOutput() WebAppOutput {
 
 func (o WebAppOutput) ToWebAppOutputWithContext(ctx context.Context) WebAppOutput {
 	return o
+}
+
+func (o WebAppOutput) ToOutput(ctx context.Context) pulumix.Output[*WebApp] {
+	return pulumix.Output[*WebApp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Management information availability state for the app.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configures where to store the OMS agent data for workspaces under a scope
@@ -119,6 +120,12 @@ func (i *WorkspaceSetting) ToWorkspaceSettingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceSettingOutput)
 }
 
+func (i *WorkspaceSetting) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceSetting] {
+	return pulumix.Output[*WorkspaceSetting]{
+		OutputState: i.ToWorkspaceSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceSettingOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceSettingOutput) ElementType() reflect.Type {
@@ -131,6 +138,12 @@ func (o WorkspaceSettingOutput) ToWorkspaceSettingOutput() WorkspaceSettingOutpu
 
 func (o WorkspaceSettingOutput) ToWorkspaceSettingOutputWithContext(ctx context.Context) WorkspaceSettingOutput {
 	return o
+}
+
+func (o WorkspaceSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceSetting] {
+	return pulumix.Output[*WorkspaceSetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name

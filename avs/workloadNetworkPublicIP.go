@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // NSX Public IP Block
@@ -141,6 +142,12 @@ func (i *WorkloadNetworkPublicIP) ToWorkloadNetworkPublicIPOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadNetworkPublicIPOutput)
 }
 
+func (i *WorkloadNetworkPublicIP) ToOutput(ctx context.Context) pulumix.Output[*WorkloadNetworkPublicIP] {
+	return pulumix.Output[*WorkloadNetworkPublicIP]{
+		OutputState: i.ToWorkloadNetworkPublicIPOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkloadNetworkPublicIPOutput struct{ *pulumi.OutputState }
 
 func (WorkloadNetworkPublicIPOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o WorkloadNetworkPublicIPOutput) ToWorkloadNetworkPublicIPOutput() Workloa
 
 func (o WorkloadNetworkPublicIPOutput) ToWorkloadNetworkPublicIPOutputWithContext(ctx context.Context) WorkloadNetworkPublicIPOutput {
 	return o
+}
+
+func (o WorkloadNetworkPublicIPOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadNetworkPublicIP] {
+	return pulumix.Output[*WorkloadNetworkPublicIP]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Display name of the Public IP Block.

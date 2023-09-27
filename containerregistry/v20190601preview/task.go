@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The task that has the ARM resource and task properties.
@@ -80,9 +81,6 @@ func NewTask(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:containerregistry:Task"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerregistry/v20180201preview:Task"),
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20180901:Task"),
@@ -218,6 +216,12 @@ func (i *Task) ToTaskOutputWithContext(ctx context.Context) TaskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaskOutput)
 }
 
+func (i *Task) ToOutput(ctx context.Context) pulumix.Output[*Task] {
+	return pulumix.Output[*Task]{
+		OutputState: i.ToTaskOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TaskOutput struct{ *pulumi.OutputState }
 
 func (TaskOutput) ElementType() reflect.Type {
@@ -230,6 +234,12 @@ func (o TaskOutput) ToTaskOutput() TaskOutput {
 
 func (o TaskOutput) ToTaskOutputWithContext(ctx context.Context) TaskOutput {
 	return o
+}
+
+func (o TaskOutput) ToOutput(ctx context.Context) pulumix.Output[*Task] {
+	return pulumix.Output[*Task]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The machine configuration of the run agent.

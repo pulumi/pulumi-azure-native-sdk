@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The application type name resource
@@ -151,6 +152,12 @@ func (i *ApplicationType) ToApplicationTypeOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationTypeOutput)
 }
 
+func (i *ApplicationType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationType] {
+	return pulumix.Output[*ApplicationType]{
+		OutputState: i.ToApplicationTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationTypeOutput struct{ *pulumi.OutputState }
 
 func (ApplicationTypeOutput) ElementType() reflect.Type {
@@ -163,6 +170,12 @@ func (o ApplicationTypeOutput) ToApplicationTypeOutput() ApplicationTypeOutput {
 
 func (o ApplicationTypeOutput) ToApplicationTypeOutputWithContext(ctx context.Context) ApplicationTypeOutput {
 	return o
+}
+
+func (o ApplicationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationType] {
+	return pulumix.Output[*ApplicationType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure resource etag.

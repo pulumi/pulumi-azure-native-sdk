@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Settings with single toggle.
@@ -112,6 +113,9 @@ func NewIPSyncer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:IPSyncer"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:IPSyncer"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -196,6 +200,12 @@ func (i *IPSyncer) ToIPSyncerOutputWithContext(ctx context.Context) IPSyncerOutp
 	return pulumi.ToOutputWithContext(ctx, i).(IPSyncerOutput)
 }
 
+func (i *IPSyncer) ToOutput(ctx context.Context) pulumix.Output[*IPSyncer] {
+	return pulumix.Output[*IPSyncer]{
+		OutputState: i.ToIPSyncerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IPSyncerOutput struct{ *pulumi.OutputState }
 
 func (IPSyncerOutput) ElementType() reflect.Type {
@@ -208,6 +218,12 @@ func (o IPSyncerOutput) ToIPSyncerOutput() IPSyncerOutput {
 
 func (o IPSyncerOutput) ToIPSyncerOutputWithContext(ctx context.Context) IPSyncerOutput {
 	return o
+}
+
+func (o IPSyncerOutput) ToOutput(ctx context.Context) pulumix.Output[*IPSyncer] {
+	return pulumix.Output[*IPSyncer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Etag of the azure resource

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Container App SourceControl.
@@ -92,6 +93,12 @@ func (o LookupContainerAppsSourceControlResultOutput) ToLookupContainerAppsSourc
 
 func (o LookupContainerAppsSourceControlResultOutput) ToLookupContainerAppsSourceControlResultOutputWithContext(ctx context.Context) LookupContainerAppsSourceControlResultOutput {
 	return o
+}
+
+func (o LookupContainerAppsSourceControlResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContainerAppsSourceControlResult] {
+	return pulumix.Output[LookupContainerAppsSourceControlResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The branch which will trigger the auto deployment

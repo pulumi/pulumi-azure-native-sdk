@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Log Analytics QueryPack-Query definition.
@@ -169,6 +170,12 @@ func (i *Query) ToQueryOutputWithContext(ctx context.Context) QueryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueryOutput)
 }
 
+func (i *Query) ToOutput(ctx context.Context) pulumix.Output[*Query] {
+	return pulumix.Output[*Query]{
+		OutputState: i.ToQueryOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QueryOutput struct{ *pulumi.OutputState }
 
 func (QueryOutput) ElementType() reflect.Type {
@@ -181,6 +188,12 @@ func (o QueryOutput) ToQueryOutput() QueryOutput {
 
 func (o QueryOutput) ToQueryOutputWithContext(ctx context.Context) QueryOutput {
 	return o
+}
+
+func (o QueryOutput) ToOutput(ctx context.Context) pulumix.Output[*Query] {
+	return pulumix.Output[*Query]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Object Id of user creating the query.

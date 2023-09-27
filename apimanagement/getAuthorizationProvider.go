@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the authorization provider specified by its identifier.
@@ -87,6 +88,12 @@ func (o LookupAuthorizationProviderResultOutput) ToLookupAuthorizationProviderRe
 
 func (o LookupAuthorizationProviderResultOutput) ToLookupAuthorizationProviderResultOutputWithContext(ctx context.Context) LookupAuthorizationProviderResultOutput {
 	return o
+}
+
+func (o LookupAuthorizationProviderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAuthorizationProviderResult] {
+	return pulumix.Output[LookupAuthorizationProviderResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authorization Provider name. Must be 1 to 300 characters long.

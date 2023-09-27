@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates whether or not the encryption is enabled for the workspace.
@@ -94,6 +95,12 @@ func (o LinkedServiceLinkTypeOutput) ToLinkedServiceLinkTypePtrOutputWithContext
 	}).(LinkedServiceLinkTypePtrOutput)
 }
 
+func (o LinkedServiceLinkTypeOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedServiceLinkType] {
+	return pulumix.Output[LinkedServiceLinkType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LinkedServiceLinkTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -127,6 +134,12 @@ func (o LinkedServiceLinkTypePtrOutput) ToLinkedServiceLinkTypePtrOutput() Linke
 
 func (o LinkedServiceLinkTypePtrOutput) ToLinkedServiceLinkTypePtrOutputWithContext(ctx context.Context) LinkedServiceLinkTypePtrOutput {
 	return o
+}
+
+func (o LinkedServiceLinkTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedServiceLinkType] {
+	return pulumix.Output[*LinkedServiceLinkType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LinkedServiceLinkTypePtrOutput) Elem() LinkedServiceLinkTypeOutput {
@@ -189,6 +202,12 @@ func (in *linkedServiceLinkTypePtr) ToLinkedServiceLinkTypePtrOutput() LinkedSer
 
 func (in *linkedServiceLinkTypePtr) ToLinkedServiceLinkTypePtrOutputWithContext(ctx context.Context) LinkedServiceLinkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LinkedServiceLinkTypePtrOutput)
+}
+
+func (in *linkedServiceLinkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LinkedServiceLinkType] {
+	return pulumix.Output[*LinkedServiceLinkType]{
+		OutputState: in.ToLinkedServiceLinkTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Media type of data asset.
@@ -280,6 +299,12 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
+func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
+	return pulumix.Output[ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -313,6 +338,12 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -375,6 +406,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+}
+
+func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

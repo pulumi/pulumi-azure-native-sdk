@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified load balancer.
@@ -106,6 +107,12 @@ func (o LookupLoadBalancerResultOutput) ToLookupLoadBalancerResultOutput() Looku
 
 func (o LookupLoadBalancerResultOutput) ToLookupLoadBalancerResultOutputWithContext(ctx context.Context) LookupLoadBalancerResultOutput {
 	return o
+}
+
+func (o LookupLoadBalancerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLoadBalancerResult] {
+	return pulumix.Output[LookupLoadBalancerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Collection of backend address pools used by a load balancer.

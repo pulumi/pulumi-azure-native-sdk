@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get configuration for resource.
@@ -96,6 +97,12 @@ func (o LookupConfigurationAssignmentResultOutput) ToLookupConfigurationAssignme
 
 func (o LookupConfigurationAssignmentResultOutput) ToLookupConfigurationAssignmentResultOutputWithContext(ctx context.Context) LookupConfigurationAssignmentResultOutput {
 	return o
+}
+
+func (o LookupConfigurationAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigurationAssignmentResult] {
+	return pulumix.Output[LookupConfigurationAssignmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified identifier of the resource

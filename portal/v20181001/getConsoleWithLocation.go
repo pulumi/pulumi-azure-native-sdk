@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the console for the user.
@@ -72,6 +73,12 @@ func (o LookupConsoleWithLocationResultOutput) ToLookupConsoleWithLocationResult
 
 func (o LookupConsoleWithLocationResultOutput) ToLookupConsoleWithLocationResultOutputWithContext(ctx context.Context) LookupConsoleWithLocationResultOutput {
 	return o
+}
+
+func (o LookupConsoleWithLocationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConsoleWithLocationResult] {
+	return pulumix.Output[LookupConsoleWithLocationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cloud shell console properties.

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The private link service connection status.
@@ -88,6 +89,12 @@ func (o CreateModeOutput) ToCreateModePtrOutputWithContext(ctx context.Context) 
 	}).(CreateModePtrOutput)
 }
 
+func (o CreateModeOutput) ToOutput(ctx context.Context) pulumix.Output[CreateMode] {
+	return pulumix.Output[CreateMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CreateModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -121,6 +128,12 @@ func (o CreateModePtrOutput) ToCreateModePtrOutput() CreateModePtrOutput {
 
 func (o CreateModePtrOutput) ToCreateModePtrOutputWithContext(ctx context.Context) CreateModePtrOutput {
 	return o
+}
+
+func (o CreateModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
+	return pulumix.Output[*CreateMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CreateModePtrOutput) Elem() CreateModeOutput {
@@ -183,6 +196,12 @@ func (in *createModePtr) ToCreateModePtrOutput() CreateModePtrOutput {
 
 func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) CreateModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
+}
+
+func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
+	return pulumix.Output[*CreateMode]{
+		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.

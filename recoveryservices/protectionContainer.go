@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Base class for container with backup items. Containers with specific workloads are derived from this class.
@@ -219,6 +220,12 @@ func (i *ProtectionContainer) ToProtectionContainerOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectionContainerOutput)
 }
 
+func (i *ProtectionContainer) ToOutput(ctx context.Context) pulumix.Output[*ProtectionContainer] {
+	return pulumix.Output[*ProtectionContainer]{
+		OutputState: i.ToProtectionContainerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProtectionContainerOutput struct{ *pulumi.OutputState }
 
 func (ProtectionContainerOutput) ElementType() reflect.Type {
@@ -231,6 +238,12 @@ func (o ProtectionContainerOutput) ToProtectionContainerOutput() ProtectionConta
 
 func (o ProtectionContainerOutput) ToProtectionContainerOutputWithContext(ctx context.Context) ProtectionContainerOutput {
 	return o
+}
+
+func (o ProtectionContainerOutput) ToOutput(ctx context.Context) pulumix.Output[*ProtectionContainer] {
+	return pulumix.Output[*ProtectionContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional ETag.

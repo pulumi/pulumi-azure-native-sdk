@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -42,6 +43,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -125,6 +132,12 @@ func (i ThreatIntelligenceExternalReferenceArgs) ToThreatIntelligenceExternalRef
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceExternalReferenceOutput)
 }
 
+func (i ThreatIntelligenceExternalReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceExternalReference] {
+	return pulumix.Output[ThreatIntelligenceExternalReference]{
+		OutputState: i.ToThreatIntelligenceExternalReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ThreatIntelligenceExternalReferenceArrayInput is an input type that accepts ThreatIntelligenceExternalReferenceArray and ThreatIntelligenceExternalReferenceArrayOutput values.
 // You can construct a concrete instance of `ThreatIntelligenceExternalReferenceArrayInput` via:
 //
@@ -150,6 +163,12 @@ func (i ThreatIntelligenceExternalReferenceArray) ToThreatIntelligenceExternalRe
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceExternalReferenceArrayOutput)
 }
 
+func (i ThreatIntelligenceExternalReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceExternalReference] {
+	return pulumix.Output[[]ThreatIntelligenceExternalReference]{
+		OutputState: i.ToThreatIntelligenceExternalReferenceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes external reference
 type ThreatIntelligenceExternalReferenceOutput struct{ *pulumi.OutputState }
 
@@ -163,6 +182,12 @@ func (o ThreatIntelligenceExternalReferenceOutput) ToThreatIntelligenceExternalR
 
 func (o ThreatIntelligenceExternalReferenceOutput) ToThreatIntelligenceExternalReferenceOutputWithContext(ctx context.Context) ThreatIntelligenceExternalReferenceOutput {
 	return o
+}
+
+func (o ThreatIntelligenceExternalReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceExternalReference] {
+	return pulumix.Output[ThreatIntelligenceExternalReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 // External reference description
@@ -202,6 +227,12 @@ func (o ThreatIntelligenceExternalReferenceArrayOutput) ToThreatIntelligenceExte
 
 func (o ThreatIntelligenceExternalReferenceArrayOutput) ToThreatIntelligenceExternalReferenceArrayOutputWithContext(ctx context.Context) ThreatIntelligenceExternalReferenceArrayOutput {
 	return o
+}
+
+func (o ThreatIntelligenceExternalReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceExternalReference] {
+	return pulumix.Output[[]ThreatIntelligenceExternalReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ThreatIntelligenceExternalReferenceArrayOutput) Index(i pulumi.IntInput) ThreatIntelligenceExternalReferenceOutput {
@@ -253,6 +284,12 @@ func (i ThreatIntelligenceGranularMarkingModelArgs) ToThreatIntelligenceGranular
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceGranularMarkingModelOutput)
 }
 
+func (i ThreatIntelligenceGranularMarkingModelArgs) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceGranularMarkingModel] {
+	return pulumix.Output[ThreatIntelligenceGranularMarkingModel]{
+		OutputState: i.ToThreatIntelligenceGranularMarkingModelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ThreatIntelligenceGranularMarkingModelArrayInput is an input type that accepts ThreatIntelligenceGranularMarkingModelArray and ThreatIntelligenceGranularMarkingModelArrayOutput values.
 // You can construct a concrete instance of `ThreatIntelligenceGranularMarkingModelArrayInput` via:
 //
@@ -278,6 +315,12 @@ func (i ThreatIntelligenceGranularMarkingModelArray) ToThreatIntelligenceGranula
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceGranularMarkingModelArrayOutput)
 }
 
+func (i ThreatIntelligenceGranularMarkingModelArray) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceGranularMarkingModel] {
+	return pulumix.Output[[]ThreatIntelligenceGranularMarkingModel]{
+		OutputState: i.ToThreatIntelligenceGranularMarkingModelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes threat granular marking model entity
 type ThreatIntelligenceGranularMarkingModelOutput struct{ *pulumi.OutputState }
 
@@ -291,6 +334,12 @@ func (o ThreatIntelligenceGranularMarkingModelOutput) ToThreatIntelligenceGranul
 
 func (o ThreatIntelligenceGranularMarkingModelOutput) ToThreatIntelligenceGranularMarkingModelOutputWithContext(ctx context.Context) ThreatIntelligenceGranularMarkingModelOutput {
 	return o
+}
+
+func (o ThreatIntelligenceGranularMarkingModelOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceGranularMarkingModel] {
+	return pulumix.Output[ThreatIntelligenceGranularMarkingModel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Language granular marking model
@@ -320,6 +369,12 @@ func (o ThreatIntelligenceGranularMarkingModelArrayOutput) ToThreatIntelligenceG
 
 func (o ThreatIntelligenceGranularMarkingModelArrayOutput) ToThreatIntelligenceGranularMarkingModelArrayOutputWithContext(ctx context.Context) ThreatIntelligenceGranularMarkingModelArrayOutput {
 	return o
+}
+
+func (o ThreatIntelligenceGranularMarkingModelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceGranularMarkingModel] {
+	return pulumix.Output[[]ThreatIntelligenceGranularMarkingModel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ThreatIntelligenceGranularMarkingModelArrayOutput) Index(i pulumi.IntInput) ThreatIntelligenceGranularMarkingModelOutput {
@@ -367,6 +422,12 @@ func (i ThreatIntelligenceKillChainPhaseArgs) ToThreatIntelligenceKillChainPhase
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceKillChainPhaseOutput)
 }
 
+func (i ThreatIntelligenceKillChainPhaseArgs) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceKillChainPhase] {
+	return pulumix.Output[ThreatIntelligenceKillChainPhase]{
+		OutputState: i.ToThreatIntelligenceKillChainPhaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ThreatIntelligenceKillChainPhaseArrayInput is an input type that accepts ThreatIntelligenceKillChainPhaseArray and ThreatIntelligenceKillChainPhaseArrayOutput values.
 // You can construct a concrete instance of `ThreatIntelligenceKillChainPhaseArrayInput` via:
 //
@@ -392,6 +453,12 @@ func (i ThreatIntelligenceKillChainPhaseArray) ToThreatIntelligenceKillChainPhas
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceKillChainPhaseArrayOutput)
 }
 
+func (i ThreatIntelligenceKillChainPhaseArray) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceKillChainPhase] {
+	return pulumix.Output[[]ThreatIntelligenceKillChainPhase]{
+		OutputState: i.ToThreatIntelligenceKillChainPhaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes threat kill chain phase entity
 type ThreatIntelligenceKillChainPhaseOutput struct{ *pulumi.OutputState }
 
@@ -405,6 +472,12 @@ func (o ThreatIntelligenceKillChainPhaseOutput) ToThreatIntelligenceKillChainPha
 
 func (o ThreatIntelligenceKillChainPhaseOutput) ToThreatIntelligenceKillChainPhaseOutputWithContext(ctx context.Context) ThreatIntelligenceKillChainPhaseOutput {
 	return o
+}
+
+func (o ThreatIntelligenceKillChainPhaseOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceKillChainPhase] {
+	return pulumix.Output[ThreatIntelligenceKillChainPhase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Kill chainName name
@@ -429,6 +502,12 @@ func (o ThreatIntelligenceKillChainPhaseArrayOutput) ToThreatIntelligenceKillCha
 
 func (o ThreatIntelligenceKillChainPhaseArrayOutput) ToThreatIntelligenceKillChainPhaseArrayOutputWithContext(ctx context.Context) ThreatIntelligenceKillChainPhaseArrayOutput {
 	return o
+}
+
+func (o ThreatIntelligenceKillChainPhaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceKillChainPhase] {
+	return pulumix.Output[[]ThreatIntelligenceKillChainPhase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ThreatIntelligenceKillChainPhaseArrayOutput) Index(i pulumi.IntInput) ThreatIntelligenceKillChainPhaseOutput {
@@ -476,6 +555,12 @@ func (i ThreatIntelligenceParsedPatternArgs) ToThreatIntelligenceParsedPatternOu
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceParsedPatternOutput)
 }
 
+func (i ThreatIntelligenceParsedPatternArgs) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceParsedPattern] {
+	return pulumix.Output[ThreatIntelligenceParsedPattern]{
+		OutputState: i.ToThreatIntelligenceParsedPatternOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ThreatIntelligenceParsedPatternArrayInput is an input type that accepts ThreatIntelligenceParsedPatternArray and ThreatIntelligenceParsedPatternArrayOutput values.
 // You can construct a concrete instance of `ThreatIntelligenceParsedPatternArrayInput` via:
 //
@@ -501,6 +586,12 @@ func (i ThreatIntelligenceParsedPatternArray) ToThreatIntelligenceParsedPatternA
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceParsedPatternArrayOutput)
 }
 
+func (i ThreatIntelligenceParsedPatternArray) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceParsedPattern] {
+	return pulumix.Output[[]ThreatIntelligenceParsedPattern]{
+		OutputState: i.ToThreatIntelligenceParsedPatternArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes parsed pattern entity
 type ThreatIntelligenceParsedPatternOutput struct{ *pulumi.OutputState }
 
@@ -514,6 +605,12 @@ func (o ThreatIntelligenceParsedPatternOutput) ToThreatIntelligenceParsedPattern
 
 func (o ThreatIntelligenceParsedPatternOutput) ToThreatIntelligenceParsedPatternOutputWithContext(ctx context.Context) ThreatIntelligenceParsedPatternOutput {
 	return o
+}
+
+func (o ThreatIntelligenceParsedPatternOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceParsedPattern] {
+	return pulumix.Output[ThreatIntelligenceParsedPattern]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Pattern type key
@@ -540,6 +637,12 @@ func (o ThreatIntelligenceParsedPatternArrayOutput) ToThreatIntelligenceParsedPa
 
 func (o ThreatIntelligenceParsedPatternArrayOutput) ToThreatIntelligenceParsedPatternArrayOutputWithContext(ctx context.Context) ThreatIntelligenceParsedPatternArrayOutput {
 	return o
+}
+
+func (o ThreatIntelligenceParsedPatternArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceParsedPattern] {
+	return pulumix.Output[[]ThreatIntelligenceParsedPattern]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ThreatIntelligenceParsedPatternArrayOutput) Index(i pulumi.IntInput) ThreatIntelligenceParsedPatternOutput {
@@ -587,6 +690,12 @@ func (i ThreatIntelligenceParsedPatternTypeValueArgs) ToThreatIntelligenceParsed
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceParsedPatternTypeValueOutput)
 }
 
+func (i ThreatIntelligenceParsedPatternTypeValueArgs) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceParsedPatternTypeValue] {
+	return pulumix.Output[ThreatIntelligenceParsedPatternTypeValue]{
+		OutputState: i.ToThreatIntelligenceParsedPatternTypeValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ThreatIntelligenceParsedPatternTypeValueArrayInput is an input type that accepts ThreatIntelligenceParsedPatternTypeValueArray and ThreatIntelligenceParsedPatternTypeValueArrayOutput values.
 // You can construct a concrete instance of `ThreatIntelligenceParsedPatternTypeValueArrayInput` via:
 //
@@ -612,6 +721,12 @@ func (i ThreatIntelligenceParsedPatternTypeValueArray) ToThreatIntelligenceParse
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceParsedPatternTypeValueArrayOutput)
 }
 
+func (i ThreatIntelligenceParsedPatternTypeValueArray) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceParsedPatternTypeValue] {
+	return pulumix.Output[[]ThreatIntelligenceParsedPatternTypeValue]{
+		OutputState: i.ToThreatIntelligenceParsedPatternTypeValueArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes threat kill chain phase entity
 type ThreatIntelligenceParsedPatternTypeValueOutput struct{ *pulumi.OutputState }
 
@@ -625,6 +740,12 @@ func (o ThreatIntelligenceParsedPatternTypeValueOutput) ToThreatIntelligencePars
 
 func (o ThreatIntelligenceParsedPatternTypeValueOutput) ToThreatIntelligenceParsedPatternTypeValueOutputWithContext(ctx context.Context) ThreatIntelligenceParsedPatternTypeValueOutput {
 	return o
+}
+
+func (o ThreatIntelligenceParsedPatternTypeValueOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceParsedPatternTypeValue] {
+	return pulumix.Output[ThreatIntelligenceParsedPatternTypeValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Value of parsed pattern
@@ -649,6 +770,12 @@ func (o ThreatIntelligenceParsedPatternTypeValueArrayOutput) ToThreatIntelligenc
 
 func (o ThreatIntelligenceParsedPatternTypeValueArrayOutput) ToThreatIntelligenceParsedPatternTypeValueArrayOutputWithContext(ctx context.Context) ThreatIntelligenceParsedPatternTypeValueArrayOutput {
 	return o
+}
+
+func (o ThreatIntelligenceParsedPatternTypeValueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceParsedPatternTypeValue] {
+	return pulumix.Output[[]ThreatIntelligenceParsedPatternTypeValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ThreatIntelligenceParsedPatternTypeValueArrayOutput) Index(i pulumi.IntInput) ThreatIntelligenceParsedPatternTypeValueOutput {
@@ -692,6 +819,12 @@ func (i WatchlistUserInfoArgs) ToWatchlistUserInfoOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WatchlistUserInfoOutput)
 }
 
+func (i WatchlistUserInfoArgs) ToOutput(ctx context.Context) pulumix.Output[WatchlistUserInfo] {
+	return pulumix.Output[WatchlistUserInfo]{
+		OutputState: i.ToWatchlistUserInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WatchlistUserInfoArgs) ToWatchlistUserInfoPtrOutput() WatchlistUserInfoPtrOutput {
 	return i.ToWatchlistUserInfoPtrOutputWithContext(context.Background())
 }
@@ -733,6 +866,12 @@ func (i *watchlistUserInfoPtrType) ToWatchlistUserInfoPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(WatchlistUserInfoPtrOutput)
 }
 
+func (i *watchlistUserInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*WatchlistUserInfo] {
+	return pulumix.Output[*WatchlistUserInfo]{
+		OutputState: i.ToWatchlistUserInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // User information that made some action
 type WatchlistUserInfoOutput struct{ *pulumi.OutputState }
 
@@ -758,6 +897,12 @@ func (o WatchlistUserInfoOutput) ToWatchlistUserInfoPtrOutputWithContext(ctx con
 	}).(WatchlistUserInfoPtrOutput)
 }
 
+func (o WatchlistUserInfoOutput) ToOutput(ctx context.Context) pulumix.Output[WatchlistUserInfo] {
+	return pulumix.Output[WatchlistUserInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The object id of the user.
 func (o WatchlistUserInfoOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WatchlistUserInfo) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
@@ -775,6 +920,12 @@ func (o WatchlistUserInfoPtrOutput) ToWatchlistUserInfoPtrOutput() WatchlistUser
 
 func (o WatchlistUserInfoPtrOutput) ToWatchlistUserInfoPtrOutputWithContext(ctx context.Context) WatchlistUserInfoPtrOutput {
 	return o
+}
+
+func (o WatchlistUserInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WatchlistUserInfo] {
+	return pulumix.Output[*WatchlistUserInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WatchlistUserInfoPtrOutput) Elem() WatchlistUserInfoOutput {
@@ -822,6 +973,12 @@ func (o WatchlistUserInfoResponseOutput) ToWatchlistUserInfoResponseOutputWithCo
 	return o
 }
 
+func (o WatchlistUserInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WatchlistUserInfoResponse] {
+	return pulumix.Output[WatchlistUserInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The email of the user.
 func (o WatchlistUserInfoResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v WatchlistUserInfoResponse) string { return v.Email }).(pulumi.StringOutput)
@@ -849,6 +1006,12 @@ func (o WatchlistUserInfoResponsePtrOutput) ToWatchlistUserInfoResponsePtrOutput
 
 func (o WatchlistUserInfoResponsePtrOutput) ToWatchlistUserInfoResponsePtrOutputWithContext(ctx context.Context) WatchlistUserInfoResponsePtrOutput {
 	return o
+}
+
+func (o WatchlistUserInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WatchlistUserInfoResponse] {
+	return pulumix.Output[*WatchlistUserInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WatchlistUserInfoResponsePtrOutput) Elem() WatchlistUserInfoResponseOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // NetworkSecurityGroup resource.
@@ -299,6 +300,12 @@ func (i *NetworkSecurityGroup) ToNetworkSecurityGroupOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkSecurityGroupOutput)
 }
 
+func (i *NetworkSecurityGroup) ToOutput(ctx context.Context) pulumix.Output[*NetworkSecurityGroup] {
+	return pulumix.Output[*NetworkSecurityGroup]{
+		OutputState: i.ToNetworkSecurityGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkSecurityGroupOutput struct{ *pulumi.OutputState }
 
 func (NetworkSecurityGroupOutput) ElementType() reflect.Type {
@@ -311,6 +318,12 @@ func (o NetworkSecurityGroupOutput) ToNetworkSecurityGroupOutput() NetworkSecuri
 
 func (o NetworkSecurityGroupOutput) ToNetworkSecurityGroupOutputWithContext(ctx context.Context) NetworkSecurityGroupOutput {
 	return o
+}
+
+func (o NetworkSecurityGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkSecurityGroup] {
+	return pulumix.Output[*NetworkSecurityGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The default security rules of network security group.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the schema configuration at the API level.
@@ -88,6 +89,12 @@ func (o LookupApiSchemaResultOutput) ToLookupApiSchemaResultOutput() LookupApiSc
 
 func (o LookupApiSchemaResultOutput) ToLookupApiSchemaResultOutputWithContext(ctx context.Context) LookupApiSchemaResultOutput {
 	return o
+}
+
+func (o LookupApiSchemaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiSchemaResult] {
+	return pulumix.Output[LookupApiSchemaResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Must be a valid a media type used in a Content-Type header as defined in the RFC 2616. Media type of the schema document (e.g. application/json, application/xml). </br> - `Swagger` Schema use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL` Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use `application/vnd.ms-azure-apim.wadl.grammars+xml`.

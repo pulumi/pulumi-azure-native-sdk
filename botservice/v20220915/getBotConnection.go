@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Connection Setting registration for a Bot Service
@@ -105,6 +106,12 @@ func (o LookupBotConnectionResultOutput) ToLookupBotConnectionResultOutput() Loo
 
 func (o LookupBotConnectionResultOutput) ToLookupBotConnectionResultOutputWithContext(ctx context.Context) LookupBotConnectionResultOutput {
 	return o
+}
+
+func (o LookupBotConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBotConnectionResult] {
+	return pulumix.Output[LookupBotConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Entity Tag.

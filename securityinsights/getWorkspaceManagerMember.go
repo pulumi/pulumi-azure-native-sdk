@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a workspace manager member
@@ -43,7 +44,7 @@ type LookupWorkspaceManagerMemberResult struct {
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
-	TargetWorkspaceId string `pulumi:"targetWorkspaceId"`
+	TargetWorkspaceResourceId string `pulumi:"targetWorkspaceResourceId"`
 	// Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
 	TargetWorkspaceTenantId string `pulumi:"targetWorkspaceTenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -91,6 +92,12 @@ func (o LookupWorkspaceManagerMemberResultOutput) ToLookupWorkspaceManagerMember
 	return o
 }
 
+func (o LookupWorkspaceManagerMemberResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceManagerMemberResult] {
+	return pulumix.Output[LookupWorkspaceManagerMemberResult]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource Etag.
 func (o LookupWorkspaceManagerMemberResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceManagerMemberResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -112,8 +119,8 @@ func (o LookupWorkspaceManagerMemberResultOutput) SystemData() SystemDataRespons
 }
 
 // Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
-func (o LookupWorkspaceManagerMemberResultOutput) TargetWorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceManagerMemberResult) string { return v.TargetWorkspaceId }).(pulumi.StringOutput)
+func (o LookupWorkspaceManagerMemberResultOutput) TargetWorkspaceResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceManagerMemberResult) string { return v.TargetWorkspaceResourceId }).(pulumi.StringOutput)
 }
 
 // Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager

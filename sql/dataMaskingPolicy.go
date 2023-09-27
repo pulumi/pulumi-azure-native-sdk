@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A database data masking policy.
@@ -164,6 +165,12 @@ func (i *DataMaskingPolicy) ToDataMaskingPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DataMaskingPolicyOutput)
 }
 
+func (i *DataMaskingPolicy) ToOutput(ctx context.Context) pulumix.Output[*DataMaskingPolicy] {
+	return pulumix.Output[*DataMaskingPolicy]{
+		OutputState: i.ToDataMaskingPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataMaskingPolicyOutput struct{ *pulumi.OutputState }
 
 func (DataMaskingPolicyOutput) ElementType() reflect.Type {
@@ -176,6 +183,12 @@ func (o DataMaskingPolicyOutput) ToDataMaskingPolicyOutput() DataMaskingPolicyOu
 
 func (o DataMaskingPolicyOutput) ToDataMaskingPolicyOutputWithContext(ctx context.Context) DataMaskingPolicyOutput {
 	return o
+}
+
+func (o DataMaskingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DataMaskingPolicy] {
+	return pulumix.Output[*DataMaskingPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of the application principals. This is a legacy parameter and is no longer used.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
@@ -134,6 +135,12 @@ func (i *Input) ToInputOutputWithContext(ctx context.Context) InputOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InputOutput)
 }
 
+func (i *Input) ToOutput(ctx context.Context) pulumix.Output[*Input] {
+	return pulumix.Output[*Input]{
+		OutputState: i.ToInputOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InputOutput struct{ *pulumi.OutputState }
 
 func (InputOutput) ElementType() reflect.Type {
@@ -146,6 +153,12 @@ func (o InputOutput) ToInputOutput() InputOutput {
 
 func (o InputOutput) ToInputOutputWithContext(ctx context.Context) InputOutput {
 	return o
+}
+
+func (o InputOutput) ToOutput(ctx context.Context) pulumix.Output[*Input] {
+	return pulumix.Output[*Input]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name

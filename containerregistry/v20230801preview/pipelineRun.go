@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An object that represents a pipeline run for a container registry.
@@ -160,6 +161,12 @@ func (i *PipelineRun) ToPipelineRunOutputWithContext(ctx context.Context) Pipeli
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineRunOutput)
 }
 
+func (i *PipelineRun) ToOutput(ctx context.Context) pulumix.Output[*PipelineRun] {
+	return pulumix.Output[*PipelineRun]{
+		OutputState: i.ToPipelineRunOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PipelineRunOutput struct{ *pulumi.OutputState }
 
 func (PipelineRunOutput) ElementType() reflect.Type {
@@ -172,6 +179,12 @@ func (o PipelineRunOutput) ToPipelineRunOutput() PipelineRunOutput {
 
 func (o PipelineRunOutput) ToPipelineRunOutputWithContext(ctx context.Context) PipelineRunOutput {
 	return o
+}
+
+func (o PipelineRunOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineRun] {
+	return pulumix.Output[*PipelineRun]{
+		OutputState: o.OutputState,
+	}
 }
 
 // How the pipeline run should be forced to recreate even if the pipeline run configuration has not changed.

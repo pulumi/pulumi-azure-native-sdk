@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the upload location for the user to be able to upload the source.
@@ -74,6 +75,12 @@ func (o ListRegistryBuildSourceUploadUrlResultOutput) ToListRegistryBuildSourceU
 
 func (o ListRegistryBuildSourceUploadUrlResultOutput) ToListRegistryBuildSourceUploadUrlResultOutputWithContext(ctx context.Context) ListRegistryBuildSourceUploadUrlResultOutput {
 	return o
+}
+
+func (o ListRegistryBuildSourceUploadUrlResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListRegistryBuildSourceUploadUrlResult] {
+	return pulumix.Output[ListRegistryBuildSourceUploadUrlResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The relative path to the source. This is used to submit the subsequent queue build request.

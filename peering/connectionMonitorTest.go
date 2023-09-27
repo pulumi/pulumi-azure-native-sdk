@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Connection Monitor Test class.
@@ -155,6 +156,12 @@ func (i *ConnectionMonitorTest) ToConnectionMonitorTestOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionMonitorTestOutput)
 }
 
+func (i *ConnectionMonitorTest) ToOutput(ctx context.Context) pulumix.Output[*ConnectionMonitorTest] {
+	return pulumix.Output[*ConnectionMonitorTest]{
+		OutputState: i.ToConnectionMonitorTestOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionMonitorTestOutput struct{ *pulumi.OutputState }
 
 func (ConnectionMonitorTestOutput) ElementType() reflect.Type {
@@ -167,6 +174,12 @@ func (o ConnectionMonitorTestOutput) ToConnectionMonitorTestOutput() ConnectionM
 
 func (o ConnectionMonitorTestOutput) ToConnectionMonitorTestOutputWithContext(ctx context.Context) ConnectionMonitorTestOutput {
 	return o
+}
+
+func (o ConnectionMonitorTestOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionMonitorTest] {
+	return pulumix.Output[*ConnectionMonitorTest]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Connection Monitor test destination

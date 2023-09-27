@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (o ConfigurationGroupResponseOutput) ToConfigurationGroupResponseOutputWith
 	return o
 }
 
+func (o ConfigurationGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationGroupResponse] {
+	return pulumix.Output[ConfigurationGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A description of the network group.
 func (o ConfigurationGroupResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigurationGroupResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -80,6 +87,12 @@ func (o ConfigurationGroupResponseArrayOutput) ToConfigurationGroupResponseArray
 
 func (o ConfigurationGroupResponseArrayOutput) ToConfigurationGroupResponseArrayOutputWithContext(ctx context.Context) ConfigurationGroupResponseArrayOutput {
 	return o
+}
+
+func (o ConfigurationGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigurationGroupResponse] {
+	return pulumix.Output[[]ConfigurationGroupResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigurationGroupResponseArrayOutput) Index(i pulumi.IntInput) ConfigurationGroupResponseOutput {
@@ -115,6 +128,12 @@ func (o ConnectivityGroupItemResponseOutput) ToConnectivityGroupItemResponseOutp
 	return o
 }
 
+func (o ConnectivityGroupItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectivityGroupItemResponse] {
+	return pulumix.Output[ConnectivityGroupItemResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Group connectivity type.
 func (o ConnectivityGroupItemResponseOutput) GroupConnectivity() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectivityGroupItemResponse) string { return v.GroupConnectivity }).(pulumi.StringOutput)
@@ -147,6 +166,12 @@ func (o ConnectivityGroupItemResponseArrayOutput) ToConnectivityGroupItemRespons
 
 func (o ConnectivityGroupItemResponseArrayOutput) ToConnectivityGroupItemResponseArrayOutputWithContext(ctx context.Context) ConnectivityGroupItemResponseArrayOutput {
 	return o
+}
+
+func (o ConnectivityGroupItemResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectivityGroupItemResponse] {
+	return pulumix.Output[[]ConnectivityGroupItemResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectivityGroupItemResponseArrayOutput) Index(i pulumi.IntInput) ConnectivityGroupItemResponseOutput {
@@ -190,6 +215,12 @@ func (o EffectiveConnectivityConfigurationResponseOutput) ToEffectiveConnectivit
 
 func (o EffectiveConnectivityConfigurationResponseOutput) ToEffectiveConnectivityConfigurationResponseOutputWithContext(ctx context.Context) EffectiveConnectivityConfigurationResponseOutput {
 	return o
+}
+
+func (o EffectiveConnectivityConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EffectiveConnectivityConfigurationResponse] {
+	return pulumix.Output[EffectiveConnectivityConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Groups for configuration
@@ -253,6 +284,12 @@ func (o EffectiveConnectivityConfigurationResponseArrayOutput) ToEffectiveConnec
 
 func (o EffectiveConnectivityConfigurationResponseArrayOutput) ToEffectiveConnectivityConfigurationResponseArrayOutputWithContext(ctx context.Context) EffectiveConnectivityConfigurationResponseArrayOutput {
 	return o
+}
+
+func (o EffectiveConnectivityConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EffectiveConnectivityConfigurationResponse] {
+	return pulumix.Output[[]EffectiveConnectivityConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EffectiveConnectivityConfigurationResponseArrayOutput) Index(i pulumi.IntInput) EffectiveConnectivityConfigurationResponseOutput {
@@ -360,6 +397,12 @@ func (o HubResponseOutput) ToHubResponseOutputWithContext(ctx context.Context) H
 	return o
 }
 
+func (o HubResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HubResponse] {
+	return pulumix.Output[HubResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource Id.
 func (o HubResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HubResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -382,6 +425,12 @@ func (o HubResponseArrayOutput) ToHubResponseArrayOutput() HubResponseArrayOutpu
 
 func (o HubResponseArrayOutput) ToHubResponseArrayOutputWithContext(ctx context.Context) HubResponseArrayOutput {
 	return o
+}
+
+func (o HubResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HubResponse] {
+	return pulumix.Output[[]HubResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HubResponseArrayOutput) Index(i pulumi.IntInput) HubResponseOutput {

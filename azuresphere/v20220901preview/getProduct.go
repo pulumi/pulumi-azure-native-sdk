@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
@@ -86,6 +87,12 @@ func (o LookupProductResultOutput) ToLookupProductResultOutput() LookupProductRe
 
 func (o LookupProductResultOutput) ToLookupProductResultOutputWithContext(ctx context.Context) LookupProductResultOutput {
 	return o
+}
+
+func (o LookupProductResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProductResult] {
+	return pulumix.Output[LookupProductResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of the product

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a failover group.
@@ -94,6 +95,12 @@ func (o LookupInstanceFailoverGroupResultOutput) ToLookupInstanceFailoverGroupRe
 
 func (o LookupInstanceFailoverGroupResultOutput) ToLookupInstanceFailoverGroupResultOutputWithContext(ctx context.Context) LookupInstanceFailoverGroupResultOutput {
 	return o
+}
+
+func (o LookupInstanceFailoverGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceFailoverGroupResult] {
+	return pulumix.Output[LookupInstanceFailoverGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.

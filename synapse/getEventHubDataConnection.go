@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a data connection.
@@ -114,6 +115,12 @@ func (o LookupEventHubDataConnectionResultOutput) ToLookupEventHubDataConnection
 
 func (o LookupEventHubDataConnectionResultOutput) ToLookupEventHubDataConnectionResultOutputWithContext(ctx context.Context) LookupEventHubDataConnectionResultOutput {
 	return o
+}
+
+func (o LookupEventHubDataConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEventHubDataConnectionResult] {
+	return pulumix.Output[LookupEventHubDataConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The event hub messages compression type

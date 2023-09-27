@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a migration resource.
@@ -189,6 +190,12 @@ func (i *Migration) ToMigrationOutputWithContext(ctx context.Context) MigrationO
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationOutput)
 }
 
+func (i *Migration) ToOutput(ctx context.Context) pulumix.Output[*Migration] {
+	return pulumix.Output[*Migration]{
+		OutputState: i.ToMigrationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MigrationOutput struct{ *pulumi.OutputState }
 
 func (MigrationOutput) ElementType() reflect.Type {
@@ -201,6 +208,12 @@ func (o MigrationOutput) ToMigrationOutput() MigrationOutput {
 
 func (o MigrationOutput) ToMigrationOutputWithContext(ctx context.Context) MigrationOutput {
 	return o
+}
+
+func (o MigrationOutput) ToOutput(ctx context.Context) pulumix.Output[*Migration] {
+	return pulumix.Output[*Migration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Migration status.

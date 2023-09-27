@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a ApplicationGroup definition.
@@ -123,6 +124,9 @@ func NewApplicationGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:ApplicationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:ApplicationGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -238,6 +242,12 @@ func (i *ApplicationGroup) ToApplicationGroupOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGroupOutput)
 }
 
+func (i *ApplicationGroup) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGroup] {
+	return pulumix.Output[*ApplicationGroup]{
+		OutputState: i.ToApplicationGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationGroupOutput struct{ *pulumi.OutputState }
 
 func (ApplicationGroupOutput) ElementType() reflect.Type {
@@ -250,6 +260,12 @@ func (o ApplicationGroupOutput) ToApplicationGroupOutput() ApplicationGroupOutpu
 
 func (o ApplicationGroupOutput) ToApplicationGroupOutputWithContext(ctx context.Context) ApplicationGroupOutput {
 	return o
+}
+
+func (o ApplicationGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGroup] {
+	return pulumix.Output[*ApplicationGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Type of ApplicationGroup.

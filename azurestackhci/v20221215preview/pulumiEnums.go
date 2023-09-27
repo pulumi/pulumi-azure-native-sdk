@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates the way the update content can be downloaded.
@@ -137,6 +138,12 @@ func (o IPPoolTypeEnumOutput) ToIPPoolTypeEnumPtrOutputWithContext(ctx context.C
 	}).(IPPoolTypeEnumPtrOutput)
 }
 
+func (o IPPoolTypeEnumOutput) ToOutput(ctx context.Context) pulumix.Output[IPPoolTypeEnum] {
+	return pulumix.Output[IPPoolTypeEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IPPoolTypeEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -170,6 +177,12 @@ func (o IPPoolTypeEnumPtrOutput) ToIPPoolTypeEnumPtrOutput() IPPoolTypeEnumPtrOu
 
 func (o IPPoolTypeEnumPtrOutput) ToIPPoolTypeEnumPtrOutputWithContext(ctx context.Context) IPPoolTypeEnumPtrOutput {
 	return o
+}
+
+func (o IPPoolTypeEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPPoolTypeEnum] {
+	return pulumix.Output[*IPPoolTypeEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPPoolTypeEnumPtrOutput) Elem() IPPoolTypeEnumOutput {
@@ -232,6 +245,12 @@ func (in *ippoolTypeEnumPtr) ToIPPoolTypeEnumPtrOutput() IPPoolTypeEnumPtrOutput
 
 func (in *ippoolTypeEnumPtr) ToIPPoolTypeEnumPtrOutputWithContext(ctx context.Context) IPPoolTypeEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IPPoolTypeEnumPtrOutput)
+}
+
+func (in *ippoolTypeEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*IPPoolTypeEnum] {
+	return pulumix.Output[*IPPoolTypeEnum]{
+		OutputState: in.ToIPPoolTypeEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
@@ -335,6 +354,12 @@ func (o OperatingSystemTypesOutput) ToOperatingSystemTypesPtrOutputWithContext(c
 	}).(OperatingSystemTypesPtrOutput)
 }
 
+func (o OperatingSystemTypesOutput) ToOutput(ctx context.Context) pulumix.Output[OperatingSystemTypes] {
+	return pulumix.Output[OperatingSystemTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OperatingSystemTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -368,6 +393,12 @@ func (o OperatingSystemTypesPtrOutput) ToOperatingSystemTypesPtrOutput() Operati
 
 func (o OperatingSystemTypesPtrOutput) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return o
+}
+
+func (o OperatingSystemTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
+	return pulumix.Output[*OperatingSystemTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OperatingSystemTypesPtrOutput) Elem() OperatingSystemTypesOutput {
@@ -430,6 +461,12 @@ func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutput() OperatingSy
 
 func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypesPtrOutput)
+}
+
+func (in *operatingSystemTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
+	return pulumix.Output[*OperatingSystemTypes]{
+		OutputState: in.ToOperatingSystemTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OsType - string specifying whether the OS is Linux or Windows
@@ -524,6 +561,12 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
+func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
+	return pulumix.Output[ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -557,6 +600,12 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -619,6 +668,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+}
+
+func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Customer Intent for Software Assurance Benefit.

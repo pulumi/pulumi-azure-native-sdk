@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -42,6 +43,12 @@ func (o AzureResourceResponseOutput) ToAzureResourceResponseOutput() AzureResour
 
 func (o AzureResourceResponseOutput) ToAzureResourceResponseOutputWithContext(ctx context.Context) AzureResourceResponseOutput {
 	return o
+}
+
+func (o AzureResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureResourceResponse] {
+	return pulumix.Output[AzureResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of this resource.
@@ -86,6 +93,12 @@ func (o AzureResourceResponseArrayOutput) ToAzureResourceResponseArrayOutput() A
 
 func (o AzureResourceResponseArrayOutput) ToAzureResourceResponseArrayOutputWithContext(ctx context.Context) AzureResourceResponseArrayOutput {
 	return o
+}
+
+func (o AzureResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureResourceResponse] {
+	return pulumix.Output[[]AzureResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureResourceResponseArrayOutput) Index(i pulumi.IntInput) AzureResourceResponseOutput {

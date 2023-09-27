@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The application resource.
@@ -201,6 +202,12 @@ func (i *ManagedClusterApplication) ToManagedClusterApplicationOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterApplicationOutput)
 }
 
+func (i *ManagedClusterApplication) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterApplication] {
+	return pulumix.Output[*ManagedClusterApplication]{
+		OutputState: i.ToManagedClusterApplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedClusterApplicationOutput struct{ *pulumi.OutputState }
 
 func (ManagedClusterApplicationOutput) ElementType() reflect.Type {
@@ -213,6 +220,12 @@ func (o ManagedClusterApplicationOutput) ToManagedClusterApplicationOutput() Man
 
 func (o ManagedClusterApplicationOutput) ToManagedClusterApplicationOutputWithContext(ctx context.Context) ManagedClusterApplicationOutput {
 	return o
+}
+
+func (o ManagedClusterApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterApplication] {
+	return pulumix.Output[*ManagedClusterApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the managed identities for an Azure resource.

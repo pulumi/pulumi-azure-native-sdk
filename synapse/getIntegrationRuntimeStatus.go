@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the integration runtime status
@@ -79,6 +80,12 @@ func (o GetIntegrationRuntimeStatusResultOutput) ToGetIntegrationRuntimeStatusRe
 
 func (o GetIntegrationRuntimeStatusResultOutput) ToGetIntegrationRuntimeStatusResultOutputWithContext(ctx context.Context) GetIntegrationRuntimeStatusResultOutput {
 	return o
+}
+
+func (o GetIntegrationRuntimeStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIntegrationRuntimeStatusResult] {
+	return pulumix.Output[GetIntegrationRuntimeStatusResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The integration runtime name.

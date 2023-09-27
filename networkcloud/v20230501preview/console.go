@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Console struct {
@@ -177,6 +178,12 @@ func (i *Console) ToConsoleOutputWithContext(ctx context.Context) ConsoleOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ConsoleOutput)
 }
 
+func (i *Console) ToOutput(ctx context.Context) pulumix.Output[*Console] {
+	return pulumix.Output[*Console]{
+		OutputState: i.ToConsoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConsoleOutput struct{ *pulumi.OutputState }
 
 func (ConsoleOutput) ElementType() reflect.Type {
@@ -189,6 +196,12 @@ func (o ConsoleOutput) ToConsoleOutput() ConsoleOutput {
 
 func (o ConsoleOutput) ToConsoleOutputWithContext(ctx context.Context) ConsoleOutput {
 	return o
+}
+
+func (o ConsoleOutput) ToOutput(ctx context.Context) pulumix.Output[*Console] {
+	return pulumix.Output[*Console]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The more detailed status of the console.

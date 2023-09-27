@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Dapr Component.
@@ -184,6 +185,12 @@ func (i *ConnectedEnvironmentsDaprComponent) ToConnectedEnvironmentsDaprComponen
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectedEnvironmentsDaprComponentOutput)
 }
 
+func (i *ConnectedEnvironmentsDaprComponent) ToOutput(ctx context.Context) pulumix.Output[*ConnectedEnvironmentsDaprComponent] {
+	return pulumix.Output[*ConnectedEnvironmentsDaprComponent]{
+		OutputState: i.ToConnectedEnvironmentsDaprComponentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectedEnvironmentsDaprComponentOutput struct{ *pulumi.OutputState }
 
 func (ConnectedEnvironmentsDaprComponentOutput) ElementType() reflect.Type {
@@ -196,6 +203,12 @@ func (o ConnectedEnvironmentsDaprComponentOutput) ToConnectedEnvironmentsDaprCom
 
 func (o ConnectedEnvironmentsDaprComponentOutput) ToConnectedEnvironmentsDaprComponentOutputWithContext(ctx context.Context) ConnectedEnvironmentsDaprComponentOutput {
 	return o
+}
+
+func (o ConnectedEnvironmentsDaprComponentOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectedEnvironmentsDaprComponent] {
+	return pulumix.Output[*ConnectedEnvironmentsDaprComponent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Component type

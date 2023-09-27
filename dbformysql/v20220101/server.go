@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a server.
@@ -97,6 +98,9 @@ func NewServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20220930preview:Server"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20230601preview:Server"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -242,6 +246,12 @@ func (i *Server) ToServerOutputWithContext(ctx context.Context) ServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerOutput)
 }
 
+func (i *Server) ToOutput(ctx context.Context) pulumix.Output[*Server] {
+	return pulumix.Output[*Server]{
+		OutputState: i.ToServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerOutput struct{ *pulumi.OutputState }
 
 func (ServerOutput) ElementType() reflect.Type {
@@ -254,6 +264,12 @@ func (o ServerOutput) ToServerOutput() ServerOutput {
 
 func (o ServerOutput) ToServerOutputWithContext(ctx context.Context) ServerOutput {
 	return o
+}
+
+func (o ServerOutput) ToOutput(ctx context.Context) pulumix.Output[*Server] {
+	return pulumix.Output[*Server]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).

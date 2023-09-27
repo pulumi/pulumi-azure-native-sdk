@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a specific governanceAssignment for the requested scope by AssignmentKey
@@ -92,6 +93,12 @@ func (o LookupGovernanceAssignmentResultOutput) ToLookupGovernanceAssignmentResu
 
 func (o LookupGovernanceAssignmentResultOutput) ToLookupGovernanceAssignmentResultOutputWithContext(ctx context.Context) LookupGovernanceAssignmentResultOutput {
 	return o
+}
+
+func (o LookupGovernanceAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGovernanceAssignmentResult] {
+	return pulumix.Output[LookupGovernanceAssignmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The additional data for the governance assignment - e.g. links to ticket (optional), see example

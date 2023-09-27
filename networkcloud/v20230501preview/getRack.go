@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of the provided rack.
@@ -98,6 +99,12 @@ func (o LookupRackResultOutput) ToLookupRackResultOutput() LookupRackResultOutpu
 
 func (o LookupRackResultOutput) ToLookupRackResultOutputWithContext(ctx context.Context) LookupRackResultOutput {
 	return o
+}
+
+func (o LookupRackResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRackResult] {
+	return pulumix.Output[LookupRackResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value that will be used for machines in this rack to represent the availability zones that can be referenced by Hybrid AKS Clusters for node arrangement.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents the serial port of the parent resource.
@@ -136,6 +137,12 @@ func (i *SerialPort) ToSerialPortOutputWithContext(ctx context.Context) SerialPo
 	return pulumi.ToOutputWithContext(ctx, i).(SerialPortOutput)
 }
 
+func (i *SerialPort) ToOutput(ctx context.Context) pulumix.Output[*SerialPort] {
+	return pulumix.Output[*SerialPort]{
+		OutputState: i.ToSerialPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SerialPortOutput struct{ *pulumi.OutputState }
 
 func (SerialPortOutput) ElementType() reflect.Type {
@@ -148,6 +155,12 @@ func (o SerialPortOutput) ToSerialPortOutput() SerialPortOutput {
 
 func (o SerialPortOutput) ToSerialPortOutputWithContext(ctx context.Context) SerialPortOutput {
 	return o
+}
+
+func (o SerialPortOutput) ToOutput(ctx context.Context) pulumix.Output[*SerialPort] {
+	return pulumix.Output[*SerialPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name

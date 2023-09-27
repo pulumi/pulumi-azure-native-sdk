@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A managed cluster snapshot resource.
@@ -188,6 +189,12 @@ func (i *ManagedClusterSnapshot) ToManagedClusterSnapshotOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSnapshotOutput)
 }
 
+func (i *ManagedClusterSnapshot) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSnapshot] {
+	return pulumix.Output[*ManagedClusterSnapshot]{
+		OutputState: i.ToManagedClusterSnapshotOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedClusterSnapshotOutput struct{ *pulumi.OutputState }
 
 func (ManagedClusterSnapshotOutput) ElementType() reflect.Type {
@@ -200,6 +207,12 @@ func (o ManagedClusterSnapshotOutput) ToManagedClusterSnapshotOutput() ManagedCl
 
 func (o ManagedClusterSnapshotOutput) ToManagedClusterSnapshotOutputWithContext(ctx context.Context) ManagedClusterSnapshotOutput {
 	return o
+}
+
+func (o ManagedClusterSnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSnapshot] {
+	return pulumix.Output[*ManagedClusterSnapshot]{
+		OutputState: o.OutputState,
+	}
 }
 
 // CreationData to be used to specify the source resource ID to create this snapshot.

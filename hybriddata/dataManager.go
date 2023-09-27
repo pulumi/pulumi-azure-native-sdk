@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The DataManager resource.
@@ -141,6 +142,12 @@ func (i *DataManager) ToDataManagerOutputWithContext(ctx context.Context) DataMa
 	return pulumi.ToOutputWithContext(ctx, i).(DataManagerOutput)
 }
 
+func (i *DataManager) ToOutput(ctx context.Context) pulumix.Output[*DataManager] {
+	return pulumix.Output[*DataManager]{
+		OutputState: i.ToDataManagerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataManagerOutput struct{ *pulumi.OutputState }
 
 func (DataManagerOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o DataManagerOutput) ToDataManagerOutput() DataManagerOutput {
 
 func (o DataManagerOutput) ToDataManagerOutputWithContext(ctx context.Context) DataManagerOutput {
 	return o
+}
+
+func (o DataManagerOutput) ToOutput(ctx context.Context) pulumix.Output[*DataManager] {
+	return pulumix.Output[*DataManager]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Etag of the Resource.

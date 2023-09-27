@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the Continuous Export configuration for this export id.
@@ -113,6 +114,12 @@ func (o LookupExportConfigurationResultOutput) ToLookupExportConfigurationResult
 
 func (o LookupExportConfigurationResultOutput) ToLookupExportConfigurationResultOutputWithContext(ctx context.Context) LookupExportConfigurationResultOutput {
 	return o
+}
+
+func (o LookupExportConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExportConfigurationResult] {
+	return pulumix.Output[LookupExportConfigurationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Application Insights component.

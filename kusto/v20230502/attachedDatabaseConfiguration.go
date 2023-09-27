@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing an attached database configuration.
@@ -98,6 +99,9 @@ func NewAttachedDatabaseConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20221229:AttachedDatabaseConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230815:AttachedDatabaseConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -203,6 +207,12 @@ func (i *AttachedDatabaseConfiguration) ToAttachedDatabaseConfigurationOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDatabaseConfigurationOutput)
 }
 
+func (i *AttachedDatabaseConfiguration) ToOutput(ctx context.Context) pulumix.Output[*AttachedDatabaseConfiguration] {
+	return pulumix.Output[*AttachedDatabaseConfiguration]{
+		OutputState: i.ToAttachedDatabaseConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttachedDatabaseConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AttachedDatabaseConfigurationOutput) ElementType() reflect.Type {
@@ -215,6 +225,12 @@ func (o AttachedDatabaseConfigurationOutput) ToAttachedDatabaseConfigurationOutp
 
 func (o AttachedDatabaseConfigurationOutput) ToAttachedDatabaseConfigurationOutputWithContext(ctx context.Context) AttachedDatabaseConfigurationOutput {
 	return o
+}
+
+func (o AttachedDatabaseConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedDatabaseConfiguration] {
+	return pulumix.Output[*AttachedDatabaseConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of databases from the clusterResourceId which are currently attached to the cluster.

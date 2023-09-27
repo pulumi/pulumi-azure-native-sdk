@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Network related settings
@@ -81,6 +82,9 @@ func NewNetworkConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20230401:NetworkConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230801preview:NetworkConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -190,6 +194,12 @@ func (i *NetworkConnection) ToNetworkConnectionOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionOutput)
 }
 
+func (i *NetworkConnection) ToOutput(ctx context.Context) pulumix.Output[*NetworkConnection] {
+	return pulumix.Output[*NetworkConnection]{
+		OutputState: i.ToNetworkConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkConnectionOutput struct{ *pulumi.OutputState }
 
 func (NetworkConnectionOutput) ElementType() reflect.Type {
@@ -202,6 +212,12 @@ func (o NetworkConnectionOutput) ToNetworkConnectionOutput() NetworkConnectionOu
 
 func (o NetworkConnectionOutput) ToNetworkConnectionOutputWithContext(ctx context.Context) NetworkConnectionOutput {
 	return o
+}
+
+func (o NetworkConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConnection] {
+	return pulumix.Output[*NetworkConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AAD Join type.

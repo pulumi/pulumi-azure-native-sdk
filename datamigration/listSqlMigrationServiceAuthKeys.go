@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
@@ -75,6 +76,12 @@ func (o ListSqlMigrationServiceAuthKeysResultOutput) ToListSqlMigrationServiceAu
 
 func (o ListSqlMigrationServiceAuthKeysResultOutput) ToListSqlMigrationServiceAuthKeysResultOutputWithContext(ctx context.Context) ListSqlMigrationServiceAuthKeysResultOutput {
 	return o
+}
+
+func (o ListSqlMigrationServiceAuthKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListSqlMigrationServiceAuthKeysResult] {
+	return pulumix.Output[ListSqlMigrationServiceAuthKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The first authentication key.

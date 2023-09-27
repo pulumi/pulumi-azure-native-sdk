@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The backup schedule.
@@ -182,6 +183,12 @@ func (i *BackupSchedule) ToBackupScheduleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleOutput)
 }
 
+func (i *BackupSchedule) ToOutput(ctx context.Context) pulumix.Output[*BackupSchedule] {
+	return pulumix.Output[*BackupSchedule]{
+		OutputState: i.ToBackupScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupScheduleOutput struct{ *pulumi.OutputState }
 
 func (BackupScheduleOutput) ElementType() reflect.Type {
@@ -194,6 +201,12 @@ func (o BackupScheduleOutput) ToBackupScheduleOutput() BackupScheduleOutput {
 
 func (o BackupScheduleOutput) ToBackupScheduleOutputWithContext(ctx context.Context) BackupScheduleOutput {
 	return o
+}
+
+func (o BackupScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupSchedule] {
+	return pulumix.Output[*BackupSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of backup which needs to be taken.

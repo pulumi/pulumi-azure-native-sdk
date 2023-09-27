@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB Cassandra view.
@@ -77,6 +78,9 @@ func NewCassandraResourceCassandraView(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20230315preview:CassandraResourceCassandraView"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230915preview:CassandraResourceCassandraView"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -178,6 +182,12 @@ func (i *CassandraResourceCassandraView) ToCassandraResourceCassandraViewOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraResourceCassandraViewOutput)
 }
 
+func (i *CassandraResourceCassandraView) ToOutput(ctx context.Context) pulumix.Output[*CassandraResourceCassandraView] {
+	return pulumix.Output[*CassandraResourceCassandraView]{
+		OutputState: i.ToCassandraResourceCassandraViewOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CassandraResourceCassandraViewOutput struct{ *pulumi.OutputState }
 
 func (CassandraResourceCassandraViewOutput) ElementType() reflect.Type {
@@ -190,6 +200,12 @@ func (o CassandraResourceCassandraViewOutput) ToCassandraResourceCassandraViewOu
 
 func (o CassandraResourceCassandraViewOutput) ToCassandraResourceCassandraViewOutputWithContext(ctx context.Context) CassandraResourceCassandraViewOutput {
 	return o
+}
+
+func (o CassandraResourceCassandraViewOutput) ToOutput(ctx context.Context) pulumix.Output[*CassandraResourceCassandraView] {
+	return pulumix.Output[*CassandraResourceCassandraView]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identity for the resource.

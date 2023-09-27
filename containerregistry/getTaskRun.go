@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the detailed information for a given task run.
@@ -108,6 +109,12 @@ func (o LookupTaskRunResultOutput) ToLookupTaskRunResultOutput() LookupTaskRunRe
 
 func (o LookupTaskRunResultOutput) ToLookupTaskRunResultOutputWithContext(ctx context.Context) LookupTaskRunResultOutput {
 	return o
+}
+
+func (o LookupTaskRunResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTaskRunResult] {
+	return pulumix.Output[LookupTaskRunResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // How the run should be forced to rerun even if the run request configuration has not changed

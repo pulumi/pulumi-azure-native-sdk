@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified contact Profile in a specified resource group.
@@ -96,6 +97,12 @@ func (o LookupContactProfileResultOutput) ToLookupContactProfileResultOutput() L
 
 func (o LookupContactProfileResultOutput) ToLookupContactProfileResultOutputWithContext(ctx context.Context) LookupContactProfileResultOutput {
 	return o
+}
+
+func (o LookupContactProfileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContactProfileResult] {
+	return pulumix.Output[LookupContactProfileResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Auto-tracking configuration.

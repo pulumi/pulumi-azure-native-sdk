@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Container registry resource payload.
@@ -130,6 +131,12 @@ func (i *ContainerRegistry) ToContainerRegistryOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryOutput)
 }
 
+func (i *ContainerRegistry) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistry] {
+	return pulumix.Output[*ContainerRegistry]{
+		OutputState: i.ToContainerRegistryOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerRegistryOutput struct{ *pulumi.OutputState }
 
 func (ContainerRegistryOutput) ElementType() reflect.Type {
@@ -142,6 +149,12 @@ func (o ContainerRegistryOutput) ToContainerRegistryOutput() ContainerRegistryOu
 
 func (o ContainerRegistryOutput) ToContainerRegistryOutputWithContext(ctx context.Context) ContainerRegistryOutput {
 	return o
+}
+
+func (o ContainerRegistryOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistry] {
+	return pulumix.Output[*ContainerRegistry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource.

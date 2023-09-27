@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the action of alert rule.
@@ -93,6 +94,12 @@ func (o LookupActionResultOutput) ToLookupActionResultOutput() LookupActionResul
 
 func (o LookupActionResultOutput) ToLookupActionResultOutputWithContext(ctx context.Context) LookupActionResultOutput {
 	return o
+}
+
+func (o LookupActionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupActionResult] {
+	return pulumix.Output[LookupActionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Etag of the action.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Compute role.
@@ -231,6 +232,12 @@ func (i *IoTRole) ToIoTRoleOutputWithContext(ctx context.Context) IoTRoleOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(IoTRoleOutput)
 }
 
+func (i *IoTRole) ToOutput(ctx context.Context) pulumix.Output[*IoTRole] {
+	return pulumix.Output[*IoTRole]{
+		OutputState: i.ToIoTRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IoTRoleOutput struct{ *pulumi.OutputState }
 
 func (IoTRoleOutput) ElementType() reflect.Type {
@@ -243,6 +250,12 @@ func (o IoTRoleOutput) ToIoTRoleOutput() IoTRoleOutput {
 
 func (o IoTRoleOutput) ToIoTRoleOutputWithContext(ctx context.Context) IoTRoleOutput {
 	return o
+}
+
+func (o IoTRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*IoTRole] {
+	return pulumix.Output[*IoTRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource allocation

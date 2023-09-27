@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists deployments for catalog.
@@ -91,6 +92,12 @@ func (o ListCatalogDeploymentsResultOutput) ToListCatalogDeploymentsResultOutput
 
 func (o ListCatalogDeploymentsResultOutput) ToListCatalogDeploymentsResultOutputWithContext(ctx context.Context) ListCatalogDeploymentsResultOutput {
 	return o
+}
+
+func (o ListCatalogDeploymentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListCatalogDeploymentsResult] {
+	return pulumix.Output[ListCatalogDeploymentsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The link to the next page of items

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The description of the service.
@@ -151,6 +152,12 @@ func (i *PrivateLinkServicesForM365ComplianceCenter) ToPrivateLinkServicesForM36
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServicesForM365ComplianceCenterOutput)
 }
 
+func (i *PrivateLinkServicesForM365ComplianceCenter) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServicesForM365ComplianceCenter] {
+	return pulumix.Output[*PrivateLinkServicesForM365ComplianceCenter]{
+		OutputState: i.ToPrivateLinkServicesForM365ComplianceCenterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateLinkServicesForM365ComplianceCenterOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkServicesForM365ComplianceCenterOutput) ElementType() reflect.Type {
@@ -163,6 +170,12 @@ func (o PrivateLinkServicesForM365ComplianceCenterOutput) ToPrivateLinkServicesF
 
 func (o PrivateLinkServicesForM365ComplianceCenterOutput) ToPrivateLinkServicesForM365ComplianceCenterOutputWithContext(ctx context.Context) PrivateLinkServicesForM365ComplianceCenterOutput {
 	return o
+}
+
+func (o PrivateLinkServicesForM365ComplianceCenterOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServicesForM365ComplianceCenter] {
+	return pulumix.Output[*PrivateLinkServicesForM365ComplianceCenter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

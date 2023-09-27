@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details about the orchestrator instance.
@@ -101,6 +102,12 @@ func (o LookupOrchestratorInstanceServiceDetailsResultOutput) ToLookupOrchestrat
 
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) ToLookupOrchestratorInstanceServiceDetailsResultOutputWithContext(ctx context.Context) LookupOrchestratorInstanceServiceDetailsResultOutput {
 	return o
+}
+
+func (o LookupOrchestratorInstanceServiceDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrchestratorInstanceServiceDetailsResult] {
+	return pulumix.Output[LookupOrchestratorInstanceServiceDetailsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified

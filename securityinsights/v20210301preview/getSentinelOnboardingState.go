@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get Sentinel onboarding state
@@ -90,6 +91,12 @@ func (o LookupSentinelOnboardingStateResultOutput) ToLookupSentinelOnboardingSta
 
 func (o LookupSentinelOnboardingStateResultOutput) ToLookupSentinelOnboardingStateResultOutputWithContext(ctx context.Context) LookupSentinelOnboardingStateResultOutput {
 	return o
+}
+
+func (o LookupSentinelOnboardingStateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSentinelOnboardingStateResult] {
+	return pulumix.Output[LookupSentinelOnboardingStateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Flag that indicates the status of the CMK setting

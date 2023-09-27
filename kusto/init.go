@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ReadOnlyFollowingDatabase{}
 	case "azure-native:kusto:ReadWriteDatabase":
 		r = &ReadWriteDatabase{}
+	case "azure-native:kusto:SandboxCustomImage":
+		r = &SandboxCustomImage{}
 	case "azure-native:kusto:Script":
 		r = &Script{}
 	default:

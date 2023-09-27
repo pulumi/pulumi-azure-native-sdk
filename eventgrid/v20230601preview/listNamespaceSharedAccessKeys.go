@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List the two keys used to publish to a namespace.
@@ -74,6 +75,12 @@ func (o ListNamespaceSharedAccessKeysResultOutput) ToListNamespaceSharedAccessKe
 
 func (o ListNamespaceSharedAccessKeysResultOutput) ToListNamespaceSharedAccessKeysResultOutputWithContext(ctx context.Context) ListNamespaceSharedAccessKeysResultOutput {
 	return o
+}
+
+func (o ListNamespaceSharedAccessKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListNamespaceSharedAccessKeysResult] {
+	return pulumix.Output[ListNamespaceSharedAccessKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Shared access key1 for the namespace.

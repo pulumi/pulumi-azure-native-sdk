@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Subscription details.
@@ -197,6 +198,12 @@ func (i *WorkspaceSubscription) ToWorkspaceSubscriptionOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceSubscriptionOutput)
 }
 
+func (i *WorkspaceSubscription) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceSubscription] {
+	return pulumix.Output[*WorkspaceSubscription]{
+		OutputState: i.ToWorkspaceSubscriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceSubscriptionOutput) ElementType() reflect.Type {
@@ -209,6 +216,12 @@ func (o WorkspaceSubscriptionOutput) ToWorkspaceSubscriptionOutput() WorkspaceSu
 
 func (o WorkspaceSubscriptionOutput) ToWorkspaceSubscriptionOutputWithContext(ctx context.Context) WorkspaceSubscriptionOutput {
 	return o
+}
+
+func (o WorkspaceSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceSubscription] {
+	return pulumix.Output[*WorkspaceSubscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Determines whether tracing is enabled

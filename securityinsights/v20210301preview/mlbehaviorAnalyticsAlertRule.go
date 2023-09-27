@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents MLBehaviorAnalytics alert rule.
@@ -148,6 +149,9 @@ func NewMLBehaviorAnalyticsAlertRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:MLBehaviorAnalyticsAlertRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:MLBehaviorAnalyticsAlertRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -242,6 +246,12 @@ func (i *MLBehaviorAnalyticsAlertRule) ToMLBehaviorAnalyticsAlertRuleOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(MLBehaviorAnalyticsAlertRuleOutput)
 }
 
+func (i *MLBehaviorAnalyticsAlertRule) ToOutput(ctx context.Context) pulumix.Output[*MLBehaviorAnalyticsAlertRule] {
+	return pulumix.Output[*MLBehaviorAnalyticsAlertRule]{
+		OutputState: i.ToMLBehaviorAnalyticsAlertRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MLBehaviorAnalyticsAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (MLBehaviorAnalyticsAlertRuleOutput) ElementType() reflect.Type {
@@ -254,6 +264,12 @@ func (o MLBehaviorAnalyticsAlertRuleOutput) ToMLBehaviorAnalyticsAlertRuleOutput
 
 func (o MLBehaviorAnalyticsAlertRuleOutput) ToMLBehaviorAnalyticsAlertRuleOutputWithContext(ctx context.Context) MLBehaviorAnalyticsAlertRuleOutput {
 	return o
+}
+
+func (o MLBehaviorAnalyticsAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*MLBehaviorAnalyticsAlertRule] {
+	return pulumix.Output[*MLBehaviorAnalyticsAlertRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Name of the alert rule template used to create this rule.

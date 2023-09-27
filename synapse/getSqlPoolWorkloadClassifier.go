@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a workload classifier of Sql pool's workload group.
@@ -101,6 +102,12 @@ func (o LookupSqlPoolWorkloadClassifierResultOutput) ToLookupSqlPoolWorkloadClas
 
 func (o LookupSqlPoolWorkloadClassifierResultOutput) ToLookupSqlPoolWorkloadClassifierResultOutputWithContext(ctx context.Context) LookupSqlPoolWorkloadClassifierResultOutput {
 	return o
+}
+
+func (o LookupSqlPoolWorkloadClassifierResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlPoolWorkloadClassifierResult] {
+	return pulumix.Output[LookupSqlPoolWorkloadClassifierResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The workload classifier context.

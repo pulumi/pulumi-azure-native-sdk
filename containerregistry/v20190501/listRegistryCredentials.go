@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the login credentials for the specified container registry.
@@ -74,6 +75,12 @@ func (o ListRegistryCredentialsResultOutput) ToListRegistryCredentialsResultOutp
 
 func (o ListRegistryCredentialsResultOutput) ToListRegistryCredentialsResultOutputWithContext(ctx context.Context) ListRegistryCredentialsResultOutput {
 	return o
+}
+
+func (o ListRegistryCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListRegistryCredentialsResult] {
+	return pulumix.Output[ListRegistryCredentialsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of passwords for a container registry.

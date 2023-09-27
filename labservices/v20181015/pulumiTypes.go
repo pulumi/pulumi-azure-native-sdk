@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (o EnvironmentDetailsResponseOutput) ToEnvironmentDetailsResponseOutput() E
 
 func (o EnvironmentDetailsResponseOutput) ToEnvironmentDetailsResponseOutputWithContext(ctx context.Context) EnvironmentDetailsResponseOutput {
 	return o
+}
+
+func (o EnvironmentDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentDetailsResponse] {
+	return pulumix.Output[EnvironmentDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of the Environment
@@ -109,6 +116,12 @@ func (o EnvironmentDetailsResponseArrayOutput) ToEnvironmentDetailsResponseArray
 	return o
 }
 
+func (o EnvironmentDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentDetailsResponse] {
+	return pulumix.Output[[]EnvironmentDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnvironmentDetailsResponseArrayOutput) Index(i pulumi.IntInput) EnvironmentDetailsResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentDetailsResponse {
 		return vs[0].([]EnvironmentDetailsResponse)[vs[1].(int)]
@@ -142,6 +155,12 @@ func (o EnvironmentSizeResponseOutput) ToEnvironmentSizeResponseOutput() Environ
 
 func (o EnvironmentSizeResponseOutput) ToEnvironmentSizeResponseOutputWithContext(ctx context.Context) EnvironmentSizeResponseOutput {
 	return o
+}
+
+func (o EnvironmentSizeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentSizeResponse] {
+	return pulumix.Output[EnvironmentSizeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The pay-as-you-go dollar price per hour this size will cost. It does not include discounts and may not reflect the actual price the size will cost. This is the maximum price of all prices within this tier.
@@ -183,6 +202,12 @@ func (o EnvironmentSizeResponseArrayOutput) ToEnvironmentSizeResponseArrayOutput
 	return o
 }
 
+func (o EnvironmentSizeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentSizeResponse] {
+	return pulumix.Output[[]EnvironmentSizeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnvironmentSizeResponseArrayOutput) Index(i pulumi.IntInput) EnvironmentSizeResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentSizeResponse {
 		return vs[0].([]EnvironmentSizeResponse)[vs[1].(int)]
@@ -216,6 +241,12 @@ func (o GalleryImageReferenceResponseOutput) ToGalleryImageReferenceResponseOutp
 
 func (o GalleryImageReferenceResponseOutput) ToGalleryImageReferenceResponseOutputWithContext(ctx context.Context) GalleryImageReferenceResponseOutput {
 	return o
+}
+
+func (o GalleryImageReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryImageReferenceResponse] {
+	return pulumix.Output[GalleryImageReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The offer of the gallery image.
@@ -270,6 +301,12 @@ func (o LabDetailsResponseOutput) ToLabDetailsResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o LabDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LabDetailsResponse] {
+	return pulumix.Output[LabDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Id of the lab.
 func (o LabDetailsResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LabDetailsResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -302,6 +339,12 @@ func (o LabDetailsResponseArrayOutput) ToLabDetailsResponseArrayOutput() LabDeta
 
 func (o LabDetailsResponseArrayOutput) ToLabDetailsResponseArrayOutputWithContext(ctx context.Context) LabDetailsResponseArrayOutput {
 	return o
+}
+
+func (o LabDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LabDetailsResponse] {
+	return pulumix.Output[[]LabDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LabDetailsResponseArrayOutput) Index(i pulumi.IntInput) LabDetailsResponseOutput {
@@ -339,6 +382,12 @@ func (o LatestOperationResultResponseOutput) ToLatestOperationResultResponseOutp
 
 func (o LatestOperationResultResponseOutput) ToLatestOperationResultResponseOutputWithContext(ctx context.Context) LatestOperationResultResponseOutput {
 	return o
+}
+
+func (o LatestOperationResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LatestOperationResultResponse] {
+	return pulumix.Output[LatestOperationResultResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Error code on failure.
@@ -398,6 +447,12 @@ func (o NetworkInterfaceResponseOutput) ToNetworkInterfaceResponseOutputWithCont
 	return o
 }
 
+func (o NetworkInterfaceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkInterfaceResponse] {
+	return pulumix.Output[NetworkInterfaceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // PrivateIp address of the Compute VM
 func (o NetworkInterfaceResponseOutput) PrivateIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.PrivateIpAddress }).(pulumi.StringOutput)
@@ -441,6 +496,12 @@ func (o OperationBatchStatusResponseItemResponseOutput) ToOperationBatchStatusRe
 	return o
 }
 
+func (o OperationBatchStatusResponseItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OperationBatchStatusResponseItemResponse] {
+	return pulumix.Output[OperationBatchStatusResponseItemResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // status of the long running operation for an environment
 func (o OperationBatchStatusResponseItemResponseOutput) OperationUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationBatchStatusResponseItemResponse) string { return v.OperationUrl }).(pulumi.StringOutput)
@@ -463,6 +524,12 @@ func (o OperationBatchStatusResponseItemResponseArrayOutput) ToOperationBatchSta
 
 func (o OperationBatchStatusResponseItemResponseArrayOutput) ToOperationBatchStatusResponseItemResponseArrayOutputWithContext(ctx context.Context) OperationBatchStatusResponseItemResponseArrayOutput {
 	return o
+}
+
+func (o OperationBatchStatusResponseItemResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OperationBatchStatusResponseItemResponse] {
+	return pulumix.Output[[]OperationBatchStatusResponseItemResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OperationBatchStatusResponseItemResponseArrayOutput) Index(i pulumi.IntInput) OperationBatchStatusResponseItemResponseOutput {
@@ -510,6 +577,12 @@ func (i ReferenceVmArgs) ToReferenceVmOutputWithContext(ctx context.Context) Ref
 	return pulumi.ToOutputWithContext(ctx, i).(ReferenceVmOutput)
 }
 
+func (i ReferenceVmArgs) ToOutput(ctx context.Context) pulumix.Output[ReferenceVm] {
+	return pulumix.Output[ReferenceVm]{
+		OutputState: i.ToReferenceVmOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Details of a Reference Vm
 type ReferenceVmOutput struct{ *pulumi.OutputState }
 
@@ -523,6 +596,12 @@ func (o ReferenceVmOutput) ToReferenceVmOutput() ReferenceVmOutput {
 
 func (o ReferenceVmOutput) ToReferenceVmOutputWithContext(ctx context.Context) ReferenceVmOutput {
 	return o
+}
+
+func (o ReferenceVmOutput) ToOutput(ctx context.Context) pulumix.Output[ReferenceVm] {
+	return pulumix.Output[ReferenceVm]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The password of the virtual machine. This will be set to null in GET resource API
@@ -560,6 +639,12 @@ func (o ReferenceVmResponseOutput) ToReferenceVmResponseOutput() ReferenceVmResp
 
 func (o ReferenceVmResponseOutput) ToReferenceVmResponseOutputWithContext(ctx context.Context) ReferenceVmResponseOutput {
 	return o
+}
+
+func (o ReferenceVmResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReferenceVmResponse] {
+	return pulumix.Output[ReferenceVmResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The password of the virtual machine. This will be set to null in GET resource API
@@ -605,6 +690,12 @@ func (o RegionalAvailabilityResponseOutput) ToRegionalAvailabilityResponseOutput
 	return o
 }
 
+func (o RegionalAvailabilityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RegionalAvailabilityResponse] {
+	return pulumix.Output[RegionalAvailabilityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Corresponding region
 func (o RegionalAvailabilityResponseOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionalAvailabilityResponse) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -627,6 +718,12 @@ func (o RegionalAvailabilityResponseArrayOutput) ToRegionalAvailabilityResponseA
 
 func (o RegionalAvailabilityResponseArrayOutput) ToRegionalAvailabilityResponseArrayOutputWithContext(ctx context.Context) RegionalAvailabilityResponseArrayOutput {
 	return o
+}
+
+func (o RegionalAvailabilityResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RegionalAvailabilityResponse] {
+	return pulumix.Output[[]RegionalAvailabilityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionalAvailabilityResponseArrayOutput) Index(i pulumi.IntInput) RegionalAvailabilityResponseOutput {
@@ -674,6 +771,12 @@ func (i ResourceSetArgs) ToResourceSetOutputWithContext(ctx context.Context) Res
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSetOutput)
 }
 
+func (i ResourceSetArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSet] {
+	return pulumix.Output[ResourceSet]{
+		OutputState: i.ToResourceSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSetArgs) ToResourceSetPtrOutput() ResourceSetPtrOutput {
 	return i.ToResourceSetPtrOutputWithContext(context.Background())
 }
@@ -715,6 +818,12 @@ func (i *resourceSetPtrType) ToResourceSetPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSetPtrOutput)
 }
 
+func (i *resourceSetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSet] {
+	return pulumix.Output[*ResourceSet]{
+		OutputState: i.ToResourceSetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a VM and the setting Id it was created for.
 type ResourceSetOutput struct{ *pulumi.OutputState }
 
@@ -740,6 +849,12 @@ func (o ResourceSetOutput) ToResourceSetPtrOutputWithContext(ctx context.Context
 	}).(ResourceSetPtrOutput)
 }
 
+func (o ResourceSetOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSet] {
+	return pulumix.Output[ResourceSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 // resourceSettingId for the environment
 func (o ResourceSetOutput) ResourceSettingId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSet) *string { return v.ResourceSettingId }).(pulumi.StringPtrOutput)
@@ -762,6 +877,12 @@ func (o ResourceSetPtrOutput) ToResourceSetPtrOutput() ResourceSetPtrOutput {
 
 func (o ResourceSetPtrOutput) ToResourceSetPtrOutputWithContext(ctx context.Context) ResourceSetPtrOutput {
 	return o
+}
+
+func (o ResourceSetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSet] {
+	return pulumix.Output[*ResourceSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSetPtrOutput) Elem() ResourceSetOutput {
@@ -817,6 +938,12 @@ func (o ResourceSetResponseOutput) ToResourceSetResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o ResourceSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSetResponse] {
+	return pulumix.Output[ResourceSetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // resourceSettingId for the environment
 func (o ResourceSetResponseOutput) ResourceSettingId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSetResponse) *string { return v.ResourceSettingId }).(pulumi.StringPtrOutput)
@@ -839,6 +966,12 @@ func (o ResourceSetResponsePtrOutput) ToResourceSetResponsePtrOutput() ResourceS
 
 func (o ResourceSetResponsePtrOutput) ToResourceSetResponsePtrOutputWithContext(ctx context.Context) ResourceSetResponsePtrOutput {
 	return o
+}
+
+func (o ResourceSetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSetResponse] {
+	return pulumix.Output[*ResourceSetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSetResponsePtrOutput) Elem() ResourceSetResponseOutput {
@@ -914,6 +1047,12 @@ func (i ResourceSettingsArgs) ToResourceSettingsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSettingsOutput)
 }
 
+func (i ResourceSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSettings] {
+	return pulumix.Output[ResourceSettings]{
+		OutputState: i.ToResourceSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents resource specific settings
 type ResourceSettingsOutput struct{ *pulumi.OutputState }
 
@@ -927,6 +1066,12 @@ func (o ResourceSettingsOutput) ToResourceSettingsOutput() ResourceSettingsOutpu
 
 func (o ResourceSettingsOutput) ToResourceSettingsOutputWithContext(ctx context.Context) ResourceSettingsOutput {
 	return o
+}
+
+func (o ResourceSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSettings] {
+	return pulumix.Output[ResourceSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource id of the gallery image used for creating the virtual machine
@@ -973,6 +1118,12 @@ func (o ResourceSettingsResponseOutput) ToResourceSettingsResponseOutput() Resou
 
 func (o ResourceSettingsResponseOutput) ToResourceSettingsResponseOutputWithContext(ctx context.Context) ResourceSettingsResponseOutput {
 	return o
+}
+
+func (o ResourceSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSettingsResponse] {
+	return pulumix.Output[ResourceSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The translated compute cores of the virtual machine
@@ -1028,6 +1179,12 @@ func (o SizeAvailabilityResponseOutput) ToSizeAvailabilityResponseOutputWithCont
 	return o
 }
 
+func (o SizeAvailabilityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SizeAvailabilityResponse] {
+	return pulumix.Output[SizeAvailabilityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether or not this size category is available
 func (o SizeAvailabilityResponseOutput) IsAvailable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SizeAvailabilityResponse) *bool { return v.IsAvailable }).(pulumi.BoolPtrOutput)
@@ -1050,6 +1207,12 @@ func (o SizeAvailabilityResponseArrayOutput) ToSizeAvailabilityResponseArrayOutp
 
 func (o SizeAvailabilityResponseArrayOutput) ToSizeAvailabilityResponseArrayOutputWithContext(ctx context.Context) SizeAvailabilityResponseArrayOutput {
 	return o
+}
+
+func (o SizeAvailabilityResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SizeAvailabilityResponse] {
+	return pulumix.Output[[]SizeAvailabilityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SizeAvailabilityResponseArrayOutput) Index(i pulumi.IntInput) SizeAvailabilityResponseOutput {
@@ -1077,6 +1240,12 @@ func (o SizeConfigurationPropertiesResponseOutput) ToSizeConfigurationProperties
 
 func (o SizeConfigurationPropertiesResponseOutput) ToSizeConfigurationPropertiesResponseOutputWithContext(ctx context.Context) SizeConfigurationPropertiesResponseOutput {
 	return o
+}
+
+func (o SizeConfigurationPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SizeConfigurationPropertiesResponse] {
+	return pulumix.Output[SizeConfigurationPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents a list of size categories supported by this Lab Account (Small, Medium, Large)
@@ -1111,6 +1280,12 @@ func (o SizeInfoResponseOutput) ToSizeInfoResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o SizeInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SizeInfoResponse] {
+	return pulumix.Output[SizeInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Represents the actual compute size, e.g. Standard_A2_v2.
 func (o SizeInfoResponseOutput) ComputeSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SizeInfoResponse) *string { return v.ComputeSize }).(pulumi.StringPtrOutput)
@@ -1143,6 +1318,12 @@ func (o SizeInfoResponseArrayOutput) ToSizeInfoResponseArrayOutput() SizeInfoRes
 
 func (o SizeInfoResponseArrayOutput) ToSizeInfoResponseArrayOutputWithContext(ctx context.Context) SizeInfoResponseArrayOutput {
 	return o
+}
+
+func (o SizeInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SizeInfoResponse] {
+	return pulumix.Output[[]SizeInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SizeInfoResponseArrayOutput) Index(i pulumi.IntInput) SizeInfoResponseOutput {
@@ -1180,6 +1361,12 @@ func (o VirtualMachineDetailsResponseOutput) ToVirtualMachineDetailsResponseOutp
 
 func (o VirtualMachineDetailsResponseOutput) ToVirtualMachineDetailsResponseOutputWithContext(ctx context.Context) VirtualMachineDetailsResponseOutput {
 	return o
+}
+
+func (o VirtualMachineDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineDetailsResponse] {
+	return pulumix.Output[VirtualMachineDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Last known compute power state captured in DTL
@@ -1237,6 +1424,12 @@ func (o VmStateDetailsResponseOutput) ToVmStateDetailsResponseOutput() VmStateDe
 
 func (o VmStateDetailsResponseOutput) ToVmStateDetailsResponseOutputWithContext(ctx context.Context) VmStateDetailsResponseOutput {
 	return o
+}
+
+func (o VmStateDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmStateDetailsResponse] {
+	return pulumix.Output[VmStateDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Last known compute power state captured in DTL

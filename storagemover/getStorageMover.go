@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Storage Mover resource.
@@ -87,6 +88,12 @@ func (o LookupStorageMoverResultOutput) ToLookupStorageMoverResultOutput() Looku
 
 func (o LookupStorageMoverResultOutput) ToLookupStorageMoverResultOutputWithContext(ctx context.Context) LookupStorageMoverResultOutput {
 	return o
+}
+
+func (o LookupStorageMoverResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStorageMoverResult] {
+	return pulumix.Output[LookupStorageMoverResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A description for the Storage Mover.

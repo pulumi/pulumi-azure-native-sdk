@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A cluster resource belonging to a site resource.
@@ -151,6 +152,12 @@ func (i *HypervClusterControllerCluster) ToHypervClusterControllerClusterOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(HypervClusterControllerClusterOutput)
 }
 
+func (i *HypervClusterControllerCluster) ToOutput(ctx context.Context) pulumix.Output[*HypervClusterControllerCluster] {
+	return pulumix.Output[*HypervClusterControllerCluster]{
+		OutputState: i.ToHypervClusterControllerClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HypervClusterControllerClusterOutput struct{ *pulumi.OutputState }
 
 func (HypervClusterControllerClusterOutput) ElementType() reflect.Type {
@@ -163,6 +170,12 @@ func (o HypervClusterControllerClusterOutput) ToHypervClusterControllerClusterOu
 
 func (o HypervClusterControllerClusterOutput) ToHypervClusterControllerClusterOutputWithContext(ctx context.Context) HypervClusterControllerClusterOutput {
 	return o
+}
+
+func (o HypervClusterControllerClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*HypervClusterControllerCluster] {
+	return pulumix.Output[*HypervClusterControllerCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the timestamp marking Hyper-V cluster creation.

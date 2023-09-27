@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the properties of an Azure Stack registration.
@@ -88,6 +89,12 @@ func (o LookupRegistrationResultOutput) ToLookupRegistrationResultOutput() Looku
 
 func (o LookupRegistrationResultOutput) ToLookupRegistrationResultOutputWithContext(ctx context.Context) LookupRegistrationResultOutput {
 	return o
+}
+
+func (o LookupRegistrationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegistrationResult] {
+	return pulumix.Output[LookupRegistrationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the billing mode for the Azure Stack registration.

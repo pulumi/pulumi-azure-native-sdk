@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified SIM.
@@ -108,6 +109,12 @@ func (o LookupSimResultOutput) ToLookupSimResultOutput() LookupSimResultOutput {
 
 func (o LookupSimResultOutput) ToLookupSimResultOutputWithContext(ctx context.Context) LookupSimResultOutput {
 	return o
+}
+
+func (o LookupSimResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSimResult] {
+	return pulumix.Output[LookupSimResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

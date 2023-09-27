@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Certificate product type.
@@ -78,6 +79,12 @@ func (o CertificateProductTypeOutput) ToCertificateProductTypePtrOutputWithConte
 	}).(CertificateProductTypePtrOutput)
 }
 
+func (o CertificateProductTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateProductType] {
+	return pulumix.Output[CertificateProductType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CertificateProductTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o CertificateProductTypePtrOutput) ToCertificateProductTypePtrOutput() Cer
 
 func (o CertificateProductTypePtrOutput) ToCertificateProductTypePtrOutputWithContext(ctx context.Context) CertificateProductTypePtrOutput {
 	return o
+}
+
+func (o CertificateProductTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateProductType] {
+	return pulumix.Output[*CertificateProductType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateProductTypePtrOutput) Elem() CertificateProductTypeOutput {
@@ -173,6 +186,12 @@ func (in *certificateProductTypePtr) ToCertificateProductTypePtrOutput() Certifi
 
 func (in *certificateProductTypePtr) ToCertificateProductTypePtrOutputWithContext(ctx context.Context) CertificateProductTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateProductTypePtrOutput)
+}
+
+func (in *certificateProductTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateProductType] {
+	return pulumix.Output[*CertificateProductType]{
+		OutputState: in.ToCertificateProductTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

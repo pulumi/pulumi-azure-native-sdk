@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The virtual hard disk resource definition.
@@ -180,6 +181,12 @@ func (i *VirtualHardDisk) ToVirtualHardDiskOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualHardDiskOutput)
 }
 
+func (i *VirtualHardDisk) ToOutput(ctx context.Context) pulumix.Output[*VirtualHardDisk] {
+	return pulumix.Output[*VirtualHardDisk]{
+		OutputState: i.ToVirtualHardDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualHardDiskOutput struct{ *pulumi.OutputState }
 
 func (VirtualHardDiskOutput) ElementType() reflect.Type {
@@ -192,6 +199,12 @@ func (o VirtualHardDiskOutput) ToVirtualHardDiskOutput() VirtualHardDiskOutput {
 
 func (o VirtualHardDiskOutput) ToVirtualHardDiskOutputWithContext(ctx context.Context) VirtualHardDiskOutput {
 	return o
+}
+
+func (o VirtualHardDiskOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualHardDisk] {
+	return pulumix.Output[*VirtualHardDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualHardDiskOutput) BlockSizeBytes() pulumi.IntPtrOutput {

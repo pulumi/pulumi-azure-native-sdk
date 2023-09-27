@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Managed Network resource
@@ -125,6 +126,12 @@ func (i *ScopeAssignment) ToScopeAssignmentOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeAssignmentOutput)
 }
 
+func (i *ScopeAssignment) ToOutput(ctx context.Context) pulumix.Output[*ScopeAssignment] {
+	return pulumix.Output[*ScopeAssignment]{
+		OutputState: i.ToScopeAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScopeAssignmentOutput struct{ *pulumi.OutputState }
 
 func (ScopeAssignmentOutput) ElementType() reflect.Type {
@@ -137,6 +144,12 @@ func (o ScopeAssignmentOutput) ToScopeAssignmentOutput() ScopeAssignmentOutput {
 
 func (o ScopeAssignmentOutput) ToScopeAssignmentOutputWithContext(ctx context.Context) ScopeAssignmentOutput {
 	return o
+}
+
+func (o ScopeAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeAssignment] {
+	return pulumix.Output[*ScopeAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The managed network ID with scope will be assigned to.

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource Type of ApplicationGroup.
@@ -91,6 +92,12 @@ func (o DayOfWeekOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Da
 	}).(DayOfWeekPtrOutput)
 }
 
+func (o DayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[DayOfWeek] {
+	return pulumix.Output[DayOfWeek]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,6 +131,12 @@ func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return o
+}
+
+func (o DayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
+	return pulumix.Output[*DayOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DayOfWeekPtrOutput) Elem() DayOfWeekOutput {
@@ -186,6 +199,12 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
+}
+
+func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
+	return pulumix.Output[*DayOfWeek]{
+		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HostPool type for desktop.
@@ -328,6 +347,12 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
+func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
+	return pulumix.Output[ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -361,6 +386,12 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -423,6 +454,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+}
+
+func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of single sign on Secret Type.
@@ -515,6 +552,12 @@ func (o SkuTierOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTie
 	}).(SkuTierPtrOutput)
 }
 
+func (o SkuTierOutput) ToOutput(ctx context.Context) pulumix.Output[SkuTier] {
+	return pulumix.Output[SkuTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SkuTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -548,6 +591,12 @@ func (o SkuTierPtrOutput) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (o SkuTierPtrOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return o
+}
+
+func (o SkuTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
+	return pulumix.Output[*SkuTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuTierPtrOutput) Elem() SkuTierOutput {
@@ -610,6 +659,12 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
+}
+
+func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
+	return pulumix.Output[*SkuTier]{
+		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

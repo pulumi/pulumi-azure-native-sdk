@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.
@@ -133,6 +134,12 @@ func (o LookupManagedClusterResultOutput) ToLookupManagedClusterResultOutput() L
 
 func (o LookupManagedClusterResultOutput) ToLookupManagedClusterResultOutputWithContext(ctx context.Context) LookupManagedClusterResultOutput {
 	return o
+}
+
+func (o LookupManagedClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedClusterResult] {
+	return pulumix.Output[LookupManagedClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // client certificates for the cluster.

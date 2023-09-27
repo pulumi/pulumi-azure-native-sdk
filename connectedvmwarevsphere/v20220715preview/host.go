@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Define the host.
@@ -74,6 +75,9 @@ func NewHost(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20230301preview:Host"),
+		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231001:Host"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -175,6 +179,12 @@ func (i *Host) ToHostOutputWithContext(ctx context.Context) HostOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostOutput)
 }
 
+func (i *Host) ToOutput(ctx context.Context) pulumix.Output[*Host] {
+	return pulumix.Output[*Host]{
+		OutputState: i.ToHostOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostOutput struct{ *pulumi.OutputState }
 
 func (HostOutput) ElementType() reflect.Type {
@@ -187,6 +197,12 @@ func (o HostOutput) ToHostOutput() HostOutput {
 
 func (o HostOutput) ToHostOutputWithContext(ctx context.Context) HostOutput {
 	return o
+}
+
+func (o HostOutput) ToOutput(ctx context.Context) pulumix.Output[*Host] {
+	return pulumix.Output[*Host]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the name of the corresponding resource in Kubernetes.

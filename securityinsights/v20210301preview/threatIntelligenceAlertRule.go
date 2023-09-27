@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Threat Intelligence alert rule.
@@ -148,6 +149,9 @@ func NewThreatIntelligenceAlertRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:ThreatIntelligenceAlertRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:ThreatIntelligenceAlertRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -242,6 +246,12 @@ func (i *ThreatIntelligenceAlertRule) ToThreatIntelligenceAlertRuleOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceAlertRuleOutput)
 }
 
+func (i *ThreatIntelligenceAlertRule) ToOutput(ctx context.Context) pulumix.Output[*ThreatIntelligenceAlertRule] {
+	return pulumix.Output[*ThreatIntelligenceAlertRule]{
+		OutputState: i.ToThreatIntelligenceAlertRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ThreatIntelligenceAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (ThreatIntelligenceAlertRuleOutput) ElementType() reflect.Type {
@@ -254,6 +264,12 @@ func (o ThreatIntelligenceAlertRuleOutput) ToThreatIntelligenceAlertRuleOutput()
 
 func (o ThreatIntelligenceAlertRuleOutput) ToThreatIntelligenceAlertRuleOutputWithContext(ctx context.Context) ThreatIntelligenceAlertRuleOutput {
 	return o
+}
+
+func (o ThreatIntelligenceAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ThreatIntelligenceAlertRule] {
+	return pulumix.Output[*ThreatIntelligenceAlertRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Name of the alert rule template used to create this rule.

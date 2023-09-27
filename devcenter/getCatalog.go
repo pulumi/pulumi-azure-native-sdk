@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a catalog
@@ -93,6 +94,12 @@ func (o LookupCatalogResultOutput) ToLookupCatalogResultOutput() LookupCatalogRe
 
 func (o LookupCatalogResultOutput) ToLookupCatalogResultOutputWithContext(ctx context.Context) LookupCatalogResultOutput {
 	return o
+}
+
+func (o LookupCatalogResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCatalogResult] {
+	return pulumix.Output[LookupCatalogResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Properties for an Azure DevOps catalog type.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an incident comment.
@@ -100,6 +101,12 @@ func (o LookupIncidentCommentResultOutput) ToLookupIncidentCommentResultOutput()
 
 func (o LookupIncidentCommentResultOutput) ToLookupIncidentCommentResultOutputWithContext(ctx context.Context) LookupIncidentCommentResultOutput {
 	return o
+}
+
+func (o LookupIncidentCommentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIncidentCommentResult] {
+	return pulumix.Output[LookupIncidentCommentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the client that created the comment

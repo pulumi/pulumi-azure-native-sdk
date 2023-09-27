@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessRights string
@@ -93,6 +94,12 @@ func (o CaptureIdentityTypeOutput) ToCaptureIdentityTypePtrOutputWithContext(ctx
 	}).(CaptureIdentityTypePtrOutput)
 }
 
+func (o CaptureIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CaptureIdentityType] {
+	return pulumix.Output[CaptureIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CaptureIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -126,6 +133,12 @@ func (o CaptureIdentityTypePtrOutput) ToCaptureIdentityTypePtrOutput() CaptureId
 
 func (o CaptureIdentityTypePtrOutput) ToCaptureIdentityTypePtrOutputWithContext(ctx context.Context) CaptureIdentityTypePtrOutput {
 	return o
+}
+
+func (o CaptureIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CaptureIdentityType] {
+	return pulumix.Output[*CaptureIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CaptureIdentityTypePtrOutput) Elem() CaptureIdentityTypeOutput {
@@ -188,6 +201,12 @@ func (in *captureIdentityTypePtr) ToCaptureIdentityTypePtrOutput() CaptureIdenti
 
 func (in *captureIdentityTypePtr) ToCaptureIdentityTypePtrOutputWithContext(ctx context.Context) CaptureIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CaptureIdentityTypePtrOutput)
+}
+
+func (in *captureIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CaptureIdentityType] {
+	return pulumix.Output[*CaptureIdentityType]{
+		OutputState: in.ToCaptureIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Enumerates the possible values for cleanup policy
@@ -281,6 +300,12 @@ func (o EncodingCaptureDescriptionOutput) ToEncodingCaptureDescriptionPtrOutputW
 	}).(EncodingCaptureDescriptionPtrOutput)
 }
 
+func (o EncodingCaptureDescriptionOutput) ToOutput(ctx context.Context) pulumix.Output[EncodingCaptureDescription] {
+	return pulumix.Output[EncodingCaptureDescription]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EncodingCaptureDescriptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -314,6 +339,12 @@ func (o EncodingCaptureDescriptionPtrOutput) ToEncodingCaptureDescriptionPtrOutp
 
 func (o EncodingCaptureDescriptionPtrOutput) ToEncodingCaptureDescriptionPtrOutputWithContext(ctx context.Context) EncodingCaptureDescriptionPtrOutput {
 	return o
+}
+
+func (o EncodingCaptureDescriptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncodingCaptureDescription] {
+	return pulumix.Output[*EncodingCaptureDescription]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncodingCaptureDescriptionPtrOutput) Elem() EncodingCaptureDescriptionOutput {
@@ -376,6 +407,12 @@ func (in *encodingCaptureDescriptionPtr) ToEncodingCaptureDescriptionPtrOutput()
 
 func (in *encodingCaptureDescriptionPtr) ToEncodingCaptureDescriptionPtrOutputWithContext(ctx context.Context) EncodingCaptureDescriptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncodingCaptureDescriptionPtrOutput)
+}
+
+func (in *encodingCaptureDescriptionPtr) ToOutput(ctx context.Context) pulumix.Output[*EncodingCaptureDescription] {
+	return pulumix.Output[*EncodingCaptureDescription]{
+		OutputState: in.ToEncodingCaptureDescriptionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Provisioning state of the Private Endpoint Connection.
@@ -465,6 +502,12 @@ func (o EntityStatusOutput) ToEntityStatusPtrOutputWithContext(ctx context.Conte
 	}).(EntityStatusPtrOutput)
 }
 
+func (o EntityStatusOutput) ToOutput(ctx context.Context) pulumix.Output[EntityStatus] {
+	return pulumix.Output[EntityStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -498,6 +541,12 @@ func (o EntityStatusPtrOutput) ToEntityStatusPtrOutput() EntityStatusPtrOutput {
 
 func (o EntityStatusPtrOutput) ToEntityStatusPtrOutputWithContext(ctx context.Context) EntityStatusPtrOutput {
 	return o
+}
+
+func (o EntityStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityStatus] {
+	return pulumix.Output[*EntityStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityStatusPtrOutput) Elem() EntityStatusOutput {
@@ -560,6 +609,12 @@ func (in *entityStatusPtr) ToEntityStatusPtrOutput() EntityStatusPtrOutput {
 
 func (in *entityStatusPtr) ToEntityStatusPtrOutputWithContext(ctx context.Context) EntityStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityStatusPtrOutput)
+}
+
+func (in *entityStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityStatus] {
+	return pulumix.Output[*EntityStatus]{
+		OutputState: in.ToEntityStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GeoDR Role Types
@@ -637,6 +692,12 @@ func (o KeySourceOutput) ToKeySourcePtrOutputWithContext(ctx context.Context) Ke
 	}).(KeySourcePtrOutput)
 }
 
+func (o KeySourceOutput) ToOutput(ctx context.Context) pulumix.Output[KeySource] {
+	return pulumix.Output[KeySource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeySourceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -670,6 +731,12 @@ func (o KeySourcePtrOutput) ToKeySourcePtrOutput() KeySourcePtrOutput {
 
 func (o KeySourcePtrOutput) ToKeySourcePtrOutputWithContext(ctx context.Context) KeySourcePtrOutput {
 	return o
+}
+
+func (o KeySourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
+	return pulumix.Output[*KeySource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeySourcePtrOutput) Elem() KeySourceOutput {
@@ -732,6 +799,12 @@ func (in *keySourcePtr) ToKeySourcePtrOutput() KeySourcePtrOutput {
 
 func (in *keySourcePtr) ToKeySourcePtrOutputWithContext(ctx context.Context) KeySourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeySourcePtrOutput)
+}
+
+func (in *keySourcePtr) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
+	return pulumix.Output[*KeySource]{
+		OutputState: in.ToKeySourcePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of managed service identity.
@@ -804,6 +877,12 @@ func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypePtrOutputW
 	}).(ManagedServiceIdentityTypePtrOutput)
 }
 
+func (o ManagedServiceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityType] {
+	return pulumix.Output[ManagedServiceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ManagedServiceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -837,6 +916,12 @@ func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutp
 
 func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
+	return pulumix.Output[*ManagedServiceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityTypePtrOutput) Elem() ManagedServiceIdentityTypeOutput {
@@ -899,6 +984,12 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
+}
+
+func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
+	return pulumix.Output[*ManagedServiceIdentityType]{
+		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Metric Id on which the throttle limit should be set, MetricId can be discovered by hovering over Metric in the Metrics section of Event Hub Namespace inside Azure Portal

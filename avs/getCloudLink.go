@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A cloud link resource
@@ -85,6 +86,12 @@ func (o LookupCloudLinkResultOutput) ToLookupCloudLinkResultOutput() LookupCloud
 
 func (o LookupCloudLinkResultOutput) ToLookupCloudLinkResultOutputWithContext(ctx context.Context) LookupCloudLinkResultOutput {
 	return o
+}
+
+func (o LookupCloudLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCloudLinkResult] {
+	return pulumix.Output[LookupCloudLinkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.

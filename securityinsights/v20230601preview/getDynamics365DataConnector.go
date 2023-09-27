@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a data connector.
@@ -91,6 +92,12 @@ func (o LookupDynamics365DataConnectorResultOutput) ToLookupDynamics365DataConne
 
 func (o LookupDynamics365DataConnectorResultOutput) ToLookupDynamics365DataConnectorResultOutputWithContext(ctx context.Context) LookupDynamics365DataConnectorResultOutput {
 	return o
+}
+
+func (o LookupDynamics365DataConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDynamics365DataConnectorResult] {
+	return pulumix.Output[LookupDynamics365DataConnectorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available data types for the connector.

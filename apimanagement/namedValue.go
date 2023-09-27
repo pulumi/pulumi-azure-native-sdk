@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // NamedValue details.
@@ -182,6 +183,12 @@ func (i *NamedValue) ToNamedValueOutputWithContext(ctx context.Context) NamedVal
 	return pulumi.ToOutputWithContext(ctx, i).(NamedValueOutput)
 }
 
+func (i *NamedValue) ToOutput(ctx context.Context) pulumix.Output[*NamedValue] {
+	return pulumix.Output[*NamedValue]{
+		OutputState: i.ToNamedValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamedValueOutput struct{ *pulumi.OutputState }
 
 func (NamedValueOutput) ElementType() reflect.Type {
@@ -194,6 +201,12 @@ func (o NamedValueOutput) ToNamedValueOutput() NamedValueOutput {
 
 func (o NamedValueOutput) ToNamedValueOutputWithContext(ctx context.Context) NamedValueOutput {
 	return o
+}
+
+func (o NamedValueOutput) ToOutput(ctx context.Context) pulumix.Output[*NamedValue] {
+	return pulumix.Output[*NamedValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore characters.

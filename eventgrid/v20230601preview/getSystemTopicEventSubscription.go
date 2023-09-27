@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an event subscription.
@@ -125,6 +126,12 @@ func (o LookupSystemTopicEventSubscriptionResultOutput) ToLookupSystemTopicEvent
 
 func (o LookupSystemTopicEventSubscriptionResultOutput) ToLookupSystemTopicEventSubscriptionResultOutputWithContext(ctx context.Context) LookupSystemTopicEventSubscriptionResultOutput {
 	return o
+}
+
+func (o LookupSystemTopicEventSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSystemTopicEventSubscriptionResult] {
+	return pulumix.Output[LookupSystemTopicEventSubscriptionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.

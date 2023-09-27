@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB Cassandra keyspace.
@@ -145,6 +146,12 @@ func NewCassandraResourceCassandraKeyspace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20230415:CassandraResourceCassandraKeyspace"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230915:CassandraResourceCassandraKeyspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230915preview:CassandraResourceCassandraKeyspace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -237,6 +244,12 @@ func (i *CassandraResourceCassandraKeyspace) ToCassandraResourceCassandraKeyspac
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraResourceCassandraKeyspaceOutput)
 }
 
+func (i *CassandraResourceCassandraKeyspace) ToOutput(ctx context.Context) pulumix.Output[*CassandraResourceCassandraKeyspace] {
+	return pulumix.Output[*CassandraResourceCassandraKeyspace]{
+		OutputState: i.ToCassandraResourceCassandraKeyspaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CassandraResourceCassandraKeyspaceOutput struct{ *pulumi.OutputState }
 
 func (CassandraResourceCassandraKeyspaceOutput) ElementType() reflect.Type {
@@ -249,6 +262,12 @@ func (o CassandraResourceCassandraKeyspaceOutput) ToCassandraResourceCassandraKe
 
 func (o CassandraResourceCassandraKeyspaceOutput) ToCassandraResourceCassandraKeyspaceOutputWithContext(ctx context.Context) CassandraResourceCassandraKeyspaceOutput {
 	return o
+}
+
+func (o CassandraResourceCassandraKeyspaceOutput) ToOutput(ctx context.Context) pulumix.Output[*CassandraResourceCassandraKeyspace] {
+	return pulumix.Output[*CassandraResourceCassandraKeyspace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location of the resource group to which the resource belongs.

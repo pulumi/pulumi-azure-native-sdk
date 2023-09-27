@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the kafka configuration for the account
@@ -112,6 +113,12 @@ func (o LookupKafkaConfigurationResultOutput) ToLookupKafkaConfigurationResultOu
 
 func (o LookupKafkaConfigurationResultOutput) ToLookupKafkaConfigurationResultOutputWithContext(ctx context.Context) LookupKafkaConfigurationResultOutput {
 	return o
+}
+
+func (o LookupKafkaConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKafkaConfigurationResult] {
+	return pulumix.Output[LookupKafkaConfigurationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Consumer group for hook event hub.

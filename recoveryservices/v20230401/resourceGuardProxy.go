@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ResourceGuardProxy struct {
@@ -181,6 +182,12 @@ func (i *ResourceGuardProxy) ToResourceGuardProxyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGuardProxyOutput)
 }
 
+func (i *ResourceGuardProxy) ToOutput(ctx context.Context) pulumix.Output[*ResourceGuardProxy] {
+	return pulumix.Output[*ResourceGuardProxy]{
+		OutputState: i.ToResourceGuardProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceGuardProxyOutput struct{ *pulumi.OutputState }
 
 func (ResourceGuardProxyOutput) ElementType() reflect.Type {
@@ -193,6 +200,12 @@ func (o ResourceGuardProxyOutput) ToResourceGuardProxyOutput() ResourceGuardProx
 
 func (o ResourceGuardProxyOutput) ToResourceGuardProxyOutputWithContext(ctx context.Context) ResourceGuardProxyOutput {
 	return o
+}
+
+func (o ResourceGuardProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceGuardProxy] {
+	return pulumix.Output[*ResourceGuardProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional ETag.

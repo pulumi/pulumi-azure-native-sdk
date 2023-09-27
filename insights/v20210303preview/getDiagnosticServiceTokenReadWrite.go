@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an read-write access token for application insights diagnostic service data.
@@ -68,6 +69,12 @@ func (o GetDiagnosticServiceTokenReadWriteResultOutput) ToGetDiagnosticServiceTo
 
 func (o GetDiagnosticServiceTokenReadWriteResultOutput) ToGetDiagnosticServiceTokenReadWriteResultOutputWithContext(ctx context.Context) GetDiagnosticServiceTokenReadWriteResultOutput {
 	return o
+}
+
+func (o GetDiagnosticServiceTokenReadWriteResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDiagnosticServiceTokenReadWriteResult] {
+	return pulumix.Output[GetDiagnosticServiceTokenReadWriteResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // JWT token for accessing application insights diagnostic service data.

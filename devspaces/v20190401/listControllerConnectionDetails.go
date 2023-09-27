@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists connection details for the underlying container resources of an Azure Dev Spaces Controller.
@@ -74,6 +75,12 @@ func (o ListControllerConnectionDetailsResultOutput) ToListControllerConnectionD
 
 func (o ListControllerConnectionDetailsResultOutput) ToListControllerConnectionDetailsResultOutputWithContext(ctx context.Context) ListControllerConnectionDetailsResultOutput {
 	return o
+}
+
+func (o ListControllerConnectionDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListControllerConnectionDetailsResult] {
+	return pulumix.Output[ListControllerConnectionDetailsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of Azure Dev Spaces Controller connection details.

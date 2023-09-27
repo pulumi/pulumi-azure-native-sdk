@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Hub resource.
@@ -141,6 +142,12 @@ func (i *Hub) ToHubOutputWithContext(ctx context.Context) HubOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HubOutput)
 }
 
+func (i *Hub) ToOutput(ctx context.Context) pulumix.Output[*Hub] {
+	return pulumix.Output[*Hub]{
+		OutputState: i.ToHubOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HubOutput struct{ *pulumi.OutputState }
 
 func (HubOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o HubOutput) ToHubOutput() HubOutput {
 
 func (o HubOutput) ToHubOutputWithContext(ctx context.Context) HubOutput {
 	return o
+}
+
+func (o HubOutput) ToOutput(ctx context.Context) pulumix.Output[*Hub] {
+	return pulumix.Output[*Hub]{
+		OutputState: o.OutputState,
+	}
 }
 
 // API endpoint URL of the hub.

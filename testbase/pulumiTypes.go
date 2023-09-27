@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -42,6 +43,12 @@ func (o BillingHubExecutionUsageDetailResponseOutput) ToBillingHubExecutionUsage
 
 func (o BillingHubExecutionUsageDetailResponseOutput) ToBillingHubExecutionUsageDetailResponseOutputWithContext(ctx context.Context) BillingHubExecutionUsageDetailResponseOutput {
 	return o
+}
+
+func (o BillingHubExecutionUsageDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BillingHubExecutionUsageDetailResponse] {
+	return pulumix.Output[BillingHubExecutionUsageDetailResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BillingHubExecutionUsageDetailResponseOutput) ApplicationName() pulumi.StringPtrOutput {
@@ -114,6 +121,12 @@ func (o BillingHubExecutionUsageDetailResponseArrayOutput) ToBillingHubExecution
 	return o
 }
 
+func (o BillingHubExecutionUsageDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BillingHubExecutionUsageDetailResponse] {
+	return pulumix.Output[[]BillingHubExecutionUsageDetailResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BillingHubExecutionUsageDetailResponseArrayOutput) Index(i pulumi.IntInput) BillingHubExecutionUsageDetailResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BillingHubExecutionUsageDetailResponse {
 		return vs[0].([]BillingHubExecutionUsageDetailResponse)[vs[1].(int)]
@@ -139,6 +152,12 @@ func (o BillingHubFreeHourIncrementEntryResponseOutput) ToBillingHubFreeHourIncr
 
 func (o BillingHubFreeHourIncrementEntryResponseOutput) ToBillingHubFreeHourIncrementEntryResponseOutputWithContext(ctx context.Context) BillingHubFreeHourIncrementEntryResponseOutput {
 	return o
+}
+
+func (o BillingHubFreeHourIncrementEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BillingHubFreeHourIncrementEntryResponse] {
+	return pulumix.Output[BillingHubFreeHourIncrementEntryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BillingHubFreeHourIncrementEntryResponseOutput) CreateTimeStamp() pulumi.StringPtrOutput {
@@ -171,6 +190,12 @@ func (o BillingHubFreeHourIncrementEntryResponseArrayOutput) ToBillingHubFreeHou
 	return o
 }
 
+func (o BillingHubFreeHourIncrementEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BillingHubFreeHourIncrementEntryResponse] {
+	return pulumix.Output[[]BillingHubFreeHourIncrementEntryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BillingHubFreeHourIncrementEntryResponseArrayOutput) Index(i pulumi.IntInput) BillingHubFreeHourIncrementEntryResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BillingHubFreeHourIncrementEntryResponse {
 		return vs[0].([]BillingHubFreeHourIncrementEntryResponse)[vs[1].(int)]
@@ -196,6 +221,12 @@ func (o BillingHubGetUsageRequestResponseOutput) ToBillingHubGetUsageRequestResp
 
 func (o BillingHubGetUsageRequestResponseOutput) ToBillingHubGetUsageRequestResponseOutputWithContext(ctx context.Context) BillingHubGetUsageRequestResponseOutput {
 	return o
+}
+
+func (o BillingHubGetUsageRequestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BillingHubGetUsageRequestResponse] {
+	return pulumix.Output[BillingHubGetUsageRequestResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BillingHubGetUsageRequestResponseOutput) EndTimeStamp() pulumi.StringOutput {
@@ -226,6 +257,12 @@ func (o BillingHubGetUsageRequestResponsePtrOutput) ToBillingHubGetUsageRequestR
 
 func (o BillingHubGetUsageRequestResponsePtrOutput) ToBillingHubGetUsageRequestResponsePtrOutputWithContext(ctx context.Context) BillingHubGetUsageRequestResponsePtrOutput {
 	return o
+}
+
+func (o BillingHubGetUsageRequestResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingHubGetUsageRequestResponse] {
+	return pulumix.Output[*BillingHubGetUsageRequestResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BillingHubGetUsageRequestResponsePtrOutput) Elem() BillingHubGetUsageRequestResponseOutput {
@@ -298,6 +335,12 @@ func (o BillingHubPackageUsageResponseOutput) ToBillingHubPackageUsageResponseOu
 	return o
 }
 
+func (o BillingHubPackageUsageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BillingHubPackageUsageResponse] {
+	return pulumix.Output[BillingHubPackageUsageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BillingHubPackageUsageResponseOutput) ApplicationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BillingHubPackageUsageResponse) *string { return v.ApplicationName }).(pulumi.StringPtrOutput)
 }
@@ -342,6 +385,12 @@ func (o BillingHubPackageUsageResponseArrayOutput) ToBillingHubPackageUsageRespo
 	return o
 }
 
+func (o BillingHubPackageUsageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BillingHubPackageUsageResponse] {
+	return pulumix.Output[[]BillingHubPackageUsageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BillingHubPackageUsageResponseArrayOutput) Index(i pulumi.IntInput) BillingHubPackageUsageResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BillingHubPackageUsageResponse {
 		return vs[0].([]BillingHubPackageUsageResponse)[vs[1].(int)]
@@ -374,6 +423,12 @@ func (o BillingHubUsageGroupResponseOutput) ToBillingHubUsageGroupResponseOutput
 
 func (o BillingHubUsageGroupResponseOutput) ToBillingHubUsageGroupResponseOutputWithContext(ctx context.Context) BillingHubUsageGroupResponseOutput {
 	return o
+}
+
+func (o BillingHubUsageGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BillingHubUsageGroupResponse] {
+	return pulumix.Output[BillingHubUsageGroupResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BillingHubUsageGroupResponseOutput) ExecutionUsageDetails() BillingHubExecutionUsageDetailResponseArrayOutput {
@@ -436,6 +491,12 @@ func (o BillingHubUsageGroupResponseArrayOutput) ToBillingHubUsageGroupResponseA
 	return o
 }
 
+func (o BillingHubUsageGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BillingHubUsageGroupResponse] {
+	return pulumix.Output[[]BillingHubUsageGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BillingHubUsageGroupResponseArrayOutput) Index(i pulumi.IntInput) BillingHubUsageGroupResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BillingHubUsageGroupResponse {
 		return vs[0].([]BillingHubUsageGroupResponse)[vs[1].(int)]
@@ -462,6 +523,12 @@ func (o BillingHubUsageGroupedByUpdateTypeResponseOutput) ToBillingHubUsageGroup
 
 func (o BillingHubUsageGroupedByUpdateTypeResponseOutput) ToBillingHubUsageGroupedByUpdateTypeResponseOutputWithContext(ctx context.Context) BillingHubUsageGroupedByUpdateTypeResponseOutput {
 	return o
+}
+
+func (o BillingHubUsageGroupedByUpdateTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BillingHubUsageGroupedByUpdateTypeResponse] {
+	return pulumix.Output[BillingHubUsageGroupedByUpdateTypeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BillingHubUsageGroupedByUpdateTypeResponseOutput) TotalCharges() pulumi.Float64PtrOutput {
@@ -498,6 +565,12 @@ func (o BillingHubUsageGroupedByUpdateTypeResponseArrayOutput) ToBillingHubUsage
 
 func (o BillingHubUsageGroupedByUpdateTypeResponseArrayOutput) ToBillingHubUsageGroupedByUpdateTypeResponseArrayOutputWithContext(ctx context.Context) BillingHubUsageGroupedByUpdateTypeResponseArrayOutput {
 	return o
+}
+
+func (o BillingHubUsageGroupedByUpdateTypeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BillingHubUsageGroupedByUpdateTypeResponse] {
+	return pulumix.Output[[]BillingHubUsageGroupedByUpdateTypeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BillingHubUsageGroupedByUpdateTypeResponseArrayOutput) Index(i pulumi.IntInput) BillingHubUsageGroupedByUpdateTypeResponseOutput {
@@ -577,6 +650,12 @@ func (i CommandArgs) ToCommandOutputWithContext(ctx context.Context) CommandOutp
 	return pulumi.ToOutputWithContext(ctx, i).(CommandOutput)
 }
 
+func (i CommandArgs) ToOutput(ctx context.Context) pulumix.Output[Command] {
+	return pulumix.Output[Command]{
+		OutputState: i.ToCommandOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CommandArrayInput is an input type that accepts CommandArray and CommandArrayOutput values.
 // You can construct a concrete instance of `CommandArrayInput` via:
 //
@@ -602,6 +681,12 @@ func (i CommandArray) ToCommandArrayOutputWithContext(ctx context.Context) Comma
 	return pulumi.ToOutputWithContext(ctx, i).(CommandArrayOutput)
 }
 
+func (i CommandArray) ToOutput(ctx context.Context) pulumix.Output[[]Command] {
+	return pulumix.Output[[]Command]{
+		OutputState: i.ToCommandArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The command used in the test
 type CommandOutput struct{ *pulumi.OutputState }
 
@@ -615,6 +700,12 @@ func (o CommandOutput) ToCommandOutput() CommandOutput {
 
 func (o CommandOutput) ToCommandOutputWithContext(ctx context.Context) CommandOutput {
 	return o
+}
+
+func (o CommandOutput) ToOutput(ctx context.Context) pulumix.Output[Command] {
+	return pulumix.Output[Command]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action of the command.
@@ -681,6 +772,12 @@ func (o CommandArrayOutput) ToCommandArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o CommandArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Command] {
+	return pulumix.Output[[]Command]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CommandArrayOutput) Index(i pulumi.IntInput) CommandOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Command {
 		return vs[0].([]Command)[vs[1].(int)]
@@ -724,6 +821,12 @@ func (o CommandResponseOutput) ToCommandResponseOutput() CommandResponseOutput {
 
 func (o CommandResponseOutput) ToCommandResponseOutputWithContext(ctx context.Context) CommandResponseOutput {
 	return o
+}
+
+func (o CommandResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CommandResponse] {
+	return pulumix.Output[CommandResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action of the command.
@@ -790,6 +893,12 @@ func (o CommandResponseArrayOutput) ToCommandResponseArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o CommandResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CommandResponse] {
+	return pulumix.Output[[]CommandResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CommandResponseArrayOutput) Index(i pulumi.IntInput) CommandResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CommandResponse {
 		return vs[0].([]CommandResponse)[vs[1].(int)]
@@ -829,6 +938,12 @@ func (i DistributionGroupListReceiverValueArgs) ToDistributionGroupListReceiverV
 
 func (i DistributionGroupListReceiverValueArgs) ToDistributionGroupListReceiverValueOutputWithContext(ctx context.Context) DistributionGroupListReceiverValueOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DistributionGroupListReceiverValueOutput)
+}
+
+func (i DistributionGroupListReceiverValueArgs) ToOutput(ctx context.Context) pulumix.Output[DistributionGroupListReceiverValue] {
+	return pulumix.Output[DistributionGroupListReceiverValue]{
+		OutputState: i.ToDistributionGroupListReceiverValueOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i DistributionGroupListReceiverValueArgs) ToDistributionGroupListReceiverValuePtrOutput() DistributionGroupListReceiverValuePtrOutput {
@@ -872,6 +987,12 @@ func (i *distributionGroupListReceiverValuePtrType) ToDistributionGroupListRecei
 	return pulumi.ToOutputWithContext(ctx, i).(DistributionGroupListReceiverValuePtrOutput)
 }
 
+func (i *distributionGroupListReceiverValuePtrType) ToOutput(ctx context.Context) pulumix.Output[*DistributionGroupListReceiverValue] {
+	return pulumix.Output[*DistributionGroupListReceiverValue]{
+		OutputState: i.ToDistributionGroupListReceiverValuePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The user object receiver value.
 type DistributionGroupListReceiverValueOutput struct{ *pulumi.OutputState }
 
@@ -897,6 +1018,12 @@ func (o DistributionGroupListReceiverValueOutput) ToDistributionGroupListReceive
 	}).(DistributionGroupListReceiverValuePtrOutput)
 }
 
+func (o DistributionGroupListReceiverValueOutput) ToOutput(ctx context.Context) pulumix.Output[DistributionGroupListReceiverValue] {
+	return pulumix.Output[DistributionGroupListReceiverValue]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of distribution groups.
 func (o DistributionGroupListReceiverValueOutput) DistributionGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DistributionGroupListReceiverValue) []string { return v.DistributionGroups }).(pulumi.StringArrayOutput)
@@ -914,6 +1041,12 @@ func (o DistributionGroupListReceiverValuePtrOutput) ToDistributionGroupListRece
 
 func (o DistributionGroupListReceiverValuePtrOutput) ToDistributionGroupListReceiverValuePtrOutputWithContext(ctx context.Context) DistributionGroupListReceiverValuePtrOutput {
 	return o
+}
+
+func (o DistributionGroupListReceiverValuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DistributionGroupListReceiverValue] {
+	return pulumix.Output[*DistributionGroupListReceiverValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DistributionGroupListReceiverValuePtrOutput) Elem() DistributionGroupListReceiverValueOutput {
@@ -957,6 +1090,12 @@ func (o DistributionGroupListReceiverValueResponseOutput) ToDistributionGroupLis
 	return o
 }
 
+func (o DistributionGroupListReceiverValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DistributionGroupListReceiverValueResponse] {
+	return pulumix.Output[DistributionGroupListReceiverValueResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of distribution groups.
 func (o DistributionGroupListReceiverValueResponseOutput) DistributionGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DistributionGroupListReceiverValueResponse) []string { return v.DistributionGroups }).(pulumi.StringArrayOutput)
@@ -974,6 +1113,12 @@ func (o DistributionGroupListReceiverValueResponsePtrOutput) ToDistributionGroup
 
 func (o DistributionGroupListReceiverValueResponsePtrOutput) ToDistributionGroupListReceiverValueResponsePtrOutputWithContext(ctx context.Context) DistributionGroupListReceiverValueResponsePtrOutput {
 	return o
+}
+
+func (o DistributionGroupListReceiverValueResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DistributionGroupListReceiverValueResponse] {
+	return pulumix.Output[*DistributionGroupListReceiverValueResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DistributionGroupListReceiverValueResponsePtrOutput) Elem() DistributionGroupListReceiverValueResponseOutput {
@@ -1035,6 +1180,12 @@ func (i NotificationEventReceiverArgs) ToNotificationEventReceiverOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationEventReceiverOutput)
 }
 
+func (i NotificationEventReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[NotificationEventReceiver] {
+	return pulumix.Output[NotificationEventReceiver]{
+		OutputState: i.ToNotificationEventReceiverOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NotificationEventReceiverArrayInput is an input type that accepts NotificationEventReceiverArray and NotificationEventReceiverArrayOutput values.
 // You can construct a concrete instance of `NotificationEventReceiverArrayInput` via:
 //
@@ -1060,6 +1211,12 @@ func (i NotificationEventReceiverArray) ToNotificationEventReceiverArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationEventReceiverArrayOutput)
 }
 
+func (i NotificationEventReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]NotificationEventReceiver] {
+	return pulumix.Output[[]NotificationEventReceiver]{
+		OutputState: i.ToNotificationEventReceiverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A notification event receivers.
 type NotificationEventReceiverOutput struct{ *pulumi.OutputState }
 
@@ -1073,6 +1230,12 @@ func (o NotificationEventReceiverOutput) ToNotificationEventReceiverOutput() Not
 
 func (o NotificationEventReceiverOutput) ToNotificationEventReceiverOutputWithContext(ctx context.Context) NotificationEventReceiverOutput {
 	return o
+}
+
+func (o NotificationEventReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationEventReceiver] {
+	return pulumix.Output[NotificationEventReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of the notification event receiver.
@@ -1097,6 +1260,12 @@ func (o NotificationEventReceiverArrayOutput) ToNotificationEventReceiverArrayOu
 
 func (o NotificationEventReceiverArrayOutput) ToNotificationEventReceiverArrayOutputWithContext(ctx context.Context) NotificationEventReceiverArrayOutput {
 	return o
+}
+
+func (o NotificationEventReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NotificationEventReceiver] {
+	return pulumix.Output[[]NotificationEventReceiver]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationEventReceiverArrayOutput) Index(i pulumi.IntInput) NotificationEventReceiverOutput {
@@ -1128,6 +1297,12 @@ func (o NotificationEventReceiverResponseOutput) ToNotificationEventReceiverResp
 	return o
 }
 
+func (o NotificationEventReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationEventReceiverResponse] {
+	return pulumix.Output[NotificationEventReceiverResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The type of the notification event receiver.
 func (o NotificationEventReceiverResponseOutput) ReceiverType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationEventReceiverResponse) *string { return v.ReceiverType }).(pulumi.StringPtrOutput)
@@ -1150,6 +1325,12 @@ func (o NotificationEventReceiverResponseArrayOutput) ToNotificationEventReceive
 
 func (o NotificationEventReceiverResponseArrayOutput) ToNotificationEventReceiverResponseArrayOutputWithContext(ctx context.Context) NotificationEventReceiverResponseArrayOutput {
 	return o
+}
+
+func (o NotificationEventReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NotificationEventReceiverResponse] {
+	return pulumix.Output[[]NotificationEventReceiverResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationEventReceiverResponseArrayOutput) Index(i pulumi.IntInput) NotificationEventReceiverResponseOutput {
@@ -1201,6 +1382,12 @@ func (i NotificationReceiverValueArgs) ToNotificationReceiverValueOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationReceiverValueOutput)
 }
 
+func (i NotificationReceiverValueArgs) ToOutput(ctx context.Context) pulumix.Output[NotificationReceiverValue] {
+	return pulumix.Output[NotificationReceiverValue]{
+		OutputState: i.ToNotificationReceiverValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NotificationReceiverValueArgs) ToNotificationReceiverValuePtrOutput() NotificationReceiverValuePtrOutput {
 	return i.ToNotificationReceiverValuePtrOutputWithContext(context.Background())
 }
@@ -1242,6 +1429,12 @@ func (i *notificationReceiverValuePtrType) ToNotificationReceiverValuePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationReceiverValuePtrOutput)
 }
 
+func (i *notificationReceiverValuePtrType) ToOutput(ctx context.Context) pulumix.Output[*NotificationReceiverValue] {
+	return pulumix.Output[*NotificationReceiverValue]{
+		OutputState: i.ToNotificationReceiverValuePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A notification event receiver value.
 type NotificationReceiverValueOutput struct{ *pulumi.OutputState }
 
@@ -1265,6 +1458,12 @@ func (o NotificationReceiverValueOutput) ToNotificationReceiverValuePtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationReceiverValue) *NotificationReceiverValue {
 		return &v
 	}).(NotificationReceiverValuePtrOutput)
+}
+
+func (o NotificationReceiverValueOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationReceiverValue] {
+	return pulumix.Output[NotificationReceiverValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The user object receiver value.
@@ -1296,6 +1495,12 @@ func (o NotificationReceiverValuePtrOutput) ToNotificationReceiverValuePtrOutput
 
 func (o NotificationReceiverValuePtrOutput) ToNotificationReceiverValuePtrOutputWithContext(ctx context.Context) NotificationReceiverValuePtrOutput {
 	return o
+}
+
+func (o NotificationReceiverValuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationReceiverValue] {
+	return pulumix.Output[*NotificationReceiverValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationReceiverValuePtrOutput) Elem() NotificationReceiverValueOutput {
@@ -1363,6 +1568,12 @@ func (o NotificationReceiverValueResponseOutput) ToNotificationReceiverValueResp
 	return o
 }
 
+func (o NotificationReceiverValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationReceiverValueResponse] {
+	return pulumix.Output[NotificationReceiverValueResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The user object receiver value.
 func (o NotificationReceiverValueResponseOutput) DistributionGroupListReceiverValue() DistributionGroupListReceiverValueResponsePtrOutput {
 	return o.ApplyT(func(v NotificationReceiverValueResponse) *DistributionGroupListReceiverValueResponse {
@@ -1396,6 +1607,12 @@ func (o NotificationReceiverValueResponsePtrOutput) ToNotificationReceiverValueR
 
 func (o NotificationReceiverValueResponsePtrOutput) ToNotificationReceiverValueResponsePtrOutputWithContext(ctx context.Context) NotificationReceiverValueResponsePtrOutput {
 	return o
+}
+
+func (o NotificationReceiverValueResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationReceiverValueResponse] {
+	return pulumix.Output[*NotificationReceiverValueResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationReceiverValueResponsePtrOutput) Elem() NotificationReceiverValueResponseOutput {
@@ -1463,6 +1680,12 @@ func (o PackageValidationResultResponseOutput) ToPackageValidationResultResponse
 	return o
 }
 
+func (o PackageValidationResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PackageValidationResultResponse] {
+	return pulumix.Output[PackageValidationResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Error information.
 func (o PackageValidationResultResponseOutput) Errors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PackageValidationResultResponse) []string { return v.Errors }).(pulumi.StringArrayOutput)
@@ -1490,6 +1713,12 @@ func (o PackageValidationResultResponseArrayOutput) ToPackageValidationResultRes
 
 func (o PackageValidationResultResponseArrayOutput) ToPackageValidationResultResponseArrayOutputWithContext(ctx context.Context) PackageValidationResultResponseArrayOutput {
 	return o
+}
+
+func (o PackageValidationResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PackageValidationResultResponse] {
+	return pulumix.Output[[]PackageValidationResultResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PackageValidationResultResponseArrayOutput) Index(i pulumi.IntInput) PackageValidationResultResponseOutput {
@@ -1541,6 +1770,12 @@ func (i SubscriptionReceiverValueArgs) ToSubscriptionReceiverValueOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionReceiverValueOutput)
 }
 
+func (i SubscriptionReceiverValueArgs) ToOutput(ctx context.Context) pulumix.Output[SubscriptionReceiverValue] {
+	return pulumix.Output[SubscriptionReceiverValue]{
+		OutputState: i.ToSubscriptionReceiverValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SubscriptionReceiverValueArgs) ToSubscriptionReceiverValuePtrOutput() SubscriptionReceiverValuePtrOutput {
 	return i.ToSubscriptionReceiverValuePtrOutputWithContext(context.Background())
 }
@@ -1582,6 +1817,12 @@ func (i *subscriptionReceiverValuePtrType) ToSubscriptionReceiverValuePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionReceiverValuePtrOutput)
 }
 
+func (i *subscriptionReceiverValuePtrType) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionReceiverValue] {
+	return pulumix.Output[*SubscriptionReceiverValue]{
+		OutputState: i.ToSubscriptionReceiverValuePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The subscription role receiver value.
 type SubscriptionReceiverValueOutput struct{ *pulumi.OutputState }
 
@@ -1605,6 +1846,12 @@ func (o SubscriptionReceiverValueOutput) ToSubscriptionReceiverValuePtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionReceiverValue) *SubscriptionReceiverValue {
 		return &v
 	}).(SubscriptionReceiverValuePtrOutput)
+}
+
+func (o SubscriptionReceiverValueOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionReceiverValue] {
+	return pulumix.Output[SubscriptionReceiverValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The role of the notification receiver.
@@ -1634,6 +1881,12 @@ func (o SubscriptionReceiverValuePtrOutput) ToSubscriptionReceiverValuePtrOutput
 
 func (o SubscriptionReceiverValuePtrOutput) ToSubscriptionReceiverValuePtrOutputWithContext(ctx context.Context) SubscriptionReceiverValuePtrOutput {
 	return o
+}
+
+func (o SubscriptionReceiverValuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionReceiverValue] {
+	return pulumix.Output[*SubscriptionReceiverValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubscriptionReceiverValuePtrOutput) Elem() SubscriptionReceiverValueOutput {
@@ -1701,6 +1954,12 @@ func (o SubscriptionReceiverValueResponseOutput) ToSubscriptionReceiverValueResp
 	return o
 }
 
+func (o SubscriptionReceiverValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionReceiverValueResponse] {
+	return pulumix.Output[SubscriptionReceiverValueResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The role of the notification receiver.
 func (o SubscriptionReceiverValueResponseOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubscriptionReceiverValueResponse) *string { return v.Role }).(pulumi.StringPtrOutput)
@@ -1728,6 +1987,12 @@ func (o SubscriptionReceiverValueResponsePtrOutput) ToSubscriptionReceiverValueR
 
 func (o SubscriptionReceiverValueResponsePtrOutput) ToSubscriptionReceiverValueResponsePtrOutputWithContext(ctx context.Context) SubscriptionReceiverValueResponsePtrOutput {
 	return o
+}
+
+func (o SubscriptionReceiverValueResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionReceiverValueResponse] {
+	return pulumix.Output[*SubscriptionReceiverValueResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubscriptionReceiverValueResponsePtrOutput) Elem() SubscriptionReceiverValueResponseOutput {
@@ -1799,6 +2064,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -1874,6 +2145,12 @@ func (i TargetOSInfoArgs) ToTargetOSInfoOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TargetOSInfoOutput)
 }
 
+func (i TargetOSInfoArgs) ToOutput(ctx context.Context) pulumix.Output[TargetOSInfo] {
+	return pulumix.Output[TargetOSInfo]{
+		OutputState: i.ToTargetOSInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TargetOSInfoArrayInput is an input type that accepts TargetOSInfoArray and TargetOSInfoArrayOutput values.
 // You can construct a concrete instance of `TargetOSInfoArrayInput` via:
 //
@@ -1899,6 +2176,12 @@ func (i TargetOSInfoArray) ToTargetOSInfoArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TargetOSInfoArrayOutput)
 }
 
+func (i TargetOSInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]TargetOSInfo] {
+	return pulumix.Output[[]TargetOSInfo]{
+		OutputState: i.ToTargetOSInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The information of the target OS to be tested.
 type TargetOSInfoOutput struct{ *pulumi.OutputState }
 
@@ -1912,6 +2195,12 @@ func (o TargetOSInfoOutput) ToTargetOSInfoOutput() TargetOSInfoOutput {
 
 func (o TargetOSInfoOutput) ToTargetOSInfoOutputWithContext(ctx context.Context) TargetOSInfoOutput {
 	return o
+}
+
+func (o TargetOSInfoOutput) ToOutput(ctx context.Context) pulumix.Output[TargetOSInfo] {
+	return pulumix.Output[TargetOSInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the baseline OSs to be tested.
@@ -1941,6 +2230,12 @@ func (o TargetOSInfoArrayOutput) ToTargetOSInfoArrayOutput() TargetOSInfoArrayOu
 
 func (o TargetOSInfoArrayOutput) ToTargetOSInfoArrayOutputWithContext(ctx context.Context) TargetOSInfoArrayOutput {
 	return o
+}
+
+func (o TargetOSInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetOSInfo] {
+	return pulumix.Output[[]TargetOSInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetOSInfoArrayOutput) Index(i pulumi.IntInput) TargetOSInfoOutput {
@@ -1974,6 +2269,12 @@ func (o TargetOSInfoResponseOutput) ToTargetOSInfoResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o TargetOSInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetOSInfoResponse] {
+	return pulumix.Output[TargetOSInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the baseline OSs to be tested.
 func (o TargetOSInfoResponseOutput) BaselineOSs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TargetOSInfoResponse) []string { return v.BaselineOSs }).(pulumi.StringArrayOutput)
@@ -2001,6 +2302,12 @@ func (o TargetOSInfoResponseArrayOutput) ToTargetOSInfoResponseArrayOutput() Tar
 
 func (o TargetOSInfoResponseArrayOutput) ToTargetOSInfoResponseArrayOutputWithContext(ctx context.Context) TargetOSInfoResponseArrayOutput {
 	return o
+}
+
+func (o TargetOSInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetOSInfoResponse] {
+	return pulumix.Output[[]TargetOSInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetOSInfoResponseArrayOutput) Index(i pulumi.IntInput) TargetOSInfoResponseOutput {
@@ -2052,6 +2359,12 @@ func (i TestArgs) ToTestOutputWithContext(ctx context.Context) TestOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TestOutput)
 }
 
+func (i TestArgs) ToOutput(ctx context.Context) pulumix.Output[Test] {
+	return pulumix.Output[Test]{
+		OutputState: i.ToTestOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TestArrayInput is an input type that accepts TestArray and TestArrayOutput values.
 // You can construct a concrete instance of `TestArrayInput` via:
 //
@@ -2077,6 +2390,12 @@ func (i TestArray) ToTestArrayOutputWithContext(ctx context.Context) TestArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(TestArrayOutput)
 }
 
+func (i TestArray) ToOutput(ctx context.Context) pulumix.Output[[]Test] {
+	return pulumix.Output[[]Test]{
+		OutputState: i.ToTestArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The definition of a Test.
 type TestOutput struct{ *pulumi.OutputState }
 
@@ -2090,6 +2409,12 @@ func (o TestOutput) ToTestOutput() TestOutput {
 
 func (o TestOutput) ToTestOutputWithContext(ctx context.Context) TestOutput {
 	return o
+}
+
+func (o TestOutput) ToOutput(ctx context.Context) pulumix.Output[Test] {
+	return pulumix.Output[Test]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The commands used in the test.
@@ -2119,6 +2444,12 @@ func (o TestArrayOutput) ToTestArrayOutput() TestArrayOutput {
 
 func (o TestArrayOutput) ToTestArrayOutputWithContext(ctx context.Context) TestArrayOutput {
 	return o
+}
+
+func (o TestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Test] {
+	return pulumix.Output[[]Test]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TestArrayOutput) Index(i pulumi.IntInput) TestOutput {
@@ -2174,6 +2505,12 @@ func (i TestBaseAccountSKUArgs) ToTestBaseAccountSKUOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TestBaseAccountSKUOutput)
 }
 
+func (i TestBaseAccountSKUArgs) ToOutput(ctx context.Context) pulumix.Output[TestBaseAccountSKU] {
+	return pulumix.Output[TestBaseAccountSKU]{
+		OutputState: i.ToTestBaseAccountSKUOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a Test Base Account SKU.
 type TestBaseAccountSKUOutput struct{ *pulumi.OutputState }
 
@@ -2187,6 +2524,12 @@ func (o TestBaseAccountSKUOutput) ToTestBaseAccountSKUOutput() TestBaseAccountSK
 
 func (o TestBaseAccountSKUOutput) ToTestBaseAccountSKUOutputWithContext(ctx context.Context) TestBaseAccountSKUOutput {
 	return o
+}
+
+func (o TestBaseAccountSKUOutput) ToOutput(ctx context.Context) pulumix.Output[TestBaseAccountSKU] {
+	return pulumix.Output[TestBaseAccountSKU]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The locations that the SKU is available.
@@ -2232,6 +2575,12 @@ func (o TestBaseAccountSKUCapabilityResponseOutput) ToTestBaseAccountSKUCapabili
 	return o
 }
 
+func (o TestBaseAccountSKUCapabilityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TestBaseAccountSKUCapabilityResponse] {
+	return pulumix.Output[TestBaseAccountSKUCapabilityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // An invariant to describe the feature, such as 'SLA'.
 func (o TestBaseAccountSKUCapabilityResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TestBaseAccountSKUCapabilityResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -2254,6 +2603,12 @@ func (o TestBaseAccountSKUCapabilityResponseArrayOutput) ToTestBaseAccountSKUCap
 
 func (o TestBaseAccountSKUCapabilityResponseArrayOutput) ToTestBaseAccountSKUCapabilityResponseArrayOutputWithContext(ctx context.Context) TestBaseAccountSKUCapabilityResponseArrayOutput {
 	return o
+}
+
+func (o TestBaseAccountSKUCapabilityResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TestBaseAccountSKUCapabilityResponse] {
+	return pulumix.Output[[]TestBaseAccountSKUCapabilityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TestBaseAccountSKUCapabilityResponseArrayOutput) Index(i pulumi.IntInput) TestBaseAccountSKUCapabilityResponseOutput {
@@ -2289,6 +2644,12 @@ func (o TestBaseAccountSKUResponseOutput) ToTestBaseAccountSKUResponseOutput() T
 
 func (o TestBaseAccountSKUResponseOutput) ToTestBaseAccountSKUResponseOutputWithContext(ctx context.Context) TestBaseAccountSKUResponseOutput {
 	return o
+}
+
+func (o TestBaseAccountSKUResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TestBaseAccountSKUResponse] {
+	return pulumix.Output[TestBaseAccountSKUResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The capabilities of a SKU.
@@ -2345,6 +2706,12 @@ func (o TestResponseOutput) ToTestResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o TestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TestResponse] {
+	return pulumix.Output[TestResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The commands used in the test.
 func (o TestResponseOutput) Commands() CommandResponseArrayOutput {
 	return o.ApplyT(func(v TestResponse) []CommandResponse { return v.Commands }).(CommandResponseArrayOutput)
@@ -2382,6 +2749,12 @@ func (o TestResponseArrayOutput) ToTestResponseArrayOutput() TestResponseArrayOu
 
 func (o TestResponseArrayOutput) ToTestResponseArrayOutputWithContext(ctx context.Context) TestResponseArrayOutput {
 	return o
+}
+
+func (o TestResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TestResponse] {
+	return pulumix.Output[[]TestResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TestResponseArrayOutput) Index(i pulumi.IntInput) TestResponseOutput {
@@ -2425,6 +2798,12 @@ func (i UserObjectReceiverValueArgs) ToUserObjectReceiverValueOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(UserObjectReceiverValueOutput)
 }
 
+func (i UserObjectReceiverValueArgs) ToOutput(ctx context.Context) pulumix.Output[UserObjectReceiverValue] {
+	return pulumix.Output[UserObjectReceiverValue]{
+		OutputState: i.ToUserObjectReceiverValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UserObjectReceiverValueArgs) ToUserObjectReceiverValuePtrOutput() UserObjectReceiverValuePtrOutput {
 	return i.ToUserObjectReceiverValuePtrOutputWithContext(context.Background())
 }
@@ -2466,6 +2845,12 @@ func (i *userObjectReceiverValuePtrType) ToUserObjectReceiverValuePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(UserObjectReceiverValuePtrOutput)
 }
 
+func (i *userObjectReceiverValuePtrType) ToOutput(ctx context.Context) pulumix.Output[*UserObjectReceiverValue] {
+	return pulumix.Output[*UserObjectReceiverValue]{
+		OutputState: i.ToUserObjectReceiverValuePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The user object receiver value.
 type UserObjectReceiverValueOutput struct{ *pulumi.OutputState }
 
@@ -2491,6 +2876,12 @@ func (o UserObjectReceiverValueOutput) ToUserObjectReceiverValuePtrOutputWithCon
 	}).(UserObjectReceiverValuePtrOutput)
 }
 
+func (o UserObjectReceiverValueOutput) ToOutput(ctx context.Context) pulumix.Output[UserObjectReceiverValue] {
+	return pulumix.Output[UserObjectReceiverValue]{
+		OutputState: o.OutputState,
+	}
+}
+
 // user object ids.
 func (o UserObjectReceiverValueOutput) UserObjectIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserObjectReceiverValue) []string { return v.UserObjectIds }).(pulumi.StringArrayOutput)
@@ -2508,6 +2899,12 @@ func (o UserObjectReceiverValuePtrOutput) ToUserObjectReceiverValuePtrOutput() U
 
 func (o UserObjectReceiverValuePtrOutput) ToUserObjectReceiverValuePtrOutputWithContext(ctx context.Context) UserObjectReceiverValuePtrOutput {
 	return o
+}
+
+func (o UserObjectReceiverValuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserObjectReceiverValue] {
+	return pulumix.Output[*UserObjectReceiverValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserObjectReceiverValuePtrOutput) Elem() UserObjectReceiverValueOutput {
@@ -2551,6 +2948,12 @@ func (o UserObjectReceiverValueResponseOutput) ToUserObjectReceiverValueResponse
 	return o
 }
 
+func (o UserObjectReceiverValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserObjectReceiverValueResponse] {
+	return pulumix.Output[UserObjectReceiverValueResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // user object ids.
 func (o UserObjectReceiverValueResponseOutput) UserObjectIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserObjectReceiverValueResponse) []string { return v.UserObjectIds }).(pulumi.StringArrayOutput)
@@ -2568,6 +2971,12 @@ func (o UserObjectReceiverValueResponsePtrOutput) ToUserObjectReceiverValueRespo
 
 func (o UserObjectReceiverValueResponsePtrOutput) ToUserObjectReceiverValueResponsePtrOutputWithContext(ctx context.Context) UserObjectReceiverValueResponsePtrOutput {
 	return o
+}
+
+func (o UserObjectReceiverValueResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserObjectReceiverValueResponse] {
+	return pulumix.Output[*UserObjectReceiverValueResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserObjectReceiverValueResponsePtrOutput) Elem() UserObjectReceiverValueResponseOutput {

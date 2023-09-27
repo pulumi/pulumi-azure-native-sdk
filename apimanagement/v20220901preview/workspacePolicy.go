@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Policy Contract details.
@@ -143,6 +144,12 @@ func (i *WorkspacePolicy) ToWorkspacePolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspacePolicyOutput)
 }
 
+func (i *WorkspacePolicy) ToOutput(ctx context.Context) pulumix.Output[*WorkspacePolicy] {
+	return pulumix.Output[*WorkspacePolicy]{
+		OutputState: i.ToWorkspacePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspacePolicyOutput struct{ *pulumi.OutputState }
 
 func (WorkspacePolicyOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o WorkspacePolicyOutput) ToWorkspacePolicyOutput() WorkspacePolicyOutput {
 
 func (o WorkspacePolicyOutput) ToWorkspacePolicyOutputWithContext(ctx context.Context) WorkspacePolicyOutput {
 	return o
+}
+
+func (o WorkspacePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspacePolicy] {
+	return pulumix.Output[*WorkspacePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Format of the policyContent.

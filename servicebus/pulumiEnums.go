@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessRights string
@@ -113,6 +114,12 @@ func (o EntityStatusOutput) ToEntityStatusPtrOutputWithContext(ctx context.Conte
 	}).(EntityStatusPtrOutput)
 }
 
+func (o EntityStatusOutput) ToOutput(ctx context.Context) pulumix.Output[EntityStatus] {
+	return pulumix.Output[EntityStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -146,6 +153,12 @@ func (o EntityStatusPtrOutput) ToEntityStatusPtrOutput() EntityStatusPtrOutput {
 
 func (o EntityStatusPtrOutput) ToEntityStatusPtrOutputWithContext(ctx context.Context) EntityStatusPtrOutput {
 	return o
+}
+
+func (o EntityStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityStatus] {
+	return pulumix.Output[*EntityStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityStatusPtrOutput) Elem() EntityStatusOutput {
@@ -208,6 +221,12 @@ func (in *entityStatusPtr) ToEntityStatusPtrOutput() EntityStatusPtrOutput {
 
 func (in *entityStatusPtr) ToEntityStatusPtrOutputWithContext(ctx context.Context) EntityStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityStatusPtrOutput)
+}
+
+func (in *entityStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityStatus] {
+	return pulumix.Output[*EntityStatus]{
+		OutputState: in.ToEntityStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Filter type that is evaluated against a BrokeredMessage.

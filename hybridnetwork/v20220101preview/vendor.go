@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Vendor resource.
@@ -112,6 +113,12 @@ func (i *Vendor) ToVendorOutputWithContext(ctx context.Context) VendorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VendorOutput)
 }
 
+func (i *Vendor) ToOutput(ctx context.Context) pulumix.Output[*Vendor] {
+	return pulumix.Output[*Vendor]{
+		OutputState: i.ToVendorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VendorOutput struct{ *pulumi.OutputState }
 
 func (VendorOutput) ElementType() reflect.Type {
@@ -124,6 +131,12 @@ func (o VendorOutput) ToVendorOutput() VendorOutput {
 
 func (o VendorOutput) ToVendorOutputWithContext(ctx context.Context) VendorOutput {
 	return o
+}
+
+func (o VendorOutput) ToOutput(ctx context.Context) pulumix.Output[*Vendor] {
+	return pulumix.Output[*Vendor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

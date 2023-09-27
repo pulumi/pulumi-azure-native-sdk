@@ -253,6 +253,13 @@ const (
 	KindReadOnlyFollowing = Kind("ReadOnlyFollowing")
 )
 
+// The language name, for example Python.
+type Language string
+
+const (
+	LanguagePython = Language("Python")
+)
+
 // The language extension image name.
 type LanguageExtensionImageName string
 

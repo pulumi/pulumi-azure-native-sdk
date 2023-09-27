@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Define the Database resource.
@@ -154,6 +155,12 @@ func (i *SAPDatabaseInstance) ToSAPDatabaseInstanceOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SAPDatabaseInstanceOutput)
 }
 
+func (i *SAPDatabaseInstance) ToOutput(ctx context.Context) pulumix.Output[*SAPDatabaseInstance] {
+	return pulumix.Output[*SAPDatabaseInstance]{
+		OutputState: i.ToSAPDatabaseInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SAPDatabaseInstanceOutput struct{ *pulumi.OutputState }
 
 func (SAPDatabaseInstanceOutput) ElementType() reflect.Type {
@@ -166,6 +173,12 @@ func (o SAPDatabaseInstanceOutput) ToSAPDatabaseInstanceOutput() SAPDatabaseInst
 
 func (o SAPDatabaseInstanceOutput) ToSAPDatabaseInstanceOutputWithContext(ctx context.Context) SAPDatabaseInstanceOutput {
 	return o
+}
+
+func (o SAPDatabaseInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*SAPDatabaseInstance] {
+	return pulumix.Output[*SAPDatabaseInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Database SID name.

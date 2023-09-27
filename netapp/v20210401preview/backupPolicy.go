@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Backup policy information
@@ -228,6 +229,12 @@ func (i *BackupPolicy) ToBackupPolicyOutputWithContext(ctx context.Context) Back
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyOutput)
 }
 
+func (i *BackupPolicy) ToOutput(ctx context.Context) pulumix.Output[*BackupPolicy] {
+	return pulumix.Output[*BackupPolicy]{
+		OutputState: i.ToBackupPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPolicyOutput struct{ *pulumi.OutputState }
 
 func (BackupPolicyOutput) ElementType() reflect.Type {
@@ -240,6 +247,12 @@ func (o BackupPolicyOutput) ToBackupPolicyOutput() BackupPolicyOutput {
 
 func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput {
 	return o
+}
+
+func (o BackupPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPolicy] {
+	return pulumix.Output[*BackupPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Daily backups count to keep

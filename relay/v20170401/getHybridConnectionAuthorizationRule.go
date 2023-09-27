@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Hybrid connection authorization rule for a hybrid connection by name.
@@ -86,6 +87,12 @@ func (o LookupHybridConnectionAuthorizationRuleResultOutput) ToLookupHybridConne
 
 func (o LookupHybridConnectionAuthorizationRuleResultOutput) ToLookupHybridConnectionAuthorizationRuleResultOutputWithContext(ctx context.Context) LookupHybridConnectionAuthorizationRuleResultOutput {
 	return o
+}
+
+func (o LookupHybridConnectionAuthorizationRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHybridConnectionAuthorizationRuleResult] {
+	return pulumix.Output[LookupHybridConnectionAuthorizationRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.

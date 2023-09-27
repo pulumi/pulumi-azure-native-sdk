@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An attestation resource.
@@ -174,6 +175,12 @@ func (i *AttestationAtResourceGroup) ToAttestationAtResourceGroupOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AttestationAtResourceGroupOutput)
 }
 
+func (i *AttestationAtResourceGroup) ToOutput(ctx context.Context) pulumix.Output[*AttestationAtResourceGroup] {
+	return pulumix.Output[*AttestationAtResourceGroup]{
+		OutputState: i.ToAttestationAtResourceGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttestationAtResourceGroupOutput struct{ *pulumi.OutputState }
 
 func (AttestationAtResourceGroupOutput) ElementType() reflect.Type {
@@ -186,6 +193,12 @@ func (o AttestationAtResourceGroupOutput) ToAttestationAtResourceGroupOutput() A
 
 func (o AttestationAtResourceGroupOutput) ToAttestationAtResourceGroupOutputWithContext(ctx context.Context) AttestationAtResourceGroupOutput {
 	return o
+}
+
+func (o AttestationAtResourceGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*AttestationAtResourceGroup] {
+	return pulumix.Output[*AttestationAtResourceGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the evidence was assessed

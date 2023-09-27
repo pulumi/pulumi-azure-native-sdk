@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List Content Keys used by this Streaming Locator
@@ -77,6 +78,12 @@ func (o ListStreamingLocatorContentKeysResultOutput) ToListStreamingLocatorConte
 
 func (o ListStreamingLocatorContentKeysResultOutput) ToListStreamingLocatorContentKeysResultOutputWithContext(ctx context.Context) ListStreamingLocatorContentKeysResultOutput {
 	return o
+}
+
+func (o ListStreamingLocatorContentKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListStreamingLocatorContentKeysResult] {
+	return pulumix.Output[ListStreamingLocatorContentKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ContentKeys used by current Streaming Locator

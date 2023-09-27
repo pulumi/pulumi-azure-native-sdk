@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an environment type.
@@ -87,6 +88,12 @@ func (o LookupEnvironmentTypeResultOutput) ToLookupEnvironmentTypeResultOutput()
 
 func (o LookupEnvironmentTypeResultOutput) ToLookupEnvironmentTypeResultOutputWithContext(ctx context.Context) LookupEnvironmentTypeResultOutput {
 	return o
+}
+
+func (o LookupEnvironmentTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEnvironmentTypeResult] {
+	return pulumix.Output[LookupEnvironmentTypeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

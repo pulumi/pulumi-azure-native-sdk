@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configuration settings for the Azure App Service Authentication / Authorization V2 feature.
@@ -173,6 +174,12 @@ func (i *WebAppAuthSettingsV2Slot) ToWebAppAuthSettingsV2SlotOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppAuthSettingsV2SlotOutput)
 }
 
+func (i *WebAppAuthSettingsV2Slot) ToOutput(ctx context.Context) pulumix.Output[*WebAppAuthSettingsV2Slot] {
+	return pulumix.Output[*WebAppAuthSettingsV2Slot]{
+		OutputState: i.ToWebAppAuthSettingsV2SlotOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppAuthSettingsV2SlotOutput struct{ *pulumi.OutputState }
 
 func (WebAppAuthSettingsV2SlotOutput) ElementType() reflect.Type {
@@ -185,6 +192,12 @@ func (o WebAppAuthSettingsV2SlotOutput) ToWebAppAuthSettingsV2SlotOutput() WebAp
 
 func (o WebAppAuthSettingsV2SlotOutput) ToWebAppAuthSettingsV2SlotOutputWithContext(ctx context.Context) WebAppAuthSettingsV2SlotOutput {
 	return o
+}
+
+func (o WebAppAuthSettingsV2SlotOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppAuthSettingsV2Slot] {
+	return pulumix.Output[*WebAppAuthSettingsV2Slot]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.

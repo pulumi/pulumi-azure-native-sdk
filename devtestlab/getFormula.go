@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get formula.
@@ -116,6 +117,12 @@ func (o LookupFormulaResultOutput) ToLookupFormulaResultOutput() LookupFormulaRe
 
 func (o LookupFormulaResultOutput) ToLookupFormulaResultOutputWithContext(ctx context.Context) LookupFormulaResultOutput {
 	return o
+}
+
+func (o LookupFormulaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFormulaResult] {
+	return pulumix.Output[LookupFormulaResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The author of the formula.

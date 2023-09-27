@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing a database script.
@@ -73,6 +74,9 @@ func NewScript(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230502:Script"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230815:Script"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -174,6 +178,12 @@ func (i *Script) ToScriptOutputWithContext(ctx context.Context) ScriptOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScriptOutput)
 }
 
+func (i *Script) ToOutput(ctx context.Context) pulumix.Output[*Script] {
+	return pulumix.Output[*Script]{
+		OutputState: i.ToScriptOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScriptOutput struct{ *pulumi.OutputState }
 
 func (ScriptOutput) ElementType() reflect.Type {
@@ -186,6 +196,12 @@ func (o ScriptOutput) ToScriptOutput() ScriptOutput {
 
 func (o ScriptOutput) ToScriptOutputWithContext(ctx context.Context) ScriptOutput {
 	return o
+}
+
+func (o ScriptOutput) ToOutput(ctx context.Context) pulumix.Output[*Script] {
+	return pulumix.Output[*Script]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Flag that indicates whether to continue if one of the command fails.

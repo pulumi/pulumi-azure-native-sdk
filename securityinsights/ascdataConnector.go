@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents ASC (Azure Security Center) data connector.
@@ -130,6 +131,9 @@ func NewASCDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:ASCDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:ASCDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -220,6 +224,12 @@ func (i *ASCDataConnector) ToASCDataConnectorOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ASCDataConnectorOutput)
 }
 
+func (i *ASCDataConnector) ToOutput(ctx context.Context) pulumix.Output[*ASCDataConnector] {
+	return pulumix.Output[*ASCDataConnector]{
+		OutputState: i.ToASCDataConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ASCDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (ASCDataConnectorOutput) ElementType() reflect.Type {
@@ -232,6 +242,12 @@ func (o ASCDataConnectorOutput) ToASCDataConnectorOutput() ASCDataConnectorOutpu
 
 func (o ASCDataConnectorOutput) ToASCDataConnectorOutputWithContext(ctx context.Context) ASCDataConnectorOutput {
 	return o
+}
+
+func (o ASCDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*ASCDataConnector] {
+	return pulumix.Output[*ASCDataConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available data types for the connector.

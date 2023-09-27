@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an instance of an auto scale v-core resource.
@@ -149,6 +150,12 @@ func (i *AutoScaleVCore) ToAutoScaleVCoreOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AutoScaleVCoreOutput)
 }
 
+func (i *AutoScaleVCore) ToOutput(ctx context.Context) pulumix.Output[*AutoScaleVCore] {
+	return pulumix.Output[*AutoScaleVCore]{
+		OutputState: i.ToAutoScaleVCoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AutoScaleVCoreOutput struct{ *pulumi.OutputState }
 
 func (AutoScaleVCoreOutput) ElementType() reflect.Type {
@@ -161,6 +168,12 @@ func (o AutoScaleVCoreOutput) ToAutoScaleVCoreOutput() AutoScaleVCoreOutput {
 
 func (o AutoScaleVCoreOutput) ToAutoScaleVCoreOutputWithContext(ctx context.Context) AutoScaleVCoreOutput {
 	return o
+}
+
+func (o AutoScaleVCoreOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoScaleVCore] {
+	return pulumix.Output[*AutoScaleVCore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The maximum capacity of an auto scale v-core resource.

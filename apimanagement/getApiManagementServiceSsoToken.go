@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Single-Sign-On token for the API Management Service which is valid for 5 Minutes.
@@ -73,6 +74,12 @@ func (o GetApiManagementServiceSsoTokenResultOutput) ToGetApiManagementServiceSs
 
 func (o GetApiManagementServiceSsoTokenResultOutput) ToGetApiManagementServiceSsoTokenResultOutputWithContext(ctx context.Context) GetApiManagementServiceSsoTokenResultOutput {
 	return o
+}
+
+func (o GetApiManagementServiceSsoTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApiManagementServiceSsoTokenResult] {
+	return pulumix.Output[GetApiManagementServiceSsoTokenResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Redirect URL to the Publisher Portal containing the SSO token.

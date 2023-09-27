@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get details of the specified capacity pool
@@ -130,6 +131,12 @@ func (o LookupPoolResultOutput) ToLookupPoolResultOutput() LookupPoolResultOutpu
 
 func (o LookupPoolResultOutput) ToLookupPoolResultOutputWithContext(ctx context.Context) LookupPoolResultOutput {
 	return o
+}
+
+func (o LookupPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPoolResult] {
+	return pulumix.Output[LookupPoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If enabled (true) the pool can contain cool Access enabled volumes.

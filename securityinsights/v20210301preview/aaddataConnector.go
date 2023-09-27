@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents AAD (Azure Active Directory) data connector.
@@ -135,6 +136,9 @@ func NewAADDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:AADDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:AADDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -229,6 +233,12 @@ func (i *AADDataConnector) ToAADDataConnectorOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AADDataConnectorOutput)
 }
 
+func (i *AADDataConnector) ToOutput(ctx context.Context) pulumix.Output[*AADDataConnector] {
+	return pulumix.Output[*AADDataConnector]{
+		OutputState: i.ToAADDataConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AADDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (AADDataConnectorOutput) ElementType() reflect.Type {
@@ -241,6 +251,12 @@ func (o AADDataConnectorOutput) ToAADDataConnectorOutput() AADDataConnectorOutpu
 
 func (o AADDataConnectorOutput) ToAADDataConnectorOutputWithContext(ctx context.Context) AADDataConnectorOutput {
 	return o
+}
+
+func (o AADDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*AADDataConnector] {
+	return pulumix.Output[*AADDataConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available data types for the connector.

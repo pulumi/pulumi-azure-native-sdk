@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Managed CCF. Contains the properties of Managed CCF Resource.
@@ -47,6 +48,9 @@ func NewManagedCCF(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:confidentialledger/v20230126preview:ManagedCCF"),
+		},
+		{
+			Type: pulumi.String("azure-native:confidentialledger/v20230628preview:ManagedCCF"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -132,6 +136,12 @@ func (i *ManagedCCF) ToManagedCCFOutputWithContext(ctx context.Context) ManagedC
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedCCFOutput)
 }
 
+func (i *ManagedCCF) ToOutput(ctx context.Context) pulumix.Output[*ManagedCCF] {
+	return pulumix.Output[*ManagedCCF]{
+		OutputState: i.ToManagedCCFOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedCCFOutput struct{ *pulumi.OutputState }
 
 func (ManagedCCFOutput) ElementType() reflect.Type {
@@ -144,6 +154,12 @@ func (o ManagedCCFOutput) ToManagedCCFOutput() ManagedCCFOutput {
 
 func (o ManagedCCFOutput) ToManagedCCFOutputWithContext(ctx context.Context) ManagedCCFOutput {
 	return o
+}
+
+func (o ManagedCCFOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedCCF] {
+	return pulumix.Output[*ManagedCCF]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The geo-location where the resource lives

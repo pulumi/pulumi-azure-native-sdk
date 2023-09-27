@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The storageSpaces resource definition.
@@ -143,6 +144,12 @@ func (i *StorageSpaceRetrieve) ToStorageSpaceRetrieveOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(StorageSpaceRetrieveOutput)
 }
 
+func (i *StorageSpaceRetrieve) ToOutput(ctx context.Context) pulumix.Output[*StorageSpaceRetrieve] {
+	return pulumix.Output[*StorageSpaceRetrieve]{
+		OutputState: i.ToStorageSpaceRetrieveOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StorageSpaceRetrieveOutput struct{ *pulumi.OutputState }
 
 func (StorageSpaceRetrieveOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o StorageSpaceRetrieveOutput) ToStorageSpaceRetrieveOutput() StorageSpaceR
 
 func (o StorageSpaceRetrieveOutput) ToStorageSpaceRetrieveOutputWithContext(ctx context.Context) StorageSpaceRetrieveOutput {
 	return o
+}
+
+func (o StorageSpaceRetrieveOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageSpaceRetrieve] {
+	return pulumix.Output[*StorageSpaceRetrieve]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageSpaceRetrieveOutput) ExtendedLocation() StorageSpacesResponseExtendedLocationPtrOutput {

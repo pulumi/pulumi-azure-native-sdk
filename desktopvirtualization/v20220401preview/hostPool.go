@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a HostPool definition.
@@ -158,6 +159,9 @@ func NewHostPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:HostPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:HostPool"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -333,6 +337,12 @@ func (i *HostPool) ToHostPoolOutputWithContext(ctx context.Context) HostPoolOutp
 	return pulumi.ToOutputWithContext(ctx, i).(HostPoolOutput)
 }
 
+func (i *HostPool) ToOutput(ctx context.Context) pulumix.Output[*HostPool] {
+	return pulumix.Output[*HostPool]{
+		OutputState: i.ToHostPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostPoolOutput struct{ *pulumi.OutputState }
 
 func (HostPoolOutput) ElementType() reflect.Type {
@@ -345,6 +355,12 @@ func (o HostPoolOutput) ToHostPoolOutput() HostPoolOutput {
 
 func (o HostPoolOutput) ToHostPoolOutputWithContext(ctx context.Context) HostPoolOutput {
 	return o
+}
+
+func (o HostPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*HostPool] {
+	return pulumix.Output[*HostPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The session host configuration for updating agent, monitoring agent, and stack component.

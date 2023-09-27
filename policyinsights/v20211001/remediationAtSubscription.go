@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The remediation definition.
@@ -162,6 +163,12 @@ func (i *RemediationAtSubscription) ToRemediationAtSubscriptionOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(RemediationAtSubscriptionOutput)
 }
 
+func (i *RemediationAtSubscription) ToOutput(ctx context.Context) pulumix.Output[*RemediationAtSubscription] {
+	return pulumix.Output[*RemediationAtSubscription]{
+		OutputState: i.ToRemediationAtSubscriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RemediationAtSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (RemediationAtSubscriptionOutput) ElementType() reflect.Type {
@@ -174,6 +181,12 @@ func (o RemediationAtSubscriptionOutput) ToRemediationAtSubscriptionOutput() Rem
 
 func (o RemediationAtSubscriptionOutput) ToRemediationAtSubscriptionOutputWithContext(ctx context.Context) RemediationAtSubscriptionOutput {
 	return o
+}
+
+func (o RemediationAtSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*RemediationAtSubscription] {
+	return pulumix.Output[*RemediationAtSubscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The remediation correlation Id. Can be used to find events related to the remediation in the activity log.

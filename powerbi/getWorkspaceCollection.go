@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves an existing Power BI Workspace Collection.
@@ -81,6 +82,12 @@ func (o LookupWorkspaceCollectionResultOutput) ToLookupWorkspaceCollectionResult
 
 func (o LookupWorkspaceCollectionResultOutput) ToLookupWorkspaceCollectionResultOutputWithContext(ctx context.Context) LookupWorkspaceCollectionResultOutput {
 	return o
+}
+
+func (o LookupWorkspaceCollectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceCollectionResult] {
+	return pulumix.Output[LookupWorkspaceCollectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource id

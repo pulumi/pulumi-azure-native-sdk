@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details of the specified volume
@@ -243,6 +244,12 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutput() LookupVolumeResul
 
 func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx context.Context) LookupVolumeResultOutput {
 	return o
+}
+
+func (o LookupVolumeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVolumeResult] {
+	return pulumix.Output[LookupVolumeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the operationalization cluster resource view. Note that the credentials are not returned by this call. Call ListKeys to get them.
@@ -115,6 +116,12 @@ func (o LookupOperationalizationClusterResultOutput) ToLookupOperationalizationC
 
 func (o LookupOperationalizationClusterResultOutput) ToLookupOperationalizationClusterResultOutputWithContext(ctx context.Context) LookupOperationalizationClusterResultOutput {
 	return o
+}
+
+func (o LookupOperationalizationClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOperationalizationClusterResult] {
+	return pulumix.Output[LookupOperationalizationClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AppInsights configuration.

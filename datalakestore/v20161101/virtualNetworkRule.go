@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data Lake Store virtual network rule information.
@@ -124,6 +125,12 @@ func (i *VirtualNetworkRule) ToVirtualNetworkRuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkRuleOutput)
 }
 
+func (i *VirtualNetworkRule) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkRule] {
+	return pulumix.Output[*VirtualNetworkRule]{
+		OutputState: i.ToVirtualNetworkRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualNetworkRuleOutput struct{ *pulumi.OutputState }
 
 func (VirtualNetworkRuleOutput) ElementType() reflect.Type {
@@ -136,6 +143,12 @@ func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutput() VirtualNetworkRul
 
 func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput {
 	return o
+}
+
+func (o VirtualNetworkRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkRule] {
+	return pulumix.Output[*VirtualNetworkRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource name.

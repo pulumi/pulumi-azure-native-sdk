@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get stream events telemetry of a live event.
@@ -77,6 +78,12 @@ func (o GetLiveEventStreamEventsResultOutput) ToGetLiveEventStreamEventsResultOu
 
 func (o GetLiveEventStreamEventsResultOutput) ToGetLiveEventStreamEventsResultOutputWithContext(ctx context.Context) GetLiveEventStreamEventsResultOutput {
 	return o
+}
+
+func (o GetLiveEventStreamEventsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLiveEventStreamEventsResult] {
+	return pulumix.Output[GetLiveEventStreamEventsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The result of the get live event stream events.

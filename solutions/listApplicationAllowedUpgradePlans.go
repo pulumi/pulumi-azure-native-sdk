@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List allowed upgrade plans for application.
@@ -73,6 +74,12 @@ func (o ListApplicationAllowedUpgradePlansResultOutput) ToListApplicationAllowed
 
 func (o ListApplicationAllowedUpgradePlansResultOutput) ToListApplicationAllowedUpgradePlansResultOutputWithContext(ctx context.Context) ListApplicationAllowedUpgradePlansResultOutput {
 	return o
+}
+
+func (o ListApplicationAllowedUpgradePlansResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListApplicationAllowedUpgradePlansResult] {
+	return pulumix.Output[ListApplicationAllowedUpgradePlansResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The array of plans.

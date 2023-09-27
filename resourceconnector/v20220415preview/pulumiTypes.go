@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o ApplianceCredentialKubeconfigResponseOutput) ToApplianceCredentialKubeco
 	return o
 }
 
+func (o ApplianceCredentialKubeconfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplianceCredentialKubeconfigResponse] {
+	return pulumix.Output[ApplianceCredentialKubeconfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name which contains the role of the kubeconfig.
 func (o ApplianceCredentialKubeconfigResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplianceCredentialKubeconfigResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -58,6 +65,12 @@ func (o ApplianceCredentialKubeconfigResponseArrayOutput) ToApplianceCredentialK
 
 func (o ApplianceCredentialKubeconfigResponseArrayOutput) ToApplianceCredentialKubeconfigResponseArrayOutputWithContext(ctx context.Context) ApplianceCredentialKubeconfigResponseArrayOutput {
 	return o
+}
+
+func (o ApplianceCredentialKubeconfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplianceCredentialKubeconfigResponse] {
+	return pulumix.Output[[]ApplianceCredentialKubeconfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplianceCredentialKubeconfigResponseArrayOutput) Index(i pulumi.IntInput) ApplianceCredentialKubeconfigResponseOutput {
@@ -89,6 +102,12 @@ func (o SSHKeyResponseOutput) ToSSHKeyResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o SSHKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SSHKeyResponse] {
+	return pulumix.Output[SSHKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // User Private Key.
 func (o SSHKeyResponseOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SSHKeyResponse) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
@@ -111,6 +130,12 @@ func (o SSHKeyResponseMapOutput) ToSSHKeyResponseMapOutput() SSHKeyResponseMapOu
 
 func (o SSHKeyResponseMapOutput) ToSSHKeyResponseMapOutputWithContext(ctx context.Context) SSHKeyResponseMapOutput {
 	return o
+}
+
+func (o SSHKeyResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]SSHKeyResponse] {
+	return pulumix.Output[map[string]SSHKeyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SSHKeyResponseMapOutput) MapIndex(k pulumi.StringInput) SSHKeyResponseOutput {

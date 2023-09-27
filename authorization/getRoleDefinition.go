@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get role definition by ID (GUID).
@@ -95,6 +96,12 @@ func (o LookupRoleDefinitionResultOutput) ToLookupRoleDefinitionResultOutput() L
 
 func (o LookupRoleDefinitionResultOutput) ToLookupRoleDefinitionResultOutputWithContext(ctx context.Context) LookupRoleDefinitionResultOutput {
 	return o
+}
+
+func (o LookupRoleDefinitionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRoleDefinitionResult] {
+	return pulumix.Output[LookupRoleDefinitionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Role definition assignable scopes.

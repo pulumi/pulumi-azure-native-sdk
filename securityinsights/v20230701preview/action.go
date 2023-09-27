@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Action for alert rule.
@@ -131,6 +132,9 @@ func NewAction(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:Action"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Action"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -219,6 +223,12 @@ func (i *Action) ToActionOutputWithContext(ctx context.Context) ActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionOutput)
 }
 
+func (i *Action) ToOutput(ctx context.Context) pulumix.Output[*Action] {
+	return pulumix.Output[*Action]{
+		OutputState: i.ToActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ActionOutput struct{ *pulumi.OutputState }
 
 func (ActionOutput) ElementType() reflect.Type {
@@ -231,6 +241,12 @@ func (o ActionOutput) ToActionOutput() ActionOutput {
 
 func (o ActionOutput) ToActionOutputWithContext(ctx context.Context) ActionOutput {
 	return o
+}
+
+func (o ActionOutput) ToOutput(ctx context.Context) pulumix.Output[*Action] {
+	return pulumix.Output[*Action]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Etag of the azure resource

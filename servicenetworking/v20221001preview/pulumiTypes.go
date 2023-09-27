@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i AssociationSubnetArgs) ToAssociationSubnetOutput() AssociationSubnetOutp
 
 func (i AssociationSubnetArgs) ToAssociationSubnetOutputWithContext(ctx context.Context) AssociationSubnetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssociationSubnetOutput)
+}
+
+func (i AssociationSubnetArgs) ToOutput(ctx context.Context) pulumix.Output[AssociationSubnet] {
+	return pulumix.Output[AssociationSubnet]{
+		OutputState: i.ToAssociationSubnetOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i AssociationSubnetArgs) ToAssociationSubnetPtrOutput() AssociationSubnetPtrOutput {
@@ -89,6 +96,12 @@ func (i *associationSubnetPtrType) ToAssociationSubnetPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AssociationSubnetPtrOutput)
 }
 
+func (i *associationSubnetPtrType) ToOutput(ctx context.Context) pulumix.Output[*AssociationSubnet] {
+	return pulumix.Output[*AssociationSubnet]{
+		OutputState: i.ToAssociationSubnetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Association Subnet.
 type AssociationSubnetOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o AssociationSubnetOutput) ToAssociationSubnetPtrOutputWithContext(ctx con
 	}).(AssociationSubnetPtrOutput)
 }
 
+func (o AssociationSubnetOutput) ToOutput(ctx context.Context) pulumix.Output[AssociationSubnet] {
+	return pulumix.Output[AssociationSubnet]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Association ID.
 func (o AssociationSubnetOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AssociationSubnet) string { return v.Id }).(pulumi.StringOutput)
@@ -131,6 +150,12 @@ func (o AssociationSubnetPtrOutput) ToAssociationSubnetPtrOutput() AssociationSu
 
 func (o AssociationSubnetPtrOutput) ToAssociationSubnetPtrOutputWithContext(ctx context.Context) AssociationSubnetPtrOutput {
 	return o
+}
+
+func (o AssociationSubnetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssociationSubnet] {
+	return pulumix.Output[*AssociationSubnet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AssociationSubnetPtrOutput) Elem() AssociationSubnetOutput {
@@ -174,6 +199,12 @@ func (o AssociationSubnetResponseOutput) ToAssociationSubnetResponseOutputWithCo
 	return o
 }
 
+func (o AssociationSubnetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssociationSubnetResponse] {
+	return pulumix.Output[AssociationSubnetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Association ID.
 func (o AssociationSubnetResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AssociationSubnetResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -191,6 +222,12 @@ func (o AssociationSubnetResponsePtrOutput) ToAssociationSubnetResponsePtrOutput
 
 func (o AssociationSubnetResponsePtrOutput) ToAssociationSubnetResponsePtrOutputWithContext(ctx context.Context) AssociationSubnetResponsePtrOutput {
 	return o
+}
+
+func (o AssociationSubnetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssociationSubnetResponse] {
+	return pulumix.Output[*AssociationSubnetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AssociationSubnetResponsePtrOutput) Elem() AssociationSubnetResponseOutput {
@@ -248,6 +285,12 @@ func (i FrontendPropertiesIPAddressArgs) ToFrontendPropertiesIPAddressOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(FrontendPropertiesIPAddressOutput)
 }
 
+func (i FrontendPropertiesIPAddressArgs) ToOutput(ctx context.Context) pulumix.Output[FrontendPropertiesIPAddress] {
+	return pulumix.Output[FrontendPropertiesIPAddress]{
+		OutputState: i.ToFrontendPropertiesIPAddressOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FrontendPropertiesIPAddressArgs) ToFrontendPropertiesIPAddressPtrOutput() FrontendPropertiesIPAddressPtrOutput {
 	return i.ToFrontendPropertiesIPAddressPtrOutputWithContext(context.Background())
 }
@@ -289,6 +332,12 @@ func (i *frontendPropertiesIPAddressPtrType) ToFrontendPropertiesIPAddressPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(FrontendPropertiesIPAddressPtrOutput)
 }
 
+func (i *frontendPropertiesIPAddressPtrType) ToOutput(ctx context.Context) pulumix.Output[*FrontendPropertiesIPAddress] {
+	return pulumix.Output[*FrontendPropertiesIPAddress]{
+		OutputState: i.ToFrontendPropertiesIPAddressPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Frontend IP Address.
 type FrontendPropertiesIPAddressOutput struct{ *pulumi.OutputState }
 
@@ -314,6 +363,12 @@ func (o FrontendPropertiesIPAddressOutput) ToFrontendPropertiesIPAddressPtrOutpu
 	}).(FrontendPropertiesIPAddressPtrOutput)
 }
 
+func (o FrontendPropertiesIPAddressOutput) ToOutput(ctx context.Context) pulumix.Output[FrontendPropertiesIPAddress] {
+	return pulumix.Output[FrontendPropertiesIPAddress]{
+		OutputState: o.OutputState,
+	}
+}
+
 // IP Address.
 func (o FrontendPropertiesIPAddressOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v FrontendPropertiesIPAddress) string { return v.Id }).(pulumi.StringOutput)
@@ -331,6 +386,12 @@ func (o FrontendPropertiesIPAddressPtrOutput) ToFrontendPropertiesIPAddressPtrOu
 
 func (o FrontendPropertiesIPAddressPtrOutput) ToFrontendPropertiesIPAddressPtrOutputWithContext(ctx context.Context) FrontendPropertiesIPAddressPtrOutput {
 	return o
+}
+
+func (o FrontendPropertiesIPAddressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FrontendPropertiesIPAddress] {
+	return pulumix.Output[*FrontendPropertiesIPAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FrontendPropertiesIPAddressPtrOutput) Elem() FrontendPropertiesIPAddressOutput {
@@ -374,6 +435,12 @@ func (o FrontendPropertiesIPAddressResponseOutput) ToFrontendPropertiesIPAddress
 	return o
 }
 
+func (o FrontendPropertiesIPAddressResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FrontendPropertiesIPAddressResponse] {
+	return pulumix.Output[FrontendPropertiesIPAddressResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // IP Address.
 func (o FrontendPropertiesIPAddressResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v FrontendPropertiesIPAddressResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -391,6 +458,12 @@ func (o FrontendPropertiesIPAddressResponsePtrOutput) ToFrontendPropertiesIPAddr
 
 func (o FrontendPropertiesIPAddressResponsePtrOutput) ToFrontendPropertiesIPAddressResponsePtrOutputWithContext(ctx context.Context) FrontendPropertiesIPAddressResponsePtrOutput {
 	return o
+}
+
+func (o FrontendPropertiesIPAddressResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FrontendPropertiesIPAddressResponse] {
+	return pulumix.Output[*FrontendPropertiesIPAddressResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FrontendPropertiesIPAddressResponsePtrOutput) Elem() FrontendPropertiesIPAddressResponseOutput {
@@ -434,6 +507,12 @@ func (o ResourceIDResponseOutput) ToResourceIDResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o ResourceIDResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIDResponse] {
+	return pulumix.Output[ResourceIDResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of child resource.
 func (o ResourceIDResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceIDResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -451,6 +530,12 @@ func (o ResourceIDResponseArrayOutput) ToResourceIDResponseArrayOutput() Resourc
 
 func (o ResourceIDResponseArrayOutput) ToResourceIDResponseArrayOutputWithContext(ctx context.Context) ResourceIDResponseArrayOutput {
 	return o
+}
+
+func (o ResourceIDResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceIDResponse] {
+	return pulumix.Output[[]ResourceIDResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIDResponseArrayOutput) Index(i pulumi.IntInput) ResourceIDResponseOutput {
@@ -488,6 +573,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

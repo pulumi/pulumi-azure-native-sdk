@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Big Data pool
@@ -251,6 +252,12 @@ func (i *BigDataPool) ToBigDataPoolOutputWithContext(ctx context.Context) BigDat
 	return pulumi.ToOutputWithContext(ctx, i).(BigDataPoolOutput)
 }
 
+func (i *BigDataPool) ToOutput(ctx context.Context) pulumix.Output[*BigDataPool] {
+	return pulumix.Output[*BigDataPool]{
+		OutputState: i.ToBigDataPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BigDataPoolOutput struct{ *pulumi.OutputState }
 
 func (BigDataPoolOutput) ElementType() reflect.Type {
@@ -263,6 +270,12 @@ func (o BigDataPoolOutput) ToBigDataPoolOutput() BigDataPoolOutput {
 
 func (o BigDataPoolOutput) ToBigDataPoolOutputWithContext(ctx context.Context) BigDataPoolOutput {
 	return o
+}
+
+func (o BigDataPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*BigDataPool] {
+	return pulumix.Output[*BigDataPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Auto-pausing properties

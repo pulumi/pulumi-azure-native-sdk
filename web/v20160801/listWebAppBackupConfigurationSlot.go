@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the backup configuration of an app.
@@ -103,6 +104,12 @@ func (o ListWebAppBackupConfigurationSlotResultOutput) ToListWebAppBackupConfigu
 
 func (o ListWebAppBackupConfigurationSlotResultOutput) ToListWebAppBackupConfigurationSlotResultOutputWithContext(ctx context.Context) ListWebAppBackupConfigurationSlotResultOutput {
 	return o
+}
+
+func (o ListWebAppBackupConfigurationSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppBackupConfigurationSlotResult] {
+	return pulumix.Output[ListWebAppBackupConfigurationSlotResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the backup.

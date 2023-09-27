@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB userDefinedFunction.
@@ -136,6 +137,12 @@ func NewSqlResourceSqlUserDefinedFunction(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20230415:SqlResourceSqlUserDefinedFunction"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230915:SqlResourceSqlUserDefinedFunction"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230915preview:SqlResourceSqlUserDefinedFunction"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -240,6 +247,12 @@ func (i *SqlResourceSqlUserDefinedFunction) ToSqlResourceSqlUserDefinedFunctionO
 	return pulumi.ToOutputWithContext(ctx, i).(SqlResourceSqlUserDefinedFunctionOutput)
 }
 
+func (i *SqlResourceSqlUserDefinedFunction) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlUserDefinedFunction] {
+	return pulumix.Output[*SqlResourceSqlUserDefinedFunction]{
+		OutputState: i.ToSqlResourceSqlUserDefinedFunctionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlResourceSqlUserDefinedFunctionOutput struct{ *pulumi.OutputState }
 
 func (SqlResourceSqlUserDefinedFunctionOutput) ElementType() reflect.Type {
@@ -252,6 +265,12 @@ func (o SqlResourceSqlUserDefinedFunctionOutput) ToSqlResourceSqlUserDefinedFunc
 
 func (o SqlResourceSqlUserDefinedFunctionOutput) ToSqlResourceSqlUserDefinedFunctionOutputWithContext(ctx context.Context) SqlResourceSqlUserDefinedFunctionOutput {
 	return o
+}
+
+func (o SqlResourceSqlUserDefinedFunctionOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlUserDefinedFunction] {
+	return pulumix.Output[*SqlResourceSqlUserDefinedFunction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identity for the resource.

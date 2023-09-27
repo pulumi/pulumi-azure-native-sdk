@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The architecture of the image. Applicable to OS disks only.
@@ -106,6 +107,12 @@ func (o GalleryApplicationCustomActionParameterTypeOutput) ToGalleryApplicationC
 	}).(GalleryApplicationCustomActionParameterTypePtrOutput)
 }
 
+func (o GalleryApplicationCustomActionParameterTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GalleryApplicationCustomActionParameterType] {
+	return pulumix.Output[GalleryApplicationCustomActionParameterType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GalleryApplicationCustomActionParameterTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -139,6 +146,12 @@ func (o GalleryApplicationCustomActionParameterTypePtrOutput) ToGalleryApplicati
 
 func (o GalleryApplicationCustomActionParameterTypePtrOutput) ToGalleryApplicationCustomActionParameterTypePtrOutputWithContext(ctx context.Context) GalleryApplicationCustomActionParameterTypePtrOutput {
 	return o
+}
+
+func (o GalleryApplicationCustomActionParameterTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryApplicationCustomActionParameterType] {
+	return pulumix.Output[*GalleryApplicationCustomActionParameterType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GalleryApplicationCustomActionParameterTypePtrOutput) Elem() GalleryApplicationCustomActionParameterTypeOutput {
@@ -201,6 +214,12 @@ func (in *galleryApplicationCustomActionParameterTypePtr) ToGalleryApplicationCu
 
 func (in *galleryApplicationCustomActionParameterTypePtr) ToGalleryApplicationCustomActionParameterTypePtrOutputWithContext(ctx context.Context) GalleryApplicationCustomActionParameterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GalleryApplicationCustomActionParameterTypePtrOutput)
+}
+
+func (in *galleryApplicationCustomActionParameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GalleryApplicationCustomActionParameterType] {
+	return pulumix.Output[*GalleryApplicationCustomActionParameterType]{
+		OutputState: in.ToGalleryApplicationCustomActionParameterTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // It is type of the extended location.
@@ -289,6 +308,12 @@ func (o HostCachingOutput) ToHostCachingPtrOutputWithContext(ctx context.Context
 	}).(HostCachingPtrOutput)
 }
 
+func (o HostCachingOutput) ToOutput(ctx context.Context) pulumix.Output[HostCaching] {
+	return pulumix.Output[HostCaching]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostCachingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -322,6 +347,12 @@ func (o HostCachingPtrOutput) ToHostCachingPtrOutput() HostCachingPtrOutput {
 
 func (o HostCachingPtrOutput) ToHostCachingPtrOutputWithContext(ctx context.Context) HostCachingPtrOutput {
 	return o
+}
+
+func (o HostCachingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostCaching] {
+	return pulumix.Output[*HostCaching]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostCachingPtrOutput) Elem() HostCachingOutput {
@@ -384,6 +415,12 @@ func (in *hostCachingPtr) ToHostCachingPtrOutput() HostCachingPtrOutput {
 
 func (in *hostCachingPtr) ToHostCachingPtrOutputWithContext(ctx context.Context) HostCachingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HostCachingPtrOutput)
+}
+
+func (in *hostCachingPtr) ToOutput(ctx context.Context) pulumix.Output[*HostCaching] {
+	return pulumix.Output[*HostCaching]{
+		OutputState: in.ToHostCachingPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
@@ -462,6 +499,12 @@ func (o OperatingSystemStateTypesOutput) ToOperatingSystemStateTypesPtrOutputWit
 	}).(OperatingSystemStateTypesPtrOutput)
 }
 
+func (o OperatingSystemStateTypesOutput) ToOutput(ctx context.Context) pulumix.Output[OperatingSystemStateTypes] {
+	return pulumix.Output[OperatingSystemStateTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OperatingSystemStateTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -495,6 +538,12 @@ func (o OperatingSystemStateTypesPtrOutput) ToOperatingSystemStateTypesPtrOutput
 
 func (o OperatingSystemStateTypesPtrOutput) ToOperatingSystemStateTypesPtrOutputWithContext(ctx context.Context) OperatingSystemStateTypesPtrOutput {
 	return o
+}
+
+func (o OperatingSystemStateTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemStateTypes] {
+	return pulumix.Output[*OperatingSystemStateTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OperatingSystemStateTypesPtrOutput) Elem() OperatingSystemStateTypesOutput {
@@ -557,6 +606,12 @@ func (in *operatingSystemStateTypesPtr) ToOperatingSystemStateTypesPtrOutput() O
 
 func (in *operatingSystemStateTypesPtr) ToOperatingSystemStateTypesPtrOutputWithContext(ctx context.Context) OperatingSystemStateTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemStateTypesPtrOutput)
+}
+
+func (in *operatingSystemStateTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemStateTypes] {
+	return pulumix.Output[*OperatingSystemStateTypes]{
+		OutputState: in.ToOperatingSystemStateTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
@@ -627,6 +682,12 @@ func (o OperatingSystemTypesOutput) ToOperatingSystemTypesPtrOutputWithContext(c
 	}).(OperatingSystemTypesPtrOutput)
 }
 
+func (o OperatingSystemTypesOutput) ToOutput(ctx context.Context) pulumix.Output[OperatingSystemTypes] {
+	return pulumix.Output[OperatingSystemTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OperatingSystemTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -660,6 +721,12 @@ func (o OperatingSystemTypesPtrOutput) ToOperatingSystemTypesPtrOutput() Operati
 
 func (o OperatingSystemTypesPtrOutput) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return o
+}
+
+func (o OperatingSystemTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
+	return pulumix.Output[*OperatingSystemTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OperatingSystemTypesPtrOutput) Elem() OperatingSystemTypesOutput {
@@ -722,6 +789,12 @@ func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutput() OperatingSy
 
 func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypesPtrOutput)
+}
+
+func (in *operatingSystemTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
+	return pulumix.Output[*OperatingSystemTypes]{
+		OutputState: in.ToOperatingSystemTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional parameter which specifies the mode to be used for replication. This property is not updatable.

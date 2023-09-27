@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB Gremlin graph.
@@ -150,6 +151,12 @@ func NewGremlinResourceGremlinGraph(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20230415:GremlinResourceGremlinGraph"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230915:GremlinResourceGremlinGraph"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230915preview:GremlinResourceGremlinGraph"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -250,6 +257,12 @@ func (i *GremlinResourceGremlinGraph) ToGremlinResourceGremlinGraphOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(GremlinResourceGremlinGraphOutput)
 }
 
+func (i *GremlinResourceGremlinGraph) ToOutput(ctx context.Context) pulumix.Output[*GremlinResourceGremlinGraph] {
+	return pulumix.Output[*GremlinResourceGremlinGraph]{
+		OutputState: i.ToGremlinResourceGremlinGraphOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GremlinResourceGremlinGraphOutput struct{ *pulumi.OutputState }
 
 func (GremlinResourceGremlinGraphOutput) ElementType() reflect.Type {
@@ -262,6 +275,12 @@ func (o GremlinResourceGremlinGraphOutput) ToGremlinResourceGremlinGraphOutput()
 
 func (o GremlinResourceGremlinGraphOutput) ToGremlinResourceGremlinGraphOutputWithContext(ctx context.Context) GremlinResourceGremlinGraphOutput {
 	return o
+}
+
+func (o GremlinResourceGremlinGraphOutput) ToOutput(ctx context.Context) pulumix.Output[*GremlinResourceGremlinGraph] {
+	return pulumix.Output[*GremlinResourceGremlinGraph]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identity for the resource.

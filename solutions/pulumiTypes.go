@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -38,6 +39,12 @@ func (o ApplicationArtifactResponseOutput) ToApplicationArtifactResponseOutputWi
 	return o
 }
 
+func (o ApplicationArtifactResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationArtifactResponse] {
+	return pulumix.Output[ApplicationArtifactResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The managed application artifact name.
 func (o ApplicationArtifactResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationArtifactResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -65,6 +72,12 @@ func (o ApplicationArtifactResponseArrayOutput) ToApplicationArtifactResponseArr
 
 func (o ApplicationArtifactResponseArrayOutput) ToApplicationArtifactResponseArrayOutputWithContext(ctx context.Context) ApplicationArtifactResponseArrayOutput {
 	return o
+}
+
+func (o ApplicationArtifactResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationArtifactResponse] {
+	return pulumix.Output[[]ApplicationArtifactResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationArtifactResponseArrayOutput) Index(i pulumi.IntInput) ApplicationArtifactResponseOutput {
@@ -112,6 +125,12 @@ func (i ApplicationAuthorizationArgs) ToApplicationAuthorizationOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAuthorizationOutput)
 }
 
+func (i ApplicationAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationAuthorization] {
+	return pulumix.Output[ApplicationAuthorization]{
+		OutputState: i.ToApplicationAuthorizationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApplicationAuthorizationArrayInput is an input type that accepts ApplicationAuthorizationArray and ApplicationAuthorizationArrayOutput values.
 // You can construct a concrete instance of `ApplicationAuthorizationArrayInput` via:
 //
@@ -137,6 +156,12 @@ func (i ApplicationAuthorizationArray) ToApplicationAuthorizationArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAuthorizationArrayOutput)
 }
 
+func (i ApplicationAuthorizationArray) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationAuthorization] {
+	return pulumix.Output[[]ApplicationAuthorization]{
+		OutputState: i.ToApplicationAuthorizationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The managed application provider authorization.
 type ApplicationAuthorizationOutput struct{ *pulumi.OutputState }
 
@@ -150,6 +175,12 @@ func (o ApplicationAuthorizationOutput) ToApplicationAuthorizationOutput() Appli
 
 func (o ApplicationAuthorizationOutput) ToApplicationAuthorizationOutputWithContext(ctx context.Context) ApplicationAuthorizationOutput {
 	return o
+}
+
+func (o ApplicationAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationAuthorization] {
+	return pulumix.Output[ApplicationAuthorization]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the managed application resources.
@@ -174,6 +205,12 @@ func (o ApplicationAuthorizationArrayOutput) ToApplicationAuthorizationArrayOutp
 
 func (o ApplicationAuthorizationArrayOutput) ToApplicationAuthorizationArrayOutputWithContext(ctx context.Context) ApplicationAuthorizationArrayOutput {
 	return o
+}
+
+func (o ApplicationAuthorizationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationAuthorization] {
+	return pulumix.Output[[]ApplicationAuthorization]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationAuthorizationArrayOutput) Index(i pulumi.IntInput) ApplicationAuthorizationOutput {
@@ -205,6 +242,12 @@ func (o ApplicationAuthorizationResponseOutput) ToApplicationAuthorizationRespon
 	return o
 }
 
+func (o ApplicationAuthorizationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationAuthorizationResponse] {
+	return pulumix.Output[ApplicationAuthorizationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the managed application resources.
 func (o ApplicationAuthorizationResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationAuthorizationResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -227,6 +270,12 @@ func (o ApplicationAuthorizationResponseArrayOutput) ToApplicationAuthorizationR
 
 func (o ApplicationAuthorizationResponseArrayOutput) ToApplicationAuthorizationResponseArrayOutputWithContext(ctx context.Context) ApplicationAuthorizationResponseArrayOutput {
 	return o
+}
+
+func (o ApplicationAuthorizationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationAuthorizationResponse] {
+	return pulumix.Output[[]ApplicationAuthorizationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationAuthorizationResponseArrayOutput) Index(i pulumi.IntInput) ApplicationAuthorizationResponseOutput {
@@ -254,6 +303,12 @@ func (o ApplicationBillingDetailsDefinitionResponseOutput) ToApplicationBillingD
 
 func (o ApplicationBillingDetailsDefinitionResponseOutput) ToApplicationBillingDetailsDefinitionResponseOutputWithContext(ctx context.Context) ApplicationBillingDetailsDefinitionResponseOutput {
 	return o
+}
+
+func (o ApplicationBillingDetailsDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationBillingDetailsDefinitionResponse] {
+	return pulumix.Output[ApplicationBillingDetailsDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The managed application resource usage Id.
@@ -284,6 +339,12 @@ func (o ApplicationClientDetailsResponseOutput) ToApplicationClientDetailsRespon
 
 func (o ApplicationClientDetailsResponseOutput) ToApplicationClientDetailsResponseOutputWithContext(ctx context.Context) ApplicationClientDetailsResponseOutput {
 	return o
+}
+
+func (o ApplicationClientDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationClientDetailsResponse] {
+	return pulumix.Output[ApplicationClientDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The client application Id.
@@ -344,6 +405,12 @@ func (i ApplicationDefinitionArtifactArgs) ToApplicationDefinitionArtifactOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationDefinitionArtifactOutput)
 }
 
+func (i ApplicationDefinitionArtifactArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationDefinitionArtifact] {
+	return pulumix.Output[ApplicationDefinitionArtifact]{
+		OutputState: i.ToApplicationDefinitionArtifactOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApplicationDefinitionArtifactArrayInput is an input type that accepts ApplicationDefinitionArtifactArray and ApplicationDefinitionArtifactArrayOutput values.
 // You can construct a concrete instance of `ApplicationDefinitionArtifactArrayInput` via:
 //
@@ -369,6 +436,12 @@ func (i ApplicationDefinitionArtifactArray) ToApplicationDefinitionArtifactArray
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationDefinitionArtifactArrayOutput)
 }
 
+func (i ApplicationDefinitionArtifactArray) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationDefinitionArtifact] {
+	return pulumix.Output[[]ApplicationDefinitionArtifact]{
+		OutputState: i.ToApplicationDefinitionArtifactArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Application definition artifact.
 type ApplicationDefinitionArtifactOutput struct{ *pulumi.OutputState }
 
@@ -382,6 +455,12 @@ func (o ApplicationDefinitionArtifactOutput) ToApplicationDefinitionArtifactOutp
 
 func (o ApplicationDefinitionArtifactOutput) ToApplicationDefinitionArtifactOutputWithContext(ctx context.Context) ApplicationDefinitionArtifactOutput {
 	return o
+}
+
+func (o ApplicationDefinitionArtifactOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationDefinitionArtifact] {
+	return pulumix.Output[ApplicationDefinitionArtifact]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The managed application definition artifact name.
@@ -411,6 +490,12 @@ func (o ApplicationDefinitionArtifactArrayOutput) ToApplicationDefinitionArtifac
 
 func (o ApplicationDefinitionArtifactArrayOutput) ToApplicationDefinitionArtifactArrayOutputWithContext(ctx context.Context) ApplicationDefinitionArtifactArrayOutput {
 	return o
+}
+
+func (o ApplicationDefinitionArtifactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationDefinitionArtifact] {
+	return pulumix.Output[[]ApplicationDefinitionArtifact]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationDefinitionArtifactArrayOutput) Index(i pulumi.IntInput) ApplicationDefinitionArtifactOutput {
@@ -444,6 +529,12 @@ func (o ApplicationDefinitionArtifactResponseOutput) ToApplicationDefinitionArti
 	return o
 }
 
+func (o ApplicationDefinitionArtifactResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationDefinitionArtifactResponse] {
+	return pulumix.Output[ApplicationDefinitionArtifactResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The managed application definition artifact name.
 func (o ApplicationDefinitionArtifactResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationDefinitionArtifactResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -471,6 +562,12 @@ func (o ApplicationDefinitionArtifactResponseArrayOutput) ToApplicationDefinitio
 
 func (o ApplicationDefinitionArtifactResponseArrayOutput) ToApplicationDefinitionArtifactResponseArrayOutputWithContext(ctx context.Context) ApplicationDefinitionArtifactResponseArrayOutput {
 	return o
+}
+
+func (o ApplicationDefinitionArtifactResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationDefinitionArtifactResponse] {
+	return pulumix.Output[[]ApplicationDefinitionArtifactResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationDefinitionArtifactResponseArrayOutput) Index(i pulumi.IntInput) ApplicationDefinitionArtifactResponseOutput {
@@ -514,6 +611,12 @@ func (i ApplicationDeploymentPolicyArgs) ToApplicationDeploymentPolicyOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationDeploymentPolicyOutput)
 }
 
+func (i ApplicationDeploymentPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationDeploymentPolicy] {
+	return pulumix.Output[ApplicationDeploymentPolicy]{
+		OutputState: i.ToApplicationDeploymentPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ApplicationDeploymentPolicyArgs) ToApplicationDeploymentPolicyPtrOutput() ApplicationDeploymentPolicyPtrOutput {
 	return i.ToApplicationDeploymentPolicyPtrOutputWithContext(context.Background())
 }
@@ -555,6 +658,12 @@ func (i *applicationDeploymentPolicyPtrType) ToApplicationDeploymentPolicyPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationDeploymentPolicyPtrOutput)
 }
 
+func (i *applicationDeploymentPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationDeploymentPolicy] {
+	return pulumix.Output[*ApplicationDeploymentPolicy]{
+		OutputState: i.ToApplicationDeploymentPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed application deployment policy.
 type ApplicationDeploymentPolicyOutput struct{ *pulumi.OutputState }
 
@@ -580,6 +689,12 @@ func (o ApplicationDeploymentPolicyOutput) ToApplicationDeploymentPolicyPtrOutpu
 	}).(ApplicationDeploymentPolicyPtrOutput)
 }
 
+func (o ApplicationDeploymentPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationDeploymentPolicy] {
+	return pulumix.Output[ApplicationDeploymentPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The managed application deployment mode.
 func (o ApplicationDeploymentPolicyOutput) DeploymentMode() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationDeploymentPolicy) string { return v.DeploymentMode }).(pulumi.StringOutput)
@@ -597,6 +712,12 @@ func (o ApplicationDeploymentPolicyPtrOutput) ToApplicationDeploymentPolicyPtrOu
 
 func (o ApplicationDeploymentPolicyPtrOutput) ToApplicationDeploymentPolicyPtrOutputWithContext(ctx context.Context) ApplicationDeploymentPolicyPtrOutput {
 	return o
+}
+
+func (o ApplicationDeploymentPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationDeploymentPolicy] {
+	return pulumix.Output[*ApplicationDeploymentPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationDeploymentPolicyPtrOutput) Elem() ApplicationDeploymentPolicyOutput {
@@ -640,6 +761,12 @@ func (o ApplicationDeploymentPolicyResponseOutput) ToApplicationDeploymentPolicy
 	return o
 }
 
+func (o ApplicationDeploymentPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationDeploymentPolicyResponse] {
+	return pulumix.Output[ApplicationDeploymentPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The managed application deployment mode.
 func (o ApplicationDeploymentPolicyResponseOutput) DeploymentMode() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationDeploymentPolicyResponse) string { return v.DeploymentMode }).(pulumi.StringOutput)
@@ -657,6 +784,12 @@ func (o ApplicationDeploymentPolicyResponsePtrOutput) ToApplicationDeploymentPol
 
 func (o ApplicationDeploymentPolicyResponsePtrOutput) ToApplicationDeploymentPolicyResponsePtrOutputWithContext(ctx context.Context) ApplicationDeploymentPolicyResponsePtrOutput {
 	return o
+}
+
+func (o ApplicationDeploymentPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationDeploymentPolicyResponse] {
+	return pulumix.Output[*ApplicationDeploymentPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationDeploymentPolicyResponsePtrOutput) Elem() ApplicationDeploymentPolicyResponseOutput {
@@ -726,6 +859,12 @@ func (i ApplicationJitAccessPolicyArgs) ToApplicationJitAccessPolicyOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationJitAccessPolicyOutput)
 }
 
+func (i ApplicationJitAccessPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationJitAccessPolicy] {
+	return pulumix.Output[ApplicationJitAccessPolicy]{
+		OutputState: i.ToApplicationJitAccessPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ApplicationJitAccessPolicyArgs) ToApplicationJitAccessPolicyPtrOutput() ApplicationJitAccessPolicyPtrOutput {
 	return i.ToApplicationJitAccessPolicyPtrOutputWithContext(context.Background())
 }
@@ -767,6 +906,12 @@ func (i *applicationJitAccessPolicyPtrType) ToApplicationJitAccessPolicyPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationJitAccessPolicyPtrOutput)
 }
 
+func (i *applicationJitAccessPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationJitAccessPolicy] {
+	return pulumix.Output[*ApplicationJitAccessPolicy]{
+		OutputState: i.ToApplicationJitAccessPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed application Jit access policy.
 type ApplicationJitAccessPolicyOutput struct{ *pulumi.OutputState }
 
@@ -790,6 +935,12 @@ func (o ApplicationJitAccessPolicyOutput) ToApplicationJitAccessPolicyPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationJitAccessPolicy) *ApplicationJitAccessPolicy {
 		return &v
 	}).(ApplicationJitAccessPolicyPtrOutput)
+}
+
+func (o ApplicationJitAccessPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationJitAccessPolicy] {
+	return pulumix.Output[ApplicationJitAccessPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the JIT access is enabled.
@@ -824,6 +975,12 @@ func (o ApplicationJitAccessPolicyPtrOutput) ToApplicationJitAccessPolicyPtrOutp
 
 func (o ApplicationJitAccessPolicyPtrOutput) ToApplicationJitAccessPolicyPtrOutputWithContext(ctx context.Context) ApplicationJitAccessPolicyPtrOutput {
 	return o
+}
+
+func (o ApplicationJitAccessPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationJitAccessPolicy] {
+	return pulumix.Output[*ApplicationJitAccessPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationJitAccessPolicyPtrOutput) Elem() ApplicationJitAccessPolicyOutput {
@@ -903,6 +1060,12 @@ func (o ApplicationJitAccessPolicyResponseOutput) ToApplicationJitAccessPolicyRe
 	return o
 }
 
+func (o ApplicationJitAccessPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationJitAccessPolicyResponse] {
+	return pulumix.Output[ApplicationJitAccessPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether the JIT access is enabled.
 func (o ApplicationJitAccessPolicyResponseOutput) JitAccessEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ApplicationJitAccessPolicyResponse) bool { return v.JitAccessEnabled }).(pulumi.BoolOutput)
@@ -935,6 +1098,12 @@ func (o ApplicationJitAccessPolicyResponsePtrOutput) ToApplicationJitAccessPolic
 
 func (o ApplicationJitAccessPolicyResponsePtrOutput) ToApplicationJitAccessPolicyResponsePtrOutputWithContext(ctx context.Context) ApplicationJitAccessPolicyResponsePtrOutput {
 	return o
+}
+
+func (o ApplicationJitAccessPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationJitAccessPolicyResponse] {
+	return pulumix.Output[*ApplicationJitAccessPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationJitAccessPolicyResponsePtrOutput) Elem() ApplicationJitAccessPolicyResponseOutput {
@@ -1022,6 +1191,12 @@ func (i ApplicationManagementPolicyArgs) ToApplicationManagementPolicyOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationManagementPolicyOutput)
 }
 
+func (i ApplicationManagementPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationManagementPolicy] {
+	return pulumix.Output[ApplicationManagementPolicy]{
+		OutputState: i.ToApplicationManagementPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ApplicationManagementPolicyArgs) ToApplicationManagementPolicyPtrOutput() ApplicationManagementPolicyPtrOutput {
 	return i.ToApplicationManagementPolicyPtrOutputWithContext(context.Background())
 }
@@ -1063,6 +1238,12 @@ func (i *applicationManagementPolicyPtrType) ToApplicationManagementPolicyPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationManagementPolicyPtrOutput)
 }
 
+func (i *applicationManagementPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationManagementPolicy] {
+	return pulumix.Output[*ApplicationManagementPolicy]{
+		OutputState: i.ToApplicationManagementPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed application management policy.
 type ApplicationManagementPolicyOutput struct{ *pulumi.OutputState }
 
@@ -1088,6 +1269,12 @@ func (o ApplicationManagementPolicyOutput) ToApplicationManagementPolicyPtrOutpu
 	}).(ApplicationManagementPolicyPtrOutput)
 }
 
+func (o ApplicationManagementPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationManagementPolicy] {
+	return pulumix.Output[ApplicationManagementPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The managed application management mode.
 func (o ApplicationManagementPolicyOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationManagementPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
@@ -1105,6 +1292,12 @@ func (o ApplicationManagementPolicyPtrOutput) ToApplicationManagementPolicyPtrOu
 
 func (o ApplicationManagementPolicyPtrOutput) ToApplicationManagementPolicyPtrOutputWithContext(ctx context.Context) ApplicationManagementPolicyPtrOutput {
 	return o
+}
+
+func (o ApplicationManagementPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationManagementPolicy] {
+	return pulumix.Output[*ApplicationManagementPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationManagementPolicyPtrOutput) Elem() ApplicationManagementPolicyOutput {
@@ -1148,6 +1341,12 @@ func (o ApplicationManagementPolicyResponseOutput) ToApplicationManagementPolicy
 	return o
 }
 
+func (o ApplicationManagementPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationManagementPolicyResponse] {
+	return pulumix.Output[ApplicationManagementPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The managed application management mode.
 func (o ApplicationManagementPolicyResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationManagementPolicyResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
@@ -1165,6 +1364,12 @@ func (o ApplicationManagementPolicyResponsePtrOutput) ToApplicationManagementPol
 
 func (o ApplicationManagementPolicyResponsePtrOutput) ToApplicationManagementPolicyResponsePtrOutputWithContext(ctx context.Context) ApplicationManagementPolicyResponsePtrOutput {
 	return o
+}
+
+func (o ApplicationManagementPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationManagementPolicyResponse] {
+	return pulumix.Output[*ApplicationManagementPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationManagementPolicyResponsePtrOutput) Elem() ApplicationManagementPolicyResponseOutput {
@@ -1222,6 +1427,12 @@ func (i ApplicationNotificationEndpointArgs) ToApplicationNotificationEndpointOu
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationNotificationEndpointOutput)
 }
 
+func (i ApplicationNotificationEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationNotificationEndpoint] {
+	return pulumix.Output[ApplicationNotificationEndpoint]{
+		OutputState: i.ToApplicationNotificationEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApplicationNotificationEndpointArrayInput is an input type that accepts ApplicationNotificationEndpointArray and ApplicationNotificationEndpointArrayOutput values.
 // You can construct a concrete instance of `ApplicationNotificationEndpointArrayInput` via:
 //
@@ -1247,6 +1458,12 @@ func (i ApplicationNotificationEndpointArray) ToApplicationNotificationEndpointA
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationNotificationEndpointArrayOutput)
 }
 
+func (i ApplicationNotificationEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationNotificationEndpoint] {
+	return pulumix.Output[[]ApplicationNotificationEndpoint]{
+		OutputState: i.ToApplicationNotificationEndpointArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed application notification endpoint.
 type ApplicationNotificationEndpointOutput struct{ *pulumi.OutputState }
 
@@ -1260,6 +1477,12 @@ func (o ApplicationNotificationEndpointOutput) ToApplicationNotificationEndpoint
 
 func (o ApplicationNotificationEndpointOutput) ToApplicationNotificationEndpointOutputWithContext(ctx context.Context) ApplicationNotificationEndpointOutput {
 	return o
+}
+
+func (o ApplicationNotificationEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationNotificationEndpoint] {
+	return pulumix.Output[ApplicationNotificationEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The managed application notification endpoint uri.
@@ -1279,6 +1502,12 @@ func (o ApplicationNotificationEndpointArrayOutput) ToApplicationNotificationEnd
 
 func (o ApplicationNotificationEndpointArrayOutput) ToApplicationNotificationEndpointArrayOutputWithContext(ctx context.Context) ApplicationNotificationEndpointArrayOutput {
 	return o
+}
+
+func (o ApplicationNotificationEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationNotificationEndpoint] {
+	return pulumix.Output[[]ApplicationNotificationEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationNotificationEndpointArrayOutput) Index(i pulumi.IntInput) ApplicationNotificationEndpointOutput {
@@ -1308,6 +1537,12 @@ func (o ApplicationNotificationEndpointResponseOutput) ToApplicationNotification
 	return o
 }
 
+func (o ApplicationNotificationEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationNotificationEndpointResponse] {
+	return pulumix.Output[ApplicationNotificationEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The managed application notification endpoint uri.
 func (o ApplicationNotificationEndpointResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationNotificationEndpointResponse) string { return v.Uri }).(pulumi.StringOutput)
@@ -1325,6 +1560,12 @@ func (o ApplicationNotificationEndpointResponseArrayOutput) ToApplicationNotific
 
 func (o ApplicationNotificationEndpointResponseArrayOutput) ToApplicationNotificationEndpointResponseArrayOutputWithContext(ctx context.Context) ApplicationNotificationEndpointResponseArrayOutput {
 	return o
+}
+
+func (o ApplicationNotificationEndpointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationNotificationEndpointResponse] {
+	return pulumix.Output[[]ApplicationNotificationEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationNotificationEndpointResponseArrayOutput) Index(i pulumi.IntInput) ApplicationNotificationEndpointResponseOutput {
@@ -1368,6 +1609,12 @@ func (i ApplicationNotificationPolicyArgs) ToApplicationNotificationPolicyOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationNotificationPolicyOutput)
 }
 
+func (i ApplicationNotificationPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationNotificationPolicy] {
+	return pulumix.Output[ApplicationNotificationPolicy]{
+		OutputState: i.ToApplicationNotificationPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ApplicationNotificationPolicyArgs) ToApplicationNotificationPolicyPtrOutput() ApplicationNotificationPolicyPtrOutput {
 	return i.ToApplicationNotificationPolicyPtrOutputWithContext(context.Background())
 }
@@ -1409,6 +1656,12 @@ func (i *applicationNotificationPolicyPtrType) ToApplicationNotificationPolicyPt
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationNotificationPolicyPtrOutput)
 }
 
+func (i *applicationNotificationPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationNotificationPolicy] {
+	return pulumix.Output[*ApplicationNotificationPolicy]{
+		OutputState: i.ToApplicationNotificationPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed application notification policy.
 type ApplicationNotificationPolicyOutput struct{ *pulumi.OutputState }
 
@@ -1434,6 +1687,12 @@ func (o ApplicationNotificationPolicyOutput) ToApplicationNotificationPolicyPtrO
 	}).(ApplicationNotificationPolicyPtrOutput)
 }
 
+func (o ApplicationNotificationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationNotificationPolicy] {
+	return pulumix.Output[ApplicationNotificationPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The managed application notification endpoint.
 func (o ApplicationNotificationPolicyOutput) NotificationEndpoints() ApplicationNotificationEndpointArrayOutput {
 	return o.ApplyT(func(v ApplicationNotificationPolicy) []ApplicationNotificationEndpoint {
@@ -1453,6 +1712,12 @@ func (o ApplicationNotificationPolicyPtrOutput) ToApplicationNotificationPolicyP
 
 func (o ApplicationNotificationPolicyPtrOutput) ToApplicationNotificationPolicyPtrOutputWithContext(ctx context.Context) ApplicationNotificationPolicyPtrOutput {
 	return o
+}
+
+func (o ApplicationNotificationPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationNotificationPolicy] {
+	return pulumix.Output[*ApplicationNotificationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationNotificationPolicyPtrOutput) Elem() ApplicationNotificationPolicyOutput {
@@ -1496,6 +1761,12 @@ func (o ApplicationNotificationPolicyResponseOutput) ToApplicationNotificationPo
 	return o
 }
 
+func (o ApplicationNotificationPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationNotificationPolicyResponse] {
+	return pulumix.Output[ApplicationNotificationPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The managed application notification endpoint.
 func (o ApplicationNotificationPolicyResponseOutput) NotificationEndpoints() ApplicationNotificationEndpointResponseArrayOutput {
 	return o.ApplyT(func(v ApplicationNotificationPolicyResponse) []ApplicationNotificationEndpointResponse {
@@ -1515,6 +1786,12 @@ func (o ApplicationNotificationPolicyResponsePtrOutput) ToApplicationNotificatio
 
 func (o ApplicationNotificationPolicyResponsePtrOutput) ToApplicationNotificationPolicyResponsePtrOutputWithContext(ctx context.Context) ApplicationNotificationPolicyResponsePtrOutput {
 	return o
+}
+
+func (o ApplicationNotificationPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationNotificationPolicyResponse] {
+	return pulumix.Output[*ApplicationNotificationPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationNotificationPolicyResponsePtrOutput) Elem() ApplicationNotificationPolicyResponseOutput {
@@ -1560,6 +1837,12 @@ func (o ApplicationPackageContactResponseOutput) ToApplicationPackageContactResp
 
 func (o ApplicationPackageContactResponseOutput) ToApplicationPackageContactResponseOutputWithContext(ctx context.Context) ApplicationPackageContactResponseOutput {
 	return o
+}
+
+func (o ApplicationPackageContactResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationPackageContactResponse] {
+	return pulumix.Output[ApplicationPackageContactResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The contact name.
@@ -1616,6 +1899,12 @@ func (i ApplicationPackageLockingPolicyDefinitionArgs) ToApplicationPackageLocki
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPackageLockingPolicyDefinitionOutput)
 }
 
+func (i ApplicationPackageLockingPolicyDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationPackageLockingPolicyDefinition] {
+	return pulumix.Output[ApplicationPackageLockingPolicyDefinition]{
+		OutputState: i.ToApplicationPackageLockingPolicyDefinitionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ApplicationPackageLockingPolicyDefinitionArgs) ToApplicationPackageLockingPolicyDefinitionPtrOutput() ApplicationPackageLockingPolicyDefinitionPtrOutput {
 	return i.ToApplicationPackageLockingPolicyDefinitionPtrOutputWithContext(context.Background())
 }
@@ -1657,6 +1946,12 @@ func (i *applicationPackageLockingPolicyDefinitionPtrType) ToApplicationPackageL
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPackageLockingPolicyDefinitionPtrOutput)
 }
 
+func (i *applicationPackageLockingPolicyDefinitionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPackageLockingPolicyDefinition] {
+	return pulumix.Output[*ApplicationPackageLockingPolicyDefinition]{
+		OutputState: i.ToApplicationPackageLockingPolicyDefinitionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed application locking policy.
 type ApplicationPackageLockingPolicyDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -1682,6 +1977,12 @@ func (o ApplicationPackageLockingPolicyDefinitionOutput) ToApplicationPackageLoc
 	}).(ApplicationPackageLockingPolicyDefinitionPtrOutput)
 }
 
+func (o ApplicationPackageLockingPolicyDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationPackageLockingPolicyDefinition] {
+	return pulumix.Output[ApplicationPackageLockingPolicyDefinition]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The deny assignment excluded actions.
 func (o ApplicationPackageLockingPolicyDefinitionOutput) AllowedActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationPackageLockingPolicyDefinition) []string { return v.AllowedActions }).(pulumi.StringArrayOutput)
@@ -1704,6 +2005,12 @@ func (o ApplicationPackageLockingPolicyDefinitionPtrOutput) ToApplicationPackage
 
 func (o ApplicationPackageLockingPolicyDefinitionPtrOutput) ToApplicationPackageLockingPolicyDefinitionPtrOutputWithContext(ctx context.Context) ApplicationPackageLockingPolicyDefinitionPtrOutput {
 	return o
+}
+
+func (o ApplicationPackageLockingPolicyDefinitionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPackageLockingPolicyDefinition] {
+	return pulumix.Output[*ApplicationPackageLockingPolicyDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationPackageLockingPolicyDefinitionPtrOutput) Elem() ApplicationPackageLockingPolicyDefinitionOutput {
@@ -1759,6 +2066,12 @@ func (o ApplicationPackageLockingPolicyDefinitionResponseOutput) ToApplicationPa
 	return o
 }
 
+func (o ApplicationPackageLockingPolicyDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationPackageLockingPolicyDefinitionResponse] {
+	return pulumix.Output[ApplicationPackageLockingPolicyDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The deny assignment excluded actions.
 func (o ApplicationPackageLockingPolicyDefinitionResponseOutput) AllowedActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationPackageLockingPolicyDefinitionResponse) []string { return v.AllowedActions }).(pulumi.StringArrayOutput)
@@ -1781,6 +2094,12 @@ func (o ApplicationPackageLockingPolicyDefinitionResponsePtrOutput) ToApplicatio
 
 func (o ApplicationPackageLockingPolicyDefinitionResponsePtrOutput) ToApplicationPackageLockingPolicyDefinitionResponsePtrOutputWithContext(ctx context.Context) ApplicationPackageLockingPolicyDefinitionResponsePtrOutput {
 	return o
+}
+
+func (o ApplicationPackageLockingPolicyDefinitionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPackageLockingPolicyDefinitionResponse] {
+	return pulumix.Output[*ApplicationPackageLockingPolicyDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationPackageLockingPolicyDefinitionResponsePtrOutput) Elem() ApplicationPackageLockingPolicyDefinitionResponseOutput {
@@ -1836,6 +2155,12 @@ func (o ApplicationPackageSupportUrlsResponseOutput) ToApplicationPackageSupport
 	return o
 }
 
+func (o ApplicationPackageSupportUrlsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationPackageSupportUrlsResponse] {
+	return pulumix.Output[ApplicationPackageSupportUrlsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The government cloud support URL.
 func (o ApplicationPackageSupportUrlsResponseOutput) GovernmentCloud() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationPackageSupportUrlsResponse) *string { return v.GovernmentCloud }).(pulumi.StringPtrOutput)
@@ -1889,6 +2214,12 @@ func (i ApplicationPolicyArgs) ToApplicationPolicyOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPolicyOutput)
 }
 
+func (i ApplicationPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationPolicy] {
+	return pulumix.Output[ApplicationPolicy]{
+		OutputState: i.ToApplicationPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApplicationPolicyArrayInput is an input type that accepts ApplicationPolicyArray and ApplicationPolicyArrayOutput values.
 // You can construct a concrete instance of `ApplicationPolicyArrayInput` via:
 //
@@ -1914,6 +2245,12 @@ func (i ApplicationPolicyArray) ToApplicationPolicyArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPolicyArrayOutput)
 }
 
+func (i ApplicationPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationPolicy] {
+	return pulumix.Output[[]ApplicationPolicy]{
+		OutputState: i.ToApplicationPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Managed application policy.
 type ApplicationPolicyOutput struct{ *pulumi.OutputState }
 
@@ -1927,6 +2264,12 @@ func (o ApplicationPolicyOutput) ToApplicationPolicyOutput() ApplicationPolicyOu
 
 func (o ApplicationPolicyOutput) ToApplicationPolicyOutputWithContext(ctx context.Context) ApplicationPolicyOutput {
 	return o
+}
+
+func (o ApplicationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationPolicy] {
+	return pulumix.Output[ApplicationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The policy name
@@ -1956,6 +2299,12 @@ func (o ApplicationPolicyArrayOutput) ToApplicationPolicyArrayOutput() Applicati
 
 func (o ApplicationPolicyArrayOutput) ToApplicationPolicyArrayOutputWithContext(ctx context.Context) ApplicationPolicyArrayOutput {
 	return o
+}
+
+func (o ApplicationPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationPolicy] {
+	return pulumix.Output[[]ApplicationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationPolicyArrayOutput) Index(i pulumi.IntInput) ApplicationPolicyOutput {
@@ -1989,6 +2338,12 @@ func (o ApplicationPolicyResponseOutput) ToApplicationPolicyResponseOutputWithCo
 	return o
 }
 
+func (o ApplicationPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationPolicyResponse] {
+	return pulumix.Output[ApplicationPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The policy name
 func (o ApplicationPolicyResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationPolicyResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2016,6 +2371,12 @@ func (o ApplicationPolicyResponseArrayOutput) ToApplicationPolicyResponseArrayOu
 
 func (o ApplicationPolicyResponseArrayOutput) ToApplicationPolicyResponseArrayOutputWithContext(ctx context.Context) ApplicationPolicyResponseArrayOutput {
 	return o
+}
+
+func (o ApplicationPolicyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationPolicyResponse] {
+	return pulumix.Output[[]ApplicationPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationPolicyResponseArrayOutput) Index(i pulumi.IntInput) ApplicationPolicyResponseOutput {
@@ -2063,6 +2424,12 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
+func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
 	return i.ToIdentityPtrOutputWithContext(context.Background())
 }
@@ -2104,6 +2471,12 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
+func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity for the resource.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -2129,6 +2502,12 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
+func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v Identity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -2151,6 +2530,12 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
+}
+
+func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -2210,6 +2595,12 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
+	return pulumix.Output[IdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal ID of resource identity.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -2244,6 +2635,12 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
+}
+
+func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
+	return pulumix.Output[*IdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -2339,6 +2736,12 @@ func (i JitApproverDefinitionArgs) ToJitApproverDefinitionOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(JitApproverDefinitionOutput)
 }
 
+func (i JitApproverDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[JitApproverDefinition] {
+	return pulumix.Output[JitApproverDefinition]{
+		OutputState: i.ToJitApproverDefinitionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JitApproverDefinitionArrayInput is an input type that accepts JitApproverDefinitionArray and JitApproverDefinitionArrayOutput values.
 // You can construct a concrete instance of `JitApproverDefinitionArrayInput` via:
 //
@@ -2364,6 +2767,12 @@ func (i JitApproverDefinitionArray) ToJitApproverDefinitionArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(JitApproverDefinitionArrayOutput)
 }
 
+func (i JitApproverDefinitionArray) ToOutput(ctx context.Context) pulumix.Output[[]JitApproverDefinition] {
+	return pulumix.Output[[]JitApproverDefinition]{
+		OutputState: i.ToJitApproverDefinitionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JIT approver definition.
 type JitApproverDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -2377,6 +2786,12 @@ func (o JitApproverDefinitionOutput) ToJitApproverDefinitionOutput() JitApprover
 
 func (o JitApproverDefinitionOutput) ToJitApproverDefinitionOutputWithContext(ctx context.Context) JitApproverDefinitionOutput {
 	return o
+}
+
+func (o JitApproverDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[JitApproverDefinition] {
+	return pulumix.Output[JitApproverDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The approver display name.
@@ -2406,6 +2821,12 @@ func (o JitApproverDefinitionArrayOutput) ToJitApproverDefinitionArrayOutput() J
 
 func (o JitApproverDefinitionArrayOutput) ToJitApproverDefinitionArrayOutputWithContext(ctx context.Context) JitApproverDefinitionArrayOutput {
 	return o
+}
+
+func (o JitApproverDefinitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitApproverDefinition] {
+	return pulumix.Output[[]JitApproverDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JitApproverDefinitionArrayOutput) Index(i pulumi.IntInput) JitApproverDefinitionOutput {
@@ -2439,6 +2860,12 @@ func (o JitApproverDefinitionResponseOutput) ToJitApproverDefinitionResponseOutp
 	return o
 }
 
+func (o JitApproverDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JitApproverDefinitionResponse] {
+	return pulumix.Output[JitApproverDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The approver display name.
 func (o JitApproverDefinitionResponseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JitApproverDefinitionResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -2466,6 +2893,12 @@ func (o JitApproverDefinitionResponseArrayOutput) ToJitApproverDefinitionRespons
 
 func (o JitApproverDefinitionResponseArrayOutput) ToJitApproverDefinitionResponseArrayOutputWithContext(ctx context.Context) JitApproverDefinitionResponseArrayOutput {
 	return o
+}
+
+func (o JitApproverDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitApproverDefinitionResponse] {
+	return pulumix.Output[[]JitApproverDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JitApproverDefinitionResponseArrayOutput) Index(i pulumi.IntInput) JitApproverDefinitionResponseOutput {
@@ -2513,6 +2946,12 @@ func (i JitAuthorizationPoliciesArgs) ToJitAuthorizationPoliciesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(JitAuthorizationPoliciesOutput)
 }
 
+func (i JitAuthorizationPoliciesArgs) ToOutput(ctx context.Context) pulumix.Output[JitAuthorizationPolicies] {
+	return pulumix.Output[JitAuthorizationPolicies]{
+		OutputState: i.ToJitAuthorizationPoliciesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JitAuthorizationPoliciesArrayInput is an input type that accepts JitAuthorizationPoliciesArray and JitAuthorizationPoliciesArrayOutput values.
 // You can construct a concrete instance of `JitAuthorizationPoliciesArrayInput` via:
 //
@@ -2538,6 +2977,12 @@ func (i JitAuthorizationPoliciesArray) ToJitAuthorizationPoliciesArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(JitAuthorizationPoliciesArrayOutput)
 }
 
+func (i JitAuthorizationPoliciesArray) ToOutput(ctx context.Context) pulumix.Output[[]JitAuthorizationPolicies] {
+	return pulumix.Output[[]JitAuthorizationPolicies]{
+		OutputState: i.ToJitAuthorizationPoliciesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The JIT authorization policies.
 type JitAuthorizationPoliciesOutput struct{ *pulumi.OutputState }
 
@@ -2551,6 +2996,12 @@ func (o JitAuthorizationPoliciesOutput) ToJitAuthorizationPoliciesOutput() JitAu
 
 func (o JitAuthorizationPoliciesOutput) ToJitAuthorizationPoliciesOutputWithContext(ctx context.Context) JitAuthorizationPoliciesOutput {
 	return o
+}
+
+func (o JitAuthorizationPoliciesOutput) ToOutput(ctx context.Context) pulumix.Output[JitAuthorizationPolicies] {
+	return pulumix.Output[JitAuthorizationPolicies]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The the principal id that will be granted JIT access.
@@ -2575,6 +3026,12 @@ func (o JitAuthorizationPoliciesArrayOutput) ToJitAuthorizationPoliciesArrayOutp
 
 func (o JitAuthorizationPoliciesArrayOutput) ToJitAuthorizationPoliciesArrayOutputWithContext(ctx context.Context) JitAuthorizationPoliciesArrayOutput {
 	return o
+}
+
+func (o JitAuthorizationPoliciesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitAuthorizationPolicies] {
+	return pulumix.Output[[]JitAuthorizationPolicies]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JitAuthorizationPoliciesArrayOutput) Index(i pulumi.IntInput) JitAuthorizationPoliciesOutput {
@@ -2606,6 +3063,12 @@ func (o JitAuthorizationPoliciesResponseOutput) ToJitAuthorizationPoliciesRespon
 	return o
 }
 
+func (o JitAuthorizationPoliciesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JitAuthorizationPoliciesResponse] {
+	return pulumix.Output[JitAuthorizationPoliciesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The the principal id that will be granted JIT access.
 func (o JitAuthorizationPoliciesResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v JitAuthorizationPoliciesResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -2628,6 +3091,12 @@ func (o JitAuthorizationPoliciesResponseArrayOutput) ToJitAuthorizationPoliciesR
 
 func (o JitAuthorizationPoliciesResponseArrayOutput) ToJitAuthorizationPoliciesResponseArrayOutputWithContext(ctx context.Context) JitAuthorizationPoliciesResponseArrayOutput {
 	return o
+}
+
+func (o JitAuthorizationPoliciesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JitAuthorizationPoliciesResponse] {
+	return pulumix.Output[[]JitAuthorizationPoliciesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JitAuthorizationPoliciesResponseArrayOutput) Index(i pulumi.IntInput) JitAuthorizationPoliciesResponseOutput {
@@ -2677,6 +3146,12 @@ func (i JitSchedulingPolicyArgs) ToJitSchedulingPolicyOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(JitSchedulingPolicyOutput)
 }
 
+func (i JitSchedulingPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[JitSchedulingPolicy] {
+	return pulumix.Output[JitSchedulingPolicy]{
+		OutputState: i.ToJitSchedulingPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The JIT scheduling policies.
 type JitSchedulingPolicyOutput struct{ *pulumi.OutputState }
 
@@ -2690,6 +3165,12 @@ func (o JitSchedulingPolicyOutput) ToJitSchedulingPolicyOutput() JitSchedulingPo
 
 func (o JitSchedulingPolicyOutput) ToJitSchedulingPolicyOutputWithContext(ctx context.Context) JitSchedulingPolicyOutput {
 	return o
+}
+
+func (o JitSchedulingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[JitSchedulingPolicy] {
+	return pulumix.Output[JitSchedulingPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JitSchedulingPolicyOutput) Duration() pulumi.StringOutput {
@@ -2728,6 +3209,12 @@ func (o JitSchedulingPolicyResponseOutput) ToJitSchedulingPolicyResponseOutput()
 
 func (o JitSchedulingPolicyResponseOutput) ToJitSchedulingPolicyResponseOutputWithContext(ctx context.Context) JitSchedulingPolicyResponseOutput {
 	return o
+}
+
+func (o JitSchedulingPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JitSchedulingPolicyResponse] {
+	return pulumix.Output[JitSchedulingPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JitSchedulingPolicyResponseOutput) Duration() pulumi.StringOutput {
@@ -2777,6 +3264,12 @@ func (o ManagedIdentityTokenResponseOutput) ToManagedIdentityTokenResponseOutput
 	return o
 }
 
+func (o ManagedIdentityTokenResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedIdentityTokenResponse] {
+	return pulumix.Output[ManagedIdentityTokenResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The requested access token.
 func (o ManagedIdentityTokenResponseOutput) AccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIdentityTokenResponse) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
@@ -2824,6 +3317,12 @@ func (o ManagedIdentityTokenResponseArrayOutput) ToManagedIdentityTokenResponseA
 
 func (o ManagedIdentityTokenResponseArrayOutput) ToManagedIdentityTokenResponseArrayOutputWithContext(ctx context.Context) ManagedIdentityTokenResponseArrayOutput {
 	return o
+}
+
+func (o ManagedIdentityTokenResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedIdentityTokenResponse] {
+	return pulumix.Output[[]ManagedIdentityTokenResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedIdentityTokenResponseArrayOutput) Index(i pulumi.IntInput) ManagedIdentityTokenResponseOutput {
@@ -2883,6 +3382,12 @@ func (i PlanArgs) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PlanOutput)
 }
 
+func (i PlanArgs) ToOutput(ctx context.Context) pulumix.Output[Plan] {
+	return pulumix.Output[Plan]{
+		OutputState: i.ToPlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PlanArgs) ToPlanPtrOutput() PlanPtrOutput {
 	return i.ToPlanPtrOutputWithContext(context.Background())
 }
@@ -2924,6 +3429,12 @@ func (i *planPtrType) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(PlanPtrOutput)
 }
 
+func (i *planPtrType) ToOutput(ctx context.Context) pulumix.Output[*Plan] {
+	return pulumix.Output[*Plan]{
+		OutputState: i.ToPlanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Plan for the managed application.
 type PlanOutput struct{ *pulumi.OutputState }
 
@@ -2947,6 +3458,12 @@ func (o PlanOutput) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Plan) *Plan {
 		return &v
 	}).(PlanPtrOutput)
+}
+
+func (o PlanOutput) ToOutput(ctx context.Context) pulumix.Output[Plan] {
+	return pulumix.Output[Plan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The plan name.
@@ -2986,6 +3503,12 @@ func (o PlanPtrOutput) ToPlanPtrOutput() PlanPtrOutput {
 
 func (o PlanPtrOutput) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutput {
 	return o
+}
+
+func (o PlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Plan] {
+	return pulumix.Output[*Plan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PlanPtrOutput) Elem() PlanOutput {
@@ -3077,6 +3600,12 @@ func (o PlanResponseOutput) ToPlanResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o PlanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PlanResponse] {
+	return pulumix.Output[PlanResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The plan name.
 func (o PlanResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PlanResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -3114,6 +3643,12 @@ func (o PlanResponsePtrOutput) ToPlanResponsePtrOutput() PlanResponsePtrOutput {
 
 func (o PlanResponsePtrOutput) ToPlanResponsePtrOutputWithContext(ctx context.Context) PlanResponsePtrOutput {
 	return o
+}
+
+func (o PlanResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PlanResponse] {
+	return pulumix.Output[*PlanResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PlanResponsePtrOutput) Elem() PlanResponseOutput {
@@ -3190,6 +3725,12 @@ func (o PlanResponseArrayOutput) ToPlanResponseArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o PlanResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PlanResponse] {
+	return pulumix.Output[[]PlanResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PlanResponseArrayOutput) Index(i pulumi.IntInput) PlanResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PlanResponse {
 		return vs[0].([]PlanResponse)[vs[1].(int)]
@@ -3251,6 +3792,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -3292,6 +3839,12 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
+func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SKU for the resource.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -3315,6 +3868,12 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
 		return &v
 	}).(SkuPtrOutput)
+}
+
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SKU capacity.
@@ -3359,6 +3918,12 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
+}
+
+func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
+	return pulumix.Output[*Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -3462,6 +4027,12 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The SKU capacity.
 func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -3504,6 +4075,12 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
+}
+
+func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
+	return pulumix.Output[*SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -3607,6 +4184,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -3660,6 +4243,12 @@ func (o UserAssignedResourceIdentityResponseOutput) ToUserAssignedResourceIdenti
 	return o
 }
 
+func (o UserAssignedResourceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedResourceIdentityResponse] {
+	return pulumix.Output[UserAssignedResourceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal id of user assigned identity.
 func (o UserAssignedResourceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedResourceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -3682,6 +4271,12 @@ func (o UserAssignedResourceIdentityResponseMapOutput) ToUserAssignedResourceIde
 
 func (o UserAssignedResourceIdentityResponseMapOutput) ToUserAssignedResourceIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedResourceIdentityResponseMapOutput {
 	return o
+}
+
+func (o UserAssignedResourceIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedResourceIdentityResponse] {
+	return pulumix.Output[map[string]UserAssignedResourceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAssignedResourceIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedResourceIdentityResponseOutput {

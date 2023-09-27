@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of the Storage Target.
@@ -202,6 +203,12 @@ func (i *StorageTarget) ToStorageTargetOutputWithContext(ctx context.Context) St
 	return pulumi.ToOutputWithContext(ctx, i).(StorageTargetOutput)
 }
 
+func (i *StorageTarget) ToOutput(ctx context.Context) pulumix.Output[*StorageTarget] {
+	return pulumix.Output[*StorageTarget]{
+		OutputState: i.ToStorageTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StorageTargetOutput struct{ *pulumi.OutputState }
 
 func (StorageTargetOutput) ElementType() reflect.Type {
@@ -214,6 +221,12 @@ func (o StorageTargetOutput) ToStorageTargetOutput() StorageTargetOutput {
 
 func (o StorageTargetOutput) ToStorageTargetOutputWithContext(ctx context.Context) StorageTargetOutput {
 	return o
+}
+
+func (o StorageTargetOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageTarget] {
+	return pulumix.Output[*StorageTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The percentage of cache space allocated for this storage target

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sku sub resource.
@@ -160,6 +161,12 @@ func (i *VendorSkus) ToVendorSkusOutputWithContext(ctx context.Context) VendorSk
 	return pulumi.ToOutputWithContext(ctx, i).(VendorSkusOutput)
 }
 
+func (i *VendorSkus) ToOutput(ctx context.Context) pulumix.Output[*VendorSkus] {
+	return pulumix.Output[*VendorSkus]{
+		OutputState: i.ToVendorSkusOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VendorSkusOutput struct{ *pulumi.OutputState }
 
 func (VendorSkusOutput) ElementType() reflect.Type {
@@ -172,6 +179,12 @@ func (o VendorSkusOutput) ToVendorSkusOutput() VendorSkusOutput {
 
 func (o VendorSkusOutput) ToVendorSkusOutputWithContext(ctx context.Context) VendorSkusOutput {
 	return o
+}
+
+func (o VendorSkusOutput) ToOutput(ctx context.Context) pulumix.Output[*VendorSkus] {
+	return pulumix.Output[*VendorSkus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The sku deployment mode.

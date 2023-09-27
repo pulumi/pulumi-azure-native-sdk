@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A private cloud resource
@@ -233,6 +234,12 @@ func (i *PrivateCloud) ToPrivateCloudOutputWithContext(ctx context.Context) Priv
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudOutput)
 }
 
+func (i *PrivateCloud) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloud] {
+	return pulumix.Output[*PrivateCloud]{
+		OutputState: i.ToPrivateCloudOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateCloudOutput struct{ *pulumi.OutputState }
 
 func (PrivateCloudOutput) ElementType() reflect.Type {
@@ -245,6 +252,12 @@ func (o PrivateCloudOutput) ToPrivateCloudOutput() PrivateCloudOutput {
 
 func (o PrivateCloudOutput) ToPrivateCloudOutputWithContext(ctx context.Context) PrivateCloudOutput {
 	return o
+}
+
+func (o PrivateCloudOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloud] {
+	return pulumix.Output[*PrivateCloud]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Properties describing how the cloud is distributed across availability zones

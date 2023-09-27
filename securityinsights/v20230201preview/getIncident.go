@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an incident.
@@ -122,6 +123,12 @@ func (o LookupIncidentResultOutput) ToLookupIncidentResultOutput() LookupInciden
 
 func (o LookupIncidentResultOutput) ToLookupIncidentResultOutputWithContext(ctx context.Context) LookupIncidentResultOutput {
 	return o
+}
+
+func (o LookupIncidentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIncidentResult] {
+	return pulumix.Output[LookupIncidentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional data on the incident

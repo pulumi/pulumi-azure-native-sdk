@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List the device groups for the catalog.
@@ -94,6 +95,12 @@ func (o ListCatalogDeviceGroupsResultOutput) ToListCatalogDeviceGroupsResultOutp
 
 func (o ListCatalogDeviceGroupsResultOutput) ToListCatalogDeviceGroupsResultOutputWithContext(ctx context.Context) ListCatalogDeviceGroupsResultOutput {
 	return o
+}
+
+func (o ListCatalogDeviceGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListCatalogDeviceGroupsResult] {
+	return pulumix.Output[ListCatalogDeviceGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The link to the next page of items

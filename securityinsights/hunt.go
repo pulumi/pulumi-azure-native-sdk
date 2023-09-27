@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Hunt in Azure Security Insights.
@@ -83,6 +84,9 @@ func NewHunt(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:Hunt"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Hunt"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -192,6 +196,12 @@ func (i *Hunt) ToHuntOutputWithContext(ctx context.Context) HuntOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HuntOutput)
 }
 
+func (i *Hunt) ToOutput(ctx context.Context) pulumix.Output[*Hunt] {
+	return pulumix.Output[*Hunt]{
+		OutputState: i.ToHuntOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HuntOutput struct{ *pulumi.OutputState }
 
 func (HuntOutput) ElementType() reflect.Type {
@@ -204,6 +214,12 @@ func (o HuntOutput) ToHuntOutput() HuntOutput {
 
 func (o HuntOutput) ToHuntOutputWithContext(ctx context.Context) HuntOutput {
 	return o
+}
+
+func (o HuntOutput) ToOutput(ctx context.Context) pulumix.Output[*Hunt] {
+	return pulumix.Output[*Hunt]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of mitre attack tactics the hunt is associated with

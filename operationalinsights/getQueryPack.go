@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a Log Analytics QueryPack.
@@ -89,6 +90,12 @@ func (o LookupQueryPackResultOutput) ToLookupQueryPackResultOutput() LookupQuery
 
 func (o LookupQueryPackResultOutput) ToLookupQueryPackResultOutputWithContext(ctx context.Context) LookupQueryPackResultOutput {
 	return o
+}
+
+func (o LookupQueryPackResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupQueryPackResult] {
+	return pulumix.Output[LookupQueryPackResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Azure resource Id

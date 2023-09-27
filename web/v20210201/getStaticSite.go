@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a static site.
@@ -114,6 +115,12 @@ func (o LookupStaticSiteResultOutput) ToLookupStaticSiteResultOutput() LookupSta
 
 func (o LookupStaticSiteResultOutput) ToLookupStaticSiteResultOutputWithContext(ctx context.Context) LookupStaticSiteResultOutput {
 	return o
+}
+
+func (o LookupStaticSiteResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStaticSiteResult] {
+	return pulumix.Output[LookupStaticSiteResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // <code>false</code> if config file is locked for this static web app; otherwise, <code>true</code>.

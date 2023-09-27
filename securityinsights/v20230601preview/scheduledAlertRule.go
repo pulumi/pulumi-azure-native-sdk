@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents scheduled alert rule.
@@ -199,6 +200,9 @@ func NewScheduledAlertRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:ScheduledAlertRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:ScheduledAlertRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -365,6 +369,12 @@ func (i *ScheduledAlertRule) ToScheduledAlertRuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledAlertRuleOutput)
 }
 
+func (i *ScheduledAlertRule) ToOutput(ctx context.Context) pulumix.Output[*ScheduledAlertRule] {
+	return pulumix.Output[*ScheduledAlertRule]{
+		OutputState: i.ToScheduledAlertRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScheduledAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (ScheduledAlertRuleOutput) ElementType() reflect.Type {
@@ -377,6 +387,12 @@ func (o ScheduledAlertRuleOutput) ToScheduledAlertRuleOutput() ScheduledAlertRul
 
 func (o ScheduledAlertRuleOutput) ToScheduledAlertRuleOutputWithContext(ctx context.Context) ScheduledAlertRuleOutput {
 	return o
+}
+
+func (o ScheduledAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduledAlertRule] {
+	return pulumix.Output[*ScheduledAlertRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alert details override settings

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A user-defined logical grouping of machines.
@@ -157,6 +158,12 @@ func (i *MachineGroup) ToMachineGroupOutputWithContext(ctx context.Context) Mach
 	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupOutput)
 }
 
+func (i *MachineGroup) ToOutput(ctx context.Context) pulumix.Output[*MachineGroup] {
+	return pulumix.Output[*MachineGroup]{
+		OutputState: i.ToMachineGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MachineGroupOutput struct{ *pulumi.OutputState }
 
 func (MachineGroupOutput) ElementType() reflect.Type {
@@ -169,6 +176,12 @@ func (o MachineGroupOutput) ToMachineGroupOutput() MachineGroupOutput {
 
 func (o MachineGroupOutput) ToMachineGroupOutputWithContext(ctx context.Context) MachineGroupOutput {
 	return o
+}
+
+func (o MachineGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineGroup] {
+	return pulumix.Output[*MachineGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Count of machines in this group. The value of count may be bigger than the number of machines in case of the group has been truncated due to exceeding the max number of machines a group can handle.

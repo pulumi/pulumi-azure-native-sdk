@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -38,6 +39,12 @@ func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput) ToAks
 	return o
 }
 
+func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput) ToOutput(ctx context.Context) pulumix.Output[AksClusterProfileResponseAksClusterAgentPoolIdentityProfile] {
+	return pulumix.Output[AksClusterProfileResponseAksClusterAgentPoolIdentityProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // ClientId of the MSI.
 func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput) MsiClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v AksClusterProfileResponseAksClusterAgentPoolIdentityProfile) string { return v.MsiClientId }).(pulumi.StringOutput)
@@ -65,6 +72,12 @@ func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput) To
 
 func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput) ToAksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutputWithContext(ctx context.Context) AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput {
 	return o
+}
+
+func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AksClusterProfileResponseAksClusterAgentPoolIdentityProfile] {
+	return pulumix.Output[*AksClusterProfileResponseAksClusterAgentPoolIdentityProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput) Elem() AksClusterProfileResponseAksClusterAgentPoolIdentityProfileOutput {
@@ -146,6 +159,12 @@ func (i AuthorizationProfileArgs) ToAuthorizationProfileOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationProfileOutput)
 }
 
+func (i AuthorizationProfileArgs) ToOutput(ctx context.Context) pulumix.Output[AuthorizationProfile] {
+	return pulumix.Output[AuthorizationProfile]{
+		OutputState: i.ToAuthorizationProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Authorization profile with details of AAD user Ids and group Ids authorized for data plane access.
 type AuthorizationProfileOutput struct{ *pulumi.OutputState }
 
@@ -159,6 +178,12 @@ func (o AuthorizationProfileOutput) ToAuthorizationProfileOutput() Authorization
 
 func (o AuthorizationProfileOutput) ToAuthorizationProfileOutputWithContext(ctx context.Context) AuthorizationProfileOutput {
 	return o
+}
+
+func (o AuthorizationProfileOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationProfile] {
+	return pulumix.Output[AuthorizationProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AAD group Ids authorized for data plane access.
@@ -192,6 +217,12 @@ func (o AuthorizationProfileResponseOutput) ToAuthorizationProfileResponseOutput
 
 func (o AuthorizationProfileResponseOutput) ToAuthorizationProfileResponseOutputWithContext(ctx context.Context) AuthorizationProfileResponseOutput {
 	return o
+}
+
+func (o AuthorizationProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationProfileResponse] {
+	return pulumix.Output[AuthorizationProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AAD group Ids authorized for data plane access.
@@ -255,6 +286,12 @@ func (i AutoscaleProfileArgs) ToAutoscaleProfileOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleProfileOutput)
 }
 
+func (i AutoscaleProfileArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscaleProfile] {
+	return pulumix.Output[AutoscaleProfile]{
+		OutputState: i.ToAutoscaleProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AutoscaleProfileArgs) ToAutoscaleProfilePtrOutput() AutoscaleProfilePtrOutput {
 	return i.ToAutoscaleProfilePtrOutputWithContext(context.Background())
 }
@@ -296,6 +333,12 @@ func (i *autoscaleProfilePtrType) ToAutoscaleProfilePtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleProfilePtrOutput)
 }
 
+func (i *autoscaleProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoscaleProfile] {
+	return pulumix.Output[*AutoscaleProfile]{
+		OutputState: i.ToAutoscaleProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This is the Autoscale profile for the cluster. This will allow customer to create cluster enabled with Autoscale.
 type AutoscaleProfileOutput struct{ *pulumi.OutputState }
 
@@ -319,6 +362,12 @@ func (o AutoscaleProfileOutput) ToAutoscaleProfilePtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscaleProfile) *AutoscaleProfile {
 		return &v
 	}).(AutoscaleProfilePtrOutput)
+}
+
+func (o AutoscaleProfileOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscaleProfile] {
+	return pulumix.Output[AutoscaleProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User to specify which type of Autoscale to be implemented - Scheduled Based or Load Based.
@@ -358,6 +407,12 @@ func (o AutoscaleProfilePtrOutput) ToAutoscaleProfilePtrOutput() AutoscaleProfil
 
 func (o AutoscaleProfilePtrOutput) ToAutoscaleProfilePtrOutputWithContext(ctx context.Context) AutoscaleProfilePtrOutput {
 	return o
+}
+
+func (o AutoscaleProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscaleProfile] {
+	return pulumix.Output[*AutoscaleProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoscaleProfilePtrOutput) Elem() AutoscaleProfileOutput {
@@ -449,6 +504,12 @@ func (o AutoscaleProfileResponseOutput) ToAutoscaleProfileResponseOutputWithCont
 	return o
 }
 
+func (o AutoscaleProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscaleProfileResponse] {
+	return pulumix.Output[AutoscaleProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // User to specify which type of Autoscale to be implemented - Scheduled Based or Load Based.
 func (o AutoscaleProfileResponseOutput) AutoscaleType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoscaleProfileResponse) *string { return v.AutoscaleType }).(pulumi.StringPtrOutput)
@@ -486,6 +547,12 @@ func (o AutoscaleProfileResponsePtrOutput) ToAutoscaleProfileResponsePtrOutput()
 
 func (o AutoscaleProfileResponsePtrOutput) ToAutoscaleProfileResponsePtrOutputWithContext(ctx context.Context) AutoscaleProfileResponsePtrOutput {
 	return o
+}
+
+func (o AutoscaleProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscaleProfileResponse] {
+	return pulumix.Output[*AutoscaleProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoscaleProfileResponsePtrOutput) Elem() AutoscaleProfileResponseOutput {
@@ -583,6 +650,12 @@ func (i CatalogOptionsArgs) ToCatalogOptionsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogOptionsOutput)
 }
 
+func (i CatalogOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[CatalogOptions] {
+	return pulumix.Output[CatalogOptions]{
+		OutputState: i.ToCatalogOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CatalogOptionsArgs) ToCatalogOptionsPtrOutput() CatalogOptionsPtrOutput {
 	return i.ToCatalogOptionsPtrOutputWithContext(context.Background())
 }
@@ -624,6 +697,12 @@ func (i *catalogOptionsPtrType) ToCatalogOptionsPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogOptionsPtrOutput)
 }
 
+func (i *catalogOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CatalogOptions] {
+	return pulumix.Output[*CatalogOptions]{
+		OutputState: i.ToCatalogOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Trino cluster catalog options.
 type CatalogOptionsOutput struct{ *pulumi.OutputState }
 
@@ -649,6 +728,12 @@ func (o CatalogOptionsOutput) ToCatalogOptionsPtrOutputWithContext(ctx context.C
 	}).(CatalogOptionsPtrOutput)
 }
 
+func (o CatalogOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[CatalogOptions] {
+	return pulumix.Output[CatalogOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // hive catalog options.
 func (o CatalogOptionsOutput) Hive() HiveCatalogOptionArrayOutput {
 	return o.ApplyT(func(v CatalogOptions) []HiveCatalogOption { return v.Hive }).(HiveCatalogOptionArrayOutput)
@@ -666,6 +751,12 @@ func (o CatalogOptionsPtrOutput) ToCatalogOptionsPtrOutput() CatalogOptionsPtrOu
 
 func (o CatalogOptionsPtrOutput) ToCatalogOptionsPtrOutputWithContext(ctx context.Context) CatalogOptionsPtrOutput {
 	return o
+}
+
+func (o CatalogOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CatalogOptions] {
+	return pulumix.Output[*CatalogOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CatalogOptionsPtrOutput) Elem() CatalogOptionsOutput {
@@ -709,6 +800,12 @@ func (o CatalogOptionsResponseOutput) ToCatalogOptionsResponseOutputWithContext(
 	return o
 }
 
+func (o CatalogOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CatalogOptionsResponse] {
+	return pulumix.Output[CatalogOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // hive catalog options.
 func (o CatalogOptionsResponseOutput) Hive() HiveCatalogOptionResponseArrayOutput {
 	return o.ApplyT(func(v CatalogOptionsResponse) []HiveCatalogOptionResponse { return v.Hive }).(HiveCatalogOptionResponseArrayOutput)
@@ -726,6 +823,12 @@ func (o CatalogOptionsResponsePtrOutput) ToCatalogOptionsResponsePtrOutput() Cat
 
 func (o CatalogOptionsResponsePtrOutput) ToCatalogOptionsResponsePtrOutputWithContext(ctx context.Context) CatalogOptionsResponsePtrOutput {
 	return o
+}
+
+func (o CatalogOptionsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CatalogOptionsResponse] {
+	return pulumix.Output[*CatalogOptionsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CatalogOptionsResponsePtrOutput) Elem() CatalogOptionsResponseOutput {
@@ -801,6 +904,12 @@ func (i ClusterConfigFileArgs) ToClusterConfigFileOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigFileOutput)
 }
 
+func (i ClusterConfigFileArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterConfigFile] {
+	return pulumix.Output[ClusterConfigFile]{
+		OutputState: i.ToClusterConfigFileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClusterConfigFileArrayInput is an input type that accepts ClusterConfigFileArray and ClusterConfigFileArrayOutput values.
 // You can construct a concrete instance of `ClusterConfigFileArrayInput` via:
 //
@@ -826,6 +935,12 @@ func (i ClusterConfigFileArray) ToClusterConfigFileArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigFileArrayOutput)
 }
 
+func (i ClusterConfigFileArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterConfigFile] {
+	return pulumix.Output[[]ClusterConfigFile]{
+		OutputState: i.ToClusterConfigFileArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cluster configuration files.
 type ClusterConfigFileOutput struct{ *pulumi.OutputState }
 
@@ -839,6 +954,12 @@ func (o ClusterConfigFileOutput) ToClusterConfigFileOutput() ClusterConfigFileOu
 
 func (o ClusterConfigFileOutput) ToClusterConfigFileOutputWithContext(ctx context.Context) ClusterConfigFileOutput {
 	return o
+}
+
+func (o ClusterConfigFileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterConfigFile] {
+	return pulumix.Output[ClusterConfigFile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Free form content of the entire configuration file.
@@ -881,6 +1002,12 @@ func (o ClusterConfigFileArrayOutput) ToClusterConfigFileArrayOutputWithContext(
 	return o
 }
 
+func (o ClusterConfigFileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterConfigFile] {
+	return pulumix.Output[[]ClusterConfigFile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClusterConfigFileArrayOutput) Index(i pulumi.IntInput) ClusterConfigFileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterConfigFile {
 		return vs[0].([]ClusterConfigFile)[vs[1].(int)]
@@ -915,6 +1042,12 @@ func (o ClusterConfigFileResponseOutput) ToClusterConfigFileResponseOutput() Clu
 
 func (o ClusterConfigFileResponseOutput) ToClusterConfigFileResponseOutputWithContext(ctx context.Context) ClusterConfigFileResponseOutput {
 	return o
+}
+
+func (o ClusterConfigFileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterConfigFileResponse] {
+	return pulumix.Output[ClusterConfigFileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Free form content of the entire configuration file.
@@ -955,6 +1088,12 @@ func (o ClusterConfigFileResponseArrayOutput) ToClusterConfigFileResponseArrayOu
 
 func (o ClusterConfigFileResponseArrayOutput) ToClusterConfigFileResponseArrayOutputWithContext(ctx context.Context) ClusterConfigFileResponseArrayOutput {
 	return o
+}
+
+func (o ClusterConfigFileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterConfigFileResponse] {
+	return pulumix.Output[[]ClusterConfigFileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterConfigFileResponseArrayOutput) Index(i pulumi.IntInput) ClusterConfigFileResponseOutput {
@@ -1002,6 +1141,12 @@ func (i ClusterLogAnalyticsApplicationLogsArgs) ToClusterLogAnalyticsApplication
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterLogAnalyticsApplicationLogsOutput)
 }
 
+func (i ClusterLogAnalyticsApplicationLogsArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterLogAnalyticsApplicationLogs] {
+	return pulumix.Output[ClusterLogAnalyticsApplicationLogs]{
+		OutputState: i.ToClusterLogAnalyticsApplicationLogsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ClusterLogAnalyticsApplicationLogsArgs) ToClusterLogAnalyticsApplicationLogsPtrOutput() ClusterLogAnalyticsApplicationLogsPtrOutput {
 	return i.ToClusterLogAnalyticsApplicationLogsPtrOutputWithContext(context.Background())
 }
@@ -1043,6 +1188,12 @@ func (i *clusterLogAnalyticsApplicationLogsPtrType) ToClusterLogAnalyticsApplica
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterLogAnalyticsApplicationLogsPtrOutput)
 }
 
+func (i *clusterLogAnalyticsApplicationLogsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterLogAnalyticsApplicationLogs] {
+	return pulumix.Output[*ClusterLogAnalyticsApplicationLogs]{
+		OutputState: i.ToClusterLogAnalyticsApplicationLogsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Collection of logs to be enabled or disabled for log analytics.
 type ClusterLogAnalyticsApplicationLogsOutput struct{ *pulumi.OutputState }
 
@@ -1068,6 +1219,12 @@ func (o ClusterLogAnalyticsApplicationLogsOutput) ToClusterLogAnalyticsApplicati
 	}).(ClusterLogAnalyticsApplicationLogsPtrOutput)
 }
 
+func (o ClusterLogAnalyticsApplicationLogsOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterLogAnalyticsApplicationLogs] {
+	return pulumix.Output[ClusterLogAnalyticsApplicationLogs]{
+		OutputState: o.OutputState,
+	}
+}
+
 // True if stderror is enabled, otherwise false.
 func (o ClusterLogAnalyticsApplicationLogsOutput) StdErrorEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterLogAnalyticsApplicationLogs) *bool { return v.StdErrorEnabled }).(pulumi.BoolPtrOutput)
@@ -1090,6 +1247,12 @@ func (o ClusterLogAnalyticsApplicationLogsPtrOutput) ToClusterLogAnalyticsApplic
 
 func (o ClusterLogAnalyticsApplicationLogsPtrOutput) ToClusterLogAnalyticsApplicationLogsPtrOutputWithContext(ctx context.Context) ClusterLogAnalyticsApplicationLogsPtrOutput {
 	return o
+}
+
+func (o ClusterLogAnalyticsApplicationLogsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterLogAnalyticsApplicationLogs] {
+	return pulumix.Output[*ClusterLogAnalyticsApplicationLogs]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterLogAnalyticsApplicationLogsPtrOutput) Elem() ClusterLogAnalyticsApplicationLogsOutput {
@@ -1145,6 +1308,12 @@ func (o ClusterLogAnalyticsApplicationLogsResponseOutput) ToClusterLogAnalyticsA
 	return o
 }
 
+func (o ClusterLogAnalyticsApplicationLogsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterLogAnalyticsApplicationLogsResponse] {
+	return pulumix.Output[ClusterLogAnalyticsApplicationLogsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // True if stderror is enabled, otherwise false.
 func (o ClusterLogAnalyticsApplicationLogsResponseOutput) StdErrorEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterLogAnalyticsApplicationLogsResponse) *bool { return v.StdErrorEnabled }).(pulumi.BoolPtrOutput)
@@ -1167,6 +1336,12 @@ func (o ClusterLogAnalyticsApplicationLogsResponsePtrOutput) ToClusterLogAnalyti
 
 func (o ClusterLogAnalyticsApplicationLogsResponsePtrOutput) ToClusterLogAnalyticsApplicationLogsResponsePtrOutputWithContext(ctx context.Context) ClusterLogAnalyticsApplicationLogsResponsePtrOutput {
 	return o
+}
+
+func (o ClusterLogAnalyticsApplicationLogsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterLogAnalyticsApplicationLogsResponse] {
+	return pulumix.Output[*ClusterLogAnalyticsApplicationLogsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterLogAnalyticsApplicationLogsResponsePtrOutput) Elem() ClusterLogAnalyticsApplicationLogsResponseOutput {
@@ -1242,6 +1417,12 @@ func (i ClusterLogAnalyticsProfileArgs) ToClusterLogAnalyticsProfileOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterLogAnalyticsProfileOutput)
 }
 
+func (i ClusterLogAnalyticsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterLogAnalyticsProfile] {
+	return pulumix.Output[ClusterLogAnalyticsProfile]{
+		OutputState: i.ToClusterLogAnalyticsProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ClusterLogAnalyticsProfileArgs) ToClusterLogAnalyticsProfilePtrOutput() ClusterLogAnalyticsProfilePtrOutput {
 	return i.ToClusterLogAnalyticsProfilePtrOutputWithContext(context.Background())
 }
@@ -1283,6 +1464,12 @@ func (i *clusterLogAnalyticsProfilePtrType) ToClusterLogAnalyticsProfilePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterLogAnalyticsProfilePtrOutput)
 }
 
+func (i *clusterLogAnalyticsProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterLogAnalyticsProfile] {
+	return pulumix.Output[*ClusterLogAnalyticsProfile]{
+		OutputState: i.ToClusterLogAnalyticsProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cluster log analytics profile to enable or disable OMS agent for cluster.
 type ClusterLogAnalyticsProfileOutput struct{ *pulumi.OutputState }
 
@@ -1306,6 +1493,12 @@ func (o ClusterLogAnalyticsProfileOutput) ToClusterLogAnalyticsProfilePtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterLogAnalyticsProfile) *ClusterLogAnalyticsProfile {
 		return &v
 	}).(ClusterLogAnalyticsProfilePtrOutput)
+}
+
+func (o ClusterLogAnalyticsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterLogAnalyticsProfile] {
+	return pulumix.Output[ClusterLogAnalyticsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Collection of logs to be enabled or disabled for log analytics.
@@ -1335,6 +1528,12 @@ func (o ClusterLogAnalyticsProfilePtrOutput) ToClusterLogAnalyticsProfilePtrOutp
 
 func (o ClusterLogAnalyticsProfilePtrOutput) ToClusterLogAnalyticsProfilePtrOutputWithContext(ctx context.Context) ClusterLogAnalyticsProfilePtrOutput {
 	return o
+}
+
+func (o ClusterLogAnalyticsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterLogAnalyticsProfile] {
+	return pulumix.Output[*ClusterLogAnalyticsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterLogAnalyticsProfilePtrOutput) Elem() ClusterLogAnalyticsProfileOutput {
@@ -1402,6 +1601,12 @@ func (o ClusterLogAnalyticsProfileResponseOutput) ToClusterLogAnalyticsProfileRe
 	return o
 }
 
+func (o ClusterLogAnalyticsProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterLogAnalyticsProfileResponse] {
+	return pulumix.Output[ClusterLogAnalyticsProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Collection of logs to be enabled or disabled for log analytics.
 func (o ClusterLogAnalyticsProfileResponseOutput) ApplicationLogs() ClusterLogAnalyticsApplicationLogsResponsePtrOutput {
 	return o.ApplyT(func(v ClusterLogAnalyticsProfileResponse) *ClusterLogAnalyticsApplicationLogsResponse {
@@ -1431,6 +1636,12 @@ func (o ClusterLogAnalyticsProfileResponsePtrOutput) ToClusterLogAnalyticsProfil
 
 func (o ClusterLogAnalyticsProfileResponsePtrOutput) ToClusterLogAnalyticsProfileResponsePtrOutputWithContext(ctx context.Context) ClusterLogAnalyticsProfileResponsePtrOutput {
 	return o
+}
+
+func (o ClusterLogAnalyticsProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterLogAnalyticsProfileResponse] {
+	return pulumix.Output[*ClusterLogAnalyticsProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterLogAnalyticsProfileResponsePtrOutput) Elem() ClusterLogAnalyticsProfileResponseOutput {
@@ -1508,6 +1719,12 @@ func (i ClusterPoolResourcePropertiesClusterPoolProfileArgs) ToClusterPoolResour
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesClusterPoolProfileOutput)
 }
 
+func (i ClusterPoolResourcePropertiesClusterPoolProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterPoolResourcePropertiesClusterPoolProfile] {
+	return pulumix.Output[ClusterPoolResourcePropertiesClusterPoolProfile]{
+		OutputState: i.ToClusterPoolResourcePropertiesClusterPoolProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ClusterPoolResourcePropertiesClusterPoolProfileArgs) ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutput() ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput {
 	return i.ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutputWithContext(context.Background())
 }
@@ -1549,6 +1766,12 @@ func (i *clusterPoolResourcePropertiesClusterPoolProfilePtrType) ToClusterPoolRe
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput)
 }
 
+func (i *clusterPoolResourcePropertiesClusterPoolProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterPoolResourcePropertiesClusterPoolProfile] {
+	return pulumix.Output[*ClusterPoolResourcePropertiesClusterPoolProfile]{
+		OutputState: i.ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CLuster pool profile.
 type ClusterPoolResourcePropertiesClusterPoolProfileOutput struct{ *pulumi.OutputState }
 
@@ -1574,6 +1797,12 @@ func (o ClusterPoolResourcePropertiesClusterPoolProfileOutput) ToClusterPoolReso
 	}).(ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput)
 }
 
+func (o ClusterPoolResourcePropertiesClusterPoolProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterPoolResourcePropertiesClusterPoolProfile] {
+	return pulumix.Output[ClusterPoolResourcePropertiesClusterPoolProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Cluster pool version is a 2-part version.
 func (o ClusterPoolResourcePropertiesClusterPoolProfileOutput) ClusterPoolVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterPoolResourcePropertiesClusterPoolProfile) string { return v.ClusterPoolVersion }).(pulumi.StringOutput)
@@ -1591,6 +1820,12 @@ func (o ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput) ToClusterPoolR
 
 func (o ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput) ToClusterPoolResourcePropertiesClusterPoolProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput {
 	return o
+}
+
+func (o ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterPoolResourcePropertiesClusterPoolProfile] {
+	return pulumix.Output[*ClusterPoolResourcePropertiesClusterPoolProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput) Elem() ClusterPoolResourcePropertiesClusterPoolProfileOutput {
@@ -1648,6 +1883,12 @@ func (i ClusterPoolResourcePropertiesComputeProfileArgs) ToClusterPoolResourcePr
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesComputeProfileOutput)
 }
 
+func (i ClusterPoolResourcePropertiesComputeProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterPoolResourcePropertiesComputeProfile] {
+	return pulumix.Output[ClusterPoolResourcePropertiesComputeProfile]{
+		OutputState: i.ToClusterPoolResourcePropertiesComputeProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CLuster pool compute profile.
 type ClusterPoolResourcePropertiesComputeProfileOutput struct{ *pulumi.OutputState }
 
@@ -1661,6 +1902,12 @@ func (o ClusterPoolResourcePropertiesComputeProfileOutput) ToClusterPoolResource
 
 func (o ClusterPoolResourcePropertiesComputeProfileOutput) ToClusterPoolResourcePropertiesComputeProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesComputeProfileOutput {
 	return o
+}
+
+func (o ClusterPoolResourcePropertiesComputeProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterPoolResourcePropertiesComputeProfile] {
+	return pulumix.Output[ClusterPoolResourcePropertiesComputeProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The virtual machine SKU.
@@ -1707,6 +1954,12 @@ func (i ClusterPoolResourcePropertiesLogAnalyticsProfileArgs) ToClusterPoolResou
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesLogAnalyticsProfileOutput)
 }
 
+func (i ClusterPoolResourcePropertiesLogAnalyticsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterPoolResourcePropertiesLogAnalyticsProfile] {
+	return pulumix.Output[ClusterPoolResourcePropertiesLogAnalyticsProfile]{
+		OutputState: i.ToClusterPoolResourcePropertiesLogAnalyticsProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ClusterPoolResourcePropertiesLogAnalyticsProfileArgs) ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput() ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput {
 	return i.ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutputWithContext(context.Background())
 }
@@ -1748,6 +2001,12 @@ func (i *clusterPoolResourcePropertiesLogAnalyticsProfilePtrType) ToClusterPoolR
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput)
 }
 
+func (i *clusterPoolResourcePropertiesLogAnalyticsProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterPoolResourcePropertiesLogAnalyticsProfile] {
+	return pulumix.Output[*ClusterPoolResourcePropertiesLogAnalyticsProfile]{
+		OutputState: i.ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cluster pool log analytics profile to enable OMS agent for AKS cluster.
 type ClusterPoolResourcePropertiesLogAnalyticsProfileOutput struct{ *pulumi.OutputState }
 
@@ -1773,6 +2032,12 @@ func (o ClusterPoolResourcePropertiesLogAnalyticsProfileOutput) ToClusterPoolRes
 	}).(ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput)
 }
 
+func (o ClusterPoolResourcePropertiesLogAnalyticsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterPoolResourcePropertiesLogAnalyticsProfile] {
+	return pulumix.Output[ClusterPoolResourcePropertiesLogAnalyticsProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // True if log analytics is enabled for cluster pool, otherwise false.
 func (o ClusterPoolResourcePropertiesLogAnalyticsProfileOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterPoolResourcePropertiesLogAnalyticsProfile) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -1795,6 +2060,12 @@ func (o ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput) ToClusterPool
 
 func (o ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput) ToClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput {
 	return o
+}
+
+func (o ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterPoolResourcePropertiesLogAnalyticsProfile] {
+	return pulumix.Output[*ClusterPoolResourcePropertiesLogAnalyticsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput) Elem() ClusterPoolResourcePropertiesLogAnalyticsProfileOutput {
@@ -1862,6 +2133,12 @@ func (i ClusterPoolResourcePropertiesNetworkProfileArgs) ToClusterPoolResourcePr
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesNetworkProfileOutput)
 }
 
+func (i ClusterPoolResourcePropertiesNetworkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterPoolResourcePropertiesNetworkProfile] {
+	return pulumix.Output[ClusterPoolResourcePropertiesNetworkProfile]{
+		OutputState: i.ToClusterPoolResourcePropertiesNetworkProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ClusterPoolResourcePropertiesNetworkProfileArgs) ToClusterPoolResourcePropertiesNetworkProfilePtrOutput() ClusterPoolResourcePropertiesNetworkProfilePtrOutput {
 	return i.ToClusterPoolResourcePropertiesNetworkProfilePtrOutputWithContext(context.Background())
 }
@@ -1903,6 +2180,12 @@ func (i *clusterPoolResourcePropertiesNetworkProfilePtrType) ToClusterPoolResour
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolResourcePropertiesNetworkProfilePtrOutput)
 }
 
+func (i *clusterPoolResourcePropertiesNetworkProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterPoolResourcePropertiesNetworkProfile] {
+	return pulumix.Output[*ClusterPoolResourcePropertiesNetworkProfile]{
+		OutputState: i.ToClusterPoolResourcePropertiesNetworkProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cluster pool network profile.
 type ClusterPoolResourcePropertiesNetworkProfileOutput struct{ *pulumi.OutputState }
 
@@ -1928,6 +2211,12 @@ func (o ClusterPoolResourcePropertiesNetworkProfileOutput) ToClusterPoolResource
 	}).(ClusterPoolResourcePropertiesNetworkProfilePtrOutput)
 }
 
+func (o ClusterPoolResourcePropertiesNetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterPoolResourcePropertiesNetworkProfile] {
+	return pulumix.Output[ClusterPoolResourcePropertiesNetworkProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Cluster pool subnet resource id.
 func (o ClusterPoolResourcePropertiesNetworkProfileOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterPoolResourcePropertiesNetworkProfile) string { return v.SubnetId }).(pulumi.StringOutput)
@@ -1945,6 +2234,12 @@ func (o ClusterPoolResourcePropertiesNetworkProfilePtrOutput) ToClusterPoolResou
 
 func (o ClusterPoolResourcePropertiesNetworkProfilePtrOutput) ToClusterPoolResourcePropertiesNetworkProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesNetworkProfilePtrOutput {
 	return o
+}
+
+func (o ClusterPoolResourcePropertiesNetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterPoolResourcePropertiesNetworkProfile] {
+	return pulumix.Output[*ClusterPoolResourcePropertiesNetworkProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterPoolResourcePropertiesNetworkProfilePtrOutput) Elem() ClusterPoolResourcePropertiesNetworkProfileOutput {
@@ -1992,6 +2287,12 @@ func (o ClusterPoolResourcePropertiesResponseAksClusterProfileOutput) ToClusterP
 	return o
 }
 
+func (o ClusterPoolResourcePropertiesResponseAksClusterProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterPoolResourcePropertiesResponseAksClusterProfile] {
+	return pulumix.Output[ClusterPoolResourcePropertiesResponseAksClusterProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Identity properties of the AKS cluster agentpool MSI
 func (o ClusterPoolResourcePropertiesResponseAksClusterProfileOutput) AksClusterAgentPoolIdentityProfile() AksClusterProfileResponseAksClusterAgentPoolIdentityProfilePtrOutput {
 	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseAksClusterProfile) *AksClusterProfileResponseAksClusterAgentPoolIdentityProfile {
@@ -2030,6 +2331,12 @@ func (o ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput) ToCluster
 	return o
 }
 
+func (o ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterPoolResourcePropertiesResponseClusterPoolProfile] {
+	return pulumix.Output[ClusterPoolResourcePropertiesResponseClusterPoolProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Cluster pool version is a 2-part version.
 func (o ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput) ClusterPoolVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseClusterPoolProfile) string { return v.ClusterPoolVersion }).(pulumi.StringOutput)
@@ -2047,6 +2354,12 @@ func (o ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput) ToClus
 
 func (o ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput) ToClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput {
 	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterPoolResourcePropertiesResponseClusterPoolProfile] {
+	return pulumix.Output[*ClusterPoolResourcePropertiesResponseClusterPoolProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput) Elem() ClusterPoolResourcePropertiesResponseClusterPoolProfileOutput {
@@ -2092,6 +2405,12 @@ func (o ClusterPoolResourcePropertiesResponseComputeProfileOutput) ToClusterPool
 	return o
 }
 
+func (o ClusterPoolResourcePropertiesResponseComputeProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterPoolResourcePropertiesResponseComputeProfile] {
+	return pulumix.Output[ClusterPoolResourcePropertiesResponseComputeProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of virtual machines.
 func (o ClusterPoolResourcePropertiesResponseComputeProfileOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseComputeProfile) int { return v.Count }).(pulumi.IntOutput)
@@ -2125,6 +2444,12 @@ func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput) ToCluste
 	return o
 }
 
+func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterPoolResourcePropertiesResponseLogAnalyticsProfile] {
+	return pulumix.Output[ClusterPoolResourcePropertiesResponseLogAnalyticsProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // True if log analytics is enabled for cluster pool, otherwise false.
 func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseLogAnalyticsProfile) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -2147,6 +2472,12 @@ func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput) ToClu
 
 func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput) ToClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput {
 	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterPoolResourcePropertiesResponseLogAnalyticsProfile] {
+	return pulumix.Output[*ClusterPoolResourcePropertiesResponseLogAnalyticsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput) Elem() ClusterPoolResourcePropertiesResponseLogAnalyticsProfileOutput {
@@ -2200,6 +2531,12 @@ func (o ClusterPoolResourcePropertiesResponseNetworkProfileOutput) ToClusterPool
 	return o
 }
 
+func (o ClusterPoolResourcePropertiesResponseNetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterPoolResourcePropertiesResponseNetworkProfile] {
+	return pulumix.Output[ClusterPoolResourcePropertiesResponseNetworkProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Cluster pool subnet resource id.
 func (o ClusterPoolResourcePropertiesResponseNetworkProfileOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseNetworkProfile) string { return v.SubnetId }).(pulumi.StringOutput)
@@ -2217,6 +2554,12 @@ func (o ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput) ToClusterP
 
 func (o ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput) ToClusterPoolResourcePropertiesResponseNetworkProfilePtrOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput {
 	return o
+}
+
+func (o ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterPoolResourcePropertiesResponseNetworkProfile] {
+	return pulumix.Output[*ClusterPoolResourcePropertiesResponseNetworkProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput) Elem() ClusterPoolResourcePropertiesResponseNetworkProfileOutput {
@@ -2360,6 +2703,12 @@ func (i ClusterProfileArgs) ToClusterProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterProfileOutput)
 }
 
+func (i ClusterProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterProfile] {
+	return pulumix.Output[ClusterProfile]{
+		OutputState: i.ToClusterProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cluster profile.
 type ClusterProfileOutput struct{ *pulumi.OutputState }
 
@@ -2373,6 +2722,12 @@ func (o ClusterProfileOutput) ToClusterProfileOutput() ClusterProfileOutput {
 
 func (o ClusterProfileOutput) ToClusterProfileOutputWithContext(ctx context.Context) ClusterProfileOutput {
 	return o
+}
+
+func (o ClusterProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterProfile] {
+	return pulumix.Output[ClusterProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authorization profile with details of AAD user Ids and group Ids authorized for data plane access.
@@ -2530,6 +2885,12 @@ func (o ClusterProfileResponseOutput) ToClusterProfileResponseOutputWithContext(
 	return o
 }
 
+func (o ClusterProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterProfileResponse] {
+	return pulumix.Output[ClusterProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Authorization profile with details of AAD user Ids and group Ids authorized for data plane access.
 func (o ClusterProfileResponseOutput) AuthorizationProfile() AuthorizationProfileResponseOutput {
 	return o.ApplyT(func(v ClusterProfileResponse) AuthorizationProfileResponse { return v.AuthorizationProfile }).(AuthorizationProfileResponseOutput)
@@ -2644,6 +3005,12 @@ func (o ClusterProfileResponseComponentsOutput) ToClusterProfileResponseComponen
 	return o
 }
 
+func (o ClusterProfileResponseComponentsOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterProfileResponseComponents] {
+	return pulumix.Output[ClusterProfileResponseComponents]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClusterProfileResponseComponentsOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterProfileResponseComponents) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -2664,6 +3031,12 @@ func (o ClusterProfileResponseComponentsArrayOutput) ToClusterProfileResponseCom
 
 func (o ClusterProfileResponseComponentsArrayOutput) ToClusterProfileResponseComponentsArrayOutputWithContext(ctx context.Context) ClusterProfileResponseComponentsArrayOutput {
 	return o
+}
+
+func (o ClusterProfileResponseComponentsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterProfileResponseComponents] {
+	return pulumix.Output[[]ClusterProfileResponseComponents]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterProfileResponseComponentsArrayOutput) Index(i pulumi.IntInput) ClusterProfileResponseComponentsOutput {
@@ -2730,6 +3103,12 @@ func (i ClusterPrometheusProfileArgs) ToClusterPrometheusProfileOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPrometheusProfileOutput)
 }
 
+func (i ClusterPrometheusProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterPrometheusProfile] {
+	return pulumix.Output[ClusterPrometheusProfile]{
+		OutputState: i.ToClusterPrometheusProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ClusterPrometheusProfileArgs) ToClusterPrometheusProfilePtrOutput() ClusterPrometheusProfilePtrOutput {
 	return i.ToClusterPrometheusProfilePtrOutputWithContext(context.Background())
 }
@@ -2771,6 +3150,12 @@ func (i *clusterPrometheusProfilePtrType) ToClusterPrometheusProfilePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPrometheusProfilePtrOutput)
 }
 
+func (i *clusterPrometheusProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterPrometheusProfile] {
+	return pulumix.Output[*ClusterPrometheusProfile]{
+		OutputState: i.ToClusterPrometheusProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cluster Prometheus profile.
 type ClusterPrometheusProfileOutput struct{ *pulumi.OutputState }
 
@@ -2796,6 +3181,12 @@ func (o ClusterPrometheusProfileOutput) ToClusterPrometheusProfilePtrOutputWithC
 	}).(ClusterPrometheusProfilePtrOutput)
 }
 
+func (o ClusterPrometheusProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterPrometheusProfile] {
+	return pulumix.Output[ClusterPrometheusProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Enable Prometheus for cluster or not.
 func (o ClusterPrometheusProfileOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterPrometheusProfile) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -2813,6 +3204,12 @@ func (o ClusterPrometheusProfilePtrOutput) ToClusterPrometheusProfilePtrOutput()
 
 func (o ClusterPrometheusProfilePtrOutput) ToClusterPrometheusProfilePtrOutputWithContext(ctx context.Context) ClusterPrometheusProfilePtrOutput {
 	return o
+}
+
+func (o ClusterPrometheusProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterPrometheusProfile] {
+	return pulumix.Output[*ClusterPrometheusProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterPrometheusProfilePtrOutput) Elem() ClusterPrometheusProfileOutput {
@@ -2868,6 +3265,12 @@ func (o ClusterPrometheusProfileResponseOutput) ToClusterPrometheusProfileRespon
 	return o
 }
 
+func (o ClusterPrometheusProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterPrometheusProfileResponse] {
+	return pulumix.Output[ClusterPrometheusProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Enable Prometheus for cluster or not.
 func (o ClusterPrometheusProfileResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterPrometheusProfileResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -2885,6 +3288,12 @@ func (o ClusterPrometheusProfileResponsePtrOutput) ToClusterPrometheusProfileRes
 
 func (o ClusterPrometheusProfileResponsePtrOutput) ToClusterPrometheusProfileResponsePtrOutputWithContext(ctx context.Context) ClusterPrometheusProfileResponsePtrOutput {
 	return o
+}
+
+func (o ClusterPrometheusProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterPrometheusProfileResponse] {
+	return pulumix.Output[*ClusterPrometheusProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterPrometheusProfileResponsePtrOutput) Elem() ClusterPrometheusProfileResponseOutput {
@@ -2946,6 +3355,12 @@ func (i ClusterServiceConfigArgs) ToClusterServiceConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterServiceConfigOutput)
 }
 
+func (i ClusterServiceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterServiceConfig] {
+	return pulumix.Output[ClusterServiceConfig]{
+		OutputState: i.ToClusterServiceConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClusterServiceConfigArrayInput is an input type that accepts ClusterServiceConfigArray and ClusterServiceConfigArrayOutput values.
 // You can construct a concrete instance of `ClusterServiceConfigArrayInput` via:
 //
@@ -2971,6 +3386,12 @@ func (i ClusterServiceConfigArray) ToClusterServiceConfigArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterServiceConfigArrayOutput)
 }
 
+func (i ClusterServiceConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterServiceConfig] {
+	return pulumix.Output[[]ClusterServiceConfig]{
+		OutputState: i.ToClusterServiceConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cluster configs per component.
 type ClusterServiceConfigOutput struct{ *pulumi.OutputState }
 
@@ -2984,6 +3405,12 @@ func (o ClusterServiceConfigOutput) ToClusterServiceConfigOutput() ClusterServic
 
 func (o ClusterServiceConfigOutput) ToClusterServiceConfigOutputWithContext(ctx context.Context) ClusterServiceConfigOutput {
 	return o
+}
+
+func (o ClusterServiceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterServiceConfig] {
+	return pulumix.Output[ClusterServiceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the component the config files should apply to.
@@ -3008,6 +3435,12 @@ func (o ClusterServiceConfigArrayOutput) ToClusterServiceConfigArrayOutput() Clu
 
 func (o ClusterServiceConfigArrayOutput) ToClusterServiceConfigArrayOutputWithContext(ctx context.Context) ClusterServiceConfigArrayOutput {
 	return o
+}
+
+func (o ClusterServiceConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterServiceConfig] {
+	return pulumix.Output[[]ClusterServiceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterServiceConfigArrayOutput) Index(i pulumi.IntInput) ClusterServiceConfigOutput {
@@ -3039,6 +3472,12 @@ func (o ClusterServiceConfigResponseOutput) ToClusterServiceConfigResponseOutput
 	return o
 }
 
+func (o ClusterServiceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterServiceConfigResponse] {
+	return pulumix.Output[ClusterServiceConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the component the config files should apply to.
 func (o ClusterServiceConfigResponseOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterServiceConfigResponse) string { return v.Component }).(pulumi.StringOutput)
@@ -3061,6 +3500,12 @@ func (o ClusterServiceConfigResponseArrayOutput) ToClusterServiceConfigResponseA
 
 func (o ClusterServiceConfigResponseArrayOutput) ToClusterServiceConfigResponseArrayOutputWithContext(ctx context.Context) ClusterServiceConfigResponseArrayOutput {
 	return o
+}
+
+func (o ClusterServiceConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterServiceConfigResponse] {
+	return pulumix.Output[[]ClusterServiceConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterServiceConfigResponseArrayOutput) Index(i pulumi.IntInput) ClusterServiceConfigResponseOutput {
@@ -3108,6 +3553,12 @@ func (i ClusterServiceConfigsProfileArgs) ToClusterServiceConfigsProfileOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterServiceConfigsProfileOutput)
 }
 
+func (i ClusterServiceConfigsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterServiceConfigsProfile] {
+	return pulumix.Output[ClusterServiceConfigsProfile]{
+		OutputState: i.ToClusterServiceConfigsProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClusterServiceConfigsProfileArrayInput is an input type that accepts ClusterServiceConfigsProfileArray and ClusterServiceConfigsProfileArrayOutput values.
 // You can construct a concrete instance of `ClusterServiceConfigsProfileArrayInput` via:
 //
@@ -3133,6 +3584,12 @@ func (i ClusterServiceConfigsProfileArray) ToClusterServiceConfigsProfileArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterServiceConfigsProfileArrayOutput)
 }
 
+func (i ClusterServiceConfigsProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterServiceConfigsProfile] {
+	return pulumix.Output[[]ClusterServiceConfigsProfile]{
+		OutputState: i.ToClusterServiceConfigsProfileArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cluster service configs.
 type ClusterServiceConfigsProfileOutput struct{ *pulumi.OutputState }
 
@@ -3146,6 +3603,12 @@ func (o ClusterServiceConfigsProfileOutput) ToClusterServiceConfigsProfileOutput
 
 func (o ClusterServiceConfigsProfileOutput) ToClusterServiceConfigsProfileOutputWithContext(ctx context.Context) ClusterServiceConfigsProfileOutput {
 	return o
+}
+
+func (o ClusterServiceConfigsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterServiceConfigsProfile] {
+	return pulumix.Output[ClusterServiceConfigsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of service configs.
@@ -3170,6 +3633,12 @@ func (o ClusterServiceConfigsProfileArrayOutput) ToClusterServiceConfigsProfileA
 
 func (o ClusterServiceConfigsProfileArrayOutput) ToClusterServiceConfigsProfileArrayOutputWithContext(ctx context.Context) ClusterServiceConfigsProfileArrayOutput {
 	return o
+}
+
+func (o ClusterServiceConfigsProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterServiceConfigsProfile] {
+	return pulumix.Output[[]ClusterServiceConfigsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterServiceConfigsProfileArrayOutput) Index(i pulumi.IntInput) ClusterServiceConfigsProfileOutput {
@@ -3201,6 +3670,12 @@ func (o ClusterServiceConfigsProfileResponseOutput) ToClusterServiceConfigsProfi
 	return o
 }
 
+func (o ClusterServiceConfigsProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterServiceConfigsProfileResponse] {
+	return pulumix.Output[ClusterServiceConfigsProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of service configs.
 func (o ClusterServiceConfigsProfileResponseOutput) Configs() ClusterServiceConfigResponseArrayOutput {
 	return o.ApplyT(func(v ClusterServiceConfigsProfileResponse) []ClusterServiceConfigResponse { return v.Configs }).(ClusterServiceConfigResponseArrayOutput)
@@ -3223,6 +3698,12 @@ func (o ClusterServiceConfigsProfileResponseArrayOutput) ToClusterServiceConfigs
 
 func (o ClusterServiceConfigsProfileResponseArrayOutput) ToClusterServiceConfigsProfileResponseArrayOutputWithContext(ctx context.Context) ClusterServiceConfigsProfileResponseArrayOutput {
 	return o
+}
+
+func (o ClusterServiceConfigsProfileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterServiceConfigsProfileResponse] {
+	return pulumix.Output[[]ClusterServiceConfigsProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterServiceConfigsProfileResponseArrayOutput) Index(i pulumi.IntInput) ClusterServiceConfigsProfileResponseOutput {
@@ -3270,6 +3751,12 @@ func (i ComparisonRuleArgs) ToComparisonRuleOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ComparisonRuleOutput)
 }
 
+func (i ComparisonRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ComparisonRule] {
+	return pulumix.Output[ComparisonRule]{
+		OutputState: i.ToComparisonRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The comparison rule.
 type ComparisonRuleOutput struct{ *pulumi.OutputState }
 
@@ -3283,6 +3770,12 @@ func (o ComparisonRuleOutput) ToComparisonRuleOutput() ComparisonRuleOutput {
 
 func (o ComparisonRuleOutput) ToComparisonRuleOutputWithContext(ctx context.Context) ComparisonRuleOutput {
 	return o
+}
+
+func (o ComparisonRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ComparisonRule] {
+	return pulumix.Output[ComparisonRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator.
@@ -3316,6 +3809,12 @@ func (o ComparisonRuleResponseOutput) ToComparisonRuleResponseOutput() Compariso
 
 func (o ComparisonRuleResponseOutput) ToComparisonRuleResponseOutputWithContext(ctx context.Context) ComparisonRuleResponseOutput {
 	return o
+}
+
+func (o ComparisonRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ComparisonRuleResponse] {
+	return pulumix.Output[ComparisonRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator.
@@ -3363,6 +3862,12 @@ func (i ComputeProfileArgs) ToComputeProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeProfileOutput)
 }
 
+func (i ComputeProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ComputeProfile] {
+	return pulumix.Output[ComputeProfile]{
+		OutputState: i.ToComputeProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The compute profile.
 type ComputeProfileOutput struct{ *pulumi.OutputState }
 
@@ -3376,6 +3881,12 @@ func (o ComputeProfileOutput) ToComputeProfileOutput() ComputeProfileOutput {
 
 func (o ComputeProfileOutput) ToComputeProfileOutputWithContext(ctx context.Context) ComputeProfileOutput {
 	return o
+}
+
+func (o ComputeProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeProfile] {
+	return pulumix.Output[ComputeProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The nodes definitions.
@@ -3402,6 +3913,12 @@ func (o ComputeProfileResponseOutput) ToComputeProfileResponseOutput() ComputePr
 
 func (o ComputeProfileResponseOutput) ToComputeProfileResponseOutputWithContext(ctx context.Context) ComputeProfileResponseOutput {
 	return o
+}
+
+func (o ComputeProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeProfileResponse] {
+	return pulumix.Output[ComputeProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The nodes definitions.
@@ -3448,6 +3965,12 @@ func (i ComputeResourceDefinitionArgs) ToComputeResourceDefinitionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeResourceDefinitionOutput)
 }
 
+func (i ComputeResourceDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[ComputeResourceDefinition] {
+	return pulumix.Output[ComputeResourceDefinition]{
+		OutputState: i.ToComputeResourceDefinitionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ComputeResourceDefinitionArgs) ToComputeResourceDefinitionPtrOutput() ComputeResourceDefinitionPtrOutput {
 	return i.ToComputeResourceDefinitionPtrOutputWithContext(context.Background())
 }
@@ -3489,6 +4012,12 @@ func (i *computeResourceDefinitionPtrType) ToComputeResourceDefinitionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeResourceDefinitionPtrOutput)
 }
 
+func (i *computeResourceDefinitionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ComputeResourceDefinition] {
+	return pulumix.Output[*ComputeResourceDefinition]{
+		OutputState: i.ToComputeResourceDefinitionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The cpu and memory requirement definition.
 type ComputeResourceDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -3514,6 +4043,12 @@ func (o ComputeResourceDefinitionOutput) ToComputeResourceDefinitionPtrOutputWit
 	}).(ComputeResourceDefinitionPtrOutput)
 }
 
+func (o ComputeResourceDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeResourceDefinition] {
+	return pulumix.Output[ComputeResourceDefinition]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The required CPU.
 func (o ComputeResourceDefinitionOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v ComputeResourceDefinition) float64 { return v.Cpu }).(pulumi.Float64Output)
@@ -3536,6 +4071,12 @@ func (o ComputeResourceDefinitionPtrOutput) ToComputeResourceDefinitionPtrOutput
 
 func (o ComputeResourceDefinitionPtrOutput) ToComputeResourceDefinitionPtrOutputWithContext(ctx context.Context) ComputeResourceDefinitionPtrOutput {
 	return o
+}
+
+func (o ComputeResourceDefinitionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeResourceDefinition] {
+	return pulumix.Output[*ComputeResourceDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ComputeResourceDefinitionPtrOutput) Elem() ComputeResourceDefinitionOutput {
@@ -3591,6 +4132,12 @@ func (o ComputeResourceDefinitionResponseOutput) ToComputeResourceDefinitionResp
 	return o
 }
 
+func (o ComputeResourceDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeResourceDefinitionResponse] {
+	return pulumix.Output[ComputeResourceDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The required CPU.
 func (o ComputeResourceDefinitionResponseOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v ComputeResourceDefinitionResponse) float64 { return v.Cpu }).(pulumi.Float64Output)
@@ -3613,6 +4160,12 @@ func (o ComputeResourceDefinitionResponsePtrOutput) ToComputeResourceDefinitionR
 
 func (o ComputeResourceDefinitionResponsePtrOutput) ToComputeResourceDefinitionResponsePtrOutputWithContext(ctx context.Context) ComputeResourceDefinitionResponsePtrOutput {
 	return o
+}
+
+func (o ComputeResourceDefinitionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeResourceDefinitionResponse] {
+	return pulumix.Output[*ComputeResourceDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ComputeResourceDefinitionResponsePtrOutput) Elem() ComputeResourceDefinitionResponseOutput {
@@ -3668,6 +4221,12 @@ func (o ConnectivityProfileResponseOutput) ToConnectivityProfileResponseOutputWi
 	return o
 }
 
+func (o ConnectivityProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectivityProfileResponse] {
+	return pulumix.Output[ConnectivityProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of SSH connectivity endpoints.
 func (o ConnectivityProfileResponseOutput) Ssh() SshConnectivityEndpointResponseArrayOutput {
 	return o.ApplyT(func(v ConnectivityProfileResponse) []SshConnectivityEndpointResponse { return v.Ssh }).(SshConnectivityEndpointResponseArrayOutput)
@@ -3697,6 +4256,12 @@ func (o ConnectivityProfileResponseWebOutput) ToConnectivityProfileResponseWebOu
 
 func (o ConnectivityProfileResponseWebOutput) ToConnectivityProfileResponseWebOutputWithContext(ctx context.Context) ConnectivityProfileResponseWebOutput {
 	return o
+}
+
+func (o ConnectivityProfileResponseWebOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectivityProfileResponseWeb] {
+	return pulumix.Output[ConnectivityProfileResponseWeb]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Web connectivity endpoint.
@@ -3737,6 +4302,12 @@ func (i FlinkCatalogOptionsArgs) ToFlinkCatalogOptionsOutput() FlinkCatalogOptio
 
 func (i FlinkCatalogOptionsArgs) ToFlinkCatalogOptionsOutputWithContext(ctx context.Context) FlinkCatalogOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkCatalogOptionsOutput)
+}
+
+func (i FlinkCatalogOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[FlinkCatalogOptions] {
+	return pulumix.Output[FlinkCatalogOptions]{
+		OutputState: i.ToFlinkCatalogOptionsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i FlinkCatalogOptionsArgs) ToFlinkCatalogOptionsPtrOutput() FlinkCatalogOptionsPtrOutput {
@@ -3780,6 +4351,12 @@ func (i *flinkCatalogOptionsPtrType) ToFlinkCatalogOptionsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkCatalogOptionsPtrOutput)
 }
 
+func (i *flinkCatalogOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlinkCatalogOptions] {
+	return pulumix.Output[*FlinkCatalogOptions]{
+		OutputState: i.ToFlinkCatalogOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Flink cluster catalog options.
 type FlinkCatalogOptionsOutput struct{ *pulumi.OutputState }
 
@@ -3805,6 +4382,12 @@ func (o FlinkCatalogOptionsOutput) ToFlinkCatalogOptionsPtrOutputWithContext(ctx
 	}).(FlinkCatalogOptionsPtrOutput)
 }
 
+func (o FlinkCatalogOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[FlinkCatalogOptions] {
+	return pulumix.Output[FlinkCatalogOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Hive Catalog Option for Flink cluster.
 func (o FlinkCatalogOptionsOutput) Hive() FlinkHiveCatalogOptionPtrOutput {
 	return o.ApplyT(func(v FlinkCatalogOptions) *FlinkHiveCatalogOption { return v.Hive }).(FlinkHiveCatalogOptionPtrOutput)
@@ -3822,6 +4405,12 @@ func (o FlinkCatalogOptionsPtrOutput) ToFlinkCatalogOptionsPtrOutput() FlinkCata
 
 func (o FlinkCatalogOptionsPtrOutput) ToFlinkCatalogOptionsPtrOutputWithContext(ctx context.Context) FlinkCatalogOptionsPtrOutput {
 	return o
+}
+
+func (o FlinkCatalogOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlinkCatalogOptions] {
+	return pulumix.Output[*FlinkCatalogOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FlinkCatalogOptionsPtrOutput) Elem() FlinkCatalogOptionsOutput {
@@ -3865,6 +4454,12 @@ func (o FlinkCatalogOptionsResponseOutput) ToFlinkCatalogOptionsResponseOutputWi
 	return o
 }
 
+func (o FlinkCatalogOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FlinkCatalogOptionsResponse] {
+	return pulumix.Output[FlinkCatalogOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Hive Catalog Option for Flink cluster.
 func (o FlinkCatalogOptionsResponseOutput) Hive() FlinkHiveCatalogOptionResponsePtrOutput {
 	return o.ApplyT(func(v FlinkCatalogOptionsResponse) *FlinkHiveCatalogOptionResponse { return v.Hive }).(FlinkHiveCatalogOptionResponsePtrOutput)
@@ -3882,6 +4477,12 @@ func (o FlinkCatalogOptionsResponsePtrOutput) ToFlinkCatalogOptionsResponsePtrOu
 
 func (o FlinkCatalogOptionsResponsePtrOutput) ToFlinkCatalogOptionsResponsePtrOutputWithContext(ctx context.Context) FlinkCatalogOptionsResponsePtrOutput {
 	return o
+}
+
+func (o FlinkCatalogOptionsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlinkCatalogOptionsResponse] {
+	return pulumix.Output[*FlinkCatalogOptionsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FlinkCatalogOptionsResponsePtrOutput) Elem() FlinkCatalogOptionsResponseOutput {
@@ -3947,6 +4548,12 @@ func (i FlinkHiveCatalogOptionArgs) ToFlinkHiveCatalogOptionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkHiveCatalogOptionOutput)
 }
 
+func (i FlinkHiveCatalogOptionArgs) ToOutput(ctx context.Context) pulumix.Output[FlinkHiveCatalogOption] {
+	return pulumix.Output[FlinkHiveCatalogOption]{
+		OutputState: i.ToFlinkHiveCatalogOptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FlinkHiveCatalogOptionArgs) ToFlinkHiveCatalogOptionPtrOutput() FlinkHiveCatalogOptionPtrOutput {
 	return i.ToFlinkHiveCatalogOptionPtrOutputWithContext(context.Background())
 }
@@ -3988,6 +4595,12 @@ func (i *flinkHiveCatalogOptionPtrType) ToFlinkHiveCatalogOptionPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkHiveCatalogOptionPtrOutput)
 }
 
+func (i *flinkHiveCatalogOptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlinkHiveCatalogOption] {
+	return pulumix.Output[*FlinkHiveCatalogOption]{
+		OutputState: i.ToFlinkHiveCatalogOptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Hive Catalog Option for Flink cluster.
 type FlinkHiveCatalogOptionOutput struct{ *pulumi.OutputState }
 
@@ -4011,6 +4624,12 @@ func (o FlinkHiveCatalogOptionOutput) ToFlinkHiveCatalogOptionPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlinkHiveCatalogOption) *FlinkHiveCatalogOption {
 		return &v
 	}).(FlinkHiveCatalogOptionPtrOutput)
+}
+
+func (o FlinkHiveCatalogOptionOutput) ToOutput(ctx context.Context) pulumix.Output[FlinkHiveCatalogOption] {
+	return pulumix.Output[FlinkHiveCatalogOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Secret reference name from secretsProfile.secrets containing password for database connection.
@@ -4040,6 +4659,12 @@ func (o FlinkHiveCatalogOptionPtrOutput) ToFlinkHiveCatalogOptionPtrOutput() Fli
 
 func (o FlinkHiveCatalogOptionPtrOutput) ToFlinkHiveCatalogOptionPtrOutputWithContext(ctx context.Context) FlinkHiveCatalogOptionPtrOutput {
 	return o
+}
+
+func (o FlinkHiveCatalogOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlinkHiveCatalogOption] {
+	return pulumix.Output[*FlinkHiveCatalogOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FlinkHiveCatalogOptionPtrOutput) Elem() FlinkHiveCatalogOptionOutput {
@@ -4107,6 +4732,12 @@ func (o FlinkHiveCatalogOptionResponseOutput) ToFlinkHiveCatalogOptionResponseOu
 	return o
 }
 
+func (o FlinkHiveCatalogOptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FlinkHiveCatalogOptionResponse] {
+	return pulumix.Output[FlinkHiveCatalogOptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Secret reference name from secretsProfile.secrets containing password for database connection.
 func (o FlinkHiveCatalogOptionResponseOutput) MetastoreDbConnectionPasswordSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v FlinkHiveCatalogOptionResponse) string { return v.MetastoreDbConnectionPasswordSecret }).(pulumi.StringOutput)
@@ -4134,6 +4765,12 @@ func (o FlinkHiveCatalogOptionResponsePtrOutput) ToFlinkHiveCatalogOptionRespons
 
 func (o FlinkHiveCatalogOptionResponsePtrOutput) ToFlinkHiveCatalogOptionResponsePtrOutputWithContext(ctx context.Context) FlinkHiveCatalogOptionResponsePtrOutput {
 	return o
+}
+
+func (o FlinkHiveCatalogOptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlinkHiveCatalogOptionResponse] {
+	return pulumix.Output[*FlinkHiveCatalogOptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FlinkHiveCatalogOptionResponsePtrOutput) Elem() FlinkHiveCatalogOptionResponseOutput {
@@ -4231,6 +4868,12 @@ func (i FlinkProfileArgs) ToFlinkProfileOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkProfileOutput)
 }
 
+func (i FlinkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[FlinkProfile] {
+	return pulumix.Output[FlinkProfile]{
+		OutputState: i.ToFlinkProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FlinkProfileArgs) ToFlinkProfilePtrOutput() FlinkProfilePtrOutput {
 	return i.ToFlinkProfilePtrOutputWithContext(context.Background())
 }
@@ -4272,6 +4915,12 @@ func (i *flinkProfilePtrType) ToFlinkProfilePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkProfilePtrOutput)
 }
 
+func (i *flinkProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*FlinkProfile] {
+	return pulumix.Output[*FlinkProfile]{
+		OutputState: i.ToFlinkProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Flink cluster profile.
 type FlinkProfileOutput struct{ *pulumi.OutputState }
 
@@ -4295,6 +4944,12 @@ func (o FlinkProfileOutput) ToFlinkProfilePtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlinkProfile) *FlinkProfile {
 		return &v
 	}).(FlinkProfilePtrOutput)
+}
+
+func (o FlinkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[FlinkProfile] {
+	return pulumix.Output[FlinkProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Flink cluster catalog options.
@@ -4339,6 +4994,12 @@ func (o FlinkProfilePtrOutput) ToFlinkProfilePtrOutput() FlinkProfilePtrOutput {
 
 func (o FlinkProfilePtrOutput) ToFlinkProfilePtrOutputWithContext(ctx context.Context) FlinkProfilePtrOutput {
 	return o
+}
+
+func (o FlinkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlinkProfile] {
+	return pulumix.Output[*FlinkProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FlinkProfilePtrOutput) Elem() FlinkProfileOutput {
@@ -4442,6 +5103,12 @@ func (o FlinkProfileResponseOutput) ToFlinkProfileResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o FlinkProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FlinkProfileResponse] {
+	return pulumix.Output[FlinkProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flink cluster catalog options.
 func (o FlinkProfileResponseOutput) CatalogOptions() FlinkCatalogOptionsResponsePtrOutput {
 	return o.ApplyT(func(v FlinkProfileResponse) *FlinkCatalogOptionsResponse { return v.CatalogOptions }).(FlinkCatalogOptionsResponsePtrOutput)
@@ -4484,6 +5151,12 @@ func (o FlinkProfileResponsePtrOutput) ToFlinkProfileResponsePtrOutput() FlinkPr
 
 func (o FlinkProfileResponsePtrOutput) ToFlinkProfileResponsePtrOutputWithContext(ctx context.Context) FlinkProfileResponsePtrOutput {
 	return o
+}
+
+func (o FlinkProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlinkProfileResponse] {
+	return pulumix.Output[*FlinkProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FlinkProfileResponsePtrOutput) Elem() FlinkProfileResponseOutput {
@@ -4595,6 +5268,12 @@ func (i FlinkStorageProfileArgs) ToFlinkStorageProfileOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkStorageProfileOutput)
 }
 
+func (i FlinkStorageProfileArgs) ToOutput(ctx context.Context) pulumix.Output[FlinkStorageProfile] {
+	return pulumix.Output[FlinkStorageProfile]{
+		OutputState: i.ToFlinkStorageProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FlinkStorageProfileArgs) ToFlinkStorageProfilePtrOutput() FlinkStorageProfilePtrOutput {
 	return i.ToFlinkStorageProfilePtrOutputWithContext(context.Background())
 }
@@ -4636,6 +5315,12 @@ func (i *flinkStorageProfilePtrType) ToFlinkStorageProfilePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(FlinkStorageProfilePtrOutput)
 }
 
+func (i *flinkStorageProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*FlinkStorageProfile] {
+	return pulumix.Output[*FlinkStorageProfile]{
+		OutputState: i.ToFlinkStorageProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The storage profile
 type FlinkStorageProfileOutput struct{ *pulumi.OutputState }
 
@@ -4661,6 +5346,12 @@ func (o FlinkStorageProfileOutput) ToFlinkStorageProfilePtrOutputWithContext(ctx
 	}).(FlinkStorageProfilePtrOutput)
 }
 
+func (o FlinkStorageProfileOutput) ToOutput(ctx context.Context) pulumix.Output[FlinkStorageProfile] {
+	return pulumix.Output[FlinkStorageProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Storage account uri which is used for savepoint and checkpoint state.
 func (o FlinkStorageProfileOutput) StorageUri() pulumi.StringOutput {
 	return o.ApplyT(func(v FlinkStorageProfile) string { return v.StorageUri }).(pulumi.StringOutput)
@@ -4683,6 +5374,12 @@ func (o FlinkStorageProfilePtrOutput) ToFlinkStorageProfilePtrOutput() FlinkStor
 
 func (o FlinkStorageProfilePtrOutput) ToFlinkStorageProfilePtrOutputWithContext(ctx context.Context) FlinkStorageProfilePtrOutput {
 	return o
+}
+
+func (o FlinkStorageProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlinkStorageProfile] {
+	return pulumix.Output[*FlinkStorageProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FlinkStorageProfilePtrOutput) Elem() FlinkStorageProfileOutput {
@@ -4738,6 +5435,12 @@ func (o FlinkStorageProfileResponseOutput) ToFlinkStorageProfileResponseOutputWi
 	return o
 }
 
+func (o FlinkStorageProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FlinkStorageProfileResponse] {
+	return pulumix.Output[FlinkStorageProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Storage account uri which is used for savepoint and checkpoint state.
 func (o FlinkStorageProfileResponseOutput) StorageUri() pulumi.StringOutput {
 	return o.ApplyT(func(v FlinkStorageProfileResponse) string { return v.StorageUri }).(pulumi.StringOutput)
@@ -4760,6 +5463,12 @@ func (o FlinkStorageProfileResponsePtrOutput) ToFlinkStorageProfileResponsePtrOu
 
 func (o FlinkStorageProfileResponsePtrOutput) ToFlinkStorageProfileResponsePtrOutputWithContext(ctx context.Context) FlinkStorageProfileResponsePtrOutput {
 	return o
+}
+
+func (o FlinkStorageProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlinkStorageProfileResponse] {
+	return pulumix.Output[*FlinkStorageProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FlinkStorageProfileResponsePtrOutput) Elem() FlinkStorageProfileResponseOutput {
@@ -4843,6 +5552,12 @@ func (i HiveCatalogOptionArgs) ToHiveCatalogOptionOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(HiveCatalogOptionOutput)
 }
 
+func (i HiveCatalogOptionArgs) ToOutput(ctx context.Context) pulumix.Output[HiveCatalogOption] {
+	return pulumix.Output[HiveCatalogOption]{
+		OutputState: i.ToHiveCatalogOptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HiveCatalogOptionArrayInput is an input type that accepts HiveCatalogOptionArray and HiveCatalogOptionArrayOutput values.
 // You can construct a concrete instance of `HiveCatalogOptionArrayInput` via:
 //
@@ -4868,6 +5583,12 @@ func (i HiveCatalogOptionArray) ToHiveCatalogOptionArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HiveCatalogOptionArrayOutput)
 }
 
+func (i HiveCatalogOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]HiveCatalogOption] {
+	return pulumix.Output[[]HiveCatalogOption]{
+		OutputState: i.ToHiveCatalogOptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Hive Catalog Option
 type HiveCatalogOptionOutput struct{ *pulumi.OutputState }
 
@@ -4881,6 +5602,12 @@ func (o HiveCatalogOptionOutput) ToHiveCatalogOptionOutput() HiveCatalogOptionOu
 
 func (o HiveCatalogOptionOutput) ToHiveCatalogOptionOutputWithContext(ctx context.Context) HiveCatalogOptionOutput {
 	return o
+}
+
+func (o HiveCatalogOptionOutput) ToOutput(ctx context.Context) pulumix.Output[HiveCatalogOption] {
+	return pulumix.Output[HiveCatalogOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of trino catalog which should use specified hive metastore.
@@ -4922,6 +5649,12 @@ func (o HiveCatalogOptionArrayOutput) ToHiveCatalogOptionArrayOutputWithContext(
 	return o
 }
 
+func (o HiveCatalogOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HiveCatalogOption] {
+	return pulumix.Output[[]HiveCatalogOption]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HiveCatalogOptionArrayOutput) Index(i pulumi.IntInput) HiveCatalogOptionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HiveCatalogOption {
 		return vs[0].([]HiveCatalogOption)[vs[1].(int)]
@@ -4955,6 +5688,12 @@ func (o HiveCatalogOptionResponseOutput) ToHiveCatalogOptionResponseOutput() Hiv
 
 func (o HiveCatalogOptionResponseOutput) ToHiveCatalogOptionResponseOutputWithContext(ctx context.Context) HiveCatalogOptionResponseOutput {
 	return o
+}
+
+func (o HiveCatalogOptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HiveCatalogOptionResponse] {
+	return pulumix.Output[HiveCatalogOptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of trino catalog which should use specified hive metastore.
@@ -4994,6 +5733,12 @@ func (o HiveCatalogOptionResponseArrayOutput) ToHiveCatalogOptionResponseArrayOu
 
 func (o HiveCatalogOptionResponseArrayOutput) ToHiveCatalogOptionResponseArrayOutputWithContext(ctx context.Context) HiveCatalogOptionResponseArrayOutput {
 	return o
+}
+
+func (o HiveCatalogOptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HiveCatalogOptionResponse] {
+	return pulumix.Output[[]HiveCatalogOptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HiveCatalogOptionResponseArrayOutput) Index(i pulumi.IntInput) HiveCatalogOptionResponseOutput {
@@ -5045,6 +5790,12 @@ func (i IdentityProfileArgs) ToIdentityProfileOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityProfileOutput)
 }
 
+func (i IdentityProfileArgs) ToOutput(ctx context.Context) pulumix.Output[IdentityProfile] {
+	return pulumix.Output[IdentityProfile]{
+		OutputState: i.ToIdentityProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity Profile with details of an MSI.
 type IdentityProfileOutput struct{ *pulumi.OutputState }
 
@@ -5058,6 +5809,12 @@ func (o IdentityProfileOutput) ToIdentityProfileOutput() IdentityProfileOutput {
 
 func (o IdentityProfileOutput) ToIdentityProfileOutputWithContext(ctx context.Context) IdentityProfileOutput {
 	return o
+}
+
+func (o IdentityProfileOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityProfile] {
+	return pulumix.Output[IdentityProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ClientId of the MSI.
@@ -5098,6 +5855,12 @@ func (o IdentityProfileResponseOutput) ToIdentityProfileResponseOutput() Identit
 
 func (o IdentityProfileResponseOutput) ToIdentityProfileResponseOutputWithContext(ctx context.Context) IdentityProfileResponseOutput {
 	return o
+}
+
+func (o IdentityProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityProfileResponse] {
+	return pulumix.Output[IdentityProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ClientId of the MSI.
@@ -5166,6 +5929,12 @@ func (i LoadBasedConfigArgs) ToLoadBasedConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBasedConfigOutput)
 }
 
+func (i LoadBasedConfigArgs) ToOutput(ctx context.Context) pulumix.Output[LoadBasedConfig] {
+	return pulumix.Output[LoadBasedConfig]{
+		OutputState: i.ToLoadBasedConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LoadBasedConfigArgs) ToLoadBasedConfigPtrOutput() LoadBasedConfigPtrOutput {
 	return i.ToLoadBasedConfigPtrOutputWithContext(context.Background())
 }
@@ -5207,6 +5976,12 @@ func (i *loadBasedConfigPtrType) ToLoadBasedConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBasedConfigPtrOutput)
 }
 
+func (i *loadBasedConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*LoadBasedConfig] {
+	return pulumix.Output[*LoadBasedConfig]{
+		OutputState: i.ToLoadBasedConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Profile of load based Autoscale.
 type LoadBasedConfigOutput struct{ *pulumi.OutputState }
 
@@ -5230,6 +6005,12 @@ func (o LoadBasedConfigOutput) ToLoadBasedConfigPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBasedConfig) *LoadBasedConfig {
 		return &v
 	}).(LoadBasedConfigPtrOutput)
+}
+
+func (o LoadBasedConfigOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBasedConfig] {
+	return pulumix.Output[LoadBasedConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This is a cool down period, this is a time period in seconds, which determines the amount of time that must elapse between a scaling activity started by a rule and the start of the next scaling activity, regardless of the rule that triggers it. The default value is 300 seconds.
@@ -5269,6 +6050,12 @@ func (o LoadBasedConfigPtrOutput) ToLoadBasedConfigPtrOutput() LoadBasedConfigPt
 
 func (o LoadBasedConfigPtrOutput) ToLoadBasedConfigPtrOutputWithContext(ctx context.Context) LoadBasedConfigPtrOutput {
 	return o
+}
+
+func (o LoadBasedConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadBasedConfig] {
+	return pulumix.Output[*LoadBasedConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoadBasedConfigPtrOutput) Elem() LoadBasedConfigOutput {
@@ -5360,6 +6147,12 @@ func (o LoadBasedConfigResponseOutput) ToLoadBasedConfigResponseOutputWithContex
 	return o
 }
 
+func (o LoadBasedConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBasedConfigResponse] {
+	return pulumix.Output[LoadBasedConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This is a cool down period, this is a time period in seconds, which determines the amount of time that must elapse between a scaling activity started by a rule and the start of the next scaling activity, regardless of the rule that triggers it. The default value is 300 seconds.
 func (o LoadBasedConfigResponseOutput) CooldownPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LoadBasedConfigResponse) *int { return v.CooldownPeriod }).(pulumi.IntPtrOutput)
@@ -5397,6 +6190,12 @@ func (o LoadBasedConfigResponsePtrOutput) ToLoadBasedConfigResponsePtrOutput() L
 
 func (o LoadBasedConfigResponsePtrOutput) ToLoadBasedConfigResponsePtrOutputWithContext(ctx context.Context) LoadBasedConfigResponsePtrOutput {
 	return o
+}
+
+func (o LoadBasedConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadBasedConfigResponse] {
+	return pulumix.Output[*LoadBasedConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoadBasedConfigResponsePtrOutput) Elem() LoadBasedConfigResponseOutput {
@@ -5502,6 +6301,12 @@ func (i NodeProfileArgs) ToNodeProfileOutputWithContext(ctx context.Context) Nod
 	return pulumi.ToOutputWithContext(ctx, i).(NodeProfileOutput)
 }
 
+func (i NodeProfileArgs) ToOutput(ctx context.Context) pulumix.Output[NodeProfile] {
+	return pulumix.Output[NodeProfile]{
+		OutputState: i.ToNodeProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NodeProfileArrayInput is an input type that accepts NodeProfileArray and NodeProfileArrayOutput values.
 // You can construct a concrete instance of `NodeProfileArrayInput` via:
 //
@@ -5527,6 +6332,12 @@ func (i NodeProfileArray) ToNodeProfileArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NodeProfileArrayOutput)
 }
 
+func (i NodeProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]NodeProfile] {
+	return pulumix.Output[[]NodeProfile]{
+		OutputState: i.ToNodeProfileArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The node profile.
 type NodeProfileOutput struct{ *pulumi.OutputState }
 
@@ -5540,6 +6351,12 @@ func (o NodeProfileOutput) ToNodeProfileOutput() NodeProfileOutput {
 
 func (o NodeProfileOutput) ToNodeProfileOutputWithContext(ctx context.Context) NodeProfileOutput {
 	return o
+}
+
+func (o NodeProfileOutput) ToOutput(ctx context.Context) pulumix.Output[NodeProfile] {
+	return pulumix.Output[NodeProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of virtual machines.
@@ -5569,6 +6386,12 @@ func (o NodeProfileArrayOutput) ToNodeProfileArrayOutput() NodeProfileArrayOutpu
 
 func (o NodeProfileArrayOutput) ToNodeProfileArrayOutputWithContext(ctx context.Context) NodeProfileArrayOutput {
 	return o
+}
+
+func (o NodeProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeProfile] {
+	return pulumix.Output[[]NodeProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeProfileArrayOutput) Index(i pulumi.IntInput) NodeProfileOutput {
@@ -5602,6 +6425,12 @@ func (o NodeProfileResponseOutput) ToNodeProfileResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o NodeProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeProfileResponse] {
+	return pulumix.Output[NodeProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of virtual machines.
 func (o NodeProfileResponseOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeProfileResponse) int { return v.Count }).(pulumi.IntOutput)
@@ -5629,6 +6458,12 @@ func (o NodeProfileResponseArrayOutput) ToNodeProfileResponseArrayOutput() NodeP
 
 func (o NodeProfileResponseArrayOutput) ToNodeProfileResponseArrayOutputWithContext(ctx context.Context) NodeProfileResponseArrayOutput {
 	return o
+}
+
+func (o NodeProfileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeProfileResponse] {
+	return pulumix.Output[[]NodeProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeProfileResponseArrayOutput) Index(i pulumi.IntInput) NodeProfileResponseOutput {
@@ -5684,6 +6519,12 @@ func (i ScalingRuleArgs) ToScalingRuleOutputWithContext(ctx context.Context) Sca
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleOutput)
 }
 
+func (i ScalingRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ScalingRule] {
+	return pulumix.Output[ScalingRule]{
+		OutputState: i.ToScalingRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScalingRuleArrayInput is an input type that accepts ScalingRuleArray and ScalingRuleArrayOutput values.
 // You can construct a concrete instance of `ScalingRuleArrayInput` via:
 //
@@ -5709,6 +6550,12 @@ func (i ScalingRuleArray) ToScalingRuleArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleArrayOutput)
 }
 
+func (i ScalingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ScalingRule] {
+	return pulumix.Output[[]ScalingRule]{
+		OutputState: i.ToScalingRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The scaling rule.
 type ScalingRuleOutput struct{ *pulumi.OutputState }
 
@@ -5722,6 +6569,12 @@ func (o ScalingRuleOutput) ToScalingRuleOutput() ScalingRuleOutput {
 
 func (o ScalingRuleOutput) ToScalingRuleOutputWithContext(ctx context.Context) ScalingRuleOutput {
 	return o
+}
+
+func (o ScalingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ScalingRule] {
+	return pulumix.Output[ScalingRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action type.
@@ -5758,6 +6611,12 @@ func (o ScalingRuleArrayOutput) ToScalingRuleArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o ScalingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScalingRule] {
+	return pulumix.Output[[]ScalingRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ScalingRuleArrayOutput) Index(i pulumi.IntInput) ScalingRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingRule {
 		return vs[0].([]ScalingRule)[vs[1].(int)]
@@ -5789,6 +6648,12 @@ func (o ScalingRuleResponseOutput) ToScalingRuleResponseOutput() ScalingRuleResp
 
 func (o ScalingRuleResponseOutput) ToScalingRuleResponseOutputWithContext(ctx context.Context) ScalingRuleResponseOutput {
 	return o
+}
+
+func (o ScalingRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScalingRuleResponse] {
+	return pulumix.Output[ScalingRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action type.
@@ -5823,6 +6688,12 @@ func (o ScalingRuleResponseArrayOutput) ToScalingRuleResponseArrayOutput() Scali
 
 func (o ScalingRuleResponseArrayOutput) ToScalingRuleResponseArrayOutputWithContext(ctx context.Context) ScalingRuleResponseArrayOutput {
 	return o
+}
+
+func (o ScalingRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScalingRuleResponse] {
+	return pulumix.Output[[]ScalingRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScalingRuleResponseArrayOutput) Index(i pulumi.IntInput) ScalingRuleResponseOutput {
@@ -5878,6 +6749,12 @@ func (i ScheduleArgs) ToScheduleOutputWithContext(ctx context.Context) ScheduleO
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
 }
 
+func (i ScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
+	return pulumix.Output[Schedule]{
+		OutputState: i.ToScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScheduleArrayInput is an input type that accepts ScheduleArray and ScheduleArrayOutput values.
 // You can construct a concrete instance of `ScheduleArrayInput` via:
 //
@@ -5903,6 +6780,12 @@ func (i ScheduleArray) ToScheduleArrayOutputWithContext(ctx context.Context) Sch
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleArrayOutput)
 }
 
+func (i ScheduleArray) ToOutput(ctx context.Context) pulumix.Output[[]Schedule] {
+	return pulumix.Output[[]Schedule]{
+		OutputState: i.ToScheduleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Schedule definition.
 type ScheduleOutput struct{ *pulumi.OutputState }
 
@@ -5916,6 +6799,12 @@ func (o ScheduleOutput) ToScheduleOutput() ScheduleOutput {
 
 func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
 	return o
+}
+
+func (o ScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
+	return pulumix.Output[Schedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User has to set the node count anticipated at end of the scaling operation of the set current schedule configuration, format is integer.
@@ -5950,6 +6839,12 @@ func (o ScheduleArrayOutput) ToScheduleArrayOutput() ScheduleArrayOutput {
 
 func (o ScheduleArrayOutput) ToScheduleArrayOutputWithContext(ctx context.Context) ScheduleArrayOutput {
 	return o
+}
+
+func (o ScheduleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Schedule] {
+	return pulumix.Output[[]Schedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScheduleArrayOutput) Index(i pulumi.IntInput) ScheduleOutput {
@@ -6001,6 +6896,12 @@ func (i ScheduleBasedConfigArgs) ToScheduleBasedConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBasedConfigOutput)
 }
 
+func (i ScheduleBasedConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ScheduleBasedConfig] {
+	return pulumix.Output[ScheduleBasedConfig]{
+		OutputState: i.ToScheduleBasedConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ScheduleBasedConfigArgs) ToScheduleBasedConfigPtrOutput() ScheduleBasedConfigPtrOutput {
 	return i.ToScheduleBasedConfigPtrOutputWithContext(context.Background())
 }
@@ -6042,6 +6943,12 @@ func (i *scheduleBasedConfigPtrType) ToScheduleBasedConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBasedConfigPtrOutput)
 }
 
+func (i *scheduleBasedConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ScheduleBasedConfig] {
+	return pulumix.Output[*ScheduleBasedConfig]{
+		OutputState: i.ToScheduleBasedConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Profile of schedule based Autoscale.
 type ScheduleBasedConfigOutput struct{ *pulumi.OutputState }
 
@@ -6065,6 +6972,12 @@ func (o ScheduleBasedConfigOutput) ToScheduleBasedConfigPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleBasedConfig) *ScheduleBasedConfig {
 		return &v
 	}).(ScheduleBasedConfigPtrOutput)
+}
+
+func (o ScheduleBasedConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleBasedConfig] {
+	return pulumix.Output[ScheduleBasedConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Setting default node count of current schedule configuration. Default node count specifies the number of nodes which are default when an specified scaling operation is executed (scale up/scale down)
@@ -6094,6 +7007,12 @@ func (o ScheduleBasedConfigPtrOutput) ToScheduleBasedConfigPtrOutput() ScheduleB
 
 func (o ScheduleBasedConfigPtrOutput) ToScheduleBasedConfigPtrOutputWithContext(ctx context.Context) ScheduleBasedConfigPtrOutput {
 	return o
+}
+
+func (o ScheduleBasedConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduleBasedConfig] {
+	return pulumix.Output[*ScheduleBasedConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScheduleBasedConfigPtrOutput) Elem() ScheduleBasedConfigOutput {
@@ -6161,6 +7080,12 @@ func (o ScheduleBasedConfigResponseOutput) ToScheduleBasedConfigResponseOutputWi
 	return o
 }
 
+func (o ScheduleBasedConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleBasedConfigResponse] {
+	return pulumix.Output[ScheduleBasedConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Setting default node count of current schedule configuration. Default node count specifies the number of nodes which are default when an specified scaling operation is executed (scale up/scale down)
 func (o ScheduleBasedConfigResponseOutput) DefaultCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ScheduleBasedConfigResponse) int { return v.DefaultCount }).(pulumi.IntOutput)
@@ -6188,6 +7113,12 @@ func (o ScheduleBasedConfigResponsePtrOutput) ToScheduleBasedConfigResponsePtrOu
 
 func (o ScheduleBasedConfigResponsePtrOutput) ToScheduleBasedConfigResponsePtrOutputWithContext(ctx context.Context) ScheduleBasedConfigResponsePtrOutput {
 	return o
+}
+
+func (o ScheduleBasedConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduleBasedConfigResponse] {
+	return pulumix.Output[*ScheduleBasedConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScheduleBasedConfigResponsePtrOutput) Elem() ScheduleBasedConfigResponseOutput {
@@ -6257,6 +7188,12 @@ func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o ScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleResponse] {
+	return pulumix.Output[ScheduleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // User has to set the node count anticipated at end of the scaling operation of the set current schedule configuration, format is integer.
 func (o ScheduleResponseOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v ScheduleResponse) int { return v.Count }).(pulumi.IntOutput)
@@ -6289,6 +7226,12 @@ func (o ScheduleResponseArrayOutput) ToScheduleResponseArrayOutput() ScheduleRes
 
 func (o ScheduleResponseArrayOutput) ToScheduleResponseArrayOutputWithContext(ctx context.Context) ScheduleResponseArrayOutput {
 	return o
+}
+
+func (o ScheduleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScheduleResponse] {
+	return pulumix.Output[[]ScheduleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScheduleResponseArrayOutput) Index(i pulumi.IntInput) ScheduleResponseOutput {
@@ -6380,6 +7323,12 @@ func (i ScriptActionProfileArgs) ToScriptActionProfileOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ScriptActionProfileOutput)
 }
 
+func (i ScriptActionProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ScriptActionProfile] {
+	return pulumix.Output[ScriptActionProfile]{
+		OutputState: i.ToScriptActionProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScriptActionProfileArrayInput is an input type that accepts ScriptActionProfileArray and ScriptActionProfileArrayOutput values.
 // You can construct a concrete instance of `ScriptActionProfileArrayInput` via:
 //
@@ -6405,6 +7354,12 @@ func (i ScriptActionProfileArray) ToScriptActionProfileArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ScriptActionProfileArrayOutput)
 }
 
+func (i ScriptActionProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]ScriptActionProfile] {
+	return pulumix.Output[[]ScriptActionProfile]{
+		OutputState: i.ToScriptActionProfileArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The script action profile.
 type ScriptActionProfileOutput struct{ *pulumi.OutputState }
 
@@ -6418,6 +7373,12 @@ func (o ScriptActionProfileOutput) ToScriptActionProfileOutput() ScriptActionPro
 
 func (o ScriptActionProfileOutput) ToScriptActionProfileOutputWithContext(ctx context.Context) ScriptActionProfileOutput {
 	return o
+}
+
+func (o ScriptActionProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ScriptActionProfile] {
+	return pulumix.Output[ScriptActionProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Script name.
@@ -6467,6 +7428,12 @@ func (o ScriptActionProfileArrayOutput) ToScriptActionProfileArrayOutput() Scrip
 
 func (o ScriptActionProfileArrayOutput) ToScriptActionProfileArrayOutputWithContext(ctx context.Context) ScriptActionProfileArrayOutput {
 	return o
+}
+
+func (o ScriptActionProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScriptActionProfile] {
+	return pulumix.Output[[]ScriptActionProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScriptActionProfileArrayOutput) Index(i pulumi.IntInput) ScriptActionProfileOutput {
@@ -6521,6 +7488,12 @@ func (o ScriptActionProfileResponseOutput) ToScriptActionProfileResponseOutputWi
 	return o
 }
 
+func (o ScriptActionProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScriptActionProfileResponse] {
+	return pulumix.Output[ScriptActionProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Script name.
 func (o ScriptActionProfileResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ScriptActionProfileResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -6568,6 +7541,12 @@ func (o ScriptActionProfileResponseArrayOutput) ToScriptActionProfileResponseArr
 
 func (o ScriptActionProfileResponseArrayOutput) ToScriptActionProfileResponseArrayOutputWithContext(ctx context.Context) ScriptActionProfileResponseArrayOutput {
 	return o
+}
+
+func (o ScriptActionProfileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScriptActionProfileResponse] {
+	return pulumix.Output[[]ScriptActionProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScriptActionProfileResponseArrayOutput) Index(i pulumi.IntInput) ScriptActionProfileResponseOutput {
@@ -6623,6 +7602,12 @@ func (i SecretReferenceArgs) ToSecretReferenceOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReferenceOutput)
 }
 
+func (i SecretReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[SecretReference] {
+	return pulumix.Output[SecretReference]{
+		OutputState: i.ToSecretReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecretReferenceArrayInput is an input type that accepts SecretReferenceArray and SecretReferenceArrayOutput values.
 // You can construct a concrete instance of `SecretReferenceArrayInput` via:
 //
@@ -6648,6 +7633,12 @@ func (i SecretReferenceArray) ToSecretReferenceArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReferenceArrayOutput)
 }
 
+func (i SecretReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]SecretReference] {
+	return pulumix.Output[[]SecretReference]{
+		OutputState: i.ToSecretReferenceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Secret reference and corresponding properties of a key vault secret.
 type SecretReferenceOutput struct{ *pulumi.OutputState }
 
@@ -6661,6 +7652,12 @@ func (o SecretReferenceOutput) ToSecretReferenceOutput() SecretReferenceOutput {
 
 func (o SecretReferenceOutput) ToSecretReferenceOutputWithContext(ctx context.Context) SecretReferenceOutput {
 	return o
+}
+
+func (o SecretReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[SecretReference] {
+	return pulumix.Output[SecretReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Object identifier name of the secret in key vault.
@@ -6697,6 +7694,12 @@ func (o SecretReferenceArrayOutput) ToSecretReferenceArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o SecretReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecretReference] {
+	return pulumix.Output[[]SecretReference]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecretReferenceArrayOutput) Index(i pulumi.IntInput) SecretReferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretReference {
 		return vs[0].([]SecretReference)[vs[1].(int)]
@@ -6728,6 +7731,12 @@ func (o SecretReferenceResponseOutput) ToSecretReferenceResponseOutput() SecretR
 
 func (o SecretReferenceResponseOutput) ToSecretReferenceResponseOutputWithContext(ctx context.Context) SecretReferenceResponseOutput {
 	return o
+}
+
+func (o SecretReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretReferenceResponse] {
+	return pulumix.Output[SecretReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Object identifier name of the secret in key vault.
@@ -6762,6 +7771,12 @@ func (o SecretReferenceResponseArrayOutput) ToSecretReferenceResponseArrayOutput
 
 func (o SecretReferenceResponseArrayOutput) ToSecretReferenceResponseArrayOutputWithContext(ctx context.Context) SecretReferenceResponseArrayOutput {
 	return o
+}
+
+func (o SecretReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecretReferenceResponse] {
+	return pulumix.Output[[]SecretReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretReferenceResponseArrayOutput) Index(i pulumi.IntInput) SecretReferenceResponseOutput {
@@ -6809,6 +7824,12 @@ func (i SecretsProfileArgs) ToSecretsProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SecretsProfileOutput)
 }
 
+func (i SecretsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[SecretsProfile] {
+	return pulumix.Output[SecretsProfile]{
+		OutputState: i.ToSecretsProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretsProfileArgs) ToSecretsProfilePtrOutput() SecretsProfilePtrOutput {
 	return i.ToSecretsProfilePtrOutputWithContext(context.Background())
 }
@@ -6850,6 +7871,12 @@ func (i *secretsProfilePtrType) ToSecretsProfilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SecretsProfilePtrOutput)
 }
 
+func (i *secretsProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretsProfile] {
+	return pulumix.Output[*SecretsProfile]{
+		OutputState: i.ToSecretsProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The cluster secret profile.
 type SecretsProfileOutput struct{ *pulumi.OutputState }
 
@@ -6875,6 +7902,12 @@ func (o SecretsProfileOutput) ToSecretsProfilePtrOutputWithContext(ctx context.C
 	}).(SecretsProfilePtrOutput)
 }
 
+func (o SecretsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[SecretsProfile] {
+	return pulumix.Output[SecretsProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the user Key Vault where all the cluster specific user secrets are stored.
 func (o SecretsProfileOutput) KeyVaultResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretsProfile) string { return v.KeyVaultResourceId }).(pulumi.StringOutput)
@@ -6897,6 +7930,12 @@ func (o SecretsProfilePtrOutput) ToSecretsProfilePtrOutput() SecretsProfilePtrOu
 
 func (o SecretsProfilePtrOutput) ToSecretsProfilePtrOutputWithContext(ctx context.Context) SecretsProfilePtrOutput {
 	return o
+}
+
+func (o SecretsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretsProfile] {
+	return pulumix.Output[*SecretsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretsProfilePtrOutput) Elem() SecretsProfileOutput {
@@ -6952,6 +7991,12 @@ func (o SecretsProfileResponseOutput) ToSecretsProfileResponseOutputWithContext(
 	return o
 }
 
+func (o SecretsProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretsProfileResponse] {
+	return pulumix.Output[SecretsProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the user Key Vault where all the cluster specific user secrets are stored.
 func (o SecretsProfileResponseOutput) KeyVaultResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretsProfileResponse) string { return v.KeyVaultResourceId }).(pulumi.StringOutput)
@@ -6974,6 +8019,12 @@ func (o SecretsProfileResponsePtrOutput) ToSecretsProfileResponsePtrOutput() Sec
 
 func (o SecretsProfileResponsePtrOutput) ToSecretsProfileResponsePtrOutputWithContext(ctx context.Context) SecretsProfileResponsePtrOutput {
 	return o
+}
+
+func (o SecretsProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretsProfileResponse] {
+	return pulumix.Output[*SecretsProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretsProfileResponsePtrOutput) Elem() SecretsProfileResponseOutput {
@@ -7061,6 +8112,12 @@ func (i SparkMetastoreSpecArgs) ToSparkMetastoreSpecOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SparkMetastoreSpecOutput)
 }
 
+func (i SparkMetastoreSpecArgs) ToOutput(ctx context.Context) pulumix.Output[SparkMetastoreSpec] {
+	return pulumix.Output[SparkMetastoreSpec]{
+		OutputState: i.ToSparkMetastoreSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SparkMetastoreSpecArgs) ToSparkMetastoreSpecPtrOutput() SparkMetastoreSpecPtrOutput {
 	return i.ToSparkMetastoreSpecPtrOutputWithContext(context.Background())
 }
@@ -7102,6 +8159,12 @@ func (i *sparkMetastoreSpecPtrType) ToSparkMetastoreSpecPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SparkMetastoreSpecPtrOutput)
 }
 
+func (i *sparkMetastoreSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*SparkMetastoreSpec] {
+	return pulumix.Output[*SparkMetastoreSpec]{
+		OutputState: i.ToSparkMetastoreSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The metastore specification for Spark cluster.
 type SparkMetastoreSpecOutput struct{ *pulumi.OutputState }
 
@@ -7125,6 +8188,12 @@ func (o SparkMetastoreSpecOutput) ToSparkMetastoreSpecPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkMetastoreSpec) *SparkMetastoreSpec {
 		return &v
 	}).(SparkMetastoreSpecPtrOutput)
+}
+
+func (o SparkMetastoreSpecOutput) ToOutput(ctx context.Context) pulumix.Output[SparkMetastoreSpec] {
+	return pulumix.Output[SparkMetastoreSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The database name.
@@ -7169,6 +8238,12 @@ func (o SparkMetastoreSpecPtrOutput) ToSparkMetastoreSpecPtrOutput() SparkMetast
 
 func (o SparkMetastoreSpecPtrOutput) ToSparkMetastoreSpecPtrOutputWithContext(ctx context.Context) SparkMetastoreSpecPtrOutput {
 	return o
+}
+
+func (o SparkMetastoreSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SparkMetastoreSpec] {
+	return pulumix.Output[*SparkMetastoreSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SparkMetastoreSpecPtrOutput) Elem() SparkMetastoreSpecOutput {
@@ -7272,6 +8347,12 @@ func (o SparkMetastoreSpecResponseOutput) ToSparkMetastoreSpecResponseOutputWith
 	return o
 }
 
+func (o SparkMetastoreSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SparkMetastoreSpecResponse] {
+	return pulumix.Output[SparkMetastoreSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The database name.
 func (o SparkMetastoreSpecResponseOutput) DbName() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkMetastoreSpecResponse) string { return v.DbName }).(pulumi.StringOutput)
@@ -7314,6 +8395,12 @@ func (o SparkMetastoreSpecResponsePtrOutput) ToSparkMetastoreSpecResponsePtrOutp
 
 func (o SparkMetastoreSpecResponsePtrOutput) ToSparkMetastoreSpecResponsePtrOutputWithContext(ctx context.Context) SparkMetastoreSpecResponsePtrOutput {
 	return o
+}
+
+func (o SparkMetastoreSpecResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SparkMetastoreSpecResponse] {
+	return pulumix.Output[*SparkMetastoreSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SparkMetastoreSpecResponsePtrOutput) Elem() SparkMetastoreSpecResponseOutput {
@@ -7429,6 +8516,12 @@ func (i SparkProfileArgs) ToSparkProfileOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SparkProfileOutput)
 }
 
+func (i SparkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[SparkProfile] {
+	return pulumix.Output[SparkProfile]{
+		OutputState: i.ToSparkProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SparkProfileArgs) ToSparkProfilePtrOutput() SparkProfilePtrOutput {
 	return i.ToSparkProfilePtrOutputWithContext(context.Background())
 }
@@ -7470,6 +8563,12 @@ func (i *sparkProfilePtrType) ToSparkProfilePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SparkProfilePtrOutput)
 }
 
+func (i *sparkProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*SparkProfile] {
+	return pulumix.Output[*SparkProfile]{
+		OutputState: i.ToSparkProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The spark cluster profile.
 type SparkProfileOutput struct{ *pulumi.OutputState }
 
@@ -7493,6 +8592,12 @@ func (o SparkProfileOutput) ToSparkProfilePtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkProfile) *SparkProfile {
 		return &v
 	}).(SparkProfilePtrOutput)
+}
+
+func (o SparkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[SparkProfile] {
+	return pulumix.Output[SparkProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The default storage URL.
@@ -7522,6 +8627,12 @@ func (o SparkProfilePtrOutput) ToSparkProfilePtrOutput() SparkProfilePtrOutput {
 
 func (o SparkProfilePtrOutput) ToSparkProfilePtrOutputWithContext(ctx context.Context) SparkProfilePtrOutput {
 	return o
+}
+
+func (o SparkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SparkProfile] {
+	return pulumix.Output[*SparkProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SparkProfilePtrOutput) Elem() SparkProfileOutput {
@@ -7589,6 +8700,12 @@ func (o SparkProfileResponseOutput) ToSparkProfileResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o SparkProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SparkProfileResponse] {
+	return pulumix.Output[SparkProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The default storage URL.
 func (o SparkProfileResponseOutput) DefaultStorageUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SparkProfileResponse) *string { return v.DefaultStorageUrl }).(pulumi.StringPtrOutput)
@@ -7616,6 +8733,12 @@ func (o SparkProfileResponsePtrOutput) ToSparkProfileResponsePtrOutput() SparkPr
 
 func (o SparkProfileResponsePtrOutput) ToSparkProfileResponsePtrOutputWithContext(ctx context.Context) SparkProfileResponsePtrOutput {
 	return o
+}
+
+func (o SparkProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SparkProfileResponse] {
+	return pulumix.Output[*SparkProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SparkProfileResponsePtrOutput) Elem() SparkProfileResponseOutput {
@@ -7693,6 +8816,12 @@ func (i SparkUserPluginArgs) ToSparkUserPluginOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SparkUserPluginOutput)
 }
 
+func (i SparkUserPluginArgs) ToOutput(ctx context.Context) pulumix.Output[SparkUserPlugin] {
+	return pulumix.Output[SparkUserPlugin]{
+		OutputState: i.ToSparkUserPluginOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SparkUserPluginArrayInput is an input type that accepts SparkUserPluginArray and SparkUserPluginArrayOutput values.
 // You can construct a concrete instance of `SparkUserPluginArrayInput` via:
 //
@@ -7718,6 +8847,12 @@ func (i SparkUserPluginArray) ToSparkUserPluginArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SparkUserPluginArrayOutput)
 }
 
+func (i SparkUserPluginArray) ToOutput(ctx context.Context) pulumix.Output[[]SparkUserPlugin] {
+	return pulumix.Output[[]SparkUserPlugin]{
+		OutputState: i.ToSparkUserPluginArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Spark user plugin.
 type SparkUserPluginOutput struct{ *pulumi.OutputState }
 
@@ -7731,6 +8866,12 @@ func (o SparkUserPluginOutput) ToSparkUserPluginOutput() SparkUserPluginOutput {
 
 func (o SparkUserPluginOutput) ToSparkUserPluginOutputWithContext(ctx context.Context) SparkUserPluginOutput {
 	return o
+}
+
+func (o SparkUserPluginOutput) ToOutput(ctx context.Context) pulumix.Output[SparkUserPlugin] {
+	return pulumix.Output[SparkUserPlugin]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified path to the folder containing the plugins.
@@ -7750,6 +8891,12 @@ func (o SparkUserPluginArrayOutput) ToSparkUserPluginArrayOutput() SparkUserPlug
 
 func (o SparkUserPluginArrayOutput) ToSparkUserPluginArrayOutputWithContext(ctx context.Context) SparkUserPluginArrayOutput {
 	return o
+}
+
+func (o SparkUserPluginArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SparkUserPlugin] {
+	return pulumix.Output[[]SparkUserPlugin]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SparkUserPluginArrayOutput) Index(i pulumi.IntInput) SparkUserPluginOutput {
@@ -7779,6 +8926,12 @@ func (o SparkUserPluginResponseOutput) ToSparkUserPluginResponseOutputWithContex
 	return o
 }
 
+func (o SparkUserPluginResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SparkUserPluginResponse] {
+	return pulumix.Output[SparkUserPluginResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully qualified path to the folder containing the plugins.
 func (o SparkUserPluginResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkUserPluginResponse) string { return v.Path }).(pulumi.StringOutput)
@@ -7796,6 +8949,12 @@ func (o SparkUserPluginResponseArrayOutput) ToSparkUserPluginResponseArrayOutput
 
 func (o SparkUserPluginResponseArrayOutput) ToSparkUserPluginResponseArrayOutputWithContext(ctx context.Context) SparkUserPluginResponseArrayOutput {
 	return o
+}
+
+func (o SparkUserPluginResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SparkUserPluginResponse] {
+	return pulumix.Output[[]SparkUserPluginResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SparkUserPluginResponseArrayOutput) Index(i pulumi.IntInput) SparkUserPluginResponseOutput {
@@ -7839,6 +8998,12 @@ func (i SparkUserPluginsArgs) ToSparkUserPluginsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SparkUserPluginsOutput)
 }
 
+func (i SparkUserPluginsArgs) ToOutput(ctx context.Context) pulumix.Output[SparkUserPlugins] {
+	return pulumix.Output[SparkUserPlugins]{
+		OutputState: i.ToSparkUserPluginsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SparkUserPluginsArgs) ToSparkUserPluginsPtrOutput() SparkUserPluginsPtrOutput {
 	return i.ToSparkUserPluginsPtrOutputWithContext(context.Background())
 }
@@ -7880,6 +9045,12 @@ func (i *sparkUserPluginsPtrType) ToSparkUserPluginsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SparkUserPluginsPtrOutput)
 }
 
+func (i *sparkUserPluginsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SparkUserPlugins] {
+	return pulumix.Output[*SparkUserPlugins]{
+		OutputState: i.ToSparkUserPluginsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Spark user plugins spec
 type SparkUserPluginsOutput struct{ *pulumi.OutputState }
 
@@ -7905,6 +9076,12 @@ func (o SparkUserPluginsOutput) ToSparkUserPluginsPtrOutputWithContext(ctx conte
 	}).(SparkUserPluginsPtrOutput)
 }
 
+func (o SparkUserPluginsOutput) ToOutput(ctx context.Context) pulumix.Output[SparkUserPlugins] {
+	return pulumix.Output[SparkUserPlugins]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Spark user plugins.
 func (o SparkUserPluginsOutput) Plugins() SparkUserPluginArrayOutput {
 	return o.ApplyT(func(v SparkUserPlugins) []SparkUserPlugin { return v.Plugins }).(SparkUserPluginArrayOutput)
@@ -7922,6 +9099,12 @@ func (o SparkUserPluginsPtrOutput) ToSparkUserPluginsPtrOutput() SparkUserPlugin
 
 func (o SparkUserPluginsPtrOutput) ToSparkUserPluginsPtrOutputWithContext(ctx context.Context) SparkUserPluginsPtrOutput {
 	return o
+}
+
+func (o SparkUserPluginsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SparkUserPlugins] {
+	return pulumix.Output[*SparkUserPlugins]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SparkUserPluginsPtrOutput) Elem() SparkUserPluginsOutput {
@@ -7965,6 +9148,12 @@ func (o SparkUserPluginsResponseOutput) ToSparkUserPluginsResponseOutputWithCont
 	return o
 }
 
+func (o SparkUserPluginsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SparkUserPluginsResponse] {
+	return pulumix.Output[SparkUserPluginsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Spark user plugins.
 func (o SparkUserPluginsResponseOutput) Plugins() SparkUserPluginResponseArrayOutput {
 	return o.ApplyT(func(v SparkUserPluginsResponse) []SparkUserPluginResponse { return v.Plugins }).(SparkUserPluginResponseArrayOutput)
@@ -7982,6 +9171,12 @@ func (o SparkUserPluginsResponsePtrOutput) ToSparkUserPluginsResponsePtrOutput()
 
 func (o SparkUserPluginsResponsePtrOutput) ToSparkUserPluginsResponsePtrOutputWithContext(ctx context.Context) SparkUserPluginsResponsePtrOutput {
 	return o
+}
+
+func (o SparkUserPluginsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SparkUserPluginsResponse] {
+	return pulumix.Output[*SparkUserPluginsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SparkUserPluginsResponsePtrOutput) Elem() SparkUserPluginsResponseOutput {
@@ -8025,6 +9220,12 @@ func (o SshConnectivityEndpointResponseOutput) ToSshConnectivityEndpointResponse
 	return o
 }
 
+func (o SshConnectivityEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SshConnectivityEndpointResponse] {
+	return pulumix.Output[SshConnectivityEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // SSH connectivity endpoint.
 func (o SshConnectivityEndpointResponseOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v SshConnectivityEndpointResponse) string { return v.Endpoint }).(pulumi.StringOutput)
@@ -8042,6 +9243,12 @@ func (o SshConnectivityEndpointResponseArrayOutput) ToSshConnectivityEndpointRes
 
 func (o SshConnectivityEndpointResponseArrayOutput) ToSshConnectivityEndpointResponseArrayOutputWithContext(ctx context.Context) SshConnectivityEndpointResponseArrayOutput {
 	return o
+}
+
+func (o SshConnectivityEndpointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SshConnectivityEndpointResponse] {
+	return pulumix.Output[[]SshConnectivityEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SshConnectivityEndpointResponseArrayOutput) Index(i pulumi.IntInput) SshConnectivityEndpointResponseOutput {
@@ -8085,6 +9292,12 @@ func (i SshProfileArgs) ToSshProfileOutputWithContext(ctx context.Context) SshPr
 	return pulumi.ToOutputWithContext(ctx, i).(SshProfileOutput)
 }
 
+func (i SshProfileArgs) ToOutput(ctx context.Context) pulumix.Output[SshProfile] {
+	return pulumix.Output[SshProfile]{
+		OutputState: i.ToSshProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SshProfileArgs) ToSshProfilePtrOutput() SshProfilePtrOutput {
 	return i.ToSshProfilePtrOutputWithContext(context.Background())
 }
@@ -8126,6 +9339,12 @@ func (i *sshProfilePtrType) ToSshProfilePtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SshProfilePtrOutput)
 }
 
+func (i *sshProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*SshProfile] {
+	return pulumix.Output[*SshProfile]{
+		OutputState: i.ToSshProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Ssh profile for the cluster.
 type SshProfileOutput struct{ *pulumi.OutputState }
 
@@ -8151,6 +9370,12 @@ func (o SshProfileOutput) ToSshProfilePtrOutputWithContext(ctx context.Context) 
 	}).(SshProfilePtrOutput)
 }
 
+func (o SshProfileOutput) ToOutput(ctx context.Context) pulumix.Output[SshProfile] {
+	return pulumix.Output[SshProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Number of ssh pods per cluster.
 func (o SshProfileOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v SshProfile) int { return v.Count }).(pulumi.IntOutput)
@@ -8168,6 +9393,12 @@ func (o SshProfilePtrOutput) ToSshProfilePtrOutput() SshProfilePtrOutput {
 
 func (o SshProfilePtrOutput) ToSshProfilePtrOutputWithContext(ctx context.Context) SshProfilePtrOutput {
 	return o
+}
+
+func (o SshProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SshProfile] {
+	return pulumix.Output[*SshProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SshProfilePtrOutput) Elem() SshProfileOutput {
@@ -8213,6 +9444,12 @@ func (o SshProfileResponseOutput) ToSshProfileResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o SshProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SshProfileResponse] {
+	return pulumix.Output[SshProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Number of ssh pods per cluster.
 func (o SshProfileResponseOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v SshProfileResponse) int { return v.Count }).(pulumi.IntOutput)
@@ -8235,6 +9472,12 @@ func (o SshProfileResponsePtrOutput) ToSshProfileResponsePtrOutput() SshProfileR
 
 func (o SshProfileResponsePtrOutput) ToSshProfileResponsePtrOutputWithContext(ctx context.Context) SshProfileResponsePtrOutput {
 	return o
+}
+
+func (o SshProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SshProfileResponse] {
+	return pulumix.Output[*SshProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SshProfileResponsePtrOutput) Elem() SshProfileResponseOutput {
@@ -8296,6 +9539,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -8420,6 +9669,12 @@ func (i TrinoCoordinatorArgs) ToTrinoCoordinatorOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoCoordinatorOutput)
 }
 
+func (i TrinoCoordinatorArgs) ToOutput(ctx context.Context) pulumix.Output[TrinoCoordinator] {
+	return pulumix.Output[TrinoCoordinator]{
+		OutputState: i.ToTrinoCoordinatorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TrinoCoordinatorArgs) ToTrinoCoordinatorPtrOutput() TrinoCoordinatorPtrOutput {
 	return i.ToTrinoCoordinatorPtrOutputWithContext(context.Background())
 }
@@ -8461,6 +9716,12 @@ func (i *trinoCoordinatorPtrType) ToTrinoCoordinatorPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoCoordinatorPtrOutput)
 }
 
+func (i *trinoCoordinatorPtrType) ToOutput(ctx context.Context) pulumix.Output[*TrinoCoordinator] {
+	return pulumix.Output[*TrinoCoordinator]{
+		OutputState: i.ToTrinoCoordinatorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Trino Coordinator.
 type TrinoCoordinatorOutput struct{ *pulumi.OutputState }
 
@@ -8484,6 +9745,12 @@ func (o TrinoCoordinatorOutput) ToTrinoCoordinatorPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrinoCoordinator) *TrinoCoordinator {
 		return &v
 	}).(TrinoCoordinatorPtrOutput)
+}
+
+func (o TrinoCoordinatorOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoCoordinator] {
+	return pulumix.Output[TrinoCoordinator]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The flag that if enable debug or not.
@@ -8518,6 +9785,12 @@ func (o TrinoCoordinatorPtrOutput) ToTrinoCoordinatorPtrOutput() TrinoCoordinato
 
 func (o TrinoCoordinatorPtrOutput) ToTrinoCoordinatorPtrOutputWithContext(ctx context.Context) TrinoCoordinatorPtrOutput {
 	return o
+}
+
+func (o TrinoCoordinatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrinoCoordinator] {
+	return pulumix.Output[*TrinoCoordinator]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoCoordinatorPtrOutput) Elem() TrinoCoordinatorOutput {
@@ -8622,6 +9895,12 @@ func (o TrinoCoordinatorResponseOutput) ToTrinoCoordinatorResponseOutputWithCont
 	return o
 }
 
+func (o TrinoCoordinatorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoCoordinatorResponse] {
+	return pulumix.Output[TrinoCoordinatorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The flag that if enable debug or not.
 func (o TrinoCoordinatorResponseOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TrinoCoordinatorResponse) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
@@ -8654,6 +9933,12 @@ func (o TrinoCoordinatorResponsePtrOutput) ToTrinoCoordinatorResponsePtrOutput()
 
 func (o TrinoCoordinatorResponsePtrOutput) ToTrinoCoordinatorResponsePtrOutputWithContext(ctx context.Context) TrinoCoordinatorResponsePtrOutput {
 	return o
+}
+
+func (o TrinoCoordinatorResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrinoCoordinatorResponse] {
+	return pulumix.Output[*TrinoCoordinatorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoCoordinatorResponsePtrOutput) Elem() TrinoCoordinatorResponseOutput {
@@ -8781,6 +10066,12 @@ func (i TrinoProfileArgs) ToTrinoProfileOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoProfileOutput)
 }
 
+func (i TrinoProfileArgs) ToOutput(ctx context.Context) pulumix.Output[TrinoProfile] {
+	return pulumix.Output[TrinoProfile]{
+		OutputState: i.ToTrinoProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TrinoProfileArgs) ToTrinoProfilePtrOutput() TrinoProfilePtrOutput {
 	return i.ToTrinoProfilePtrOutputWithContext(context.Background())
 }
@@ -8822,6 +10113,12 @@ func (i *trinoProfilePtrType) ToTrinoProfilePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoProfilePtrOutput)
 }
 
+func (i *trinoProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*TrinoProfile] {
+	return pulumix.Output[*TrinoProfile]{
+		OutputState: i.ToTrinoProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Trino Cluster profile.
 type TrinoProfileOutput struct{ *pulumi.OutputState }
 
@@ -8845,6 +10142,12 @@ func (o TrinoProfileOutput) ToTrinoProfilePtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrinoProfile) *TrinoProfile {
 		return &v
 	}).(TrinoProfilePtrOutput)
+}
+
+func (o TrinoProfileOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoProfile] {
+	return pulumix.Output[TrinoProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Trino cluster catalog options.
@@ -8884,6 +10187,12 @@ func (o TrinoProfilePtrOutput) ToTrinoProfilePtrOutput() TrinoProfilePtrOutput {
 
 func (o TrinoProfilePtrOutput) ToTrinoProfilePtrOutputWithContext(ctx context.Context) TrinoProfilePtrOutput {
 	return o
+}
+
+func (o TrinoProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrinoProfile] {
+	return pulumix.Output[*TrinoProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoProfilePtrOutput) Elem() TrinoProfileOutput {
@@ -8990,6 +10299,12 @@ func (o TrinoProfileResponseOutput) ToTrinoProfileResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o TrinoProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoProfileResponse] {
+	return pulumix.Output[TrinoProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Trino cluster catalog options.
 func (o TrinoProfileResponseOutput) CatalogOptions() CatalogOptionsResponsePtrOutput {
 	return o.ApplyT(func(v TrinoProfileResponse) *CatalogOptionsResponse { return v.CatalogOptions }).(CatalogOptionsResponsePtrOutput)
@@ -9027,6 +10342,12 @@ func (o TrinoProfileResponsePtrOutput) ToTrinoProfileResponsePtrOutput() TrinoPr
 
 func (o TrinoProfileResponsePtrOutput) ToTrinoProfileResponsePtrOutputWithContext(ctx context.Context) TrinoProfileResponsePtrOutput {
 	return o
+}
+
+func (o TrinoProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrinoProfileResponse] {
+	return pulumix.Output[*TrinoProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoProfileResponsePtrOutput) Elem() TrinoProfileResponseOutput {
@@ -9167,6 +10488,12 @@ func (i TrinoTelemetryConfigArgs) ToTrinoTelemetryConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoTelemetryConfigOutput)
 }
 
+func (i TrinoTelemetryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[TrinoTelemetryConfig] {
+	return pulumix.Output[TrinoTelemetryConfig]{
+		OutputState: i.ToTrinoTelemetryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TrinoTelemetryConfigArgs) ToTrinoTelemetryConfigPtrOutput() TrinoTelemetryConfigPtrOutput {
 	return i.ToTrinoTelemetryConfigPtrOutputWithContext(context.Background())
 }
@@ -9208,6 +10535,12 @@ func (i *trinoTelemetryConfigPtrType) ToTrinoTelemetryConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoTelemetryConfigPtrOutput)
 }
 
+func (i *trinoTelemetryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*TrinoTelemetryConfig] {
+	return pulumix.Output[*TrinoTelemetryConfig]{
+		OutputState: i.ToTrinoTelemetryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Trino user telemetry definition.
 type TrinoTelemetryConfigOutput struct{ *pulumi.OutputState }
 
@@ -9231,6 +10564,12 @@ func (o TrinoTelemetryConfigOutput) ToTrinoTelemetryConfigPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrinoTelemetryConfig) *TrinoTelemetryConfig {
 		return &v
 	}).(TrinoTelemetryConfigPtrOutput)
+}
+
+func (o TrinoTelemetryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoTelemetryConfig] {
+	return pulumix.Output[TrinoTelemetryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
@@ -9265,6 +10604,12 @@ func (o TrinoTelemetryConfigPtrOutput) ToTrinoTelemetryConfigPtrOutput() TrinoTe
 
 func (o TrinoTelemetryConfigPtrOutput) ToTrinoTelemetryConfigPtrOutputWithContext(ctx context.Context) TrinoTelemetryConfigPtrOutput {
 	return o
+}
+
+func (o TrinoTelemetryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrinoTelemetryConfig] {
+	return pulumix.Output[*TrinoTelemetryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoTelemetryConfigPtrOutput) Elem() TrinoTelemetryConfigOutput {
@@ -9361,6 +10706,12 @@ func (o TrinoTelemetryConfigResponseOutput) ToTrinoTelemetryConfigResponseOutput
 	return o
 }
 
+func (o TrinoTelemetryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoTelemetryConfigResponse] {
+	return pulumix.Output[TrinoTelemetryConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
 func (o TrinoTelemetryConfigResponseOutput) HivecatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrinoTelemetryConfigResponse) *string { return v.HivecatalogName }).(pulumi.StringPtrOutput)
@@ -9393,6 +10744,12 @@ func (o TrinoTelemetryConfigResponsePtrOutput) ToTrinoTelemetryConfigResponsePtr
 
 func (o TrinoTelemetryConfigResponsePtrOutput) ToTrinoTelemetryConfigResponsePtrOutputWithContext(ctx context.Context) TrinoTelemetryConfigResponsePtrOutput {
 	return o
+}
+
+func (o TrinoTelemetryConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrinoTelemetryConfigResponse] {
+	return pulumix.Output[*TrinoTelemetryConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoTelemetryConfigResponsePtrOutput) Elem() TrinoTelemetryConfigResponseOutput {
@@ -9488,6 +10845,12 @@ func (i TrinoUserPluginArgs) ToTrinoUserPluginOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoUserPluginOutput)
 }
 
+func (i TrinoUserPluginArgs) ToOutput(ctx context.Context) pulumix.Output[TrinoUserPlugin] {
+	return pulumix.Output[TrinoUserPlugin]{
+		OutputState: i.ToTrinoUserPluginOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TrinoUserPluginArrayInput is an input type that accepts TrinoUserPluginArray and TrinoUserPluginArrayOutput values.
 // You can construct a concrete instance of `TrinoUserPluginArrayInput` via:
 //
@@ -9513,6 +10876,12 @@ func (i TrinoUserPluginArray) ToTrinoUserPluginArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoUserPluginArrayOutput)
 }
 
+func (i TrinoUserPluginArray) ToOutput(ctx context.Context) pulumix.Output[[]TrinoUserPlugin] {
+	return pulumix.Output[[]TrinoUserPlugin]{
+		OutputState: i.ToTrinoUserPluginArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Trino user plugin.
 type TrinoUserPluginOutput struct{ *pulumi.OutputState }
 
@@ -9526,6 +10895,12 @@ func (o TrinoUserPluginOutput) ToTrinoUserPluginOutput() TrinoUserPluginOutput {
 
 func (o TrinoUserPluginOutput) ToTrinoUserPluginOutputWithContext(ctx context.Context) TrinoUserPluginOutput {
 	return o
+}
+
+func (o TrinoUserPluginOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoUserPlugin] {
+	return pulumix.Output[TrinoUserPlugin]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Denotes whether the plugin is active or not.
@@ -9555,6 +10930,12 @@ func (o TrinoUserPluginArrayOutput) ToTrinoUserPluginArrayOutput() TrinoUserPlug
 
 func (o TrinoUserPluginArrayOutput) ToTrinoUserPluginArrayOutputWithContext(ctx context.Context) TrinoUserPluginArrayOutput {
 	return o
+}
+
+func (o TrinoUserPluginArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrinoUserPlugin] {
+	return pulumix.Output[[]TrinoUserPlugin]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoUserPluginArrayOutput) Index(i pulumi.IntInput) TrinoUserPluginOutput {
@@ -9588,6 +10969,12 @@ func (o TrinoUserPluginResponseOutput) ToTrinoUserPluginResponseOutputWithContex
 	return o
 }
 
+func (o TrinoUserPluginResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoUserPluginResponse] {
+	return pulumix.Output[TrinoUserPluginResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Denotes whether the plugin is active or not.
 func (o TrinoUserPluginResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TrinoUserPluginResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -9615,6 +11002,12 @@ func (o TrinoUserPluginResponseArrayOutput) ToTrinoUserPluginResponseArrayOutput
 
 func (o TrinoUserPluginResponseArrayOutput) ToTrinoUserPluginResponseArrayOutputWithContext(ctx context.Context) TrinoUserPluginResponseArrayOutput {
 	return o
+}
+
+func (o TrinoUserPluginResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrinoUserPluginResponse] {
+	return pulumix.Output[[]TrinoUserPluginResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoUserPluginResponseArrayOutput) Index(i pulumi.IntInput) TrinoUserPluginResponseOutput {
@@ -9658,6 +11051,12 @@ func (i TrinoUserPluginsArgs) ToTrinoUserPluginsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoUserPluginsOutput)
 }
 
+func (i TrinoUserPluginsArgs) ToOutput(ctx context.Context) pulumix.Output[TrinoUserPlugins] {
+	return pulumix.Output[TrinoUserPlugins]{
+		OutputState: i.ToTrinoUserPluginsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TrinoUserPluginsArgs) ToTrinoUserPluginsPtrOutput() TrinoUserPluginsPtrOutput {
 	return i.ToTrinoUserPluginsPtrOutputWithContext(context.Background())
 }
@@ -9699,6 +11098,12 @@ func (i *trinoUserPluginsPtrType) ToTrinoUserPluginsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoUserPluginsPtrOutput)
 }
 
+func (i *trinoUserPluginsPtrType) ToOutput(ctx context.Context) pulumix.Output[*TrinoUserPlugins] {
+	return pulumix.Output[*TrinoUserPlugins]{
+		OutputState: i.ToTrinoUserPluginsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Trino user plugins spec
 type TrinoUserPluginsOutput struct{ *pulumi.OutputState }
 
@@ -9724,6 +11129,12 @@ func (o TrinoUserPluginsOutput) ToTrinoUserPluginsPtrOutputWithContext(ctx conte
 	}).(TrinoUserPluginsPtrOutput)
 }
 
+func (o TrinoUserPluginsOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoUserPlugins] {
+	return pulumix.Output[TrinoUserPlugins]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Trino user plugins.
 func (o TrinoUserPluginsOutput) Plugins() TrinoUserPluginArrayOutput {
 	return o.ApplyT(func(v TrinoUserPlugins) []TrinoUserPlugin { return v.Plugins }).(TrinoUserPluginArrayOutput)
@@ -9741,6 +11152,12 @@ func (o TrinoUserPluginsPtrOutput) ToTrinoUserPluginsPtrOutput() TrinoUserPlugin
 
 func (o TrinoUserPluginsPtrOutput) ToTrinoUserPluginsPtrOutputWithContext(ctx context.Context) TrinoUserPluginsPtrOutput {
 	return o
+}
+
+func (o TrinoUserPluginsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrinoUserPlugins] {
+	return pulumix.Output[*TrinoUserPlugins]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoUserPluginsPtrOutput) Elem() TrinoUserPluginsOutput {
@@ -9784,6 +11201,12 @@ func (o TrinoUserPluginsResponseOutput) ToTrinoUserPluginsResponseOutputWithCont
 	return o
 }
 
+func (o TrinoUserPluginsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoUserPluginsResponse] {
+	return pulumix.Output[TrinoUserPluginsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Trino user plugins.
 func (o TrinoUserPluginsResponseOutput) Plugins() TrinoUserPluginResponseArrayOutput {
 	return o.ApplyT(func(v TrinoUserPluginsResponse) []TrinoUserPluginResponse { return v.Plugins }).(TrinoUserPluginResponseArrayOutput)
@@ -9801,6 +11224,12 @@ func (o TrinoUserPluginsResponsePtrOutput) ToTrinoUserPluginsResponsePtrOutput()
 
 func (o TrinoUserPluginsResponsePtrOutput) ToTrinoUserPluginsResponsePtrOutputWithContext(ctx context.Context) TrinoUserPluginsResponsePtrOutput {
 	return o
+}
+
+func (o TrinoUserPluginsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrinoUserPluginsResponse] {
+	return pulumix.Output[*TrinoUserPluginsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoUserPluginsResponsePtrOutput) Elem() TrinoUserPluginsResponseOutput {
@@ -9878,6 +11307,12 @@ func (i TrinoUserTelemetryArgs) ToTrinoUserTelemetryOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoUserTelemetryOutput)
 }
 
+func (i TrinoUserTelemetryArgs) ToOutput(ctx context.Context) pulumix.Output[TrinoUserTelemetry] {
+	return pulumix.Output[TrinoUserTelemetry]{
+		OutputState: i.ToTrinoUserTelemetryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TrinoUserTelemetryArgs) ToTrinoUserTelemetryPtrOutput() TrinoUserTelemetryPtrOutput {
 	return i.ToTrinoUserTelemetryPtrOutputWithContext(context.Background())
 }
@@ -9919,6 +11354,12 @@ func (i *trinoUserTelemetryPtrType) ToTrinoUserTelemetryPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoUserTelemetryPtrOutput)
 }
 
+func (i *trinoUserTelemetryPtrType) ToOutput(ctx context.Context) pulumix.Output[*TrinoUserTelemetry] {
+	return pulumix.Output[*TrinoUserTelemetry]{
+		OutputState: i.ToTrinoUserTelemetryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // User telemetry
 type TrinoUserTelemetryOutput struct{ *pulumi.OutputState }
 
@@ -9944,6 +11385,12 @@ func (o TrinoUserTelemetryOutput) ToTrinoUserTelemetryPtrOutputWithContext(ctx c
 	}).(TrinoUserTelemetryPtrOutput)
 }
 
+func (o TrinoUserTelemetryOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoUserTelemetry] {
+	return pulumix.Output[TrinoUserTelemetry]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Trino user telemetry definition.
 func (o TrinoUserTelemetryOutput) Storage() TrinoTelemetryConfigPtrOutput {
 	return o.ApplyT(func(v TrinoUserTelemetry) *TrinoTelemetryConfig { return v.Storage }).(TrinoTelemetryConfigPtrOutput)
@@ -9961,6 +11408,12 @@ func (o TrinoUserTelemetryPtrOutput) ToTrinoUserTelemetryPtrOutput() TrinoUserTe
 
 func (o TrinoUserTelemetryPtrOutput) ToTrinoUserTelemetryPtrOutputWithContext(ctx context.Context) TrinoUserTelemetryPtrOutput {
 	return o
+}
+
+func (o TrinoUserTelemetryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrinoUserTelemetry] {
+	return pulumix.Output[*TrinoUserTelemetry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoUserTelemetryPtrOutput) Elem() TrinoUserTelemetryOutput {
@@ -10015,6 +11468,12 @@ func (o TrinoUserTelemetryResponseOutput) ToTrinoUserTelemetryResponseOutputWith
 	return o
 }
 
+func (o TrinoUserTelemetryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoUserTelemetryResponse] {
+	return pulumix.Output[TrinoUserTelemetryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Trino user telemetry definition.
 func (o TrinoUserTelemetryResponseOutput) Storage() TrinoTelemetryConfigResponsePtrOutput {
 	return o.ApplyT(func(v TrinoUserTelemetryResponse) *TrinoTelemetryConfigResponse { return v.Storage }).(TrinoTelemetryConfigResponsePtrOutput)
@@ -10032,6 +11491,12 @@ func (o TrinoUserTelemetryResponsePtrOutput) ToTrinoUserTelemetryResponsePtrOutp
 
 func (o TrinoUserTelemetryResponsePtrOutput) ToTrinoUserTelemetryResponsePtrOutputWithContext(ctx context.Context) TrinoUserTelemetryResponsePtrOutput {
 	return o
+}
+
+func (o TrinoUserTelemetryResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrinoUserTelemetryResponse] {
+	return pulumix.Output[*TrinoUserTelemetryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoUserTelemetryResponsePtrOutput) Elem() TrinoUserTelemetryResponseOutput {
@@ -10135,6 +11600,12 @@ func (i TrinoWorkerArgs) ToTrinoWorkerOutputWithContext(ctx context.Context) Tri
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoWorkerOutput)
 }
 
+func (i TrinoWorkerArgs) ToOutput(ctx context.Context) pulumix.Output[TrinoWorker] {
+	return pulumix.Output[TrinoWorker]{
+		OutputState: i.ToTrinoWorkerOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TrinoWorkerArgs) ToTrinoWorkerPtrOutput() TrinoWorkerPtrOutput {
 	return i.ToTrinoWorkerPtrOutputWithContext(context.Background())
 }
@@ -10176,6 +11647,12 @@ func (i *trinoWorkerPtrType) ToTrinoWorkerPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TrinoWorkerPtrOutput)
 }
 
+func (i *trinoWorkerPtrType) ToOutput(ctx context.Context) pulumix.Output[*TrinoWorker] {
+	return pulumix.Output[*TrinoWorker]{
+		OutputState: i.ToTrinoWorkerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Trino worker.
 type TrinoWorkerOutput struct{ *pulumi.OutputState }
 
@@ -10199,6 +11676,12 @@ func (o TrinoWorkerOutput) ToTrinoWorkerPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrinoWorker) *TrinoWorker {
 		return &v
 	}).(TrinoWorkerPtrOutput)
+}
+
+func (o TrinoWorkerOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoWorker] {
+	return pulumix.Output[TrinoWorker]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The flag that if enable debug or not.
@@ -10228,6 +11711,12 @@ func (o TrinoWorkerPtrOutput) ToTrinoWorkerPtrOutput() TrinoWorkerPtrOutput {
 
 func (o TrinoWorkerPtrOutput) ToTrinoWorkerPtrOutputWithContext(ctx context.Context) TrinoWorkerPtrOutput {
 	return o
+}
+
+func (o TrinoWorkerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrinoWorker] {
+	return pulumix.Output[*TrinoWorker]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoWorkerPtrOutput) Elem() TrinoWorkerOutput {
@@ -10316,6 +11805,12 @@ func (o TrinoWorkerResponseOutput) ToTrinoWorkerResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o TrinoWorkerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrinoWorkerResponse] {
+	return pulumix.Output[TrinoWorkerResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The flag that if enable debug or not.
 func (o TrinoWorkerResponseOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TrinoWorkerResponse) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
@@ -10343,6 +11838,12 @@ func (o TrinoWorkerResponsePtrOutput) ToTrinoWorkerResponsePtrOutput() TrinoWork
 
 func (o TrinoWorkerResponsePtrOutput) ToTrinoWorkerResponsePtrOutputWithContext(ctx context.Context) TrinoWorkerResponsePtrOutput {
 	return o
+}
+
+func (o TrinoWorkerResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrinoWorkerResponse] {
+	return pulumix.Output[*TrinoWorkerResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrinoWorkerResponsePtrOutput) Elem() TrinoWorkerResponseOutput {

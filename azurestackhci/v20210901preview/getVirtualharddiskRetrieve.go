@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets virtualharddisks by resource name
@@ -100,6 +101,12 @@ func (o LookupVirtualharddiskRetrieveResultOutput) ToLookupVirtualharddiskRetrie
 
 func (o LookupVirtualharddiskRetrieveResultOutput) ToLookupVirtualharddiskRetrieveResultOutputWithContext(ctx context.Context) LookupVirtualharddiskRetrieveResultOutput {
 	return o
+}
+
+func (o LookupVirtualharddiskRetrieveResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualharddiskRetrieveResult] {
+	return pulumix.Output[LookupVirtualharddiskRetrieveResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupVirtualharddiskRetrieveResultOutput) BlockSizeBytes() pulumi.IntPtrOutput {

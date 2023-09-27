@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a data connection.
@@ -107,6 +108,12 @@ func (o LookupCosmosDbDataConnectionResultOutput) ToLookupCosmosDbDataConnection
 
 func (o LookupCosmosDbDataConnectionResultOutput) ToLookupCosmosDbDataConnectionResultOutputWithContext(ctx context.Context) LookupCosmosDbDataConnectionResultOutput {
 	return o
+}
+
+func (o LookupCosmosDbDataConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCosmosDbDataConnectionResult] {
+	return pulumix.Output[LookupCosmosDbDataConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource ID of the Cosmos DB account used to create the data connection.

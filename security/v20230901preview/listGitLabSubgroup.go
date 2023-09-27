@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List of RP resources which supports pagination.
@@ -78,6 +79,12 @@ func (o ListGitLabSubgroupResultOutput) ToListGitLabSubgroupResultOutput() ListG
 
 func (o ListGitLabSubgroupResultOutput) ToListGitLabSubgroupResultOutputWithContext(ctx context.Context) ListGitLabSubgroupResultOutput {
 	return o
+}
+
+func (o ListGitLabSubgroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListGitLabSubgroupResult] {
+	return pulumix.Output[ListGitLabSubgroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets next link to scroll over the results.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An product resource belonging to a catalog resource.
@@ -129,6 +130,12 @@ func (i *Product) ToProductOutputWithContext(ctx context.Context) ProductOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProductOutput)
 }
 
+func (i *Product) ToOutput(ctx context.Context) pulumix.Output[*Product] {
+	return pulumix.Output[*Product]{
+		OutputState: i.ToProductOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProductOutput struct{ *pulumi.OutputState }
 
 func (ProductOutput) ElementType() reflect.Type {
@@ -141,6 +148,12 @@ func (o ProductOutput) ToProductOutput() ProductOutput {
 
 func (o ProductOutput) ToProductOutputWithContext(ctx context.Context) ProductOutput {
 	return o
+}
+
+func (o ProductOutput) ToOutput(ctx context.Context) pulumix.Output[*Product] {
+	return pulumix.Output[*Product]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of the product

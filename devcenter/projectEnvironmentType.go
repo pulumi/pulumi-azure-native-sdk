@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an environment type.
@@ -72,6 +73,9 @@ func NewProjectEnvironmentType(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20230401:ProjectEnvironmentType"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230801preview:ProjectEnvironmentType"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -177,6 +181,12 @@ func (i *ProjectEnvironmentType) ToProjectEnvironmentTypeOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentTypeOutput)
 }
 
+func (i *ProjectEnvironmentType) ToOutput(ctx context.Context) pulumix.Output[*ProjectEnvironmentType] {
+	return pulumix.Output[*ProjectEnvironmentType]{
+		OutputState: i.ToProjectEnvironmentTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectEnvironmentTypeOutput struct{ *pulumi.OutputState }
 
 func (ProjectEnvironmentTypeOutput) ElementType() reflect.Type {
@@ -189,6 +199,12 @@ func (o ProjectEnvironmentTypeOutput) ToProjectEnvironmentTypeOutput() ProjectEn
 
 func (o ProjectEnvironmentTypeOutput) ToProjectEnvironmentTypeOutputWithContext(ctx context.Context) ProjectEnvironmentTypeOutput {
 	return o
+}
+
+func (o ProjectEnvironmentTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectEnvironmentType] {
+	return pulumix.Output[*ProjectEnvironmentType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The role definition assigned to the environment creator on backing resources.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i CloudServiceExtensionProfileArgs) ToCloudServiceExtensionProfileOutput()
 
 func (i CloudServiceExtensionProfileArgs) ToCloudServiceExtensionProfileOutputWithContext(ctx context.Context) CloudServiceExtensionProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceExtensionProfileOutput)
+}
+
+func (i CloudServiceExtensionProfileArgs) ToOutput(ctx context.Context) pulumix.Output[CloudServiceExtensionProfile] {
+	return pulumix.Output[CloudServiceExtensionProfile]{
+		OutputState: i.ToCloudServiceExtensionProfileOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CloudServiceExtensionProfileArgs) ToCloudServiceExtensionProfilePtrOutput() CloudServiceExtensionProfilePtrOutput {
@@ -89,6 +96,12 @@ func (i *cloudServiceExtensionProfilePtrType) ToCloudServiceExtensionProfilePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceExtensionProfilePtrOutput)
 }
 
+func (i *cloudServiceExtensionProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceExtensionProfile] {
+	return pulumix.Output[*CloudServiceExtensionProfile]{
+		OutputState: i.ToCloudServiceExtensionProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a cloud service extension profile.
 type CloudServiceExtensionProfileOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o CloudServiceExtensionProfileOutput) ToCloudServiceExtensionProfilePtrOut
 	}).(CloudServiceExtensionProfilePtrOutput)
 }
 
+func (o CloudServiceExtensionProfileOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceExtensionProfile] {
+	return pulumix.Output[CloudServiceExtensionProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of extensions for the cloud service.
 func (o CloudServiceExtensionProfileOutput) Extensions() ExtensionArrayOutput {
 	return o.ApplyT(func(v CloudServiceExtensionProfile) []Extension { return v.Extensions }).(ExtensionArrayOutput)
@@ -131,6 +150,12 @@ func (o CloudServiceExtensionProfilePtrOutput) ToCloudServiceExtensionProfilePtr
 
 func (o CloudServiceExtensionProfilePtrOutput) ToCloudServiceExtensionProfilePtrOutputWithContext(ctx context.Context) CloudServiceExtensionProfilePtrOutput {
 	return o
+}
+
+func (o CloudServiceExtensionProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceExtensionProfile] {
+	return pulumix.Output[*CloudServiceExtensionProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceExtensionProfilePtrOutput) Elem() CloudServiceExtensionProfileOutput {
@@ -174,6 +199,12 @@ func (o CloudServiceExtensionProfileResponseOutput) ToCloudServiceExtensionProfi
 	return o
 }
 
+func (o CloudServiceExtensionProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceExtensionProfileResponse] {
+	return pulumix.Output[CloudServiceExtensionProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of extensions for the cloud service.
 func (o CloudServiceExtensionProfileResponseOutput) Extensions() ExtensionResponseArrayOutput {
 	return o.ApplyT(func(v CloudServiceExtensionProfileResponse) []ExtensionResponse { return v.Extensions }).(ExtensionResponseArrayOutput)
@@ -191,6 +222,12 @@ func (o CloudServiceExtensionProfileResponsePtrOutput) ToCloudServiceExtensionPr
 
 func (o CloudServiceExtensionProfileResponsePtrOutput) ToCloudServiceExtensionProfileResponsePtrOutputWithContext(ctx context.Context) CloudServiceExtensionProfileResponsePtrOutput {
 	return o
+}
+
+func (o CloudServiceExtensionProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceExtensionProfileResponse] {
+	return pulumix.Output[*CloudServiceExtensionProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceExtensionProfileResponsePtrOutput) Elem() CloudServiceExtensionProfileResponseOutput {
@@ -288,6 +325,12 @@ func (i CloudServiceExtensionPropertiesArgs) ToCloudServiceExtensionPropertiesOu
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceExtensionPropertiesOutput)
 }
 
+func (i CloudServiceExtensionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[CloudServiceExtensionProperties] {
+	return pulumix.Output[CloudServiceExtensionProperties]{
+		OutputState: i.ToCloudServiceExtensionPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CloudServiceExtensionPropertiesArgs) ToCloudServiceExtensionPropertiesPtrOutput() CloudServiceExtensionPropertiesPtrOutput {
 	return i.ToCloudServiceExtensionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -329,6 +372,12 @@ func (i *cloudServiceExtensionPropertiesPtrType) ToCloudServiceExtensionProperti
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceExtensionPropertiesPtrOutput)
 }
 
+func (i *cloudServiceExtensionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceExtensionProperties] {
+	return pulumix.Output[*CloudServiceExtensionProperties]{
+		OutputState: i.ToCloudServiceExtensionPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Extension Properties.
 type CloudServiceExtensionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -352,6 +401,12 @@ func (o CloudServiceExtensionPropertiesOutput) ToCloudServiceExtensionProperties
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudServiceExtensionProperties) *CloudServiceExtensionProperties {
 		return &v
 	}).(CloudServiceExtensionPropertiesPtrOutput)
+}
+
+func (o CloudServiceExtensionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceExtensionProperties] {
+	return pulumix.Output[CloudServiceExtensionProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Explicitly specify whether platform can automatically upgrade typeHandlerVersion to higher minor versions when they become available.
@@ -417,6 +472,12 @@ func (o CloudServiceExtensionPropertiesPtrOutput) ToCloudServiceExtensionPropert
 
 func (o CloudServiceExtensionPropertiesPtrOutput) ToCloudServiceExtensionPropertiesPtrOutputWithContext(ctx context.Context) CloudServiceExtensionPropertiesPtrOutput {
 	return o
+}
+
+func (o CloudServiceExtensionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceExtensionProperties] {
+	return pulumix.Output[*CloudServiceExtensionProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceExtensionPropertiesPtrOutput) Elem() CloudServiceExtensionPropertiesOutput {
@@ -566,6 +627,12 @@ func (o CloudServiceExtensionPropertiesResponseOutput) ToCloudServiceExtensionPr
 	return o
 }
 
+func (o CloudServiceExtensionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceExtensionPropertiesResponse] {
+	return pulumix.Output[CloudServiceExtensionPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Explicitly specify whether platform can automatically upgrade typeHandlerVersion to higher minor versions when they become available.
 func (o CloudServiceExtensionPropertiesResponseOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CloudServiceExtensionPropertiesResponse) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
@@ -634,6 +701,12 @@ func (o CloudServiceExtensionPropertiesResponsePtrOutput) ToCloudServiceExtensio
 
 func (o CloudServiceExtensionPropertiesResponsePtrOutput) ToCloudServiceExtensionPropertiesResponsePtrOutputWithContext(ctx context.Context) CloudServiceExtensionPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o CloudServiceExtensionPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceExtensionPropertiesResponse] {
+	return pulumix.Output[*CloudServiceExtensionPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceExtensionPropertiesResponsePtrOutput) Elem() CloudServiceExtensionPropertiesResponseOutput {
@@ -797,6 +870,12 @@ func (i CloudServiceNetworkProfileArgs) ToCloudServiceNetworkProfileOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceNetworkProfileOutput)
 }
 
+func (i CloudServiceNetworkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[CloudServiceNetworkProfile] {
+	return pulumix.Output[CloudServiceNetworkProfile]{
+		OutputState: i.ToCloudServiceNetworkProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CloudServiceNetworkProfileArgs) ToCloudServiceNetworkProfilePtrOutput() CloudServiceNetworkProfilePtrOutput {
 	return i.ToCloudServiceNetworkProfilePtrOutputWithContext(context.Background())
 }
@@ -838,6 +917,12 @@ func (i *cloudServiceNetworkProfilePtrType) ToCloudServiceNetworkProfilePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceNetworkProfilePtrOutput)
 }
 
+func (i *cloudServiceNetworkProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceNetworkProfile] {
+	return pulumix.Output[*CloudServiceNetworkProfile]{
+		OutputState: i.ToCloudServiceNetworkProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Network Profile for the cloud service.
 type CloudServiceNetworkProfileOutput struct{ *pulumi.OutputState }
 
@@ -861,6 +946,12 @@ func (o CloudServiceNetworkProfileOutput) ToCloudServiceNetworkProfilePtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudServiceNetworkProfile) *CloudServiceNetworkProfile {
 		return &v
 	}).(CloudServiceNetworkProfilePtrOutput)
+}
+
+func (o CloudServiceNetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceNetworkProfile] {
+	return pulumix.Output[CloudServiceNetworkProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
@@ -892,6 +983,12 @@ func (o CloudServiceNetworkProfilePtrOutput) ToCloudServiceNetworkProfilePtrOutp
 
 func (o CloudServiceNetworkProfilePtrOutput) ToCloudServiceNetworkProfilePtrOutputWithContext(ctx context.Context) CloudServiceNetworkProfilePtrOutput {
 	return o
+}
+
+func (o CloudServiceNetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceNetworkProfile] {
+	return pulumix.Output[*CloudServiceNetworkProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceNetworkProfilePtrOutput) Elem() CloudServiceNetworkProfileOutput {
@@ -963,6 +1060,12 @@ func (o CloudServiceNetworkProfileResponseOutput) ToCloudServiceNetworkProfileRe
 	return o
 }
 
+func (o CloudServiceNetworkProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceNetworkProfileResponse] {
+	return pulumix.Output[CloudServiceNetworkProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
 func (o CloudServiceNetworkProfileResponseOutput) LoadBalancerConfigurations() LoadBalancerConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v CloudServiceNetworkProfileResponse) []LoadBalancerConfigurationResponse {
@@ -994,6 +1097,12 @@ func (o CloudServiceNetworkProfileResponsePtrOutput) ToCloudServiceNetworkProfil
 
 func (o CloudServiceNetworkProfileResponsePtrOutput) ToCloudServiceNetworkProfileResponsePtrOutputWithContext(ctx context.Context) CloudServiceNetworkProfileResponsePtrOutput {
 	return o
+}
+
+func (o CloudServiceNetworkProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceNetworkProfileResponse] {
+	return pulumix.Output[*CloudServiceNetworkProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceNetworkProfileResponsePtrOutput) Elem() CloudServiceNetworkProfileResponseOutput {
@@ -1073,6 +1182,12 @@ func (i CloudServiceOsProfileArgs) ToCloudServiceOsProfileOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceOsProfileOutput)
 }
 
+func (i CloudServiceOsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[CloudServiceOsProfile] {
+	return pulumix.Output[CloudServiceOsProfile]{
+		OutputState: i.ToCloudServiceOsProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CloudServiceOsProfileArgs) ToCloudServiceOsProfilePtrOutput() CloudServiceOsProfilePtrOutput {
 	return i.ToCloudServiceOsProfilePtrOutputWithContext(context.Background())
 }
@@ -1114,6 +1229,12 @@ func (i *cloudServiceOsProfilePtrType) ToCloudServiceOsProfilePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceOsProfilePtrOutput)
 }
 
+func (i *cloudServiceOsProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceOsProfile] {
+	return pulumix.Output[*CloudServiceOsProfile]{
+		OutputState: i.ToCloudServiceOsProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the OS profile for the cloud service.
 type CloudServiceOsProfileOutput struct{ *pulumi.OutputState }
 
@@ -1139,6 +1260,12 @@ func (o CloudServiceOsProfileOutput) ToCloudServiceOsProfilePtrOutputWithContext
 	}).(CloudServiceOsProfilePtrOutput)
 }
 
+func (o CloudServiceOsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceOsProfile] {
+	return pulumix.Output[CloudServiceOsProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies set of certificates that should be installed onto the role instances.
 func (o CloudServiceOsProfileOutput) Secrets() CloudServiceVaultSecretGroupArrayOutput {
 	return o.ApplyT(func(v CloudServiceOsProfile) []CloudServiceVaultSecretGroup { return v.Secrets }).(CloudServiceVaultSecretGroupArrayOutput)
@@ -1156,6 +1283,12 @@ func (o CloudServiceOsProfilePtrOutput) ToCloudServiceOsProfilePtrOutput() Cloud
 
 func (o CloudServiceOsProfilePtrOutput) ToCloudServiceOsProfilePtrOutputWithContext(ctx context.Context) CloudServiceOsProfilePtrOutput {
 	return o
+}
+
+func (o CloudServiceOsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceOsProfile] {
+	return pulumix.Output[*CloudServiceOsProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceOsProfilePtrOutput) Elem() CloudServiceOsProfileOutput {
@@ -1199,6 +1332,12 @@ func (o CloudServiceOsProfileResponseOutput) ToCloudServiceOsProfileResponseOutp
 	return o
 }
 
+func (o CloudServiceOsProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceOsProfileResponse] {
+	return pulumix.Output[CloudServiceOsProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies set of certificates that should be installed onto the role instances.
 func (o CloudServiceOsProfileResponseOutput) Secrets() CloudServiceVaultSecretGroupResponseArrayOutput {
 	return o.ApplyT(func(v CloudServiceOsProfileResponse) []CloudServiceVaultSecretGroupResponse { return v.Secrets }).(CloudServiceVaultSecretGroupResponseArrayOutput)
@@ -1216,6 +1355,12 @@ func (o CloudServiceOsProfileResponsePtrOutput) ToCloudServiceOsProfileResponseP
 
 func (o CloudServiceOsProfileResponsePtrOutput) ToCloudServiceOsProfileResponsePtrOutputWithContext(ctx context.Context) CloudServiceOsProfileResponsePtrOutput {
 	return o
+}
+
+func (o CloudServiceOsProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceOsProfileResponse] {
+	return pulumix.Output[*CloudServiceOsProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceOsProfileResponsePtrOutput) Elem() CloudServiceOsProfileResponseOutput {
@@ -1321,6 +1466,12 @@ func (i CloudServicePropertiesArgs) ToCloudServicePropertiesOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServicePropertiesOutput)
 }
 
+func (i CloudServicePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[CloudServiceProperties] {
+	return pulumix.Output[CloudServiceProperties]{
+		OutputState: i.ToCloudServicePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CloudServicePropertiesArgs) ToCloudServicePropertiesPtrOutput() CloudServicePropertiesPtrOutput {
 	return i.ToCloudServicePropertiesPtrOutputWithContext(context.Background())
 }
@@ -1362,6 +1513,12 @@ func (i *cloudServicePropertiesPtrType) ToCloudServicePropertiesPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServicePropertiesPtrOutput)
 }
 
+func (i *cloudServicePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceProperties] {
+	return pulumix.Output[*CloudServiceProperties]{
+		OutputState: i.ToCloudServicePropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cloud service properties
 type CloudServicePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1385,6 +1542,12 @@ func (o CloudServicePropertiesOutput) ToCloudServicePropertiesPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudServiceProperties) *CloudServiceProperties {
 		return &v
 	}).(CloudServicePropertiesPtrOutput)
+}
+
+func (o CloudServicePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceProperties] {
+	return pulumix.Output[CloudServiceProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.
@@ -1455,6 +1618,12 @@ func (o CloudServicePropertiesPtrOutput) ToCloudServicePropertiesPtrOutput() Clo
 
 func (o CloudServicePropertiesPtrOutput) ToCloudServicePropertiesPtrOutputWithContext(ctx context.Context) CloudServicePropertiesPtrOutput {
 	return o
+}
+
+func (o CloudServicePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceProperties] {
+	return pulumix.Output[*CloudServiceProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServicePropertiesPtrOutput) Elem() CloudServicePropertiesOutput {
@@ -1622,6 +1791,12 @@ func (o CloudServicePropertiesResponseOutput) ToCloudServicePropertiesResponseOu
 	return o
 }
 
+func (o CloudServicePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServicePropertiesResponse] {
+	return pulumix.Output[CloudServicePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.
 // The default value is `false`.
 func (o CloudServicePropertiesResponseOutput) AllowModelOverride() pulumi.BoolPtrOutput {
@@ -1725,6 +1900,12 @@ func (i CloudServiceRoleProfileArgs) ToCloudServiceRoleProfileOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceRoleProfileOutput)
 }
 
+func (i CloudServiceRoleProfileArgs) ToOutput(ctx context.Context) pulumix.Output[CloudServiceRoleProfile] {
+	return pulumix.Output[CloudServiceRoleProfile]{
+		OutputState: i.ToCloudServiceRoleProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CloudServiceRoleProfileArgs) ToCloudServiceRoleProfilePtrOutput() CloudServiceRoleProfilePtrOutput {
 	return i.ToCloudServiceRoleProfilePtrOutputWithContext(context.Background())
 }
@@ -1766,6 +1947,12 @@ func (i *cloudServiceRoleProfilePtrType) ToCloudServiceRoleProfilePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceRoleProfilePtrOutput)
 }
 
+func (i *cloudServiceRoleProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceRoleProfile] {
+	return pulumix.Output[*CloudServiceRoleProfile]{
+		OutputState: i.ToCloudServiceRoleProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the role profile for the cloud service.
 type CloudServiceRoleProfileOutput struct{ *pulumi.OutputState }
 
@@ -1791,6 +1978,12 @@ func (o CloudServiceRoleProfileOutput) ToCloudServiceRoleProfilePtrOutputWithCon
 	}).(CloudServiceRoleProfilePtrOutput)
 }
 
+func (o CloudServiceRoleProfileOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceRoleProfile] {
+	return pulumix.Output[CloudServiceRoleProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of roles for the cloud service.
 func (o CloudServiceRoleProfileOutput) Roles() CloudServiceRoleProfilePropertiesArrayOutput {
 	return o.ApplyT(func(v CloudServiceRoleProfile) []CloudServiceRoleProfileProperties { return v.Roles }).(CloudServiceRoleProfilePropertiesArrayOutput)
@@ -1808,6 +2001,12 @@ func (o CloudServiceRoleProfilePtrOutput) ToCloudServiceRoleProfilePtrOutput() C
 
 func (o CloudServiceRoleProfilePtrOutput) ToCloudServiceRoleProfilePtrOutputWithContext(ctx context.Context) CloudServiceRoleProfilePtrOutput {
 	return o
+}
+
+func (o CloudServiceRoleProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceRoleProfile] {
+	return pulumix.Output[*CloudServiceRoleProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceRoleProfilePtrOutput) Elem() CloudServiceRoleProfileOutput {
@@ -1869,6 +2068,12 @@ func (i CloudServiceRoleProfilePropertiesArgs) ToCloudServiceRoleProfileProperti
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceRoleProfilePropertiesOutput)
 }
 
+func (i CloudServiceRoleProfilePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[CloudServiceRoleProfileProperties] {
+	return pulumix.Output[CloudServiceRoleProfileProperties]{
+		OutputState: i.ToCloudServiceRoleProfilePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CloudServiceRoleProfilePropertiesArrayInput is an input type that accepts CloudServiceRoleProfilePropertiesArray and CloudServiceRoleProfilePropertiesArrayOutput values.
 // You can construct a concrete instance of `CloudServiceRoleProfilePropertiesArrayInput` via:
 //
@@ -1894,6 +2099,12 @@ func (i CloudServiceRoleProfilePropertiesArray) ToCloudServiceRoleProfilePropert
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceRoleProfilePropertiesArrayOutput)
 }
 
+func (i CloudServiceRoleProfilePropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]CloudServiceRoleProfileProperties] {
+	return pulumix.Output[[]CloudServiceRoleProfileProperties]{
+		OutputState: i.ToCloudServiceRoleProfilePropertiesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the role properties.
 type CloudServiceRoleProfilePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1907,6 +2118,12 @@ func (o CloudServiceRoleProfilePropertiesOutput) ToCloudServiceRoleProfileProper
 
 func (o CloudServiceRoleProfilePropertiesOutput) ToCloudServiceRoleProfilePropertiesOutputWithContext(ctx context.Context) CloudServiceRoleProfilePropertiesOutput {
 	return o
+}
+
+func (o CloudServiceRoleProfilePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceRoleProfileProperties] {
+	return pulumix.Output[CloudServiceRoleProfileProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name.
@@ -1931,6 +2148,12 @@ func (o CloudServiceRoleProfilePropertiesArrayOutput) ToCloudServiceRoleProfileP
 
 func (o CloudServiceRoleProfilePropertiesArrayOutput) ToCloudServiceRoleProfilePropertiesArrayOutputWithContext(ctx context.Context) CloudServiceRoleProfilePropertiesArrayOutput {
 	return o
+}
+
+func (o CloudServiceRoleProfilePropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CloudServiceRoleProfileProperties] {
+	return pulumix.Output[[]CloudServiceRoleProfileProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceRoleProfilePropertiesArrayOutput) Index(i pulumi.IntInput) CloudServiceRoleProfilePropertiesOutput {
@@ -1962,6 +2185,12 @@ func (o CloudServiceRoleProfilePropertiesResponseOutput) ToCloudServiceRoleProfi
 	return o
 }
 
+func (o CloudServiceRoleProfilePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceRoleProfilePropertiesResponse] {
+	return pulumix.Output[CloudServiceRoleProfilePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource name.
 func (o CloudServiceRoleProfilePropertiesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudServiceRoleProfilePropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1984,6 +2213,12 @@ func (o CloudServiceRoleProfilePropertiesResponseArrayOutput) ToCloudServiceRole
 
 func (o CloudServiceRoleProfilePropertiesResponseArrayOutput) ToCloudServiceRoleProfilePropertiesResponseArrayOutputWithContext(ctx context.Context) CloudServiceRoleProfilePropertiesResponseArrayOutput {
 	return o
+}
+
+func (o CloudServiceRoleProfilePropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CloudServiceRoleProfilePropertiesResponse] {
+	return pulumix.Output[[]CloudServiceRoleProfilePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceRoleProfilePropertiesResponseArrayOutput) Index(i pulumi.IntInput) CloudServiceRoleProfilePropertiesResponseOutput {
@@ -2013,6 +2248,12 @@ func (o CloudServiceRoleProfileResponseOutput) ToCloudServiceRoleProfileResponse
 	return o
 }
 
+func (o CloudServiceRoleProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceRoleProfileResponse] {
+	return pulumix.Output[CloudServiceRoleProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of roles for the cloud service.
 func (o CloudServiceRoleProfileResponseOutput) Roles() CloudServiceRoleProfilePropertiesResponseArrayOutput {
 	return o.ApplyT(func(v CloudServiceRoleProfileResponse) []CloudServiceRoleProfilePropertiesResponse { return v.Roles }).(CloudServiceRoleProfilePropertiesResponseArrayOutput)
@@ -2030,6 +2271,12 @@ func (o CloudServiceRoleProfileResponsePtrOutput) ToCloudServiceRoleProfileRespo
 
 func (o CloudServiceRoleProfileResponsePtrOutput) ToCloudServiceRoleProfileResponsePtrOutputWithContext(ctx context.Context) CloudServiceRoleProfileResponsePtrOutput {
 	return o
+}
+
+func (o CloudServiceRoleProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceRoleProfileResponse] {
+	return pulumix.Output[*CloudServiceRoleProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceRoleProfileResponsePtrOutput) Elem() CloudServiceRoleProfileResponseOutput {
@@ -2095,6 +2342,12 @@ func (i CloudServiceRoleSkuArgs) ToCloudServiceRoleSkuOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceRoleSkuOutput)
 }
 
+func (i CloudServiceRoleSkuArgs) ToOutput(ctx context.Context) pulumix.Output[CloudServiceRoleSku] {
+	return pulumix.Output[CloudServiceRoleSku]{
+		OutputState: i.ToCloudServiceRoleSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CloudServiceRoleSkuArgs) ToCloudServiceRoleSkuPtrOutput() CloudServiceRoleSkuPtrOutput {
 	return i.ToCloudServiceRoleSkuPtrOutputWithContext(context.Background())
 }
@@ -2136,6 +2389,12 @@ func (i *cloudServiceRoleSkuPtrType) ToCloudServiceRoleSkuPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceRoleSkuPtrOutput)
 }
 
+func (i *cloudServiceRoleSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceRoleSku] {
+	return pulumix.Output[*CloudServiceRoleSku]{
+		OutputState: i.ToCloudServiceRoleSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the cloud service role sku.
 type CloudServiceRoleSkuOutput struct{ *pulumi.OutputState }
 
@@ -2159,6 +2418,12 @@ func (o CloudServiceRoleSkuOutput) ToCloudServiceRoleSkuPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudServiceRoleSku) *CloudServiceRoleSku {
 		return &v
 	}).(CloudServiceRoleSkuPtrOutput)
+}
+
+func (o CloudServiceRoleSkuOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceRoleSku] {
+	return pulumix.Output[CloudServiceRoleSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the number of role instances in the cloud service.
@@ -2188,6 +2453,12 @@ func (o CloudServiceRoleSkuPtrOutput) ToCloudServiceRoleSkuPtrOutput() CloudServ
 
 func (o CloudServiceRoleSkuPtrOutput) ToCloudServiceRoleSkuPtrOutputWithContext(ctx context.Context) CloudServiceRoleSkuPtrOutput {
 	return o
+}
+
+func (o CloudServiceRoleSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceRoleSku] {
+	return pulumix.Output[*CloudServiceRoleSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceRoleSkuPtrOutput) Elem() CloudServiceRoleSkuOutput {
@@ -2255,6 +2526,12 @@ func (o CloudServiceRoleSkuResponseOutput) ToCloudServiceRoleSkuResponseOutputWi
 	return o
 }
 
+func (o CloudServiceRoleSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceRoleSkuResponse] {
+	return pulumix.Output[CloudServiceRoleSkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the number of role instances in the cloud service.
 func (o CloudServiceRoleSkuResponseOutput) Capacity() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v CloudServiceRoleSkuResponse) *float64 { return v.Capacity }).(pulumi.Float64PtrOutput)
@@ -2282,6 +2559,12 @@ func (o CloudServiceRoleSkuResponsePtrOutput) ToCloudServiceRoleSkuResponsePtrOu
 
 func (o CloudServiceRoleSkuResponsePtrOutput) ToCloudServiceRoleSkuResponsePtrOutputWithContext(ctx context.Context) CloudServiceRoleSkuResponsePtrOutput {
 	return o
+}
+
+func (o CloudServiceRoleSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceRoleSkuResponse] {
+	return pulumix.Output[*CloudServiceRoleSkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceRoleSkuResponsePtrOutput) Elem() CloudServiceRoleSkuResponseOutput {
@@ -2363,6 +2646,12 @@ func (i CloudServiceVaultAndSecretReferenceArgs) ToCloudServiceVaultAndSecretRef
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceVaultAndSecretReferenceOutput)
 }
 
+func (i CloudServiceVaultAndSecretReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[CloudServiceVaultAndSecretReference] {
+	return pulumix.Output[CloudServiceVaultAndSecretReference]{
+		OutputState: i.ToCloudServiceVaultAndSecretReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CloudServiceVaultAndSecretReferenceArgs) ToCloudServiceVaultAndSecretReferencePtrOutput() CloudServiceVaultAndSecretReferencePtrOutput {
 	return i.ToCloudServiceVaultAndSecretReferencePtrOutputWithContext(context.Background())
 }
@@ -2404,6 +2693,12 @@ func (i *cloudServiceVaultAndSecretReferencePtrType) ToCloudServiceVaultAndSecre
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceVaultAndSecretReferencePtrOutput)
 }
 
+func (i *cloudServiceVaultAndSecretReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceVaultAndSecretReference] {
+	return pulumix.Output[*CloudServiceVaultAndSecretReference]{
+		OutputState: i.ToCloudServiceVaultAndSecretReferencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Protected settings for the extension, referenced using KeyVault which are encrypted before sent to the role instance.
 type CloudServiceVaultAndSecretReferenceOutput struct{ *pulumi.OutputState }
 
@@ -2429,6 +2724,12 @@ func (o CloudServiceVaultAndSecretReferenceOutput) ToCloudServiceVaultAndSecretR
 	}).(CloudServiceVaultAndSecretReferencePtrOutput)
 }
 
+func (o CloudServiceVaultAndSecretReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceVaultAndSecretReference] {
+	return pulumix.Output[CloudServiceVaultAndSecretReference]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Secret URL which contains the protected settings of the extension
 func (o CloudServiceVaultAndSecretReferenceOutput) SecretUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudServiceVaultAndSecretReference) *string { return v.SecretUrl }).(pulumi.StringPtrOutput)
@@ -2451,6 +2752,12 @@ func (o CloudServiceVaultAndSecretReferencePtrOutput) ToCloudServiceVaultAndSecr
 
 func (o CloudServiceVaultAndSecretReferencePtrOutput) ToCloudServiceVaultAndSecretReferencePtrOutputWithContext(ctx context.Context) CloudServiceVaultAndSecretReferencePtrOutput {
 	return o
+}
+
+func (o CloudServiceVaultAndSecretReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceVaultAndSecretReference] {
+	return pulumix.Output[*CloudServiceVaultAndSecretReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceVaultAndSecretReferencePtrOutput) Elem() CloudServiceVaultAndSecretReferenceOutput {
@@ -2506,6 +2813,12 @@ func (o CloudServiceVaultAndSecretReferenceResponseOutput) ToCloudServiceVaultAn
 	return o
 }
 
+func (o CloudServiceVaultAndSecretReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceVaultAndSecretReferenceResponse] {
+	return pulumix.Output[CloudServiceVaultAndSecretReferenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Secret URL which contains the protected settings of the extension
 func (o CloudServiceVaultAndSecretReferenceResponseOutput) SecretUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudServiceVaultAndSecretReferenceResponse) *string { return v.SecretUrl }).(pulumi.StringPtrOutput)
@@ -2528,6 +2841,12 @@ func (o CloudServiceVaultAndSecretReferenceResponsePtrOutput) ToCloudServiceVaul
 
 func (o CloudServiceVaultAndSecretReferenceResponsePtrOutput) ToCloudServiceVaultAndSecretReferenceResponsePtrOutputWithContext(ctx context.Context) CloudServiceVaultAndSecretReferenceResponsePtrOutput {
 	return o
+}
+
+func (o CloudServiceVaultAndSecretReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudServiceVaultAndSecretReferenceResponse] {
+	return pulumix.Output[*CloudServiceVaultAndSecretReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceVaultAndSecretReferenceResponsePtrOutput) Elem() CloudServiceVaultAndSecretReferenceResponseOutput {
@@ -2595,6 +2914,12 @@ func (i CloudServiceVaultCertificateArgs) ToCloudServiceVaultCertificateOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceVaultCertificateOutput)
 }
 
+func (i CloudServiceVaultCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[CloudServiceVaultCertificate] {
+	return pulumix.Output[CloudServiceVaultCertificate]{
+		OutputState: i.ToCloudServiceVaultCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CloudServiceVaultCertificateArrayInput is an input type that accepts CloudServiceVaultCertificateArray and CloudServiceVaultCertificateArrayOutput values.
 // You can construct a concrete instance of `CloudServiceVaultCertificateArrayInput` via:
 //
@@ -2620,6 +2945,12 @@ func (i CloudServiceVaultCertificateArray) ToCloudServiceVaultCertificateArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceVaultCertificateArrayOutput)
 }
 
+func (i CloudServiceVaultCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]CloudServiceVaultCertificate] {
+	return pulumix.Output[[]CloudServiceVaultCertificate]{
+		OutputState: i.ToCloudServiceVaultCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a single certificate reference in a Key Vault, and where the certificate should reside on the role instance.
 type CloudServiceVaultCertificateOutput struct{ *pulumi.OutputState }
 
@@ -2633,6 +2964,12 @@ func (o CloudServiceVaultCertificateOutput) ToCloudServiceVaultCertificateOutput
 
 func (o CloudServiceVaultCertificateOutput) ToCloudServiceVaultCertificateOutputWithContext(ctx context.Context) CloudServiceVaultCertificateOutput {
 	return o
+}
+
+func (o CloudServiceVaultCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceVaultCertificate] {
+	return pulumix.Output[CloudServiceVaultCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This is the URL of a certificate that has been uploaded to Key Vault as a secret.
@@ -2652,6 +2989,12 @@ func (o CloudServiceVaultCertificateArrayOutput) ToCloudServiceVaultCertificateA
 
 func (o CloudServiceVaultCertificateArrayOutput) ToCloudServiceVaultCertificateArrayOutputWithContext(ctx context.Context) CloudServiceVaultCertificateArrayOutput {
 	return o
+}
+
+func (o CloudServiceVaultCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CloudServiceVaultCertificate] {
+	return pulumix.Output[[]CloudServiceVaultCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceVaultCertificateArrayOutput) Index(i pulumi.IntInput) CloudServiceVaultCertificateOutput {
@@ -2681,6 +3024,12 @@ func (o CloudServiceVaultCertificateResponseOutput) ToCloudServiceVaultCertifica
 	return o
 }
 
+func (o CloudServiceVaultCertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceVaultCertificateResponse] {
+	return pulumix.Output[CloudServiceVaultCertificateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This is the URL of a certificate that has been uploaded to Key Vault as a secret.
 func (o CloudServiceVaultCertificateResponseOutput) CertificateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudServiceVaultCertificateResponse) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
@@ -2698,6 +3047,12 @@ func (o CloudServiceVaultCertificateResponseArrayOutput) ToCloudServiceVaultCert
 
 func (o CloudServiceVaultCertificateResponseArrayOutput) ToCloudServiceVaultCertificateResponseArrayOutputWithContext(ctx context.Context) CloudServiceVaultCertificateResponseArrayOutput {
 	return o
+}
+
+func (o CloudServiceVaultCertificateResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CloudServiceVaultCertificateResponse] {
+	return pulumix.Output[[]CloudServiceVaultCertificateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceVaultCertificateResponseArrayOutput) Index(i pulumi.IntInput) CloudServiceVaultCertificateResponseOutput {
@@ -2745,6 +3100,12 @@ func (i CloudServiceVaultSecretGroupArgs) ToCloudServiceVaultSecretGroupOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceVaultSecretGroupOutput)
 }
 
+func (i CloudServiceVaultSecretGroupArgs) ToOutput(ctx context.Context) pulumix.Output[CloudServiceVaultSecretGroup] {
+	return pulumix.Output[CloudServiceVaultSecretGroup]{
+		OutputState: i.ToCloudServiceVaultSecretGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CloudServiceVaultSecretGroupArrayInput is an input type that accepts CloudServiceVaultSecretGroupArray and CloudServiceVaultSecretGroupArrayOutput values.
 // You can construct a concrete instance of `CloudServiceVaultSecretGroupArrayInput` via:
 //
@@ -2770,6 +3131,12 @@ func (i CloudServiceVaultSecretGroupArray) ToCloudServiceVaultSecretGroupArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceVaultSecretGroupArrayOutput)
 }
 
+func (i CloudServiceVaultSecretGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]CloudServiceVaultSecretGroup] {
+	return pulumix.Output[[]CloudServiceVaultSecretGroup]{
+		OutputState: i.ToCloudServiceVaultSecretGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a set of certificates which are all in the same Key Vault.
 type CloudServiceVaultSecretGroupOutput struct{ *pulumi.OutputState }
 
@@ -2783,6 +3150,12 @@ func (o CloudServiceVaultSecretGroupOutput) ToCloudServiceVaultSecretGroupOutput
 
 func (o CloudServiceVaultSecretGroupOutput) ToCloudServiceVaultSecretGroupOutputWithContext(ctx context.Context) CloudServiceVaultSecretGroupOutput {
 	return o
+}
+
+func (o CloudServiceVaultSecretGroupOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceVaultSecretGroup] {
+	return pulumix.Output[CloudServiceVaultSecretGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
@@ -2807,6 +3180,12 @@ func (o CloudServiceVaultSecretGroupArrayOutput) ToCloudServiceVaultSecretGroupA
 
 func (o CloudServiceVaultSecretGroupArrayOutput) ToCloudServiceVaultSecretGroupArrayOutputWithContext(ctx context.Context) CloudServiceVaultSecretGroupArrayOutput {
 	return o
+}
+
+func (o CloudServiceVaultSecretGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CloudServiceVaultSecretGroup] {
+	return pulumix.Output[[]CloudServiceVaultSecretGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceVaultSecretGroupArrayOutput) Index(i pulumi.IntInput) CloudServiceVaultSecretGroupOutput {
@@ -2838,6 +3217,12 @@ func (o CloudServiceVaultSecretGroupResponseOutput) ToCloudServiceVaultSecretGro
 	return o
 }
 
+func (o CloudServiceVaultSecretGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudServiceVaultSecretGroupResponse] {
+	return pulumix.Output[CloudServiceVaultSecretGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
 func (o CloudServiceVaultSecretGroupResponseOutput) SourceVault() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v CloudServiceVaultSecretGroupResponse) *SubResourceResponse { return v.SourceVault }).(SubResourceResponsePtrOutput)
@@ -2862,6 +3247,12 @@ func (o CloudServiceVaultSecretGroupResponseArrayOutput) ToCloudServiceVaultSecr
 
 func (o CloudServiceVaultSecretGroupResponseArrayOutput) ToCloudServiceVaultSecretGroupResponseArrayOutputWithContext(ctx context.Context) CloudServiceVaultSecretGroupResponseArrayOutput {
 	return o
+}
+
+func (o CloudServiceVaultSecretGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CloudServiceVaultSecretGroupResponse] {
+	return pulumix.Output[[]CloudServiceVaultSecretGroupResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudServiceVaultSecretGroupResponseArrayOutput) Index(i pulumi.IntInput) CloudServiceVaultSecretGroupResponseOutput {
@@ -2909,6 +3300,12 @@ func (i ExtensionArgs) ToExtensionOutputWithContext(ctx context.Context) Extensi
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionOutput)
 }
 
+func (i ExtensionArgs) ToOutput(ctx context.Context) pulumix.Output[Extension] {
+	return pulumix.Output[Extension]{
+		OutputState: i.ToExtensionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ExtensionArrayInput is an input type that accepts ExtensionArray and ExtensionArrayOutput values.
 // You can construct a concrete instance of `ExtensionArrayInput` via:
 //
@@ -2934,6 +3331,12 @@ func (i ExtensionArray) ToExtensionArrayOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionArrayOutput)
 }
 
+func (i ExtensionArray) ToOutput(ctx context.Context) pulumix.Output[[]Extension] {
+	return pulumix.Output[[]Extension]{
+		OutputState: i.ToExtensionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a cloud service Extension.
 type ExtensionOutput struct{ *pulumi.OutputState }
 
@@ -2947,6 +3350,12 @@ func (o ExtensionOutput) ToExtensionOutput() ExtensionOutput {
 
 func (o ExtensionOutput) ToExtensionOutputWithContext(ctx context.Context) ExtensionOutput {
 	return o
+}
+
+func (o ExtensionOutput) ToOutput(ctx context.Context) pulumix.Output[Extension] {
+	return pulumix.Output[Extension]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the extension.
@@ -2971,6 +3380,12 @@ func (o ExtensionArrayOutput) ToExtensionArrayOutput() ExtensionArrayOutput {
 
 func (o ExtensionArrayOutput) ToExtensionArrayOutputWithContext(ctx context.Context) ExtensionArrayOutput {
 	return o
+}
+
+func (o ExtensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Extension] {
+	return pulumix.Output[[]Extension]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtensionArrayOutput) Index(i pulumi.IntInput) ExtensionOutput {
@@ -3002,6 +3417,12 @@ func (o ExtensionResponseOutput) ToExtensionResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o ExtensionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionResponse] {
+	return pulumix.Output[ExtensionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the extension.
 func (o ExtensionResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtensionResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -3024,6 +3445,12 @@ func (o ExtensionResponseArrayOutput) ToExtensionResponseArrayOutput() Extension
 
 func (o ExtensionResponseArrayOutput) ToExtensionResponseArrayOutputWithContext(ctx context.Context) ExtensionResponseArrayOutput {
 	return o
+}
+
+func (o ExtensionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionResponse] {
+	return pulumix.Output[[]ExtensionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtensionResponseArrayOutput) Index(i pulumi.IntInput) ExtensionResponseOutput {
@@ -3075,6 +3502,12 @@ func (i LoadBalancerConfigurationArgs) ToLoadBalancerConfigurationOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerConfigurationOutput)
 }
 
+func (i LoadBalancerConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerConfiguration] {
+	return pulumix.Output[LoadBalancerConfiguration]{
+		OutputState: i.ToLoadBalancerConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LoadBalancerConfigurationArrayInput is an input type that accepts LoadBalancerConfigurationArray and LoadBalancerConfigurationArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerConfigurationArrayInput` via:
 //
@@ -3100,6 +3533,12 @@ func (i LoadBalancerConfigurationArray) ToLoadBalancerConfigurationArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerConfigurationArrayOutput)
 }
 
+func (i LoadBalancerConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerConfiguration] {
+	return pulumix.Output[[]LoadBalancerConfiguration]{
+		OutputState: i.ToLoadBalancerConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the load balancer configuration.
 type LoadBalancerConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -3113,6 +3552,12 @@ func (o LoadBalancerConfigurationOutput) ToLoadBalancerConfigurationOutput() Loa
 
 func (o LoadBalancerConfigurationOutput) ToLoadBalancerConfigurationOutputWithContext(ctx context.Context) LoadBalancerConfigurationOutput {
 	return o
+}
+
+func (o LoadBalancerConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerConfiguration] {
+	return pulumix.Output[LoadBalancerConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id
@@ -3142,6 +3587,12 @@ func (o LoadBalancerConfigurationArrayOutput) ToLoadBalancerConfigurationArrayOu
 
 func (o LoadBalancerConfigurationArrayOutput) ToLoadBalancerConfigurationArrayOutputWithContext(ctx context.Context) LoadBalancerConfigurationArrayOutput {
 	return o
+}
+
+func (o LoadBalancerConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerConfiguration] {
+	return pulumix.Output[[]LoadBalancerConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoadBalancerConfigurationArrayOutput) Index(i pulumi.IntInput) LoadBalancerConfigurationOutput {
@@ -3185,6 +3636,12 @@ func (i LoadBalancerConfigurationPropertiesArgs) ToLoadBalancerConfigurationProp
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerConfigurationPropertiesOutput)
 }
 
+func (i LoadBalancerConfigurationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerConfigurationProperties] {
+	return pulumix.Output[LoadBalancerConfigurationProperties]{
+		OutputState: i.ToLoadBalancerConfigurationPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the properties of the load balancer configuration.
 type LoadBalancerConfigurationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -3198,6 +3655,12 @@ func (o LoadBalancerConfigurationPropertiesOutput) ToLoadBalancerConfigurationPr
 
 func (o LoadBalancerConfigurationPropertiesOutput) ToLoadBalancerConfigurationPropertiesOutputWithContext(ctx context.Context) LoadBalancerConfigurationPropertiesOutput {
 	return o
+}
+
+func (o LoadBalancerConfigurationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerConfigurationProperties] {
+	return pulumix.Output[LoadBalancerConfigurationProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
@@ -3226,6 +3689,12 @@ func (o LoadBalancerConfigurationPropertiesResponseOutput) ToLoadBalancerConfigu
 
 func (o LoadBalancerConfigurationPropertiesResponseOutput) ToLoadBalancerConfigurationPropertiesResponseOutputWithContext(ctx context.Context) LoadBalancerConfigurationPropertiesResponseOutput {
 	return o
+}
+
+func (o LoadBalancerConfigurationPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerConfigurationPropertiesResponse] {
+	return pulumix.Output[LoadBalancerConfigurationPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
@@ -3260,6 +3729,12 @@ func (o LoadBalancerConfigurationResponseOutput) ToLoadBalancerConfigurationResp
 	return o
 }
 
+func (o LoadBalancerConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerConfigurationResponse] {
+	return pulumix.Output[LoadBalancerConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource Id
 func (o LoadBalancerConfigurationResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerConfigurationResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -3289,6 +3764,12 @@ func (o LoadBalancerConfigurationResponseArrayOutput) ToLoadBalancerConfiguratio
 
 func (o LoadBalancerConfigurationResponseArrayOutput) ToLoadBalancerConfigurationResponseArrayOutputWithContext(ctx context.Context) LoadBalancerConfigurationResponseArrayOutput {
 	return o
+}
+
+func (o LoadBalancerConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerConfigurationResponse] {
+	return pulumix.Output[[]LoadBalancerConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoadBalancerConfigurationResponseArrayOutput) Index(i pulumi.IntInput) LoadBalancerConfigurationResponseOutput {
@@ -3336,6 +3817,12 @@ func (i LoadBalancerFrontendIpConfigurationArgs) ToLoadBalancerFrontendIpConfigu
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerFrontendIpConfigurationOutput)
 }
 
+func (i LoadBalancerFrontendIpConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerFrontendIpConfiguration] {
+	return pulumix.Output[LoadBalancerFrontendIpConfiguration]{
+		OutputState: i.ToLoadBalancerFrontendIpConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LoadBalancerFrontendIpConfigurationArrayInput is an input type that accepts LoadBalancerFrontendIpConfigurationArray and LoadBalancerFrontendIpConfigurationArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerFrontendIpConfigurationArrayInput` via:
 //
@@ -3361,6 +3848,12 @@ func (i LoadBalancerFrontendIpConfigurationArray) ToLoadBalancerFrontendIpConfig
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerFrontendIpConfigurationArrayOutput)
 }
 
+func (i LoadBalancerFrontendIpConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerFrontendIpConfiguration] {
+	return pulumix.Output[[]LoadBalancerFrontendIpConfiguration]{
+		OutputState: i.ToLoadBalancerFrontendIpConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
 type LoadBalancerFrontendIpConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -3374,6 +3867,12 @@ func (o LoadBalancerFrontendIpConfigurationOutput) ToLoadBalancerFrontendIpConfi
 
 func (o LoadBalancerFrontendIpConfigurationOutput) ToLoadBalancerFrontendIpConfigurationOutputWithContext(ctx context.Context) LoadBalancerFrontendIpConfigurationOutput {
 	return o
+}
+
+func (o LoadBalancerFrontendIpConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerFrontendIpConfiguration] {
+	return pulumix.Output[LoadBalancerFrontendIpConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
@@ -3400,6 +3899,12 @@ func (o LoadBalancerFrontendIpConfigurationArrayOutput) ToLoadBalancerFrontendIp
 
 func (o LoadBalancerFrontendIpConfigurationArrayOutput) ToLoadBalancerFrontendIpConfigurationArrayOutputWithContext(ctx context.Context) LoadBalancerFrontendIpConfigurationArrayOutput {
 	return o
+}
+
+func (o LoadBalancerFrontendIpConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerFrontendIpConfiguration] {
+	return pulumix.Output[[]LoadBalancerFrontendIpConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoadBalancerFrontendIpConfigurationArrayOutput) Index(i pulumi.IntInput) LoadBalancerFrontendIpConfigurationOutput {
@@ -3451,6 +3956,12 @@ func (i LoadBalancerFrontendIpConfigurationPropertiesArgs) ToLoadBalancerFronten
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerFrontendIpConfigurationPropertiesOutput)
 }
 
+func (i LoadBalancerFrontendIpConfigurationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerFrontendIpConfigurationProperties] {
+	return pulumix.Output[LoadBalancerFrontendIpConfigurationProperties]{
+		OutputState: i.ToLoadBalancerFrontendIpConfigurationPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a cloud service IP Configuration
 type LoadBalancerFrontendIpConfigurationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -3464,6 +3975,12 @@ func (o LoadBalancerFrontendIpConfigurationPropertiesOutput) ToLoadBalancerFront
 
 func (o LoadBalancerFrontendIpConfigurationPropertiesOutput) ToLoadBalancerFrontendIpConfigurationPropertiesOutputWithContext(ctx context.Context) LoadBalancerFrontendIpConfigurationPropertiesOutput {
 	return o
+}
+
+func (o LoadBalancerFrontendIpConfigurationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerFrontendIpConfigurationProperties] {
+	return pulumix.Output[LoadBalancerFrontendIpConfigurationProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The virtual network private IP address of the IP configuration.
@@ -3506,6 +4023,12 @@ func (o LoadBalancerFrontendIpConfigurationPropertiesResponseOutput) ToLoadBalan
 	return o
 }
 
+func (o LoadBalancerFrontendIpConfigurationPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerFrontendIpConfigurationPropertiesResponse] {
+	return pulumix.Output[LoadBalancerFrontendIpConfigurationPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The virtual network private IP address of the IP configuration.
 func (o LoadBalancerFrontendIpConfigurationPropertiesResponseOutput) PrivateIPAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerFrontendIpConfigurationPropertiesResponse) *string { return v.PrivateIPAddress }).(pulumi.StringPtrOutput)
@@ -3546,6 +4069,12 @@ func (o LoadBalancerFrontendIpConfigurationResponseOutput) ToLoadBalancerFronten
 	return o
 }
 
+func (o LoadBalancerFrontendIpConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerFrontendIpConfigurationResponse] {
+	return pulumix.Output[LoadBalancerFrontendIpConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
 func (o LoadBalancerFrontendIpConfigurationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerFrontendIpConfigurationResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -3570,6 +4099,12 @@ func (o LoadBalancerFrontendIpConfigurationResponseArrayOutput) ToLoadBalancerFr
 
 func (o LoadBalancerFrontendIpConfigurationResponseArrayOutput) ToLoadBalancerFrontendIpConfigurationResponseArrayOutputWithContext(ctx context.Context) LoadBalancerFrontendIpConfigurationResponseArrayOutput {
 	return o
+}
+
+func (o LoadBalancerFrontendIpConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerFrontendIpConfigurationResponse] {
+	return pulumix.Output[[]LoadBalancerFrontendIpConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoadBalancerFrontendIpConfigurationResponseArrayOutput) Index(i pulumi.IntInput) LoadBalancerFrontendIpConfigurationResponseOutput {
@@ -3617,6 +4152,12 @@ func (i SubResourceArgs) ToSubResourceOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourceOutput)
 }
 
+func (i SubResourceArgs) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
+	return pulumix.Output[SubResource]{
+		OutputState: i.ToSubResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SubResourceArgs) ToSubResourcePtrOutput() SubResourcePtrOutput {
 	return i.ToSubResourcePtrOutputWithContext(context.Background())
 }
@@ -3658,6 +4199,12 @@ func (i *subResourcePtrType) ToSubResourcePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourcePtrOutput)
 }
 
+func (i *subResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
+	return pulumix.Output[*SubResource]{
+		OutputState: i.ToSubResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SubResourceOutput struct{ *pulumi.OutputState }
 
 func (SubResourceOutput) ElementType() reflect.Type {
@@ -3682,6 +4229,12 @@ func (o SubResourceOutput) ToSubResourcePtrOutputWithContext(ctx context.Context
 	}).(SubResourcePtrOutput)
 }
 
+func (o SubResourceOutput) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
+	return pulumix.Output[SubResource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
 // An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
 // A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
@@ -3702,6 +4255,12 @@ func (o SubResourcePtrOutput) ToSubResourcePtrOutput() SubResourcePtrOutput {
 
 func (o SubResourcePtrOutput) ToSubResourcePtrOutputWithContext(ctx context.Context) SubResourcePtrOutput {
 	return o
+}
+
+func (o SubResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
+	return pulumix.Output[*SubResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubResourcePtrOutput) Elem() SubResourceOutput {
@@ -3746,6 +4305,12 @@ func (o SubResourceResponseOutput) ToSubResourceResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o SubResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubResourceResponse] {
+	return pulumix.Output[SubResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource Id
 func (o SubResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -3763,6 +4328,12 @@ func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutput() SubResour
 
 func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutputWithContext(ctx context.Context) SubResourceResponsePtrOutput {
 	return o
+}
+
+func (o SubResourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResourceResponse] {
+	return pulumix.Output[*SubResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubResourceResponsePtrOutput) Elem() SubResourceResponseOutput {
@@ -3808,6 +4379,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the time in UTC at which the Cloud Service (extended support) resource was created. <br />Minimum api-version: 2022-04-04.
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v SystemDataResponse) string { return v.CreatedAt }).(pulumi.StringOutput)
@@ -3830,6 +4407,12 @@ func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutput() SystemDataR
 
 func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutputWithContext(ctx context.Context) SystemDataResponsePtrOutput {
 	return o
+}
+
+func (o SystemDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemDataResponse] {
+	return pulumix.Output[*SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SystemDataResponsePtrOutput) Elem() SystemDataResponseOutput {

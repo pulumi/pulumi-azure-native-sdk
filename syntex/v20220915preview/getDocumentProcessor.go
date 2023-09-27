@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a document processor for a given name.
@@ -84,6 +85,12 @@ func (o LookupDocumentProcessorResultOutput) ToLookupDocumentProcessorResultOutp
 
 func (o LookupDocumentProcessorResultOutput) ToLookupDocumentProcessorResultOutputWithContext(ctx context.Context) LookupDocumentProcessorResultOutput {
 	return o
+}
+
+func (o LookupDocumentProcessorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDocumentProcessorResult] {
+	return pulumix.Output[LookupDocumentProcessorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

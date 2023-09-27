@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Contains information about a pool.
@@ -85,6 +86,24 @@ func NewPool(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.DeploymentConfiguration != nil {
+		args.DeploymentConfiguration = args.DeploymentConfiguration.ToDeploymentConfigurationPtrOutput().ApplyT(func(v *DeploymentConfiguration) *DeploymentConfiguration { return v.Defaults() }).(DeploymentConfigurationPtrOutput)
+	}
+	if args.NetworkConfiguration != nil {
+		args.NetworkConfiguration = args.NetworkConfiguration.ToNetworkConfigurationPtrOutput().ApplyT(func(v *NetworkConfiguration) *NetworkConfiguration { return v.Defaults() }).(NetworkConfigurationPtrOutput)
+	}
+	if args.ScaleSettings != nil {
+		args.ScaleSettings = args.ScaleSettings.ToScaleSettingsPtrOutput().ApplyT(func(v *ScaleSettings) *ScaleSettings { return v.Defaults() }).(ScaleSettingsPtrOutput)
+	}
+	if args.StartTask != nil {
+		args.StartTask = args.StartTask.ToStartTaskPtrOutput().ApplyT(func(v *StartTask) *StartTask { return v.Defaults() }).(StartTaskPtrOutput)
+	}
+	if args.TaskSchedulingPolicy != nil {
+		args.TaskSchedulingPolicy = args.TaskSchedulingPolicy.ToTaskSchedulingPolicyPtrOutput().ApplyT(func(v *TaskSchedulingPolicy) *TaskSchedulingPolicy { return v.Defaults() }).(TaskSchedulingPolicyPtrOutput)
+	}
+	if args.TaskSlotsPerNode == nil {
+		args.TaskSlotsPerNode = pulumi.IntPtr(1)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -272,6 +291,12 @@ func (i *Pool) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PoolOutput)
 }
 
+func (i *Pool) ToOutput(ctx context.Context) pulumix.Output[*Pool] {
+	return pulumix.Output[*Pool]{
+		OutputState: i.ToPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PoolOutput struct{ *pulumi.OutputState }
 
 func (PoolOutput) ElementType() reflect.Type {
@@ -284,6 +309,12 @@ func (o PoolOutput) ToPoolOutput() PoolOutput {
 
 func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return o
+}
+
+func (o PoolOutput) ToOutput(ctx context.Context) pulumix.Output[*Pool] {
+	return pulumix.Output[*Pool]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PoolOutput) AllocationState() pulumi.StringOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Activity entity query.
@@ -130,6 +131,9 @@ func NewActivityCustomEntityQuery(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:ActivityCustomEntityQuery"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:ActivityCustomEntityQuery"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -248,6 +252,12 @@ func (i *ActivityCustomEntityQuery) ToActivityCustomEntityQueryOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ActivityCustomEntityQueryOutput)
 }
 
+func (i *ActivityCustomEntityQuery) ToOutput(ctx context.Context) pulumix.Output[*ActivityCustomEntityQuery] {
+	return pulumix.Output[*ActivityCustomEntityQuery]{
+		OutputState: i.ToActivityCustomEntityQueryOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ActivityCustomEntityQueryOutput struct{ *pulumi.OutputState }
 
 func (ActivityCustomEntityQueryOutput) ElementType() reflect.Type {
@@ -260,6 +270,12 @@ func (o ActivityCustomEntityQueryOutput) ToActivityCustomEntityQueryOutput() Act
 
 func (o ActivityCustomEntityQueryOutput) ToActivityCustomEntityQueryOutputWithContext(ctx context.Context) ActivityCustomEntityQueryOutput {
 	return o
+}
+
+func (o ActivityCustomEntityQueryOutput) ToOutput(ctx context.Context) pulumix.Output[*ActivityCustomEntityQuery] {
+	return pulumix.Output[*ActivityCustomEntityQuery]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The entity query content to display in timeline

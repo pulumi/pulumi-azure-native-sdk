@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // EventGrid Partner Namespace.
@@ -191,6 +192,12 @@ func (i *PartnerNamespace) ToPartnerNamespaceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PartnerNamespaceOutput)
 }
 
+func (i *PartnerNamespace) ToOutput(ctx context.Context) pulumix.Output[*PartnerNamespace] {
+	return pulumix.Output[*PartnerNamespace]{
+		OutputState: i.ToPartnerNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PartnerNamespaceOutput struct{ *pulumi.OutputState }
 
 func (PartnerNamespaceOutput) ElementType() reflect.Type {
@@ -203,6 +210,12 @@ func (o PartnerNamespaceOutput) ToPartnerNamespaceOutput() PartnerNamespaceOutpu
 
 func (o PartnerNamespaceOutput) ToPartnerNamespaceOutputWithContext(ctx context.Context) PartnerNamespaceOutput {
 	return o
+}
+
+func (o PartnerNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[*PartnerNamespace] {
+	return pulumix.Output[*PartnerNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace.

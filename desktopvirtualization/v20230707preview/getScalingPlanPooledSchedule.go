@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a ScalingPlanPooledSchedule.
@@ -116,6 +117,12 @@ func (o LookupScalingPlanPooledScheduleResultOutput) ToLookupScalingPlanPooledSc
 
 func (o LookupScalingPlanPooledScheduleResultOutput) ToLookupScalingPlanPooledScheduleResultOutputWithContext(ctx context.Context) LookupScalingPlanPooledScheduleResultOutput {
 	return o
+}
+
+func (o LookupScalingPlanPooledScheduleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScalingPlanPooledScheduleResult] {
+	return pulumix.Output[LookupScalingPlanPooledScheduleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Set of days of the week on which this schedule is active.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The connector mapping resource format.
@@ -189,6 +190,12 @@ func (i *ConnectorMapping) ToConnectorMappingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorMappingOutput)
 }
 
+func (i *ConnectorMapping) ToOutput(ctx context.Context) pulumix.Output[*ConnectorMapping] {
+	return pulumix.Output[*ConnectorMapping]{
+		OutputState: i.ToConnectorMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectorMappingOutput struct{ *pulumi.OutputState }
 
 func (ConnectorMappingOutput) ElementType() reflect.Type {
@@ -201,6 +208,12 @@ func (o ConnectorMappingOutput) ToConnectorMappingOutput() ConnectorMappingOutpu
 
 func (o ConnectorMappingOutput) ToConnectorMappingOutputWithContext(ctx context.Context) ConnectorMappingOutput {
 	return o
+}
+
+func (o ConnectorMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorMapping] {
+	return pulumix.Output[*ConnectorMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The connector mapping name

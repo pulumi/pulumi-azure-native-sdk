@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes the type of ARM deployment to be performed on the resource.
@@ -78,6 +79,12 @@ func (o DeploymentModeOutput) ToDeploymentModePtrOutputWithContext(ctx context.C
 	}).(DeploymentModePtrOutput)
 }
 
+func (o DeploymentModeOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentMode] {
+	return pulumix.Output[DeploymentMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DeploymentModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o DeploymentModePtrOutput) ToDeploymentModePtrOutput() DeploymentModePtrOu
 
 func (o DeploymentModePtrOutput) ToDeploymentModePtrOutputWithContext(ctx context.Context) DeploymentModePtrOutput {
 	return o
+}
+
+func (o DeploymentModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentMode] {
+	return pulumix.Output[*DeploymentMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeploymentModePtrOutput) Elem() DeploymentModeOutput {
@@ -173,6 +186,12 @@ func (in *deploymentModePtr) ToDeploymentModePtrOutput() DeploymentModePtrOutput
 
 func (in *deploymentModePtr) ToDeploymentModePtrOutputWithContext(ctx context.Context) DeploymentModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentModePtrOutput)
+}
+
+func (in *deploymentModePtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentMode] {
+	return pulumix.Output[*DeploymentMode]{
+		OutputState: in.ToDeploymentModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The location of the authentication key/value pair in the request.

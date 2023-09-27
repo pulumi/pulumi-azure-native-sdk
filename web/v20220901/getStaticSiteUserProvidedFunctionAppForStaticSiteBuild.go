@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Gets the details of the user provided function app registered with a static site build
@@ -92,6 +93,12 @@ func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) T
 
 func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) ToLookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutputWithContext(ctx context.Context) LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput {
 	return o
+}
+
+func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult] {
+	return pulumix.Output[LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The date and time on which the function app was registered with the static site.

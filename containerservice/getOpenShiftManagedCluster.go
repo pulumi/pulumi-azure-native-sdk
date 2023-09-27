@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the managed OpenShift cluster with a specified resource group and name.
@@ -118,6 +119,12 @@ func (o LookupOpenShiftManagedClusterResultOutput) ToLookupOpenShiftManagedClust
 
 func (o LookupOpenShiftManagedClusterResultOutput) ToLookupOpenShiftManagedClusterResultOutputWithContext(ctx context.Context) LookupOpenShiftManagedClusterResultOutput {
 	return o
+}
+
+func (o LookupOpenShiftManagedClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOpenShiftManagedClusterResult] {
+	return pulumix.Output[LookupOpenShiftManagedClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration of OpenShift cluster VMs.

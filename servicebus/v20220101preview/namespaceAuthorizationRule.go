@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description of a namespace authorization rule.
@@ -152,6 +153,12 @@ func (i *NamespaceAuthorizationRule) ToNamespaceAuthorizationRuleOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceAuthorizationRuleOutput)
 }
 
+func (i *NamespaceAuthorizationRule) ToOutput(ctx context.Context) pulumix.Output[*NamespaceAuthorizationRule] {
+	return pulumix.Output[*NamespaceAuthorizationRule]{
+		OutputState: i.ToNamespaceAuthorizationRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamespaceAuthorizationRuleOutput struct{ *pulumi.OutputState }
 
 func (NamespaceAuthorizationRuleOutput) ElementType() reflect.Type {
@@ -164,6 +171,12 @@ func (o NamespaceAuthorizationRuleOutput) ToNamespaceAuthorizationRuleOutput() N
 
 func (o NamespaceAuthorizationRuleOutput) ToNamespaceAuthorizationRuleOutputWithContext(ctx context.Context) NamespaceAuthorizationRuleOutput {
 	return o
+}
+
+func (o NamespaceAuthorizationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceAuthorizationRule] {
+	return pulumix.Output[*NamespaceAuthorizationRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The geo-location where the resource lives

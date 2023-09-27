@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2022-09-01-preview.
@@ -81,6 +82,12 @@ func (o LookupAzureDevOpsConnectorResultOutput) ToLookupAzureDevOpsConnectorResu
 
 func (o LookupAzureDevOpsConnectorResultOutput) ToLookupAzureDevOpsConnectorResultOutputWithContext(ctx context.Context) LookupAzureDevOpsConnectorResultOutput {
 	return o
+}
+
+func (o LookupAzureDevOpsConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAzureDevOpsConnectorResult] {
+	return pulumix.Output[LookupAzureDevOpsConnectorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

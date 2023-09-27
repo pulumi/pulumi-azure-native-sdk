@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details about the specified input.
@@ -82,6 +83,12 @@ func (o LookupInputResultOutput) ToLookupInputResultOutput() LookupInputResultOu
 
 func (o LookupInputResultOutput) ToLookupInputResultOutputWithContext(ctx context.Context) LookupInputResultOutput {
 	return o
+}
+
+func (o LookupInputResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInputResult] {
+	return pulumix.Output[LookupInputResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id

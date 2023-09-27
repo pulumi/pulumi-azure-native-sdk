@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The defaulting behavior is: **None for Standard storage. ReadOnly for Premium storage.**
@@ -79,6 +80,12 @@ func (o CachingTypesOutput) ToCachingTypesPtrOutputWithContext(ctx context.Conte
 	}).(CachingTypesPtrOutput)
 }
 
+func (o CachingTypesOutput) ToOutput(ctx context.Context) pulumix.Output[CachingTypes] {
+	return pulumix.Output[CachingTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CachingTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -112,6 +119,12 @@ func (o CachingTypesPtrOutput) ToCachingTypesPtrOutput() CachingTypesPtrOutput {
 
 func (o CachingTypesPtrOutput) ToCachingTypesPtrOutputWithContext(ctx context.Context) CachingTypesPtrOutput {
 	return o
+}
+
+func (o CachingTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CachingTypes] {
+	return pulumix.Output[*CachingTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CachingTypesPtrOutput) Elem() CachingTypesOutput {
@@ -174,6 +187,12 @@ func (in *cachingTypesPtr) ToCachingTypesPtrOutput() CachingTypesPtrOutput {
 
 func (in *cachingTypesPtr) ToCachingTypesPtrOutputWithContext(ctx context.Context) CachingTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CachingTypesPtrOutput)
+}
+
+func (in *cachingTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*CachingTypes] {
+	return pulumix.Output[*CachingTypes]{
+		OutputState: in.ToCachingTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
@@ -243,6 +262,12 @@ func (o ComponentNamesOutput) ToComponentNamesPtrOutputWithContext(ctx context.C
 	}).(ComponentNamesPtrOutput)
 }
 
+func (o ComponentNamesOutput) ToOutput(ctx context.Context) pulumix.Output[ComponentNames] {
+	return pulumix.Output[ComponentNames]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ComponentNamesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -276,6 +301,12 @@ func (o ComponentNamesPtrOutput) ToComponentNamesPtrOutput() ComponentNamesPtrOu
 
 func (o ComponentNamesPtrOutput) ToComponentNamesPtrOutputWithContext(ctx context.Context) ComponentNamesPtrOutput {
 	return o
+}
+
+func (o ComponentNamesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComponentNames] {
+	return pulumix.Output[*ComponentNames]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ComponentNamesPtrOutput) Elem() ComponentNamesOutput {
@@ -338,6 +369,12 @@ func (in *componentNamesPtr) ToComponentNamesPtrOutput() ComponentNamesPtrOutput
 
 func (in *componentNamesPtr) ToComponentNamesPtrOutputWithContext(ctx context.Context) ComponentNamesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComponentNamesPtrOutput)
+}
+
+func (in *componentNamesPtr) ToOutput(ctx context.Context) pulumix.Output[*ComponentNames] {
+	return pulumix.Output[*ComponentNames]{
+		OutputState: in.ToComponentNamesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
@@ -418,6 +455,12 @@ func (o DedicatedHostLicenseTypesOutput) ToDedicatedHostLicenseTypesPtrOutputWit
 	}).(DedicatedHostLicenseTypesPtrOutput)
 }
 
+func (o DedicatedHostLicenseTypesOutput) ToOutput(ctx context.Context) pulumix.Output[DedicatedHostLicenseTypes] {
+	return pulumix.Output[DedicatedHostLicenseTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DedicatedHostLicenseTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -451,6 +494,12 @@ func (o DedicatedHostLicenseTypesPtrOutput) ToDedicatedHostLicenseTypesPtrOutput
 
 func (o DedicatedHostLicenseTypesPtrOutput) ToDedicatedHostLicenseTypesPtrOutputWithContext(ctx context.Context) DedicatedHostLicenseTypesPtrOutput {
 	return o
+}
+
+func (o DedicatedHostLicenseTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DedicatedHostLicenseTypes] {
+	return pulumix.Output[*DedicatedHostLicenseTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DedicatedHostLicenseTypesPtrOutput) Elem() DedicatedHostLicenseTypesOutput {
@@ -513,6 +562,12 @@ func (in *dedicatedHostLicenseTypesPtr) ToDedicatedHostLicenseTypesPtrOutput() D
 
 func (in *dedicatedHostLicenseTypesPtr) ToDedicatedHostLicenseTypesPtrOutputWithContext(ctx context.Context) DedicatedHostLicenseTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DedicatedHostLicenseTypesPtrOutput)
+}
+
+func (in *dedicatedHostLicenseTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*DedicatedHostLicenseTypes] {
+	return pulumix.Output[*DedicatedHostLicenseTypes]{
+		OutputState: in.ToDedicatedHostLicenseTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specify what happens to the public IP when the VM is deleted
@@ -681,6 +736,12 @@ func (o IntervalInMinsOutput) ToIntervalInMinsPtrOutputWithContext(ctx context.C
 	}).(IntervalInMinsPtrOutput)
 }
 
+func (o IntervalInMinsOutput) ToOutput(ctx context.Context) pulumix.Output[IntervalInMins] {
+	return pulumix.Output[IntervalInMins]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IntervalInMinsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -714,6 +775,12 @@ func (o IntervalInMinsPtrOutput) ToIntervalInMinsPtrOutput() IntervalInMinsPtrOu
 
 func (o IntervalInMinsPtrOutput) ToIntervalInMinsPtrOutputWithContext(ctx context.Context) IntervalInMinsPtrOutput {
 	return o
+}
+
+func (o IntervalInMinsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IntervalInMins] {
+	return pulumix.Output[*IntervalInMins]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntervalInMinsPtrOutput) Elem() IntervalInMinsOutput {
@@ -776,6 +843,12 @@ func (in *intervalInMinsPtr) ToIntervalInMinsPtrOutput() IntervalInMinsPtrOutput
 
 func (in *intervalInMinsPtr) ToIntervalInMinsPtrOutputWithContext(ctx context.Context) IntervalInMinsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntervalInMinsPtrOutput)
+}
+
+func (in *intervalInMinsPtr) ToOutput(ctx context.Context) pulumix.Output[*IntervalInMins] {
+	return pulumix.Output[*IntervalInMins]{
+		OutputState: in.ToIntervalInMinsPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the mode of VM Guest Patch Assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine. <br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
@@ -901,6 +974,12 @@ func (o OperatingSystemStateTypesOutput) ToOperatingSystemStateTypesPtrOutputWit
 	}).(OperatingSystemStateTypesPtrOutput)
 }
 
+func (o OperatingSystemStateTypesOutput) ToOutput(ctx context.Context) pulumix.Output[OperatingSystemStateTypes] {
+	return pulumix.Output[OperatingSystemStateTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OperatingSystemStateTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -934,6 +1013,12 @@ func (o OperatingSystemStateTypesPtrOutput) ToOperatingSystemStateTypesPtrOutput
 
 func (o OperatingSystemStateTypesPtrOutput) ToOperatingSystemStateTypesPtrOutputWithContext(ctx context.Context) OperatingSystemStateTypesPtrOutput {
 	return o
+}
+
+func (o OperatingSystemStateTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemStateTypes] {
+	return pulumix.Output[*OperatingSystemStateTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OperatingSystemStateTypesPtrOutput) Elem() OperatingSystemStateTypesOutput {
@@ -996,6 +1081,12 @@ func (in *operatingSystemStateTypesPtr) ToOperatingSystemStateTypesPtrOutput() O
 
 func (in *operatingSystemStateTypesPtr) ToOperatingSystemStateTypesPtrOutputWithContext(ctx context.Context) OperatingSystemStateTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemStateTypesPtrOutput)
+}
+
+func (in *operatingSystemStateTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemStateTypes] {
+	return pulumix.Output[*OperatingSystemStateTypes]{
+		OutputState: in.ToOperatingSystemStateTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
@@ -1066,6 +1157,12 @@ func (o OperatingSystemTypesOutput) ToOperatingSystemTypesPtrOutputWithContext(c
 	}).(OperatingSystemTypesPtrOutput)
 }
 
+func (o OperatingSystemTypesOutput) ToOutput(ctx context.Context) pulumix.Output[OperatingSystemTypes] {
+	return pulumix.Output[OperatingSystemTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OperatingSystemTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1099,6 +1196,12 @@ func (o OperatingSystemTypesPtrOutput) ToOperatingSystemTypesPtrOutput() Operati
 
 func (o OperatingSystemTypesPtrOutput) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return o
+}
+
+func (o OperatingSystemTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
+	return pulumix.Output[*OperatingSystemTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OperatingSystemTypesPtrOutput) Elem() OperatingSystemTypesOutput {
@@ -1161,6 +1264,12 @@ func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutput() OperatingSy
 
 func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypesPtrOutput)
+}
+
+func (in *operatingSystemTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
+	return pulumix.Output[*OperatingSystemTypes]{
+		OutputState: in.ToOperatingSystemTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the orchestration mode for the virtual machine scale set.
@@ -1238,6 +1347,12 @@ func (o PassNamesOutput) ToPassNamesPtrOutputWithContext(ctx context.Context) Pa
 	}).(PassNamesPtrOutput)
 }
 
+func (o PassNamesOutput) ToOutput(ctx context.Context) pulumix.Output[PassNames] {
+	return pulumix.Output[PassNames]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PassNamesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1271,6 +1386,12 @@ func (o PassNamesPtrOutput) ToPassNamesPtrOutput() PassNamesPtrOutput {
 
 func (o PassNamesPtrOutput) ToPassNamesPtrOutputWithContext(ctx context.Context) PassNamesPtrOutput {
 	return o
+}
+
+func (o PassNamesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PassNames] {
+	return pulumix.Output[*PassNames]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PassNamesPtrOutput) Elem() PassNamesOutput {
@@ -1333,6 +1454,12 @@ func (in *passNamesPtr) ToPassNamesPtrOutput() PassNamesPtrOutput {
 
 func (in *passNamesPtr) ToPassNamesPtrOutputWithContext(ctx context.Context) PassNamesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PassNamesPtrOutput)
+}
+
+func (in *passNamesPtr) ToOutput(ctx context.Context) pulumix.Output[*PassNames] {
+	return pulumix.Output[*PassNames]{
+		OutputState: in.ToPassNamesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the protocol of WinRM listener. Possible values are: **http,** **https.**
@@ -1403,6 +1530,12 @@ func (o ProtocolTypesOutput) ToProtocolTypesPtrOutputWithContext(ctx context.Con
 	}).(ProtocolTypesPtrOutput)
 }
 
+func (o ProtocolTypesOutput) ToOutput(ctx context.Context) pulumix.Output[ProtocolTypes] {
+	return pulumix.Output[ProtocolTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProtocolTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1436,6 +1569,12 @@ func (o ProtocolTypesPtrOutput) ToProtocolTypesPtrOutput() ProtocolTypesPtrOutpu
 
 func (o ProtocolTypesPtrOutput) ToProtocolTypesPtrOutputWithContext(ctx context.Context) ProtocolTypesPtrOutput {
 	return o
+}
+
+func (o ProtocolTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProtocolTypes] {
+	return pulumix.Output[*ProtocolTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProtocolTypesPtrOutput) Elem() ProtocolTypesOutput {
@@ -1498,6 +1637,12 @@ func (in *protocolTypesPtr) ToProtocolTypesPtrOutput() ProtocolTypesPtrOutput {
 
 func (in *protocolTypesPtr) ToProtocolTypesPtrOutputWithContext(ctx context.Context) ProtocolTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolTypesPtrOutput)
+}
+
+func (in *protocolTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ProtocolTypes] {
+	return pulumix.Output[*ProtocolTypes]{
+		OutputState: in.ToProtocolTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the type of the proximity placement group. Possible values are: **Standard** : Co-locate resources within an Azure region or Availability Zone. **Ultra** : For future use.
@@ -1611,6 +1756,12 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
+func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
+	return pulumix.Output[ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1644,6 +1795,12 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -1706,6 +1863,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+}
+
+func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of key used to encrypt the data of the disk restore point.
@@ -1804,6 +1967,12 @@ func (o SettingNamesOutput) ToSettingNamesPtrOutputWithContext(ctx context.Conte
 	}).(SettingNamesPtrOutput)
 }
 
+func (o SettingNamesOutput) ToOutput(ctx context.Context) pulumix.Output[SettingNames] {
+	return pulumix.Output[SettingNames]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SettingNamesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1837,6 +2006,12 @@ func (o SettingNamesPtrOutput) ToSettingNamesPtrOutput() SettingNamesPtrOutput {
 
 func (o SettingNamesPtrOutput) ToSettingNamesPtrOutputWithContext(ctx context.Context) SettingNamesPtrOutput {
 	return o
+}
+
+func (o SettingNamesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SettingNames] {
+	return pulumix.Output[*SettingNames]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SettingNamesPtrOutput) Elem() SettingNamesOutput {
@@ -1899,6 +2074,12 @@ func (in *settingNamesPtr) ToSettingNamesPtrOutput() SettingNamesPtrOutput {
 
 func (in *settingNamesPtr) ToSettingNamesPtrOutputWithContext(ctx context.Context) SettingNamesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SettingNamesPtrOutput)
+}
+
+func (in *settingNamesPtr) ToOutput(ctx context.Context) pulumix.Output[*SettingNames] {
+	return pulumix.Output[*SettingNames]{
+		OutputState: in.ToSettingNamesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The level code.
@@ -1970,6 +2151,12 @@ func (o StatusLevelTypesOutput) ToStatusLevelTypesPtrOutputWithContext(ctx conte
 	}).(StatusLevelTypesPtrOutput)
 }
 
+func (o StatusLevelTypesOutput) ToOutput(ctx context.Context) pulumix.Output[StatusLevelTypes] {
+	return pulumix.Output[StatusLevelTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StatusLevelTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2003,6 +2190,12 @@ func (o StatusLevelTypesPtrOutput) ToStatusLevelTypesPtrOutput() StatusLevelType
 
 func (o StatusLevelTypesPtrOutput) ToStatusLevelTypesPtrOutputWithContext(ctx context.Context) StatusLevelTypesPtrOutput {
 	return o
+}
+
+func (o StatusLevelTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StatusLevelTypes] {
+	return pulumix.Output[*StatusLevelTypes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StatusLevelTypesPtrOutput) Elem() StatusLevelTypesOutput {
@@ -2065,6 +2258,12 @@ func (in *statusLevelTypesPtr) ToStatusLevelTypesPtrOutput() StatusLevelTypesPtr
 
 func (in *statusLevelTypesPtr) ToStatusLevelTypesPtrOutputWithContext(ctx context.Context) StatusLevelTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatusLevelTypesPtrOutput)
+}
+
+func (in *statusLevelTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*StatusLevelTypes] {
+	return pulumix.Output[*StatusLevelTypes]{
+		OutputState: in.ToStatusLevelTypesPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
@@ -2149,6 +2348,12 @@ func (o UpgradeModeOutput) ToUpgradeModePtrOutputWithContext(ctx context.Context
 	}).(UpgradeModePtrOutput)
 }
 
+func (o UpgradeModeOutput) ToOutput(ctx context.Context) pulumix.Output[UpgradeMode] {
+	return pulumix.Output[UpgradeMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UpgradeModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2182,6 +2387,12 @@ func (o UpgradeModePtrOutput) ToUpgradeModePtrOutput() UpgradeModePtrOutput {
 
 func (o UpgradeModePtrOutput) ToUpgradeModePtrOutputWithContext(ctx context.Context) UpgradeModePtrOutput {
 	return o
+}
+
+func (o UpgradeModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UpgradeMode] {
+	return pulumix.Output[*UpgradeMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpgradeModePtrOutput) Elem() UpgradeModeOutput {
@@ -2244,6 +2455,12 @@ func (in *upgradeModePtr) ToUpgradeModePtrOutput() UpgradeModePtrOutput {
 
 func (in *upgradeModePtr) ToUpgradeModePtrOutputWithContext(ctx context.Context) UpgradeModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpgradeModePtrOutput)
+}
+
+func (in *upgradeModePtr) ToOutput(ctx context.Context) pulumix.Output[*UpgradeMode] {
+	return pulumix.Output[*UpgradeMode]{
+		OutputState: in.ToUpgradeModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.

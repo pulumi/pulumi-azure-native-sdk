@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the access keys of the CommunicationService resource.
@@ -79,6 +80,12 @@ func (o ListCommunicationServiceKeysResultOutput) ToListCommunicationServiceKeys
 
 func (o ListCommunicationServiceKeysResultOutput) ToListCommunicationServiceKeysResultOutputWithContext(ctx context.Context) ListCommunicationServiceKeysResultOutput {
 	return o
+}
+
+func (o ListCommunicationServiceKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListCommunicationServiceKeysResult] {
+	return pulumix.Output[ListCommunicationServiceKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // CommunicationService connection string constructed via the primaryKey

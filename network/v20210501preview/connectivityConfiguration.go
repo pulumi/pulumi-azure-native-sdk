@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The network manager connectivity configuration resource
@@ -202,6 +203,12 @@ func (i *ConnectivityConfiguration) ToConnectivityConfigurationOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityConfigurationOutput)
 }
 
+func (i *ConnectivityConfiguration) ToOutput(ctx context.Context) pulumix.Output[*ConnectivityConfiguration] {
+	return pulumix.Output[*ConnectivityConfiguration]{
+		OutputState: i.ToConnectivityConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectivityConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ConnectivityConfigurationOutput) ElementType() reflect.Type {
@@ -214,6 +221,12 @@ func (o ConnectivityConfigurationOutput) ToConnectivityConfigurationOutput() Con
 
 func (o ConnectivityConfigurationOutput) ToConnectivityConfigurationOutputWithContext(ctx context.Context) ConnectivityConfigurationOutput {
 	return o
+}
+
+func (o ConnectivityConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectivityConfiguration] {
+	return pulumix.Output[*ConnectivityConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Groups for configuration

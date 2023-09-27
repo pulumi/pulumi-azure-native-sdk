@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets maintenanceScope of the configuration
@@ -107,6 +108,12 @@ func (o TagOperatorsOutput) ToTagOperatorsPtrOutputWithContext(ctx context.Conte
 	}).(TagOperatorsPtrOutput)
 }
 
+func (o TagOperatorsOutput) ToOutput(ctx context.Context) pulumix.Output[TagOperators] {
+	return pulumix.Output[TagOperators]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TagOperatorsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -140,6 +147,12 @@ func (o TagOperatorsPtrOutput) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
 
 func (o TagOperatorsPtrOutput) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
 	return o
+}
+
+func (o TagOperatorsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagOperators] {
+	return pulumix.Output[*TagOperators]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagOperatorsPtrOutput) Elem() TagOperatorsOutput {
@@ -202,6 +215,12 @@ func (in *tagOperatorsPtr) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
 
 func (in *tagOperatorsPtr) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TagOperatorsPtrOutput)
+}
+
+func (in *tagOperatorsPtr) ToOutput(ctx context.Context) pulumix.Output[*TagOperators] {
+	return pulumix.Output[*TagOperators]{
+		OutputState: in.ToTagOperatorsPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Global Task execute once when schedule trigger. Resource task execute for each VM.

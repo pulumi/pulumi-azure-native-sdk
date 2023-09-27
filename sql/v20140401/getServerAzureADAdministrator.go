@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns an server Administrator.
@@ -88,6 +89,12 @@ func (o LookupServerAzureADAdministratorResultOutput) ToLookupServerAzureADAdmin
 
 func (o LookupServerAzureADAdministratorResultOutput) ToLookupServerAzureADAdministratorResultOutputWithContext(ctx context.Context) LookupServerAzureADAdministratorResultOutput {
 	return o
+}
+
+func (o LookupServerAzureADAdministratorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServerAzureADAdministratorResult] {
+	return pulumix.Output[LookupServerAzureADAdministratorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of administrator.

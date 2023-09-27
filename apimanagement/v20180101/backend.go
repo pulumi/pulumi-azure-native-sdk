@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Backend details.
@@ -229,6 +230,12 @@ func (i *Backend) ToBackendOutputWithContext(ctx context.Context) BackendOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(BackendOutput)
 }
 
+func (i *Backend) ToOutput(ctx context.Context) pulumix.Output[*Backend] {
+	return pulumix.Output[*Backend]{
+		OutputState: i.ToBackendOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackendOutput struct{ *pulumi.OutputState }
 
 func (BackendOutput) ElementType() reflect.Type {
@@ -241,6 +248,12 @@ func (o BackendOutput) ToBackendOutput() BackendOutput {
 
 func (o BackendOutput) ToBackendOutputWithContext(ctx context.Context) BackendOutput {
 	return o
+}
+
+func (o BackendOutput) ToOutput(ctx context.Context) pulumix.Output[*Backend] {
+	return pulumix.Output[*Backend]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Backend Credentials Contract Properties

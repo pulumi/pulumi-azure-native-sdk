@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create and list an account shared access signature token. Use this SAS token for authentication to Azure Maps REST APIs through various Azure Maps SDKs. As prerequisite to create a SAS Token.
@@ -112,6 +113,12 @@ func (o ListAccountSasResultOutput) ToListAccountSasResultOutput() ListAccountSa
 
 func (o ListAccountSasResultOutput) ToListAccountSasResultOutputWithContext(ctx context.Context) ListAccountSasResultOutput {
 	return o
+}
+
+func (o ListAccountSasResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListAccountSasResult] {
+	return pulumix.Output[ListAccountSasResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The shared access signature access token.

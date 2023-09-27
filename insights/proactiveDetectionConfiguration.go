@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A ProactiveDetection configuration definition.
@@ -155,6 +156,12 @@ func (i *ProactiveDetectionConfiguration) ToProactiveDetectionConfigurationOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ProactiveDetectionConfigurationOutput)
 }
 
+func (i *ProactiveDetectionConfiguration) ToOutput(ctx context.Context) pulumix.Output[*ProactiveDetectionConfiguration] {
+	return pulumix.Output[*ProactiveDetectionConfiguration]{
+		OutputState: i.ToProactiveDetectionConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProactiveDetectionConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ProactiveDetectionConfigurationOutput) ElementType() reflect.Type {
@@ -167,6 +174,12 @@ func (o ProactiveDetectionConfigurationOutput) ToProactiveDetectionConfiguration
 
 func (o ProactiveDetectionConfigurationOutput) ToProactiveDetectionConfigurationOutputWithContext(ctx context.Context) ProactiveDetectionConfigurationOutput {
 	return o
+}
+
+func (o ProactiveDetectionConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*ProactiveDetectionConfiguration] {
+	return pulumix.Output[*ProactiveDetectionConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Custom email addresses for this rule notifications

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing a read only following database.
@@ -114,6 +115,9 @@ func NewReadOnlyFollowingDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:kusto/v20230502:ReadOnlyFollowingDatabase"),
 		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230815:ReadOnlyFollowingDatabase"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -208,6 +212,12 @@ func (i *ReadOnlyFollowingDatabase) ToReadOnlyFollowingDatabaseOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyFollowingDatabaseOutput)
 }
 
+func (i *ReadOnlyFollowingDatabase) ToOutput(ctx context.Context) pulumix.Output[*ReadOnlyFollowingDatabase] {
+	return pulumix.Output[*ReadOnlyFollowingDatabase]{
+		OutputState: i.ToReadOnlyFollowingDatabaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReadOnlyFollowingDatabaseOutput struct{ *pulumi.OutputState }
 
 func (ReadOnlyFollowingDatabaseOutput) ElementType() reflect.Type {
@@ -220,6 +230,12 @@ func (o ReadOnlyFollowingDatabaseOutput) ToReadOnlyFollowingDatabaseOutput() Rea
 
 func (o ReadOnlyFollowingDatabaseOutput) ToReadOnlyFollowingDatabaseOutputWithContext(ctx context.Context) ReadOnlyFollowingDatabaseOutput {
 	return o
+}
+
+func (o ReadOnlyFollowingDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*ReadOnlyFollowingDatabase] {
+	return pulumix.Output[*ReadOnlyFollowingDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the attached database configuration cluster

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List disk images available for custom image creation.
@@ -74,6 +75,12 @@ func (o ListLabVhdsResultOutput) ToListLabVhdsResultOutput() ListLabVhdsResultOu
 
 func (o ListLabVhdsResultOutput) ToListLabVhdsResultOutputWithContext(ctx context.Context) ListLabVhdsResultOutput {
 	return o
+}
+
+func (o ListLabVhdsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListLabVhdsResult] {
+	return pulumix.Output[ListLabVhdsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Link for next set of results.

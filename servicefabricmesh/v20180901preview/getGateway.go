@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the information about the gateway resource with the given name. The information include the description and other properties of the gateway.
@@ -98,6 +99,12 @@ func (o LookupGatewayResultOutput) ToLookupGatewayResultOutput() LookupGatewayRe
 
 func (o LookupGatewayResultOutput) ToLookupGatewayResultOutputWithContext(ctx context.Context) LookupGatewayResultOutput {
 	return o
+}
+
+func (o LookupGatewayResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGatewayResult] {
+	return pulumix.Output[LookupGatewayResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User readable description of the gateway.

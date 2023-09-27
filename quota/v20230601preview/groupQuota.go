@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
@@ -116,6 +117,12 @@ func (i *GroupQuota) ToGroupQuotaOutputWithContext(ctx context.Context) GroupQuo
 	return pulumi.ToOutputWithContext(ctx, i).(GroupQuotaOutput)
 }
 
+func (i *GroupQuota) ToOutput(ctx context.Context) pulumix.Output[*GroupQuota] {
+	return pulumix.Output[*GroupQuota]{
+		OutputState: i.ToGroupQuotaOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupQuotaOutput struct{ *pulumi.OutputState }
 
 func (GroupQuotaOutput) ElementType() reflect.Type {
@@ -128,6 +135,12 @@ func (o GroupQuotaOutput) ToGroupQuotaOutput() GroupQuotaOutput {
 
 func (o GroupQuotaOutput) ToGroupQuotaOutputWithContext(ctx context.Context) GroupQuotaOutput {
 	return o
+}
+
+func (o GroupQuotaOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupQuota] {
+	return pulumix.Output[*GroupQuota]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A profile is a logical grouping of endpoints that share the same settings.
@@ -107,6 +108,9 @@ func NewProfile(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20230501:Profile"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20230701preview:Profile"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -199,6 +203,12 @@ func (i *Profile) ToProfileOutputWithContext(ctx context.Context) ProfileOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProfileOutput)
 }
 
+func (i *Profile) ToOutput(ctx context.Context) pulumix.Output[*Profile] {
+	return pulumix.Output[*Profile]{
+		OutputState: i.ToProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProfileOutput struct{ *pulumi.OutputState }
 
 func (ProfileOutput) ElementType() reflect.Type {
@@ -211,6 +221,12 @@ func (o ProfileOutput) ToProfileOutput() ProfileOutput {
 
 func (o ProfileOutput) ToProfileOutputWithContext(ctx context.Context) ProfileOutput {
 	return o
+}
+
+func (o ProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*Profile] {
+	return pulumix.Output[*Profile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Key-Value pair representing additional properties for profiles.

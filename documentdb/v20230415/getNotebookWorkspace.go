@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the notebook workspace for a Cosmos DB account.
@@ -84,6 +85,12 @@ func (o LookupNotebookWorkspaceResultOutput) ToLookupNotebookWorkspaceResultOutp
 
 func (o LookupNotebookWorkspaceResultOutput) ToLookupNotebookWorkspaceResultOutputWithContext(ctx context.Context) LookupNotebookWorkspaceResultOutput {
 	return o
+}
+
+func (o LookupNotebookWorkspaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNotebookWorkspaceResult] {
+	return pulumix.Output[LookupNotebookWorkspaceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The unique resource identifier of the database account.

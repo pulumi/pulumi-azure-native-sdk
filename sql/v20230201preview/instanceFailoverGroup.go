@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An instance failover group.
@@ -197,6 +198,12 @@ func (i *InstanceFailoverGroup) ToInstanceFailoverGroupOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFailoverGroupOutput)
 }
 
+func (i *InstanceFailoverGroup) ToOutput(ctx context.Context) pulumix.Output[*InstanceFailoverGroup] {
+	return pulumix.Output[*InstanceFailoverGroup]{
+		OutputState: i.ToInstanceFailoverGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceFailoverGroupOutput struct{ *pulumi.OutputState }
 
 func (InstanceFailoverGroupOutput) ElementType() reflect.Type {
@@ -209,6 +216,12 @@ func (o InstanceFailoverGroupOutput) ToInstanceFailoverGroupOutput() InstanceFai
 
 func (o InstanceFailoverGroupOutput) ToInstanceFailoverGroupOutputWithContext(ctx context.Context) InstanceFailoverGroupOutput {
 	return o
+}
+
+func (o InstanceFailoverGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceFailoverGroup] {
+	return pulumix.Output[*InstanceFailoverGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of managed instance pairs in the failover group.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists all of the streaming jobs in the given cluster.
@@ -74,6 +75,12 @@ func (o ListClusterStreamingJobsResultOutput) ToListClusterStreamingJobsResultOu
 
 func (o ListClusterStreamingJobsResultOutput) ToListClusterStreamingJobsResultOutputWithContext(ctx context.Context) ListClusterStreamingJobsResultOutput {
 	return o
+}
+
+func (o ListClusterStreamingJobsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListClusterStreamingJobsResult] {
+	return pulumix.Output[ListClusterStreamingJobsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL to fetch the next set of streaming jobs.

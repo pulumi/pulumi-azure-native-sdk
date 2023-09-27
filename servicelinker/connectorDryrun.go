@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // a dryrun job resource
@@ -134,6 +135,12 @@ func (i *ConnectorDryrun) ToConnectorDryrunOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDryrunOutput)
 }
 
+func (i *ConnectorDryrun) ToOutput(ctx context.Context) pulumix.Output[*ConnectorDryrun] {
+	return pulumix.Output[*ConnectorDryrun]{
+		OutputState: i.ToConnectorDryrunOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectorDryrunOutput struct{ *pulumi.OutputState }
 
 func (ConnectorDryrunOutput) ElementType() reflect.Type {
@@ -146,6 +153,12 @@ func (o ConnectorDryrunOutput) ToConnectorDryrunOutput() ConnectorDryrunOutput {
 
 func (o ConnectorDryrunOutput) ToConnectorDryrunOutputWithContext(ctx context.Context) ConnectorDryrunOutput {
 	return o
+}
+
+func (o ConnectorDryrunOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorDryrun] {
+	return pulumix.Output[*ConnectorDryrun]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

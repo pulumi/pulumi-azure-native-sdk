@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DataSet in a share
@@ -99,6 +100,12 @@ func (o LookupADLSGen1FolderDataSetResultOutput) ToLookupADLSGen1FolderDataSetRe
 
 func (o LookupADLSGen1FolderDataSetResultOutput) ToLookupADLSGen1FolderDataSetResultOutputWithContext(ctx context.Context) LookupADLSGen1FolderDataSetResultOutput {
 	return o
+}
+
+func (o LookupADLSGen1FolderDataSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupADLSGen1FolderDataSetResult] {
+	return pulumix.Output[LookupADLSGen1FolderDataSetResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ADLS account name.

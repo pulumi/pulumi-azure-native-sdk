@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Dapr component Secrets Collection for ListSecrets Action.
@@ -77,6 +78,12 @@ func (o ListConnectedEnvironmentsDaprComponentSecretsResultOutput) ToListConnect
 
 func (o ListConnectedEnvironmentsDaprComponentSecretsResultOutput) ToListConnectedEnvironmentsDaprComponentSecretsResultOutputWithContext(ctx context.Context) ListConnectedEnvironmentsDaprComponentSecretsResultOutput {
 	return o
+}
+
+func (o ListConnectedEnvironmentsDaprComponentSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListConnectedEnvironmentsDaprComponentSecretsResult] {
+	return pulumix.Output[ListConnectedEnvironmentsDaprComponentSecretsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Collection of secrets used by a Dapr component

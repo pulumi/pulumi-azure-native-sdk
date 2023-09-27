@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List test keys for a Service.
@@ -81,6 +82,12 @@ func (o ListServiceTestKeysResultOutput) ToListServiceTestKeysResultOutput() Lis
 
 func (o ListServiceTestKeysResultOutput) ToListServiceTestKeysResultOutputWithContext(ctx context.Context) ListServiceTestKeysResultOutput {
 	return o
+}
+
+func (o ListServiceTestKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListServiceTestKeysResult] {
+	return pulumix.Output[ListServiceTestKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates whether the test endpoint feature enabled or not

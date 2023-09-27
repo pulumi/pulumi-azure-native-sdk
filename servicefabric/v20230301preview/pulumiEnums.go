@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The network traffic is allowed or denied.
@@ -176,6 +177,12 @@ func (o ManagedIdentityTypeOutput) ToManagedIdentityTypePtrOutputWithContext(ctx
 	}).(ManagedIdentityTypePtrOutput)
 }
 
+func (o ManagedIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedIdentityType] {
+	return pulumix.Output[ManagedIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ManagedIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -209,6 +216,12 @@ func (o ManagedIdentityTypePtrOutput) ToManagedIdentityTypePtrOutput() ManagedId
 
 func (o ManagedIdentityTypePtrOutput) ToManagedIdentityTypePtrOutputWithContext(ctx context.Context) ManagedIdentityTypePtrOutput {
 	return o
+}
+
+func (o ManagedIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityType] {
+	return pulumix.Output[*ManagedIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedIdentityTypePtrOutput) Elem() ManagedIdentityTypeOutput {
@@ -271,6 +284,12 @@ func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutput() ManagedIdenti
 
 func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutputWithContext(ctx context.Context) ManagedIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedIdentityTypePtrOutput)
+}
+
+func (in *managedIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityType] {
+	return pulumix.Output[*ManagedIdentityType]{
+		OutputState: in.ToManagedIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the move cost for the service.

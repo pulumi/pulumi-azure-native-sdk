@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details about the specified instances.
@@ -87,6 +88,12 @@ func (o LookupInstanceDetailsResultOutput) ToLookupInstanceDetailsResultOutput()
 
 func (o LookupInstanceDetailsResultOutput) ToLookupInstanceDetailsResultOutputWithContext(ctx context.Context) LookupInstanceDetailsResultOutput {
 	return o
+}
+
+func (o LookupInstanceDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceDetailsResult] {
+	return pulumix.Output[LookupInstanceDetailsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A collection of DFP instance administrators

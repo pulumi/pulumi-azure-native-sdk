@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Payload of the transaction node which is the request/response of the resource provider.
@@ -141,6 +142,12 @@ func (i *TransactionNode) ToTransactionNodeOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TransactionNodeOutput)
 }
 
+func (i *TransactionNode) ToOutput(ctx context.Context) pulumix.Output[*TransactionNode] {
+	return pulumix.Output[*TransactionNode]{
+		OutputState: i.ToTransactionNodeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransactionNodeOutput struct{ *pulumi.OutputState }
 
 func (TransactionNodeOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o TransactionNodeOutput) ToTransactionNodeOutput() TransactionNodeOutput {
 
 func (o TransactionNodeOutput) ToTransactionNodeOutputWithContext(ctx context.Context) TransactionNodeOutput {
 	return o
+}
+
+func (o TransactionNodeOutput) ToOutput(ctx context.Context) pulumix.Output[*TransactionNode] {
+	return pulumix.Output[*TransactionNode]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the transaction node dns endpoint.

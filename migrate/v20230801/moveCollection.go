@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Define the move collection.
@@ -148,6 +149,12 @@ func (i *MoveCollection) ToMoveCollectionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(MoveCollectionOutput)
 }
 
+func (i *MoveCollection) ToOutput(ctx context.Context) pulumix.Output[*MoveCollection] {
+	return pulumix.Output[*MoveCollection]{
+		OutputState: i.ToMoveCollectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MoveCollectionOutput struct{ *pulumi.OutputState }
 
 func (MoveCollectionOutput) ElementType() reflect.Type {
@@ -160,6 +167,12 @@ func (o MoveCollectionOutput) ToMoveCollectionOutput() MoveCollectionOutput {
 
 func (o MoveCollectionOutput) ToMoveCollectionOutputWithContext(ctx context.Context) MoveCollectionOutput {
 	return o
+}
+
+func (o MoveCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[*MoveCollection] {
+	return pulumix.Output[*MoveCollection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The etag of the resource.

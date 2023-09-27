@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configures how to correlate scan data and logs with resources associated with the subscription.
@@ -101,6 +102,12 @@ func (i *IngestionSetting) ToIngestionSettingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(IngestionSettingOutput)
 }
 
+func (i *IngestionSetting) ToOutput(ctx context.Context) pulumix.Output[*IngestionSetting] {
+	return pulumix.Output[*IngestionSetting]{
+		OutputState: i.ToIngestionSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IngestionSettingOutput struct{ *pulumi.OutputState }
 
 func (IngestionSettingOutput) ElementType() reflect.Type {
@@ -113,6 +120,12 @@ func (o IngestionSettingOutput) ToIngestionSettingOutput() IngestionSettingOutpu
 
 func (o IngestionSettingOutput) ToIngestionSettingOutputWithContext(ctx context.Context) IngestionSettingOutput {
 	return o
+}
+
+func (o IngestionSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*IngestionSetting] {
+	return pulumix.Output[*IngestionSetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name

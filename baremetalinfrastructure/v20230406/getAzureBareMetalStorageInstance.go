@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an Azure BareMetal Storage instance for the specified subscription, resource group, and instance name.
@@ -86,6 +87,12 @@ func (o LookupAzureBareMetalStorageInstanceResultOutput) ToLookupAzureBareMetalS
 
 func (o LookupAzureBareMetalStorageInstanceResultOutput) ToLookupAzureBareMetalStorageInstanceResultOutputWithContext(ctx context.Context) LookupAzureBareMetalStorageInstanceResultOutput {
 	return o
+}
+
+func (o LookupAzureBareMetalStorageInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAzureBareMetalStorageInstanceResult] {
+	return pulumix.Output[LookupAzureBareMetalStorageInstanceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the AzureBareMetaStorageInstance unique ID.

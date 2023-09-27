@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i AgentPoolUpgradeSettingsArgs) ToAgentPoolUpgradeSettingsOutput() AgentPo
 
 func (i AgentPoolUpgradeSettingsArgs) ToAgentPoolUpgradeSettingsOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolUpgradeSettingsOutput)
+}
+
+func (i AgentPoolUpgradeSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AgentPoolUpgradeSettings] {
+	return pulumix.Output[AgentPoolUpgradeSettings]{
+		OutputState: i.ToAgentPoolUpgradeSettingsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i AgentPoolUpgradeSettingsArgs) ToAgentPoolUpgradeSettingsPtrOutput() AgentPoolUpgradeSettingsPtrOutput {
@@ -89,6 +96,12 @@ func (i *agentPoolUpgradeSettingsPtrType) ToAgentPoolUpgradeSettingsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolUpgradeSettingsPtrOutput)
 }
 
+func (i *agentPoolUpgradeSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolUpgradeSettings] {
+	return pulumix.Output[*AgentPoolUpgradeSettings]{
+		OutputState: i.ToAgentPoolUpgradeSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings for upgrading an agentpool
 type AgentPoolUpgradeSettingsOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o AgentPoolUpgradeSettingsOutput) ToAgentPoolUpgradeSettingsPtrOutputWithC
 	}).(AgentPoolUpgradeSettingsPtrOutput)
 }
 
+func (o AgentPoolUpgradeSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AgentPoolUpgradeSettings] {
+	return pulumix.Output[AgentPoolUpgradeSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Count or percentage of additional nodes to be added during upgrade. If empty uses AKS default
 func (o AgentPoolUpgradeSettingsOutput) MaxSurge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentPoolUpgradeSettings) *string { return v.MaxSurge }).(pulumi.StringPtrOutput)
@@ -131,6 +150,12 @@ func (o AgentPoolUpgradeSettingsPtrOutput) ToAgentPoolUpgradeSettingsPtrOutput()
 
 func (o AgentPoolUpgradeSettingsPtrOutput) ToAgentPoolUpgradeSettingsPtrOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsPtrOutput {
 	return o
+}
+
+func (o AgentPoolUpgradeSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolUpgradeSettings] {
+	return pulumix.Output[*AgentPoolUpgradeSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AgentPoolUpgradeSettingsPtrOutput) Elem() AgentPoolUpgradeSettingsOutput {
@@ -174,6 +199,12 @@ func (o AgentPoolUpgradeSettingsResponseOutput) ToAgentPoolUpgradeSettingsRespon
 	return o
 }
 
+func (o AgentPoolUpgradeSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AgentPoolUpgradeSettingsResponse] {
+	return pulumix.Output[AgentPoolUpgradeSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Count or percentage of additional nodes to be added during upgrade. If empty uses AKS default
 func (o AgentPoolUpgradeSettingsResponseOutput) MaxSurge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentPoolUpgradeSettingsResponse) *string { return v.MaxSurge }).(pulumi.StringPtrOutput)
@@ -191,6 +222,12 @@ func (o AgentPoolUpgradeSettingsResponsePtrOutput) ToAgentPoolUpgradeSettingsRes
 
 func (o AgentPoolUpgradeSettingsResponsePtrOutput) ToAgentPoolUpgradeSettingsResponsePtrOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsResponsePtrOutput {
 	return o
+}
+
+func (o AgentPoolUpgradeSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolUpgradeSettingsResponse] {
+	return pulumix.Output[*AgentPoolUpgradeSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AgentPoolUpgradeSettingsResponsePtrOutput) Elem() AgentPoolUpgradeSettingsResponseOutput {

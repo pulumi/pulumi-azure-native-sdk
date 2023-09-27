@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A stored credential that can be used by a job to connect to target databases.
@@ -177,6 +178,12 @@ func (i *JobCredential) ToJobCredentialOutputWithContext(ctx context.Context) Jo
 	return pulumi.ToOutputWithContext(ctx, i).(JobCredentialOutput)
 }
 
+func (i *JobCredential) ToOutput(ctx context.Context) pulumix.Output[*JobCredential] {
+	return pulumix.Output[*JobCredential]{
+		OutputState: i.ToJobCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobCredentialOutput struct{ *pulumi.OutputState }
 
 func (JobCredentialOutput) ElementType() reflect.Type {
@@ -189,6 +196,12 @@ func (o JobCredentialOutput) ToJobCredentialOutput() JobCredentialOutput {
 
 func (o JobCredentialOutput) ToJobCredentialOutputWithContext(ctx context.Context) JobCredentialOutput {
 	return o
+}
+
+func (o JobCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[*JobCredential] {
+	return pulumix.Output[*JobCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name.

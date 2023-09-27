@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The AzureFrontDoor endpoint uses the URL format <endpointname>.azureedge.net.
@@ -65,6 +66,9 @@ func NewAFDEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20230501:AFDEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20230701preview:AFDEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -158,6 +162,12 @@ func (i *AFDEndpoint) ToAFDEndpointOutputWithContext(ctx context.Context) AFDEnd
 	return pulumi.ToOutputWithContext(ctx, i).(AFDEndpointOutput)
 }
 
+func (i *AFDEndpoint) ToOutput(ctx context.Context) pulumix.Output[*AFDEndpoint] {
+	return pulumix.Output[*AFDEndpoint]{
+		OutputState: i.ToAFDEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AFDEndpointOutput struct{ *pulumi.OutputState }
 
 func (AFDEndpointOutput) ElementType() reflect.Type {
@@ -170,6 +180,12 @@ func (o AFDEndpointOutput) ToAFDEndpointOutput() AFDEndpointOutput {
 
 func (o AFDEndpointOutput) ToAFDEndpointOutputWithContext(ctx context.Context) AFDEndpointOutput {
 	return o
+}
+
+func (o AFDEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*AFDEndpoint] {
+	return pulumix.Output[*AFDEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AFDEndpointOutput) DeploymentStatus() pulumi.StringOutput {

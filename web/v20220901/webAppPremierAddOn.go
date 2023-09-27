@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Premier add-on.
@@ -205,6 +206,12 @@ func (i *WebAppPremierAddOn) ToWebAppPremierAddOnOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppPremierAddOnOutput)
 }
 
+func (i *WebAppPremierAddOn) ToOutput(ctx context.Context) pulumix.Output[*WebAppPremierAddOn] {
+	return pulumix.Output[*WebAppPremierAddOn]{
+		OutputState: i.ToWebAppPremierAddOnOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppPremierAddOnOutput struct{ *pulumi.OutputState }
 
 func (WebAppPremierAddOnOutput) ElementType() reflect.Type {
@@ -217,6 +224,12 @@ func (o WebAppPremierAddOnOutput) ToWebAppPremierAddOnOutput() WebAppPremierAddO
 
 func (o WebAppPremierAddOnOutput) ToWebAppPremierAddOnOutputWithContext(ctx context.Context) WebAppPremierAddOnOutput {
 	return o
+}
+
+func (o WebAppPremierAddOnOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppPremierAddOn] {
+	return pulumix.Output[*WebAppPremierAddOn]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Kind of resource.

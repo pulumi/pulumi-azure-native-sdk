@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB Cassandra table.
@@ -147,6 +148,12 @@ func NewCassandraResourceCassandraTable(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20230315preview:CassandraResourceCassandraTable"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230915:CassandraResourceCassandraTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230915preview:CassandraResourceCassandraTable"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -243,6 +250,12 @@ func (i *CassandraResourceCassandraTable) ToCassandraResourceCassandraTableOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraResourceCassandraTableOutput)
 }
 
+func (i *CassandraResourceCassandraTable) ToOutput(ctx context.Context) pulumix.Output[*CassandraResourceCassandraTable] {
+	return pulumix.Output[*CassandraResourceCassandraTable]{
+		OutputState: i.ToCassandraResourceCassandraTableOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CassandraResourceCassandraTableOutput struct{ *pulumi.OutputState }
 
 func (CassandraResourceCassandraTableOutput) ElementType() reflect.Type {
@@ -255,6 +268,12 @@ func (o CassandraResourceCassandraTableOutput) ToCassandraResourceCassandraTable
 
 func (o CassandraResourceCassandraTableOutput) ToCassandraResourceCassandraTableOutputWithContext(ctx context.Context) CassandraResourceCassandraTableOutput {
 	return o
+}
+
+func (o CassandraResourceCassandraTableOutput) ToOutput(ctx context.Context) pulumix.Output[*CassandraResourceCassandraTable] {
+	return pulumix.Output[*CassandraResourceCassandraTable]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location of the resource group to which the resource belongs.

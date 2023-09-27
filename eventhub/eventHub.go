@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Single item in List or Get Event Hub operation
@@ -183,6 +184,12 @@ func (i *EventHub) ToEventHubOutputWithContext(ctx context.Context) EventHubOutp
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubOutput)
 }
 
+func (i *EventHub) ToOutput(ctx context.Context) pulumix.Output[*EventHub] {
+	return pulumix.Output[*EventHub]{
+		OutputState: i.ToEventHubOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EventHubOutput struct{ *pulumi.OutputState }
 
 func (EventHubOutput) ElementType() reflect.Type {
@@ -195,6 +202,12 @@ func (o EventHubOutput) ToEventHubOutput() EventHubOutput {
 
 func (o EventHubOutput) ToEventHubOutputWithContext(ctx context.Context) EventHubOutput {
 	return o
+}
+
+func (o EventHubOutput) ToOutput(ctx context.Context) pulumix.Output[*EventHub] {
+	return pulumix.Output[*EventHub]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Properties of capture description

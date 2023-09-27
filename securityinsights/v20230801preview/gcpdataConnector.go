@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Google Cloud Platform data connector.
@@ -142,6 +143,9 @@ func NewGCPDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230701preview:GCPDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:GCPDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -240,6 +244,12 @@ func (i *GCPDataConnector) ToGCPDataConnectorOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GCPDataConnectorOutput)
 }
 
+func (i *GCPDataConnector) ToOutput(ctx context.Context) pulumix.Output[*GCPDataConnector] {
+	return pulumix.Output[*GCPDataConnector]{
+		OutputState: i.ToGCPDataConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GCPDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (GCPDataConnectorOutput) ElementType() reflect.Type {
@@ -252,6 +262,12 @@ func (o GCPDataConnectorOutput) ToGCPDataConnectorOutput() GCPDataConnectorOutpu
 
 func (o GCPDataConnectorOutput) ToGCPDataConnectorOutputWithContext(ctx context.Context) GCPDataConnectorOutput {
 	return o
+}
+
+func (o GCPDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*GCPDataConnector] {
+	return pulumix.Output[*GCPDataConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The auth section of the connector.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func ListWorkspaceNotebookAccessToken(ctx *pulumi.Context, args *ListWorkspaceNotebookAccessTokenArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceNotebookAccessTokenResult, error) {
@@ -75,6 +76,12 @@ func (o ListWorkspaceNotebookAccessTokenResultOutput) ToListWorkspaceNotebookAcc
 
 func (o ListWorkspaceNotebookAccessTokenResultOutput) ToListWorkspaceNotebookAccessTokenResultOutputWithContext(ctx context.Context) ListWorkspaceNotebookAccessTokenResultOutput {
 	return o
+}
+
+func (o ListWorkspaceNotebookAccessTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWorkspaceNotebookAccessTokenResult] {
+	return pulumix.Output[ListWorkspaceNotebookAccessTokenResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListWorkspaceNotebookAccessTokenResultOutput) AccessToken() pulumi.StringOutput {

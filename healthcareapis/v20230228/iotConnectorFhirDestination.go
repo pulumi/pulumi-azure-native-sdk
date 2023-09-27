@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // IoT Connector FHIR destination definition.
@@ -180,6 +181,12 @@ func (i *IotConnectorFhirDestination) ToIotConnectorFhirDestinationOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(IotConnectorFhirDestinationOutput)
 }
 
+func (i *IotConnectorFhirDestination) ToOutput(ctx context.Context) pulumix.Output[*IotConnectorFhirDestination] {
+	return pulumix.Output[*IotConnectorFhirDestination]{
+		OutputState: i.ToIotConnectorFhirDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IotConnectorFhirDestinationOutput struct{ *pulumi.OutputState }
 
 func (IotConnectorFhirDestinationOutput) ElementType() reflect.Type {
@@ -192,6 +199,12 @@ func (o IotConnectorFhirDestinationOutput) ToIotConnectorFhirDestinationOutput()
 
 func (o IotConnectorFhirDestinationOutput) ToIotConnectorFhirDestinationOutputWithContext(ctx context.Context) IotConnectorFhirDestinationOutput {
 	return o
+}
+
+func (o IotConnectorFhirDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[*IotConnectorFhirDestination] {
+	return pulumix.Output[*IotConnectorFhirDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

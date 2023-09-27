@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes the suppression rule
@@ -148,6 +149,12 @@ func (i *AlertsSuppressionRule) ToAlertsSuppressionRuleOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AlertsSuppressionRuleOutput)
 }
 
+func (i *AlertsSuppressionRule) ToOutput(ctx context.Context) pulumix.Output[*AlertsSuppressionRule] {
+	return pulumix.Output[*AlertsSuppressionRule]{
+		OutputState: i.ToAlertsSuppressionRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertsSuppressionRuleOutput struct{ *pulumi.OutputState }
 
 func (AlertsSuppressionRuleOutput) ElementType() reflect.Type {
@@ -160,6 +167,12 @@ func (o AlertsSuppressionRuleOutput) ToAlertsSuppressionRuleOutput() AlertsSuppr
 
 func (o AlertsSuppressionRuleOutput) ToAlertsSuppressionRuleOutputWithContext(ctx context.Context) AlertsSuppressionRuleOutput {
 	return o
+}
+
+func (o AlertsSuppressionRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertsSuppressionRule] {
+	return pulumix.Output[*AlertsSuppressionRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Type of the alert to automatically suppress. For all alert types, use '*'

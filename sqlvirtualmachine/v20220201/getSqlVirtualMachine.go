@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a SQL virtual machine.
@@ -118,6 +119,12 @@ func (o LookupSqlVirtualMachineResultOutput) ToLookupSqlVirtualMachineResultOutp
 
 func (o LookupSqlVirtualMachineResultOutput) ToLookupSqlVirtualMachineResultOutputWithContext(ctx context.Context) LookupSqlVirtualMachineResultOutput {
 	return o
+}
+
+func (o LookupSqlVirtualMachineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlVirtualMachineResult] {
+	return pulumix.Output[LookupSqlVirtualMachineResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Assessment Settings.

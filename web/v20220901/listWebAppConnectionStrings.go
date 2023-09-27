@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Gets the connection strings of an app.
@@ -80,6 +81,12 @@ func (o ListWebAppConnectionStringsResultOutput) ToListWebAppConnectionStringsRe
 
 func (o ListWebAppConnectionStringsResultOutput) ToListWebAppConnectionStringsResultOutputWithContext(ctx context.Context) ListWebAppConnectionStringsResultOutput {
 	return o
+}
+
+func (o ListWebAppConnectionStringsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppConnectionStringsResult] {
+	return pulumix.Output[ListWebAppConnectionStringsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id.

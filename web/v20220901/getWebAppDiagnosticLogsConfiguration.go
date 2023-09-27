@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Gets the logging configuration of an app.
@@ -97,6 +98,12 @@ func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) ToLookupWebAppDiagn
 
 func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) ToLookupWebAppDiagnosticLogsConfigurationResultOutputWithContext(ctx context.Context) LookupWebAppDiagnosticLogsConfigurationResultOutput {
 	return o
+}
+
+func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppDiagnosticLogsConfigurationResult] {
+	return pulumix.Output[LookupWebAppDiagnosticLogsConfigurationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Application logs configuration.

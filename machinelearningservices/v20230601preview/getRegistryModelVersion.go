@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Resource Manager resource envelope.
@@ -99,6 +100,12 @@ func (o LookupRegistryModelVersionResultOutput) ToLookupRegistryModelVersionResu
 
 func (o LookupRegistryModelVersionResultOutput) ToLookupRegistryModelVersionResultOutputWithContext(ctx context.Context) LookupRegistryModelVersionResultOutput {
 	return o
+}
+
+func (o LookupRegistryModelVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegistryModelVersionResult] {
+	return pulumix.Output[LookupRegistryModelVersionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The description of the DigitalTwins service.
@@ -169,6 +170,12 @@ func (i *DigitalTwin) ToDigitalTwinOutputWithContext(ctx context.Context) Digita
 	return pulumi.ToOutputWithContext(ctx, i).(DigitalTwinOutput)
 }
 
+func (i *DigitalTwin) ToOutput(ctx context.Context) pulumix.Output[*DigitalTwin] {
+	return pulumix.Output[*DigitalTwin]{
+		OutputState: i.ToDigitalTwinOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DigitalTwinOutput struct{ *pulumi.OutputState }
 
 func (DigitalTwinOutput) ElementType() reflect.Type {
@@ -181,6 +188,12 @@ func (o DigitalTwinOutput) ToDigitalTwinOutput() DigitalTwinOutput {
 
 func (o DigitalTwinOutput) ToDigitalTwinOutputWithContext(ctx context.Context) DigitalTwinOutput {
 	return o
+}
+
+func (o DigitalTwinOutput) ToOutput(ctx context.Context) pulumix.Output[*DigitalTwin] {
+	return pulumix.Output[*DigitalTwin]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time when DigitalTwinsInstance was created.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SAP monitor info on Azure (ARM properties and SAP monitor properties)
@@ -157,6 +158,12 @@ func (i *SapMonitor) ToSapMonitorOutputWithContext(ctx context.Context) SapMonit
 	return pulumi.ToOutputWithContext(ctx, i).(SapMonitorOutput)
 }
 
+func (i *SapMonitor) ToOutput(ctx context.Context) pulumix.Output[*SapMonitor] {
+	return pulumix.Output[*SapMonitor]{
+		OutputState: i.ToSapMonitorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SapMonitorOutput struct{ *pulumi.OutputState }
 
 func (SapMonitorOutput) ElementType() reflect.Type {
@@ -169,6 +176,12 @@ func (o SapMonitorOutput) ToSapMonitorOutput() SapMonitorOutput {
 
 func (o SapMonitorOutput) ToSapMonitorOutputWithContext(ctx context.Context) SapMonitorOutput {
 	return o
+}
+
+func (o SapMonitorOutput) ToOutput(ctx context.Context) pulumix.Output[*SapMonitor] {
+	return pulumix.Output[*SapMonitor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value indicating whether to send analytics to Microsoft

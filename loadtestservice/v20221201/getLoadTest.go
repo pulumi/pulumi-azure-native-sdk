@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a LoadTest resource.
@@ -92,6 +93,12 @@ func (o LookupLoadTestResultOutput) ToLookupLoadTestResultOutput() LookupLoadTes
 
 func (o LookupLoadTestResultOutput) ToLookupLoadTestResultOutputWithContext(ctx context.Context) LookupLoadTestResultOutput {
 	return o
+}
+
+func (o LookupLoadTestResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLoadTestResult] {
+	return pulumix.Output[LookupLoadTestResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource data plane URI.

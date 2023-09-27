@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A SQL Migration Service.
@@ -123,6 +124,12 @@ func (i *SqlMigrationService) ToSqlMigrationServiceOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SqlMigrationServiceOutput)
 }
 
+func (i *SqlMigrationService) ToOutput(ctx context.Context) pulumix.Output[*SqlMigrationService] {
+	return pulumix.Output[*SqlMigrationService]{
+		OutputState: i.ToSqlMigrationServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlMigrationServiceOutput struct{ *pulumi.OutputState }
 
 func (SqlMigrationServiceOutput) ElementType() reflect.Type {
@@ -135,6 +142,12 @@ func (o SqlMigrationServiceOutput) ToSqlMigrationServiceOutput() SqlMigrationSer
 
 func (o SqlMigrationServiceOutput) ToSqlMigrationServiceOutputWithContext(ctx context.Context) SqlMigrationServiceOutput {
 	return o
+}
+
+func (o SqlMigrationServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlMigrationService] {
+	return pulumix.Output[*SqlMigrationService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Current state of the Integration runtime.

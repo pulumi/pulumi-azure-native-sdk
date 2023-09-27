@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Storage mapping object.
@@ -206,6 +207,12 @@ func (i *ReplicationStorageClassificationMapping) ToReplicationStorageClassifica
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationStorageClassificationMappingOutput)
 }
 
+func (i *ReplicationStorageClassificationMapping) ToOutput(ctx context.Context) pulumix.Output[*ReplicationStorageClassificationMapping] {
+	return pulumix.Output[*ReplicationStorageClassificationMapping]{
+		OutputState: i.ToReplicationStorageClassificationMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReplicationStorageClassificationMappingOutput struct{ *pulumi.OutputState }
 
 func (ReplicationStorageClassificationMappingOutput) ElementType() reflect.Type {
@@ -218,6 +225,12 @@ func (o ReplicationStorageClassificationMappingOutput) ToReplicationStorageClass
 
 func (o ReplicationStorageClassificationMappingOutput) ToReplicationStorageClassificationMappingOutputWithContext(ctx context.Context) ReplicationStorageClassificationMappingOutput {
 	return o
+}
+
+func (o ReplicationStorageClassificationMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationStorageClassificationMapping] {
+	return pulumix.Output[*ReplicationStorageClassificationMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Location

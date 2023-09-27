@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i IdentityArgs) ToIdentityOutput() IdentityOutput {
 
 func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
+}
+
+func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
@@ -89,6 +96,12 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
+func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity for the resource.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
+func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
+	return pulumix.Output[Identity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type. This is the only required field when adding a system assigned identity to a resource.
 func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v Identity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -131,6 +150,12 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
+}
+
+func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
+	return pulumix.Output[*Identity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -178,6 +203,12 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
+	return pulumix.Output[IdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal ID of the resource identity.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -205,6 +236,12 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
+}
+
+func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
+	return pulumix.Output[*IdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -282,6 +319,12 @@ func (i ParameterValuesValueArgs) ToParameterValuesValueOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterValuesValueOutput)
 }
 
+func (i ParameterValuesValueArgs) ToOutput(ctx context.Context) pulumix.Output[ParameterValuesValue] {
+	return pulumix.Output[ParameterValuesValue]{
+		OutputState: i.ToParameterValuesValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ParameterValuesValueMapInput is an input type that accepts ParameterValuesValueMap and ParameterValuesValueMapOutput values.
 // You can construct a concrete instance of `ParameterValuesValueMapInput` via:
 //
@@ -307,6 +350,12 @@ func (i ParameterValuesValueMap) ToParameterValuesValueMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterValuesValueMapOutput)
 }
 
+func (i ParameterValuesValueMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterValuesValue] {
+	return pulumix.Output[map[string]ParameterValuesValue]{
+		OutputState: i.ToParameterValuesValueMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The value of a parameter.
 type ParameterValuesValueOutput struct{ *pulumi.OutputState }
 
@@ -320,6 +369,12 @@ func (o ParameterValuesValueOutput) ToParameterValuesValueOutput() ParameterValu
 
 func (o ParameterValuesValueOutput) ToParameterValuesValueOutputWithContext(ctx context.Context) ParameterValuesValueOutput {
 	return o
+}
+
+func (o ParameterValuesValueOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterValuesValue] {
+	return pulumix.Output[ParameterValuesValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value of the parameter.
@@ -339,6 +394,12 @@ func (o ParameterValuesValueMapOutput) ToParameterValuesValueMapOutput() Paramet
 
 func (o ParameterValuesValueMapOutput) ToParameterValuesValueMapOutputWithContext(ctx context.Context) ParameterValuesValueMapOutput {
 	return o
+}
+
+func (o ParameterValuesValueMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterValuesValue] {
+	return pulumix.Output[map[string]ParameterValuesValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParameterValuesValueMapOutput) MapIndex(k pulumi.StringInput) ParameterValuesValueOutput {
@@ -368,6 +429,12 @@ func (o ParameterValuesValueResponseOutput) ToParameterValuesValueResponseOutput
 	return o
 }
 
+func (o ParameterValuesValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterValuesValueResponse] {
+	return pulumix.Output[ParameterValuesValueResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The value of the parameter.
 func (o ParameterValuesValueResponseOutput) Value() pulumi.AnyOutput {
 	return o.ApplyT(func(v ParameterValuesValueResponse) interface{} { return v.Value }).(pulumi.AnyOutput)
@@ -385,6 +452,12 @@ func (o ParameterValuesValueResponseMapOutput) ToParameterValuesValueResponseMap
 
 func (o ParameterValuesValueResponseMapOutput) ToParameterValuesValueResponseMapOutputWithContext(ctx context.Context) ParameterValuesValueResponseMapOutput {
 	return o
+}
+
+func (o ParameterValuesValueResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterValuesValueResponse] {
+	return pulumix.Output[map[string]ParameterValuesValueResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParameterValuesValueResponseMapOutput) MapIndex(k pulumi.StringInput) ParameterValuesValueResponseOutput {
@@ -432,6 +505,12 @@ func (i PolicySkuArgs) ToPolicySkuOutputWithContext(ctx context.Context) PolicyS
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySkuOutput)
 }
 
+func (i PolicySkuArgs) ToOutput(ctx context.Context) pulumix.Output[PolicySku] {
+	return pulumix.Output[PolicySku]{
+		OutputState: i.ToPolicySkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PolicySkuArgs) ToPolicySkuPtrOutput() PolicySkuPtrOutput {
 	return i.ToPolicySkuPtrOutputWithContext(context.Background())
 }
@@ -473,6 +552,12 @@ func (i *policySkuPtrType) ToPolicySkuPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySkuPtrOutput)
 }
 
+func (i *policySkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicySku] {
+	return pulumix.Output[*PolicySku]{
+		OutputState: i.ToPolicySkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The policy sku. This property is optional, obsolete, and will be ignored.
 type PolicySkuOutput struct{ *pulumi.OutputState }
 
@@ -498,6 +583,12 @@ func (o PolicySkuOutput) ToPolicySkuPtrOutputWithContext(ctx context.Context) Po
 	}).(PolicySkuPtrOutput)
 }
 
+func (o PolicySkuOutput) ToOutput(ctx context.Context) pulumix.Output[PolicySku] {
+	return pulumix.Output[PolicySku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the policy sku. Possible values are A0 and A1.
 func (o PolicySkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicySku) string { return v.Name }).(pulumi.StringOutput)
@@ -520,6 +611,12 @@ func (o PolicySkuPtrOutput) ToPolicySkuPtrOutput() PolicySkuPtrOutput {
 
 func (o PolicySkuPtrOutput) ToPolicySkuPtrOutputWithContext(ctx context.Context) PolicySkuPtrOutput {
 	return o
+}
+
+func (o PolicySkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicySku] {
+	return pulumix.Output[*PolicySku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicySkuPtrOutput) Elem() PolicySkuOutput {
@@ -575,6 +672,12 @@ func (o PolicySkuResponseOutput) ToPolicySkuResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o PolicySkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicySkuResponse] {
+	return pulumix.Output[PolicySkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the policy sku. Possible values are A0 and A1.
 func (o PolicySkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicySkuResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -597,6 +700,12 @@ func (o PolicySkuResponsePtrOutput) ToPolicySkuResponsePtrOutput() PolicySkuResp
 
 func (o PolicySkuResponsePtrOutput) ToPolicySkuResponsePtrOutputWithContext(ctx context.Context) PolicySkuResponsePtrOutput {
 	return o
+}
+
+func (o PolicySkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicySkuResponse] {
+	return pulumix.Output[*PolicySkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicySkuResponsePtrOutput) Elem() PolicySkuResponseOutput {

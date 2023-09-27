@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the update summaries for the cluster
@@ -181,6 +182,12 @@ func (i *UpdateSummary) ToUpdateSummaryOutputWithContext(ctx context.Context) Up
 	return pulumi.ToOutputWithContext(ctx, i).(UpdateSummaryOutput)
 }
 
+func (i *UpdateSummary) ToOutput(ctx context.Context) pulumix.Output[*UpdateSummary] {
+	return pulumix.Output[*UpdateSummary]{
+		OutputState: i.ToUpdateSummaryOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UpdateSummaryOutput struct{ *pulumi.OutputState }
 
 func (UpdateSummaryOutput) ElementType() reflect.Type {
@@ -193,6 +200,12 @@ func (o UpdateSummaryOutput) ToUpdateSummaryOutput() UpdateSummaryOutput {
 
 func (o UpdateSummaryOutput) ToUpdateSummaryOutputWithContext(ctx context.Context) UpdateSummaryOutput {
 	return o
+}
+
+func (o UpdateSummaryOutput) ToOutput(ctx context.Context) pulumix.Output[*UpdateSummary] {
+	return pulumix.Output[*UpdateSummary]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Current OEM Version.

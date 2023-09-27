@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Collector policy resource.
@@ -155,6 +156,12 @@ func (i *CollectorPolicy) ToCollectorPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CollectorPolicyOutput)
 }
 
+func (i *CollectorPolicy) ToOutput(ctx context.Context) pulumix.Output[*CollectorPolicy] {
+	return pulumix.Output[*CollectorPolicy]{
+		OutputState: i.ToCollectorPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CollectorPolicyOutput struct{ *pulumi.OutputState }
 
 func (CollectorPolicyOutput) ElementType() reflect.Type {
@@ -167,6 +174,12 @@ func (o CollectorPolicyOutput) ToCollectorPolicyOutput() CollectorPolicyOutput {
 
 func (o CollectorPolicyOutput) ToCollectorPolicyOutputWithContext(ctx context.Context) CollectorPolicyOutput {
 	return o
+}
+
+func (o CollectorPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*CollectorPolicy] {
+	return pulumix.Output[*CollectorPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Emission policies.

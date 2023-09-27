@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the details of a VirtualWAN.
@@ -89,6 +90,12 @@ func (o LookupVirtualWANResultOutput) ToLookupVirtualWANResultOutput() LookupVir
 
 func (o LookupVirtualWANResultOutput) ToLookupVirtualWANResultOutputWithContext(ctx context.Context) LookupVirtualWANResultOutput {
 	return o
+}
+
+func (o LookupVirtualWANResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualWANResult] {
+	return pulumix.Output[LookupVirtualWANResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Vpn encryption to be disabled or not.

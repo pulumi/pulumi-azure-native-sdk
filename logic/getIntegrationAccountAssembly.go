@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an assembly for an integration account.
@@ -87,6 +88,12 @@ func (o LookupIntegrationAccountAssemblyResultOutput) ToLookupIntegrationAccount
 
 func (o LookupIntegrationAccountAssemblyResultOutput) ToLookupIntegrationAccountAssemblyResultOutputWithContext(ctx context.Context) LookupIntegrationAccountAssemblyResultOutput {
 	return o
+}
+
+func (o LookupIntegrationAccountAssemblyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIntegrationAccountAssemblyResult] {
+	return pulumix.Output[LookupIntegrationAccountAssemblyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource id.

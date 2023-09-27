@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Resource Manager resource envelope.
@@ -133,6 +134,12 @@ func (i *FeaturesetContainerEntity) ToFeaturesetContainerEntityOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(FeaturesetContainerEntityOutput)
 }
 
+func (i *FeaturesetContainerEntity) ToOutput(ctx context.Context) pulumix.Output[*FeaturesetContainerEntity] {
+	return pulumix.Output[*FeaturesetContainerEntity]{
+		OutputState: i.ToFeaturesetContainerEntityOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeaturesetContainerEntityOutput struct{ *pulumi.OutputState }
 
 func (FeaturesetContainerEntityOutput) ElementType() reflect.Type {
@@ -145,6 +152,12 @@ func (o FeaturesetContainerEntityOutput) ToFeaturesetContainerEntityOutput() Fea
 
 func (o FeaturesetContainerEntityOutput) ToFeaturesetContainerEntityOutputWithContext(ctx context.Context) FeaturesetContainerEntityOutput {
 	return o
+}
+
+func (o FeaturesetContainerEntityOutput) ToOutput(ctx context.Context) pulumix.Output[*FeaturesetContainerEntity] {
+	return pulumix.Output[*FeaturesetContainerEntity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // [Required] Additional attributes of the entity.

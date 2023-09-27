@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Front Door origin is the source of the content being delivered via Azure Front Door. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
@@ -93,6 +94,9 @@ func NewAFDOrigin(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20230501:AFDOrigin"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20230701preview:AFDOrigin"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -214,6 +218,12 @@ func (i *AFDOrigin) ToAFDOriginOutputWithContext(ctx context.Context) AFDOriginO
 	return pulumi.ToOutputWithContext(ctx, i).(AFDOriginOutput)
 }
 
+func (i *AFDOrigin) ToOutput(ctx context.Context) pulumix.Output[*AFDOrigin] {
+	return pulumix.Output[*AFDOrigin]{
+		OutputState: i.ToAFDOriginOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AFDOriginOutput struct{ *pulumi.OutputState }
 
 func (AFDOriginOutput) ElementType() reflect.Type {
@@ -226,6 +236,12 @@ func (o AFDOriginOutput) ToAFDOriginOutput() AFDOriginOutput {
 
 func (o AFDOriginOutput) ToAFDOriginOutputWithContext(ctx context.Context) AFDOriginOutput {
 	return o
+}
+
+func (o AFDOriginOutput) ToOutput(ctx context.Context) pulumix.Output[*AFDOrigin] {
+	return pulumix.Output[*AFDOrigin]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource reference to the Azure origin resource.

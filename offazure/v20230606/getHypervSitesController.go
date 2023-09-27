@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a HypervSite
@@ -98,6 +99,12 @@ func (o LookupHypervSitesControllerResultOutput) ToLookupHypervSitesControllerRe
 
 func (o LookupHypervSitesControllerResultOutput) ToLookupHypervSitesControllerResultOutputWithContext(ctx context.Context) LookupHypervSitesControllerResultOutput {
 	return o
+}
+
+func (o LookupHypervSitesControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHypervSitesControllerResult] {
+	return pulumix.Output[LookupHypervSitesControllerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the on-premises agent details.

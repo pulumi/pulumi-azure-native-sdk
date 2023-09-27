@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the event source with the specified name in the specified environment.
@@ -106,6 +107,12 @@ func (o LookupIoTHubEventSourceResultOutput) ToLookupIoTHubEventSourceResultOutp
 
 func (o LookupIoTHubEventSourceResultOutput) ToLookupIoTHubEventSourceResultOutputWithContext(ctx context.Context) LookupIoTHubEventSourceResultOutput {
 	return o
+}
+
+func (o LookupIoTHubEventSourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIoTHubEventSourceResult] {
+	return pulumix.Output[LookupIoTHubEventSourceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the iot hub's consumer group that holds the partitions from which events will be read.

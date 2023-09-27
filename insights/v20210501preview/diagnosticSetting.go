@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The diagnostic setting resource.
@@ -167,6 +168,12 @@ func (i *DiagnosticSetting) ToDiagnosticSettingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticSettingOutput)
 }
 
+func (i *DiagnosticSetting) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticSetting] {
+	return pulumix.Output[*DiagnosticSetting]{
+		OutputState: i.ToDiagnosticSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DiagnosticSettingOutput struct{ *pulumi.OutputState }
 
 func (DiagnosticSettingOutput) ElementType() reflect.Type {
@@ -179,6 +186,12 @@ func (o DiagnosticSettingOutput) ToDiagnosticSettingOutput() DiagnosticSettingOu
 
 func (o DiagnosticSettingOutput) ToDiagnosticSettingOutputWithContext(ctx context.Context) DiagnosticSettingOutput {
 	return o
+}
+
+func (o DiagnosticSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticSetting] {
+	return pulumix.Output[*DiagnosticSetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource Id for the event hub authorization rule.

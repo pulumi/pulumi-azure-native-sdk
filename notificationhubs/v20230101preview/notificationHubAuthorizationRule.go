@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response for POST requests that return single SharedAccessAuthorizationRule.
@@ -151,6 +152,12 @@ func (i *NotificationHubAuthorizationRule) ToNotificationHubAuthorizationRuleOut
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationHubAuthorizationRuleOutput)
 }
 
+func (i *NotificationHubAuthorizationRule) ToOutput(ctx context.Context) pulumix.Output[*NotificationHubAuthorizationRule] {
+	return pulumix.Output[*NotificationHubAuthorizationRule]{
+		OutputState: i.ToNotificationHubAuthorizationRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NotificationHubAuthorizationRuleOutput struct{ *pulumi.OutputState }
 
 func (NotificationHubAuthorizationRuleOutput) ElementType() reflect.Type {
@@ -163,6 +170,12 @@ func (o NotificationHubAuthorizationRuleOutput) ToNotificationHubAuthorizationRu
 
 func (o NotificationHubAuthorizationRuleOutput) ToNotificationHubAuthorizationRuleOutputWithContext(ctx context.Context) NotificationHubAuthorizationRuleOutput {
 	return o
+}
+
+func (o NotificationHubAuthorizationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationHubAuthorizationRule] {
+	return pulumix.Output[*NotificationHubAuthorizationRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Deprecated - only for compatibility.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response for the POST request that returns Namespace or NotificationHub access keys (connection strings).
@@ -89,6 +90,12 @@ func (o ListNotificationHubKeysResultOutput) ToListNotificationHubKeysResultOutp
 
 func (o ListNotificationHubKeysResultOutput) ToListNotificationHubKeysResultOutputWithContext(ctx context.Context) ListNotificationHubKeysResultOutput {
 	return o
+}
+
+func (o ListNotificationHubKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListNotificationHubKeysResult] {
+	return pulumix.Output[ListNotificationHubKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets keyName of the created AuthorizationRule

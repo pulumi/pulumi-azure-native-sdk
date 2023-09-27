@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the properties of a specified task.
@@ -133,6 +134,12 @@ func (o LookupTaskResultOutput) ToLookupTaskResultOutput() LookupTaskResultOutpu
 
 func (o LookupTaskResultOutput) ToLookupTaskResultOutputWithContext(ctx context.Context) LookupTaskResultOutput {
 	return o
+}
+
+func (o LookupTaskResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTaskResult] {
+	return pulumix.Output[LookupTaskResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The machine configuration of the run agent.

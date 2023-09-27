@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the configuration type.
@@ -182,6 +183,12 @@ func (i *DscConfiguration) ToDscConfigurationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DscConfigurationOutput)
 }
 
+func (i *DscConfiguration) ToOutput(ctx context.Context) pulumix.Output[*DscConfiguration] {
+	return pulumix.Output[*DscConfiguration]{
+		OutputState: i.ToDscConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DscConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DscConfigurationOutput) ElementType() reflect.Type {
@@ -194,6 +201,12 @@ func (o DscConfigurationOutput) ToDscConfigurationOutput() DscConfigurationOutpu
 
 func (o DscConfigurationOutput) ToDscConfigurationOutputWithContext(ctx context.Context) DscConfigurationOutput {
 	return o
+}
+
+func (o DscConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*DscConfiguration] {
+	return pulumix.Output[*DscConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the creation time.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Flux Configuration object returned in Get & Put response.
@@ -223,6 +224,12 @@ func (i *FluxConfiguration) ToFluxConfigurationOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(FluxConfigurationOutput)
 }
 
+func (i *FluxConfiguration) ToOutput(ctx context.Context) pulumix.Output[*FluxConfiguration] {
+	return pulumix.Output[*FluxConfiguration]{
+		OutputState: i.ToFluxConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FluxConfigurationOutput struct{ *pulumi.OutputState }
 
 func (FluxConfigurationOutput) ElementType() reflect.Type {
@@ -235,6 +242,12 @@ func (o FluxConfigurationOutput) ToFluxConfigurationOutput() FluxConfigurationOu
 
 func (o FluxConfigurationOutput) ToFluxConfigurationOutputWithContext(ctx context.Context) FluxConfigurationOutput {
 	return o
+}
+
+func (o FluxConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*FluxConfiguration] {
+	return pulumix.Output[*FluxConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Parameters to reconcile to the Bucket source kind type.

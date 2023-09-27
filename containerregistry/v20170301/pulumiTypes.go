@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o RegistryPasswordResponseOutput) ToRegistryPasswordResponseOutputWithCont
 	return o
 }
 
+func (o RegistryPasswordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RegistryPasswordResponse] {
+	return pulumix.Output[RegistryPasswordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The password name.
 func (o RegistryPasswordResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegistryPasswordResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -58,6 +65,12 @@ func (o RegistryPasswordResponseArrayOutput) ToRegistryPasswordResponseArrayOutp
 
 func (o RegistryPasswordResponseArrayOutput) ToRegistryPasswordResponseArrayOutputWithContext(ctx context.Context) RegistryPasswordResponseArrayOutput {
 	return o
+}
+
+func (o RegistryPasswordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RegistryPasswordResponse] {
+	return pulumix.Output[[]RegistryPasswordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegistryPasswordResponseArrayOutput) Index(i pulumi.IntInput) RegistryPasswordResponseOutput {
@@ -101,6 +114,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The SKU of a container registry.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +133,12 @@ func (o SkuOutput) ToSkuOutput() SkuOutput {
 
 func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
+}
+
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SKU name of the container registry. Required for registry creation. Allowed value: Basic.
@@ -142,6 +167,12 @@ func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
 
 func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
 	return o
+}
+
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SKU name of the container registry. Required for registry creation. Allowed value: Basic.
@@ -193,6 +224,12 @@ func (i StorageAccountParametersArgs) ToStorageAccountParametersOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountParametersOutput)
 }
 
+func (i StorageAccountParametersArgs) ToOutput(ctx context.Context) pulumix.Output[StorageAccountParameters] {
+	return pulumix.Output[StorageAccountParameters]{
+		OutputState: i.ToStorageAccountParametersOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The parameters of a storage account for a container registry.
 type StorageAccountParametersOutput struct{ *pulumi.OutputState }
 
@@ -206,6 +243,12 @@ func (o StorageAccountParametersOutput) ToStorageAccountParametersOutput() Stora
 
 func (o StorageAccountParametersOutput) ToStorageAccountParametersOutputWithContext(ctx context.Context) StorageAccountParametersOutput {
 	return o
+}
+
+func (o StorageAccountParametersOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountParameters] {
+	return pulumix.Output[StorageAccountParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access key to the storage account.
@@ -239,6 +282,12 @@ func (o StorageAccountPropertiesResponseOutput) ToStorageAccountPropertiesRespon
 	return o
 }
 
+func (o StorageAccountPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountPropertiesResponse] {
+	return pulumix.Output[StorageAccountPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the storage account.
 func (o StorageAccountPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageAccountPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -256,6 +305,12 @@ func (o StorageAccountPropertiesResponsePtrOutput) ToStorageAccountPropertiesRes
 
 func (o StorageAccountPropertiesResponsePtrOutput) ToStorageAccountPropertiesResponsePtrOutputWithContext(ctx context.Context) StorageAccountPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o StorageAccountPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountPropertiesResponse] {
+	return pulumix.Output[*StorageAccountPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageAccountPropertiesResponsePtrOutput) Elem() StorageAccountPropertiesResponseOutput {

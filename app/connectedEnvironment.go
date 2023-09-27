@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An environment for Kubernetes cluster specialized for web workloads by Azure App Service
@@ -168,6 +169,12 @@ func (i *ConnectedEnvironment) ToConnectedEnvironmentOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectedEnvironmentOutput)
 }
 
+func (i *ConnectedEnvironment) ToOutput(ctx context.Context) pulumix.Output[*ConnectedEnvironment] {
+	return pulumix.Output[*ConnectedEnvironment]{
+		OutputState: i.ToConnectedEnvironmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectedEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (ConnectedEnvironmentOutput) ElementType() reflect.Type {
@@ -180,6 +187,12 @@ func (o ConnectedEnvironmentOutput) ToConnectedEnvironmentOutput() ConnectedEnvi
 
 func (o ConnectedEnvironmentOutput) ToConnectedEnvironmentOutputWithContext(ctx context.Context) ConnectedEnvironmentOutput {
 	return o
+}
+
+func (o ConnectedEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectedEnvironment] {
+	return pulumix.Output[*ConnectedEnvironment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Custom domain configuration for the environment

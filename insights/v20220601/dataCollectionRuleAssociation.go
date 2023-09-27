@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of generic ARM proxy resource.
@@ -143,6 +144,12 @@ func (i *DataCollectionRuleAssociation) ToDataCollectionRuleAssociationOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DataCollectionRuleAssociationOutput)
 }
 
+func (i *DataCollectionRuleAssociation) ToOutput(ctx context.Context) pulumix.Output[*DataCollectionRuleAssociation] {
+	return pulumix.Output[*DataCollectionRuleAssociation]{
+		OutputState: i.ToDataCollectionRuleAssociationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataCollectionRuleAssociationOutput struct{ *pulumi.OutputState }
 
 func (DataCollectionRuleAssociationOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o DataCollectionRuleAssociationOutput) ToDataCollectionRuleAssociationOutp
 
 func (o DataCollectionRuleAssociationOutput) ToDataCollectionRuleAssociationOutputWithContext(ctx context.Context) DataCollectionRuleAssociationOutput {
 	return o
+}
+
+func (o DataCollectionRuleAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*DataCollectionRuleAssociation] {
+	return pulumix.Output[*DataCollectionRuleAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource ID of the data collection endpoint that is to be associated.

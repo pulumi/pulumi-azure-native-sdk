@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomDomain{}
 	case "azure-native:cdn:Endpoint":
 		r = &Endpoint{}
+	case "azure-native:cdn:KeyGroup":
+		r = &KeyGroup{}
 	case "azure-native:cdn:Origin":
 		r = &Origin{}
 	case "azure-native:cdn:OriginGroup":

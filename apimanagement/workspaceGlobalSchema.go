@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Global Schema Contract details.
@@ -147,6 +148,12 @@ func (i *WorkspaceGlobalSchema) ToWorkspaceGlobalSchemaOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceGlobalSchemaOutput)
 }
 
+func (i *WorkspaceGlobalSchema) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceGlobalSchema] {
+	return pulumix.Output[*WorkspaceGlobalSchema]{
+		OutputState: i.ToWorkspaceGlobalSchemaOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceGlobalSchemaOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceGlobalSchemaOutput) ElementType() reflect.Type {
@@ -159,6 +166,12 @@ func (o WorkspaceGlobalSchemaOutput) ToWorkspaceGlobalSchemaOutput() WorkspaceGl
 
 func (o WorkspaceGlobalSchemaOutput) ToWorkspaceGlobalSchemaOutputWithContext(ctx context.Context) WorkspaceGlobalSchemaOutput {
 	return o
+}
+
+func (o WorkspaceGlobalSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceGlobalSchema] {
+	return pulumix.Output[*WorkspaceGlobalSchema]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Free-form schema entity description.

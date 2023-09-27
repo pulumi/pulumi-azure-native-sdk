@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an application control VM/server group.
@@ -90,6 +91,12 @@ func (o LookupAdaptiveApplicationControlResultOutput) ToLookupAdaptiveApplicatio
 
 func (o LookupAdaptiveApplicationControlResultOutput) ToLookupAdaptiveApplicationControlResultOutputWithContext(ctx context.Context) LookupAdaptiveApplicationControlResultOutput {
 	return o
+}
+
+func (o LookupAdaptiveApplicationControlResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAdaptiveApplicationControlResult] {
+	return pulumix.Output[LookupAdaptiveApplicationControlResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration status of the machines group or machine or rule

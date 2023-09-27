@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves Migration Config
@@ -94,6 +95,12 @@ func (o LookupMigrationConfigResultOutput) ToLookupMigrationConfigResultOutput()
 
 func (o LookupMigrationConfigResultOutput) ToLookupMigrationConfigResultOutputWithContext(ctx context.Context) LookupMigrationConfigResultOutput {
 	return o
+}
+
+func (o LookupMigrationConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMigrationConfigResult] {
+	return pulumix.Output[LookupMigrationConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

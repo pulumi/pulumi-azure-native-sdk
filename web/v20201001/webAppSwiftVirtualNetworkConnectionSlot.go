@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Swift Virtual Network Contract. This is used to enable the new Swift way of doing virtual network integration.
@@ -168,6 +169,12 @@ func (i *WebAppSwiftVirtualNetworkConnectionSlot) ToWebAppSwiftVirtualNetworkCon
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppSwiftVirtualNetworkConnectionSlotOutput)
 }
 
+func (i *WebAppSwiftVirtualNetworkConnectionSlot) ToOutput(ctx context.Context) pulumix.Output[*WebAppSwiftVirtualNetworkConnectionSlot] {
+	return pulumix.Output[*WebAppSwiftVirtualNetworkConnectionSlot]{
+		OutputState: i.ToWebAppSwiftVirtualNetworkConnectionSlotOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppSwiftVirtualNetworkConnectionSlotOutput struct{ *pulumi.OutputState }
 
 func (WebAppSwiftVirtualNetworkConnectionSlotOutput) ElementType() reflect.Type {
@@ -180,6 +187,12 @@ func (o WebAppSwiftVirtualNetworkConnectionSlotOutput) ToWebAppSwiftVirtualNetwo
 
 func (o WebAppSwiftVirtualNetworkConnectionSlotOutput) ToWebAppSwiftVirtualNetworkConnectionSlotOutputWithContext(ctx context.Context) WebAppSwiftVirtualNetworkConnectionSlotOutput {
 	return o
+}
+
+func (o WebAppSwiftVirtualNetworkConnectionSlotOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppSwiftVirtualNetworkConnectionSlot] {
+	return pulumix.Output[*WebAppSwiftVirtualNetworkConnectionSlot]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Kind of resource.

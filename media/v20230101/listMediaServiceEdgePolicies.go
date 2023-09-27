@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List all the media edge policies associated with the Media Services account.
@@ -73,6 +74,12 @@ func (o ListMediaServiceEdgePoliciesResultOutput) ToListMediaServiceEdgePolicies
 
 func (o ListMediaServiceEdgePoliciesResultOutput) ToListMediaServiceEdgePoliciesResultOutputWithContext(ctx context.Context) ListMediaServiceEdgePoliciesResultOutput {
 	return o
+}
+
+func (o ListMediaServiceEdgePoliciesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListMediaServiceEdgePoliciesResult] {
+	return pulumix.Output[ListMediaServiceEdgePoliciesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListMediaServiceEdgePoliciesResultOutput) UsageDataCollectionPolicy() EdgeUsageDataCollectionPolicyResponsePtrOutput {

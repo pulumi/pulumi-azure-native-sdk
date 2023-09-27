@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the download URL of a package.
@@ -79,6 +80,12 @@ func (o GetPackageDownloadURLResultOutput) ToGetPackageDownloadURLResultOutput()
 
 func (o GetPackageDownloadURLResultOutput) ToGetPackageDownloadURLResultOutputWithContext(ctx context.Context) GetPackageDownloadURLResultOutput {
 	return o
+}
+
+func (o GetPackageDownloadURLResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPackageDownloadURLResult] {
+	return pulumix.Output[GetPackageDownloadURLResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The download URL.

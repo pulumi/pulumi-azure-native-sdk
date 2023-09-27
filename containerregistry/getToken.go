@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified token.
@@ -93,6 +94,12 @@ func (o LookupTokenResultOutput) ToLookupTokenResultOutput() LookupTokenResultOu
 
 func (o LookupTokenResultOutput) ToLookupTokenResultOutputWithContext(ctx context.Context) LookupTokenResultOutput {
 	return o
+}
+
+func (o LookupTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTokenResult] {
+	return pulumix.Output[LookupTokenResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation date of scope map.

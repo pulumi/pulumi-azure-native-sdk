@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Connector definition for kind 'Customizable'.
@@ -63,6 +64,9 @@ func NewCustomizableConnectorDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:CustomizableConnectorDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:CustomizableConnectorDefinition"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -162,6 +166,12 @@ func (i *CustomizableConnectorDefinition) ToCustomizableConnectorDefinitionOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(CustomizableConnectorDefinitionOutput)
 }
 
+func (i *CustomizableConnectorDefinition) ToOutput(ctx context.Context) pulumix.Output[*CustomizableConnectorDefinition] {
+	return pulumix.Output[*CustomizableConnectorDefinition]{
+		OutputState: i.ToCustomizableConnectorDefinitionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomizableConnectorDefinitionOutput struct{ *pulumi.OutputState }
 
 func (CustomizableConnectorDefinitionOutput) ElementType() reflect.Type {
@@ -174,6 +184,12 @@ func (o CustomizableConnectorDefinitionOutput) ToCustomizableConnectorDefinition
 
 func (o CustomizableConnectorDefinitionOutput) ToCustomizableConnectorDefinitionOutputWithContext(ctx context.Context) CustomizableConnectorDefinitionOutput {
 	return o
+}
+
+func (o CustomizableConnectorDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomizableConnectorDefinition] {
+	return pulumix.Output[*CustomizableConnectorDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The UiConfig for 'Customizable' connector definition kind.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List keys of APM sensitive properties.
@@ -77,6 +78,12 @@ func (o ListApmSecretKeysResultOutput) ToListApmSecretKeysResultOutput() ListApm
 
 func (o ListApmSecretKeysResultOutput) ToListApmSecretKeysResultOutputWithContext(ctx context.Context) ListApmSecretKeysResultOutput {
 	return o
+}
+
+func (o ListApmSecretKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListApmSecretKeysResult] {
+	return pulumix.Output[ListApmSecretKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Collection of the keys for the APM sensitive properties

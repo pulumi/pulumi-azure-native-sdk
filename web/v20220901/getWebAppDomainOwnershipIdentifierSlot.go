@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Get domain ownership identifier for web app.
@@ -88,6 +89,12 @@ func (o LookupWebAppDomainOwnershipIdentifierSlotResultOutput) ToLookupWebAppDom
 
 func (o LookupWebAppDomainOwnershipIdentifierSlotResultOutput) ToLookupWebAppDomainOwnershipIdentifierSlotResultOutputWithContext(ctx context.Context) LookupWebAppDomainOwnershipIdentifierSlotResultOutput {
 	return o
+}
+
+func (o LookupWebAppDomainOwnershipIdentifierSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppDomainOwnershipIdentifierSlotResult] {
+	return pulumix.Output[LookupWebAppDomainOwnershipIdentifierSlotResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id.

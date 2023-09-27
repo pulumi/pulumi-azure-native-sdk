@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Purpose of this test line, e.g. automated or manual testing
@@ -78,6 +79,12 @@ func (o TestLinePurposeOutput) ToTestLinePurposePtrOutputWithContext(ctx context
 	}).(TestLinePurposePtrOutput)
 }
 
+func (o TestLinePurposeOutput) ToOutput(ctx context.Context) pulumix.Output[TestLinePurpose] {
+	return pulumix.Output[TestLinePurpose]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TestLinePurposeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o TestLinePurposePtrOutput) ToTestLinePurposePtrOutput() TestLinePurposePt
 
 func (o TestLinePurposePtrOutput) ToTestLinePurposePtrOutputWithContext(ctx context.Context) TestLinePurposePtrOutput {
 	return o
+}
+
+func (o TestLinePurposePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TestLinePurpose] {
+	return pulumix.Output[*TestLinePurpose]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TestLinePurposePtrOutput) Elem() TestLinePurposeOutput {
@@ -173,6 +186,12 @@ func (in *testLinePurposePtr) ToTestLinePurposePtrOutput() TestLinePurposePtrOut
 
 func (in *testLinePurposePtr) ToTestLinePurposePtrOutputWithContext(ctx context.Context) TestLinePurposePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TestLinePurposePtrOutput)
+}
+
+func (in *testLinePurposePtr) ToOutput(ctx context.Context) pulumix.Output[*TestLinePurpose] {
+	return pulumix.Output[*TestLinePurpose]{
+		OutputState: in.ToTestLinePurposePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

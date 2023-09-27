@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource information, as returned by the resource provider.
@@ -120,6 +121,9 @@ func NewVault(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230401:Vault"),
 		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20230601:Vault"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -216,6 +220,12 @@ func (i *Vault) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VaultOutput)
 }
 
+func (i *Vault) ToOutput(ctx context.Context) pulumix.Output[*Vault] {
+	return pulumix.Output[*Vault]{
+		OutputState: i.ToVaultOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VaultOutput struct{ *pulumi.OutputState }
 
 func (VaultOutput) ElementType() reflect.Type {
@@ -228,6 +238,12 @@ func (o VaultOutput) ToVaultOutput() VaultOutput {
 
 func (o VaultOutput) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
 	return o
+}
+
+func (o VaultOutput) ToOutput(ctx context.Context) pulumix.Output[*Vault] {
+	return pulumix.Output[*Vault]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional ETag.

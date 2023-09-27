@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Linked workspace.
@@ -128,6 +129,12 @@ func (i *LinkedWorkspace) ToLinkedWorkspaceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedWorkspaceOutput)
 }
 
+func (i *LinkedWorkspace) ToOutput(ctx context.Context) pulumix.Output[*LinkedWorkspace] {
+	return pulumix.Output[*LinkedWorkspace]{
+		OutputState: i.ToLinkedWorkspaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LinkedWorkspaceOutput struct{ *pulumi.OutputState }
 
 func (LinkedWorkspaceOutput) ElementType() reflect.Type {
@@ -140,6 +147,12 @@ func (o LinkedWorkspaceOutput) ToLinkedWorkspaceOutput() LinkedWorkspaceOutput {
 
 func (o LinkedWorkspaceOutput) ToLinkedWorkspaceOutputWithContext(ctx context.Context) LinkedWorkspaceOutput {
 	return o
+}
+
+func (o LinkedWorkspaceOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedWorkspace] {
+	return pulumix.Output[*LinkedWorkspace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Friendly name of the linked workspace.

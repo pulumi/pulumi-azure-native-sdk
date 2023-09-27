@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the named value specified by its identifier.
@@ -91,6 +92,12 @@ func (o LookupNamedValueResultOutput) ToLookupNamedValueResultOutput() LookupNam
 
 func (o LookupNamedValueResultOutput) ToLookupNamedValueResultOutputWithContext(ctx context.Context) LookupNamedValueResultOutput {
 	return o
+}
+
+func (o LookupNamedValueResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNamedValueResult] {
+	return pulumix.Output[LookupNamedValueResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore characters.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a workspace manager configuration
@@ -87,6 +88,12 @@ func (o LookupWorkspaceManagerConfigurationResultOutput) ToLookupWorkspaceManage
 
 func (o LookupWorkspaceManagerConfigurationResultOutput) ToLookupWorkspaceManagerConfigurationResultOutputWithContext(ctx context.Context) LookupWorkspaceManagerConfigurationResultOutput {
 	return o
+}
+
+func (o LookupWorkspaceManagerConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceManagerConfigurationResult] {
+	return pulumix.Output[LookupWorkspaceManagerConfigurationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Etag.

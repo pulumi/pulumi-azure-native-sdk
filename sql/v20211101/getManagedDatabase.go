@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a managed database.
@@ -98,6 +99,12 @@ func (o LookupManagedDatabaseResultOutput) ToLookupManagedDatabaseResultOutput()
 
 func (o LookupManagedDatabaseResultOutput) ToLookupManagedDatabaseResultOutputWithContext(ctx context.Context) LookupManagedDatabaseResultOutput {
 	return o
+}
+
+func (o LookupManagedDatabaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedDatabaseResult] {
+	return pulumix.Output[LookupManagedDatabaseResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Collation of the metadata catalog.

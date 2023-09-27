@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an attached NetworkConnection.
@@ -69,6 +70,9 @@ func NewAttachedNetworkByDevCenter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20230401:AttachedNetworkByDevCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20230801preview:AttachedNetworkByDevCenter"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -150,6 +154,12 @@ func (i *AttachedNetworkByDevCenter) ToAttachedNetworkByDevCenterOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedNetworkByDevCenterOutput)
 }
 
+func (i *AttachedNetworkByDevCenter) ToOutput(ctx context.Context) pulumix.Output[*AttachedNetworkByDevCenter] {
+	return pulumix.Output[*AttachedNetworkByDevCenter]{
+		OutputState: i.ToAttachedNetworkByDevCenterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttachedNetworkByDevCenterOutput struct{ *pulumi.OutputState }
 
 func (AttachedNetworkByDevCenterOutput) ElementType() reflect.Type {
@@ -162,6 +172,12 @@ func (o AttachedNetworkByDevCenterOutput) ToAttachedNetworkByDevCenterOutput() A
 
 func (o AttachedNetworkByDevCenterOutput) ToAttachedNetworkByDevCenterOutputWithContext(ctx context.Context) AttachedNetworkByDevCenterOutput {
 	return o
+}
+
+func (o AttachedNetworkByDevCenterOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedNetworkByDevCenter] {
+	return pulumix.Output[*AttachedNetworkByDevCenter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AAD Join type of the network. This is populated based on the referenced Network Connection.

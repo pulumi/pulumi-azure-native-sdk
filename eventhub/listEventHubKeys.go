@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the ACS and SAS connection strings for the Event Hub.
@@ -93,6 +94,12 @@ func (o ListEventHubKeysResultOutput) ToListEventHubKeysResultOutput() ListEvent
 
 func (o ListEventHubKeysResultOutput) ToListEventHubKeysResultOutputWithContext(ctx context.Context) ListEventHubKeysResultOutput {
 	return o
+}
+
+func (o ListEventHubKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListEventHubKeysResult] {
+	return pulumix.Output[ListEventHubKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Primary connection string of the alias if GEO DR is enabled

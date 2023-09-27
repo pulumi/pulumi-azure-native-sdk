@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a string that represents the contents of the RDP file for the virtual machine
@@ -77,6 +78,12 @@ func (o GetVirtualMachineRdpFileContentsResultOutput) ToGetVirtualMachineRdpFile
 
 func (o GetVirtualMachineRdpFileContentsResultOutput) ToGetVirtualMachineRdpFileContentsResultOutputWithContext(ctx context.Context) GetVirtualMachineRdpFileContentsResultOutput {
 	return o
+}
+
+func (o GetVirtualMachineRdpFileContentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVirtualMachineRdpFileContentsResult] {
+	return pulumix.Output[GetVirtualMachineRdpFileContentsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The contents of the .rdp file

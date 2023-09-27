@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An instance of a script executed by a user - custom or AVS
@@ -111,6 +112,12 @@ func (o LookupScriptExecutionResultOutput) ToLookupScriptExecutionResultOutput()
 
 func (o LookupScriptExecutionResultOutput) ToLookupScriptExecutionResultOutputWithContext(ctx context.Context) LookupScriptExecutionResultOutput {
 	return o
+}
+
+func (o LookupScriptExecutionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScriptExecutionResult] {
+	return pulumix.Output[LookupScriptExecutionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Standard error output stream from the powershell execution

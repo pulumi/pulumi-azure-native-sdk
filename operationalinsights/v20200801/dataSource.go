@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Datasources under OMS Workspace.
@@ -147,6 +148,12 @@ func (i *DataSource) ToDataSourceOutputWithContext(ctx context.Context) DataSour
 	return pulumi.ToOutputWithContext(ctx, i).(DataSourceOutput)
 }
 
+func (i *DataSource) ToOutput(ctx context.Context) pulumix.Output[*DataSource] {
+	return pulumix.Output[*DataSource]{
+		OutputState: i.ToDataSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataSourceOutput struct{ *pulumi.OutputState }
 
 func (DataSourceOutput) ElementType() reflect.Type {
@@ -159,6 +166,12 @@ func (o DataSourceOutput) ToDataSourceOutput() DataSourceOutput {
 
 func (o DataSourceOutput) ToDataSourceOutputWithContext(ctx context.Context) DataSourceOutput {
 	return o
+}
+
+func (o DataSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*DataSource] {
+	return pulumix.Output[*DataSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ETag of the data source.

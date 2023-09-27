@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 //	Response for PrivateEndpoint Connection object
@@ -53,6 +54,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:elasticsan/v20221201preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:elasticsan/v20230101:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -138,6 +142,12 @@ func (i *PrivateEndpointConnection) ToPrivateEndpointConnectionOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionOutput)
 }
 
+func (i *PrivateEndpointConnection) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnection] {
+	return pulumix.Output[*PrivateEndpointConnection]{
+		OutputState: i.ToPrivateEndpointConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateEndpointConnectionOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionOutput) ElementType() reflect.Type {
@@ -150,6 +160,12 @@ func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() Pri
 
 func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnection] {
+	return pulumix.Output[*PrivateEndpointConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of resources private endpoint is mapped

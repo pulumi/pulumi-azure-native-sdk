@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i ManagementGroupLogSettingsArgs) ToManagementGroupLogSettingsOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementGroupLogSettingsOutput)
 }
 
+func (i ManagementGroupLogSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ManagementGroupLogSettings] {
+	return pulumix.Output[ManagementGroupLogSettings]{
+		OutputState: i.ToManagementGroupLogSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ManagementGroupLogSettingsArrayInput is an input type that accepts ManagementGroupLogSettingsArray and ManagementGroupLogSettingsArrayOutput values.
 // You can construct a concrete instance of `ManagementGroupLogSettingsArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i ManagementGroupLogSettingsArray) ToManagementGroupLogSettingsArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementGroupLogSettingsArrayOutput)
 }
 
+func (i ManagementGroupLogSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagementGroupLogSettings] {
+	return pulumix.Output[[]ManagementGroupLogSettings]{
+		OutputState: i.ToManagementGroupLogSettingsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Part of Management Group diagnostic setting. Specifies the settings for a particular log.
 type ManagementGroupLogSettingsOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o ManagementGroupLogSettingsOutput) ToManagementGroupLogSettingsOutput() M
 
 func (o ManagementGroupLogSettingsOutput) ToManagementGroupLogSettingsOutputWithContext(ctx context.Context) ManagementGroupLogSettingsOutput {
 	return o
+}
+
+func (o ManagementGroupLogSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementGroupLogSettings] {
+	return pulumix.Output[ManagementGroupLogSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of a Management Group Diagnostic Log category for a resource type this setting is applied to.
@@ -114,6 +133,12 @@ func (o ManagementGroupLogSettingsArrayOutput) ToManagementGroupLogSettingsArray
 
 func (o ManagementGroupLogSettingsArrayOutput) ToManagementGroupLogSettingsArrayOutputWithContext(ctx context.Context) ManagementGroupLogSettingsArrayOutput {
 	return o
+}
+
+func (o ManagementGroupLogSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementGroupLogSettings] {
+	return pulumix.Output[[]ManagementGroupLogSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagementGroupLogSettingsArrayOutput) Index(i pulumi.IntInput) ManagementGroupLogSettingsOutput {
@@ -145,6 +170,12 @@ func (o ManagementGroupLogSettingsResponseOutput) ToManagementGroupLogSettingsRe
 	return o
 }
 
+func (o ManagementGroupLogSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementGroupLogSettingsResponse] {
+	return pulumix.Output[ManagementGroupLogSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of a Management Group Diagnostic Log category for a resource type this setting is applied to.
 func (o ManagementGroupLogSettingsResponseOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagementGroupLogSettingsResponse) string { return v.Category }).(pulumi.StringOutput)
@@ -167,6 +198,12 @@ func (o ManagementGroupLogSettingsResponseArrayOutput) ToManagementGroupLogSetti
 
 func (o ManagementGroupLogSettingsResponseArrayOutput) ToManagementGroupLogSettingsResponseArrayOutputWithContext(ctx context.Context) ManagementGroupLogSettingsResponseArrayOutput {
 	return o
+}
+
+func (o ManagementGroupLogSettingsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementGroupLogSettingsResponse] {
+	return pulumix.Output[[]ManagementGroupLogSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagementGroupLogSettingsResponseArrayOutput) Index(i pulumi.IntInput) ManagementGroupLogSettingsResponseOutput {

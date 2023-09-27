@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the gateway settings for the specified cluster.
@@ -77,6 +78,12 @@ func (o GetClusterGatewaySettingsResultOutput) ToGetClusterGatewaySettingsResult
 
 func (o GetClusterGatewaySettingsResultOutput) ToGetClusterGatewaySettingsResultOutputWithContext(ctx context.Context) GetClusterGatewaySettingsResultOutput {
 	return o
+}
+
+func (o GetClusterGatewaySettingsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetClusterGatewaySettingsResult] {
+	return pulumix.Output[GetClusterGatewaySettingsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates whether or not the gateway settings based authorization is enabled.

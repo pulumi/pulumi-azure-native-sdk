@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the integration account callback URL.
@@ -74,6 +75,12 @@ func (o ListIntegrationAccountCallbackUrlResultOutput) ToListIntegrationAccountC
 
 func (o ListIntegrationAccountCallbackUrlResultOutput) ToListIntegrationAccountCallbackUrlResultOutputWithContext(ctx context.Context) ListIntegrationAccountCallbackUrlResultOutput {
 	return o
+}
+
+func (o ListIntegrationAccountCallbackUrlResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListIntegrationAccountCallbackUrlResult] {
+	return pulumix.Output[ListIntegrationAccountCallbackUrlResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL value.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents settings of an environment, from which environment instances would be created
@@ -181,6 +182,12 @@ func (i *EnvironmentSetting) ToEnvironmentSettingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentSettingOutput)
 }
 
+func (i *EnvironmentSetting) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentSetting] {
+	return pulumix.Output[*EnvironmentSetting]{
+		OutputState: i.ToEnvironmentSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnvironmentSettingOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentSettingOutput) ElementType() reflect.Type {
@@ -193,6 +200,12 @@ func (o EnvironmentSettingOutput) ToEnvironmentSettingOutput() EnvironmentSettin
 
 func (o EnvironmentSettingOutput) ToEnvironmentSettingOutputWithContext(ctx context.Context) EnvironmentSettingOutput {
 	return o
+}
+
+func (o EnvironmentSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentSetting] {
+	return pulumix.Output[*EnvironmentSetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the user's progress in configuring their environment setting

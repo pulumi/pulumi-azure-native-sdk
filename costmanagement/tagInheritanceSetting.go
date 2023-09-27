@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Tag Inheritance Setting definition.
@@ -140,6 +141,12 @@ func (i *TagInheritanceSetting) ToTagInheritanceSettingOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(TagInheritanceSettingOutput)
 }
 
+func (i *TagInheritanceSetting) ToOutput(ctx context.Context) pulumix.Output[*TagInheritanceSetting] {
+	return pulumix.Output[*TagInheritanceSetting]{
+		OutputState: i.ToTagInheritanceSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagInheritanceSettingOutput struct{ *pulumi.OutputState }
 
 func (TagInheritanceSettingOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o TagInheritanceSettingOutput) ToTagInheritanceSettingOutput() TagInherita
 
 func (o TagInheritanceSettingOutput) ToTagInheritanceSettingOutputWithContext(ctx context.Context) TagInheritanceSettingOutput {
 	return o
+}
+
+func (o TagInheritanceSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*TagInheritanceSetting] {
+	return pulumix.Output[*TagInheritanceSetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.

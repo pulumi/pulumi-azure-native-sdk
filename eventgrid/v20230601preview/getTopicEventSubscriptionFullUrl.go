@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the full endpoint URL for an event subscription for topic.
@@ -76,6 +77,12 @@ func (o GetTopicEventSubscriptionFullUrlResultOutput) ToGetTopicEventSubscriptio
 
 func (o GetTopicEventSubscriptionFullUrlResultOutput) ToGetTopicEventSubscriptionFullUrlResultOutputWithContext(ctx context.Context) GetTopicEventSubscriptionFullUrlResultOutput {
 	return o
+}
+
+func (o GetTopicEventSubscriptionFullUrlResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTopicEventSubscriptionFullUrlResult] {
+	return pulumix.Output[GetTopicEventSubscriptionFullUrlResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL that represents the endpoint of the destination of an event subscription.

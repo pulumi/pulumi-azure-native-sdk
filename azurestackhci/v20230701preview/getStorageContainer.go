@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a storage container
@@ -90,6 +91,12 @@ func (o LookupStorageContainerResultOutput) ToLookupStorageContainerResultOutput
 
 func (o LookupStorageContainerResultOutput) ToLookupStorageContainerResultOutputWithContext(ctx context.Context) LookupStorageContainerResultOutput {
 	return o
+}
+
+func (o LookupStorageContainerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStorageContainerResult] {
+	return pulumix.Output[LookupStorageContainerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The extendedLocation of the resource.

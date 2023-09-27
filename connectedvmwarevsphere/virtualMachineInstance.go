@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Define the virtualMachineInstance.
@@ -62,6 +63,9 @@ func NewVirtualMachineInstance(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20230301preview:VirtualMachineInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231001:VirtualMachineInstance"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -163,6 +167,12 @@ func (i *VirtualMachineInstance) ToVirtualMachineInstanceOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineInstanceOutput)
 }
 
+func (i *VirtualMachineInstance) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstance] {
+	return pulumix.Output[*VirtualMachineInstance]{
+		OutputState: i.ToVirtualMachineInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualMachineInstanceOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineInstanceOutput) ElementType() reflect.Type {
@@ -175,6 +185,12 @@ func (o VirtualMachineInstanceOutput) ToVirtualMachineInstanceOutput() VirtualMa
 
 func (o VirtualMachineInstanceOutput) ToVirtualMachineInstanceOutputWithContext(ctx context.Context) VirtualMachineInstanceOutput {
 	return o
+}
+
+func (o VirtualMachineInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineInstance] {
+	return pulumix.Output[*VirtualMachineInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the extended location.

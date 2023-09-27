@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents threat intelligence data connector.
@@ -132,6 +133,9 @@ func NewTIDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:TIDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:TIDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -226,6 +230,12 @@ func (i *TIDataConnector) ToTIDataConnectorOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TIDataConnectorOutput)
 }
 
+func (i *TIDataConnector) ToOutput(ctx context.Context) pulumix.Output[*TIDataConnector] {
+	return pulumix.Output[*TIDataConnector]{
+		OutputState: i.ToTIDataConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TIDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (TIDataConnectorOutput) ElementType() reflect.Type {
@@ -238,6 +248,12 @@ func (o TIDataConnectorOutput) ToTIDataConnectorOutput() TIDataConnectorOutput {
 
 func (o TIDataConnectorOutput) ToTIDataConnectorOutputWithContext(ctx context.Context) TIDataConnectorOutput {
 	return o
+}
+
+func (o TIDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*TIDataConnector] {
+	return pulumix.Output[*TIDataConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available data types for the connector.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified vendor.
@@ -78,6 +79,12 @@ func (o LookupVendorResultOutput) ToLookupVendorResultOutput() LookupVendorResul
 
 func (o LookupVendorResultOutput) ToLookupVendorResultOutputWithContext(ctx context.Context) LookupVendorResultOutput {
 	return o
+}
+
+func (o LookupVendorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVendorResult] {
+	return pulumix.Output[LookupVendorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

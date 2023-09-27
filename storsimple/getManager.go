@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the properties of the specified manager name.
@@ -89,6 +90,12 @@ func (o LookupManagerResultOutput) ToLookupManagerResultOutput() LookupManagerRe
 
 func (o LookupManagerResultOutput) ToLookupManagerResultOutputWithContext(ctx context.Context) LookupManagerResultOutput {
 	return o
+}
+
+func (o LookupManagerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagerResult] {
+	return pulumix.Output[LookupManagerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents the type of StorSimple Manager.

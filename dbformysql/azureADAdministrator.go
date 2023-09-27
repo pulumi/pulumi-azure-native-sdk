@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Administrator.
@@ -54,6 +55,9 @@ func NewAzureADAdministrator(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20220101:AzureADAdministrator"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20230601preview:AzureADAdministrator"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -151,6 +155,12 @@ func (i *AzureADAdministrator) ToAzureADAdministratorOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AzureADAdministratorOutput)
 }
 
+func (i *AzureADAdministrator) ToOutput(ctx context.Context) pulumix.Output[*AzureADAdministrator] {
+	return pulumix.Output[*AzureADAdministrator]{
+		OutputState: i.ToAzureADAdministratorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AzureADAdministratorOutput struct{ *pulumi.OutputState }
 
 func (AzureADAdministratorOutput) ElementType() reflect.Type {
@@ -163,6 +173,12 @@ func (o AzureADAdministratorOutput) ToAzureADAdministratorOutput() AzureADAdmini
 
 func (o AzureADAdministratorOutput) ToAzureADAdministratorOutputWithContext(ctx context.Context) AzureADAdministratorOutput {
 	return o
+}
+
+func (o AzureADAdministratorOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureADAdministrator] {
+	return pulumix.Output[*AzureADAdministrator]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Type of the sever administrator.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an authorization rule for a queue by rule name.
@@ -91,6 +92,12 @@ func (o LookupQueueAuthorizationRuleResultOutput) ToLookupQueueAuthorizationRule
 
 func (o LookupQueueAuthorizationRuleResultOutput) ToLookupQueueAuthorizationRuleResultOutputWithContext(ctx context.Context) LookupQueueAuthorizationRuleResultOutput {
 	return o
+}
+
+func (o LookupQueueAuthorizationRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupQueueAuthorizationRuleResult] {
+	return pulumix.Output[LookupQueueAuthorizationRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

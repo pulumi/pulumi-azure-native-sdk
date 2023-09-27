@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // VirtualWAN Resource.
@@ -236,6 +237,12 @@ func (i *VirtualWAN) ToVirtualWANOutputWithContext(ctx context.Context) VirtualW
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualWANOutput)
 }
 
+func (i *VirtualWAN) ToOutput(ctx context.Context) pulumix.Output[*VirtualWAN] {
+	return pulumix.Output[*VirtualWAN]{
+		OutputState: i.ToVirtualWANOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualWANOutput struct{ *pulumi.OutputState }
 
 func (VirtualWANOutput) ElementType() reflect.Type {
@@ -248,6 +255,12 @@ func (o VirtualWANOutput) ToVirtualWANOutput() VirtualWANOutput {
 
 func (o VirtualWANOutput) ToVirtualWANOutputWithContext(ctx context.Context) VirtualWANOutput {
 	return o
+}
+
+func (o VirtualWANOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualWAN] {
+	return pulumix.Output[*VirtualWAN]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Vpn encryption to be disabled or not.

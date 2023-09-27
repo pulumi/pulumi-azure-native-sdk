@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The workspace manager member
@@ -23,7 +24,7 @@ type WorkspaceManagerMember struct {
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
-	TargetWorkspaceId pulumi.StringOutput `pulumi:"targetWorkspaceId"`
+	TargetWorkspaceResourceId pulumi.StringOutput `pulumi:"targetWorkspaceResourceId"`
 	// Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
 	TargetWorkspaceTenantId pulumi.StringOutput `pulumi:"targetWorkspaceTenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -40,8 +41,8 @@ func NewWorkspaceManagerMember(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.TargetWorkspaceId == nil {
-		return nil, errors.New("invalid value for required argument 'TargetWorkspaceId'")
+	if args.TargetWorkspaceResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetWorkspaceResourceId'")
 	}
 	if args.TargetWorkspaceTenantId == nil {
 		return nil, errors.New("invalid value for required argument 'TargetWorkspaceTenantId'")
@@ -64,6 +65,9 @@ func NewWorkspaceManagerMember(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:WorkspaceManagerMember"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:WorkspaceManagerMember"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -103,7 +107,7 @@ type workspaceManagerMemberArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
-	TargetWorkspaceId string `pulumi:"targetWorkspaceId"`
+	TargetWorkspaceResourceId string `pulumi:"targetWorkspaceResourceId"`
 	// Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
 	TargetWorkspaceTenantId string `pulumi:"targetWorkspaceTenantId"`
 	// The name of the workspace manager member
@@ -117,7 +121,7 @@ type WorkspaceManagerMemberArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
-	TargetWorkspaceId pulumi.StringInput
+	TargetWorkspaceResourceId pulumi.StringInput
 	// Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
 	TargetWorkspaceTenantId pulumi.StringInput
 	// The name of the workspace manager member
@@ -149,6 +153,12 @@ func (i *WorkspaceManagerMember) ToWorkspaceManagerMemberOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceManagerMemberOutput)
 }
 
+func (i *WorkspaceManagerMember) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceManagerMember] {
+	return pulumix.Output[*WorkspaceManagerMember]{
+		OutputState: i.ToWorkspaceManagerMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceManagerMemberOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceManagerMemberOutput) ElementType() reflect.Type {
@@ -161,6 +171,12 @@ func (o WorkspaceManagerMemberOutput) ToWorkspaceManagerMemberOutput() Workspace
 
 func (o WorkspaceManagerMemberOutput) ToWorkspaceManagerMemberOutputWithContext(ctx context.Context) WorkspaceManagerMemberOutput {
 	return o
+}
+
+func (o WorkspaceManagerMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceManagerMember] {
+	return pulumix.Output[*WorkspaceManagerMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Etag.
@@ -179,8 +195,8 @@ func (o WorkspaceManagerMemberOutput) SystemData() SystemDataResponseOutput {
 }
 
 // Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
-func (o WorkspaceManagerMemberOutput) TargetWorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkspaceManagerMember) pulumi.StringOutput { return v.TargetWorkspaceId }).(pulumi.StringOutput)
+func (o WorkspaceManagerMemberOutput) TargetWorkspaceResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceManagerMember) pulumi.StringOutput { return v.TargetWorkspaceResourceId }).(pulumi.StringOutput)
 }
 
 // Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager

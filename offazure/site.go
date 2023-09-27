@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Site REST Resource.
@@ -142,6 +143,12 @@ func (i *Site) ToSiteOutputWithContext(ctx context.Context) SiteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SiteOutput)
 }
 
+func (i *Site) ToOutput(ctx context.Context) pulumix.Output[*Site] {
+	return pulumix.Output[*Site]{
+		OutputState: i.ToSiteOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SiteOutput struct{ *pulumi.OutputState }
 
 func (SiteOutput) ElementType() reflect.Type {
@@ -154,6 +161,12 @@ func (o SiteOutput) ToSiteOutput() SiteOutput {
 
 func (o SiteOutput) ToSiteOutputWithContext(ctx context.Context) SiteOutput {
 	return o
+}
+
+func (o SiteOutput) ToOutput(ctx context.Context) pulumix.Output[*Site] {
+	return pulumix.Output[*Site]{
+		OutputState: o.OutputState,
+	}
 }
 
 // eTag for concurrency control.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -564,6 +565,12 @@ func (o HealthErrorModelResponseOutput) ToHealthErrorModelResponseOutputWithCont
 	return o
 }
 
+func (o HealthErrorModelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HealthErrorModelResponse] {
+	return pulumix.Output[HealthErrorModelResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the list of affected resource correlation Ids. This can be used to
 // uniquely identify the count of items affected by a specific category and severity
 // as well as count of item affected by an specific issue.
@@ -653,6 +660,12 @@ func (o HealthErrorModelResponseArrayOutput) ToHealthErrorModelResponseArrayOutp
 
 func (o HealthErrorModelResponseArrayOutput) ToHealthErrorModelResponseArrayOutputWithContext(ctx context.Context) HealthErrorModelResponseArrayOutput {
 	return o
+}
+
+func (o HealthErrorModelResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HealthErrorModelResponse] {
+	return pulumix.Output[[]HealthErrorModelResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HealthErrorModelResponseArrayOutput) Index(i pulumi.IntInput) HealthErrorModelResponseOutput {
@@ -1012,6 +1025,12 @@ func (i IdentityModelArgs) ToIdentityModelOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityModelOutput)
 }
 
+func (i IdentityModelArgs) ToOutput(ctx context.Context) pulumix.Output[IdentityModel] {
+	return pulumix.Output[IdentityModel]{
+		OutputState: i.ToIdentityModelOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IdentityModelArgs) ToIdentityModelPtrOutput() IdentityModelPtrOutput {
 	return i.ToIdentityModelPtrOutputWithContext(context.Background())
 }
@@ -1053,6 +1072,12 @@ func (i *identityModelPtrType) ToIdentityModelPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityModelPtrOutput)
 }
 
+func (i *identityModelPtrType) ToOutput(ctx context.Context) pulumix.Output[*IdentityModel] {
+	return pulumix.Output[*IdentityModel]{
+		OutputState: i.ToIdentityModelPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity model.
 type IdentityModelOutput struct{ *pulumi.OutputState }
 
@@ -1076,6 +1101,12 @@ func (o IdentityModelOutput) ToIdentityModelPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityModel) *IdentityModel {
 		return &v
 	}).(IdentityModelPtrOutput)
+}
+
+func (o IdentityModelOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityModel] {
+	return pulumix.Output[IdentityModel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the authority of the SPN with which MigrateAgent communicates to service.
@@ -1116,6 +1147,12 @@ func (o IdentityModelPtrOutput) ToIdentityModelPtrOutput() IdentityModelPtrOutpu
 
 func (o IdentityModelPtrOutput) ToIdentityModelPtrOutputWithContext(ctx context.Context) IdentityModelPtrOutput {
 	return o
+}
+
+func (o IdentityModelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityModel] {
+	return pulumix.Output[*IdentityModel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityModelPtrOutput) Elem() IdentityModelOutput {
@@ -1209,6 +1246,12 @@ func (o IdentityModelResponseOutput) ToIdentityModelResponseOutputWithContext(ct
 	return o
 }
 
+func (o IdentityModelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityModelResponse] {
+	return pulumix.Output[IdentityModelResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the authority of the SPN with which MigrateAgent communicates to service.
 func (o IdentityModelResponseOutput) AadAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentityModelResponse) *string { return v.AadAuthority }).(pulumi.StringPtrOutput)
@@ -1247,6 +1290,12 @@ func (o IdentityModelResponsePtrOutput) ToIdentityModelResponsePtrOutput() Ident
 
 func (o IdentityModelResponsePtrOutput) ToIdentityModelResponsePtrOutputWithContext(ctx context.Context) IdentityModelResponsePtrOutput {
 	return o
+}
+
+func (o IdentityModelResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityModelResponse] {
+	return pulumix.Output[*IdentityModelResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityModelResponsePtrOutput) Elem() IdentityModelResponseOutput {
@@ -1353,6 +1402,12 @@ func (o InnerHealthErrorModelResponseOutput) ToInnerHealthErrorModelResponseOutp
 	return o
 }
 
+func (o InnerHealthErrorModelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InnerHealthErrorModelResponse] {
+	return pulumix.Output[InnerHealthErrorModelResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the error category.
 func (o InnerHealthErrorModelResponseOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v InnerHealthErrorModelResponse) string { return v.Category }).(pulumi.StringOutput)
@@ -1425,6 +1480,12 @@ func (o InnerHealthErrorModelResponseArrayOutput) ToInnerHealthErrorModelRespons
 
 func (o InnerHealthErrorModelResponseArrayOutput) ToInnerHealthErrorModelResponseArrayOutputWithContext(ctx context.Context) InnerHealthErrorModelResponseArrayOutput {
 	return o
+}
+
+func (o InnerHealthErrorModelResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InnerHealthErrorModelResponse] {
+	return pulumix.Output[[]InnerHealthErrorModelResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InnerHealthErrorModelResponseArrayOutput) Index(i pulumi.IntInput) InnerHealthErrorModelResponseOutput {
@@ -1517,6 +1578,12 @@ func (i MigrateAgentModelPropertiesArgs) ToMigrateAgentModelPropertiesOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(MigrateAgentModelPropertiesOutput)
 }
 
+func (i MigrateAgentModelPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MigrateAgentModelProperties] {
+	return pulumix.Output[MigrateAgentModelProperties]{
+		OutputState: i.ToMigrateAgentModelPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MigrateAgentModelPropertiesArgs) ToMigrateAgentModelPropertiesPtrOutput() MigrateAgentModelPropertiesPtrOutput {
 	return i.ToMigrateAgentModelPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1558,6 +1625,12 @@ func (i *migrateAgentModelPropertiesPtrType) ToMigrateAgentModelPropertiesPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(MigrateAgentModelPropertiesPtrOutput)
 }
 
+func (i *migrateAgentModelPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MigrateAgentModelProperties] {
+	return pulumix.Output[*MigrateAgentModelProperties]{
+		OutputState: i.ToMigrateAgentModelPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MigrateAgent model properties.
 type MigrateAgentModelPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1581,6 +1654,12 @@ func (o MigrateAgentModelPropertiesOutput) ToMigrateAgentModelPropertiesPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrateAgentModelProperties) *MigrateAgentModelProperties {
 		return &v
 	}).(MigrateAgentModelPropertiesPtrOutput)
+}
+
+func (o MigrateAgentModelPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MigrateAgentModelProperties] {
+	return pulumix.Output[MigrateAgentModelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identity model.
@@ -1617,6 +1696,12 @@ func (o MigrateAgentModelPropertiesPtrOutput) ToMigrateAgentModelPropertiesPtrOu
 
 func (o MigrateAgentModelPropertiesPtrOutput) ToMigrateAgentModelPropertiesPtrOutputWithContext(ctx context.Context) MigrateAgentModelPropertiesPtrOutput {
 	return o
+}
+
+func (o MigrateAgentModelPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrateAgentModelProperties] {
+	return pulumix.Output[*MigrateAgentModelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MigrateAgentModelPropertiesPtrOutput) Elem() MigrateAgentModelPropertiesOutput {
@@ -1708,6 +1793,12 @@ func (o MigrateAgentModelPropertiesResponseOutput) ToMigrateAgentModelProperties
 	return o
 }
 
+func (o MigrateAgentModelPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MigrateAgentModelPropertiesResponse] {
+	return pulumix.Output[MigrateAgentModelPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Identity model.
 func (o MigrateAgentModelPropertiesResponseOutput) AuthenticationIdentity() IdentityModelResponsePtrOutput {
 	return o.ApplyT(func(v MigrateAgentModelPropertiesResponse) *IdentityModelResponse { return v.AuthenticationIdentity }).(IdentityModelResponsePtrOutput)
@@ -1791,6 +1882,12 @@ func (o MigrateAgentModelResponseSystemDataOutput) ToMigrateAgentModelResponseSy
 	return o
 }
 
+func (o MigrateAgentModelResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[MigrateAgentModelResponseSystemData] {
+	return pulumix.Output[MigrateAgentModelResponseSystemData]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the timestamp of resource creation (UTC).
 func (o MigrateAgentModelResponseSystemDataOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MigrateAgentModelResponseSystemData) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -1866,6 +1963,12 @@ func (i MigrationConfigurationArgs) ToMigrationConfigurationOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationConfigurationOutput)
 }
 
+func (i MigrationConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[MigrationConfiguration] {
+	return pulumix.Output[MigrationConfiguration]{
+		OutputState: i.ToMigrationConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MigrationConfigurationArgs) ToMigrationConfigurationPtrOutput() MigrationConfigurationPtrOutput {
 	return i.ToMigrationConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1907,6 +2010,12 @@ func (i *migrationConfigurationPtrType) ToMigrationConfigurationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationConfigurationPtrOutput)
 }
 
+func (i *migrationConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*MigrationConfiguration] {
+	return pulumix.Output[*MigrationConfiguration]{
+		OutputState: i.ToMigrationConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MigrationConfiguration properties.
 type MigrationConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -1930,6 +2039,12 @@ func (o MigrationConfigurationOutput) ToMigrationConfigurationPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationConfiguration) *MigrationConfiguration {
 		return &v
 	}).(MigrationConfigurationPtrOutput)
+}
+
+func (o MigrationConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[MigrationConfiguration] {
+	return pulumix.Output[MigrationConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the key vault resource Id.
@@ -1959,6 +2074,12 @@ func (o MigrationConfigurationPtrOutput) ToMigrationConfigurationPtrOutput() Mig
 
 func (o MigrationConfigurationPtrOutput) ToMigrationConfigurationPtrOutputWithContext(ctx context.Context) MigrationConfigurationPtrOutput {
 	return o
+}
+
+func (o MigrationConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationConfiguration] {
+	return pulumix.Output[*MigrationConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MigrationConfigurationPtrOutput) Elem() MigrationConfigurationOutput {
@@ -2026,6 +2147,12 @@ func (o MigrationConfigurationResponseOutput) ToMigrationConfigurationResponseOu
 	return o
 }
 
+func (o MigrationConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MigrationConfigurationResponse] {
+	return pulumix.Output[MigrationConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the key vault resource Id.
 func (o MigrationConfigurationResponseOutput) KeyVaultResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MigrationConfigurationResponse) *string { return v.KeyVaultResourceId }).(pulumi.StringPtrOutput)
@@ -2053,6 +2180,12 @@ func (o MigrationConfigurationResponsePtrOutput) ToMigrationConfigurationRespons
 
 func (o MigrationConfigurationResponsePtrOutput) ToMigrationConfigurationResponsePtrOutputWithContext(ctx context.Context) MigrationConfigurationResponsePtrOutput {
 	return o
+}
+
+func (o MigrationConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationConfigurationResponse] {
+	return pulumix.Output[*MigrationConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MigrationConfigurationResponsePtrOutput) Elem() MigrationConfigurationResponseOutput {
@@ -2130,6 +2263,12 @@ func (i ModernizeProjectModelPropertiesArgs) ToModernizeProjectModelPropertiesOu
 	return pulumi.ToOutputWithContext(ctx, i).(ModernizeProjectModelPropertiesOutput)
 }
 
+func (i ModernizeProjectModelPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ModernizeProjectModelProperties] {
+	return pulumix.Output[ModernizeProjectModelProperties]{
+		OutputState: i.ToModernizeProjectModelPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ModernizeProjectModelPropertiesArgs) ToModernizeProjectModelPropertiesPtrOutput() ModernizeProjectModelPropertiesPtrOutput {
 	return i.ToModernizeProjectModelPropertiesPtrOutputWithContext(context.Background())
 }
@@ -2171,6 +2310,12 @@ func (i *modernizeProjectModelPropertiesPtrType) ToModernizeProjectModelProperti
 	return pulumi.ToOutputWithContext(ctx, i).(ModernizeProjectModelPropertiesPtrOutput)
 }
 
+func (i *modernizeProjectModelPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ModernizeProjectModelProperties] {
+	return pulumix.Output[*ModernizeProjectModelProperties]{
+		OutputState: i.ToModernizeProjectModelPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ModernizeProject properties.
 type ModernizeProjectModelPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2196,6 +2341,12 @@ func (o ModernizeProjectModelPropertiesOutput) ToModernizeProjectModelProperties
 	}).(ModernizeProjectModelPropertiesPtrOutput)
 }
 
+func (o ModernizeProjectModelPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ModernizeProjectModelProperties] {
+	return pulumix.Output[ModernizeProjectModelProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // MigrationConfiguration properties.
 func (o ModernizeProjectModelPropertiesOutput) MigrationConfiguration() MigrationConfigurationPtrOutput {
 	return o.ApplyT(func(v ModernizeProjectModelProperties) *MigrationConfiguration { return v.MigrationConfiguration }).(MigrationConfigurationPtrOutput)
@@ -2213,6 +2364,12 @@ func (o ModernizeProjectModelPropertiesPtrOutput) ToModernizeProjectModelPropert
 
 func (o ModernizeProjectModelPropertiesPtrOutput) ToModernizeProjectModelPropertiesPtrOutputWithContext(ctx context.Context) ModernizeProjectModelPropertiesPtrOutput {
 	return o
+}
+
+func (o ModernizeProjectModelPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ModernizeProjectModelProperties] {
+	return pulumix.Output[*ModernizeProjectModelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ModernizeProjectModelPropertiesPtrOutput) Elem() ModernizeProjectModelPropertiesOutput {
@@ -2260,6 +2417,12 @@ func (o ModernizeProjectModelPropertiesResponseOutput) ToModernizeProjectModelPr
 
 func (o ModernizeProjectModelPropertiesResponseOutput) ToModernizeProjectModelPropertiesResponseOutputWithContext(ctx context.Context) ModernizeProjectModelPropertiesResponseOutput {
 	return o
+}
+
+func (o ModernizeProjectModelPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ModernizeProjectModelPropertiesResponse] {
+	return pulumix.Output[ModernizeProjectModelPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // MigrationConfiguration properties.
@@ -2313,6 +2476,12 @@ func (o ModernizeProjectModelResponseSystemDataOutput) ToModernizeProjectModelRe
 
 func (o ModernizeProjectModelResponseSystemDataOutput) ToModernizeProjectModelResponseSystemDataOutputWithContext(ctx context.Context) ModernizeProjectModelResponseSystemDataOutput {
 	return o
+}
+
+func (o ModernizeProjectModelResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[ModernizeProjectModelResponseSystemData] {
+	return pulumix.Output[ModernizeProjectModelResponseSystemData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the timestamp of resource creation (UTC).
@@ -2414,6 +2583,12 @@ func (i ResourceIdentityArgs) ToResourceIdentityOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityOutput)
 }
 
+func (i ResourceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentity] {
+	return pulumix.Output[ResourceIdentity]{
+		OutputState: i.ToResourceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceIdentityArgs) ToResourceIdentityPtrOutput() ResourceIdentityPtrOutput {
 	return i.ToResourceIdentityPtrOutputWithContext(context.Background())
 }
@@ -2455,6 +2630,12 @@ func (i *resourceIdentityPtrType) ToResourceIdentityPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityPtrOutput)
 }
 
+func (i *resourceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentity] {
+	return pulumix.Output[*ResourceIdentity]{
+		OutputState: i.ToResourceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceIdentityOutput struct{ *pulumi.OutputState }
 
 func (ResourceIdentityOutput) ElementType() reflect.Type {
@@ -2477,6 +2658,12 @@ func (o ResourceIdentityOutput) ToResourceIdentityPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceIdentity) *ResourceIdentity {
 		return &v
 	}).(ResourceIdentityPtrOutput)
+}
+
+func (o ResourceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentity] {
+	return pulumix.Output[ResourceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityOutput) PrincipalId() pulumi.StringPtrOutput {
@@ -2507,6 +2694,12 @@ func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutput() ResourceIdentit
 
 func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutputWithContext(ctx context.Context) ResourceIdentityPtrOutput {
 	return o
+}
+
+func (o ResourceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentity] {
+	return pulumix.Output[*ResourceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityPtrOutput) Elem() ResourceIdentityOutput {
@@ -2576,6 +2769,12 @@ func (o ResourceIdentityResponseOutput) ToResourceIdentityResponseOutputWithCont
 	return o
 }
 
+func (o ResourceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityResponse] {
+	return pulumix.Output[ResourceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityResponseOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceIdentityResponse) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
 }
@@ -2606,6 +2805,12 @@ func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutput()
 
 func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutputWithContext(ctx context.Context) ResourceIdentityResponsePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityResponse] {
+	return pulumix.Output[*ResourceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityResponsePtrOutput) Elem() ResourceIdentityResponseOutput {
@@ -2770,6 +2975,12 @@ func (i UserAssignedIdentityArgs) ToUserAssignedIdentityOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityOutput)
 }
 
+func (i UserAssignedIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentity] {
+	return pulumix.Output[UserAssignedIdentity]{
+		OutputState: i.ToUserAssignedIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UserAssignedIdentityMapInput is an input type that accepts UserAssignedIdentityMap and UserAssignedIdentityMapOutput values.
 // You can construct a concrete instance of `UserAssignedIdentityMapInput` via:
 //
@@ -2795,6 +3006,12 @@ func (i UserAssignedIdentityMap) ToUserAssignedIdentityMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityMapOutput)
 }
 
+func (i UserAssignedIdentityMap) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentity] {
+	return pulumix.Output[map[string]UserAssignedIdentity]{
+		OutputState: i.ToUserAssignedIdentityMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UserAssignedIdentityOutput struct{ *pulumi.OutputState }
 
 func (UserAssignedIdentityOutput) ElementType() reflect.Type {
@@ -2807,6 +3024,12 @@ func (o UserAssignedIdentityOutput) ToUserAssignedIdentityOutput() UserAssignedI
 
 func (o UserAssignedIdentityOutput) ToUserAssignedIdentityOutputWithContext(ctx context.Context) UserAssignedIdentityOutput {
 	return o
+}
+
+func (o UserAssignedIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentity] {
+	return pulumix.Output[UserAssignedIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAssignedIdentityOutput) ClientId() pulumi.StringPtrOutput {
@@ -2829,6 +3052,12 @@ func (o UserAssignedIdentityMapOutput) ToUserAssignedIdentityMapOutput() UserAss
 
 func (o UserAssignedIdentityMapOutput) ToUserAssignedIdentityMapOutputWithContext(ctx context.Context) UserAssignedIdentityMapOutput {
 	return o
+}
+
+func (o UserAssignedIdentityMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentity] {
+	return pulumix.Output[map[string]UserAssignedIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAssignedIdentityMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityOutput {
@@ -2856,6 +3085,12 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
+func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
+	return pulumix.Output[UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
@@ -2876,6 +3111,12 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
+	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
@@ -2929,6 +3170,12 @@ func (i VMwareMigrateAgentModelCustomPropertiesArgs) ToVMwareMigrateAgentModelCu
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareMigrateAgentModelCustomPropertiesOutput)
 }
 
+func (i VMwareMigrateAgentModelCustomPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareMigrateAgentModelCustomProperties] {
+	return pulumix.Output[VMwareMigrateAgentModelCustomProperties]{
+		OutputState: i.ToVMwareMigrateAgentModelCustomPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VMwareMigrateAgentModelCustomPropertiesArgs) ToVMwareMigrateAgentModelCustomPropertiesPtrOutput() VMwareMigrateAgentModelCustomPropertiesPtrOutput {
 	return i.ToVMwareMigrateAgentModelCustomPropertiesPtrOutputWithContext(context.Background())
 }
@@ -2970,6 +3217,12 @@ func (i *vmwareMigrateAgentModelCustomPropertiesPtrType) ToVMwareMigrateAgentMod
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareMigrateAgentModelCustomPropertiesPtrOutput)
 }
 
+func (i *vmwareMigrateAgentModelCustomPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareMigrateAgentModelCustomProperties] {
+	return pulumix.Output[*VMwareMigrateAgentModelCustomProperties]{
+		OutputState: i.ToVMwareMigrateAgentModelCustomPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VMware MigrateAgent model custom properties.
 type VMwareMigrateAgentModelCustomPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2993,6 +3246,12 @@ func (o VMwareMigrateAgentModelCustomPropertiesOutput) ToVMwareMigrateAgentModel
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareMigrateAgentModelCustomProperties) *VMwareMigrateAgentModelCustomProperties {
 		return &v
 	}).(VMwareMigrateAgentModelCustomPropertiesPtrOutput)
+}
+
+func (o VMwareMigrateAgentModelCustomPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareMigrateAgentModelCustomProperties] {
+	return pulumix.Output[VMwareMigrateAgentModelCustomProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the friendly name of the,of the MigrateAgent fabric.
@@ -3023,6 +3282,12 @@ func (o VMwareMigrateAgentModelCustomPropertiesPtrOutput) ToVMwareMigrateAgentMo
 
 func (o VMwareMigrateAgentModelCustomPropertiesPtrOutput) ToVMwareMigrateAgentModelCustomPropertiesPtrOutputWithContext(ctx context.Context) VMwareMigrateAgentModelCustomPropertiesPtrOutput {
 	return o
+}
+
+func (o VMwareMigrateAgentModelCustomPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareMigrateAgentModelCustomProperties] {
+	return pulumix.Output[*VMwareMigrateAgentModelCustomProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VMwareMigrateAgentModelCustomPropertiesPtrOutput) Elem() VMwareMigrateAgentModelCustomPropertiesOutput {
@@ -3092,6 +3357,12 @@ func (o VMwareMigrateAgentModelCustomPropertiesResponseOutput) ToVMwareMigrateAg
 	return o
 }
 
+func (o VMwareMigrateAgentModelCustomPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareMigrateAgentModelCustomPropertiesResponse] {
+	return pulumix.Output[VMwareMigrateAgentModelCustomPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the friendly name of the,of the MigrateAgent fabric.
 func (o VMwareMigrateAgentModelCustomPropertiesResponseOutput) FabricFriendlyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareMigrateAgentModelCustomPropertiesResponse) *string { return v.FabricFriendlyName }).(pulumi.StringPtrOutput)
@@ -3120,6 +3391,12 @@ func (o VMwareMigrateAgentModelCustomPropertiesResponsePtrOutput) ToVMwareMigrat
 
 func (o VMwareMigrateAgentModelCustomPropertiesResponsePtrOutput) ToVMwareMigrateAgentModelCustomPropertiesResponsePtrOutputWithContext(ctx context.Context) VMwareMigrateAgentModelCustomPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o VMwareMigrateAgentModelCustomPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareMigrateAgentModelCustomPropertiesResponse] {
+	return pulumix.Output[*VMwareMigrateAgentModelCustomPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VMwareMigrateAgentModelCustomPropertiesResponsePtrOutput) Elem() VMwareMigrateAgentModelCustomPropertiesResponseOutput {
@@ -3306,6 +3583,12 @@ func (i WorkloadDeploymentModelPropertiesArgs) ToWorkloadDeploymentModelProperti
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadDeploymentModelPropertiesOutput)
 }
 
+func (i WorkloadDeploymentModelPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[WorkloadDeploymentModelProperties] {
+	return pulumix.Output[WorkloadDeploymentModelProperties]{
+		OutputState: i.ToWorkloadDeploymentModelPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkloadDeploymentModelPropertiesArgs) ToWorkloadDeploymentModelPropertiesPtrOutput() WorkloadDeploymentModelPropertiesPtrOutput {
 	return i.ToWorkloadDeploymentModelPropertiesPtrOutputWithContext(context.Background())
 }
@@ -3347,6 +3630,12 @@ func (i *workloadDeploymentModelPropertiesPtrType) ToWorkloadDeploymentModelProp
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadDeploymentModelPropertiesPtrOutput)
 }
 
+func (i *workloadDeploymentModelPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkloadDeploymentModelProperties] {
+	return pulumix.Output[*WorkloadDeploymentModelProperties]{
+		OutputState: i.ToWorkloadDeploymentModelPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Workload deployment model properties.
 type WorkloadDeploymentModelPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -3370,6 +3659,12 @@ func (o WorkloadDeploymentModelPropertiesOutput) ToWorkloadDeploymentModelProper
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadDeploymentModelProperties) *WorkloadDeploymentModelProperties {
 		return &v
 	}).(WorkloadDeploymentModelPropertiesPtrOutput)
+}
+
+func (o WorkloadDeploymentModelPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadDeploymentModelProperties] {
+	return pulumix.Output[WorkloadDeploymentModelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Workload deployment model custom properties.
@@ -3406,6 +3701,12 @@ func (o WorkloadDeploymentModelPropertiesPtrOutput) ToWorkloadDeploymentModelPro
 
 func (o WorkloadDeploymentModelPropertiesPtrOutput) ToWorkloadDeploymentModelPropertiesPtrOutputWithContext(ctx context.Context) WorkloadDeploymentModelPropertiesPtrOutput {
 	return o
+}
+
+func (o WorkloadDeploymentModelPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadDeploymentModelProperties] {
+	return pulumix.Output[*WorkloadDeploymentModelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkloadDeploymentModelPropertiesPtrOutput) Elem() WorkloadDeploymentModelPropertiesOutput {
@@ -3508,6 +3809,12 @@ func (o WorkloadDeploymentModelPropertiesResponseOutput) ToWorkloadDeploymentMod
 
 func (o WorkloadDeploymentModelPropertiesResponseOutput) ToWorkloadDeploymentModelPropertiesResponseOutputWithContext(ctx context.Context) WorkloadDeploymentModelPropertiesResponseOutput {
 	return o
+}
+
+func (o WorkloadDeploymentModelPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadDeploymentModelPropertiesResponse] {
+	return pulumix.Output[WorkloadDeploymentModelPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the allowed scenarios on the workload deployment.
@@ -3629,6 +3936,12 @@ func (o WorkloadDeploymentModelPropertiesResponseCurrentJobOutput) ToWorkloadDep
 	return o
 }
 
+func (o WorkloadDeploymentModelPropertiesResponseCurrentJobOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadDeploymentModelPropertiesResponseCurrentJob] {
+	return pulumix.Output[WorkloadDeploymentModelPropertiesResponseCurrentJob]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the workflow friendly display name.
 func (o WorkloadDeploymentModelPropertiesResponseCurrentJobOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkloadDeploymentModelPropertiesResponseCurrentJob) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -3693,6 +4006,12 @@ func (o WorkloadDeploymentModelResponseSystemDataOutput) ToWorkloadDeploymentMod
 
 func (o WorkloadDeploymentModelResponseSystemDataOutput) ToWorkloadDeploymentModelResponseSystemDataOutputWithContext(ctx context.Context) WorkloadDeploymentModelResponseSystemDataOutput {
 	return o
+}
+
+func (o WorkloadDeploymentModelResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadDeploymentModelResponseSystemData] {
+	return pulumix.Output[WorkloadDeploymentModelResponseSystemData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the timestamp of resource creation (UTC).
@@ -3786,6 +4105,12 @@ func (i WorkloadInstanceModelPropertiesArgs) ToWorkloadInstanceModelPropertiesOu
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadInstanceModelPropertiesOutput)
 }
 
+func (i WorkloadInstanceModelPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[WorkloadInstanceModelProperties] {
+	return pulumix.Output[WorkloadInstanceModelProperties]{
+		OutputState: i.ToWorkloadInstanceModelPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkloadInstanceModelPropertiesArgs) ToWorkloadInstanceModelPropertiesPtrOutput() WorkloadInstanceModelPropertiesPtrOutput {
 	return i.ToWorkloadInstanceModelPropertiesPtrOutputWithContext(context.Background())
 }
@@ -3827,6 +4152,12 @@ func (i *workloadInstanceModelPropertiesPtrType) ToWorkloadInstanceModelProperti
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadInstanceModelPropertiesPtrOutput)
 }
 
+func (i *workloadInstanceModelPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkloadInstanceModelProperties] {
+	return pulumix.Output[*WorkloadInstanceModelProperties]{
+		OutputState: i.ToWorkloadInstanceModelPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Workload instance model properties.
 type WorkloadInstanceModelPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -3850,6 +4181,12 @@ func (o WorkloadInstanceModelPropertiesOutput) ToWorkloadInstanceModelProperties
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadInstanceModelProperties) *WorkloadInstanceModelProperties {
 		return &v
 	}).(WorkloadInstanceModelPropertiesPtrOutput)
+}
+
+func (o WorkloadInstanceModelPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadInstanceModelProperties] {
+	return pulumix.Output[WorkloadInstanceModelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Workload instance model custom properties.
@@ -3899,6 +4236,12 @@ func (o WorkloadInstanceModelPropertiesPtrOutput) ToWorkloadInstanceModelPropert
 
 func (o WorkloadInstanceModelPropertiesPtrOutput) ToWorkloadInstanceModelPropertiesPtrOutputWithContext(ctx context.Context) WorkloadInstanceModelPropertiesPtrOutput {
 	return o
+}
+
+func (o WorkloadInstanceModelPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadInstanceModelProperties] {
+	return pulumix.Output[*WorkloadInstanceModelProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkloadInstanceModelPropertiesPtrOutput) Elem() WorkloadInstanceModelPropertiesOutput {
@@ -4029,6 +4372,12 @@ func (o WorkloadInstanceModelPropertiesResponseOutput) ToWorkloadInstanceModelPr
 	return o
 }
 
+func (o WorkloadInstanceModelPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadInstanceModelPropertiesResponse] {
+	return pulumix.Output[WorkloadInstanceModelPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the allowed scenarios on the workload instance.
 func (o WorkloadInstanceModelPropertiesResponseOutput) AllowedOperations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkloadInstanceModelPropertiesResponse) []string { return v.AllowedOperations }).(pulumi.StringArrayOutput)
@@ -4117,6 +4466,12 @@ func (o WorkloadInstanceModelPropertiesResponsePtrOutput) ToWorkloadInstanceMode
 
 func (o WorkloadInstanceModelPropertiesResponsePtrOutput) ToWorkloadInstanceModelPropertiesResponsePtrOutputWithContext(ctx context.Context) WorkloadInstanceModelPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o WorkloadInstanceModelPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadInstanceModelPropertiesResponse] {
+	return pulumix.Output[*WorkloadInstanceModelPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkloadInstanceModelPropertiesResponsePtrOutput) Elem() WorkloadInstanceModelPropertiesResponseOutput {
@@ -4309,6 +4664,12 @@ func (o WorkloadInstanceModelPropertiesResponseCurrentJobOutput) ToWorkloadInsta
 	return o
 }
 
+func (o WorkloadInstanceModelPropertiesResponseCurrentJobOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadInstanceModelPropertiesResponseCurrentJob] {
+	return pulumix.Output[WorkloadInstanceModelPropertiesResponseCurrentJob]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets or sets the workflow friendly display name.
 func (o WorkloadInstanceModelPropertiesResponseCurrentJobOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkloadInstanceModelPropertiesResponseCurrentJob) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -4356,6 +4717,12 @@ func (o WorkloadInstanceModelPropertiesResponseCurrentJobPtrOutput) ToWorkloadIn
 
 func (o WorkloadInstanceModelPropertiesResponseCurrentJobPtrOutput) ToWorkloadInstanceModelPropertiesResponseCurrentJobPtrOutputWithContext(ctx context.Context) WorkloadInstanceModelPropertiesResponseCurrentJobPtrOutput {
 	return o
+}
+
+func (o WorkloadInstanceModelPropertiesResponseCurrentJobPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadInstanceModelPropertiesResponseCurrentJob] {
+	return pulumix.Output[*WorkloadInstanceModelPropertiesResponseCurrentJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkloadInstanceModelPropertiesResponseCurrentJobPtrOutput) Elem() WorkloadInstanceModelPropertiesResponseCurrentJobOutput {
@@ -4467,6 +4834,12 @@ func (o WorkloadInstanceModelResponseSystemDataOutput) ToWorkloadInstanceModelRe
 
 func (o WorkloadInstanceModelResponseSystemDataOutput) ToWorkloadInstanceModelResponseSystemDataOutputWithContext(ctx context.Context) WorkloadInstanceModelResponseSystemDataOutput {
 	return o
+}
+
+func (o WorkloadInstanceModelResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadInstanceModelResponseSystemData] {
+	return pulumix.Output[WorkloadInstanceModelResponseSystemData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the timestamp of resource creation (UTC).

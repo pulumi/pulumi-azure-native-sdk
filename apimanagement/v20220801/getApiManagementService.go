@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an API Management service resource description.
@@ -179,6 +180,12 @@ func (o LookupApiManagementServiceResultOutput) ToLookupApiManagementServiceResu
 
 func (o LookupApiManagementServiceResultOutput) ToLookupApiManagementServiceResultOutputWithContext(ctx context.Context) LookupApiManagementServiceResultOutput {
 	return o
+}
+
+func (o LookupApiManagementServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiManagementServiceResult] {
+	return pulumix.Output[LookupApiManagementServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional datacenter locations of the API Management service.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This method gets job definition object by name.
@@ -115,6 +116,12 @@ func (o LookupJobDefinitionResultOutput) ToLookupJobDefinitionResultOutput() Loo
 
 func (o LookupJobDefinitionResultOutput) ToLookupJobDefinitionResultOutputWithContext(ctx context.Context) LookupJobDefinitionResultOutput {
 	return o
+}
+
+func (o LookupJobDefinitionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJobDefinitionResult] {
+	return pulumix.Output[LookupJobDefinitionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.

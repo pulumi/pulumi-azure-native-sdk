@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview
@@ -184,6 +185,12 @@ func (i *TrunkedNetwork) ToTrunkedNetworkOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TrunkedNetworkOutput)
 }
 
+func (i *TrunkedNetwork) ToOutput(ctx context.Context) pulumix.Output[*TrunkedNetwork] {
+	return pulumix.Output[*TrunkedNetwork]{
+		OutputState: i.ToTrunkedNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TrunkedNetworkOutput struct{ *pulumi.OutputState }
 
 func (TrunkedNetworkOutput) ElementType() reflect.Type {
@@ -196,6 +203,12 @@ func (o TrunkedNetworkOutput) ToTrunkedNetworkOutput() TrunkedNetworkOutput {
 
 func (o TrunkedNetworkOutput) ToTrunkedNetworkOutputWithContext(ctx context.Context) TrunkedNetworkOutput {
 	return o
+}
+
+func (o TrunkedNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*TrunkedNetwork] {
+	return pulumix.Output[*TrunkedNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.

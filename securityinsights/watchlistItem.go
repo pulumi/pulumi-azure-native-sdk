@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Watchlist Item in Azure Security Insights.
@@ -145,6 +146,9 @@ func NewWatchlistItem(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:WatchlistItem"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:WatchlistItem"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -261,6 +265,12 @@ func (i *WatchlistItem) ToWatchlistItemOutputWithContext(ctx context.Context) Wa
 	return pulumi.ToOutputWithContext(ctx, i).(WatchlistItemOutput)
 }
 
+func (i *WatchlistItem) ToOutput(ctx context.Context) pulumix.Output[*WatchlistItem] {
+	return pulumix.Output[*WatchlistItem]{
+		OutputState: i.ToWatchlistItemOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WatchlistItemOutput struct{ *pulumi.OutputState }
 
 func (WatchlistItemOutput) ElementType() reflect.Type {
@@ -273,6 +283,12 @@ func (o WatchlistItemOutput) ToWatchlistItemOutput() WatchlistItemOutput {
 
 func (o WatchlistItemOutput) ToWatchlistItemOutputWithContext(ctx context.Context) WatchlistItemOutput {
 	return o
+}
+
+func (o WatchlistItemOutput) ToOutput(ctx context.Context) pulumix.Output[*WatchlistItem] {
+	return pulumix.Output[*WatchlistItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the watchlist item was created

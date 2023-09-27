@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i PlanArgs) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PlanOutput)
 }
 
+func (i PlanArgs) ToOutput(ctx context.Context) pulumix.Output[Plan] {
+	return pulumix.Output[Plan]{
+		OutputState: i.ToPlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PlanArrayInput is an input type that accepts PlanArray and PlanArrayOutput values.
 // You can construct a concrete instance of `PlanArrayInput` via:
 //
@@ -71,6 +78,12 @@ func (i PlanArray) ToPlanArrayOutputWithContext(ctx context.Context) PlanArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(PlanArrayOutput)
 }
 
+func (i PlanArray) ToOutput(ctx context.Context) pulumix.Output[[]Plan] {
+	return pulumix.Output[[]Plan]{
+		OutputState: i.ToPlanArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PlanOutput struct{ *pulumi.OutputState }
 
 func (PlanOutput) ElementType() reflect.Type {
@@ -83,6 +96,12 @@ func (o PlanOutput) ToPlanOutput() PlanOutput {
 
 func (o PlanOutput) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
 	return o
+}
+
+func (o PlanOutput) ToOutput(ctx context.Context) pulumix.Output[Plan] {
+	return pulumix.Output[Plan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Plan accessibility
@@ -102,6 +121,12 @@ func (o PlanArrayOutput) ToPlanArrayOutput() PlanArrayOutput {
 
 func (o PlanArrayOutput) ToPlanArrayOutputWithContext(ctx context.Context) PlanArrayOutput {
 	return o
+}
+
+func (o PlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Plan] {
+	return pulumix.Output[[]Plan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PlanArrayOutput) Index(i pulumi.IntInput) PlanOutput {
@@ -137,6 +162,12 @@ func (o PlanResponseOutput) ToPlanResponseOutput() PlanResponseOutput {
 
 func (o PlanResponseOutput) ToPlanResponseOutputWithContext(ctx context.Context) PlanResponseOutput {
 	return o
+}
+
+func (o PlanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PlanResponse] {
+	return pulumix.Output[PlanResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Plan accessibility
@@ -181,6 +212,12 @@ func (o PlanResponseArrayOutput) ToPlanResponseArrayOutput() PlanResponseArrayOu
 
 func (o PlanResponseArrayOutput) ToPlanResponseArrayOutputWithContext(ctx context.Context) PlanResponseArrayOutput {
 	return o
+}
+
+func (o PlanResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PlanResponse] {
+	return pulumix.Output[[]PlanResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PlanResponseArrayOutput) Index(i pulumi.IntInput) PlanResponseOutput {

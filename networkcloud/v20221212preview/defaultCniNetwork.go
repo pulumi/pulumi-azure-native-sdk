@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type DefaultCniNetwork struct {
@@ -197,6 +198,12 @@ func (i *DefaultCniNetwork) ToDefaultCniNetworkOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultCniNetworkOutput)
 }
 
+func (i *DefaultCniNetwork) ToOutput(ctx context.Context) pulumix.Output[*DefaultCniNetwork] {
+	return pulumix.Output[*DefaultCniNetwork]{
+		OutputState: i.ToDefaultCniNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DefaultCniNetworkOutput struct{ *pulumi.OutputState }
 
 func (DefaultCniNetworkOutput) ElementType() reflect.Type {
@@ -209,6 +216,12 @@ func (o DefaultCniNetworkOutput) ToDefaultCniNetworkOutput() DefaultCniNetworkOu
 
 func (o DefaultCniNetworkOutput) ToDefaultCniNetworkOutputWithContext(ctx context.Context) DefaultCniNetworkOutput {
 	return o
+}
+
+func (o DefaultCniNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultCniNetwork] {
+	return pulumix.Output[*DefaultCniNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource ID of the Network Cloud cluster this default CNI network is associated with.

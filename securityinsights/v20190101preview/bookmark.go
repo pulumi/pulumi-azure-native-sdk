@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a bookmark in Azure Security Insights.
@@ -148,6 +149,9 @@ func NewBookmark(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:Bookmark"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Bookmark"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -280,6 +284,12 @@ func (i *Bookmark) ToBookmarkOutputWithContext(ctx context.Context) BookmarkOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BookmarkOutput)
 }
 
+func (i *Bookmark) ToOutput(ctx context.Context) pulumix.Output[*Bookmark] {
+	return pulumix.Output[*Bookmark]{
+		OutputState: i.ToBookmarkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BookmarkOutput struct{ *pulumi.OutputState }
 
 func (BookmarkOutput) ElementType() reflect.Type {
@@ -292,6 +302,12 @@ func (o BookmarkOutput) ToBookmarkOutput() BookmarkOutput {
 
 func (o BookmarkOutput) ToBookmarkOutputWithContext(ctx context.Context) BookmarkOutput {
 	return o
+}
+
+func (o BookmarkOutput) ToOutput(ctx context.Context) pulumix.Output[*Bookmark] {
+	return pulumix.Output[*Bookmark]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the bookmark was created

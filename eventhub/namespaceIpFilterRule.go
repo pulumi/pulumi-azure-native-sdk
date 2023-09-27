@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Single item in a List or Get IpFilterRules operation
@@ -134,6 +135,12 @@ func (i *NamespaceIpFilterRule) ToNamespaceIpFilterRuleOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIpFilterRuleOutput)
 }
 
+func (i *NamespaceIpFilterRule) ToOutput(ctx context.Context) pulumix.Output[*NamespaceIpFilterRule] {
+	return pulumix.Output[*NamespaceIpFilterRule]{
+		OutputState: i.ToNamespaceIpFilterRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamespaceIpFilterRuleOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIpFilterRuleOutput) ElementType() reflect.Type {
@@ -146,6 +153,12 @@ func (o NamespaceIpFilterRuleOutput) ToNamespaceIpFilterRuleOutput() NamespaceIp
 
 func (o NamespaceIpFilterRuleOutput) ToNamespaceIpFilterRuleOutputWithContext(ctx context.Context) NamespaceIpFilterRuleOutput {
 	return o
+}
+
+func (o NamespaceIpFilterRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceIpFilterRule] {
+	return pulumix.Output[*NamespaceIpFilterRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP Filter Action

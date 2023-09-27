@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Volume{}
 	case "azure-native:elasticsan:VolumeGroup":
 		r = &VolumeGroup{}
+	case "azure-native:elasticsan:VolumeSnapshot":
+		r = &VolumeSnapshot{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

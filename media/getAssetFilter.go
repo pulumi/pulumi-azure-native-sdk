@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details of an Asset Filter associated with the specified Asset.
@@ -93,6 +94,12 @@ func (o LookupAssetFilterResultOutput) ToLookupAssetFilterResultOutput() LookupA
 
 func (o LookupAssetFilterResultOutput) ToLookupAssetFilterResultOutputWithContext(ctx context.Context) LookupAssetFilterResultOutput {
 	return o
+}
+
+func (o LookupAssetFilterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAssetFilterResult] {
+	return pulumix.Output[LookupAssetFilterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The first quality.

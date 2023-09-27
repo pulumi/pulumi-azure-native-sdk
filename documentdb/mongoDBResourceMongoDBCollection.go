@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB MongoDB collection.
@@ -148,6 +149,12 @@ func NewMongoDBResourceMongoDBCollection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20230415:MongoDBResourceMongoDBCollection"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230915:MongoDBResourceMongoDBCollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230915preview:MongoDBResourceMongoDBCollection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -244,6 +251,12 @@ func (i *MongoDBResourceMongoDBCollection) ToMongoDBResourceMongoDBCollectionOut
 	return pulumi.ToOutputWithContext(ctx, i).(MongoDBResourceMongoDBCollectionOutput)
 }
 
+func (i *MongoDBResourceMongoDBCollection) ToOutput(ctx context.Context) pulumix.Output[*MongoDBResourceMongoDBCollection] {
+	return pulumix.Output[*MongoDBResourceMongoDBCollection]{
+		OutputState: i.ToMongoDBResourceMongoDBCollectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MongoDBResourceMongoDBCollectionOutput struct{ *pulumi.OutputState }
 
 func (MongoDBResourceMongoDBCollectionOutput) ElementType() reflect.Type {
@@ -256,6 +269,12 @@ func (o MongoDBResourceMongoDBCollectionOutput) ToMongoDBResourceMongoDBCollecti
 
 func (o MongoDBResourceMongoDBCollectionOutput) ToMongoDBResourceMongoDBCollectionOutputWithContext(ctx context.Context) MongoDBResourceMongoDBCollectionOutput {
 	return o
+}
+
+func (o MongoDBResourceMongoDBCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[*MongoDBResourceMongoDBCollection] {
+	return pulumix.Output[*MongoDBResourceMongoDBCollection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location of the resource group to which the resource belongs.

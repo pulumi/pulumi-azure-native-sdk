@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get bare metal machine key set of the provided cluster.
@@ -109,6 +110,12 @@ func (o LookupBareMetalMachineKeySetResultOutput) ToLookupBareMetalMachineKeySet
 
 func (o LookupBareMetalMachineKeySetResultOutput) ToLookupBareMetalMachineKeySetResultOutputWithContext(ctx context.Context) LookupBareMetalMachineKeySetResultOutput {
 	return o
+}
+
+func (o LookupBareMetalMachineKeySetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBareMetalMachineKeySetResult] {
+	return pulumix.Output[LookupBareMetalMachineKeySetResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.

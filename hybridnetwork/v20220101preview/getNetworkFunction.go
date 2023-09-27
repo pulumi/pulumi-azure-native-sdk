@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified network function resource.
@@ -106,6 +107,12 @@ func (o LookupNetworkFunctionResultOutput) ToLookupNetworkFunctionResultOutput()
 
 func (o LookupNetworkFunctionResultOutput) ToLookupNetworkFunctionResultOutputWithContext(ctx context.Context) LookupNetworkFunctionResultOutput {
 	return o
+}
+
+func (o LookupNetworkFunctionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkFunctionResult] {
+	return pulumix.Output[LookupNetworkFunctionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The reference to the device resource. Once set, it cannot be updated.

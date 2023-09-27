@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An object that represents a token for a container registry.
@@ -169,6 +170,12 @@ func (i *Token) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TokenOutput)
 }
 
+func (i *Token) ToOutput(ctx context.Context) pulumix.Output[*Token] {
+	return pulumix.Output[*Token]{
+		OutputState: i.ToTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TokenOutput struct{ *pulumi.OutputState }
 
 func (TokenOutput) ElementType() reflect.Type {
@@ -181,6 +188,12 @@ func (o TokenOutput) ToTokenOutput() TokenOutput {
 
 func (o TokenOutput) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 	return o
+}
+
+func (o TokenOutput) ToOutput(ctx context.Context) pulumix.Output[*Token] {
+	return pulumix.Output[*Token]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation date of scope map.

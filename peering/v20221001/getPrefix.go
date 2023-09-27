@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
@@ -98,6 +99,12 @@ func (o LookupPrefixResultOutput) ToLookupPrefixResultOutput() LookupPrefixResul
 
 func (o LookupPrefixResultOutput) ToLookupPrefixResultOutputWithContext(ctx context.Context) LookupPrefixResultOutput {
 	return o
+}
+
+func (o LookupPrefixResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrefixResult] {
+	return pulumix.Output[LookupPrefixResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The error message for validation state

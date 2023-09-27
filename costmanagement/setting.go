@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // State of the myscope setting.
@@ -125,6 +126,12 @@ func (i *Setting) ToSettingOutputWithContext(ctx context.Context) SettingOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SettingOutput)
 }
 
+func (i *Setting) ToOutput(ctx context.Context) pulumix.Output[*Setting] {
+	return pulumix.Output[*Setting]{
+		OutputState: i.ToSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SettingOutput struct{ *pulumi.OutputState }
 
 func (SettingOutput) ElementType() reflect.Type {
@@ -137,6 +144,12 @@ func (o SettingOutput) ToSettingOutput() SettingOutput {
 
 func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOutput {
 	return o
+}
+
+func (o SettingOutput) ToOutput(ctx context.Context) pulumix.Output[*Setting] {
+	return pulumix.Output[*Setting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Array of scopes with additional details used by Cost Management in the Azure portal.

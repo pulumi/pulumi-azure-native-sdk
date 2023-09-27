@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Anomaly Security ML Analytics Settings
@@ -143,6 +144,9 @@ func NewAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:AnomalySecurityMLAnalyticsSettings"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:AnomalySecurityMLAnalyticsSettings"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -278,6 +282,12 @@ func (i *AnomalySecurityMLAnalyticsSettings) ToAnomalySecurityMLAnalyticsSetting
 	return pulumi.ToOutputWithContext(ctx, i).(AnomalySecurityMLAnalyticsSettingsOutput)
 }
 
+func (i *AnomalySecurityMLAnalyticsSettings) ToOutput(ctx context.Context) pulumix.Output[*AnomalySecurityMLAnalyticsSettings] {
+	return pulumix.Output[*AnomalySecurityMLAnalyticsSettings]{
+		OutputState: i.ToAnomalySecurityMLAnalyticsSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AnomalySecurityMLAnalyticsSettingsOutput struct{ *pulumi.OutputState }
 
 func (AnomalySecurityMLAnalyticsSettingsOutput) ElementType() reflect.Type {
@@ -290,6 +300,12 @@ func (o AnomalySecurityMLAnalyticsSettingsOutput) ToAnomalySecurityMLAnalyticsSe
 
 func (o AnomalySecurityMLAnalyticsSettingsOutput) ToAnomalySecurityMLAnalyticsSettingsOutputWithContext(ctx context.Context) AnomalySecurityMLAnalyticsSettingsOutput {
 	return o
+}
+
+func (o AnomalySecurityMLAnalyticsSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*AnomalySecurityMLAnalyticsSettings] {
+	return pulumix.Output[*AnomalySecurityMLAnalyticsSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The anomaly settings version of the Anomaly security ml analytics settings that dictates whether job version gets updated or not.

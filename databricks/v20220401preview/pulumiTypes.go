@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -30,6 +31,12 @@ func (o AccessConnectorPropertiesResponseOutput) ToAccessConnectorPropertiesResp
 
 func (o AccessConnectorPropertiesResponseOutput) ToAccessConnectorPropertiesResponseOutputWithContext(ctx context.Context) AccessConnectorPropertiesResponseOutput {
 	return o
+}
+
+func (o AccessConnectorPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessConnectorPropertiesResponse] {
+	return pulumix.Output[AccessConnectorPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Provisioning status of the accessConnector.
@@ -70,6 +77,12 @@ func (i IdentityDataArgs) ToIdentityDataOutput() IdentityDataOutput {
 
 func (i IdentityDataArgs) ToIdentityDataOutputWithContext(ctx context.Context) IdentityDataOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityDataOutput)
+}
+
+func (i IdentityDataArgs) ToOutput(ctx context.Context) pulumix.Output[IdentityData] {
+	return pulumix.Output[IdentityData]{
+		OutputState: i.ToIdentityDataOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i IdentityDataArgs) ToIdentityDataPtrOutput() IdentityDataPtrOutput {
@@ -113,6 +126,12 @@ func (i *identityDataPtrType) ToIdentityDataPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityDataPtrOutput)
 }
 
+func (i *identityDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*IdentityData] {
+	return pulumix.Output[*IdentityData]{
+		OutputState: i.ToIdentityDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identity for the resource.
 type IdentityDataOutput struct{ *pulumi.OutputState }
 
@@ -138,6 +157,12 @@ func (o IdentityDataOutput) ToIdentityDataPtrOutputWithContext(ctx context.Conte
 	}).(IdentityDataPtrOutput)
 }
 
+func (o IdentityDataOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityData] {
+	return pulumix.Output[IdentityData]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity type.
 func (o IdentityDataOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityData) string { return v.Type }).(pulumi.StringOutput)
@@ -155,6 +180,12 @@ func (o IdentityDataPtrOutput) ToIdentityDataPtrOutput() IdentityDataPtrOutput {
 
 func (o IdentityDataPtrOutput) ToIdentityDataPtrOutputWithContext(ctx context.Context) IdentityDataPtrOutput {
 	return o
+}
+
+func (o IdentityDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityData] {
+	return pulumix.Output[*IdentityData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityDataPtrOutput) Elem() IdentityDataOutput {
@@ -202,6 +233,12 @@ func (o IdentityDataResponseOutput) ToIdentityDataResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o IdentityDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityDataResponse] {
+	return pulumix.Output[IdentityDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The principal ID of resource identity.
 func (o IdentityDataResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityDataResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -229,6 +266,12 @@ func (o IdentityDataResponsePtrOutput) ToIdentityDataResponsePtrOutput() Identit
 
 func (o IdentityDataResponsePtrOutput) ToIdentityDataResponsePtrOutputWithContext(ctx context.Context) IdentityDataResponsePtrOutput {
 	return o
+}
+
+func (o IdentityDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityDataResponse] {
+	return pulumix.Output[*IdentityDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityDataResponsePtrOutput) Elem() IdentityDataResponseOutput {
@@ -300,6 +343,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

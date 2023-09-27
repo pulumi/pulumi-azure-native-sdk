@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a jobs credential.
@@ -86,6 +87,12 @@ func (o LookupJobCredentialResultOutput) ToLookupJobCredentialResultOutput() Loo
 
 func (o LookupJobCredentialResultOutput) ToLookupJobCredentialResultOutputWithContext(ctx context.Context) LookupJobCredentialResultOutput {
 	return o
+}
+
+func (o LookupJobCredentialResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJobCredentialResult] {
+	return pulumix.Output[LookupJobCredentialResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID.

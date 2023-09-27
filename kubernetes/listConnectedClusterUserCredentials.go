@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets cluster user credentials of the connected cluster with a specified resource group and name.
@@ -83,6 +84,12 @@ func (o ListConnectedClusterUserCredentialsResultOutput) ToListConnectedClusterU
 
 func (o ListConnectedClusterUserCredentialsResultOutput) ToListConnectedClusterUserCredentialsResultOutputWithContext(ctx context.Context) ListConnectedClusterUserCredentialsResultOutput {
 	return o
+}
+
+func (o ListConnectedClusterUserCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListConnectedClusterUserCredentialsResult] {
+	return pulumix.Output[ListConnectedClusterUserCredentialsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Contains the REP (rendezvous endpoint) and “Sender” access token.

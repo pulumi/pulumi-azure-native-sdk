@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents AATP (Azure Advanced Threat Protection) data connector.
@@ -132,6 +133,9 @@ func NewAATPDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230701preview:AATPDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:AATPDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -222,6 +226,12 @@ func (i *AATPDataConnector) ToAATPDataConnectorOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AATPDataConnectorOutput)
 }
 
+func (i *AATPDataConnector) ToOutput(ctx context.Context) pulumix.Output[*AATPDataConnector] {
+	return pulumix.Output[*AATPDataConnector]{
+		OutputState: i.ToAATPDataConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AATPDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (AATPDataConnectorOutput) ElementType() reflect.Type {
@@ -234,6 +244,12 @@ func (o AATPDataConnectorOutput) ToAATPDataConnectorOutput() AATPDataConnectorOu
 
 func (o AATPDataConnectorOutput) ToAATPDataConnectorOutputWithContext(ctx context.Context) AATPDataConnectorOutput {
 	return o
+}
+
+func (o AATPDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*AATPDataConnector] {
+	return pulumix.Output[*AATPDataConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available data types for the connector.

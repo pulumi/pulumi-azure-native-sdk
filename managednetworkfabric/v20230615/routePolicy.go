@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The RoutePolicy resource definition.
@@ -173,6 +174,12 @@ func (i *RoutePolicy) ToRoutePolicyOutputWithContext(ctx context.Context) RouteP
 	return pulumi.ToOutputWithContext(ctx, i).(RoutePolicyOutput)
 }
 
+func (i *RoutePolicy) ToOutput(ctx context.Context) pulumix.Output[*RoutePolicy] {
+	return pulumix.Output[*RoutePolicy]{
+		OutputState: i.ToRoutePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RoutePolicyOutput struct{ *pulumi.OutputState }
 
 func (RoutePolicyOutput) ElementType() reflect.Type {
@@ -185,6 +192,12 @@ func (o RoutePolicyOutput) ToRoutePolicyOutput() RoutePolicyOutput {
 
 func (o RoutePolicyOutput) ToRoutePolicyOutputWithContext(ctx context.Context) RoutePolicyOutput {
 	return o
+}
+
+func (o RoutePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutePolicy] {
+	return pulumix.Output[*RoutePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.

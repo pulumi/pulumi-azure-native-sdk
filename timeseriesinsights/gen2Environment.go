@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. Gen2 environments do not have set data retention limits.
@@ -192,6 +193,12 @@ func (i *Gen2Environment) ToGen2EnvironmentOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(Gen2EnvironmentOutput)
 }
 
+func (i *Gen2Environment) ToOutput(ctx context.Context) pulumix.Output[*Gen2Environment] {
+	return pulumix.Output[*Gen2Environment]{
+		OutputState: i.ToGen2EnvironmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type Gen2EnvironmentOutput struct{ *pulumi.OutputState }
 
 func (Gen2EnvironmentOutput) ElementType() reflect.Type {
@@ -204,6 +211,12 @@ func (o Gen2EnvironmentOutput) ToGen2EnvironmentOutput() Gen2EnvironmentOutput {
 
 func (o Gen2EnvironmentOutput) ToGen2EnvironmentOutputWithContext(ctx context.Context) Gen2EnvironmentOutput {
 	return o
+}
+
+func (o Gen2EnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[*Gen2Environment] {
+	return pulumix.Output[*Gen2Environment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the resource was created.

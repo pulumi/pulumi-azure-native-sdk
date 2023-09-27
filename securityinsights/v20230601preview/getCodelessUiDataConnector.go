@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a data connector.
@@ -89,6 +90,12 @@ func (o LookupCodelessUiDataConnectorResultOutput) ToLookupCodelessUiDataConnect
 
 func (o LookupCodelessUiDataConnectorResultOutput) ToLookupCodelessUiDataConnectorResultOutputWithContext(ctx context.Context) LookupCodelessUiDataConnectorResultOutput {
 	return o
+}
+
+func (o LookupCodelessUiDataConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCodelessUiDataConnectorResult] {
+	return pulumix.Output[LookupCodelessUiDataConnectorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Config to describe the instructions blade

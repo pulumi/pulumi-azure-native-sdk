@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i AsymmetricEncryptedSecretArgs) ToAsymmetricEncryptedSecretOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AsymmetricEncryptedSecretOutput)
 }
 
+func (i AsymmetricEncryptedSecretArgs) ToOutput(ctx context.Context) pulumix.Output[AsymmetricEncryptedSecret] {
+	return pulumix.Output[AsymmetricEncryptedSecret]{
+		OutputState: i.ToAsymmetricEncryptedSecretOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AsymmetricEncryptedSecretArgs) ToAsymmetricEncryptedSecretPtrOutput() AsymmetricEncryptedSecretPtrOutput {
 	return i.ToAsymmetricEncryptedSecretPtrOutputWithContext(context.Background())
 }
@@ -97,6 +104,12 @@ func (i *asymmetricEncryptedSecretPtrType) ToAsymmetricEncryptedSecretPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(AsymmetricEncryptedSecretPtrOutput)
 }
 
+func (i *asymmetricEncryptedSecretPtrType) ToOutput(ctx context.Context) pulumix.Output[*AsymmetricEncryptedSecret] {
+	return pulumix.Output[*AsymmetricEncryptedSecret]{
+		OutputState: i.ToAsymmetricEncryptedSecretPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represent the secrets intended for encryption with asymmetric key pair.
 type AsymmetricEncryptedSecretOutput struct{ *pulumi.OutputState }
 
@@ -120,6 +133,12 @@ func (o AsymmetricEncryptedSecretOutput) ToAsymmetricEncryptedSecretPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AsymmetricEncryptedSecret) *AsymmetricEncryptedSecret {
 		return &v
 	}).(AsymmetricEncryptedSecretPtrOutput)
+}
+
+func (o AsymmetricEncryptedSecretOutput) ToOutput(ctx context.Context) pulumix.Output[AsymmetricEncryptedSecret] {
+	return pulumix.Output[AsymmetricEncryptedSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The algorithm used to encrypt "Value".
@@ -149,6 +168,12 @@ func (o AsymmetricEncryptedSecretPtrOutput) ToAsymmetricEncryptedSecretPtrOutput
 
 func (o AsymmetricEncryptedSecretPtrOutput) ToAsymmetricEncryptedSecretPtrOutputWithContext(ctx context.Context) AsymmetricEncryptedSecretPtrOutput {
 	return o
+}
+
+func (o AsymmetricEncryptedSecretPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AsymmetricEncryptedSecret] {
+	return pulumix.Output[*AsymmetricEncryptedSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AsymmetricEncryptedSecretPtrOutput) Elem() AsymmetricEncryptedSecretOutput {
@@ -216,6 +241,12 @@ func (o AsymmetricEncryptedSecretResponseOutput) ToAsymmetricEncryptedSecretResp
 	return o
 }
 
+func (o AsymmetricEncryptedSecretResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AsymmetricEncryptedSecretResponse] {
+	return pulumix.Output[AsymmetricEncryptedSecretResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The algorithm used to encrypt "Value".
 func (o AsymmetricEncryptedSecretResponseOutput) EncryptionAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v AsymmetricEncryptedSecretResponse) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
@@ -243,6 +274,12 @@ func (o AsymmetricEncryptedSecretResponsePtrOutput) ToAsymmetricEncryptedSecretR
 
 func (o AsymmetricEncryptedSecretResponsePtrOutput) ToAsymmetricEncryptedSecretResponsePtrOutputWithContext(ctx context.Context) AsymmetricEncryptedSecretResponsePtrOutput {
 	return o
+}
+
+func (o AsymmetricEncryptedSecretResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AsymmetricEncryptedSecretResponse] {
+	return pulumix.Output[*AsymmetricEncryptedSecretResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AsymmetricEncryptedSecretResponsePtrOutput) Elem() AsymmetricEncryptedSecretResponseOutput {
@@ -332,6 +369,12 @@ func (i BandwidthScheduleArgs) ToBandwidthScheduleOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthScheduleOutput)
 }
 
+func (i BandwidthScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[BandwidthSchedule] {
+	return pulumix.Output[BandwidthSchedule]{
+		OutputState: i.ToBandwidthScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BandwidthScheduleArrayInput is an input type that accepts BandwidthScheduleArray and BandwidthScheduleArrayOutput values.
 // You can construct a concrete instance of `BandwidthScheduleArrayInput` via:
 //
@@ -357,6 +400,12 @@ func (i BandwidthScheduleArray) ToBandwidthScheduleArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthScheduleArrayOutput)
 }
 
+func (i BandwidthScheduleArray) ToOutput(ctx context.Context) pulumix.Output[[]BandwidthSchedule] {
+	return pulumix.Output[[]BandwidthSchedule]{
+		OutputState: i.ToBandwidthScheduleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The schedule for bandwidth setting.
 type BandwidthScheduleOutput struct{ *pulumi.OutputState }
 
@@ -370,6 +419,12 @@ func (o BandwidthScheduleOutput) ToBandwidthScheduleOutput() BandwidthScheduleOu
 
 func (o BandwidthScheduleOutput) ToBandwidthScheduleOutputWithContext(ctx context.Context) BandwidthScheduleOutput {
 	return o
+}
+
+func (o BandwidthScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[BandwidthSchedule] {
+	return pulumix.Output[BandwidthSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The days of the week when this schedule is applicable.
@@ -406,6 +461,12 @@ func (o BandwidthScheduleArrayOutput) ToBandwidthScheduleArrayOutputWithContext(
 	return o
 }
 
+func (o BandwidthScheduleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BandwidthSchedule] {
+	return pulumix.Output[[]BandwidthSchedule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BandwidthScheduleArrayOutput) Index(i pulumi.IntInput) BandwidthScheduleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BandwidthSchedule {
 		return vs[0].([]BandwidthSchedule)[vs[1].(int)]
@@ -437,6 +498,12 @@ func (o BandwidthScheduleResponseOutput) ToBandwidthScheduleResponseOutput() Ban
 
 func (o BandwidthScheduleResponseOutput) ToBandwidthScheduleResponseOutputWithContext(ctx context.Context) BandwidthScheduleResponseOutput {
 	return o
+}
+
+func (o BandwidthScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BandwidthScheduleResponse] {
+	return pulumix.Output[BandwidthScheduleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The days of the week when this schedule is applicable.
@@ -473,6 +540,12 @@ func (o BandwidthScheduleResponseArrayOutput) ToBandwidthScheduleResponseArrayOu
 	return o
 }
 
+func (o BandwidthScheduleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BandwidthScheduleResponse] {
+	return pulumix.Output[[]BandwidthScheduleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BandwidthScheduleResponseArrayOutput) Index(i pulumi.IntInput) BandwidthScheduleResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BandwidthScheduleResponse {
 		return vs[0].([]BandwidthScheduleResponse)[vs[1].(int)]
@@ -502,6 +575,12 @@ func (o FailoverSetEligibilityResultResponseOutput) ToFailoverSetEligibilityResu
 	return o
 }
 
+func (o FailoverSetEligibilityResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FailoverSetEligibilityResultResponse] {
+	return pulumix.Output[FailoverSetEligibilityResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The error message, if the failover set is not eligible for failover.
 func (o FailoverSetEligibilityResultResponseOutput) ErrorMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FailoverSetEligibilityResultResponse) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
@@ -524,6 +603,12 @@ func (o FailoverSetEligibilityResultResponsePtrOutput) ToFailoverSetEligibilityR
 
 func (o FailoverSetEligibilityResultResponsePtrOutput) ToFailoverSetEligibilityResultResponsePtrOutputWithContext(ctx context.Context) FailoverSetEligibilityResultResponsePtrOutput {
 	return o
+}
+
+func (o FailoverSetEligibilityResultResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FailoverSetEligibilityResultResponse] {
+	return pulumix.Output[*FailoverSetEligibilityResultResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FailoverSetEligibilityResultResponsePtrOutput) Elem() FailoverSetEligibilityResultResponseOutput {
@@ -579,6 +664,12 @@ func (o FailoverSetResponseOutput) ToFailoverSetResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o FailoverSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FailoverSetResponse] {
+	return pulumix.Output[FailoverSetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The eligibility result of the failover set, for failover.
 func (o FailoverSetResponseOutput) EligibilityResult() FailoverSetEligibilityResultResponsePtrOutput {
 	return o.ApplyT(func(v FailoverSetResponse) *FailoverSetEligibilityResultResponse { return v.EligibilityResult }).(FailoverSetEligibilityResultResponsePtrOutput)
@@ -601,6 +692,12 @@ func (o FailoverSetResponseArrayOutput) ToFailoverSetResponseArrayOutput() Failo
 
 func (o FailoverSetResponseArrayOutput) ToFailoverSetResponseArrayOutputWithContext(ctx context.Context) FailoverSetResponseArrayOutput {
 	return o
+}
+
+func (o FailoverSetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FailoverSetResponse] {
+	return pulumix.Output[[]FailoverSetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FailoverSetResponseArrayOutput) Index(i pulumi.IntInput) FailoverSetResponseOutput {
@@ -648,6 +745,12 @@ func (o FailoverTargetResponseOutput) ToFailoverTargetResponseOutput() FailoverT
 
 func (o FailoverTargetResponseOutput) ToFailoverTargetResponseOutputWithContext(ctx context.Context) FailoverTargetResponseOutput {
 	return o
+}
+
+func (o FailoverTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FailoverTargetResponse] {
+	return pulumix.Output[FailoverTargetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The amount of free local storage available on the device in bytes.
@@ -719,6 +822,12 @@ func (o FailoverTargetResponseArrayOutput) ToFailoverTargetResponseArrayOutputWi
 	return o
 }
 
+func (o FailoverTargetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FailoverTargetResponse] {
+	return pulumix.Output[[]FailoverTargetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FailoverTargetResponseArrayOutput) Index(i pulumi.IntInput) FailoverTargetResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FailoverTargetResponse {
 		return vs[0].([]FailoverTargetResponse)[vs[1].(int)]
@@ -758,6 +867,12 @@ func (i ManagerIntrinsicSettingsArgs) ToManagerIntrinsicSettingsOutput() Manager
 
 func (i ManagerIntrinsicSettingsArgs) ToManagerIntrinsicSettingsOutputWithContext(ctx context.Context) ManagerIntrinsicSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagerIntrinsicSettingsOutput)
+}
+
+func (i ManagerIntrinsicSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ManagerIntrinsicSettings] {
+	return pulumix.Output[ManagerIntrinsicSettings]{
+		OutputState: i.ToManagerIntrinsicSettingsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ManagerIntrinsicSettingsArgs) ToManagerIntrinsicSettingsPtrOutput() ManagerIntrinsicSettingsPtrOutput {
@@ -801,6 +916,12 @@ func (i *managerIntrinsicSettingsPtrType) ToManagerIntrinsicSettingsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ManagerIntrinsicSettingsPtrOutput)
 }
 
+func (i *managerIntrinsicSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagerIntrinsicSettings] {
+	return pulumix.Output[*ManagerIntrinsicSettings]{
+		OutputState: i.ToManagerIntrinsicSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Intrinsic settings which refers to the type of the StorSimple Manager.
 type ManagerIntrinsicSettingsOutput struct{ *pulumi.OutputState }
 
@@ -826,6 +947,12 @@ func (o ManagerIntrinsicSettingsOutput) ToManagerIntrinsicSettingsPtrOutputWithC
 	}).(ManagerIntrinsicSettingsPtrOutput)
 }
 
+func (o ManagerIntrinsicSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagerIntrinsicSettings] {
+	return pulumix.Output[ManagerIntrinsicSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The type of StorSimple Manager.
 func (o ManagerIntrinsicSettingsOutput) Type() ManagerTypeOutput {
 	return o.ApplyT(func(v ManagerIntrinsicSettings) ManagerType { return v.Type }).(ManagerTypeOutput)
@@ -843,6 +970,12 @@ func (o ManagerIntrinsicSettingsPtrOutput) ToManagerIntrinsicSettingsPtrOutput()
 
 func (o ManagerIntrinsicSettingsPtrOutput) ToManagerIntrinsicSettingsPtrOutputWithContext(ctx context.Context) ManagerIntrinsicSettingsPtrOutput {
 	return o
+}
+
+func (o ManagerIntrinsicSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagerIntrinsicSettings] {
+	return pulumix.Output[*ManagerIntrinsicSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagerIntrinsicSettingsPtrOutput) Elem() ManagerIntrinsicSettingsOutput {
@@ -886,6 +1019,12 @@ func (o ManagerIntrinsicSettingsResponseOutput) ToManagerIntrinsicSettingsRespon
 	return o
 }
 
+func (o ManagerIntrinsicSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagerIntrinsicSettingsResponse] {
+	return pulumix.Output[ManagerIntrinsicSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The type of StorSimple Manager.
 func (o ManagerIntrinsicSettingsResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagerIntrinsicSettingsResponse) string { return v.Type }).(pulumi.StringOutput)
@@ -903,6 +1042,12 @@ func (o ManagerIntrinsicSettingsResponsePtrOutput) ToManagerIntrinsicSettingsRes
 
 func (o ManagerIntrinsicSettingsResponsePtrOutput) ToManagerIntrinsicSettingsResponsePtrOutputWithContext(ctx context.Context) ManagerIntrinsicSettingsResponsePtrOutput {
 	return o
+}
+
+func (o ManagerIntrinsicSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagerIntrinsicSettingsResponse] {
+	return pulumix.Output[*ManagerIntrinsicSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagerIntrinsicSettingsResponsePtrOutput) Elem() ManagerIntrinsicSettingsResponseOutput {
@@ -960,6 +1105,12 @@ func (i ManagerSkuArgs) ToManagerSkuOutputWithContext(ctx context.Context) Manag
 	return pulumi.ToOutputWithContext(ctx, i).(ManagerSkuOutput)
 }
 
+func (i ManagerSkuArgs) ToOutput(ctx context.Context) pulumix.Output[ManagerSku] {
+	return pulumix.Output[ManagerSku]{
+		OutputState: i.ToManagerSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagerSkuArgs) ToManagerSkuPtrOutput() ManagerSkuPtrOutput {
 	return i.ToManagerSkuPtrOutputWithContext(context.Background())
 }
@@ -1001,6 +1152,12 @@ func (i *managerSkuPtrType) ToManagerSkuPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ManagerSkuPtrOutput)
 }
 
+func (i *managerSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagerSku] {
+	return pulumix.Output[*ManagerSku]{
+		OutputState: i.ToManagerSkuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Sku.
 type ManagerSkuOutput struct{ *pulumi.OutputState }
 
@@ -1026,6 +1183,12 @@ func (o ManagerSkuOutput) ToManagerSkuPtrOutputWithContext(ctx context.Context) 
 	}).(ManagerSkuPtrOutput)
 }
 
+func (o ManagerSkuOutput) ToOutput(ctx context.Context) pulumix.Output[ManagerSku] {
+	return pulumix.Output[ManagerSku]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Refers to the sku name which should be "Standard"
 func (o ManagerSkuOutput) Name() ManagerSkuTypeOutput {
 	return o.ApplyT(func(v ManagerSku) ManagerSkuType { return v.Name }).(ManagerSkuTypeOutput)
@@ -1043,6 +1206,12 @@ func (o ManagerSkuPtrOutput) ToManagerSkuPtrOutput() ManagerSkuPtrOutput {
 
 func (o ManagerSkuPtrOutput) ToManagerSkuPtrOutputWithContext(ctx context.Context) ManagerSkuPtrOutput {
 	return o
+}
+
+func (o ManagerSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagerSku] {
+	return pulumix.Output[*ManagerSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagerSkuPtrOutput) Elem() ManagerSkuOutput {
@@ -1086,6 +1255,12 @@ func (o ManagerSkuResponseOutput) ToManagerSkuResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o ManagerSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagerSkuResponse] {
+	return pulumix.Output[ManagerSkuResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Refers to the sku name which should be "Standard"
 func (o ManagerSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagerSkuResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -1103,6 +1278,12 @@ func (o ManagerSkuResponsePtrOutput) ToManagerSkuResponsePtrOutput() ManagerSkuR
 
 func (o ManagerSkuResponsePtrOutput) ToManagerSkuResponsePtrOutputWithContext(ctx context.Context) ManagerSkuResponsePtrOutput {
 	return o
+}
+
+func (o ManagerSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagerSkuResponse] {
+	return pulumix.Output[*ManagerSkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagerSkuResponsePtrOutput) Elem() ManagerSkuResponseOutput {
@@ -1168,6 +1349,12 @@ func (i ScheduleRecurrenceArgs) ToScheduleRecurrenceOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleRecurrenceOutput)
 }
 
+func (i ScheduleRecurrenceArgs) ToOutput(ctx context.Context) pulumix.Output[ScheduleRecurrence] {
+	return pulumix.Output[ScheduleRecurrence]{
+		OutputState: i.ToScheduleRecurrenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The schedule recurrence.
 type ScheduleRecurrenceOutput struct{ *pulumi.OutputState }
 
@@ -1181,6 +1368,12 @@ func (o ScheduleRecurrenceOutput) ToScheduleRecurrenceOutput() ScheduleRecurrenc
 
 func (o ScheduleRecurrenceOutput) ToScheduleRecurrenceOutputWithContext(ctx context.Context) ScheduleRecurrenceOutput {
 	return o
+}
+
+func (o ScheduleRecurrenceOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleRecurrence] {
+	return pulumix.Output[ScheduleRecurrence]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The recurrence type.
@@ -1223,6 +1416,12 @@ func (o ScheduleRecurrenceResponseOutput) ToScheduleRecurrenceResponseOutputWith
 	return o
 }
 
+func (o ScheduleRecurrenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleRecurrenceResponse] {
+	return pulumix.Output[ScheduleRecurrenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The recurrence type.
 func (o ScheduleRecurrenceResponseOutput) RecurrenceType() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduleRecurrenceResponse) string { return v.RecurrenceType }).(pulumi.StringOutput)
@@ -1263,6 +1462,12 @@ func (o TargetEligibilityErrorMessageResponseOutput) ToTargetEligibilityErrorMes
 	return o
 }
 
+func (o TargetEligibilityErrorMessageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetEligibilityErrorMessageResponse] {
+	return pulumix.Output[TargetEligibilityErrorMessageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The localized error message stating the reason why the device is not eligible as a target device.
 func (o TargetEligibilityErrorMessageResponseOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TargetEligibilityErrorMessageResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
@@ -1290,6 +1495,12 @@ func (o TargetEligibilityErrorMessageResponseArrayOutput) ToTargetEligibilityErr
 
 func (o TargetEligibilityErrorMessageResponseArrayOutput) ToTargetEligibilityErrorMessageResponseArrayOutputWithContext(ctx context.Context) TargetEligibilityErrorMessageResponseArrayOutput {
 	return o
+}
+
+func (o TargetEligibilityErrorMessageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetEligibilityErrorMessageResponse] {
+	return pulumix.Output[[]TargetEligibilityErrorMessageResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetEligibilityErrorMessageResponseArrayOutput) Index(i pulumi.IntInput) TargetEligibilityErrorMessageResponseOutput {
@@ -1321,6 +1532,12 @@ func (o TargetEligibilityResultResponseOutput) ToTargetEligibilityResultResponse
 	return o
 }
 
+func (o TargetEligibilityResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetEligibilityResultResponse] {
+	return pulumix.Output[TargetEligibilityResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The eligibility status of device, as a failover target device.
 func (o TargetEligibilityResultResponseOutput) EligibilityStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TargetEligibilityResultResponse) *string { return v.EligibilityStatus }).(pulumi.StringPtrOutput)
@@ -1343,6 +1560,12 @@ func (o TargetEligibilityResultResponsePtrOutput) ToTargetEligibilityResultRespo
 
 func (o TargetEligibilityResultResponsePtrOutput) ToTargetEligibilityResultResponsePtrOutputWithContext(ctx context.Context) TargetEligibilityResultResponsePtrOutput {
 	return o
+}
+
+func (o TargetEligibilityResultResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetEligibilityResultResponse] {
+	return pulumix.Output[*TargetEligibilityResultResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetEligibilityResultResponsePtrOutput) Elem() TargetEligibilityResultResponseOutput {
@@ -1418,6 +1641,12 @@ func (i TimeArgs) ToTimeOutputWithContext(ctx context.Context) TimeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TimeOutput)
 }
 
+func (i TimeArgs) ToOutput(ctx context.Context) pulumix.Output[Time] {
+	return pulumix.Output[Time]{
+		OutputState: i.ToTimeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The time.
 type TimeOutput struct{ *pulumi.OutputState }
 
@@ -1431,6 +1660,12 @@ func (o TimeOutput) ToTimeOutput() TimeOutput {
 
 func (o TimeOutput) ToTimeOutputWithContext(ctx context.Context) TimeOutput {
 	return o
+}
+
+func (o TimeOutput) ToOutput(ctx context.Context) pulumix.Output[Time] {
+	return pulumix.Output[Time]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The hour.
@@ -1473,6 +1708,12 @@ func (o TimeResponseOutput) ToTimeResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o TimeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeResponse] {
+	return pulumix.Output[TimeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The hour.
 func (o TimeResponseOutput) Hours() pulumi.IntOutput {
 	return o.ApplyT(func(v TimeResponse) int { return v.Hours }).(pulumi.IntOutput)
@@ -1511,6 +1752,12 @@ func (o VolumeContainerFailoverMetadataResponseOutput) ToVolumeContainerFailover
 	return o
 }
 
+func (o VolumeContainerFailoverMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeContainerFailoverMetadataResponse] {
+	return pulumix.Output[VolumeContainerFailoverMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The path ID of the volume container.
 func (o VolumeContainerFailoverMetadataResponseOutput) VolumeContainerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeContainerFailoverMetadataResponse) *string { return v.VolumeContainerId }).(pulumi.StringPtrOutput)
@@ -1533,6 +1780,12 @@ func (o VolumeContainerFailoverMetadataResponseArrayOutput) ToVolumeContainerFai
 
 func (o VolumeContainerFailoverMetadataResponseArrayOutput) ToVolumeContainerFailoverMetadataResponseArrayOutputWithContext(ctx context.Context) VolumeContainerFailoverMetadataResponseArrayOutput {
 	return o
+}
+
+func (o VolumeContainerFailoverMetadataResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeContainerFailoverMetadataResponse] {
+	return pulumix.Output[[]VolumeContainerFailoverMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeContainerFailoverMetadataResponseArrayOutput) Index(i pulumi.IntInput) VolumeContainerFailoverMetadataResponseOutput {
@@ -1572,6 +1825,12 @@ func (o VolumeFailoverMetadataResponseOutput) ToVolumeFailoverMetadataResponseOu
 
 func (o VolumeFailoverMetadataResponseOutput) ToVolumeFailoverMetadataResponseOutputWithContext(ctx context.Context) VolumeFailoverMetadataResponseOutput {
 	return o
+}
+
+func (o VolumeFailoverMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeFailoverMetadataResponse] {
+	return pulumix.Output[VolumeFailoverMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The date at which the snapshot was taken.
@@ -1621,6 +1880,12 @@ func (o VolumeFailoverMetadataResponseArrayOutput) ToVolumeFailoverMetadataRespo
 
 func (o VolumeFailoverMetadataResponseArrayOutput) ToVolumeFailoverMetadataResponseArrayOutputWithContext(ctx context.Context) VolumeFailoverMetadataResponseArrayOutput {
 	return o
+}
+
+func (o VolumeFailoverMetadataResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeFailoverMetadataResponse] {
+	return pulumix.Output[[]VolumeFailoverMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeFailoverMetadataResponseArrayOutput) Index(i pulumi.IntInput) VolumeFailoverMetadataResponseOutput {

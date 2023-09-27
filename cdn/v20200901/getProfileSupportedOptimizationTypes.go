@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the supported optimization types for the current profile. A user can create an endpoint with an optimization type from the listed values.
@@ -72,6 +73,12 @@ func (o GetProfileSupportedOptimizationTypesResultOutput) ToGetProfileSupportedO
 
 func (o GetProfileSupportedOptimizationTypesResultOutput) ToGetProfileSupportedOptimizationTypesResultOutputWithContext(ctx context.Context) GetProfileSupportedOptimizationTypesResultOutput {
 	return o
+}
+
+func (o GetProfileSupportedOptimizationTypesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProfileSupportedOptimizationTypesResult] {
+	return pulumix.Output[GetProfileSupportedOptimizationTypesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Supported optimization types for a profile.

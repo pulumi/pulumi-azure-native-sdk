@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Hybrid Connection for an App Service app.
@@ -181,6 +182,12 @@ func (i *WebAppRelayServiceConnection) ToWebAppRelayServiceConnectionOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppRelayServiceConnectionOutput)
 }
 
+func (i *WebAppRelayServiceConnection) ToOutput(ctx context.Context) pulumix.Output[*WebAppRelayServiceConnection] {
+	return pulumix.Output[*WebAppRelayServiceConnection]{
+		OutputState: i.ToWebAppRelayServiceConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppRelayServiceConnectionOutput struct{ *pulumi.OutputState }
 
 func (WebAppRelayServiceConnectionOutput) ElementType() reflect.Type {
@@ -193,6 +200,12 @@ func (o WebAppRelayServiceConnectionOutput) ToWebAppRelayServiceConnectionOutput
 
 func (o WebAppRelayServiceConnectionOutput) ToWebAppRelayServiceConnectionOutputWithContext(ctx context.Context) WebAppRelayServiceConnectionOutput {
 	return o
+}
+
+func (o WebAppRelayServiceConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppRelayServiceConnection] {
+	return pulumix.Output[*WebAppRelayServiceConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebAppRelayServiceConnectionOutput) BiztalkUri() pulumi.StringPtrOutput {

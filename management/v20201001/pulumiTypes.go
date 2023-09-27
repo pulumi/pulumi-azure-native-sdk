@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -55,6 +56,12 @@ func (o EntityInfoResponseOutput) ToEntityInfoResponseOutput() EntityInfoRespons
 
 func (o EntityInfoResponseOutput) ToEntityInfoResponseOutputWithContext(ctx context.Context) EntityInfoResponseOutput {
 	return o
+}
+
+func (o EntityInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EntityInfoResponse] {
+	return pulumix.Output[EntityInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The friendly name of the management group.
@@ -135,6 +142,12 @@ func (o EntityInfoResponseArrayOutput) ToEntityInfoResponseArrayOutputWithContex
 	return o
 }
 
+func (o EntityInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EntityInfoResponse] {
+	return pulumix.Output[[]EntityInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityInfoResponseArrayOutput) Index(i pulumi.IntInput) EntityInfoResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityInfoResponse {
 		return vs[0].([]EntityInfoResponse)[vs[1].(int)]
@@ -162,6 +175,12 @@ func (o EntityParentGroupInfoResponseOutput) ToEntityParentGroupInfoResponseOutp
 	return o
 }
 
+func (o EntityParentGroupInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EntityParentGroupInfoResponse] {
+	return pulumix.Output[EntityParentGroupInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
 func (o EntityParentGroupInfoResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntityParentGroupInfoResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -179,6 +198,12 @@ func (o EntityParentGroupInfoResponsePtrOutput) ToEntityParentGroupInfoResponseP
 
 func (o EntityParentGroupInfoResponsePtrOutput) ToEntityParentGroupInfoResponsePtrOutputWithContext(ctx context.Context) EntityParentGroupInfoResponsePtrOutput {
 	return o
+}
+
+func (o EntityParentGroupInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityParentGroupInfoResponse] {
+	return pulumix.Output[*EntityParentGroupInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityParentGroupInfoResponsePtrOutput) Elem() EntityParentGroupInfoResponseOutput {

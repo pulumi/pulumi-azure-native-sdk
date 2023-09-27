@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // BackupInstance Resource
@@ -99,6 +100,9 @@ func NewBackupInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20230501:BackupInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230601preview:BackupInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -183,6 +187,12 @@ func (i *BackupInstance) ToBackupInstanceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BackupInstanceOutput)
 }
 
+func (i *BackupInstance) ToOutput(ctx context.Context) pulumix.Output[*BackupInstance] {
+	return pulumix.Output[*BackupInstance]{
+		OutputState: i.ToBackupInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupInstanceOutput struct{ *pulumi.OutputState }
 
 func (BackupInstanceOutput) ElementType() reflect.Type {
@@ -195,6 +205,12 @@ func (o BackupInstanceOutput) ToBackupInstanceOutput() BackupInstanceOutput {
 
 func (o BackupInstanceOutput) ToBackupInstanceOutputWithContext(ctx context.Context) BackupInstanceOutput {
 	return o
+}
+
+func (o BackupInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupInstance] {
+	return pulumix.Output[*BackupInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Proxy Resource name associated with the resource.

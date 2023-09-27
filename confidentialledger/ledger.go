@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Confidential Ledger. Contains the properties of Confidential Ledger Resource.
@@ -56,6 +57,9 @@ func NewLedger(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:confidentialledger/v20230126preview:Ledger"),
+		},
+		{
+			Type: pulumi.String("azure-native:confidentialledger/v20230628preview:Ledger"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -141,6 +145,12 @@ func (i *Ledger) ToLedgerOutputWithContext(ctx context.Context) LedgerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LedgerOutput)
 }
 
+func (i *Ledger) ToOutput(ctx context.Context) pulumix.Output[*Ledger] {
+	return pulumix.Output[*Ledger]{
+		OutputState: i.ToLedgerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LedgerOutput struct{ *pulumi.OutputState }
 
 func (LedgerOutput) ElementType() reflect.Type {
@@ -153,6 +163,12 @@ func (o LedgerOutput) ToLedgerOutput() LedgerOutput {
 
 func (o LedgerOutput) ToLedgerOutputWithContext(ctx context.Context) LedgerOutput {
 	return o
+}
+
+func (o LedgerOutput) ToOutput(ctx context.Context) pulumix.Output[*Ledger] {
+	return pulumix.Output[*Ledger]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Azure location where the Confidential Ledger is running.

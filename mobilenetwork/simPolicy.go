@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SIM policy resource.
@@ -185,6 +186,12 @@ func (i *SimPolicy) ToSimPolicyOutputWithContext(ctx context.Context) SimPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(SimPolicyOutput)
 }
 
+func (i *SimPolicy) ToOutput(ctx context.Context) pulumix.Output[*SimPolicy] {
+	return pulumix.Output[*SimPolicy]{
+		OutputState: i.ToSimPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SimPolicyOutput struct{ *pulumi.OutputState }
 
 func (SimPolicyOutput) ElementType() reflect.Type {
@@ -197,6 +204,12 @@ func (o SimPolicyOutput) ToSimPolicyOutput() SimPolicyOutput {
 
 func (o SimPolicyOutput) ToSimPolicyOutputWithContext(ctx context.Context) SimPolicyOutput {
 	return o
+}
+
+func (o SimPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*SimPolicy] {
+	return pulumix.Output[*SimPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map. The slice must be in the same location as the SIM policy.

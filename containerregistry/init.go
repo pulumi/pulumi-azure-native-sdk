@@ -27,8 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Archife{}
 	case "azure-native:containerregistry:ArchiveVersion":
 		r = &ArchiveVersion{}
-	case "azure-native:containerregistry:BuildStep":
-		r = &BuildStep{}
 	case "azure-native:containerregistry:CacheRule":
 		r = &CacheRule{}
 	case "azure-native:containerregistry:ConnectedRegistry":

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Product-group link details.
@@ -142,6 +143,12 @@ func (i *WorkspaceProductGroupLink) ToWorkspaceProductGroupLinkOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceProductGroupLinkOutput)
 }
 
+func (i *WorkspaceProductGroupLink) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceProductGroupLink] {
+	return pulumix.Output[*WorkspaceProductGroupLink]{
+		OutputState: i.ToWorkspaceProductGroupLinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceProductGroupLinkOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceProductGroupLinkOutput) ElementType() reflect.Type {
@@ -154,6 +161,12 @@ func (o WorkspaceProductGroupLinkOutput) ToWorkspaceProductGroupLinkOutput() Wor
 
 func (o WorkspaceProductGroupLinkOutput) ToWorkspaceProductGroupLinkOutputWithContext(ctx context.Context) WorkspaceProductGroupLinkOutput {
 	return o
+}
+
+func (o WorkspaceProductGroupLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceProductGroupLink] {
+	return pulumix.Output[*WorkspaceProductGroupLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Full resource Id of a group.

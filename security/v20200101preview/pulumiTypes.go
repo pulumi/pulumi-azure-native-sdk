@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -182,6 +183,12 @@ func (i HybridComputeSettingsPropertiesArgs) ToHybridComputeSettingsPropertiesOu
 	return pulumi.ToOutputWithContext(ctx, i).(HybridComputeSettingsPropertiesOutput)
 }
 
+func (i HybridComputeSettingsPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[HybridComputeSettingsProperties] {
+	return pulumix.Output[HybridComputeSettingsProperties]{
+		OutputState: i.ToHybridComputeSettingsPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HybridComputeSettingsPropertiesArgs) ToHybridComputeSettingsPropertiesPtrOutput() HybridComputeSettingsPropertiesPtrOutput {
 	return i.ToHybridComputeSettingsPropertiesPtrOutputWithContext(context.Background())
 }
@@ -223,6 +230,12 @@ func (i *hybridComputeSettingsPropertiesPtrType) ToHybridComputeSettingsProperti
 	return pulumi.ToOutputWithContext(ctx, i).(HybridComputeSettingsPropertiesPtrOutput)
 }
 
+func (i *hybridComputeSettingsPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*HybridComputeSettingsProperties] {
+	return pulumix.Output[*HybridComputeSettingsProperties]{
+		OutputState: i.ToHybridComputeSettingsPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings for hybrid compute management
 type HybridComputeSettingsPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -246,6 +259,12 @@ func (o HybridComputeSettingsPropertiesOutput) ToHybridComputeSettingsProperties
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HybridComputeSettingsProperties) *HybridComputeSettingsProperties {
 		return &v
 	}).(HybridComputeSettingsPropertiesPtrOutput)
+}
+
+func (o HybridComputeSettingsPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[HybridComputeSettingsProperties] {
+	return pulumix.Output[HybridComputeSettingsProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether or not to automatically install Azure Arc (hybrid compute) agents on machines
@@ -285,6 +304,12 @@ func (o HybridComputeSettingsPropertiesPtrOutput) ToHybridComputeSettingsPropert
 
 func (o HybridComputeSettingsPropertiesPtrOutput) ToHybridComputeSettingsPropertiesPtrOutputWithContext(ctx context.Context) HybridComputeSettingsPropertiesPtrOutput {
 	return o
+}
+
+func (o HybridComputeSettingsPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridComputeSettingsProperties] {
+	return pulumix.Output[*HybridComputeSettingsProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HybridComputeSettingsPropertiesPtrOutput) Elem() HybridComputeSettingsPropertiesOutput {
@@ -378,6 +403,12 @@ func (o HybridComputeSettingsPropertiesResponseOutput) ToHybridComputeSettingsPr
 	return o
 }
 
+func (o HybridComputeSettingsPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HybridComputeSettingsPropertiesResponse] {
+	return pulumix.Output[HybridComputeSettingsPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether or not to automatically install Azure Arc (hybrid compute) agents on machines
 func (o HybridComputeSettingsPropertiesResponseOutput) AutoProvision() pulumi.StringOutput {
 	return o.ApplyT(func(v HybridComputeSettingsPropertiesResponse) string { return v.AutoProvision }).(pulumi.StringOutput)
@@ -422,6 +453,12 @@ func (o HybridComputeSettingsPropertiesResponsePtrOutput) ToHybridComputeSetting
 
 func (o HybridComputeSettingsPropertiesResponsePtrOutput) ToHybridComputeSettingsPropertiesResponsePtrOutputWithContext(ctx context.Context) HybridComputeSettingsPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o HybridComputeSettingsPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridComputeSettingsPropertiesResponse] {
+	return pulumix.Output[*HybridComputeSettingsPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HybridComputeSettingsPropertiesResponsePtrOutput) Elem() HybridComputeSettingsPropertiesResponseOutput {
@@ -533,6 +570,12 @@ func (i ProxyServerPropertiesArgs) ToProxyServerPropertiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ProxyServerPropertiesOutput)
 }
 
+func (i ProxyServerPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ProxyServerProperties] {
+	return pulumix.Output[ProxyServerProperties]{
+		OutputState: i.ToProxyServerPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ProxyServerPropertiesArgs) ToProxyServerPropertiesPtrOutput() ProxyServerPropertiesPtrOutput {
 	return i.ToProxyServerPropertiesPtrOutputWithContext(context.Background())
 }
@@ -574,6 +617,12 @@ func (i *proxyServerPropertiesPtrType) ToProxyServerPropertiesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ProxyServerPropertiesPtrOutput)
 }
 
+func (i *proxyServerPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProxyServerProperties] {
+	return pulumix.Output[*ProxyServerProperties]{
+		OutputState: i.ToProxyServerPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // For a non-Azure machine that is not connected directly to the internet, specify a proxy server that the non-Azure machine can use.
 type ProxyServerPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -599,6 +648,12 @@ func (o ProxyServerPropertiesOutput) ToProxyServerPropertiesPtrOutputWithContext
 	}).(ProxyServerPropertiesPtrOutput)
 }
 
+func (o ProxyServerPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ProxyServerProperties] {
+	return pulumix.Output[ProxyServerProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Proxy server IP
 func (o ProxyServerPropertiesOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProxyServerProperties) *string { return v.Ip }).(pulumi.StringPtrOutput)
@@ -621,6 +676,12 @@ func (o ProxyServerPropertiesPtrOutput) ToProxyServerPropertiesPtrOutput() Proxy
 
 func (o ProxyServerPropertiesPtrOutput) ToProxyServerPropertiesPtrOutputWithContext(ctx context.Context) ProxyServerPropertiesPtrOutput {
 	return o
+}
+
+func (o ProxyServerPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProxyServerProperties] {
+	return pulumix.Output[*ProxyServerProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProxyServerPropertiesPtrOutput) Elem() ProxyServerPropertiesOutput {
@@ -676,6 +737,12 @@ func (o ProxyServerPropertiesResponseOutput) ToProxyServerPropertiesResponseOutp
 	return o
 }
 
+func (o ProxyServerPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProxyServerPropertiesResponse] {
+	return pulumix.Output[ProxyServerPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Proxy server IP
 func (o ProxyServerPropertiesResponseOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProxyServerPropertiesResponse) *string { return v.Ip }).(pulumi.StringPtrOutput)
@@ -698,6 +765,12 @@ func (o ProxyServerPropertiesResponsePtrOutput) ToProxyServerPropertiesResponseP
 
 func (o ProxyServerPropertiesResponsePtrOutput) ToProxyServerPropertiesResponsePtrOutputWithContext(ctx context.Context) ProxyServerPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o ProxyServerPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProxyServerPropertiesResponse] {
+	return pulumix.Output[*ProxyServerPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProxyServerPropertiesResponsePtrOutput) Elem() ProxyServerPropertiesResponseOutput {
@@ -769,6 +842,12 @@ func (i SecurityContactPropertiesAlertNotificationsArgs) ToSecurityContactProper
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityContactPropertiesAlertNotificationsOutput)
 }
 
+func (i SecurityContactPropertiesAlertNotificationsArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityContactPropertiesAlertNotifications] {
+	return pulumix.Output[SecurityContactPropertiesAlertNotifications]{
+		OutputState: i.ToSecurityContactPropertiesAlertNotificationsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecurityContactPropertiesAlertNotificationsArgs) ToSecurityContactPropertiesAlertNotificationsPtrOutput() SecurityContactPropertiesAlertNotificationsPtrOutput {
 	return i.ToSecurityContactPropertiesAlertNotificationsPtrOutputWithContext(context.Background())
 }
@@ -810,6 +889,12 @@ func (i *securityContactPropertiesAlertNotificationsPtrType) ToSecurityContactPr
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityContactPropertiesAlertNotificationsPtrOutput)
 }
 
+func (i *securityContactPropertiesAlertNotificationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityContactPropertiesAlertNotifications] {
+	return pulumix.Output[*SecurityContactPropertiesAlertNotifications]{
+		OutputState: i.ToSecurityContactPropertiesAlertNotificationsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines whether to send email notifications about new security alerts
 type SecurityContactPropertiesAlertNotificationsOutput struct{ *pulumi.OutputState }
 
@@ -835,6 +920,12 @@ func (o SecurityContactPropertiesAlertNotificationsOutput) ToSecurityContactProp
 	}).(SecurityContactPropertiesAlertNotificationsPtrOutput)
 }
 
+func (o SecurityContactPropertiesAlertNotificationsOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityContactPropertiesAlertNotifications] {
+	return pulumix.Output[SecurityContactPropertiesAlertNotifications]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Defines the minimal alert severity which will be sent as email notifications
 func (o SecurityContactPropertiesAlertNotificationsOutput) MinimalSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityContactPropertiesAlertNotifications) *string { return v.MinimalSeverity }).(pulumi.StringPtrOutput)
@@ -857,6 +948,12 @@ func (o SecurityContactPropertiesAlertNotificationsPtrOutput) ToSecurityContactP
 
 func (o SecurityContactPropertiesAlertNotificationsPtrOutput) ToSecurityContactPropertiesAlertNotificationsPtrOutputWithContext(ctx context.Context) SecurityContactPropertiesAlertNotificationsPtrOutput {
 	return o
+}
+
+func (o SecurityContactPropertiesAlertNotificationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityContactPropertiesAlertNotifications] {
+	return pulumix.Output[*SecurityContactPropertiesAlertNotifications]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityContactPropertiesAlertNotificationsPtrOutput) Elem() SecurityContactPropertiesAlertNotificationsOutput {
@@ -928,6 +1025,12 @@ func (i SecurityContactPropertiesNotificationsByRoleArgs) ToSecurityContactPrope
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityContactPropertiesNotificationsByRoleOutput)
 }
 
+func (i SecurityContactPropertiesNotificationsByRoleArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityContactPropertiesNotificationsByRole] {
+	return pulumix.Output[SecurityContactPropertiesNotificationsByRole]{
+		OutputState: i.ToSecurityContactPropertiesNotificationsByRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecurityContactPropertiesNotificationsByRoleArgs) ToSecurityContactPropertiesNotificationsByRolePtrOutput() SecurityContactPropertiesNotificationsByRolePtrOutput {
 	return i.ToSecurityContactPropertiesNotificationsByRolePtrOutputWithContext(context.Background())
 }
@@ -969,6 +1072,12 @@ func (i *securityContactPropertiesNotificationsByRolePtrType) ToSecurityContactP
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityContactPropertiesNotificationsByRolePtrOutput)
 }
 
+func (i *securityContactPropertiesNotificationsByRolePtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityContactPropertiesNotificationsByRole] {
+	return pulumix.Output[*SecurityContactPropertiesNotificationsByRole]{
+		OutputState: i.ToSecurityContactPropertiesNotificationsByRolePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
 type SecurityContactPropertiesNotificationsByRoleOutput struct{ *pulumi.OutputState }
 
@@ -994,6 +1103,12 @@ func (o SecurityContactPropertiesNotificationsByRoleOutput) ToSecurityContactPro
 	}).(SecurityContactPropertiesNotificationsByRolePtrOutput)
 }
 
+func (o SecurityContactPropertiesNotificationsByRoleOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityContactPropertiesNotificationsByRole] {
+	return pulumix.Output[SecurityContactPropertiesNotificationsByRole]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Defines which RBAC roles will get email notifications from Microsoft Defender for Cloud. List of allowed RBAC roles:
 func (o SecurityContactPropertiesNotificationsByRoleOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityContactPropertiesNotificationsByRole) []string { return v.Roles }).(pulumi.StringArrayOutput)
@@ -1016,6 +1131,12 @@ func (o SecurityContactPropertiesNotificationsByRolePtrOutput) ToSecurityContact
 
 func (o SecurityContactPropertiesNotificationsByRolePtrOutput) ToSecurityContactPropertiesNotificationsByRolePtrOutputWithContext(ctx context.Context) SecurityContactPropertiesNotificationsByRolePtrOutput {
 	return o
+}
+
+func (o SecurityContactPropertiesNotificationsByRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityContactPropertiesNotificationsByRole] {
+	return pulumix.Output[*SecurityContactPropertiesNotificationsByRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityContactPropertiesNotificationsByRolePtrOutput) Elem() SecurityContactPropertiesNotificationsByRoleOutput {
@@ -1071,6 +1192,12 @@ func (o SecurityContactPropertiesResponseAlertNotificationsOutput) ToSecurityCon
 	return o
 }
 
+func (o SecurityContactPropertiesResponseAlertNotificationsOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityContactPropertiesResponseAlertNotifications] {
+	return pulumix.Output[SecurityContactPropertiesResponseAlertNotifications]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Defines the minimal alert severity which will be sent as email notifications
 func (o SecurityContactPropertiesResponseAlertNotificationsOutput) MinimalSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityContactPropertiesResponseAlertNotifications) *string { return v.MinimalSeverity }).(pulumi.StringPtrOutput)
@@ -1093,6 +1220,12 @@ func (o SecurityContactPropertiesResponseAlertNotificationsPtrOutput) ToSecurity
 
 func (o SecurityContactPropertiesResponseAlertNotificationsPtrOutput) ToSecurityContactPropertiesResponseAlertNotificationsPtrOutputWithContext(ctx context.Context) SecurityContactPropertiesResponseAlertNotificationsPtrOutput {
 	return o
+}
+
+func (o SecurityContactPropertiesResponseAlertNotificationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityContactPropertiesResponseAlertNotifications] {
+	return pulumix.Output[*SecurityContactPropertiesResponseAlertNotifications]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityContactPropertiesResponseAlertNotificationsPtrOutput) Elem() SecurityContactPropertiesResponseAlertNotificationsOutput {
@@ -1148,6 +1281,12 @@ func (o SecurityContactPropertiesResponseNotificationsByRoleOutput) ToSecurityCo
 	return o
 }
 
+func (o SecurityContactPropertiesResponseNotificationsByRoleOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityContactPropertiesResponseNotificationsByRole] {
+	return pulumix.Output[SecurityContactPropertiesResponseNotificationsByRole]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Defines which RBAC roles will get email notifications from Microsoft Defender for Cloud. List of allowed RBAC roles:
 func (o SecurityContactPropertiesResponseNotificationsByRoleOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityContactPropertiesResponseNotificationsByRole) []string { return v.Roles }).(pulumi.StringArrayOutput)
@@ -1170,6 +1309,12 @@ func (o SecurityContactPropertiesResponseNotificationsByRolePtrOutput) ToSecurit
 
 func (o SecurityContactPropertiesResponseNotificationsByRolePtrOutput) ToSecurityContactPropertiesResponseNotificationsByRolePtrOutputWithContext(ctx context.Context) SecurityContactPropertiesResponseNotificationsByRolePtrOutput {
 	return o
+}
+
+func (o SecurityContactPropertiesResponseNotificationsByRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityContactPropertiesResponseNotificationsByRole] {
+	return pulumix.Output[*SecurityContactPropertiesResponseNotificationsByRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityContactPropertiesResponseNotificationsByRolePtrOutput) Elem() SecurityContactPropertiesResponseNotificationsByRoleOutput {
@@ -1241,6 +1386,12 @@ func (i ServicePrincipalPropertiesArgs) ToServicePrincipalPropertiesOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPropertiesOutput)
 }
 
+func (i ServicePrincipalPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePrincipalProperties] {
+	return pulumix.Output[ServicePrincipalProperties]{
+		OutputState: i.ToServicePrincipalPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServicePrincipalPropertiesArgs) ToServicePrincipalPropertiesPtrOutput() ServicePrincipalPropertiesPtrOutput {
 	return i.ToServicePrincipalPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1282,6 +1433,12 @@ func (i *servicePrincipalPropertiesPtrType) ToServicePrincipalPropertiesPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPropertiesPtrOutput)
 }
 
+func (i *servicePrincipalPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalProperties] {
+	return pulumix.Output[*ServicePrincipalProperties]{
+		OutputState: i.ToServicePrincipalPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Details of the service principal.
 type ServicePrincipalPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1307,6 +1464,12 @@ func (o ServicePrincipalPropertiesOutput) ToServicePrincipalPropertiesPtrOutputW
 	}).(ServicePrincipalPropertiesPtrOutput)
 }
 
+func (o ServicePrincipalPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePrincipalProperties] {
+	return pulumix.Output[ServicePrincipalProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Application ID of service principal.
 func (o ServicePrincipalPropertiesOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalProperties) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
@@ -1329,6 +1492,12 @@ func (o ServicePrincipalPropertiesPtrOutput) ToServicePrincipalPropertiesPtrOutp
 
 func (o ServicePrincipalPropertiesPtrOutput) ToServicePrincipalPropertiesPtrOutputWithContext(ctx context.Context) ServicePrincipalPropertiesPtrOutput {
 	return o
+}
+
+func (o ServicePrincipalPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalProperties] {
+	return pulumix.Output[*ServicePrincipalProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServicePrincipalPropertiesPtrOutput) Elem() ServicePrincipalPropertiesOutput {
@@ -1384,6 +1553,12 @@ func (o ServicePrincipalPropertiesResponseOutput) ToServicePrincipalPropertiesRe
 	return o
 }
 
+func (o ServicePrincipalPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePrincipalPropertiesResponse] {
+	return pulumix.Output[ServicePrincipalPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Application ID of service principal.
 func (o ServicePrincipalPropertiesResponseOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalPropertiesResponse) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
@@ -1406,6 +1581,12 @@ func (o ServicePrincipalPropertiesResponsePtrOutput) ToServicePrincipalPropertie
 
 func (o ServicePrincipalPropertiesResponsePtrOutput) ToServicePrincipalPropertiesResponsePtrOutputWithContext(ctx context.Context) ServicePrincipalPropertiesResponsePtrOutput {
 	return o
+}
+
+func (o ServicePrincipalPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalPropertiesResponse] {
+	return pulumix.Output[*ServicePrincipalPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServicePrincipalPropertiesResponsePtrOutput) Elem() ServicePrincipalPropertiesResponseOutput {

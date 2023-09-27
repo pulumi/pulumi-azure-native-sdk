@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Schema for MSIX Package properties.
@@ -104,6 +105,9 @@ func NewMSIXPackage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:MSIXPackage"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:MSIXPackage"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -225,6 +229,12 @@ func (i *MSIXPackage) ToMSIXPackageOutputWithContext(ctx context.Context) MSIXPa
 	return pulumi.ToOutputWithContext(ctx, i).(MSIXPackageOutput)
 }
 
+func (i *MSIXPackage) ToOutput(ctx context.Context) pulumix.Output[*MSIXPackage] {
+	return pulumix.Output[*MSIXPackage]{
+		OutputState: i.ToMSIXPackageOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MSIXPackageOutput struct{ *pulumi.OutputState }
 
 func (MSIXPackageOutput) ElementType() reflect.Type {
@@ -237,6 +247,12 @@ func (o MSIXPackageOutput) ToMSIXPackageOutput() MSIXPackageOutput {
 
 func (o MSIXPackageOutput) ToMSIXPackageOutputWithContext(ctx context.Context) MSIXPackageOutput {
 	return o
+}
+
+func (o MSIXPackageOutput) ToOutput(ctx context.Context) pulumix.Output[*MSIXPackage] {
+	return pulumix.Output[*MSIXPackage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User friendly Name to be displayed in the portal.

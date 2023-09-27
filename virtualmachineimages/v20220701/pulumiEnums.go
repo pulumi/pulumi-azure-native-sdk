@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of identity used for the image template. The type 'None' will remove any identities from the image template.
@@ -78,6 +79,12 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
+func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
+	return pulumix.Output[ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -173,6 +186,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+}
+
+func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
+	return pulumix.Output[*ResourceIdentityType]{
+		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
@@ -252,6 +271,12 @@ func (o VMBootOptimizationStateOutput) ToVMBootOptimizationStatePtrOutputWithCon
 	}).(VMBootOptimizationStatePtrOutput)
 }
 
+func (o VMBootOptimizationStateOutput) ToOutput(ctx context.Context) pulumix.Output[VMBootOptimizationState] {
+	return pulumix.Output[VMBootOptimizationState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VMBootOptimizationStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -285,6 +310,12 @@ func (o VMBootOptimizationStatePtrOutput) ToVMBootOptimizationStatePtrOutput() V
 
 func (o VMBootOptimizationStatePtrOutput) ToVMBootOptimizationStatePtrOutputWithContext(ctx context.Context) VMBootOptimizationStatePtrOutput {
 	return o
+}
+
+func (o VMBootOptimizationStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMBootOptimizationState] {
+	return pulumix.Output[*VMBootOptimizationState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VMBootOptimizationStatePtrOutput) Elem() VMBootOptimizationStateOutput {
@@ -347,6 +378,12 @@ func (in *vmbootOptimizationStatePtr) ToVMBootOptimizationStatePtrOutput() VMBoo
 
 func (in *vmbootOptimizationStatePtr) ToVMBootOptimizationStatePtrOutputWithContext(ctx context.Context) VMBootOptimizationStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VMBootOptimizationStatePtrOutput)
+}
+
+func (in *vmbootOptimizationStatePtr) ToOutput(ctx context.Context) pulumix.Output[*VMBootOptimizationState] {
+	return pulumix.Output[*VMBootOptimizationState]{
+		OutputState: in.ToVMBootOptimizationStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

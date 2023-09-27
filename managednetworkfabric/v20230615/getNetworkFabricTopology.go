@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets Topology of the underlying resources in the given Network Fabric instance.
@@ -76,6 +77,12 @@ func (o GetNetworkFabricTopologyResultOutput) ToGetNetworkFabricTopologyResultOu
 
 func (o GetNetworkFabricTopologyResultOutput) ToGetNetworkFabricTopologyResultOutputWithContext(ctx context.Context) GetNetworkFabricTopologyResultOutput {
 	return o
+}
+
+func (o GetNetworkFabricTopologyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworkFabricTopologyResult] {
+	return pulumix.Output[GetNetworkFabricTopologyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the configuration state.

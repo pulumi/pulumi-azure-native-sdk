@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get remote debugging config.
@@ -83,6 +84,12 @@ func (o GetDeploymentRemoteDebuggingConfigResultOutput) ToGetDeploymentRemoteDeb
 
 func (o GetDeploymentRemoteDebuggingConfigResultOutput) ToGetDeploymentRemoteDebuggingConfigResultOutputWithContext(ctx context.Context) GetDeploymentRemoteDebuggingConfigResultOutput {
 	return o
+}
+
+func (o GetDeploymentRemoteDebuggingConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeploymentRemoteDebuggingConfigResult] {
+	return pulumix.Output[GetDeploymentRemoteDebuggingConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicate if remote debugging is enabled

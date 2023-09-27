@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A SQL Analytics pool
@@ -224,6 +225,12 @@ func (i *SqlPool) ToSqlPoolOutputWithContext(ctx context.Context) SqlPoolOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolOutput)
 }
 
+func (i *SqlPool) ToOutput(ctx context.Context) pulumix.Output[*SqlPool] {
+	return pulumix.Output[*SqlPool]{
+		OutputState: i.ToSqlPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlPoolOutput struct{ *pulumi.OutputState }
 
 func (SqlPoolOutput) ElementType() reflect.Type {
@@ -236,6 +243,12 @@ func (o SqlPoolOutput) ToSqlPoolOutput() SqlPoolOutput {
 
 func (o SqlPoolOutput) ToSqlPoolOutputWithContext(ctx context.Context) SqlPoolOutput {
 	return o
+}
+
+func (o SqlPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlPool] {
+	return pulumix.Output[*SqlPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Collation mode

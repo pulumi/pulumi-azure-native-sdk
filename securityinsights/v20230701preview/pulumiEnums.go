@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of the automation rule action.
@@ -911,6 +912,12 @@ func (o TriggerOperatorOutput) ToTriggerOperatorPtrOutputWithContext(ctx context
 	}).(TriggerOperatorPtrOutput)
 }
 
+func (o TriggerOperatorOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerOperator] {
+	return pulumix.Output[TriggerOperator]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TriggerOperatorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -944,6 +951,12 @@ func (o TriggerOperatorPtrOutput) ToTriggerOperatorPtrOutput() TriggerOperatorPt
 
 func (o TriggerOperatorPtrOutput) ToTriggerOperatorPtrOutputWithContext(ctx context.Context) TriggerOperatorPtrOutput {
 	return o
+}
+
+func (o TriggerOperatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerOperator] {
+	return pulumix.Output[*TriggerOperator]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerOperatorPtrOutput) Elem() TriggerOperatorOutput {
@@ -1006,6 +1019,12 @@ func (in *triggerOperatorPtr) ToTriggerOperatorPtrOutput() TriggerOperatorPtrOut
 
 func (in *triggerOperatorPtr) ToTriggerOperatorPtrOutputWithContext(ctx context.Context) TriggerOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerOperatorPtrOutput)
+}
+
+func (in *triggerOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*TriggerOperator] {
+	return pulumix.Output[*TriggerOperator]{
+		OutputState: in.ToTriggerOperatorPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type TriggersOn string

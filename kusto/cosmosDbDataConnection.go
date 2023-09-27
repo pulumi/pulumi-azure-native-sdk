@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing a CosmosDb data connection.
@@ -123,6 +124,9 @@ func NewCosmosDbDataConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230502:CosmosDbDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230815:CosmosDbDataConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -242,6 +246,12 @@ func (i *CosmosDbDataConnection) ToCosmosDbDataConnectionOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(CosmosDbDataConnectionOutput)
 }
 
+func (i *CosmosDbDataConnection) ToOutput(ctx context.Context) pulumix.Output[*CosmosDbDataConnection] {
+	return pulumix.Output[*CosmosDbDataConnection]{
+		OutputState: i.ToCosmosDbDataConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CosmosDbDataConnectionOutput struct{ *pulumi.OutputState }
 
 func (CosmosDbDataConnectionOutput) ElementType() reflect.Type {
@@ -254,6 +264,12 @@ func (o CosmosDbDataConnectionOutput) ToCosmosDbDataConnectionOutput() CosmosDbD
 
 func (o CosmosDbDataConnectionOutput) ToCosmosDbDataConnectionOutputWithContext(ctx context.Context) CosmosDbDataConnectionOutput {
 	return o
+}
+
+func (o CosmosDbDataConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*CosmosDbDataConnection] {
+	return pulumix.Output[*CosmosDbDataConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource ID of the Cosmos DB account used to create the data connection.

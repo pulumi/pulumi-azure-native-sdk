@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Publishing Credentials Policies parameters.
@@ -157,6 +158,12 @@ func (i *WebAppScmAllowed) ToWebAppScmAllowedOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppScmAllowedOutput)
 }
 
+func (i *WebAppScmAllowed) ToOutput(ctx context.Context) pulumix.Output[*WebAppScmAllowed] {
+	return pulumix.Output[*WebAppScmAllowed]{
+		OutputState: i.ToWebAppScmAllowedOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppScmAllowedOutput struct{ *pulumi.OutputState }
 
 func (WebAppScmAllowedOutput) ElementType() reflect.Type {
@@ -169,6 +176,12 @@ func (o WebAppScmAllowedOutput) ToWebAppScmAllowedOutput() WebAppScmAllowedOutpu
 
 func (o WebAppScmAllowedOutput) ToWebAppScmAllowedOutputWithContext(ctx context.Context) WebAppScmAllowedOutput {
 	return o
+}
+
+func (o WebAppScmAllowedOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppScmAllowed] {
+	return pulumix.Output[*WebAppScmAllowed]{
+		OutputState: o.OutputState,
+	}
 }
 
 // <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.

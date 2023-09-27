@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of the specific container registered to your Recovery Services Vault.
@@ -93,6 +94,12 @@ func (o LookupProtectionContainerResultOutput) ToLookupProtectionContainerResult
 
 func (o LookupProtectionContainerResultOutput) ToLookupProtectionContainerResultOutputWithContext(ctx context.Context) LookupProtectionContainerResultOutput {
 	return o
+}
+
+func (o LookupProtectionContainerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProtectionContainerResult] {
+	return pulumix.Output[LookupProtectionContainerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional ETag.

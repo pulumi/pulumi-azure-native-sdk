@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupBatchDeployment(ctx *pulumi.Context, args *LookupBatchDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupBatchDeploymentResult, error) {
@@ -93,6 +94,12 @@ func (o LookupBatchDeploymentResultOutput) ToLookupBatchDeploymentResultOutput()
 
 func (o LookupBatchDeploymentResultOutput) ToLookupBatchDeploymentResultOutputWithContext(ctx context.Context) LookupBatchDeploymentResultOutput {
 	return o
+}
+
+func (o LookupBatchDeploymentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBatchDeploymentResult] {
+	return pulumix.Output[LookupBatchDeploymentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

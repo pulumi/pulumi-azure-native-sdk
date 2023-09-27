@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description of a backup which will be performed.
@@ -195,6 +196,12 @@ func (i *WebAppBackupConfiguration) ToWebAppBackupConfigurationOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppBackupConfigurationOutput)
 }
 
+func (i *WebAppBackupConfiguration) ToOutput(ctx context.Context) pulumix.Output[*WebAppBackupConfiguration] {
+	return pulumix.Output[*WebAppBackupConfiguration]{
+		OutputState: i.ToWebAppBackupConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppBackupConfigurationOutput struct{ *pulumi.OutputState }
 
 func (WebAppBackupConfigurationOutput) ElementType() reflect.Type {
@@ -207,6 +214,12 @@ func (o WebAppBackupConfigurationOutput) ToWebAppBackupConfigurationOutput() Web
 
 func (o WebAppBackupConfigurationOutput) ToWebAppBackupConfigurationOutputWithContext(ctx context.Context) WebAppBackupConfigurationOutput {
 	return o
+}
+
+func (o WebAppBackupConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppBackupConfiguration] {
+	return pulumix.Output[*WebAppBackupConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the backup.

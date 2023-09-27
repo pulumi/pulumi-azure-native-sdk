@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The policy definition.
@@ -180,6 +181,12 @@ func (i *PolicyDefinition) ToPolicyDefinitionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefinitionOutput)
 }
 
+func (i *PolicyDefinition) ToOutput(ctx context.Context) pulumix.Output[*PolicyDefinition] {
+	return pulumix.Output[*PolicyDefinition]{
+		OutputState: i.ToPolicyDefinitionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PolicyDefinitionOutput struct{ *pulumi.OutputState }
 
 func (PolicyDefinitionOutput) ElementType() reflect.Type {
@@ -192,6 +199,12 @@ func (o PolicyDefinitionOutput) ToPolicyDefinitionOutput() PolicyDefinitionOutpu
 
 func (o PolicyDefinitionOutput) ToPolicyDefinitionOutputWithContext(ctx context.Context) PolicyDefinitionOutput {
 	return o
+}
+
+func (o PolicyDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyDefinition] {
+	return pulumix.Output[*PolicyDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The policy definition description.

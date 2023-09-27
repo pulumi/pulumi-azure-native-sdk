@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the activation key of the manager.
@@ -73,6 +74,12 @@ func (o ListManagerActivationKeyResultOutput) ToListManagerActivationKeyResultOu
 
 func (o ListManagerActivationKeyResultOutput) ToListManagerActivationKeyResultOutputWithContext(ctx context.Context) ListManagerActivationKeyResultOutput {
 	return o
+}
+
+func (o ListManagerActivationKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListManagerActivationKeyResult] {
+	return pulumix.Output[ListManagerActivationKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The activation key for the device.

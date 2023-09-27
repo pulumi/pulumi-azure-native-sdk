@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An AML file system instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
@@ -206,6 +207,12 @@ func (i *AmlFilesystem) ToAmlFilesystemOutputWithContext(ctx context.Context) Am
 	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemOutput)
 }
 
+func (i *AmlFilesystem) ToOutput(ctx context.Context) pulumix.Output[*AmlFilesystem] {
+	return pulumix.Output[*AmlFilesystem]{
+		OutputState: i.ToAmlFilesystemOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AmlFilesystemOutput struct{ *pulumi.OutputState }
 
 func (AmlFilesystemOutput) ElementType() reflect.Type {
@@ -218,6 +225,12 @@ func (o AmlFilesystemOutput) ToAmlFilesystemOutput() AmlFilesystemOutput {
 
 func (o AmlFilesystemOutput) ToAmlFilesystemOutputWithContext(ctx context.Context) AmlFilesystemOutput {
 	return o
+}
+
+func (o AmlFilesystemOutput) ToOutput(ctx context.Context) pulumix.Output[*AmlFilesystem] {
+	return pulumix.Output[*AmlFilesystem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies encryption settings of the AML file system.

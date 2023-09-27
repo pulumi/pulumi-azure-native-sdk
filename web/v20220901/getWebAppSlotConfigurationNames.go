@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Gets the names of app settings and connection strings that stick to the slot (not swapped).
@@ -84,6 +85,12 @@ func (o LookupWebAppSlotConfigurationNamesResultOutput) ToLookupWebAppSlotConfig
 
 func (o LookupWebAppSlotConfigurationNamesResultOutput) ToLookupWebAppSlotConfigurationNamesResultOutputWithContext(ctx context.Context) LookupWebAppSlotConfigurationNamesResultOutput {
 	return o
+}
+
+func (o LookupWebAppSlotConfigurationNamesResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppSlotConfigurationNamesResult] {
+	return pulumix.Output[LookupWebAppSlotConfigurationNamesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of application settings names.

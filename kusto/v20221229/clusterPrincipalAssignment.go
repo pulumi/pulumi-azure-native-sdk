@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing a cluster principal assignment.
@@ -93,6 +94,9 @@ func NewClusterPrincipalAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230502:ClusterPrincipalAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230815:ClusterPrincipalAssignment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -186,6 +190,12 @@ func (i *ClusterPrincipalAssignment) ToClusterPrincipalAssignmentOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPrincipalAssignmentOutput)
 }
 
+func (i *ClusterPrincipalAssignment) ToOutput(ctx context.Context) pulumix.Output[*ClusterPrincipalAssignment] {
+	return pulumix.Output[*ClusterPrincipalAssignment]{
+		OutputState: i.ToClusterPrincipalAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClusterPrincipalAssignmentOutput struct{ *pulumi.OutputState }
 
 func (ClusterPrincipalAssignmentOutput) ElementType() reflect.Type {
@@ -198,6 +208,12 @@ func (o ClusterPrincipalAssignmentOutput) ToClusterPrincipalAssignmentOutput() C
 
 func (o ClusterPrincipalAssignmentOutput) ToClusterPrincipalAssignmentOutputWithContext(ctx context.Context) ClusterPrincipalAssignmentOutput {
 	return o
+}
+
+func (o ClusterPrincipalAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterPrincipalAssignment] {
+	return pulumix.Output[*ClusterPrincipalAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The service principal object id in AAD (Azure active directory)

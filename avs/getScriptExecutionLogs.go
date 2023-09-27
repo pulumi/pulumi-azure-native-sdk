@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Return the logs for a script execution resource
@@ -111,6 +112,12 @@ func (o GetScriptExecutionLogsResultOutput) ToGetScriptExecutionLogsResultOutput
 
 func (o GetScriptExecutionLogsResultOutput) ToGetScriptExecutionLogsResultOutputWithContext(ctx context.Context) GetScriptExecutionLogsResultOutput {
 	return o
+}
+
+func (o GetScriptExecutionLogsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetScriptExecutionLogsResult] {
+	return pulumix.Output[GetScriptExecutionLogsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Standard error output stream from the powershell execution

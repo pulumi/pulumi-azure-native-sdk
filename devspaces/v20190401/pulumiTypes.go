@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -32,6 +33,12 @@ func (o ControllerConnectionDetailsResponseOutput) ToControllerConnectionDetails
 	return o
 }
 
+func (o ControllerConnectionDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ControllerConnectionDetailsResponse] {
+	return pulumix.Output[ControllerConnectionDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Base class for types that supply values used to connect to container orchestrators
 func (o ControllerConnectionDetailsResponseOutput) OrchestratorSpecificConnectionDetails() KubernetesConnectionDetailsResponsePtrOutput {
 	return o.ApplyT(func(v ControllerConnectionDetailsResponse) *KubernetesConnectionDetailsResponse {
@@ -51,6 +58,12 @@ func (o ControllerConnectionDetailsResponseArrayOutput) ToControllerConnectionDe
 
 func (o ControllerConnectionDetailsResponseArrayOutput) ToControllerConnectionDetailsResponseArrayOutputWithContext(ctx context.Context) ControllerConnectionDetailsResponseArrayOutput {
 	return o
+}
+
+func (o ControllerConnectionDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ControllerConnectionDetailsResponse] {
+	return pulumix.Output[[]ControllerConnectionDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ControllerConnectionDetailsResponseArrayOutput) Index(i pulumi.IntInput) ControllerConnectionDetailsResponseOutput {
@@ -83,6 +96,12 @@ func (o KubernetesConnectionDetailsResponseOutput) ToKubernetesConnectionDetails
 	return o
 }
 
+func (o KubernetesConnectionDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KubernetesConnectionDetailsResponse] {
+	return pulumix.Output[KubernetesConnectionDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Gets the Instance type.
 // Expected value is 'Kubernetes'.
 func (o KubernetesConnectionDetailsResponseOutput) InstanceType() pulumi.StringOutput {
@@ -106,6 +125,12 @@ func (o KubernetesConnectionDetailsResponsePtrOutput) ToKubernetesConnectionDeta
 
 func (o KubernetesConnectionDetailsResponsePtrOutput) ToKubernetesConnectionDetailsResponsePtrOutputWithContext(ctx context.Context) KubernetesConnectionDetailsResponsePtrOutput {
 	return o
+}
+
+func (o KubernetesConnectionDetailsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KubernetesConnectionDetailsResponse] {
+	return pulumix.Output[*KubernetesConnectionDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KubernetesConnectionDetailsResponsePtrOutput) Elem() KubernetesConnectionDetailsResponseOutput {
@@ -178,6 +203,12 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Model representing SKU for Azure Dev Spaces Controller.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -191,6 +222,12 @@ func (o SkuOutput) ToSkuOutput() SkuOutput {
 
 func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
+}
+
+func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
+	return pulumix.Output[Sku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the SKU for Azure Dev Spaces Controller.
@@ -224,6 +261,12 @@ func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
 
 func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
 	return o
+}
+
+func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
+	return pulumix.Output[SkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the SKU for Azure Dev Spaces Controller.

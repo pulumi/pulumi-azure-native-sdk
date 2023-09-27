@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure storage blob data set.
@@ -196,6 +197,12 @@ func (i *BlobDataSet) ToBlobDataSetOutputWithContext(ctx context.Context) BlobDa
 	return pulumi.ToOutputWithContext(ctx, i).(BlobDataSetOutput)
 }
 
+func (i *BlobDataSet) ToOutput(ctx context.Context) pulumix.Output[*BlobDataSet] {
+	return pulumix.Output[*BlobDataSet]{
+		OutputState: i.ToBlobDataSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BlobDataSetOutput struct{ *pulumi.OutputState }
 
 func (BlobDataSetOutput) ElementType() reflect.Type {
@@ -208,6 +215,12 @@ func (o BlobDataSetOutput) ToBlobDataSetOutput() BlobDataSetOutput {
 
 func (o BlobDataSetOutput) ToBlobDataSetOutputWithContext(ctx context.Context) BlobDataSetOutput {
 	return o
+}
+
+func (o BlobDataSetOutput) ToOutput(ctx context.Context) pulumix.Output[*BlobDataSet] {
+	return pulumix.Output[*BlobDataSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Container that has the file path.

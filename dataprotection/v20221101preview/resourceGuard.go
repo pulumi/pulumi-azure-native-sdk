@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ResourceGuard struct {
@@ -91,6 +92,9 @@ func NewResourceGuard(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20230501:ResourceGuard"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230601preview:ResourceGuard"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -184,6 +188,12 @@ func (i *ResourceGuard) ToResourceGuardOutputWithContext(ctx context.Context) Re
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGuardOutput)
 }
 
+func (i *ResourceGuard) ToOutput(ctx context.Context) pulumix.Output[*ResourceGuard] {
+	return pulumix.Output[*ResourceGuard]{
+		OutputState: i.ToResourceGuardOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceGuardOutput struct{ *pulumi.OutputState }
 
 func (ResourceGuardOutput) ElementType() reflect.Type {
@@ -196,6 +206,12 @@ func (o ResourceGuardOutput) ToResourceGuardOutput() ResourceGuardOutput {
 
 func (o ResourceGuardOutput) ToResourceGuardOutputWithContext(ctx context.Context) ResourceGuardOutput {
 	return o
+}
+
+func (o ResourceGuardOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceGuard] {
+	return pulumix.Output[*ResourceGuard]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional ETag.

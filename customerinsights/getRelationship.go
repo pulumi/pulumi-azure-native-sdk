@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified relationship.
@@ -105,6 +106,12 @@ func (o LookupRelationshipResultOutput) ToLookupRelationshipResultOutput() Looku
 
 func (o LookupRelationshipResultOutput) ToLookupRelationshipResultOutputWithContext(ctx context.Context) LookupRelationshipResultOutput {
 	return o
+}
+
+func (o LookupRelationshipResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRelationshipResult] {
+	return pulumix.Output[LookupRelationshipResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Relationship Cardinality.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
@@ -102,6 +103,9 @@ func NewOrigin(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20230501:Origin"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20230701preview:Origin"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -227,6 +231,12 @@ func (i *Origin) ToOriginOutputWithContext(ctx context.Context) OriginOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OriginOutput)
 }
 
+func (i *Origin) ToOutput(ctx context.Context) pulumix.Output[*Origin] {
+	return pulumix.Output[*Origin]{
+		OutputState: i.ToOriginOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OriginOutput struct{ *pulumi.OutputState }
 
 func (OriginOutput) ElementType() reflect.Type {
@@ -239,6 +249,12 @@ func (o OriginOutput) ToOriginOutput() OriginOutput {
 
 func (o OriginOutput) ToOriginOutputWithContext(ctx context.Context) OriginOutput {
 	return o
+}
+
+func (o OriginOutput) ToOutput(ctx context.Context) pulumix.Output[*Origin] {
+	return pulumix.Output[*Origin]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Origin is enabled for load balancing or not

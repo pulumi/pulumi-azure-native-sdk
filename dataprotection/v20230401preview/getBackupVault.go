@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a resource belonging to a resource group.
@@ -88,6 +89,12 @@ func (o LookupBackupVaultResultOutput) ToLookupBackupVaultResultOutput() LookupB
 
 func (o LookupBackupVaultResultOutput) ToLookupBackupVaultResultOutputWithContext(ctx context.Context) LookupBackupVaultResultOutput {
 	return o
+}
+
+func (o LookupBackupVaultResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackupVaultResult] {
+	return pulumix.Output[LookupBackupVaultResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional ETag.

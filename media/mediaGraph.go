@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Media Graph.
@@ -149,6 +150,12 @@ func (i *MediaGraph) ToMediaGraphOutputWithContext(ctx context.Context) MediaGra
 	return pulumi.ToOutputWithContext(ctx, i).(MediaGraphOutput)
 }
 
+func (i *MediaGraph) ToOutput(ctx context.Context) pulumix.Output[*MediaGraph] {
+	return pulumix.Output[*MediaGraph]{
+		OutputState: i.ToMediaGraphOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MediaGraphOutput struct{ *pulumi.OutputState }
 
 func (MediaGraphOutput) ElementType() reflect.Type {
@@ -161,6 +168,12 @@ func (o MediaGraphOutput) ToMediaGraphOutput() MediaGraphOutput {
 
 func (o MediaGraphOutput) ToMediaGraphOutputWithContext(ctx context.Context) MediaGraphOutput {
 	return o
+}
+
+func (o MediaGraphOutput) ToOutput(ctx context.Context) pulumix.Output[*MediaGraph] {
+	return pulumix.Output[*MediaGraph]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Date the Media Graph was created.

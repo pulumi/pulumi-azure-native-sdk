@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i LogSettingsArgs) ToLogSettingsOutputWithContext(ctx context.Context) Log
 	return pulumi.ToOutputWithContext(ctx, i).(LogSettingsOutput)
 }
 
+func (i LogSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[LogSettings] {
+	return pulumix.Output[LogSettings]{
+		OutputState: i.ToLogSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LogSettingsArrayInput is an input type that accepts LogSettingsArray and LogSettingsArrayOutput values.
 // You can construct a concrete instance of `LogSettingsArrayInput` via:
 //
@@ -85,6 +92,12 @@ func (i LogSettingsArray) ToLogSettingsArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(LogSettingsArrayOutput)
 }
 
+func (i LogSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]LogSettings] {
+	return pulumix.Output[[]LogSettings]{
+		OutputState: i.ToLogSettingsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
 type LogSettingsOutput struct{ *pulumi.OutputState }
 
@@ -98,6 +111,12 @@ func (o LogSettingsOutput) ToLogSettingsOutput() LogSettingsOutput {
 
 func (o LogSettingsOutput) ToLogSettingsOutputWithContext(ctx context.Context) LogSettingsOutput {
 	return o
+}
+
+func (o LogSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[LogSettings] {
+	return pulumix.Output[LogSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
@@ -134,6 +153,12 @@ func (o LogSettingsArrayOutput) ToLogSettingsArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o LogSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LogSettings] {
+	return pulumix.Output[[]LogSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogSettingsArrayOutput) Index(i pulumi.IntInput) LogSettingsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogSettings {
 		return vs[0].([]LogSettings)[vs[1].(int)]
@@ -165,6 +190,12 @@ func (o LogSettingsResponseOutput) ToLogSettingsResponseOutput() LogSettingsResp
 
 func (o LogSettingsResponseOutput) ToLogSettingsResponseOutputWithContext(ctx context.Context) LogSettingsResponseOutput {
 	return o
+}
+
+func (o LogSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogSettingsResponse] {
+	return pulumix.Output[LogSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
@@ -199,6 +230,12 @@ func (o LogSettingsResponseArrayOutput) ToLogSettingsResponseArrayOutput() LogSe
 
 func (o LogSettingsResponseArrayOutput) ToLogSettingsResponseArrayOutputWithContext(ctx context.Context) LogSettingsResponseArrayOutput {
 	return o
+}
+
+func (o LogSettingsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LogSettingsResponse] {
+	return pulumix.Output[[]LogSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogSettingsResponseArrayOutput) Index(i pulumi.IntInput) LogSettingsResponseOutput {
@@ -250,6 +287,12 @@ func (i ManagementGroupLogSettingsArgs) ToManagementGroupLogSettingsOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementGroupLogSettingsOutput)
 }
 
+func (i ManagementGroupLogSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ManagementGroupLogSettings] {
+	return pulumix.Output[ManagementGroupLogSettings]{
+		OutputState: i.ToManagementGroupLogSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ManagementGroupLogSettingsArrayInput is an input type that accepts ManagementGroupLogSettingsArray and ManagementGroupLogSettingsArrayOutput values.
 // You can construct a concrete instance of `ManagementGroupLogSettingsArrayInput` via:
 //
@@ -275,6 +318,12 @@ func (i ManagementGroupLogSettingsArray) ToManagementGroupLogSettingsArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementGroupLogSettingsArrayOutput)
 }
 
+func (i ManagementGroupLogSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagementGroupLogSettings] {
+	return pulumix.Output[[]ManagementGroupLogSettings]{
+		OutputState: i.ToManagementGroupLogSettingsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Part of Management Group diagnostic setting. Specifies the settings for a particular log.
 type ManagementGroupLogSettingsOutput struct{ *pulumi.OutputState }
 
@@ -288,6 +337,12 @@ func (o ManagementGroupLogSettingsOutput) ToManagementGroupLogSettingsOutput() M
 
 func (o ManagementGroupLogSettingsOutput) ToManagementGroupLogSettingsOutputWithContext(ctx context.Context) ManagementGroupLogSettingsOutput {
 	return o
+}
+
+func (o ManagementGroupLogSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementGroupLogSettings] {
+	return pulumix.Output[ManagementGroupLogSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of a Management Group Diagnostic Log category for a resource type this setting is applied to.
@@ -317,6 +372,12 @@ func (o ManagementGroupLogSettingsArrayOutput) ToManagementGroupLogSettingsArray
 
 func (o ManagementGroupLogSettingsArrayOutput) ToManagementGroupLogSettingsArrayOutputWithContext(ctx context.Context) ManagementGroupLogSettingsArrayOutput {
 	return o
+}
+
+func (o ManagementGroupLogSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementGroupLogSettings] {
+	return pulumix.Output[[]ManagementGroupLogSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagementGroupLogSettingsArrayOutput) Index(i pulumi.IntInput) ManagementGroupLogSettingsOutput {
@@ -350,6 +411,12 @@ func (o ManagementGroupLogSettingsResponseOutput) ToManagementGroupLogSettingsRe
 	return o
 }
 
+func (o ManagementGroupLogSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementGroupLogSettingsResponse] {
+	return pulumix.Output[ManagementGroupLogSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of a Management Group Diagnostic Log category for a resource type this setting is applied to.
 func (o ManagementGroupLogSettingsResponseOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagementGroupLogSettingsResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
@@ -377,6 +444,12 @@ func (o ManagementGroupLogSettingsResponseArrayOutput) ToManagementGroupLogSetti
 
 func (o ManagementGroupLogSettingsResponseArrayOutput) ToManagementGroupLogSettingsResponseArrayOutputWithContext(ctx context.Context) ManagementGroupLogSettingsResponseArrayOutput {
 	return o
+}
+
+func (o ManagementGroupLogSettingsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementGroupLogSettingsResponse] {
+	return pulumix.Output[[]ManagementGroupLogSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagementGroupLogSettingsResponseArrayOutput) Index(i pulumi.IntInput) ManagementGroupLogSettingsResponseOutput {
@@ -432,6 +505,12 @@ func (i MetricSettingsArgs) ToMetricSettingsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MetricSettingsOutput)
 }
 
+func (i MetricSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[MetricSettings] {
+	return pulumix.Output[MetricSettings]{
+		OutputState: i.ToMetricSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MetricSettingsArrayInput is an input type that accepts MetricSettingsArray and MetricSettingsArrayOutput values.
 // You can construct a concrete instance of `MetricSettingsArrayInput` via:
 //
@@ -457,6 +536,12 @@ func (i MetricSettingsArray) ToMetricSettingsArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MetricSettingsArrayOutput)
 }
 
+func (i MetricSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]MetricSettings] {
+	return pulumix.Output[[]MetricSettings]{
+		OutputState: i.ToMetricSettingsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
 type MetricSettingsOutput struct{ *pulumi.OutputState }
 
@@ -470,6 +555,12 @@ func (o MetricSettingsOutput) ToMetricSettingsOutput() MetricSettingsOutput {
 
 func (o MetricSettingsOutput) ToMetricSettingsOutputWithContext(ctx context.Context) MetricSettingsOutput {
 	return o
+}
+
+func (o MetricSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[MetricSettings] {
+	return pulumix.Output[MetricSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
@@ -506,6 +597,12 @@ func (o MetricSettingsArrayOutput) ToMetricSettingsArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o MetricSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricSettings] {
+	return pulumix.Output[[]MetricSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetricSettingsArrayOutput) Index(i pulumi.IntInput) MetricSettingsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricSettings {
 		return vs[0].([]MetricSettings)[vs[1].(int)]
@@ -537,6 +634,12 @@ func (o MetricSettingsResponseOutput) ToMetricSettingsResponseOutput() MetricSet
 
 func (o MetricSettingsResponseOutput) ToMetricSettingsResponseOutputWithContext(ctx context.Context) MetricSettingsResponseOutput {
 	return o
+}
+
+func (o MetricSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetricSettingsResponse] {
+	return pulumix.Output[MetricSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
@@ -571,6 +674,12 @@ func (o MetricSettingsResponseArrayOutput) ToMetricSettingsResponseArrayOutput()
 
 func (o MetricSettingsResponseArrayOutput) ToMetricSettingsResponseArrayOutputWithContext(ctx context.Context) MetricSettingsResponseArrayOutput {
 	return o
+}
+
+func (o MetricSettingsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricSettingsResponse] {
+	return pulumix.Output[[]MetricSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricSettingsResponseArrayOutput) Index(i pulumi.IntInput) MetricSettingsResponseOutput {
@@ -618,6 +727,12 @@ func (i RetentionPolicyArgs) ToRetentionPolicyOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyOutput)
 }
 
+func (i RetentionPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicy] {
+	return pulumix.Output[RetentionPolicy]{
+		OutputState: i.ToRetentionPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RetentionPolicyArgs) ToRetentionPolicyPtrOutput() RetentionPolicyPtrOutput {
 	return i.ToRetentionPolicyPtrOutputWithContext(context.Background())
 }
@@ -659,6 +774,12 @@ func (i *retentionPolicyPtrType) ToRetentionPolicyPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyPtrOutput)
 }
 
+func (i *retentionPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*RetentionPolicy] {
+	return pulumix.Output[*RetentionPolicy]{
+		OutputState: i.ToRetentionPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the retention policy for the log.
 type RetentionPolicyOutput struct{ *pulumi.OutputState }
 
@@ -684,6 +805,12 @@ func (o RetentionPolicyOutput) ToRetentionPolicyPtrOutputWithContext(ctx context
 	}).(RetentionPolicyPtrOutput)
 }
 
+func (o RetentionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicy] {
+	return pulumix.Output[RetentionPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the number of days for the retention in days. A value of 0 will retain the events indefinitely.
 func (o RetentionPolicyOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v RetentionPolicy) int { return v.Days }).(pulumi.IntOutput)
@@ -706,6 +833,12 @@ func (o RetentionPolicyPtrOutput) ToRetentionPolicyPtrOutput() RetentionPolicyPt
 
 func (o RetentionPolicyPtrOutput) ToRetentionPolicyPtrOutputWithContext(ctx context.Context) RetentionPolicyPtrOutput {
 	return o
+}
+
+func (o RetentionPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetentionPolicy] {
+	return pulumix.Output[*RetentionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RetentionPolicyPtrOutput) Elem() RetentionPolicyOutput {
@@ -761,6 +894,12 @@ func (o RetentionPolicyResponseOutput) ToRetentionPolicyResponseOutputWithContex
 	return o
 }
 
+func (o RetentionPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicyResponse] {
+	return pulumix.Output[RetentionPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // the number of days for the retention in days. A value of 0 will retain the events indefinitely.
 func (o RetentionPolicyResponseOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v RetentionPolicyResponse) int { return v.Days }).(pulumi.IntOutput)
@@ -783,6 +922,12 @@ func (o RetentionPolicyResponsePtrOutput) ToRetentionPolicyResponsePtrOutput() R
 
 func (o RetentionPolicyResponsePtrOutput) ToRetentionPolicyResponsePtrOutputWithContext(ctx context.Context) RetentionPolicyResponsePtrOutput {
 	return o
+}
+
+func (o RetentionPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetentionPolicyResponse] {
+	return pulumix.Output[*RetentionPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RetentionPolicyResponsePtrOutput) Elem() RetentionPolicyResponseOutput {
@@ -858,6 +1003,12 @@ func (i SubscriptionLogSettingsArgs) ToSubscriptionLogSettingsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionLogSettingsOutput)
 }
 
+func (i SubscriptionLogSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[SubscriptionLogSettings] {
+	return pulumix.Output[SubscriptionLogSettings]{
+		OutputState: i.ToSubscriptionLogSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SubscriptionLogSettingsArrayInput is an input type that accepts SubscriptionLogSettingsArray and SubscriptionLogSettingsArrayOutput values.
 // You can construct a concrete instance of `SubscriptionLogSettingsArrayInput` via:
 //
@@ -883,6 +1034,12 @@ func (i SubscriptionLogSettingsArray) ToSubscriptionLogSettingsArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionLogSettingsArrayOutput)
 }
 
+func (i SubscriptionLogSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]SubscriptionLogSettings] {
+	return pulumix.Output[[]SubscriptionLogSettings]{
+		OutputState: i.ToSubscriptionLogSettingsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Part of Subscription diagnostic setting. Specifies the settings for a particular log.
 type SubscriptionLogSettingsOutput struct{ *pulumi.OutputState }
 
@@ -896,6 +1053,12 @@ func (o SubscriptionLogSettingsOutput) ToSubscriptionLogSettingsOutput() Subscri
 
 func (o SubscriptionLogSettingsOutput) ToSubscriptionLogSettingsOutputWithContext(ctx context.Context) SubscriptionLogSettingsOutput {
 	return o
+}
+
+func (o SubscriptionLogSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionLogSettings] {
+	return pulumix.Output[SubscriptionLogSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of a Subscription Diagnostic Log category for a resource type this setting is applied to.
@@ -925,6 +1088,12 @@ func (o SubscriptionLogSettingsArrayOutput) ToSubscriptionLogSettingsArrayOutput
 
 func (o SubscriptionLogSettingsArrayOutput) ToSubscriptionLogSettingsArrayOutputWithContext(ctx context.Context) SubscriptionLogSettingsArrayOutput {
 	return o
+}
+
+func (o SubscriptionLogSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubscriptionLogSettings] {
+	return pulumix.Output[[]SubscriptionLogSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubscriptionLogSettingsArrayOutput) Index(i pulumi.IntInput) SubscriptionLogSettingsOutput {
@@ -958,6 +1127,12 @@ func (o SubscriptionLogSettingsResponseOutput) ToSubscriptionLogSettingsResponse
 	return o
 }
 
+func (o SubscriptionLogSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionLogSettingsResponse] {
+	return pulumix.Output[SubscriptionLogSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of a Subscription Diagnostic Log category for a resource type this setting is applied to.
 func (o SubscriptionLogSettingsResponseOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubscriptionLogSettingsResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
@@ -985,6 +1160,12 @@ func (o SubscriptionLogSettingsResponseArrayOutput) ToSubscriptionLogSettingsRes
 
 func (o SubscriptionLogSettingsResponseArrayOutput) ToSubscriptionLogSettingsResponseArrayOutputWithContext(ctx context.Context) SubscriptionLogSettingsResponseArrayOutput {
 	return o
+}
+
+func (o SubscriptionLogSettingsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubscriptionLogSettingsResponse] {
+	return pulumix.Output[[]SubscriptionLogSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubscriptionLogSettingsResponseArrayOutput) Index(i pulumi.IntInput) SubscriptionLogSettingsResponseOutput {
@@ -1022,6 +1203,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

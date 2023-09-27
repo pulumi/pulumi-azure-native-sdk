@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an incident comment
@@ -132,6 +133,9 @@ func NewIncidentComment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230701preview:IncidentComment"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:IncidentComment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -216,6 +220,12 @@ func (i *IncidentComment) ToIncidentCommentOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(IncidentCommentOutput)
 }
 
+func (i *IncidentComment) ToOutput(ctx context.Context) pulumix.Output[*IncidentComment] {
+	return pulumix.Output[*IncidentComment]{
+		OutputState: i.ToIncidentCommentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IncidentCommentOutput struct{ *pulumi.OutputState }
 
 func (IncidentCommentOutput) ElementType() reflect.Type {
@@ -228,6 +238,12 @@ func (o IncidentCommentOutput) ToIncidentCommentOutput() IncidentCommentOutput {
 
 func (o IncidentCommentOutput) ToIncidentCommentOutputWithContext(ctx context.Context) IncidentCommentOutput {
 	return o
+}
+
+func (o IncidentCommentOutput) ToOutput(ctx context.Context) pulumix.Output[*IncidentComment] {
+	return pulumix.Output[*IncidentComment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the client that created the comment

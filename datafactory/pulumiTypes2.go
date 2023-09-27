@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -2790,6 +2791,12 @@ func (o UserAccessPolicyResponseOutput) ToUserAccessPolicyResponseOutputWithCont
 	return o
 }
 
+func (o UserAccessPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAccessPolicyResponse] {
+	return pulumix.Output[UserAccessPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource path to get access relative to factory. Currently only empty string is supported which corresponds to the factory resource.
 func (o UserAccessPolicyResponseOutput) AccessResourcePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserAccessPolicyResponse) *string { return v.AccessResourcePath }).(pulumi.StringPtrOutput)
@@ -2827,6 +2834,12 @@ func (o UserAccessPolicyResponsePtrOutput) ToUserAccessPolicyResponsePtrOutput()
 
 func (o UserAccessPolicyResponsePtrOutput) ToUserAccessPolicyResponsePtrOutputWithContext(ctx context.Context) UserAccessPolicyResponsePtrOutput {
 	return o
+}
+
+func (o UserAccessPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserAccessPolicyResponse] {
+	return pulumix.Output[*UserAccessPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAccessPolicyResponsePtrOutput) Elem() UserAccessPolicyResponseOutput {
@@ -3002,6 +3015,12 @@ func (i VariableSpecificationArgs) ToVariableSpecificationOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VariableSpecificationOutput)
 }
 
+func (i VariableSpecificationArgs) ToOutput(ctx context.Context) pulumix.Output[VariableSpecification] {
+	return pulumix.Output[VariableSpecification]{
+		OutputState: i.ToVariableSpecificationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VariableSpecificationMapInput is an input type that accepts VariableSpecificationMap and VariableSpecificationMapOutput values.
 // You can construct a concrete instance of `VariableSpecificationMapInput` via:
 //
@@ -3027,6 +3046,12 @@ func (i VariableSpecificationMap) ToVariableSpecificationMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(VariableSpecificationMapOutput)
 }
 
+func (i VariableSpecificationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]VariableSpecification] {
+	return pulumix.Output[map[string]VariableSpecification]{
+		OutputState: i.ToVariableSpecificationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Definition of a single variable for a Pipeline.
 type VariableSpecificationOutput struct{ *pulumi.OutputState }
 
@@ -3040,6 +3065,12 @@ func (o VariableSpecificationOutput) ToVariableSpecificationOutput() VariableSpe
 
 func (o VariableSpecificationOutput) ToVariableSpecificationOutputWithContext(ctx context.Context) VariableSpecificationOutput {
 	return o
+}
+
+func (o VariableSpecificationOutput) ToOutput(ctx context.Context) pulumix.Output[VariableSpecification] {
+	return pulumix.Output[VariableSpecification]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Default value of variable.
@@ -3064,6 +3095,12 @@ func (o VariableSpecificationMapOutput) ToVariableSpecificationMapOutput() Varia
 
 func (o VariableSpecificationMapOutput) ToVariableSpecificationMapOutputWithContext(ctx context.Context) VariableSpecificationMapOutput {
 	return o
+}
+
+func (o VariableSpecificationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]VariableSpecification] {
+	return pulumix.Output[map[string]VariableSpecification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VariableSpecificationMapOutput) MapIndex(k pulumi.StringInput) VariableSpecificationOutput {
@@ -3095,6 +3132,12 @@ func (o VariableSpecificationResponseOutput) ToVariableSpecificationResponseOutp
 	return o
 }
 
+func (o VariableSpecificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VariableSpecificationResponse] {
+	return pulumix.Output[VariableSpecificationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Default value of variable.
 func (o VariableSpecificationResponseOutput) DefaultValue() pulumi.AnyOutput {
 	return o.ApplyT(func(v VariableSpecificationResponse) interface{} { return v.DefaultValue }).(pulumi.AnyOutput)
@@ -3117,6 +3160,12 @@ func (o VariableSpecificationResponseMapOutput) ToVariableSpecificationResponseM
 
 func (o VariableSpecificationResponseMapOutput) ToVariableSpecificationResponseMapOutputWithContext(ctx context.Context) VariableSpecificationResponseMapOutput {
 	return o
+}
+
+func (o VariableSpecificationResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]VariableSpecificationResponse] {
+	return pulumix.Output[map[string]VariableSpecificationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VariableSpecificationResponseMapOutput) MapIndex(k pulumi.StringInput) VariableSpecificationResponseOutput {

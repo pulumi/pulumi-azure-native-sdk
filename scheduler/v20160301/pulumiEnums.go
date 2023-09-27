@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type DayOfWeek string
@@ -82,6 +83,12 @@ func (o DayOfWeekOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Da
 	}).(DayOfWeekPtrOutput)
 }
 
+func (o DayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[DayOfWeek] {
+	return pulumix.Output[DayOfWeek]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return o
+}
+
+func (o DayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
+	return pulumix.Output[*DayOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DayOfWeekPtrOutput) Elem() DayOfWeekOutput {
@@ -179,6 +192,12 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
 }
 
+func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
+	return pulumix.Output[*DayOfWeek]{
+		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DayOfWeekArrayInput is an input type that accepts DayOfWeekArray and DayOfWeekArrayOutput values.
 // You can construct a concrete instance of `DayOfWeekArrayInput` via:
 //
@@ -204,6 +223,12 @@ func (i DayOfWeekArray) ToDayOfWeekArrayOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DayOfWeekArrayOutput)
 }
 
+func (i DayOfWeekArray) ToOutput(ctx context.Context) pulumix.Output[[]DayOfWeek] {
+	return pulumix.Output[[]DayOfWeek]{
+		OutputState: i.ToDayOfWeekArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DayOfWeekArrayOutput struct{ *pulumi.OutputState }
 
 func (DayOfWeekArrayOutput) ElementType() reflect.Type {
@@ -216,6 +241,12 @@ func (o DayOfWeekArrayOutput) ToDayOfWeekArrayOutput() DayOfWeekArrayOutput {
 
 func (o DayOfWeekArrayOutput) ToDayOfWeekArrayOutputWithContext(ctx context.Context) DayOfWeekArrayOutput {
 	return o
+}
+
+func (o DayOfWeekArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DayOfWeek] {
+	return pulumix.Output[[]DayOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DayOfWeekArrayOutput) Index(i pulumi.IntInput) DayOfWeekOutput {
@@ -305,6 +336,12 @@ func (o JobActionTypeOutput) ToJobActionTypePtrOutputWithContext(ctx context.Con
 	}).(JobActionTypePtrOutput)
 }
 
+func (o JobActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[JobActionType] {
+	return pulumix.Output[JobActionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -338,6 +375,12 @@ func (o JobActionTypePtrOutput) ToJobActionTypePtrOutput() JobActionTypePtrOutpu
 
 func (o JobActionTypePtrOutput) ToJobActionTypePtrOutputWithContext(ctx context.Context) JobActionTypePtrOutput {
 	return o
+}
+
+func (o JobActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobActionType] {
+	return pulumix.Output[*JobActionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobActionTypePtrOutput) Elem() JobActionTypeOutput {
@@ -400,6 +443,12 @@ func (in *jobActionTypePtr) ToJobActionTypePtrOutput() JobActionTypePtrOutput {
 
 func (in *jobActionTypePtr) ToJobActionTypePtrOutputWithContext(ctx context.Context) JobActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobActionTypePtrOutput)
+}
+
+func (in *jobActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobActionType] {
+	return pulumix.Output[*JobActionType]{
+		OutputState: in.ToJobActionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Gets or sets the state.
@@ -472,6 +521,12 @@ func (o JobCollectionStateEnumOutput) ToJobCollectionStateEnumPtrOutputWithConte
 	}).(JobCollectionStateEnumPtrOutput)
 }
 
+func (o JobCollectionStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[JobCollectionStateEnum] {
+	return pulumix.Output[JobCollectionStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobCollectionStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -505,6 +560,12 @@ func (o JobCollectionStateEnumPtrOutput) ToJobCollectionStateEnumPtrOutput() Job
 
 func (o JobCollectionStateEnumPtrOutput) ToJobCollectionStateEnumPtrOutputWithContext(ctx context.Context) JobCollectionStateEnumPtrOutput {
 	return o
+}
+
+func (o JobCollectionStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobCollectionStateEnum] {
+	return pulumix.Output[*JobCollectionStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobCollectionStateEnumPtrOutput) Elem() JobCollectionStateEnumOutput {
@@ -567,6 +628,12 @@ func (in *jobCollectionStateEnumPtr) ToJobCollectionStateEnumPtrOutput() JobColl
 
 func (in *jobCollectionStateEnumPtr) ToJobCollectionStateEnumPtrOutputWithContext(ctx context.Context) JobCollectionStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobCollectionStateEnumPtrOutput)
+}
+
+func (in *jobCollectionStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*JobCollectionStateEnum] {
+	return pulumix.Output[*JobCollectionStateEnum]{
+		OutputState: in.ToJobCollectionStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
@@ -642,6 +709,12 @@ func (o JobScheduleDayOutput) ToJobScheduleDayPtrOutputWithContext(ctx context.C
 	}).(JobScheduleDayPtrOutput)
 }
 
+func (o JobScheduleDayOutput) ToOutput(ctx context.Context) pulumix.Output[JobScheduleDay] {
+	return pulumix.Output[JobScheduleDay]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobScheduleDayOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -675,6 +748,12 @@ func (o JobScheduleDayPtrOutput) ToJobScheduleDayPtrOutput() JobScheduleDayPtrOu
 
 func (o JobScheduleDayPtrOutput) ToJobScheduleDayPtrOutputWithContext(ctx context.Context) JobScheduleDayPtrOutput {
 	return o
+}
+
+func (o JobScheduleDayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobScheduleDay] {
+	return pulumix.Output[*JobScheduleDay]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobScheduleDayPtrOutput) Elem() JobScheduleDayOutput {
@@ -737,6 +816,12 @@ func (in *jobScheduleDayPtr) ToJobScheduleDayPtrOutput() JobScheduleDayPtrOutput
 
 func (in *jobScheduleDayPtr) ToJobScheduleDayPtrOutputWithContext(ctx context.Context) JobScheduleDayPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobScheduleDayPtrOutput)
+}
+
+func (in *jobScheduleDayPtr) ToOutput(ctx context.Context) pulumix.Output[*JobScheduleDay] {
+	return pulumix.Output[*JobScheduleDay]{
+		OutputState: in.ToJobScheduleDayPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Gets or set the job state.
@@ -809,6 +894,12 @@ func (o JobStateEnumOutput) ToJobStateEnumPtrOutputWithContext(ctx context.Conte
 	}).(JobStateEnumPtrOutput)
 }
 
+func (o JobStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[JobStateEnum] {
+	return pulumix.Output[JobStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -842,6 +933,12 @@ func (o JobStateEnumPtrOutput) ToJobStateEnumPtrOutput() JobStateEnumPtrOutput {
 
 func (o JobStateEnumPtrOutput) ToJobStateEnumPtrOutputWithContext(ctx context.Context) JobStateEnumPtrOutput {
 	return o
+}
+
+func (o JobStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobStateEnum] {
+	return pulumix.Output[*JobStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobStateEnumPtrOutput) Elem() JobStateEnumOutput {
@@ -904,6 +1001,12 @@ func (in *jobStateEnumPtr) ToJobStateEnumPtrOutput() JobStateEnumPtrOutput {
 
 func (in *jobStateEnumPtr) ToJobStateEnumPtrOutputWithContext(ctx context.Context) JobStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobStateEnumPtrOutput)
+}
+
+func (in *jobStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*JobStateEnum] {
+	return pulumix.Output[*JobStateEnum]{
+		OutputState: in.ToJobStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Gets or sets the frequency of recurrence (second, minute, hour, day, week, month).
@@ -977,6 +1080,12 @@ func (o RecurrenceFrequencyOutput) ToRecurrenceFrequencyPtrOutputWithContext(ctx
 	}).(RecurrenceFrequencyPtrOutput)
 }
 
+func (o RecurrenceFrequencyOutput) ToOutput(ctx context.Context) pulumix.Output[RecurrenceFrequency] {
+	return pulumix.Output[RecurrenceFrequency]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RecurrenceFrequencyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1010,6 +1119,12 @@ func (o RecurrenceFrequencyPtrOutput) ToRecurrenceFrequencyPtrOutput() Recurrenc
 
 func (o RecurrenceFrequencyPtrOutput) ToRecurrenceFrequencyPtrOutputWithContext(ctx context.Context) RecurrenceFrequencyPtrOutput {
 	return o
+}
+
+func (o RecurrenceFrequencyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
+	return pulumix.Output[*RecurrenceFrequency]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecurrenceFrequencyPtrOutput) Elem() RecurrenceFrequencyOutput {
@@ -1072,6 +1187,12 @@ func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutput() RecurrenceFre
 
 func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutputWithContext(ctx context.Context) RecurrenceFrequencyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RecurrenceFrequencyPtrOutput)
+}
+
+func (in *recurrenceFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
+	return pulumix.Output[*RecurrenceFrequency]{
+		OutputState: in.ToRecurrenceFrequencyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Gets or sets the retry strategy to be used.
@@ -1142,6 +1263,12 @@ func (o RetryTypeOutput) ToRetryTypePtrOutputWithContext(ctx context.Context) Re
 	}).(RetryTypePtrOutput)
 }
 
+func (o RetryTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RetryType] {
+	return pulumix.Output[RetryType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RetryTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1175,6 +1302,12 @@ func (o RetryTypePtrOutput) ToRetryTypePtrOutput() RetryTypePtrOutput {
 
 func (o RetryTypePtrOutput) ToRetryTypePtrOutputWithContext(ctx context.Context) RetryTypePtrOutput {
 	return o
+}
+
+func (o RetryTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetryType] {
+	return pulumix.Output[*RetryType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RetryTypePtrOutput) Elem() RetryTypeOutput {
@@ -1237,6 +1370,12 @@ func (in *retryTypePtr) ToRetryTypePtrOutput() RetryTypePtrOutput {
 
 func (in *retryTypePtr) ToRetryTypePtrOutputWithContext(ctx context.Context) RetryTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RetryTypePtrOutput)
+}
+
+func (in *retryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RetryType] {
+	return pulumix.Output[*RetryType]{
+		OutputState: in.ToRetryTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Gets or sets the authentication type.
@@ -1307,6 +1446,12 @@ func (o ServiceBusAuthenticationTypeOutput) ToServiceBusAuthenticationTypePtrOut
 	}).(ServiceBusAuthenticationTypePtrOutput)
 }
 
+func (o ServiceBusAuthenticationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceBusAuthenticationType] {
+	return pulumix.Output[ServiceBusAuthenticationType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceBusAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1340,6 +1485,12 @@ func (o ServiceBusAuthenticationTypePtrOutput) ToServiceBusAuthenticationTypePtr
 
 func (o ServiceBusAuthenticationTypePtrOutput) ToServiceBusAuthenticationTypePtrOutputWithContext(ctx context.Context) ServiceBusAuthenticationTypePtrOutput {
 	return o
+}
+
+func (o ServiceBusAuthenticationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusAuthenticationType] {
+	return pulumix.Output[*ServiceBusAuthenticationType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceBusAuthenticationTypePtrOutput) Elem() ServiceBusAuthenticationTypeOutput {
@@ -1402,6 +1553,12 @@ func (in *serviceBusAuthenticationTypePtr) ToServiceBusAuthenticationTypePtrOutp
 
 func (in *serviceBusAuthenticationTypePtr) ToServiceBusAuthenticationTypePtrOutputWithContext(ctx context.Context) ServiceBusAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceBusAuthenticationTypePtrOutput)
+}
+
+func (in *serviceBusAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusAuthenticationType] {
+	return pulumix.Output[*ServiceBusAuthenticationType]{
+		OutputState: in.ToServiceBusAuthenticationTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Gets or sets the transport type.
@@ -1473,6 +1630,12 @@ func (o ServiceBusTransportTypeOutput) ToServiceBusTransportTypePtrOutputWithCon
 	}).(ServiceBusTransportTypePtrOutput)
 }
 
+func (o ServiceBusTransportTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceBusTransportType] {
+	return pulumix.Output[ServiceBusTransportType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceBusTransportTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1506,6 +1669,12 @@ func (o ServiceBusTransportTypePtrOutput) ToServiceBusTransportTypePtrOutput() S
 
 func (o ServiceBusTransportTypePtrOutput) ToServiceBusTransportTypePtrOutputWithContext(ctx context.Context) ServiceBusTransportTypePtrOutput {
 	return o
+}
+
+func (o ServiceBusTransportTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusTransportType] {
+	return pulumix.Output[*ServiceBusTransportType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceBusTransportTypePtrOutput) Elem() ServiceBusTransportTypeOutput {
@@ -1568,6 +1737,12 @@ func (in *serviceBusTransportTypePtr) ToServiceBusTransportTypePtrOutput() Servi
 
 func (in *serviceBusTransportTypePtr) ToServiceBusTransportTypePtrOutputWithContext(ctx context.Context) ServiceBusTransportTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceBusTransportTypePtrOutput)
+}
+
+func (in *serviceBusTransportTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusTransportType] {
+	return pulumix.Output[*ServiceBusTransportType]{
+		OutputState: in.ToServiceBusTransportTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Gets or set the SKU.
@@ -1640,6 +1815,12 @@ func (o SkuDefinitionOutput) ToSkuDefinitionPtrOutputWithContext(ctx context.Con
 	}).(SkuDefinitionPtrOutput)
 }
 
+func (o SkuDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[SkuDefinition] {
+	return pulumix.Output[SkuDefinition]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SkuDefinitionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1673,6 +1854,12 @@ func (o SkuDefinitionPtrOutput) ToSkuDefinitionPtrOutput() SkuDefinitionPtrOutpu
 
 func (o SkuDefinitionPtrOutput) ToSkuDefinitionPtrOutputWithContext(ctx context.Context) SkuDefinitionPtrOutput {
 	return o
+}
+
+func (o SkuDefinitionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuDefinition] {
+	return pulumix.Output[*SkuDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SkuDefinitionPtrOutput) Elem() SkuDefinitionOutput {
@@ -1735,6 +1922,12 @@ func (in *skuDefinitionPtr) ToSkuDefinitionPtrOutput() SkuDefinitionPtrOutput {
 
 func (in *skuDefinitionPtr) ToSkuDefinitionPtrOutputWithContext(ctx context.Context) SkuDefinitionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuDefinitionPtrOutput)
+}
+
+func (in *skuDefinitionPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuDefinition] {
+	return pulumix.Output[*SkuDefinition]{
+		OutputState: in.ToSkuDefinitionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details of the transaction node.
@@ -94,6 +95,12 @@ func (o LookupTransactionNodeResultOutput) ToLookupTransactionNodeResultOutput()
 
 func (o LookupTransactionNodeResultOutput) ToLookupTransactionNodeResultOutputWithContext(ctx context.Context) LookupTransactionNodeResultOutput {
 	return o
+}
+
+func (o LookupTransactionNodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTransactionNodeResult] {
+	return pulumix.Output[LookupTransactionNodeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the transaction node dns endpoint.

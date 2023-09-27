@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Log Analytics workspace table.
@@ -107,6 +108,12 @@ func (o LookupTableResultOutput) ToLookupTableResultOutput() LookupTableResultOu
 
 func (o LookupTableResultOutput) ToLookupTableResultOutputWithContext(ctx context.Context) LookupTableResultOutput {
 	return o
+}
+
+func (o LookupTableResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTableResult] {
+	return pulumix.Output[LookupTableResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The table data archive retention in days. Calculated as (totalRetentionInDays-retentionInDays)

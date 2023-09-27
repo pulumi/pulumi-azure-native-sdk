@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A kusto table data set.
@@ -173,6 +174,12 @@ func (i *KustoTableDataSet) ToKustoTableDataSetOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(KustoTableDataSetOutput)
 }
 
+func (i *KustoTableDataSet) ToOutput(ctx context.Context) pulumix.Output[*KustoTableDataSet] {
+	return pulumix.Output[*KustoTableDataSet]{
+		OutputState: i.ToKustoTableDataSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KustoTableDataSetOutput struct{ *pulumi.OutputState }
 
 func (KustoTableDataSetOutput) ElementType() reflect.Type {
@@ -185,6 +192,12 @@ func (o KustoTableDataSetOutput) ToKustoTableDataSetOutput() KustoTableDataSetOu
 
 func (o KustoTableDataSetOutput) ToKustoTableDataSetOutputWithContext(ctx context.Context) KustoTableDataSetOutput {
 	return o
+}
+
+func (o KustoTableDataSetOutput) ToOutput(ctx context.Context) pulumix.Output[*KustoTableDataSet] {
+	return pulumix.Output[*KustoTableDataSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique id for identifying a data set resource

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure SQL Database sync group.
@@ -228,6 +229,12 @@ func (i *SyncGroup) ToSyncGroupOutputWithContext(ctx context.Context) SyncGroupO
 	return pulumi.ToOutputWithContext(ctx, i).(SyncGroupOutput)
 }
 
+func (i *SyncGroup) ToOutput(ctx context.Context) pulumix.Output[*SyncGroup] {
+	return pulumix.Output[*SyncGroup]{
+		OutputState: i.ToSyncGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SyncGroupOutput struct{ *pulumi.OutputState }
 
 func (SyncGroupOutput) ElementType() reflect.Type {
@@ -240,6 +247,12 @@ func (o SyncGroupOutput) ToSyncGroupOutput() SyncGroupOutput {
 
 func (o SyncGroupOutput) ToSyncGroupOutputWithContext(ctx context.Context) SyncGroupOutput {
 	return o
+}
+
+func (o SyncGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*SyncGroup] {
+	return pulumix.Output[*SyncGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Conflict logging retention period.

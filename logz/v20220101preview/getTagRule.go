@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Capture logs and metrics of Azure resources based on ARM tags.
@@ -82,6 +83,12 @@ func (o LookupTagRuleResultOutput) ToLookupTagRuleResultOutput() LookupTagRuleRe
 
 func (o LookupTagRuleResultOutput) ToLookupTagRuleResultOutputWithContext(ctx context.Context) LookupTagRuleResultOutput {
 	return o
+}
+
+func (o LookupTagRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTagRuleResult] {
+	return pulumix.Output[LookupTagRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the rule set.

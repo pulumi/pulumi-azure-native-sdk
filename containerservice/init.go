@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Fleet{}
 	case "azure-native:containerservice:FleetMember":
 		r = &FleetMember{}
+	case "azure-native:containerservice:FleetUpdateStrategy":
+		r = &FleetUpdateStrategy{}
 	case "azure-native:containerservice:MaintenanceConfiguration":
 		r = &MaintenanceConfiguration{}
 	case "azure-native:containerservice:ManagedCluster":

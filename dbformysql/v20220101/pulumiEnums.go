@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of the sever administrator.
@@ -103,6 +104,12 @@ func (o DataEncryptionTypeOutput) ToDataEncryptionTypePtrOutputWithContext(ctx c
 	}).(DataEncryptionTypePtrOutput)
 }
 
+func (o DataEncryptionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DataEncryptionType] {
+	return pulumix.Output[DataEncryptionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DataEncryptionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -136,6 +143,12 @@ func (o DataEncryptionTypePtrOutput) ToDataEncryptionTypePtrOutput() DataEncrypt
 
 func (o DataEncryptionTypePtrOutput) ToDataEncryptionTypePtrOutputWithContext(ctx context.Context) DataEncryptionTypePtrOutput {
 	return o
+}
+
+func (o DataEncryptionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataEncryptionType] {
+	return pulumix.Output[*DataEncryptionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataEncryptionTypePtrOutput) Elem() DataEncryptionTypeOutput {
@@ -198,6 +211,12 @@ func (in *dataEncryptionTypePtr) ToDataEncryptionTypePtrOutput() DataEncryptionT
 
 func (in *dataEncryptionTypePtr) ToDataEncryptionTypePtrOutputWithContext(ctx context.Context) DataEncryptionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataEncryptionTypePtrOutput)
+}
+
+func (in *dataEncryptionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataEncryptionType] {
+	return pulumix.Output[*DataEncryptionType]{
+		OutputState: in.ToDataEncryptionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Enable Log On Disk or not.
@@ -284,6 +303,12 @@ func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypePtrOutputW
 	}).(ManagedServiceIdentityTypePtrOutput)
 }
 
+func (o ManagedServiceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityType] {
+	return pulumix.Output[ManagedServiceIdentityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ManagedServiceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -317,6 +342,12 @@ func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutp
 
 func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return o
+}
+
+func (o ManagedServiceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
+	return pulumix.Output[*ManagedServiceIdentityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedServiceIdentityTypePtrOutput) Elem() ManagedServiceIdentityTypeOutput {
@@ -379,6 +410,12 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
+}
+
+func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
+	return pulumix.Output[*ManagedServiceIdentityType]{
+		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The replication role.

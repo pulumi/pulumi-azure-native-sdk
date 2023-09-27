@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a setting.
@@ -90,6 +91,12 @@ func (o LookupUebaResultOutput) ToLookupUebaResultOutput() LookupUebaResultOutpu
 
 func (o LookupUebaResultOutput) ToLookupUebaResultOutputWithContext(ctx context.Context) LookupUebaResultOutput {
 	return o
+}
+
+func (o LookupUebaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupUebaResult] {
+	return pulumix.Output[LookupUebaResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The relevant data sources that enriched by ueba

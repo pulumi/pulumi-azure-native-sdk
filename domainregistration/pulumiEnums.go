@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Target DNS type (would be used for migration)
@@ -78,6 +79,12 @@ func (o DnsTypeOutput) ToDnsTypePtrOutputWithContext(ctx context.Context) DnsTyp
 	}).(DnsTypePtrOutput)
 }
 
+func (o DnsTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DnsType] {
+	return pulumix.Output[DnsType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DnsTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o DnsTypePtrOutput) ToDnsTypePtrOutput() DnsTypePtrOutput {
 
 func (o DnsTypePtrOutput) ToDnsTypePtrOutputWithContext(ctx context.Context) DnsTypePtrOutput {
 	return o
+}
+
+func (o DnsTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsType] {
+	return pulumix.Output[*DnsType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DnsTypePtrOutput) Elem() DnsTypeOutput {
@@ -173,6 +186,12 @@ func (in *dnsTypePtr) ToDnsTypePtrOutput() DnsTypePtrOutput {
 
 func (in *dnsTypePtr) ToDnsTypePtrOutputWithContext(ctx context.Context) DnsTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DnsTypePtrOutput)
+}
+
+func (in *dnsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DnsType] {
+	return pulumix.Output[*DnsType]{
+		OutputState: in.ToDnsTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

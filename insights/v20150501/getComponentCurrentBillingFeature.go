@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns current billing features for an Application Insights component.
@@ -74,6 +75,12 @@ func (o LookupComponentCurrentBillingFeatureResultOutput) ToLookupComponentCurre
 
 func (o LookupComponentCurrentBillingFeatureResultOutput) ToLookupComponentCurrentBillingFeatureResultOutputWithContext(ctx context.Context) LookupComponentCurrentBillingFeatureResultOutput {
 	return o
+}
+
+func (o LookupComponentCurrentBillingFeatureResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupComponentCurrentBillingFeatureResult] {
+	return pulumix.Output[LookupComponentCurrentBillingFeatureResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Current enabled pricing plan. When the component is in the Enterprise plan, this will list both 'Basic' and 'Application Insights Enterprise'.

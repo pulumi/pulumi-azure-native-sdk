@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an integration runtime.
@@ -85,6 +86,12 @@ func (o LookupIntegrationRuntimeResultOutput) ToLookupIntegrationRuntimeResultOu
 
 func (o LookupIntegrationRuntimeResultOutput) ToLookupIntegrationRuntimeResultOutputWithContext(ctx context.Context) LookupIntegrationRuntimeResultOutput {
 	return o
+}
+
+func (o LookupIntegrationRuntimeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIntegrationRuntimeResult] {
+	return pulumix.Output[LookupIntegrationRuntimeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Etag identifies change in the resource.

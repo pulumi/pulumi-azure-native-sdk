@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SAP monitor info on Azure (ARM properties and SAP monitor properties)
@@ -190,6 +191,12 @@ func (i *Monitor) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorOutput)
 }
 
+func (i *Monitor) ToOutput(ctx context.Context) pulumix.Output[*Monitor] {
+	return pulumix.Output[*Monitor]{
+		OutputState: i.ToMonitorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MonitorOutput struct{ *pulumi.OutputState }
 
 func (MonitorOutput) ElementType() reflect.Type {
@@ -202,6 +209,12 @@ func (o MonitorOutput) ToMonitorOutput() MonitorOutput {
 
 func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput {
 	return o
+}
+
+func (o MonitorOutput) ToOutput(ctx context.Context) pulumix.Output[*Monitor] {
+	return pulumix.Output[*Monitor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SAP monitor resources will be deployed in the SAP monitoring region. The subnet region should be same as the SAP monitoring region.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified pool.
@@ -19,7 +20,7 @@ func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.Invoke
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupPoolArgs struct {
@@ -92,6 +93,29 @@ type LookupPoolResult struct {
 	VmSize *string `pulumi:"vmSize"`
 }
 
+// Defaults sets the appropriate defaults for LookupPoolResult
+func (val *LookupPoolResult) Defaults() *LookupPoolResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.DeploymentConfiguration = tmp.DeploymentConfiguration.Defaults()
+
+	tmp.NetworkConfiguration = tmp.NetworkConfiguration.Defaults()
+
+	tmp.ScaleSettings = tmp.ScaleSettings.Defaults()
+
+	tmp.StartTask = tmp.StartTask.Defaults()
+
+	tmp.TaskSchedulingPolicy = tmp.TaskSchedulingPolicy.Defaults()
+
+	if tmp.TaskSlotsPerNode == nil {
+		taskSlotsPerNode_ := 1
+		tmp.TaskSlotsPerNode = &taskSlotsPerNode_
+	}
+	return &tmp
+}
+
 func LookupPoolOutput(ctx *pulumi.Context, args LookupPoolOutputArgs, opts ...pulumi.InvokeOption) LookupPoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
 		ApplyT(func(v interface{}) (LookupPoolResult, error) {
@@ -131,6 +155,12 @@ func (o LookupPoolResultOutput) ToLookupPoolResultOutput() LookupPoolResultOutpu
 
 func (o LookupPoolResultOutput) ToLookupPoolResultOutputWithContext(ctx context.Context) LookupPoolResultOutput {
 	return o
+}
+
+func (o LookupPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPoolResult] {
+	return pulumix.Output[LookupPoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupPoolResultOutput) AllocationState() pulumi.StringOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Asset storage encryption keys used to decrypt content created by version 2 of the Media Services API
@@ -78,6 +79,12 @@ func (o GetAssetEncryptionKeyResultOutput) ToGetAssetEncryptionKeyResultOutput()
 
 func (o GetAssetEncryptionKeyResultOutput) ToGetAssetEncryptionKeyResultOutputWithContext(ctx context.Context) GetAssetEncryptionKeyResultOutput {
 	return o
+}
+
+func (o GetAssetEncryptionKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAssetEncryptionKeyResult] {
+	return pulumix.Output[GetAssetEncryptionKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Asset File encryption metadata.

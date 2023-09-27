@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Method to get a site.
@@ -92,6 +93,12 @@ func (o LookupWebAppSitesControllerResultOutput) ToLookupWebAppSitesControllerRe
 
 func (o LookupWebAppSitesControllerResultOutput) ToLookupWebAppSitesControllerResultOutputWithContext(ctx context.Context) LookupWebAppSitesControllerResultOutput {
 	return o
+}
+
+func (o LookupWebAppSitesControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppSitesControllerResult] {
+	return pulumix.Output[LookupWebAppSitesControllerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets or sets the discovery scenario.

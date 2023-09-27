@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB SQL database.
@@ -144,6 +145,12 @@ func NewSqlResourceSqlDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20230315preview:SqlResourceSqlDatabase"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230915:SqlResourceSqlDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20230915preview:SqlResourceSqlDatabase"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -236,6 +243,12 @@ func (i *SqlResourceSqlDatabase) ToSqlResourceSqlDatabaseOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SqlResourceSqlDatabaseOutput)
 }
 
+func (i *SqlResourceSqlDatabase) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlDatabase] {
+	return pulumix.Output[*SqlResourceSqlDatabase]{
+		OutputState: i.ToSqlResourceSqlDatabaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlResourceSqlDatabaseOutput struct{ *pulumi.OutputState }
 
 func (SqlResourceSqlDatabaseOutput) ElementType() reflect.Type {
@@ -248,6 +261,12 @@ func (o SqlResourceSqlDatabaseOutput) ToSqlResourceSqlDatabaseOutput() SqlResour
 
 func (o SqlResourceSqlDatabaseOutput) ToSqlResourceSqlDatabaseOutputWithContext(ctx context.Context) SqlResourceSqlDatabaseOutput {
 	return o
+}
+
+func (o SqlResourceSqlDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlDatabase] {
+	return pulumix.Output[*SqlResourceSqlDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location of the resource group to which the resource belongs.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Managed cluster.
@@ -254,6 +255,9 @@ func NewManagedCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230702preview:ManagedCluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230801:ManagedCluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -390,6 +394,12 @@ func (i *ManagedCluster) ToManagedClusterOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterOutput)
 }
 
+func (i *ManagedCluster) ToOutput(ctx context.Context) pulumix.Output[*ManagedCluster] {
+	return pulumix.Output[*ManagedCluster]{
+		OutputState: i.ToManagedClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedClusterOutput struct{ *pulumi.OutputState }
 
 func (ManagedClusterOutput) ElementType() reflect.Type {
@@ -402,6 +412,12 @@ func (o ManagedClusterOutput) ToManagedClusterOutput() ManagedClusterOutput {
 
 func (o ManagedClusterOutput) ToManagedClusterOutputWithContext(ctx context.Context) ManagedClusterOutput {
 	return o
+}
+
+func (o ManagedClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedCluster] {
+	return pulumix.Output[*ManagedCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Profile of Azure Active Directory configuration.

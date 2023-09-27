@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a SQL Server.
@@ -94,6 +95,12 @@ func (o LookupSqlServerResultOutput) ToLookupSqlServerResultOutput() LookupSqlSe
 
 func (o LookupSqlServerResultOutput) ToLookupSqlServerResultOutputWithContext(ctx context.Context) LookupSqlServerResultOutput {
 	return o
+}
+
+func (o LookupSqlServerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlServerResult] {
+	return pulumix.Output[LookupSqlServerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cores of the Sql Server.

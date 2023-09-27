@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -40,6 +41,12 @@ func (o MachineExtensionInstanceViewResponseStatusOutput) ToMachineExtensionInst
 
 func (o MachineExtensionInstanceViewResponseStatusOutput) ToMachineExtensionInstanceViewResponseStatusOutputWithContext(ctx context.Context) MachineExtensionInstanceViewResponseStatusOutput {
 	return o
+}
+
+func (o MachineExtensionInstanceViewResponseStatusOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionInstanceViewResponseStatus] {
+	return pulumix.Output[MachineExtensionInstanceViewResponseStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status code.
@@ -79,6 +86,12 @@ func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToMachineExtensionI
 
 func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToMachineExtensionInstanceViewResponseStatusPtrOutputWithContext(ctx context.Context) MachineExtensionInstanceViewResponseStatusPtrOutput {
 	return o
+}
+
+func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionInstanceViewResponseStatus] {
+	return pulumix.Output[*MachineExtensionInstanceViewResponseStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MachineExtensionInstanceViewResponseStatusPtrOutput) Elem() MachineExtensionInstanceViewResponseStatusOutput {
@@ -168,6 +181,12 @@ func (o MachineExtensionPropertiesResponseInstanceViewOutput) ToMachineExtension
 	return o
 }
 
+func (o MachineExtensionPropertiesResponseInstanceViewOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionPropertiesResponseInstanceView] {
+	return pulumix.Output[MachineExtensionPropertiesResponseInstanceView]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The machine extension name.
 func (o MachineExtensionPropertiesResponseInstanceViewOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MachineExtensionPropertiesResponseInstanceView) string { return v.Name }).(pulumi.StringOutput)
@@ -202,6 +221,12 @@ func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) ToMachineExtens
 
 func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) ToMachineExtensionPropertiesResponseInstanceViewPtrOutputWithContext(ctx context.Context) MachineExtensionPropertiesResponseInstanceViewPtrOutput {
 	return o
+}
+
+func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionPropertiesResponseInstanceView] {
+	return pulumix.Output[*MachineExtensionPropertiesResponseInstanceView]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MachineExtensionPropertiesResponseInstanceViewPtrOutput) Elem() MachineExtensionPropertiesResponseInstanceViewOutput {
@@ -283,6 +308,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

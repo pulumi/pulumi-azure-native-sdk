@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an integration account certificate.
@@ -92,6 +93,12 @@ func (o LookupIntegrationAccountCertificateResultOutput) ToLookupIntegrationAcco
 
 func (o LookupIntegrationAccountCertificateResultOutput) ToLookupIntegrationAccountCertificateResultOutputWithContext(ctx context.Context) LookupIntegrationAccountCertificateResultOutput {
 	return o
+}
+
+func (o LookupIntegrationAccountCertificateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIntegrationAccountCertificateResult] {
+	return pulumix.Output[LookupIntegrationAccountCertificateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The changed time.

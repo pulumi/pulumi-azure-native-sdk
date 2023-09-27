@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the PHP workload resource.
@@ -116,6 +117,12 @@ func (o LookupPhpWorkloadResultOutput) ToLookupPhpWorkloadResultOutput() LookupP
 
 func (o LookupPhpWorkloadResultOutput) ToLookupPhpWorkloadResultOutputWithContext(ctx context.Context) LookupPhpWorkloadResultOutput {
 	return o
+}
+
+func (o LookupPhpWorkloadResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPhpWorkloadResult] {
+	return pulumix.Output[LookupPhpWorkloadResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Admin user profile used for VM and VMSS

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Registration information.
@@ -144,6 +145,12 @@ func (i *Registration) ToRegistrationOutputWithContext(ctx context.Context) Regi
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationOutput)
 }
 
+func (i *Registration) ToOutput(ctx context.Context) pulumix.Output[*Registration] {
+	return pulumix.Output[*Registration]{
+		OutputState: i.ToRegistrationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegistrationOutput struct{ *pulumi.OutputState }
 
 func (RegistrationOutput) ElementType() reflect.Type {
@@ -156,6 +163,12 @@ func (o RegistrationOutput) ToRegistrationOutput() RegistrationOutput {
 
 func (o RegistrationOutput) ToRegistrationOutputWithContext(ctx context.Context) RegistrationOutput {
 	return o
+}
+
+func (o RegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[*Registration] {
+	return pulumix.Output[*Registration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the billing mode for the Azure Stack registration.

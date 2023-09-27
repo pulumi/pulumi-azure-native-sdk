@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ResourceGuardProxyBaseResource object, used for response and request bodies for ResourceGuardProxy APIs
@@ -57,6 +58,9 @@ func NewDppResourceGuardProxy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20230501:DppResourceGuardProxy"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230601preview:DppResourceGuardProxy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -138,6 +142,12 @@ func (i *DppResourceGuardProxy) ToDppResourceGuardProxyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DppResourceGuardProxyOutput)
 }
 
+func (i *DppResourceGuardProxy) ToOutput(ctx context.Context) pulumix.Output[*DppResourceGuardProxy] {
+	return pulumix.Output[*DppResourceGuardProxy]{
+		OutputState: i.ToDppResourceGuardProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DppResourceGuardProxyOutput struct{ *pulumi.OutputState }
 
 func (DppResourceGuardProxyOutput) ElementType() reflect.Type {
@@ -150,6 +160,12 @@ func (o DppResourceGuardProxyOutput) ToDppResourceGuardProxyOutput() DppResource
 
 func (o DppResourceGuardProxyOutput) ToDppResourceGuardProxyOutputWithContext(ctx context.Context) DppResourceGuardProxyOutput {
 	return o
+}
+
+func (o DppResourceGuardProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*DppResourceGuardProxy] {
+	return pulumix.Output[*DppResourceGuardProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name associated with the resource.

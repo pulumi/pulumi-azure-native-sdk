@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Fusion alert rule.
@@ -154,6 +155,9 @@ func NewFusionAlertRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:FusionAlertRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:FusionAlertRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -252,6 +256,12 @@ func (i *FusionAlertRule) ToFusionAlertRuleOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(FusionAlertRuleOutput)
 }
 
+func (i *FusionAlertRule) ToOutput(ctx context.Context) pulumix.Output[*FusionAlertRule] {
+	return pulumix.Output[*FusionAlertRule]{
+		OutputState: i.ToFusionAlertRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FusionAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (FusionAlertRuleOutput) ElementType() reflect.Type {
@@ -264,6 +274,12 @@ func (o FusionAlertRuleOutput) ToFusionAlertRuleOutput() FusionAlertRuleOutput {
 
 func (o FusionAlertRuleOutput) ToFusionAlertRuleOutputWithContext(ctx context.Context) FusionAlertRuleOutput {
 	return o
+}
+
+func (o FusionAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*FusionAlertRule] {
+	return pulumix.Output[*FusionAlertRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Name of the alert rule template used to create this rule.

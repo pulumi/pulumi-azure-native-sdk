@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Package in Azure Security Insights.
@@ -109,6 +110,9 @@ func NewContentPackage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:ContentPackage"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:ContentPackage"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -270,6 +274,12 @@ func (i *ContentPackage) ToContentPackageOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ContentPackageOutput)
 }
 
+func (i *ContentPackage) ToOutput(ctx context.Context) pulumix.Output[*ContentPackage] {
+	return pulumix.Output[*ContentPackage]{
+		OutputState: i.ToContentPackageOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContentPackageOutput struct{ *pulumi.OutputState }
 
 func (ContentPackageOutput) ElementType() reflect.Type {
@@ -282,6 +292,12 @@ func (o ContentPackageOutput) ToContentPackageOutput() ContentPackageOutput {
 
 func (o ContentPackageOutput) ToContentPackageOutputWithContext(ctx context.Context) ContentPackageOutput {
 	return o
+}
+
+func (o ContentPackageOutput) ToOutput(ctx context.Context) pulumix.Output[*ContentPackage] {
+	return pulumix.Output[*ContentPackage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The author of the package

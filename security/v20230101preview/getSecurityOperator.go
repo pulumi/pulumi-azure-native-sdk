@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a specific security operator for the requested scope.
@@ -78,6 +79,12 @@ func (o LookupSecurityOperatorResultOutput) ToLookupSecurityOperatorResultOutput
 
 func (o LookupSecurityOperatorResultOutput) ToLookupSecurityOperatorResultOutputWithContext(ctx context.Context) LookupSecurityOperatorResultOutput {
 	return o
+}
+
+func (o LookupSecurityOperatorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecurityOperatorResult] {
+	return pulumix.Output[LookupSecurityOperatorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource Id

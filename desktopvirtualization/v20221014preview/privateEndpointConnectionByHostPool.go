@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Private Endpoint Connection resource.
@@ -64,6 +65,9 @@ func NewPrivateEndpointConnectionByHostPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:PrivateEndpointConnectionByHostPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:PrivateEndpointConnectionByHostPool"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -145,6 +149,12 @@ func (i *PrivateEndpointConnectionByHostPool) ToPrivateEndpointConnectionByHostP
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionByHostPoolOutput)
 }
 
+func (i *PrivateEndpointConnectionByHostPool) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionByHostPool] {
+	return pulumix.Output[*PrivateEndpointConnectionByHostPool]{
+		OutputState: i.ToPrivateEndpointConnectionByHostPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateEndpointConnectionByHostPoolOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionByHostPoolOutput) ElementType() reflect.Type {
@@ -157,6 +167,12 @@ func (o PrivateEndpointConnectionByHostPoolOutput) ToPrivateEndpointConnectionBy
 
 func (o PrivateEndpointConnectionByHostPoolOutput) ToPrivateEndpointConnectionByHostPoolOutputWithContext(ctx context.Context) PrivateEndpointConnectionByHostPoolOutput {
 	return o
+}
+
+func (o PrivateEndpointConnectionByHostPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionByHostPool] {
+	return pulumix.Output[*PrivateEndpointConnectionByHostPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource

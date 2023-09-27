@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the connection strings for the specified Azure Cosmos DB database account.
@@ -73,6 +74,12 @@ func (o ListDatabaseAccountConnectionStringsResultOutput) ToListDatabaseAccountC
 
 func (o ListDatabaseAccountConnectionStringsResultOutput) ToListDatabaseAccountConnectionStringsResultOutputWithContext(ctx context.Context) ListDatabaseAccountConnectionStringsResultOutput {
 	return o
+}
+
+func (o ListDatabaseAccountConnectionStringsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListDatabaseAccountConnectionStringsResult] {
+	return pulumix.Output[ListDatabaseAccountConnectionStringsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An array that contains the connection strings for the Cosmos DB account.

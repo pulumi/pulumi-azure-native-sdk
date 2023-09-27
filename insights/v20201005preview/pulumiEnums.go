@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The kind of WebTest that this web test watches. Choices are ping and multistep.
@@ -78,6 +79,12 @@ func (o WebTestKindOutput) ToWebTestKindPtrOutputWithContext(ctx context.Context
 	}).(WebTestKindPtrOutput)
 }
 
+func (o WebTestKindOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestKind] {
+	return pulumix.Output[WebTestKind]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WebTestKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o WebTestKindPtrOutput) ToWebTestKindPtrOutput() WebTestKindPtrOutput {
 
 func (o WebTestKindPtrOutput) ToWebTestKindPtrOutputWithContext(ctx context.Context) WebTestKindPtrOutput {
 	return o
+}
+
+func (o WebTestKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTestKind] {
+	return pulumix.Output[*WebTestKind]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebTestKindPtrOutput) Elem() WebTestKindOutput {
@@ -173,6 +186,12 @@ func (in *webTestKindPtr) ToWebTestKindPtrOutput() WebTestKindPtrOutput {
 
 func (in *webTestKindPtr) ToWebTestKindPtrOutputWithContext(ctx context.Context) WebTestKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WebTestKindPtrOutput)
+}
+
+func (in *webTestKindPtr) ToOutput(ctx context.Context) pulumix.Output[*WebTestKind] {
+	return pulumix.Output[*WebTestKind]{
+		OutputState: in.ToWebTestKindPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The kind of web test this is, valid choices are ping, multistep, basic, and standard.
@@ -245,6 +264,12 @@ func (o WebTestKindEnumOutput) ToWebTestKindEnumPtrOutputWithContext(ctx context
 	}).(WebTestKindEnumPtrOutput)
 }
 
+func (o WebTestKindEnumOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestKindEnum] {
+	return pulumix.Output[WebTestKindEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WebTestKindEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -278,6 +303,12 @@ func (o WebTestKindEnumPtrOutput) ToWebTestKindEnumPtrOutput() WebTestKindEnumPt
 
 func (o WebTestKindEnumPtrOutput) ToWebTestKindEnumPtrOutputWithContext(ctx context.Context) WebTestKindEnumPtrOutput {
 	return o
+}
+
+func (o WebTestKindEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTestKindEnum] {
+	return pulumix.Output[*WebTestKindEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebTestKindEnumPtrOutput) Elem() WebTestKindEnumOutput {
@@ -340,6 +371,12 @@ func (in *webTestKindEnumPtr) ToWebTestKindEnumPtrOutput() WebTestKindEnumPtrOut
 
 func (in *webTestKindEnumPtr) ToWebTestKindEnumPtrOutputWithContext(ctx context.Context) WebTestKindEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WebTestKindEnumPtrOutput)
+}
+
+func (in *webTestKindEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*WebTestKindEnum] {
+	return pulumix.Output[*WebTestKindEnum]{
+		OutputState: in.ToWebTestKindEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

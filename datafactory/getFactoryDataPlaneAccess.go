@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get Data Plane access.
@@ -97,6 +98,12 @@ func (o GetFactoryDataPlaneAccessResultOutput) ToGetFactoryDataPlaneAccessResult
 
 func (o GetFactoryDataPlaneAccessResultOutput) ToGetFactoryDataPlaneAccessResultOutputWithContext(ctx context.Context) GetFactoryDataPlaneAccessResultOutput {
 	return o
+}
+
+func (o GetFactoryDataPlaneAccessResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFactoryDataPlaneAccessResult] {
+	return pulumix.Output[GetFactoryDataPlaneAccessResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Data Plane read only access token.

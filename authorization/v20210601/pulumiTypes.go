@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i ParameterDefinitionsValueArgs) ToParameterDefinitionsValueOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterDefinitionsValueOutput)
 }
 
+func (i ParameterDefinitionsValueArgs) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinitionsValue] {
+	return pulumix.Output[ParameterDefinitionsValue]{
+		OutputState: i.ToParameterDefinitionsValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ParameterDefinitionsValueMapInput is an input type that accepts ParameterDefinitionsValueMap and ParameterDefinitionsValueMapOutput values.
 // You can construct a concrete instance of `ParameterDefinitionsValueMapInput` via:
 //
@@ -85,6 +92,12 @@ func (i ParameterDefinitionsValueMap) ToParameterDefinitionsValueMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterDefinitionsValueMapOutput)
 }
 
+func (i ParameterDefinitionsValueMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterDefinitionsValue] {
+	return pulumix.Output[map[string]ParameterDefinitionsValue]{
+		OutputState: i.ToParameterDefinitionsValueMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The definition of a parameter that can be provided to the policy.
 type ParameterDefinitionsValueOutput struct{ *pulumi.OutputState }
 
@@ -98,6 +111,12 @@ func (o ParameterDefinitionsValueOutput) ToParameterDefinitionsValueOutput() Par
 
 func (o ParameterDefinitionsValueOutput) ToParameterDefinitionsValueOutputWithContext(ctx context.Context) ParameterDefinitionsValueOutput {
 	return o
+}
+
+func (o ParameterDefinitionsValueOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinitionsValue] {
+	return pulumix.Output[ParameterDefinitionsValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The allowed values for the parameter.
@@ -132,6 +151,12 @@ func (o ParameterDefinitionsValueMapOutput) ToParameterDefinitionsValueMapOutput
 
 func (o ParameterDefinitionsValueMapOutput) ToParameterDefinitionsValueMapOutputWithContext(ctx context.Context) ParameterDefinitionsValueMapOutput {
 	return o
+}
+
+func (o ParameterDefinitionsValueMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterDefinitionsValue] {
+	return pulumix.Output[map[string]ParameterDefinitionsValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParameterDefinitionsValueMapOutput) MapIndex(k pulumi.StringInput) ParameterDefinitionsValueOutput {
@@ -187,6 +212,12 @@ func (i ParameterDefinitionsValueMetadataArgs) ToParameterDefinitionsValueMetada
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterDefinitionsValueMetadataOutput)
 }
 
+func (i ParameterDefinitionsValueMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinitionsValueMetadata] {
+	return pulumix.Output[ParameterDefinitionsValueMetadata]{
+		OutputState: i.ToParameterDefinitionsValueMetadataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ParameterDefinitionsValueMetadataArgs) ToParameterDefinitionsValueMetadataPtrOutput() ParameterDefinitionsValueMetadataPtrOutput {
 	return i.ToParameterDefinitionsValueMetadataPtrOutputWithContext(context.Background())
 }
@@ -228,6 +259,12 @@ func (i *parameterDefinitionsValueMetadataPtrType) ToParameterDefinitionsValueMe
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterDefinitionsValueMetadataPtrOutput)
 }
 
+func (i *parameterDefinitionsValueMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*ParameterDefinitionsValueMetadata] {
+	return pulumix.Output[*ParameterDefinitionsValueMetadata]{
+		OutputState: i.ToParameterDefinitionsValueMetadataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // General metadata for the parameter.
 type ParameterDefinitionsValueMetadataOutput struct{ *pulumi.OutputState }
 
@@ -251,6 +288,12 @@ func (o ParameterDefinitionsValueMetadataOutput) ToParameterDefinitionsValueMeta
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParameterDefinitionsValueMetadata) *ParameterDefinitionsValueMetadata {
 		return &v
 	}).(ParameterDefinitionsValueMetadataPtrOutput)
+}
+
+func (o ParameterDefinitionsValueMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinitionsValueMetadata] {
+	return pulumix.Output[ParameterDefinitionsValueMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.
@@ -285,6 +328,12 @@ func (o ParameterDefinitionsValueMetadataPtrOutput) ToParameterDefinitionsValueM
 
 func (o ParameterDefinitionsValueMetadataPtrOutput) ToParameterDefinitionsValueMetadataPtrOutputWithContext(ctx context.Context) ParameterDefinitionsValueMetadataPtrOutput {
 	return o
+}
+
+func (o ParameterDefinitionsValueMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ParameterDefinitionsValueMetadata] {
+	return pulumix.Output[*ParameterDefinitionsValueMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParameterDefinitionsValueMetadataPtrOutput) Elem() ParameterDefinitionsValueMetadataOutput {
@@ -364,6 +413,12 @@ func (o ParameterDefinitionsValueResponseOutput) ToParameterDefinitionsValueResp
 	return o
 }
 
+func (o ParameterDefinitionsValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinitionsValueResponse] {
+	return pulumix.Output[ParameterDefinitionsValueResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The allowed values for the parameter.
 func (o ParameterDefinitionsValueResponseOutput) AllowedValues() pulumi.ArrayOutput {
 	return o.ApplyT(func(v ParameterDefinitionsValueResponse) []interface{} { return v.AllowedValues }).(pulumi.ArrayOutput)
@@ -400,6 +455,12 @@ func (o ParameterDefinitionsValueResponseMapOutput) ToParameterDefinitionsValueR
 	return o
 }
 
+func (o ParameterDefinitionsValueResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterDefinitionsValueResponse] {
+	return pulumix.Output[map[string]ParameterDefinitionsValueResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ParameterDefinitionsValueResponseMapOutput) MapIndex(k pulumi.StringInput) ParameterDefinitionsValueResponseOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ParameterDefinitionsValueResponse {
 		return vs[0].(map[string]ParameterDefinitionsValueResponse)[vs[1].(string)]
@@ -431,6 +492,12 @@ func (o ParameterDefinitionsValueResponseMetadataOutput) ToParameterDefinitionsV
 
 func (o ParameterDefinitionsValueResponseMetadataOutput) ToParameterDefinitionsValueResponseMetadataOutputWithContext(ctx context.Context) ParameterDefinitionsValueResponseMetadataOutput {
 	return o
+}
+
+func (o ParameterDefinitionsValueResponseMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinitionsValueResponseMetadata] {
+	return pulumix.Output[ParameterDefinitionsValueResponseMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.
@@ -465,6 +532,12 @@ func (o ParameterDefinitionsValueResponseMetadataPtrOutput) ToParameterDefinitio
 
 func (o ParameterDefinitionsValueResponseMetadataPtrOutput) ToParameterDefinitionsValueResponseMetadataPtrOutputWithContext(ctx context.Context) ParameterDefinitionsValueResponseMetadataPtrOutput {
 	return o
+}
+
+func (o ParameterDefinitionsValueResponseMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ParameterDefinitionsValueResponseMetadata] {
+	return pulumix.Output[*ParameterDefinitionsValueResponseMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParameterDefinitionsValueResponseMetadataPtrOutput) Elem() ParameterDefinitionsValueResponseMetadataOutput {
@@ -552,6 +625,12 @@ func (i ParameterValuesValueArgs) ToParameterValuesValueOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterValuesValueOutput)
 }
 
+func (i ParameterValuesValueArgs) ToOutput(ctx context.Context) pulumix.Output[ParameterValuesValue] {
+	return pulumix.Output[ParameterValuesValue]{
+		OutputState: i.ToParameterValuesValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ParameterValuesValueMapInput is an input type that accepts ParameterValuesValueMap and ParameterValuesValueMapOutput values.
 // You can construct a concrete instance of `ParameterValuesValueMapInput` via:
 //
@@ -577,6 +656,12 @@ func (i ParameterValuesValueMap) ToParameterValuesValueMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterValuesValueMapOutput)
 }
 
+func (i ParameterValuesValueMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterValuesValue] {
+	return pulumix.Output[map[string]ParameterValuesValue]{
+		OutputState: i.ToParameterValuesValueMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The value of a parameter.
 type ParameterValuesValueOutput struct{ *pulumi.OutputState }
 
@@ -590,6 +675,12 @@ func (o ParameterValuesValueOutput) ToParameterValuesValueOutput() ParameterValu
 
 func (o ParameterValuesValueOutput) ToParameterValuesValueOutputWithContext(ctx context.Context) ParameterValuesValueOutput {
 	return o
+}
+
+func (o ParameterValuesValueOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterValuesValue] {
+	return pulumix.Output[ParameterValuesValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value of the parameter.
@@ -609,6 +700,12 @@ func (o ParameterValuesValueMapOutput) ToParameterValuesValueMapOutput() Paramet
 
 func (o ParameterValuesValueMapOutput) ToParameterValuesValueMapOutputWithContext(ctx context.Context) ParameterValuesValueMapOutput {
 	return o
+}
+
+func (o ParameterValuesValueMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterValuesValue] {
+	return pulumix.Output[map[string]ParameterValuesValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParameterValuesValueMapOutput) MapIndex(k pulumi.StringInput) ParameterValuesValueOutput {
@@ -638,6 +735,12 @@ func (o ParameterValuesValueResponseOutput) ToParameterValuesValueResponseOutput
 	return o
 }
 
+func (o ParameterValuesValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterValuesValueResponse] {
+	return pulumix.Output[ParameterValuesValueResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The value of the parameter.
 func (o ParameterValuesValueResponseOutput) Value() pulumi.AnyOutput {
 	return o.ApplyT(func(v ParameterValuesValueResponse) interface{} { return v.Value }).(pulumi.AnyOutput)
@@ -655,6 +758,12 @@ func (o ParameterValuesValueResponseMapOutput) ToParameterValuesValueResponseMap
 
 func (o ParameterValuesValueResponseMapOutput) ToParameterValuesValueResponseMapOutputWithContext(ctx context.Context) ParameterValuesValueResponseMapOutput {
 	return o
+}
+
+func (o ParameterValuesValueResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterValuesValueResponse] {
+	return pulumix.Output[map[string]ParameterValuesValueResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParameterValuesValueResponseMapOutput) MapIndex(k pulumi.StringInput) ParameterValuesValueResponseOutput {
@@ -714,6 +823,12 @@ func (i PolicyDefinitionGroupArgs) ToPolicyDefinitionGroupOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefinitionGroupOutput)
 }
 
+func (i PolicyDefinitionGroupArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionGroup] {
+	return pulumix.Output[PolicyDefinitionGroup]{
+		OutputState: i.ToPolicyDefinitionGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PolicyDefinitionGroupArrayInput is an input type that accepts PolicyDefinitionGroupArray and PolicyDefinitionGroupArrayOutput values.
 // You can construct a concrete instance of `PolicyDefinitionGroupArrayInput` via:
 //
@@ -739,6 +854,12 @@ func (i PolicyDefinitionGroupArray) ToPolicyDefinitionGroupArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefinitionGroupArrayOutput)
 }
 
+func (i PolicyDefinitionGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionGroup] {
+	return pulumix.Output[[]PolicyDefinitionGroup]{
+		OutputState: i.ToPolicyDefinitionGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The policy definition group.
 type PolicyDefinitionGroupOutput struct{ *pulumi.OutputState }
 
@@ -752,6 +873,12 @@ func (o PolicyDefinitionGroupOutput) ToPolicyDefinitionGroupOutput() PolicyDefin
 
 func (o PolicyDefinitionGroupOutput) ToPolicyDefinitionGroupOutputWithContext(ctx context.Context) PolicyDefinitionGroupOutput {
 	return o
+}
+
+func (o PolicyDefinitionGroupOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionGroup] {
+	return pulumix.Output[PolicyDefinitionGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A resource ID of a resource that contains additional metadata about the group.
@@ -793,6 +920,12 @@ func (o PolicyDefinitionGroupArrayOutput) ToPolicyDefinitionGroupArrayOutputWith
 	return o
 }
 
+func (o PolicyDefinitionGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionGroup] {
+	return pulumix.Output[[]PolicyDefinitionGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PolicyDefinitionGroupArrayOutput) Index(i pulumi.IntInput) PolicyDefinitionGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyDefinitionGroup {
 		return vs[0].([]PolicyDefinitionGroup)[vs[1].(int)]
@@ -826,6 +959,12 @@ func (o PolicyDefinitionGroupResponseOutput) ToPolicyDefinitionGroupResponseOutp
 
 func (o PolicyDefinitionGroupResponseOutput) ToPolicyDefinitionGroupResponseOutputWithContext(ctx context.Context) PolicyDefinitionGroupResponseOutput {
 	return o
+}
+
+func (o PolicyDefinitionGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionGroupResponse] {
+	return pulumix.Output[PolicyDefinitionGroupResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A resource ID of a resource that contains additional metadata about the group.
@@ -865,6 +1004,12 @@ func (o PolicyDefinitionGroupResponseArrayOutput) ToPolicyDefinitionGroupRespons
 
 func (o PolicyDefinitionGroupResponseArrayOutput) ToPolicyDefinitionGroupResponseArrayOutputWithContext(ctx context.Context) PolicyDefinitionGroupResponseArrayOutput {
 	return o
+}
+
+func (o PolicyDefinitionGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionGroupResponse] {
+	return pulumix.Output[[]PolicyDefinitionGroupResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyDefinitionGroupResponseArrayOutput) Index(i pulumi.IntInput) PolicyDefinitionGroupResponseOutput {
@@ -920,6 +1065,12 @@ func (i PolicyDefinitionReferenceArgs) ToPolicyDefinitionReferenceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefinitionReferenceOutput)
 }
 
+func (i PolicyDefinitionReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionReference] {
+	return pulumix.Output[PolicyDefinitionReference]{
+		OutputState: i.ToPolicyDefinitionReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PolicyDefinitionReferenceArrayInput is an input type that accepts PolicyDefinitionReferenceArray and PolicyDefinitionReferenceArrayOutput values.
 // You can construct a concrete instance of `PolicyDefinitionReferenceArrayInput` via:
 //
@@ -945,6 +1096,12 @@ func (i PolicyDefinitionReferenceArray) ToPolicyDefinitionReferenceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefinitionReferenceArrayOutput)
 }
 
+func (i PolicyDefinitionReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionReference] {
+	return pulumix.Output[[]PolicyDefinitionReference]{
+		OutputState: i.ToPolicyDefinitionReferenceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The policy definition reference.
 type PolicyDefinitionReferenceOutput struct{ *pulumi.OutputState }
 
@@ -958,6 +1115,12 @@ func (o PolicyDefinitionReferenceOutput) ToPolicyDefinitionReferenceOutput() Pol
 
 func (o PolicyDefinitionReferenceOutput) ToPolicyDefinitionReferenceOutputWithContext(ctx context.Context) PolicyDefinitionReferenceOutput {
 	return o
+}
+
+func (o PolicyDefinitionReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionReference] {
+	return pulumix.Output[PolicyDefinitionReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the groups that this policy definition reference belongs to.
@@ -994,6 +1157,12 @@ func (o PolicyDefinitionReferenceArrayOutput) ToPolicyDefinitionReferenceArrayOu
 	return o
 }
 
+func (o PolicyDefinitionReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionReference] {
+	return pulumix.Output[[]PolicyDefinitionReference]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PolicyDefinitionReferenceArrayOutput) Index(i pulumi.IntInput) PolicyDefinitionReferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyDefinitionReference {
 		return vs[0].([]PolicyDefinitionReference)[vs[1].(int)]
@@ -1025,6 +1194,12 @@ func (o PolicyDefinitionReferenceResponseOutput) ToPolicyDefinitionReferenceResp
 
 func (o PolicyDefinitionReferenceResponseOutput) ToPolicyDefinitionReferenceResponseOutputWithContext(ctx context.Context) PolicyDefinitionReferenceResponseOutput {
 	return o
+}
+
+func (o PolicyDefinitionReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionReferenceResponse] {
+	return pulumix.Output[PolicyDefinitionReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the groups that this policy definition reference belongs to.
@@ -1059,6 +1234,12 @@ func (o PolicyDefinitionReferenceResponseArrayOutput) ToPolicyDefinitionReferenc
 
 func (o PolicyDefinitionReferenceResponseArrayOutput) ToPolicyDefinitionReferenceResponseArrayOutputWithContext(ctx context.Context) PolicyDefinitionReferenceResponseArrayOutput {
 	return o
+}
+
+func (o PolicyDefinitionReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionReferenceResponse] {
+	return pulumix.Output[[]PolicyDefinitionReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyDefinitionReferenceResponseArrayOutput) Index(i pulumi.IntInput) PolicyDefinitionReferenceResponseOutput {
@@ -1096,6 +1277,12 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
+}
+
+func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
+	return pulumix.Output[SystemDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of resource creation (UTC).

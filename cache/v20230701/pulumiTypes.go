@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i DatabasePropertiesGeoReplicationArgs) ToDatabasePropertiesGeoReplication
 	return pulumi.ToOutputWithContext(ctx, i).(DatabasePropertiesGeoReplicationOutput)
 }
 
+func (i DatabasePropertiesGeoReplicationArgs) ToOutput(ctx context.Context) pulumix.Output[DatabasePropertiesGeoReplication] {
+	return pulumix.Output[DatabasePropertiesGeoReplication]{
+		OutputState: i.ToDatabasePropertiesGeoReplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DatabasePropertiesGeoReplicationArgs) ToDatabasePropertiesGeoReplicationPtrOutput() DatabasePropertiesGeoReplicationPtrOutput {
 	return i.ToDatabasePropertiesGeoReplicationPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *databasePropertiesGeoReplicationPtrType) ToDatabasePropertiesGeoReplica
 	return pulumi.ToOutputWithContext(ctx, i).(DatabasePropertiesGeoReplicationPtrOutput)
 }
 
+func (i *databasePropertiesGeoReplicationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabasePropertiesGeoReplication] {
+	return pulumix.Output[*DatabasePropertiesGeoReplication]{
+		OutputState: i.ToDatabasePropertiesGeoReplicationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Optional set of properties to configure geo replication for this database.
 type DatabasePropertiesGeoReplicationOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o DatabasePropertiesGeoReplicationOutput) ToDatabasePropertiesGeoReplicati
 	}).(DatabasePropertiesGeoReplicationPtrOutput)
 }
 
+func (o DatabasePropertiesGeoReplicationOutput) ToOutput(ctx context.Context) pulumix.Output[DatabasePropertiesGeoReplication] {
+	return pulumix.Output[DatabasePropertiesGeoReplication]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name for the group of linked database resources
 func (o DatabasePropertiesGeoReplicationOutput) GroupNickname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabasePropertiesGeoReplication) *string { return v.GroupNickname }).(pulumi.StringPtrOutput)
@@ -140,6 +159,12 @@ func (o DatabasePropertiesGeoReplicationPtrOutput) ToDatabasePropertiesGeoReplic
 
 func (o DatabasePropertiesGeoReplicationPtrOutput) ToDatabasePropertiesGeoReplicationPtrOutputWithContext(ctx context.Context) DatabasePropertiesGeoReplicationPtrOutput {
 	return o
+}
+
+func (o DatabasePropertiesGeoReplicationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabasePropertiesGeoReplication] {
+	return pulumix.Output[*DatabasePropertiesGeoReplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabasePropertiesGeoReplicationPtrOutput) Elem() DatabasePropertiesGeoReplicationOutput {
@@ -195,6 +220,12 @@ func (o DatabasePropertiesResponseGeoReplicationOutput) ToDatabasePropertiesResp
 	return o
 }
 
+func (o DatabasePropertiesResponseGeoReplicationOutput) ToOutput(ctx context.Context) pulumix.Output[DatabasePropertiesResponseGeoReplication] {
+	return pulumix.Output[DatabasePropertiesResponseGeoReplication]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name for the group of linked database resources
 func (o DatabasePropertiesResponseGeoReplicationOutput) GroupNickname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabasePropertiesResponseGeoReplication) *string { return v.GroupNickname }).(pulumi.StringPtrOutput)
@@ -217,6 +248,12 @@ func (o DatabasePropertiesResponseGeoReplicationPtrOutput) ToDatabasePropertiesR
 
 func (o DatabasePropertiesResponseGeoReplicationPtrOutput) ToDatabasePropertiesResponseGeoReplicationPtrOutputWithContext(ctx context.Context) DatabasePropertiesResponseGeoReplicationPtrOutput {
 	return o
+}
+
+func (o DatabasePropertiesResponseGeoReplicationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabasePropertiesResponseGeoReplication] {
+	return pulumix.Output[*DatabasePropertiesResponseGeoReplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabasePropertiesResponseGeoReplicationPtrOutput) Elem() DatabasePropertiesResponseGeoReplicationOutput {
@@ -288,6 +325,12 @@ func (i EnterpriseSkuArgs) ToEnterpriseSkuOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSkuOutput)
 }
 
+func (i EnterpriseSkuArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseSku] {
+	return pulumix.Output[EnterpriseSku]{
+		OutputState: i.ToEnterpriseSkuOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SKU parameters supplied to the create RedisEnterprise operation.
 type EnterpriseSkuOutput struct{ *pulumi.OutputState }
 
@@ -301,6 +344,12 @@ func (o EnterpriseSkuOutput) ToEnterpriseSkuOutput() EnterpriseSkuOutput {
 
 func (o EnterpriseSkuOutput) ToEnterpriseSkuOutputWithContext(ctx context.Context) EnterpriseSkuOutput {
 	return o
+}
+
+func (o EnterpriseSkuOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseSku] {
+	return pulumix.Output[EnterpriseSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
@@ -334,6 +383,12 @@ func (o EnterpriseSkuResponseOutput) ToEnterpriseSkuResponseOutput() EnterpriseS
 
 func (o EnterpriseSkuResponseOutput) ToEnterpriseSkuResponseOutputWithContext(ctx context.Context) EnterpriseSkuResponseOutput {
 	return o
+}
+
+func (o EnterpriseSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseSkuResponse] {
+	return pulumix.Output[EnterpriseSkuResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
@@ -381,6 +436,12 @@ func (i LinkedDatabaseArgs) ToLinkedDatabaseOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedDatabaseOutput)
 }
 
+func (i LinkedDatabaseArgs) ToOutput(ctx context.Context) pulumix.Output[LinkedDatabase] {
+	return pulumix.Output[LinkedDatabase]{
+		OutputState: i.ToLinkedDatabaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LinkedDatabaseArrayInput is an input type that accepts LinkedDatabaseArray and LinkedDatabaseArrayOutput values.
 // You can construct a concrete instance of `LinkedDatabaseArrayInput` via:
 //
@@ -406,6 +467,12 @@ func (i LinkedDatabaseArray) ToLinkedDatabaseArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedDatabaseArrayOutput)
 }
 
+func (i LinkedDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]LinkedDatabase] {
+	return pulumix.Output[[]LinkedDatabase]{
+		OutputState: i.ToLinkedDatabaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies details of a linked database resource.
 type LinkedDatabaseOutput struct{ *pulumi.OutputState }
 
@@ -419,6 +486,12 @@ func (o LinkedDatabaseOutput) ToLinkedDatabaseOutput() LinkedDatabaseOutput {
 
 func (o LinkedDatabaseOutput) ToLinkedDatabaseOutputWithContext(ctx context.Context) LinkedDatabaseOutput {
 	return o
+}
+
+func (o LinkedDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedDatabase] {
+	return pulumix.Output[LinkedDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource ID of a database resource to link with this database.
@@ -438,6 +511,12 @@ func (o LinkedDatabaseArrayOutput) ToLinkedDatabaseArrayOutput() LinkedDatabaseA
 
 func (o LinkedDatabaseArrayOutput) ToLinkedDatabaseArrayOutputWithContext(ctx context.Context) LinkedDatabaseArrayOutput {
 	return o
+}
+
+func (o LinkedDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LinkedDatabase] {
+	return pulumix.Output[[]LinkedDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LinkedDatabaseArrayOutput) Index(i pulumi.IntInput) LinkedDatabaseOutput {
@@ -469,6 +548,12 @@ func (o LinkedDatabaseResponseOutput) ToLinkedDatabaseResponseOutputWithContext(
 	return o
 }
 
+func (o LinkedDatabaseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedDatabaseResponse] {
+	return pulumix.Output[LinkedDatabaseResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource ID of a database resource to link with this database.
 func (o LinkedDatabaseResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LinkedDatabaseResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -491,6 +576,12 @@ func (o LinkedDatabaseResponseArrayOutput) ToLinkedDatabaseResponseArrayOutput()
 
 func (o LinkedDatabaseResponseArrayOutput) ToLinkedDatabaseResponseArrayOutputWithContext(ctx context.Context) LinkedDatabaseResponseArrayOutput {
 	return o
+}
+
+func (o LinkedDatabaseResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LinkedDatabaseResponse] {
+	return pulumix.Output[[]LinkedDatabaseResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LinkedDatabaseResponseArrayOutput) Index(i pulumi.IntInput) LinkedDatabaseResponseOutput {
@@ -538,6 +629,12 @@ func (i ModuleArgs) ToModuleOutputWithContext(ctx context.Context) ModuleOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ModuleOutput)
 }
 
+func (i ModuleArgs) ToOutput(ctx context.Context) pulumix.Output[Module] {
+	return pulumix.Output[Module]{
+		OutputState: i.ToModuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ModuleArrayInput is an input type that accepts ModuleArray and ModuleArrayOutput values.
 // You can construct a concrete instance of `ModuleArrayInput` via:
 //
@@ -563,6 +660,12 @@ func (i ModuleArray) ToModuleArrayOutputWithContext(ctx context.Context) ModuleA
 	return pulumi.ToOutputWithContext(ctx, i).(ModuleArrayOutput)
 }
 
+func (i ModuleArray) ToOutput(ctx context.Context) pulumix.Output[[]Module] {
+	return pulumix.Output[[]Module]{
+		OutputState: i.ToModuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies configuration of a redis module
 type ModuleOutput struct{ *pulumi.OutputState }
 
@@ -576,6 +679,12 @@ func (o ModuleOutput) ToModuleOutput() ModuleOutput {
 
 func (o ModuleOutput) ToModuleOutputWithContext(ctx context.Context) ModuleOutput {
 	return o
+}
+
+func (o ModuleOutput) ToOutput(ctx context.Context) pulumix.Output[Module] {
+	return pulumix.Output[Module]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
@@ -600,6 +709,12 @@ func (o ModuleArrayOutput) ToModuleArrayOutput() ModuleArrayOutput {
 
 func (o ModuleArrayOutput) ToModuleArrayOutputWithContext(ctx context.Context) ModuleArrayOutput {
 	return o
+}
+
+func (o ModuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Module] {
+	return pulumix.Output[[]Module]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ModuleArrayOutput) Index(i pulumi.IntInput) ModuleOutput {
@@ -633,6 +748,12 @@ func (o ModuleResponseOutput) ToModuleResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ModuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ModuleResponse] {
+	return pulumix.Output[ModuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
 func (o ModuleResponseOutput) Args() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModuleResponse) *string { return v.Args }).(pulumi.StringPtrOutput)
@@ -660,6 +781,12 @@ func (o ModuleResponseArrayOutput) ToModuleResponseArrayOutput() ModuleResponseA
 
 func (o ModuleResponseArrayOutput) ToModuleResponseArrayOutputWithContext(ctx context.Context) ModuleResponseArrayOutput {
 	return o
+}
+
+func (o ModuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ModuleResponse] {
+	return pulumix.Output[[]ModuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ModuleResponseArrayOutput) Index(i pulumi.IntInput) ModuleResponseOutput {
@@ -715,6 +842,12 @@ func (i PersistenceArgs) ToPersistenceOutputWithContext(ctx context.Context) Per
 	return pulumi.ToOutputWithContext(ctx, i).(PersistenceOutput)
 }
 
+func (i PersistenceArgs) ToOutput(ctx context.Context) pulumix.Output[Persistence] {
+	return pulumix.Output[Persistence]{
+		OutputState: i.ToPersistenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PersistenceArgs) ToPersistencePtrOutput() PersistencePtrOutput {
 	return i.ToPersistencePtrOutputWithContext(context.Background())
 }
@@ -756,6 +889,12 @@ func (i *persistencePtrType) ToPersistencePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PersistencePtrOutput)
 }
 
+func (i *persistencePtrType) ToOutput(ctx context.Context) pulumix.Output[*Persistence] {
+	return pulumix.Output[*Persistence]{
+		OutputState: i.ToPersistencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Persistence-related configuration for the RedisEnterprise database
 type PersistenceOutput struct{ *pulumi.OutputState }
 
@@ -779,6 +918,12 @@ func (o PersistenceOutput) ToPersistencePtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Persistence) *Persistence {
 		return &v
 	}).(PersistencePtrOutput)
+}
+
+func (o PersistenceOutput) ToOutput(ctx context.Context) pulumix.Output[Persistence] {
+	return pulumix.Output[Persistence]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Sets whether AOF is enabled.
@@ -813,6 +958,12 @@ func (o PersistencePtrOutput) ToPersistencePtrOutput() PersistencePtrOutput {
 
 func (o PersistencePtrOutput) ToPersistencePtrOutputWithContext(ctx context.Context) PersistencePtrOutput {
 	return o
+}
+
+func (o PersistencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Persistence] {
+	return pulumix.Output[*Persistence]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PersistencePtrOutput) Elem() PersistenceOutput {
@@ -892,6 +1043,12 @@ func (o PersistenceResponseOutput) ToPersistenceResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o PersistenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PersistenceResponse] {
+	return pulumix.Output[PersistenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Sets whether AOF is enabled.
 func (o PersistenceResponseOutput) AofEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PersistenceResponse) *bool { return v.AofEnabled }).(pulumi.BoolPtrOutput)
@@ -924,6 +1081,12 @@ func (o PersistenceResponsePtrOutput) ToPersistenceResponsePtrOutput() Persisten
 
 func (o PersistenceResponsePtrOutput) ToPersistenceResponsePtrOutputWithContext(ctx context.Context) PersistenceResponsePtrOutput {
 	return o
+}
+
+func (o PersistenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PersistenceResponse] {
+	return pulumix.Output[*PersistenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PersistenceResponsePtrOutput) Elem() PersistenceResponseOutput {
@@ -1007,6 +1170,12 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
+	return pulumix.Output[PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1053,6 +1222,12 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
+func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
+	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -1080,6 +1255,12 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
+func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
+	return pulumix.Output[PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1097,6 +1278,12 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
+	return pulumix.Output[*PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -1162,6 +1349,12 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
+func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -1175,6 +1368,12 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
+	return pulumix.Output[PrivateLinkServiceConnectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -1215,6 +1414,12 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
 	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
+	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // NSX Port Mirroring
@@ -94,6 +95,12 @@ func (o LookupWorkloadNetworkPortMirroringResultOutput) ToLookupWorkloadNetworkP
 
 func (o LookupWorkloadNetworkPortMirroringResultOutput) ToLookupWorkloadNetworkPortMirroringResultOutputWithContext(ctx context.Context) LookupWorkloadNetworkPortMirroringResultOutput {
 	return o
+}
+
+func (o LookupWorkloadNetworkPortMirroringResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkloadNetworkPortMirroringResult] {
+	return pulumix.Output[LookupWorkloadNetworkPortMirroringResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Destination VM Group.

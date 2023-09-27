@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about the model of a security automation.
@@ -94,6 +95,12 @@ func (o LookupAutomationResultOutput) ToLookupAutomationResultOutput() LookupAut
 
 func (o LookupAutomationResultOutput) ToLookupAutomationResultOutputWithContext(ctx context.Context) LookupAutomationResultOutput {
 	return o
+}
+
+func (o LookupAutomationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAutomationResult] {
+	return pulumix.Output[LookupAutomationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.

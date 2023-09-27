@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Binding and its properties.
@@ -89,6 +90,12 @@ func (o LookupBindingResultOutput) ToLookupBindingResultOutput() LookupBindingRe
 
 func (o LookupBindingResultOutput) ToLookupBindingResultOutputWithContext(ctx context.Context) LookupBindingResultOutput {
 	return o
+}
+
+func (o LookupBindingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBindingResult] {
+	return pulumix.Output[LookupBindingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource Id for the resource.

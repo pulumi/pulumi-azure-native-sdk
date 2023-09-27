@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a HypervHost
@@ -96,6 +97,12 @@ func (o LookupHypervHostControllerResultOutput) ToLookupHypervHostControllerResu
 
 func (o LookupHypervHostControllerResultOutput) ToLookupHypervHostControllerResultOutputWithContext(ctx context.Context) LookupHypervHostControllerResultOutput {
 	return o
+}
+
+func (o LookupHypervHostControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHypervHostControllerResult] {
+	return pulumix.Output[LookupHypervHostControllerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Gets the timestamp marking Hyper-V host creation.

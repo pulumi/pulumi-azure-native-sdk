@@ -10,9 +10,10 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// An UpdateRun is a multi-stage process to perform update operations across members of a Fleet.
+// A multi-stage process to perform update operations across members of a Fleet.
 type UpdateRun struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +59,9 @@ func NewUpdateRun(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230315preview:UpdateRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230815preview:UpdateRun"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -147,6 +151,12 @@ func (i *UpdateRun) ToUpdateRunOutputWithContext(ctx context.Context) UpdateRunO
 	return pulumi.ToOutputWithContext(ctx, i).(UpdateRunOutput)
 }
 
+func (i *UpdateRun) ToOutput(ctx context.Context) pulumix.Output[*UpdateRun] {
+	return pulumix.Output[*UpdateRun]{
+		OutputState: i.ToUpdateRunOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UpdateRunOutput struct{ *pulumi.OutputState }
 
 func (UpdateRunOutput) ElementType() reflect.Type {
@@ -159,6 +169,12 @@ func (o UpdateRunOutput) ToUpdateRunOutput() UpdateRunOutput {
 
 func (o UpdateRunOutput) ToUpdateRunOutputWithContext(ctx context.Context) UpdateRunOutput {
 	return o
+}
+
+func (o UpdateRunOutput) ToOutput(ctx context.Context) pulumix.Output[*UpdateRun] {
+	return pulumix.Output[*UpdateRun]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.

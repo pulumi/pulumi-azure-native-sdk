@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Api details.
@@ -293,6 +294,12 @@ func (i *Api) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiOutput)
 }
 
+func (i *Api) ToOutput(ctx context.Context) pulumix.Output[*Api] {
+	return pulumix.Output[*Api]{
+		OutputState: i.ToApiOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiOutput struct{ *pulumi.OutputState }
 
 func (ApiOutput) ElementType() reflect.Type {
@@ -305,6 +312,12 @@ func (o ApiOutput) ToApiOutput() ApiOutput {
 
 func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 	return o
+}
+
+func (o ApiOutput) ToOutput(ctx context.Context) pulumix.Output[*Api] {
+	return pulumix.Output[*Api]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the Revision of the Api. If no value is provided, default revision 1 is created

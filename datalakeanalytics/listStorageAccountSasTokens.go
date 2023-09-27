@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the SAS token associated with the specified Data Lake Analytics and Azure Storage account and container combination.
@@ -83,6 +84,12 @@ func (o ListStorageAccountSasTokensResultOutput) ToListStorageAccountSasTokensRe
 
 func (o ListStorageAccountSasTokensResultOutput) ToListStorageAccountSasTokensResultOutputWithContext(ctx context.Context) ListStorageAccountSasTokensResultOutput {
 	return o
+}
+
+func (o ListStorageAccountSasTokensResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListStorageAccountSasTokensResult] {
+	return pulumix.Output[ListStorageAccountSasTokensResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The link (url) to the next page of results.
