@@ -92,6 +92,9 @@ func NewManagedClusterApplicationTypeVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20230301preview:ManagedClusterApplicationTypeVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20230901preview:ManagedClusterApplicationTypeVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

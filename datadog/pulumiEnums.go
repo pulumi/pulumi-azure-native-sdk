@@ -19,5 +19,34 @@ const (
 	MonitoringStatusDisabled = MonitoringStatus("Disabled")
 )
 
+// The operation for the patch on the resource.
+type Operation string
+
+const (
+	OperationAddBegin       = Operation("AddBegin")
+	OperationAddComplete    = Operation("AddComplete")
+	OperationDeleteBegin    = Operation("DeleteBegin")
+	OperationDeleteComplete = Operation("DeleteComplete")
+	OperationActive         = Operation("Active")
+)
+
+// The state of monitoring.
+type Status string
+
+const (
+	StatusInProgress = Status("InProgress")
+	StatusActive     = Status("Active")
+	StatusFailed     = Status("Failed")
+	StatusDeleting   = Status("Deleting")
+)
+
+// Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+type TagAction string
+
+const (
+	TagActionInclude = TagAction("Include")
+	TagActionExclude = TagAction("Exclude")
+)
+
 func init() {
 }

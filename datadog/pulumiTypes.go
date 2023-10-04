@@ -824,6 +824,220 @@ func (o DatadogOrganizationPropertiesResponsePtrOutput) Name() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored.
+type FilteringTag struct {
+	// Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+	Action *string `pulumi:"action"`
+	// The name (also known as the key) of the tag.
+	Name *string `pulumi:"name"`
+	// The value of the tag.
+	Value *string `pulumi:"value"`
+}
+
+// FilteringTagInput is an input type that accepts FilteringTagArgs and FilteringTagOutput values.
+// You can construct a concrete instance of `FilteringTagInput` via:
+//
+//	FilteringTagArgs{...}
+type FilteringTagInput interface {
+	pulumi.Input
+
+	ToFilteringTagOutput() FilteringTagOutput
+	ToFilteringTagOutputWithContext(context.Context) FilteringTagOutput
+}
+
+// The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored.
+type FilteringTagArgs struct {
+	// Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// The name (also known as the key) of the tag.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the tag.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (FilteringTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilteringTag)(nil)).Elem()
+}
+
+func (i FilteringTagArgs) ToFilteringTagOutput() FilteringTagOutput {
+	return i.ToFilteringTagOutputWithContext(context.Background())
+}
+
+func (i FilteringTagArgs) ToFilteringTagOutputWithContext(ctx context.Context) FilteringTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilteringTagOutput)
+}
+
+func (i FilteringTagArgs) ToOutput(ctx context.Context) pulumix.Output[FilteringTag] {
+	return pulumix.Output[FilteringTag]{
+		OutputState: i.ToFilteringTagOutputWithContext(ctx).OutputState,
+	}
+}
+
+// FilteringTagArrayInput is an input type that accepts FilteringTagArray and FilteringTagArrayOutput values.
+// You can construct a concrete instance of `FilteringTagArrayInput` via:
+//
+//	FilteringTagArray{ FilteringTagArgs{...} }
+type FilteringTagArrayInput interface {
+	pulumi.Input
+
+	ToFilteringTagArrayOutput() FilteringTagArrayOutput
+	ToFilteringTagArrayOutputWithContext(context.Context) FilteringTagArrayOutput
+}
+
+type FilteringTagArray []FilteringTagInput
+
+func (FilteringTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FilteringTag)(nil)).Elem()
+}
+
+func (i FilteringTagArray) ToFilteringTagArrayOutput() FilteringTagArrayOutput {
+	return i.ToFilteringTagArrayOutputWithContext(context.Background())
+}
+
+func (i FilteringTagArray) ToFilteringTagArrayOutputWithContext(ctx context.Context) FilteringTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilteringTagArrayOutput)
+}
+
+func (i FilteringTagArray) ToOutput(ctx context.Context) pulumix.Output[[]FilteringTag] {
+	return pulumix.Output[[]FilteringTag]{
+		OutputState: i.ToFilteringTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored.
+type FilteringTagOutput struct{ *pulumi.OutputState }
+
+func (FilteringTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilteringTag)(nil)).Elem()
+}
+
+func (o FilteringTagOutput) ToFilteringTagOutput() FilteringTagOutput {
+	return o
+}
+
+func (o FilteringTagOutput) ToFilteringTagOutputWithContext(ctx context.Context) FilteringTagOutput {
+	return o
+}
+
+func (o FilteringTagOutput) ToOutput(ctx context.Context) pulumix.Output[FilteringTag] {
+	return pulumix.Output[FilteringTag]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+func (o FilteringTagOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FilteringTag) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// The name (also known as the key) of the tag.
+func (o FilteringTagOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FilteringTag) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the tag.
+func (o FilteringTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FilteringTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type FilteringTagArrayOutput struct{ *pulumi.OutputState }
+
+func (FilteringTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FilteringTag)(nil)).Elem()
+}
+
+func (o FilteringTagArrayOutput) ToFilteringTagArrayOutput() FilteringTagArrayOutput {
+	return o
+}
+
+func (o FilteringTagArrayOutput) ToFilteringTagArrayOutputWithContext(ctx context.Context) FilteringTagArrayOutput {
+	return o
+}
+
+func (o FilteringTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilteringTag] {
+	return pulumix.Output[[]FilteringTag]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o FilteringTagArrayOutput) Index(i pulumi.IntInput) FilteringTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FilteringTag {
+		return vs[0].([]FilteringTag)[vs[1].(int)]
+	}).(FilteringTagOutput)
+}
+
+// The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored.
+type FilteringTagResponse struct {
+	// Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+	Action *string `pulumi:"action"`
+	// The name (also known as the key) of the tag.
+	Name *string `pulumi:"name"`
+	// The value of the tag.
+	Value *string `pulumi:"value"`
+}
+
+// The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored.
+type FilteringTagResponseOutput struct{ *pulumi.OutputState }
+
+func (FilteringTagResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilteringTagResponse)(nil)).Elem()
+}
+
+func (o FilteringTagResponseOutput) ToFilteringTagResponseOutput() FilteringTagResponseOutput {
+	return o
+}
+
+func (o FilteringTagResponseOutput) ToFilteringTagResponseOutputWithContext(ctx context.Context) FilteringTagResponseOutput {
+	return o
+}
+
+func (o FilteringTagResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FilteringTagResponse] {
+	return pulumix.Output[FilteringTagResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+func (o FilteringTagResponseOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FilteringTagResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// The name (also known as the key) of the tag.
+func (o FilteringTagResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FilteringTagResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the tag.
+func (o FilteringTagResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FilteringTagResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type FilteringTagResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FilteringTagResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FilteringTagResponse)(nil)).Elem()
+}
+
+func (o FilteringTagResponseArrayOutput) ToFilteringTagResponseArrayOutput() FilteringTagResponseArrayOutput {
+	return o
+}
+
+func (o FilteringTagResponseArrayOutput) ToFilteringTagResponseArrayOutputWithContext(ctx context.Context) FilteringTagResponseArrayOutput {
+	return o
+}
+
+func (o FilteringTagResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilteringTagResponse] {
+	return pulumix.Output[[]FilteringTagResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o FilteringTagResponseArrayOutput) Index(i pulumi.IntInput) FilteringTagResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FilteringTagResponse {
+		return vs[0].([]FilteringTagResponse)[vs[1].(int)]
+	}).(FilteringTagResponseOutput)
+}
+
 type IdentityProperties struct {
 	// Identity type
 	Type *string `pulumi:"type"`
@@ -1145,6 +1359,586 @@ func (o LinkedResourceResponseArrayOutput) Index(i pulumi.IntInput) LinkedResour
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LinkedResourceResponse {
 		return vs[0].([]LinkedResourceResponse)[vs[1].(int)]
 	}).(LinkedResourceResponseOutput)
+}
+
+// Set of rules for sending logs for the Monitor resource.
+type LogRules struct {
+	// List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+	FilteringTags []FilteringTag `pulumi:"filteringTags"`
+	// Flag specifying if AAD logs should be sent for the Monitor resource.
+	SendAadLogs *bool `pulumi:"sendAadLogs"`
+	// Flag specifying if Azure resource logs should be sent for the Monitor resource.
+	SendResourceLogs *bool `pulumi:"sendResourceLogs"`
+	// Flag specifying if Azure subscription logs should be sent for the Monitor resource.
+	SendSubscriptionLogs *bool `pulumi:"sendSubscriptionLogs"`
+}
+
+// LogRulesInput is an input type that accepts LogRulesArgs and LogRulesOutput values.
+// You can construct a concrete instance of `LogRulesInput` via:
+//
+//	LogRulesArgs{...}
+type LogRulesInput interface {
+	pulumi.Input
+
+	ToLogRulesOutput() LogRulesOutput
+	ToLogRulesOutputWithContext(context.Context) LogRulesOutput
+}
+
+// Set of rules for sending logs for the Monitor resource.
+type LogRulesArgs struct {
+	// List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+	FilteringTags FilteringTagArrayInput `pulumi:"filteringTags"`
+	// Flag specifying if AAD logs should be sent for the Monitor resource.
+	SendAadLogs pulumi.BoolPtrInput `pulumi:"sendAadLogs"`
+	// Flag specifying if Azure resource logs should be sent for the Monitor resource.
+	SendResourceLogs pulumi.BoolPtrInput `pulumi:"sendResourceLogs"`
+	// Flag specifying if Azure subscription logs should be sent for the Monitor resource.
+	SendSubscriptionLogs pulumi.BoolPtrInput `pulumi:"sendSubscriptionLogs"`
+}
+
+func (LogRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogRules)(nil)).Elem()
+}
+
+func (i LogRulesArgs) ToLogRulesOutput() LogRulesOutput {
+	return i.ToLogRulesOutputWithContext(context.Background())
+}
+
+func (i LogRulesArgs) ToLogRulesOutputWithContext(ctx context.Context) LogRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogRulesOutput)
+}
+
+func (i LogRulesArgs) ToOutput(ctx context.Context) pulumix.Output[LogRules] {
+	return pulumix.Output[LogRules]{
+		OutputState: i.ToLogRulesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i LogRulesArgs) ToLogRulesPtrOutput() LogRulesPtrOutput {
+	return i.ToLogRulesPtrOutputWithContext(context.Background())
+}
+
+func (i LogRulesArgs) ToLogRulesPtrOutputWithContext(ctx context.Context) LogRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogRulesOutput).ToLogRulesPtrOutputWithContext(ctx)
+}
+
+// LogRulesPtrInput is an input type that accepts LogRulesArgs, LogRulesPtr and LogRulesPtrOutput values.
+// You can construct a concrete instance of `LogRulesPtrInput` via:
+//
+//	        LogRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogRulesPtrInput interface {
+	pulumi.Input
+
+	ToLogRulesPtrOutput() LogRulesPtrOutput
+	ToLogRulesPtrOutputWithContext(context.Context) LogRulesPtrOutput
+}
+
+type logRulesPtrType LogRulesArgs
+
+func LogRulesPtr(v *LogRulesArgs) LogRulesPtrInput {
+	return (*logRulesPtrType)(v)
+}
+
+func (*logRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogRules)(nil)).Elem()
+}
+
+func (i *logRulesPtrType) ToLogRulesPtrOutput() LogRulesPtrOutput {
+	return i.ToLogRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *logRulesPtrType) ToLogRulesPtrOutputWithContext(ctx context.Context) LogRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogRulesPtrOutput)
+}
+
+func (i *logRulesPtrType) ToOutput(ctx context.Context) pulumix.Output[*LogRules] {
+	return pulumix.Output[*LogRules]{
+		OutputState: i.ToLogRulesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Set of rules for sending logs for the Monitor resource.
+type LogRulesOutput struct{ *pulumi.OutputState }
+
+func (LogRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogRules)(nil)).Elem()
+}
+
+func (o LogRulesOutput) ToLogRulesOutput() LogRulesOutput {
+	return o
+}
+
+func (o LogRulesOutput) ToLogRulesOutputWithContext(ctx context.Context) LogRulesOutput {
+	return o
+}
+
+func (o LogRulesOutput) ToLogRulesPtrOutput() LogRulesPtrOutput {
+	return o.ToLogRulesPtrOutputWithContext(context.Background())
+}
+
+func (o LogRulesOutput) ToLogRulesPtrOutputWithContext(ctx context.Context) LogRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogRules) *LogRules {
+		return &v
+	}).(LogRulesPtrOutput)
+}
+
+func (o LogRulesOutput) ToOutput(ctx context.Context) pulumix.Output[LogRules] {
+	return pulumix.Output[LogRules]{
+		OutputState: o.OutputState,
+	}
+}
+
+// List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+func (o LogRulesOutput) FilteringTags() FilteringTagArrayOutput {
+	return o.ApplyT(func(v LogRules) []FilteringTag { return v.FilteringTags }).(FilteringTagArrayOutput)
+}
+
+// Flag specifying if AAD logs should be sent for the Monitor resource.
+func (o LogRulesOutput) SendAadLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogRules) *bool { return v.SendAadLogs }).(pulumi.BoolPtrOutput)
+}
+
+// Flag specifying if Azure resource logs should be sent for the Monitor resource.
+func (o LogRulesOutput) SendResourceLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogRules) *bool { return v.SendResourceLogs }).(pulumi.BoolPtrOutput)
+}
+
+// Flag specifying if Azure subscription logs should be sent for the Monitor resource.
+func (o LogRulesOutput) SendSubscriptionLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogRules) *bool { return v.SendSubscriptionLogs }).(pulumi.BoolPtrOutput)
+}
+
+type LogRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (LogRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogRules)(nil)).Elem()
+}
+
+func (o LogRulesPtrOutput) ToLogRulesPtrOutput() LogRulesPtrOutput {
+	return o
+}
+
+func (o LogRulesPtrOutput) ToLogRulesPtrOutputWithContext(ctx context.Context) LogRulesPtrOutput {
+	return o
+}
+
+func (o LogRulesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogRules] {
+	return pulumix.Output[*LogRules]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o LogRulesPtrOutput) Elem() LogRulesOutput {
+	return o.ApplyT(func(v *LogRules) LogRules {
+		if v != nil {
+			return *v
+		}
+		var ret LogRules
+		return ret
+	}).(LogRulesOutput)
+}
+
+// List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+func (o LogRulesPtrOutput) FilteringTags() FilteringTagArrayOutput {
+	return o.ApplyT(func(v *LogRules) []FilteringTag {
+		if v == nil {
+			return nil
+		}
+		return v.FilteringTags
+	}).(FilteringTagArrayOutput)
+}
+
+// Flag specifying if AAD logs should be sent for the Monitor resource.
+func (o LogRulesPtrOutput) SendAadLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendAadLogs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag specifying if Azure resource logs should be sent for the Monitor resource.
+func (o LogRulesPtrOutput) SendResourceLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendResourceLogs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag specifying if Azure subscription logs should be sent for the Monitor resource.
+func (o LogRulesPtrOutput) SendSubscriptionLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendSubscriptionLogs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set of rules for sending logs for the Monitor resource.
+type LogRulesResponse struct {
+	// List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+	FilteringTags []FilteringTagResponse `pulumi:"filteringTags"`
+	// Flag specifying if AAD logs should be sent for the Monitor resource.
+	SendAadLogs *bool `pulumi:"sendAadLogs"`
+	// Flag specifying if Azure resource logs should be sent for the Monitor resource.
+	SendResourceLogs *bool `pulumi:"sendResourceLogs"`
+	// Flag specifying if Azure subscription logs should be sent for the Monitor resource.
+	SendSubscriptionLogs *bool `pulumi:"sendSubscriptionLogs"`
+}
+
+// Set of rules for sending logs for the Monitor resource.
+type LogRulesResponseOutput struct{ *pulumi.OutputState }
+
+func (LogRulesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogRulesResponse)(nil)).Elem()
+}
+
+func (o LogRulesResponseOutput) ToLogRulesResponseOutput() LogRulesResponseOutput {
+	return o
+}
+
+func (o LogRulesResponseOutput) ToLogRulesResponseOutputWithContext(ctx context.Context) LogRulesResponseOutput {
+	return o
+}
+
+func (o LogRulesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogRulesResponse] {
+	return pulumix.Output[LogRulesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+func (o LogRulesResponseOutput) FilteringTags() FilteringTagResponseArrayOutput {
+	return o.ApplyT(func(v LogRulesResponse) []FilteringTagResponse { return v.FilteringTags }).(FilteringTagResponseArrayOutput)
+}
+
+// Flag specifying if AAD logs should be sent for the Monitor resource.
+func (o LogRulesResponseOutput) SendAadLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogRulesResponse) *bool { return v.SendAadLogs }).(pulumi.BoolPtrOutput)
+}
+
+// Flag specifying if Azure resource logs should be sent for the Monitor resource.
+func (o LogRulesResponseOutput) SendResourceLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogRulesResponse) *bool { return v.SendResourceLogs }).(pulumi.BoolPtrOutput)
+}
+
+// Flag specifying if Azure subscription logs should be sent for the Monitor resource.
+func (o LogRulesResponseOutput) SendSubscriptionLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogRulesResponse) *bool { return v.SendSubscriptionLogs }).(pulumi.BoolPtrOutput)
+}
+
+type LogRulesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LogRulesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogRulesResponse)(nil)).Elem()
+}
+
+func (o LogRulesResponsePtrOutput) ToLogRulesResponsePtrOutput() LogRulesResponsePtrOutput {
+	return o
+}
+
+func (o LogRulesResponsePtrOutput) ToLogRulesResponsePtrOutputWithContext(ctx context.Context) LogRulesResponsePtrOutput {
+	return o
+}
+
+func (o LogRulesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogRulesResponse] {
+	return pulumix.Output[*LogRulesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o LogRulesResponsePtrOutput) Elem() LogRulesResponseOutput {
+	return o.ApplyT(func(v *LogRulesResponse) LogRulesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LogRulesResponse
+		return ret
+	}).(LogRulesResponseOutput)
+}
+
+// List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+func (o LogRulesResponsePtrOutput) FilteringTags() FilteringTagResponseArrayOutput {
+	return o.ApplyT(func(v *LogRulesResponse) []FilteringTagResponse {
+		if v == nil {
+			return nil
+		}
+		return v.FilteringTags
+	}).(FilteringTagResponseArrayOutput)
+}
+
+// Flag specifying if AAD logs should be sent for the Monitor resource.
+func (o LogRulesResponsePtrOutput) SendAadLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogRulesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendAadLogs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag specifying if Azure resource logs should be sent for the Monitor resource.
+func (o LogRulesResponsePtrOutput) SendResourceLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogRulesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendResourceLogs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag specifying if Azure subscription logs should be sent for the Monitor resource.
+func (o LogRulesResponsePtrOutput) SendSubscriptionLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogRulesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendSubscriptionLogs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set of rules for sending metrics for the Monitor resource.
+type MetricRules struct {
+	// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+	FilteringTags []FilteringTag `pulumi:"filteringTags"`
+}
+
+// MetricRulesInput is an input type that accepts MetricRulesArgs and MetricRulesOutput values.
+// You can construct a concrete instance of `MetricRulesInput` via:
+//
+//	MetricRulesArgs{...}
+type MetricRulesInput interface {
+	pulumi.Input
+
+	ToMetricRulesOutput() MetricRulesOutput
+	ToMetricRulesOutputWithContext(context.Context) MetricRulesOutput
+}
+
+// Set of rules for sending metrics for the Monitor resource.
+type MetricRulesArgs struct {
+	// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+	FilteringTags FilteringTagArrayInput `pulumi:"filteringTags"`
+}
+
+func (MetricRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRules)(nil)).Elem()
+}
+
+func (i MetricRulesArgs) ToMetricRulesOutput() MetricRulesOutput {
+	return i.ToMetricRulesOutputWithContext(context.Background())
+}
+
+func (i MetricRulesArgs) ToMetricRulesOutputWithContext(ctx context.Context) MetricRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesOutput)
+}
+
+func (i MetricRulesArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRules] {
+	return pulumix.Output[MetricRules]{
+		OutputState: i.ToMetricRulesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i MetricRulesArgs) ToMetricRulesPtrOutput() MetricRulesPtrOutput {
+	return i.ToMetricRulesPtrOutputWithContext(context.Background())
+}
+
+func (i MetricRulesArgs) ToMetricRulesPtrOutputWithContext(ctx context.Context) MetricRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesOutput).ToMetricRulesPtrOutputWithContext(ctx)
+}
+
+// MetricRulesPtrInput is an input type that accepts MetricRulesArgs, MetricRulesPtr and MetricRulesPtrOutput values.
+// You can construct a concrete instance of `MetricRulesPtrInput` via:
+//
+//	        MetricRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricRulesPtrInput interface {
+	pulumi.Input
+
+	ToMetricRulesPtrOutput() MetricRulesPtrOutput
+	ToMetricRulesPtrOutputWithContext(context.Context) MetricRulesPtrOutput
+}
+
+type metricRulesPtrType MetricRulesArgs
+
+func MetricRulesPtr(v *MetricRulesArgs) MetricRulesPtrInput {
+	return (*metricRulesPtrType)(v)
+}
+
+func (*metricRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRules)(nil)).Elem()
+}
+
+func (i *metricRulesPtrType) ToMetricRulesPtrOutput() MetricRulesPtrOutput {
+	return i.ToMetricRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *metricRulesPtrType) ToMetricRulesPtrOutputWithContext(ctx context.Context) MetricRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesPtrOutput)
+}
+
+func (i *metricRulesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricRules] {
+	return pulumix.Output[*MetricRules]{
+		OutputState: i.ToMetricRulesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Set of rules for sending metrics for the Monitor resource.
+type MetricRulesOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRules)(nil)).Elem()
+}
+
+func (o MetricRulesOutput) ToMetricRulesOutput() MetricRulesOutput {
+	return o
+}
+
+func (o MetricRulesOutput) ToMetricRulesOutputWithContext(ctx context.Context) MetricRulesOutput {
+	return o
+}
+
+func (o MetricRulesOutput) ToMetricRulesPtrOutput() MetricRulesPtrOutput {
+	return o.ToMetricRulesPtrOutputWithContext(context.Background())
+}
+
+func (o MetricRulesOutput) ToMetricRulesPtrOutputWithContext(ctx context.Context) MetricRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRules) *MetricRules {
+		return &v
+	}).(MetricRulesPtrOutput)
+}
+
+func (o MetricRulesOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRules] {
+	return pulumix.Output[MetricRules]{
+		OutputState: o.OutputState,
+	}
+}
+
+// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+func (o MetricRulesOutput) FilteringTags() FilteringTagArrayOutput {
+	return o.ApplyT(func(v MetricRules) []FilteringTag { return v.FilteringTags }).(FilteringTagArrayOutput)
+}
+
+type MetricRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRules)(nil)).Elem()
+}
+
+func (o MetricRulesPtrOutput) ToMetricRulesPtrOutput() MetricRulesPtrOutput {
+	return o
+}
+
+func (o MetricRulesPtrOutput) ToMetricRulesPtrOutputWithContext(ctx context.Context) MetricRulesPtrOutput {
+	return o
+}
+
+func (o MetricRulesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricRules] {
+	return pulumix.Output[*MetricRules]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MetricRulesPtrOutput) Elem() MetricRulesOutput {
+	return o.ApplyT(func(v *MetricRules) MetricRules {
+		if v != nil {
+			return *v
+		}
+		var ret MetricRules
+		return ret
+	}).(MetricRulesOutput)
+}
+
+// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+func (o MetricRulesPtrOutput) FilteringTags() FilteringTagArrayOutput {
+	return o.ApplyT(func(v *MetricRules) []FilteringTag {
+		if v == nil {
+			return nil
+		}
+		return v.FilteringTags
+	}).(FilteringTagArrayOutput)
+}
+
+// Set of rules for sending metrics for the Monitor resource.
+type MetricRulesResponse struct {
+	// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+	FilteringTags []FilteringTagResponse `pulumi:"filteringTags"`
+}
+
+// Set of rules for sending metrics for the Monitor resource.
+type MetricRulesResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesResponse)(nil)).Elem()
+}
+
+func (o MetricRulesResponseOutput) ToMetricRulesResponseOutput() MetricRulesResponseOutput {
+	return o
+}
+
+func (o MetricRulesResponseOutput) ToMetricRulesResponseOutputWithContext(ctx context.Context) MetricRulesResponseOutput {
+	return o
+}
+
+func (o MetricRulesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRulesResponse] {
+	return pulumix.Output[MetricRulesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+func (o MetricRulesResponseOutput) FilteringTags() FilteringTagResponseArrayOutput {
+	return o.ApplyT(func(v MetricRulesResponse) []FilteringTagResponse { return v.FilteringTags }).(FilteringTagResponseArrayOutput)
+}
+
+type MetricRulesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRulesResponse)(nil)).Elem()
+}
+
+func (o MetricRulesResponsePtrOutput) ToMetricRulesResponsePtrOutput() MetricRulesResponsePtrOutput {
+	return o
+}
+
+func (o MetricRulesResponsePtrOutput) ToMetricRulesResponsePtrOutputWithContext(ctx context.Context) MetricRulesResponsePtrOutput {
+	return o
+}
+
+func (o MetricRulesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricRulesResponse] {
+	return pulumix.Output[*MetricRulesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MetricRulesResponsePtrOutput) Elem() MetricRulesResponseOutput {
+	return o.ApplyT(func(v *MetricRulesResponse) MetricRulesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MetricRulesResponse
+		return ret
+	}).(MetricRulesResponseOutput)
+}
+
+// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+func (o MetricRulesResponsePtrOutput) FilteringTags() FilteringTagResponseArrayOutput {
+	return o.ApplyT(func(v *MetricRulesResponse) []FilteringTagResponse {
+		if v == nil {
+			return nil
+		}
+		return v.FilteringTags
+	}).(FilteringTagResponseArrayOutput)
 }
 
 // Properties specific to the monitor resource.
@@ -1507,6 +2301,558 @@ func (o MonitoredResourceResponseArrayOutput) Index(i pulumi.IntInput) Monitored
 	}).(MonitoredResourceResponseOutput)
 }
 
+// The list of subscriptions and it's monitoring status by current Datadog monitor.
+type MonitoredSubscriptionType struct {
+	// The reason of not monitoring the subscription.
+	Error *string `pulumi:"error"`
+	// The state of monitoring.
+	Status *string `pulumi:"status"`
+	// The subscriptionId to be monitored.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Definition of the properties for a TagRules resource.
+	TagRules *MonitoringTagRulesProperties `pulumi:"tagRules"`
+}
+
+// MonitoredSubscriptionTypeInput is an input type that accepts MonitoredSubscriptionTypeArgs and MonitoredSubscriptionTypeOutput values.
+// You can construct a concrete instance of `MonitoredSubscriptionTypeInput` via:
+//
+//	MonitoredSubscriptionTypeArgs{...}
+type MonitoredSubscriptionTypeInput interface {
+	pulumi.Input
+
+	ToMonitoredSubscriptionTypeOutput() MonitoredSubscriptionTypeOutput
+	ToMonitoredSubscriptionTypeOutputWithContext(context.Context) MonitoredSubscriptionTypeOutput
+}
+
+// The list of subscriptions and it's monitoring status by current Datadog monitor.
+type MonitoredSubscriptionTypeArgs struct {
+	// The reason of not monitoring the subscription.
+	Error pulumi.StringPtrInput `pulumi:"error"`
+	// The state of monitoring.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The subscriptionId to be monitored.
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
+	// Definition of the properties for a TagRules resource.
+	TagRules MonitoringTagRulesPropertiesPtrInput `pulumi:"tagRules"`
+}
+
+func (MonitoredSubscriptionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoredSubscriptionType)(nil)).Elem()
+}
+
+func (i MonitoredSubscriptionTypeArgs) ToMonitoredSubscriptionTypeOutput() MonitoredSubscriptionTypeOutput {
+	return i.ToMonitoredSubscriptionTypeOutputWithContext(context.Background())
+}
+
+func (i MonitoredSubscriptionTypeArgs) ToMonitoredSubscriptionTypeOutputWithContext(ctx context.Context) MonitoredSubscriptionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoredSubscriptionTypeOutput)
+}
+
+func (i MonitoredSubscriptionTypeArgs) ToOutput(ctx context.Context) pulumix.Output[MonitoredSubscriptionType] {
+	return pulumix.Output[MonitoredSubscriptionType]{
+		OutputState: i.ToMonitoredSubscriptionTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
+// MonitoredSubscriptionTypeArrayInput is an input type that accepts MonitoredSubscriptionTypeArray and MonitoredSubscriptionTypeArrayOutput values.
+// You can construct a concrete instance of `MonitoredSubscriptionTypeArrayInput` via:
+//
+//	MonitoredSubscriptionTypeArray{ MonitoredSubscriptionTypeArgs{...} }
+type MonitoredSubscriptionTypeArrayInput interface {
+	pulumi.Input
+
+	ToMonitoredSubscriptionTypeArrayOutput() MonitoredSubscriptionTypeArrayOutput
+	ToMonitoredSubscriptionTypeArrayOutputWithContext(context.Context) MonitoredSubscriptionTypeArrayOutput
+}
+
+type MonitoredSubscriptionTypeArray []MonitoredSubscriptionTypeInput
+
+func (MonitoredSubscriptionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoredSubscriptionType)(nil)).Elem()
+}
+
+func (i MonitoredSubscriptionTypeArray) ToMonitoredSubscriptionTypeArrayOutput() MonitoredSubscriptionTypeArrayOutput {
+	return i.ToMonitoredSubscriptionTypeArrayOutputWithContext(context.Background())
+}
+
+func (i MonitoredSubscriptionTypeArray) ToMonitoredSubscriptionTypeArrayOutputWithContext(ctx context.Context) MonitoredSubscriptionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoredSubscriptionTypeArrayOutput)
+}
+
+func (i MonitoredSubscriptionTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]MonitoredSubscriptionType] {
+	return pulumix.Output[[]MonitoredSubscriptionType]{
+		OutputState: i.ToMonitoredSubscriptionTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The list of subscriptions and it's monitoring status by current Datadog monitor.
+type MonitoredSubscriptionTypeOutput struct{ *pulumi.OutputState }
+
+func (MonitoredSubscriptionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoredSubscriptionType)(nil)).Elem()
+}
+
+func (o MonitoredSubscriptionTypeOutput) ToMonitoredSubscriptionTypeOutput() MonitoredSubscriptionTypeOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionTypeOutput) ToMonitoredSubscriptionTypeOutputWithContext(ctx context.Context) MonitoredSubscriptionTypeOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoredSubscriptionType] {
+	return pulumix.Output[MonitoredSubscriptionType]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The reason of not monitoring the subscription.
+func (o MonitoredSubscriptionTypeOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionType) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+// The state of monitoring.
+func (o MonitoredSubscriptionTypeOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionType) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The subscriptionId to be monitored.
+func (o MonitoredSubscriptionTypeOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionType) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Definition of the properties for a TagRules resource.
+func (o MonitoredSubscriptionTypeOutput) TagRules() MonitoringTagRulesPropertiesPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionType) *MonitoringTagRulesProperties { return v.TagRules }).(MonitoringTagRulesPropertiesPtrOutput)
+}
+
+type MonitoredSubscriptionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitoredSubscriptionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoredSubscriptionType)(nil)).Elem()
+}
+
+func (o MonitoredSubscriptionTypeArrayOutput) ToMonitoredSubscriptionTypeArrayOutput() MonitoredSubscriptionTypeArrayOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionTypeArrayOutput) ToMonitoredSubscriptionTypeArrayOutputWithContext(ctx context.Context) MonitoredSubscriptionTypeArrayOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitoredSubscriptionType] {
+	return pulumix.Output[[]MonitoredSubscriptionType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MonitoredSubscriptionTypeArrayOutput) Index(i pulumi.IntInput) MonitoredSubscriptionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitoredSubscriptionType {
+		return vs[0].([]MonitoredSubscriptionType)[vs[1].(int)]
+	}).(MonitoredSubscriptionTypeOutput)
+}
+
+// The list of subscriptions and it's monitoring status by current Datadog monitor.
+type MonitoredSubscriptionResponse struct {
+	// The reason of not monitoring the subscription.
+	Error *string `pulumi:"error"`
+	// The state of monitoring.
+	Status *string `pulumi:"status"`
+	// The subscriptionId to be monitored.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Definition of the properties for a TagRules resource.
+	TagRules *MonitoringTagRulesPropertiesResponse `pulumi:"tagRules"`
+}
+
+// The list of subscriptions and it's monitoring status by current Datadog monitor.
+type MonitoredSubscriptionResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoredSubscriptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoredSubscriptionResponse)(nil)).Elem()
+}
+
+func (o MonitoredSubscriptionResponseOutput) ToMonitoredSubscriptionResponseOutput() MonitoredSubscriptionResponseOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionResponseOutput) ToMonitoredSubscriptionResponseOutputWithContext(ctx context.Context) MonitoredSubscriptionResponseOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoredSubscriptionResponse] {
+	return pulumix.Output[MonitoredSubscriptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The reason of not monitoring the subscription.
+func (o MonitoredSubscriptionResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+// The state of monitoring.
+func (o MonitoredSubscriptionResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The subscriptionId to be monitored.
+func (o MonitoredSubscriptionResponseOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionResponse) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Definition of the properties for a TagRules resource.
+func (o MonitoredSubscriptionResponseOutput) TagRules() MonitoringTagRulesPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionResponse) *MonitoringTagRulesPropertiesResponse { return v.TagRules }).(MonitoringTagRulesPropertiesResponsePtrOutput)
+}
+
+type MonitoredSubscriptionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitoredSubscriptionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoredSubscriptionResponse)(nil)).Elem()
+}
+
+func (o MonitoredSubscriptionResponseArrayOutput) ToMonitoredSubscriptionResponseArrayOutput() MonitoredSubscriptionResponseArrayOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionResponseArrayOutput) ToMonitoredSubscriptionResponseArrayOutputWithContext(ctx context.Context) MonitoredSubscriptionResponseArrayOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitoredSubscriptionResponse] {
+	return pulumix.Output[[]MonitoredSubscriptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MonitoredSubscriptionResponseArrayOutput) Index(i pulumi.IntInput) MonitoredSubscriptionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitoredSubscriptionResponse {
+		return vs[0].([]MonitoredSubscriptionResponse)[vs[1].(int)]
+	}).(MonitoredSubscriptionResponseOutput)
+}
+
+// Definition of the properties for a TagRules resource.
+type MonitoringTagRulesProperties struct {
+	// Configuration to enable/disable auto-muting flag
+	Automuting *bool `pulumi:"automuting"`
+	// Set of rules for sending logs for the Monitor resource.
+	LogRules *LogRules `pulumi:"logRules"`
+	// Set of rules for sending metrics for the Monitor resource.
+	MetricRules *MetricRules `pulumi:"metricRules"`
+}
+
+// MonitoringTagRulesPropertiesInput is an input type that accepts MonitoringTagRulesPropertiesArgs and MonitoringTagRulesPropertiesOutput values.
+// You can construct a concrete instance of `MonitoringTagRulesPropertiesInput` via:
+//
+//	MonitoringTagRulesPropertiesArgs{...}
+type MonitoringTagRulesPropertiesInput interface {
+	pulumi.Input
+
+	ToMonitoringTagRulesPropertiesOutput() MonitoringTagRulesPropertiesOutput
+	ToMonitoringTagRulesPropertiesOutputWithContext(context.Context) MonitoringTagRulesPropertiesOutput
+}
+
+// Definition of the properties for a TagRules resource.
+type MonitoringTagRulesPropertiesArgs struct {
+	// Configuration to enable/disable auto-muting flag
+	Automuting pulumi.BoolPtrInput `pulumi:"automuting"`
+	// Set of rules for sending logs for the Monitor resource.
+	LogRules LogRulesPtrInput `pulumi:"logRules"`
+	// Set of rules for sending metrics for the Monitor resource.
+	MetricRules MetricRulesPtrInput `pulumi:"metricRules"`
+}
+
+func (MonitoringTagRulesPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringTagRulesProperties)(nil)).Elem()
+}
+
+func (i MonitoringTagRulesPropertiesArgs) ToMonitoringTagRulesPropertiesOutput() MonitoringTagRulesPropertiesOutput {
+	return i.ToMonitoringTagRulesPropertiesOutputWithContext(context.Background())
+}
+
+func (i MonitoringTagRulesPropertiesArgs) ToMonitoringTagRulesPropertiesOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringTagRulesPropertiesOutput)
+}
+
+func (i MonitoringTagRulesPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MonitoringTagRulesProperties] {
+	return pulumix.Output[MonitoringTagRulesProperties]{
+		OutputState: i.ToMonitoringTagRulesPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i MonitoringTagRulesPropertiesArgs) ToMonitoringTagRulesPropertiesPtrOutput() MonitoringTagRulesPropertiesPtrOutput {
+	return i.ToMonitoringTagRulesPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i MonitoringTagRulesPropertiesArgs) ToMonitoringTagRulesPropertiesPtrOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringTagRulesPropertiesOutput).ToMonitoringTagRulesPropertiesPtrOutputWithContext(ctx)
+}
+
+// MonitoringTagRulesPropertiesPtrInput is an input type that accepts MonitoringTagRulesPropertiesArgs, MonitoringTagRulesPropertiesPtr and MonitoringTagRulesPropertiesPtrOutput values.
+// You can construct a concrete instance of `MonitoringTagRulesPropertiesPtrInput` via:
+//
+//	        MonitoringTagRulesPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MonitoringTagRulesPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToMonitoringTagRulesPropertiesPtrOutput() MonitoringTagRulesPropertiesPtrOutput
+	ToMonitoringTagRulesPropertiesPtrOutputWithContext(context.Context) MonitoringTagRulesPropertiesPtrOutput
+}
+
+type monitoringTagRulesPropertiesPtrType MonitoringTagRulesPropertiesArgs
+
+func MonitoringTagRulesPropertiesPtr(v *MonitoringTagRulesPropertiesArgs) MonitoringTagRulesPropertiesPtrInput {
+	return (*monitoringTagRulesPropertiesPtrType)(v)
+}
+
+func (*monitoringTagRulesPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringTagRulesProperties)(nil)).Elem()
+}
+
+func (i *monitoringTagRulesPropertiesPtrType) ToMonitoringTagRulesPropertiesPtrOutput() MonitoringTagRulesPropertiesPtrOutput {
+	return i.ToMonitoringTagRulesPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *monitoringTagRulesPropertiesPtrType) ToMonitoringTagRulesPropertiesPtrOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringTagRulesPropertiesPtrOutput)
+}
+
+func (i *monitoringTagRulesPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MonitoringTagRulesProperties] {
+	return pulumix.Output[*MonitoringTagRulesProperties]{
+		OutputState: i.ToMonitoringTagRulesPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Definition of the properties for a TagRules resource.
+type MonitoringTagRulesPropertiesOutput struct{ *pulumi.OutputState }
+
+func (MonitoringTagRulesPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringTagRulesProperties)(nil)).Elem()
+}
+
+func (o MonitoringTagRulesPropertiesOutput) ToMonitoringTagRulesPropertiesOutput() MonitoringTagRulesPropertiesOutput {
+	return o
+}
+
+func (o MonitoringTagRulesPropertiesOutput) ToMonitoringTagRulesPropertiesOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesOutput {
+	return o
+}
+
+func (o MonitoringTagRulesPropertiesOutput) ToMonitoringTagRulesPropertiesPtrOutput() MonitoringTagRulesPropertiesPtrOutput {
+	return o.ToMonitoringTagRulesPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringTagRulesPropertiesOutput) ToMonitoringTagRulesPropertiesPtrOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringTagRulesProperties) *MonitoringTagRulesProperties {
+		return &v
+	}).(MonitoringTagRulesPropertiesPtrOutput)
+}
+
+func (o MonitoringTagRulesPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringTagRulesProperties] {
+	return pulumix.Output[MonitoringTagRulesProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Configuration to enable/disable auto-muting flag
+func (o MonitoringTagRulesPropertiesOutput) Automuting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MonitoringTagRulesProperties) *bool { return v.Automuting }).(pulumi.BoolPtrOutput)
+}
+
+// Set of rules for sending logs for the Monitor resource.
+func (o MonitoringTagRulesPropertiesOutput) LogRules() LogRulesPtrOutput {
+	return o.ApplyT(func(v MonitoringTagRulesProperties) *LogRules { return v.LogRules }).(LogRulesPtrOutput)
+}
+
+// Set of rules for sending metrics for the Monitor resource.
+func (o MonitoringTagRulesPropertiesOutput) MetricRules() MetricRulesPtrOutput {
+	return o.ApplyT(func(v MonitoringTagRulesProperties) *MetricRules { return v.MetricRules }).(MetricRulesPtrOutput)
+}
+
+type MonitoringTagRulesPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringTagRulesPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringTagRulesProperties)(nil)).Elem()
+}
+
+func (o MonitoringTagRulesPropertiesPtrOutput) ToMonitoringTagRulesPropertiesPtrOutput() MonitoringTagRulesPropertiesPtrOutput {
+	return o
+}
+
+func (o MonitoringTagRulesPropertiesPtrOutput) ToMonitoringTagRulesPropertiesPtrOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesPtrOutput {
+	return o
+}
+
+func (o MonitoringTagRulesPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoringTagRulesProperties] {
+	return pulumix.Output[*MonitoringTagRulesProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MonitoringTagRulesPropertiesPtrOutput) Elem() MonitoringTagRulesPropertiesOutput {
+	return o.ApplyT(func(v *MonitoringTagRulesProperties) MonitoringTagRulesProperties {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringTagRulesProperties
+		return ret
+	}).(MonitoringTagRulesPropertiesOutput)
+}
+
+// Configuration to enable/disable auto-muting flag
+func (o MonitoringTagRulesPropertiesPtrOutput) Automuting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MonitoringTagRulesProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Automuting
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set of rules for sending logs for the Monitor resource.
+func (o MonitoringTagRulesPropertiesPtrOutput) LogRules() LogRulesPtrOutput {
+	return o.ApplyT(func(v *MonitoringTagRulesProperties) *LogRules {
+		if v == nil {
+			return nil
+		}
+		return v.LogRules
+	}).(LogRulesPtrOutput)
+}
+
+// Set of rules for sending metrics for the Monitor resource.
+func (o MonitoringTagRulesPropertiesPtrOutput) MetricRules() MetricRulesPtrOutput {
+	return o.ApplyT(func(v *MonitoringTagRulesProperties) *MetricRules {
+		if v == nil {
+			return nil
+		}
+		return v.MetricRules
+	}).(MetricRulesPtrOutput)
+}
+
+// Definition of the properties for a TagRules resource.
+type MonitoringTagRulesPropertiesResponse struct {
+	// Configuration to enable/disable auto-muting flag
+	Automuting *bool `pulumi:"automuting"`
+	// Set of rules for sending logs for the Monitor resource.
+	LogRules *LogRulesResponse `pulumi:"logRules"`
+	// Set of rules for sending metrics for the Monitor resource.
+	MetricRules       *MetricRulesResponse `pulumi:"metricRules"`
+	ProvisioningState string               `pulumi:"provisioningState"`
+}
+
+// Definition of the properties for a TagRules resource.
+type MonitoringTagRulesPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoringTagRulesPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringTagRulesPropertiesResponse)(nil)).Elem()
+}
+
+func (o MonitoringTagRulesPropertiesResponseOutput) ToMonitoringTagRulesPropertiesResponseOutput() MonitoringTagRulesPropertiesResponseOutput {
+	return o
+}
+
+func (o MonitoringTagRulesPropertiesResponseOutput) ToMonitoringTagRulesPropertiesResponseOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesResponseOutput {
+	return o
+}
+
+func (o MonitoringTagRulesPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringTagRulesPropertiesResponse] {
+	return pulumix.Output[MonitoringTagRulesPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Configuration to enable/disable auto-muting flag
+func (o MonitoringTagRulesPropertiesResponseOutput) Automuting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MonitoringTagRulesPropertiesResponse) *bool { return v.Automuting }).(pulumi.BoolPtrOutput)
+}
+
+// Set of rules for sending logs for the Monitor resource.
+func (o MonitoringTagRulesPropertiesResponseOutput) LogRules() LogRulesResponsePtrOutput {
+	return o.ApplyT(func(v MonitoringTagRulesPropertiesResponse) *LogRulesResponse { return v.LogRules }).(LogRulesResponsePtrOutput)
+}
+
+// Set of rules for sending metrics for the Monitor resource.
+func (o MonitoringTagRulesPropertiesResponseOutput) MetricRules() MetricRulesResponsePtrOutput {
+	return o.ApplyT(func(v MonitoringTagRulesPropertiesResponse) *MetricRulesResponse { return v.MetricRules }).(MetricRulesResponsePtrOutput)
+}
+
+func (o MonitoringTagRulesPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoringTagRulesPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+type MonitoringTagRulesPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringTagRulesPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringTagRulesPropertiesResponse)(nil)).Elem()
+}
+
+func (o MonitoringTagRulesPropertiesResponsePtrOutput) ToMonitoringTagRulesPropertiesResponsePtrOutput() MonitoringTagRulesPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringTagRulesPropertiesResponsePtrOutput) ToMonitoringTagRulesPropertiesResponsePtrOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringTagRulesPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoringTagRulesPropertiesResponse] {
+	return pulumix.Output[*MonitoringTagRulesPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MonitoringTagRulesPropertiesResponsePtrOutput) Elem() MonitoringTagRulesPropertiesResponseOutput {
+	return o.ApplyT(func(v *MonitoringTagRulesPropertiesResponse) MonitoringTagRulesPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringTagRulesPropertiesResponse
+		return ret
+	}).(MonitoringTagRulesPropertiesResponseOutput)
+}
+
+// Configuration to enable/disable auto-muting flag
+func (o MonitoringTagRulesPropertiesResponsePtrOutput) Automuting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MonitoringTagRulesPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Automuting
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set of rules for sending logs for the Monitor resource.
+func (o MonitoringTagRulesPropertiesResponsePtrOutput) LogRules() LogRulesResponsePtrOutput {
+	return o.ApplyT(func(v *MonitoringTagRulesPropertiesResponse) *LogRulesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LogRules
+	}).(LogRulesResponsePtrOutput)
+}
+
+// Set of rules for sending metrics for the Monitor resource.
+func (o MonitoringTagRulesPropertiesResponsePtrOutput) MetricRules() MetricRulesResponsePtrOutput {
+	return o.ApplyT(func(v *MonitoringTagRulesPropertiesResponse) *MetricRulesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MetricRules
+	}).(MetricRulesResponsePtrOutput)
+}
+
+func (o MonitoringTagRulesPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitoringTagRulesPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceSku struct {
 	// Name of the SKU.
 	Name string `pulumi:"name"`
@@ -1736,6 +3082,221 @@ func (o ResourceSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 		}
 		return &v.Name
 	}).(pulumi.StringPtrOutput)
+}
+
+// The request to update subscriptions needed to be monitored by the Datadog monitor resource.
+type SubscriptionList struct {
+	// List of subscriptions and the state of the monitoring.
+	MonitoredSubscriptionList []MonitoredSubscriptionType `pulumi:"monitoredSubscriptionList"`
+	// The operation for the patch on the resource.
+	Operation *string `pulumi:"operation"`
+}
+
+// SubscriptionListInput is an input type that accepts SubscriptionListArgs and SubscriptionListOutput values.
+// You can construct a concrete instance of `SubscriptionListInput` via:
+//
+//	SubscriptionListArgs{...}
+type SubscriptionListInput interface {
+	pulumi.Input
+
+	ToSubscriptionListOutput() SubscriptionListOutput
+	ToSubscriptionListOutputWithContext(context.Context) SubscriptionListOutput
+}
+
+// The request to update subscriptions needed to be monitored by the Datadog monitor resource.
+type SubscriptionListArgs struct {
+	// List of subscriptions and the state of the monitoring.
+	MonitoredSubscriptionList MonitoredSubscriptionTypeArrayInput `pulumi:"monitoredSubscriptionList"`
+	// The operation for the patch on the resource.
+	Operation pulumi.StringPtrInput `pulumi:"operation"`
+}
+
+func (SubscriptionListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionList)(nil)).Elem()
+}
+
+func (i SubscriptionListArgs) ToSubscriptionListOutput() SubscriptionListOutput {
+	return i.ToSubscriptionListOutputWithContext(context.Background())
+}
+
+func (i SubscriptionListArgs) ToSubscriptionListOutputWithContext(ctx context.Context) SubscriptionListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionListOutput)
+}
+
+func (i SubscriptionListArgs) ToOutput(ctx context.Context) pulumix.Output[SubscriptionList] {
+	return pulumix.Output[SubscriptionList]{
+		OutputState: i.ToSubscriptionListOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SubscriptionListArgs) ToSubscriptionListPtrOutput() SubscriptionListPtrOutput {
+	return i.ToSubscriptionListPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionListArgs) ToSubscriptionListPtrOutputWithContext(ctx context.Context) SubscriptionListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionListOutput).ToSubscriptionListPtrOutputWithContext(ctx)
+}
+
+// SubscriptionListPtrInput is an input type that accepts SubscriptionListArgs, SubscriptionListPtr and SubscriptionListPtrOutput values.
+// You can construct a concrete instance of `SubscriptionListPtrInput` via:
+//
+//	        SubscriptionListArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionListPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionListPtrOutput() SubscriptionListPtrOutput
+	ToSubscriptionListPtrOutputWithContext(context.Context) SubscriptionListPtrOutput
+}
+
+type subscriptionListPtrType SubscriptionListArgs
+
+func SubscriptionListPtr(v *SubscriptionListArgs) SubscriptionListPtrInput {
+	return (*subscriptionListPtrType)(v)
+}
+
+func (*subscriptionListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionList)(nil)).Elem()
+}
+
+func (i *subscriptionListPtrType) ToSubscriptionListPtrOutput() SubscriptionListPtrOutput {
+	return i.ToSubscriptionListPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionListPtrType) ToSubscriptionListPtrOutputWithContext(ctx context.Context) SubscriptionListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionListPtrOutput)
+}
+
+func (i *subscriptionListPtrType) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionList] {
+	return pulumix.Output[*SubscriptionList]{
+		OutputState: i.ToSubscriptionListPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The request to update subscriptions needed to be monitored by the Datadog monitor resource.
+type SubscriptionListOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionList)(nil)).Elem()
+}
+
+func (o SubscriptionListOutput) ToSubscriptionListOutput() SubscriptionListOutput {
+	return o
+}
+
+func (o SubscriptionListOutput) ToSubscriptionListOutputWithContext(ctx context.Context) SubscriptionListOutput {
+	return o
+}
+
+func (o SubscriptionListOutput) ToSubscriptionListPtrOutput() SubscriptionListPtrOutput {
+	return o.ToSubscriptionListPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionListOutput) ToSubscriptionListPtrOutputWithContext(ctx context.Context) SubscriptionListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionList) *SubscriptionList {
+		return &v
+	}).(SubscriptionListPtrOutput)
+}
+
+func (o SubscriptionListOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionList] {
+	return pulumix.Output[SubscriptionList]{
+		OutputState: o.OutputState,
+	}
+}
+
+// List of subscriptions and the state of the monitoring.
+func (o SubscriptionListOutput) MonitoredSubscriptionList() MonitoredSubscriptionTypeArrayOutput {
+	return o.ApplyT(func(v SubscriptionList) []MonitoredSubscriptionType { return v.MonitoredSubscriptionList }).(MonitoredSubscriptionTypeArrayOutput)
+}
+
+// The operation for the patch on the resource.
+func (o SubscriptionListOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionList) *string { return v.Operation }).(pulumi.StringPtrOutput)
+}
+
+type SubscriptionListPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionList)(nil)).Elem()
+}
+
+func (o SubscriptionListPtrOutput) ToSubscriptionListPtrOutput() SubscriptionListPtrOutput {
+	return o
+}
+
+func (o SubscriptionListPtrOutput) ToSubscriptionListPtrOutputWithContext(ctx context.Context) SubscriptionListPtrOutput {
+	return o
+}
+
+func (o SubscriptionListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionList] {
+	return pulumix.Output[*SubscriptionList]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SubscriptionListPtrOutput) Elem() SubscriptionListOutput {
+	return o.ApplyT(func(v *SubscriptionList) SubscriptionList {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionList
+		return ret
+	}).(SubscriptionListOutput)
+}
+
+// List of subscriptions and the state of the monitoring.
+func (o SubscriptionListPtrOutput) MonitoredSubscriptionList() MonitoredSubscriptionTypeArrayOutput {
+	return o.ApplyT(func(v *SubscriptionList) []MonitoredSubscriptionType {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoredSubscriptionList
+	}).(MonitoredSubscriptionTypeArrayOutput)
+}
+
+// The operation for the patch on the resource.
+func (o SubscriptionListPtrOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionList) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The request to update subscriptions needed to be monitored by the Datadog monitor resource.
+type SubscriptionListResponse struct {
+	// List of subscriptions and the state of the monitoring.
+	MonitoredSubscriptionList []MonitoredSubscriptionResponse `pulumi:"monitoredSubscriptionList"`
+}
+
+// The request to update subscriptions needed to be monitored by the Datadog monitor resource.
+type SubscriptionListResponseOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionListResponse)(nil)).Elem()
+}
+
+func (o SubscriptionListResponseOutput) ToSubscriptionListResponseOutput() SubscriptionListResponseOutput {
+	return o
+}
+
+func (o SubscriptionListResponseOutput) ToSubscriptionListResponseOutputWithContext(ctx context.Context) SubscriptionListResponseOutput {
+	return o
+}
+
+func (o SubscriptionListResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionListResponse] {
+	return pulumix.Output[SubscriptionListResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// List of subscriptions and the state of the monitoring.
+func (o SubscriptionListResponseOutput) MonitoredSubscriptionList() MonitoredSubscriptionResponseArrayOutput {
+	return o.ApplyT(func(v SubscriptionListResponse) []MonitoredSubscriptionResponse { return v.MonitoredSubscriptionList }).(MonitoredSubscriptionResponseArrayOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -2128,21 +3689,44 @@ func init() {
 	pulumi.RegisterOutputType(DatadogOrganizationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DatadogOrganizationPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(DatadogOrganizationPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(FilteringTagOutput{})
+	pulumi.RegisterOutputType(FilteringTagArrayOutput{})
+	pulumi.RegisterOutputType(FilteringTagResponseOutput{})
+	pulumi.RegisterOutputType(FilteringTagResponseArrayOutput{})
 	pulumi.RegisterOutputType(IdentityPropertiesOutput{})
 	pulumi.RegisterOutputType(IdentityPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(IdentityPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(IdentityPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(LinkedResourceResponseOutput{})
 	pulumi.RegisterOutputType(LinkedResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(LogRulesOutput{})
+	pulumi.RegisterOutputType(LogRulesPtrOutput{})
+	pulumi.RegisterOutputType(LogRulesResponseOutput{})
+	pulumi.RegisterOutputType(LogRulesResponsePtrOutput{})
+	pulumi.RegisterOutputType(MetricRulesOutput{})
+	pulumi.RegisterOutputType(MetricRulesPtrOutput{})
+	pulumi.RegisterOutputType(MetricRulesResponseOutput{})
+	pulumi.RegisterOutputType(MetricRulesResponsePtrOutput{})
 	pulumi.RegisterOutputType(MonitorPropertiesOutput{})
 	pulumi.RegisterOutputType(MonitorPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(MonitorPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceResponseOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(MonitoredSubscriptionTypeOutput{})
+	pulumi.RegisterOutputType(MonitoredSubscriptionTypeArrayOutput{})
+	pulumi.RegisterOutputType(MonitoredSubscriptionResponseOutput{})
+	pulumi.RegisterOutputType(MonitoredSubscriptionResponseArrayOutput{})
+	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesOutput{})
+	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceSkuOutput{})
 	pulumi.RegisterOutputType(ResourceSkuPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponseOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionListOutput{})
+	pulumi.RegisterOutputType(SubscriptionListPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionListResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserInfoOutput{})
 	pulumi.RegisterOutputType(UserInfoPtrOutput{})

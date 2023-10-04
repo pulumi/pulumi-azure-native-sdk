@@ -47,6 +47,9 @@ func NewAzureBareMetalStorageInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:baremetalinfrastructure:AzureBareMetalStorageInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:baremetalinfrastructure/v20230804preview:AzureBareMetalStorageInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
