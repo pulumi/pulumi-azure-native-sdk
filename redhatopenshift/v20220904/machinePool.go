@@ -49,6 +49,9 @@ func NewMachinePool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:redhatopenshift/v20230701preview:MachinePool"),
 		},
+		{
+			Type: pulumi.String("azure-native:redhatopenshift/v20230904:MachinePool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

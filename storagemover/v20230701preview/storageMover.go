@@ -53,6 +53,9 @@ func NewStorageMover(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagemover/v20230301:StorageMover"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagemover/v20231001:StorageMover"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

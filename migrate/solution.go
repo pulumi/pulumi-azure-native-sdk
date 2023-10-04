@@ -45,6 +45,9 @@ func NewSolution(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20180901preview:Solution"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230101:Solution"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

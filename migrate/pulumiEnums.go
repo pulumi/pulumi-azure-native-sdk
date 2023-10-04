@@ -184,6 +184,17 @@ const (
 	AzureVmFamily_DC_Series       = AzureVmFamily("DC_Series")
 )
 
+// Gets or sets the cleanup state of the solution.
+type CleanupState string
+
+const (
+	CleanupStateNone       = CleanupState("None")
+	CleanupStateStarted    = CleanupState("Started")
+	CleanupStateInProgress = CleanupState("InProgress")
+	CleanupStateCompleted  = CleanupState("Completed")
+	CleanupStateFailed     = CleanupState("Failed")
+)
+
 // Gets or sets the configuration type.
 type ConfigurationType string
 
@@ -223,6 +234,17 @@ const (
 	CurrencyARS     = Currency("ARS")
 	CurrencyAUD     = Currency("AUD")
 	CurrencyCNY     = Currency("CNY")
+)
+
+// Gets or sets the goal of the solution.
+type Goal string
+
+const (
+	GoalServers               = Goal("Servers")
+	GoalDatabases             = Goal("Databases")
+	GoalDesktopVirtualization = Goal("DesktopVirtualization")
+	GoalWebApplications       = Goal("WebApplications")
+	GoalDataCenter            = Goal("DataCenter")
 )
 
 // Gets or sets the load balancer type.
@@ -270,6 +292,15 @@ const (
 	ProvisioningStateSucceeded = ProvisioningState("Succeeded")
 )
 
+// Gets or sets the purpose of the solution.
+type Purpose string
+
+const (
+	PurposeDiscovery  = Purpose("Discovery")
+	PurposeAssessment = Purpose("Assessment")
+	PurposeMigration  = Purpose("Migration")
+)
+
 // Azure reserved instance.
 type ReservedInstance string
 
@@ -305,14 +336,12 @@ const (
 	SecretStoreTypeAppServiceAppSettings = SecretStoreType("AppServiceAppSettings")
 )
 
-// Private link connection state.
+// Gets or sets the current status of the solution.
 type Status string
 
 const (
-	StatusApproved     = Status("Approved")
-	StatusPending      = Status("Pending")
-	StatusRejected     = Status("Rejected")
-	StatusDisconnected = Status("Disconnected")
+	StatusInactive = Status("Inactive")
+	StatusActive   = Status("Active")
 )
 
 // Gets or sets the target availability zone.
@@ -357,6 +386,37 @@ const (
 	TimeRangeWeek   = TimeRange("Week")
 	TimeRangeMonth  = TimeRange("Month")
 	TimeRangeCustom = TimeRange("Custom")
+)
+
+// Gets or sets the tool being used in the solution.
+type Tool string
+
+const (
+	ToolServerDiscovery                  = Tool("ServerDiscovery")
+	ToolServerAssessment                 = Tool("ServerAssessment")
+	ToolServerMigration                  = Tool("ServerMigration")
+	ToolCloudamize                       = Tool("Cloudamize")
+	ToolTurbonomic                       = Tool("Turbonomic")
+	ToolZerto                            = Tool("Zerto")
+	ToolCorentTech                       = Tool("CorentTech")
+	ToolServerAssessmentV1               = Tool("ServerAssessmentV1")
+	Tool_ServerMigration_Replication     = Tool("ServerMigration_Replication")
+	ToolCarbonite                        = Tool("Carbonite")
+	ToolDataMigrationAssistant           = Tool("DataMigrationAssistant")
+	ToolDatabaseMigrationService         = Tool("DatabaseMigrationService")
+	ToolDevice42                         = Tool("Device42")
+	ToolJetStream                        = Tool("JetStream")
+	ToolRackWare                         = Tool("RackWare")
+	ToolUnifyCloud                       = Tool("UnifyCloud")
+	ToolFlexera                          = Tool("Flexera")
+	Tool_ServerDiscovery_Import          = Tool("ServerDiscovery_Import")
+	ToolLakeside                         = Tool("Lakeside")
+	ToolAppServiceMigrationAssistant     = Tool("AppServiceMigrationAssistant")
+	ToolMovere                           = Tool("Movere")
+	ToolCloudSphere                      = Tool("CloudSphere")
+	ToolModernization                    = Tool("Modernization")
+	Tool_ServerMigration_DataReplication = Tool("ServerMigration_DataReplication")
+	ToolUnknown                          = Tool("Unknown")
 )
 
 // Gets or sets the deployment target platform.

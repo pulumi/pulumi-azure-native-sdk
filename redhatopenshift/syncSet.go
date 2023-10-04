@@ -51,6 +51,9 @@ func NewSyncSet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:redhatopenshift/v20230701preview:SyncSet"),
 		},
+		{
+			Type: pulumi.String("azure-native:redhatopenshift/v20230904:SyncSet"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

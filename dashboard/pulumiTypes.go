@@ -792,6 +792,45 @@ func (o ManagedGrafanaPropertiesResponseOutput) ZoneRedundancy() pulumi.StringPt
 	return o.ApplyT(func(v ManagedGrafanaPropertiesResponse) *string { return v.ZoneRedundancy }).(pulumi.StringPtrOutput)
 }
 
+// The state of managed private endpoint connection.
+type ManagedPrivateEndpointConnectionStateResponse struct {
+	// Gets or sets the reason for approval/rejection of the connection.
+	Description string `pulumi:"description"`
+	// The approval/rejection status of managed private endpoint connection.
+	Status string `pulumi:"status"`
+}
+
+// The state of managed private endpoint connection.
+type ManagedPrivateEndpointConnectionStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedPrivateEndpointConnectionStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedPrivateEndpointConnectionStateResponse)(nil)).Elem()
+}
+
+func (o ManagedPrivateEndpointConnectionStateResponseOutput) ToManagedPrivateEndpointConnectionStateResponseOutput() ManagedPrivateEndpointConnectionStateResponseOutput {
+	return o
+}
+
+func (o ManagedPrivateEndpointConnectionStateResponseOutput) ToManagedPrivateEndpointConnectionStateResponseOutputWithContext(ctx context.Context) ManagedPrivateEndpointConnectionStateResponseOutput {
+	return o
+}
+
+func (o ManagedPrivateEndpointConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedPrivateEndpointConnectionStateResponse] {
+	return pulumix.Output[ManagedPrivateEndpointConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Gets or sets the reason for approval/rejection of the connection.
+func (o ManagedPrivateEndpointConnectionStateResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedPrivateEndpointConnectionStateResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The approval/rejection status of managed private endpoint connection.
+func (o ManagedPrivateEndpointConnectionStateResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedPrivateEndpointConnectionStateResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentity struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -1780,6 +1819,7 @@ func init() {
 	pulumi.RegisterOutputType(ManagedGrafanaPropertiesOutput{})
 	pulumi.RegisterOutputType(ManagedGrafanaPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedGrafanaPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ManagedPrivateEndpointConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})

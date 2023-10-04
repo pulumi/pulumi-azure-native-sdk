@@ -45,12 +45,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrivateEndpointConnection{}
 	case "azure-native:migrate:PrivateEndpointConnectionControllerPrivateEndpointConnection":
 		r = &PrivateEndpointConnectionControllerPrivateEndpointConnection{}
+	case "azure-native:migrate:PrivateEndpointConnectionProxyController":
+		r = &PrivateEndpointConnectionProxyController{}
 	case "azure-native:migrate:Project":
 		r = &Project{}
 	case "azure-native:migrate:ServerCollector":
 		r = &ServerCollector{}
 	case "azure-native:migrate:Solution":
 		r = &Solution{}
+	case "azure-native:migrate:SolutionsControllerSolution":
+		r = &SolutionsControllerSolution{}
 	case "azure-native:migrate:VMwareCollector":
 		r = &VMwareCollector{}
 	case "azure-native:migrate:WorkloadDeployment":

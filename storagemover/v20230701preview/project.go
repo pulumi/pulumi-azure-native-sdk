@@ -52,6 +52,9 @@ func NewProject(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagemover/v20230301:Project"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagemover/v20231001:Project"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

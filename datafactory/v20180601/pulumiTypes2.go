@@ -3556,6 +3556,8 @@ type WebHookActivity struct {
 	Name string `pulumi:"name"`
 	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
 	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity policy.
+	Policy *SecureInputOutputPolicy `pulumi:"policy"`
 	// When set to true, statusCode, output and error in callback request body will be consumed by activity. The activity can be marked as failed by setting statusCode >= 400 in callback request. Default is false. Type: boolean (or Expression with resultType boolean).
 	ReportStatusOnCallBack interface{} `pulumi:"reportStatusOnCallBack"`
 	// Activity state. This is an optional property and if not provided, the state will be Active by default.
@@ -3589,6 +3591,8 @@ type WebHookActivityResponse struct {
 	Name string `pulumi:"name"`
 	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
 	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity policy.
+	Policy *SecureInputOutputPolicyResponse `pulumi:"policy"`
 	// When set to true, statusCode, output and error in callback request body will be consumed by activity. The activity can be marked as failed by setting statusCode >= 400 in callback request. Default is false. Type: boolean (or Expression with resultType boolean).
 	ReportStatusOnCallBack interface{} `pulumi:"reportStatusOnCallBack"`
 	// Activity state. This is an optional property and if not provided, the state will be Active by default.

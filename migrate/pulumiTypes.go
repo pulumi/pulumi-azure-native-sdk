@@ -2140,6 +2140,92 @@ type GmsaAuthenticationPropertiesResponse struct {
 	GmsaUsername *string `pulumi:"gmsaUsername"`
 }
 
+// Defines Private link service group connectivity.
+type GroupConnectivityInformationResponse struct {
+	CustomerVisibleFqdns        []string `pulumi:"customerVisibleFqdns"`
+	GroupId                     *string  `pulumi:"groupId"`
+	Id                          *string  `pulumi:"id"`
+	InternalFqdn                *string  `pulumi:"internalFqdn"`
+	MemberName                  *string  `pulumi:"memberName"`
+	PrivateLinkServiceArmRegion *string  `pulumi:"privateLinkServiceArmRegion"`
+	RedirectMapId               *string  `pulumi:"redirectMapId"`
+}
+
+// Defines Private link service group connectivity.
+type GroupConnectivityInformationResponseOutput struct{ *pulumi.OutputState }
+
+func (GroupConnectivityInformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupConnectivityInformationResponse)(nil)).Elem()
+}
+
+func (o GroupConnectivityInformationResponseOutput) ToGroupConnectivityInformationResponseOutput() GroupConnectivityInformationResponseOutput {
+	return o
+}
+
+func (o GroupConnectivityInformationResponseOutput) ToGroupConnectivityInformationResponseOutputWithContext(ctx context.Context) GroupConnectivityInformationResponseOutput {
+	return o
+}
+
+func (o GroupConnectivityInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GroupConnectivityInformationResponse] {
+	return pulumix.Output[GroupConnectivityInformationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GroupConnectivityInformationResponseOutput) CustomerVisibleFqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GroupConnectivityInformationResponse) []string { return v.CustomerVisibleFqdns }).(pulumi.StringArrayOutput)
+}
+
+func (o GroupConnectivityInformationResponseOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupConnectivityInformationResponse) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GroupConnectivityInformationResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupConnectivityInformationResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o GroupConnectivityInformationResponseOutput) InternalFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupConnectivityInformationResponse) *string { return v.InternalFqdn }).(pulumi.StringPtrOutput)
+}
+
+func (o GroupConnectivityInformationResponseOutput) MemberName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupConnectivityInformationResponse) *string { return v.MemberName }).(pulumi.StringPtrOutput)
+}
+
+func (o GroupConnectivityInformationResponseOutput) PrivateLinkServiceArmRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupConnectivityInformationResponse) *string { return v.PrivateLinkServiceArmRegion }).(pulumi.StringPtrOutput)
+}
+
+func (o GroupConnectivityInformationResponseOutput) RedirectMapId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupConnectivityInformationResponse) *string { return v.RedirectMapId }).(pulumi.StringPtrOutput)
+}
+
+type GroupConnectivityInformationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupConnectivityInformationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupConnectivityInformationResponse)(nil)).Elem()
+}
+
+func (o GroupConnectivityInformationResponseArrayOutput) ToGroupConnectivityInformationResponseArrayOutput() GroupConnectivityInformationResponseArrayOutput {
+	return o
+}
+
+func (o GroupConnectivityInformationResponseArrayOutput) ToGroupConnectivityInformationResponseArrayOutputWithContext(ctx context.Context) GroupConnectivityInformationResponseArrayOutput {
+	return o
+}
+
+func (o GroupConnectivityInformationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GroupConnectivityInformationResponse] {
+	return pulumix.Output[[]GroupConnectivityInformationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GroupConnectivityInformationResponseArrayOutput) Index(i pulumi.IntInput) GroupConnectivityInformationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupConnectivityInformationResponse {
+		return vs[0].([]GroupConnectivityInformationResponse)[vs[1].(int)]
+	}).(GroupConnectivityInformationResponseOutput)
+}
+
 // Properties of group resource.
 type GroupProperties struct {
 	// The type of group.
@@ -3762,6 +3848,82 @@ func (o InnerHealthErrorModelResponseArrayOutput) Index(i pulumi.IntInput) Inner
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InnerHealthErrorModelResponse {
 		return vs[0].([]InnerHealthErrorModelResponse)[vs[1].(int)]
 	}).(InnerHealthErrorModelResponseOutput)
+}
+
+// Defines Private link IP configuration.
+type IpConfigurationResponse struct {
+	GroupId          *string `pulumi:"groupId"`
+	Id               *string `pulumi:"id"`
+	LinkIdentifier   *string `pulumi:"linkIdentifier"`
+	MemberName       *string `pulumi:"memberName"`
+	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+}
+
+// Defines Private link IP configuration.
+type IpConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (IpConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpConfigurationResponse)(nil)).Elem()
+}
+
+func (o IpConfigurationResponseOutput) ToIpConfigurationResponseOutput() IpConfigurationResponseOutput {
+	return o
+}
+
+func (o IpConfigurationResponseOutput) ToIpConfigurationResponseOutputWithContext(ctx context.Context) IpConfigurationResponseOutput {
+	return o
+}
+
+func (o IpConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IpConfigurationResponse] {
+	return pulumix.Output[IpConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IpConfigurationResponseOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o IpConfigurationResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o IpConfigurationResponseOutput) LinkIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) *string { return v.LinkIdentifier }).(pulumi.StringPtrOutput)
+}
+
+func (o IpConfigurationResponseOutput) MemberName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) *string { return v.MemberName }).(pulumi.StringPtrOutput)
+}
+
+func (o IpConfigurationResponseOutput) PrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) *string { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+type IpConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IpConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpConfigurationResponse)(nil)).Elem()
+}
+
+func (o IpConfigurationResponseArrayOutput) ToIpConfigurationResponseArrayOutput() IpConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o IpConfigurationResponseArrayOutput) ToIpConfigurationResponseArrayOutputWithContext(ctx context.Context) IpConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o IpConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpConfigurationResponse] {
+	return pulumix.Output[[]IpConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IpConfigurationResponseArrayOutput) Index(i pulumi.IntInput) IpConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpConfigurationResponse {
+		return vs[0].([]IpConfigurationResponse)[vs[1].(int)]
+	}).(IpConfigurationResponseOutput)
 }
 
 // Defines the job status.
@@ -7202,6 +7364,45 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) ProvisioningState() p
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Properties of a private endpoint connection proxy.
+type PrivateEndpointConnectionProxyPropertiesResponse struct {
+	// Defines Private endpoint additional details.
+	RemotePrivateEndpoint PrivateEndpointDetailsResponse `pulumi:"remotePrivateEndpoint"`
+	Status                string                         `pulumi:"status"`
+}
+
+// Properties of a private endpoint connection proxy.
+type PrivateEndpointConnectionProxyPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionProxyPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionProxyPropertiesResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionProxyPropertiesResponseOutput) ToPrivateEndpointConnectionProxyPropertiesResponseOutput() PrivateEndpointConnectionProxyPropertiesResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionProxyPropertiesResponseOutput) ToPrivateEndpointConnectionProxyPropertiesResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionProxyPropertiesResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionProxyPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionProxyPropertiesResponse] {
+	return pulumix.Output[PrivateEndpointConnectionProxyPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Defines Private endpoint additional details.
+func (o PrivateEndpointConnectionProxyPropertiesResponseOutput) RemotePrivateEndpoint() PrivateEndpointDetailsResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionProxyPropertiesResponse) PrivateEndpointDetailsResponse {
+		return v.RemotePrivateEndpoint
+	}).(PrivateEndpointDetailsResponseOutput)
+}
+
+func (o PrivateEndpointConnectionProxyPropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionProxyPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
 // A private endpoint connection for a project.
 type PrivateEndpointConnectionResponse struct {
 	// For optimistic concurrency control.
@@ -7295,6 +7496,133 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
 	}).(PrivateEndpointConnectionResponseOutput)
+}
+
+// Defines Private endpoint additional details.
+type PrivateEndpointDetailsResponse struct {
+	ConnectionDetails                   []IpConfigurationResponse              `pulumi:"connectionDetails"`
+	Id                                  *string                                `pulumi:"id"`
+	ManualPrivateLinkServiceConnections []PrivateLinkServiceConnectionResponse `pulumi:"manualPrivateLinkServiceConnections"`
+	PrivateLinkServiceConnections       []PrivateLinkServiceConnectionResponse `pulumi:"privateLinkServiceConnections"`
+	PrivateLinkServiceProxies           []PrivateLinkServiceProxyResponse      `pulumi:"privateLinkServiceProxies"`
+}
+
+// Defines Private endpoint additional details.
+type PrivateEndpointDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointDetailsResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointDetailsResponseOutput) ToPrivateEndpointDetailsResponseOutput() PrivateEndpointDetailsResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointDetailsResponseOutput) ToPrivateEndpointDetailsResponseOutputWithContext(ctx context.Context) PrivateEndpointDetailsResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointDetailsResponse] {
+	return pulumix.Output[PrivateEndpointDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PrivateEndpointDetailsResponseOutput) ConnectionDetails() IpConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointDetailsResponse) []IpConfigurationResponse { return v.ConnectionDetails }).(IpConfigurationResponseArrayOutput)
+}
+
+func (o PrivateEndpointDetailsResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointDetailsResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateEndpointDetailsResponseOutput) ManualPrivateLinkServiceConnections() PrivateLinkServiceConnectionResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointDetailsResponse) []PrivateLinkServiceConnectionResponse {
+		return v.ManualPrivateLinkServiceConnections
+	}).(PrivateLinkServiceConnectionResponseArrayOutput)
+}
+
+func (o PrivateEndpointDetailsResponseOutput) PrivateLinkServiceConnections() PrivateLinkServiceConnectionResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointDetailsResponse) []PrivateLinkServiceConnectionResponse {
+		return v.PrivateLinkServiceConnections
+	}).(PrivateLinkServiceConnectionResponseArrayOutput)
+}
+
+func (o PrivateEndpointDetailsResponseOutput) PrivateLinkServiceProxies() PrivateLinkServiceProxyResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointDetailsResponse) []PrivateLinkServiceProxyResponse {
+		return v.PrivateLinkServiceProxies
+	}).(PrivateLinkServiceProxyResponseArrayOutput)
+}
+
+// Defines Private link service connection.
+type PrivateLinkServiceConnectionResponse struct {
+	GroupIds       []string `pulumi:"groupIds"`
+	Id             *string  `pulumi:"id"`
+	Name           *string  `pulumi:"name"`
+	RequestMessage *string  `pulumi:"requestMessage"`
+}
+
+// Defines Private link service connection.
+type PrivateLinkServiceConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionResponseOutput) ToPrivateLinkServiceConnectionResponseOutput() PrivateLinkServiceConnectionResponseOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionResponseOutput) ToPrivateLinkServiceConnectionResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionResponseOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionResponse] {
+	return pulumix.Output[PrivateLinkServiceConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PrivateLinkServiceConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o PrivateLinkServiceConnectionResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateLinkServiceConnectionResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateLinkServiceConnectionResponseOutput) RequestMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
+}
+
+type PrivateLinkServiceConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateLinkServiceConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionResponseArrayOutput) ToPrivateLinkServiceConnectionResponseArrayOutput() PrivateLinkServiceConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionResponseArrayOutput) ToPrivateLinkServiceConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateLinkServiceConnectionResponse] {
+	return pulumix.Output[[]PrivateLinkServiceConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PrivateLinkServiceConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateLinkServiceConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateLinkServiceConnectionResponse {
+		return vs[0].([]PrivateLinkServiceConnectionResponse)[vs[1].(int)]
+	}).(PrivateLinkServiceConnectionResponseOutput)
 }
 
 // Private endpoint connection state.
@@ -7603,6 +7931,85 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.Stri
 		}
 		return v.Status
 	}).(pulumi.StringPtrOutput)
+}
+
+// Defines Private link service proxy.
+type PrivateLinkServiceProxyResponse struct {
+	GroupConnectivityInformation []GroupConnectivityInformationResponse `pulumi:"groupConnectivityInformation"`
+	Id                           *string                                `pulumi:"id"`
+	// Defines resource ID of a private endpoint connection.
+	RemotePrivateEndpointConnection *ResourceIdResponse `pulumi:"remotePrivateEndpointConnection"`
+	// Private endpoint connection state.
+	RemotePrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"remotePrivateLinkServiceConnectionState"`
+}
+
+// Defines Private link service proxy.
+type PrivateLinkServiceProxyResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceProxyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceProxyResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceProxyResponseOutput) ToPrivateLinkServiceProxyResponseOutput() PrivateLinkServiceProxyResponseOutput {
+	return o
+}
+
+func (o PrivateLinkServiceProxyResponseOutput) ToPrivateLinkServiceProxyResponseOutputWithContext(ctx context.Context) PrivateLinkServiceProxyResponseOutput {
+	return o
+}
+
+func (o PrivateLinkServiceProxyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceProxyResponse] {
+	return pulumix.Output[PrivateLinkServiceProxyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PrivateLinkServiceProxyResponseOutput) GroupConnectivityInformation() GroupConnectivityInformationResponseArrayOutput {
+	return o.ApplyT(func(v PrivateLinkServiceProxyResponse) []GroupConnectivityInformationResponse {
+		return v.GroupConnectivityInformation
+	}).(GroupConnectivityInformationResponseArrayOutput)
+}
+
+func (o PrivateLinkServiceProxyResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceProxyResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Defines resource ID of a private endpoint connection.
+func (o PrivateLinkServiceProxyResponseOutput) RemotePrivateEndpointConnection() ResourceIdResponsePtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceProxyResponse) *ResourceIdResponse { return v.RemotePrivateEndpointConnection }).(ResourceIdResponsePtrOutput)
+}
+
+// Private endpoint connection state.
+func (o PrivateLinkServiceProxyResponseOutput) RemotePrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceProxyResponse) *PrivateLinkServiceConnectionStateResponse {
+		return v.RemotePrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
+}
+
+type PrivateLinkServiceProxyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceProxyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateLinkServiceProxyResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceProxyResponseArrayOutput) ToPrivateLinkServiceProxyResponseArrayOutput() PrivateLinkServiceProxyResponseArrayOutput {
+	return o
+}
+
+func (o PrivateLinkServiceProxyResponseArrayOutput) ToPrivateLinkServiceProxyResponseArrayOutputWithContext(ctx context.Context) PrivateLinkServiceProxyResponseArrayOutput {
+	return o
+}
+
+func (o PrivateLinkServiceProxyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateLinkServiceProxyResponse] {
+	return pulumix.Output[[]PrivateLinkServiceProxyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PrivateLinkServiceProxyResponseArrayOutput) Index(i pulumi.IntInput) PrivateLinkServiceProxyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateLinkServiceProxyResponse {
+		return vs[0].([]PrivateLinkServiceProxyResponse)[vs[1].(int)]
+	}).(PrivateLinkServiceProxyResponseOutput)
 }
 
 // Properties of a project.
@@ -8116,6 +8523,45 @@ func (o ResourceIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[R
 
 func (o ResourceIdResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ResourceIdResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceIdResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceIdResponse)(nil)).Elem()
+}
+
+func (o ResourceIdResponsePtrOutput) ToResourceIdResponsePtrOutput() ResourceIdResponsePtrOutput {
+	return o
+}
+
+func (o ResourceIdResponsePtrOutput) ToResourceIdResponsePtrOutputWithContext(ctx context.Context) ResourceIdResponsePtrOutput {
+	return o
+}
+
+func (o ResourceIdResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdResponse] {
+	return pulumix.Output[*ResourceIdResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ResourceIdResponsePtrOutput) Elem() ResourceIdResponseOutput {
+	return o.ApplyT(func(v *ResourceIdResponse) ResourceIdResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceIdResponse
+		return ret
+	}).(ResourceIdResponseOutput)
+}
+
+func (o ResourceIdResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceIdResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
 }
 
 type ResourceIdentity struct {
@@ -9147,6 +9593,12 @@ func (o SolutionPropertiesResponseOutput) Tool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SolutionPropertiesResponse) *string { return v.Tool }).(pulumi.StringPtrOutput)
 }
 
+// The solution summary class.
+type SolutionSummaryResponse struct {
+	// Gets the Instance type.
+	InstanceType string `pulumi:"instanceType"`
+}
+
 // Defines the Sql Database resource settings.
 type SqlDatabaseResourceSettings struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -9273,7 +9725,7 @@ type SystemDataResponse struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// The type of identity that created the resource.
 	CreatedByType *string `pulumi:"createdByType"`
-	// The type of identity that last modified the resource.
+	// The timestamp of resource last modification (UTC)
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// The identity that last modified the resource.
 	LastModifiedBy *string `pulumi:"lastModifiedBy"`
@@ -9317,7 +9769,7 @@ func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that last modified the resource.
+// The timestamp of resource last modification (UTC)
 func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
 }
@@ -9392,7 +9844,7 @@ func (o SystemDataResponsePtrOutput) CreatedByType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that last modified the resource.
+// The timestamp of resource last modification (UTC)
 func (o SystemDataResponsePtrOutput) LastModifiedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SystemDataResponse) *string {
 		if v == nil {
@@ -11618,6 +12070,8 @@ func init() {
 	pulumi.RegisterOutputType(CollectorPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ConnectionStateRequestBodyPropertiesOutput{})
 	pulumi.RegisterOutputType(ConnectionStateRequestBodyPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GroupConnectivityInformationResponseOutput{})
+	pulumi.RegisterOutputType(GroupConnectivityInformationResponseArrayOutput{})
 	pulumi.RegisterOutputType(GroupPropertiesOutput{})
 	pulumi.RegisterOutputType(GroupPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(HealthErrorModelResponseOutput{})
@@ -11635,6 +12089,8 @@ func init() {
 	pulumi.RegisterOutputType(ImportCollectorPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(InnerHealthErrorModelResponseOutput{})
 	pulumi.RegisterOutputType(InnerHealthErrorModelResponseArrayOutput{})
+	pulumi.RegisterOutputType(IpConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(IpConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStatusResponseOutput{})
 	pulumi.RegisterOutputType(JobStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManualResolutionPropertiesResponseOutput{})
@@ -11680,16 +12136,23 @@ func init() {
 	pulumi.RegisterOutputType(MoveResourcePropertiesResponseMoveStatusOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionProxyPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointDetailsResponseOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionResponseOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceProxyResponseOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceProxyResponseArrayOutput{})
 	pulumi.RegisterOutputType(ProjectPropertiesOutput{})
 	pulumi.RegisterOutputType(ProjectPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ProjectPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ResourceIdResponseOutput{})
+	pulumi.RegisterOutputType(ResourceIdResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponseOutput{})
