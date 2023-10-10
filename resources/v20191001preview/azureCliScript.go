@@ -100,6 +100,9 @@ func NewAzureCliScript(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:resources/v20201001:AzureCliScript"),
 		},
+		{
+			Type: pulumi.String("azure-native:resources/v20230801:AzureCliScript"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

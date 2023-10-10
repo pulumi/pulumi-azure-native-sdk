@@ -14,6 +14,667 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Text-NER task in AutoML NLP vertical.
+// NER - Named Entity Recognition.
+// NLP - Natural Language Processing.
+type TextNer struct {
+	// Featurization inputs needed for AutoML job.
+	FeaturizationSettings *NlpVerticalFeaturizationSettings `pulumi:"featurizationSettings"`
+	// Execution constraints for AutoMLJob.
+	LimitSettings *NlpVerticalLimitSettings `pulumi:"limitSettings"`
+	// Log verbosity for the job.
+	LogVerbosity *string `pulumi:"logVerbosity"`
+	// Target column name: This is prediction values column.
+	// Also known as label column name in context of classification tasks.
+	TargetColumnName *string `pulumi:"targetColumnName"`
+	// AutoMLJob Task type.
+	// Expected value is 'TextNER'.
+	TaskType string `pulumi:"taskType"`
+	// [Required] Training data input.
+	TrainingData MLTableJobInput `pulumi:"trainingData"`
+	// Validation data inputs.
+	ValidationData *MLTableJobInput `pulumi:"validationData"`
+}
+
+// Defaults sets the appropriate defaults for TextNer
+func (val *TextNer) Defaults() *TextNer {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.LimitSettings = tmp.LimitSettings.Defaults()
+
+	if tmp.LogVerbosity == nil {
+		logVerbosity_ := "Info"
+		tmp.LogVerbosity = &logVerbosity_
+	}
+	tmp.TrainingData = *tmp.TrainingData.Defaults()
+
+	tmp.ValidationData = tmp.ValidationData.Defaults()
+
+	return &tmp
+}
+
+// Text-NER task in AutoML NLP vertical.
+// NER - Named Entity Recognition.
+// NLP - Natural Language Processing.
+type TextNerResponse struct {
+	// Featurization inputs needed for AutoML job.
+	FeaturizationSettings *NlpVerticalFeaturizationSettingsResponse `pulumi:"featurizationSettings"`
+	// Execution constraints for AutoMLJob.
+	LimitSettings *NlpVerticalLimitSettingsResponse `pulumi:"limitSettings"`
+	// Log verbosity for the job.
+	LogVerbosity *string `pulumi:"logVerbosity"`
+	// Primary metric for Text-NER task.
+	// Only 'Accuracy' is supported for Text-NER, so user need not set this explicitly.
+	PrimaryMetric string `pulumi:"primaryMetric"`
+	// Target column name: This is prediction values column.
+	// Also known as label column name in context of classification tasks.
+	TargetColumnName *string `pulumi:"targetColumnName"`
+	// AutoMLJob Task type.
+	// Expected value is 'TextNER'.
+	TaskType string `pulumi:"taskType"`
+	// [Required] Training data input.
+	TrainingData MLTableJobInputResponse `pulumi:"trainingData"`
+	// Validation data inputs.
+	ValidationData *MLTableJobInputResponse `pulumi:"validationData"`
+}
+
+// Defaults sets the appropriate defaults for TextNerResponse
+func (val *TextNerResponse) Defaults() *TextNerResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.LimitSettings = tmp.LimitSettings.Defaults()
+
+	if tmp.LogVerbosity == nil {
+		logVerbosity_ := "Info"
+		tmp.LogVerbosity = &logVerbosity_
+	}
+	tmp.TrainingData = *tmp.TrainingData.Defaults()
+
+	tmp.ValidationData = tmp.ValidationData.Defaults()
+
+	return &tmp
+}
+
+// Describes the tmpfs options for the container
+type TmpfsOptions struct {
+	// Mention the Tmpfs size
+	Size *int `pulumi:"size"`
+}
+
+// Describes the tmpfs options for the container
+type TmpfsOptionsResponse struct {
+	// Mention the Tmpfs size
+	Size *int `pulumi:"size"`
+}
+
+// Trial component definition.
+type TrialComponent struct {
+	// ARM resource ID of the code asset.
+	CodeId *string `pulumi:"codeId"`
+	// [Required] The command to execute on startup of the job. eg. "python train.py"
+	Command string `pulumi:"command"`
+	// Distribution configuration of the job. If set, this should be one of Mpi, Tensorflow, PyTorch, or null.
+	Distribution interface{} `pulumi:"distribution"`
+	// [Required] The ARM resource ID of the Environment specification for the job.
+	EnvironmentId string `pulumi:"environmentId"`
+	// Environment variables included in the job.
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
+	// Compute Resource configuration for the job.
+	Resources *JobResourceConfiguration `pulumi:"resources"`
+}
+
+// Defaults sets the appropriate defaults for TrialComponent
+func (val *TrialComponent) Defaults() *TrialComponent {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Resources = tmp.Resources.Defaults()
+
+	return &tmp
+}
+
+// Trial component definition.
+type TrialComponentResponse struct {
+	// ARM resource ID of the code asset.
+	CodeId *string `pulumi:"codeId"`
+	// [Required] The command to execute on startup of the job. eg. "python train.py"
+	Command string `pulumi:"command"`
+	// Distribution configuration of the job. If set, this should be one of Mpi, Tensorflow, PyTorch, or null.
+	Distribution interface{} `pulumi:"distribution"`
+	// [Required] The ARM resource ID of the Environment specification for the job.
+	EnvironmentId string `pulumi:"environmentId"`
+	// Environment variables included in the job.
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
+	// Compute Resource configuration for the job.
+	Resources *JobResourceConfigurationResponse `pulumi:"resources"`
+}
+
+// Defaults sets the appropriate defaults for TrialComponentResponse
+func (val *TrialComponentResponse) Defaults() *TrialComponentResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Resources = tmp.Resources.Defaults()
+
+	return &tmp
+}
+
+type TritonModelJobInput struct {
+	// Description for the input.
+	Description *string `pulumi:"description"`
+	// Enum to determine the Job Input Type.
+	// Expected value is 'triton_model'.
+	JobInputType string `pulumi:"jobInputType"`
+	// Input Asset Delivery Mode.
+	Mode *string `pulumi:"mode"`
+	// [Required] Input Asset URI.
+	Uri string `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for TritonModelJobInput
+func (val *TritonModelJobInput) Defaults() *TritonModelJobInput {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "ReadOnlyMount"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+type TritonModelJobInputResponse struct {
+	// Description for the input.
+	Description *string `pulumi:"description"`
+	// Enum to determine the Job Input Type.
+	// Expected value is 'triton_model'.
+	JobInputType string `pulumi:"jobInputType"`
+	// Input Asset Delivery Mode.
+	Mode *string `pulumi:"mode"`
+	// [Required] Input Asset URI.
+	Uri string `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for TritonModelJobInputResponse
+func (val *TritonModelJobInputResponse) Defaults() *TritonModelJobInputResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "ReadOnlyMount"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+type TritonModelJobOutput struct {
+	// Description for the output.
+	Description *string `pulumi:"description"`
+	// Enum to determine the Job Output Type.
+	// Expected value is 'triton_model'.
+	JobOutputType string `pulumi:"jobOutputType"`
+	// Output Asset Delivery Mode.
+	Mode *string `pulumi:"mode"`
+	// Output Asset URI.
+	Uri *string `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for TritonModelJobOutput
+func (val *TritonModelJobOutput) Defaults() *TritonModelJobOutput {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "ReadWriteMount"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+type TritonModelJobOutputResponse struct {
+	// Description for the output.
+	Description *string `pulumi:"description"`
+	// Enum to determine the Job Output Type.
+	// Expected value is 'triton_model'.
+	JobOutputType string `pulumi:"jobOutputType"`
+	// Output Asset Delivery Mode.
+	Mode *string `pulumi:"mode"`
+	// Output Asset URI.
+	Uri *string `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for TritonModelJobOutputResponse
+func (val *TritonModelJobOutputResponse) Defaults() *TritonModelJobOutputResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "ReadWriteMount"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+// Defines an early termination policy that cancels a given percentage of runs at each evaluation interval.
+type TruncationSelectionPolicy struct {
+	// Number of intervals by which to delay the first evaluation.
+	DelayEvaluation *int `pulumi:"delayEvaluation"`
+	// Interval (number of runs) between policy evaluations.
+	EvaluationInterval *int `pulumi:"evaluationInterval"`
+	// Expected value is 'TruncationSelection'.
+	PolicyType string `pulumi:"policyType"`
+	// The percentage of runs to cancel at each evaluation interval.
+	TruncationPercentage *int `pulumi:"truncationPercentage"`
+}
+
+// Defaults sets the appropriate defaults for TruncationSelectionPolicy
+func (val *TruncationSelectionPolicy) Defaults() *TruncationSelectionPolicy {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DelayEvaluation == nil {
+		delayEvaluation_ := 0
+		tmp.DelayEvaluation = &delayEvaluation_
+	}
+	if tmp.EvaluationInterval == nil {
+		evaluationInterval_ := 0
+		tmp.EvaluationInterval = &evaluationInterval_
+	}
+	if tmp.TruncationPercentage == nil {
+		truncationPercentage_ := 0
+		tmp.TruncationPercentage = &truncationPercentage_
+	}
+	return &tmp
+}
+
+// Defines an early termination policy that cancels a given percentage of runs at each evaluation interval.
+type TruncationSelectionPolicyResponse struct {
+	// Number of intervals by which to delay the first evaluation.
+	DelayEvaluation *int `pulumi:"delayEvaluation"`
+	// Interval (number of runs) between policy evaluations.
+	EvaluationInterval *int `pulumi:"evaluationInterval"`
+	// Expected value is 'TruncationSelection'.
+	PolicyType string `pulumi:"policyType"`
+	// The percentage of runs to cancel at each evaluation interval.
+	TruncationPercentage *int `pulumi:"truncationPercentage"`
+}
+
+// Defaults sets the appropriate defaults for TruncationSelectionPolicyResponse
+func (val *TruncationSelectionPolicyResponse) Defaults() *TruncationSelectionPolicyResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DelayEvaluation == nil {
+		delayEvaluation_ := 0
+		tmp.DelayEvaluation = &delayEvaluation_
+	}
+	if tmp.EvaluationInterval == nil {
+		evaluationInterval_ := 0
+		tmp.EvaluationInterval = &evaluationInterval_
+	}
+	if tmp.TruncationPercentage == nil {
+		truncationPercentage_ := 0
+		tmp.TruncationPercentage = &truncationPercentage_
+	}
+	return &tmp
+}
+
+// uri-file data version entity
+type UriFileDataVersion struct {
+	// Enum to determine the type of data.
+	// Expected value is 'uri_file'.
+	DataType string `pulumi:"dataType"`
+	// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
+	DataUri string `pulumi:"dataUri"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// If the name version are system generated (anonymous registration).
+	IsAnonymous *bool `pulumi:"isAnonymous"`
+	// Is the asset archived?
+	IsArchived *bool `pulumi:"isArchived"`
+	// The asset property dictionary.
+	Properties map[string]string `pulumi:"properties"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for UriFileDataVersion
+func (val *UriFileDataVersion) Defaults() *UriFileDataVersion {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsAnonymous == nil {
+		isAnonymous_ := false
+		tmp.IsAnonymous = &isAnonymous_
+	}
+	if tmp.IsArchived == nil {
+		isArchived_ := false
+		tmp.IsArchived = &isArchived_
+	}
+	return &tmp
+}
+
+// uri-file data version entity
+type UriFileDataVersionResponse struct {
+	// Enum to determine the type of data.
+	// Expected value is 'uri_file'.
+	DataType string `pulumi:"dataType"`
+	// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
+	DataUri string `pulumi:"dataUri"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// If the name version are system generated (anonymous registration).
+	IsAnonymous *bool `pulumi:"isAnonymous"`
+	// Is the asset archived?
+	IsArchived *bool `pulumi:"isArchived"`
+	// The asset property dictionary.
+	Properties map[string]string `pulumi:"properties"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for UriFileDataVersionResponse
+func (val *UriFileDataVersionResponse) Defaults() *UriFileDataVersionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsAnonymous == nil {
+		isAnonymous_ := false
+		tmp.IsAnonymous = &isAnonymous_
+	}
+	if tmp.IsArchived == nil {
+		isArchived_ := false
+		tmp.IsArchived = &isArchived_
+	}
+	return &tmp
+}
+
+type UriFileJobInput struct {
+	// Description for the input.
+	Description *string `pulumi:"description"`
+	// Enum to determine the Job Input Type.
+	// Expected value is 'uri_file'.
+	JobInputType string `pulumi:"jobInputType"`
+	// Input Asset Delivery Mode.
+	Mode *string `pulumi:"mode"`
+	// [Required] Input Asset URI.
+	Uri string `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for UriFileJobInput
+func (val *UriFileJobInput) Defaults() *UriFileJobInput {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "ReadOnlyMount"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+type UriFileJobInputResponse struct {
+	// Description for the input.
+	Description *string `pulumi:"description"`
+	// Enum to determine the Job Input Type.
+	// Expected value is 'uri_file'.
+	JobInputType string `pulumi:"jobInputType"`
+	// Input Asset Delivery Mode.
+	Mode *string `pulumi:"mode"`
+	// [Required] Input Asset URI.
+	Uri string `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for UriFileJobInputResponse
+func (val *UriFileJobInputResponse) Defaults() *UriFileJobInputResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "ReadOnlyMount"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+type UriFileJobOutput struct {
+	// Description for the output.
+	Description *string `pulumi:"description"`
+	// Enum to determine the Job Output Type.
+	// Expected value is 'uri_file'.
+	JobOutputType string `pulumi:"jobOutputType"`
+	// Output Asset Delivery Mode.
+	Mode *string `pulumi:"mode"`
+	// Output Asset URI.
+	Uri *string `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for UriFileJobOutput
+func (val *UriFileJobOutput) Defaults() *UriFileJobOutput {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "ReadWriteMount"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+type UriFileJobOutputResponse struct {
+	// Description for the output.
+	Description *string `pulumi:"description"`
+	// Enum to determine the Job Output Type.
+	// Expected value is 'uri_file'.
+	JobOutputType string `pulumi:"jobOutputType"`
+	// Output Asset Delivery Mode.
+	Mode *string `pulumi:"mode"`
+	// Output Asset URI.
+	Uri *string `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for UriFileJobOutputResponse
+func (val *UriFileJobOutputResponse) Defaults() *UriFileJobOutputResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "ReadWriteMount"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+// uri-folder data version entity
+type UriFolderDataVersion struct {
+	// Enum to determine the type of data.
+	// Expected value is 'uri_folder'.
+	DataType string `pulumi:"dataType"`
+	// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
+	DataUri string `pulumi:"dataUri"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// If the name version are system generated (anonymous registration).
+	IsAnonymous *bool `pulumi:"isAnonymous"`
+	// Is the asset archived?
+	IsArchived *bool `pulumi:"isArchived"`
+	// The asset property dictionary.
+	Properties map[string]string `pulumi:"properties"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for UriFolderDataVersion
+func (val *UriFolderDataVersion) Defaults() *UriFolderDataVersion {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsAnonymous == nil {
+		isAnonymous_ := false
+		tmp.IsAnonymous = &isAnonymous_
+	}
+	if tmp.IsArchived == nil {
+		isArchived_ := false
+		tmp.IsArchived = &isArchived_
+	}
+	return &tmp
+}
+
+// uri-folder data version entity
+type UriFolderDataVersionResponse struct {
+	// Enum to determine the type of data.
+	// Expected value is 'uri_folder'.
+	DataType string `pulumi:"dataType"`
+	// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
+	DataUri string `pulumi:"dataUri"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// If the name version are system generated (anonymous registration).
+	IsAnonymous *bool `pulumi:"isAnonymous"`
+	// Is the asset archived?
+	IsArchived *bool `pulumi:"isArchived"`
+	// The asset property dictionary.
+	Properties map[string]string `pulumi:"properties"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for UriFolderDataVersionResponse
+func (val *UriFolderDataVersionResponse) Defaults() *UriFolderDataVersionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsAnonymous == nil {
+		isAnonymous_ := false
+		tmp.IsAnonymous = &isAnonymous_
+	}
+	if tmp.IsArchived == nil {
+		isArchived_ := false
+		tmp.IsArchived = &isArchived_
+	}
+	return &tmp
+}
+
+type UriFolderJobInput struct {
+	// Description for the input.
+	Description *string `pulumi:"description"`
+	// Enum to determine the Job Input Type.
+	// Expected value is 'uri_folder'.
+	JobInputType string `pulumi:"jobInputType"`
+	// Input Asset Delivery Mode.
+	Mode *string `pulumi:"mode"`
+	// [Required] Input Asset URI.
+	Uri string `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for UriFolderJobInput
+func (val *UriFolderJobInput) Defaults() *UriFolderJobInput {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "ReadOnlyMount"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+type UriFolderJobInputResponse struct {
+	// Description for the input.
+	Description *string `pulumi:"description"`
+	// Enum to determine the Job Input Type.
+	// Expected value is 'uri_folder'.
+	JobInputType string `pulumi:"jobInputType"`
+	// Input Asset Delivery Mode.
+	Mode *string `pulumi:"mode"`
+	// [Required] Input Asset URI.
+	Uri string `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for UriFolderJobInputResponse
+func (val *UriFolderJobInputResponse) Defaults() *UriFolderJobInputResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "ReadOnlyMount"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+type UriFolderJobOutput struct {
+	// Description for the output.
+	Description *string `pulumi:"description"`
+	// Enum to determine the Job Output Type.
+	// Expected value is 'uri_folder'.
+	JobOutputType string `pulumi:"jobOutputType"`
+	// Output Asset Delivery Mode.
+	Mode *string `pulumi:"mode"`
+	// Output Asset URI.
+	Uri *string `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for UriFolderJobOutput
+func (val *UriFolderJobOutput) Defaults() *UriFolderJobOutput {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "ReadWriteMount"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+type UriFolderJobOutputResponse struct {
+	// Description for the output.
+	Description *string `pulumi:"description"`
+	// Enum to determine the Job Output Type.
+	// Expected value is 'uri_folder'.
+	JobOutputType string `pulumi:"jobOutputType"`
+	// Output Asset Delivery Mode.
+	Mode *string `pulumi:"mode"`
+	// Output Asset URI.
+	Uri *string `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for UriFolderJobOutputResponse
+func (val *UriFolderJobOutputResponse) Defaults() *UriFolderJobOutputResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "ReadWriteMount"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
 // Settings for user account that gets created on each on the nodes of a compute.
 type UserAccountCredentials struct {
 	// Name of the administrator user account which can be used to SSH to nodes.
@@ -870,6 +1531,134 @@ type VirtualMachineSchemaResponseProperties struct {
 	VirtualMachineSize *string `pulumi:"virtualMachineSize"`
 }
 
+// Describes the properties of a VM size.
+type VirtualMachineSizeResponse struct {
+	// The estimated price information for using a VM.
+	EstimatedVMPrices *EstimatedVMPricesResponse `pulumi:"estimatedVMPrices"`
+	// The family name of the virtual machine size.
+	Family string `pulumi:"family"`
+	// The number of gPUs supported by the virtual machine size.
+	Gpus int `pulumi:"gpus"`
+	// Specifies if the virtual machine size supports low priority VMs.
+	LowPriorityCapable bool `pulumi:"lowPriorityCapable"`
+	// The resource volume size, in MB, allowed by the virtual machine size.
+	MaxResourceVolumeMB int `pulumi:"maxResourceVolumeMB"`
+	// The amount of memory, in GB, supported by the virtual machine size.
+	MemoryGB float64 `pulumi:"memoryGB"`
+	// The name of the virtual machine size.
+	Name string `pulumi:"name"`
+	// The OS VHD disk size, in MB, allowed by the virtual machine size.
+	OsVhdSizeMB int `pulumi:"osVhdSizeMB"`
+	// Specifies if the virtual machine size supports premium IO.
+	PremiumIO bool `pulumi:"premiumIO"`
+	// Specifies the compute types supported by the virtual machine size.
+	SupportedComputeTypes []string `pulumi:"supportedComputeTypes"`
+	// The number of vCPUs supported by the virtual machine size.
+	VCPUs int `pulumi:"vCPUs"`
+}
+
+// Describes the properties of a VM size.
+type VirtualMachineSizeResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSizeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSizeResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineSizeResponseOutput) ToVirtualMachineSizeResponseOutput() VirtualMachineSizeResponseOutput {
+	return o
+}
+
+func (o VirtualMachineSizeResponseOutput) ToVirtualMachineSizeResponseOutputWithContext(ctx context.Context) VirtualMachineSizeResponseOutput {
+	return o
+}
+
+func (o VirtualMachineSizeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineSizeResponse] {
+	return pulumix.Output[VirtualMachineSizeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The estimated price information for using a VM.
+func (o VirtualMachineSizeResponseOutput) EstimatedVMPrices() EstimatedVMPricesResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineSizeResponse) *EstimatedVMPricesResponse { return v.EstimatedVMPrices }).(EstimatedVMPricesResponsePtrOutput)
+}
+
+// The family name of the virtual machine size.
+func (o VirtualMachineSizeResponseOutput) Family() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineSizeResponse) string { return v.Family }).(pulumi.StringOutput)
+}
+
+// The number of gPUs supported by the virtual machine size.
+func (o VirtualMachineSizeResponseOutput) Gpus() pulumi.IntOutput {
+	return o.ApplyT(func(v VirtualMachineSizeResponse) int { return v.Gpus }).(pulumi.IntOutput)
+}
+
+// Specifies if the virtual machine size supports low priority VMs.
+func (o VirtualMachineSizeResponseOutput) LowPriorityCapable() pulumi.BoolOutput {
+	return o.ApplyT(func(v VirtualMachineSizeResponse) bool { return v.LowPriorityCapable }).(pulumi.BoolOutput)
+}
+
+// The resource volume size, in MB, allowed by the virtual machine size.
+func (o VirtualMachineSizeResponseOutput) MaxResourceVolumeMB() pulumi.IntOutput {
+	return o.ApplyT(func(v VirtualMachineSizeResponse) int { return v.MaxResourceVolumeMB }).(pulumi.IntOutput)
+}
+
+// The amount of memory, in GB, supported by the virtual machine size.
+func (o VirtualMachineSizeResponseOutput) MemoryGB() pulumi.Float64Output {
+	return o.ApplyT(func(v VirtualMachineSizeResponse) float64 { return v.MemoryGB }).(pulumi.Float64Output)
+}
+
+// The name of the virtual machine size.
+func (o VirtualMachineSizeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineSizeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The OS VHD disk size, in MB, allowed by the virtual machine size.
+func (o VirtualMachineSizeResponseOutput) OsVhdSizeMB() pulumi.IntOutput {
+	return o.ApplyT(func(v VirtualMachineSizeResponse) int { return v.OsVhdSizeMB }).(pulumi.IntOutput)
+}
+
+// Specifies if the virtual machine size supports premium IO.
+func (o VirtualMachineSizeResponseOutput) PremiumIO() pulumi.BoolOutput {
+	return o.ApplyT(func(v VirtualMachineSizeResponse) bool { return v.PremiumIO }).(pulumi.BoolOutput)
+}
+
+// Specifies the compute types supported by the virtual machine size.
+func (o VirtualMachineSizeResponseOutput) SupportedComputeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualMachineSizeResponse) []string { return v.SupportedComputeTypes }).(pulumi.StringArrayOutput)
+}
+
+// The number of vCPUs supported by the virtual machine size.
+func (o VirtualMachineSizeResponseOutput) VCPUs() pulumi.IntOutput {
+	return o.ApplyT(func(v VirtualMachineSizeResponse) int { return v.VCPUs }).(pulumi.IntOutput)
+}
+
+type VirtualMachineSizeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSizeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineSizeResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineSizeResponseArrayOutput) ToVirtualMachineSizeResponseArrayOutput() VirtualMachineSizeResponseArrayOutput {
+	return o
+}
+
+func (o VirtualMachineSizeResponseArrayOutput) ToVirtualMachineSizeResponseArrayOutputWithContext(ctx context.Context) VirtualMachineSizeResponseArrayOutput {
+	return o
+}
+
+func (o VirtualMachineSizeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineSizeResponse] {
+	return pulumix.Output[[]VirtualMachineSizeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualMachineSizeResponseArrayOutput) Index(i pulumi.IntInput) VirtualMachineSizeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineSizeResponse {
+		return vs[0].([]VirtualMachineSizeResponse)[vs[1].(int)]
+	}).(VirtualMachineSizeResponseOutput)
+}
+
 // Admin credentials for virtual machine
 type VirtualMachineSshCredentials struct {
 	// Password of admin account
@@ -1037,4 +1826,6 @@ func init() {
 	pulumi.RegisterOutputType(UserCreatedStorageAccountResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserInfoResponseOutput{})
 	pulumi.RegisterOutputType(UserInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSizeResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSizeResponseArrayOutput{})
 }

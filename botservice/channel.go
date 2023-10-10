@@ -73,6 +73,9 @@ func NewChannel(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:botservice/v20220915:Channel"),
 		},
+		{
+			Type: pulumi.String("azure-native:botservice/v20230915preview:Channel"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

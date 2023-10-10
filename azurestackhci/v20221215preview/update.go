@@ -102,6 +102,9 @@ func NewUpdate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230601:Update"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230801:Update"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

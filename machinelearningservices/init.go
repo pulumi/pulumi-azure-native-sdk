@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BatchDeployment{}
 	case "azure-native:machinelearningservices:BatchEndpoint":
 		r = &BatchEndpoint{}
+	case "azure-native:machinelearningservices:CapacityReservationGroup":
+		r = &CapacityReservationGroup{}
 	case "azure-native:machinelearningservices:CodeContainer":
 		r = &CodeContainer{}
 	case "azure-native:machinelearningservices:CodeVersion":
@@ -55,6 +57,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FeaturestoreEntityContainerEntity{}
 	case "azure-native:machinelearningservices:FeaturestoreEntityVersion":
 		r = &FeaturestoreEntityVersion{}
+	case "azure-native:machinelearningservices:InferenceEndpoint":
+		r = &InferenceEndpoint{}
+	case "azure-native:machinelearningservices:InferenceGroup":
+		r = &InferenceGroup{}
+	case "azure-native:machinelearningservices:InferencePool":
+		r = &InferencePool{}
 	case "azure-native:machinelearningservices:Job":
 		r = &Job{}
 	case "azure-native:machinelearningservices:LabelingJob":
@@ -103,6 +111,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegistryModelVersion{}
 	case "azure-native:machinelearningservices:Schedule":
 		r = &Schedule{}
+	case "azure-native:machinelearningservices:ServerlessEndpoint":
+		r = &ServerlessEndpoint{}
 	case "azure-native:machinelearningservices:Workspace":
 		r = &Workspace{}
 	case "azure-native:machinelearningservices:WorkspaceConnection":

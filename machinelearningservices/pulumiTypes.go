@@ -391,6 +391,131 @@ func (o AcrDetailsResponseArrayOutput) Index(i pulumi.IntInput) AcrDetailsRespon
 	}).(AcrDetailsResponseOutput)
 }
 
+type ActualCapacityInfoResponse struct {
+	// Gets or sets the total number of instances for the group.
+	Allocated *int `pulumi:"allocated"`
+	// Gets or sets the number of instances which failed to successfully complete assignment.
+	AssignmentFailed *int `pulumi:"assignmentFailed"`
+	// Gets or sets the number of instances which successfully completed assignment.
+	AssignmentSuccess *int `pulumi:"assignmentSuccess"`
+}
+
+// Defaults sets the appropriate defaults for ActualCapacityInfoResponse
+func (val *ActualCapacityInfoResponse) Defaults() *ActualCapacityInfoResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Allocated == nil {
+		allocated_ := 0
+		tmp.Allocated = &allocated_
+	}
+	if tmp.AssignmentFailed == nil {
+		assignmentFailed_ := 0
+		tmp.AssignmentFailed = &assignmentFailed_
+	}
+	if tmp.AssignmentSuccess == nil {
+		assignmentSuccess_ := 0
+		tmp.AssignmentSuccess = &assignmentSuccess_
+	}
+	return &tmp
+}
+
+type ActualCapacityInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ActualCapacityInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActualCapacityInfoResponse)(nil)).Elem()
+}
+
+func (o ActualCapacityInfoResponseOutput) ToActualCapacityInfoResponseOutput() ActualCapacityInfoResponseOutput {
+	return o
+}
+
+func (o ActualCapacityInfoResponseOutput) ToActualCapacityInfoResponseOutputWithContext(ctx context.Context) ActualCapacityInfoResponseOutput {
+	return o
+}
+
+func (o ActualCapacityInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActualCapacityInfoResponse] {
+	return pulumix.Output[ActualCapacityInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Gets or sets the total number of instances for the group.
+func (o ActualCapacityInfoResponseOutput) Allocated() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActualCapacityInfoResponse) *int { return v.Allocated }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the number of instances which failed to successfully complete assignment.
+func (o ActualCapacityInfoResponseOutput) AssignmentFailed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActualCapacityInfoResponse) *int { return v.AssignmentFailed }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the number of instances which successfully completed assignment.
+func (o ActualCapacityInfoResponseOutput) AssignmentSuccess() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActualCapacityInfoResponse) *int { return v.AssignmentSuccess }).(pulumi.IntPtrOutput)
+}
+
+type ActualCapacityInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ActualCapacityInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActualCapacityInfoResponse)(nil)).Elem()
+}
+
+func (o ActualCapacityInfoResponsePtrOutput) ToActualCapacityInfoResponsePtrOutput() ActualCapacityInfoResponsePtrOutput {
+	return o
+}
+
+func (o ActualCapacityInfoResponsePtrOutput) ToActualCapacityInfoResponsePtrOutputWithContext(ctx context.Context) ActualCapacityInfoResponsePtrOutput {
+	return o
+}
+
+func (o ActualCapacityInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActualCapacityInfoResponse] {
+	return pulumix.Output[*ActualCapacityInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ActualCapacityInfoResponsePtrOutput) Elem() ActualCapacityInfoResponseOutput {
+	return o.ApplyT(func(v *ActualCapacityInfoResponse) ActualCapacityInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ActualCapacityInfoResponse
+		return ret
+	}).(ActualCapacityInfoResponseOutput)
+}
+
+// Gets or sets the total number of instances for the group.
+func (o ActualCapacityInfoResponsePtrOutput) Allocated() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ActualCapacityInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Allocated
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the number of instances which failed to successfully complete assignment.
+func (o ActualCapacityInfoResponsePtrOutput) AssignmentFailed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ActualCapacityInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AssignmentFailed
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the number of instances which successfully completed assignment.
+func (o ActualCapacityInfoResponsePtrOutput) AssignmentSuccess() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ActualCapacityInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AssignmentSuccess
+	}).(pulumi.IntPtrOutput)
+}
+
 // Advance configuration for AKS networking
 type AksNetworkingConfiguration struct {
 	// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
@@ -5577,6 +5702,116 @@ func (o BuildContextResponsePtrOutput) DockerfilePath() pulumi.StringPtrOutput {
 		}
 		return v.DockerfilePath
 	}).(pulumi.StringPtrOutput)
+}
+
+type CapacityReservationGroupType struct {
+	// Offer used by this capacity reservation group.
+	Offer *ServerlessOffer `pulumi:"offer"`
+	// [Required] Specifies the amount of capacity to reserve.
+	ReservedCapacity int `pulumi:"reservedCapacity"`
+}
+
+// CapacityReservationGroupTypeInput is an input type that accepts CapacityReservationGroupTypeArgs and CapacityReservationGroupTypeOutput values.
+// You can construct a concrete instance of `CapacityReservationGroupTypeInput` via:
+//
+//	CapacityReservationGroupTypeArgs{...}
+type CapacityReservationGroupTypeInput interface {
+	pulumi.Input
+
+	ToCapacityReservationGroupTypeOutput() CapacityReservationGroupTypeOutput
+	ToCapacityReservationGroupTypeOutputWithContext(context.Context) CapacityReservationGroupTypeOutput
+}
+
+type CapacityReservationGroupTypeArgs struct {
+	// Offer used by this capacity reservation group.
+	Offer ServerlessOfferPtrInput `pulumi:"offer"`
+	// [Required] Specifies the amount of capacity to reserve.
+	ReservedCapacity pulumi.IntInput `pulumi:"reservedCapacity"`
+}
+
+func (CapacityReservationGroupTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityReservationGroupType)(nil)).Elem()
+}
+
+func (i CapacityReservationGroupTypeArgs) ToCapacityReservationGroupTypeOutput() CapacityReservationGroupTypeOutput {
+	return i.ToCapacityReservationGroupTypeOutputWithContext(context.Background())
+}
+
+func (i CapacityReservationGroupTypeArgs) ToCapacityReservationGroupTypeOutputWithContext(ctx context.Context) CapacityReservationGroupTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityReservationGroupTypeOutput)
+}
+
+func (i CapacityReservationGroupTypeArgs) ToOutput(ctx context.Context) pulumix.Output[CapacityReservationGroupType] {
+	return pulumix.Output[CapacityReservationGroupType]{
+		OutputState: i.ToCapacityReservationGroupTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CapacityReservationGroupTypeOutput struct{ *pulumi.OutputState }
+
+func (CapacityReservationGroupTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityReservationGroupType)(nil)).Elem()
+}
+
+func (o CapacityReservationGroupTypeOutput) ToCapacityReservationGroupTypeOutput() CapacityReservationGroupTypeOutput {
+	return o
+}
+
+func (o CapacityReservationGroupTypeOutput) ToCapacityReservationGroupTypeOutputWithContext(ctx context.Context) CapacityReservationGroupTypeOutput {
+	return o
+}
+
+func (o CapacityReservationGroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CapacityReservationGroupType] {
+	return pulumix.Output[CapacityReservationGroupType]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Offer used by this capacity reservation group.
+func (o CapacityReservationGroupTypeOutput) Offer() ServerlessOfferPtrOutput {
+	return o.ApplyT(func(v CapacityReservationGroupType) *ServerlessOffer { return v.Offer }).(ServerlessOfferPtrOutput)
+}
+
+// [Required] Specifies the amount of capacity to reserve.
+func (o CapacityReservationGroupTypeOutput) ReservedCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v CapacityReservationGroupType) int { return v.ReservedCapacity }).(pulumi.IntOutput)
+}
+
+type CapacityReservationGroupResponse struct {
+	// Offer used by this capacity reservation group.
+	Offer *ServerlessOfferResponse `pulumi:"offer"`
+	// [Required] Specifies the amount of capacity to reserve.
+	ReservedCapacity int `pulumi:"reservedCapacity"`
+}
+
+type CapacityReservationGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (CapacityReservationGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityReservationGroupResponse)(nil)).Elem()
+}
+
+func (o CapacityReservationGroupResponseOutput) ToCapacityReservationGroupResponseOutput() CapacityReservationGroupResponseOutput {
+	return o
+}
+
+func (o CapacityReservationGroupResponseOutput) ToCapacityReservationGroupResponseOutputWithContext(ctx context.Context) CapacityReservationGroupResponseOutput {
+	return o
+}
+
+func (o CapacityReservationGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CapacityReservationGroupResponse] {
+	return pulumix.Output[CapacityReservationGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Offer used by this capacity reservation group.
+func (o CapacityReservationGroupResponseOutput) Offer() ServerlessOfferResponsePtrOutput {
+	return o.ApplyT(func(v CapacityReservationGroupResponse) *ServerlessOfferResponse { return v.Offer }).(ServerlessOfferResponsePtrOutput)
+}
+
+// [Required] Specifies the amount of capacity to reserve.
+func (o CapacityReservationGroupResponseOutput) ReservedCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v CapacityReservationGroupResponse) int { return v.ReservedCapacity }).(pulumi.IntOutput)
 }
 
 // Certificate datastore credentials configuration.
@@ -13119,6 +13354,184 @@ type ErrorResponseResponse struct {
 	Error *ErrorDetailResponse `pulumi:"error"`
 }
 
+// The estimated price info for using a VM of a particular OS type, tier, etc.
+type EstimatedVMPriceResponse struct {
+	// Operating system type used by the VM.
+	OsType string `pulumi:"osType"`
+	// The price charged for using the VM.
+	RetailPrice float64 `pulumi:"retailPrice"`
+	// The type of the VM.
+	VmTier string `pulumi:"vmTier"`
+}
+
+// The estimated price info for using a VM of a particular OS type, tier, etc.
+type EstimatedVMPriceResponseOutput struct{ *pulumi.OutputState }
+
+func (EstimatedVMPriceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EstimatedVMPriceResponse)(nil)).Elem()
+}
+
+func (o EstimatedVMPriceResponseOutput) ToEstimatedVMPriceResponseOutput() EstimatedVMPriceResponseOutput {
+	return o
+}
+
+func (o EstimatedVMPriceResponseOutput) ToEstimatedVMPriceResponseOutputWithContext(ctx context.Context) EstimatedVMPriceResponseOutput {
+	return o
+}
+
+func (o EstimatedVMPriceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EstimatedVMPriceResponse] {
+	return pulumix.Output[EstimatedVMPriceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Operating system type used by the VM.
+func (o EstimatedVMPriceResponseOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v EstimatedVMPriceResponse) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+// The price charged for using the VM.
+func (o EstimatedVMPriceResponseOutput) RetailPrice() pulumi.Float64Output {
+	return o.ApplyT(func(v EstimatedVMPriceResponse) float64 { return v.RetailPrice }).(pulumi.Float64Output)
+}
+
+// The type of the VM.
+func (o EstimatedVMPriceResponseOutput) VmTier() pulumi.StringOutput {
+	return o.ApplyT(func(v EstimatedVMPriceResponse) string { return v.VmTier }).(pulumi.StringOutput)
+}
+
+type EstimatedVMPriceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EstimatedVMPriceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EstimatedVMPriceResponse)(nil)).Elem()
+}
+
+func (o EstimatedVMPriceResponseArrayOutput) ToEstimatedVMPriceResponseArrayOutput() EstimatedVMPriceResponseArrayOutput {
+	return o
+}
+
+func (o EstimatedVMPriceResponseArrayOutput) ToEstimatedVMPriceResponseArrayOutputWithContext(ctx context.Context) EstimatedVMPriceResponseArrayOutput {
+	return o
+}
+
+func (o EstimatedVMPriceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EstimatedVMPriceResponse] {
+	return pulumix.Output[[]EstimatedVMPriceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EstimatedVMPriceResponseArrayOutput) Index(i pulumi.IntInput) EstimatedVMPriceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EstimatedVMPriceResponse {
+		return vs[0].([]EstimatedVMPriceResponse)[vs[1].(int)]
+	}).(EstimatedVMPriceResponseOutput)
+}
+
+// The estimated price info for using a VM.
+type EstimatedVMPricesResponse struct {
+	// Three lettered code specifying the currency of the VM price. Example: USD
+	BillingCurrency string `pulumi:"billingCurrency"`
+	// The unit of time measurement for the specified VM price. Example: OneHour
+	UnitOfMeasure string `pulumi:"unitOfMeasure"`
+	// The list of estimated prices for using a VM of a particular OS type, tier, etc.
+	Values []EstimatedVMPriceResponse `pulumi:"values"`
+}
+
+// The estimated price info for using a VM.
+type EstimatedVMPricesResponseOutput struct{ *pulumi.OutputState }
+
+func (EstimatedVMPricesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EstimatedVMPricesResponse)(nil)).Elem()
+}
+
+func (o EstimatedVMPricesResponseOutput) ToEstimatedVMPricesResponseOutput() EstimatedVMPricesResponseOutput {
+	return o
+}
+
+func (o EstimatedVMPricesResponseOutput) ToEstimatedVMPricesResponseOutputWithContext(ctx context.Context) EstimatedVMPricesResponseOutput {
+	return o
+}
+
+func (o EstimatedVMPricesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EstimatedVMPricesResponse] {
+	return pulumix.Output[EstimatedVMPricesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Three lettered code specifying the currency of the VM price. Example: USD
+func (o EstimatedVMPricesResponseOutput) BillingCurrency() pulumi.StringOutput {
+	return o.ApplyT(func(v EstimatedVMPricesResponse) string { return v.BillingCurrency }).(pulumi.StringOutput)
+}
+
+// The unit of time measurement for the specified VM price. Example: OneHour
+func (o EstimatedVMPricesResponseOutput) UnitOfMeasure() pulumi.StringOutput {
+	return o.ApplyT(func(v EstimatedVMPricesResponse) string { return v.UnitOfMeasure }).(pulumi.StringOutput)
+}
+
+// The list of estimated prices for using a VM of a particular OS type, tier, etc.
+func (o EstimatedVMPricesResponseOutput) Values() EstimatedVMPriceResponseArrayOutput {
+	return o.ApplyT(func(v EstimatedVMPricesResponse) []EstimatedVMPriceResponse { return v.Values }).(EstimatedVMPriceResponseArrayOutput)
+}
+
+type EstimatedVMPricesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EstimatedVMPricesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EstimatedVMPricesResponse)(nil)).Elem()
+}
+
+func (o EstimatedVMPricesResponsePtrOutput) ToEstimatedVMPricesResponsePtrOutput() EstimatedVMPricesResponsePtrOutput {
+	return o
+}
+
+func (o EstimatedVMPricesResponsePtrOutput) ToEstimatedVMPricesResponsePtrOutputWithContext(ctx context.Context) EstimatedVMPricesResponsePtrOutput {
+	return o
+}
+
+func (o EstimatedVMPricesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EstimatedVMPricesResponse] {
+	return pulumix.Output[*EstimatedVMPricesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EstimatedVMPricesResponsePtrOutput) Elem() EstimatedVMPricesResponseOutput {
+	return o.ApplyT(func(v *EstimatedVMPricesResponse) EstimatedVMPricesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EstimatedVMPricesResponse
+		return ret
+	}).(EstimatedVMPricesResponseOutput)
+}
+
+// Three lettered code specifying the currency of the VM price. Example: USD
+func (o EstimatedVMPricesResponsePtrOutput) BillingCurrency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EstimatedVMPricesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BillingCurrency
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unit of time measurement for the specified VM price. Example: OneHour
+func (o EstimatedVMPricesResponsePtrOutput) UnitOfMeasure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EstimatedVMPricesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UnitOfMeasure
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of estimated prices for using a VM of a particular OS type, tier, etc.
+func (o EstimatedVMPricesResponsePtrOutput) Values() EstimatedVMPriceResponseArrayOutput {
+	return o.ApplyT(func(v *EstimatedVMPricesResponse) []EstimatedVMPriceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(EstimatedVMPriceResponseArrayOutput)
+}
+
 // Dto object representing feature
 type FeatureResponse struct {
 	// Specifies type
@@ -17984,6 +18397,627 @@ func (o InferenceContainerPropertiesResponsePtrOutput) ScoringRoute() RouteRespo
 		}
 		return v.ScoringRoute
 	}).(RouteResponsePtrOutput)
+}
+
+// InferenceEndpoint configuration
+type InferenceEndpointType struct {
+	// [Required] Authentication mode for the endpoint.
+	AuthMode string `pulumi:"authMode"`
+	// Description of the resource.
+	Description *string `pulumi:"description"`
+	// [Required] Group within the same pool with which this endpoint needs to be associated with.
+	GroupId string `pulumi:"groupId"`
+	// Property dictionary. Properties can be added, but not removed or altered.
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// InferenceEndpointTypeInput is an input type that accepts InferenceEndpointTypeArgs and InferenceEndpointTypeOutput values.
+// You can construct a concrete instance of `InferenceEndpointTypeInput` via:
+//
+//	InferenceEndpointTypeArgs{...}
+type InferenceEndpointTypeInput interface {
+	pulumi.Input
+
+	ToInferenceEndpointTypeOutput() InferenceEndpointTypeOutput
+	ToInferenceEndpointTypeOutputWithContext(context.Context) InferenceEndpointTypeOutput
+}
+
+// InferenceEndpoint configuration
+type InferenceEndpointTypeArgs struct {
+	// [Required] Authentication mode for the endpoint.
+	AuthMode pulumi.StringInput `pulumi:"authMode"`
+	// Description of the resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// [Required] Group within the same pool with which this endpoint needs to be associated with.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// Property dictionary. Properties can be added, but not removed or altered.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (InferenceEndpointTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InferenceEndpointType)(nil)).Elem()
+}
+
+func (i InferenceEndpointTypeArgs) ToInferenceEndpointTypeOutput() InferenceEndpointTypeOutput {
+	return i.ToInferenceEndpointTypeOutputWithContext(context.Background())
+}
+
+func (i InferenceEndpointTypeArgs) ToInferenceEndpointTypeOutputWithContext(ctx context.Context) InferenceEndpointTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InferenceEndpointTypeOutput)
+}
+
+func (i InferenceEndpointTypeArgs) ToOutput(ctx context.Context) pulumix.Output[InferenceEndpointType] {
+	return pulumix.Output[InferenceEndpointType]{
+		OutputState: i.ToInferenceEndpointTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
+// InferenceEndpoint configuration
+type InferenceEndpointTypeOutput struct{ *pulumi.OutputState }
+
+func (InferenceEndpointTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InferenceEndpointType)(nil)).Elem()
+}
+
+func (o InferenceEndpointTypeOutput) ToInferenceEndpointTypeOutput() InferenceEndpointTypeOutput {
+	return o
+}
+
+func (o InferenceEndpointTypeOutput) ToInferenceEndpointTypeOutputWithContext(ctx context.Context) InferenceEndpointTypeOutput {
+	return o
+}
+
+func (o InferenceEndpointTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InferenceEndpointType] {
+	return pulumix.Output[InferenceEndpointType]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Required] Authentication mode for the endpoint.
+func (o InferenceEndpointTypeOutput) AuthMode() pulumi.StringOutput {
+	return o.ApplyT(func(v InferenceEndpointType) string { return v.AuthMode }).(pulumi.StringOutput)
+}
+
+// Description of the resource.
+func (o InferenceEndpointTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InferenceEndpointType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Group within the same pool with which this endpoint needs to be associated with.
+func (o InferenceEndpointTypeOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v InferenceEndpointType) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// Property dictionary. Properties can be added, but not removed or altered.
+func (o InferenceEndpointTypeOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InferenceEndpointType) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// InferenceEndpoint configuration
+type InferenceEndpointResponse struct {
+	// [Required] Authentication mode for the endpoint.
+	AuthMode string `pulumi:"authMode"`
+	// Description of the resource.
+	Description *string `pulumi:"description"`
+	// Endpoint URI for the inference endpoint.
+	EndpointUri string `pulumi:"endpointUri"`
+	// [Required] Group within the same pool with which this endpoint needs to be associated with.
+	GroupId string `pulumi:"groupId"`
+	// Property dictionary. Properties can be added, but not removed or altered.
+	Properties map[string]string `pulumi:"properties"`
+	// Provisioning state for the endpoint.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// InferenceEndpoint configuration
+type InferenceEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (InferenceEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InferenceEndpointResponse)(nil)).Elem()
+}
+
+func (o InferenceEndpointResponseOutput) ToInferenceEndpointResponseOutput() InferenceEndpointResponseOutput {
+	return o
+}
+
+func (o InferenceEndpointResponseOutput) ToInferenceEndpointResponseOutputWithContext(ctx context.Context) InferenceEndpointResponseOutput {
+	return o
+}
+
+func (o InferenceEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InferenceEndpointResponse] {
+	return pulumix.Output[InferenceEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Required] Authentication mode for the endpoint.
+func (o InferenceEndpointResponseOutput) AuthMode() pulumi.StringOutput {
+	return o.ApplyT(func(v InferenceEndpointResponse) string { return v.AuthMode }).(pulumi.StringOutput)
+}
+
+// Description of the resource.
+func (o InferenceEndpointResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InferenceEndpointResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Endpoint URI for the inference endpoint.
+func (o InferenceEndpointResponseOutput) EndpointUri() pulumi.StringOutput {
+	return o.ApplyT(func(v InferenceEndpointResponse) string { return v.EndpointUri }).(pulumi.StringOutput)
+}
+
+// [Required] Group within the same pool with which this endpoint needs to be associated with.
+func (o InferenceEndpointResponseOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v InferenceEndpointResponse) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// Property dictionary. Properties can be added, but not removed or altered.
+func (o InferenceEndpointResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InferenceEndpointResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Provisioning state for the endpoint.
+func (o InferenceEndpointResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v InferenceEndpointResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Inference group configuration
+type InferenceGroupType struct {
+	// Capacity to be used from the pool's reserved capacity.
+	// optional
+	BonusExtraCapacity *int `pulumi:"bonusExtraCapacity"`
+	// Description of the resource.
+	Description *string `pulumi:"description"`
+	// Metadata for the inference group.
+	Metadata *string `pulumi:"metadata"`
+	// Priority of the group within the N:Microsoft.MachineLearning.ManagementFrontEnd.Contracts.V20230801Preview.Pools.InferencePools.
+	Priority *int `pulumi:"priority"`
+	// Property dictionary. Properties can be added, but not removed or altered.
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// Defaults sets the appropriate defaults for InferenceGroupType
+func (val *InferenceGroupType) Defaults() *InferenceGroupType {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.BonusExtraCapacity == nil {
+		bonusExtraCapacity_ := 0
+		tmp.BonusExtraCapacity = &bonusExtraCapacity_
+	}
+	if tmp.Priority == nil {
+		priority_ := 0
+		tmp.Priority = &priority_
+	}
+	return &tmp
+}
+
+// InferenceGroupTypeInput is an input type that accepts InferenceGroupTypeArgs and InferenceGroupTypeOutput values.
+// You can construct a concrete instance of `InferenceGroupTypeInput` via:
+//
+//	InferenceGroupTypeArgs{...}
+type InferenceGroupTypeInput interface {
+	pulumi.Input
+
+	ToInferenceGroupTypeOutput() InferenceGroupTypeOutput
+	ToInferenceGroupTypeOutputWithContext(context.Context) InferenceGroupTypeOutput
+}
+
+// Inference group configuration
+type InferenceGroupTypeArgs struct {
+	// Capacity to be used from the pool's reserved capacity.
+	// optional
+	BonusExtraCapacity pulumi.IntPtrInput `pulumi:"bonusExtraCapacity"`
+	// Description of the resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Metadata for the inference group.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+	// Priority of the group within the N:Microsoft.MachineLearning.ManagementFrontEnd.Contracts.V20230801Preview.Pools.InferencePools.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// Property dictionary. Properties can be added, but not removed or altered.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+// Defaults sets the appropriate defaults for InferenceGroupTypeArgs
+func (val *InferenceGroupTypeArgs) Defaults() *InferenceGroupTypeArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.BonusExtraCapacity == nil {
+		tmp.BonusExtraCapacity = pulumi.IntPtr(0)
+	}
+	if tmp.Priority == nil {
+		tmp.Priority = pulumi.IntPtr(0)
+	}
+	return &tmp
+}
+func (InferenceGroupTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InferenceGroupType)(nil)).Elem()
+}
+
+func (i InferenceGroupTypeArgs) ToInferenceGroupTypeOutput() InferenceGroupTypeOutput {
+	return i.ToInferenceGroupTypeOutputWithContext(context.Background())
+}
+
+func (i InferenceGroupTypeArgs) ToInferenceGroupTypeOutputWithContext(ctx context.Context) InferenceGroupTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InferenceGroupTypeOutput)
+}
+
+func (i InferenceGroupTypeArgs) ToOutput(ctx context.Context) pulumix.Output[InferenceGroupType] {
+	return pulumix.Output[InferenceGroupType]{
+		OutputState: i.ToInferenceGroupTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Inference group configuration
+type InferenceGroupTypeOutput struct{ *pulumi.OutputState }
+
+func (InferenceGroupTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InferenceGroupType)(nil)).Elem()
+}
+
+func (o InferenceGroupTypeOutput) ToInferenceGroupTypeOutput() InferenceGroupTypeOutput {
+	return o
+}
+
+func (o InferenceGroupTypeOutput) ToInferenceGroupTypeOutputWithContext(ctx context.Context) InferenceGroupTypeOutput {
+	return o
+}
+
+func (o InferenceGroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InferenceGroupType] {
+	return pulumix.Output[InferenceGroupType]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Capacity to be used from the pool's reserved capacity.
+// optional
+func (o InferenceGroupTypeOutput) BonusExtraCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InferenceGroupType) *int { return v.BonusExtraCapacity }).(pulumi.IntPtrOutput)
+}
+
+// Description of the resource.
+func (o InferenceGroupTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InferenceGroupType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Metadata for the inference group.
+func (o InferenceGroupTypeOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InferenceGroupType) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+// Priority of the group within the N:Microsoft.MachineLearning.ManagementFrontEnd.Contracts.V20230801Preview.Pools.InferencePools.
+func (o InferenceGroupTypeOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InferenceGroupType) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// Property dictionary. Properties can be added, but not removed or altered.
+func (o InferenceGroupTypeOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InferenceGroupType) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Inference group configuration
+type InferenceGroupResponse struct {
+	// Capacity to be used from the pool's reserved capacity.
+	// optional
+	BonusExtraCapacity *int `pulumi:"bonusExtraCapacity"`
+	// Description of the resource.
+	Description *string `pulumi:"description"`
+	// Metadata for the inference group.
+	Metadata *string `pulumi:"metadata"`
+	// Priority of the group within the N:Microsoft.MachineLearning.ManagementFrontEnd.Contracts.V20230801Preview.Pools.InferencePools.
+	Priority *int `pulumi:"priority"`
+	// Property dictionary. Properties can be added, but not removed or altered.
+	Properties map[string]string `pulumi:"properties"`
+	// Provisioning state for the inference group.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Defaults sets the appropriate defaults for InferenceGroupResponse
+func (val *InferenceGroupResponse) Defaults() *InferenceGroupResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.BonusExtraCapacity == nil {
+		bonusExtraCapacity_ := 0
+		tmp.BonusExtraCapacity = &bonusExtraCapacity_
+	}
+	if tmp.Priority == nil {
+		priority_ := 0
+		tmp.Priority = &priority_
+	}
+	return &tmp
+}
+
+// Inference group configuration
+type InferenceGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (InferenceGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InferenceGroupResponse)(nil)).Elem()
+}
+
+func (o InferenceGroupResponseOutput) ToInferenceGroupResponseOutput() InferenceGroupResponseOutput {
+	return o
+}
+
+func (o InferenceGroupResponseOutput) ToInferenceGroupResponseOutputWithContext(ctx context.Context) InferenceGroupResponseOutput {
+	return o
+}
+
+func (o InferenceGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InferenceGroupResponse] {
+	return pulumix.Output[InferenceGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Capacity to be used from the pool's reserved capacity.
+// optional
+func (o InferenceGroupResponseOutput) BonusExtraCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InferenceGroupResponse) *int { return v.BonusExtraCapacity }).(pulumi.IntPtrOutput)
+}
+
+// Description of the resource.
+func (o InferenceGroupResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InferenceGroupResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Metadata for the inference group.
+func (o InferenceGroupResponseOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InferenceGroupResponse) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+// Priority of the group within the N:Microsoft.MachineLearning.ManagementFrontEnd.Contracts.V20230801Preview.Pools.InferencePools.
+func (o InferenceGroupResponseOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InferenceGroupResponse) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// Property dictionary. Properties can be added, but not removed or altered.
+func (o InferenceGroupResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InferenceGroupResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Provisioning state for the inference group.
+func (o InferenceGroupResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v InferenceGroupResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Inference pool configuration
+type InferencePoolType struct {
+	// Code configuration for the inference pool.
+	CodeConfiguration *CodeConfiguration `pulumi:"codeConfiguration"`
+	// Description of the resource.
+	Description *string `pulumi:"description"`
+	// EnvironmentConfiguration for the inference pool.
+	EnvironmentConfiguration *PoolEnvironmentConfiguration `pulumi:"environmentConfiguration"`
+	// ModelConfiguration for the inference pool.
+	ModelConfiguration *PoolModelConfiguration `pulumi:"modelConfiguration"`
+	// [Required] Compute instance type.
+	NodeSkuType string `pulumi:"nodeSkuType"`
+	// Property dictionary. Properties can be added, but not removed or altered.
+	Properties map[string]string `pulumi:"properties"`
+	// Request configuration for the inference pool.
+	RequestConfiguration *RequestConfiguration `pulumi:"requestConfiguration"`
+}
+
+// Defaults sets the appropriate defaults for InferencePoolType
+func (val *InferencePoolType) Defaults() *InferencePoolType {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.EnvironmentConfiguration = tmp.EnvironmentConfiguration.Defaults()
+
+	tmp.RequestConfiguration = tmp.RequestConfiguration.Defaults()
+
+	return &tmp
+}
+
+// InferencePoolTypeInput is an input type that accepts InferencePoolTypeArgs and InferencePoolTypeOutput values.
+// You can construct a concrete instance of `InferencePoolTypeInput` via:
+//
+//	InferencePoolTypeArgs{...}
+type InferencePoolTypeInput interface {
+	pulumi.Input
+
+	ToInferencePoolTypeOutput() InferencePoolTypeOutput
+	ToInferencePoolTypeOutputWithContext(context.Context) InferencePoolTypeOutput
+}
+
+// Inference pool configuration
+type InferencePoolTypeArgs struct {
+	// Code configuration for the inference pool.
+	CodeConfiguration CodeConfigurationPtrInput `pulumi:"codeConfiguration"`
+	// Description of the resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// EnvironmentConfiguration for the inference pool.
+	EnvironmentConfiguration PoolEnvironmentConfigurationPtrInput `pulumi:"environmentConfiguration"`
+	// ModelConfiguration for the inference pool.
+	ModelConfiguration PoolModelConfigurationPtrInput `pulumi:"modelConfiguration"`
+	// [Required] Compute instance type.
+	NodeSkuType pulumi.StringInput `pulumi:"nodeSkuType"`
+	// Property dictionary. Properties can be added, but not removed or altered.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Request configuration for the inference pool.
+	RequestConfiguration RequestConfigurationPtrInput `pulumi:"requestConfiguration"`
+}
+
+// Defaults sets the appropriate defaults for InferencePoolTypeArgs
+func (val *InferencePoolTypeArgs) Defaults() *InferencePoolTypeArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (InferencePoolTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InferencePoolType)(nil)).Elem()
+}
+
+func (i InferencePoolTypeArgs) ToInferencePoolTypeOutput() InferencePoolTypeOutput {
+	return i.ToInferencePoolTypeOutputWithContext(context.Background())
+}
+
+func (i InferencePoolTypeArgs) ToInferencePoolTypeOutputWithContext(ctx context.Context) InferencePoolTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InferencePoolTypeOutput)
+}
+
+func (i InferencePoolTypeArgs) ToOutput(ctx context.Context) pulumix.Output[InferencePoolType] {
+	return pulumix.Output[InferencePoolType]{
+		OutputState: i.ToInferencePoolTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Inference pool configuration
+type InferencePoolTypeOutput struct{ *pulumi.OutputState }
+
+func (InferencePoolTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InferencePoolType)(nil)).Elem()
+}
+
+func (o InferencePoolTypeOutput) ToInferencePoolTypeOutput() InferencePoolTypeOutput {
+	return o
+}
+
+func (o InferencePoolTypeOutput) ToInferencePoolTypeOutputWithContext(ctx context.Context) InferencePoolTypeOutput {
+	return o
+}
+
+func (o InferencePoolTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InferencePoolType] {
+	return pulumix.Output[InferencePoolType]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Code configuration for the inference pool.
+func (o InferencePoolTypeOutput) CodeConfiguration() CodeConfigurationPtrOutput {
+	return o.ApplyT(func(v InferencePoolType) *CodeConfiguration { return v.CodeConfiguration }).(CodeConfigurationPtrOutput)
+}
+
+// Description of the resource.
+func (o InferencePoolTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InferencePoolType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// EnvironmentConfiguration for the inference pool.
+func (o InferencePoolTypeOutput) EnvironmentConfiguration() PoolEnvironmentConfigurationPtrOutput {
+	return o.ApplyT(func(v InferencePoolType) *PoolEnvironmentConfiguration { return v.EnvironmentConfiguration }).(PoolEnvironmentConfigurationPtrOutput)
+}
+
+// ModelConfiguration for the inference pool.
+func (o InferencePoolTypeOutput) ModelConfiguration() PoolModelConfigurationPtrOutput {
+	return o.ApplyT(func(v InferencePoolType) *PoolModelConfiguration { return v.ModelConfiguration }).(PoolModelConfigurationPtrOutput)
+}
+
+// [Required] Compute instance type.
+func (o InferencePoolTypeOutput) NodeSkuType() pulumi.StringOutput {
+	return o.ApplyT(func(v InferencePoolType) string { return v.NodeSkuType }).(pulumi.StringOutput)
+}
+
+// Property dictionary. Properties can be added, but not removed or altered.
+func (o InferencePoolTypeOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InferencePoolType) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Request configuration for the inference pool.
+func (o InferencePoolTypeOutput) RequestConfiguration() RequestConfigurationPtrOutput {
+	return o.ApplyT(func(v InferencePoolType) *RequestConfiguration { return v.RequestConfiguration }).(RequestConfigurationPtrOutput)
+}
+
+// Inference pool configuration
+type InferencePoolResponse struct {
+	// Code configuration for the inference pool.
+	CodeConfiguration *CodeConfigurationResponse `pulumi:"codeConfiguration"`
+	// Description of the resource.
+	Description *string `pulumi:"description"`
+	// EnvironmentConfiguration for the inference pool.
+	EnvironmentConfiguration *PoolEnvironmentConfigurationResponse `pulumi:"environmentConfiguration"`
+	// ModelConfiguration for the inference pool.
+	ModelConfiguration *PoolModelConfigurationResponse `pulumi:"modelConfiguration"`
+	// [Required] Compute instance type.
+	NodeSkuType string `pulumi:"nodeSkuType"`
+	// Property dictionary. Properties can be added, but not removed or altered.
+	Properties map[string]string `pulumi:"properties"`
+	// Provisioning state for the pool.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Request configuration for the inference pool.
+	RequestConfiguration *RequestConfigurationResponse `pulumi:"requestConfiguration"`
+}
+
+// Defaults sets the appropriate defaults for InferencePoolResponse
+func (val *InferencePoolResponse) Defaults() *InferencePoolResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.EnvironmentConfiguration = tmp.EnvironmentConfiguration.Defaults()
+
+	tmp.RequestConfiguration = tmp.RequestConfiguration.Defaults()
+
+	return &tmp
+}
+
+// Inference pool configuration
+type InferencePoolResponseOutput struct{ *pulumi.OutputState }
+
+func (InferencePoolResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InferencePoolResponse)(nil)).Elem()
+}
+
+func (o InferencePoolResponseOutput) ToInferencePoolResponseOutput() InferencePoolResponseOutput {
+	return o
+}
+
+func (o InferencePoolResponseOutput) ToInferencePoolResponseOutputWithContext(ctx context.Context) InferencePoolResponseOutput {
+	return o
+}
+
+func (o InferencePoolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InferencePoolResponse] {
+	return pulumix.Output[InferencePoolResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Code configuration for the inference pool.
+func (o InferencePoolResponseOutput) CodeConfiguration() CodeConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v InferencePoolResponse) *CodeConfigurationResponse { return v.CodeConfiguration }).(CodeConfigurationResponsePtrOutput)
+}
+
+// Description of the resource.
+func (o InferencePoolResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InferencePoolResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// EnvironmentConfiguration for the inference pool.
+func (o InferencePoolResponseOutput) EnvironmentConfiguration() PoolEnvironmentConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v InferencePoolResponse) *PoolEnvironmentConfigurationResponse { return v.EnvironmentConfiguration }).(PoolEnvironmentConfigurationResponsePtrOutput)
+}
+
+// ModelConfiguration for the inference pool.
+func (o InferencePoolResponseOutput) ModelConfiguration() PoolModelConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v InferencePoolResponse) *PoolModelConfigurationResponse { return v.ModelConfiguration }).(PoolModelConfigurationResponsePtrOutput)
+}
+
+// [Required] Compute instance type.
+func (o InferencePoolResponseOutput) NodeSkuType() pulumi.StringOutput {
+	return o.ApplyT(func(v InferencePoolResponse) string { return v.NodeSkuType }).(pulumi.StringOutput)
+}
+
+// Property dictionary. Properties can be added, but not removed or altered.
+func (o InferencePoolResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InferencePoolResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Provisioning state for the pool.
+func (o InferencePoolResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v InferencePoolResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Request configuration for the inference pool.
+func (o InferencePoolResponseOutput) RequestConfiguration() RequestConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v InferencePoolResponse) *RequestConfigurationResponse { return v.RequestConfiguration }).(RequestConfigurationResponsePtrOutput)
 }
 
 // Instance type schema.
@@ -24008,6 +25042,661 @@ func (val *PipelineJobResponse) Defaults() *PipelineJobResponse {
 	return &tmp
 }
 
+// Environment configuration options.
+type PoolEnvironmentConfiguration struct {
+	// ARM resource ID of the environment specification for the inference pool.
+	EnvironmentId *string `pulumi:"environmentId"`
+	// Environment variables configuration for the inference pool.
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
+	// Liveness probe monitors the health of the container regularly.
+	LivenessProbe *ProbeSettings `pulumi:"livenessProbe"`
+	// Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
+	ReadinessProbe *ProbeSettings `pulumi:"readinessProbe"`
+	// This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
+	StartupProbe *ProbeSettings `pulumi:"startupProbe"`
+}
+
+// Defaults sets the appropriate defaults for PoolEnvironmentConfiguration
+func (val *PoolEnvironmentConfiguration) Defaults() *PoolEnvironmentConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.LivenessProbe = tmp.LivenessProbe.Defaults()
+
+	tmp.ReadinessProbe = tmp.ReadinessProbe.Defaults()
+
+	tmp.StartupProbe = tmp.StartupProbe.Defaults()
+
+	return &tmp
+}
+
+// PoolEnvironmentConfigurationInput is an input type that accepts PoolEnvironmentConfigurationArgs and PoolEnvironmentConfigurationOutput values.
+// You can construct a concrete instance of `PoolEnvironmentConfigurationInput` via:
+//
+//	PoolEnvironmentConfigurationArgs{...}
+type PoolEnvironmentConfigurationInput interface {
+	pulumi.Input
+
+	ToPoolEnvironmentConfigurationOutput() PoolEnvironmentConfigurationOutput
+	ToPoolEnvironmentConfigurationOutputWithContext(context.Context) PoolEnvironmentConfigurationOutput
+}
+
+// Environment configuration options.
+type PoolEnvironmentConfigurationArgs struct {
+	// ARM resource ID of the environment specification for the inference pool.
+	EnvironmentId pulumi.StringPtrInput `pulumi:"environmentId"`
+	// Environment variables configuration for the inference pool.
+	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
+	// Liveness probe monitors the health of the container regularly.
+	LivenessProbe ProbeSettingsPtrInput `pulumi:"livenessProbe"`
+	// Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
+	ReadinessProbe ProbeSettingsPtrInput `pulumi:"readinessProbe"`
+	// This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
+	StartupProbe ProbeSettingsPtrInput `pulumi:"startupProbe"`
+}
+
+// Defaults sets the appropriate defaults for PoolEnvironmentConfigurationArgs
+func (val *PoolEnvironmentConfigurationArgs) Defaults() *PoolEnvironmentConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (PoolEnvironmentConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PoolEnvironmentConfiguration)(nil)).Elem()
+}
+
+func (i PoolEnvironmentConfigurationArgs) ToPoolEnvironmentConfigurationOutput() PoolEnvironmentConfigurationOutput {
+	return i.ToPoolEnvironmentConfigurationOutputWithContext(context.Background())
+}
+
+func (i PoolEnvironmentConfigurationArgs) ToPoolEnvironmentConfigurationOutputWithContext(ctx context.Context) PoolEnvironmentConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolEnvironmentConfigurationOutput)
+}
+
+func (i PoolEnvironmentConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[PoolEnvironmentConfiguration] {
+	return pulumix.Output[PoolEnvironmentConfiguration]{
+		OutputState: i.ToPoolEnvironmentConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i PoolEnvironmentConfigurationArgs) ToPoolEnvironmentConfigurationPtrOutput() PoolEnvironmentConfigurationPtrOutput {
+	return i.ToPoolEnvironmentConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i PoolEnvironmentConfigurationArgs) ToPoolEnvironmentConfigurationPtrOutputWithContext(ctx context.Context) PoolEnvironmentConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolEnvironmentConfigurationOutput).ToPoolEnvironmentConfigurationPtrOutputWithContext(ctx)
+}
+
+// PoolEnvironmentConfigurationPtrInput is an input type that accepts PoolEnvironmentConfigurationArgs, PoolEnvironmentConfigurationPtr and PoolEnvironmentConfigurationPtrOutput values.
+// You can construct a concrete instance of `PoolEnvironmentConfigurationPtrInput` via:
+//
+//	        PoolEnvironmentConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PoolEnvironmentConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToPoolEnvironmentConfigurationPtrOutput() PoolEnvironmentConfigurationPtrOutput
+	ToPoolEnvironmentConfigurationPtrOutputWithContext(context.Context) PoolEnvironmentConfigurationPtrOutput
+}
+
+type poolEnvironmentConfigurationPtrType PoolEnvironmentConfigurationArgs
+
+func PoolEnvironmentConfigurationPtr(v *PoolEnvironmentConfigurationArgs) PoolEnvironmentConfigurationPtrInput {
+	return (*poolEnvironmentConfigurationPtrType)(v)
+}
+
+func (*poolEnvironmentConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PoolEnvironmentConfiguration)(nil)).Elem()
+}
+
+func (i *poolEnvironmentConfigurationPtrType) ToPoolEnvironmentConfigurationPtrOutput() PoolEnvironmentConfigurationPtrOutput {
+	return i.ToPoolEnvironmentConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *poolEnvironmentConfigurationPtrType) ToPoolEnvironmentConfigurationPtrOutputWithContext(ctx context.Context) PoolEnvironmentConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolEnvironmentConfigurationPtrOutput)
+}
+
+func (i *poolEnvironmentConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*PoolEnvironmentConfiguration] {
+	return pulumix.Output[*PoolEnvironmentConfiguration]{
+		OutputState: i.ToPoolEnvironmentConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Environment configuration options.
+type PoolEnvironmentConfigurationOutput struct{ *pulumi.OutputState }
+
+func (PoolEnvironmentConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PoolEnvironmentConfiguration)(nil)).Elem()
+}
+
+func (o PoolEnvironmentConfigurationOutput) ToPoolEnvironmentConfigurationOutput() PoolEnvironmentConfigurationOutput {
+	return o
+}
+
+func (o PoolEnvironmentConfigurationOutput) ToPoolEnvironmentConfigurationOutputWithContext(ctx context.Context) PoolEnvironmentConfigurationOutput {
+	return o
+}
+
+func (o PoolEnvironmentConfigurationOutput) ToPoolEnvironmentConfigurationPtrOutput() PoolEnvironmentConfigurationPtrOutput {
+	return o.ToPoolEnvironmentConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o PoolEnvironmentConfigurationOutput) ToPoolEnvironmentConfigurationPtrOutputWithContext(ctx context.Context) PoolEnvironmentConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PoolEnvironmentConfiguration) *PoolEnvironmentConfiguration {
+		return &v
+	}).(PoolEnvironmentConfigurationPtrOutput)
+}
+
+func (o PoolEnvironmentConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[PoolEnvironmentConfiguration] {
+	return pulumix.Output[PoolEnvironmentConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// ARM resource ID of the environment specification for the inference pool.
+func (o PoolEnvironmentConfigurationOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PoolEnvironmentConfiguration) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
+}
+
+// Environment variables configuration for the inference pool.
+func (o PoolEnvironmentConfigurationOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PoolEnvironmentConfiguration) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// Liveness probe monitors the health of the container regularly.
+func (o PoolEnvironmentConfigurationOutput) LivenessProbe() ProbeSettingsPtrOutput {
+	return o.ApplyT(func(v PoolEnvironmentConfiguration) *ProbeSettings { return v.LivenessProbe }).(ProbeSettingsPtrOutput)
+}
+
+// Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
+func (o PoolEnvironmentConfigurationOutput) ReadinessProbe() ProbeSettingsPtrOutput {
+	return o.ApplyT(func(v PoolEnvironmentConfiguration) *ProbeSettings { return v.ReadinessProbe }).(ProbeSettingsPtrOutput)
+}
+
+// This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
+func (o PoolEnvironmentConfigurationOutput) StartupProbe() ProbeSettingsPtrOutput {
+	return o.ApplyT(func(v PoolEnvironmentConfiguration) *ProbeSettings { return v.StartupProbe }).(ProbeSettingsPtrOutput)
+}
+
+type PoolEnvironmentConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (PoolEnvironmentConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PoolEnvironmentConfiguration)(nil)).Elem()
+}
+
+func (o PoolEnvironmentConfigurationPtrOutput) ToPoolEnvironmentConfigurationPtrOutput() PoolEnvironmentConfigurationPtrOutput {
+	return o
+}
+
+func (o PoolEnvironmentConfigurationPtrOutput) ToPoolEnvironmentConfigurationPtrOutputWithContext(ctx context.Context) PoolEnvironmentConfigurationPtrOutput {
+	return o
+}
+
+func (o PoolEnvironmentConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PoolEnvironmentConfiguration] {
+	return pulumix.Output[*PoolEnvironmentConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PoolEnvironmentConfigurationPtrOutput) Elem() PoolEnvironmentConfigurationOutput {
+	return o.ApplyT(func(v *PoolEnvironmentConfiguration) PoolEnvironmentConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret PoolEnvironmentConfiguration
+		return ret
+	}).(PoolEnvironmentConfigurationOutput)
+}
+
+// ARM resource ID of the environment specification for the inference pool.
+func (o PoolEnvironmentConfigurationPtrOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PoolEnvironmentConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Environment variables configuration for the inference pool.
+func (o PoolEnvironmentConfigurationPtrOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PoolEnvironmentConfiguration) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentVariables
+	}).(pulumi.StringMapOutput)
+}
+
+// Liveness probe monitors the health of the container regularly.
+func (o PoolEnvironmentConfigurationPtrOutput) LivenessProbe() ProbeSettingsPtrOutput {
+	return o.ApplyT(func(v *PoolEnvironmentConfiguration) *ProbeSettings {
+		if v == nil {
+			return nil
+		}
+		return v.LivenessProbe
+	}).(ProbeSettingsPtrOutput)
+}
+
+// Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
+func (o PoolEnvironmentConfigurationPtrOutput) ReadinessProbe() ProbeSettingsPtrOutput {
+	return o.ApplyT(func(v *PoolEnvironmentConfiguration) *ProbeSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ReadinessProbe
+	}).(ProbeSettingsPtrOutput)
+}
+
+// This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
+func (o PoolEnvironmentConfigurationPtrOutput) StartupProbe() ProbeSettingsPtrOutput {
+	return o.ApplyT(func(v *PoolEnvironmentConfiguration) *ProbeSettings {
+		if v == nil {
+			return nil
+		}
+		return v.StartupProbe
+	}).(ProbeSettingsPtrOutput)
+}
+
+// Environment configuration options.
+type PoolEnvironmentConfigurationResponse struct {
+	// ARM resource ID of the environment specification for the inference pool.
+	EnvironmentId *string `pulumi:"environmentId"`
+	// Environment variables configuration for the inference pool.
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
+	// Liveness probe monitors the health of the container regularly.
+	LivenessProbe *ProbeSettingsResponse `pulumi:"livenessProbe"`
+	// Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
+	ReadinessProbe *ProbeSettingsResponse `pulumi:"readinessProbe"`
+	// This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
+	StartupProbe *ProbeSettingsResponse `pulumi:"startupProbe"`
+}
+
+// Defaults sets the appropriate defaults for PoolEnvironmentConfigurationResponse
+func (val *PoolEnvironmentConfigurationResponse) Defaults() *PoolEnvironmentConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.LivenessProbe = tmp.LivenessProbe.Defaults()
+
+	tmp.ReadinessProbe = tmp.ReadinessProbe.Defaults()
+
+	tmp.StartupProbe = tmp.StartupProbe.Defaults()
+
+	return &tmp
+}
+
+// Environment configuration options.
+type PoolEnvironmentConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (PoolEnvironmentConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PoolEnvironmentConfigurationResponse)(nil)).Elem()
+}
+
+func (o PoolEnvironmentConfigurationResponseOutput) ToPoolEnvironmentConfigurationResponseOutput() PoolEnvironmentConfigurationResponseOutput {
+	return o
+}
+
+func (o PoolEnvironmentConfigurationResponseOutput) ToPoolEnvironmentConfigurationResponseOutputWithContext(ctx context.Context) PoolEnvironmentConfigurationResponseOutput {
+	return o
+}
+
+func (o PoolEnvironmentConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PoolEnvironmentConfigurationResponse] {
+	return pulumix.Output[PoolEnvironmentConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// ARM resource ID of the environment specification for the inference pool.
+func (o PoolEnvironmentConfigurationResponseOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PoolEnvironmentConfigurationResponse) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
+}
+
+// Environment variables configuration for the inference pool.
+func (o PoolEnvironmentConfigurationResponseOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PoolEnvironmentConfigurationResponse) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// Liveness probe monitors the health of the container regularly.
+func (o PoolEnvironmentConfigurationResponseOutput) LivenessProbe() ProbeSettingsResponsePtrOutput {
+	return o.ApplyT(func(v PoolEnvironmentConfigurationResponse) *ProbeSettingsResponse { return v.LivenessProbe }).(ProbeSettingsResponsePtrOutput)
+}
+
+// Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
+func (o PoolEnvironmentConfigurationResponseOutput) ReadinessProbe() ProbeSettingsResponsePtrOutput {
+	return o.ApplyT(func(v PoolEnvironmentConfigurationResponse) *ProbeSettingsResponse { return v.ReadinessProbe }).(ProbeSettingsResponsePtrOutput)
+}
+
+// This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
+func (o PoolEnvironmentConfigurationResponseOutput) StartupProbe() ProbeSettingsResponsePtrOutput {
+	return o.ApplyT(func(v PoolEnvironmentConfigurationResponse) *ProbeSettingsResponse { return v.StartupProbe }).(ProbeSettingsResponsePtrOutput)
+}
+
+type PoolEnvironmentConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PoolEnvironmentConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PoolEnvironmentConfigurationResponse)(nil)).Elem()
+}
+
+func (o PoolEnvironmentConfigurationResponsePtrOutput) ToPoolEnvironmentConfigurationResponsePtrOutput() PoolEnvironmentConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o PoolEnvironmentConfigurationResponsePtrOutput) ToPoolEnvironmentConfigurationResponsePtrOutputWithContext(ctx context.Context) PoolEnvironmentConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o PoolEnvironmentConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PoolEnvironmentConfigurationResponse] {
+	return pulumix.Output[*PoolEnvironmentConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PoolEnvironmentConfigurationResponsePtrOutput) Elem() PoolEnvironmentConfigurationResponseOutput {
+	return o.ApplyT(func(v *PoolEnvironmentConfigurationResponse) PoolEnvironmentConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PoolEnvironmentConfigurationResponse
+		return ret
+	}).(PoolEnvironmentConfigurationResponseOutput)
+}
+
+// ARM resource ID of the environment specification for the inference pool.
+func (o PoolEnvironmentConfigurationResponsePtrOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PoolEnvironmentConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Environment variables configuration for the inference pool.
+func (o PoolEnvironmentConfigurationResponsePtrOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PoolEnvironmentConfigurationResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentVariables
+	}).(pulumi.StringMapOutput)
+}
+
+// Liveness probe monitors the health of the container regularly.
+func (o PoolEnvironmentConfigurationResponsePtrOutput) LivenessProbe() ProbeSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *PoolEnvironmentConfigurationResponse) *ProbeSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LivenessProbe
+	}).(ProbeSettingsResponsePtrOutput)
+}
+
+// Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
+func (o PoolEnvironmentConfigurationResponsePtrOutput) ReadinessProbe() ProbeSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *PoolEnvironmentConfigurationResponse) *ProbeSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ReadinessProbe
+	}).(ProbeSettingsResponsePtrOutput)
+}
+
+// This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
+func (o PoolEnvironmentConfigurationResponsePtrOutput) StartupProbe() ProbeSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *PoolEnvironmentConfigurationResponse) *ProbeSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StartupProbe
+	}).(ProbeSettingsResponsePtrOutput)
+}
+
+// Model configuration options.
+type PoolModelConfiguration struct {
+	// The URI path to the model.
+	ModelId *string `pulumi:"modelId"`
+}
+
+// PoolModelConfigurationInput is an input type that accepts PoolModelConfigurationArgs and PoolModelConfigurationOutput values.
+// You can construct a concrete instance of `PoolModelConfigurationInput` via:
+//
+//	PoolModelConfigurationArgs{...}
+type PoolModelConfigurationInput interface {
+	pulumi.Input
+
+	ToPoolModelConfigurationOutput() PoolModelConfigurationOutput
+	ToPoolModelConfigurationOutputWithContext(context.Context) PoolModelConfigurationOutput
+}
+
+// Model configuration options.
+type PoolModelConfigurationArgs struct {
+	// The URI path to the model.
+	ModelId pulumi.StringPtrInput `pulumi:"modelId"`
+}
+
+func (PoolModelConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PoolModelConfiguration)(nil)).Elem()
+}
+
+func (i PoolModelConfigurationArgs) ToPoolModelConfigurationOutput() PoolModelConfigurationOutput {
+	return i.ToPoolModelConfigurationOutputWithContext(context.Background())
+}
+
+func (i PoolModelConfigurationArgs) ToPoolModelConfigurationOutputWithContext(ctx context.Context) PoolModelConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolModelConfigurationOutput)
+}
+
+func (i PoolModelConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[PoolModelConfiguration] {
+	return pulumix.Output[PoolModelConfiguration]{
+		OutputState: i.ToPoolModelConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i PoolModelConfigurationArgs) ToPoolModelConfigurationPtrOutput() PoolModelConfigurationPtrOutput {
+	return i.ToPoolModelConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i PoolModelConfigurationArgs) ToPoolModelConfigurationPtrOutputWithContext(ctx context.Context) PoolModelConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolModelConfigurationOutput).ToPoolModelConfigurationPtrOutputWithContext(ctx)
+}
+
+// PoolModelConfigurationPtrInput is an input type that accepts PoolModelConfigurationArgs, PoolModelConfigurationPtr and PoolModelConfigurationPtrOutput values.
+// You can construct a concrete instance of `PoolModelConfigurationPtrInput` via:
+//
+//	        PoolModelConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PoolModelConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToPoolModelConfigurationPtrOutput() PoolModelConfigurationPtrOutput
+	ToPoolModelConfigurationPtrOutputWithContext(context.Context) PoolModelConfigurationPtrOutput
+}
+
+type poolModelConfigurationPtrType PoolModelConfigurationArgs
+
+func PoolModelConfigurationPtr(v *PoolModelConfigurationArgs) PoolModelConfigurationPtrInput {
+	return (*poolModelConfigurationPtrType)(v)
+}
+
+func (*poolModelConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PoolModelConfiguration)(nil)).Elem()
+}
+
+func (i *poolModelConfigurationPtrType) ToPoolModelConfigurationPtrOutput() PoolModelConfigurationPtrOutput {
+	return i.ToPoolModelConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *poolModelConfigurationPtrType) ToPoolModelConfigurationPtrOutputWithContext(ctx context.Context) PoolModelConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolModelConfigurationPtrOutput)
+}
+
+func (i *poolModelConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*PoolModelConfiguration] {
+	return pulumix.Output[*PoolModelConfiguration]{
+		OutputState: i.ToPoolModelConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Model configuration options.
+type PoolModelConfigurationOutput struct{ *pulumi.OutputState }
+
+func (PoolModelConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PoolModelConfiguration)(nil)).Elem()
+}
+
+func (o PoolModelConfigurationOutput) ToPoolModelConfigurationOutput() PoolModelConfigurationOutput {
+	return o
+}
+
+func (o PoolModelConfigurationOutput) ToPoolModelConfigurationOutputWithContext(ctx context.Context) PoolModelConfigurationOutput {
+	return o
+}
+
+func (o PoolModelConfigurationOutput) ToPoolModelConfigurationPtrOutput() PoolModelConfigurationPtrOutput {
+	return o.ToPoolModelConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o PoolModelConfigurationOutput) ToPoolModelConfigurationPtrOutputWithContext(ctx context.Context) PoolModelConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PoolModelConfiguration) *PoolModelConfiguration {
+		return &v
+	}).(PoolModelConfigurationPtrOutput)
+}
+
+func (o PoolModelConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[PoolModelConfiguration] {
+	return pulumix.Output[PoolModelConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The URI path to the model.
+func (o PoolModelConfigurationOutput) ModelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PoolModelConfiguration) *string { return v.ModelId }).(pulumi.StringPtrOutput)
+}
+
+type PoolModelConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (PoolModelConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PoolModelConfiguration)(nil)).Elem()
+}
+
+func (o PoolModelConfigurationPtrOutput) ToPoolModelConfigurationPtrOutput() PoolModelConfigurationPtrOutput {
+	return o
+}
+
+func (o PoolModelConfigurationPtrOutput) ToPoolModelConfigurationPtrOutputWithContext(ctx context.Context) PoolModelConfigurationPtrOutput {
+	return o
+}
+
+func (o PoolModelConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PoolModelConfiguration] {
+	return pulumix.Output[*PoolModelConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PoolModelConfigurationPtrOutput) Elem() PoolModelConfigurationOutput {
+	return o.ApplyT(func(v *PoolModelConfiguration) PoolModelConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret PoolModelConfiguration
+		return ret
+	}).(PoolModelConfigurationOutput)
+}
+
+// The URI path to the model.
+func (o PoolModelConfigurationPtrOutput) ModelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PoolModelConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Model configuration options.
+type PoolModelConfigurationResponse struct {
+	// The URI path to the model.
+	ModelId *string `pulumi:"modelId"`
+}
+
+// Model configuration options.
+type PoolModelConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (PoolModelConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PoolModelConfigurationResponse)(nil)).Elem()
+}
+
+func (o PoolModelConfigurationResponseOutput) ToPoolModelConfigurationResponseOutput() PoolModelConfigurationResponseOutput {
+	return o
+}
+
+func (o PoolModelConfigurationResponseOutput) ToPoolModelConfigurationResponseOutputWithContext(ctx context.Context) PoolModelConfigurationResponseOutput {
+	return o
+}
+
+func (o PoolModelConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PoolModelConfigurationResponse] {
+	return pulumix.Output[PoolModelConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The URI path to the model.
+func (o PoolModelConfigurationResponseOutput) ModelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PoolModelConfigurationResponse) *string { return v.ModelId }).(pulumi.StringPtrOutput)
+}
+
+type PoolModelConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PoolModelConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PoolModelConfigurationResponse)(nil)).Elem()
+}
+
+func (o PoolModelConfigurationResponsePtrOutput) ToPoolModelConfigurationResponsePtrOutput() PoolModelConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o PoolModelConfigurationResponsePtrOutput) ToPoolModelConfigurationResponsePtrOutputWithContext(ctx context.Context) PoolModelConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o PoolModelConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PoolModelConfigurationResponse] {
+	return pulumix.Output[*PoolModelConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PoolModelConfigurationResponsePtrOutput) Elem() PoolModelConfigurationResponseOutput {
+	return o.ApplyT(func(v *PoolModelConfigurationResponse) PoolModelConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PoolModelConfigurationResponse
+		return ret
+	}).(PoolModelConfigurationResponseOutput)
+}
+
+// The URI path to the model.
+func (o PoolModelConfigurationResponsePtrOutput) ModelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PoolModelConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The Private Endpoint Connection resource.
 type PrivateEndpointConnectionResponse struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -24677,6 +26366,252 @@ func (val *ProbeSettings) Defaults() *ProbeSettings {
 	return &tmp
 }
 
+// ProbeSettingsInput is an input type that accepts ProbeSettingsArgs and ProbeSettingsOutput values.
+// You can construct a concrete instance of `ProbeSettingsInput` via:
+//
+//	ProbeSettingsArgs{...}
+type ProbeSettingsInput interface {
+	pulumi.Input
+
+	ToProbeSettingsOutput() ProbeSettingsOutput
+	ToProbeSettingsOutputWithContext(context.Context) ProbeSettingsOutput
+}
+
+// Deployment container liveness/readiness probe configuration.
+type ProbeSettingsArgs struct {
+	// The number of failures to allow before returning an unhealthy status.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// The delay before the first probe in ISO 8601 format.
+	InitialDelay pulumi.StringPtrInput `pulumi:"initialDelay"`
+	// The length of time between probes in ISO 8601 format.
+	Period pulumi.StringPtrInput `pulumi:"period"`
+	// The number of successful probes before returning a healthy status.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// The probe timeout in ISO 8601 format.
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+}
+
+// Defaults sets the appropriate defaults for ProbeSettingsArgs
+func (val *ProbeSettingsArgs) Defaults() *ProbeSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.FailureThreshold == nil {
+		tmp.FailureThreshold = pulumi.IntPtr(30)
+	}
+	if tmp.Period == nil {
+		tmp.Period = pulumi.StringPtr("PT10S")
+	}
+	if tmp.SuccessThreshold == nil {
+		tmp.SuccessThreshold = pulumi.IntPtr(1)
+	}
+	if tmp.Timeout == nil {
+		tmp.Timeout = pulumi.StringPtr("PT2S")
+	}
+	return &tmp
+}
+func (ProbeSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProbeSettings)(nil)).Elem()
+}
+
+func (i ProbeSettingsArgs) ToProbeSettingsOutput() ProbeSettingsOutput {
+	return i.ToProbeSettingsOutputWithContext(context.Background())
+}
+
+func (i ProbeSettingsArgs) ToProbeSettingsOutputWithContext(ctx context.Context) ProbeSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProbeSettingsOutput)
+}
+
+func (i ProbeSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ProbeSettings] {
+	return pulumix.Output[ProbeSettings]{
+		OutputState: i.ToProbeSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ProbeSettingsArgs) ToProbeSettingsPtrOutput() ProbeSettingsPtrOutput {
+	return i.ToProbeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ProbeSettingsArgs) ToProbeSettingsPtrOutputWithContext(ctx context.Context) ProbeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProbeSettingsOutput).ToProbeSettingsPtrOutputWithContext(ctx)
+}
+
+// ProbeSettingsPtrInput is an input type that accepts ProbeSettingsArgs, ProbeSettingsPtr and ProbeSettingsPtrOutput values.
+// You can construct a concrete instance of `ProbeSettingsPtrInput` via:
+//
+//	        ProbeSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProbeSettingsPtrInput interface {
+	pulumi.Input
+
+	ToProbeSettingsPtrOutput() ProbeSettingsPtrOutput
+	ToProbeSettingsPtrOutputWithContext(context.Context) ProbeSettingsPtrOutput
+}
+
+type probeSettingsPtrType ProbeSettingsArgs
+
+func ProbeSettingsPtr(v *ProbeSettingsArgs) ProbeSettingsPtrInput {
+	return (*probeSettingsPtrType)(v)
+}
+
+func (*probeSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProbeSettings)(nil)).Elem()
+}
+
+func (i *probeSettingsPtrType) ToProbeSettingsPtrOutput() ProbeSettingsPtrOutput {
+	return i.ToProbeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *probeSettingsPtrType) ToProbeSettingsPtrOutputWithContext(ctx context.Context) ProbeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProbeSettingsPtrOutput)
+}
+
+func (i *probeSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProbeSettings] {
+	return pulumix.Output[*ProbeSettings]{
+		OutputState: i.ToProbeSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Deployment container liveness/readiness probe configuration.
+type ProbeSettingsOutput struct{ *pulumi.OutputState }
+
+func (ProbeSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProbeSettings)(nil)).Elem()
+}
+
+func (o ProbeSettingsOutput) ToProbeSettingsOutput() ProbeSettingsOutput {
+	return o
+}
+
+func (o ProbeSettingsOutput) ToProbeSettingsOutputWithContext(ctx context.Context) ProbeSettingsOutput {
+	return o
+}
+
+func (o ProbeSettingsOutput) ToProbeSettingsPtrOutput() ProbeSettingsPtrOutput {
+	return o.ToProbeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ProbeSettingsOutput) ToProbeSettingsPtrOutputWithContext(ctx context.Context) ProbeSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProbeSettings) *ProbeSettings {
+		return &v
+	}).(ProbeSettingsPtrOutput)
+}
+
+func (o ProbeSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ProbeSettings] {
+	return pulumix.Output[ProbeSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The number of failures to allow before returning an unhealthy status.
+func (o ProbeSettingsOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProbeSettings) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The delay before the first probe in ISO 8601 format.
+func (o ProbeSettingsOutput) InitialDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProbeSettings) *string { return v.InitialDelay }).(pulumi.StringPtrOutput)
+}
+
+// The length of time between probes in ISO 8601 format.
+func (o ProbeSettingsOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProbeSettings) *string { return v.Period }).(pulumi.StringPtrOutput)
+}
+
+// The number of successful probes before returning a healthy status.
+func (o ProbeSettingsOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProbeSettings) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The probe timeout in ISO 8601 format.
+func (o ProbeSettingsOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProbeSettings) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type ProbeSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ProbeSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProbeSettings)(nil)).Elem()
+}
+
+func (o ProbeSettingsPtrOutput) ToProbeSettingsPtrOutput() ProbeSettingsPtrOutput {
+	return o
+}
+
+func (o ProbeSettingsPtrOutput) ToProbeSettingsPtrOutputWithContext(ctx context.Context) ProbeSettingsPtrOutput {
+	return o
+}
+
+func (o ProbeSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProbeSettings] {
+	return pulumix.Output[*ProbeSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ProbeSettingsPtrOutput) Elem() ProbeSettingsOutput {
+	return o.ApplyT(func(v *ProbeSettings) ProbeSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ProbeSettings
+		return ret
+	}).(ProbeSettingsOutput)
+}
+
+// The number of failures to allow before returning an unhealthy status.
+func (o ProbeSettingsPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProbeSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The delay before the first probe in ISO 8601 format.
+func (o ProbeSettingsPtrOutput) InitialDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProbeSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+// The length of time between probes in ISO 8601 format.
+func (o ProbeSettingsPtrOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProbeSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Period
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of successful probes before returning a healthy status.
+func (o ProbeSettingsPtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProbeSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The probe timeout in ISO 8601 format.
+func (o ProbeSettingsPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProbeSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
 // Deployment container liveness/readiness probe configuration.
 type ProbeSettingsResponse struct {
 	// The number of failures to allow before returning an unhealthy status.
@@ -24714,6 +26649,132 @@ func (val *ProbeSettingsResponse) Defaults() *ProbeSettingsResponse {
 		tmp.Timeout = &timeout_
 	}
 	return &tmp
+}
+
+// Deployment container liveness/readiness probe configuration.
+type ProbeSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ProbeSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProbeSettingsResponse)(nil)).Elem()
+}
+
+func (o ProbeSettingsResponseOutput) ToProbeSettingsResponseOutput() ProbeSettingsResponseOutput {
+	return o
+}
+
+func (o ProbeSettingsResponseOutput) ToProbeSettingsResponseOutputWithContext(ctx context.Context) ProbeSettingsResponseOutput {
+	return o
+}
+
+func (o ProbeSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProbeSettingsResponse] {
+	return pulumix.Output[ProbeSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The number of failures to allow before returning an unhealthy status.
+func (o ProbeSettingsResponseOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProbeSettingsResponse) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The delay before the first probe in ISO 8601 format.
+func (o ProbeSettingsResponseOutput) InitialDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProbeSettingsResponse) *string { return v.InitialDelay }).(pulumi.StringPtrOutput)
+}
+
+// The length of time between probes in ISO 8601 format.
+func (o ProbeSettingsResponseOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProbeSettingsResponse) *string { return v.Period }).(pulumi.StringPtrOutput)
+}
+
+// The number of successful probes before returning a healthy status.
+func (o ProbeSettingsResponseOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProbeSettingsResponse) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The probe timeout in ISO 8601 format.
+func (o ProbeSettingsResponseOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProbeSettingsResponse) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type ProbeSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ProbeSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProbeSettingsResponse)(nil)).Elem()
+}
+
+func (o ProbeSettingsResponsePtrOutput) ToProbeSettingsResponsePtrOutput() ProbeSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ProbeSettingsResponsePtrOutput) ToProbeSettingsResponsePtrOutputWithContext(ctx context.Context) ProbeSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ProbeSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProbeSettingsResponse] {
+	return pulumix.Output[*ProbeSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ProbeSettingsResponsePtrOutput) Elem() ProbeSettingsResponseOutput {
+	return o.ApplyT(func(v *ProbeSettingsResponse) ProbeSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ProbeSettingsResponse
+		return ret
+	}).(ProbeSettingsResponseOutput)
+}
+
+// The number of failures to allow before returning an unhealthy status.
+func (o ProbeSettingsResponsePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProbeSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The delay before the first probe in ISO 8601 format.
+func (o ProbeSettingsResponsePtrOutput) InitialDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProbeSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+// The length of time between probes in ISO 8601 format.
+func (o ProbeSettingsResponsePtrOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProbeSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Period
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of successful probes before returning a healthy status.
+func (o ProbeSettingsResponsePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProbeSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The probe timeout in ISO 8601 format.
+func (o ProbeSettingsResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProbeSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
 }
 
 // Progress metrics definition
@@ -27326,6 +29387,333 @@ func (val *RegressionTrainingSettingsResponse) Defaults() *RegressionTrainingSet
 	return &tmp
 }
 
+// Scoring requests configuration.
+type RequestConfiguration struct {
+	// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
+	MaxConcurrentRequestsPerInstance *int `pulumi:"maxConcurrentRequestsPerInstance"`
+	// The scoring timeout in ISO 8601 format.
+	// Defaults to 5000ms.
+	RequestTimeout *string `pulumi:"requestTimeout"`
+}
+
+// Defaults sets the appropriate defaults for RequestConfiguration
+func (val *RequestConfiguration) Defaults() *RequestConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MaxConcurrentRequestsPerInstance == nil {
+		maxConcurrentRequestsPerInstance_ := 1
+		tmp.MaxConcurrentRequestsPerInstance = &maxConcurrentRequestsPerInstance_
+	}
+	if tmp.RequestTimeout == nil {
+		requestTimeout_ := "PT5S"
+		tmp.RequestTimeout = &requestTimeout_
+	}
+	return &tmp
+}
+
+// RequestConfigurationInput is an input type that accepts RequestConfigurationArgs and RequestConfigurationOutput values.
+// You can construct a concrete instance of `RequestConfigurationInput` via:
+//
+//	RequestConfigurationArgs{...}
+type RequestConfigurationInput interface {
+	pulumi.Input
+
+	ToRequestConfigurationOutput() RequestConfigurationOutput
+	ToRequestConfigurationOutputWithContext(context.Context) RequestConfigurationOutput
+}
+
+// Scoring requests configuration.
+type RequestConfigurationArgs struct {
+	// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
+	MaxConcurrentRequestsPerInstance pulumi.IntPtrInput `pulumi:"maxConcurrentRequestsPerInstance"`
+	// The scoring timeout in ISO 8601 format.
+	// Defaults to 5000ms.
+	RequestTimeout pulumi.StringPtrInput `pulumi:"requestTimeout"`
+}
+
+// Defaults sets the appropriate defaults for RequestConfigurationArgs
+func (val *RequestConfigurationArgs) Defaults() *RequestConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MaxConcurrentRequestsPerInstance == nil {
+		tmp.MaxConcurrentRequestsPerInstance = pulumi.IntPtr(1)
+	}
+	if tmp.RequestTimeout == nil {
+		tmp.RequestTimeout = pulumi.StringPtr("PT5S")
+	}
+	return &tmp
+}
+func (RequestConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestConfiguration)(nil)).Elem()
+}
+
+func (i RequestConfigurationArgs) ToRequestConfigurationOutput() RequestConfigurationOutput {
+	return i.ToRequestConfigurationOutputWithContext(context.Background())
+}
+
+func (i RequestConfigurationArgs) ToRequestConfigurationOutputWithContext(ctx context.Context) RequestConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RequestConfigurationOutput)
+}
+
+func (i RequestConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[RequestConfiguration] {
+	return pulumix.Output[RequestConfiguration]{
+		OutputState: i.ToRequestConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RequestConfigurationArgs) ToRequestConfigurationPtrOutput() RequestConfigurationPtrOutput {
+	return i.ToRequestConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i RequestConfigurationArgs) ToRequestConfigurationPtrOutputWithContext(ctx context.Context) RequestConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RequestConfigurationOutput).ToRequestConfigurationPtrOutputWithContext(ctx)
+}
+
+// RequestConfigurationPtrInput is an input type that accepts RequestConfigurationArgs, RequestConfigurationPtr and RequestConfigurationPtrOutput values.
+// You can construct a concrete instance of `RequestConfigurationPtrInput` via:
+//
+//	        RequestConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RequestConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToRequestConfigurationPtrOutput() RequestConfigurationPtrOutput
+	ToRequestConfigurationPtrOutputWithContext(context.Context) RequestConfigurationPtrOutput
+}
+
+type requestConfigurationPtrType RequestConfigurationArgs
+
+func RequestConfigurationPtr(v *RequestConfigurationArgs) RequestConfigurationPtrInput {
+	return (*requestConfigurationPtrType)(v)
+}
+
+func (*requestConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RequestConfiguration)(nil)).Elem()
+}
+
+func (i *requestConfigurationPtrType) ToRequestConfigurationPtrOutput() RequestConfigurationPtrOutput {
+	return i.ToRequestConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *requestConfigurationPtrType) ToRequestConfigurationPtrOutputWithContext(ctx context.Context) RequestConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RequestConfigurationPtrOutput)
+}
+
+func (i *requestConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*RequestConfiguration] {
+	return pulumix.Output[*RequestConfiguration]{
+		OutputState: i.ToRequestConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Scoring requests configuration.
+type RequestConfigurationOutput struct{ *pulumi.OutputState }
+
+func (RequestConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestConfiguration)(nil)).Elem()
+}
+
+func (o RequestConfigurationOutput) ToRequestConfigurationOutput() RequestConfigurationOutput {
+	return o
+}
+
+func (o RequestConfigurationOutput) ToRequestConfigurationOutputWithContext(ctx context.Context) RequestConfigurationOutput {
+	return o
+}
+
+func (o RequestConfigurationOutput) ToRequestConfigurationPtrOutput() RequestConfigurationPtrOutput {
+	return o.ToRequestConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o RequestConfigurationOutput) ToRequestConfigurationPtrOutputWithContext(ctx context.Context) RequestConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RequestConfiguration) *RequestConfiguration {
+		return &v
+	}).(RequestConfigurationPtrOutput)
+}
+
+func (o RequestConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[RequestConfiguration] {
+	return pulumix.Output[RequestConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
+func (o RequestConfigurationOutput) MaxConcurrentRequestsPerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RequestConfiguration) *int { return v.MaxConcurrentRequestsPerInstance }).(pulumi.IntPtrOutput)
+}
+
+// The scoring timeout in ISO 8601 format.
+// Defaults to 5000ms.
+func (o RequestConfigurationOutput) RequestTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RequestConfiguration) *string { return v.RequestTimeout }).(pulumi.StringPtrOutput)
+}
+
+type RequestConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (RequestConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RequestConfiguration)(nil)).Elem()
+}
+
+func (o RequestConfigurationPtrOutput) ToRequestConfigurationPtrOutput() RequestConfigurationPtrOutput {
+	return o
+}
+
+func (o RequestConfigurationPtrOutput) ToRequestConfigurationPtrOutputWithContext(ctx context.Context) RequestConfigurationPtrOutput {
+	return o
+}
+
+func (o RequestConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RequestConfiguration] {
+	return pulumix.Output[*RequestConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RequestConfigurationPtrOutput) Elem() RequestConfigurationOutput {
+	return o.ApplyT(func(v *RequestConfiguration) RequestConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret RequestConfiguration
+		return ret
+	}).(RequestConfigurationOutput)
+}
+
+// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
+func (o RequestConfigurationPtrOutput) MaxConcurrentRequestsPerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RequestConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentRequestsPerInstance
+	}).(pulumi.IntPtrOutput)
+}
+
+// The scoring timeout in ISO 8601 format.
+// Defaults to 5000ms.
+func (o RequestConfigurationPtrOutput) RequestTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RequestConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scoring requests configuration.
+type RequestConfigurationResponse struct {
+	// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
+	MaxConcurrentRequestsPerInstance *int `pulumi:"maxConcurrentRequestsPerInstance"`
+	// The scoring timeout in ISO 8601 format.
+	// Defaults to 5000ms.
+	RequestTimeout *string `pulumi:"requestTimeout"`
+}
+
+// Defaults sets the appropriate defaults for RequestConfigurationResponse
+func (val *RequestConfigurationResponse) Defaults() *RequestConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MaxConcurrentRequestsPerInstance == nil {
+		maxConcurrentRequestsPerInstance_ := 1
+		tmp.MaxConcurrentRequestsPerInstance = &maxConcurrentRequestsPerInstance_
+	}
+	if tmp.RequestTimeout == nil {
+		requestTimeout_ := "PT5S"
+		tmp.RequestTimeout = &requestTimeout_
+	}
+	return &tmp
+}
+
+// Scoring requests configuration.
+type RequestConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (RequestConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestConfigurationResponse)(nil)).Elem()
+}
+
+func (o RequestConfigurationResponseOutput) ToRequestConfigurationResponseOutput() RequestConfigurationResponseOutput {
+	return o
+}
+
+func (o RequestConfigurationResponseOutput) ToRequestConfigurationResponseOutputWithContext(ctx context.Context) RequestConfigurationResponseOutput {
+	return o
+}
+
+func (o RequestConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RequestConfigurationResponse] {
+	return pulumix.Output[RequestConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
+func (o RequestConfigurationResponseOutput) MaxConcurrentRequestsPerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RequestConfigurationResponse) *int { return v.MaxConcurrentRequestsPerInstance }).(pulumi.IntPtrOutput)
+}
+
+// The scoring timeout in ISO 8601 format.
+// Defaults to 5000ms.
+func (o RequestConfigurationResponseOutput) RequestTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RequestConfigurationResponse) *string { return v.RequestTimeout }).(pulumi.StringPtrOutput)
+}
+
+type RequestConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RequestConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RequestConfigurationResponse)(nil)).Elem()
+}
+
+func (o RequestConfigurationResponsePtrOutput) ToRequestConfigurationResponsePtrOutput() RequestConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o RequestConfigurationResponsePtrOutput) ToRequestConfigurationResponsePtrOutputWithContext(ctx context.Context) RequestConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o RequestConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RequestConfigurationResponse] {
+	return pulumix.Output[*RequestConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RequestConfigurationResponsePtrOutput) Elem() RequestConfigurationResponseOutput {
+	return o.ApplyT(func(v *RequestConfigurationResponse) RequestConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RequestConfigurationResponse
+		return ret
+	}).(RequestConfigurationResponseOutput)
+}
+
+// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
+func (o RequestConfigurationResponsePtrOutput) MaxConcurrentRequestsPerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RequestConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentRequestsPerInstance
+	}).(pulumi.IntPtrOutput)
+}
+
+// The scoring timeout in ISO 8601 format.
+// Defaults to 5000ms.
+func (o RequestConfigurationResponsePtrOutput) RequestTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RequestConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
 type ResourceId struct {
 	// The ID of the resource
@@ -28204,6 +30592,724 @@ func (o SecretConfigurationResponseMapOutput) MapIndex(k pulumi.StringInput) Sec
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecretConfigurationResponse {
 		return vs[0].(map[string]SecretConfigurationResponse)[vs[1].(string)]
 	}).(SecretConfigurationResponseOutput)
+}
+
+type ServerlessEndpointType struct {
+	// Specifies the authentication mode for the Serverless endpoint.
+	AuthMode *string `pulumi:"authMode"`
+	// Optional capacity reservation information for the endpoint. When specified, the Serverless Endpoint
+	// will be allocated capacity from the specified capacity reservation group.
+	CapacityReservation *ServerlessEndpointCapacityReservation `pulumi:"capacityReservation"`
+	// [Required] The publisher-defined Serverless Offer to provision the endpoint with.
+	Offer ServerlessOffer `pulumi:"offer"`
+}
+
+// ServerlessEndpointTypeInput is an input type that accepts ServerlessEndpointTypeArgs and ServerlessEndpointTypeOutput values.
+// You can construct a concrete instance of `ServerlessEndpointTypeInput` via:
+//
+//	ServerlessEndpointTypeArgs{...}
+type ServerlessEndpointTypeInput interface {
+	pulumi.Input
+
+	ToServerlessEndpointTypeOutput() ServerlessEndpointTypeOutput
+	ToServerlessEndpointTypeOutputWithContext(context.Context) ServerlessEndpointTypeOutput
+}
+
+type ServerlessEndpointTypeArgs struct {
+	// Specifies the authentication mode for the Serverless endpoint.
+	AuthMode pulumi.StringPtrInput `pulumi:"authMode"`
+	// Optional capacity reservation information for the endpoint. When specified, the Serverless Endpoint
+	// will be allocated capacity from the specified capacity reservation group.
+	CapacityReservation ServerlessEndpointCapacityReservationPtrInput `pulumi:"capacityReservation"`
+	// [Required] The publisher-defined Serverless Offer to provision the endpoint with.
+	Offer ServerlessOfferInput `pulumi:"offer"`
+}
+
+func (ServerlessEndpointTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessEndpointType)(nil)).Elem()
+}
+
+func (i ServerlessEndpointTypeArgs) ToServerlessEndpointTypeOutput() ServerlessEndpointTypeOutput {
+	return i.ToServerlessEndpointTypeOutputWithContext(context.Background())
+}
+
+func (i ServerlessEndpointTypeArgs) ToServerlessEndpointTypeOutputWithContext(ctx context.Context) ServerlessEndpointTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessEndpointTypeOutput)
+}
+
+func (i ServerlessEndpointTypeArgs) ToOutput(ctx context.Context) pulumix.Output[ServerlessEndpointType] {
+	return pulumix.Output[ServerlessEndpointType]{
+		OutputState: i.ToServerlessEndpointTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ServerlessEndpointTypeOutput struct{ *pulumi.OutputState }
+
+func (ServerlessEndpointTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessEndpointType)(nil)).Elem()
+}
+
+func (o ServerlessEndpointTypeOutput) ToServerlessEndpointTypeOutput() ServerlessEndpointTypeOutput {
+	return o
+}
+
+func (o ServerlessEndpointTypeOutput) ToServerlessEndpointTypeOutputWithContext(ctx context.Context) ServerlessEndpointTypeOutput {
+	return o
+}
+
+func (o ServerlessEndpointTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ServerlessEndpointType] {
+	return pulumix.Output[ServerlessEndpointType]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the authentication mode for the Serverless endpoint.
+func (o ServerlessEndpointTypeOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessEndpointType) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
+}
+
+// Optional capacity reservation information for the endpoint. When specified, the Serverless Endpoint
+// will be allocated capacity from the specified capacity reservation group.
+func (o ServerlessEndpointTypeOutput) CapacityReservation() ServerlessEndpointCapacityReservationPtrOutput {
+	return o.ApplyT(func(v ServerlessEndpointType) *ServerlessEndpointCapacityReservation { return v.CapacityReservation }).(ServerlessEndpointCapacityReservationPtrOutput)
+}
+
+// [Required] The publisher-defined Serverless Offer to provision the endpoint with.
+func (o ServerlessEndpointTypeOutput) Offer() ServerlessOfferOutput {
+	return o.ApplyT(func(v ServerlessEndpointType) ServerlessOffer { return v.Offer }).(ServerlessOfferOutput)
+}
+
+type ServerlessEndpointCapacityReservation struct {
+	// [Required] Specifies a capacity reservation group ID to allocate capacity from.
+	CapacityReservationGroupId string `pulumi:"capacityReservationGroupId"`
+	// Specifies a capacity amount to reserve for this endpoint within the parent capacity reservation group.
+	EndpointReservedCapacity *int `pulumi:"endpointReservedCapacity"`
+}
+
+// ServerlessEndpointCapacityReservationInput is an input type that accepts ServerlessEndpointCapacityReservationArgs and ServerlessEndpointCapacityReservationOutput values.
+// You can construct a concrete instance of `ServerlessEndpointCapacityReservationInput` via:
+//
+//	ServerlessEndpointCapacityReservationArgs{...}
+type ServerlessEndpointCapacityReservationInput interface {
+	pulumi.Input
+
+	ToServerlessEndpointCapacityReservationOutput() ServerlessEndpointCapacityReservationOutput
+	ToServerlessEndpointCapacityReservationOutputWithContext(context.Context) ServerlessEndpointCapacityReservationOutput
+}
+
+type ServerlessEndpointCapacityReservationArgs struct {
+	// [Required] Specifies a capacity reservation group ID to allocate capacity from.
+	CapacityReservationGroupId pulumi.StringInput `pulumi:"capacityReservationGroupId"`
+	// Specifies a capacity amount to reserve for this endpoint within the parent capacity reservation group.
+	EndpointReservedCapacity pulumi.IntPtrInput `pulumi:"endpointReservedCapacity"`
+}
+
+func (ServerlessEndpointCapacityReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessEndpointCapacityReservation)(nil)).Elem()
+}
+
+func (i ServerlessEndpointCapacityReservationArgs) ToServerlessEndpointCapacityReservationOutput() ServerlessEndpointCapacityReservationOutput {
+	return i.ToServerlessEndpointCapacityReservationOutputWithContext(context.Background())
+}
+
+func (i ServerlessEndpointCapacityReservationArgs) ToServerlessEndpointCapacityReservationOutputWithContext(ctx context.Context) ServerlessEndpointCapacityReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessEndpointCapacityReservationOutput)
+}
+
+func (i ServerlessEndpointCapacityReservationArgs) ToOutput(ctx context.Context) pulumix.Output[ServerlessEndpointCapacityReservation] {
+	return pulumix.Output[ServerlessEndpointCapacityReservation]{
+		OutputState: i.ToServerlessEndpointCapacityReservationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ServerlessEndpointCapacityReservationArgs) ToServerlessEndpointCapacityReservationPtrOutput() ServerlessEndpointCapacityReservationPtrOutput {
+	return i.ToServerlessEndpointCapacityReservationPtrOutputWithContext(context.Background())
+}
+
+func (i ServerlessEndpointCapacityReservationArgs) ToServerlessEndpointCapacityReservationPtrOutputWithContext(ctx context.Context) ServerlessEndpointCapacityReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessEndpointCapacityReservationOutput).ToServerlessEndpointCapacityReservationPtrOutputWithContext(ctx)
+}
+
+// ServerlessEndpointCapacityReservationPtrInput is an input type that accepts ServerlessEndpointCapacityReservationArgs, ServerlessEndpointCapacityReservationPtr and ServerlessEndpointCapacityReservationPtrOutput values.
+// You can construct a concrete instance of `ServerlessEndpointCapacityReservationPtrInput` via:
+//
+//	        ServerlessEndpointCapacityReservationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerlessEndpointCapacityReservationPtrInput interface {
+	pulumi.Input
+
+	ToServerlessEndpointCapacityReservationPtrOutput() ServerlessEndpointCapacityReservationPtrOutput
+	ToServerlessEndpointCapacityReservationPtrOutputWithContext(context.Context) ServerlessEndpointCapacityReservationPtrOutput
+}
+
+type serverlessEndpointCapacityReservationPtrType ServerlessEndpointCapacityReservationArgs
+
+func ServerlessEndpointCapacityReservationPtr(v *ServerlessEndpointCapacityReservationArgs) ServerlessEndpointCapacityReservationPtrInput {
+	return (*serverlessEndpointCapacityReservationPtrType)(v)
+}
+
+func (*serverlessEndpointCapacityReservationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessEndpointCapacityReservation)(nil)).Elem()
+}
+
+func (i *serverlessEndpointCapacityReservationPtrType) ToServerlessEndpointCapacityReservationPtrOutput() ServerlessEndpointCapacityReservationPtrOutput {
+	return i.ToServerlessEndpointCapacityReservationPtrOutputWithContext(context.Background())
+}
+
+func (i *serverlessEndpointCapacityReservationPtrType) ToServerlessEndpointCapacityReservationPtrOutputWithContext(ctx context.Context) ServerlessEndpointCapacityReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessEndpointCapacityReservationPtrOutput)
+}
+
+func (i *serverlessEndpointCapacityReservationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerlessEndpointCapacityReservation] {
+	return pulumix.Output[*ServerlessEndpointCapacityReservation]{
+		OutputState: i.ToServerlessEndpointCapacityReservationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ServerlessEndpointCapacityReservationOutput struct{ *pulumi.OutputState }
+
+func (ServerlessEndpointCapacityReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessEndpointCapacityReservation)(nil)).Elem()
+}
+
+func (o ServerlessEndpointCapacityReservationOutput) ToServerlessEndpointCapacityReservationOutput() ServerlessEndpointCapacityReservationOutput {
+	return o
+}
+
+func (o ServerlessEndpointCapacityReservationOutput) ToServerlessEndpointCapacityReservationOutputWithContext(ctx context.Context) ServerlessEndpointCapacityReservationOutput {
+	return o
+}
+
+func (o ServerlessEndpointCapacityReservationOutput) ToServerlessEndpointCapacityReservationPtrOutput() ServerlessEndpointCapacityReservationPtrOutput {
+	return o.ToServerlessEndpointCapacityReservationPtrOutputWithContext(context.Background())
+}
+
+func (o ServerlessEndpointCapacityReservationOutput) ToServerlessEndpointCapacityReservationPtrOutputWithContext(ctx context.Context) ServerlessEndpointCapacityReservationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerlessEndpointCapacityReservation) *ServerlessEndpointCapacityReservation {
+		return &v
+	}).(ServerlessEndpointCapacityReservationPtrOutput)
+}
+
+func (o ServerlessEndpointCapacityReservationOutput) ToOutput(ctx context.Context) pulumix.Output[ServerlessEndpointCapacityReservation] {
+	return pulumix.Output[ServerlessEndpointCapacityReservation]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Required] Specifies a capacity reservation group ID to allocate capacity from.
+func (o ServerlessEndpointCapacityReservationOutput) CapacityReservationGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerlessEndpointCapacityReservation) string { return v.CapacityReservationGroupId }).(pulumi.StringOutput)
+}
+
+// Specifies a capacity amount to reserve for this endpoint within the parent capacity reservation group.
+func (o ServerlessEndpointCapacityReservationOutput) EndpointReservedCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerlessEndpointCapacityReservation) *int { return v.EndpointReservedCapacity }).(pulumi.IntPtrOutput)
+}
+
+type ServerlessEndpointCapacityReservationPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerlessEndpointCapacityReservationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessEndpointCapacityReservation)(nil)).Elem()
+}
+
+func (o ServerlessEndpointCapacityReservationPtrOutput) ToServerlessEndpointCapacityReservationPtrOutput() ServerlessEndpointCapacityReservationPtrOutput {
+	return o
+}
+
+func (o ServerlessEndpointCapacityReservationPtrOutput) ToServerlessEndpointCapacityReservationPtrOutputWithContext(ctx context.Context) ServerlessEndpointCapacityReservationPtrOutput {
+	return o
+}
+
+func (o ServerlessEndpointCapacityReservationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerlessEndpointCapacityReservation] {
+	return pulumix.Output[*ServerlessEndpointCapacityReservation]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServerlessEndpointCapacityReservationPtrOutput) Elem() ServerlessEndpointCapacityReservationOutput {
+	return o.ApplyT(func(v *ServerlessEndpointCapacityReservation) ServerlessEndpointCapacityReservation {
+		if v != nil {
+			return *v
+		}
+		var ret ServerlessEndpointCapacityReservation
+		return ret
+	}).(ServerlessEndpointCapacityReservationOutput)
+}
+
+// [Required] Specifies a capacity reservation group ID to allocate capacity from.
+func (o ServerlessEndpointCapacityReservationPtrOutput) CapacityReservationGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessEndpointCapacityReservation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CapacityReservationGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a capacity amount to reserve for this endpoint within the parent capacity reservation group.
+func (o ServerlessEndpointCapacityReservationPtrOutput) EndpointReservedCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerlessEndpointCapacityReservation) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointReservedCapacity
+	}).(pulumi.IntPtrOutput)
+}
+
+type ServerlessEndpointCapacityReservationResponse struct {
+	// [Required] Specifies a capacity reservation group ID to allocate capacity from.
+	CapacityReservationGroupId string `pulumi:"capacityReservationGroupId"`
+	// Specifies a capacity amount to reserve for this endpoint within the parent capacity reservation group.
+	EndpointReservedCapacity *int `pulumi:"endpointReservedCapacity"`
+}
+
+type ServerlessEndpointCapacityReservationResponseOutput struct{ *pulumi.OutputState }
+
+func (ServerlessEndpointCapacityReservationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessEndpointCapacityReservationResponse)(nil)).Elem()
+}
+
+func (o ServerlessEndpointCapacityReservationResponseOutput) ToServerlessEndpointCapacityReservationResponseOutput() ServerlessEndpointCapacityReservationResponseOutput {
+	return o
+}
+
+func (o ServerlessEndpointCapacityReservationResponseOutput) ToServerlessEndpointCapacityReservationResponseOutputWithContext(ctx context.Context) ServerlessEndpointCapacityReservationResponseOutput {
+	return o
+}
+
+func (o ServerlessEndpointCapacityReservationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerlessEndpointCapacityReservationResponse] {
+	return pulumix.Output[ServerlessEndpointCapacityReservationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Required] Specifies a capacity reservation group ID to allocate capacity from.
+func (o ServerlessEndpointCapacityReservationResponseOutput) CapacityReservationGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerlessEndpointCapacityReservationResponse) string { return v.CapacityReservationGroupId }).(pulumi.StringOutput)
+}
+
+// Specifies a capacity amount to reserve for this endpoint within the parent capacity reservation group.
+func (o ServerlessEndpointCapacityReservationResponseOutput) EndpointReservedCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerlessEndpointCapacityReservationResponse) *int { return v.EndpointReservedCapacity }).(pulumi.IntPtrOutput)
+}
+
+type ServerlessEndpointCapacityReservationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServerlessEndpointCapacityReservationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessEndpointCapacityReservationResponse)(nil)).Elem()
+}
+
+func (o ServerlessEndpointCapacityReservationResponsePtrOutput) ToServerlessEndpointCapacityReservationResponsePtrOutput() ServerlessEndpointCapacityReservationResponsePtrOutput {
+	return o
+}
+
+func (o ServerlessEndpointCapacityReservationResponsePtrOutput) ToServerlessEndpointCapacityReservationResponsePtrOutputWithContext(ctx context.Context) ServerlessEndpointCapacityReservationResponsePtrOutput {
+	return o
+}
+
+func (o ServerlessEndpointCapacityReservationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerlessEndpointCapacityReservationResponse] {
+	return pulumix.Output[*ServerlessEndpointCapacityReservationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServerlessEndpointCapacityReservationResponsePtrOutput) Elem() ServerlessEndpointCapacityReservationResponseOutput {
+	return o.ApplyT(func(v *ServerlessEndpointCapacityReservationResponse) ServerlessEndpointCapacityReservationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServerlessEndpointCapacityReservationResponse
+		return ret
+	}).(ServerlessEndpointCapacityReservationResponseOutput)
+}
+
+// [Required] Specifies a capacity reservation group ID to allocate capacity from.
+func (o ServerlessEndpointCapacityReservationResponsePtrOutput) CapacityReservationGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessEndpointCapacityReservationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CapacityReservationGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a capacity amount to reserve for this endpoint within the parent capacity reservation group.
+func (o ServerlessEndpointCapacityReservationResponsePtrOutput) EndpointReservedCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerlessEndpointCapacityReservationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointReservedCapacity
+	}).(pulumi.IntPtrOutput)
+}
+
+type ServerlessEndpointResponse struct {
+	// Specifies the authentication mode for the Serverless endpoint.
+	AuthMode *string `pulumi:"authMode"`
+	// Optional capacity reservation information for the endpoint. When specified, the Serverless Endpoint
+	// will be allocated capacity from the specified capacity reservation group.
+	CapacityReservation *ServerlessEndpointCapacityReservationResponse `pulumi:"capacityReservation"`
+	// The inference uri to target when making requests against the serverless endpoint
+	InferenceEndpoint ServerlessInferenceEndpointResponse `pulumi:"inferenceEndpoint"`
+	// [Required] The publisher-defined Serverless Offer to provision the endpoint with.
+	Offer ServerlessOfferResponse `pulumi:"offer"`
+	// Provisioning state for the endpoint.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+type ServerlessEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (ServerlessEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessEndpointResponse)(nil)).Elem()
+}
+
+func (o ServerlessEndpointResponseOutput) ToServerlessEndpointResponseOutput() ServerlessEndpointResponseOutput {
+	return o
+}
+
+func (o ServerlessEndpointResponseOutput) ToServerlessEndpointResponseOutputWithContext(ctx context.Context) ServerlessEndpointResponseOutput {
+	return o
+}
+
+func (o ServerlessEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerlessEndpointResponse] {
+	return pulumix.Output[ServerlessEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the authentication mode for the Serverless endpoint.
+func (o ServerlessEndpointResponseOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessEndpointResponse) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
+}
+
+// Optional capacity reservation information for the endpoint. When specified, the Serverless Endpoint
+// will be allocated capacity from the specified capacity reservation group.
+func (o ServerlessEndpointResponseOutput) CapacityReservation() ServerlessEndpointCapacityReservationResponsePtrOutput {
+	return o.ApplyT(func(v ServerlessEndpointResponse) *ServerlessEndpointCapacityReservationResponse {
+		return v.CapacityReservation
+	}).(ServerlessEndpointCapacityReservationResponsePtrOutput)
+}
+
+// The inference uri to target when making requests against the serverless endpoint
+func (o ServerlessEndpointResponseOutput) InferenceEndpoint() ServerlessInferenceEndpointResponseOutput {
+	return o.ApplyT(func(v ServerlessEndpointResponse) ServerlessInferenceEndpointResponse { return v.InferenceEndpoint }).(ServerlessInferenceEndpointResponseOutput)
+}
+
+// [Required] The publisher-defined Serverless Offer to provision the endpoint with.
+func (o ServerlessEndpointResponseOutput) Offer() ServerlessOfferResponseOutput {
+	return o.ApplyT(func(v ServerlessEndpointResponse) ServerlessOfferResponse { return v.Offer }).(ServerlessOfferResponseOutput)
+}
+
+// Provisioning state for the endpoint.
+func (o ServerlessEndpointResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerlessEndpointResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+type ServerlessInferenceEndpointResponse struct {
+	// Specifies any required headers to target this serverless endpoint.
+	Headers map[string]string `pulumi:"headers"`
+	// [Required] The inference uri to target when making requests against the Serverless Endpoint.
+	Uri string `pulumi:"uri"`
+}
+
+type ServerlessInferenceEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (ServerlessInferenceEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessInferenceEndpointResponse)(nil)).Elem()
+}
+
+func (o ServerlessInferenceEndpointResponseOutput) ToServerlessInferenceEndpointResponseOutput() ServerlessInferenceEndpointResponseOutput {
+	return o
+}
+
+func (o ServerlessInferenceEndpointResponseOutput) ToServerlessInferenceEndpointResponseOutputWithContext(ctx context.Context) ServerlessInferenceEndpointResponseOutput {
+	return o
+}
+
+func (o ServerlessInferenceEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerlessInferenceEndpointResponse] {
+	return pulumix.Output[ServerlessInferenceEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies any required headers to target this serverless endpoint.
+func (o ServerlessInferenceEndpointResponseOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServerlessInferenceEndpointResponse) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+// [Required] The inference uri to target when making requests against the Serverless Endpoint.
+func (o ServerlessInferenceEndpointResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerlessInferenceEndpointResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type ServerlessOffer struct {
+	// [Required] The name of the Serverless Offer
+	OfferName string `pulumi:"offerName"`
+	// [Required] Publisher name of the Serverless Offer
+	Publisher string `pulumi:"publisher"`
+}
+
+// ServerlessOfferInput is an input type that accepts ServerlessOfferArgs and ServerlessOfferOutput values.
+// You can construct a concrete instance of `ServerlessOfferInput` via:
+//
+//	ServerlessOfferArgs{...}
+type ServerlessOfferInput interface {
+	pulumi.Input
+
+	ToServerlessOfferOutput() ServerlessOfferOutput
+	ToServerlessOfferOutputWithContext(context.Context) ServerlessOfferOutput
+}
+
+type ServerlessOfferArgs struct {
+	// [Required] The name of the Serverless Offer
+	OfferName pulumi.StringInput `pulumi:"offerName"`
+	// [Required] Publisher name of the Serverless Offer
+	Publisher pulumi.StringInput `pulumi:"publisher"`
+}
+
+func (ServerlessOfferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessOffer)(nil)).Elem()
+}
+
+func (i ServerlessOfferArgs) ToServerlessOfferOutput() ServerlessOfferOutput {
+	return i.ToServerlessOfferOutputWithContext(context.Background())
+}
+
+func (i ServerlessOfferArgs) ToServerlessOfferOutputWithContext(ctx context.Context) ServerlessOfferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessOfferOutput)
+}
+
+func (i ServerlessOfferArgs) ToOutput(ctx context.Context) pulumix.Output[ServerlessOffer] {
+	return pulumix.Output[ServerlessOffer]{
+		OutputState: i.ToServerlessOfferOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ServerlessOfferArgs) ToServerlessOfferPtrOutput() ServerlessOfferPtrOutput {
+	return i.ToServerlessOfferPtrOutputWithContext(context.Background())
+}
+
+func (i ServerlessOfferArgs) ToServerlessOfferPtrOutputWithContext(ctx context.Context) ServerlessOfferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessOfferOutput).ToServerlessOfferPtrOutputWithContext(ctx)
+}
+
+// ServerlessOfferPtrInput is an input type that accepts ServerlessOfferArgs, ServerlessOfferPtr and ServerlessOfferPtrOutput values.
+// You can construct a concrete instance of `ServerlessOfferPtrInput` via:
+//
+//	        ServerlessOfferArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerlessOfferPtrInput interface {
+	pulumi.Input
+
+	ToServerlessOfferPtrOutput() ServerlessOfferPtrOutput
+	ToServerlessOfferPtrOutputWithContext(context.Context) ServerlessOfferPtrOutput
+}
+
+type serverlessOfferPtrType ServerlessOfferArgs
+
+func ServerlessOfferPtr(v *ServerlessOfferArgs) ServerlessOfferPtrInput {
+	return (*serverlessOfferPtrType)(v)
+}
+
+func (*serverlessOfferPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessOffer)(nil)).Elem()
+}
+
+func (i *serverlessOfferPtrType) ToServerlessOfferPtrOutput() ServerlessOfferPtrOutput {
+	return i.ToServerlessOfferPtrOutputWithContext(context.Background())
+}
+
+func (i *serverlessOfferPtrType) ToServerlessOfferPtrOutputWithContext(ctx context.Context) ServerlessOfferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessOfferPtrOutput)
+}
+
+func (i *serverlessOfferPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerlessOffer] {
+	return pulumix.Output[*ServerlessOffer]{
+		OutputState: i.ToServerlessOfferPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ServerlessOfferOutput struct{ *pulumi.OutputState }
+
+func (ServerlessOfferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessOffer)(nil)).Elem()
+}
+
+func (o ServerlessOfferOutput) ToServerlessOfferOutput() ServerlessOfferOutput {
+	return o
+}
+
+func (o ServerlessOfferOutput) ToServerlessOfferOutputWithContext(ctx context.Context) ServerlessOfferOutput {
+	return o
+}
+
+func (o ServerlessOfferOutput) ToServerlessOfferPtrOutput() ServerlessOfferPtrOutput {
+	return o.ToServerlessOfferPtrOutputWithContext(context.Background())
+}
+
+func (o ServerlessOfferOutput) ToServerlessOfferPtrOutputWithContext(ctx context.Context) ServerlessOfferPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerlessOffer) *ServerlessOffer {
+		return &v
+	}).(ServerlessOfferPtrOutput)
+}
+
+func (o ServerlessOfferOutput) ToOutput(ctx context.Context) pulumix.Output[ServerlessOffer] {
+	return pulumix.Output[ServerlessOffer]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Required] The name of the Serverless Offer
+func (o ServerlessOfferOutput) OfferName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerlessOffer) string { return v.OfferName }).(pulumi.StringOutput)
+}
+
+// [Required] Publisher name of the Serverless Offer
+func (o ServerlessOfferOutput) Publisher() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerlessOffer) string { return v.Publisher }).(pulumi.StringOutput)
+}
+
+type ServerlessOfferPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerlessOfferPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessOffer)(nil)).Elem()
+}
+
+func (o ServerlessOfferPtrOutput) ToServerlessOfferPtrOutput() ServerlessOfferPtrOutput {
+	return o
+}
+
+func (o ServerlessOfferPtrOutput) ToServerlessOfferPtrOutputWithContext(ctx context.Context) ServerlessOfferPtrOutput {
+	return o
+}
+
+func (o ServerlessOfferPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerlessOffer] {
+	return pulumix.Output[*ServerlessOffer]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServerlessOfferPtrOutput) Elem() ServerlessOfferOutput {
+	return o.ApplyT(func(v *ServerlessOffer) ServerlessOffer {
+		if v != nil {
+			return *v
+		}
+		var ret ServerlessOffer
+		return ret
+	}).(ServerlessOfferOutput)
+}
+
+// [Required] The name of the Serverless Offer
+func (o ServerlessOfferPtrOutput) OfferName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessOffer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OfferName
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Required] Publisher name of the Serverless Offer
+func (o ServerlessOfferPtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessOffer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Publisher
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServerlessOfferResponse struct {
+	// [Required] The name of the Serverless Offer
+	OfferName string `pulumi:"offerName"`
+	// [Required] Publisher name of the Serverless Offer
+	Publisher string `pulumi:"publisher"`
+}
+
+type ServerlessOfferResponseOutput struct{ *pulumi.OutputState }
+
+func (ServerlessOfferResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessOfferResponse)(nil)).Elem()
+}
+
+func (o ServerlessOfferResponseOutput) ToServerlessOfferResponseOutput() ServerlessOfferResponseOutput {
+	return o
+}
+
+func (o ServerlessOfferResponseOutput) ToServerlessOfferResponseOutputWithContext(ctx context.Context) ServerlessOfferResponseOutput {
+	return o
+}
+
+func (o ServerlessOfferResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerlessOfferResponse] {
+	return pulumix.Output[ServerlessOfferResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Required] The name of the Serverless Offer
+func (o ServerlessOfferResponseOutput) OfferName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerlessOfferResponse) string { return v.OfferName }).(pulumi.StringOutput)
+}
+
+// [Required] Publisher name of the Serverless Offer
+func (o ServerlessOfferResponseOutput) Publisher() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerlessOfferResponse) string { return v.Publisher }).(pulumi.StringOutput)
+}
+
+type ServerlessOfferResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServerlessOfferResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessOfferResponse)(nil)).Elem()
+}
+
+func (o ServerlessOfferResponsePtrOutput) ToServerlessOfferResponsePtrOutput() ServerlessOfferResponsePtrOutput {
+	return o
+}
+
+func (o ServerlessOfferResponsePtrOutput) ToServerlessOfferResponsePtrOutputWithContext(ctx context.Context) ServerlessOfferResponsePtrOutput {
+	return o
+}
+
+func (o ServerlessOfferResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerlessOfferResponse] {
+	return pulumix.Output[*ServerlessOfferResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServerlessOfferResponsePtrOutput) Elem() ServerlessOfferResponseOutput {
+	return o.ApplyT(func(v *ServerlessOfferResponse) ServerlessOfferResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServerlessOfferResponse
+		return ret
+	}).(ServerlessOfferResponseOutput)
+}
+
+// [Required] The name of the Serverless Offer
+func (o ServerlessOfferResponsePtrOutput) OfferName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessOfferResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OfferName
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Required] Publisher name of the Serverless Offer
+func (o ServerlessOfferResponsePtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessOfferResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Publisher
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceManagedResourcesSettings struct {
@@ -31057,672 +34163,13 @@ func (val *TextClassificationResponse) Defaults() *TextClassificationResponse {
 
 	return &tmp
 }
-
-// Text-NER task in AutoML NLP vertical.
-// NER - Named Entity Recognition.
-// NLP - Natural Language Processing.
-type TextNer struct {
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings *NlpVerticalFeaturizationSettings `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings *NlpVerticalLimitSettings `pulumi:"limitSettings"`
-	// Log verbosity for the job.
-	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName *string `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'TextNER'.
-	TaskType string `pulumi:"taskType"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInput `pulumi:"trainingData"`
-	// Validation data inputs.
-	ValidationData *MLTableJobInput `pulumi:"validationData"`
-}
-
-// Defaults sets the appropriate defaults for TextNer
-func (val *TextNer) Defaults() *TextNer {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.LimitSettings = tmp.LimitSettings.Defaults()
-
-	if tmp.LogVerbosity == nil {
-		logVerbosity_ := "Info"
-		tmp.LogVerbosity = &logVerbosity_
-	}
-	tmp.TrainingData = *tmp.TrainingData.Defaults()
-
-	tmp.ValidationData = tmp.ValidationData.Defaults()
-
-	return &tmp
-}
-
-// Text-NER task in AutoML NLP vertical.
-// NER - Named Entity Recognition.
-// NLP - Natural Language Processing.
-type TextNerResponse struct {
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings *NlpVerticalFeaturizationSettingsResponse `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings *NlpVerticalLimitSettingsResponse `pulumi:"limitSettings"`
-	// Log verbosity for the job.
-	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Primary metric for Text-NER task.
-	// Only 'Accuracy' is supported for Text-NER, so user need not set this explicitly.
-	PrimaryMetric string `pulumi:"primaryMetric"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName *string `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'TextNER'.
-	TaskType string `pulumi:"taskType"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInputResponse `pulumi:"trainingData"`
-	// Validation data inputs.
-	ValidationData *MLTableJobInputResponse `pulumi:"validationData"`
-}
-
-// Defaults sets the appropriate defaults for TextNerResponse
-func (val *TextNerResponse) Defaults() *TextNerResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.LimitSettings = tmp.LimitSettings.Defaults()
-
-	if tmp.LogVerbosity == nil {
-		logVerbosity_ := "Info"
-		tmp.LogVerbosity = &logVerbosity_
-	}
-	tmp.TrainingData = *tmp.TrainingData.Defaults()
-
-	tmp.ValidationData = tmp.ValidationData.Defaults()
-
-	return &tmp
-}
-
-// Describes the tmpfs options for the container
-type TmpfsOptions struct {
-	// Mention the Tmpfs size
-	Size *int `pulumi:"size"`
-}
-
-// Describes the tmpfs options for the container
-type TmpfsOptionsResponse struct {
-	// Mention the Tmpfs size
-	Size *int `pulumi:"size"`
-}
-
-// Trial component definition.
-type TrialComponent struct {
-	// ARM resource ID of the code asset.
-	CodeId *string `pulumi:"codeId"`
-	// [Required] The command to execute on startup of the job. eg. "python train.py"
-	Command string `pulumi:"command"`
-	// Distribution configuration of the job. If set, this should be one of Mpi, Tensorflow, PyTorch, or null.
-	Distribution interface{} `pulumi:"distribution"`
-	// [Required] The ARM resource ID of the Environment specification for the job.
-	EnvironmentId string `pulumi:"environmentId"`
-	// Environment variables included in the job.
-	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
-	// Compute Resource configuration for the job.
-	Resources *JobResourceConfiguration `pulumi:"resources"`
-}
-
-// Defaults sets the appropriate defaults for TrialComponent
-func (val *TrialComponent) Defaults() *TrialComponent {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.Resources = tmp.Resources.Defaults()
-
-	return &tmp
-}
-
-// Trial component definition.
-type TrialComponentResponse struct {
-	// ARM resource ID of the code asset.
-	CodeId *string `pulumi:"codeId"`
-	// [Required] The command to execute on startup of the job. eg. "python train.py"
-	Command string `pulumi:"command"`
-	// Distribution configuration of the job. If set, this should be one of Mpi, Tensorflow, PyTorch, or null.
-	Distribution interface{} `pulumi:"distribution"`
-	// [Required] The ARM resource ID of the Environment specification for the job.
-	EnvironmentId string `pulumi:"environmentId"`
-	// Environment variables included in the job.
-	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
-	// Compute Resource configuration for the job.
-	Resources *JobResourceConfigurationResponse `pulumi:"resources"`
-}
-
-// Defaults sets the appropriate defaults for TrialComponentResponse
-func (val *TrialComponentResponse) Defaults() *TrialComponentResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.Resources = tmp.Resources.Defaults()
-
-	return &tmp
-}
-
-type TritonModelJobInput struct {
-	// Description for the input.
-	Description *string `pulumi:"description"`
-	// Enum to determine the Job Input Type.
-	// Expected value is 'triton_model'.
-	JobInputType string `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
-	Mode *string `pulumi:"mode"`
-	// [Required] Input Asset URI.
-	Uri string `pulumi:"uri"`
-}
-
-// Defaults sets the appropriate defaults for TritonModelJobInput
-func (val *TritonModelJobInput) Defaults() *TritonModelJobInput {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		mode_ := "ReadOnlyMount"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
-
-type TritonModelJobInputResponse struct {
-	// Description for the input.
-	Description *string `pulumi:"description"`
-	// Enum to determine the Job Input Type.
-	// Expected value is 'triton_model'.
-	JobInputType string `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
-	Mode *string `pulumi:"mode"`
-	// [Required] Input Asset URI.
-	Uri string `pulumi:"uri"`
-}
-
-// Defaults sets the appropriate defaults for TritonModelJobInputResponse
-func (val *TritonModelJobInputResponse) Defaults() *TritonModelJobInputResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		mode_ := "ReadOnlyMount"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
-
-type TritonModelJobOutput struct {
-	// Description for the output.
-	Description *string `pulumi:"description"`
-	// Enum to determine the Job Output Type.
-	// Expected value is 'triton_model'.
-	JobOutputType string `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
-	Mode *string `pulumi:"mode"`
-	// Output Asset URI.
-	Uri *string `pulumi:"uri"`
-}
-
-// Defaults sets the appropriate defaults for TritonModelJobOutput
-func (val *TritonModelJobOutput) Defaults() *TritonModelJobOutput {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		mode_ := "ReadWriteMount"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
-
-type TritonModelJobOutputResponse struct {
-	// Description for the output.
-	Description *string `pulumi:"description"`
-	// Enum to determine the Job Output Type.
-	// Expected value is 'triton_model'.
-	JobOutputType string `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
-	Mode *string `pulumi:"mode"`
-	// Output Asset URI.
-	Uri *string `pulumi:"uri"`
-}
-
-// Defaults sets the appropriate defaults for TritonModelJobOutputResponse
-func (val *TritonModelJobOutputResponse) Defaults() *TritonModelJobOutputResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		mode_ := "ReadWriteMount"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
-
-// Defines an early termination policy that cancels a given percentage of runs at each evaluation interval.
-type TruncationSelectionPolicy struct {
-	// Number of intervals by which to delay the first evaluation.
-	DelayEvaluation *int `pulumi:"delayEvaluation"`
-	// Interval (number of runs) between policy evaluations.
-	EvaluationInterval *int `pulumi:"evaluationInterval"`
-	// Expected value is 'TruncationSelection'.
-	PolicyType string `pulumi:"policyType"`
-	// The percentage of runs to cancel at each evaluation interval.
-	TruncationPercentage *int `pulumi:"truncationPercentage"`
-}
-
-// Defaults sets the appropriate defaults for TruncationSelectionPolicy
-func (val *TruncationSelectionPolicy) Defaults() *TruncationSelectionPolicy {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.DelayEvaluation == nil {
-		delayEvaluation_ := 0
-		tmp.DelayEvaluation = &delayEvaluation_
-	}
-	if tmp.EvaluationInterval == nil {
-		evaluationInterval_ := 0
-		tmp.EvaluationInterval = &evaluationInterval_
-	}
-	if tmp.TruncationPercentage == nil {
-		truncationPercentage_ := 0
-		tmp.TruncationPercentage = &truncationPercentage_
-	}
-	return &tmp
-}
-
-// Defines an early termination policy that cancels a given percentage of runs at each evaluation interval.
-type TruncationSelectionPolicyResponse struct {
-	// Number of intervals by which to delay the first evaluation.
-	DelayEvaluation *int `pulumi:"delayEvaluation"`
-	// Interval (number of runs) between policy evaluations.
-	EvaluationInterval *int `pulumi:"evaluationInterval"`
-	// Expected value is 'TruncationSelection'.
-	PolicyType string `pulumi:"policyType"`
-	// The percentage of runs to cancel at each evaluation interval.
-	TruncationPercentage *int `pulumi:"truncationPercentage"`
-}
-
-// Defaults sets the appropriate defaults for TruncationSelectionPolicyResponse
-func (val *TruncationSelectionPolicyResponse) Defaults() *TruncationSelectionPolicyResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.DelayEvaluation == nil {
-		delayEvaluation_ := 0
-		tmp.DelayEvaluation = &delayEvaluation_
-	}
-	if tmp.EvaluationInterval == nil {
-		evaluationInterval_ := 0
-		tmp.EvaluationInterval = &evaluationInterval_
-	}
-	if tmp.TruncationPercentage == nil {
-		truncationPercentage_ := 0
-		tmp.TruncationPercentage = &truncationPercentage_
-	}
-	return &tmp
-}
-
-// uri-file data version entity
-type UriFileDataVersion struct {
-	// Enum to determine the type of data.
-	// Expected value is 'uri_file'.
-	DataType string `pulumi:"dataType"`
-	// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
-	DataUri string `pulumi:"dataUri"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// If the name version are system generated (anonymous registration).
-	IsAnonymous *bool `pulumi:"isAnonymous"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for UriFileDataVersion
-func (val *UriFileDataVersion) Defaults() *UriFileDataVersion {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsAnonymous == nil {
-		isAnonymous_ := false
-		tmp.IsAnonymous = &isAnonymous_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	return &tmp
-}
-
-// uri-file data version entity
-type UriFileDataVersionResponse struct {
-	// Enum to determine the type of data.
-	// Expected value is 'uri_file'.
-	DataType string `pulumi:"dataType"`
-	// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
-	DataUri string `pulumi:"dataUri"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// If the name version are system generated (anonymous registration).
-	IsAnonymous *bool `pulumi:"isAnonymous"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for UriFileDataVersionResponse
-func (val *UriFileDataVersionResponse) Defaults() *UriFileDataVersionResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsAnonymous == nil {
-		isAnonymous_ := false
-		tmp.IsAnonymous = &isAnonymous_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	return &tmp
-}
-
-type UriFileJobInput struct {
-	// Description for the input.
-	Description *string `pulumi:"description"`
-	// Enum to determine the Job Input Type.
-	// Expected value is 'uri_file'.
-	JobInputType string `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
-	Mode *string `pulumi:"mode"`
-	// [Required] Input Asset URI.
-	Uri string `pulumi:"uri"`
-}
-
-// Defaults sets the appropriate defaults for UriFileJobInput
-func (val *UriFileJobInput) Defaults() *UriFileJobInput {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		mode_ := "ReadOnlyMount"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
-
-type UriFileJobInputResponse struct {
-	// Description for the input.
-	Description *string `pulumi:"description"`
-	// Enum to determine the Job Input Type.
-	// Expected value is 'uri_file'.
-	JobInputType string `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
-	Mode *string `pulumi:"mode"`
-	// [Required] Input Asset URI.
-	Uri string `pulumi:"uri"`
-}
-
-// Defaults sets the appropriate defaults for UriFileJobInputResponse
-func (val *UriFileJobInputResponse) Defaults() *UriFileJobInputResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		mode_ := "ReadOnlyMount"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
-
-type UriFileJobOutput struct {
-	// Description for the output.
-	Description *string `pulumi:"description"`
-	// Enum to determine the Job Output Type.
-	// Expected value is 'uri_file'.
-	JobOutputType string `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
-	Mode *string `pulumi:"mode"`
-	// Output Asset URI.
-	Uri *string `pulumi:"uri"`
-}
-
-// Defaults sets the appropriate defaults for UriFileJobOutput
-func (val *UriFileJobOutput) Defaults() *UriFileJobOutput {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		mode_ := "ReadWriteMount"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
-
-type UriFileJobOutputResponse struct {
-	// Description for the output.
-	Description *string `pulumi:"description"`
-	// Enum to determine the Job Output Type.
-	// Expected value is 'uri_file'.
-	JobOutputType string `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
-	Mode *string `pulumi:"mode"`
-	// Output Asset URI.
-	Uri *string `pulumi:"uri"`
-}
-
-// Defaults sets the appropriate defaults for UriFileJobOutputResponse
-func (val *UriFileJobOutputResponse) Defaults() *UriFileJobOutputResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		mode_ := "ReadWriteMount"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
-
-// uri-folder data version entity
-type UriFolderDataVersion struct {
-	// Enum to determine the type of data.
-	// Expected value is 'uri_folder'.
-	DataType string `pulumi:"dataType"`
-	// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
-	DataUri string `pulumi:"dataUri"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// If the name version are system generated (anonymous registration).
-	IsAnonymous *bool `pulumi:"isAnonymous"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for UriFolderDataVersion
-func (val *UriFolderDataVersion) Defaults() *UriFolderDataVersion {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsAnonymous == nil {
-		isAnonymous_ := false
-		tmp.IsAnonymous = &isAnonymous_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	return &tmp
-}
-
-// uri-folder data version entity
-type UriFolderDataVersionResponse struct {
-	// Enum to determine the type of data.
-	// Expected value is 'uri_folder'.
-	DataType string `pulumi:"dataType"`
-	// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
-	DataUri string `pulumi:"dataUri"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// If the name version are system generated (anonymous registration).
-	IsAnonymous *bool `pulumi:"isAnonymous"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for UriFolderDataVersionResponse
-func (val *UriFolderDataVersionResponse) Defaults() *UriFolderDataVersionResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsAnonymous == nil {
-		isAnonymous_ := false
-		tmp.IsAnonymous = &isAnonymous_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	return &tmp
-}
-
-type UriFolderJobInput struct {
-	// Description for the input.
-	Description *string `pulumi:"description"`
-	// Enum to determine the Job Input Type.
-	// Expected value is 'uri_folder'.
-	JobInputType string `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
-	Mode *string `pulumi:"mode"`
-	// [Required] Input Asset URI.
-	Uri string `pulumi:"uri"`
-}
-
-// Defaults sets the appropriate defaults for UriFolderJobInput
-func (val *UriFolderJobInput) Defaults() *UriFolderJobInput {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		mode_ := "ReadOnlyMount"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
-
-type UriFolderJobInputResponse struct {
-	// Description for the input.
-	Description *string `pulumi:"description"`
-	// Enum to determine the Job Input Type.
-	// Expected value is 'uri_folder'.
-	JobInputType string `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
-	Mode *string `pulumi:"mode"`
-	// [Required] Input Asset URI.
-	Uri string `pulumi:"uri"`
-}
-
-// Defaults sets the appropriate defaults for UriFolderJobInputResponse
-func (val *UriFolderJobInputResponse) Defaults() *UriFolderJobInputResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		mode_ := "ReadOnlyMount"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
-
-type UriFolderJobOutput struct {
-	// Description for the output.
-	Description *string `pulumi:"description"`
-	// Enum to determine the Job Output Type.
-	// Expected value is 'uri_folder'.
-	JobOutputType string `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
-	Mode *string `pulumi:"mode"`
-	// Output Asset URI.
-	Uri *string `pulumi:"uri"`
-}
-
-// Defaults sets the appropriate defaults for UriFolderJobOutput
-func (val *UriFolderJobOutput) Defaults() *UriFolderJobOutput {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		mode_ := "ReadWriteMount"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
-
-type UriFolderJobOutputResponse struct {
-	// Description for the output.
-	Description *string `pulumi:"description"`
-	// Enum to determine the Job Output Type.
-	// Expected value is 'uri_folder'.
-	JobOutputType string `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
-	Mode *string `pulumi:"mode"`
-	// Output Asset URI.
-	Uri *string `pulumi:"uri"`
-}
-
-// Defaults sets the appropriate defaults for UriFolderJobOutputResponse
-func (val *UriFolderJobOutputResponse) Defaults() *UriFolderJobOutputResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		mode_ := "ReadWriteMount"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
 func init() {
 	pulumi.RegisterOutputType(AcrDetailsOutput{})
 	pulumi.RegisterOutputType(AcrDetailsArrayOutput{})
 	pulumi.RegisterOutputType(AcrDetailsResponseOutput{})
 	pulumi.RegisterOutputType(AcrDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(ActualCapacityInfoResponseOutput{})
+	pulumi.RegisterOutputType(ActualCapacityInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(AllNodesOutput{})
 	pulumi.RegisterOutputType(AllNodesPtrOutput{})
 	pulumi.RegisterOutputType(AllNodesResponseOutput{})
@@ -31767,6 +34214,8 @@ func init() {
 	pulumi.RegisterOutputType(BuildContextPtrOutput{})
 	pulumi.RegisterOutputType(BuildContextResponseOutput{})
 	pulumi.RegisterOutputType(BuildContextResponsePtrOutput{})
+	pulumi.RegisterOutputType(CapacityReservationGroupTypeOutput{})
+	pulumi.RegisterOutputType(CapacityReservationGroupResponseOutput{})
 	pulumi.RegisterOutputType(ClientCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(ClientCredentialsResponsePtrOutput{})
 	pulumi.RegisterOutputType(CodeConfigurationOutput{})
@@ -31829,6 +34278,10 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentSpecificationVersionResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentVersionTypeOutput{})
 	pulumi.RegisterOutputType(EnvironmentVersionResponseOutput{})
+	pulumi.RegisterOutputType(EstimatedVMPriceResponseOutput{})
+	pulumi.RegisterOutputType(EstimatedVMPriceResponseArrayOutput{})
+	pulumi.RegisterOutputType(EstimatedVMPricesResponseOutput{})
+	pulumi.RegisterOutputType(EstimatedVMPricesResponsePtrOutput{})
 	pulumi.RegisterOutputType(FeatureResponseOutput{})
 	pulumi.RegisterOutputType(FeatureResponseArrayOutput{})
 	pulumi.RegisterOutputType(FeatureWindowResponseOutput{})
@@ -31869,6 +34322,12 @@ func init() {
 	pulumi.RegisterOutputType(InferenceContainerPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(InferenceContainerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(InferenceContainerPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(InferenceEndpointTypeOutput{})
+	pulumi.RegisterOutputType(InferenceEndpointResponseOutput{})
+	pulumi.RegisterOutputType(InferenceGroupTypeOutput{})
+	pulumi.RegisterOutputType(InferenceGroupResponseOutput{})
+	pulumi.RegisterOutputType(InferencePoolTypeOutput{})
+	pulumi.RegisterOutputType(InferencePoolResponseOutput{})
 	pulumi.RegisterOutputType(JobServiceOutput{})
 	pulumi.RegisterOutputType(JobServiceMapOutput{})
 	pulumi.RegisterOutputType(JobServiceResponseOutput{})
@@ -31927,6 +34386,14 @@ func init() {
 	pulumi.RegisterOutputType(OnlineEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PasswordResponseOutput{})
 	pulumi.RegisterOutputType(PasswordResponseArrayOutput{})
+	pulumi.RegisterOutputType(PoolEnvironmentConfigurationOutput{})
+	pulumi.RegisterOutputType(PoolEnvironmentConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(PoolEnvironmentConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(PoolEnvironmentConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(PoolModelConfigurationOutput{})
+	pulumi.RegisterOutputType(PoolModelConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(PoolModelConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(PoolModelConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResourceOutput{})
@@ -31937,6 +34404,10 @@ func init() {
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
+	pulumi.RegisterOutputType(ProbeSettingsOutput{})
+	pulumi.RegisterOutputType(ProbeSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ProbeSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ProbeSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ProgressMetricsResponseOutput{})
 	pulumi.RegisterOutputType(RecurrenceScheduleOutput{})
 	pulumi.RegisterOutputType(RecurrenceSchedulePtrOutput{})
@@ -31965,6 +34436,10 @@ func init() {
 	pulumi.RegisterOutputType(RegistryRegionArmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(RegistryRegionArmDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(RegistryResponseOutput{})
+	pulumi.RegisterOutputType(RequestConfigurationOutput{})
+	pulumi.RegisterOutputType(RequestConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(RequestConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(RequestConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(RouteOutput{})
 	pulumi.RegisterOutputType(RoutePtrOutput{})
 	pulumi.RegisterOutputType(RouteResponseOutput{})
@@ -31975,6 +34450,17 @@ func init() {
 	pulumi.RegisterOutputType(SecretConfigurationMapOutput{})
 	pulumi.RegisterOutputType(SecretConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(SecretConfigurationResponseMapOutput{})
+	pulumi.RegisterOutputType(ServerlessEndpointTypeOutput{})
+	pulumi.RegisterOutputType(ServerlessEndpointCapacityReservationOutput{})
+	pulumi.RegisterOutputType(ServerlessEndpointCapacityReservationPtrOutput{})
+	pulumi.RegisterOutputType(ServerlessEndpointCapacityReservationResponseOutput{})
+	pulumi.RegisterOutputType(ServerlessEndpointCapacityReservationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServerlessEndpointResponseOutput{})
+	pulumi.RegisterOutputType(ServerlessInferenceEndpointResponseOutput{})
+	pulumi.RegisterOutputType(ServerlessOfferOutput{})
+	pulumi.RegisterOutputType(ServerlessOfferPtrOutput{})
+	pulumi.RegisterOutputType(ServerlessOfferResponseOutput{})
+	pulumi.RegisterOutputType(ServerlessOfferResponsePtrOutput{})
 	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsOutput{})
 	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsResponseOutput{})

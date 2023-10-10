@@ -66,6 +66,9 @@ func NewRegistryComponentVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:RegistryComponentVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:RegistryComponentVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

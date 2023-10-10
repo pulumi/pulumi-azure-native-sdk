@@ -19,6 +19,13 @@ const (
 	ApplicationSharingPolicyShared   = ApplicationSharingPolicy("Shared")
 )
 
+// [Required] Authentication mode for the endpoint.
+type AuthMode string
+
+const (
+	AuthModeAAD = AuthMode("AAD")
+)
+
 // When to check if an asset is expired
 type AutoDeleteCondition string
 
@@ -1328,6 +1335,14 @@ const (
 	SecretsTypeCertificate      = SecretsType("Certificate")
 	SecretsTypeSas              = SecretsType("Sas")
 	SecretsTypeServicePrincipal = SecretsType("ServicePrincipal")
+)
+
+// Specifies the authentication mode for the Serverless endpoint.
+type ServerlessInferenceEndpointAuthMode string
+
+const (
+	ServerlessInferenceEndpointAuthModeKey = ServerlessInferenceEndpointAuthMode("Key")
+	ServerlessInferenceEndpointAuthModeAAD = ServerlessInferenceEndpointAuthMode("AAD")
 )
 
 // Indicates which identity to use to authenticate service data access to customer's storage.

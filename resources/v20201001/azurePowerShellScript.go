@@ -97,6 +97,9 @@ func NewAzurePowerShellScript(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:resources/v20191001preview:AzurePowerShellScript"),
 		},
+		{
+			Type: pulumi.String("azure-native:resources/v20230801:AzurePowerShellScript"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

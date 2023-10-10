@@ -137,6 +137,9 @@ func NewCompute(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:Compute"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:Compute"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

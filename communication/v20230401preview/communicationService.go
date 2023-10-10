@@ -80,6 +80,9 @@ func NewCommunicationService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:communication/v20230331:CommunicationService"),
 		},
+		{
+			Type: pulumi.String("azure-native:communication/v20230601preview:CommunicationService"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

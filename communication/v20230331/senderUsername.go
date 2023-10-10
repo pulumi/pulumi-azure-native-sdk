@@ -62,6 +62,9 @@ func NewSenderUsername(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:communication/v20230401preview:SenderUsername"),
 		},
+		{
+			Type: pulumi.String("azure-native:communication/v20230601preview:SenderUsername"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

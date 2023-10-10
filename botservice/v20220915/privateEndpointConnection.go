@@ -57,6 +57,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:botservice/v20220615preview:PrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:botservice/v20230915preview:PrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

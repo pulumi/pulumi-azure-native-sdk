@@ -29,6 +29,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EmailService{}
 	case "azure-native:communication:SenderUsername":
 		r = &SenderUsername{}
+	case "azure-native:communication:SuppressionList":
+		r = &SuppressionList{}
+	case "azure-native:communication:SuppressionListAddress":
+		r = &SuppressionListAddress{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

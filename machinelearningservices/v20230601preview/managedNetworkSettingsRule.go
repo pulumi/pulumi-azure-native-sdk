@@ -50,6 +50,9 @@ func NewManagedNetworkSettingsRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:ManagedNetworkSettingsRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:ManagedNetworkSettingsRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
