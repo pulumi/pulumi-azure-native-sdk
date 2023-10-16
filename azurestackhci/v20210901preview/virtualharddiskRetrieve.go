@@ -87,6 +87,12 @@ func NewVirtualharddiskRetrieve(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230701preview:virtualharddiskRetrieve"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230901preview:VirtualharddiskRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230901preview:virtualharddiskRetrieve"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -3421,6 +3421,298 @@ func (o EncryptionResponsePtrOutput) KeyVaultProperties() KeyVaultPropertiesResp
 	}).(KeyVaultPropertiesResponsePtrOutput)
 }
 
+// Properties to EncryptionScope
+type EncryptionScopeProperties struct {
+	// Enumerates the possible value of keySource for Encryption
+	KeySource *string `pulumi:"keySource"`
+	// Properties of KeyVault
+	KeyVaultProperties *KeyVaultProperties `pulumi:"keyVaultProperties"`
+	// The encryptionScope state.
+	State *string `pulumi:"state"`
+}
+
+// Defaults sets the appropriate defaults for EncryptionScopeProperties
+func (val *EncryptionScopeProperties) Defaults() *EncryptionScopeProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.KeySource == nil {
+		keySource_ := "Microsoft.KeyVault"
+		tmp.KeySource = &keySource_
+	}
+	return &tmp
+}
+
+// EncryptionScopePropertiesInput is an input type that accepts EncryptionScopePropertiesArgs and EncryptionScopePropertiesOutput values.
+// You can construct a concrete instance of `EncryptionScopePropertiesInput` via:
+//
+//	EncryptionScopePropertiesArgs{...}
+type EncryptionScopePropertiesInput interface {
+	pulumi.Input
+
+	ToEncryptionScopePropertiesOutput() EncryptionScopePropertiesOutput
+	ToEncryptionScopePropertiesOutputWithContext(context.Context) EncryptionScopePropertiesOutput
+}
+
+// Properties to EncryptionScope
+type EncryptionScopePropertiesArgs struct {
+	// Enumerates the possible value of keySource for Encryption
+	KeySource pulumi.StringPtrInput `pulumi:"keySource"`
+	// Properties of KeyVault
+	KeyVaultProperties KeyVaultPropertiesPtrInput `pulumi:"keyVaultProperties"`
+	// The encryptionScope state.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+// Defaults sets the appropriate defaults for EncryptionScopePropertiesArgs
+func (val *EncryptionScopePropertiesArgs) Defaults() *EncryptionScopePropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.KeySource == nil {
+		tmp.KeySource = pulumi.StringPtr("Microsoft.KeyVault")
+	}
+	return &tmp
+}
+func (EncryptionScopePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionScopeProperties)(nil)).Elem()
+}
+
+func (i EncryptionScopePropertiesArgs) ToEncryptionScopePropertiesOutput() EncryptionScopePropertiesOutput {
+	return i.ToEncryptionScopePropertiesOutputWithContext(context.Background())
+}
+
+func (i EncryptionScopePropertiesArgs) ToEncryptionScopePropertiesOutputWithContext(ctx context.Context) EncryptionScopePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionScopePropertiesOutput)
+}
+
+func (i EncryptionScopePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionScopeProperties] {
+	return pulumix.Output[EncryptionScopeProperties]{
+		OutputState: i.ToEncryptionScopePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i EncryptionScopePropertiesArgs) ToEncryptionScopePropertiesPtrOutput() EncryptionScopePropertiesPtrOutput {
+	return i.ToEncryptionScopePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionScopePropertiesArgs) ToEncryptionScopePropertiesPtrOutputWithContext(ctx context.Context) EncryptionScopePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionScopePropertiesOutput).ToEncryptionScopePropertiesPtrOutputWithContext(ctx)
+}
+
+// EncryptionScopePropertiesPtrInput is an input type that accepts EncryptionScopePropertiesArgs, EncryptionScopePropertiesPtr and EncryptionScopePropertiesPtrOutput values.
+// You can construct a concrete instance of `EncryptionScopePropertiesPtrInput` via:
+//
+//	        EncryptionScopePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncryptionScopePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionScopePropertiesPtrOutput() EncryptionScopePropertiesPtrOutput
+	ToEncryptionScopePropertiesPtrOutputWithContext(context.Context) EncryptionScopePropertiesPtrOutput
+}
+
+type encryptionScopePropertiesPtrType EncryptionScopePropertiesArgs
+
+func EncryptionScopePropertiesPtr(v *EncryptionScopePropertiesArgs) EncryptionScopePropertiesPtrInput {
+	return (*encryptionScopePropertiesPtrType)(v)
+}
+
+func (*encryptionScopePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionScopeProperties)(nil)).Elem()
+}
+
+func (i *encryptionScopePropertiesPtrType) ToEncryptionScopePropertiesPtrOutput() EncryptionScopePropertiesPtrOutput {
+	return i.ToEncryptionScopePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionScopePropertiesPtrType) ToEncryptionScopePropertiesPtrOutputWithContext(ctx context.Context) EncryptionScopePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionScopePropertiesPtrOutput)
+}
+
+func (i *encryptionScopePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionScopeProperties] {
+	return pulumix.Output[*EncryptionScopeProperties]{
+		OutputState: i.ToEncryptionScopePropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Properties to EncryptionScope
+type EncryptionScopePropertiesOutput struct{ *pulumi.OutputState }
+
+func (EncryptionScopePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionScopeProperties)(nil)).Elem()
+}
+
+func (o EncryptionScopePropertiesOutput) ToEncryptionScopePropertiesOutput() EncryptionScopePropertiesOutput {
+	return o
+}
+
+func (o EncryptionScopePropertiesOutput) ToEncryptionScopePropertiesOutputWithContext(ctx context.Context) EncryptionScopePropertiesOutput {
+	return o
+}
+
+func (o EncryptionScopePropertiesOutput) ToEncryptionScopePropertiesPtrOutput() EncryptionScopePropertiesPtrOutput {
+	return o.ToEncryptionScopePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionScopePropertiesOutput) ToEncryptionScopePropertiesPtrOutputWithContext(ctx context.Context) EncryptionScopePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionScopeProperties) *EncryptionScopeProperties {
+		return &v
+	}).(EncryptionScopePropertiesPtrOutput)
+}
+
+func (o EncryptionScopePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionScopeProperties] {
+	return pulumix.Output[EncryptionScopeProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enumerates the possible value of keySource for Encryption
+func (o EncryptionScopePropertiesOutput) KeySource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionScopeProperties) *string { return v.KeySource }).(pulumi.StringPtrOutput)
+}
+
+// Properties of KeyVault
+func (o EncryptionScopePropertiesOutput) KeyVaultProperties() KeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v EncryptionScopeProperties) *KeyVaultProperties { return v.KeyVaultProperties }).(KeyVaultPropertiesPtrOutput)
+}
+
+// The encryptionScope state.
+func (o EncryptionScopePropertiesOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionScopeProperties) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionScopePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionScopePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionScopeProperties)(nil)).Elem()
+}
+
+func (o EncryptionScopePropertiesPtrOutput) ToEncryptionScopePropertiesPtrOutput() EncryptionScopePropertiesPtrOutput {
+	return o
+}
+
+func (o EncryptionScopePropertiesPtrOutput) ToEncryptionScopePropertiesPtrOutputWithContext(ctx context.Context) EncryptionScopePropertiesPtrOutput {
+	return o
+}
+
+func (o EncryptionScopePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionScopeProperties] {
+	return pulumix.Output[*EncryptionScopeProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EncryptionScopePropertiesPtrOutput) Elem() EncryptionScopePropertiesOutput {
+	return o.ApplyT(func(v *EncryptionScopeProperties) EncryptionScopeProperties {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionScopeProperties
+		return ret
+	}).(EncryptionScopePropertiesOutput)
+}
+
+// Enumerates the possible value of keySource for Encryption
+func (o EncryptionScopePropertiesPtrOutput) KeySource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionScopeProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeySource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of KeyVault
+func (o EncryptionScopePropertiesPtrOutput) KeyVaultProperties() KeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v *EncryptionScopeProperties) *KeyVaultProperties {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultProperties
+	}).(KeyVaultPropertiesPtrOutput)
+}
+
+// The encryptionScope state.
+func (o EncryptionScopePropertiesPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionScopeProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties to EncryptionScope
+type EncryptionScopePropertiesResponse struct {
+	// Enumerates the possible value of keySource for Encryption
+	KeySource *string `pulumi:"keySource"`
+	// Properties of KeyVault
+	KeyVaultProperties *KeyVaultPropertiesResponse `pulumi:"keyVaultProperties"`
+	// Gets the status of the resource at the time the operation was called.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The encryptionScope state.
+	State *string `pulumi:"state"`
+}
+
+// Defaults sets the appropriate defaults for EncryptionScopePropertiesResponse
+func (val *EncryptionScopePropertiesResponse) Defaults() *EncryptionScopePropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.KeySource == nil {
+		keySource_ := "Microsoft.KeyVault"
+		tmp.KeySource = &keySource_
+	}
+	return &tmp
+}
+
+// Properties to EncryptionScope
+type EncryptionScopePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionScopePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionScopePropertiesResponse)(nil)).Elem()
+}
+
+func (o EncryptionScopePropertiesResponseOutput) ToEncryptionScopePropertiesResponseOutput() EncryptionScopePropertiesResponseOutput {
+	return o
+}
+
+func (o EncryptionScopePropertiesResponseOutput) ToEncryptionScopePropertiesResponseOutputWithContext(ctx context.Context) EncryptionScopePropertiesResponseOutput {
+	return o
+}
+
+func (o EncryptionScopePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionScopePropertiesResponse] {
+	return pulumix.Output[EncryptionScopePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enumerates the possible value of keySource for Encryption
+func (o EncryptionScopePropertiesResponseOutput) KeySource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionScopePropertiesResponse) *string { return v.KeySource }).(pulumi.StringPtrOutput)
+}
+
+// Properties of KeyVault
+func (o EncryptionScopePropertiesResponseOutput) KeyVaultProperties() KeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v EncryptionScopePropertiesResponse) *KeyVaultPropertiesResponse { return v.KeyVaultProperties }).(KeyVaultPropertiesResponsePtrOutput)
+}
+
+// Gets the status of the resource at the time the operation was called.
+func (o EncryptionScopePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionScopePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The encryptionScope state.
+func (o EncryptionScopePropertiesResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionScopePropertiesResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
 // Identity for the resource.
 type Identity struct {
 	// The identity type.
@@ -5649,6 +5941,1175 @@ func (o QuotaLimitResponseOutput) Rules() ThrottlingRuleResponseArrayOutput {
 	return o.ApplyT(func(v QuotaLimitResponse) []ThrottlingRuleResponse { return v.Rules }).(ThrottlingRuleResponseArrayOutput)
 }
 
+// Azure OpenAI blocklist config.
+type RaiBlocklistConfig struct {
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// Name of ContentFilter.
+	BlocklistName *string `pulumi:"blocklistName"`
+}
+
+// RaiBlocklistConfigInput is an input type that accepts RaiBlocklistConfigArgs and RaiBlocklistConfigOutput values.
+// You can construct a concrete instance of `RaiBlocklistConfigInput` via:
+//
+//	RaiBlocklistConfigArgs{...}
+type RaiBlocklistConfigInput interface {
+	pulumi.Input
+
+	ToRaiBlocklistConfigOutput() RaiBlocklistConfigOutput
+	ToRaiBlocklistConfigOutputWithContext(context.Context) RaiBlocklistConfigOutput
+}
+
+// Azure OpenAI blocklist config.
+type RaiBlocklistConfigArgs struct {
+	// If blocking would occur.
+	Blocking pulumi.BoolPtrInput `pulumi:"blocking"`
+	// Name of ContentFilter.
+	BlocklistName pulumi.StringPtrInput `pulumi:"blocklistName"`
+}
+
+func (RaiBlocklistConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistConfig)(nil)).Elem()
+}
+
+func (i RaiBlocklistConfigArgs) ToRaiBlocklistConfigOutput() RaiBlocklistConfigOutput {
+	return i.ToRaiBlocklistConfigOutputWithContext(context.Background())
+}
+
+func (i RaiBlocklistConfigArgs) ToRaiBlocklistConfigOutputWithContext(ctx context.Context) RaiBlocklistConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistConfigOutput)
+}
+
+func (i RaiBlocklistConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RaiBlocklistConfig] {
+	return pulumix.Output[RaiBlocklistConfig]{
+		OutputState: i.ToRaiBlocklistConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// RaiBlocklistConfigArrayInput is an input type that accepts RaiBlocklistConfigArray and RaiBlocklistConfigArrayOutput values.
+// You can construct a concrete instance of `RaiBlocklistConfigArrayInput` via:
+//
+//	RaiBlocklistConfigArray{ RaiBlocklistConfigArgs{...} }
+type RaiBlocklistConfigArrayInput interface {
+	pulumi.Input
+
+	ToRaiBlocklistConfigArrayOutput() RaiBlocklistConfigArrayOutput
+	ToRaiBlocklistConfigArrayOutputWithContext(context.Context) RaiBlocklistConfigArrayOutput
+}
+
+type RaiBlocklistConfigArray []RaiBlocklistConfigInput
+
+func (RaiBlocklistConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiBlocklistConfig)(nil)).Elem()
+}
+
+func (i RaiBlocklistConfigArray) ToRaiBlocklistConfigArrayOutput() RaiBlocklistConfigArrayOutput {
+	return i.ToRaiBlocklistConfigArrayOutputWithContext(context.Background())
+}
+
+func (i RaiBlocklistConfigArray) ToRaiBlocklistConfigArrayOutputWithContext(ctx context.Context) RaiBlocklistConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistConfigArrayOutput)
+}
+
+func (i RaiBlocklistConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]RaiBlocklistConfig] {
+	return pulumix.Output[[]RaiBlocklistConfig]{
+		OutputState: i.ToRaiBlocklistConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Azure OpenAI blocklist config.
+type RaiBlocklistConfigOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistConfig)(nil)).Elem()
+}
+
+func (o RaiBlocklistConfigOutput) ToRaiBlocklistConfigOutput() RaiBlocklistConfigOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigOutput) ToRaiBlocklistConfigOutputWithContext(ctx context.Context) RaiBlocklistConfigOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RaiBlocklistConfig] {
+	return pulumix.Output[RaiBlocklistConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If blocking would occur.
+func (o RaiBlocklistConfigOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistConfig) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// Name of ContentFilter.
+func (o RaiBlocklistConfigOutput) BlocklistName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistConfig) *string { return v.BlocklistName }).(pulumi.StringPtrOutput)
+}
+
+type RaiBlocklistConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiBlocklistConfig)(nil)).Elem()
+}
+
+func (o RaiBlocklistConfigArrayOutput) ToRaiBlocklistConfigArrayOutput() RaiBlocklistConfigArrayOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigArrayOutput) ToRaiBlocklistConfigArrayOutputWithContext(ctx context.Context) RaiBlocklistConfigArrayOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RaiBlocklistConfig] {
+	return pulumix.Output[[]RaiBlocklistConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RaiBlocklistConfigArrayOutput) Index(i pulumi.IntInput) RaiBlocklistConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiBlocklistConfig {
+		return vs[0].([]RaiBlocklistConfig)[vs[1].(int)]
+	}).(RaiBlocklistConfigOutput)
+}
+
+// Azure OpenAI blocklist config.
+type RaiBlocklistConfigResponse struct {
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// Name of ContentFilter.
+	BlocklistName *string `pulumi:"blocklistName"`
+}
+
+// Azure OpenAI blocklist config.
+type RaiBlocklistConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistConfigResponse)(nil)).Elem()
+}
+
+func (o RaiBlocklistConfigResponseOutput) ToRaiBlocklistConfigResponseOutput() RaiBlocklistConfigResponseOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigResponseOutput) ToRaiBlocklistConfigResponseOutputWithContext(ctx context.Context) RaiBlocklistConfigResponseOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RaiBlocklistConfigResponse] {
+	return pulumix.Output[RaiBlocklistConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If blocking would occur.
+func (o RaiBlocklistConfigResponseOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistConfigResponse) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// Name of ContentFilter.
+func (o RaiBlocklistConfigResponseOutput) BlocklistName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistConfigResponse) *string { return v.BlocklistName }).(pulumi.StringPtrOutput)
+}
+
+type RaiBlocklistConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiBlocklistConfigResponse)(nil)).Elem()
+}
+
+func (o RaiBlocklistConfigResponseArrayOutput) ToRaiBlocklistConfigResponseArrayOutput() RaiBlocklistConfigResponseArrayOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigResponseArrayOutput) ToRaiBlocklistConfigResponseArrayOutputWithContext(ctx context.Context) RaiBlocklistConfigResponseArrayOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RaiBlocklistConfigResponse] {
+	return pulumix.Output[[]RaiBlocklistConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RaiBlocklistConfigResponseArrayOutput) Index(i pulumi.IntInput) RaiBlocklistConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiBlocklistConfigResponse {
+		return vs[0].([]RaiBlocklistConfigResponse)[vs[1].(int)]
+	}).(RaiBlocklistConfigResponseOutput)
+}
+
+// RAI Custom Blocklist Item properties.
+type RaiBlocklistItemProperties struct {
+	// If the pattern is a regex pattern.
+	IsRegex *bool `pulumi:"isRegex"`
+	// Pattern to match against.
+	Pattern *string `pulumi:"pattern"`
+}
+
+// RaiBlocklistItemPropertiesInput is an input type that accepts RaiBlocklistItemPropertiesArgs and RaiBlocklistItemPropertiesOutput values.
+// You can construct a concrete instance of `RaiBlocklistItemPropertiesInput` via:
+//
+//	RaiBlocklistItemPropertiesArgs{...}
+type RaiBlocklistItemPropertiesInput interface {
+	pulumi.Input
+
+	ToRaiBlocklistItemPropertiesOutput() RaiBlocklistItemPropertiesOutput
+	ToRaiBlocklistItemPropertiesOutputWithContext(context.Context) RaiBlocklistItemPropertiesOutput
+}
+
+// RAI Custom Blocklist Item properties.
+type RaiBlocklistItemPropertiesArgs struct {
+	// If the pattern is a regex pattern.
+	IsRegex pulumi.BoolPtrInput `pulumi:"isRegex"`
+	// Pattern to match against.
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+}
+
+func (RaiBlocklistItemPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistItemProperties)(nil)).Elem()
+}
+
+func (i RaiBlocklistItemPropertiesArgs) ToRaiBlocklistItemPropertiesOutput() RaiBlocklistItemPropertiesOutput {
+	return i.ToRaiBlocklistItemPropertiesOutputWithContext(context.Background())
+}
+
+func (i RaiBlocklistItemPropertiesArgs) ToRaiBlocklistItemPropertiesOutputWithContext(ctx context.Context) RaiBlocklistItemPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistItemPropertiesOutput)
+}
+
+func (i RaiBlocklistItemPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[RaiBlocklistItemProperties] {
+	return pulumix.Output[RaiBlocklistItemProperties]{
+		OutputState: i.ToRaiBlocklistItemPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RaiBlocklistItemPropertiesArgs) ToRaiBlocklistItemPropertiesPtrOutput() RaiBlocklistItemPropertiesPtrOutput {
+	return i.ToRaiBlocklistItemPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i RaiBlocklistItemPropertiesArgs) ToRaiBlocklistItemPropertiesPtrOutputWithContext(ctx context.Context) RaiBlocklistItemPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistItemPropertiesOutput).ToRaiBlocklistItemPropertiesPtrOutputWithContext(ctx)
+}
+
+// RaiBlocklistItemPropertiesPtrInput is an input type that accepts RaiBlocklistItemPropertiesArgs, RaiBlocklistItemPropertiesPtr and RaiBlocklistItemPropertiesPtrOutput values.
+// You can construct a concrete instance of `RaiBlocklistItemPropertiesPtrInput` via:
+//
+//	        RaiBlocklistItemPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RaiBlocklistItemPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToRaiBlocklistItemPropertiesPtrOutput() RaiBlocklistItemPropertiesPtrOutput
+	ToRaiBlocklistItemPropertiesPtrOutputWithContext(context.Context) RaiBlocklistItemPropertiesPtrOutput
+}
+
+type raiBlocklistItemPropertiesPtrType RaiBlocklistItemPropertiesArgs
+
+func RaiBlocklistItemPropertiesPtr(v *RaiBlocklistItemPropertiesArgs) RaiBlocklistItemPropertiesPtrInput {
+	return (*raiBlocklistItemPropertiesPtrType)(v)
+}
+
+func (*raiBlocklistItemPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiBlocklistItemProperties)(nil)).Elem()
+}
+
+func (i *raiBlocklistItemPropertiesPtrType) ToRaiBlocklistItemPropertiesPtrOutput() RaiBlocklistItemPropertiesPtrOutput {
+	return i.ToRaiBlocklistItemPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *raiBlocklistItemPropertiesPtrType) ToRaiBlocklistItemPropertiesPtrOutputWithContext(ctx context.Context) RaiBlocklistItemPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistItemPropertiesPtrOutput)
+}
+
+func (i *raiBlocklistItemPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*RaiBlocklistItemProperties] {
+	return pulumix.Output[*RaiBlocklistItemProperties]{
+		OutputState: i.ToRaiBlocklistItemPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// RAI Custom Blocklist Item properties.
+type RaiBlocklistItemPropertiesOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistItemPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistItemProperties)(nil)).Elem()
+}
+
+func (o RaiBlocklistItemPropertiesOutput) ToRaiBlocklistItemPropertiesOutput() RaiBlocklistItemPropertiesOutput {
+	return o
+}
+
+func (o RaiBlocklistItemPropertiesOutput) ToRaiBlocklistItemPropertiesOutputWithContext(ctx context.Context) RaiBlocklistItemPropertiesOutput {
+	return o
+}
+
+func (o RaiBlocklistItemPropertiesOutput) ToRaiBlocklistItemPropertiesPtrOutput() RaiBlocklistItemPropertiesPtrOutput {
+	return o.ToRaiBlocklistItemPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o RaiBlocklistItemPropertiesOutput) ToRaiBlocklistItemPropertiesPtrOutputWithContext(ctx context.Context) RaiBlocklistItemPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RaiBlocklistItemProperties) *RaiBlocklistItemProperties {
+		return &v
+	}).(RaiBlocklistItemPropertiesPtrOutput)
+}
+
+func (o RaiBlocklistItemPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[RaiBlocklistItemProperties] {
+	return pulumix.Output[RaiBlocklistItemProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If the pattern is a regex pattern.
+func (o RaiBlocklistItemPropertiesOutput) IsRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistItemProperties) *bool { return v.IsRegex }).(pulumi.BoolPtrOutput)
+}
+
+// Pattern to match against.
+func (o RaiBlocklistItemPropertiesOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistItemProperties) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+type RaiBlocklistItemPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistItemPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiBlocklistItemProperties)(nil)).Elem()
+}
+
+func (o RaiBlocklistItemPropertiesPtrOutput) ToRaiBlocklistItemPropertiesPtrOutput() RaiBlocklistItemPropertiesPtrOutput {
+	return o
+}
+
+func (o RaiBlocklistItemPropertiesPtrOutput) ToRaiBlocklistItemPropertiesPtrOutputWithContext(ctx context.Context) RaiBlocklistItemPropertiesPtrOutput {
+	return o
+}
+
+func (o RaiBlocklistItemPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RaiBlocklistItemProperties] {
+	return pulumix.Output[*RaiBlocklistItemProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RaiBlocklistItemPropertiesPtrOutput) Elem() RaiBlocklistItemPropertiesOutput {
+	return o.ApplyT(func(v *RaiBlocklistItemProperties) RaiBlocklistItemProperties {
+		if v != nil {
+			return *v
+		}
+		var ret RaiBlocklistItemProperties
+		return ret
+	}).(RaiBlocklistItemPropertiesOutput)
+}
+
+// If the pattern is a regex pattern.
+func (o RaiBlocklistItemPropertiesPtrOutput) IsRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RaiBlocklistItemProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsRegex
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Pattern to match against.
+func (o RaiBlocklistItemPropertiesPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiBlocklistItemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pattern
+	}).(pulumi.StringPtrOutput)
+}
+
+// RAI Custom Blocklist Item properties.
+type RaiBlocklistItemPropertiesResponse struct {
+	// If the pattern is a regex pattern.
+	IsRegex *bool `pulumi:"isRegex"`
+	// Pattern to match against.
+	Pattern *string `pulumi:"pattern"`
+}
+
+// RAI Custom Blocklist Item properties.
+type RaiBlocklistItemPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistItemPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistItemPropertiesResponse)(nil)).Elem()
+}
+
+func (o RaiBlocklistItemPropertiesResponseOutput) ToRaiBlocklistItemPropertiesResponseOutput() RaiBlocklistItemPropertiesResponseOutput {
+	return o
+}
+
+func (o RaiBlocklistItemPropertiesResponseOutput) ToRaiBlocklistItemPropertiesResponseOutputWithContext(ctx context.Context) RaiBlocklistItemPropertiesResponseOutput {
+	return o
+}
+
+func (o RaiBlocklistItemPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RaiBlocklistItemPropertiesResponse] {
+	return pulumix.Output[RaiBlocklistItemPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If the pattern is a regex pattern.
+func (o RaiBlocklistItemPropertiesResponseOutput) IsRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistItemPropertiesResponse) *bool { return v.IsRegex }).(pulumi.BoolPtrOutput)
+}
+
+// Pattern to match against.
+func (o RaiBlocklistItemPropertiesResponseOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistItemPropertiesResponse) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+// RAI Custom Blocklist properties.
+type RaiBlocklistProperties struct {
+	// Description of the block list.
+	Description *string `pulumi:"description"`
+}
+
+// RaiBlocklistPropertiesInput is an input type that accepts RaiBlocklistPropertiesArgs and RaiBlocklistPropertiesOutput values.
+// You can construct a concrete instance of `RaiBlocklistPropertiesInput` via:
+//
+//	RaiBlocklistPropertiesArgs{...}
+type RaiBlocklistPropertiesInput interface {
+	pulumi.Input
+
+	ToRaiBlocklistPropertiesOutput() RaiBlocklistPropertiesOutput
+	ToRaiBlocklistPropertiesOutputWithContext(context.Context) RaiBlocklistPropertiesOutput
+}
+
+// RAI Custom Blocklist properties.
+type RaiBlocklistPropertiesArgs struct {
+	// Description of the block list.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+}
+
+func (RaiBlocklistPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistProperties)(nil)).Elem()
+}
+
+func (i RaiBlocklistPropertiesArgs) ToRaiBlocklistPropertiesOutput() RaiBlocklistPropertiesOutput {
+	return i.ToRaiBlocklistPropertiesOutputWithContext(context.Background())
+}
+
+func (i RaiBlocklistPropertiesArgs) ToRaiBlocklistPropertiesOutputWithContext(ctx context.Context) RaiBlocklistPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistPropertiesOutput)
+}
+
+func (i RaiBlocklistPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[RaiBlocklistProperties] {
+	return pulumix.Output[RaiBlocklistProperties]{
+		OutputState: i.ToRaiBlocklistPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RaiBlocklistPropertiesArgs) ToRaiBlocklistPropertiesPtrOutput() RaiBlocklistPropertiesPtrOutput {
+	return i.ToRaiBlocklistPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i RaiBlocklistPropertiesArgs) ToRaiBlocklistPropertiesPtrOutputWithContext(ctx context.Context) RaiBlocklistPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistPropertiesOutput).ToRaiBlocklistPropertiesPtrOutputWithContext(ctx)
+}
+
+// RaiBlocklistPropertiesPtrInput is an input type that accepts RaiBlocklistPropertiesArgs, RaiBlocklistPropertiesPtr and RaiBlocklistPropertiesPtrOutput values.
+// You can construct a concrete instance of `RaiBlocklistPropertiesPtrInput` via:
+//
+//	        RaiBlocklistPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RaiBlocklistPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToRaiBlocklistPropertiesPtrOutput() RaiBlocklistPropertiesPtrOutput
+	ToRaiBlocklistPropertiesPtrOutputWithContext(context.Context) RaiBlocklistPropertiesPtrOutput
+}
+
+type raiBlocklistPropertiesPtrType RaiBlocklistPropertiesArgs
+
+func RaiBlocklistPropertiesPtr(v *RaiBlocklistPropertiesArgs) RaiBlocklistPropertiesPtrInput {
+	return (*raiBlocklistPropertiesPtrType)(v)
+}
+
+func (*raiBlocklistPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiBlocklistProperties)(nil)).Elem()
+}
+
+func (i *raiBlocklistPropertiesPtrType) ToRaiBlocklistPropertiesPtrOutput() RaiBlocklistPropertiesPtrOutput {
+	return i.ToRaiBlocklistPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *raiBlocklistPropertiesPtrType) ToRaiBlocklistPropertiesPtrOutputWithContext(ctx context.Context) RaiBlocklistPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistPropertiesPtrOutput)
+}
+
+func (i *raiBlocklistPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*RaiBlocklistProperties] {
+	return pulumix.Output[*RaiBlocklistProperties]{
+		OutputState: i.ToRaiBlocklistPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// RAI Custom Blocklist properties.
+type RaiBlocklistPropertiesOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistProperties)(nil)).Elem()
+}
+
+func (o RaiBlocklistPropertiesOutput) ToRaiBlocklistPropertiesOutput() RaiBlocklistPropertiesOutput {
+	return o
+}
+
+func (o RaiBlocklistPropertiesOutput) ToRaiBlocklistPropertiesOutputWithContext(ctx context.Context) RaiBlocklistPropertiesOutput {
+	return o
+}
+
+func (o RaiBlocklistPropertiesOutput) ToRaiBlocklistPropertiesPtrOutput() RaiBlocklistPropertiesPtrOutput {
+	return o.ToRaiBlocklistPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o RaiBlocklistPropertiesOutput) ToRaiBlocklistPropertiesPtrOutputWithContext(ctx context.Context) RaiBlocklistPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RaiBlocklistProperties) *RaiBlocklistProperties {
+		return &v
+	}).(RaiBlocklistPropertiesPtrOutput)
+}
+
+func (o RaiBlocklistPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[RaiBlocklistProperties] {
+	return pulumix.Output[RaiBlocklistProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Description of the block list.
+func (o RaiBlocklistPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+type RaiBlocklistPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiBlocklistProperties)(nil)).Elem()
+}
+
+func (o RaiBlocklistPropertiesPtrOutput) ToRaiBlocklistPropertiesPtrOutput() RaiBlocklistPropertiesPtrOutput {
+	return o
+}
+
+func (o RaiBlocklistPropertiesPtrOutput) ToRaiBlocklistPropertiesPtrOutputWithContext(ctx context.Context) RaiBlocklistPropertiesPtrOutput {
+	return o
+}
+
+func (o RaiBlocklistPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RaiBlocklistProperties] {
+	return pulumix.Output[*RaiBlocklistProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RaiBlocklistPropertiesPtrOutput) Elem() RaiBlocklistPropertiesOutput {
+	return o.ApplyT(func(v *RaiBlocklistProperties) RaiBlocklistProperties {
+		if v != nil {
+			return *v
+		}
+		var ret RaiBlocklistProperties
+		return ret
+	}).(RaiBlocklistPropertiesOutput)
+}
+
+// Description of the block list.
+func (o RaiBlocklistPropertiesPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiBlocklistProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// RAI Custom Blocklist properties.
+type RaiBlocklistPropertiesResponse struct {
+	// Description of the block list.
+	Description *string `pulumi:"description"`
+}
+
+// RAI Custom Blocklist properties.
+type RaiBlocklistPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistPropertiesResponse)(nil)).Elem()
+}
+
+func (o RaiBlocklistPropertiesResponseOutput) ToRaiBlocklistPropertiesResponseOutput() RaiBlocklistPropertiesResponseOutput {
+	return o
+}
+
+func (o RaiBlocklistPropertiesResponseOutput) ToRaiBlocklistPropertiesResponseOutputWithContext(ctx context.Context) RaiBlocklistPropertiesResponseOutput {
+	return o
+}
+
+func (o RaiBlocklistPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RaiBlocklistPropertiesResponse] {
+	return pulumix.Output[RaiBlocklistPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Description of the block list.
+func (o RaiBlocklistPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Azure OpenAI Content Filter.
+type RaiPolicyContentFilter struct {
+	// Level at which content is filtered.
+	AllowedContentLevel *string `pulumi:"allowedContentLevel"`
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// If the ContentFilter is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Name of ContentFilter.
+	PolicyName *string `pulumi:"policyName"`
+	// Content source to apply the Content Filters.
+	Source *string `pulumi:"source"`
+}
+
+// RaiPolicyContentFilterInput is an input type that accepts RaiPolicyContentFilterArgs and RaiPolicyContentFilterOutput values.
+// You can construct a concrete instance of `RaiPolicyContentFilterInput` via:
+//
+//	RaiPolicyContentFilterArgs{...}
+type RaiPolicyContentFilterInput interface {
+	pulumi.Input
+
+	ToRaiPolicyContentFilterOutput() RaiPolicyContentFilterOutput
+	ToRaiPolicyContentFilterOutputWithContext(context.Context) RaiPolicyContentFilterOutput
+}
+
+// Azure OpenAI Content Filter.
+type RaiPolicyContentFilterArgs struct {
+	// Level at which content is filtered.
+	AllowedContentLevel pulumi.StringPtrInput `pulumi:"allowedContentLevel"`
+	// If blocking would occur.
+	Blocking pulumi.BoolPtrInput `pulumi:"blocking"`
+	// If the ContentFilter is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Name of ContentFilter.
+	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
+	// Content source to apply the Content Filters.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (RaiPolicyContentFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyContentFilter)(nil)).Elem()
+}
+
+func (i RaiPolicyContentFilterArgs) ToRaiPolicyContentFilterOutput() RaiPolicyContentFilterOutput {
+	return i.ToRaiPolicyContentFilterOutputWithContext(context.Background())
+}
+
+func (i RaiPolicyContentFilterArgs) ToRaiPolicyContentFilterOutputWithContext(ctx context.Context) RaiPolicyContentFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiPolicyContentFilterOutput)
+}
+
+func (i RaiPolicyContentFilterArgs) ToOutput(ctx context.Context) pulumix.Output[RaiPolicyContentFilter] {
+	return pulumix.Output[RaiPolicyContentFilter]{
+		OutputState: i.ToRaiPolicyContentFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
+// RaiPolicyContentFilterArrayInput is an input type that accepts RaiPolicyContentFilterArray and RaiPolicyContentFilterArrayOutput values.
+// You can construct a concrete instance of `RaiPolicyContentFilterArrayInput` via:
+//
+//	RaiPolicyContentFilterArray{ RaiPolicyContentFilterArgs{...} }
+type RaiPolicyContentFilterArrayInput interface {
+	pulumi.Input
+
+	ToRaiPolicyContentFilterArrayOutput() RaiPolicyContentFilterArrayOutput
+	ToRaiPolicyContentFilterArrayOutputWithContext(context.Context) RaiPolicyContentFilterArrayOutput
+}
+
+type RaiPolicyContentFilterArray []RaiPolicyContentFilterInput
+
+func (RaiPolicyContentFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiPolicyContentFilter)(nil)).Elem()
+}
+
+func (i RaiPolicyContentFilterArray) ToRaiPolicyContentFilterArrayOutput() RaiPolicyContentFilterArrayOutput {
+	return i.ToRaiPolicyContentFilterArrayOutputWithContext(context.Background())
+}
+
+func (i RaiPolicyContentFilterArray) ToRaiPolicyContentFilterArrayOutputWithContext(ctx context.Context) RaiPolicyContentFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiPolicyContentFilterArrayOutput)
+}
+
+func (i RaiPolicyContentFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]RaiPolicyContentFilter] {
+	return pulumix.Output[[]RaiPolicyContentFilter]{
+		OutputState: i.ToRaiPolicyContentFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Azure OpenAI Content Filter.
+type RaiPolicyContentFilterOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyContentFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyContentFilter)(nil)).Elem()
+}
+
+func (o RaiPolicyContentFilterOutput) ToRaiPolicyContentFilterOutput() RaiPolicyContentFilterOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterOutput) ToRaiPolicyContentFilterOutputWithContext(ctx context.Context) RaiPolicyContentFilterOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterOutput) ToOutput(ctx context.Context) pulumix.Output[RaiPolicyContentFilter] {
+	return pulumix.Output[RaiPolicyContentFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Level at which content is filtered.
+func (o RaiPolicyContentFilterOutput) AllowedContentLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.AllowedContentLevel }).(pulumi.StringPtrOutput)
+}
+
+// If blocking would occur.
+func (o RaiPolicyContentFilterOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilter) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// If the ContentFilter is enabled.
+func (o RaiPolicyContentFilterOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilter) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Name of ContentFilter.
+func (o RaiPolicyContentFilterOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
+// Content source to apply the Content Filters.
+func (o RaiPolicyContentFilterOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type RaiPolicyContentFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyContentFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiPolicyContentFilter)(nil)).Elem()
+}
+
+func (o RaiPolicyContentFilterArrayOutput) ToRaiPolicyContentFilterArrayOutput() RaiPolicyContentFilterArrayOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterArrayOutput) ToRaiPolicyContentFilterArrayOutputWithContext(ctx context.Context) RaiPolicyContentFilterArrayOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RaiPolicyContentFilter] {
+	return pulumix.Output[[]RaiPolicyContentFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RaiPolicyContentFilterArrayOutput) Index(i pulumi.IntInput) RaiPolicyContentFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiPolicyContentFilter {
+		return vs[0].([]RaiPolicyContentFilter)[vs[1].(int)]
+	}).(RaiPolicyContentFilterOutput)
+}
+
+// Azure OpenAI Content Filter.
+type RaiPolicyContentFilterResponse struct {
+	// Level at which content is filtered.
+	AllowedContentLevel *string `pulumi:"allowedContentLevel"`
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// If the ContentFilter is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Name of ContentFilter.
+	PolicyName *string `pulumi:"policyName"`
+	// Content source to apply the Content Filters.
+	Source *string `pulumi:"source"`
+}
+
+// Azure OpenAI Content Filter.
+type RaiPolicyContentFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyContentFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyContentFilterResponse)(nil)).Elem()
+}
+
+func (o RaiPolicyContentFilterResponseOutput) ToRaiPolicyContentFilterResponseOutput() RaiPolicyContentFilterResponseOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterResponseOutput) ToRaiPolicyContentFilterResponseOutputWithContext(ctx context.Context) RaiPolicyContentFilterResponseOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RaiPolicyContentFilterResponse] {
+	return pulumix.Output[RaiPolicyContentFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Level at which content is filtered.
+func (o RaiPolicyContentFilterResponseOutput) AllowedContentLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.AllowedContentLevel }).(pulumi.StringPtrOutput)
+}
+
+// If blocking would occur.
+func (o RaiPolicyContentFilterResponseOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// If the ContentFilter is enabled.
+func (o RaiPolicyContentFilterResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Name of ContentFilter.
+func (o RaiPolicyContentFilterResponseOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
+// Content source to apply the Content Filters.
+func (o RaiPolicyContentFilterResponseOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type RaiPolicyContentFilterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyContentFilterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiPolicyContentFilterResponse)(nil)).Elem()
+}
+
+func (o RaiPolicyContentFilterResponseArrayOutput) ToRaiPolicyContentFilterResponseArrayOutput() RaiPolicyContentFilterResponseArrayOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterResponseArrayOutput) ToRaiPolicyContentFilterResponseArrayOutputWithContext(ctx context.Context) RaiPolicyContentFilterResponseArrayOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RaiPolicyContentFilterResponse] {
+	return pulumix.Output[[]RaiPolicyContentFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RaiPolicyContentFilterResponseArrayOutput) Index(i pulumi.IntInput) RaiPolicyContentFilterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiPolicyContentFilterResponse {
+		return vs[0].([]RaiPolicyContentFilterResponse)[vs[1].(int)]
+	}).(RaiPolicyContentFilterResponseOutput)
+}
+
+// Azure OpenAI Content Filters properties.
+type RaiPolicyProperties struct {
+	// Name of the base Content Filters.
+	BasePolicyName *string `pulumi:"basePolicyName"`
+	// The list of blocklists for completion.
+	CompletionBlocklists []RaiBlocklistConfig `pulumi:"completionBlocklists"`
+	// The list of Content Filters.
+	ContentFilters []RaiPolicyContentFilter `pulumi:"contentFilters"`
+	// Content Filters mode.
+	Mode *string `pulumi:"mode"`
+	// The list of blocklists for prompt.
+	PromptBlocklists []RaiBlocklistConfig `pulumi:"promptBlocklists"`
+}
+
+// RaiPolicyPropertiesInput is an input type that accepts RaiPolicyPropertiesArgs and RaiPolicyPropertiesOutput values.
+// You can construct a concrete instance of `RaiPolicyPropertiesInput` via:
+//
+//	RaiPolicyPropertiesArgs{...}
+type RaiPolicyPropertiesInput interface {
+	pulumi.Input
+
+	ToRaiPolicyPropertiesOutput() RaiPolicyPropertiesOutput
+	ToRaiPolicyPropertiesOutputWithContext(context.Context) RaiPolicyPropertiesOutput
+}
+
+// Azure OpenAI Content Filters properties.
+type RaiPolicyPropertiesArgs struct {
+	// Name of the base Content Filters.
+	BasePolicyName pulumi.StringPtrInput `pulumi:"basePolicyName"`
+	// The list of blocklists for completion.
+	CompletionBlocklists RaiBlocklistConfigArrayInput `pulumi:"completionBlocklists"`
+	// The list of Content Filters.
+	ContentFilters RaiPolicyContentFilterArrayInput `pulumi:"contentFilters"`
+	// Content Filters mode.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The list of blocklists for prompt.
+	PromptBlocklists RaiBlocklistConfigArrayInput `pulumi:"promptBlocklists"`
+}
+
+func (RaiPolicyPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyProperties)(nil)).Elem()
+}
+
+func (i RaiPolicyPropertiesArgs) ToRaiPolicyPropertiesOutput() RaiPolicyPropertiesOutput {
+	return i.ToRaiPolicyPropertiesOutputWithContext(context.Background())
+}
+
+func (i RaiPolicyPropertiesArgs) ToRaiPolicyPropertiesOutputWithContext(ctx context.Context) RaiPolicyPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiPolicyPropertiesOutput)
+}
+
+func (i RaiPolicyPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[RaiPolicyProperties] {
+	return pulumix.Output[RaiPolicyProperties]{
+		OutputState: i.ToRaiPolicyPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RaiPolicyPropertiesArgs) ToRaiPolicyPropertiesPtrOutput() RaiPolicyPropertiesPtrOutput {
+	return i.ToRaiPolicyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i RaiPolicyPropertiesArgs) ToRaiPolicyPropertiesPtrOutputWithContext(ctx context.Context) RaiPolicyPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiPolicyPropertiesOutput).ToRaiPolicyPropertiesPtrOutputWithContext(ctx)
+}
+
+// RaiPolicyPropertiesPtrInput is an input type that accepts RaiPolicyPropertiesArgs, RaiPolicyPropertiesPtr and RaiPolicyPropertiesPtrOutput values.
+// You can construct a concrete instance of `RaiPolicyPropertiesPtrInput` via:
+//
+//	        RaiPolicyPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RaiPolicyPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToRaiPolicyPropertiesPtrOutput() RaiPolicyPropertiesPtrOutput
+	ToRaiPolicyPropertiesPtrOutputWithContext(context.Context) RaiPolicyPropertiesPtrOutput
+}
+
+type raiPolicyPropertiesPtrType RaiPolicyPropertiesArgs
+
+func RaiPolicyPropertiesPtr(v *RaiPolicyPropertiesArgs) RaiPolicyPropertiesPtrInput {
+	return (*raiPolicyPropertiesPtrType)(v)
+}
+
+func (*raiPolicyPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiPolicyProperties)(nil)).Elem()
+}
+
+func (i *raiPolicyPropertiesPtrType) ToRaiPolicyPropertiesPtrOutput() RaiPolicyPropertiesPtrOutput {
+	return i.ToRaiPolicyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *raiPolicyPropertiesPtrType) ToRaiPolicyPropertiesPtrOutputWithContext(ctx context.Context) RaiPolicyPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiPolicyPropertiesPtrOutput)
+}
+
+func (i *raiPolicyPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*RaiPolicyProperties] {
+	return pulumix.Output[*RaiPolicyProperties]{
+		OutputState: i.ToRaiPolicyPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Azure OpenAI Content Filters properties.
+type RaiPolicyPropertiesOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyProperties)(nil)).Elem()
+}
+
+func (o RaiPolicyPropertiesOutput) ToRaiPolicyPropertiesOutput() RaiPolicyPropertiesOutput {
+	return o
+}
+
+func (o RaiPolicyPropertiesOutput) ToRaiPolicyPropertiesOutputWithContext(ctx context.Context) RaiPolicyPropertiesOutput {
+	return o
+}
+
+func (o RaiPolicyPropertiesOutput) ToRaiPolicyPropertiesPtrOutput() RaiPolicyPropertiesPtrOutput {
+	return o.ToRaiPolicyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o RaiPolicyPropertiesOutput) ToRaiPolicyPropertiesPtrOutputWithContext(ctx context.Context) RaiPolicyPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RaiPolicyProperties) *RaiPolicyProperties {
+		return &v
+	}).(RaiPolicyPropertiesPtrOutput)
+}
+
+func (o RaiPolicyPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[RaiPolicyProperties] {
+	return pulumix.Output[RaiPolicyProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the base Content Filters.
+func (o RaiPolicyPropertiesOutput) BasePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) *string { return v.BasePolicyName }).(pulumi.StringPtrOutput)
+}
+
+// The list of blocklists for completion.
+func (o RaiPolicyPropertiesOutput) CompletionBlocklists() RaiBlocklistConfigArrayOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) []RaiBlocklistConfig { return v.CompletionBlocklists }).(RaiBlocklistConfigArrayOutput)
+}
+
+// The list of Content Filters.
+func (o RaiPolicyPropertiesOutput) ContentFilters() RaiPolicyContentFilterArrayOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) []RaiPolicyContentFilter { return v.ContentFilters }).(RaiPolicyContentFilterArrayOutput)
+}
+
+// Content Filters mode.
+func (o RaiPolicyPropertiesOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The list of blocklists for prompt.
+func (o RaiPolicyPropertiesOutput) PromptBlocklists() RaiBlocklistConfigArrayOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) []RaiBlocklistConfig { return v.PromptBlocklists }).(RaiBlocklistConfigArrayOutput)
+}
+
+type RaiPolicyPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiPolicyProperties)(nil)).Elem()
+}
+
+func (o RaiPolicyPropertiesPtrOutput) ToRaiPolicyPropertiesPtrOutput() RaiPolicyPropertiesPtrOutput {
+	return o
+}
+
+func (o RaiPolicyPropertiesPtrOutput) ToRaiPolicyPropertiesPtrOutputWithContext(ctx context.Context) RaiPolicyPropertiesPtrOutput {
+	return o
+}
+
+func (o RaiPolicyPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RaiPolicyProperties] {
+	return pulumix.Output[*RaiPolicyProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RaiPolicyPropertiesPtrOutput) Elem() RaiPolicyPropertiesOutput {
+	return o.ApplyT(func(v *RaiPolicyProperties) RaiPolicyProperties {
+		if v != nil {
+			return *v
+		}
+		var ret RaiPolicyProperties
+		return ret
+	}).(RaiPolicyPropertiesOutput)
+}
+
+// Name of the base Content Filters.
+func (o RaiPolicyPropertiesPtrOutput) BasePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiPolicyProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BasePolicyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of blocklists for completion.
+func (o RaiPolicyPropertiesPtrOutput) CompletionBlocklists() RaiBlocklistConfigArrayOutput {
+	return o.ApplyT(func(v *RaiPolicyProperties) []RaiBlocklistConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CompletionBlocklists
+	}).(RaiBlocklistConfigArrayOutput)
+}
+
+// The list of Content Filters.
+func (o RaiPolicyPropertiesPtrOutput) ContentFilters() RaiPolicyContentFilterArrayOutput {
+	return o.ApplyT(func(v *RaiPolicyProperties) []RaiPolicyContentFilter {
+		if v == nil {
+			return nil
+		}
+		return v.ContentFilters
+	}).(RaiPolicyContentFilterArrayOutput)
+}
+
+// Content Filters mode.
+func (o RaiPolicyPropertiesPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiPolicyProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of blocklists for prompt.
+func (o RaiPolicyPropertiesPtrOutput) PromptBlocklists() RaiBlocklistConfigArrayOutput {
+	return o.ApplyT(func(v *RaiPolicyProperties) []RaiBlocklistConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PromptBlocklists
+	}).(RaiBlocklistConfigArrayOutput)
+}
+
+// Azure OpenAI Content Filters properties.
+type RaiPolicyPropertiesResponse struct {
+	// Name of the base Content Filters.
+	BasePolicyName *string `pulumi:"basePolicyName"`
+	// The list of blocklists for completion.
+	CompletionBlocklists []RaiBlocklistConfigResponse `pulumi:"completionBlocklists"`
+	// The list of Content Filters.
+	ContentFilters []RaiPolicyContentFilterResponse `pulumi:"contentFilters"`
+	// Content Filters mode.
+	Mode *string `pulumi:"mode"`
+	// Content Filters policy type.
+	PolicyType string `pulumi:"policyType"`
+	// The list of blocklists for prompt.
+	PromptBlocklists []RaiBlocklistConfigResponse `pulumi:"promptBlocklists"`
+}
+
+// Azure OpenAI Content Filters properties.
+type RaiPolicyPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyPropertiesResponse)(nil)).Elem()
+}
+
+func (o RaiPolicyPropertiesResponseOutput) ToRaiPolicyPropertiesResponseOutput() RaiPolicyPropertiesResponseOutput {
+	return o
+}
+
+func (o RaiPolicyPropertiesResponseOutput) ToRaiPolicyPropertiesResponseOutputWithContext(ctx context.Context) RaiPolicyPropertiesResponseOutput {
+	return o
+}
+
+func (o RaiPolicyPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RaiPolicyPropertiesResponse] {
+	return pulumix.Output[RaiPolicyPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the base Content Filters.
+func (o RaiPolicyPropertiesResponseOutput) BasePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) *string { return v.BasePolicyName }).(pulumi.StringPtrOutput)
+}
+
+// The list of blocklists for completion.
+func (o RaiPolicyPropertiesResponseOutput) CompletionBlocklists() RaiBlocklistConfigResponseArrayOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []RaiBlocklistConfigResponse { return v.CompletionBlocklists }).(RaiBlocklistConfigResponseArrayOutput)
+}
+
+// The list of Content Filters.
+func (o RaiPolicyPropertiesResponseOutput) ContentFilters() RaiPolicyContentFilterResponseArrayOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []RaiPolicyContentFilterResponse { return v.ContentFilters }).(RaiPolicyContentFilterResponseArrayOutput)
+}
+
+// Content Filters mode.
+func (o RaiPolicyPropertiesResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Content Filters policy type.
+func (o RaiPolicyPropertiesResponseOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) string { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+// The list of blocklists for prompt.
+func (o RaiPolicyPropertiesResponseOutput) PromptBlocklists() RaiBlocklistConfigResponseArrayOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []RaiBlocklistConfigResponse { return v.PromptBlocklists }).(RaiBlocklistConfigResponseArrayOutput)
+}
+
 // The call rate limit Cognitive Services account.
 type RegionSetting struct {
 	// Maps the region to the regional custom subdomain.
@@ -7068,6 +8529,9 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(EncryptionScopePropertiesOutput{})
+	pulumi.RegisterOutputType(EncryptionScopePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionScopePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(IdentityOutput{})
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
@@ -7101,6 +8565,23 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(QuotaLimitResponseOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistConfigOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistConfigArrayOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistConfigResponseOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistItemPropertiesOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistItemPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistItemPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistPropertiesOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(RaiPolicyContentFilterOutput{})
+	pulumi.RegisterOutputType(RaiPolicyContentFilterArrayOutput{})
+	pulumi.RegisterOutputType(RaiPolicyContentFilterResponseOutput{})
+	pulumi.RegisterOutputType(RaiPolicyContentFilterResponseArrayOutput{})
+	pulumi.RegisterOutputType(RaiPolicyPropertiesOutput{})
+	pulumi.RegisterOutputType(RaiPolicyPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(RaiPolicyPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RegionSettingOutput{})
 	pulumi.RegisterOutputType(RegionSettingArrayOutput{})
 	pulumi.RegisterOutputType(RegionSettingResponseOutput{})

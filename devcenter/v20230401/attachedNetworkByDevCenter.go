@@ -73,6 +73,9 @@ func NewAttachedNetworkByDevCenter(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20230801preview:AttachedNetworkByDevCenter"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20231001preview:AttachedNetworkByDevCenter"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

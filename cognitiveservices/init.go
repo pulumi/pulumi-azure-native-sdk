@@ -29,8 +29,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CommitmentPlanAssociation{}
 	case "azure-native:cognitiveservices:Deployment":
 		r = &Deployment{}
+	case "azure-native:cognitiveservices:EncryptionScope":
+		r = &EncryptionScope{}
 	case "azure-native:cognitiveservices:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:cognitiveservices:RaiBlocklist":
+		r = &RaiBlocklist{}
+	case "azure-native:cognitiveservices:RaiBlocklistItem":
+		r = &RaiBlocklistItem{}
+	case "azure-native:cognitiveservices:RaiPolicy":
+		r = &RaiPolicy{}
 	case "azure-native:cognitiveservices:SharedCommitmentPlan":
 		r = &SharedCommitmentPlan{}
 	default:

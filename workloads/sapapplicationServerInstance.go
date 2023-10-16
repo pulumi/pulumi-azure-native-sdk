@@ -83,6 +83,9 @@ func NewSAPApplicationServerInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:workloads/v20230401:SAPApplicationServerInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20231001preview:SAPApplicationServerInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

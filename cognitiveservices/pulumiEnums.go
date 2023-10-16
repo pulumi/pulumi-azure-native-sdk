@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Level at which content is filtered.
+type AllowedContentLevel string
+
+const (
+	AllowedContentLevelLow    = AllowedContentLevel("Low")
+	AllowedContentLevelMedium = AllowedContentLevel("Medium")
+	AllowedContentLevelHigh   = AllowedContentLevel("High")
+)
+
 // Deployment model version upgrade option.
 type DeploymentModelVersionUpgradeOption string
 
@@ -26,6 +35,14 @@ type DeploymentScaleType string
 const (
 	DeploymentScaleTypeStandard = DeploymentScaleType("Standard")
 	DeploymentScaleTypeManual   = DeploymentScaleType("Manual")
+)
+
+// The encryptionScope state.
+type EncryptionScopeStateEnum string
+
+const (
+	EncryptionScopeStateEnumDisabled = EncryptionScopeStateEnum("Disabled")
+	EncryptionScopeStateEnumEnabled  = EncryptionScopeStateEnum("Enabled")
 )
 
 // Account hosting model.
@@ -69,6 +86,23 @@ type PublicNetworkAccess string
 const (
 	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
 	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
+)
+
+// Content source to apply the Content Filters.
+type RaiPolicyContentSource string
+
+const (
+	RaiPolicyContentSourcePrompt     = RaiPolicyContentSource("Prompt")
+	RaiPolicyContentSourceCompletion = RaiPolicyContentSource("Completion")
+)
+
+// Content Filters mode.
+type RaiPolicyMode string
+
+const (
+	RaiPolicyModeDefault  = RaiPolicyMode("Default")
+	RaiPolicyModeDeferred = RaiPolicyMode("Deferred")
+	RaiPolicyModeBlocking = RaiPolicyMode("Blocking")
 )
 
 // The identity type.

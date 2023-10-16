@@ -77,6 +77,9 @@ func NewAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20221201:Account"),
 		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20231001preview:Account"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

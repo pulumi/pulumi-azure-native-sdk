@@ -26,7 +26,7 @@ type NetworkFabric struct {
 	// ASN of CE devices for CE/PE connectivity.
 	FabricASN pulumi.Float64Output `pulumi:"fabricASN"`
 	// The version of Network Fabric.
-	FabricVersion pulumi.StringOutput `pulumi:"fabricVersion"`
+	FabricVersion pulumi.StringPtrOutput `pulumi:"fabricVersion"`
 	// IPv4Prefix for Management Network. Example: 10.1.0.0/19.
 	Ipv4Prefix pulumi.StringOutput `pulumi:"ipv4Prefix"`
 	// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59
@@ -145,6 +145,8 @@ type networkFabricArgs struct {
 	Annotation *string `pulumi:"annotation"`
 	// ASN of CE devices for CE/PE connectivity.
 	FabricASN float64 `pulumi:"fabricASN"`
+	// The version of Network Fabric.
+	FabricVersion *string `pulumi:"fabricVersion"`
 	// IPv4Prefix for Management Network. Example: 10.1.0.0/19.
 	Ipv4Prefix string `pulumi:"ipv4Prefix"`
 	// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59
@@ -177,6 +179,8 @@ type NetworkFabricArgs struct {
 	Annotation pulumi.StringPtrInput
 	// ASN of CE devices for CE/PE connectivity.
 	FabricASN pulumi.Float64Input
+	// The version of Network Fabric.
+	FabricVersion pulumi.StringPtrInput
 	// IPv4Prefix for Management Network. Example: 10.1.0.0/19.
 	Ipv4Prefix pulumi.StringInput
 	// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59
@@ -273,8 +277,8 @@ func (o NetworkFabricOutput) FabricASN() pulumi.Float64Output {
 }
 
 // The version of Network Fabric.
-func (o NetworkFabricOutput) FabricVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkFabric) pulumi.StringOutput { return v.FabricVersion }).(pulumi.StringOutput)
+func (o NetworkFabricOutput) FabricVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkFabric) pulumi.StringPtrOutput { return v.FabricVersion }).(pulumi.StringPtrOutput)
 }
 
 // IPv4Prefix for Management Network. Example: 10.1.0.0/19.

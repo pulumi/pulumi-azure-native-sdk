@@ -41,7 +41,7 @@ type LookupNetworkFabricResult struct {
 	// ASN of CE devices for CE/PE connectivity.
 	FabricASN float64 `pulumi:"fabricASN"`
 	// The version of Network Fabric.
-	FabricVersion string `pulumi:"fabricVersion"`
+	FabricVersion *string `pulumi:"fabricVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// IPv4Prefix for Management Network. Example: 10.1.0.0/19.
@@ -159,8 +159,8 @@ func (o LookupNetworkFabricResultOutput) FabricASN() pulumi.Float64Output {
 }
 
 // The version of Network Fabric.
-func (o LookupNetworkFabricResultOutput) FabricVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNetworkFabricResult) string { return v.FabricVersion }).(pulumi.StringOutput)
+func (o LookupNetworkFabricResultOutput) FabricVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkFabricResult) *string { return v.FabricVersion }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
