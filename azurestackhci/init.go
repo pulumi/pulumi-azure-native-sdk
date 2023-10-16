@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GuestAgent{}
 	case "azure-native:azurestackhci:HybridIdentityMetadatum":
 		r = &HybridIdentityMetadatum{}
+	case "azure-native:azurestackhci:LogicalNetwork":
+		r = &LogicalNetwork{}
 	case "azure-native:azurestackhci:MachineExtension":
 		r = &MachineExtension{}
 	case "azure-native:azurestackhci:MarketplaceGalleryImage":

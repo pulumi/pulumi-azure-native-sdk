@@ -82,6 +82,9 @@ func NewSimPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20230601:SimPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20230901:SimPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

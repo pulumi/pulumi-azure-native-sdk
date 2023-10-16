@@ -45,6 +45,12 @@ func NewGuestAgent(ctx *pulumi.Context,
 	if args.ResourceUri == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceUri'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230901preview:GuestAgent"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource GuestAgent
 	err := ctx.RegisterResource("azure-native:azurestackhci/v20230701preview:GuestAgent", name, args, &resource, opts...)

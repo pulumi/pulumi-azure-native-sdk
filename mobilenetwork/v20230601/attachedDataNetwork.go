@@ -84,6 +84,9 @@ func NewAttachedDataNetwork(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20221101:AttachedDataNetwork"),
 		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20230901:AttachedDataNetwork"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

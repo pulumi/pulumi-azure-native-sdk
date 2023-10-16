@@ -7914,7 +7914,7 @@ type WorkspaceRepositoryConfiguration struct {
 	AccountName *string `pulumi:"accountName"`
 	// Collaboration branch
 	CollaborationBranch *string `pulumi:"collaborationBranch"`
-	// GitHub Enterprise host name. For example: https://github.mydomain.com
+	// GitHub Enterprise host name. For example: `https://github.mydomain.com`
 	HostName *string `pulumi:"hostName"`
 	// The last commit ID
 	LastCommitId *string `pulumi:"lastCommitId"`
@@ -7947,7 +7947,7 @@ type WorkspaceRepositoryConfigurationArgs struct {
 	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
 	// Collaboration branch
 	CollaborationBranch pulumi.StringPtrInput `pulumi:"collaborationBranch"`
-	// GitHub Enterprise host name. For example: https://github.mydomain.com
+	// GitHub Enterprise host name. For example: `https://github.mydomain.com`
 	HostName pulumi.StringPtrInput `pulumi:"hostName"`
 	// The last commit ID
 	LastCommitId pulumi.StringPtrInput `pulumi:"lastCommitId"`
@@ -8069,7 +8069,7 @@ func (o WorkspaceRepositoryConfigurationOutput) CollaborationBranch() pulumi.Str
 	return o.ApplyT(func(v WorkspaceRepositoryConfiguration) *string { return v.CollaborationBranch }).(pulumi.StringPtrOutput)
 }
 
-// GitHub Enterprise host name. For example: https://github.mydomain.com
+// GitHub Enterprise host name. For example: `https://github.mydomain.com`
 func (o WorkspaceRepositoryConfigurationOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkspaceRepositoryConfiguration) *string { return v.HostName }).(pulumi.StringPtrOutput)
 }
@@ -8154,7 +8154,7 @@ func (o WorkspaceRepositoryConfigurationPtrOutput) CollaborationBranch() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// GitHub Enterprise host name. For example: https://github.mydomain.com
+// GitHub Enterprise host name. For example: `https://github.mydomain.com`
 func (o WorkspaceRepositoryConfigurationPtrOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceRepositoryConfiguration) *string {
 		if v == nil {
@@ -8230,7 +8230,7 @@ type WorkspaceRepositoryConfigurationResponse struct {
 	AccountName *string `pulumi:"accountName"`
 	// Collaboration branch
 	CollaborationBranch *string `pulumi:"collaborationBranch"`
-	// GitHub Enterprise host name. For example: https://github.mydomain.com
+	// GitHub Enterprise host name. For example: `https://github.mydomain.com`
 	HostName *string `pulumi:"hostName"`
 	// The last commit ID
 	LastCommitId *string `pulumi:"lastCommitId"`
@@ -8277,7 +8277,7 @@ func (o WorkspaceRepositoryConfigurationResponseOutput) CollaborationBranch() pu
 	return o.ApplyT(func(v WorkspaceRepositoryConfigurationResponse) *string { return v.CollaborationBranch }).(pulumi.StringPtrOutput)
 }
 
-// GitHub Enterprise host name. For example: https://github.mydomain.com
+// GitHub Enterprise host name. For example: `https://github.mydomain.com`
 func (o WorkspaceRepositoryConfigurationResponseOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkspaceRepositoryConfigurationResponse) *string { return v.HostName }).(pulumi.StringPtrOutput)
 }
@@ -8362,7 +8362,7 @@ func (o WorkspaceRepositoryConfigurationResponsePtrOutput) CollaborationBranch()
 	}).(pulumi.StringPtrOutput)
 }
 
-// GitHub Enterprise host name. For example: https://github.mydomain.com
+// GitHub Enterprise host name. For example: `https://github.mydomain.com`
 func (o WorkspaceRepositoryConfigurationResponsePtrOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceRepositoryConfigurationResponse) *string {
 		if v == nil {

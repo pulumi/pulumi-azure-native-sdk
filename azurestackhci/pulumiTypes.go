@@ -3871,6 +3871,8 @@ type IPPool struct {
 	End *string `pulumi:"end"`
 	// ip pool type
 	IpPoolType *IPPoolTypeEnum `pulumi:"ipPoolType"`
+	// Name of the IP-Pool
+	Name *string `pulumi:"name"`
 	// start of the ip address pool
 	Start *string `pulumi:"start"`
 }
@@ -3891,6 +3893,8 @@ type IPPoolArgs struct {
 	End pulumi.StringPtrInput `pulumi:"end"`
 	// ip pool type
 	IpPoolType IPPoolTypeEnumPtrInput `pulumi:"ipPoolType"`
+	// Name of the IP-Pool
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// start of the ip address pool
 	Start pulumi.StringPtrInput `pulumi:"start"`
 }
@@ -3972,6 +3976,11 @@ func (o IPPoolOutput) End() pulumi.StringPtrOutput {
 // ip pool type
 func (o IPPoolOutput) IpPoolType() IPPoolTypeEnumPtrOutput {
 	return o.ApplyT(func(v IPPool) *IPPoolTypeEnum { return v.IpPoolType }).(IPPoolTypeEnumPtrOutput)
+}
+
+// Name of the IP-Pool
+func (o IPPoolOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IPPool) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // start of the ip address pool
@@ -4098,6 +4107,8 @@ type IPPoolResponse struct {
 	Info *IPPoolInfoResponse `pulumi:"info"`
 	// ip pool type
 	IpPoolType *string `pulumi:"ipPoolType"`
+	// Name of the IP-Pool
+	Name *string `pulumi:"name"`
 	// start of the ip address pool
 	Start *string `pulumi:"start"`
 }
@@ -4134,6 +4145,11 @@ func (o IPPoolResponseOutput) Info() IPPoolInfoResponsePtrOutput {
 // ip pool type
 func (o IPPoolResponseOutput) IpPoolType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPPoolResponse) *string { return v.IpPoolType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the IP-Pool
+func (o IPPoolResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IPPoolResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // start of the ip address pool
@@ -4752,6 +4768,375 @@ func (o InterfaceDNSSettingsResponsePtrOutput) DnsServers() pulumi.StringArrayOu
 		}
 		return v.DnsServers
 	}).(pulumi.StringArrayOutput)
+}
+
+// DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
+type LogicalNetworkPropertiesDhcpOptions struct {
+	// The list of DNS servers IP addresses.
+	DnsServers []string `pulumi:"dnsServers"`
+}
+
+// LogicalNetworkPropertiesDhcpOptionsInput is an input type that accepts LogicalNetworkPropertiesDhcpOptionsArgs and LogicalNetworkPropertiesDhcpOptionsOutput values.
+// You can construct a concrete instance of `LogicalNetworkPropertiesDhcpOptionsInput` via:
+//
+//	LogicalNetworkPropertiesDhcpOptionsArgs{...}
+type LogicalNetworkPropertiesDhcpOptionsInput interface {
+	pulumi.Input
+
+	ToLogicalNetworkPropertiesDhcpOptionsOutput() LogicalNetworkPropertiesDhcpOptionsOutput
+	ToLogicalNetworkPropertiesDhcpOptionsOutputWithContext(context.Context) LogicalNetworkPropertiesDhcpOptionsOutput
+}
+
+// DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
+type LogicalNetworkPropertiesDhcpOptionsArgs struct {
+	// The list of DNS servers IP addresses.
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
+}
+
+func (LogicalNetworkPropertiesDhcpOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalNetworkPropertiesDhcpOptions)(nil)).Elem()
+}
+
+func (i LogicalNetworkPropertiesDhcpOptionsArgs) ToLogicalNetworkPropertiesDhcpOptionsOutput() LogicalNetworkPropertiesDhcpOptionsOutput {
+	return i.ToLogicalNetworkPropertiesDhcpOptionsOutputWithContext(context.Background())
+}
+
+func (i LogicalNetworkPropertiesDhcpOptionsArgs) ToLogicalNetworkPropertiesDhcpOptionsOutputWithContext(ctx context.Context) LogicalNetworkPropertiesDhcpOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogicalNetworkPropertiesDhcpOptionsOutput)
+}
+
+func (i LogicalNetworkPropertiesDhcpOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[LogicalNetworkPropertiesDhcpOptions] {
+	return pulumix.Output[LogicalNetworkPropertiesDhcpOptions]{
+		OutputState: i.ToLogicalNetworkPropertiesDhcpOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i LogicalNetworkPropertiesDhcpOptionsArgs) ToLogicalNetworkPropertiesDhcpOptionsPtrOutput() LogicalNetworkPropertiesDhcpOptionsPtrOutput {
+	return i.ToLogicalNetworkPropertiesDhcpOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i LogicalNetworkPropertiesDhcpOptionsArgs) ToLogicalNetworkPropertiesDhcpOptionsPtrOutputWithContext(ctx context.Context) LogicalNetworkPropertiesDhcpOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogicalNetworkPropertiesDhcpOptionsOutput).ToLogicalNetworkPropertiesDhcpOptionsPtrOutputWithContext(ctx)
+}
+
+// LogicalNetworkPropertiesDhcpOptionsPtrInput is an input type that accepts LogicalNetworkPropertiesDhcpOptionsArgs, LogicalNetworkPropertiesDhcpOptionsPtr and LogicalNetworkPropertiesDhcpOptionsPtrOutput values.
+// You can construct a concrete instance of `LogicalNetworkPropertiesDhcpOptionsPtrInput` via:
+//
+//	        LogicalNetworkPropertiesDhcpOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogicalNetworkPropertiesDhcpOptionsPtrInput interface {
+	pulumi.Input
+
+	ToLogicalNetworkPropertiesDhcpOptionsPtrOutput() LogicalNetworkPropertiesDhcpOptionsPtrOutput
+	ToLogicalNetworkPropertiesDhcpOptionsPtrOutputWithContext(context.Context) LogicalNetworkPropertiesDhcpOptionsPtrOutput
+}
+
+type logicalNetworkPropertiesDhcpOptionsPtrType LogicalNetworkPropertiesDhcpOptionsArgs
+
+func LogicalNetworkPropertiesDhcpOptionsPtr(v *LogicalNetworkPropertiesDhcpOptionsArgs) LogicalNetworkPropertiesDhcpOptionsPtrInput {
+	return (*logicalNetworkPropertiesDhcpOptionsPtrType)(v)
+}
+
+func (*logicalNetworkPropertiesDhcpOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogicalNetworkPropertiesDhcpOptions)(nil)).Elem()
+}
+
+func (i *logicalNetworkPropertiesDhcpOptionsPtrType) ToLogicalNetworkPropertiesDhcpOptionsPtrOutput() LogicalNetworkPropertiesDhcpOptionsPtrOutput {
+	return i.ToLogicalNetworkPropertiesDhcpOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *logicalNetworkPropertiesDhcpOptionsPtrType) ToLogicalNetworkPropertiesDhcpOptionsPtrOutputWithContext(ctx context.Context) LogicalNetworkPropertiesDhcpOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogicalNetworkPropertiesDhcpOptionsPtrOutput)
+}
+
+func (i *logicalNetworkPropertiesDhcpOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*LogicalNetworkPropertiesDhcpOptions] {
+	return pulumix.Output[*LogicalNetworkPropertiesDhcpOptions]{
+		OutputState: i.ToLogicalNetworkPropertiesDhcpOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
+type LogicalNetworkPropertiesDhcpOptionsOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkPropertiesDhcpOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalNetworkPropertiesDhcpOptions)(nil)).Elem()
+}
+
+func (o LogicalNetworkPropertiesDhcpOptionsOutput) ToLogicalNetworkPropertiesDhcpOptionsOutput() LogicalNetworkPropertiesDhcpOptionsOutput {
+	return o
+}
+
+func (o LogicalNetworkPropertiesDhcpOptionsOutput) ToLogicalNetworkPropertiesDhcpOptionsOutputWithContext(ctx context.Context) LogicalNetworkPropertiesDhcpOptionsOutput {
+	return o
+}
+
+func (o LogicalNetworkPropertiesDhcpOptionsOutput) ToLogicalNetworkPropertiesDhcpOptionsPtrOutput() LogicalNetworkPropertiesDhcpOptionsPtrOutput {
+	return o.ToLogicalNetworkPropertiesDhcpOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o LogicalNetworkPropertiesDhcpOptionsOutput) ToLogicalNetworkPropertiesDhcpOptionsPtrOutputWithContext(ctx context.Context) LogicalNetworkPropertiesDhcpOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogicalNetworkPropertiesDhcpOptions) *LogicalNetworkPropertiesDhcpOptions {
+		return &v
+	}).(LogicalNetworkPropertiesDhcpOptionsPtrOutput)
+}
+
+func (o LogicalNetworkPropertiesDhcpOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[LogicalNetworkPropertiesDhcpOptions] {
+	return pulumix.Output[LogicalNetworkPropertiesDhcpOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The list of DNS servers IP addresses.
+func (o LogicalNetworkPropertiesDhcpOptionsOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LogicalNetworkPropertiesDhcpOptions) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+type LogicalNetworkPropertiesDhcpOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkPropertiesDhcpOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogicalNetworkPropertiesDhcpOptions)(nil)).Elem()
+}
+
+func (o LogicalNetworkPropertiesDhcpOptionsPtrOutput) ToLogicalNetworkPropertiesDhcpOptionsPtrOutput() LogicalNetworkPropertiesDhcpOptionsPtrOutput {
+	return o
+}
+
+func (o LogicalNetworkPropertiesDhcpOptionsPtrOutput) ToLogicalNetworkPropertiesDhcpOptionsPtrOutputWithContext(ctx context.Context) LogicalNetworkPropertiesDhcpOptionsPtrOutput {
+	return o
+}
+
+func (o LogicalNetworkPropertiesDhcpOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogicalNetworkPropertiesDhcpOptions] {
+	return pulumix.Output[*LogicalNetworkPropertiesDhcpOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o LogicalNetworkPropertiesDhcpOptionsPtrOutput) Elem() LogicalNetworkPropertiesDhcpOptionsOutput {
+	return o.ApplyT(func(v *LogicalNetworkPropertiesDhcpOptions) LogicalNetworkPropertiesDhcpOptions {
+		if v != nil {
+			return *v
+		}
+		var ret LogicalNetworkPropertiesDhcpOptions
+		return ret
+	}).(LogicalNetworkPropertiesDhcpOptionsOutput)
+}
+
+// The list of DNS servers IP addresses.
+func (o LogicalNetworkPropertiesDhcpOptionsPtrOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LogicalNetworkPropertiesDhcpOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
+type LogicalNetworkPropertiesResponseDhcpOptions struct {
+	// The list of DNS servers IP addresses.
+	DnsServers []string `pulumi:"dnsServers"`
+}
+
+// DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
+type LogicalNetworkPropertiesResponseDhcpOptionsOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkPropertiesResponseDhcpOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalNetworkPropertiesResponseDhcpOptions)(nil)).Elem()
+}
+
+func (o LogicalNetworkPropertiesResponseDhcpOptionsOutput) ToLogicalNetworkPropertiesResponseDhcpOptionsOutput() LogicalNetworkPropertiesResponseDhcpOptionsOutput {
+	return o
+}
+
+func (o LogicalNetworkPropertiesResponseDhcpOptionsOutput) ToLogicalNetworkPropertiesResponseDhcpOptionsOutputWithContext(ctx context.Context) LogicalNetworkPropertiesResponseDhcpOptionsOutput {
+	return o
+}
+
+func (o LogicalNetworkPropertiesResponseDhcpOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[LogicalNetworkPropertiesResponseDhcpOptions] {
+	return pulumix.Output[LogicalNetworkPropertiesResponseDhcpOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The list of DNS servers IP addresses.
+func (o LogicalNetworkPropertiesResponseDhcpOptionsOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LogicalNetworkPropertiesResponseDhcpOptions) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+type LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogicalNetworkPropertiesResponseDhcpOptions)(nil)).Elem()
+}
+
+func (o LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput) ToLogicalNetworkPropertiesResponseDhcpOptionsPtrOutput() LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput {
+	return o
+}
+
+func (o LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput) ToLogicalNetworkPropertiesResponseDhcpOptionsPtrOutputWithContext(ctx context.Context) LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput {
+	return o
+}
+
+func (o LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogicalNetworkPropertiesResponseDhcpOptions] {
+	return pulumix.Output[*LogicalNetworkPropertiesResponseDhcpOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput) Elem() LogicalNetworkPropertiesResponseDhcpOptionsOutput {
+	return o.ApplyT(func(v *LogicalNetworkPropertiesResponseDhcpOptions) LogicalNetworkPropertiesResponseDhcpOptions {
+		if v != nil {
+			return *v
+		}
+		var ret LogicalNetworkPropertiesResponseDhcpOptions
+		return ret
+	}).(LogicalNetworkPropertiesResponseDhcpOptionsOutput)
+}
+
+// The list of DNS servers IP addresses.
+func (o LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LogicalNetworkPropertiesResponseDhcpOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// The observed state of logical networks
+type LogicalNetworkStatusResponse struct {
+	// LogicalNetwork provisioning error code
+	ErrorCode *string `pulumi:"errorCode"`
+	// Descriptive error message
+	ErrorMessage       *string                                         `pulumi:"errorMessage"`
+	ProvisioningStatus *LogicalNetworkStatusResponseProvisioningStatus `pulumi:"provisioningStatus"`
+}
+
+// The observed state of logical networks
+type LogicalNetworkStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalNetworkStatusResponse)(nil)).Elem()
+}
+
+func (o LogicalNetworkStatusResponseOutput) ToLogicalNetworkStatusResponseOutput() LogicalNetworkStatusResponseOutput {
+	return o
+}
+
+func (o LogicalNetworkStatusResponseOutput) ToLogicalNetworkStatusResponseOutputWithContext(ctx context.Context) LogicalNetworkStatusResponseOutput {
+	return o
+}
+
+func (o LogicalNetworkStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogicalNetworkStatusResponse] {
+	return pulumix.Output[LogicalNetworkStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// LogicalNetwork provisioning error code
+func (o LogicalNetworkStatusResponseOutput) ErrorCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogicalNetworkStatusResponse) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
+}
+
+// Descriptive error message
+func (o LogicalNetworkStatusResponseOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogicalNetworkStatusResponse) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+func (o LogicalNetworkStatusResponseOutput) ProvisioningStatus() LogicalNetworkStatusResponseProvisioningStatusPtrOutput {
+	return o.ApplyT(func(v LogicalNetworkStatusResponse) *LogicalNetworkStatusResponseProvisioningStatus {
+		return v.ProvisioningStatus
+	}).(LogicalNetworkStatusResponseProvisioningStatusPtrOutput)
+}
+
+type LogicalNetworkStatusResponseProvisioningStatus struct {
+	// The ID of the operation performed on the logical network
+	OperationId *string `pulumi:"operationId"`
+	// The status of the operation performed on the logical network [Succeeded, Failed, InProgress]
+	Status *string `pulumi:"status"`
+}
+
+type LogicalNetworkStatusResponseProvisioningStatusOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkStatusResponseProvisioningStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalNetworkStatusResponseProvisioningStatus)(nil)).Elem()
+}
+
+func (o LogicalNetworkStatusResponseProvisioningStatusOutput) ToLogicalNetworkStatusResponseProvisioningStatusOutput() LogicalNetworkStatusResponseProvisioningStatusOutput {
+	return o
+}
+
+func (o LogicalNetworkStatusResponseProvisioningStatusOutput) ToLogicalNetworkStatusResponseProvisioningStatusOutputWithContext(ctx context.Context) LogicalNetworkStatusResponseProvisioningStatusOutput {
+	return o
+}
+
+func (o LogicalNetworkStatusResponseProvisioningStatusOutput) ToOutput(ctx context.Context) pulumix.Output[LogicalNetworkStatusResponseProvisioningStatus] {
+	return pulumix.Output[LogicalNetworkStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ID of the operation performed on the logical network
+func (o LogicalNetworkStatusResponseProvisioningStatusOutput) OperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogicalNetworkStatusResponseProvisioningStatus) *string { return v.OperationId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the operation performed on the logical network [Succeeded, Failed, InProgress]
+func (o LogicalNetworkStatusResponseProvisioningStatusOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogicalNetworkStatusResponseProvisioningStatus) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type LogicalNetworkStatusResponseProvisioningStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkStatusResponseProvisioningStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogicalNetworkStatusResponseProvisioningStatus)(nil)).Elem()
+}
+
+func (o LogicalNetworkStatusResponseProvisioningStatusPtrOutput) ToLogicalNetworkStatusResponseProvisioningStatusPtrOutput() LogicalNetworkStatusResponseProvisioningStatusPtrOutput {
+	return o
+}
+
+func (o LogicalNetworkStatusResponseProvisioningStatusPtrOutput) ToLogicalNetworkStatusResponseProvisioningStatusPtrOutputWithContext(ctx context.Context) LogicalNetworkStatusResponseProvisioningStatusPtrOutput {
+	return o
+}
+
+func (o LogicalNetworkStatusResponseProvisioningStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogicalNetworkStatusResponseProvisioningStatus] {
+	return pulumix.Output[*LogicalNetworkStatusResponseProvisioningStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o LogicalNetworkStatusResponseProvisioningStatusPtrOutput) Elem() LogicalNetworkStatusResponseProvisioningStatusOutput {
+	return o.ApplyT(func(v *LogicalNetworkStatusResponseProvisioningStatus) LogicalNetworkStatusResponseProvisioningStatus {
+		if v != nil {
+			return *v
+		}
+		var ret LogicalNetworkStatusResponseProvisioningStatus
+		return ret
+	}).(LogicalNetworkStatusResponseProvisioningStatusOutput)
+}
+
+// The ID of the operation performed on the logical network
+func (o LogicalNetworkStatusResponseProvisioningStatusPtrOutput) OperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogicalNetworkStatusResponseProvisioningStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The status of the operation performed on the logical network [Succeeded, Failed, InProgress]
+func (o LogicalNetworkStatusResponseProvisioningStatusPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogicalNetworkStatusResponseProvisioningStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
 }
 
 // Instance view status.
@@ -5529,6 +5914,507 @@ func (o PerNodeStateResponseArrayOutput) Index(i pulumi.IntInput) PerNodeStateRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PerNodeStateResponse {
 		return vs[0].([]PerNodeStateResponse)[vs[1].(int)]
 	}).(PerNodeStateResponseOutput)
+}
+
+// Route - Route resource.
+type Route struct {
+	// The destination CIDR to which the route applies.
+	AddressPrefix *string `pulumi:"addressPrefix"`
+	// Name - name of the subnet
+	Name *string `pulumi:"name"`
+	// The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+	NextHopIpAddress *string `pulumi:"nextHopIpAddress"`
+}
+
+// RouteInput is an input type that accepts RouteArgs and RouteOutput values.
+// You can construct a concrete instance of `RouteInput` via:
+//
+//	RouteArgs{...}
+type RouteInput interface {
+	pulumi.Input
+
+	ToRouteOutput() RouteOutput
+	ToRouteOutputWithContext(context.Context) RouteOutput
+}
+
+// Route - Route resource.
+type RouteArgs struct {
+	// The destination CIDR to which the route applies.
+	AddressPrefix pulumi.StringPtrInput `pulumi:"addressPrefix"`
+	// Name - name of the subnet
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+	NextHopIpAddress pulumi.StringPtrInput `pulumi:"nextHopIpAddress"`
+}
+
+func (RouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Route)(nil)).Elem()
+}
+
+func (i RouteArgs) ToRouteOutput() RouteOutput {
+	return i.ToRouteOutputWithContext(context.Background())
+}
+
+func (i RouteArgs) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteOutput)
+}
+
+func (i RouteArgs) ToOutput(ctx context.Context) pulumix.Output[Route] {
+	return pulumix.Output[Route]{
+		OutputState: i.ToRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
+// RouteArrayInput is an input type that accepts RouteArray and RouteArrayOutput values.
+// You can construct a concrete instance of `RouteArrayInput` via:
+//
+//	RouteArray{ RouteArgs{...} }
+type RouteArrayInput interface {
+	pulumi.Input
+
+	ToRouteArrayOutput() RouteArrayOutput
+	ToRouteArrayOutputWithContext(context.Context) RouteArrayOutput
+}
+
+type RouteArray []RouteInput
+
+func (RouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Route)(nil)).Elem()
+}
+
+func (i RouteArray) ToRouteArrayOutput() RouteArrayOutput {
+	return i.ToRouteArrayOutputWithContext(context.Background())
+}
+
+func (i RouteArray) ToRouteArrayOutputWithContext(ctx context.Context) RouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteArrayOutput)
+}
+
+func (i RouteArray) ToOutput(ctx context.Context) pulumix.Output[[]Route] {
+	return pulumix.Output[[]Route]{
+		OutputState: i.ToRouteArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Route - Route resource.
+type RouteOutput struct{ *pulumi.OutputState }
+
+func (RouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Route)(nil)).Elem()
+}
+
+func (o RouteOutput) ToRouteOutput() RouteOutput {
+	return o
+}
+
+func (o RouteOutput) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
+	return o
+}
+
+func (o RouteOutput) ToOutput(ctx context.Context) pulumix.Output[Route] {
+	return pulumix.Output[Route]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The destination CIDR to which the route applies.
+func (o RouteOutput) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Route) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Name - name of the subnet
+func (o RouteOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Route) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+func (o RouteOutput) NextHopIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Route) *string { return v.NextHopIpAddress }).(pulumi.StringPtrOutput)
+}
+
+type RouteArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Route)(nil)).Elem()
+}
+
+func (o RouteArrayOutput) ToRouteArrayOutput() RouteArrayOutput {
+	return o
+}
+
+func (o RouteArrayOutput) ToRouteArrayOutputWithContext(ctx context.Context) RouteArrayOutput {
+	return o
+}
+
+func (o RouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Route] {
+	return pulumix.Output[[]Route]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RouteArrayOutput) Index(i pulumi.IntInput) RouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Route {
+		return vs[0].([]Route)[vs[1].(int)]
+	}).(RouteOutput)
+}
+
+// Route - Route resource.
+type RouteResponse struct {
+	// The destination CIDR to which the route applies.
+	AddressPrefix *string `pulumi:"addressPrefix"`
+	// Name - name of the subnet
+	Name *string `pulumi:"name"`
+	// The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+	NextHopIpAddress *string `pulumi:"nextHopIpAddress"`
+}
+
+// Route - Route resource.
+type RouteResponseOutput struct{ *pulumi.OutputState }
+
+func (RouteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteResponse)(nil)).Elem()
+}
+
+func (o RouteResponseOutput) ToRouteResponseOutput() RouteResponseOutput {
+	return o
+}
+
+func (o RouteResponseOutput) ToRouteResponseOutputWithContext(ctx context.Context) RouteResponseOutput {
+	return o
+}
+
+func (o RouteResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RouteResponse] {
+	return pulumix.Output[RouteResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The destination CIDR to which the route applies.
+func (o RouteResponseOutput) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteResponse) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Name - name of the subnet
+func (o RouteResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+func (o RouteResponseOutput) NextHopIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteResponse) *string { return v.NextHopIpAddress }).(pulumi.StringPtrOutput)
+}
+
+type RouteResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteResponse)(nil)).Elem()
+}
+
+func (o RouteResponseArrayOutput) ToRouteResponseArrayOutput() RouteResponseArrayOutput {
+	return o
+}
+
+func (o RouteResponseArrayOutput) ToRouteResponseArrayOutputWithContext(ctx context.Context) RouteResponseArrayOutput {
+	return o
+}
+
+func (o RouteResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RouteResponse] {
+	return pulumix.Output[[]RouteResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RouteResponseArrayOutput) Index(i pulumi.IntInput) RouteResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteResponse {
+		return vs[0].([]RouteResponse)[vs[1].(int)]
+	}).(RouteResponseOutput)
+}
+
+// Route table resource.
+type RouteTable struct {
+	// Collection of routes contained within a route table.
+	Routes []Route `pulumi:"routes"`
+}
+
+// RouteTableInput is an input type that accepts RouteTableArgs and RouteTableOutput values.
+// You can construct a concrete instance of `RouteTableInput` via:
+//
+//	RouteTableArgs{...}
+type RouteTableInput interface {
+	pulumi.Input
+
+	ToRouteTableOutput() RouteTableOutput
+	ToRouteTableOutputWithContext(context.Context) RouteTableOutput
+}
+
+// Route table resource.
+type RouteTableArgs struct {
+	// Collection of routes contained within a route table.
+	Routes RouteArrayInput `pulumi:"routes"`
+}
+
+func (RouteTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTable)(nil)).Elem()
+}
+
+func (i RouteTableArgs) ToRouteTableOutput() RouteTableOutput {
+	return i.ToRouteTableOutputWithContext(context.Background())
+}
+
+func (i RouteTableArgs) ToRouteTableOutputWithContext(ctx context.Context) RouteTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTableOutput)
+}
+
+func (i RouteTableArgs) ToOutput(ctx context.Context) pulumix.Output[RouteTable] {
+	return pulumix.Output[RouteTable]{
+		OutputState: i.ToRouteTableOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RouteTableArgs) ToRouteTablePtrOutput() RouteTablePtrOutput {
+	return i.ToRouteTablePtrOutputWithContext(context.Background())
+}
+
+func (i RouteTableArgs) ToRouteTablePtrOutputWithContext(ctx context.Context) RouteTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTableOutput).ToRouteTablePtrOutputWithContext(ctx)
+}
+
+// RouteTablePtrInput is an input type that accepts RouteTableArgs, RouteTablePtr and RouteTablePtrOutput values.
+// You can construct a concrete instance of `RouteTablePtrInput` via:
+//
+//	        RouteTableArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteTablePtrInput interface {
+	pulumi.Input
+
+	ToRouteTablePtrOutput() RouteTablePtrOutput
+	ToRouteTablePtrOutputWithContext(context.Context) RouteTablePtrOutput
+}
+
+type routeTablePtrType RouteTableArgs
+
+func RouteTablePtr(v *RouteTableArgs) RouteTablePtrInput {
+	return (*routeTablePtrType)(v)
+}
+
+func (*routeTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteTable)(nil)).Elem()
+}
+
+func (i *routeTablePtrType) ToRouteTablePtrOutput() RouteTablePtrOutput {
+	return i.ToRouteTablePtrOutputWithContext(context.Background())
+}
+
+func (i *routeTablePtrType) ToRouteTablePtrOutputWithContext(ctx context.Context) RouteTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTablePtrOutput)
+}
+
+func (i *routeTablePtrType) ToOutput(ctx context.Context) pulumix.Output[*RouteTable] {
+	return pulumix.Output[*RouteTable]{
+		OutputState: i.ToRouteTablePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Route table resource.
+type RouteTableOutput struct{ *pulumi.OutputState }
+
+func (RouteTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTable)(nil)).Elem()
+}
+
+func (o RouteTableOutput) ToRouteTableOutput() RouteTableOutput {
+	return o
+}
+
+func (o RouteTableOutput) ToRouteTableOutputWithContext(ctx context.Context) RouteTableOutput {
+	return o
+}
+
+func (o RouteTableOutput) ToRouteTablePtrOutput() RouteTablePtrOutput {
+	return o.ToRouteTablePtrOutputWithContext(context.Background())
+}
+
+func (o RouteTableOutput) ToRouteTablePtrOutputWithContext(ctx context.Context) RouteTablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteTable) *RouteTable {
+		return &v
+	}).(RouteTablePtrOutput)
+}
+
+func (o RouteTableOutput) ToOutput(ctx context.Context) pulumix.Output[RouteTable] {
+	return pulumix.Output[RouteTable]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Collection of routes contained within a route table.
+func (o RouteTableOutput) Routes() RouteArrayOutput {
+	return o.ApplyT(func(v RouteTable) []Route { return v.Routes }).(RouteArrayOutput)
+}
+
+type RouteTablePtrOutput struct{ *pulumi.OutputState }
+
+func (RouteTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteTable)(nil)).Elem()
+}
+
+func (o RouteTablePtrOutput) ToRouteTablePtrOutput() RouteTablePtrOutput {
+	return o
+}
+
+func (o RouteTablePtrOutput) ToRouteTablePtrOutputWithContext(ctx context.Context) RouteTablePtrOutput {
+	return o
+}
+
+func (o RouteTablePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouteTable] {
+	return pulumix.Output[*RouteTable]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RouteTablePtrOutput) Elem() RouteTableOutput {
+	return o.ApplyT(func(v *RouteTable) RouteTable {
+		if v != nil {
+			return *v
+		}
+		var ret RouteTable
+		return ret
+	}).(RouteTableOutput)
+}
+
+// Collection of routes contained within a route table.
+func (o RouteTablePtrOutput) Routes() RouteArrayOutput {
+	return o.ApplyT(func(v *RouteTable) []Route {
+		if v == nil {
+			return nil
+		}
+		return v.Routes
+	}).(RouteArrayOutput)
+}
+
+// Route table resource.
+type RouteTableResponse struct {
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Collection of routes contained within a route table.
+	Routes []RouteResponse `pulumi:"routes"`
+	// Resource type.
+	Type string `pulumi:"type"`
+}
+
+// Route table resource.
+type RouteTableResponseOutput struct{ *pulumi.OutputState }
+
+func (RouteTableResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTableResponse)(nil)).Elem()
+}
+
+func (o RouteTableResponseOutput) ToRouteTableResponseOutput() RouteTableResponseOutput {
+	return o
+}
+
+func (o RouteTableResponseOutput) ToRouteTableResponseOutputWithContext(ctx context.Context) RouteTableResponseOutput {
+	return o
+}
+
+func (o RouteTableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RouteTableResponse] {
+	return pulumix.Output[RouteTableResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o RouteTableResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteTableResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Resource name.
+func (o RouteTableResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteTableResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Collection of routes contained within a route table.
+func (o RouteTableResponseOutput) Routes() RouteResponseArrayOutput {
+	return o.ApplyT(func(v RouteTableResponse) []RouteResponse { return v.Routes }).(RouteResponseArrayOutput)
+}
+
+// Resource type.
+func (o RouteTableResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteTableResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RouteTableResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RouteTableResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteTableResponse)(nil)).Elem()
+}
+
+func (o RouteTableResponsePtrOutput) ToRouteTableResponsePtrOutput() RouteTableResponsePtrOutput {
+	return o
+}
+
+func (o RouteTableResponsePtrOutput) ToRouteTableResponsePtrOutputWithContext(ctx context.Context) RouteTableResponsePtrOutput {
+	return o
+}
+
+func (o RouteTableResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouteTableResponse] {
+	return pulumix.Output[*RouteTableResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RouteTableResponsePtrOutput) Elem() RouteTableResponseOutput {
+	return o.ApplyT(func(v *RouteTableResponse) RouteTableResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RouteTableResponse
+		return ret
+	}).(RouteTableResponseOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o RouteTableResponsePtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTableResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o RouteTableResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTableResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Collection of routes contained within a route table.
+func (o RouteTableResponsePtrOutput) Routes() RouteResponseArrayOutput {
+	return o.ApplyT(func(v *RouteTableResponse) []RouteResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Routes
+	}).(RouteResponseArrayOutput)
+}
+
+// Resource type.
+func (o RouteTableResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTableResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Software Assurance properties of the cluster.
@@ -6693,6 +7579,479 @@ func (o StorageContainerStatusResponseProvisioningStatusPtrOutput) Status() pulu
 		}
 		return v.Status
 	}).(pulumi.StringPtrOutput)
+}
+
+type Subnet struct {
+	// The address prefix for the subnet: Cidr for this subnet - IPv4, IPv6.
+	AddressPrefix *string `pulumi:"addressPrefix"`
+	// List of address prefixes for the subnet.
+	AddressPrefixes []string `pulumi:"addressPrefixes"`
+	// IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
+	IpAllocationMethod *string `pulumi:"ipAllocationMethod"`
+	// IPConfigurationReferences - list of IPConfigurationReferences
+	IpConfigurationReferences []SubnetPropertiesFormatIpConfigurationReferences `pulumi:"ipConfigurationReferences"`
+	// network associated pool of IP Addresses
+	IpPools []IPPool `pulumi:"ipPools"`
+	// Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// Route table resource.
+	RouteTable *RouteTable `pulumi:"routeTable"`
+	// Vlan to use for the subnet
+	Vlan *int `pulumi:"vlan"`
+}
+
+// SubnetInput is an input type that accepts SubnetArgs and SubnetOutput values.
+// You can construct a concrete instance of `SubnetInput` via:
+//
+//	SubnetArgs{...}
+type SubnetInput interface {
+	pulumi.Input
+
+	ToSubnetOutput() SubnetOutput
+	ToSubnetOutputWithContext(context.Context) SubnetOutput
+}
+
+type SubnetArgs struct {
+	// The address prefix for the subnet: Cidr for this subnet - IPv4, IPv6.
+	AddressPrefix pulumi.StringPtrInput `pulumi:"addressPrefix"`
+	// List of address prefixes for the subnet.
+	AddressPrefixes pulumi.StringArrayInput `pulumi:"addressPrefixes"`
+	// IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
+	IpAllocationMethod pulumi.StringPtrInput `pulumi:"ipAllocationMethod"`
+	// IPConfigurationReferences - list of IPConfigurationReferences
+	IpConfigurationReferences SubnetPropertiesFormatIpConfigurationReferencesArrayInput `pulumi:"ipConfigurationReferences"`
+	// network associated pool of IP Addresses
+	IpPools IPPoolArrayInput `pulumi:"ipPools"`
+	// Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Route table resource.
+	RouteTable RouteTablePtrInput `pulumi:"routeTable"`
+	// Vlan to use for the subnet
+	Vlan pulumi.IntPtrInput `pulumi:"vlan"`
+}
+
+func (SubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Subnet)(nil)).Elem()
+}
+
+func (i SubnetArgs) ToSubnetOutput() SubnetOutput {
+	return i.ToSubnetOutputWithContext(context.Background())
+}
+
+func (i SubnetArgs) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetOutput)
+}
+
+func (i SubnetArgs) ToOutput(ctx context.Context) pulumix.Output[Subnet] {
+	return pulumix.Output[Subnet]{
+		OutputState: i.ToSubnetOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SubnetArrayInput is an input type that accepts SubnetArray and SubnetArrayOutput values.
+// You can construct a concrete instance of `SubnetArrayInput` via:
+//
+//	SubnetArray{ SubnetArgs{...} }
+type SubnetArrayInput interface {
+	pulumi.Input
+
+	ToSubnetArrayOutput() SubnetArrayOutput
+	ToSubnetArrayOutputWithContext(context.Context) SubnetArrayOutput
+}
+
+type SubnetArray []SubnetInput
+
+func (SubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Subnet)(nil)).Elem()
+}
+
+func (i SubnetArray) ToSubnetArrayOutput() SubnetArrayOutput {
+	return i.ToSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i SubnetArray) ToSubnetArrayOutputWithContext(ctx context.Context) SubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetArrayOutput)
+}
+
+func (i SubnetArray) ToOutput(ctx context.Context) pulumix.Output[[]Subnet] {
+	return pulumix.Output[[]Subnet]{
+		OutputState: i.ToSubnetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type SubnetOutput struct{ *pulumi.OutputState }
+
+func (SubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Subnet)(nil)).Elem()
+}
+
+func (o SubnetOutput) ToSubnetOutput() SubnetOutput {
+	return o
+}
+
+func (o SubnetOutput) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
+	return o
+}
+
+func (o SubnetOutput) ToOutput(ctx context.Context) pulumix.Output[Subnet] {
+	return pulumix.Output[Subnet]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The address prefix for the subnet: Cidr for this subnet - IPv4, IPv6.
+func (o SubnetOutput) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Subnet) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// List of address prefixes for the subnet.
+func (o SubnetOutput) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Subnet) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
+func (o SubnetOutput) IpAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Subnet) *string { return v.IpAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// IPConfigurationReferences - list of IPConfigurationReferences
+func (o SubnetOutput) IpConfigurationReferences() SubnetPropertiesFormatIpConfigurationReferencesArrayOutput {
+	return o.ApplyT(func(v Subnet) []SubnetPropertiesFormatIpConfigurationReferences { return v.IpConfigurationReferences }).(SubnetPropertiesFormatIpConfigurationReferencesArrayOutput)
+}
+
+// network associated pool of IP Addresses
+func (o SubnetOutput) IpPools() IPPoolArrayOutput {
+	return o.ApplyT(func(v Subnet) []IPPool { return v.IpPools }).(IPPoolArrayOutput)
+}
+
+// Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o SubnetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Subnet) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Route table resource.
+func (o SubnetOutput) RouteTable() RouteTablePtrOutput {
+	return o.ApplyT(func(v Subnet) *RouteTable { return v.RouteTable }).(RouteTablePtrOutput)
+}
+
+// Vlan to use for the subnet
+func (o SubnetOutput) Vlan() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Subnet) *int { return v.Vlan }).(pulumi.IntPtrOutput)
+}
+
+type SubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Subnet)(nil)).Elem()
+}
+
+func (o SubnetArrayOutput) ToSubnetArrayOutput() SubnetArrayOutput {
+	return o
+}
+
+func (o SubnetArrayOutput) ToSubnetArrayOutputWithContext(ctx context.Context) SubnetArrayOutput {
+	return o
+}
+
+func (o SubnetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Subnet] {
+	return pulumix.Output[[]Subnet]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SubnetArrayOutput) Index(i pulumi.IntInput) SubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Subnet {
+		return vs[0].([]Subnet)[vs[1].(int)]
+	}).(SubnetOutput)
+}
+
+// IPConfigurationReference - Describes a IPConfiguration under the virtual network
+type SubnetPropertiesFormatIpConfigurationReferences struct {
+	// IPConfigurationID
+	Id *string `pulumi:"id"`
+}
+
+// SubnetPropertiesFormatIpConfigurationReferencesInput is an input type that accepts SubnetPropertiesFormatIpConfigurationReferencesArgs and SubnetPropertiesFormatIpConfigurationReferencesOutput values.
+// You can construct a concrete instance of `SubnetPropertiesFormatIpConfigurationReferencesInput` via:
+//
+//	SubnetPropertiesFormatIpConfigurationReferencesArgs{...}
+type SubnetPropertiesFormatIpConfigurationReferencesInput interface {
+	pulumi.Input
+
+	ToSubnetPropertiesFormatIpConfigurationReferencesOutput() SubnetPropertiesFormatIpConfigurationReferencesOutput
+	ToSubnetPropertiesFormatIpConfigurationReferencesOutputWithContext(context.Context) SubnetPropertiesFormatIpConfigurationReferencesOutput
+}
+
+// IPConfigurationReference - Describes a IPConfiguration under the virtual network
+type SubnetPropertiesFormatIpConfigurationReferencesArgs struct {
+	// IPConfigurationID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (SubnetPropertiesFormatIpConfigurationReferencesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetPropertiesFormatIpConfigurationReferences)(nil)).Elem()
+}
+
+func (i SubnetPropertiesFormatIpConfigurationReferencesArgs) ToSubnetPropertiesFormatIpConfigurationReferencesOutput() SubnetPropertiesFormatIpConfigurationReferencesOutput {
+	return i.ToSubnetPropertiesFormatIpConfigurationReferencesOutputWithContext(context.Background())
+}
+
+func (i SubnetPropertiesFormatIpConfigurationReferencesArgs) ToSubnetPropertiesFormatIpConfigurationReferencesOutputWithContext(ctx context.Context) SubnetPropertiesFormatIpConfigurationReferencesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetPropertiesFormatIpConfigurationReferencesOutput)
+}
+
+func (i SubnetPropertiesFormatIpConfigurationReferencesArgs) ToOutput(ctx context.Context) pulumix.Output[SubnetPropertiesFormatIpConfigurationReferences] {
+	return pulumix.Output[SubnetPropertiesFormatIpConfigurationReferences]{
+		OutputState: i.ToSubnetPropertiesFormatIpConfigurationReferencesOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SubnetPropertiesFormatIpConfigurationReferencesArrayInput is an input type that accepts SubnetPropertiesFormatIpConfigurationReferencesArray and SubnetPropertiesFormatIpConfigurationReferencesArrayOutput values.
+// You can construct a concrete instance of `SubnetPropertiesFormatIpConfigurationReferencesArrayInput` via:
+//
+//	SubnetPropertiesFormatIpConfigurationReferencesArray{ SubnetPropertiesFormatIpConfigurationReferencesArgs{...} }
+type SubnetPropertiesFormatIpConfigurationReferencesArrayInput interface {
+	pulumi.Input
+
+	ToSubnetPropertiesFormatIpConfigurationReferencesArrayOutput() SubnetPropertiesFormatIpConfigurationReferencesArrayOutput
+	ToSubnetPropertiesFormatIpConfigurationReferencesArrayOutputWithContext(context.Context) SubnetPropertiesFormatIpConfigurationReferencesArrayOutput
+}
+
+type SubnetPropertiesFormatIpConfigurationReferencesArray []SubnetPropertiesFormatIpConfigurationReferencesInput
+
+func (SubnetPropertiesFormatIpConfigurationReferencesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetPropertiesFormatIpConfigurationReferences)(nil)).Elem()
+}
+
+func (i SubnetPropertiesFormatIpConfigurationReferencesArray) ToSubnetPropertiesFormatIpConfigurationReferencesArrayOutput() SubnetPropertiesFormatIpConfigurationReferencesArrayOutput {
+	return i.ToSubnetPropertiesFormatIpConfigurationReferencesArrayOutputWithContext(context.Background())
+}
+
+func (i SubnetPropertiesFormatIpConfigurationReferencesArray) ToSubnetPropertiesFormatIpConfigurationReferencesArrayOutputWithContext(ctx context.Context) SubnetPropertiesFormatIpConfigurationReferencesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetPropertiesFormatIpConfigurationReferencesArrayOutput)
+}
+
+func (i SubnetPropertiesFormatIpConfigurationReferencesArray) ToOutput(ctx context.Context) pulumix.Output[[]SubnetPropertiesFormatIpConfigurationReferences] {
+	return pulumix.Output[[]SubnetPropertiesFormatIpConfigurationReferences]{
+		OutputState: i.ToSubnetPropertiesFormatIpConfigurationReferencesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// IPConfigurationReference - Describes a IPConfiguration under the virtual network
+type SubnetPropertiesFormatIpConfigurationReferencesOutput struct{ *pulumi.OutputState }
+
+func (SubnetPropertiesFormatIpConfigurationReferencesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetPropertiesFormatIpConfigurationReferences)(nil)).Elem()
+}
+
+func (o SubnetPropertiesFormatIpConfigurationReferencesOutput) ToSubnetPropertiesFormatIpConfigurationReferencesOutput() SubnetPropertiesFormatIpConfigurationReferencesOutput {
+	return o
+}
+
+func (o SubnetPropertiesFormatIpConfigurationReferencesOutput) ToSubnetPropertiesFormatIpConfigurationReferencesOutputWithContext(ctx context.Context) SubnetPropertiesFormatIpConfigurationReferencesOutput {
+	return o
+}
+
+func (o SubnetPropertiesFormatIpConfigurationReferencesOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetPropertiesFormatIpConfigurationReferences] {
+	return pulumix.Output[SubnetPropertiesFormatIpConfigurationReferences]{
+		OutputState: o.OutputState,
+	}
+}
+
+// IPConfigurationID
+func (o SubnetPropertiesFormatIpConfigurationReferencesOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetPropertiesFormatIpConfigurationReferences) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type SubnetPropertiesFormatIpConfigurationReferencesArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetPropertiesFormatIpConfigurationReferencesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetPropertiesFormatIpConfigurationReferences)(nil)).Elem()
+}
+
+func (o SubnetPropertiesFormatIpConfigurationReferencesArrayOutput) ToSubnetPropertiesFormatIpConfigurationReferencesArrayOutput() SubnetPropertiesFormatIpConfigurationReferencesArrayOutput {
+	return o
+}
+
+func (o SubnetPropertiesFormatIpConfigurationReferencesArrayOutput) ToSubnetPropertiesFormatIpConfigurationReferencesArrayOutputWithContext(ctx context.Context) SubnetPropertiesFormatIpConfigurationReferencesArrayOutput {
+	return o
+}
+
+func (o SubnetPropertiesFormatIpConfigurationReferencesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubnetPropertiesFormatIpConfigurationReferences] {
+	return pulumix.Output[[]SubnetPropertiesFormatIpConfigurationReferences]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SubnetPropertiesFormatIpConfigurationReferencesArrayOutput) Index(i pulumi.IntInput) SubnetPropertiesFormatIpConfigurationReferencesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetPropertiesFormatIpConfigurationReferences {
+		return vs[0].([]SubnetPropertiesFormatIpConfigurationReferences)[vs[1].(int)]
+	}).(SubnetPropertiesFormatIpConfigurationReferencesOutput)
+}
+
+// IPConfigurationReference - Describes a IPConfiguration under the virtual network
+type SubnetPropertiesFormatResponseIpConfigurationReferences struct {
+	// IPConfigurationID
+	Id *string `pulumi:"id"`
+}
+
+// IPConfigurationReference - Describes a IPConfiguration under the virtual network
+type SubnetPropertiesFormatResponseIpConfigurationReferencesOutput struct{ *pulumi.OutputState }
+
+func (SubnetPropertiesFormatResponseIpConfigurationReferencesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetPropertiesFormatResponseIpConfigurationReferences)(nil)).Elem()
+}
+
+func (o SubnetPropertiesFormatResponseIpConfigurationReferencesOutput) ToSubnetPropertiesFormatResponseIpConfigurationReferencesOutput() SubnetPropertiesFormatResponseIpConfigurationReferencesOutput {
+	return o
+}
+
+func (o SubnetPropertiesFormatResponseIpConfigurationReferencesOutput) ToSubnetPropertiesFormatResponseIpConfigurationReferencesOutputWithContext(ctx context.Context) SubnetPropertiesFormatResponseIpConfigurationReferencesOutput {
+	return o
+}
+
+func (o SubnetPropertiesFormatResponseIpConfigurationReferencesOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetPropertiesFormatResponseIpConfigurationReferences] {
+	return pulumix.Output[SubnetPropertiesFormatResponseIpConfigurationReferences]{
+		OutputState: o.OutputState,
+	}
+}
+
+// IPConfigurationID
+func (o SubnetPropertiesFormatResponseIpConfigurationReferencesOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetPropertiesFormatResponseIpConfigurationReferences) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type SubnetPropertiesFormatResponseIpConfigurationReferencesArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetPropertiesFormatResponseIpConfigurationReferencesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetPropertiesFormatResponseIpConfigurationReferences)(nil)).Elem()
+}
+
+func (o SubnetPropertiesFormatResponseIpConfigurationReferencesArrayOutput) ToSubnetPropertiesFormatResponseIpConfigurationReferencesArrayOutput() SubnetPropertiesFormatResponseIpConfigurationReferencesArrayOutput {
+	return o
+}
+
+func (o SubnetPropertiesFormatResponseIpConfigurationReferencesArrayOutput) ToSubnetPropertiesFormatResponseIpConfigurationReferencesArrayOutputWithContext(ctx context.Context) SubnetPropertiesFormatResponseIpConfigurationReferencesArrayOutput {
+	return o
+}
+
+func (o SubnetPropertiesFormatResponseIpConfigurationReferencesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubnetPropertiesFormatResponseIpConfigurationReferences] {
+	return pulumix.Output[[]SubnetPropertiesFormatResponseIpConfigurationReferences]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SubnetPropertiesFormatResponseIpConfigurationReferencesArrayOutput) Index(i pulumi.IntInput) SubnetPropertiesFormatResponseIpConfigurationReferencesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetPropertiesFormatResponseIpConfigurationReferences {
+		return vs[0].([]SubnetPropertiesFormatResponseIpConfigurationReferences)[vs[1].(int)]
+	}).(SubnetPropertiesFormatResponseIpConfigurationReferencesOutput)
+}
+
+type SubnetResponse struct {
+	// The address prefix for the subnet: Cidr for this subnet - IPv4, IPv6.
+	AddressPrefix *string `pulumi:"addressPrefix"`
+	// List of address prefixes for the subnet.
+	AddressPrefixes []string `pulumi:"addressPrefixes"`
+	// IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
+	IpAllocationMethod *string `pulumi:"ipAllocationMethod"`
+	// IPConfigurationReferences - list of IPConfigurationReferences
+	IpConfigurationReferences []SubnetPropertiesFormatResponseIpConfigurationReferences `pulumi:"ipConfigurationReferences"`
+	// network associated pool of IP Addresses
+	IpPools []IPPoolResponse `pulumi:"ipPools"`
+	// Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// Route table resource.
+	RouteTable *RouteTableResponse `pulumi:"routeTable"`
+	// Vlan to use for the subnet
+	Vlan *int `pulumi:"vlan"`
+}
+
+type SubnetResponseOutput struct{ *pulumi.OutputState }
+
+func (SubnetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetResponse)(nil)).Elem()
+}
+
+func (o SubnetResponseOutput) ToSubnetResponseOutput() SubnetResponseOutput {
+	return o
+}
+
+func (o SubnetResponseOutput) ToSubnetResponseOutputWithContext(ctx context.Context) SubnetResponseOutput {
+	return o
+}
+
+func (o SubnetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetResponse] {
+	return pulumix.Output[SubnetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The address prefix for the subnet: Cidr for this subnet - IPv4, IPv6.
+func (o SubnetResponseOutput) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponse) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// List of address prefixes for the subnet.
+func (o SubnetResponseOutput) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SubnetResponse) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
+func (o SubnetResponseOutput) IpAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponse) *string { return v.IpAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// IPConfigurationReferences - list of IPConfigurationReferences
+func (o SubnetResponseOutput) IpConfigurationReferences() SubnetPropertiesFormatResponseIpConfigurationReferencesArrayOutput {
+	return o.ApplyT(func(v SubnetResponse) []SubnetPropertiesFormatResponseIpConfigurationReferences {
+		return v.IpConfigurationReferences
+	}).(SubnetPropertiesFormatResponseIpConfigurationReferencesArrayOutput)
+}
+
+// network associated pool of IP Addresses
+func (o SubnetResponseOutput) IpPools() IPPoolResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponse) []IPPoolResponse { return v.IpPools }).(IPPoolResponseArrayOutput)
+}
+
+// Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o SubnetResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Route table resource.
+func (o SubnetResponseOutput) RouteTable() RouteTableResponsePtrOutput {
+	return o.ApplyT(func(v SubnetResponse) *RouteTableResponse { return v.RouteTable }).(RouteTableResponsePtrOutput)
+}
+
+// Vlan to use for the subnet
+func (o SubnetResponseOutput) Vlan() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SubnetResponse) *int { return v.Vlan }).(pulumi.IntPtrOutput)
+}
+
+type SubnetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetResponse)(nil)).Elem()
+}
+
+func (o SubnetResponseArrayOutput) ToSubnetResponseArrayOutput() SubnetResponseArrayOutput {
+	return o
+}
+
+func (o SubnetResponseArrayOutput) ToSubnetResponseArrayOutputWithContext(ctx context.Context) SubnetResponseArrayOutput {
+	return o
+}
+
+func (o SubnetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubnetResponse] {
+	return pulumix.Output[[]SubnetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SubnetResponseArrayOutput) Index(i pulumi.IntInput) SubnetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetResponse {
+		return vs[0].([]SubnetResponse)[vs[1].(int)]
+	}).(SubnetResponseOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -17617,6 +18976,13 @@ func init() {
 	pulumi.RegisterOutputType(InterfaceDNSSettingsPtrOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsResponseOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkPropertiesDhcpOptionsOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkPropertiesDhcpOptionsPtrOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkPropertiesResponseDhcpOptionsOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkStatusResponseOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkStatusResponseProvisioningStatusOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkStatusResponseProvisioningStatusPtrOutput{})
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewResponseStatusOutput{})
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewResponseStatusPtrOutput{})
 	pulumi.RegisterOutputType(MachineExtensionPropertiesResponseInstanceViewOutput{})
@@ -17633,6 +18999,14 @@ func init() {
 	pulumi.RegisterOutputType(PerNodeExtensionStateResponseArrayOutput{})
 	pulumi.RegisterOutputType(PerNodeStateResponseOutput{})
 	pulumi.RegisterOutputType(PerNodeStateResponseArrayOutput{})
+	pulumi.RegisterOutputType(RouteOutput{})
+	pulumi.RegisterOutputType(RouteArrayOutput{})
+	pulumi.RegisterOutputType(RouteResponseOutput{})
+	pulumi.RegisterOutputType(RouteResponseArrayOutput{})
+	pulumi.RegisterOutputType(RouteTableOutput{})
+	pulumi.RegisterOutputType(RouteTablePtrOutput{})
+	pulumi.RegisterOutputType(RouteTableResponseOutput{})
+	pulumi.RegisterOutputType(RouteTableResponsePtrOutput{})
 	pulumi.RegisterOutputType(SoftwareAssurancePropertiesOutput{})
 	pulumi.RegisterOutputType(SoftwareAssurancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SoftwareAssurancePropertiesResponseOutput{})
@@ -17652,6 +19026,14 @@ func init() {
 	pulumi.RegisterOutputType(StorageContainerStatusResponseOutput{})
 	pulumi.RegisterOutputType(StorageContainerStatusResponseProvisioningStatusOutput{})
 	pulumi.RegisterOutputType(StorageContainerStatusResponseProvisioningStatusPtrOutput{})
+	pulumi.RegisterOutputType(SubnetOutput{})
+	pulumi.RegisterOutputType(SubnetArrayOutput{})
+	pulumi.RegisterOutputType(SubnetPropertiesFormatIpConfigurationReferencesOutput{})
+	pulumi.RegisterOutputType(SubnetPropertiesFormatIpConfigurationReferencesArrayOutput{})
+	pulumi.RegisterOutputType(SubnetPropertiesFormatResponseIpConfigurationReferencesOutput{})
+	pulumi.RegisterOutputType(SubnetPropertiesFormatResponseIpConfigurationReferencesArrayOutput{})
+	pulumi.RegisterOutputType(SubnetResponseOutput{})
+	pulumi.RegisterOutputType(SubnetResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UpdatePrerequisiteOutput{})
 	pulumi.RegisterOutputType(UpdatePrerequisiteArrayOutput{})

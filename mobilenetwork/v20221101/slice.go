@@ -64,6 +64,9 @@ func NewSlice(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20230601:Slice"),
 		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20230901:Slice"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

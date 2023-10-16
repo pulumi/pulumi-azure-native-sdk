@@ -118,6 +118,9 @@ func NewRegisteredServer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagesync/v20200901:RegisteredServer"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagesync/v20220901:RegisteredServer"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

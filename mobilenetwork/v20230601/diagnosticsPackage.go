@@ -48,6 +48,9 @@ func NewDiagnosticsPackage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:mobilenetwork:DiagnosticsPackage"),
 		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20230901:DiagnosticsPackage"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

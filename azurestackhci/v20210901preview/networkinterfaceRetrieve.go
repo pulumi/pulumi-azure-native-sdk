@@ -80,6 +80,12 @@ func NewNetworkinterfaceRetrieve(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230701preview:networkinterfaceRetrieve"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230901preview:NetworkinterfaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230901preview:networkinterfaceRetrieve"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

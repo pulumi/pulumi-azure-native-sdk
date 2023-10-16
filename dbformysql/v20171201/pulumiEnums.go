@@ -3,6 +3,13 @@
 
 package v20171201
 
+// The type of administrator.
+type AdministratorType string
+
+const (
+	AdministratorTypeActiveDirectory = AdministratorType("ActiveDirectory")
+)
+
 // The mode to create a new server.
 type CreateMode string
 
