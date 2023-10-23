@@ -14,6 +14,8 @@ import (
 
 // Implements Route Policy GET method.
 // Azure REST API version: 2023-02-01-preview.
+//
+// Other available API versions: 2023-06-15.
 func LookupRoutePolicy(ctx *pulumi.Context, args *LookupRoutePolicyArgs, opts ...pulumi.InvokeOption) (*LookupRoutePolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoutePolicyResult

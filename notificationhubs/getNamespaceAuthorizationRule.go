@@ -14,6 +14,8 @@ import (
 
 // Response for POST requests that return single SharedAccessAuthorizationRule.
 // Azure REST API version: 2023-01-01-preview.
+//
+// Other available API versions: 2016-03-01, 2017-04-01, 2023-09-01.
 func LookupNamespaceAuthorizationRule(ctx *pulumi.Context, args *LookupNamespaceAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceAuthorizationRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceAuthorizationRuleResult

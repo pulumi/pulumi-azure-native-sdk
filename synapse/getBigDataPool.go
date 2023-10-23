@@ -14,6 +14,8 @@ import (
 
 // Get a Big Data pool.
 // Azure REST API version: 2021-06-01.
+//
+// Other available API versions: 2021-05-01, 2021-06-01-preview.
 func LookupBigDataPool(ctx *pulumi.Context, args *LookupBigDataPoolArgs, opts ...pulumi.InvokeOption) (*LookupBigDataPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBigDataPoolResult

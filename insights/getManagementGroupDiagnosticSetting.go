@@ -14,6 +14,8 @@ import (
 
 // Gets the active management group diagnostic settings for the specified resource.
 // Azure REST API version: 2021-05-01-preview.
+//
+// Other available API versions: 2020-01-01-preview.
 func LookupManagementGroupDiagnosticSetting(ctx *pulumi.Context, args *LookupManagementGroupDiagnosticSettingArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupDiagnosticSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementGroupDiagnosticSettingResult

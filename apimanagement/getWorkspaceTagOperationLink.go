@@ -14,6 +14,8 @@ import (
 
 // Gets the operation link for the tag.
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2023-03-01-preview.
 func LookupWorkspaceTagOperationLink(ctx *pulumi.Context, args *LookupWorkspaceTagOperationLinkArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceTagOperationLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceTagOperationLinkResult

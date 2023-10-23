@@ -14,6 +14,8 @@ import (
 
 // Get policy.
 // Azure REST API version: 2018-09-15.
+//
+// Other available API versions: 2016-05-15.
 func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyResult

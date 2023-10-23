@@ -14,7 +14,7 @@ import (
 )
 
 // The autoscale setting resource.
-// Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2015-04-01
+// Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2015-04-01.
 type AutoscaleSetting struct {
 	pulumi.CustomResourceState
 

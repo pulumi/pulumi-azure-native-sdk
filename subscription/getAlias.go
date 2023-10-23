@@ -14,6 +14,8 @@ import (
 
 // Get Alias Subscription.
 // Azure REST API version: 2021-10-01.
+//
+// Other available API versions: 2020-09-01.
 func LookupAlias(ctx *pulumi.Context, args *LookupAliasArgs, opts ...pulumi.InvokeOption) (*LookupAliasResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAliasResult

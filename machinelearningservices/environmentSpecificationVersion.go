@@ -14,7 +14,7 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
-// Azure REST API version: 2021-03-01-preview. Prior API version in Azure Native 1.x: 2021-03-01-preview
+// Azure REST API version: 2021-03-01-preview. Prior API version in Azure Native 1.x: 2021-03-01-preview.
 type EnvironmentSpecificationVersion struct {
 	pulumi.CustomResourceState
 

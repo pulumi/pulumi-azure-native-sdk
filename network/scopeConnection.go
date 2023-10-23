@@ -14,7 +14,9 @@ import (
 )
 
 // The Scope Connections resource
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-02-01-preview
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-02-01-preview.
+//
+// Other available API versions: 2023-04-01, 2023-05-01.
 type ScopeConnection struct {
 	pulumi.CustomResourceState
 

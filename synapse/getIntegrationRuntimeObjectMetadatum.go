@@ -14,6 +14,8 @@ import (
 
 // Get object metadata from an integration runtime
 // Azure REST API version: 2021-06-01.
+//
+// Other available API versions: 2021-06-01-preview.
 func GetIntegrationRuntimeObjectMetadatum(ctx *pulumi.Context, args *GetIntegrationRuntimeObjectMetadatumArgs, opts ...pulumi.InvokeOption) (*GetIntegrationRuntimeObjectMetadatumResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetIntegrationRuntimeObjectMetadatumResult

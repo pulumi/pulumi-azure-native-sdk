@@ -14,6 +14,8 @@ import (
 
 // Description for Get the properties of an App Service Environment.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2019-08-01, 2020-10-01, 2021-01-15.
 func LookupAppServiceEnvironment(ctx *pulumi.Context, args *LookupAppServiceEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceEnvironmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServiceEnvironmentResult

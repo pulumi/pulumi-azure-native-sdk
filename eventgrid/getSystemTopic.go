@@ -14,6 +14,8 @@ import (
 
 // Get properties of a system topic.
 // Azure REST API version: 2022-06-15.
+//
+// Other available API versions: 2023-06-01-preview.
 func LookupSystemTopic(ctx *pulumi.Context, args *LookupSystemTopicArgs, opts ...pulumi.InvokeOption) (*LookupSystemTopicResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSystemTopicResult

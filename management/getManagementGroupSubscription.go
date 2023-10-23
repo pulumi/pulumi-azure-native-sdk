@@ -15,6 +15,8 @@ import (
 // Retrieves details about given subscription which is associated with the management group.
 //
 // Azure REST API version: 2021-04-01.
+//
+// Other available API versions: 2023-04-01.
 func LookupManagementGroupSubscription(ctx *pulumi.Context, args *LookupManagementGroupSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementGroupSubscriptionResult

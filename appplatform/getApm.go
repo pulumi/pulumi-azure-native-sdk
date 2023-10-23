@@ -14,6 +14,8 @@ import (
 
 // Get the APM by name.
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview.
 func LookupApm(ctx *pulumi.Context, args *LookupApmArgs, opts ...pulumi.InvokeOption) (*LookupApmResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApmResult

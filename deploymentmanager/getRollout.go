@@ -14,6 +14,8 @@ import (
 
 // Defines the PUT rollout request body.
 // Azure REST API version: 2019-11-01-preview.
+//
+// Other available API versions: 2018-09-01-preview.
 func LookupRollout(ctx *pulumi.Context, args *LookupRolloutArgs, opts ...pulumi.InvokeOption) (*LookupRolloutResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRolloutResult

@@ -14,7 +14,9 @@ import (
 )
 
 // Instance of an Azure ML web service resource.
-// Azure REST API version: 2017-01-01. Prior API version in Azure Native 1.x: 2017-01-01
+// Azure REST API version: 2017-01-01. Prior API version in Azure Native 1.x: 2017-01-01.
+//
+// Other available API versions: 2016-05-01-preview.
 type WebService struct {
 	pulumi.CustomResourceState
 

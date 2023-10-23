@@ -14,6 +14,8 @@ import (
 
 // Returns a list of language extensions that can run within KQL queries.
 // Azure REST API version: 2022-12-29.
+//
+// Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15.
 func ListClusterLanguageExtensions(ctx *pulumi.Context, args *ListClusterLanguageExtensionsArgs, opts ...pulumi.InvokeOption) (*ListClusterLanguageExtensionsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListClusterLanguageExtensionsResult

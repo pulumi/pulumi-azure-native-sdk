@@ -14,6 +14,8 @@ import (
 
 // Get a TestLine
 // Azure REST API version: 2023-04-03.
+//
+// Other available API versions: 2022-12-01-preview.
 func LookupTestLine(ctx *pulumi.Context, args *LookupTestLineArgs, opts ...pulumi.InvokeOption) (*LookupTestLineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTestLineResult

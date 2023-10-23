@@ -14,6 +14,8 @@ import (
 
 // Gets a factory.
 // Azure REST API version: 2018-06-01.
+//
+// Other available API versions: 2017-09-01-preview.
 func LookupFactory(ctx *pulumi.Context, args *LookupFactoryArgs, opts ...pulumi.InvokeOption) (*LookupFactoryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFactoryResult

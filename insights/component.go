@@ -14,7 +14,9 @@ import (
 )
 
 // An Application Insights component definition.
-// Azure REST API version: 2020-02-02. Prior API version in Azure Native 1.x: 2015-05-01
+// Azure REST API version: 2020-02-02. Prior API version in Azure Native 1.x: 2015-05-01.
+//
+// Other available API versions: 2020-02-02-preview.
 type Component struct {
 	pulumi.CustomResourceState
 

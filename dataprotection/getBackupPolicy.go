@@ -14,6 +14,8 @@ import (
 
 // Gets a backup policy belonging to a backup vault
 // Azure REST API version: 2023-01-01.
+//
+// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview.
 func LookupBackupPolicy(ctx *pulumi.Context, args *LookupBackupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackupPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupPolicyResult

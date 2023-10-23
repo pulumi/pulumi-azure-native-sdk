@@ -14,6 +14,8 @@ import (
 
 // Returns the cluster user credentials for the dedicated appliance.
 // Azure REST API version: 2022-10-27.
+//
+// Other available API versions: 2021-10-31-preview.
 func ListApplianceClusterUserCredential(ctx *pulumi.Context, args *ListApplianceClusterUserCredentialArgs, opts ...pulumi.InvokeOption) (*ListApplianceClusterUserCredentialResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListApplianceClusterUserCredentialResult

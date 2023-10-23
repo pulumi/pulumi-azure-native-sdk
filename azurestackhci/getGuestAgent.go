@@ -14,6 +14,8 @@ import (
 
 // Implements GuestAgent GET method.
 // Azure REST API version: 2022-12-15-preview.
+//
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview.
 func LookupGuestAgent(ctx *pulumi.Context, args *LookupGuestAgentArgs, opts ...pulumi.InvokeOption) (*LookupGuestAgentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestAgentResult

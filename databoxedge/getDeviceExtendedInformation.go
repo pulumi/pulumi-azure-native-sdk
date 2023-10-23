@@ -14,6 +14,8 @@ import (
 
 // Gets additional information for the specified Azure Stack Edge/Data Box Gateway device.
 // Azure REST API version: 2022-03-01.
+//
+// Other available API versions: 2020-05-01-preview, 2021-02-01, 2021-02-01-preview, 2022-04-01-preview, 2023-01-01-preview, 2023-07-01.
 func GetDeviceExtendedInformation(ctx *pulumi.Context, args *GetDeviceExtendedInformationArgs, opts ...pulumi.InvokeOption) (*GetDeviceExtendedInformationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetDeviceExtendedInformationResult

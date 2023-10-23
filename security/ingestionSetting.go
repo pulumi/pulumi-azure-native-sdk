@@ -13,7 +13,7 @@ import (
 )
 
 // Configures how to correlate scan data and logs with resources associated with the subscription.
-// Azure REST API version: 2021-01-15-preview. Prior API version in Azure Native 1.x: 2021-01-15-preview
+// Azure REST API version: 2021-01-15-preview. Prior API version in Azure Native 1.x: 2021-01-15-preview.
 type IngestionSetting struct {
 	pulumi.CustomResourceState
 

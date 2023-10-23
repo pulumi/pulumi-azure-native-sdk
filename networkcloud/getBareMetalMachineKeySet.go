@@ -14,6 +14,8 @@ import (
 
 // Get bare metal machine key set of the provided cluster.
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-07-01.
 func LookupBareMetalMachineKeySet(ctx *pulumi.Context, args *LookupBareMetalMachineKeySetArgs, opts ...pulumi.InvokeOption) (*LookupBareMetalMachineKeySetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBareMetalMachineKeySetResult

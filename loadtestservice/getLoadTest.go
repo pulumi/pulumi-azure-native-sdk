@@ -14,6 +14,8 @@ import (
 
 // Get a LoadTest resource.
 // Azure REST API version: 2022-12-01.
+//
+// Other available API versions: 2021-12-01-preview.
 func LookupLoadTest(ctx *pulumi.Context, args *LookupLoadTestArgs, opts ...pulumi.InvokeOption) (*LookupLoadTestResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadTestResult

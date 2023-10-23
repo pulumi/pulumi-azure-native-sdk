@@ -14,6 +14,8 @@ import (
 
 // Get a Maps Account.
 // Azure REST API version: 2021-02-01.
+//
+// Other available API versions: 2018-05-01, 2021-12-01-preview, 2023-06-01.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult

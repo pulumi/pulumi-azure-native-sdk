@@ -15,6 +15,8 @@ import (
 
 // Outbound Rule Basic Resource for the managed network of a machine learning workspace.
 // Azure REST API version: 2023-04-01-preview.
+//
+// Other available API versions: 2023-06-01-preview, 2023-08-01-preview.
 type ManagedNetworkSettingsRule struct {
 	pulumi.CustomResourceState
 

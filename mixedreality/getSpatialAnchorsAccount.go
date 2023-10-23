@@ -14,6 +14,8 @@ import (
 
 // Retrieve a Spatial Anchors Account.
 // Azure REST API version: 2021-01-01.
+//
+// Other available API versions: 2019-02-28-preview, 2021-03-01-preview.
 func LookupSpatialAnchorsAccount(ctx *pulumi.Context, args *LookupSpatialAnchorsAccountArgs, opts ...pulumi.InvokeOption) (*LookupSpatialAnchorsAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpatialAnchorsAccountResult

@@ -14,7 +14,9 @@ import (
 )
 
 // Represents a Configuration.
-// Azure REST API version: 2022-01-01. Prior API version in Azure Native 1.x: 2017-12-01
+// Azure REST API version: 2022-01-01. Prior API version in Azure Native 1.x: 2017-12-01.
+//
+// Other available API versions: 2017-12-01, 2020-07-01-privatepreview, 2023-06-01-preview.
 type Configuration struct {
 	pulumi.CustomResourceState
 

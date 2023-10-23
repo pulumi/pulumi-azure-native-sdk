@@ -14,6 +14,8 @@ import (
 
 // Marketplace Subscription and Organization details to which resource gets billed into.
 // Azure REST API version: 2023-07-01-preview.
+//
+// Other available API versions: 2023-10-01-preview.
 func GetBillingInfo(ctx *pulumi.Context, args *GetBillingInfoArgs, opts ...pulumi.InvokeOption) (*GetBillingInfoResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetBillingInfoResult

@@ -14,6 +14,8 @@ import (
 
 // Get properties of a nested event subscription for a domain topic.
 // Azure REST API version: 2022-06-15.
+//
+// Other available API versions: 2023-06-01-preview.
 func LookupDomainTopicEventSubscription(ctx *pulumi.Context, args *LookupDomainTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupDomainTopicEventSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainTopicEventSubscriptionResult

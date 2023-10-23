@@ -14,6 +14,8 @@ import (
 
 // Implements VMMServer GET method.
 // Azure REST API version: 2022-05-21-preview.
+//
+// Other available API versions: 2023-04-01-preview.
 func LookupVmmServer(ctx *pulumi.Context, args *LookupVmmServerArgs, opts ...pulumi.InvokeOption) (*LookupVmmServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVmmServerResult

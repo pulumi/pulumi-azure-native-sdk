@@ -14,7 +14,9 @@ import (
 )
 
 // Maintenance configuration record type
-// Azure REST API version: 2022-11-01-preview. Prior API version in Azure Native 1.x: 2020-04-01
+// Azure REST API version: 2022-11-01-preview. Prior API version in Azure Native 1.x: 2020-04-01.
+//
+// Other available API versions: 2023-04-01.
 type MaintenanceConfiguration struct {
 	pulumi.CustomResourceState
 

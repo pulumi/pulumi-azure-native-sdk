@@ -14,6 +14,8 @@ import (
 
 // Retrieves the properties of a Lab Plan.
 // Azure REST API version: 2022-08-01.
+//
+// Other available API versions: 2023-06-07.
 func LookupLabPlan(ctx *pulumi.Context, args *LookupLabPlanArgs, opts ...pulumi.InvokeOption) (*LookupLabPlanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLabPlanResult

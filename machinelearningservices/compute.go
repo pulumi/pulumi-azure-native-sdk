@@ -15,6 +15,8 @@ import (
 
 // Machine Learning compute object wrapped into ARM resource envelope.
 // Azure REST API version: 2023-04-01.
+//
+// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview.
 type Compute struct {
 	pulumi.CustomResourceState
 

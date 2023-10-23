@@ -14,6 +14,8 @@ import (
 
 // Gets the API link for the product.
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2023-03-01-preview.
 func LookupProductApiLink(ctx *pulumi.Context, args *LookupProductApiLinkArgs, opts ...pulumi.InvokeOption) (*LookupProductApiLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProductApiLinkResult

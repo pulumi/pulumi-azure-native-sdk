@@ -14,7 +14,7 @@ import (
 )
 
 // Represents the response of a service unit resource.
-// Azure REST API version: 2019-11-01-preview. Prior API version in Azure Native 1.x: 2019-11-01-preview
+// Azure REST API version: 2019-11-01-preview. Prior API version in Azure Native 1.x: 2019-11-01-preview.
 type ServiceUnit struct {
 	pulumi.CustomResourceState
 

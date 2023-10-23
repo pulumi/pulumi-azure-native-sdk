@@ -14,6 +14,8 @@ import (
 
 // Shows the provisioning status of Network Fabric Controller.
 // Azure REST API version: 2023-02-01-preview.
+//
+// Other available API versions: 2023-06-15.
 func LookupNetworkFabricController(ctx *pulumi.Context, args *LookupNetworkFabricControllerArgs, opts ...pulumi.InvokeOption) (*LookupNetworkFabricControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkFabricControllerResult

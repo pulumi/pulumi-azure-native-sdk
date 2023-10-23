@@ -14,7 +14,7 @@ import (
 )
 
 // Represents Anomaly Security ML Analytics Settings
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-05-01-preview
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-05-01-preview.
 type AnomalySecurityMLAnalyticsSettings struct {
 	pulumi.CustomResourceState
 

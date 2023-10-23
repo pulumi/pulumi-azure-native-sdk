@@ -14,6 +14,8 @@ import (
 
 // Get properties of the provided cloud services network.
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-07-01.
 func LookupCloudServicesNetwork(ctx *pulumi.Context, args *LookupCloudServicesNetworkArgs, opts ...pulumi.InvokeOption) (*LookupCloudServicesNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudServicesNetworkResult

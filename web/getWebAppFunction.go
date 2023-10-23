@@ -14,6 +14,8 @@ import (
 
 // Description for Get function information by its ID for web site, or a deployment slot.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2016-08-01, 2020-10-01.
 func LookupWebAppFunction(ctx *pulumi.Context, args *LookupWebAppFunctionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppFunctionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppFunctionResult

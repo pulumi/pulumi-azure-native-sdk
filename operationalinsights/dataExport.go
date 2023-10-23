@@ -14,7 +14,7 @@ import (
 )
 
 // The top level data export resource container.
-// Azure REST API version: 2020-08-01. Prior API version in Azure Native 1.x: 2020-08-01
+// Azure REST API version: 2020-08-01. Prior API version in Azure Native 1.x: 2020-08-01.
 type DataExport struct {
 	pulumi.CustomResourceState
 

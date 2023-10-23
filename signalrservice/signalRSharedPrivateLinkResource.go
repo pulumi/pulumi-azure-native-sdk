@@ -14,7 +14,9 @@ import (
 )
 
 // Describes a Shared Private Link Resource
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-04-01-preview
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-04-01-preview.
+//
+// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview.
 type SignalRSharedPrivateLinkResource struct {
 	pulumi.CustomResourceState
 

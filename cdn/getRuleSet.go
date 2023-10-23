@@ -14,6 +14,8 @@ import (
 
 // Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 // Azure REST API version: 2023-05-01.
+//
+// Other available API versions: 2023-07-01-preview.
 func LookupRuleSet(ctx *pulumi.Context, args *LookupRuleSetArgs, opts ...pulumi.InvokeOption) (*LookupRuleSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleSetResult

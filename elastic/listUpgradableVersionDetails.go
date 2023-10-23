@@ -14,6 +14,8 @@ import (
 
 // Stack Versions that this version can upgrade to
 // Azure REST API version: 2023-06-01.
+//
+// Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview.
 func ListUpgradableVersionDetails(ctx *pulumi.Context, args *ListUpgradableVersionDetailsArgs, opts ...pulumi.InvokeOption) (*ListUpgradableVersionDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListUpgradableVersionDetailsResult

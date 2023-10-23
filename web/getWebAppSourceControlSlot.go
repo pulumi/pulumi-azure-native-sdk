@@ -14,6 +14,8 @@ import (
 
 // Description for Gets the source control configuration of an app.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2020-10-01.
 func LookupWebAppSourceControlSlot(ctx *pulumi.Context, args *LookupWebAppSourceControlSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSourceControlSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppSourceControlSlotResult

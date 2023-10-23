@@ -14,6 +14,8 @@ import (
 
 // Retrieves details of this L3 Isolation Domain.
 // Azure REST API version: 2023-02-01-preview.
+//
+// Other available API versions: 2023-06-15.
 func LookupL3IsolationDomain(ctx *pulumi.Context, args *LookupL3IsolationDomainArgs, opts ...pulumi.InvokeOption) (*LookupL3IsolationDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupL3IsolationDomainResult

@@ -14,6 +14,8 @@ import (
 
 // NSX VM Group
 // Azure REST API version: 2022-05-01.
+//
+// Other available API versions: 2023-03-01.
 func LookupWorkloadNetworkVMGroup(ctx *pulumi.Context, args *LookupWorkloadNetworkVMGroupArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkVMGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadNetworkVMGroupResult

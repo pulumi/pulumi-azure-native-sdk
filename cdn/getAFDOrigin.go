@@ -14,6 +14,8 @@ import (
 
 // Gets an existing origin within an origin group.
 // Azure REST API version: 2023-05-01.
+//
+// Other available API versions: 2023-07-01-preview.
 func LookupAFDOrigin(ctx *pulumi.Context, args *LookupAFDOriginArgs, opts ...pulumi.InvokeOption) (*LookupAFDOriginResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAFDOriginResult

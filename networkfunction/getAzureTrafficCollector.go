@@ -14,6 +14,8 @@ import (
 
 // Gets the specified Azure Traffic Collector in a specified resource group
 // Azure REST API version: 2022-11-01.
+//
+// Other available API versions: 2022-08-01.
 func LookupAzureTrafficCollector(ctx *pulumi.Context, args *LookupAzureTrafficCollectorArgs, opts ...pulumi.InvokeOption) (*LookupAzureTrafficCollectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureTrafficCollectorResult

@@ -14,6 +14,8 @@ import (
 
 // Response of a list operation.
 // Azure REST API version: 2023-06-01.
+//
+// Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview.
 func ListVMHost(ctx *pulumi.Context, args *ListVMHostArgs, opts ...pulumi.InvokeOption) (*ListVMHostResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListVMHostResult

@@ -14,6 +14,8 @@ import (
 
 // Gets the view for the defined scope by view name.
 // Azure REST API version: 2023-03-01.
+//
+// Other available API versions: 2019-11-01, 2020-06-01, 2022-10-01, 2022-10-05-preview, 2023-04-01-preview, 2023-08-01.
 func LookupViewByScope(ctx *pulumi.Context, args *LookupViewByScopeArgs, opts ...pulumi.InvokeOption) (*LookupViewByScopeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupViewByScopeResult

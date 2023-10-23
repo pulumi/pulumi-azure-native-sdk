@@ -14,6 +14,8 @@ import (
 
 // Gets the specified backup of the volume
 // Azure REST API version: 2022-11-01.
+//
+// Other available API versions: 2022-11-01-preview.
 func LookupBackup(ctx *pulumi.Context, args *LookupBackupArgs, opts ...pulumi.InvokeOption) (*LookupBackupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupResult

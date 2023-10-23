@@ -14,7 +14,9 @@ import (
 )
 
 // Schema for MSIX Package properties.
-// Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2021-02-01-preview
+// Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2021-02-01-preview.
+//
+// Other available API versions: 2022-10-14-preview, 2023-07-07-preview, 2023-09-05.
 type MSIXPackage struct {
 	pulumi.CustomResourceState
 

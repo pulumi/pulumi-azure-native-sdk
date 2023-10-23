@@ -14,7 +14,7 @@ import (
 )
 
 // SAP monitor info on Azure (ARM properties and SAP monitor properties)
-// Azure REST API version: 2020-02-07-preview. Prior API version in Azure Native 1.x: 2020-02-07-preview
+// Azure REST API version: 2020-02-07-preview. Prior API version in Azure Native 1.x: 2020-02-07-preview.
 type SapMonitor struct {
 	pulumi.CustomResourceState
 

@@ -14,7 +14,9 @@ import (
 )
 
 // The shared dashboard resource definition.
-// Azure REST API version: 2020-09-01-preview. Prior API version in Azure Native 1.x: 2020-09-01-preview
+// Azure REST API version: 2020-09-01-preview. Prior API version in Azure Native 1.x: 2020-09-01-preview.
+//
+// Other available API versions: 2019-01-01-preview.
 type Dashboard struct {
 	pulumi.CustomResourceState
 

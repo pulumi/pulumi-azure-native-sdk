@@ -14,6 +14,8 @@ import (
 
 // Gets a hunt relation
 // Azure REST API version: 2023-06-01-preview.
+//
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
 func LookupHuntRelation(ctx *pulumi.Context, args *LookupHuntRelationArgs, opts ...pulumi.InvokeOption) (*LookupHuntRelationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHuntRelationResult

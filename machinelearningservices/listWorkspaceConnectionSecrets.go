@@ -13,6 +13,8 @@ import (
 )
 
 // Azure REST API version: 2023-06-01-preview.
+//
+// Other available API versions: 2023-08-01-preview.
 func ListWorkspaceConnectionSecrets(ctx *pulumi.Context, args *ListWorkspaceConnectionSecretsArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceConnectionSecretsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkspaceConnectionSecretsResult

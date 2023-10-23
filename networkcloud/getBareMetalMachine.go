@@ -14,6 +14,8 @@ import (
 
 // Get properties of the provided bare metal machine.
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-07-01.
 func LookupBareMetalMachine(ctx *pulumi.Context, args *LookupBareMetalMachineArgs, opts ...pulumi.InvokeOption) (*LookupBareMetalMachineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBareMetalMachineResult

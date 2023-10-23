@@ -13,7 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01
+// Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01.
 type HyperVCollector struct {
 	pulumi.CustomResourceState
 

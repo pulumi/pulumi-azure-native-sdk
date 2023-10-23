@@ -14,7 +14,9 @@ import (
 )
 
 // Response for Volume request.
-// Azure REST API version: 2021-11-20-preview. Prior API version in Azure Native 1.x: 2021-11-20-preview
+// Azure REST API version: 2021-11-20-preview. Prior API version in Azure Native 1.x: 2021-11-20-preview.
+//
+// Other available API versions: 2022-12-01-preview, 2023-01-01.
 type Volume struct {
 	pulumi.CustomResourceState
 

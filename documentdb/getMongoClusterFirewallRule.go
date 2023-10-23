@@ -14,6 +14,8 @@ import (
 
 // Gets information about a mongo cluster firewall rule.
 // Azure REST API version: 2023-03-15-preview.
+//
+// Other available API versions: 2023-09-15-preview.
 func LookupMongoClusterFirewallRule(ctx *pulumi.Context, args *LookupMongoClusterFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupMongoClusterFirewallRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMongoClusterFirewallRuleResult

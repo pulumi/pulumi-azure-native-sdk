@@ -14,6 +14,8 @@ import (
 
 // Description for Gets the metadata of an app.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2020-10-01.
 func ListWebAppMetadata(ctx *pulumi.Context, args *ListWebAppMetadataArgs, opts ...pulumi.InvokeOption) (*ListWebAppMetadataResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppMetadataResult

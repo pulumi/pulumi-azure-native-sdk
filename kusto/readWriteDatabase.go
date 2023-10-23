@@ -14,7 +14,7 @@ import (
 )
 
 // Class representing a read write database.
-// Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-01-01
+// Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-01-01.
 type ReadWriteDatabase struct {
 	pulumi.CustomResourceState
 

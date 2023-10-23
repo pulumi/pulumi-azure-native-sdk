@@ -14,6 +14,8 @@ import (
 
 // Implements vCenter GET method.
 // Azure REST API version: 2022-07-15-preview.
+//
+// Other available API versions: 2023-03-01-preview, 2023-10-01.
 func LookupVCenter(ctx *pulumi.Context, args *LookupVCenterArgs, opts ...pulumi.InvokeOption) (*LookupVCenterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVCenterResult
