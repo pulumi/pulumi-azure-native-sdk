@@ -14,7 +14,7 @@ import (
 )
 
 // Guest configuration assignment is an association between a machine and guest configuration.
-// Azure REST API version: 2022-01-25. Prior API version in Azure Native 1.x: 2020-06-25
+// Azure REST API version: 2022-01-25. Prior API version in Azure Native 1.x: 2020-06-25.
 type GuestConfigurationHCRPAssignment struct {
 	pulumi.CustomResourceState
 

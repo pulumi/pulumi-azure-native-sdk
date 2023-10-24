@@ -14,7 +14,7 @@ import (
 )
 
 // A custom API
-// Azure REST API version: 2016-06-01. Prior API version in Azure Native 1.x: 2016-06-01
+// Azure REST API version: 2016-06-01. Prior API version in Azure Native 1.x: 2016-06-01.
 type CustomApi struct {
 	pulumi.CustomResourceState
 

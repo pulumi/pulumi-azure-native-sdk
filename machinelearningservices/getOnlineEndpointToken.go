@@ -14,6 +14,8 @@ import (
 
 // Service Token
 // Azure REST API version: 2023-04-01.
+//
+// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
 func GetOnlineEndpointToken(ctx *pulumi.Context, args *GetOnlineEndpointTokenArgs, opts ...pulumi.InvokeOption) (*GetOnlineEndpointTokenResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetOnlineEndpointTokenResult

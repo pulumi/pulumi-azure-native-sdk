@@ -15,6 +15,8 @@ import (
 
 // Define the virtualMachineInstance.
 // Azure REST API version: 2023-04-01-preview.
+//
+// Other available API versions: 2023-10-07.
 type VirtualMachineInstance struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +62,9 @@ func NewVirtualMachineInstance(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:scvmm/v20230401preview:VirtualMachineInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20231007:VirtualMachineInstance"),
 		},
 	})
 	opts = append(opts, aliases)

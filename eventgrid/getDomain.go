@@ -14,6 +14,8 @@ import (
 
 // Get properties of a domain.
 // Azure REST API version: 2022-06-15.
+//
+// Other available API versions: 2020-04-01-preview, 2023-06-01-preview.
 func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.InvokeOption) (*LookupDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainResult

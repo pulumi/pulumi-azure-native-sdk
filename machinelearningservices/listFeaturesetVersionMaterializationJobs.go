@@ -14,6 +14,8 @@ import (
 
 // A paginated list of FeaturesetJob entities.
 // Azure REST API version: 2023-04-01-preview.
+//
+// Other available API versions: 2023-06-01-preview.
 func ListFeaturesetVersionMaterializationJobs(ctx *pulumi.Context, args *ListFeaturesetVersionMaterializationJobsArgs, opts ...pulumi.InvokeOption) (*ListFeaturesetVersionMaterializationJobsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListFeaturesetVersionMaterializationJobsResult

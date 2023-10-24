@@ -14,6 +14,8 @@ import (
 
 // NSX Segment
 // Azure REST API version: 2022-05-01.
+//
+// Other available API versions: 2023-03-01.
 func LookupWorkloadNetworkSegment(ctx *pulumi.Context, args *LookupWorkloadNetworkSegmentArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkSegmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadNetworkSegmentResult

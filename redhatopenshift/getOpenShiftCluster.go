@@ -14,6 +14,8 @@ import (
 
 // The operation returns properties of a OpenShift cluster.
 // Azure REST API version: 2022-09-04.
+//
+// Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04.
 func LookupOpenShiftCluster(ctx *pulumi.Context, args *LookupOpenShiftClusterArgs, opts ...pulumi.InvokeOption) (*LookupOpenShiftClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenShiftClusterResult

@@ -14,6 +14,8 @@ import (
 
 // Returns an attached database configuration.
 // Azure REST API version: 2022-12-29.
+//
+// Other available API versions: 2023-05-02, 2023-08-15.
 func LookupAttachedDatabaseConfiguration(ctx *pulumi.Context, args *LookupAttachedDatabaseConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupAttachedDatabaseConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttachedDatabaseConfigurationResult

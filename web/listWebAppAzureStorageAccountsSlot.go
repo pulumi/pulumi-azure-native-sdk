@@ -14,6 +14,8 @@ import (
 
 // Description for Gets the Azure storage account configurations of an app.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2020-10-01.
 func ListWebAppAzureStorageAccountsSlot(ctx *pulumi.Context, args *ListWebAppAzureStorageAccountsSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppAzureStorageAccountsSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppAzureStorageAccountsSlotResult

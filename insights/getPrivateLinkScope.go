@@ -14,6 +14,8 @@ import (
 
 // Returns a Azure Monitor PrivateLinkScope.
 // Azure REST API version: 2021-07-01-preview.
+//
+// Other available API versions: 2019-10-17-preview.
 func LookupPrivateLinkScope(ctx *pulumi.Context, args *LookupPrivateLinkScopeArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkScopeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkScopeResult

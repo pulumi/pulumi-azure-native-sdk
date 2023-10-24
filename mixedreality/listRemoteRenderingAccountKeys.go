@@ -14,6 +14,8 @@ import (
 
 // List Both of the 2 Keys of a Remote Rendering Account
 // Azure REST API version: 2021-01-01.
+//
+// Other available API versions: 2021-03-01-preview.
 func ListRemoteRenderingAccountKeys(ctx *pulumi.Context, args *ListRemoteRenderingAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListRemoteRenderingAccountKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListRemoteRenderingAccountKeysResult

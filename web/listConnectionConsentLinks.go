@@ -14,6 +14,8 @@ import (
 
 // Lists the consent links of a connection
 // Azure REST API version: 2016-06-01.
+//
+// Other available API versions: 2015-08-01-preview.
 func ListConnectionConsentLinks(ctx *pulumi.Context, args *ListConnectionConsentLinksArgs, opts ...pulumi.InvokeOption) (*ListConnectionConsentLinksResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConnectionConsentLinksResult

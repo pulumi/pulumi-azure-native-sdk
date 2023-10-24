@@ -14,6 +14,8 @@ import (
 
 // List of elastic traffic filters in the account
 // Azure REST API version: 2023-06-01.
+//
+// Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview.
 func ListAllTrafficFilter(ctx *pulumi.Context, args *ListAllTrafficFilterArgs, opts ...pulumi.InvokeOption) (*ListAllTrafficFilterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAllTrafficFilterResult

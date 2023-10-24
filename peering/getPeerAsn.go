@@ -14,6 +14,8 @@ import (
 
 // Gets the peer ASN with the specified name under the given subscription.
 // Azure REST API version: 2022-10-01.
+//
+// Other available API versions: 2019-09-01-preview, 2021-01-01.
 func LookupPeerAsn(ctx *pulumi.Context, args *LookupPeerAsnArgs, opts ...pulumi.InvokeOption) (*LookupPeerAsnResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPeerAsnResult

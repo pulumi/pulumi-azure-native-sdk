@@ -14,6 +14,8 @@ import (
 
 // Gets Kubernetes Cluster Extension.
 // Azure REST API version: 2023-05-01.
+//
+// Other available API versions: 2020-07-01-preview, 2022-04-02-preview, 2022-07-01.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExtensionResult

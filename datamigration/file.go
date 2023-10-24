@@ -14,7 +14,9 @@ import (
 )
 
 // A file resource
-// Azure REST API version: 2021-06-30. Prior API version in Azure Native 1.x: 2018-07-15-preview
+// Azure REST API version: 2021-06-30. Prior API version in Azure Native 1.x: 2018-07-15-preview.
+//
+// Other available API versions: 2022-03-30-preview.
 type File struct {
 	pulumi.CustomResourceState
 

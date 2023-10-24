@@ -14,7 +14,7 @@ import (
 )
 
 // An Azure Monitor Workspace definition
-// Azure REST API version: 2023-04-03. Prior API version in Azure Native 1.x: 2021-06-03-preview
+// Azure REST API version: 2023-04-03. Prior API version in Azure Native 1.x: 2021-06-03-preview.
 type AzureMonitorWorkspace struct {
 	pulumi.CustomResourceState
 

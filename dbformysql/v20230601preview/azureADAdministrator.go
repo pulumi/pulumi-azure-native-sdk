@@ -58,6 +58,9 @@ func NewAzureADAdministrator(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20220101:AzureADAdministrator"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20230630:AzureADAdministrator"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

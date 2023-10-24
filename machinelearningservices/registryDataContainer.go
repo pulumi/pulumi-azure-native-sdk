@@ -15,6 +15,8 @@ import (
 
 // Azure Resource Manager resource envelope.
 // Azure REST API version: 2023-04-01.
+//
+// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
 type RegistryDataContainer struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +62,9 @@ func NewRegistryDataContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:RegistryDataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20231001:RegistryDataContainer"),
 		},
 	})
 	opts = append(opts, aliases)

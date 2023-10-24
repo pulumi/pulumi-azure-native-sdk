@@ -14,6 +14,8 @@ import (
 
 // Gets a managed instance administrator.
 // Azure REST API version: 2021-11-01.
+//
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
 func LookupManagedInstanceAdministrator(ctx *pulumi.Context, args *LookupManagedInstanceAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceAdministratorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedInstanceAdministratorResult

@@ -14,6 +14,8 @@ import (
 
 // Get SQL pool properties
 // Azure REST API version: 2021-06-01.
+//
+// Other available API versions: 2021-05-01, 2021-06-01-preview.
 func LookupSqlPool(ctx *pulumi.Context, args *LookupSqlPoolArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlPoolResult

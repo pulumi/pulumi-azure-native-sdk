@@ -15,6 +15,8 @@ import (
 
 // A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure.
 // Azure REST API version: 2023-03-15-preview.
+//
+// Other available API versions: 2022-07-02-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15.
 type FleetMember struct {
 	pulumi.CustomResourceState
 
@@ -68,6 +70,9 @@ func NewFleetMember(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230815preview:FleetMember"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20231015:FleetMember"),
 		},
 	})
 	opts = append(opts, aliases)

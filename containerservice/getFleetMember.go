@@ -14,6 +14,8 @@ import (
 
 // Get a FleetMember
 // Azure REST API version: 2023-03-15-preview.
+//
+// Other available API versions: 2022-07-02-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15.
 func LookupFleetMember(ctx *pulumi.Context, args *LookupFleetMemberArgs, opts ...pulumi.InvokeOption) (*LookupFleetMemberResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFleetMemberResult

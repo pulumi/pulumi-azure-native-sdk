@@ -14,6 +14,8 @@ import (
 
 // Gets the primary and secondary admin API keys for the specified Azure Cognitive Search service.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2015-02-28, 2021-04-01-preview, 2023-11-01.
 func ListAdminKey(ctx *pulumi.Context, args *ListAdminKeyArgs, opts ...pulumi.InvokeOption) (*ListAdminKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAdminKeyResult

@@ -14,6 +14,8 @@ import (
 
 // Gets the API link for the product.
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2023-03-01-preview.
 func LookupWorkspaceProductApiLink(ctx *pulumi.Context, args *LookupWorkspaceProductApiLinkArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceProductApiLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceProductApiLinkResult

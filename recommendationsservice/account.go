@@ -14,7 +14,9 @@ import (
 )
 
 // Account resource details.
-// Azure REST API version: 2022-02-01. Prior API version in Azure Native 1.x: 2022-02-01
+// Azure REST API version: 2022-02-01. Prior API version in Azure Native 1.x: 2022-02-01.
+//
+// Other available API versions: 2022-03-01-preview.
 type Account struct {
 	pulumi.CustomResourceState
 

@@ -15,6 +15,8 @@ import (
 
 // Response to get/put access policy.
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-08-01.
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 

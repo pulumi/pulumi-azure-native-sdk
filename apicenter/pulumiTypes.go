@@ -14,6 +14,1272 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// API specification details.
+type ApiDefinitionPropertiesResponseSpecification struct {
+	// Specification name.
+	Name *string `pulumi:"name"`
+	// Specification version.
+	Version *string `pulumi:"version"`
+}
+
+// API specification details.
+type ApiDefinitionPropertiesResponseSpecificationOutput struct{ *pulumi.OutputState }
+
+func (ApiDefinitionPropertiesResponseSpecificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiDefinitionPropertiesResponseSpecification)(nil)).Elem()
+}
+
+func (o ApiDefinitionPropertiesResponseSpecificationOutput) ToApiDefinitionPropertiesResponseSpecificationOutput() ApiDefinitionPropertiesResponseSpecificationOutput {
+	return o
+}
+
+func (o ApiDefinitionPropertiesResponseSpecificationOutput) ToApiDefinitionPropertiesResponseSpecificationOutputWithContext(ctx context.Context) ApiDefinitionPropertiesResponseSpecificationOutput {
+	return o
+}
+
+func (o ApiDefinitionPropertiesResponseSpecificationOutput) ToOutput(ctx context.Context) pulumix.Output[ApiDefinitionPropertiesResponseSpecification] {
+	return pulumix.Output[ApiDefinitionPropertiesResponseSpecification]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specification name.
+func (o ApiDefinitionPropertiesResponseSpecificationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiDefinitionPropertiesResponseSpecification) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Specification version.
+func (o ApiDefinitionPropertiesResponseSpecificationOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiDefinitionPropertiesResponseSpecification) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type Contact struct {
+	// Email address of the contact.
+	Email *string `pulumi:"email"`
+	// Name of the contact.
+	Name *string `pulumi:"name"`
+	// URL for the contact.
+	Url *string `pulumi:"url"`
+}
+
+// ContactInput is an input type that accepts ContactArgs and ContactOutput values.
+// You can construct a concrete instance of `ContactInput` via:
+//
+//	ContactArgs{...}
+type ContactInput interface {
+	pulumi.Input
+
+	ToContactOutput() ContactOutput
+	ToContactOutputWithContext(context.Context) ContactOutput
+}
+
+type ContactArgs struct {
+	// Email address of the contact.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// Name of the contact.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// URL for the contact.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ContactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Contact)(nil)).Elem()
+}
+
+func (i ContactArgs) ToContactOutput() ContactOutput {
+	return i.ToContactOutputWithContext(context.Background())
+}
+
+func (i ContactArgs) ToContactOutputWithContext(ctx context.Context) ContactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactOutput)
+}
+
+func (i ContactArgs) ToOutput(ctx context.Context) pulumix.Output[Contact] {
+	return pulumix.Output[Contact]{
+		OutputState: i.ToContactOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ContactArrayInput is an input type that accepts ContactArray and ContactArrayOutput values.
+// You can construct a concrete instance of `ContactArrayInput` via:
+//
+//	ContactArray{ ContactArgs{...} }
+type ContactArrayInput interface {
+	pulumi.Input
+
+	ToContactArrayOutput() ContactArrayOutput
+	ToContactArrayOutputWithContext(context.Context) ContactArrayOutput
+}
+
+type ContactArray []ContactInput
+
+func (ContactArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Contact)(nil)).Elem()
+}
+
+func (i ContactArray) ToContactArrayOutput() ContactArrayOutput {
+	return i.ToContactArrayOutputWithContext(context.Background())
+}
+
+func (i ContactArray) ToContactArrayOutputWithContext(ctx context.Context) ContactArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactArrayOutput)
+}
+
+func (i ContactArray) ToOutput(ctx context.Context) pulumix.Output[[]Contact] {
+	return pulumix.Output[[]Contact]{
+		OutputState: i.ToContactArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ContactOutput struct{ *pulumi.OutputState }
+
+func (ContactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Contact)(nil)).Elem()
+}
+
+func (o ContactOutput) ToContactOutput() ContactOutput {
+	return o
+}
+
+func (o ContactOutput) ToContactOutputWithContext(ctx context.Context) ContactOutput {
+	return o
+}
+
+func (o ContactOutput) ToOutput(ctx context.Context) pulumix.Output[Contact] {
+	return pulumix.Output[Contact]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Email address of the contact.
+func (o ContactOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Contact) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// Name of the contact.
+func (o ContactOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Contact) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// URL for the contact.
+func (o ContactOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Contact) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ContactArrayOutput struct{ *pulumi.OutputState }
+
+func (ContactArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Contact)(nil)).Elem()
+}
+
+func (o ContactArrayOutput) ToContactArrayOutput() ContactArrayOutput {
+	return o
+}
+
+func (o ContactArrayOutput) ToContactArrayOutputWithContext(ctx context.Context) ContactArrayOutput {
+	return o
+}
+
+func (o ContactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Contact] {
+	return pulumix.Output[[]Contact]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ContactArrayOutput) Index(i pulumi.IntInput) ContactOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Contact {
+		return vs[0].([]Contact)[vs[1].(int)]
+	}).(ContactOutput)
+}
+
+type ContactResponse struct {
+	// Email address of the contact.
+	Email *string `pulumi:"email"`
+	// Name of the contact.
+	Name *string `pulumi:"name"`
+	// URL for the contact.
+	Url *string `pulumi:"url"`
+}
+
+type ContactResponseOutput struct{ *pulumi.OutputState }
+
+func (ContactResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContactResponse)(nil)).Elem()
+}
+
+func (o ContactResponseOutput) ToContactResponseOutput() ContactResponseOutput {
+	return o
+}
+
+func (o ContactResponseOutput) ToContactResponseOutputWithContext(ctx context.Context) ContactResponseOutput {
+	return o
+}
+
+func (o ContactResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContactResponse] {
+	return pulumix.Output[ContactResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Email address of the contact.
+func (o ContactResponseOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContactResponse) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// Name of the contact.
+func (o ContactResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContactResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// URL for the contact.
+func (o ContactResponseOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContactResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ContactResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ContactResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContactResponse)(nil)).Elem()
+}
+
+func (o ContactResponseArrayOutput) ToContactResponseArrayOutput() ContactResponseArrayOutput {
+	return o
+}
+
+func (o ContactResponseArrayOutput) ToContactResponseArrayOutputWithContext(ctx context.Context) ContactResponseArrayOutput {
+	return o
+}
+
+func (o ContactResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContactResponse] {
+	return pulumix.Output[[]ContactResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ContactResponseArrayOutput) Index(i pulumi.IntInput) ContactResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContactResponse {
+		return vs[0].([]ContactResponse)[vs[1].(int)]
+	}).(ContactResponseOutput)
+}
+
+type DeploymentServer struct {
+	// Base runtime URLs for this deployment.
+	RuntimeUri []string `pulumi:"runtimeUri"`
+}
+
+// DeploymentServerInput is an input type that accepts DeploymentServerArgs and DeploymentServerOutput values.
+// You can construct a concrete instance of `DeploymentServerInput` via:
+//
+//	DeploymentServerArgs{...}
+type DeploymentServerInput interface {
+	pulumi.Input
+
+	ToDeploymentServerOutput() DeploymentServerOutput
+	ToDeploymentServerOutputWithContext(context.Context) DeploymentServerOutput
+}
+
+type DeploymentServerArgs struct {
+	// Base runtime URLs for this deployment.
+	RuntimeUri pulumi.StringArrayInput `pulumi:"runtimeUri"`
+}
+
+func (DeploymentServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentServer)(nil)).Elem()
+}
+
+func (i DeploymentServerArgs) ToDeploymentServerOutput() DeploymentServerOutput {
+	return i.ToDeploymentServerOutputWithContext(context.Background())
+}
+
+func (i DeploymentServerArgs) ToDeploymentServerOutputWithContext(ctx context.Context) DeploymentServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentServerOutput)
+}
+
+func (i DeploymentServerArgs) ToOutput(ctx context.Context) pulumix.Output[DeploymentServer] {
+	return pulumix.Output[DeploymentServer]{
+		OutputState: i.ToDeploymentServerOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DeploymentServerArgs) ToDeploymentServerPtrOutput() DeploymentServerPtrOutput {
+	return i.ToDeploymentServerPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentServerArgs) ToDeploymentServerPtrOutputWithContext(ctx context.Context) DeploymentServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentServerOutput).ToDeploymentServerPtrOutputWithContext(ctx)
+}
+
+// DeploymentServerPtrInput is an input type that accepts DeploymentServerArgs, DeploymentServerPtr and DeploymentServerPtrOutput values.
+// You can construct a concrete instance of `DeploymentServerPtrInput` via:
+//
+//	        DeploymentServerArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentServerPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentServerPtrOutput() DeploymentServerPtrOutput
+	ToDeploymentServerPtrOutputWithContext(context.Context) DeploymentServerPtrOutput
+}
+
+type deploymentServerPtrType DeploymentServerArgs
+
+func DeploymentServerPtr(v *DeploymentServerArgs) DeploymentServerPtrInput {
+	return (*deploymentServerPtrType)(v)
+}
+
+func (*deploymentServerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentServer)(nil)).Elem()
+}
+
+func (i *deploymentServerPtrType) ToDeploymentServerPtrOutput() DeploymentServerPtrOutput {
+	return i.ToDeploymentServerPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentServerPtrType) ToDeploymentServerPtrOutputWithContext(ctx context.Context) DeploymentServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentServerPtrOutput)
+}
+
+func (i *deploymentServerPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeploymentServer] {
+	return pulumix.Output[*DeploymentServer]{
+		OutputState: i.ToDeploymentServerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type DeploymentServerOutput struct{ *pulumi.OutputState }
+
+func (DeploymentServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentServer)(nil)).Elem()
+}
+
+func (o DeploymentServerOutput) ToDeploymentServerOutput() DeploymentServerOutput {
+	return o
+}
+
+func (o DeploymentServerOutput) ToDeploymentServerOutputWithContext(ctx context.Context) DeploymentServerOutput {
+	return o
+}
+
+func (o DeploymentServerOutput) ToDeploymentServerPtrOutput() DeploymentServerPtrOutput {
+	return o.ToDeploymentServerPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentServerOutput) ToDeploymentServerPtrOutputWithContext(ctx context.Context) DeploymentServerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentServer) *DeploymentServer {
+		return &v
+	}).(DeploymentServerPtrOutput)
+}
+
+func (o DeploymentServerOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentServer] {
+	return pulumix.Output[DeploymentServer]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Base runtime URLs for this deployment.
+func (o DeploymentServerOutput) RuntimeUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeploymentServer) []string { return v.RuntimeUri }).(pulumi.StringArrayOutput)
+}
+
+type DeploymentServerPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentServer)(nil)).Elem()
+}
+
+func (o DeploymentServerPtrOutput) ToDeploymentServerPtrOutput() DeploymentServerPtrOutput {
+	return o
+}
+
+func (o DeploymentServerPtrOutput) ToDeploymentServerPtrOutputWithContext(ctx context.Context) DeploymentServerPtrOutput {
+	return o
+}
+
+func (o DeploymentServerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentServer] {
+	return pulumix.Output[*DeploymentServer]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DeploymentServerPtrOutput) Elem() DeploymentServerOutput {
+	return o.ApplyT(func(v *DeploymentServer) DeploymentServer {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentServer
+		return ret
+	}).(DeploymentServerOutput)
+}
+
+// Base runtime URLs for this deployment.
+func (o DeploymentServerPtrOutput) RuntimeUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeploymentServer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeUri
+	}).(pulumi.StringArrayOutput)
+}
+
+type DeploymentServerResponse struct {
+	// Base runtime URLs for this deployment.
+	RuntimeUri []string `pulumi:"runtimeUri"`
+}
+
+type DeploymentServerResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentServerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentServerResponse)(nil)).Elem()
+}
+
+func (o DeploymentServerResponseOutput) ToDeploymentServerResponseOutput() DeploymentServerResponseOutput {
+	return o
+}
+
+func (o DeploymentServerResponseOutput) ToDeploymentServerResponseOutputWithContext(ctx context.Context) DeploymentServerResponseOutput {
+	return o
+}
+
+func (o DeploymentServerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentServerResponse] {
+	return pulumix.Output[DeploymentServerResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Base runtime URLs for this deployment.
+func (o DeploymentServerResponseOutput) RuntimeUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeploymentServerResponse) []string { return v.RuntimeUri }).(pulumi.StringArrayOutput)
+}
+
+type DeploymentServerResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentServerResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentServerResponse)(nil)).Elem()
+}
+
+func (o DeploymentServerResponsePtrOutput) ToDeploymentServerResponsePtrOutput() DeploymentServerResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentServerResponsePtrOutput) ToDeploymentServerResponsePtrOutputWithContext(ctx context.Context) DeploymentServerResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentServerResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentServerResponse] {
+	return pulumix.Output[*DeploymentServerResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DeploymentServerResponsePtrOutput) Elem() DeploymentServerResponseOutput {
+	return o.ApplyT(func(v *DeploymentServerResponse) DeploymentServerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentServerResponse
+		return ret
+	}).(DeploymentServerResponseOutput)
+}
+
+// Base runtime URLs for this deployment.
+func (o DeploymentServerResponsePtrOutput) RuntimeUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeploymentServerResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeUri
+	}).(pulumi.StringArrayOutput)
+}
+
+// Server information of the environment.
+type EnvironmentServer struct {
+	ManagementPortalUri []string `pulumi:"managementPortalUri"`
+	// Type of the server that represents the environment.
+	Type *string `pulumi:"type"`
+}
+
+// EnvironmentServerInput is an input type that accepts EnvironmentServerArgs and EnvironmentServerOutput values.
+// You can construct a concrete instance of `EnvironmentServerInput` via:
+//
+//	EnvironmentServerArgs{...}
+type EnvironmentServerInput interface {
+	pulumi.Input
+
+	ToEnvironmentServerOutput() EnvironmentServerOutput
+	ToEnvironmentServerOutputWithContext(context.Context) EnvironmentServerOutput
+}
+
+// Server information of the environment.
+type EnvironmentServerArgs struct {
+	ManagementPortalUri pulumi.StringArrayInput `pulumi:"managementPortalUri"`
+	// Type of the server that represents the environment.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (EnvironmentServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentServer)(nil)).Elem()
+}
+
+func (i EnvironmentServerArgs) ToEnvironmentServerOutput() EnvironmentServerOutput {
+	return i.ToEnvironmentServerOutputWithContext(context.Background())
+}
+
+func (i EnvironmentServerArgs) ToEnvironmentServerOutputWithContext(ctx context.Context) EnvironmentServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentServerOutput)
+}
+
+func (i EnvironmentServerArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentServer] {
+	return pulumix.Output[EnvironmentServer]{
+		OutputState: i.ToEnvironmentServerOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i EnvironmentServerArgs) ToEnvironmentServerPtrOutput() EnvironmentServerPtrOutput {
+	return i.ToEnvironmentServerPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentServerArgs) ToEnvironmentServerPtrOutputWithContext(ctx context.Context) EnvironmentServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentServerOutput).ToEnvironmentServerPtrOutputWithContext(ctx)
+}
+
+// EnvironmentServerPtrInput is an input type that accepts EnvironmentServerArgs, EnvironmentServerPtr and EnvironmentServerPtrOutput values.
+// You can construct a concrete instance of `EnvironmentServerPtrInput` via:
+//
+//	        EnvironmentServerArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentServerPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentServerPtrOutput() EnvironmentServerPtrOutput
+	ToEnvironmentServerPtrOutputWithContext(context.Context) EnvironmentServerPtrOutput
+}
+
+type environmentServerPtrType EnvironmentServerArgs
+
+func EnvironmentServerPtr(v *EnvironmentServerArgs) EnvironmentServerPtrInput {
+	return (*environmentServerPtrType)(v)
+}
+
+func (*environmentServerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentServer)(nil)).Elem()
+}
+
+func (i *environmentServerPtrType) ToEnvironmentServerPtrOutput() EnvironmentServerPtrOutput {
+	return i.ToEnvironmentServerPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentServerPtrType) ToEnvironmentServerPtrOutputWithContext(ctx context.Context) EnvironmentServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentServerPtrOutput)
+}
+
+func (i *environmentServerPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentServer] {
+	return pulumix.Output[*EnvironmentServer]{
+		OutputState: i.ToEnvironmentServerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Server information of the environment.
+type EnvironmentServerOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentServer)(nil)).Elem()
+}
+
+func (o EnvironmentServerOutput) ToEnvironmentServerOutput() EnvironmentServerOutput {
+	return o
+}
+
+func (o EnvironmentServerOutput) ToEnvironmentServerOutputWithContext(ctx context.Context) EnvironmentServerOutput {
+	return o
+}
+
+func (o EnvironmentServerOutput) ToEnvironmentServerPtrOutput() EnvironmentServerPtrOutput {
+	return o.ToEnvironmentServerPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentServerOutput) ToEnvironmentServerPtrOutputWithContext(ctx context.Context) EnvironmentServerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentServer) *EnvironmentServer {
+		return &v
+	}).(EnvironmentServerPtrOutput)
+}
+
+func (o EnvironmentServerOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentServer] {
+	return pulumix.Output[EnvironmentServer]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EnvironmentServerOutput) ManagementPortalUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EnvironmentServer) []string { return v.ManagementPortalUri }).(pulumi.StringArrayOutput)
+}
+
+// Type of the server that represents the environment.
+func (o EnvironmentServerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentServer) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentServerPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentServer)(nil)).Elem()
+}
+
+func (o EnvironmentServerPtrOutput) ToEnvironmentServerPtrOutput() EnvironmentServerPtrOutput {
+	return o
+}
+
+func (o EnvironmentServerPtrOutput) ToEnvironmentServerPtrOutputWithContext(ctx context.Context) EnvironmentServerPtrOutput {
+	return o
+}
+
+func (o EnvironmentServerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentServer] {
+	return pulumix.Output[*EnvironmentServer]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EnvironmentServerPtrOutput) Elem() EnvironmentServerOutput {
+	return o.ApplyT(func(v *EnvironmentServer) EnvironmentServer {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentServer
+		return ret
+	}).(EnvironmentServerOutput)
+}
+
+func (o EnvironmentServerPtrOutput) ManagementPortalUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EnvironmentServer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementPortalUri
+	}).(pulumi.StringArrayOutput)
+}
+
+// Type of the server that represents the environment.
+func (o EnvironmentServerPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Server information of the environment.
+type EnvironmentServerResponse struct {
+	ManagementPortalUri []string `pulumi:"managementPortalUri"`
+	// Type of the server that represents the environment.
+	Type *string `pulumi:"type"`
+}
+
+// Server information of the environment.
+type EnvironmentServerResponseOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentServerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentServerResponse)(nil)).Elem()
+}
+
+func (o EnvironmentServerResponseOutput) ToEnvironmentServerResponseOutput() EnvironmentServerResponseOutput {
+	return o
+}
+
+func (o EnvironmentServerResponseOutput) ToEnvironmentServerResponseOutputWithContext(ctx context.Context) EnvironmentServerResponseOutput {
+	return o
+}
+
+func (o EnvironmentServerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentServerResponse] {
+	return pulumix.Output[EnvironmentServerResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EnvironmentServerResponseOutput) ManagementPortalUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EnvironmentServerResponse) []string { return v.ManagementPortalUri }).(pulumi.StringArrayOutput)
+}
+
+// Type of the server that represents the environment.
+func (o EnvironmentServerResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentServerResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentServerResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentServerResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentServerResponse)(nil)).Elem()
+}
+
+func (o EnvironmentServerResponsePtrOutput) ToEnvironmentServerResponsePtrOutput() EnvironmentServerResponsePtrOutput {
+	return o
+}
+
+func (o EnvironmentServerResponsePtrOutput) ToEnvironmentServerResponsePtrOutputWithContext(ctx context.Context) EnvironmentServerResponsePtrOutput {
+	return o
+}
+
+func (o EnvironmentServerResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentServerResponse] {
+	return pulumix.Output[*EnvironmentServerResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EnvironmentServerResponsePtrOutput) Elem() EnvironmentServerResponseOutput {
+	return o.ApplyT(func(v *EnvironmentServerResponse) EnvironmentServerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentServerResponse
+		return ret
+	}).(EnvironmentServerResponseOutput)
+}
+
+func (o EnvironmentServerResponsePtrOutput) ManagementPortalUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EnvironmentServerResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementPortalUri
+	}).(pulumi.StringArrayOutput)
+}
+
+// Type of the server that represents the environment.
+func (o EnvironmentServerResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentServerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional, external documentation for the API.
+type ExternalDocumentation struct {
+	// Description of the documentation.
+	Description *string `pulumi:"description"`
+	// Title of the documentation.
+	Title *string `pulumi:"title"`
+	// URL pointing to the documentation.
+	Url string `pulumi:"url"`
+}
+
+// ExternalDocumentationInput is an input type that accepts ExternalDocumentationArgs and ExternalDocumentationOutput values.
+// You can construct a concrete instance of `ExternalDocumentationInput` via:
+//
+//	ExternalDocumentationArgs{...}
+type ExternalDocumentationInput interface {
+	pulumi.Input
+
+	ToExternalDocumentationOutput() ExternalDocumentationOutput
+	ToExternalDocumentationOutputWithContext(context.Context) ExternalDocumentationOutput
+}
+
+// Additional, external documentation for the API.
+type ExternalDocumentationArgs struct {
+	// Description of the documentation.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Title of the documentation.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// URL pointing to the documentation.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (ExternalDocumentationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDocumentation)(nil)).Elem()
+}
+
+func (i ExternalDocumentationArgs) ToExternalDocumentationOutput() ExternalDocumentationOutput {
+	return i.ToExternalDocumentationOutputWithContext(context.Background())
+}
+
+func (i ExternalDocumentationArgs) ToExternalDocumentationOutputWithContext(ctx context.Context) ExternalDocumentationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalDocumentationOutput)
+}
+
+func (i ExternalDocumentationArgs) ToOutput(ctx context.Context) pulumix.Output[ExternalDocumentation] {
+	return pulumix.Output[ExternalDocumentation]{
+		OutputState: i.ToExternalDocumentationOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ExternalDocumentationArrayInput is an input type that accepts ExternalDocumentationArray and ExternalDocumentationArrayOutput values.
+// You can construct a concrete instance of `ExternalDocumentationArrayInput` via:
+//
+//	ExternalDocumentationArray{ ExternalDocumentationArgs{...} }
+type ExternalDocumentationArrayInput interface {
+	pulumi.Input
+
+	ToExternalDocumentationArrayOutput() ExternalDocumentationArrayOutput
+	ToExternalDocumentationArrayOutputWithContext(context.Context) ExternalDocumentationArrayOutput
+}
+
+type ExternalDocumentationArray []ExternalDocumentationInput
+
+func (ExternalDocumentationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalDocumentation)(nil)).Elem()
+}
+
+func (i ExternalDocumentationArray) ToExternalDocumentationArrayOutput() ExternalDocumentationArrayOutput {
+	return i.ToExternalDocumentationArrayOutputWithContext(context.Background())
+}
+
+func (i ExternalDocumentationArray) ToExternalDocumentationArrayOutputWithContext(ctx context.Context) ExternalDocumentationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalDocumentationArrayOutput)
+}
+
+func (i ExternalDocumentationArray) ToOutput(ctx context.Context) pulumix.Output[[]ExternalDocumentation] {
+	return pulumix.Output[[]ExternalDocumentation]{
+		OutputState: i.ToExternalDocumentationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Additional, external documentation for the API.
+type ExternalDocumentationOutput struct{ *pulumi.OutputState }
+
+func (ExternalDocumentationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDocumentation)(nil)).Elem()
+}
+
+func (o ExternalDocumentationOutput) ToExternalDocumentationOutput() ExternalDocumentationOutput {
+	return o
+}
+
+func (o ExternalDocumentationOutput) ToExternalDocumentationOutputWithContext(ctx context.Context) ExternalDocumentationOutput {
+	return o
+}
+
+func (o ExternalDocumentationOutput) ToOutput(ctx context.Context) pulumix.Output[ExternalDocumentation] {
+	return pulumix.Output[ExternalDocumentation]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Description of the documentation.
+func (o ExternalDocumentationOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalDocumentation) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Title of the documentation.
+func (o ExternalDocumentationOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalDocumentation) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+// URL pointing to the documentation.
+func (o ExternalDocumentationOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalDocumentation) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type ExternalDocumentationArrayOutput struct{ *pulumi.OutputState }
+
+func (ExternalDocumentationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalDocumentation)(nil)).Elem()
+}
+
+func (o ExternalDocumentationArrayOutput) ToExternalDocumentationArrayOutput() ExternalDocumentationArrayOutput {
+	return o
+}
+
+func (o ExternalDocumentationArrayOutput) ToExternalDocumentationArrayOutputWithContext(ctx context.Context) ExternalDocumentationArrayOutput {
+	return o
+}
+
+func (o ExternalDocumentationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExternalDocumentation] {
+	return pulumix.Output[[]ExternalDocumentation]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ExternalDocumentationArrayOutput) Index(i pulumi.IntInput) ExternalDocumentationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExternalDocumentation {
+		return vs[0].([]ExternalDocumentation)[vs[1].(int)]
+	}).(ExternalDocumentationOutput)
+}
+
+// Additional, external documentation for the API.
+type ExternalDocumentationResponse struct {
+	// Description of the documentation.
+	Description *string `pulumi:"description"`
+	// Title of the documentation.
+	Title *string `pulumi:"title"`
+	// URL pointing to the documentation.
+	Url string `pulumi:"url"`
+}
+
+// Additional, external documentation for the API.
+type ExternalDocumentationResponseOutput struct{ *pulumi.OutputState }
+
+func (ExternalDocumentationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDocumentationResponse)(nil)).Elem()
+}
+
+func (o ExternalDocumentationResponseOutput) ToExternalDocumentationResponseOutput() ExternalDocumentationResponseOutput {
+	return o
+}
+
+func (o ExternalDocumentationResponseOutput) ToExternalDocumentationResponseOutputWithContext(ctx context.Context) ExternalDocumentationResponseOutput {
+	return o
+}
+
+func (o ExternalDocumentationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExternalDocumentationResponse] {
+	return pulumix.Output[ExternalDocumentationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Description of the documentation.
+func (o ExternalDocumentationResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalDocumentationResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Title of the documentation.
+func (o ExternalDocumentationResponseOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalDocumentationResponse) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+// URL pointing to the documentation.
+func (o ExternalDocumentationResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalDocumentationResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type ExternalDocumentationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ExternalDocumentationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalDocumentationResponse)(nil)).Elem()
+}
+
+func (o ExternalDocumentationResponseArrayOutput) ToExternalDocumentationResponseArrayOutput() ExternalDocumentationResponseArrayOutput {
+	return o
+}
+
+func (o ExternalDocumentationResponseArrayOutput) ToExternalDocumentationResponseArrayOutputWithContext(ctx context.Context) ExternalDocumentationResponseArrayOutput {
+	return o
+}
+
+func (o ExternalDocumentationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExternalDocumentationResponse] {
+	return pulumix.Output[[]ExternalDocumentationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ExternalDocumentationResponseArrayOutput) Index(i pulumi.IntInput) ExternalDocumentationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExternalDocumentationResponse {
+		return vs[0].([]ExternalDocumentationResponse)[vs[1].(int)]
+	}).(ExternalDocumentationResponseOutput)
+}
+
+// The license information for the API.
+type License struct {
+	// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+	Identifier *string `pulumi:"identifier"`
+	// Name of the license.
+	Name *string `pulumi:"name"`
+	// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+	Url *string `pulumi:"url"`
+}
+
+// LicenseInput is an input type that accepts LicenseArgs and LicenseOutput values.
+// You can construct a concrete instance of `LicenseInput` via:
+//
+//	LicenseArgs{...}
+type LicenseInput interface {
+	pulumi.Input
+
+	ToLicenseOutput() LicenseOutput
+	ToLicenseOutputWithContext(context.Context) LicenseOutput
+}
+
+// The license information for the API.
+type LicenseArgs struct {
+	// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	// Name of the license.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (LicenseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*License)(nil)).Elem()
+}
+
+func (i LicenseArgs) ToLicenseOutput() LicenseOutput {
+	return i.ToLicenseOutputWithContext(context.Background())
+}
+
+func (i LicenseArgs) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput)
+}
+
+func (i LicenseArgs) ToOutput(ctx context.Context) pulumix.Output[License] {
+	return pulumix.Output[License]{
+		OutputState: i.ToLicenseOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i LicenseArgs) ToLicensePtrOutput() LicensePtrOutput {
+	return i.ToLicensePtrOutputWithContext(context.Background())
+}
+
+func (i LicenseArgs) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput).ToLicensePtrOutputWithContext(ctx)
+}
+
+// LicensePtrInput is an input type that accepts LicenseArgs, LicensePtr and LicensePtrOutput values.
+// You can construct a concrete instance of `LicensePtrInput` via:
+//
+//	        LicenseArgs{...}
+//
+//	or:
+//
+//	        nil
+type LicensePtrInput interface {
+	pulumi.Input
+
+	ToLicensePtrOutput() LicensePtrOutput
+	ToLicensePtrOutputWithContext(context.Context) LicensePtrOutput
+}
+
+type licensePtrType LicenseArgs
+
+func LicensePtr(v *LicenseArgs) LicensePtrInput {
+	return (*licensePtrType)(v)
+}
+
+func (*licensePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**License)(nil)).Elem()
+}
+
+func (i *licensePtrType) ToLicensePtrOutput() LicensePtrOutput {
+	return i.ToLicensePtrOutputWithContext(context.Background())
+}
+
+func (i *licensePtrType) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicensePtrOutput)
+}
+
+func (i *licensePtrType) ToOutput(ctx context.Context) pulumix.Output[*License] {
+	return pulumix.Output[*License]{
+		OutputState: i.ToLicensePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The license information for the API.
+type LicenseOutput struct{ *pulumi.OutputState }
+
+func (LicenseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*License)(nil)).Elem()
+}
+
+func (o LicenseOutput) ToLicenseOutput() LicenseOutput {
+	return o
+}
+
+func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
+	return o
+}
+
+func (o LicenseOutput) ToLicensePtrOutput() LicensePtrOutput {
+	return o.ToLicensePtrOutputWithContext(context.Background())
+}
+
+func (o LicenseOutput) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v License) *License {
+		return &v
+	}).(LicensePtrOutput)
+}
+
+func (o LicenseOutput) ToOutput(ctx context.Context) pulumix.Output[License] {
+	return pulumix.Output[License]{
+		OutputState: o.OutputState,
+	}
+}
+
+// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+func (o LicenseOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v License) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+// Name of the license.
+func (o LicenseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v License) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+func (o LicenseOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v License) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type LicensePtrOutput struct{ *pulumi.OutputState }
+
+func (LicensePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**License)(nil)).Elem()
+}
+
+func (o LicensePtrOutput) ToLicensePtrOutput() LicensePtrOutput {
+	return o
+}
+
+func (o LicensePtrOutput) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return o
+}
+
+func (o LicensePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*License] {
+	return pulumix.Output[*License]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o LicensePtrOutput) Elem() LicenseOutput {
+	return o.ApplyT(func(v *License) License {
+		if v != nil {
+			return *v
+		}
+		var ret License
+		return ret
+	}).(LicenseOutput)
+}
+
+// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+func (o LicensePtrOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *License) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the license.
+func (o LicensePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *License) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+func (o LicensePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *License) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// The license information for the API.
+type LicenseResponse struct {
+	// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+	Identifier *string `pulumi:"identifier"`
+	// Name of the license.
+	Name *string `pulumi:"name"`
+	// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+	Url *string `pulumi:"url"`
+}
+
+// The license information for the API.
+type LicenseResponseOutput struct{ *pulumi.OutputState }
+
+func (LicenseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseResponse)(nil)).Elem()
+}
+
+func (o LicenseResponseOutput) ToLicenseResponseOutput() LicenseResponseOutput {
+	return o
+}
+
+func (o LicenseResponseOutput) ToLicenseResponseOutputWithContext(ctx context.Context) LicenseResponseOutput {
+	return o
+}
+
+func (o LicenseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LicenseResponse] {
+	return pulumix.Output[LicenseResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+func (o LicenseResponseOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LicenseResponse) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+// Name of the license.
+func (o LicenseResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LicenseResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+func (o LicenseResponseOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LicenseResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type LicenseResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LicenseResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseResponse)(nil)).Elem()
+}
+
+func (o LicenseResponsePtrOutput) ToLicenseResponsePtrOutput() LicenseResponsePtrOutput {
+	return o
+}
+
+func (o LicenseResponsePtrOutput) ToLicenseResponsePtrOutputWithContext(ctx context.Context) LicenseResponsePtrOutput {
+	return o
+}
+
+func (o LicenseResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LicenseResponse] {
+	return pulumix.Output[*LicenseResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o LicenseResponsePtrOutput) Elem() LicenseResponseOutput {
+	return o.ApplyT(func(v *LicenseResponse) LicenseResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LicenseResponse
+		return ret
+	}).(LicenseResponseOutput)
+}
+
+// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+func (o LicenseResponsePtrOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the license.
+func (o LicenseResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+func (o LicenseResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentity struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -322,6 +1588,465 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
+type MetadataAssignment struct {
+	Deprecated *bool `pulumi:"deprecated"`
+	// The entities this metadata schema component gets applied to.
+	Entity   *string `pulumi:"entity"`
+	Required *bool   `pulumi:"required"`
+}
+
+// MetadataAssignmentInput is an input type that accepts MetadataAssignmentArgs and MetadataAssignmentOutput values.
+// You can construct a concrete instance of `MetadataAssignmentInput` via:
+//
+//	MetadataAssignmentArgs{...}
+type MetadataAssignmentInput interface {
+	pulumi.Input
+
+	ToMetadataAssignmentOutput() MetadataAssignmentOutput
+	ToMetadataAssignmentOutputWithContext(context.Context) MetadataAssignmentOutput
+}
+
+type MetadataAssignmentArgs struct {
+	Deprecated pulumi.BoolPtrInput `pulumi:"deprecated"`
+	// The entities this metadata schema component gets applied to.
+	Entity   pulumi.StringPtrInput `pulumi:"entity"`
+	Required pulumi.BoolPtrInput   `pulumi:"required"`
+}
+
+func (MetadataAssignmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataAssignment)(nil)).Elem()
+}
+
+func (i MetadataAssignmentArgs) ToMetadataAssignmentOutput() MetadataAssignmentOutput {
+	return i.ToMetadataAssignmentOutputWithContext(context.Background())
+}
+
+func (i MetadataAssignmentArgs) ToMetadataAssignmentOutputWithContext(ctx context.Context) MetadataAssignmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataAssignmentOutput)
+}
+
+func (i MetadataAssignmentArgs) ToOutput(ctx context.Context) pulumix.Output[MetadataAssignment] {
+	return pulumix.Output[MetadataAssignment]{
+		OutputState: i.ToMetadataAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
+// MetadataAssignmentArrayInput is an input type that accepts MetadataAssignmentArray and MetadataAssignmentArrayOutput values.
+// You can construct a concrete instance of `MetadataAssignmentArrayInput` via:
+//
+//	MetadataAssignmentArray{ MetadataAssignmentArgs{...} }
+type MetadataAssignmentArrayInput interface {
+	pulumi.Input
+
+	ToMetadataAssignmentArrayOutput() MetadataAssignmentArrayOutput
+	ToMetadataAssignmentArrayOutputWithContext(context.Context) MetadataAssignmentArrayOutput
+}
+
+type MetadataAssignmentArray []MetadataAssignmentInput
+
+func (MetadataAssignmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetadataAssignment)(nil)).Elem()
+}
+
+func (i MetadataAssignmentArray) ToMetadataAssignmentArrayOutput() MetadataAssignmentArrayOutput {
+	return i.ToMetadataAssignmentArrayOutputWithContext(context.Background())
+}
+
+func (i MetadataAssignmentArray) ToMetadataAssignmentArrayOutputWithContext(ctx context.Context) MetadataAssignmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataAssignmentArrayOutput)
+}
+
+func (i MetadataAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]MetadataAssignment] {
+	return pulumix.Output[[]MetadataAssignment]{
+		OutputState: i.ToMetadataAssignmentArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type MetadataAssignmentOutput struct{ *pulumi.OutputState }
+
+func (MetadataAssignmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataAssignment)(nil)).Elem()
+}
+
+func (o MetadataAssignmentOutput) ToMetadataAssignmentOutput() MetadataAssignmentOutput {
+	return o
+}
+
+func (o MetadataAssignmentOutput) ToMetadataAssignmentOutputWithContext(ctx context.Context) MetadataAssignmentOutput {
+	return o
+}
+
+func (o MetadataAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataAssignment] {
+	return pulumix.Output[MetadataAssignment]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MetadataAssignmentOutput) Deprecated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MetadataAssignment) *bool { return v.Deprecated }).(pulumi.BoolPtrOutput)
+}
+
+// The entities this metadata schema component gets applied to.
+func (o MetadataAssignmentOutput) Entity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetadataAssignment) *string { return v.Entity }).(pulumi.StringPtrOutput)
+}
+
+func (o MetadataAssignmentOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MetadataAssignment) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+type MetadataAssignmentArrayOutput struct{ *pulumi.OutputState }
+
+func (MetadataAssignmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetadataAssignment)(nil)).Elem()
+}
+
+func (o MetadataAssignmentArrayOutput) ToMetadataAssignmentArrayOutput() MetadataAssignmentArrayOutput {
+	return o
+}
+
+func (o MetadataAssignmentArrayOutput) ToMetadataAssignmentArrayOutputWithContext(ctx context.Context) MetadataAssignmentArrayOutput {
+	return o
+}
+
+func (o MetadataAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetadataAssignment] {
+	return pulumix.Output[[]MetadataAssignment]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MetadataAssignmentArrayOutput) Index(i pulumi.IntInput) MetadataAssignmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetadataAssignment {
+		return vs[0].([]MetadataAssignment)[vs[1].(int)]
+	}).(MetadataAssignmentOutput)
+}
+
+type MetadataAssignmentResponse struct {
+	Deprecated *bool `pulumi:"deprecated"`
+	// The entities this metadata schema component gets applied to.
+	Entity   *string `pulumi:"entity"`
+	Required *bool   `pulumi:"required"`
+}
+
+type MetadataAssignmentResponseOutput struct{ *pulumi.OutputState }
+
+func (MetadataAssignmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataAssignmentResponse)(nil)).Elem()
+}
+
+func (o MetadataAssignmentResponseOutput) ToMetadataAssignmentResponseOutput() MetadataAssignmentResponseOutput {
+	return o
+}
+
+func (o MetadataAssignmentResponseOutput) ToMetadataAssignmentResponseOutputWithContext(ctx context.Context) MetadataAssignmentResponseOutput {
+	return o
+}
+
+func (o MetadataAssignmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataAssignmentResponse] {
+	return pulumix.Output[MetadataAssignmentResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MetadataAssignmentResponseOutput) Deprecated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MetadataAssignmentResponse) *bool { return v.Deprecated }).(pulumi.BoolPtrOutput)
+}
+
+// The entities this metadata schema component gets applied to.
+func (o MetadataAssignmentResponseOutput) Entity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetadataAssignmentResponse) *string { return v.Entity }).(pulumi.StringPtrOutput)
+}
+
+func (o MetadataAssignmentResponseOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MetadataAssignmentResponse) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+type MetadataAssignmentResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MetadataAssignmentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetadataAssignmentResponse)(nil)).Elem()
+}
+
+func (o MetadataAssignmentResponseArrayOutput) ToMetadataAssignmentResponseArrayOutput() MetadataAssignmentResponseArrayOutput {
+	return o
+}
+
+func (o MetadataAssignmentResponseArrayOutput) ToMetadataAssignmentResponseArrayOutputWithContext(ctx context.Context) MetadataAssignmentResponseArrayOutput {
+	return o
+}
+
+func (o MetadataAssignmentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetadataAssignmentResponse] {
+	return pulumix.Output[[]MetadataAssignmentResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MetadataAssignmentResponseArrayOutput) Index(i pulumi.IntInput) MetadataAssignmentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetadataAssignmentResponse {
+		return vs[0].([]MetadataAssignmentResponse)[vs[1].(int)]
+	}).(MetadataAssignmentResponseOutput)
+}
+
+type Onboarding struct {
+	DeveloperPortalUri []string `pulumi:"developerPortalUri"`
+	// Onboarding guide.
+	Instructions *string `pulumi:"instructions"`
+}
+
+// OnboardingInput is an input type that accepts OnboardingArgs and OnboardingOutput values.
+// You can construct a concrete instance of `OnboardingInput` via:
+//
+//	OnboardingArgs{...}
+type OnboardingInput interface {
+	pulumi.Input
+
+	ToOnboardingOutput() OnboardingOutput
+	ToOnboardingOutputWithContext(context.Context) OnboardingOutput
+}
+
+type OnboardingArgs struct {
+	DeveloperPortalUri pulumi.StringArrayInput `pulumi:"developerPortalUri"`
+	// Onboarding guide.
+	Instructions pulumi.StringPtrInput `pulumi:"instructions"`
+}
+
+func (OnboardingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Onboarding)(nil)).Elem()
+}
+
+func (i OnboardingArgs) ToOnboardingOutput() OnboardingOutput {
+	return i.ToOnboardingOutputWithContext(context.Background())
+}
+
+func (i OnboardingArgs) ToOnboardingOutputWithContext(ctx context.Context) OnboardingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnboardingOutput)
+}
+
+func (i OnboardingArgs) ToOutput(ctx context.Context) pulumix.Output[Onboarding] {
+	return pulumix.Output[Onboarding]{
+		OutputState: i.ToOnboardingOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i OnboardingArgs) ToOnboardingPtrOutput() OnboardingPtrOutput {
+	return i.ToOnboardingPtrOutputWithContext(context.Background())
+}
+
+func (i OnboardingArgs) ToOnboardingPtrOutputWithContext(ctx context.Context) OnboardingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnboardingOutput).ToOnboardingPtrOutputWithContext(ctx)
+}
+
+// OnboardingPtrInput is an input type that accepts OnboardingArgs, OnboardingPtr and OnboardingPtrOutput values.
+// You can construct a concrete instance of `OnboardingPtrInput` via:
+//
+//	        OnboardingArgs{...}
+//
+//	or:
+//
+//	        nil
+type OnboardingPtrInput interface {
+	pulumi.Input
+
+	ToOnboardingPtrOutput() OnboardingPtrOutput
+	ToOnboardingPtrOutputWithContext(context.Context) OnboardingPtrOutput
+}
+
+type onboardingPtrType OnboardingArgs
+
+func OnboardingPtr(v *OnboardingArgs) OnboardingPtrInput {
+	return (*onboardingPtrType)(v)
+}
+
+func (*onboardingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Onboarding)(nil)).Elem()
+}
+
+func (i *onboardingPtrType) ToOnboardingPtrOutput() OnboardingPtrOutput {
+	return i.ToOnboardingPtrOutputWithContext(context.Background())
+}
+
+func (i *onboardingPtrType) ToOnboardingPtrOutputWithContext(ctx context.Context) OnboardingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnboardingPtrOutput)
+}
+
+func (i *onboardingPtrType) ToOutput(ctx context.Context) pulumix.Output[*Onboarding] {
+	return pulumix.Output[*Onboarding]{
+		OutputState: i.ToOnboardingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type OnboardingOutput struct{ *pulumi.OutputState }
+
+func (OnboardingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Onboarding)(nil)).Elem()
+}
+
+func (o OnboardingOutput) ToOnboardingOutput() OnboardingOutput {
+	return o
+}
+
+func (o OnboardingOutput) ToOnboardingOutputWithContext(ctx context.Context) OnboardingOutput {
+	return o
+}
+
+func (o OnboardingOutput) ToOnboardingPtrOutput() OnboardingPtrOutput {
+	return o.ToOnboardingPtrOutputWithContext(context.Background())
+}
+
+func (o OnboardingOutput) ToOnboardingPtrOutputWithContext(ctx context.Context) OnboardingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Onboarding) *Onboarding {
+		return &v
+	}).(OnboardingPtrOutput)
+}
+
+func (o OnboardingOutput) ToOutput(ctx context.Context) pulumix.Output[Onboarding] {
+	return pulumix.Output[Onboarding]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OnboardingOutput) DeveloperPortalUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Onboarding) []string { return v.DeveloperPortalUri }).(pulumi.StringArrayOutput)
+}
+
+// Onboarding guide.
+func (o OnboardingOutput) Instructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Onboarding) *string { return v.Instructions }).(pulumi.StringPtrOutput)
+}
+
+type OnboardingPtrOutput struct{ *pulumi.OutputState }
+
+func (OnboardingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Onboarding)(nil)).Elem()
+}
+
+func (o OnboardingPtrOutput) ToOnboardingPtrOutput() OnboardingPtrOutput {
+	return o
+}
+
+func (o OnboardingPtrOutput) ToOnboardingPtrOutputWithContext(ctx context.Context) OnboardingPtrOutput {
+	return o
+}
+
+func (o OnboardingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Onboarding] {
+	return pulumix.Output[*Onboarding]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OnboardingPtrOutput) Elem() OnboardingOutput {
+	return o.ApplyT(func(v *Onboarding) Onboarding {
+		if v != nil {
+			return *v
+		}
+		var ret Onboarding
+		return ret
+	}).(OnboardingOutput)
+}
+
+func (o OnboardingPtrOutput) DeveloperPortalUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Onboarding) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DeveloperPortalUri
+	}).(pulumi.StringArrayOutput)
+}
+
+// Onboarding guide.
+func (o OnboardingPtrOutput) Instructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Onboarding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Instructions
+	}).(pulumi.StringPtrOutput)
+}
+
+type OnboardingResponse struct {
+	DeveloperPortalUri []string `pulumi:"developerPortalUri"`
+	// Onboarding guide.
+	Instructions *string `pulumi:"instructions"`
+}
+
+type OnboardingResponseOutput struct{ *pulumi.OutputState }
+
+func (OnboardingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnboardingResponse)(nil)).Elem()
+}
+
+func (o OnboardingResponseOutput) ToOnboardingResponseOutput() OnboardingResponseOutput {
+	return o
+}
+
+func (o OnboardingResponseOutput) ToOnboardingResponseOutputWithContext(ctx context.Context) OnboardingResponseOutput {
+	return o
+}
+
+func (o OnboardingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OnboardingResponse] {
+	return pulumix.Output[OnboardingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OnboardingResponseOutput) DeveloperPortalUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OnboardingResponse) []string { return v.DeveloperPortalUri }).(pulumi.StringArrayOutput)
+}
+
+// Onboarding guide.
+func (o OnboardingResponseOutput) Instructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OnboardingResponse) *string { return v.Instructions }).(pulumi.StringPtrOutput)
+}
+
+type OnboardingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OnboardingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnboardingResponse)(nil)).Elem()
+}
+
+func (o OnboardingResponsePtrOutput) ToOnboardingResponsePtrOutput() OnboardingResponsePtrOutput {
+	return o
+}
+
+func (o OnboardingResponsePtrOutput) ToOnboardingResponsePtrOutputWithContext(ctx context.Context) OnboardingResponsePtrOutput {
+	return o
+}
+
+func (o OnboardingResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OnboardingResponse] {
+	return pulumix.Output[*OnboardingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OnboardingResponsePtrOutput) Elem() OnboardingResponseOutput {
+	return o.ApplyT(func(v *OnboardingResponse) OnboardingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OnboardingResponse
+		return ret
+	}).(OnboardingResponseOutput)
+}
+
+func (o OnboardingResponsePtrOutput) DeveloperPortalUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OnboardingResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DeveloperPortalUri
+	}).(pulumi.StringArrayOutput)
+}
+
+// Onboarding guide.
+func (o OnboardingResponsePtrOutput) Instructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnboardingResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Instructions
+	}).(pulumi.StringPtrOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -387,6 +2112,242 @@ func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 // The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+// Terms of service for the API.
+type TermsOfService struct {
+	// URL pointing to the terms of service.
+	Url string `pulumi:"url"`
+}
+
+// TermsOfServiceInput is an input type that accepts TermsOfServiceArgs and TermsOfServiceOutput values.
+// You can construct a concrete instance of `TermsOfServiceInput` via:
+//
+//	TermsOfServiceArgs{...}
+type TermsOfServiceInput interface {
+	pulumi.Input
+
+	ToTermsOfServiceOutput() TermsOfServiceOutput
+	ToTermsOfServiceOutputWithContext(context.Context) TermsOfServiceOutput
+}
+
+// Terms of service for the API.
+type TermsOfServiceArgs struct {
+	// URL pointing to the terms of service.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (TermsOfServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TermsOfService)(nil)).Elem()
+}
+
+func (i TermsOfServiceArgs) ToTermsOfServiceOutput() TermsOfServiceOutput {
+	return i.ToTermsOfServiceOutputWithContext(context.Background())
+}
+
+func (i TermsOfServiceArgs) ToTermsOfServiceOutputWithContext(ctx context.Context) TermsOfServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TermsOfServiceOutput)
+}
+
+func (i TermsOfServiceArgs) ToOutput(ctx context.Context) pulumix.Output[TermsOfService] {
+	return pulumix.Output[TermsOfService]{
+		OutputState: i.ToTermsOfServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TermsOfServiceArgs) ToTermsOfServicePtrOutput() TermsOfServicePtrOutput {
+	return i.ToTermsOfServicePtrOutputWithContext(context.Background())
+}
+
+func (i TermsOfServiceArgs) ToTermsOfServicePtrOutputWithContext(ctx context.Context) TermsOfServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TermsOfServiceOutput).ToTermsOfServicePtrOutputWithContext(ctx)
+}
+
+// TermsOfServicePtrInput is an input type that accepts TermsOfServiceArgs, TermsOfServicePtr and TermsOfServicePtrOutput values.
+// You can construct a concrete instance of `TermsOfServicePtrInput` via:
+//
+//	        TermsOfServiceArgs{...}
+//
+//	or:
+//
+//	        nil
+type TermsOfServicePtrInput interface {
+	pulumi.Input
+
+	ToTermsOfServicePtrOutput() TermsOfServicePtrOutput
+	ToTermsOfServicePtrOutputWithContext(context.Context) TermsOfServicePtrOutput
+}
+
+type termsOfServicePtrType TermsOfServiceArgs
+
+func TermsOfServicePtr(v *TermsOfServiceArgs) TermsOfServicePtrInput {
+	return (*termsOfServicePtrType)(v)
+}
+
+func (*termsOfServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TermsOfService)(nil)).Elem()
+}
+
+func (i *termsOfServicePtrType) ToTermsOfServicePtrOutput() TermsOfServicePtrOutput {
+	return i.ToTermsOfServicePtrOutputWithContext(context.Background())
+}
+
+func (i *termsOfServicePtrType) ToTermsOfServicePtrOutputWithContext(ctx context.Context) TermsOfServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TermsOfServicePtrOutput)
+}
+
+func (i *termsOfServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*TermsOfService] {
+	return pulumix.Output[*TermsOfService]{
+		OutputState: i.ToTermsOfServicePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Terms of service for the API.
+type TermsOfServiceOutput struct{ *pulumi.OutputState }
+
+func (TermsOfServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TermsOfService)(nil)).Elem()
+}
+
+func (o TermsOfServiceOutput) ToTermsOfServiceOutput() TermsOfServiceOutput {
+	return o
+}
+
+func (o TermsOfServiceOutput) ToTermsOfServiceOutputWithContext(ctx context.Context) TermsOfServiceOutput {
+	return o
+}
+
+func (o TermsOfServiceOutput) ToTermsOfServicePtrOutput() TermsOfServicePtrOutput {
+	return o.ToTermsOfServicePtrOutputWithContext(context.Background())
+}
+
+func (o TermsOfServiceOutput) ToTermsOfServicePtrOutputWithContext(ctx context.Context) TermsOfServicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TermsOfService) *TermsOfService {
+		return &v
+	}).(TermsOfServicePtrOutput)
+}
+
+func (o TermsOfServiceOutput) ToOutput(ctx context.Context) pulumix.Output[TermsOfService] {
+	return pulumix.Output[TermsOfService]{
+		OutputState: o.OutputState,
+	}
+}
+
+// URL pointing to the terms of service.
+func (o TermsOfServiceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v TermsOfService) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type TermsOfServicePtrOutput struct{ *pulumi.OutputState }
+
+func (TermsOfServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TermsOfService)(nil)).Elem()
+}
+
+func (o TermsOfServicePtrOutput) ToTermsOfServicePtrOutput() TermsOfServicePtrOutput {
+	return o
+}
+
+func (o TermsOfServicePtrOutput) ToTermsOfServicePtrOutputWithContext(ctx context.Context) TermsOfServicePtrOutput {
+	return o
+}
+
+func (o TermsOfServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TermsOfService] {
+	return pulumix.Output[*TermsOfService]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TermsOfServicePtrOutput) Elem() TermsOfServiceOutput {
+	return o.ApplyT(func(v *TermsOfService) TermsOfService {
+		if v != nil {
+			return *v
+		}
+		var ret TermsOfService
+		return ret
+	}).(TermsOfServiceOutput)
+}
+
+// URL pointing to the terms of service.
+func (o TermsOfServicePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TermsOfService) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// Terms of service for the API.
+type TermsOfServiceResponse struct {
+	// URL pointing to the terms of service.
+	Url string `pulumi:"url"`
+}
+
+// Terms of service for the API.
+type TermsOfServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (TermsOfServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TermsOfServiceResponse)(nil)).Elem()
+}
+
+func (o TermsOfServiceResponseOutput) ToTermsOfServiceResponseOutput() TermsOfServiceResponseOutput {
+	return o
+}
+
+func (o TermsOfServiceResponseOutput) ToTermsOfServiceResponseOutputWithContext(ctx context.Context) TermsOfServiceResponseOutput {
+	return o
+}
+
+func (o TermsOfServiceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TermsOfServiceResponse] {
+	return pulumix.Output[TermsOfServiceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// URL pointing to the terms of service.
+func (o TermsOfServiceResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v TermsOfServiceResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type TermsOfServiceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TermsOfServiceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TermsOfServiceResponse)(nil)).Elem()
+}
+
+func (o TermsOfServiceResponsePtrOutput) ToTermsOfServiceResponsePtrOutput() TermsOfServiceResponsePtrOutput {
+	return o
+}
+
+func (o TermsOfServiceResponsePtrOutput) ToTermsOfServiceResponsePtrOutputWithContext(ctx context.Context) TermsOfServiceResponsePtrOutput {
+	return o
+}
+
+func (o TermsOfServiceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TermsOfServiceResponse] {
+	return pulumix.Output[*TermsOfServiceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TermsOfServiceResponsePtrOutput) Elem() TermsOfServiceResponseOutput {
+	return o.ApplyT(func(v *TermsOfServiceResponse) TermsOfServiceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TermsOfServiceResponse
+		return ret
+	}).(TermsOfServiceResponseOutput)
+}
+
+// URL pointing to the terms of service.
+func (o TermsOfServiceResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TermsOfServiceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
 }
 
 // User assigned identity properties
@@ -455,11 +2416,44 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 }
 
 func init() {
+	pulumi.RegisterOutputType(ApiDefinitionPropertiesResponseSpecificationOutput{})
+	pulumi.RegisterOutputType(ContactOutput{})
+	pulumi.RegisterOutputType(ContactArrayOutput{})
+	pulumi.RegisterOutputType(ContactResponseOutput{})
+	pulumi.RegisterOutputType(ContactResponseArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentServerOutput{})
+	pulumi.RegisterOutputType(DeploymentServerPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentServerResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentServerResponsePtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentServerOutput{})
+	pulumi.RegisterOutputType(EnvironmentServerPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentServerResponseOutput{})
+	pulumi.RegisterOutputType(EnvironmentServerResponsePtrOutput{})
+	pulumi.RegisterOutputType(ExternalDocumentationOutput{})
+	pulumi.RegisterOutputType(ExternalDocumentationArrayOutput{})
+	pulumi.RegisterOutputType(ExternalDocumentationResponseOutput{})
+	pulumi.RegisterOutputType(ExternalDocumentationResponseArrayOutput{})
+	pulumi.RegisterOutputType(LicenseOutput{})
+	pulumi.RegisterOutputType(LicensePtrOutput{})
+	pulumi.RegisterOutputType(LicenseResponseOutput{})
+	pulumi.RegisterOutputType(LicenseResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(MetadataAssignmentOutput{})
+	pulumi.RegisterOutputType(MetadataAssignmentArrayOutput{})
+	pulumi.RegisterOutputType(MetadataAssignmentResponseOutput{})
+	pulumi.RegisterOutputType(MetadataAssignmentResponseArrayOutput{})
+	pulumi.RegisterOutputType(OnboardingOutput{})
+	pulumi.RegisterOutputType(OnboardingPtrOutput{})
+	pulumi.RegisterOutputType(OnboardingResponseOutput{})
+	pulumi.RegisterOutputType(OnboardingResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TermsOfServiceOutput{})
+	pulumi.RegisterOutputType(TermsOfServicePtrOutput{})
+	pulumi.RegisterOutputType(TermsOfServiceResponseOutput{})
+	pulumi.RegisterOutputType(TermsOfServiceResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 }

@@ -15,6 +15,8 @@ import (
 
 // The IPPrefix resource definition.
 // Azure REST API version: 2023-02-01-preview.
+//
+// Other available API versions: 2023-06-15.
 type IpPrefix struct {
 	pulumi.CustomResourceState
 

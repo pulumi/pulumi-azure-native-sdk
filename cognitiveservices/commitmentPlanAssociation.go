@@ -15,6 +15,8 @@ import (
 
 // The commitment plan association.
 // Azure REST API version: 2023-05-01.
+//
+// Other available API versions: 2023-10-01-preview.
 type CommitmentPlanAssociation struct {
 	pulumi.CustomResourceState
 

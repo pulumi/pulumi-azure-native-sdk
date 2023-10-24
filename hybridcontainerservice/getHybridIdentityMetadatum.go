@@ -14,6 +14,8 @@ import (
 
 // Get the hybrid identity metadata proxy resource.
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2022-05-01-preview.
 func LookupHybridIdentityMetadatum(ctx *pulumi.Context, args *LookupHybridIdentityMetadatumArgs, opts ...pulumi.InvokeOption) (*LookupHybridIdentityMetadatumResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridIdentityMetadatumResult

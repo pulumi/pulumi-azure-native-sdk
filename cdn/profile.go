@@ -14,7 +14,9 @@ import (
 )
 
 // A profile is a logical grouping of endpoints that share the same settings.
-// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2020-09-01
+// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2020-09-01.
+//
+// Other available API versions: 2016-04-02, 2020-09-01, 2023-07-01-preview.
 type Profile struct {
 	pulumi.CustomResourceState
 

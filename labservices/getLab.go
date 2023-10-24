@@ -14,6 +14,8 @@ import (
 
 // Returns the properties of a lab resource.
 // Azure REST API version: 2022-08-01.
+//
+// Other available API versions: 2018-10-15, 2023-06-07.
 func LookupLab(ctx *pulumi.Context, args *LookupLabArgs, opts ...pulumi.InvokeOption) (*LookupLabResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLabResult

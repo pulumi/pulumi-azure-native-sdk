@@ -14,6 +14,8 @@ import (
 
 // Get a Maps Creator resource.
 // Azure REST API version: 2021-02-01.
+//
+// Other available API versions: 2020-02-01-preview, 2021-12-01-preview, 2023-06-01.
 func LookupCreator(ctx *pulumi.Context, args *LookupCreatorArgs, opts ...pulumi.InvokeOption) (*LookupCreatorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCreatorResult

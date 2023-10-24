@@ -15,6 +15,8 @@ import (
 
 // Defines a multi-stage process to perform update operations across members of a Fleet.
 // Azure REST API version: 2023-08-15-preview.
+//
+// Other available API versions: 2023-10-15.
 type FleetUpdateStrategy struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +53,9 @@ func NewFleetUpdateStrategy(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230815preview:FleetUpdateStrategy"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20231015:FleetUpdateStrategy"),
 		},
 	})
 	opts = append(opts, aliases)

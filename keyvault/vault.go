@@ -14,7 +14,9 @@ import (
 )
 
 // Resource information with extended details.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2019-09-01
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2019-09-01.
+//
+// Other available API versions: 2018-02-14-preview, 2023-07-01.
 type Vault struct {
 	pulumi.CustomResourceState
 

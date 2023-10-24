@@ -14,6 +14,8 @@ import (
 
 // Get a ScalingPlanPersonalSchedule.
 // Azure REST API version: 2023-07-07-preview.
+//
+// Other available API versions: 2023-09-05.
 func LookupScalingPlanPersonalSchedule(ctx *pulumi.Context, args *LookupScalingPlanPersonalScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScalingPlanPersonalScheduleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScalingPlanPersonalScheduleResult

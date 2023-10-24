@@ -14,6 +14,8 @@ import (
 
 // Gets the details of the customLocation with a specified resource group and name.
 // Azure REST API version: 2021-08-15.
+//
+// Other available API versions: 2021-08-31-preview.
 func LookupCustomLocation(ctx *pulumi.Context, args *LookupCustomLocationArgs, opts ...pulumi.InvokeOption) (*LookupCustomLocationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomLocationResult

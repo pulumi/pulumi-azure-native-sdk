@@ -14,6 +14,8 @@ import (
 
 // Implements IP Extended Community GET method.
 // Azure REST API version: 2023-02-01-preview.
+//
+// Other available API versions: 2023-06-15.
 func LookupIpExtendedCommunity(ctx *pulumi.Context, args *LookupIpExtendedCommunityArgs, opts ...pulumi.InvokeOption) (*LookupIpExtendedCommunityResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIpExtendedCommunityResult

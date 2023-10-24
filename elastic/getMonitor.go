@@ -14,6 +14,8 @@ import (
 
 // Monitor resource.
 // Azure REST API version: 2023-06-01.
+//
+// Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview.
 func LookupMonitor(ctx *pulumi.Context, args *LookupMonitorArgs, opts ...pulumi.InvokeOption) (*LookupMonitorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitorResult

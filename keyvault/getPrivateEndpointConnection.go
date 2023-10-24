@@ -14,6 +14,8 @@ import (
 
 // Gets the specified private endpoint connection associated with the key vault.
 // Azure REST API version: 2023-02-01.
+//
+// Other available API versions: 2023-07-01.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult

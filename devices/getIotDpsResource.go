@@ -14,6 +14,8 @@ import (
 
 // Get the metadata of the provisioning service without SAS keys.
 // Azure REST API version: 2022-12-12.
+//
+// Other available API versions: 2020-09-01-preview, 2023-03-01-preview.
 func LookupIotDpsResource(ctx *pulumi.Context, args *LookupIotDpsResourceArgs, opts ...pulumi.InvokeOption) (*LookupIotDpsResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIotDpsResourceResult

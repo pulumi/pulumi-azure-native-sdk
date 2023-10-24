@@ -14,6 +14,8 @@ import (
 
 // Gets the gateway settings for the specified cluster.
 // Azure REST API version: 2021-06-01.
+//
+// Other available API versions: 2023-04-15-preview, 2023-08-15-preview.
 func GetClusterGatewaySettings(ctx *pulumi.Context, args *GetClusterGatewaySettingsArgs, opts ...pulumi.InvokeOption) (*GetClusterGatewaySettingsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetClusterGatewaySettingsResult

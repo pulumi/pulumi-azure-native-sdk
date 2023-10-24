@@ -14,6 +14,8 @@ import (
 
 // Gets the specified Subscription keys.
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2023-03-01-preview.
 func ListWorkspaceSubscriptionSecrets(ctx *pulumi.Context, args *ListWorkspaceSubscriptionSecretsArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceSubscriptionSecretsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkspaceSubscriptionSecretsResult

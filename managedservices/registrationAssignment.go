@@ -14,7 +14,7 @@ import (
 )
 
 // The registration assignment.
-// Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2019-09-01
+// Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2019-09-01.
 type RegistrationAssignment struct {
 	pulumi.CustomResourceState
 

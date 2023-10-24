@@ -14,6 +14,8 @@ import (
 
 // Gets the specified Network Virtual Appliance.
 // Azure REST API version: 2023-02-01.
+//
+// Other available API versions: 2020-04-01, 2023-04-01, 2023-05-01.
 func LookupNetworkVirtualAppliance(ctx *pulumi.Context, args *LookupNetworkVirtualApplianceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkVirtualApplianceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkVirtualApplianceResult

@@ -4,12 +4,18 @@
 package apimanagement
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the custom domain ownership identifier for an API Management service.
 // Azure REST API version: 2022-08-01.
+//
+// Other available API versions: 2020-06-01-preview, 2020-12-01, 2021-01-01-preview, 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-09-01-preview, 2023-03-01-preview.
 func GetApiManagementServiceDomainOwnershipIdentifier(ctx *pulumi.Context, args *GetApiManagementServiceDomainOwnershipIdentifierArgs, opts ...pulumi.InvokeOption) (*GetApiManagementServiceDomainOwnershipIdentifierResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetApiManagementServiceDomainOwnershipIdentifierResult
@@ -27,4 +33,56 @@ type GetApiManagementServiceDomainOwnershipIdentifierArgs struct {
 type GetApiManagementServiceDomainOwnershipIdentifierResult struct {
 	// The domain ownership identifier value.
 	DomainOwnershipIdentifier string `pulumi:"domainOwnershipIdentifier"`
+}
+
+func GetApiManagementServiceDomainOwnershipIdentifierOutput(ctx *pulumi.Context, args GetApiManagementServiceDomainOwnershipIdentifierOutputArgs, opts ...pulumi.InvokeOption) GetApiManagementServiceDomainOwnershipIdentifierResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetApiManagementServiceDomainOwnershipIdentifierResult, error) {
+			args := v.(GetApiManagementServiceDomainOwnershipIdentifierArgs)
+			r, err := GetApiManagementServiceDomainOwnershipIdentifier(ctx, &args, opts...)
+			var s GetApiManagementServiceDomainOwnershipIdentifierResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
+		}).(GetApiManagementServiceDomainOwnershipIdentifierResultOutput)
+}
+
+type GetApiManagementServiceDomainOwnershipIdentifierOutputArgs struct {
+}
+
+func (GetApiManagementServiceDomainOwnershipIdentifierOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiManagementServiceDomainOwnershipIdentifierArgs)(nil)).Elem()
+}
+
+// Response of the GetDomainOwnershipIdentifier operation.
+type GetApiManagementServiceDomainOwnershipIdentifierResultOutput struct{ *pulumi.OutputState }
+
+func (GetApiManagementServiceDomainOwnershipIdentifierResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiManagementServiceDomainOwnershipIdentifierResult)(nil)).Elem()
+}
+
+func (o GetApiManagementServiceDomainOwnershipIdentifierResultOutput) ToGetApiManagementServiceDomainOwnershipIdentifierResultOutput() GetApiManagementServiceDomainOwnershipIdentifierResultOutput {
+	return o
+}
+
+func (o GetApiManagementServiceDomainOwnershipIdentifierResultOutput) ToGetApiManagementServiceDomainOwnershipIdentifierResultOutputWithContext(ctx context.Context) GetApiManagementServiceDomainOwnershipIdentifierResultOutput {
+	return o
+}
+
+func (o GetApiManagementServiceDomainOwnershipIdentifierResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApiManagementServiceDomainOwnershipIdentifierResult] {
+	return pulumix.Output[GetApiManagementServiceDomainOwnershipIdentifierResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The domain ownership identifier value.
+func (o GetApiManagementServiceDomainOwnershipIdentifierResultOutput) DomainOwnershipIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiManagementServiceDomainOwnershipIdentifierResult) string {
+		return v.DomainOwnershipIdentifier
+	}).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetApiManagementServiceDomainOwnershipIdentifierResultOutput{})
 }

@@ -14,7 +14,9 @@ import (
 )
 
 // Migration item.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2018-07-10
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2018-07-10.
+//
+// Other available API versions: 2023-06-01.
 type ReplicationMigrationItem struct {
 	pulumi.CustomResourceState
 

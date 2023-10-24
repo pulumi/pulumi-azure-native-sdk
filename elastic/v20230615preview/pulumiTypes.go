@@ -546,6 +546,55 @@ type ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse str
 	MarketplaceSaasInfo MarketplaceSaaSInfoResponse `pulumi:"marketplaceSaasInfo"`
 }
 
+// The properties of Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into.
+type ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput) ToElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput() ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput) ToElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutputWithContext(ctx context.Context) ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse] {
+	return pulumix.Output[ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The Azure Subscription ID to which the Organization belongs and gets billed into. This is empty for a new user OR a user without an Elastic Organization.
+func (o ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput) BilledAzureSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse) *string {
+		return v.BilledAzureSubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Elastic Organization Id.
+func (o ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput) ElasticOrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse) *string {
+		return v.ElasticOrganizationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Elastic Organization Name.
+func (o ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput) ElasticOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse) *string {
+		return v.ElasticOrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Marketplace SaaS Info of the resource.
+func (o ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput) MarketplaceSaasInfo() MarketplaceSaaSInfoResponseOutput {
+	return o.ApplyT(func(v ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse) MarketplaceSaaSInfoResponse {
+		return v.MarketplaceSaasInfo
+	}).(MarketplaceSaaSInfoResponseOutput)
+}
+
 // Elastic Resource Properties.
 type ElasticPropertiesResponse struct {
 	// Details of the elastic cloud deployment.
@@ -3020,6 +3069,7 @@ func init() {
 	pulumi.RegisterOutputType(ElasticCloudDeploymentResponsePtrOutput{})
 	pulumi.RegisterOutputType(ElasticCloudUserResponseOutput{})
 	pulumi.RegisterOutputType(ElasticCloudUserResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ElasticPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ElasticPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ElasticTrafficFilterResponseOutput{})

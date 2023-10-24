@@ -13,7 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Azure REST API version: 2020-05-01. Prior API version in Azure Native 1.x: 2020-05-01
+// Azure REST API version: 2020-05-01. Prior API version in Azure Native 1.x: 2020-05-01.
 type PrivateLinkAssociation struct {
 	pulumi.CustomResourceState
 

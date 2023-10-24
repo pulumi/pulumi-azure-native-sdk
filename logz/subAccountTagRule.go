@@ -14,7 +14,7 @@ import (
 )
 
 // Capture logs and metrics of Azure resources based on ARM tags.
-// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2020-10-01
+// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2020-10-01.
 type SubAccountTagRule struct {
 	pulumi.CustomResourceState
 

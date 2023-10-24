@@ -14,6 +14,8 @@ import (
 
 // Get tag associated with the API.
 // Azure REST API version: 2022-08-01.
+//
+// Other available API versions: 2022-09-01-preview, 2023-03-01-preview.
 func LookupTagByApi(ctx *pulumi.Context, args *LookupTagByApiArgs, opts ...pulumi.InvokeOption) (*LookupTagByApiResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagByApiResult

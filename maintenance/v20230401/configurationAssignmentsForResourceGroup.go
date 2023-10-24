@@ -47,6 +47,9 @@ func NewConfigurationAssignmentsForResourceGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:maintenance:ConfigurationAssignmentsForResourceGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:maintenance/v20230901preview:ConfigurationAssignmentsForResourceGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

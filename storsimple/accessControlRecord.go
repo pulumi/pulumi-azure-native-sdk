@@ -14,7 +14,7 @@ import (
 )
 
 // The access control record.
-// Azure REST API version: 2017-06-01. Prior API version in Azure Native 1.x: 2017-06-01
+// Azure REST API version: 2017-06-01. Prior API version in Azure Native 1.x: 2017-06-01.
 type AccessControlRecord struct {
 	pulumi.CustomResourceState
 

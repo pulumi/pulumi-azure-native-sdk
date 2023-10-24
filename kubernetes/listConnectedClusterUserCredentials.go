@@ -14,6 +14,8 @@ import (
 
 // Gets cluster user credentials of the connected cluster with a specified resource group and name.
 // Azure REST API version: 2021-04-01-preview.
+//
+// Other available API versions: 2020-01-01-preview.
 func ListConnectedClusterUserCredentials(ctx *pulumi.Context, args *ListConnectedClusterUserCredentialsArgs, opts ...pulumi.InvokeOption) (*ListConnectedClusterUserCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConnectedClusterUserCredentialsResult

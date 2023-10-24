@@ -14,6 +14,8 @@ import (
 
 // Gets the details of the API Operation specified by its identifier.
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2023-03-01-preview.
 func LookupWorkspaceApiOperation(ctx *pulumi.Context, args *LookupWorkspaceApiOperationArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceApiOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceApiOperationResult

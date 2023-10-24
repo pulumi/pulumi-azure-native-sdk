@@ -14,7 +14,9 @@ import (
 )
 
 // An Azure Cosmos DB User Definition
-// Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-10-15-preview
+// Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-10-15-preview.
+//
+// Other available API versions: 2023-09-15, 2023-09-15-preview.
 type MongoDBResourceMongoUserDefinition struct {
 	pulumi.CustomResourceState
 

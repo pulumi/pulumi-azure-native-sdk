@@ -14,6 +14,8 @@ import (
 
 // Get an Activity Log Alert rule.
 // Azure REST API version: 2023-01-01-preview.
+//
+// Other available API versions: 2017-04-01, 2020-10-01.
 func LookupActivityLogAlert(ctx *pulumi.Context, args *LookupActivityLogAlertArgs, opts ...pulumi.InvokeOption) (*LookupActivityLogAlertResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActivityLogAlertResult

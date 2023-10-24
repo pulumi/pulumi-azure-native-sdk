@@ -14,7 +14,9 @@ import (
 )
 
 // Single item in List or Get Schema Group operation
-// Azure REST API version: 2022-10-01-preview. Prior API version in Azure Native 1.x: 2022-01-01-preview
+// Azure REST API version: 2022-10-01-preview. Prior API version in Azure Native 1.x: 2022-01-01-preview.
+//
+// Other available API versions: 2023-01-01-preview.
 type SchemaRegistry struct {
 	pulumi.CustomResourceState
 

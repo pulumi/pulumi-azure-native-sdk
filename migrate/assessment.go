@@ -14,7 +14,9 @@ import (
 )
 
 // An assessment created for a group in the Migration project.
-// Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01
+// Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01.
+//
+// Other available API versions: 2017-11-11-preview, 2018-02-02.
 type Assessment struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +52,9 @@ func NewAssessment(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:migrate/v20191001:Assessment"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230315:Assessment"),
 		},
 	})
 	opts = append(opts, aliases)

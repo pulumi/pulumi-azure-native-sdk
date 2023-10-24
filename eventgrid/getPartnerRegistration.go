@@ -14,6 +14,8 @@ import (
 
 // Gets a partner registration with the specified parameters.
 // Azure REST API version: 2022-06-15.
+//
+// Other available API versions: 2021-10-15-preview, 2023-06-01-preview.
 func LookupPartnerRegistration(ctx *pulumi.Context, args *LookupPartnerRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerRegistrationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerRegistrationResult

@@ -14,6 +14,8 @@ import (
 
 // Retrieves the connection info for the notebook workspace
 // Azure REST API version: 2023-04-15.
+//
+// Other available API versions: 2023-09-15, 2023-09-15-preview.
 func ListNotebookWorkspaceConnectionInfo(ctx *pulumi.Context, args *ListNotebookWorkspaceConnectionInfoArgs, opts ...pulumi.InvokeOption) (*ListNotebookWorkspaceConnectionInfoResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListNotebookWorkspaceConnectionInfoResult

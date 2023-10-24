@@ -14,6 +14,8 @@ import (
 
 // Lists the account keys for the specified Cognitive Services account.
 // Azure REST API version: 2023-05-01.
+//
+// Other available API versions: 2017-04-18, 2023-10-01-preview.
 func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListAccountKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccountKeysResult

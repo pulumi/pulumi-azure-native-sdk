@@ -14,7 +14,7 @@ import (
 )
 
 // The peering service prefix class.
-// Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2021-01-01
+// Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2021-01-01.
 type Prefix struct {
 	pulumi.CustomResourceState
 

@@ -322,6 +322,71 @@ func (o AFDDomainHttpsParametersResponsePtrOutput) Secret() ResourceReferenceRes
 	}).(ResourceReferenceResponsePtrOutput)
 }
 
+// route configuration of the shared custom domain.
+type AFDDomainReferencedRoutePathResponse struct {
+	// List of paths of the route.
+	Paths []string `pulumi:"paths"`
+	// Resource reference to the route.
+	RouteId *ResourceReferenceResponse `pulumi:"routeId"`
+}
+
+// route configuration of the shared custom domain.
+type AFDDomainReferencedRoutePathResponseOutput struct{ *pulumi.OutputState }
+
+func (AFDDomainReferencedRoutePathResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AFDDomainReferencedRoutePathResponse)(nil)).Elem()
+}
+
+func (o AFDDomainReferencedRoutePathResponseOutput) ToAFDDomainReferencedRoutePathResponseOutput() AFDDomainReferencedRoutePathResponseOutput {
+	return o
+}
+
+func (o AFDDomainReferencedRoutePathResponseOutput) ToAFDDomainReferencedRoutePathResponseOutputWithContext(ctx context.Context) AFDDomainReferencedRoutePathResponseOutput {
+	return o
+}
+
+func (o AFDDomainReferencedRoutePathResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AFDDomainReferencedRoutePathResponse] {
+	return pulumix.Output[AFDDomainReferencedRoutePathResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// List of paths of the route.
+func (o AFDDomainReferencedRoutePathResponseOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AFDDomainReferencedRoutePathResponse) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Resource reference to the route.
+func (o AFDDomainReferencedRoutePathResponseOutput) RouteId() ResourceReferenceResponsePtrOutput {
+	return o.ApplyT(func(v AFDDomainReferencedRoutePathResponse) *ResourceReferenceResponse { return v.RouteId }).(ResourceReferenceResponsePtrOutput)
+}
+
+type AFDDomainReferencedRoutePathResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AFDDomainReferencedRoutePathResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AFDDomainReferencedRoutePathResponse)(nil)).Elem()
+}
+
+func (o AFDDomainReferencedRoutePathResponseArrayOutput) ToAFDDomainReferencedRoutePathResponseArrayOutput() AFDDomainReferencedRoutePathResponseArrayOutput {
+	return o
+}
+
+func (o AFDDomainReferencedRoutePathResponseArrayOutput) ToAFDDomainReferencedRoutePathResponseArrayOutputWithContext(ctx context.Context) AFDDomainReferencedRoutePathResponseArrayOutput {
+	return o
+}
+
+func (o AFDDomainReferencedRoutePathResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AFDDomainReferencedRoutePathResponse] {
+	return pulumix.Output[[]AFDDomainReferencedRoutePathResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AFDDomainReferencedRoutePathResponseArrayOutput) Index(i pulumi.IntInput) AFDDomainReferencedRoutePathResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AFDDomainReferencedRoutePathResponse {
+		return vs[0].([]AFDDomainReferencedRoutePathResponse)[vs[1].(int)]
+	}).(AFDDomainReferencedRoutePathResponseOutput)
+}
+
 // Reference to another resource along with its state.
 type ActivatedResourceReference struct {
 	// Resource ID.
@@ -11027,6 +11092,8 @@ func init() {
 	pulumi.RegisterOutputType(AFDDomainHttpsParametersPtrOutput{})
 	pulumi.RegisterOutputType(AFDDomainHttpsParametersResponseOutput{})
 	pulumi.RegisterOutputType(AFDDomainHttpsParametersResponsePtrOutput{})
+	pulumi.RegisterOutputType(AFDDomainReferencedRoutePathResponseOutput{})
+	pulumi.RegisterOutputType(AFDDomainReferencedRoutePathResponseArrayOutput{})
 	pulumi.RegisterOutputType(ActivatedResourceReferenceOutput{})
 	pulumi.RegisterOutputType(ActivatedResourceReferenceArrayOutput{})
 	pulumi.RegisterOutputType(ActivatedResourceReferenceResponseOutput{})

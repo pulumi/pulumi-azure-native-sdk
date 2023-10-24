@@ -34,6 +34,8 @@ type AFDCustomDomain struct {
 	ProfileName pulumi.StringOutput `pulumi:"profileName"`
 	// Provisioning status
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The JSON object list that contains the overall picture of how routes are used for the shared custom domain across different profiles.
+	ReferencedRoutePaths AFDDomainReferencedRoutePathResponseArrayOutput `pulumi:"referencedRoutePaths"`
 	// Read only system data
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
@@ -245,6 +247,13 @@ func (o AFDCustomDomainOutput) ProfileName() pulumi.StringOutput {
 // Provisioning status
 func (o AFDCustomDomainOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDCustomDomain) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The JSON object list that contains the overall picture of how routes are used for the shared custom domain across different profiles.
+func (o AFDCustomDomainOutput) ReferencedRoutePaths() AFDDomainReferencedRoutePathResponseArrayOutput {
+	return o.ApplyT(func(v *AFDCustomDomain) AFDDomainReferencedRoutePathResponseArrayOutput {
+		return v.ReferencedRoutePaths
+	}).(AFDDomainReferencedRoutePathResponseArrayOutput)
 }
 
 // Read only system data

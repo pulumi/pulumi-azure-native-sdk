@@ -14,7 +14,7 @@ import (
 )
 
 // A Kubernetes cluster specialized for web workloads by Azure App Service
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-01-01
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-01-01.
 type KubeEnvironment struct {
 	pulumi.CustomResourceState
 

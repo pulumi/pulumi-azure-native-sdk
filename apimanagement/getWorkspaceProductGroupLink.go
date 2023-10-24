@@ -14,6 +14,8 @@ import (
 
 // Gets the group link for the product.
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2023-03-01-preview.
 func LookupWorkspaceProductGroupLink(ctx *pulumi.Context, args *LookupWorkspaceProductGroupLinkArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceProductGroupLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceProductGroupLinkResult

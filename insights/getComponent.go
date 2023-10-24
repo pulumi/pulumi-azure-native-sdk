@@ -14,6 +14,8 @@ import (
 
 // Returns an Application Insights component.
 // Azure REST API version: 2020-02-02.
+//
+// Other available API versions: 2020-02-02-preview.
 func LookupComponent(ctx *pulumi.Context, args *LookupComponentArgs, opts ...pulumi.InvokeOption) (*LookupComponentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupComponentResult

@@ -14,6 +14,8 @@ import (
 
 // Returns AndroidMAMPolicy with given name.
 // Azure REST API version: 2015-01-14-preview.
+//
+// Other available API versions: 2015-01-14-privatepreview.
 func LookupAndroidMAMPolicyByName(ctx *pulumi.Context, args *LookupAndroidMAMPolicyByNameArgs, opts ...pulumi.InvokeOption) (*LookupAndroidMAMPolicyByNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAndroidMAMPolicyByNameResult

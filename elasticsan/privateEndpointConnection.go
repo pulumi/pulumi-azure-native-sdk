@@ -16,6 +16,8 @@ import (
 //	Response for PrivateEndpoint Connection object
 //
 // Azure REST API version: 2022-12-01-preview.
+//
+// Other available API versions: 2023-01-01.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 

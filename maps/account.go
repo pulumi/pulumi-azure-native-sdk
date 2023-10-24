@@ -14,7 +14,9 @@ import (
 )
 
 // An Azure resource which represents access to a suite of Maps REST APIs.
-// Azure REST API version: 2021-02-01. Prior API version in Azure Native 1.x: 2018-05-01
+// Azure REST API version: 2021-02-01. Prior API version in Azure Native 1.x: 2018-05-01.
+//
+// Other available API versions: 2018-05-01, 2021-12-01-preview, 2023-06-01.
 type Account struct {
 	pulumi.CustomResourceState
 

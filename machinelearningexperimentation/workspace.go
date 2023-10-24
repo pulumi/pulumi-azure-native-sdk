@@ -14,7 +14,7 @@ import (
 )
 
 // An object that represents a machine learning team account workspace.
-// Azure REST API version: 2017-05-01-preview. Prior API version in Azure Native 1.x: 2017-05-01-preview
+// Azure REST API version: 2017-05-01-preview. Prior API version in Azure Native 1.x: 2017-05-01-preview.
 type Workspace struct {
 	pulumi.CustomResourceState
 

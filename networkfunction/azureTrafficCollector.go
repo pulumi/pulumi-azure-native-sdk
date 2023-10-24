@@ -14,7 +14,9 @@ import (
 )
 
 // Azure Traffic Collector resource.
-// Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2022-05-01
+// Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2022-05-01.
+//
+// Other available API versions: 2022-08-01.
 type AzureTrafficCollector struct {
 	pulumi.CustomResourceState
 

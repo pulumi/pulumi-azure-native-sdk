@@ -14,6 +14,8 @@ import (
 
 // Returns a task with extended information that includes all secrets.
 // Azure REST API version: 2019-06-01-preview.
+//
+// Other available API versions: 2018-09-01, 2019-04-01.
 func ListTaskDetails(ctx *pulumi.Context, args *ListTaskDetailsArgs, opts ...pulumi.InvokeOption) (*ListTaskDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListTaskDetailsResult

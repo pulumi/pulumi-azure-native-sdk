@@ -14,7 +14,9 @@ import (
 )
 
 // Single item in List or Get Alias(Disaster Recovery configuration) operation
-// Azure REST API version: 2022-10-01-preview. Prior API version in Azure Native 1.x: 2017-04-01
+// Azure REST API version: 2022-10-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
+//
+// Other available API versions: 2023-01-01-preview.
 type DisasterRecoveryConfig struct {
 	pulumi.CustomResourceState
 

@@ -14,7 +14,7 @@ import (
 )
 
 // Definition of the webhook type.
-// Azure REST API version: 2015-10-31. Prior API version in Azure Native 1.x: 2015-10-31
+// Azure REST API version: 2015-10-31. Prior API version in Azure Native 1.x: 2015-10-31.
 type Webhook struct {
 	pulumi.CustomResourceState
 

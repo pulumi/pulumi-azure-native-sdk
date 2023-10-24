@@ -15,6 +15,8 @@ import (
 
 // AzureBareMetalStorageInstance info on Azure (ARM properties and AzureBareMetalStorage properties)
 // Azure REST API version: 2023-04-06.
+//
+// Other available API versions: 2023-08-04-preview.
 type AzureBareMetalStorageInstance struct {
 	pulumi.CustomResourceState
 

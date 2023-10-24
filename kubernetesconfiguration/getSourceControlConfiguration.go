@@ -14,6 +14,8 @@ import (
 
 // Gets details of the Source Control Configuration.
 // Azure REST API version: 2023-05-01.
+//
+// Other available API versions: 2019-11-01-preview.
 func LookupSourceControlConfiguration(ctx *pulumi.Context, args *LookupSourceControlConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSourceControlConfigurationResult

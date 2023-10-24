@@ -14,6 +14,8 @@ import (
 
 // Get the resource and its properties.
 // Azure REST API version: 2023-02-01.
+//
+// Other available API versions: 2018-10-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview.
 func LookupSignalR(ctx *pulumi.Context, args *LookupSignalRArgs, opts ...pulumi.InvokeOption) (*LookupSignalRResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSignalRResult

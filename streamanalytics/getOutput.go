@@ -14,6 +14,8 @@ import (
 
 // Gets details about the specified output.
 // Azure REST API version: 2020-03-01.
+//
+// Other available API versions: 2021-10-01-preview.
 func LookupOutput(ctx *pulumi.Context, args *LookupOutputArgs, opts ...pulumi.InvokeOption) (*LookupOutputResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOutputResult

@@ -14,7 +14,7 @@ import (
 )
 
 // The log profile resource.
-// Azure REST API version: 2016-03-01. Prior API version in Azure Native 1.x: 2016-03-01
+// Azure REST API version: 2016-03-01. Prior API version in Azure Native 1.x: 2016-03-01.
 type LogProfile struct {
 	pulumi.CustomResourceState
 

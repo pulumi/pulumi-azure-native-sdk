@@ -14,6 +14,8 @@ import (
 
 // Description for Lists the roles configured for the static site.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2021-02-01.
 func ListStaticSiteConfiguredRoles(ctx *pulumi.Context, args *ListStaticSiteConfiguredRolesArgs, opts ...pulumi.InvokeOption) (*ListStaticSiteConfiguredRolesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListStaticSiteConfiguredRolesResult

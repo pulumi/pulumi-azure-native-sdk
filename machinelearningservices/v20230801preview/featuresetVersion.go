@@ -60,6 +60,9 @@ func NewFeaturesetVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:FeaturesetVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20231001:FeaturesetVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

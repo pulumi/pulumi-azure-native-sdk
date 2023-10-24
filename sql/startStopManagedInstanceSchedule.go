@@ -15,6 +15,8 @@ import (
 
 // Managed instance's Start/Stop schedule.
 // Azure REST API version: 2022-11-01-preview.
+//
+// Other available API versions: 2023-02-01-preview.
 type StartStopManagedInstanceSchedule struct {
 	pulumi.CustomResourceState
 

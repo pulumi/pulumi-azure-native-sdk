@@ -14,6 +14,8 @@ import (
 
 // Get properties of an event subscription.
 // Azure REST API version: 2022-06-15.
+//
+// Other available API versions: 2017-06-15-preview, 2023-06-01-preview.
 func LookupEventSubscription(ctx *pulumi.Context, args *LookupEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupEventSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEventSubscriptionResult

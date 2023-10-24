@@ -4,8 +4,12 @@
 package v20230401
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This operation lists all the built-in policy definition versions for all built-in policy definitions.
@@ -28,4 +32,59 @@ type ListPolicyDefinitionVersionAllBuiltinsResult struct {
 	NextLink *string `pulumi:"nextLink"`
 	// An array of policy definitions versions.
 	Value []PolicyDefinitionVersionResponse `pulumi:"value"`
+}
+
+func ListPolicyDefinitionVersionAllBuiltinsOutput(ctx *pulumi.Context, args ListPolicyDefinitionVersionAllBuiltinsOutputArgs, opts ...pulumi.InvokeOption) ListPolicyDefinitionVersionAllBuiltinsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (ListPolicyDefinitionVersionAllBuiltinsResult, error) {
+			args := v.(ListPolicyDefinitionVersionAllBuiltinsArgs)
+			r, err := ListPolicyDefinitionVersionAllBuiltins(ctx, &args, opts...)
+			var s ListPolicyDefinitionVersionAllBuiltinsResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
+		}).(ListPolicyDefinitionVersionAllBuiltinsResultOutput)
+}
+
+type ListPolicyDefinitionVersionAllBuiltinsOutputArgs struct {
+}
+
+func (ListPolicyDefinitionVersionAllBuiltinsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListPolicyDefinitionVersionAllBuiltinsArgs)(nil)).Elem()
+}
+
+// List of policy definition versions.
+type ListPolicyDefinitionVersionAllBuiltinsResultOutput struct{ *pulumi.OutputState }
+
+func (ListPolicyDefinitionVersionAllBuiltinsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListPolicyDefinitionVersionAllBuiltinsResult)(nil)).Elem()
+}
+
+func (o ListPolicyDefinitionVersionAllBuiltinsResultOutput) ToListPolicyDefinitionVersionAllBuiltinsResultOutput() ListPolicyDefinitionVersionAllBuiltinsResultOutput {
+	return o
+}
+
+func (o ListPolicyDefinitionVersionAllBuiltinsResultOutput) ToListPolicyDefinitionVersionAllBuiltinsResultOutputWithContext(ctx context.Context) ListPolicyDefinitionVersionAllBuiltinsResultOutput {
+	return o
+}
+
+func (o ListPolicyDefinitionVersionAllBuiltinsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListPolicyDefinitionVersionAllBuiltinsResult] {
+	return pulumix.Output[ListPolicyDefinitionVersionAllBuiltinsResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The URL to use for getting the next set of results.
+func (o ListPolicyDefinitionVersionAllBuiltinsResultOutput) NextLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListPolicyDefinitionVersionAllBuiltinsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
+}
+
+// An array of policy definitions versions.
+func (o ListPolicyDefinitionVersionAllBuiltinsResultOutput) Value() PolicyDefinitionVersionResponseArrayOutput {
+	return o.ApplyT(func(v ListPolicyDefinitionVersionAllBuiltinsResult) []PolicyDefinitionVersionResponse { return v.Value }).(PolicyDefinitionVersionResponseArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(ListPolicyDefinitionVersionAllBuiltinsResultOutput{})
 }

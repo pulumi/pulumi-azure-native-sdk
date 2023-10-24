@@ -14,6 +14,8 @@ import (
 
 // Implements Access Control List GET method.
 // Azure REST API version: 2023-02-01-preview.
+//
+// Other available API versions: 2023-06-15.
 func LookupAccessControlList(ctx *pulumi.Context, args *LookupAccessControlListArgs, opts ...pulumi.InvokeOption) (*LookupAccessControlListResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessControlListResult

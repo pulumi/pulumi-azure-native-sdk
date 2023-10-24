@@ -21,8 +21,22 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:apicenter:Api":
+		r = &Api{}
+	case "azure-native:apicenter:ApiDefinition":
+		r = &ApiDefinition{}
+	case "azure-native:apicenter:ApiVersion":
+		r = &ApiVersion{}
+	case "azure-native:apicenter:Deployment":
+		r = &Deployment{}
+	case "azure-native:apicenter:Environment":
+		r = &Environment{}
+	case "azure-native:apicenter:MetadataSchema":
+		r = &MetadataSchema{}
 	case "azure-native:apicenter:Service":
 		r = &Service{}
+	case "azure-native:apicenter:Workspace":
+		r = &Workspace{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

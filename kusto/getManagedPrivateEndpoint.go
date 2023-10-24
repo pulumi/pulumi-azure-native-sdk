@@ -14,6 +14,8 @@ import (
 
 // Gets a managed private endpoint.
 // Azure REST API version: 2022-12-29.
+//
+// Other available API versions: 2023-05-02, 2023-08-15.
 func LookupManagedPrivateEndpoint(ctx *pulumi.Context, args *LookupManagedPrivateEndpointArgs, opts ...pulumi.InvokeOption) (*LookupManagedPrivateEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedPrivateEndpointResult

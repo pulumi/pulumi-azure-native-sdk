@@ -4,8 +4,12 @@
 package v20171001
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // list date to migrate to new pricing model.
@@ -28,4 +32,59 @@ type ListEASubscriptionListMigrationDatePostResult struct {
 	IsGrandFatherableSubscription *bool `pulumi:"isGrandFatherableSubscription"`
 	// Time to start using new pricing model.
 	OptedInDate *string `pulumi:"optedInDate"`
+}
+
+func ListEASubscriptionListMigrationDatePostOutput(ctx *pulumi.Context, args ListEASubscriptionListMigrationDatePostOutputArgs, opts ...pulumi.InvokeOption) ListEASubscriptionListMigrationDatePostResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (ListEASubscriptionListMigrationDatePostResult, error) {
+			args := v.(ListEASubscriptionListMigrationDatePostArgs)
+			r, err := ListEASubscriptionListMigrationDatePost(ctx, &args, opts...)
+			var s ListEASubscriptionListMigrationDatePostResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
+		}).(ListEASubscriptionListMigrationDatePostResultOutput)
+}
+
+type ListEASubscriptionListMigrationDatePostOutputArgs struct {
+}
+
+func (ListEASubscriptionListMigrationDatePostOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListEASubscriptionListMigrationDatePostArgs)(nil)).Elem()
+}
+
+// Subscription migrate date information properties
+type ListEASubscriptionListMigrationDatePostResultOutput struct{ *pulumi.OutputState }
+
+func (ListEASubscriptionListMigrationDatePostResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListEASubscriptionListMigrationDatePostResult)(nil)).Elem()
+}
+
+func (o ListEASubscriptionListMigrationDatePostResultOutput) ToListEASubscriptionListMigrationDatePostResultOutput() ListEASubscriptionListMigrationDatePostResultOutput {
+	return o
+}
+
+func (o ListEASubscriptionListMigrationDatePostResultOutput) ToListEASubscriptionListMigrationDatePostResultOutputWithContext(ctx context.Context) ListEASubscriptionListMigrationDatePostResultOutput {
+	return o
+}
+
+func (o ListEASubscriptionListMigrationDatePostResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListEASubscriptionListMigrationDatePostResult] {
+	return pulumix.Output[ListEASubscriptionListMigrationDatePostResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Is subscription in the grand fatherable subscription list.
+func (o ListEASubscriptionListMigrationDatePostResultOutput) IsGrandFatherableSubscription() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListEASubscriptionListMigrationDatePostResult) *bool { return v.IsGrandFatherableSubscription }).(pulumi.BoolPtrOutput)
+}
+
+// Time to start using new pricing model.
+func (o ListEASubscriptionListMigrationDatePostResultOutput) OptedInDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListEASubscriptionListMigrationDatePostResult) *string { return v.OptedInDate }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(ListEASubscriptionListMigrationDatePostResultOutput{})
 }

@@ -15,6 +15,8 @@ import (
 
 // Represents a migration resource.
 // Azure REST API version: 2023-03-01-preview.
+//
+// Other available API versions: 2021-06-15-privatepreview, 2022-05-01-preview.
 type Migration struct {
 	pulumi.CustomResourceState
 
