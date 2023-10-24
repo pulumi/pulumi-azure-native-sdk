@@ -14,7 +14,9 @@ import (
 )
 
 // Configuration Assignment
-// Azure REST API version: 2022-11-01-preview. Prior API version in Azure Native 1.x: 2021-04-01-preview
+// Azure REST API version: 2022-11-01-preview. Prior API version in Azure Native 1.x: 2021-04-01-preview.
+//
+// Other available API versions: 2023-04-01, 2023-09-01-preview.
 type ConfigurationAssignmentParent struct {
 	pulumi.CustomResourceState
 
@@ -72,6 +74,9 @@ func NewConfigurationAssignmentParent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:maintenance/v20230401:ConfigurationAssignmentParent"),
+		},
+		{
+			Type: pulumi.String("azure-native:maintenance/v20230901preview:ConfigurationAssignmentParent"),
 		},
 	})
 	opts = append(opts, aliases)

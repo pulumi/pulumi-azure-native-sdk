@@ -14,7 +14,9 @@ import (
 )
 
 // Maintenance configuration record type
-// Azure REST API version: 2022-11-01-preview. Prior API version in Azure Native 1.x: 2020-04-01
+// Azure REST API version: 2022-11-01-preview. Prior API version in Azure Native 1.x: 2020-04-01.
+//
+// Other available API versions: 2023-04-01, 2023-09-01-preview.
 type MaintenanceConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -92,6 +94,9 @@ func NewMaintenanceConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:maintenance/v20230401:MaintenanceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:maintenance/v20230901preview:MaintenanceConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

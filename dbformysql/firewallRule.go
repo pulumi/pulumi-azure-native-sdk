@@ -14,7 +14,9 @@ import (
 )
 
 // Represents a server firewall rule.
-// Azure REST API version: 2022-01-01. Prior API version in Azure Native 1.x: 2017-12-01
+// Azure REST API version: 2022-01-01. Prior API version in Azure Native 1.x: 2017-12-01.
+//
+// Other available API versions: 2017-12-01, 2023-06-01-preview, 2023-06-30.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +72,9 @@ func NewFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20230601preview:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20230630:FirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

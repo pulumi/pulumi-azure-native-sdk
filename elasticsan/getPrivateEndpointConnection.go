@@ -14,6 +14,8 @@ import (
 
 // Gets the specified private endpoint connection associated with the Elastic San
 // Azure REST API version: 2022-12-01-preview.
+//
+// Other available API versions: 2023-01-01.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult

@@ -14,7 +14,9 @@ import (
 )
 
 // The L2IsolationDomain resource definition.
-// Azure REST API version: 2023-02-01-preview. Prior API version in Azure Native 1.x: 2023-02-01-preview
+// Azure REST API version: 2023-02-01-preview. Prior API version in Azure Native 1.x: 2023-02-01-preview.
+//
+// Other available API versions: 2023-06-15.
 type L2IsolationDomain struct {
 	pulumi.CustomResourceState
 

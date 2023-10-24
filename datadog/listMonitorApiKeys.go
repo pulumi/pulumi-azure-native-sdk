@@ -14,6 +14,8 @@ import (
 
 // Response of a list operation.
 // Azure REST API version: 2022-06-01.
+//
+// Other available API versions: 2022-08-01, 2023-01-01.
 func ListMonitorApiKeys(ctx *pulumi.Context, args *ListMonitorApiKeysArgs, opts ...pulumi.InvokeOption) (*ListMonitorApiKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListMonitorApiKeysResult

@@ -3,6 +3,15 @@
 
 package workloads
 
+// The type of backup, VM, SQL or HANA.
+type BackupType string
+
+const (
+	BackupTypeVM   = BackupType("VM")
+	BackupTypeSQL  = BackupType("SQL")
+	BackupTypeHANA = BackupType("HANA")
+)
+
 // The type of file share config.
 type ConfigurationType string
 
@@ -10,6 +19,18 @@ const (
 	ConfigurationTypeSkip           = ConfigurationType("Skip")
 	ConfigurationTypeCreateAndMount = ConfigurationType("CreateAndMount")
 	ConfigurationTypeMount          = ConfigurationType("Mount")
+)
+
+type DayOfWeek string
+
+const (
+	DayOfWeekSunday    = DayOfWeek("Sunday")
+	DayOfWeekMonday    = DayOfWeek("Monday")
+	DayOfWeekTuesday   = DayOfWeek("Tuesday")
+	DayOfWeekWednesday = DayOfWeek("Wednesday")
+	DayOfWeekThursday  = DayOfWeek("Thursday")
+	DayOfWeekFriday    = DayOfWeek("Friday")
+	DayOfWeekSaturday  = DayOfWeek("Saturday")
 )
 
 // Defines the disk sku name.
@@ -25,12 +46,39 @@ const (
 	DiskSkuName_PremiumV2_LRS   = DiskSkuName("PremiumV2_LRS")
 )
 
+// The policy type.
+type IAASVMPolicyType string
+
+const (
+	IAASVMPolicyTypeInvalid = IAASVMPolicyType("Invalid")
+	IAASVMPolicyTypeV1      = IAASVMPolicyType("V1")
+	IAASVMPolicyTypeV2      = IAASVMPolicyType("V2")
+)
+
 // Type of manage identity
 type ManagedServiceIdentityType string
 
 const (
 	ManagedServiceIdentityTypeNone         = ManagedServiceIdentityType("None")
 	ManagedServiceIdentityTypeUserAssigned = ManagedServiceIdentityType("UserAssigned")
+)
+
+type MonthOfYear string
+
+const (
+	MonthOfYearInvalid   = MonthOfYear("Invalid")
+	MonthOfYearJanuary   = MonthOfYear("January")
+	MonthOfYearFebruary  = MonthOfYear("February")
+	MonthOfYearMarch     = MonthOfYear("March")
+	MonthOfYearApril     = MonthOfYear("April")
+	MonthOfYearMay       = MonthOfYear("May")
+	MonthOfYearJune      = MonthOfYear("June")
+	MonthOfYearJuly      = MonthOfYear("July")
+	MonthOfYearAugust    = MonthOfYear("August")
+	MonthOfYearSeptember = MonthOfYear("September")
+	MonthOfYearOctober   = MonthOfYear("October")
+	MonthOfYearNovember  = MonthOfYear("November")
+	MonthOfYearDecember  = MonthOfYear("December")
 )
 
 // The pattern type to be used for resource naming.
@@ -46,6 +94,41 @@ type OSType string
 const (
 	OSTypeLinux   = OSType("Linux")
 	OSTypeWindows = OSType("Windows")
+)
+
+// Type of backup policy type
+type PolicyType string
+
+const (
+	PolicyTypeInvalid              = PolicyType("Invalid")
+	PolicyTypeFull                 = PolicyType("Full")
+	PolicyTypeDifferential         = PolicyType("Differential")
+	PolicyTypeLog                  = PolicyType("Log")
+	PolicyTypeCopyOnlyFull         = PolicyType("CopyOnlyFull")
+	PolicyTypeIncremental          = PolicyType("Incremental")
+	PolicyTypeSnapshotFull         = PolicyType("SnapshotFull")
+	PolicyTypeSnapshotCopyOnlyFull = PolicyType("SnapshotCopyOnlyFull")
+)
+
+// Retention duration type: days/weeks/months/years
+// Used only if TieringMode is set to TierAfter
+type RetentionDurationType string
+
+const (
+	RetentionDurationTypeInvalid = RetentionDurationType("Invalid")
+	RetentionDurationTypeDays    = RetentionDurationType("Days")
+	RetentionDurationTypeWeeks   = RetentionDurationType("Weeks")
+	RetentionDurationTypeMonths  = RetentionDurationType("Months")
+	RetentionDurationTypeYears   = RetentionDurationType("Years")
+)
+
+// Retention schedule format for yearly retention policy.
+type RetentionScheduleFormat string
+
+const (
+	RetentionScheduleFormatInvalid = RetentionScheduleFormat("Invalid")
+	RetentionScheduleFormatDaily   = RetentionScheduleFormat("Daily")
+	RetentionScheduleFormatWeekly  = RetentionScheduleFormat("Weekly")
 )
 
 // Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.
@@ -122,6 +205,24 @@ const (
 	SAPSoftwareInstallationTypeExternal                  = SAPSoftwareInstallationType("External")
 )
 
+// Frequency of the schedule operation of this policy.
+type ScheduleRunType string
+
+const (
+	ScheduleRunTypeInvalid = ScheduleRunType("Invalid")
+	ScheduleRunTypeDaily   = ScheduleRunType("Daily")
+	ScheduleRunTypeWeekly  = ScheduleRunType("Weekly")
+	ScheduleRunTypeHourly  = ScheduleRunType("Hourly")
+)
+
+// Specify the crypto provider being used (commoncrypto/openssl). If this argument is not provided, it is automatically determined by searching in the configuration files.
+type SslCryptoProvider string
+
+const (
+	SslCryptoProviderCommoncrypto = SslCryptoProvider("commoncrypto")
+	SslCryptoProviderOpenssl      = SslCryptoProvider("openssl")
+)
+
 // Gets or sets certificate preference if secure communication is enabled.
 type SslPreference string
 
@@ -129,6 +230,60 @@ const (
 	SslPreferenceDisabled          = SslPreference("Disabled")
 	SslPreferenceRootCertificate   = SslPreference("RootCertificate")
 	SslPreferenceServerCertificate = SslPreference("ServerCertificate")
+)
+
+// Tiering Mode to control automatic tiering of recovery points. Supported values are:
+// 1. TierRecommended: Tier all recovery points recommended to be tiered
+// 2. TierAfter: Tier all recovery points after a fixed period, as specified in duration + durationType below.
+// 3. DoNotTier: Do not tier any recovery points
+type TieringMode string
+
+const (
+	TieringModeInvalid         = TieringMode("Invalid")
+	TieringModeTierRecommended = TieringMode("TierRecommended")
+	TieringModeTierAfter       = TieringMode("TierAfter")
+	TieringModeDoNotTier       = TieringMode("DoNotTier")
+)
+
+// The vault type, whether it is existing or has to be created.
+type VaultType string
+
+const (
+	VaultTypeExisting = VaultType("Existing")
+	VaultTypeNew      = VaultType("New")
+)
+
+type WeekOfMonth string
+
+const (
+	WeekOfMonthFirst   = WeekOfMonth("First")
+	WeekOfMonthSecond  = WeekOfMonth("Second")
+	WeekOfMonthThird   = WeekOfMonth("Third")
+	WeekOfMonthFourth  = WeekOfMonth("Fourth")
+	WeekOfMonthLast    = WeekOfMonth("Last")
+	WeekOfMonthInvalid = WeekOfMonth("Invalid")
+)
+
+// Type of workload for the backup management
+type WorkloadType string
+
+const (
+	WorkloadTypeInvalid           = WorkloadType("Invalid")
+	WorkloadTypeVM                = WorkloadType("VM")
+	WorkloadTypeFileFolder        = WorkloadType("FileFolder")
+	WorkloadTypeAzureSqlDb        = WorkloadType("AzureSqlDb")
+	WorkloadTypeSQLDB             = WorkloadType("SQLDB")
+	WorkloadTypeExchange          = WorkloadType("Exchange")
+	WorkloadTypeSharepoint        = WorkloadType("Sharepoint")
+	WorkloadTypeVMwareVM          = WorkloadType("VMwareVM")
+	WorkloadTypeSystemState       = WorkloadType("SystemState")
+	WorkloadTypeClient            = WorkloadType("Client")
+	WorkloadTypeGenericDataSource = WorkloadType("GenericDataSource")
+	WorkloadTypeSQLDataBase       = WorkloadType("SQLDataBase")
+	WorkloadTypeAzureFileShare    = WorkloadType("AzureFileShare")
+	WorkloadTypeSAPHanaDatabase   = WorkloadType("SAPHanaDatabase")
+	WorkloadTypeSAPAseDatabase    = WorkloadType("SAPAseDatabase")
+	WorkloadTypeSAPHanaDBInstance = WorkloadType("SAPHanaDBInstance")
 )
 
 func init() {

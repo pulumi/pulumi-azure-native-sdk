@@ -14,6 +14,8 @@ import (
 
 // Gets the Graph resource under an existing Azure Cosmos DB database account with the provided name.
 // Azure REST API version: 2023-03-15-preview.
+//
+// Other available API versions: 2023-09-15-preview.
 func LookupGraphResourceGraph(ctx *pulumi.Context, args *LookupGraphResourceGraphArgs, opts ...pulumi.InvokeOption) (*LookupGraphResourceGraphResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGraphResourceGraphResult

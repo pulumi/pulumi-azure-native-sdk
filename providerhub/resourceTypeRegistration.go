@@ -13,7 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Azure REST API version: 2021-09-01-preview. Prior API version in Azure Native 1.x: 2020-11-20
+// Azure REST API version: 2021-09-01-preview. Prior API version in Azure Native 1.x: 2020-11-20.
 type ResourceTypeRegistration struct {
 	pulumi.CustomResourceState
 

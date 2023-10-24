@@ -14,6 +14,8 @@ import (
 
 // Gets all deployments for a remediation at subscription scope.
 // Azure REST API version: 2021-10-01.
+//
+// Other available API versions: 2018-07-01-preview.
 func ListRemediationDeploymentsAtSubscription(ctx *pulumi.Context, args *ListRemediationDeploymentsAtSubscriptionArgs, opts ...pulumi.InvokeOption) (*ListRemediationDeploymentsAtSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListRemediationDeploymentsAtSubscriptionResult

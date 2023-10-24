@@ -14,6 +14,8 @@ import (
 
 // Gets an azure databricks accessConnector.
 // Azure REST API version: 2023-05-01.
+//
+// Other available API versions: 2022-04-01-preview.
 func LookupAccessConnector(ctx *pulumi.Context, args *LookupAccessConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAccessConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessConnectorResult

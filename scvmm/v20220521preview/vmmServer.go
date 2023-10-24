@@ -73,6 +73,9 @@ func NewVmmServer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:scvmm/v20230401preview:VmmServer"),
 		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20231007:VmmServer"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

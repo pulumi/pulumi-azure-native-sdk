@@ -14,6 +14,8 @@ import (
 
 // Gets a server DNS alias.
 // Azure REST API version: 2021-11-01.
+//
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
 func LookupServerDnsAlias(ctx *pulumi.Context, args *LookupServerDnsAliasArgs, opts ...pulumi.InvokeOption) (*LookupServerDnsAliasResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerDnsAliasResult

@@ -14,6 +14,8 @@ import (
 
 // Gets the properties of the specified configuration store.
 // Azure REST API version: 2023-03-01.
+//
+// Other available API versions: 2019-02-01-preview.
 func LookupConfigurationStore(ctx *pulumi.Context, args *LookupConfigurationStoreArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationStoreResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationStoreResult

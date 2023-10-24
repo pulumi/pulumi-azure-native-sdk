@@ -14,7 +14,9 @@ import (
 )
 
 // A function object, containing all information associated with the named function. All functions are contained under a streaming job.
-// Azure REST API version: 2020-03-01. Prior API version in Azure Native 1.x: 2016-03-01
+// Azure REST API version: 2020-03-01. Prior API version in Azure Native 1.x: 2016-03-01.
+//
+// Other available API versions: 2016-03-01, 2021-10-01-preview.
 type Function struct {
 	pulumi.CustomResourceState
 

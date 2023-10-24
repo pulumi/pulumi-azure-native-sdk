@@ -68,6 +68,9 @@ func NewCloud(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:scvmm/v20220521preview:Cloud"),
 		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20231007:Cloud"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

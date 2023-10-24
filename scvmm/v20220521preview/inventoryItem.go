@@ -63,6 +63,9 @@ func NewInventoryItem(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:scvmm/v20230401preview:InventoryItem"),
 		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20231007:InventoryItem"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

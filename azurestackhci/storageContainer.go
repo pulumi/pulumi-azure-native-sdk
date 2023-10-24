@@ -15,6 +15,8 @@ import (
 
 // The storage container resource definition.
 // Azure REST API version: 2022-12-15-preview.
+//
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview.
 type StorageContainer struct {
 	pulumi.CustomResourceState
 

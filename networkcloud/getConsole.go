@@ -14,6 +14,8 @@ import (
 
 // Get properties of the provided virtual machine console.
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-07-01.
 func LookupConsole(ctx *pulumi.Context, args *LookupConsoleArgs, opts ...pulumi.InvokeOption) (*LookupConsoleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConsoleResult

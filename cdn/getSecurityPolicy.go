@@ -14,6 +14,8 @@ import (
 
 // Gets an existing security policy within a profile.
 // Azure REST API version: 2023-05-01.
+//
+// Other available API versions: 2023-07-01-preview.
 func LookupSecurityPolicy(ctx *pulumi.Context, args *LookupSecurityPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSecurityPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityPolicyResult

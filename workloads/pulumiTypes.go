@@ -230,6 +230,78 @@ func (o CentralServerVmDetailsResponseArrayOutput) Index(i pulumi.IntInput) Cent
 	}).(CentralServerVmDetailsResponseOutput)
 }
 
+// Error definition.
+type ConnectorErrorDefinitionResponse struct {
+	// Service specific error code which serves as the substatus for the HTTP error code.
+	Code string `pulumi:"code"`
+	// Internal error details.
+	Details []ConnectorErrorDefinitionResponse `pulumi:"details"`
+	// Description of the error.
+	Message string `pulumi:"message"`
+}
+
+// Error definition.
+type ConnectorErrorDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectorErrorDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorErrorDefinitionResponse)(nil)).Elem()
+}
+
+func (o ConnectorErrorDefinitionResponseOutput) ToConnectorErrorDefinitionResponseOutput() ConnectorErrorDefinitionResponseOutput {
+	return o
+}
+
+func (o ConnectorErrorDefinitionResponseOutput) ToConnectorErrorDefinitionResponseOutputWithContext(ctx context.Context) ConnectorErrorDefinitionResponseOutput {
+	return o
+}
+
+func (o ConnectorErrorDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorErrorDefinitionResponse] {
+	return pulumix.Output[ConnectorErrorDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Service specific error code which serves as the substatus for the HTTP error code.
+func (o ConnectorErrorDefinitionResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorErrorDefinitionResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Internal error details.
+func (o ConnectorErrorDefinitionResponseOutput) Details() ConnectorErrorDefinitionResponseArrayOutput {
+	return o.ApplyT(func(v ConnectorErrorDefinitionResponse) []ConnectorErrorDefinitionResponse { return v.Details }).(ConnectorErrorDefinitionResponseArrayOutput)
+}
+
+// Description of the error.
+func (o ConnectorErrorDefinitionResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorErrorDefinitionResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type ConnectorErrorDefinitionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorErrorDefinitionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorErrorDefinitionResponse)(nil)).Elem()
+}
+
+func (o ConnectorErrorDefinitionResponseArrayOutput) ToConnectorErrorDefinitionResponseArrayOutput() ConnectorErrorDefinitionResponseArrayOutput {
+	return o
+}
+
+func (o ConnectorErrorDefinitionResponseArrayOutput) ToConnectorErrorDefinitionResponseArrayOutputWithContext(ctx context.Context) ConnectorErrorDefinitionResponseArrayOutput {
+	return o
+}
+
+func (o ConnectorErrorDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorErrorDefinitionResponse] {
+	return pulumix.Output[[]ConnectorErrorDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectorErrorDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ConnectorErrorDefinitionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorErrorDefinitionResponse {
+		return vs[0].([]ConnectorErrorDefinitionResponse)[vs[1].(int)]
+	}).(ConnectorErrorDefinitionResponseOutput)
+}
+
 // Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
 type CreateAndMountFileShareConfiguration struct {
 	// The type of file share config.
@@ -300,6 +372,88 @@ type DB2ProviderInstancePropertiesResponse struct {
 	SslCertificateUri *string `pulumi:"sslCertificateUri"`
 	// Gets or sets certificate preference if secure communication is enabled.
 	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Defines the policy properties for database backup.
+type DBBackupPolicyProperties struct {
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'AzureWorkload'.
+	BackupManagementType string `pulumi:"backupManagementType"`
+	// Fix the policy inconsistency
+	MakePolicyConsistent *bool `pulumi:"makePolicyConsistent"`
+	// The name of the DB backup policy.
+	Name string `pulumi:"name"`
+	// Number of items associated with this policy.
+	ProtectedItemsCount *int `pulumi:"protectedItemsCount"`
+	// ResourceGuard Operation Requests
+	ResourceGuardOperationRequests []string `pulumi:"resourceGuardOperationRequests"`
+	// Common settings for the backup management
+	Settings *Settings `pulumi:"settings"`
+	// List of sub-protection policies which includes schedule and retention
+	SubProtectionPolicy []SubProtectionPolicy `pulumi:"subProtectionPolicy"`
+	// Type of workload for the backup management
+	WorkLoadType *string `pulumi:"workLoadType"`
+}
+
+// Defines the policy properties for database backup.
+type DBBackupPolicyPropertiesResponse struct {
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'AzureWorkload'.
+	BackupManagementType string `pulumi:"backupManagementType"`
+	// Fix the policy inconsistency
+	MakePolicyConsistent *bool `pulumi:"makePolicyConsistent"`
+	// The name of the DB backup policy.
+	Name string `pulumi:"name"`
+	// Number of items associated with this policy.
+	ProtectedItemsCount *int `pulumi:"protectedItemsCount"`
+	// ResourceGuard Operation Requests
+	ResourceGuardOperationRequests []string `pulumi:"resourceGuardOperationRequests"`
+	// Common settings for the backup management
+	Settings *SettingsResponse `pulumi:"settings"`
+	// List of sub-protection policies which includes schedule and retention
+	SubProtectionPolicy []SubProtectionPolicyResponse `pulumi:"subProtectionPolicy"`
+	// Type of workload for the backup management
+	WorkLoadType *string `pulumi:"workLoadType"`
+}
+
+// Daily retention format.
+type DailyRetentionFormat struct {
+	// List of days of the month.
+	DaysOfTheMonth []Day `pulumi:"daysOfTheMonth"`
+}
+
+// Daily retention format.
+type DailyRetentionFormatResponse struct {
+	// List of days of the month.
+	DaysOfTheMonth []DayResponse `pulumi:"daysOfTheMonth"`
+}
+
+// Daily retention schedule.
+type DailyRetentionSchedule struct {
+	// Retention duration of retention Policy.
+	RetentionDuration *RetentionDuration `pulumi:"retentionDuration"`
+	// Retention times of retention policy.
+	RetentionTimes []string `pulumi:"retentionTimes"`
+}
+
+// Daily retention schedule.
+type DailyRetentionScheduleResponse struct {
+	// Retention duration of retention Policy.
+	RetentionDuration *RetentionDurationResponse `pulumi:"retentionDuration"`
+	// Retention times of retention policy.
+	RetentionTimes []string `pulumi:"retentionTimes"`
+}
+
+// Daily schedule.
+type DailySchedule struct {
+	// List of times of day this schedule has to be run.
+	ScheduleRunTimes []string `pulumi:"scheduleRunTimes"`
+}
+
+// Daily schedule.
+type DailyScheduleResponse struct {
+	// List of times of day this schedule has to be run.
+	ScheduleRunTimes []string `pulumi:"scheduleRunTimes"`
 }
 
 // Gets or sets the database configuration.
@@ -418,6 +572,22 @@ func (o DatabaseVmDetailsResponseArrayOutput) Index(i pulumi.IntInput) DatabaseV
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseVmDetailsResponse {
 		return vs[0].([]DatabaseVmDetailsResponse)[vs[1].(int)]
 	}).(DatabaseVmDetailsResponseOutput)
+}
+
+// Day of the week.
+type Day struct {
+	// Date of the month
+	Date *int `pulumi:"date"`
+	// Whether Date is last date of month
+	IsLast *bool `pulumi:"isLast"`
+}
+
+// Day of the week.
+type DayResponse struct {
+	// Date of the month
+	Date *int `pulumi:"date"`
+	// Whether Date is last date of month
+	IsLast *bool `pulumi:"isLast"`
 }
 
 // Defines the url and storage account ID where deployer VM packages are uploaded
@@ -626,6 +796,22 @@ func (o DiskDetailsResponseArrayOutput) Index(i pulumi.IntInput) DiskDetailsResp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskDetailsResponse {
 		return vs[0].([]DiskDetailsResponse)[vs[1].(int)]
 	}).(DiskDetailsResponseOutput)
+}
+
+// Defines the disk exclusion properties for virtual machine backup.
+type DiskExclusionProperties struct {
+	// List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
+	DiskLunList []int `pulumi:"diskLunList"`
+	// Flag to indicate whether DiskLunList is to be included/ excluded from backup.
+	IsInclusionList bool `pulumi:"isInclusionList"`
+}
+
+// Defines the disk exclusion properties for virtual machine backup.
+type DiskExclusionPropertiesResponse struct {
+	// List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
+	DiskLunList []int `pulumi:"diskLunList"`
+	// Flag to indicate whether DiskLunList is to be included/ excluded from backup.
+	IsInclusionList bool `pulumi:"isInclusionList"`
 }
 
 // The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
@@ -1489,6 +1675,24 @@ func (o ErrorResponseInnerErrorPtrOutput) InnerError() ErrorResponsePtrOutput {
 	}).(ErrorResponsePtrOutput)
 }
 
+// Existing recovery services vault.
+type ExistingRecoveryServicesVault struct {
+	// The resource ID of the recovery services vault that has been created.
+	Id string `pulumi:"id"`
+	// The vault type, whether it is existing or has to be created.
+	// Expected value is 'Existing'.
+	VaultType string `pulumi:"vaultType"`
+}
+
+// Existing recovery services vault.
+type ExistingRecoveryServicesVaultResponse struct {
+	// The resource ID of the recovery services vault that has been created.
+	Id string `pulumi:"id"`
+	// The vault type, whether it is existing or has to be created.
+	// Expected value is 'Existing'.
+	VaultType string `pulumi:"vaultType"`
+}
+
 // The SAP Software configuration Input when the software is installed externally outside the service.
 type ExternalInstallationSoftwareConfiguration struct {
 	// The resource ID of the virtual machine containing the central server instance.
@@ -1596,6 +1800,44 @@ func (o GatewayServerPropertiesResponsePtrOutput) Port() pulumi.Float64PtrOutput
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Defines the HANA Backup data for a virtual instance for SAP.
+type HanaBackupData struct {
+	// Defines the policy properties for database backup.
+	BackupPolicy DBBackupPolicyProperties `pulumi:"backupPolicy"`
+	// The type of backup, VM, SQL or HANA.
+	// Expected value is 'HANA'.
+	BackupType string `pulumi:"backupType"`
+	// Defines the policy properties for database backup.
+	DbInstanceSnapshotBackupPolicy *DBBackupPolicyProperties `pulumi:"dbInstanceSnapshotBackupPolicy"`
+	// Name of the HANA Database User Store Key.
+	HdbuserstoreKeyName string `pulumi:"hdbuserstoreKeyName"`
+	// Gets or sets the database instance number.
+	InstanceNumber *string `pulumi:"instanceNumber"`
+	// The properties of the recovery services vault used for backup.
+	RecoveryServicesVault interface{} `pulumi:"recoveryServicesVault"`
+	// Path of the SSL key store.
+	SslConfiguration *SSLConfiguration `pulumi:"sslConfiguration"`
+}
+
+// Defines the HANA Backup data for a virtual instance for SAP.
+type HanaBackupDataResponse struct {
+	// Defines the policy properties for database backup.
+	BackupPolicy DBBackupPolicyPropertiesResponse `pulumi:"backupPolicy"`
+	// The type of backup, VM, SQL or HANA.
+	// Expected value is 'HANA'.
+	BackupType string `pulumi:"backupType"`
+	// Defines the policy properties for database backup.
+	DbInstanceSnapshotBackupPolicy *DBBackupPolicyPropertiesResponse `pulumi:"dbInstanceSnapshotBackupPolicy"`
+	// Name of the HANA Database User Store Key.
+	HdbuserstoreKeyName string `pulumi:"hdbuserstoreKeyName"`
+	// Gets or sets the database instance number.
+	InstanceNumber *string `pulumi:"instanceNumber"`
+	// The properties of the recovery services vault used for backup.
+	RecoveryServicesVault interface{} `pulumi:"recoveryServicesVault"`
+	// Path of the SSL key store.
+	SslConfiguration *SSLConfigurationResponse `pulumi:"sslConfiguration"`
+}
+
 // Gets or sets the provider properties.
 type HanaDbProviderInstanceProperties struct {
 	// Gets or sets the hana database name.
@@ -1682,6 +1924,28 @@ type HighAvailabilitySoftwareConfigurationResponse struct {
 	FencingClientPassword string `pulumi:"fencingClientPassword"`
 }
 
+// Hourly schedule.
+type HourlySchedule struct {
+	// Interval at which backup needs to be triggered. For hourly the value
+	//  can be 4/6/8/12
+	Interval *int `pulumi:"interval"`
+	// To specify duration of the backup window
+	ScheduleWindowDuration *int `pulumi:"scheduleWindowDuration"`
+	// To specify start time of the backup window
+	ScheduleWindowStartTime *string `pulumi:"scheduleWindowStartTime"`
+}
+
+// Hourly schedule.
+type HourlyScheduleResponse struct {
+	// Interval at which backup needs to be triggered. For hourly the value
+	//  can be 4/6/8/12
+	Interval *int `pulumi:"interval"`
+	// To specify duration of the backup window
+	ScheduleWindowDuration *int `pulumi:"scheduleWindowDuration"`
+	// To specify start time of the backup window
+	ScheduleWindowStartTime *string `pulumi:"scheduleWindowStartTime"`
+}
+
 // Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
 type ImageReference struct {
 	// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
@@ -1704,6 +1968,22 @@ type ImageReferenceResponse struct {
 	Sku *string `pulumi:"sku"`
 	// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
 	Version *string `pulumi:"version"`
+}
+
+// Instant recovery point additional details.
+type InstantRPAdditionalDetails struct {
+	// Azure backup resource group name prefix.
+	AzureBackupRGNamePrefix *string `pulumi:"azureBackupRGNamePrefix"`
+	// Azure backup resource group name suffix.
+	AzureBackupRGNameSuffix *string `pulumi:"azureBackupRGNameSuffix"`
+}
+
+// Instant recovery point additional details.
+type InstantRPAdditionalDetailsResponse struct {
+	// Azure backup resource group name prefix.
+	AzureBackupRGNamePrefix *string `pulumi:"azureBackupRGNamePrefix"`
+	// Azure backup resource group name suffix.
+	AzureBackupRGNameSuffix *string `pulumi:"azureBackupRGNameSuffix"`
 }
 
 // Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
@@ -1784,6 +2064,68 @@ type LoadBalancerResourceNamesResponse struct {
 	HealthProbeNames []string `pulumi:"healthProbeNames"`
 	// The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
+}
+
+// Log policy schedule.
+type LogSchedulePolicy struct {
+	// Frequency of the log schedule operation of this policy in minutes.
+	ScheduleFrequencyInMins *int `pulumi:"scheduleFrequencyInMins"`
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'LogSchedulePolicy'.
+	SchedulePolicyType string `pulumi:"schedulePolicyType"`
+}
+
+// Log policy schedule.
+type LogSchedulePolicyResponse struct {
+	// Frequency of the log schedule operation of this policy in minutes.
+	ScheduleFrequencyInMins *int `pulumi:"scheduleFrequencyInMins"`
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'LogSchedulePolicy'.
+	SchedulePolicyType string `pulumi:"schedulePolicyType"`
+}
+
+// Long term retention policy.
+type LongTermRetentionPolicy struct {
+	// Daily retention schedule of the protection policy.
+	DailySchedule *DailyRetentionSchedule `pulumi:"dailySchedule"`
+	// Monthly retention schedule of the protection policy.
+	MonthlySchedule *MonthlyRetentionSchedule `pulumi:"monthlySchedule"`
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'LongTermRetentionPolicy'.
+	RetentionPolicyType string `pulumi:"retentionPolicyType"`
+	// Weekly retention schedule of the protection policy.
+	WeeklySchedule *WeeklyRetentionSchedule `pulumi:"weeklySchedule"`
+	// Yearly retention schedule of the protection policy.
+	YearlySchedule *YearlyRetentionSchedule `pulumi:"yearlySchedule"`
+}
+
+// Long term retention policy.
+type LongTermRetentionPolicyResponse struct {
+	// Daily retention schedule of the protection policy.
+	DailySchedule *DailyRetentionScheduleResponse `pulumi:"dailySchedule"`
+	// Monthly retention schedule of the protection policy.
+	MonthlySchedule *MonthlyRetentionScheduleResponse `pulumi:"monthlySchedule"`
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'LongTermRetentionPolicy'.
+	RetentionPolicyType string `pulumi:"retentionPolicyType"`
+	// Weekly retention schedule of the protection policy.
+	WeeklySchedule *WeeklyRetentionScheduleResponse `pulumi:"weeklySchedule"`
+	// Yearly retention schedule of the protection policy.
+	YearlySchedule *YearlyRetentionScheduleResponse `pulumi:"yearlySchedule"`
+}
+
+// Long term policy schedule.
+type LongTermSchedulePolicy struct {
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'LongTermSchedulePolicy'.
+	SchedulePolicyType string `pulumi:"schedulePolicyType"`
+}
+
+// Long term policy schedule.
+type LongTermSchedulePolicyResponse struct {
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'LongTermSchedulePolicy'.
+	SchedulePolicyType string `pulumi:"schedulePolicyType"`
 }
 
 // Managed resource group configuration
@@ -2256,6 +2598,34 @@ func (o MonitorPropertiesResponseErrorsOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitorPropertiesResponseErrors) string { return v.Target }).(pulumi.StringOutput)
 }
 
+// Monthly retention schedule.
+type MonthlyRetentionSchedule struct {
+	// Retention duration of retention Policy.
+	RetentionDuration *RetentionDuration `pulumi:"retentionDuration"`
+	// Daily retention format for monthly retention policy.
+	RetentionScheduleDaily *DailyRetentionFormat `pulumi:"retentionScheduleDaily"`
+	// Retention schedule format type for monthly retention policy.
+	RetentionScheduleFormatType *string `pulumi:"retentionScheduleFormatType"`
+	// Weekly retention format for monthly retention policy.
+	RetentionScheduleWeekly *WeeklyRetentionFormat `pulumi:"retentionScheduleWeekly"`
+	// Retention times of retention policy.
+	RetentionTimes []string `pulumi:"retentionTimes"`
+}
+
+// Monthly retention schedule.
+type MonthlyRetentionScheduleResponse struct {
+	// Retention duration of retention Policy.
+	RetentionDuration *RetentionDurationResponse `pulumi:"retentionDuration"`
+	// Daily retention format for monthly retention policy.
+	RetentionScheduleDaily *DailyRetentionFormatResponse `pulumi:"retentionScheduleDaily"`
+	// Retention schedule format type for monthly retention policy.
+	RetentionScheduleFormatType *string `pulumi:"retentionScheduleFormatType"`
+	// Weekly retention format for monthly retention policy.
+	RetentionScheduleWeekly *WeeklyRetentionFormatResponse `pulumi:"retentionScheduleWeekly"`
+	// Retention times of retention policy.
+	RetentionTimes []string `pulumi:"retentionTimes"`
+}
+
 // Gets or sets the file share configuration where the transport directory fileshare already exists, and user wishes to mount the fileshare as a part of the create infra flow.
 type MountFileShareConfiguration struct {
 	// The type of file share config.
@@ -2372,6 +2742,28 @@ type NetworkInterfaceResourceNames struct {
 type NetworkInterfaceResourceNamesResponse struct {
 	// The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
 	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
+}
+
+// New recovery services vault.
+type NewRecoveryServicesVault struct {
+	// The name of the recovery services vault has to be created.
+	Name string `pulumi:"name"`
+	// The name of the resource group where the recovery services vault has to be created.
+	ResourceGroup string `pulumi:"resourceGroup"`
+	// The vault type, whether it is existing or has to be created.
+	// Expected value is 'New'.
+	VaultType string `pulumi:"vaultType"`
+}
+
+// New recovery services vault.
+type NewRecoveryServicesVaultResponse struct {
+	// The name of the recovery services vault has to be created.
+	Name string `pulumi:"name"`
+	// The name of the resource group where the recovery services vault has to be created.
+	ResourceGroup string `pulumi:"resourceGroup"`
+	// The vault type, whether it is existing or has to be created.
+	// Expected value is 'New'.
+	VaultType string `pulumi:"vaultType"`
 }
 
 // Specifies the operating system settings for the virtual machine. Some of the settings cannot be changed once VM is provisioned.
@@ -2536,6 +2928,24 @@ func (o ProviderInstancePropertiesResponseErrorsOutput) Message() pulumi.StringO
 // Target of the error.
 func (o ProviderInstancePropertiesResponseErrorsOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderInstancePropertiesResponseErrors) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// Retention duration.
+type RetentionDuration struct {
+	// Count of duration types. Retention duration is obtained by the counting the duration type Count times.
+	// For example, when Count = 3 and DurationType = Weeks, retention duration will be three weeks.
+	Count *int `pulumi:"count"`
+	// Retention duration type of retention policy.
+	DurationType *string `pulumi:"durationType"`
+}
+
+// Retention duration.
+type RetentionDurationResponse struct {
+	// Count of duration types. Retention duration is obtained by the counting the duration type Count times.
+	// For example, when Count = 3 and DurationType = Weeks, retention duration will be three weeks.
+	Count *int `pulumi:"count"`
+	// Retention duration type of retention policy.
+	DurationType *string `pulumi:"durationType"`
 }
 
 // The SAP Availability Zone Pair.
@@ -2802,6 +3212,30 @@ func (o SAPVirtualInstanceErrorResponseOutput) ToOutput(ctx context.Context) pul
 // The Virtual Instance for SAP error body.
 func (o SAPVirtualInstanceErrorResponseOutput) Properties() ErrorDefinitionResponsePtrOutput {
 	return o.ApplyT(func(v SAPVirtualInstanceErrorResponse) *ErrorDefinitionResponse { return v.Properties }).(ErrorDefinitionResponsePtrOutput)
+}
+
+// Specify the HANA database TLS/SSL properties which will be used for enabling Azure Backup for this database. You need to specify these details if you have enabled secure communication for your HANA database.
+type SSLConfiguration struct {
+	// Specify the crypto provider being used (commoncrypto/openssl). If this argument is not provided, it is automatically determined by searching in the configuration files.
+	SslCryptoProvider *string `pulumi:"sslCryptoProvider"`
+	// Specify the hostname as mentioned in the SSL certificate. If this argument is not provided, it is automatically determined by searching in the SSL certificate.
+	SslHostNameInCertificate *string `pulumi:"sslHostNameInCertificate"`
+	// Specify the name of the keystore file that contains the client's identity (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
+	SslKeyStore *string `pulumi:"sslKeyStore"`
+	// Specify the name of the trust store file that contains the server’s public certificates (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
+	SslTrustStore *string `pulumi:"sslTrustStore"`
+}
+
+// Specify the HANA database TLS/SSL properties which will be used for enabling Azure Backup for this database. You need to specify these details if you have enabled secure communication for your HANA database.
+type SSLConfigurationResponse struct {
+	// Specify the crypto provider being used (commoncrypto/openssl). If this argument is not provided, it is automatically determined by searching in the configuration files.
+	SslCryptoProvider *string `pulumi:"sslCryptoProvider"`
+	// Specify the hostname as mentioned in the SSL certificate. If this argument is not provided, it is automatically determined by searching in the SSL certificate.
+	SslHostNameInCertificate *string `pulumi:"sslHostNameInCertificate"`
+	// Specify the name of the keystore file that contains the client's identity (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
+	SslKeyStore *string `pulumi:"sslKeyStore"`
+	// Specify the name of the trust store file that contains the server’s public certificates (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
+	SslTrustStore *string `pulumi:"sslTrustStore"`
 }
 
 // Gets or sets the Threshold Values for Top Metrics Health.
@@ -3604,6 +4038,28 @@ type ServiceInitiatedSoftwareConfigurationResponse struct {
 	SshPrivateKey string `pulumi:"sshPrivateKey"`
 }
 
+// Common settings field for backup management
+type Settings struct {
+	// Workload compression flag. This has been added so that 'isSqlCompression'
+	// will be deprecated once clients upgrade to consider this flag.
+	IsCompression *bool `pulumi:"isCompression"`
+	// SQL compression flag
+	Issqlcompression *bool `pulumi:"issqlcompression"`
+	// TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// Common settings field for backup management
+type SettingsResponse struct {
+	// Workload compression flag. This has been added so that 'isSqlCompression'
+	// will be deprecated once clients upgrade to consider this flag.
+	IsCompression *bool `pulumi:"isCompression"`
+	// SQL compression flag
+	Issqlcompression *bool `pulumi:"issqlcompression"`
+	// TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+	TimeZone *string `pulumi:"timeZone"`
+}
+
 // The resource names object for shared storage.
 type SharedStorageResourceNames struct {
 	// The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
@@ -3618,6 +4074,88 @@ type SharedStorageResourceNamesResponse struct {
 	SharedStorageAccountName *string `pulumi:"sharedStorageAccountName"`
 	// The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
 	SharedStorageAccountPrivateEndPointName *string `pulumi:"sharedStorageAccountPrivateEndPointName"`
+}
+
+// Simple policy retention.
+type SimpleRetentionPolicy struct {
+	// Retention duration of the protection policy.
+	RetentionDuration *RetentionDuration `pulumi:"retentionDuration"`
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'SimpleRetentionPolicy'.
+	RetentionPolicyType string `pulumi:"retentionPolicyType"`
+}
+
+// Simple policy retention.
+type SimpleRetentionPolicyResponse struct {
+	// Retention duration of the protection policy.
+	RetentionDuration *RetentionDurationResponse `pulumi:"retentionDuration"`
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'SimpleRetentionPolicy'.
+	RetentionPolicyType string `pulumi:"retentionPolicyType"`
+}
+
+// Simple policy schedule.
+type SimpleSchedulePolicy struct {
+	// Hourly Schedule of this Policy
+	HourlySchedule *HourlySchedule `pulumi:"hourlySchedule"`
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'SimpleSchedulePolicy'.
+	SchedulePolicyType string `pulumi:"schedulePolicyType"`
+	// List of days of week this schedule has to be run.
+	ScheduleRunDays []DayOfWeek `pulumi:"scheduleRunDays"`
+	// Frequency of the schedule operation of this policy.
+	ScheduleRunFrequency *string `pulumi:"scheduleRunFrequency"`
+	// List of times of day this schedule has to be run.
+	ScheduleRunTimes []string `pulumi:"scheduleRunTimes"`
+	// At every number weeks this schedule has to be run.
+	ScheduleWeeklyFrequency *int `pulumi:"scheduleWeeklyFrequency"`
+}
+
+// Simple policy schedule.
+type SimpleSchedulePolicyResponse struct {
+	// Hourly Schedule of this Policy
+	HourlySchedule *HourlyScheduleResponse `pulumi:"hourlySchedule"`
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'SimpleSchedulePolicy'.
+	SchedulePolicyType string `pulumi:"schedulePolicyType"`
+	// List of days of week this schedule has to be run.
+	ScheduleRunDays []string `pulumi:"scheduleRunDays"`
+	// Frequency of the schedule operation of this policy.
+	ScheduleRunFrequency *string `pulumi:"scheduleRunFrequency"`
+	// List of times of day this schedule has to be run.
+	ScheduleRunTimes []string `pulumi:"scheduleRunTimes"`
+	// At every number weeks this schedule has to be run.
+	ScheduleWeeklyFrequency *int `pulumi:"scheduleWeeklyFrequency"`
+}
+
+// The V2 policy schedule for IaaS that supports hourly backups.
+type SimpleSchedulePolicyV2 struct {
+	// Daily schedule of this policy
+	DailySchedule *DailySchedule `pulumi:"dailySchedule"`
+	// hourly schedule of this policy
+	HourlySchedule *HourlySchedule `pulumi:"hourlySchedule"`
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'SimpleSchedulePolicyV2'.
+	SchedulePolicyType string `pulumi:"schedulePolicyType"`
+	// Frequency of the schedule operation of this policy.
+	ScheduleRunFrequency *string `pulumi:"scheduleRunFrequency"`
+	// Weekly schedule of this policy
+	WeeklySchedule *WeeklySchedule `pulumi:"weeklySchedule"`
+}
+
+// The V2 policy schedule for IaaS that supports hourly backups.
+type SimpleSchedulePolicyV2Response struct {
+	// Daily schedule of this policy
+	DailySchedule *DailyScheduleResponse `pulumi:"dailySchedule"`
+	// hourly schedule of this policy
+	HourlySchedule *HourlyScheduleResponse `pulumi:"hourlySchedule"`
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'SimpleSchedulePolicyV2'.
+	SchedulePolicyType string `pulumi:"schedulePolicyType"`
+	// Frequency of the schedule operation of this policy.
+	ScheduleRunFrequency *string `pulumi:"scheduleRunFrequency"`
+	// Weekly schedule of this policy
+	WeeklySchedule *WeeklyScheduleResponse `pulumi:"weeklySchedule"`
 }
 
 // Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
@@ -3714,6 +4252,48 @@ type SkipFileShareConfigurationResponse struct {
 	// The type of file share config.
 	// Expected value is 'Skip'.
 	ConfigurationType string `pulumi:"configurationType"`
+}
+
+// Snapshot Backup related fields for WorkloadType SAP Hana system
+type SnapshotBackupAdditionalDetails struct {
+	// Instant RP details for the snapshot.
+	InstantRPDetails *string `pulumi:"instantRPDetails"`
+	// Retention range for instant Rp in days.
+	InstantRpRetentionRangeInDays *int `pulumi:"instantRpRetentionRangeInDays"`
+	// User Assigned managed identity details used for snapshot policy.
+	UserAssignedManagedIdentityDetails *UserAssignedManagedIdentityDetails `pulumi:"userAssignedManagedIdentityDetails"`
+}
+
+// Snapshot Backup related fields for WorkloadType SAP Hana system
+type SnapshotBackupAdditionalDetailsResponse struct {
+	// Instant RP details for the snapshot.
+	InstantRPDetails *string `pulumi:"instantRPDetails"`
+	// Retention range for instant Rp in days.
+	InstantRpRetentionRangeInDays *int `pulumi:"instantRpRetentionRangeInDays"`
+	// User Assigned managed identity details used for snapshot policy.
+	UserAssignedManagedIdentityDetails *UserAssignedManagedIdentityDetailsResponse `pulumi:"userAssignedManagedIdentityDetails"`
+}
+
+// Defines the SQL Backup data for a virtual instance for SAP.
+type SqlBackupData struct {
+	// Defines the policy properties for database backup.
+	BackupPolicy DBBackupPolicyProperties `pulumi:"backupPolicy"`
+	// The type of backup, VM, SQL or HANA.
+	// Expected value is 'SQL'.
+	BackupType string `pulumi:"backupType"`
+	// The properties of the recovery services vault used for backup.
+	RecoveryServicesVault interface{} `pulumi:"recoveryServicesVault"`
+}
+
+// Defines the SQL Backup data for a virtual instance for SAP.
+type SqlBackupDataResponse struct {
+	// Defines the policy properties for database backup.
+	BackupPolicy DBBackupPolicyPropertiesResponse `pulumi:"backupPolicy"`
+	// The type of backup, VM, SQL or HANA.
+	// Expected value is 'SQL'.
+	BackupType string `pulumi:"backupType"`
+	// The properties of the recovery services vault used for backup.
+	RecoveryServicesVault interface{} `pulumi:"recoveryServicesVault"`
 }
 
 // SSH configuration for Linux based VMs running on Azure
@@ -3822,6 +4402,38 @@ func (o StorageInformationResponseArrayOutput) Index(i pulumi.IntInput) StorageI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageInformationResponse {
 		return vs[0].([]StorageInformationResponse)[vs[1].(int)]
 	}).(StorageInformationResponseOutput)
+}
+
+// Sub-protection policy which includes schedule and retention
+type SubProtectionPolicy struct {
+	// Type of backup policy type
+	PolicyType *string `pulumi:"policyType"`
+	// Retention policy with the details on backup copy retention ranges.
+	RetentionPolicy interface{} `pulumi:"retentionPolicy"`
+	// Backup schedule specified as part of backup policy.
+	SchedulePolicy interface{} `pulumi:"schedulePolicy"`
+	// Hana DB instance snapshot backup additional details.
+	SnapshotBackupAdditionalDetails *SnapshotBackupAdditionalDetails `pulumi:"snapshotBackupAdditionalDetails"`
+	// Tiering policy to automatically move RPs to another tier.
+	// Key is Target Tier, defined in RecoveryPointTierType enum.
+	// Tiering policy specifies the criteria to move RP to the target tier.
+	TieringPolicy map[string]TieringPolicy `pulumi:"tieringPolicy"`
+}
+
+// Sub-protection policy which includes schedule and retention
+type SubProtectionPolicyResponse struct {
+	// Type of backup policy type
+	PolicyType *string `pulumi:"policyType"`
+	// Retention policy with the details on backup copy retention ranges.
+	RetentionPolicy interface{} `pulumi:"retentionPolicy"`
+	// Backup schedule specified as part of backup policy.
+	SchedulePolicy interface{} `pulumi:"schedulePolicy"`
+	// Hana DB instance snapshot backup additional details.
+	SnapshotBackupAdditionalDetails *SnapshotBackupAdditionalDetailsResponse `pulumi:"snapshotBackupAdditionalDetails"`
+	// Tiering policy to automatically move RPs to another tier.
+	// Key is Target Tier, defined in RecoveryPointTierType enum.
+	// Tiering policy specifies the criteria to move RP to the target tier.
+	TieringPolicy map[string]TieringPolicyResponse `pulumi:"tieringPolicy"`
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -3989,6 +4601,50 @@ type ThreeTierFullResourceNamesResponse struct {
 	SharedStorage *SharedStorageResourceNamesResponse `pulumi:"sharedStorage"`
 }
 
+// Tiering Policy for a target tier.
+// If the policy is not specified for a given target tier, service retains the existing configured tiering policy for that tier
+type TieringPolicy struct {
+	// Number of days/weeks/months/years to retain backups in current tier before tiering.
+	// Used only if TieringMode is set to TierAfter
+	Duration *int `pulumi:"duration"`
+	// Retention duration type: days/weeks/months/years
+	// Used only if TieringMode is set to TierAfter
+	DurationType *string `pulumi:"durationType"`
+	// Tiering Mode to control automatic tiering of recovery points. Supported values are:
+	// 1. TierRecommended: Tier all recovery points recommended to be tiered
+	// 2. TierAfter: Tier all recovery points after a fixed period, as specified in duration + durationType below.
+	// 3. DoNotTier: Do not tier any recovery points
+	TieringMode *string `pulumi:"tieringMode"`
+}
+
+// Tiering Policy for a target tier.
+// If the policy is not specified for a given target tier, service retains the existing configured tiering policy for that tier
+type TieringPolicyResponse struct {
+	// Number of days/weeks/months/years to retain backups in current tier before tiering.
+	// Used only if TieringMode is set to TierAfter
+	Duration *int `pulumi:"duration"`
+	// Retention duration type: days/weeks/months/years
+	// Used only if TieringMode is set to TierAfter
+	DurationType *string `pulumi:"durationType"`
+	// Tiering Mode to control automatic tiering of recovery points. Supported values are:
+	// 1. TierRecommended: Tier all recovery points recommended to be tiered
+	// 2. TierAfter: Tier all recovery points after a fixed period, as specified in duration + durationType below.
+	// 3. DoNotTier: Do not tier any recovery points
+	TieringMode *string `pulumi:"tieringMode"`
+}
+
+// User assigned managed identity properties.
+type UserAssignedIdentityProperties struct {
+	ClientId    *string `pulumi:"clientId"`
+	PrincipalId *string `pulumi:"principalId"`
+}
+
+// User assigned managed identity properties.
+type UserAssignedIdentityPropertiesResponse struct {
+	ClientId    *string `pulumi:"clientId"`
+	PrincipalId *string `pulumi:"principalId"`
+}
+
 // User assigned identity properties
 type UserAssignedIdentityResponse struct {
 	// The client ID of the assigned identity.
@@ -4052,6 +4708,22 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
 		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
 	}).(UserAssignedIdentityResponseOutput)
+}
+
+// User assigned managed identity details.
+type UserAssignedManagedIdentityDetails struct {
+	IdentityArmId *string `pulumi:"identityArmId"`
+	IdentityName  *string `pulumi:"identityName"`
+	// User assigned managed identity properties.
+	UserAssignedIdentityProperties *UserAssignedIdentityProperties `pulumi:"userAssignedIdentityProperties"`
+}
+
+// User assigned managed identity details.
+type UserAssignedManagedIdentityDetailsResponse struct {
+	IdentityArmId *string `pulumi:"identityArmId"`
+	IdentityName  *string `pulumi:"identityName"`
+	// User assigned managed identity properties.
+	UserAssignedIdentityProperties *UserAssignedIdentityPropertiesResponse `pulumi:"userAssignedIdentityProperties"`
 }
 
 // A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
@@ -4328,6 +5000,90 @@ func (o UserAssignedServiceIdentityResponsePtrOutput) UserAssignedIdentities() U
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
+// Defines the VM Backup data for a virtual instance for SAP.
+type VMBackupData struct {
+	// Defines the policy properties for virtual machine backup.
+	BackupPolicy VMBackupPolicyProperties `pulumi:"backupPolicy"`
+	// The type of backup, VM, SQL or HANA.
+	// Expected value is 'VM'.
+	BackupType string `pulumi:"backupType"`
+	// Defines the disk exclusion properties for virtual machine backup.
+	DiskExclusionProperties *DiskExclusionProperties `pulumi:"diskExclusionProperties"`
+	// The properties of the recovery services vault used for backup.
+	RecoveryServicesVault interface{} `pulumi:"recoveryServicesVault"`
+}
+
+// Defines the VM Backup data for a virtual instance for SAP.
+type VMBackupDataResponse struct {
+	// Defines the policy properties for virtual machine backup.
+	BackupPolicy VMBackupPolicyPropertiesResponse `pulumi:"backupPolicy"`
+	// The type of backup, VM, SQL or HANA.
+	// Expected value is 'VM'.
+	BackupType string `pulumi:"backupType"`
+	// Defines the disk exclusion properties for virtual machine backup.
+	DiskExclusionProperties *DiskExclusionPropertiesResponse `pulumi:"diskExclusionProperties"`
+	// The properties of the recovery services vault used for backup.
+	RecoveryServicesVault interface{} `pulumi:"recoveryServicesVault"`
+}
+
+// Defines the policy properties for virtual machine backup.
+type VMBackupPolicyProperties struct {
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'AzureIaasVM'.
+	BackupManagementType string `pulumi:"backupManagementType"`
+	// Instant recovery point additional details.
+	InstantRPDetails *InstantRPAdditionalDetails `pulumi:"instantRPDetails"`
+	// Instant RP retention policy range in days
+	InstantRpRetentionRangeInDays *int `pulumi:"instantRpRetentionRangeInDays"`
+	// The name of the VM Backup policy.
+	Name string `pulumi:"name"`
+	// The policy type.
+	PolicyType *string `pulumi:"policyType"`
+	// Number of items associated with this policy.
+	ProtectedItemsCount *int `pulumi:"protectedItemsCount"`
+	// ResourceGuard Operation Requests
+	ResourceGuardOperationRequests []string `pulumi:"resourceGuardOperationRequests"`
+	// Retention policy with the details on backup copy retention ranges.
+	RetentionPolicy interface{} `pulumi:"retentionPolicy"`
+	// Backup schedule specified as part of backup policy.
+	SchedulePolicy interface{} `pulumi:"schedulePolicy"`
+	// Tiering policy to automatically move RPs to another tier
+	// Key is Target Tier, defined in RecoveryPointTierType enum.
+	// Tiering policy specifies the criteria to move RP to the target tier.
+	TieringPolicy map[string]TieringPolicy `pulumi:"tieringPolicy"`
+	// Time zone optional input as string. For example: "Pacific Standard Time".
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// Defines the policy properties for virtual machine backup.
+type VMBackupPolicyPropertiesResponse struct {
+	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+	// Expected value is 'AzureIaasVM'.
+	BackupManagementType string `pulumi:"backupManagementType"`
+	// Instant recovery point additional details.
+	InstantRPDetails *InstantRPAdditionalDetailsResponse `pulumi:"instantRPDetails"`
+	// Instant RP retention policy range in days
+	InstantRpRetentionRangeInDays *int `pulumi:"instantRpRetentionRangeInDays"`
+	// The name of the VM Backup policy.
+	Name string `pulumi:"name"`
+	// The policy type.
+	PolicyType *string `pulumi:"policyType"`
+	// Number of items associated with this policy.
+	ProtectedItemsCount *int `pulumi:"protectedItemsCount"`
+	// ResourceGuard Operation Requests
+	ResourceGuardOperationRequests []string `pulumi:"resourceGuardOperationRequests"`
+	// Retention policy with the details on backup copy retention ranges.
+	RetentionPolicy interface{} `pulumi:"retentionPolicy"`
+	// Backup schedule specified as part of backup policy.
+	SchedulePolicy interface{} `pulumi:"schedulePolicy"`
+	// Tiering policy to automatically move RPs to another tier
+	// Key is Target Tier, defined in RecoveryPointTierType enum.
+	// Tiering policy specifies the criteria to move RP to the target tier.
+	TieringPolicy map[string]TieringPolicyResponse `pulumi:"tieringPolicy"`
+	// Time zone optional input as string. For example: "Pacific Standard Time".
+	TimeZone *string `pulumi:"timeZone"`
+}
+
 // Defines the virtual machine configuration.
 type VirtualMachineConfiguration struct {
 	// The image reference.
@@ -4376,6 +5132,58 @@ type VirtualMachineResourceNamesResponse struct {
 	VmName *string `pulumi:"vmName"`
 }
 
+// Weekly retention format.
+type WeeklyRetentionFormat struct {
+	// List of days of the week.
+	DaysOfTheWeek []DayOfWeek `pulumi:"daysOfTheWeek"`
+	// List of weeks of month.
+	WeeksOfTheMonth []WeekOfMonth `pulumi:"weeksOfTheMonth"`
+}
+
+// Weekly retention format.
+type WeeklyRetentionFormatResponse struct {
+	// List of days of the week.
+	DaysOfTheWeek []string `pulumi:"daysOfTheWeek"`
+	// List of weeks of month.
+	WeeksOfTheMonth []string `pulumi:"weeksOfTheMonth"`
+}
+
+// Weekly retention schedule.
+type WeeklyRetentionSchedule struct {
+	// List of days of week for weekly retention policy.
+	DaysOfTheWeek []DayOfWeek `pulumi:"daysOfTheWeek"`
+	// Retention duration of retention Policy.
+	RetentionDuration *RetentionDuration `pulumi:"retentionDuration"`
+	// Retention times of retention policy.
+	RetentionTimes []string `pulumi:"retentionTimes"`
+}
+
+// Weekly retention schedule.
+type WeeklyRetentionScheduleResponse struct {
+	// List of days of week for weekly retention policy.
+	DaysOfTheWeek []string `pulumi:"daysOfTheWeek"`
+	// Retention duration of retention Policy.
+	RetentionDuration *RetentionDurationResponse `pulumi:"retentionDuration"`
+	// Retention times of retention policy.
+	RetentionTimes []string `pulumi:"retentionTimes"`
+}
+
+// Weekly schedule.
+type WeeklySchedule struct {
+	// Schedule run days.
+	ScheduleRunDays []DayOfWeek `pulumi:"scheduleRunDays"`
+	// List of times of day this schedule has to be run.
+	ScheduleRunTimes []string `pulumi:"scheduleRunTimes"`
+}
+
+// Weekly schedule.
+type WeeklyScheduleResponse struct {
+	// Schedule run days.
+	ScheduleRunDays []string `pulumi:"scheduleRunDays"`
+	// List of times of day this schedule has to be run.
+	ScheduleRunTimes []string `pulumi:"scheduleRunTimes"`
+}
+
 // Specifies Windows operating system settings on the virtual machine.
 type WindowsConfiguration struct {
 	// The OS Type
@@ -4390,11 +5198,45 @@ type WindowsConfigurationResponse struct {
 	OsType string `pulumi:"osType"`
 }
 
+// Yearly retention schedule.
+type YearlyRetentionSchedule struct {
+	// List of months of year of yearly retention policy.
+	MonthsOfYear []MonthOfYear `pulumi:"monthsOfYear"`
+	// Retention duration of retention Policy.
+	RetentionDuration *RetentionDuration `pulumi:"retentionDuration"`
+	// Daily retention format for yearly retention policy.
+	RetentionScheduleDaily *DailyRetentionFormat `pulumi:"retentionScheduleDaily"`
+	// Retention schedule format for yearly retention policy.
+	RetentionScheduleFormatType *string `pulumi:"retentionScheduleFormatType"`
+	// Weekly retention format for yearly retention policy.
+	RetentionScheduleWeekly *WeeklyRetentionFormat `pulumi:"retentionScheduleWeekly"`
+	// Retention times of retention policy.
+	RetentionTimes []string `pulumi:"retentionTimes"`
+}
+
+// Yearly retention schedule.
+type YearlyRetentionScheduleResponse struct {
+	// List of months of year of yearly retention policy.
+	MonthsOfYear []string `pulumi:"monthsOfYear"`
+	// Retention duration of retention Policy.
+	RetentionDuration *RetentionDurationResponse `pulumi:"retentionDuration"`
+	// Daily retention format for yearly retention policy.
+	RetentionScheduleDaily *DailyRetentionFormatResponse `pulumi:"retentionScheduleDaily"`
+	// Retention schedule format for yearly retention policy.
+	RetentionScheduleFormatType *string `pulumi:"retentionScheduleFormatType"`
+	// Weekly retention format for yearly retention policy.
+	RetentionScheduleWeekly *WeeklyRetentionFormatResponse `pulumi:"retentionScheduleWeekly"`
+	// Retention times of retention policy.
+	RetentionTimes []string `pulumi:"retentionTimes"`
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationServerVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ApplicationServerVmDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(CentralServerVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(CentralServerVmDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorErrorDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(ConnectorErrorDefinitionResponseArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseVmDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(DiskDetailsResponseOutput{})

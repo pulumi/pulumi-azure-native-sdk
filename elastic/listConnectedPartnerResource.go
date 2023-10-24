@@ -15,6 +15,8 @@ import (
 //	List of all active elastic deployments.
 //
 // Azure REST API version: 2023-07-01-preview.
+//
+// Other available API versions: 2023-10-01-preview.
 func ListConnectedPartnerResource(ctx *pulumi.Context, args *ListConnectedPartnerResourceArgs, opts ...pulumi.InvokeOption) (*ListConnectedPartnerResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConnectedPartnerResourceResult

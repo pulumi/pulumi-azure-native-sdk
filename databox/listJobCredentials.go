@@ -14,6 +14,8 @@ import (
 
 // This method gets the unencrypted secrets related to the job.
 // Azure REST API version: 2022-12-01.
+//
+// Other available API versions: 2019-09-01, 2023-03-01.
 func ListJobCredentials(ctx *pulumi.Context, args *ListJobCredentialsArgs, opts ...pulumi.InvokeOption) (*ListJobCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListJobCredentialsResult

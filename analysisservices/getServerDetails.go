@@ -14,6 +14,8 @@ import (
 
 // Gets details about the specified Analysis Services server.
 // Azure REST API version: 2017-08-01.
+//
+// Other available API versions: 2017-08-01-beta.
 func LookupServerDetails(ctx *pulumi.Context, args *LookupServerDetailsArgs, opts ...pulumi.InvokeOption) (*LookupServerDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerDetailsResult

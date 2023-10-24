@@ -14,6 +14,8 @@ import (
 
 // Get a Disk pool.
 // Azure REST API version: 2021-08-01.
+//
+// Other available API versions: 2020-03-15-preview.
 func LookupDiskPool(ctx *pulumi.Context, args *LookupDiskPoolArgs, opts ...pulumi.InvokeOption) (*LookupDiskPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiskPoolResult

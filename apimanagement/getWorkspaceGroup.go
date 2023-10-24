@@ -14,6 +14,8 @@ import (
 
 // Gets the details of the group specified by its identifier.
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2023-03-01-preview.
 func LookupWorkspaceGroup(ctx *pulumi.Context, args *LookupWorkspaceGroupArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceGroupResult

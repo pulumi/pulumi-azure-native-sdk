@@ -14,7 +14,7 @@ import (
 )
 
 // Represents a lab account.
-// Azure REST API version: 2018-10-15. Prior API version in Azure Native 1.x: 2018-10-15
+// Azure REST API version: 2018-10-15. Prior API version in Azure Native 1.x: 2018-10-15.
 type LabAccount struct {
 	pulumi.CustomResourceState
 

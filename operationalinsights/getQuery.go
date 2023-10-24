@@ -14,6 +14,8 @@ import (
 
 // Gets a specific Log Analytics Query defined within a Log Analytics QueryPack.
 // Azure REST API version: 2019-09-01.
+//
+// Other available API versions: 2019-09-01-preview.
 func LookupQuery(ctx *pulumi.Context, args *LookupQueryArgs, opts ...pulumi.InvokeOption) (*LookupQueryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueryResult

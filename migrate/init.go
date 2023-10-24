@@ -23,12 +23,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:migrate:Assessment":
 		r = &Assessment{}
+	case "azure-native:migrate:AssessmentProjectsOperation":
+		r = &AssessmentProjectsOperation{}
+	case "azure-native:migrate:AvsAssessmentsOperation":
+		r = &AvsAssessmentsOperation{}
 	case "azure-native:migrate:Group":
 		r = &Group{}
+	case "azure-native:migrate:GroupsOperation":
+		r = &GroupsOperation{}
 	case "azure-native:migrate:HyperVCollector":
 		r = &HyperVCollector{}
+	case "azure-native:migrate:HypervCollectorsOperation":
+		r = &HypervCollectorsOperation{}
 	case "azure-native:migrate:ImportCollector":
 		r = &ImportCollector{}
+	case "azure-native:migrate:ImportCollectorsOperation":
+		r = &ImportCollectorsOperation{}
 	case "azure-native:migrate:MigrateAgent":
 		r = &MigrateAgent{}
 	case "azure-native:migrate:MigrateProject":
@@ -45,18 +55,28 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrivateEndpointConnection{}
 	case "azure-native:migrate:PrivateEndpointConnectionControllerPrivateEndpointConnection":
 		r = &PrivateEndpointConnectionControllerPrivateEndpointConnection{}
+	case "azure-native:migrate:PrivateEndpointConnectionOperation":
+		r = &PrivateEndpointConnectionOperation{}
 	case "azure-native:migrate:PrivateEndpointConnectionProxyController":
 		r = &PrivateEndpointConnectionProxyController{}
 	case "azure-native:migrate:Project":
 		r = &Project{}
 	case "azure-native:migrate:ServerCollector":
 		r = &ServerCollector{}
+	case "azure-native:migrate:ServerCollectorsOperation":
+		r = &ServerCollectorsOperation{}
 	case "azure-native:migrate:Solution":
 		r = &Solution{}
 	case "azure-native:migrate:SolutionsControllerSolution":
 		r = &SolutionsControllerSolution{}
+	case "azure-native:migrate:SqlAssessmentV2Operation":
+		r = &SqlAssessmentV2Operation{}
+	case "azure-native:migrate:SqlCollectorOperation":
+		r = &SqlCollectorOperation{}
 	case "azure-native:migrate:VMwareCollector":
 		r = &VMwareCollector{}
+	case "azure-native:migrate:VmwareCollectorsOperation":
+		r = &VmwareCollectorsOperation{}
 	case "azure-native:migrate:WorkloadDeployment":
 		r = &WorkloadDeployment{}
 	case "azure-native:migrate:WorkloadInstance":

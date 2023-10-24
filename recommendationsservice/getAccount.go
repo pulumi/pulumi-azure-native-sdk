@@ -14,6 +14,8 @@ import (
 
 // Returns RecommendationsService Account resource for a given name.
 // Azure REST API version: 2022-02-01.
+//
+// Other available API versions: 2022-03-01-preview.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult

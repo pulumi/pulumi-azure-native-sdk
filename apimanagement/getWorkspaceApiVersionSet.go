@@ -14,6 +14,8 @@ import (
 
 // Gets the details of the Api Version Set specified by its identifier.
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2023-03-01-preview.
 func LookupWorkspaceApiVersionSet(ctx *pulumi.Context, args *LookupWorkspaceApiVersionSetArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceApiVersionSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceApiVersionSetResult

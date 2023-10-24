@@ -14,6 +14,8 @@ import (
 
 // Gets the current version of the specified key from the specified key vault.
 // Azure REST API version: 2023-02-01.
+//
+// Other available API versions: 2023-07-01.
 func LookupKey(ctx *pulumi.Context, args *LookupKeyArgs, opts ...pulumi.InvokeOption) (*LookupKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeyResult

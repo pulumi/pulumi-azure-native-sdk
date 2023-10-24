@@ -14,6 +14,8 @@ import (
 
 // Get the certificate from the provisioning service.
 // Azure REST API version: 2022-12-12.
+//
+// Other available API versions: 2021-10-15, 2023-03-01-preview.
 func LookupDpsCertificate(ctx *pulumi.Context, args *LookupDpsCertificateArgs, opts ...pulumi.InvokeOption) (*LookupDpsCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDpsCertificateResult

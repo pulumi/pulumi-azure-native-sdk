@@ -14,7 +14,7 @@ import (
 )
 
 // Blueprint artifact that deploys a Resource Manager template.
-// Azure REST API version: 2018-11-01-preview. Prior API version in Azure Native 1.x: 2018-11-01-preview
+// Azure REST API version: 2018-11-01-preview. Prior API version in Azure Native 1.x: 2018-11-01-preview.
 type TemplateArtifact struct {
 	pulumi.CustomResourceState
 

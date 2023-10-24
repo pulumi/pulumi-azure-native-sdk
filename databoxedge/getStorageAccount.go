@@ -14,6 +14,8 @@ import (
 
 // Represents a Storage Account on the  Data Box Edge/Gateway device.
 // Azure REST API version: 2022-03-01.
+//
+// Other available API versions: 2020-05-01-preview, 2023-01-01-preview, 2023-07-01.
 func LookupStorageAccount(ctx *pulumi.Context, args *LookupStorageAccountArgs, opts ...pulumi.InvokeOption) (*LookupStorageAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageAccountResult

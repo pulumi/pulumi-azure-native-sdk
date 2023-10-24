@@ -14,6 +14,8 @@ import (
 
 // Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 // Azure REST API version: 2023-05-01.
+//
+// Other available API versions: 2016-04-02, 2023-07-01-preview.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEndpointResult

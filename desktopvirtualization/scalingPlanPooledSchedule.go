@@ -14,7 +14,9 @@ import (
 )
 
 // Represents a ScalingPlanPooledSchedule definition.
-// Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2022-04-01-preview
+// Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2022-04-01-preview.
+//
+// Other available API versions: 2022-10-14-preview, 2023-07-07-preview, 2023-09-05.
 type ScalingPlanPooledSchedule struct {
 	pulumi.CustomResourceState
 

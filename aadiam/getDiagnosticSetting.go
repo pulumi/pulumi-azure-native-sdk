@@ -14,6 +14,8 @@ import (
 
 // Gets the active diagnostic setting for AadIam.
 // Azure REST API version: 2017-04-01.
+//
+// Other available API versions: 2017-04-01-preview.
 func LookupDiagnosticSetting(ctx *pulumi.Context, args *LookupDiagnosticSettingArgs, opts ...pulumi.InvokeOption) (*LookupDiagnosticSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiagnosticSettingResult

@@ -14,6 +14,8 @@ import (
 
 // Description for Gets the application settings of a static site build.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2021-02-01.
 func ListStaticSiteBuildAppSettings(ctx *pulumi.Context, args *ListStaticSiteBuildAppSettingsArgs, opts ...pulumi.InvokeOption) (*ListStaticSiteBuildAppSettingsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListStaticSiteBuildAppSettingsResult

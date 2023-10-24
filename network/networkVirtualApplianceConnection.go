@@ -15,6 +15,8 @@ import (
 
 // NetworkVirtualApplianceConnection resource.
 // Azure REST API version: 2023-02-01.
+//
+// Other available API versions: 2023-04-01, 2023-05-01.
 type NetworkVirtualApplianceConnection struct {
 	pulumi.CustomResourceState
 

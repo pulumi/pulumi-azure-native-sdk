@@ -14,6 +14,8 @@ import (
 
 // Gets a database advisor.
 // Azure REST API version: 2021-11-01.
+//
+// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview.
 func LookupDatabaseAdvisor(ctx *pulumi.Context, args *LookupDatabaseAdvisorArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseAdvisorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseAdvisorResult

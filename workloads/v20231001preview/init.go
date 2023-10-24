@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:workloads/v20231001preview:ACSSBackupConnection":
+		r = &ACSSBackupConnection{}
+	case "azure-native:workloads/v20231001preview:Connector":
+		r = &Connector{}
 	case "azure-native:workloads/v20231001preview:SAPApplicationServerInstance":
 		r = &SAPApplicationServerInstance{}
 	case "azure-native:workloads/v20231001preview:SAPCentralInstance":

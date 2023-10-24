@@ -14,6 +14,8 @@ import (
 
 // Gets details about the specified dnc controller.
 // Azure REST API version: 2021-03-15.
+//
+// Other available API versions: 2023-05-18-preview, 2023-06-27-preview.
 func LookupControllerDetails(ctx *pulumi.Context, args *LookupControllerDetailsArgs, opts ...pulumi.InvokeOption) (*LookupControllerDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupControllerDetailsResult

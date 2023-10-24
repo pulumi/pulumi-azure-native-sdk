@@ -14,7 +14,9 @@ import (
 )
 
 // NSX DHCP
-// Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-07-17-preview
+// Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-07-17-preview.
+//
+// Other available API versions: 2021-01-01-preview, 2023-03-01.
 type WorkloadNetworkDhcp struct {
 	pulumi.CustomResourceState
 

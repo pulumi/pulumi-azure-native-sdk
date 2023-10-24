@@ -14,6 +14,8 @@ import (
 
 // list source configurations for a Linker.
 // Azure REST API version: 2022-11-01-preview.
+//
+// Other available API versions: 2021-11-01-preview.
 func ListLinkerConfigurations(ctx *pulumi.Context, args *ListLinkerConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListLinkerConfigurationsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListLinkerConfigurationsResult

@@ -14,6 +14,8 @@ import (
 
 // Certificate used for Custom Domain bindings of Container Apps in a Managed Environment
 // Azure REST API version: 2022-10-01.
+//
+// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview.
 func LookupConnectedEnvironmentsCertificate(ctx *pulumi.Context, args *LookupConnectedEnvironmentsCertificateArgs, opts ...pulumi.InvokeOption) (*LookupConnectedEnvironmentsCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectedEnvironmentsCertificateResult

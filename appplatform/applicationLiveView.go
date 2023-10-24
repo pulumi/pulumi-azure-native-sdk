@@ -15,6 +15,8 @@ import (
 
 // Application Live View resource
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview.
 type ApplicationLiveView struct {
 	pulumi.CustomResourceState
 

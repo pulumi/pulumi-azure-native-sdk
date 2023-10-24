@@ -14,6 +14,8 @@ import (
 
 // Retrieves the properties of a Confidential Ledger.
 // Azure REST API version: 2022-05-13.
+//
+// Other available API versions: 2023-01-26-preview, 2023-06-28-preview.
 func LookupLedger(ctx *pulumi.Context, args *LookupLedgerArgs, opts ...pulumi.InvokeOption) (*LookupLedgerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLedgerResult

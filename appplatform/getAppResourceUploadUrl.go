@@ -14,6 +14,8 @@ import (
 
 // Get an resource upload URL for an App, which may be artifacts or source archive.
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview.
 func GetAppResourceUploadUrl(ctx *pulumi.Context, args *GetAppResourceUploadUrlArgs, opts ...pulumi.InvokeOption) (*GetAppResourceUploadUrlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetAppResourceUploadUrlResult

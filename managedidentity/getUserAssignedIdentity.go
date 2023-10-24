@@ -14,6 +14,8 @@ import (
 
 // Gets the identity.
 // Azure REST API version: 2023-01-31.
+//
+// Other available API versions: 2015-08-31-preview.
 func LookupUserAssignedIdentity(ctx *pulumi.Context, args *LookupUserAssignedIdentityArgs, opts ...pulumi.InvokeOption) (*LookupUserAssignedIdentityResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserAssignedIdentityResult

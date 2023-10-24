@@ -14,6 +14,8 @@ import (
 
 // Gets the search service with the given name in the given resource group.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2021-04-01-preview, 2023-11-01.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceResult

@@ -14,6 +14,8 @@ import (
 
 // Gets the specified commitmentPlans associated with the Cognitive Services account.
 // Azure REST API version: 2023-05-01.
+//
+// Other available API versions: 2023-10-01-preview.
 func LookupCommitmentPlan(ctx *pulumi.Context, args *LookupCommitmentPlanArgs, opts ...pulumi.InvokeOption) (*LookupCommitmentPlanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCommitmentPlanResult

@@ -14,6 +14,8 @@ import (
 
 // List of all zones and associated hosts for a cluster
 // Azure REST API version: 2022-05-01.
+//
+// Other available API versions: 2023-03-01.
 func ListClusterZones(ctx *pulumi.Context, args *ListClusterZonesArgs, opts ...pulumi.InvokeOption) (*ListClusterZonesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListClusterZonesResult

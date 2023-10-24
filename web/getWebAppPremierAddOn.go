@@ -14,6 +14,8 @@ import (
 
 // Description for Gets a named add-on of an app.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2016-08-01, 2020-10-01.
 func LookupWebAppPremierAddOn(ctx *pulumi.Context, args *LookupWebAppPremierAddOnArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPremierAddOnResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppPremierAddOnResult

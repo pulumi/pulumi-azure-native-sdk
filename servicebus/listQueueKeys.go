@@ -14,6 +14,8 @@ import (
 
 // Primary and secondary connection strings to the queue.
 // Azure REST API version: 2022-01-01-preview.
+//
+// Other available API versions: 2015-08-01, 2022-10-01-preview.
 func ListQueueKeys(ctx *pulumi.Context, args *ListQueueKeysArgs, opts ...pulumi.InvokeOption) (*ListQueueKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListQueueKeysResult

@@ -15,6 +15,8 @@ import (
 
 // Represents a ScalingPlanPersonalSchedule definition.
 // Azure REST API version: 2023-07-07-preview.
+//
+// Other available API versions: 2023-09-05.
 type ScalingPlanPersonalSchedule struct {
 	pulumi.CustomResourceState
 

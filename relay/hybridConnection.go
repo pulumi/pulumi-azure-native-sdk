@@ -14,7 +14,7 @@ import (
 )
 
 // Description of hybrid connection resource.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2017-04-01
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2017-04-01.
 type HybridConnection struct {
 	pulumi.CustomResourceState
 

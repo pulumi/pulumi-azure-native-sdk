@@ -14,6 +14,8 @@ import (
 
 // Gets the properties of an Azure Video Indexer account.
 // Azure REST API version: 2022-08-01.
+//
+// Other available API versions: 2024-01-01.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult

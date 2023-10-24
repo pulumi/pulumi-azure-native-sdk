@@ -14,6 +14,8 @@ import (
 
 // Get a Connection Setting registration for a Bot Service
 // Azure REST API version: 2022-09-15.
+//
+// Other available API versions: 2023-09-15-preview.
 func ListBotConnectionWithSecrets(ctx *pulumi.Context, args *ListBotConnectionWithSecretsArgs, opts ...pulumi.InvokeOption) (*ListBotConnectionWithSecretsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListBotConnectionWithSecretsResult

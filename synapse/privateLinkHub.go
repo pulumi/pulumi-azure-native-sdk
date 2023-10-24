@@ -14,7 +14,9 @@ import (
 )
 
 // A privateLinkHub
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2021-03-01
+// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2021-03-01.
+//
+// Other available API versions: 2021-06-01-preview.
 type PrivateLinkHub struct {
 	pulumi.CustomResourceState
 

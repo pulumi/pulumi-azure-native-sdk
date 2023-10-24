@@ -14,6 +14,8 @@ import (
 
 // This operation retrieves the policy definition in the given management group with the given name.
 // Azure REST API version: 2021-06-01.
+//
+// Other available API versions: 2018-05-01, 2019-06-01, 2023-04-01.
 func LookupPolicyDefinitionAtManagementGroup(ctx *pulumi.Context, args *LookupPolicyDefinitionAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupPolicyDefinitionAtManagementGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyDefinitionAtManagementGroupResult

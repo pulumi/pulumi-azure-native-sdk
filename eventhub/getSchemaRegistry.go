@@ -14,6 +14,8 @@ import (
 
 // Gets the details of an EventHub schema group.
 // Azure REST API version: 2022-10-01-preview.
+//
+// Other available API versions: 2023-01-01-preview.
 func LookupSchemaRegistry(ctx *pulumi.Context, args *LookupSchemaRegistryArgs, opts ...pulumi.InvokeOption) (*LookupSchemaRegistryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaRegistryResult

@@ -14,6 +14,8 @@ import (
 
 // Gets the specified saved search for a given workspace.
 // Azure REST API version: 2020-08-01.
+//
+// Other available API versions: 2015-03-20.
 func LookupSavedSearch(ctx *pulumi.Context, args *LookupSavedSearchArgs, opts ...pulumi.InvokeOption) (*LookupSavedSearchResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSavedSearchResult
