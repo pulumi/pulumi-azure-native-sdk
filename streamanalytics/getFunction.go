@@ -14,6 +14,8 @@ import (
 
 // Gets details about the specified function.
 // Azure REST API version: 2020-03-01.
+//
+// Other available API versions: 2016-03-01, 2021-10-01-preview.
 func LookupFunction(ctx *pulumi.Context, args *LookupFunctionArgs, opts ...pulumi.InvokeOption) (*LookupFunctionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFunctionResult

@@ -14,6 +14,8 @@ import (
 
 // Gets the details of an Appliance with a specified resource group and name.
 // Azure REST API version: 2022-10-27.
+//
+// Other available API versions: 2021-10-31-preview.
 func LookupAppliance(ctx *pulumi.Context, args *LookupApplianceArgs, opts ...pulumi.InvokeOption) (*LookupApplianceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplianceResult

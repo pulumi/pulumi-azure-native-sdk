@@ -14,6 +14,8 @@ import (
 
 // Gets the specified private endpoint connection associated with the attestation provider.
 // Azure REST API version: 2021-06-01.
+//
+// Other available API versions: 2021-06-01-preview.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult

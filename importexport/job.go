@@ -14,7 +14,7 @@ import (
 )
 
 // Contains the job information.
-// Azure REST API version: 2021-01-01. Prior API version in Azure Native 1.x: 2020-08-01
+// Azure REST API version: 2021-01-01. Prior API version in Azure Native 1.x: 2020-08-01.
 type Job struct {
 	pulumi.CustomResourceState
 

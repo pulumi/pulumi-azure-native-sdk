@@ -14,6 +14,8 @@ import (
 
 // Shows an inventory item.
 // Azure REST API version: 2022-05-21-preview.
+//
+// Other available API versions: 2023-04-01-preview, 2023-10-07.
 func LookupInventoryItem(ctx *pulumi.Context, args *LookupInventoryItemArgs, opts ...pulumi.InvokeOption) (*LookupInventoryItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInventoryItemResult

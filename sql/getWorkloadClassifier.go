@@ -14,6 +14,8 @@ import (
 
 // Gets a workload classifier
 // Azure REST API version: 2021-11-01.
+//
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
 func LookupWorkloadClassifier(ctx *pulumi.Context, args *LookupWorkloadClassifierArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadClassifierResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadClassifierResult

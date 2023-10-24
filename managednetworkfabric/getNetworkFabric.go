@@ -14,6 +14,8 @@ import (
 
 // Get Network Fabric resource details.
 // Azure REST API version: 2023-02-01-preview.
+//
+// Other available API versions: 2023-06-15.
 func LookupNetworkFabric(ctx *pulumi.Context, args *LookupNetworkFabricArgs, opts ...pulumi.InvokeOption) (*LookupNetworkFabricResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkFabricResult

@@ -15,6 +15,8 @@ import (
 
 // An object that represents a cache rule for a container registry.
 // Azure REST API version: 2023-01-01-preview.
+//
+// Other available API versions: 2023-06-01-preview, 2023-07-01, 2023-08-01-preview.
 type CacheRule struct {
 	pulumi.CustomResourceState
 

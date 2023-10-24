@@ -14,6 +14,8 @@ import (
 
 // Gets private endpoint connection.
 // Azure REST API version: 2022-11-08.
+//
+// Other available API versions: 2018-06-01-privatepreview.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult

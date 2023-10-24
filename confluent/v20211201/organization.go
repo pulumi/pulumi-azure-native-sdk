@@ -73,6 +73,9 @@ func NewOrganization(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:confluent/v20210901preview:Organization"),
 		},
+		{
+			Type: pulumi.String("azure-native:confluent/v20230822:Organization"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -14,6 +14,8 @@ import (
 
 // Get information related to a specific group in the project. Returns a json object of type 'group' as specified in the models section.
 // Azure REST API version: 2019-10-01.
+//
+// Other available API versions: 2018-02-02.
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupResult

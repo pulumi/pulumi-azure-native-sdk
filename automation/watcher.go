@@ -14,7 +14,7 @@ import (
 )
 
 // Definition of the watcher type.
-// Azure REST API version: 2020-01-13-preview. Prior API version in Azure Native 1.x: 2019-06-01
+// Azure REST API version: 2020-01-13-preview. Prior API version in Azure Native 1.x: 2019-06-01.
 type Watcher struct {
 	pulumi.CustomResourceState
 

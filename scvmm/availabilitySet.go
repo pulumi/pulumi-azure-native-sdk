@@ -14,7 +14,9 @@ import (
 )
 
 // The AvailabilitySets resource definition.
-// Azure REST API version: 2022-05-21-preview. Prior API version in Azure Native 1.x: 2020-06-05-preview
+// Azure REST API version: 2022-05-21-preview. Prior API version in Azure Native 1.x: 2020-06-05-preview.
+//
+// Other available API versions: 2023-04-01-preview, 2023-10-07.
 type AvailabilitySet struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +59,9 @@ func NewAvailabilitySet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:scvmm/v20230401preview:AvailabilitySet"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20231007:AvailabilitySet"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -15,6 +15,8 @@ import (
 
 // Product-API link details.
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2023-03-01-preview.
 type WorkspaceProductApiLink struct {
 	pulumi.CustomResourceState
 

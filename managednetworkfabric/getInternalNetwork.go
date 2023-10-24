@@ -14,6 +14,8 @@ import (
 
 // Gets a InternalNetworks.
 // Azure REST API version: 2023-02-01-preview.
+//
+// Other available API versions: 2023-06-15.
 func LookupInternalNetwork(ctx *pulumi.Context, args *LookupInternalNetworkArgs, opts ...pulumi.InvokeOption) (*LookupInternalNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInternalNetworkResult

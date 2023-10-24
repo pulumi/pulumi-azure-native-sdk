@@ -15,6 +15,8 @@ import (
 
 // A multi-stage process to perform update operations across members of a Fleet.
 // Azure REST API version: 2023-03-15-preview.
+//
+// Other available API versions: 2023-06-15-preview, 2023-08-15-preview, 2023-10-15.
 type UpdateRun struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +65,9 @@ func NewUpdateRun(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230815preview:UpdateRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20231015:UpdateRun"),
 		},
 	})
 	opts = append(opts, aliases)

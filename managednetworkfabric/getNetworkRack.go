@@ -14,6 +14,8 @@ import (
 
 // Get Network Rack resource details.
 // Azure REST API version: 2023-02-01-preview.
+//
+// Other available API versions: 2023-06-15.
 func LookupNetworkRack(ctx *pulumi.Context, args *LookupNetworkRackArgs, opts ...pulumi.InvokeOption) (*LookupNetworkRackResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkRackResult

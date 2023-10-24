@@ -14,7 +14,9 @@ import (
 )
 
 // Class representing a Kusto cluster.
-// Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-01-01
+// Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-01-01.
+//
+// Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15.
 type Cluster struct {
 	pulumi.CustomResourceState
 

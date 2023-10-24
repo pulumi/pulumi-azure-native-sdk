@@ -14,7 +14,7 @@ import (
 )
 
 // Access Review Schedule Definition.
-// Azure REST API version: 2021-12-01-preview. Prior API version in Azure Native 1.x: 2021-12-01-preview
+// Azure REST API version: 2021-12-01-preview. Prior API version in Azure Native 1.x: 2021-12-01-preview.
 type ScopeAccessReviewScheduleDefinitionById struct {
 	pulumi.CustomResourceState
 

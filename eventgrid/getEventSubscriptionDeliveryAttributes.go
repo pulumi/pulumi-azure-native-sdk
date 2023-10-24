@@ -14,6 +14,8 @@ import (
 
 // Get all delivery attributes for an event subscription.
 // Azure REST API version: 2022-06-15.
+//
+// Other available API versions: 2023-06-01-preview.
 func GetEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *GetEventSubscriptionDeliveryAttributesArgs, opts ...pulumi.InvokeOption) (*GetEventSubscriptionDeliveryAttributesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetEventSubscriptionDeliveryAttributesResult

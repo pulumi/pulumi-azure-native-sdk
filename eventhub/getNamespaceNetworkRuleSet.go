@@ -14,6 +14,8 @@ import (
 
 // Gets NetworkRuleSet for a Namespace.
 // Azure REST API version: 2022-10-01-preview.
+//
+// Other available API versions: 2023-01-01-preview.
 func LookupNamespaceNetworkRuleSet(ctx *pulumi.Context, args *LookupNamespaceNetworkRuleSetArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceNetworkRuleSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceNetworkRuleSetResult

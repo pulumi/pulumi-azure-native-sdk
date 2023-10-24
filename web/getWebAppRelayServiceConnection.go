@@ -14,6 +14,8 @@ import (
 
 // Description for Gets a hybrid connection configuration by its name.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2020-10-01.
 func LookupWebAppRelayServiceConnection(ctx *pulumi.Context, args *LookupWebAppRelayServiceConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppRelayServiceConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppRelayServiceConnectionResult

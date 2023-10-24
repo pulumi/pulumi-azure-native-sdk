@@ -14,6 +14,8 @@ import (
 
 // Get a KPack build result log download URL.
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview.
 func GetBuildServiceBuildResultLog(ctx *pulumi.Context, args *GetBuildServiceBuildResultLogArgs, opts ...pulumi.InvokeOption) (*GetBuildServiceBuildResultLogResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetBuildServiceBuildResultLogResult

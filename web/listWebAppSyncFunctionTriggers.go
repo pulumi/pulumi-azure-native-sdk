@@ -14,6 +14,8 @@ import (
 
 // Description for This is to allow calling via powershell and ARM template.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2016-08-01, 2018-11-01, 2020-10-01.
 func ListWebAppSyncFunctionTriggers(ctx *pulumi.Context, args *ListWebAppSyncFunctionTriggersArgs, opts ...pulumi.InvokeOption) (*ListWebAppSyncFunctionTriggersResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppSyncFunctionTriggersResult

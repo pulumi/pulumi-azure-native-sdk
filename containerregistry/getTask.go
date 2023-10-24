@@ -14,6 +14,8 @@ import (
 
 // Get the properties of a specified task.
 // Azure REST API version: 2019-06-01-preview.
+//
+// Other available API versions: 2018-09-01, 2019-04-01.
 func LookupTask(ctx *pulumi.Context, args *LookupTaskArgs, opts ...pulumi.InvokeOption) (*LookupTaskResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTaskResult

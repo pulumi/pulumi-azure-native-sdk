@@ -14,6 +14,8 @@ import (
 
 // Returns Linker resource for a given name.
 // Azure REST API version: 2022-11-01-preview.
+//
+// Other available API versions: 2021-11-01-preview.
 func LookupLinker(ctx *pulumi.Context, args *LookupLinkerArgs, opts ...pulumi.InvokeOption) (*LookupLinkerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLinkerResult

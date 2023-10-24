@@ -14,6 +14,8 @@ import (
 
 // Retrieve a Remote Rendering Account.
 // Azure REST API version: 2021-01-01.
+//
+// Other available API versions: 2021-03-01-preview.
 func LookupRemoteRenderingAccount(ctx *pulumi.Context, args *LookupRemoteRenderingAccountArgs, opts ...pulumi.InvokeOption) (*LookupRemoteRenderingAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRemoteRenderingAccountResult

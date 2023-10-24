@@ -14,6 +14,8 @@ import (
 
 // Get configuration assignment for resource..
 // Azure REST API version: 2023-04-01.
+//
+// Other available API versions: 2023-09-01-preview.
 func LookupConfigurationAssignmentsForResourceGroup(ctx *pulumi.Context, args *LookupConfigurationAssignmentsForResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationAssignmentsForResourceGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationAssignmentsForResourceGroupResult

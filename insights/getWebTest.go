@@ -14,6 +14,8 @@ import (
 
 // Get a specific Application Insights web test definition.
 // Azure REST API version: 2022-06-15.
+//
+// Other available API versions: 2020-10-05-preview.
 func LookupWebTest(ctx *pulumi.Context, args *LookupWebTestArgs, opts ...pulumi.InvokeOption) (*LookupWebTestResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebTestResult

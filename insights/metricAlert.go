@@ -14,7 +14,7 @@ import (
 )
 
 // The metric alert resource.
-// Azure REST API version: 2018-03-01. Prior API version in Azure Native 1.x: 2018-03-01
+// Azure REST API version: 2018-03-01. Prior API version in Azure Native 1.x: 2018-03-01.
 type MetricAlert struct {
 	pulumi.CustomResourceState
 

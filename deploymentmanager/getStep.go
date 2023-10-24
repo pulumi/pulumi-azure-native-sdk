@@ -14,6 +14,8 @@ import (
 
 // The resource representation of a rollout step.
 // Azure REST API version: 2019-11-01-preview.
+//
+// Other available API versions: 2018-09-01-preview.
 func LookupStep(ctx *pulumi.Context, args *LookupStepArgs, opts ...pulumi.InvokeOption) (*LookupStepResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStepResult

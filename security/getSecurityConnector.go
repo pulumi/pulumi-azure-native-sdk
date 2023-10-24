@@ -14,6 +14,8 @@ import (
 
 // Retrieves details of a specific security connector
 // Azure REST API version: 2023-03-01-preview.
+//
+// Other available API versions: 2021-07-01-preview.
 func LookupSecurityConnector(ctx *pulumi.Context, args *LookupSecurityConnectorArgs, opts ...pulumi.InvokeOption) (*LookupSecurityConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityConnectorResult

@@ -14,6 +14,8 @@ import (
 
 // Get an integration runtime
 // Azure REST API version: 2021-06-01.
+//
+// Other available API versions: 2021-06-01-preview.
 func LookupIntegrationRuntime(ctx *pulumi.Context, args *LookupIntegrationRuntimeArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationRuntimeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationRuntimeResult

@@ -14,6 +14,8 @@ import (
 
 // Lists the user credentials of a Fleet.
 // Azure REST API version: 2023-03-15-preview.
+//
+// Other available API versions: 2022-07-02-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15.
 func ListFleetCredentials(ctx *pulumi.Context, args *ListFleetCredentialsArgs, opts ...pulumi.InvokeOption) (*ListFleetCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListFleetCredentialsResult

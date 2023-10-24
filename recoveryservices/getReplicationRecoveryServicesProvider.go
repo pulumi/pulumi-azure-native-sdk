@@ -14,6 +14,8 @@ import (
 
 // Gets the details of registered recovery services provider.
 // Azure REST API version: 2023-04-01.
+//
+// Other available API versions: 2023-06-01.
 func LookupReplicationRecoveryServicesProvider(ctx *pulumi.Context, args *LookupReplicationRecoveryServicesProviderArgs, opts ...pulumi.InvokeOption) (*LookupReplicationRecoveryServicesProviderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicationRecoveryServicesProviderResult

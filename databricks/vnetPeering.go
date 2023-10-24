@@ -14,7 +14,7 @@ import (
 )
 
 // Peerings in a VirtualNetwork resource
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2018-04-01
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2018-04-01.
 type VNetPeering struct {
 	pulumi.CustomResourceState
 

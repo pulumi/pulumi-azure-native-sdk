@@ -14,6 +14,8 @@ import (
 
 // User this method to get details of a specific IoT Security solution based on solution name
 // Azure REST API version: 2019-08-01.
+//
+// Other available API versions: 2017-08-01-preview.
 func LookupIotSecuritySolution(ctx *pulumi.Context, args *LookupIotSecuritySolutionArgs, opts ...pulumi.InvokeOption) (*LookupIotSecuritySolutionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIotSecuritySolutionResult

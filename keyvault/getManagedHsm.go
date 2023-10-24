@@ -14,6 +14,8 @@ import (
 
 // Gets the specified managed HSM Pool.
 // Azure REST API version: 2023-02-01.
+//
+// Other available API versions: 2023-07-01.
 func LookupManagedHsm(ctx *pulumi.Context, args *LookupManagedHsmArgs, opts ...pulumi.InvokeOption) (*LookupManagedHsmResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedHsmResult

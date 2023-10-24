@@ -14,7 +14,9 @@ import (
 )
 
 // Azure Migrate Project.
-// Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01
+// Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01.
+//
+// Other available API versions: 2018-02-02.
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -45,6 +47,9 @@ func NewProject(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:migrate/v20191001:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230315:Project"),
 		},
 	})
 	opts = append(opts, aliases)

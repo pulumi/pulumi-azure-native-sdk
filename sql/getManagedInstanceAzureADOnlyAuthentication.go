@@ -14,6 +14,8 @@ import (
 
 // Gets a specific Azure Active Directory only authentication property.
 // Azure REST API version: 2021-11-01.
+//
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
 func LookupManagedInstanceAzureADOnlyAuthentication(ctx *pulumi.Context, args *LookupManagedInstanceAzureADOnlyAuthenticationArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceAzureADOnlyAuthenticationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedInstanceAzureADOnlyAuthenticationResult

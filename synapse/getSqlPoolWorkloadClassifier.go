@@ -14,6 +14,8 @@ import (
 
 // Get a workload classifier of Sql pool's workload group.
 // Azure REST API version: 2021-06-01.
+//
+// Other available API versions: 2021-06-01-preview.
 func LookupSqlPoolWorkloadClassifier(ctx *pulumi.Context, args *LookupSqlPoolWorkloadClassifierArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolWorkloadClassifierResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlPoolWorkloadClassifierResult

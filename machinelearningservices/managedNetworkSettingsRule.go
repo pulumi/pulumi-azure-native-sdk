@@ -15,6 +15,8 @@ import (
 
 // Outbound Rule Basic Resource for the managed network of a machine learning workspace.
 // Azure REST API version: 2023-04-01-preview.
+//
+// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
 type ManagedNetworkSettingsRule struct {
 	pulumi.CustomResourceState
 
@@ -53,6 +55,9 @@ func NewManagedNetworkSettingsRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:ManagedNetworkSettingsRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20231001:ManagedNetworkSettingsRule"),
 		},
 	})
 	opts = append(opts, aliases)

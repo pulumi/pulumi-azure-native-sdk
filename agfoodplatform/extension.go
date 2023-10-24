@@ -14,7 +14,9 @@ import (
 )
 
 // Extension resource.
-// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 1.x: 2020-05-12-preview
+// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 1.x: 2020-05-12-preview.
+//
+// Other available API versions: 2021-09-01-preview.
 type Extension struct {
 	pulumi.CustomResourceState
 

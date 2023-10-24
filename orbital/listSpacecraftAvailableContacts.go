@@ -14,6 +14,8 @@ import (
 
 // Returns list of available contacts. A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.
 // Azure REST API version: 2022-11-01.
+//
+// Other available API versions: 2022-03-01.
 func ListSpacecraftAvailableContacts(ctx *pulumi.Context, args *ListSpacecraftAvailableContactsArgs, opts ...pulumi.InvokeOption) (*ListSpacecraftAvailableContactsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSpacecraftAvailableContactsResult

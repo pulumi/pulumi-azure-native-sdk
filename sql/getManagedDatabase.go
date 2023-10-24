@@ -14,6 +14,8 @@ import (
 
 // Gets a managed database.
 // Azure REST API version: 2021-11-01.
+//
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
 func LookupManagedDatabase(ctx *pulumi.Context, args *LookupManagedDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupManagedDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedDatabaseResult

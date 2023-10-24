@@ -13,7 +13,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2021-03-01
+// Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2021-03-01.
+//
+// Other available API versions: 2022-08-01, 2023-01-01.
 type Monitor struct {
 	pulumi.CustomResourceState
 

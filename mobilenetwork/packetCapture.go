@@ -15,6 +15,8 @@ import (
 
 // Packet capture session resource.
 // Azure REST API version: 2023-06-01.
+//
+// Other available API versions: 2023-09-01.
 type PacketCapture struct {
 	pulumi.CustomResourceState
 

@@ -14,7 +14,7 @@ import (
 )
 
 // Definition of hybrid runbook worker.
-// Azure REST API version: 2022-08-08. Prior API version in Azure Native 1.x: 2021-06-22
+// Azure REST API version: 2022-08-08. Prior API version in Azure Native 1.x: 2021-06-22.
 type HybridRunbookWorker struct {
 	pulumi.CustomResourceState
 

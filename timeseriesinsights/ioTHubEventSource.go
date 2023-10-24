@@ -14,7 +14,7 @@ import (
 )
 
 // An event source that receives its data from an Azure IoTHub.
-// Azure REST API version: 2020-05-15. Prior API version in Azure Native 1.x: 2020-05-15
+// Azure REST API version: 2020-05-15. Prior API version in Azure Native 1.x: 2020-05-15.
 type IoTHubEventSource struct {
 	pulumi.CustomResourceState
 

@@ -14,7 +14,9 @@ import (
 )
 
 // Describes the RedisEnterprise cluster
-// Azure REST API version: 2023-03-01-preview. Prior API version in Azure Native 1.x: 2021-03-01
+// Azure REST API version: 2023-03-01-preview. Prior API version in Azure Native 1.x: 2021-03-01.
+//
+// Other available API versions: 2020-10-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview.
 type RedisEnterprise struct {
 	pulumi.CustomResourceState
 

@@ -14,6 +14,8 @@ import (
 
 // Gets the detailed information about an access policy of a redis cache
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-08-01.
 func LookupAccessPolicy(ctx *pulumi.Context, args *LookupAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccessPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessPolicyResult

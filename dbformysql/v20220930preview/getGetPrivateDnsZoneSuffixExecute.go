@@ -4,8 +4,12 @@
 package v20220930preview
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get private DNS zone suffix in the cloud.
@@ -26,4 +30,54 @@ type GetGetPrivateDnsZoneSuffixExecuteArgs struct {
 type GetGetPrivateDnsZoneSuffixExecuteResult struct {
 	// Represents the private DNS zone suffix.
 	PrivateDnsZoneSuffix *string `pulumi:"privateDnsZoneSuffix"`
+}
+
+func GetGetPrivateDnsZoneSuffixExecuteOutput(ctx *pulumi.Context, args GetGetPrivateDnsZoneSuffixExecuteOutputArgs, opts ...pulumi.InvokeOption) GetGetPrivateDnsZoneSuffixExecuteResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetGetPrivateDnsZoneSuffixExecuteResult, error) {
+			args := v.(GetGetPrivateDnsZoneSuffixExecuteArgs)
+			r, err := GetGetPrivateDnsZoneSuffixExecute(ctx, &args, opts...)
+			var s GetGetPrivateDnsZoneSuffixExecuteResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
+		}).(GetGetPrivateDnsZoneSuffixExecuteResultOutput)
+}
+
+type GetGetPrivateDnsZoneSuffixExecuteOutputArgs struct {
+}
+
+func (GetGetPrivateDnsZoneSuffixExecuteOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGetPrivateDnsZoneSuffixExecuteArgs)(nil)).Elem()
+}
+
+// The response of get private dns zone suffix.
+type GetGetPrivateDnsZoneSuffixExecuteResultOutput struct{ *pulumi.OutputState }
+
+func (GetGetPrivateDnsZoneSuffixExecuteResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGetPrivateDnsZoneSuffixExecuteResult)(nil)).Elem()
+}
+
+func (o GetGetPrivateDnsZoneSuffixExecuteResultOutput) ToGetGetPrivateDnsZoneSuffixExecuteResultOutput() GetGetPrivateDnsZoneSuffixExecuteResultOutput {
+	return o
+}
+
+func (o GetGetPrivateDnsZoneSuffixExecuteResultOutput) ToGetGetPrivateDnsZoneSuffixExecuteResultOutputWithContext(ctx context.Context) GetGetPrivateDnsZoneSuffixExecuteResultOutput {
+	return o
+}
+
+func (o GetGetPrivateDnsZoneSuffixExecuteResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGetPrivateDnsZoneSuffixExecuteResult] {
+	return pulumix.Output[GetGetPrivateDnsZoneSuffixExecuteResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Represents the private DNS zone suffix.
+func (o GetGetPrivateDnsZoneSuffixExecuteResultOutput) PrivateDnsZoneSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGetPrivateDnsZoneSuffixExecuteResult) *string { return v.PrivateDnsZoneSuffix }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetGetPrivateDnsZoneSuffixExecuteResultOutput{})
 }

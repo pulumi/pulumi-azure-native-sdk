@@ -59,8 +59,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GovernanceAssignment{}
 	case "azure-native:security:GovernanceRule":
 		r = &GovernanceRule{}
-	case "azure-native:security:IngestionSetting":
-		r = &IngestionSetting{}
 	case "azure-native:security:IotSecuritySolution":
 		r = &IotSecuritySolution{}
 	case "azure-native:security:JitNetworkAccessPolicy":

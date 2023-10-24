@@ -14,7 +14,7 @@ import (
 )
 
 // Cloud shell console
-// Azure REST API version: 2018-10-01. Prior API version in Azure Native 1.x: 2018-10-01
+// Azure REST API version: 2018-10-01. Prior API version in Azure Native 1.x: 2018-10-01.
 type ConsoleWithLocation struct {
 	pulumi.CustomResourceState
 

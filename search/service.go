@@ -14,7 +14,9 @@ import (
 )
 
 // Describes an Azure Cognitive Search service and its current state.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-08-01
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-08-01.
+//
+// Other available API versions: 2021-04-01-preview, 2023-11-01.
 type Service struct {
 	pulumi.CustomResourceState
 

@@ -14,6 +14,8 @@ import (
 
 // Get an VolumeGroups.
 // Azure REST API version: 2021-11-20-preview.
+//
+// Other available API versions: 2022-12-01-preview, 2023-01-01.
 func LookupVolumeGroup(ctx *pulumi.Context, args *LookupVolumeGroupArgs, opts ...pulumi.InvokeOption) (*LookupVolumeGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeGroupResult

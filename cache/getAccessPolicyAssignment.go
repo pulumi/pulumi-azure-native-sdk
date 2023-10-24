@@ -14,6 +14,8 @@ import (
 
 // Gets the list of assignments for an access policy of a redis cache
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-08-01.
 func LookupAccessPolicyAssignment(ctx *pulumi.Context, args *LookupAccessPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupAccessPolicyAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessPolicyAssignmentResult

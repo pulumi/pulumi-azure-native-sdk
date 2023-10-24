@@ -15,6 +15,8 @@ import (
 
 // The workspace manager configuration
 // Azure REST API version: 2023-06-01-preview.
+//
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
 type WorkspaceManagerConfiguration struct {
 	pulumi.CustomResourceState
 

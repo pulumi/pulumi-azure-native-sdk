@@ -7,8 +7,10 @@ package migrate
 type AssessmentSizingCriterion string
 
 const (
+	// Performance Data based Sizing.
 	AssessmentSizingCriterionPerformanceBased = AssessmentSizingCriterion("PerformanceBased")
-	AssessmentSizingCriterionAsOnPremises     = AssessmentSizingCriterion("AsOnPremises")
+	// As On Premises or Static Data based Sizing.
+	AssessmentSizingCriterionAsOnPremises = AssessmentSizingCriterion("AsOnPremises")
 )
 
 // User configurable setting that describes the status of the assessment.
@@ -20,12 +22,72 @@ const (
 	AssessmentStageApproved    = AssessmentStage("Approved")
 )
 
+// Assessment type of the assessment.
+type AssessmentType string
+
+const (
+	AssessmentTypeUnknown           = AssessmentType("Unknown")
+	AssessmentTypeMachineAssessment = AssessmentType("MachineAssessment")
+	AssessmentTypeAvsAssessment     = AssessmentType("AvsAssessment")
+	AssessmentTypeSqlAssessment     = AssessmentType("SqlAssessment")
+	AssessmentTypeWebAppAssessment  = AssessmentType("WebAppAssessment")
+)
+
+// Gets or sets user preference indicating intent of async commit mode.
+type AsyncCommitModeIntent string
+
+const (
+	AsyncCommitModeIntentNone             = AsyncCommitModeIntent("None")
+	AsyncCommitModeIntentHighAvailability = AsyncCommitModeIntent("HighAvailability")
+	AsyncCommitModeIntentDisasterRecovery = AsyncCommitModeIntent("DisasterRecovery")
+)
+
 // Gets or sets the status of automation artifacts.
 type AutomationArtifactStatus string
 
 const (
 	AutomationArtifactStatusNotGenerated = AutomationArtifactStatus("NotGenerated")
 	AutomationArtifactStatusGenerated    = AutomationArtifactStatus("Generated")
+)
+
+// AVS node type.
+type AzureAvsNodeType string
+
+const (
+	AzureAvsNodeTypeUnknown = AzureAvsNodeType("Unknown")
+	AzureAvsNodeTypeAV36    = AzureAvsNodeType("AV36")
+)
+
+// Currency in which prices should be reported.
+type AzureCurrency string
+
+const (
+	AzureCurrencyUnknown = AzureCurrency("Unknown")
+	AzureCurrencyUSD     = AzureCurrency("USD")
+	AzureCurrencyDKK     = AzureCurrency("DKK")
+	AzureCurrencyCAD     = AzureCurrency("CAD")
+	AzureCurrencyIDR     = AzureCurrency("IDR")
+	AzureCurrencyJPY     = AzureCurrency("JPY")
+	AzureCurrencyKRW     = AzureCurrency("KRW")
+	AzureCurrencyNZD     = AzureCurrency("NZD")
+	AzureCurrencyNOK     = AzureCurrency("NOK")
+	AzureCurrencyRUB     = AzureCurrency("RUB")
+	AzureCurrencySAR     = AzureCurrency("SAR")
+	AzureCurrencyZAR     = AzureCurrency("ZAR")
+	AzureCurrencySEK     = AzureCurrency("SEK")
+	AzureCurrencyTRY     = AzureCurrency("TRY")
+	AzureCurrencyGBP     = AzureCurrency("GBP")
+	AzureCurrencyMXN     = AzureCurrency("MXN")
+	AzureCurrencyMYR     = AzureCurrency("MYR")
+	AzureCurrencyINR     = AzureCurrency("INR")
+	AzureCurrencyHKD     = AzureCurrency("HKD")
+	AzureCurrencyBRL     = AzureCurrency("BRL")
+	AzureCurrencyTWD     = AzureCurrency("TWD")
+	AzureCurrencyEUR     = AzureCurrency("EUR")
+	AzureCurrencyCHF     = AzureCurrency("CHF")
+	AzureCurrencyARS     = AzureCurrency("ARS")
+	AzureCurrencyAUD     = AzureCurrency("AUD")
+	AzureCurrencyCNY     = AzureCurrency("CNY")
 )
 
 // Storage type selected for this disk.
@@ -48,7 +110,8 @@ const (
 	AzureHybridUseBenefitNo      = AzureHybridUseBenefit("No")
 )
 
-// Target Azure location for which the machines should be assessed. These enums are the same as used by Compute API.
+// Gets or sets the Azure Location or Azure region where to which the machines
+// will be migrated.
 type AzureLocation string
 
 const (
@@ -89,52 +152,78 @@ const (
 	AzureLocationUSGovVirginia      = AzureLocation("USGovVirginia")
 	AzureLocationUSDoDCentral       = AzureLocation("USDoDCentral")
 	AzureLocationUSDoDEast          = AzureLocation("USDoDEast")
+	AzureLocationFranceCentral      = AzureLocation("FranceCentral")
+	AzureLocationAustraliaCentral   = AzureLocation("AustraliaCentral")
+	AzureLocationSouthAfricaNorth   = AzureLocation("SouthAfricaNorth")
+	AzureLocationFranceSouth        = AzureLocation("FranceSouth")
+	AzureLocationAustraliaCentral2  = AzureLocation("AustraliaCentral2")
+	AzureLocationSouthAfricaWest    = AzureLocation("SouthAfricaWest")
+	AzureLocationGermanyNorth       = AzureLocation("GermanyNorth")
+	AzureLocationGermanyWestCentral = AzureLocation("GermanyWestCentral")
+	AzureLocationNorwayEast         = AzureLocation("NorwayEast")
+	AzureLocationNorwayWest         = AzureLocation("NorwayWest")
+	AzureLocationChinaEast2         = AzureLocation("ChinaEast2")
+	AzureLocationChinaNorth2        = AzureLocation("ChinaNorth2")
+	AzureLocationSwitzerlandNorth   = AzureLocation("SwitzerlandNorth")
+	AzureLocationSwitzerlandWest    = AzureLocation("SwitzerlandWest")
+	AzureLocationUAENorth           = AzureLocation("UAENorth")
+	AzureLocationUAECentral         = AzureLocation("UAECentral")
+	AzureLocationUsNatEast          = AzureLocation("UsNatEast")
+	AzureLocationUsNatWest          = AzureLocation("UsNatWest")
+	AzureLocationUsSecEast          = AzureLocation("UsSecEast")
+	AzureLocationUsSecCentral       = AzureLocation("UsSecCentral")
+	AzureLocationUsSecWest          = AzureLocation("UsSecWest")
+	AzureLocationSwedenCentral      = AzureLocation("SwedenCentral")
+	AzureLocationQatarCentral       = AzureLocation("QatarCentral")
 )
 
-// Offer code according to which cost estimation is done.
+// Gets or sets Azure Offer Code for VM.
 type AzureOfferCode string
 
 const (
-	AzureOfferCodeUnknown         = AzureOfferCode("Unknown")
-	AzureOfferCodeMSAZR0003P      = AzureOfferCode("MSAZR0003P")
-	AzureOfferCodeMSAZR0044P      = AzureOfferCode("MSAZR0044P")
-	AzureOfferCodeMSAZR0059P      = AzureOfferCode("MSAZR0059P")
-	AzureOfferCodeMSAZR0060P      = AzureOfferCode("MSAZR0060P")
-	AzureOfferCodeMSAZR0062P      = AzureOfferCode("MSAZR0062P")
-	AzureOfferCodeMSAZR0063P      = AzureOfferCode("MSAZR0063P")
-	AzureOfferCodeMSAZR0064P      = AzureOfferCode("MSAZR0064P")
-	AzureOfferCodeMSAZR0029P      = AzureOfferCode("MSAZR0029P")
-	AzureOfferCodeMSAZR0022P      = AzureOfferCode("MSAZR0022P")
-	AzureOfferCodeMSAZR0023P      = AzureOfferCode("MSAZR0023P")
-	AzureOfferCodeMSAZR0148P      = AzureOfferCode("MSAZR0148P")
-	AzureOfferCodeMSAZR0025P      = AzureOfferCode("MSAZR0025P")
-	AzureOfferCodeMSAZR0036P      = AzureOfferCode("MSAZR0036P")
-	AzureOfferCodeMSAZR0120P      = AzureOfferCode("MSAZR0120P")
-	AzureOfferCodeMSAZR0121P      = AzureOfferCode("MSAZR0121P")
-	AzureOfferCodeMSAZR0122P      = AzureOfferCode("MSAZR0122P")
-	AzureOfferCodeMSAZR0123P      = AzureOfferCode("MSAZR0123P")
-	AzureOfferCodeMSAZR0124P      = AzureOfferCode("MSAZR0124P")
-	AzureOfferCodeMSAZR0125P      = AzureOfferCode("MSAZR0125P")
-	AzureOfferCodeMSAZR0126P      = AzureOfferCode("MSAZR0126P")
-	AzureOfferCodeMSAZR0127P      = AzureOfferCode("MSAZR0127P")
-	AzureOfferCodeMSAZR0128P      = AzureOfferCode("MSAZR0128P")
-	AzureOfferCodeMSAZR0129P      = AzureOfferCode("MSAZR0129P")
-	AzureOfferCodeMSAZR0130P      = AzureOfferCode("MSAZR0130P")
-	AzureOfferCodeMSAZR0111P      = AzureOfferCode("MSAZR0111P")
-	AzureOfferCodeMSAZR0144P      = AzureOfferCode("MSAZR0144P")
-	AzureOfferCodeMSAZR0149P      = AzureOfferCode("MSAZR0149P")
-	AzureOfferCodeMSMCAZR0044P    = AzureOfferCode("MSMCAZR0044P")
-	AzureOfferCodeMSMCAZR0059P    = AzureOfferCode("MSMCAZR0059P")
-	AzureOfferCodeMSMCAZR0060P    = AzureOfferCode("MSMCAZR0060P")
-	AzureOfferCodeMSMCAZR0063P    = AzureOfferCode("MSMCAZR0063P")
-	AzureOfferCodeMSMCAZR0120P    = AzureOfferCode("MSMCAZR0120P")
-	AzureOfferCodeMSMCAZR0121P    = AzureOfferCode("MSMCAZR0121P")
-	AzureOfferCodeMSMCAZR0125P    = AzureOfferCode("MSMCAZR0125P")
-	AzureOfferCodeMSMCAZR0128P    = AzureOfferCode("MSMCAZR0128P")
-	AzureOfferCodeMSAZRDE0003P    = AzureOfferCode("MSAZRDE0003P")
-	AzureOfferCodeMSAZRDE0044P    = AzureOfferCode("MSAZRDE0044P")
-	AzureOfferCodeMSAZRUSGOV0003P = AzureOfferCode("MSAZRUSGOV0003P")
-	AzureOfferCodeEA              = AzureOfferCode("EA")
+	AzureOfferCodeUnknown          = AzureOfferCode("Unknown")
+	AzureOfferCodeMsazr0003P       = AzureOfferCode("MSAZR0003P")
+	AzureOfferCodeMsazr0044P       = AzureOfferCode("MSAZR0044P")
+	AzureOfferCodeMsazr0059P       = AzureOfferCode("MSAZR0059P")
+	AzureOfferCodeMsazr0060P       = AzureOfferCode("MSAZR0060P")
+	AzureOfferCodeMsazr0062P       = AzureOfferCode("MSAZR0062P")
+	AzureOfferCodeMsazr0063P       = AzureOfferCode("MSAZR0063P")
+	AzureOfferCodeMsazr0064P       = AzureOfferCode("MSAZR0064P")
+	AzureOfferCodeMsazr0029P       = AzureOfferCode("MSAZR0029P")
+	AzureOfferCodeMsazr0022P       = AzureOfferCode("MSAZR0022P")
+	AzureOfferCodeMsazr0023P       = AzureOfferCode("MSAZR0023P")
+	AzureOfferCodeMsazr0148P       = AzureOfferCode("MSAZR0148P")
+	AzureOfferCodeMsazr0025P       = AzureOfferCode("MSAZR0025P")
+	AzureOfferCodeMsazr0036P       = AzureOfferCode("MSAZR0036P")
+	AzureOfferCodeMsazr0120P       = AzureOfferCode("MSAZR0120P")
+	AzureOfferCodeMsazr0121P       = AzureOfferCode("MSAZR0121P")
+	AzureOfferCodeMsazr0122P       = AzureOfferCode("MSAZR0122P")
+	AzureOfferCodeMsazr0123P       = AzureOfferCode("MSAZR0123P")
+	AzureOfferCodeMsazr0124P       = AzureOfferCode("MSAZR0124P")
+	AzureOfferCodeMsazr0125P       = AzureOfferCode("MSAZR0125P")
+	AzureOfferCodeMsazr0126P       = AzureOfferCode("MSAZR0126P")
+	AzureOfferCodeMsazr0127P       = AzureOfferCode("MSAZR0127P")
+	AzureOfferCodeMsazr0128P       = AzureOfferCode("MSAZR0128P")
+	AzureOfferCodeMsazr0129P       = AzureOfferCode("MSAZR0129P")
+	AzureOfferCodeMsazr0130P       = AzureOfferCode("MSAZR0130P")
+	AzureOfferCodeMsazr0111P       = AzureOfferCode("MSAZR0111P")
+	AzureOfferCodeMsazr0144P       = AzureOfferCode("MSAZR0144P")
+	AzureOfferCodeMsazr0149P       = AzureOfferCode("MSAZR0149P")
+	AzureOfferCodeMsmcazr0044P     = AzureOfferCode("MSMCAZR0044P")
+	AzureOfferCodeMsmcazr0059P     = AzureOfferCode("MSMCAZR0059P")
+	AzureOfferCodeMsmcazr0060P     = AzureOfferCode("MSMCAZR0060P")
+	AzureOfferCodeMsmcazr0063P     = AzureOfferCode("MSMCAZR0063P")
+	AzureOfferCodeMsmcazr0120P     = AzureOfferCode("MSMCAZR0120P")
+	AzureOfferCodeMsmcazr0121P     = AzureOfferCode("MSMCAZR0121P")
+	AzureOfferCodeMsmcazr0125P     = AzureOfferCode("MSMCAZR0125P")
+	AzureOfferCodeMsmcazr0128P     = AzureOfferCode("MSMCAZR0128P")
+	AzureOfferCodeMsazrde0003P     = AzureOfferCode("MSAZRDE0003P")
+	AzureOfferCodeMsazrde0044P     = AzureOfferCode("MSAZRDE0044P")
+	AzureOfferCodeMsazrusgov0003P  = AzureOfferCode("MSAZRUSGOV0003P")
+	AzureOfferCodeEA               = AzureOfferCode("EA")
+	AzureOfferCodeMsazr0243P       = AzureOfferCode("MSAZR0243P")
+	AzureOfferCodeSavingsPlan1Year = AzureOfferCode("SavingsPlan1Year")
+	AzureOfferCodeSavingsPlan3Year = AzureOfferCode("SavingsPlan3Year")
 )
 
 // Pricing tier for Size evaluation.
@@ -143,6 +232,63 @@ type AzurePricingTier string
 const (
 	AzurePricingTierStandard = AzurePricingTier("Standard")
 	AzurePricingTierBasic    = AzurePricingTier("Basic")
+)
+
+// Gets or sets azure reserved instance for VM.
+type AzureReservedInstance string
+
+const (
+	AzureReservedInstanceNone    = AzureReservedInstance("None")
+	AzureReservedInstanceRI1Year = AzureReservedInstance("RI1Year")
+	AzureReservedInstanceRI3Year = AzureReservedInstance("RI3Year")
+)
+
+// Gets or sets a value indicating azure security offering type.
+type AzureSecurityOfferingType string
+
+const (
+	AzureSecurityOfferingTypeNO  = AzureSecurityOfferingType("NO")
+	AzureSecurityOfferingTypeMDC = AzureSecurityOfferingType("MDC")
+)
+
+// Gets or sets the azure PAAS SQL instance type.
+type AzureSqlDataBaseType string
+
+const (
+	AzureSqlDataBaseTypeUnknown        = AzureSqlDataBaseType("Unknown")
+	AzureSqlDataBaseTypeAutomatic      = AzureSqlDataBaseType("Automatic")
+	AzureSqlDataBaseTypeSingleDatabase = AzureSqlDataBaseType("SingleDatabase")
+	AzureSqlDataBaseTypeElasticPool    = AzureSqlDataBaseType("ElasticPool")
+)
+
+// Gets or sets the azure PAAS SQL instance type.
+type AzureSqlInstanceType string
+
+const (
+	AzureSqlInstanceTypeUnknown        = AzureSqlInstanceType("Unknown")
+	AzureSqlInstanceTypeAutomatic      = AzureSqlInstanceType("Automatic")
+	AzureSqlInstanceTypeSingleInstance = AzureSqlInstanceType("SingleInstance")
+	AzureSqlInstanceTypeInstancePools  = AzureSqlInstanceType("InstancePools")
+)
+
+// Gets or sets the azure SQL purchase model.
+type AzureSqlPurchaseModel string
+
+const (
+	AzureSqlPurchaseModelUnknown = AzureSqlPurchaseModel("Unknown")
+	AzureSqlPurchaseModelVCore   = AzureSqlPurchaseModel("VCore")
+	AzureSqlPurchaseModelDTU     = AzureSqlPurchaseModel("DTU")
+)
+
+// Gets or sets the azure SQL service tier.
+type AzureSqlServiceTier string
+
+const (
+	AzureSqlServiceTierUnknown          = AzureSqlServiceTier("Unknown")
+	AzureSqlServiceTierAutomatic        = AzureSqlServiceTier("Automatic")
+	AzureSqlServiceTierGeneralPurpose   = AzureSqlServiceTier("GeneralPurpose")
+	AzureSqlServiceTierBusinessCritical = AzureSqlServiceTier("BusinessCritical")
+	AzureSqlServiceTierHyperScale       = AzureSqlServiceTier("HyperScale")
 )
 
 // Storage Redundancy type offered by Azure.
@@ -156,32 +302,61 @@ const (
 	AzureStorageRedundancyReadAccessGeoRedundant = AzureStorageRedundancy("ReadAccessGeoRedundant")
 )
 
-// Azure VM family.
 type AzureVmFamily string
 
 const (
-	AzureVmFamilyUnknown          = AzureVmFamily("Unknown")
-	AzureVmFamily_Basic_A0_A4     = AzureVmFamily("Basic_A0_A4")
-	AzureVmFamily_Standard_A0_A7  = AzureVmFamily("Standard_A0_A7")
-	AzureVmFamily_Standard_A8_A11 = AzureVmFamily("Standard_A8_A11")
-	AzureVmFamily_Av2_series      = AzureVmFamily("Av2_series")
-	AzureVmFamily_D_series        = AzureVmFamily("D_series")
-	AzureVmFamily_Dv2_series      = AzureVmFamily("Dv2_series")
-	AzureVmFamily_DS_series       = AzureVmFamily("DS_series")
-	AzureVmFamily_DSv2_series     = AzureVmFamily("DSv2_series")
-	AzureVmFamily_F_series        = AzureVmFamily("F_series")
-	AzureVmFamily_Fs_series       = AzureVmFamily("Fs_series")
-	AzureVmFamily_G_series        = AzureVmFamily("G_series")
-	AzureVmFamily_GS_series       = AzureVmFamily("GS_series")
-	AzureVmFamily_H_series        = AzureVmFamily("H_series")
-	AzureVmFamily_Ls_series       = AzureVmFamily("Ls_series")
-	AzureVmFamily_Dsv3_series     = AzureVmFamily("Dsv3_series")
-	AzureVmFamily_Dv3_series      = AzureVmFamily("Dv3_series")
-	AzureVmFamily_Fsv2_series     = AzureVmFamily("Fsv2_series")
-	AzureVmFamily_Ev3_series      = AzureVmFamily("Ev3_series")
-	AzureVmFamily_Esv3_series     = AzureVmFamily("Esv3_series")
-	AzureVmFamily_M_series        = AzureVmFamily("M_series")
-	AzureVmFamily_DC_Series       = AzureVmFamily("DC_Series")
+	AzureVmFamilyUnknown       = AzureVmFamily("Unknown")
+	AzureVmFamilyBasicA0A4     = AzureVmFamily("Basic_A0_A4")
+	AzureVmFamilyStandardA0A7  = AzureVmFamily("Standard_A0_A7")
+	AzureVmFamilyStandardA8A11 = AzureVmFamily("Standard_A8_A11")
+	AzureVmFamilyAv2Series     = AzureVmFamily("Av2_series")
+	AzureVmFamilyDSeries       = AzureVmFamily("D_series")
+	AzureVmFamilyDv2Series     = AzureVmFamily("Dv2_series")
+	AzureVmFamilyDSSeries      = AzureVmFamily("DS_series")
+	AzureVmFamilyDSv2Series    = AzureVmFamily("DSv2_series")
+	AzureVmFamilyFSeries       = AzureVmFamily("F_series")
+	AzureVmFamilyFsSeries      = AzureVmFamily("Fs_series")
+	AzureVmFamilyGSeries       = AzureVmFamily("G_series")
+	AzureVmFamilyGSSeries      = AzureVmFamily("GS_series")
+	AzureVmFamilyHSeries       = AzureVmFamily("H_series")
+	AzureVmFamilyLsSeries      = AzureVmFamily("Ls_series")
+	AzureVmFamilyDsv3Series    = AzureVmFamily("Dsv3_series")
+	AzureVmFamilyDv3Series     = AzureVmFamily("Dv3_series")
+	AzureVmFamilyFsv2Series    = AzureVmFamily("Fsv2_series")
+	AzureVmFamilyEv3Series     = AzureVmFamily("Ev3_series")
+	AzureVmFamilyEsv3Series    = AzureVmFamily("Esv3_series")
+	AzureVmFamilyMSeries       = AzureVmFamily("M_series")
+	AzureVmFamilyDCSeries      = AzureVmFamily("DC_Series")
+	AzureVmFamilyLsv2Series    = AzureVmFamily("Lsv2_series")
+	AzureVmFamilyEv4Series     = AzureVmFamily("Ev4_series")
+	AzureVmFamilyEsv4Series    = AzureVmFamily("Esv4_series")
+	AzureVmFamilyEdv4Series    = AzureVmFamily("Edv4_series")
+	AzureVmFamilyEdsv4Series   = AzureVmFamily("Edsv4_series")
+	AzureVmFamilyDv4Series     = AzureVmFamily("Dv4_series")
+	AzureVmFamilyDsv4Series    = AzureVmFamily("Dsv4_series")
+	AzureVmFamilyDdv4Series    = AzureVmFamily("Ddv4_series")
+	AzureVmFamilyDdsv4Series   = AzureVmFamily("Ddsv4_series")
+	AzureVmFamilyEasv4Series   = AzureVmFamily("Easv4_series")
+	AzureVmFamilyDasv4Series   = AzureVmFamily("Dasv4_series")
+	AzureVmFamilyMv2Series     = AzureVmFamily("Mv2_series")
+	AzureVmFamilyEav4Series    = AzureVmFamily("Eav4_series")
+	AzureVmFamilyDav4Series    = AzureVmFamily("Dav4_series")
+	AzureVmFamilyMsv2Series    = AzureVmFamily("Msv2_series")
+	AzureVmFamilyMdsv2Series   = AzureVmFamily("Mdsv2_series")
+	AzureVmFamilyDv5Series     = AzureVmFamily("Dv5_series")
+	AzureVmFamilyDsv5Series    = AzureVmFamily("Dsv5_series")
+	AzureVmFamilyDdv5Series    = AzureVmFamily("Ddv5_series")
+	AzureVmFamilyDdsv5Series   = AzureVmFamily("Ddsv5_series")
+	AzureVmFamilyDasv5Series   = AzureVmFamily("Dasv5_series")
+	AzureVmFamilyDadsv5Series  = AzureVmFamily("Dadsv5_series")
+	AzureVmFamilyEv5Series     = AzureVmFamily("Ev5_series")
+	AzureVmFamilyEsv5Series    = AzureVmFamily("Esv5_series")
+	AzureVmFamilyEdv5Series    = AzureVmFamily("Edv5_series")
+	AzureVmFamilyEdsv5Series   = AzureVmFamily("Edsv5_series")
+	AzureVmFamilyEasv5Series   = AzureVmFamily("Easv5_series")
+	AzureVmFamilyEadsv5Series  = AzureVmFamily("Eadsv5_series")
+	AzureVmFamilyEbsv5Series   = AzureVmFamily("Ebsv5_series")
+	AzureVmFamilyEbdsv5Series  = AzureVmFamily("Ebdsv5_series")
 )
 
 // Gets or sets the cleanup state of the solution.
@@ -193,6 +368,16 @@ const (
 	CleanupStateInProgress = CleanupState("InProgress")
 	CleanupStateCompleted  = CleanupState("Completed")
 	CleanupStateFailed     = CleanupState("Failed")
+)
+
+// Gets or sets the azure SQL compute tier.
+type ComputeTier string
+
+const (
+	ComputeTierUnknown     = ComputeTier("Unknown")
+	ComputeTierAutomatic   = ComputeTier("Automatic")
+	ComputeTierProvisioned = ComputeTier("Provisioned")
+	ComputeTierServerless  = ComputeTier("Serverless")
 )
 
 // Gets or sets the configuration type.
@@ -236,6 +421,26 @@ const (
 	CurrencyCNY     = Currency("CNY")
 )
 
+// Gets or sets user configurable setting to display the environment type.
+type EnvironmentType string
+
+const (
+	EnvironmentTypeProduction = EnvironmentType("Production")
+	EnvironmentTypeTest       = EnvironmentType("Test")
+)
+
+// Failures to tolerate and RAID level in a common property.
+type FttAndRaidLevel string
+
+const (
+	FttAndRaidLevelUnknown   = FttAndRaidLevel("Unknown")
+	FttAndRaidLevelFtt1Raid1 = FttAndRaidLevel("Ftt1Raid1")
+	FttAndRaidLevelFtt1Raid5 = FttAndRaidLevel("Ftt1Raid5")
+	FttAndRaidLevelFtt2Raid1 = FttAndRaidLevel("Ftt2Raid1")
+	FttAndRaidLevelFtt2Raid6 = FttAndRaidLevel("Ftt2Raid6")
+	FttAndRaidLevelFtt3Raid1 = FttAndRaidLevel("Ftt3Raid1")
+)
+
 // Gets or sets the goal of the solution.
 type Goal string
 
@@ -247,12 +452,29 @@ const (
 	GoalDataCenter            = Goal("DataCenter")
 )
 
+// Gets the group type for the assessment.
+type GroupType string
+
+const (
+	GroupTypeDefault = GroupType("Default")
+	GroupTypeImport  = GroupType("Import")
+)
+
 // Gets or sets the load balancer type.
 type LoadBalancerType string
 
 const (
 	LoadBalancerTypePrivate = LoadBalancerType("Private")
 	LoadBalancerTypePublic  = LoadBalancerType("Public")
+)
+
+// Gets or sets user preference indicating intent of multi-subnet configuration.
+type MultiSubnetIntent string
+
+const (
+	MultiSubnetIntentNone             = MultiSubnetIntent("None")
+	MultiSubnetIntentHighAvailability = MultiSubnetIntent("HighAvailability")
+	MultiSubnetIntentDisasterRecovery = MultiSubnetIntent("DisasterRecovery")
 )
 
 type OperatingSystemType string
@@ -262,7 +484,27 @@ const (
 	OperatingSystemTypeLinux   = OperatingSystemType("Linux")
 )
 
-// Percentile of performance data used to recommend Azure size.
+// Gets or sets SQL optimization logic.
+type OptimizationLogic string
+
+const (
+	OptimizationLogicMinimizeCost          = OptimizationLogic("MinimizeCost")
+	OptimizationLogicModernizeToPaaS       = OptimizationLogic("ModernizeToPaaS")
+	OptimizationLogicModernizeToAzureSqlMi = OptimizationLogic("ModernizeToAzureSqlMi")
+	OptimizationLogicModernizeToAzureSqlDb = OptimizationLogic("ModernizeToAzureSqlDb")
+)
+
+// Gets or sets user configurable setting to display the azure hybrid use benefit.
+type OsLicense string
+
+const (
+	OsLicenseUnknown = OsLicense("Unknown")
+	OsLicenseYes     = OsLicense("Yes")
+	OsLicenseNo      = OsLicense("No")
+)
+
+// Percentile of the utilization data values to be considered while assessing
+// machines.
 type Percentile string
 
 const (
@@ -270,6 +512,15 @@ const (
 	PercentilePercentile90 = Percentile("Percentile90")
 	PercentilePercentile95 = Percentile("Percentile95")
 	PercentilePercentile99 = Percentile("Percentile99")
+)
+
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+type PrivateEndpointServiceConnectionStatus string
+
+const (
+	PrivateEndpointServiceConnectionStatusPending  = PrivateEndpointServiceConnectionStatus("Pending")
+	PrivateEndpointServiceConnectionStatusApproved = PrivateEndpointServiceConnectionStatus("Approved")
+	PrivateEndpointServiceConnectionStatusRejected = PrivateEndpointServiceConnectionStatus("Rejected")
 )
 
 // Assessment project status.
@@ -280,16 +531,24 @@ const (
 	ProjectStatusInactive = ProjectStatus("Inactive")
 )
 
-// Provisioning state of the migrate project.
+// The status of the last operation.
 type ProvisioningState string
 
 const (
-	ProvisioningStateAccepted  = ProvisioningState("Accepted")
-	ProvisioningStateCreating  = ProvisioningState("Creating")
-	ProvisioningStateDeleting  = ProvisioningState("Deleting")
-	ProvisioningStateFailed    = ProvisioningState("Failed")
-	ProvisioningStateMoving    = ProvisioningState("Moving")
+	// Resource has been created.
 	ProvisioningStateSucceeded = ProvisioningState("Succeeded")
+	// Resource creation failed.
+	ProvisioningStateFailed = ProvisioningState("Failed")
+	// Resource creation was canceled.
+	ProvisioningStateCanceled = ProvisioningState("Canceled")
+	// Resource is being Provisioned.
+	ProvisioningStateProvisioning = ProvisioningState("Provisioning")
+	// Resource is being Updated.
+	ProvisioningStateUpdating = ProvisioningState("Updating")
+	// Resource is being Deleted.
+	ProvisioningStateDeleting = ProvisioningState("Deleting")
+	// Resource is being Accepted.
+	ProvisioningStateAccepted = ProvisioningState("Accepted")
 )
 
 // Gets or sets the purpose of the solution.
@@ -336,6 +595,15 @@ const (
 	SecretStoreTypeAppServiceAppSettings = SecretStoreType("AppServiceAppSettings")
 )
 
+// SQL server license.
+type SqlServerLicense string
+
+const (
+	SqlServerLicenseUnknown = SqlServerLicense("Unknown")
+	SqlServerLicenseYes     = SqlServerLicense("Yes")
+	SqlServerLicenseNo      = SqlServerLicense("No")
+)
+
 // Gets or sets the current status of the solution.
 type Status string
 
@@ -378,7 +646,8 @@ const (
 	TargetStorageProjectionTypePersistentVolume    = TargetStorageProjectionType("PersistentVolume")
 )
 
-// Time range of performance data used to recommend a size.
+// Time Range for which the historic utilization data should be considered for
+// assessment.
 type TimeRange string
 
 const (

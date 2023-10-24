@@ -14,6 +14,8 @@ import (
 
 // Gets the details of the Cache specified by its identifier.
 // Azure REST API version: 2022-08-01.
+//
+// Other available API versions: 2019-12-01-preview, 2022-09-01-preview, 2023-03-01-preview.
 func LookupCache(ctx *pulumi.Context, args *LookupCacheArgs, opts ...pulumi.InvokeOption) (*LookupCacheResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCacheResult

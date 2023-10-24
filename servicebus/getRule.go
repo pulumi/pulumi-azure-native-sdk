@@ -14,6 +14,8 @@ import (
 
 // Retrieves the description for the specified rule.
 // Azure REST API version: 2022-01-01-preview.
+//
+// Other available API versions: 2022-10-01-preview.
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleResult

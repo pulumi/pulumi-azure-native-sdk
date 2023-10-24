@@ -14,6 +14,8 @@ import (
 
 // Gets an Agent resource.
 // Azure REST API version: 2023-03-01.
+//
+// Other available API versions: 2023-07-01-preview, 2023-10-01.
 func LookupAgent(ctx *pulumi.Context, args *LookupAgentArgs, opts ...pulumi.InvokeOption) (*LookupAgentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAgentResult

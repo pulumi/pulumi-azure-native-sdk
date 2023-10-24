@@ -15,6 +15,8 @@ import (
 
 // Azure Resource Manager resource envelope.
 // Azure REST API version: 2023-04-01-preview.
+//
+// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
 type FeaturesetVersion struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +62,9 @@ func NewFeaturesetVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:FeaturesetVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20231001:FeaturesetVersion"),
 		},
 	})
 	opts = append(opts, aliases)

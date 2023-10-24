@@ -14,6 +14,8 @@ import (
 )
 
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-07-01.
 type AgentPool struct {
 	pulumi.CustomResourceState
 

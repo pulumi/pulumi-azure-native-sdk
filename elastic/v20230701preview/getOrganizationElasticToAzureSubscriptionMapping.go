@@ -4,8 +4,12 @@
 package v20230701preview
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
@@ -26,4 +30,56 @@ type GetOrganizationElasticToAzureSubscriptionMappingArgs struct {
 type GetOrganizationElasticToAzureSubscriptionMappingResult struct {
 	// The properties of Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into.
 	Properties ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse `pulumi:"properties"`
+}
+
+func GetOrganizationElasticToAzureSubscriptionMappingOutput(ctx *pulumi.Context, args GetOrganizationElasticToAzureSubscriptionMappingOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationElasticToAzureSubscriptionMappingResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetOrganizationElasticToAzureSubscriptionMappingResult, error) {
+			args := v.(GetOrganizationElasticToAzureSubscriptionMappingArgs)
+			r, err := GetOrganizationElasticToAzureSubscriptionMapping(ctx, &args, opts...)
+			var s GetOrganizationElasticToAzureSubscriptionMappingResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
+		}).(GetOrganizationElasticToAzureSubscriptionMappingResultOutput)
+}
+
+type GetOrganizationElasticToAzureSubscriptionMappingOutputArgs struct {
+}
+
+func (GetOrganizationElasticToAzureSubscriptionMappingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationElasticToAzureSubscriptionMappingArgs)(nil)).Elem()
+}
+
+// The Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into.
+type GetOrganizationElasticToAzureSubscriptionMappingResultOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationElasticToAzureSubscriptionMappingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationElasticToAzureSubscriptionMappingResult)(nil)).Elem()
+}
+
+func (o GetOrganizationElasticToAzureSubscriptionMappingResultOutput) ToGetOrganizationElasticToAzureSubscriptionMappingResultOutput() GetOrganizationElasticToAzureSubscriptionMappingResultOutput {
+	return o
+}
+
+func (o GetOrganizationElasticToAzureSubscriptionMappingResultOutput) ToGetOrganizationElasticToAzureSubscriptionMappingResultOutputWithContext(ctx context.Context) GetOrganizationElasticToAzureSubscriptionMappingResultOutput {
+	return o
+}
+
+func (o GetOrganizationElasticToAzureSubscriptionMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOrganizationElasticToAzureSubscriptionMappingResult] {
+	return pulumix.Output[GetOrganizationElasticToAzureSubscriptionMappingResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The properties of Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into.
+func (o GetOrganizationElasticToAzureSubscriptionMappingResultOutput) Properties() ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput {
+	return o.ApplyT(func(v GetOrganizationElasticToAzureSubscriptionMappingResult) ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse {
+		return v.Properties
+	}).(ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetOrganizationElasticToAzureSubscriptionMappingResultOutput{})
 }

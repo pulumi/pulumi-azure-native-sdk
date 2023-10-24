@@ -14,6 +14,8 @@ import (
 
 // List the authorization keys associated with this account.
 // Azure REST API version: 2021-12-01.
+//
+// Other available API versions: 2020-12-01-preview, 2021-07-01.
 func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListAccountKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccountKeysResult

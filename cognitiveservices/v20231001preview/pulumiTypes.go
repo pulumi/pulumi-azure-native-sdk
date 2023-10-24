@@ -2188,7 +2188,7 @@ func (o CommitmentQuotaResponsePtrOutput) Unit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The maps to reserved Capacity for fungible deployments (MSS).
+// Internal use only.
 type DeploymentCapacitySettings struct {
 	// The designated capacity.
 	DesignatedCapacity *int `pulumi:"designatedCapacity"`
@@ -2207,7 +2207,7 @@ type DeploymentCapacitySettingsInput interface {
 	ToDeploymentCapacitySettingsOutputWithContext(context.Context) DeploymentCapacitySettingsOutput
 }
 
-// The maps to reserved Capacity for fungible deployments (MSS).
+// Internal use only.
 type DeploymentCapacitySettingsArgs struct {
 	// The designated capacity.
 	DesignatedCapacity pulumi.IntPtrInput `pulumi:"designatedCapacity"`
@@ -2280,7 +2280,7 @@ func (i *deploymentCapacitySettingsPtrType) ToOutput(ctx context.Context) pulumi
 	}
 }
 
-// The maps to reserved Capacity for fungible deployments (MSS).
+// Internal use only.
 type DeploymentCapacitySettingsOutput struct{ *pulumi.OutputState }
 
 func (DeploymentCapacitySettingsOutput) ElementType() reflect.Type {
@@ -2371,7 +2371,7 @@ func (o DeploymentCapacitySettingsPtrOutput) Priority() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maps to reserved Capacity for fungible deployments (MSS).
+// Internal use only.
 type DeploymentCapacitySettingsResponse struct {
 	// The designated capacity.
 	DesignatedCapacity *int `pulumi:"designatedCapacity"`
@@ -2379,7 +2379,7 @@ type DeploymentCapacitySettingsResponse struct {
 	Priority *int `pulumi:"priority"`
 }
 
-// The maps to reserved Capacity for fungible deployments (MSS).
+// Internal use only.
 type DeploymentCapacitySettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (DeploymentCapacitySettingsResponseOutput) ElementType() reflect.Type {
@@ -2823,7 +2823,7 @@ func (o DeploymentModelResponsePtrOutput) Version() pulumi.StringPtrOutput {
 
 // Properties of Cognitive Services account deployment.
 type DeploymentProperties struct {
-	// The maps to reserved Capacity for fungible deployments (MSS).
+	// Internal use only.
 	CapacitySettings *DeploymentCapacitySettings `pulumi:"capacitySettings"`
 	// The current capacity.
 	CurrentCapacity *int `pulumi:"currentCapacity"`
@@ -2831,7 +2831,7 @@ type DeploymentProperties struct {
 	Model *DeploymentModel `pulumi:"model"`
 	// The name of RAI policy.
 	RaiPolicyName *string `pulumi:"raiPolicyName"`
-	// Properties of Cognitive Services account deployment model.
+	// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 	ScaleSettings *DeploymentScaleSettings `pulumi:"scaleSettings"`
 	// Deployment model version upgrade option.
 	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
@@ -2850,7 +2850,7 @@ type DeploymentPropertiesInput interface {
 
 // Properties of Cognitive Services account deployment.
 type DeploymentPropertiesArgs struct {
-	// The maps to reserved Capacity for fungible deployments (MSS).
+	// Internal use only.
 	CapacitySettings DeploymentCapacitySettingsPtrInput `pulumi:"capacitySettings"`
 	// The current capacity.
 	CurrentCapacity pulumi.IntPtrInput `pulumi:"currentCapacity"`
@@ -2858,7 +2858,7 @@ type DeploymentPropertiesArgs struct {
 	Model DeploymentModelPtrInput `pulumi:"model"`
 	// The name of RAI policy.
 	RaiPolicyName pulumi.StringPtrInput `pulumi:"raiPolicyName"`
-	// Properties of Cognitive Services account deployment model.
+	// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 	ScaleSettings DeploymentScaleSettingsPtrInput `pulumi:"scaleSettings"`
 	// Deployment model version upgrade option.
 	VersionUpgradeOption pulumi.StringPtrInput `pulumi:"versionUpgradeOption"`
@@ -2960,7 +2960,7 @@ func (o DeploymentPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
-// The maps to reserved Capacity for fungible deployments (MSS).
+// Internal use only.
 func (o DeploymentPropertiesOutput) CapacitySettings() DeploymentCapacitySettingsPtrOutput {
 	return o.ApplyT(func(v DeploymentProperties) *DeploymentCapacitySettings { return v.CapacitySettings }).(DeploymentCapacitySettingsPtrOutput)
 }
@@ -2980,7 +2980,7 @@ func (o DeploymentPropertiesOutput) RaiPolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentProperties) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 func (o DeploymentPropertiesOutput) ScaleSettings() DeploymentScaleSettingsPtrOutput {
 	return o.ApplyT(func(v DeploymentProperties) *DeploymentScaleSettings { return v.ScaleSettings }).(DeploymentScaleSettingsPtrOutput)
 }
@@ -3020,7 +3020,7 @@ func (o DeploymentPropertiesPtrOutput) Elem() DeploymentPropertiesOutput {
 	}).(DeploymentPropertiesOutput)
 }
 
-// The maps to reserved Capacity for fungible deployments (MSS).
+// Internal use only.
 func (o DeploymentPropertiesPtrOutput) CapacitySettings() DeploymentCapacitySettingsPtrOutput {
 	return o.ApplyT(func(v *DeploymentProperties) *DeploymentCapacitySettings {
 		if v == nil {
@@ -3060,7 +3060,7 @@ func (o DeploymentPropertiesPtrOutput) RaiPolicyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 func (o DeploymentPropertiesPtrOutput) ScaleSettings() DeploymentScaleSettingsPtrOutput {
 	return o.ApplyT(func(v *DeploymentProperties) *DeploymentScaleSettings {
 		if v == nil {
@@ -3086,7 +3086,7 @@ type DeploymentPropertiesResponse struct {
 	CallRateLimit CallRateLimitResponse `pulumi:"callRateLimit"`
 	// The capabilities.
 	Capabilities map[string]string `pulumi:"capabilities"`
-	// The maps to reserved Capacity for fungible deployments (MSS).
+	// Internal use only.
 	CapacitySettings *DeploymentCapacitySettingsResponse `pulumi:"capacitySettings"`
 	// The current capacity.
 	CurrentCapacity *int `pulumi:"currentCapacity"`
@@ -3099,7 +3099,7 @@ type DeploymentPropertiesResponse struct {
 	// The name of RAI policy.
 	RaiPolicyName *string                  `pulumi:"raiPolicyName"`
 	RateLimits    []ThrottlingRuleResponse `pulumi:"rateLimits"`
-	// Properties of Cognitive Services account deployment model.
+	// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 	ScaleSettings *DeploymentScaleSettingsResponse `pulumi:"scaleSettings"`
 	// Deployment model version upgrade option.
 	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
@@ -3136,7 +3136,7 @@ func (o DeploymentPropertiesResponseOutput) Capabilities() pulumi.StringMapOutpu
 	return o.ApplyT(func(v DeploymentPropertiesResponse) map[string]string { return v.Capabilities }).(pulumi.StringMapOutput)
 }
 
-// The maps to reserved Capacity for fungible deployments (MSS).
+// Internal use only.
 func (o DeploymentPropertiesResponseOutput) CapacitySettings() DeploymentCapacitySettingsResponsePtrOutput {
 	return o.ApplyT(func(v DeploymentPropertiesResponse) *DeploymentCapacitySettingsResponse { return v.CapacitySettings }).(DeploymentCapacitySettingsResponsePtrOutput)
 }
@@ -3170,7 +3170,7 @@ func (o DeploymentPropertiesResponseOutput) RateLimits() ThrottlingRuleResponseA
 	return o.ApplyT(func(v DeploymentPropertiesResponse) []ThrottlingRuleResponse { return v.RateLimits }).(ThrottlingRuleResponseArrayOutput)
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 func (o DeploymentPropertiesResponseOutput) ScaleSettings() DeploymentScaleSettingsResponsePtrOutput {
 	return o.ApplyT(func(v DeploymentPropertiesResponse) *DeploymentScaleSettingsResponse { return v.ScaleSettings }).(DeploymentScaleSettingsResponsePtrOutput)
 }
@@ -3180,7 +3180,7 @@ func (o DeploymentPropertiesResponseOutput) VersionUpgradeOption() pulumi.String
 	return o.ApplyT(func(v DeploymentPropertiesResponse) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 type DeploymentScaleSettings struct {
 	// Deployment capacity.
 	Capacity *int `pulumi:"capacity"`
@@ -3199,7 +3199,7 @@ type DeploymentScaleSettingsInput interface {
 	ToDeploymentScaleSettingsOutputWithContext(context.Context) DeploymentScaleSettingsOutput
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 type DeploymentScaleSettingsArgs struct {
 	// Deployment capacity.
 	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
@@ -3272,7 +3272,7 @@ func (i *deploymentScaleSettingsPtrType) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 type DeploymentScaleSettingsOutput struct{ *pulumi.OutputState }
 
 func (DeploymentScaleSettingsOutput) ElementType() reflect.Type {
@@ -3363,7 +3363,7 @@ func (o DeploymentScaleSettingsPtrOutput) ScaleType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 type DeploymentScaleSettingsResponse struct {
 	// Deployment active capacity. This value might be different from `capacity` if customer recently updated `capacity`.
 	ActiveCapacity int `pulumi:"activeCapacity"`
@@ -3373,7 +3373,7 @@ type DeploymentScaleSettingsResponse struct {
 	ScaleType *string `pulumi:"scaleType"`
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 type DeploymentScaleSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (DeploymentScaleSettingsResponseOutput) ElementType() reflect.Type {

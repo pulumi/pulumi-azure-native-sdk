@@ -14,7 +14,9 @@ import (
 )
 
 // A cluster resource
-// Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-03-20
+// Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-03-20.
+//
+// Other available API versions: 2020-03-20, 2021-06-01, 2023-03-01.
 type Cluster struct {
 	pulumi.CustomResourceState
 

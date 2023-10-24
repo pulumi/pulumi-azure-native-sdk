@@ -15,6 +15,8 @@ import (
 
 // A task resource
 // Azure REST API version: 2021-06-30.
+//
+// Other available API versions: 2022-03-30-preview.
 type ServiceTask struct {
 	pulumi.CustomResourceState
 

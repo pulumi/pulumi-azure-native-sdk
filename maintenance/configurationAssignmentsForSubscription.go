@@ -14,6 +14,8 @@ import (
 
 // Configuration Assignment
 // Azure REST API version: 2023-04-01.
+//
+// Other available API versions: 2023-09-01-preview.
 type ConfigurationAssignmentsForSubscription struct {
 	pulumi.CustomResourceState
 
@@ -43,6 +45,9 @@ func NewConfigurationAssignmentsForSubscription(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:maintenance/v20230401:ConfigurationAssignmentsForSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:maintenance/v20230901preview:ConfigurationAssignmentsForSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

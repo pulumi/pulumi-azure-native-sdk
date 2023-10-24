@@ -14,7 +14,7 @@ import (
 )
 
 // Network default admin rule.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-02-01-preview
+// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-02-01-preview.
 type DefaultAdminRule struct {
 	pulumi.CustomResourceState
 

@@ -14,7 +14,9 @@ import (
 )
 
 // The lock information.
-// Azure REST API version: 2020-05-01. Prior API version in Azure Native 1.x: 2017-04-01
+// Azure REST API version: 2020-05-01. Prior API version in Azure Native 1.x: 2017-04-01.
+//
+// Other available API versions: 2015-01-01.
 type ManagementLockAtResourceGroupLevel struct {
 	pulumi.CustomResourceState
 

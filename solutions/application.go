@@ -14,7 +14,9 @@ import (
 )
 
 // Information about managed application.
-// Azure REST API version: 2021-07-01. Prior API version in Azure Native 1.x: 2019-07-01
+// Azure REST API version: 2021-07-01. Prior API version in Azure Native 1.x: 2019-07-01.
+//
+// Other available API versions: 2017-12-01, 2018-06-01.
 type Application struct {
 	pulumi.CustomResourceState
 

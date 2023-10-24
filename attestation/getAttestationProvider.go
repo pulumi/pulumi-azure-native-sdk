@@ -14,6 +14,8 @@ import (
 
 // Get the status of Attestation Provider.
 // Azure REST API version: 2021-06-01.
+//
+// Other available API versions: 2021-06-01-preview.
 func LookupAttestationProvider(ctx *pulumi.Context, args *LookupAttestationProviderArgs, opts ...pulumi.InvokeOption) (*LookupAttestationProviderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttestationProviderResult

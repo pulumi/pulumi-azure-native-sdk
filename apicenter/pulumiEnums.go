@@ -3,6 +3,62 @@
 
 package apicenter
 
+// Kind of API. For example, REST or GraphQL.
+type ApiKind string
+
+const (
+	ApiKindRest      = ApiKind("rest")
+	ApiKindGraphql   = ApiKind("graphql")
+	ApiKindGrpc      = ApiKind("grpc")
+	ApiKindSoap      = ApiKind("soap")
+	ApiKindWebhook   = ApiKind("webhook")
+	ApiKindWebsocket = ApiKind("websocket")
+)
+
+// State of API deployment.
+type DeploymentStateEnum string
+
+const (
+	DeploymentStateEnumActive   = DeploymentStateEnum("active")
+	DeploymentStateEnumInactive = DeploymentStateEnum("inactive")
+)
+
+// Environment kind.
+type EnvironmentKind string
+
+const (
+	EnvironmentKindDevelopment = EnvironmentKind("development")
+	EnvironmentKindTesting     = EnvironmentKind("testing")
+	EnvironmentKindStaging     = EnvironmentKind("staging")
+	EnvironmentKindProduction  = EnvironmentKind("production")
+)
+
+// Type of the server that represents the environment.
+type EnvironmentServerType string
+
+const (
+	EnvironmentServerType_Azure_API_Management    = EnvironmentServerType("Azure API Management")
+	EnvironmentServerType_Azure_compute_service   = EnvironmentServerType("Azure compute service")
+	EnvironmentServerType_Apigee_API_Management   = EnvironmentServerType("Apigee API Management")
+	EnvironmentServerType_AWS_API_Gateway         = EnvironmentServerType("AWS API Gateway")
+	EnvironmentServerType_Kong_API_Gateway        = EnvironmentServerType("Kong API Gateway")
+	EnvironmentServerTypeKubernetes               = EnvironmentServerType("Kubernetes")
+	EnvironmentServerType_MuleSoft_API_Management = EnvironmentServerType("MuleSoft API Management")
+)
+
+// Current lifecycle stage of the API.
+type LifecycleStage string
+
+const (
+	LifecycleStageDesign      = LifecycleStage("design")
+	LifecycleStageDevelopment = LifecycleStage("development")
+	LifecycleStageTesting     = LifecycleStage("testing")
+	LifecycleStagePreview     = LifecycleStage("preview")
+	LifecycleStageProduction  = LifecycleStage("production")
+	LifecycleStageDeprecated  = LifecycleStage("deprecated")
+	LifecycleStageRetired     = LifecycleStage("retired")
+)
+
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 type ManagedServiceIdentityType string
 
@@ -11,6 +67,15 @@ const (
 	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
 	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
 	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned,UserAssigned")
+)
+
+// The entities this metadata schema component gets applied to.
+type MetadataAssignmentEntity string
+
+const (
+	MetadataAssignmentEntityApi         = MetadataAssignmentEntity("api")
+	MetadataAssignmentEntityDeployment  = MetadataAssignmentEntity("deployment")
+	MetadataAssignmentEntityEnvironment = MetadataAssignmentEntity("environment")
 )
 
 func init() {

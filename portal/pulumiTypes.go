@@ -2308,6 +2308,68 @@ type ViolationResponse struct {
 	UserId string `pulumi:"userId"`
 }
 
+// Violation information.
+type ViolationResponseOutput struct{ *pulumi.OutputState }
+
+func (ViolationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ViolationResponse)(nil)).Elem()
+}
+
+func (o ViolationResponseOutput) ToViolationResponseOutput() ViolationResponseOutput {
+	return o
+}
+
+func (o ViolationResponseOutput) ToViolationResponseOutputWithContext(ctx context.Context) ViolationResponseOutput {
+	return o
+}
+
+func (o ViolationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ViolationResponse] {
+	return pulumix.Output[ViolationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Error message.
+func (o ViolationResponseOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v ViolationResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// Id of the item that violates tenant configuration.
+func (o ViolationResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ViolationResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Id of the user who owns violated item.
+func (o ViolationResponseOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v ViolationResponse) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+type ViolationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ViolationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ViolationResponse)(nil)).Elem()
+}
+
+func (o ViolationResponseArrayOutput) ToViolationResponseArrayOutput() ViolationResponseArrayOutput {
+	return o
+}
+
+func (o ViolationResponseArrayOutput) ToViolationResponseArrayOutputWithContext(ctx context.Context) ViolationResponseArrayOutput {
+	return o
+}
+
+func (o ViolationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ViolationResponse] {
+	return pulumix.Output[[]ViolationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ViolationResponseArrayOutput) Index(i pulumi.IntInput) ViolationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ViolationResponse {
+		return vs[0].([]ViolationResponse)[vs[1].(int)]
+	}).(ViolationResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConsoleCreatePropertiesOutput{})
 	pulumi.RegisterOutputType(ConsolePropertiesResponseOutput{})
@@ -2343,4 +2405,6 @@ func init() {
 	pulumi.RegisterOutputType(TerminalSettingsResponseOutput{})
 	pulumi.RegisterOutputType(UserPropertiesOutput{})
 	pulumi.RegisterOutputType(UserPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ViolationResponseOutput{})
+	pulumi.RegisterOutputType(ViolationResponseArrayOutput{})
 }

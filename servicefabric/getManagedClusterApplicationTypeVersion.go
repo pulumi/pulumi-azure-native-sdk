@@ -14,6 +14,8 @@ import (
 
 // Get a Service Fabric managed application type version resource created or in the process of being created in the Service Fabric managed application type name resource.
 // Azure REST API version: 2023-03-01-preview.
+//
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview.
 func LookupManagedClusterApplicationTypeVersion(ctx *pulumi.Context, args *LookupManagedClusterApplicationTypeVersionArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterApplicationTypeVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedClusterApplicationTypeVersionResult

@@ -14,6 +14,8 @@ import (
 
 // The grafana resource type.
 // Azure REST API version: 2022-08-01.
+//
+// Other available API versions: 2021-09-01-preview, 2022-10-01-preview.
 func LookupGrafana(ctx *pulumi.Context, args *LookupGrafanaArgs, opts ...pulumi.InvokeOption) (*LookupGrafanaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGrafanaResult

@@ -14,6 +14,8 @@ import (
 
 // Get details of the specified subvolume
 // Azure REST API version: 2022-11-01.
+//
+// Other available API versions: 2022-11-01-preview, 2023-05-01.
 func GetSubvolumeMetadata(ctx *pulumi.Context, args *GetSubvolumeMetadataArgs, opts ...pulumi.InvokeOption) (*GetSubvolumeMetadataResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSubvolumeMetadataResult

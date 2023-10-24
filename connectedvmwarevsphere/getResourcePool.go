@@ -14,6 +14,8 @@ import (
 
 // Implements resourcePool GET method.
 // Azure REST API version: 2022-07-15-preview.
+//
+// Other available API versions: 2023-03-01-preview, 2023-10-01.
 func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts ...pulumi.InvokeOption) (*LookupResourcePoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourcePoolResult

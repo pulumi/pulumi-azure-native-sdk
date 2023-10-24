@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:workloads:ACSSBackupConnection":
+		r = &ACSSBackupConnection{}
+	case "azure-native:workloads:Connector":
+		r = &Connector{}
 	case "azure-native:workloads:Monitor":
 		r = &Monitor{}
 	case "azure-native:workloads:ProviderInstance":

@@ -14,6 +14,8 @@ import (
 
 // Gets an integration account schema.
 // Azure REST API version: 2019-05-01.
+//
+// Other available API versions: 2015-08-01-preview.
 func LookupIntegrationAccountSchema(ctx *pulumi.Context, args *LookupIntegrationAccountSchemaArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountSchemaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationAccountSchemaResult

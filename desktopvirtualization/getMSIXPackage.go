@@ -14,6 +14,8 @@ import (
 
 // Get a msixpackage.
 // Azure REST API version: 2022-09-09.
+//
+// Other available API versions: 2022-10-14-preview, 2023-07-07-preview, 2023-09-05.
 func LookupMSIXPackage(ctx *pulumi.Context, args *LookupMSIXPackageArgs, opts ...pulumi.InvokeOption) (*LookupMSIXPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMSIXPackageResult
