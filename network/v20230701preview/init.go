@@ -23,6 +23,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:network/v20230701preview:DnssecConfig":
 		r = &DnssecConfig{}
+	case "azure-native:network/v20230701preview:NetworkSecurityPerimeter":
+		r = &NetworkSecurityPerimeter{}
+	case "azure-native:network/v20230701preview:NspAccessRule":
+		r = &NspAccessRule{}
+	case "azure-native:network/v20230701preview:NspAssociation":
+		r = &NspAssociation{}
+	case "azure-native:network/v20230701preview:NspLink":
+		r = &NspLink{}
+	case "azure-native:network/v20230701preview:NspProfile":
+		r = &NspProfile{}
 	case "azure-native:network/v20230701preview:RecordSet":
 		r = &RecordSet{}
 	case "azure-native:network/v20230701preview:Zone":

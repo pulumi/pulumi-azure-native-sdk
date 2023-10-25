@@ -2384,22 +2384,332 @@ func (o MachineExtensionInstanceViewStatusPtrOutput) Time() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes a Machine Extension.
-type MachineExtensionResponse struct {
+// Describes the properties of a Machine Extension.
+type MachineExtensionProperties struct {
 	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
 	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
 	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
 	// How the extension handler should be forced to update even if the extension configuration has not changed.
 	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-	Id string `pulumi:"id"`
+	// The machine extension instance view.
+	InstanceView *MachineExtensionInstanceView `pulumi:"instanceView"`
+	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+	ProtectedSettings interface{} `pulumi:"protectedSettings"`
+	// The name of the extension handler publisher.
+	Publisher *string `pulumi:"publisher"`
+	// Json formatted public settings for the extension.
+	Settings interface{} `pulumi:"settings"`
+	// Specifies the type of the extension; an example is "CustomScriptExtension".
+	Type *string `pulumi:"type"`
+	// Specifies the version of the script handler.
+	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
+}
+
+// MachineExtensionPropertiesInput is an input type that accepts MachineExtensionPropertiesArgs and MachineExtensionPropertiesOutput values.
+// You can construct a concrete instance of `MachineExtensionPropertiesInput` via:
+//
+//	MachineExtensionPropertiesArgs{...}
+type MachineExtensionPropertiesInput interface {
+	pulumi.Input
+
+	ToMachineExtensionPropertiesOutput() MachineExtensionPropertiesOutput
+	ToMachineExtensionPropertiesOutputWithContext(context.Context) MachineExtensionPropertiesOutput
+}
+
+// Describes the properties of a Machine Extension.
+type MachineExtensionPropertiesArgs struct {
+	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+	AutoUpgradeMinorVersion pulumi.BoolPtrInput `pulumi:"autoUpgradeMinorVersion"`
+	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+	EnableAutomaticUpgrade pulumi.BoolPtrInput `pulumi:"enableAutomaticUpgrade"`
+	// How the extension handler should be forced to update even if the extension configuration has not changed.
+	ForceUpdateTag pulumi.StringPtrInput `pulumi:"forceUpdateTag"`
+	// The machine extension instance view.
+	InstanceView MachineExtensionInstanceViewPtrInput `pulumi:"instanceView"`
+	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+	ProtectedSettings pulumi.Input `pulumi:"protectedSettings"`
+	// The name of the extension handler publisher.
+	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
+	// Json formatted public settings for the extension.
+	Settings pulumi.Input `pulumi:"settings"`
+	// Specifies the type of the extension; an example is "CustomScriptExtension".
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Specifies the version of the script handler.
+	TypeHandlerVersion pulumi.StringPtrInput `pulumi:"typeHandlerVersion"`
+}
+
+func (MachineExtensionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineExtensionProperties)(nil)).Elem()
+}
+
+func (i MachineExtensionPropertiesArgs) ToMachineExtensionPropertiesOutput() MachineExtensionPropertiesOutput {
+	return i.ToMachineExtensionPropertiesOutputWithContext(context.Background())
+}
+
+func (i MachineExtensionPropertiesArgs) ToMachineExtensionPropertiesOutputWithContext(ctx context.Context) MachineExtensionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineExtensionPropertiesOutput)
+}
+
+func (i MachineExtensionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionProperties] {
+	return pulumix.Output[MachineExtensionProperties]{
+		OutputState: i.ToMachineExtensionPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i MachineExtensionPropertiesArgs) ToMachineExtensionPropertiesPtrOutput() MachineExtensionPropertiesPtrOutput {
+	return i.ToMachineExtensionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i MachineExtensionPropertiesArgs) ToMachineExtensionPropertiesPtrOutputWithContext(ctx context.Context) MachineExtensionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineExtensionPropertiesOutput).ToMachineExtensionPropertiesPtrOutputWithContext(ctx)
+}
+
+// MachineExtensionPropertiesPtrInput is an input type that accepts MachineExtensionPropertiesArgs, MachineExtensionPropertiesPtr and MachineExtensionPropertiesPtrOutput values.
+// You can construct a concrete instance of `MachineExtensionPropertiesPtrInput` via:
+//
+//	        MachineExtensionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MachineExtensionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToMachineExtensionPropertiesPtrOutput() MachineExtensionPropertiesPtrOutput
+	ToMachineExtensionPropertiesPtrOutputWithContext(context.Context) MachineExtensionPropertiesPtrOutput
+}
+
+type machineExtensionPropertiesPtrType MachineExtensionPropertiesArgs
+
+func MachineExtensionPropertiesPtr(v *MachineExtensionPropertiesArgs) MachineExtensionPropertiesPtrInput {
+	return (*machineExtensionPropertiesPtrType)(v)
+}
+
+func (*machineExtensionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineExtensionProperties)(nil)).Elem()
+}
+
+func (i *machineExtensionPropertiesPtrType) ToMachineExtensionPropertiesPtrOutput() MachineExtensionPropertiesPtrOutput {
+	return i.ToMachineExtensionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *machineExtensionPropertiesPtrType) ToMachineExtensionPropertiesPtrOutputWithContext(ctx context.Context) MachineExtensionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineExtensionPropertiesPtrOutput)
+}
+
+func (i *machineExtensionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionProperties] {
+	return pulumix.Output[*MachineExtensionProperties]{
+		OutputState: i.ToMachineExtensionPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Describes the properties of a Machine Extension.
+type MachineExtensionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (MachineExtensionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineExtensionProperties)(nil)).Elem()
+}
+
+func (o MachineExtensionPropertiesOutput) ToMachineExtensionPropertiesOutput() MachineExtensionPropertiesOutput {
+	return o
+}
+
+func (o MachineExtensionPropertiesOutput) ToMachineExtensionPropertiesOutputWithContext(ctx context.Context) MachineExtensionPropertiesOutput {
+	return o
+}
+
+func (o MachineExtensionPropertiesOutput) ToMachineExtensionPropertiesPtrOutput() MachineExtensionPropertiesPtrOutput {
+	return o.ToMachineExtensionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o MachineExtensionPropertiesOutput) ToMachineExtensionPropertiesPtrOutputWithContext(ctx context.Context) MachineExtensionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineExtensionProperties) *MachineExtensionProperties {
+		return &v
+	}).(MachineExtensionPropertiesPtrOutput)
+}
+
+func (o MachineExtensionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionProperties] {
+	return pulumix.Output[MachineExtensionProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+func (o MachineExtensionPropertiesOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MachineExtensionProperties) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+func (o MachineExtensionPropertiesOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MachineExtensionProperties) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// How the extension handler should be forced to update even if the extension configuration has not changed.
+func (o MachineExtensionPropertiesOutput) ForceUpdateTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineExtensionProperties) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
+}
+
+// The machine extension instance view.
+func (o MachineExtensionPropertiesOutput) InstanceView() MachineExtensionInstanceViewPtrOutput {
+	return o.ApplyT(func(v MachineExtensionProperties) *MachineExtensionInstanceView { return v.InstanceView }).(MachineExtensionInstanceViewPtrOutput)
+}
+
+// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+func (o MachineExtensionPropertiesOutput) ProtectedSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v MachineExtensionProperties) interface{} { return v.ProtectedSettings }).(pulumi.AnyOutput)
+}
+
+// The name of the extension handler publisher.
+func (o MachineExtensionPropertiesOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineExtensionProperties) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
+// Json formatted public settings for the extension.
+func (o MachineExtensionPropertiesOutput) Settings() pulumi.AnyOutput {
+	return o.ApplyT(func(v MachineExtensionProperties) interface{} { return v.Settings }).(pulumi.AnyOutput)
+}
+
+// Specifies the type of the extension; an example is "CustomScriptExtension".
+func (o MachineExtensionPropertiesOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineExtensionProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the version of the script handler.
+func (o MachineExtensionPropertiesOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineExtensionProperties) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
+}
+
+type MachineExtensionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (MachineExtensionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineExtensionProperties)(nil)).Elem()
+}
+
+func (o MachineExtensionPropertiesPtrOutput) ToMachineExtensionPropertiesPtrOutput() MachineExtensionPropertiesPtrOutput {
+	return o
+}
+
+func (o MachineExtensionPropertiesPtrOutput) ToMachineExtensionPropertiesPtrOutputWithContext(ctx context.Context) MachineExtensionPropertiesPtrOutput {
+	return o
+}
+
+func (o MachineExtensionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionProperties] {
+	return pulumix.Output[*MachineExtensionProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MachineExtensionPropertiesPtrOutput) Elem() MachineExtensionPropertiesOutput {
+	return o.ApplyT(func(v *MachineExtensionProperties) MachineExtensionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret MachineExtensionProperties
+		return ret
+	}).(MachineExtensionPropertiesOutput)
+}
+
+// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+func (o MachineExtensionPropertiesPtrOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoUpgradeMinorVersion
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+func (o MachineExtensionPropertiesPtrOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutomaticUpgrade
+	}).(pulumi.BoolPtrOutput)
+}
+
+// How the extension handler should be forced to update even if the extension configuration has not changed.
+func (o MachineExtensionPropertiesPtrOutput) ForceUpdateTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForceUpdateTag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The machine extension instance view.
+func (o MachineExtensionPropertiesPtrOutput) InstanceView() MachineExtensionInstanceViewPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionProperties) *MachineExtensionInstanceView {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceView
+	}).(MachineExtensionInstanceViewPtrOutput)
+}
+
+// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+func (o MachineExtensionPropertiesPtrOutput) ProtectedSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v *MachineExtensionProperties) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectedSettings
+	}).(pulumi.AnyOutput)
+}
+
+// The name of the extension handler publisher.
+func (o MachineExtensionPropertiesPtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Publisher
+	}).(pulumi.StringPtrOutput)
+}
+
+// Json formatted public settings for the extension.
+func (o MachineExtensionPropertiesPtrOutput) Settings() pulumi.AnyOutput {
+	return o.ApplyT(func(v *MachineExtensionProperties) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(pulumi.AnyOutput)
+}
+
+// Specifies the type of the extension; an example is "CustomScriptExtension".
+func (o MachineExtensionPropertiesPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the version of the script handler.
+func (o MachineExtensionPropertiesPtrOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TypeHandlerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the properties of a Machine Extension.
+type MachineExtensionPropertiesResponse struct {
+	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
+	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
+	// How the extension handler should be forced to update even if the extension configuration has not changed.
+	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
 	// The machine extension instance view.
 	InstanceView *MachineExtensionInstanceViewResponse `pulumi:"instanceView"`
-	// The geo-location where the resource lives
-	Location string `pulumi:"location"`
-	// The name of the resource
-	Name string `pulumi:"name"`
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
 	// The provisioning state, which only appears in the response.
@@ -2408,14 +2718,231 @@ type MachineExtensionResponse struct {
 	Publisher *string `pulumi:"publisher"`
 	// Json formatted public settings for the extension.
 	Settings interface{} `pulumi:"settings"`
+	// Specifies the type of the extension; an example is "CustomScriptExtension".
+	Type *string `pulumi:"type"`
+	// Specifies the version of the script handler.
+	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
+}
+
+// Describes the properties of a Machine Extension.
+type MachineExtensionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (MachineExtensionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineExtensionPropertiesResponse)(nil)).Elem()
+}
+
+func (o MachineExtensionPropertiesResponseOutput) ToMachineExtensionPropertiesResponseOutput() MachineExtensionPropertiesResponseOutput {
+	return o
+}
+
+func (o MachineExtensionPropertiesResponseOutput) ToMachineExtensionPropertiesResponseOutputWithContext(ctx context.Context) MachineExtensionPropertiesResponseOutput {
+	return o
+}
+
+func (o MachineExtensionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionPropertiesResponse] {
+	return pulumix.Output[MachineExtensionPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+func (o MachineExtensionPropertiesResponseOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponse) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+func (o MachineExtensionPropertiesResponseOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponse) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// How the extension handler should be forced to update even if the extension configuration has not changed.
+func (o MachineExtensionPropertiesResponseOutput) ForceUpdateTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponse) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
+}
+
+// The machine extension instance view.
+func (o MachineExtensionPropertiesResponseOutput) InstanceView() MachineExtensionInstanceViewResponsePtrOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponse) *MachineExtensionInstanceViewResponse {
+		return v.InstanceView
+	}).(MachineExtensionInstanceViewResponsePtrOutput)
+}
+
+// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+func (o MachineExtensionPropertiesResponseOutput) ProtectedSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponse) interface{} { return v.ProtectedSettings }).(pulumi.AnyOutput)
+}
+
+// The provisioning state, which only appears in the response.
+func (o MachineExtensionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The name of the extension handler publisher.
+func (o MachineExtensionPropertiesResponseOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponse) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
+// Json formatted public settings for the extension.
+func (o MachineExtensionPropertiesResponseOutput) Settings() pulumi.AnyOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponse) interface{} { return v.Settings }).(pulumi.AnyOutput)
+}
+
+// Specifies the type of the extension; an example is "CustomScriptExtension".
+func (o MachineExtensionPropertiesResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the version of the script handler.
+func (o MachineExtensionPropertiesResponseOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineExtensionPropertiesResponse) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
+}
+
+type MachineExtensionPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MachineExtensionPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineExtensionPropertiesResponse)(nil)).Elem()
+}
+
+func (o MachineExtensionPropertiesResponsePtrOutput) ToMachineExtensionPropertiesResponsePtrOutput() MachineExtensionPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o MachineExtensionPropertiesResponsePtrOutput) ToMachineExtensionPropertiesResponsePtrOutputWithContext(ctx context.Context) MachineExtensionPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o MachineExtensionPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionPropertiesResponse] {
+	return pulumix.Output[*MachineExtensionPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MachineExtensionPropertiesResponsePtrOutput) Elem() MachineExtensionPropertiesResponseOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponse) MachineExtensionPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MachineExtensionPropertiesResponse
+		return ret
+	}).(MachineExtensionPropertiesResponseOutput)
+}
+
+// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+func (o MachineExtensionPropertiesResponsePtrOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoUpgradeMinorVersion
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+func (o MachineExtensionPropertiesResponsePtrOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutomaticUpgrade
+	}).(pulumi.BoolPtrOutput)
+}
+
+// How the extension handler should be forced to update even if the extension configuration has not changed.
+func (o MachineExtensionPropertiesResponsePtrOutput) ForceUpdateTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForceUpdateTag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The machine extension instance view.
+func (o MachineExtensionPropertiesResponsePtrOutput) InstanceView() MachineExtensionInstanceViewResponsePtrOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponse) *MachineExtensionInstanceViewResponse {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceView
+	}).(MachineExtensionInstanceViewResponsePtrOutput)
+}
+
+// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+func (o MachineExtensionPropertiesResponsePtrOutput) ProtectedSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectedSettings
+	}).(pulumi.AnyOutput)
+}
+
+// The provisioning state, which only appears in the response.
+func (o MachineExtensionPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the extension handler publisher.
+func (o MachineExtensionPropertiesResponsePtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Publisher
+	}).(pulumi.StringPtrOutput)
+}
+
+// Json formatted public settings for the extension.
+func (o MachineExtensionPropertiesResponsePtrOutput) Settings() pulumi.AnyOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(pulumi.AnyOutput)
+}
+
+// Specifies the type of the extension; an example is "CustomScriptExtension".
+func (o MachineExtensionPropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the version of the script handler.
+func (o MachineExtensionPropertiesResponsePtrOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineExtensionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TypeHandlerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes a Machine Extension.
+type MachineExtensionResponse struct {
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Describes Machine Extension Properties.
+	Properties *MachineExtensionPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Specifies the version of the script handler.
-	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
 }
 
 // Describes a Machine Extension.
@@ -2439,29 +2966,9 @@ func (o MachineExtensionResponseOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-func (o MachineExtensionResponseOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MachineExtensionResponse) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
-func (o MachineExtensionResponseOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MachineExtensionResponse) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
-}
-
-// How the extension handler should be forced to update even if the extension configuration has not changed.
-func (o MachineExtensionResponseOutput) ForceUpdateTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MachineExtensionResponse) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o MachineExtensionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v MachineExtensionResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The machine extension instance view.
-func (o MachineExtensionResponseOutput) InstanceView() MachineExtensionInstanceViewResponsePtrOutput {
-	return o.ApplyT(func(v MachineExtensionResponse) *MachineExtensionInstanceViewResponse { return v.InstanceView }).(MachineExtensionInstanceViewResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -2474,24 +2981,9 @@ func (o MachineExtensionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MachineExtensionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-func (o MachineExtensionResponseOutput) ProtectedSettings() pulumi.AnyOutput {
-	return o.ApplyT(func(v MachineExtensionResponse) interface{} { return v.ProtectedSettings }).(pulumi.AnyOutput)
-}
-
-// The provisioning state, which only appears in the response.
-func (o MachineExtensionResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v MachineExtensionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The name of the extension handler publisher.
-func (o MachineExtensionResponseOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MachineExtensionResponse) *string { return v.Publisher }).(pulumi.StringPtrOutput)
-}
-
-// Json formatted public settings for the extension.
-func (o MachineExtensionResponseOutput) Settings() pulumi.AnyOutput {
-	return o.ApplyT(func(v MachineExtensionResponse) interface{} { return v.Settings }).(pulumi.AnyOutput)
+// Describes Machine Extension Properties.
+func (o MachineExtensionResponseOutput) Properties() MachineExtensionPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v MachineExtensionResponse) *MachineExtensionPropertiesResponse { return v.Properties }).(MachineExtensionPropertiesResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -2507,11 +2999,6 @@ func (o MachineExtensionResponseOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o MachineExtensionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MachineExtensionResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Specifies the version of the script handler.
-func (o MachineExtensionResponseOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MachineExtensionResponse) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
 }
 
 type MachineExtensionResponseArrayOutput struct{ *pulumi.OutputState }
@@ -4937,6 +5424,10 @@ func init() {
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewResponseStatusPtrOutput{})
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewStatusOutput{})
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewStatusPtrOutput{})
+	pulumi.RegisterOutputType(MachineExtensionPropertiesOutput{})
+	pulumi.RegisterOutputType(MachineExtensionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(MachineExtensionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(MachineExtensionPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(MachineExtensionResponseOutput{})
 	pulumi.RegisterOutputType(MachineExtensionResponseArrayOutput{})
 	pulumi.RegisterOutputType(OSProfileOutput{})

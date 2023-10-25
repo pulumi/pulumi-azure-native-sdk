@@ -11,6 +11,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Direction that specifies whether the access rules is inbound/outbound.
+type AccessRuleDirection string
+
+const (
+	AccessRuleDirectionInbound  = AccessRuleDirection("Inbound")
+	AccessRuleDirectionOutbound = AccessRuleDirection("Outbound")
+)
+
+// Access mode on the association.
+type AssociationAccessMode string
+
+const (
+	AssociationAccessModeLearning = AssociationAccessMode("Learning")
+	AssociationAccessModeEnforced = AssociationAccessMode("Enforced")
+	AssociationAccessModeAudit    = AssociationAccessMode("Audit")
+)
+
 // The type of this DNS zone (Public or Private).
 type ZoneType string
 

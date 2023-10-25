@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Describes what response the data plane API of a Search service would send for requests that failed authentication.
+// Describes what response the data plane API of a search service would send for requests that failed authentication.
 type AadAuthFailureMode string
 
 const (
@@ -564,7 +564,7 @@ func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*Identit
 	}
 }
 
-// The provisioning state of the private link service connection. Can be Updating, Deleting, Failed, Succeeded, or Incomplete
+// The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, or Incomplete
 type PrivateLinkServiceConnectionProvisioningState string
 
 const (
@@ -582,7 +582,7 @@ const (
 	PrivateLinkServiceConnectionProvisioningStateCanceled = PrivateLinkServiceConnectionProvisioningState("Canceled")
 )
 
-// Status of the the private link service connection. Can be Pending, Approved, Rejected, or Disconnected.
+// Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
 type PrivateLinkServiceConnectionStatus string
 
 const (
@@ -954,13 +954,13 @@ func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*
 	}
 }
 
-// Describes how a search service should enforce having one or more non customer encrypted resources.
+// Describes how a search service should enforce having one or more non-customer-encrypted resources.
 type SearchEncryptionWithCmk string
 
 const (
-	// No enforcement will be made and the search service can have non customer encrypted resources.
+	// No enforcement will be made and the search service can have non-customer-encrypted resources.
 	SearchEncryptionWithCmkDisabled = SearchEncryptionWithCmk("Disabled")
-	// Search service will be marked as non-compliant if there are one or more non customer encrypted resources.
+	// Search service will be marked as non-compliant if there are one or more non-customer-encrypted resources.
 	SearchEncryptionWithCmkEnabled = SearchEncryptionWithCmk("Enabled")
 	// Enforcement policy is not explicitly specified, with the behavior being the same as if it were set to 'Disabled'.
 	SearchEncryptionWithCmkUnspecified = SearchEncryptionWithCmk("Unspecified")
@@ -1141,19 +1141,19 @@ func (in *searchEncryptionWithCmkPtr) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// Sets options that control the availability of semantic search. This configuration is only possible for certain Azure Cognitive Search SKUs in certain locations.
+// Sets options that control the availability of semantic search. This configuration is only possible for certain search SKUs in certain locations.
 type SearchSemanticSearch string
 
 const (
-	// Indicates that semantic search is disabled for the search service.
+	// Indicates that semantic ranking is disabled for the search service.
 	SearchSemanticSearchDisabled = SearchSemanticSearch("disabled")
-	// Enables semantic search on a search service and indicates that it is to be used within the limits of the free tier. This would cap the volume of semantic search requests and is offered at no extra charge. This is the default for newly provisioned search services.
+	// Enables semantic ranking on a search service and indicates that it is to be used within the limits of the free tier. This would cap the volume of semantic ranking requests and is offered at no extra charge. This is the default for newly provisioned search services.
 	SearchSemanticSearchFree = SearchSemanticSearch("free")
-	// Enables semantic search on a search service as a billable feature, with higher throughput and volume of semantic search queries.
+	// Enables semantic ranking on a search service as a billable feature, with higher throughput and volume of semantic ranking requests.
 	SearchSemanticSearchStandard = SearchSemanticSearch("standard")
 )
 
-// The provisioning state of the shared private link resource. Can be Updating, Deleting, Failed, Succeeded or Incomplete.
+// The provisioning state of the shared private link resource. Valid values are Updating, Deleting, Failed, Succeeded or Incomplete.
 type SharedPrivateLinkResourceProvisioningState string
 
 const (
@@ -1339,7 +1339,7 @@ func (in *sharedPrivateLinkResourceProvisioningStatePtr) ToOutput(ctx context.Co
 	}
 }
 
-// Status of the shared private link resource. Can be Pending, Approved, Rejected or Disconnected.
+// Status of the shared private link resource. Valid values are Pending, Approved, Rejected or Disconnected.
 type SharedPrivateLinkResourceStatus string
 
 const (
@@ -1528,19 +1528,19 @@ func (in *sharedPrivateLinkResourceStatusPtr) ToOutput(ctx context.Context) pulu
 type SkuName string
 
 const (
-	// Free tier, with no SLA guarantees and a subset of features offered to paid tiers.
+	// Free tier, with no SLA guarantees and a subset of the features offered on billable tiers.
 	SkuNameFree = SkuName("free")
-	// Paid tier dedicated service with up to 3 replicas.
+	// Billable tier for a dedicated service having up to 3 replicas.
 	SkuNameBasic = SkuName("basic")
-	// Paid tier dedicated service with up to 12 partitions and 12 replicas.
+	// Billable tier for a dedicated service having up to 12 partitions and 12 replicas.
 	SkuNameStandard = SkuName("standard")
 	// Similar to 'standard', but with more capacity per search unit.
 	SkuNameStandard2 = SkuName("standard2")
 	//  The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity').
 	SkuNameStandard3 = SkuName("standard3")
-	// Paid tier dedicated service that supports 1TB per partition, up to 12 partitions.
+	// Billable tier for a dedicated service that supports 1TB per partition, up to 12 partitions.
 	SkuNameStorageOptimizedL1 = SkuName("storage_optimized_l1")
-	// Paid tier dedicated service that supports 2TB per partition, up to 12 partitions.
+	// Billable tier for a dedicated service that supports 2TB per partition, up to 12 partitions.
 	SkuNameStorageOptimizedL2 = SkuName("storage_optimized_l2")
 )
 

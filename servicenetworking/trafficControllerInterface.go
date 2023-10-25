@@ -16,7 +16,7 @@ import (
 // Concrete tracked resource types can be created by aliasing this type using a specific property type.
 // Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-10-01-preview.
 //
-// Other available API versions: 2022-10-01-preview.
+// Other available API versions: 2022-10-01-preview, 2023-11-01.
 type TrafficControllerInterface struct {
 	pulumi.CustomResourceState
 
@@ -56,6 +56,9 @@ func NewTrafficControllerInterface(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20230501preview:TrafficControllerInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20231101:TrafficControllerInterface"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -92,6 +92,9 @@ func NewBinding(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230901preview:Binding"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20231101preview:Binding"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

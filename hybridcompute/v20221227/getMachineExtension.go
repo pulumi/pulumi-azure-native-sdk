@@ -34,36 +34,20 @@ type LookupMachineExtensionArgs struct {
 
 // Describes a Machine Extension.
 type LookupMachineExtensionResult struct {
-	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
-	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
-	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
-	// How the extension handler should be forced to update even if the extension configuration has not changed.
-	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The machine extension instance view.
-	InstanceView *MachineExtensionInstanceViewResponse `pulumi:"instanceView"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-	ProtectedSettings interface{} `pulumi:"protectedSettings"`
-	// The provisioning state, which only appears in the response.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The name of the extension handler publisher.
-	Publisher *string `pulumi:"publisher"`
-	// Json formatted public settings for the extension.
-	Settings interface{} `pulumi:"settings"`
+	// Describes Machine Extension Properties.
+	Properties MachineExtensionPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Specifies the version of the script handler.
-	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
 }
 
 func LookupMachineExtensionOutput(ctx *pulumi.Context, args LookupMachineExtensionOutputArgs, opts ...pulumi.InvokeOption) LookupMachineExtensionResultOutput {
@@ -113,29 +97,9 @@ func (o LookupMachineExtensionResultOutput) ToOutput(ctx context.Context) pulumi
 	}
 }
 
-// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-func (o LookupMachineExtensionResultOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupMachineExtensionResult) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
-func (o LookupMachineExtensionResultOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupMachineExtensionResult) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
-}
-
-// How the extension handler should be forced to update even if the extension configuration has not changed.
-func (o LookupMachineExtensionResultOutput) ForceUpdateTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMachineExtensionResult) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupMachineExtensionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The machine extension instance view.
-func (o LookupMachineExtensionResultOutput) InstanceView() MachineExtensionInstanceViewResponsePtrOutput {
-	return o.ApplyT(func(v LookupMachineExtensionResult) *MachineExtensionInstanceViewResponse { return v.InstanceView }).(MachineExtensionInstanceViewResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -148,24 +112,9 @@ func (o LookupMachineExtensionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-func (o LookupMachineExtensionResultOutput) ProtectedSettings() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupMachineExtensionResult) interface{} { return v.ProtectedSettings }).(pulumi.AnyOutput)
-}
-
-// The provisioning state, which only appears in the response.
-func (o LookupMachineExtensionResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMachineExtensionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The name of the extension handler publisher.
-func (o LookupMachineExtensionResultOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMachineExtensionResult) *string { return v.Publisher }).(pulumi.StringPtrOutput)
-}
-
-// Json formatted public settings for the extension.
-func (o LookupMachineExtensionResultOutput) Settings() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupMachineExtensionResult) interface{} { return v.Settings }).(pulumi.AnyOutput)
+// Describes Machine Extension Properties.
+func (o LookupMachineExtensionResultOutput) Properties() MachineExtensionPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupMachineExtensionResult) MachineExtensionPropertiesResponse { return v.Properties }).(MachineExtensionPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -181,11 +130,6 @@ func (o LookupMachineExtensionResultOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupMachineExtensionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Specifies the version of the script handler.
-func (o LookupMachineExtensionResultOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMachineExtensionResult) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
 }
 
 func init() {

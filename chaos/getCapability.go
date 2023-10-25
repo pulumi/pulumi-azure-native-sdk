@@ -15,7 +15,7 @@ import (
 // Get a Capability resource that extends a Target resource.
 // Azure REST API version: 2023-04-15-preview.
 //
-// Other available API versions: 2023-09-01-preview.
+// Other available API versions: 2023-09-01-preview, 2023-10-27-preview.
 func LookupCapability(ctx *pulumi.Context, args *LookupCapabilityArgs, opts ...pulumi.InvokeOption) (*LookupCapabilityResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCapabilityResult

@@ -15,7 +15,7 @@ import (
 // Get a Target resource that extends a tracked regional resource.
 // Azure REST API version: 2023-04-15-preview.
 //
-// Other available API versions: 2023-09-01-preview.
+// Other available API versions: 2023-09-01-preview, 2023-10-27-preview.
 func LookupTarget(ctx *pulumi.Context, args *LookupTargetArgs, opts ...pulumi.InvokeOption) (*LookupTargetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTargetResult

@@ -80,6 +80,9 @@ func NewBuildServiceAgentPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230701preview:BuildServiceAgentPool"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20231101preview:BuildServiceAgentPool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
