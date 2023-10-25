@@ -15,7 +15,7 @@ import (
 // Get a TrafficController
 // Azure REST API version: 2023-05-01-preview.
 //
-// Other available API versions: 2022-10-01-preview.
+// Other available API versions: 2022-10-01-preview, 2023-11-01.
 func LookupTrafficControllerInterface(ctx *pulumi.Context, args *LookupTrafficControllerInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupTrafficControllerInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTrafficControllerInterfaceResult

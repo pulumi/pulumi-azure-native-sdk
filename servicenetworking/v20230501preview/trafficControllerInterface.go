@@ -54,6 +54,9 @@ func NewTrafficControllerInterface(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20221001preview:TrafficControllerInterface"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20231101:TrafficControllerInterface"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

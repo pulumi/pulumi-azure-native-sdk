@@ -16,7 +16,7 @@ import (
 // Model that represents a Experiment resource.
 // Azure REST API version: 2023-04-15-preview. Prior API version in Azure Native 1.x: 2021-09-15-preview.
 //
-// Other available API versions: 2023-09-01-preview.
+// Other available API versions: 2023-09-01-preview, 2023-10-27-preview.
 type Experiment struct {
 	pulumi.CustomResourceState
 
@@ -67,6 +67,9 @@ func NewExperiment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:chaos/v20230901preview:Experiment"),
+		},
+		{
+			Type: pulumi.String("azure-native:chaos/v20231027preview:Experiment"),
 		},
 	})
 	opts = append(opts, aliases)

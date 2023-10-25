@@ -13,7 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Describes an Azure Cognitive Search service and its current state.
+// Describes a search service and its current state.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -31,11 +31,11 @@ type Service struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Network specific rules that determine how the Azure Cognitive Search service may be reached.
+	// Network-specific rules that determine how the search service may be reached.
 	NetworkRuleSet NetworkRuleSetResponsePtrOutput `pulumi:"networkRuleSet"`
 	// The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
 	PartitionCount pulumi.IntPtrOutput `pulumi:"partitionCount"`
-	// The list of private endpoint connections to the Azure Cognitive Search service.
+	// The list of private endpoint connections to the search service.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The state of the last provisioning operation performed on the search service. Provisioning is an intermediate state that occurs while service capacity is being established. After capacity is set up, provisioningState changes to either 'succeeded' or 'failed'. Client applications can poll provisioning status (the recommended polling interval is from 30 seconds to one minute) by using the Get Search Service operation to see when an operation is completed. If you are using the free service, this value tends to come back as 'succeeded' directly in the call to Create search service. This is because the free service uses capacity that is already set up.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -43,13 +43,13 @@ type Service struct {
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
 	ReplicaCount pulumi.IntPtrOutput `pulumi:"replicaCount"`
-	// Sets options that control the availability of semantic search. This configuration is only possible for certain Azure Cognitive Search SKUs in certain locations.
+	// Sets options that control the availability of semantic search. This configuration is only possible for certain search SKUs in certain locations.
 	SemanticSearch pulumi.StringPtrOutput `pulumi:"semanticSearch"`
-	// The list of shared private link resources managed by the Azure Cognitive Search service.
+	// The list of shared private link resources managed by the search service.
 	SharedPrivateLinkResources SharedPrivateLinkResourceResponseArrayOutput `pulumi:"sharedPrivateLinkResources"`
-	// The SKU of the Search Service, which determines price tier and capacity limits. This property is required when creating a new Search Service.
+	// The SKU of the search service, which determines billing rate and capacity limits. This property is required when creating a new search service.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
-	// The status of the search service. Possible values include: 'running': The search service is running and no provisioning operations are underway. 'provisioning': The search service is being provisioned or scaled up or down. 'deleting': The search service is being deleted. 'degraded': The search service is degraded. This can occur when the underlying search units are not healthy. The search service is most likely operational, but performance might be slow and some requests might be dropped. 'disabled': The search service is disabled. In this state, the service will reject all API requests. 'error': The search service is in an error state. If your service is in the degraded, disabled, or error states, it means the Azure Cognitive Search team is actively investigating the underlying issue. Dedicated services in these states are still chargeable based on the number of search units provisioned.
+	// The status of the search service. Possible values include: 'running': The search service is running and no provisioning operations are underway. 'provisioning': The search service is being provisioned or scaled up or down. 'deleting': The search service is being deleted. 'degraded': The search service is degraded. This can occur when the underlying search units are not healthy. The search service is most likely operational, but performance might be slow and some requests might be dropped. 'disabled': The search service is disabled. In this state, the service will reject all API requests. 'error': The search service is in an error state. If your service is in the degraded, disabled, or error states, Microsoft is actively investigating the underlying issue. Dedicated services in these states are still chargeable based on the number of search units provisioned.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The details of the search service status.
 	StatusDetails pulumi.StringOutput `pulumi:"statusDetails"`
@@ -153,7 +153,7 @@ type serviceArgs struct {
 	Identity *Identity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Network specific rules that determine how the Azure Cognitive Search service may be reached.
+	// Network-specific rules that determine how the search service may be reached.
 	NetworkRuleSet *NetworkRuleSet `pulumi:"networkRuleSet"`
 	// The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
 	PartitionCount *int `pulumi:"partitionCount"`
@@ -163,11 +163,11 @@ type serviceArgs struct {
 	ReplicaCount *int `pulumi:"replicaCount"`
 	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the Azure Cognitive Search service to create or update. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. Search service names must be globally unique since they are part of the service URI (https://<name>.search.windows.net). You cannot change the service name after the service is created.
+	// The name of the search service to create or update. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. Search service names must be globally unique since they are part of the service URI (https://<name>.search.windows.net). You cannot change the service name after the service is created.
 	SearchServiceName *string `pulumi:"searchServiceName"`
-	// Sets options that control the availability of semantic search. This configuration is only possible for certain Azure Cognitive Search SKUs in certain locations.
+	// Sets options that control the availability of semantic search. This configuration is only possible for certain search SKUs in certain locations.
 	SemanticSearch *string `pulumi:"semanticSearch"`
-	// The SKU of the Search Service, which determines price tier and capacity limits. This property is required when creating a new Search Service.
+	// The SKU of the search service, which determines billing rate and capacity limits. This property is required when creating a new search service.
 	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -187,7 +187,7 @@ type ServiceArgs struct {
 	Identity IdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Network specific rules that determine how the Azure Cognitive Search service may be reached.
+	// Network-specific rules that determine how the search service may be reached.
 	NetworkRuleSet NetworkRuleSetPtrInput
 	// The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
 	PartitionCount pulumi.IntPtrInput
@@ -197,11 +197,11 @@ type ServiceArgs struct {
 	ReplicaCount pulumi.IntPtrInput
 	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput
-	// The name of the Azure Cognitive Search service to create or update. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. Search service names must be globally unique since they are part of the service URI (https://<name>.search.windows.net). You cannot change the service name after the service is created.
+	// The name of the search service to create or update. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. Search service names must be globally unique since they are part of the service URI (https://<name>.search.windows.net). You cannot change the service name after the service is created.
 	SearchServiceName pulumi.StringPtrInput
-	// Sets options that control the availability of semantic search. This configuration is only possible for certain Azure Cognitive Search SKUs in certain locations.
+	// Sets options that control the availability of semantic search. This configuration is only possible for certain search SKUs in certain locations.
 	SemanticSearch pulumi.StringPtrInput
-	// The SKU of the Search Service, which determines price tier and capacity limits. This property is required when creating a new Search Service.
+	// The SKU of the search service, which determines billing rate and capacity limits. This property is required when creating a new search service.
 	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -291,7 +291,7 @@ func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Network specific rules that determine how the Azure Cognitive Search service may be reached.
+// Network-specific rules that determine how the search service may be reached.
 func (o ServiceOutput) NetworkRuleSet() NetworkRuleSetResponsePtrOutput {
 	return o.ApplyT(func(v *Service) NetworkRuleSetResponsePtrOutput { return v.NetworkRuleSet }).(NetworkRuleSetResponsePtrOutput)
 }
@@ -301,7 +301,7 @@ func (o ServiceOutput) PartitionCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.IntPtrOutput { return v.PartitionCount }).(pulumi.IntPtrOutput)
 }
 
-// The list of private endpoint connections to the Azure Cognitive Search service.
+// The list of private endpoint connections to the search service.
 func (o ServiceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v *Service) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
@@ -321,22 +321,22 @@ func (o ServiceOutput) ReplicaCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.IntPtrOutput { return v.ReplicaCount }).(pulumi.IntPtrOutput)
 }
 
-// Sets options that control the availability of semantic search. This configuration is only possible for certain Azure Cognitive Search SKUs in certain locations.
+// Sets options that control the availability of semantic search. This configuration is only possible for certain search SKUs in certain locations.
 func (o ServiceOutput) SemanticSearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.SemanticSearch }).(pulumi.StringPtrOutput)
 }
 
-// The list of shared private link resources managed by the Azure Cognitive Search service.
+// The list of shared private link resources managed by the search service.
 func (o ServiceOutput) SharedPrivateLinkResources() SharedPrivateLinkResourceResponseArrayOutput {
 	return o.ApplyT(func(v *Service) SharedPrivateLinkResourceResponseArrayOutput { return v.SharedPrivateLinkResources }).(SharedPrivateLinkResourceResponseArrayOutput)
 }
 
-// The SKU of the Search Service, which determines price tier and capacity limits. This property is required when creating a new Search Service.
+// The SKU of the search service, which determines billing rate and capacity limits. This property is required when creating a new search service.
 func (o ServiceOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v *Service) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
-// The status of the search service. Possible values include: 'running': The search service is running and no provisioning operations are underway. 'provisioning': The search service is being provisioned or scaled up or down. 'deleting': The search service is being deleted. 'degraded': The search service is degraded. This can occur when the underlying search units are not healthy. The search service is most likely operational, but performance might be slow and some requests might be dropped. 'disabled': The search service is disabled. In this state, the service will reject all API requests. 'error': The search service is in an error state. If your service is in the degraded, disabled, or error states, it means the Azure Cognitive Search team is actively investigating the underlying issue. Dedicated services in these states are still chargeable based on the number of search units provisioned.
+// The status of the search service. Possible values include: 'running': The search service is running and no provisioning operations are underway. 'provisioning': The search service is being provisioned or scaled up or down. 'deleting': The search service is being deleted. 'degraded': The search service is degraded. This can occur when the underlying search units are not healthy. The search service is most likely operational, but performance might be slow and some requests might be dropped. 'disabled': The search service is disabled. In this state, the service will reject all API requests. 'error': The search service is in an error state. If your service is in the degraded, disabled, or error states, Microsoft is actively investigating the underlying issue. Dedicated services in these states are still chargeable based on the number of search units provisioned.
 func (o ServiceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

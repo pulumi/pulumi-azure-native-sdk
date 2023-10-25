@@ -2093,6 +2093,76 @@ func (o NsRecordResponseArrayOutput) Index(i pulumi.IntInput) NsRecordResponseOu
 	}).(NsRecordResponseOutput)
 }
 
+type PerimeterBasedAccessRuleResponse struct {
+	// NSP id in the ARM id format.
+	Id string `pulumi:"id"`
+	// Location of the NSP supplied.
+	Location string `pulumi:"location"`
+	// Resource guid of the NSP supplied.
+	PerimeterGuid string `pulumi:"perimeterGuid"`
+}
+
+type PerimeterBasedAccessRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (PerimeterBasedAccessRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerimeterBasedAccessRuleResponse)(nil)).Elem()
+}
+
+func (o PerimeterBasedAccessRuleResponseOutput) ToPerimeterBasedAccessRuleResponseOutput() PerimeterBasedAccessRuleResponseOutput {
+	return o
+}
+
+func (o PerimeterBasedAccessRuleResponseOutput) ToPerimeterBasedAccessRuleResponseOutputWithContext(ctx context.Context) PerimeterBasedAccessRuleResponseOutput {
+	return o
+}
+
+func (o PerimeterBasedAccessRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PerimeterBasedAccessRuleResponse] {
+	return pulumix.Output[PerimeterBasedAccessRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// NSP id in the ARM id format.
+func (o PerimeterBasedAccessRuleResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PerimeterBasedAccessRuleResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Location of the NSP supplied.
+func (o PerimeterBasedAccessRuleResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v PerimeterBasedAccessRuleResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Resource guid of the NSP supplied.
+func (o PerimeterBasedAccessRuleResponseOutput) PerimeterGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v PerimeterBasedAccessRuleResponse) string { return v.PerimeterGuid }).(pulumi.StringOutput)
+}
+
+type PerimeterBasedAccessRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PerimeterBasedAccessRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PerimeterBasedAccessRuleResponse)(nil)).Elem()
+}
+
+func (o PerimeterBasedAccessRuleResponseArrayOutput) ToPerimeterBasedAccessRuleResponseArrayOutput() PerimeterBasedAccessRuleResponseArrayOutput {
+	return o
+}
+
+func (o PerimeterBasedAccessRuleResponseArrayOutput) ToPerimeterBasedAccessRuleResponseArrayOutputWithContext(ctx context.Context) PerimeterBasedAccessRuleResponseArrayOutput {
+	return o
+}
+
+func (o PerimeterBasedAccessRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PerimeterBasedAccessRuleResponse] {
+	return pulumix.Output[[]PerimeterBasedAccessRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PerimeterBasedAccessRuleResponseArrayOutput) Index(i pulumi.IntInput) PerimeterBasedAccessRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PerimeterBasedAccessRuleResponse {
+		return vs[0].([]PerimeterBasedAccessRuleResponse)[vs[1].(int)]
+	}).(PerimeterBasedAccessRuleResponseOutput)
+}
+
 // A PTR record.
 type PtrRecord struct {
 	// The PTR target domain name for this PTR record.
@@ -3381,6 +3451,183 @@ func (o SubResourceResponseArrayOutput) Index(i pulumi.IntInput) SubResourceResp
 	}).(SubResourceResponseOutput)
 }
 
+type SubscriptionId struct {
+	// Subscription id in the ARM id format.
+	Id *string `pulumi:"id"`
+}
+
+// SubscriptionIdInput is an input type that accepts SubscriptionIdArgs and SubscriptionIdOutput values.
+// You can construct a concrete instance of `SubscriptionIdInput` via:
+//
+//	SubscriptionIdArgs{...}
+type SubscriptionIdInput interface {
+	pulumi.Input
+
+	ToSubscriptionIdOutput() SubscriptionIdOutput
+	ToSubscriptionIdOutputWithContext(context.Context) SubscriptionIdOutput
+}
+
+type SubscriptionIdArgs struct {
+	// Subscription id in the ARM id format.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (SubscriptionIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionId)(nil)).Elem()
+}
+
+func (i SubscriptionIdArgs) ToSubscriptionIdOutput() SubscriptionIdOutput {
+	return i.ToSubscriptionIdOutputWithContext(context.Background())
+}
+
+func (i SubscriptionIdArgs) ToSubscriptionIdOutputWithContext(ctx context.Context) SubscriptionIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIdOutput)
+}
+
+func (i SubscriptionIdArgs) ToOutput(ctx context.Context) pulumix.Output[SubscriptionId] {
+	return pulumix.Output[SubscriptionId]{
+		OutputState: i.ToSubscriptionIdOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SubscriptionIdArrayInput is an input type that accepts SubscriptionIdArray and SubscriptionIdArrayOutput values.
+// You can construct a concrete instance of `SubscriptionIdArrayInput` via:
+//
+//	SubscriptionIdArray{ SubscriptionIdArgs{...} }
+type SubscriptionIdArrayInput interface {
+	pulumi.Input
+
+	ToSubscriptionIdArrayOutput() SubscriptionIdArrayOutput
+	ToSubscriptionIdArrayOutputWithContext(context.Context) SubscriptionIdArrayOutput
+}
+
+type SubscriptionIdArray []SubscriptionIdInput
+
+func (SubscriptionIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubscriptionId)(nil)).Elem()
+}
+
+func (i SubscriptionIdArray) ToSubscriptionIdArrayOutput() SubscriptionIdArrayOutput {
+	return i.ToSubscriptionIdArrayOutputWithContext(context.Background())
+}
+
+func (i SubscriptionIdArray) ToSubscriptionIdArrayOutputWithContext(ctx context.Context) SubscriptionIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIdArrayOutput)
+}
+
+func (i SubscriptionIdArray) ToOutput(ctx context.Context) pulumix.Output[[]SubscriptionId] {
+	return pulumix.Output[[]SubscriptionId]{
+		OutputState: i.ToSubscriptionIdArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type SubscriptionIdOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionId)(nil)).Elem()
+}
+
+func (o SubscriptionIdOutput) ToSubscriptionIdOutput() SubscriptionIdOutput {
+	return o
+}
+
+func (o SubscriptionIdOutput) ToSubscriptionIdOutputWithContext(ctx context.Context) SubscriptionIdOutput {
+	return o
+}
+
+func (o SubscriptionIdOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionId] {
+	return pulumix.Output[SubscriptionId]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Subscription id in the ARM id format.
+func (o SubscriptionIdOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionId) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type SubscriptionIdArrayOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubscriptionId)(nil)).Elem()
+}
+
+func (o SubscriptionIdArrayOutput) ToSubscriptionIdArrayOutput() SubscriptionIdArrayOutput {
+	return o
+}
+
+func (o SubscriptionIdArrayOutput) ToSubscriptionIdArrayOutputWithContext(ctx context.Context) SubscriptionIdArrayOutput {
+	return o
+}
+
+func (o SubscriptionIdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubscriptionId] {
+	return pulumix.Output[[]SubscriptionId]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SubscriptionIdArrayOutput) Index(i pulumi.IntInput) SubscriptionIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubscriptionId {
+		return vs[0].([]SubscriptionId)[vs[1].(int)]
+	}).(SubscriptionIdOutput)
+}
+
+type SubscriptionIdResponse struct {
+	// Subscription id in the ARM id format.
+	Id *string `pulumi:"id"`
+}
+
+type SubscriptionIdResponseOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionIdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionIdResponse)(nil)).Elem()
+}
+
+func (o SubscriptionIdResponseOutput) ToSubscriptionIdResponseOutput() SubscriptionIdResponseOutput {
+	return o
+}
+
+func (o SubscriptionIdResponseOutput) ToSubscriptionIdResponseOutputWithContext(ctx context.Context) SubscriptionIdResponseOutput {
+	return o
+}
+
+func (o SubscriptionIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionIdResponse] {
+	return pulumix.Output[SubscriptionIdResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Subscription id in the ARM id format.
+func (o SubscriptionIdResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionIdResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type SubscriptionIdResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionIdResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubscriptionIdResponse)(nil)).Elem()
+}
+
+func (o SubscriptionIdResponseArrayOutput) ToSubscriptionIdResponseArrayOutput() SubscriptionIdResponseArrayOutput {
+	return o
+}
+
+func (o SubscriptionIdResponseArrayOutput) ToSubscriptionIdResponseArrayOutputWithContext(ctx context.Context) SubscriptionIdResponseArrayOutput {
+	return o
+}
+
+func (o SubscriptionIdResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubscriptionIdResponse] {
+	return pulumix.Output[[]SubscriptionIdResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SubscriptionIdResponseArrayOutput) Index(i pulumi.IntInput) SubscriptionIdResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubscriptionIdResponse {
+		return vs[0].([]SubscriptionIdResponse)[vs[1].(int)]
+	}).(SubscriptionIdResponseOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -3901,6 +4148,8 @@ func init() {
 	pulumi.RegisterOutputType(NsRecordArrayOutput{})
 	pulumi.RegisterOutputType(NsRecordResponseOutput{})
 	pulumi.RegisterOutputType(NsRecordResponseArrayOutput{})
+	pulumi.RegisterOutputType(PerimeterBasedAccessRuleResponseOutput{})
+	pulumi.RegisterOutputType(PerimeterBasedAccessRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(PtrRecordOutput{})
 	pulumi.RegisterOutputType(PtrRecordArrayOutput{})
 	pulumi.RegisterOutputType(PtrRecordResponseOutput{})
@@ -3921,6 +4170,10 @@ func init() {
 	pulumi.RegisterOutputType(SubResourceResponseOutput{})
 	pulumi.RegisterOutputType(SubResourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(SubscriptionIdOutput{})
+	pulumi.RegisterOutputType(SubscriptionIdArrayOutput{})
+	pulumi.RegisterOutputType(SubscriptionIdResponseOutput{})
+	pulumi.RegisterOutputType(SubscriptionIdResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TlsaRecordOutput{})
 	pulumi.RegisterOutputType(TlsaRecordArrayOutput{})
