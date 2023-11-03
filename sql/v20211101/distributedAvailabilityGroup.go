@@ -84,6 +84,9 @@ func NewDistributedAvailabilityGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230201preview:DistributedAvailabilityGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:DistributedAvailabilityGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

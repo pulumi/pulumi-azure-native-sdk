@@ -15,6 +15,8 @@ import (
 
 // Definition of the webhook type.
 // Azure REST API version: 2015-10-31. Prior API version in Azure Native 1.x: 2015-10-31.
+//
+// Other available API versions: 2023-05-15-preview.
 type Webhook struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +67,9 @@ func NewWebhook(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:automation/v20151031:Webhook"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation/v20230515preview:Webhook"),
 		},
 	})
 	opts = append(opts, aliases)

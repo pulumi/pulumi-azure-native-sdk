@@ -14,6 +14,8 @@ import (
 
 // Retrieve the module identified by module name.
 // Azure REST API version: 2022-08-08.
+//
+// Other available API versions: 2023-05-15-preview.
 func LookupModule(ctx *pulumi.Context, args *LookupModuleArgs, opts ...pulumi.InvokeOption) (*LookupModuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupModuleResult

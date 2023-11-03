@@ -52,6 +52,9 @@ func NewCaCertificate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid:CaCertificate"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20231215preview:CaCertificate"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

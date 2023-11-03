@@ -1350,6 +1350,8 @@ type AzureFileshareProtectedItemResponse struct {
 	SoftDeleteRetentionPeriodInDays *int `pulumi:"softDeleteRetentionPeriodInDays"`
 	// ARM ID of the resource to be backed up.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// ID of the vault which protects this item
+	VaultId string `pulumi:"vaultId"`
 	// Type of workload this item represents.
 	WorkloadType string `pulumi:"workloadType"`
 }
@@ -1514,6 +1516,8 @@ type AzureIaaSClassicComputeVMProtectedItemResponse struct {
 	SoftDeleteRetentionPeriodInDays *int `pulumi:"softDeleteRetentionPeriodInDays"`
 	// ARM ID of the resource to be backed up.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// ID of the vault which protects this item
+	VaultId string `pulumi:"vaultId"`
 	// Fully qualified ARM ID of the virtual machine represented by this item.
 	VirtualMachineId string `pulumi:"virtualMachineId"`
 	// Type of workload this item represents.
@@ -1680,6 +1684,8 @@ type AzureIaaSComputeVMProtectedItemResponse struct {
 	SoftDeleteRetentionPeriodInDays *int `pulumi:"softDeleteRetentionPeriodInDays"`
 	// ARM ID of the resource to be backed up.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// ID of the vault which protects this item
+	VaultId string `pulumi:"vaultId"`
 	// Fully qualified ARM ID of the virtual machine represented by this item.
 	VirtualMachineId string `pulumi:"virtualMachineId"`
 	// Type of workload this item represents.
@@ -1838,6 +1844,8 @@ type AzureIaaSVMProtectedItemResponse struct {
 	SoftDeleteRetentionPeriodInDays *int `pulumi:"softDeleteRetentionPeriodInDays"`
 	// ARM ID of the resource to be backed up.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// ID of the vault which protects this item
+	VaultId string `pulumi:"vaultId"`
 	// Fully qualified ARM ID of the virtual machine represented by this item.
 	VirtualMachineId string `pulumi:"virtualMachineId"`
 	// Type of workload this item represents.
@@ -2401,6 +2409,8 @@ type AzureSqlProtectedItemResponse struct {
 	SoftDeleteRetentionPeriodInDays *int `pulumi:"softDeleteRetentionPeriodInDays"`
 	// ARM ID of the resource to be backed up.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// ID of the vault which protects this item
+	VaultId string `pulumi:"vaultId"`
 	// Type of workload this item represents.
 	WorkloadType string `pulumi:"workloadType"`
 }
@@ -2763,6 +2773,8 @@ type AzureVmWorkloadProtectedItemResponse struct {
 	SoftDeleteRetentionPeriodInDays *int `pulumi:"softDeleteRetentionPeriodInDays"`
 	// ARM ID of the resource to be backed up.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// ID of the vault which protects this item
+	VaultId string `pulumi:"vaultId"`
 	// Type of workload this item represents.
 	WorkloadType string `pulumi:"workloadType"`
 }
@@ -2929,6 +2941,8 @@ type AzureVmWorkloadSAPAseDatabaseProtectedItemResponse struct {
 	SoftDeleteRetentionPeriodInDays *int `pulumi:"softDeleteRetentionPeriodInDays"`
 	// ARM ID of the resource to be backed up.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// ID of the vault which protects this item
+	VaultId string `pulumi:"vaultId"`
 	// Type of workload this item represents.
 	WorkloadType string `pulumi:"workloadType"`
 }
@@ -3057,6 +3071,8 @@ type AzureVmWorkloadSAPHanaDBInstanceProtectedItemResponse struct {
 	SoftDeleteRetentionPeriodInDays *int `pulumi:"softDeleteRetentionPeriodInDays"`
 	// ARM ID of the resource to be backed up.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// ID of the vault which protects this item
+	VaultId string `pulumi:"vaultId"`
 	// Type of workload this item represents.
 	WorkloadType string `pulumi:"workloadType"`
 }
@@ -3185,6 +3201,8 @@ type AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse struct {
 	SoftDeleteRetentionPeriodInDays *int `pulumi:"softDeleteRetentionPeriodInDays"`
 	// ARM ID of the resource to be backed up.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// ID of the vault which protects this item
+	VaultId string `pulumi:"vaultId"`
 	// Type of workload this item represents.
 	WorkloadType string `pulumi:"workloadType"`
 }
@@ -3313,6 +3331,8 @@ type AzureVmWorkloadSQLDatabaseProtectedItemResponse struct {
 	SoftDeleteRetentionPeriodInDays *int `pulumi:"softDeleteRetentionPeriodInDays"`
 	// ARM ID of the resource to be backed up.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// ID of the vault which protects this item
+	VaultId string `pulumi:"vaultId"`
 	// Type of workload this item represents.
 	WorkloadType string `pulumi:"workloadType"`
 }
@@ -5444,6 +5464,8 @@ type DPMProtectedItemResponse struct {
 	SoftDeleteRetentionPeriodInDays *int `pulumi:"softDeleteRetentionPeriodInDays"`
 	// ARM ID of the resource to be backed up.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// ID of the vault which protects this item
+	VaultId string `pulumi:"vaultId"`
 	// Type of workload this item represents.
 	WorkloadType string `pulumi:"workloadType"`
 }
@@ -6769,6 +6791,8 @@ type GenericProtectedItemResponse struct {
 	SourceAssociations map[string]string `pulumi:"sourceAssociations"`
 	// ARM ID of the resource to be backed up.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// ID of the vault which protects this item
+	VaultId string `pulumi:"vaultId"`
 	// Type of workload this item represents.
 	WorkloadType string `pulumi:"workloadType"`
 }
@@ -10149,6 +10173,8 @@ type MabFileFolderProtectedItemResponse struct {
 	SoftDeleteRetentionPeriodInDays *int `pulumi:"softDeleteRetentionPeriodInDays"`
 	// ARM ID of the resource to be backed up.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// ID of the vault which protects this item
+	VaultId string `pulumi:"vaultId"`
 	// Type of workload this item represents.
 	WorkloadType string `pulumi:"workloadType"`
 }

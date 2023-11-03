@@ -63,6 +63,9 @@ func NewSenderUsername(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:communication/v20230331:SenderUsername"),
 		},
 		{
+			Type: pulumi.String("azure-native:communication/v20230401:SenderUsername"),
+		},
+		{
 			Type: pulumi.String("azure-native:communication/v20230601preview:SenderUsername"),
 		},
 	})

@@ -15,7 +15,7 @@ import (
 // Get properties of a partner destination.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2021-10-15-preview.
+// Other available API versions: 2021-10-15-preview, 2023-12-15-preview.
 func LookupPartnerDestination(ctx *pulumi.Context, args *LookupPartnerDestinationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerDestinationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerDestinationResult

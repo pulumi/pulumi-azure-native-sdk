@@ -15,7 +15,7 @@ import (
 // Gets a Guest Usages resource for the Microsoft.AzureActiveDirectory resource provider
 // Azure REST API version: 2021-04-01.
 //
-// Other available API versions: 2023-01-18-preview.
+// Other available API versions: 2023-01-18-preview, 2023-05-17-preview.
 func LookupGuestUsage(ctx *pulumi.Context, args *LookupGuestUsageArgs, opts ...pulumi.InvokeOption) (*LookupGuestUsageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestUsageResult

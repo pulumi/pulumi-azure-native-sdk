@@ -886,6 +886,8 @@ type LedgerProperties struct {
 	AadBasedSecurityPrincipals []AADBasedSecurityPrincipal `pulumi:"aadBasedSecurityPrincipals"`
 	// Array of all cert based Security Principals.
 	CertBasedSecurityPrincipals []CertBasedSecurityPrincipal `pulumi:"certBasedSecurityPrincipals"`
+	// SKU associated with the ledger
+	LedgerSku *string `pulumi:"ledgerSku"`
 	// Type of Confidential Ledger
 	LedgerType *string `pulumi:"ledgerType"`
 	// Object representing RunningState for Ledger.
@@ -909,6 +911,8 @@ type LedgerPropertiesArgs struct {
 	AadBasedSecurityPrincipals AADBasedSecurityPrincipalArrayInput `pulumi:"aadBasedSecurityPrincipals"`
 	// Array of all cert based Security Principals.
 	CertBasedSecurityPrincipals CertBasedSecurityPrincipalArrayInput `pulumi:"certBasedSecurityPrincipals"`
+	// SKU associated with the ledger
+	LedgerSku pulumi.StringPtrInput `pulumi:"ledgerSku"`
 	// Type of Confidential Ledger
 	LedgerType pulumi.StringPtrInput `pulumi:"ledgerType"`
 	// Object representing RunningState for Ledger.
@@ -1021,6 +1025,11 @@ func (o LedgerPropertiesOutput) CertBasedSecurityPrincipals() CertBasedSecurityP
 	return o.ApplyT(func(v LedgerProperties) []CertBasedSecurityPrincipal { return v.CertBasedSecurityPrincipals }).(CertBasedSecurityPrincipalArrayOutput)
 }
 
+// SKU associated with the ledger
+func (o LedgerPropertiesOutput) LedgerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LedgerProperties) *string { return v.LedgerSku }).(pulumi.StringPtrOutput)
+}
+
 // Type of Confidential Ledger
 func (o LedgerPropertiesOutput) LedgerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LedgerProperties) *string { return v.LedgerType }).(pulumi.StringPtrOutput)
@@ -1081,6 +1090,16 @@ func (o LedgerPropertiesPtrOutput) CertBasedSecurityPrincipals() CertBasedSecuri
 	}).(CertBasedSecurityPrincipalArrayOutput)
 }
 
+// SKU associated with the ledger
+func (o LedgerPropertiesPtrOutput) LedgerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LedgerProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LedgerSku
+	}).(pulumi.StringPtrOutput)
+}
+
 // Type of Confidential Ledger
 func (o LedgerPropertiesPtrOutput) LedgerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LedgerProperties) *string {
@@ -1113,6 +1132,8 @@ type LedgerPropertiesResponse struct {
 	LedgerInternalNamespace string `pulumi:"ledgerInternalNamespace"`
 	// Unique name for the Confidential Ledger.
 	LedgerName string `pulumi:"ledgerName"`
+	// SKU associated with the ledger
+	LedgerSku *string `pulumi:"ledgerSku"`
 	// Type of Confidential Ledger
 	LedgerType *string `pulumi:"ledgerType"`
 	// Endpoint for calling Ledger Service.
@@ -1171,6 +1192,11 @@ func (o LedgerPropertiesResponseOutput) LedgerInternalNamespace() pulumi.StringO
 // Unique name for the Confidential Ledger.
 func (o LedgerPropertiesResponseOutput) LedgerName() pulumi.StringOutput {
 	return o.ApplyT(func(v LedgerPropertiesResponse) string { return v.LedgerName }).(pulumi.StringOutput)
+}
+
+// SKU associated with the ledger
+func (o LedgerPropertiesResponseOutput) LedgerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LedgerPropertiesResponse) *string { return v.LedgerSku }).(pulumi.StringPtrOutput)
 }
 
 // Type of Confidential Ledger

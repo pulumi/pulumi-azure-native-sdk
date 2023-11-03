@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Capability{}
 	case "azure-native:chaos/v20231027preview:Experiment":
 		r = &Experiment{}
+	case "azure-native:chaos/v20231027preview:PrivateAccess":
+		r = &PrivateAccess{}
 	case "azure-native:chaos/v20231027preview:Target":
 		r = &Target{}
 	default:

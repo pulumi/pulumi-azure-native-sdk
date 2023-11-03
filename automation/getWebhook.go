@@ -14,6 +14,8 @@ import (
 
 // Retrieve the webhook identified by webhook name.
 // Azure REST API version: 2015-10-31.
+//
+// Other available API versions: 2023-05-15-preview.
 func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.InvokeOption) (*LookupWebhookResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebhookResult

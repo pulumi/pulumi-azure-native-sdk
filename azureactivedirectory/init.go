@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:azureactivedirectory:B2CTenant":
 		r = &B2CTenant{}
+	case "azure-native:azureactivedirectory:CIAMTenant":
+		r = &CIAMTenant{}
 	case "azure-native:azureactivedirectory:GuestUsage":
 		r = &GuestUsage{}
 	default:

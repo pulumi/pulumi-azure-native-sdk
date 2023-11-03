@@ -14,6 +14,8 @@ import (
 
 // Get properties of an event subscription of a namespace topic.
 // Azure REST API version: 2023-06-01-preview.
+//
+// Other available API versions: 2023-12-15-preview.
 func LookupNamespaceTopicEventSubscription(ctx *pulumi.Context, args *LookupNamespaceTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceTopicEventSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceTopicEventSubscriptionResult

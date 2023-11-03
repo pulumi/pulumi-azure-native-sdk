@@ -14,6 +14,101 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Model that represents the an action and its status.
+type ActionStatusResponse struct {
+	// The id of the action status.
+	ActionId string `pulumi:"actionId"`
+	// The name of the action status.
+	ActionName string `pulumi:"actionName"`
+	// String that represents the end time of the action.
+	EndTime string `pulumi:"endTime"`
+	// String that represents the start time of the action.
+	StartTime string `pulumi:"startTime"`
+	// The status of the action.
+	Status string `pulumi:"status"`
+	// The array of targets.
+	Targets []ExperimentExecutionActionTargetDetailsPropertiesResponse `pulumi:"targets"`
+}
+
+// Model that represents the an action and its status.
+type ActionStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (ActionStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionStatusResponse)(nil)).Elem()
+}
+
+func (o ActionStatusResponseOutput) ToActionStatusResponseOutput() ActionStatusResponseOutput {
+	return o
+}
+
+func (o ActionStatusResponseOutput) ToActionStatusResponseOutputWithContext(ctx context.Context) ActionStatusResponseOutput {
+	return o
+}
+
+func (o ActionStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActionStatusResponse] {
+	return pulumix.Output[ActionStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The id of the action status.
+func (o ActionStatusResponseOutput) ActionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionStatusResponse) string { return v.ActionId }).(pulumi.StringOutput)
+}
+
+// The name of the action status.
+func (o ActionStatusResponseOutput) ActionName() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionStatusResponse) string { return v.ActionName }).(pulumi.StringOutput)
+}
+
+// String that represents the end time of the action.
+func (o ActionStatusResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionStatusResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// String that represents the start time of the action.
+func (o ActionStatusResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionStatusResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The status of the action.
+func (o ActionStatusResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionStatusResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The array of targets.
+func (o ActionStatusResponseOutput) Targets() ExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v ActionStatusResponse) []ExperimentExecutionActionTargetDetailsPropertiesResponse {
+		return v.Targets
+	}).(ExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutput)
+}
+
+type ActionStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionStatusResponse)(nil)).Elem()
+}
+
+func (o ActionStatusResponseArrayOutput) ToActionStatusResponseArrayOutput() ActionStatusResponseArrayOutput {
+	return o
+}
+
+func (o ActionStatusResponseArrayOutput) ToActionStatusResponseArrayOutputWithContext(ctx context.Context) ActionStatusResponseArrayOutput {
+	return o
+}
+
+func (o ActionStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ActionStatusResponse] {
+	return pulumix.Output[[]ActionStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ActionStatusResponseArrayOutput) Index(i pulumi.IntInput) ActionStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionStatusResponse {
+		return vs[0].([]ActionStatusResponse)[vs[1].(int)]
+	}).(ActionStatusResponseOutput)
+}
+
 // Model that represents a branch in the step.
 type Branch struct {
 	// List of actions.
@@ -212,6 +307,85 @@ func (o BranchResponseArrayOutput) Index(i pulumi.IntInput) BranchResponseOutput
 	}).(BranchResponseOutput)
 }
 
+// Model that represents the a list of actions and action statuses.
+type BranchStatusResponse struct {
+	// The array of actions.
+	Actions []ActionStatusResponse `pulumi:"actions"`
+	// The id of the branch status.
+	BranchId string `pulumi:"branchId"`
+	// The name of the branch status.
+	BranchName string `pulumi:"branchName"`
+	// The status of the branch.
+	Status string `pulumi:"status"`
+}
+
+// Model that represents the a list of actions and action statuses.
+type BranchStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (BranchStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BranchStatusResponse)(nil)).Elem()
+}
+
+func (o BranchStatusResponseOutput) ToBranchStatusResponseOutput() BranchStatusResponseOutput {
+	return o
+}
+
+func (o BranchStatusResponseOutput) ToBranchStatusResponseOutputWithContext(ctx context.Context) BranchStatusResponseOutput {
+	return o
+}
+
+func (o BranchStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BranchStatusResponse] {
+	return pulumix.Output[BranchStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The array of actions.
+func (o BranchStatusResponseOutput) Actions() ActionStatusResponseArrayOutput {
+	return o.ApplyT(func(v BranchStatusResponse) []ActionStatusResponse { return v.Actions }).(ActionStatusResponseArrayOutput)
+}
+
+// The id of the branch status.
+func (o BranchStatusResponseOutput) BranchId() pulumi.StringOutput {
+	return o.ApplyT(func(v BranchStatusResponse) string { return v.BranchId }).(pulumi.StringOutput)
+}
+
+// The name of the branch status.
+func (o BranchStatusResponseOutput) BranchName() pulumi.StringOutput {
+	return o.ApplyT(func(v BranchStatusResponse) string { return v.BranchName }).(pulumi.StringOutput)
+}
+
+// The status of the branch.
+func (o BranchStatusResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v BranchStatusResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type BranchStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BranchStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BranchStatusResponse)(nil)).Elem()
+}
+
+func (o BranchStatusResponseArrayOutput) ToBranchStatusResponseArrayOutput() BranchStatusResponseArrayOutput {
+	return o
+}
+
+func (o BranchStatusResponseArrayOutput) ToBranchStatusResponseArrayOutputWithContext(ctx context.Context) BranchStatusResponseArrayOutput {
+	return o
+}
+
+func (o BranchStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BranchStatusResponse] {
+	return pulumix.Output[[]BranchStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BranchStatusResponseArrayOutput) Index(i pulumi.IntInput) BranchStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BranchStatusResponse {
+		return vs[0].([]BranchStatusResponse)[vs[1].(int)]
+	}).(BranchStatusResponseOutput)
+}
+
 // Model that represents the Capability properties model.
 type CapabilityPropertiesResponse struct {
 	// Localized string of the description.
@@ -348,6 +522,167 @@ type DiscreteActionResponse struct {
 	// Enum that discriminates between action models.
 	// Expected value is 'discrete'.
 	Type string `pulumi:"type"`
+}
+
+// Model that represents the Experiment action target details error model.
+type ExperimentExecutionActionTargetDetailsErrorResponse struct {
+	// The error code.
+	Code string `pulumi:"code"`
+	// The error message
+	Message string `pulumi:"message"`
+}
+
+// Model that represents the Experiment action target details error model.
+type ExperimentExecutionActionTargetDetailsErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (ExperimentExecutionActionTargetDetailsErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentExecutionActionTargetDetailsErrorResponse)(nil)).Elem()
+}
+
+func (o ExperimentExecutionActionTargetDetailsErrorResponseOutput) ToExperimentExecutionActionTargetDetailsErrorResponseOutput() ExperimentExecutionActionTargetDetailsErrorResponseOutput {
+	return o
+}
+
+func (o ExperimentExecutionActionTargetDetailsErrorResponseOutput) ToExperimentExecutionActionTargetDetailsErrorResponseOutputWithContext(ctx context.Context) ExperimentExecutionActionTargetDetailsErrorResponseOutput {
+	return o
+}
+
+func (o ExperimentExecutionActionTargetDetailsErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExperimentExecutionActionTargetDetailsErrorResponse] {
+	return pulumix.Output[ExperimentExecutionActionTargetDetailsErrorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The error code.
+func (o ExperimentExecutionActionTargetDetailsErrorResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentExecutionActionTargetDetailsErrorResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The error message
+func (o ExperimentExecutionActionTargetDetailsErrorResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentExecutionActionTargetDetailsErrorResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Model that represents the Experiment action target details properties model.
+type ExperimentExecutionActionTargetDetailsPropertiesResponse struct {
+	// The error of the action.
+	Error ExperimentExecutionActionTargetDetailsErrorResponse `pulumi:"error"`
+	// The status of the execution.
+	Status string `pulumi:"status"`
+	// The target for the action.
+	Target string `pulumi:"target"`
+	// String that represents the completed date time.
+	TargetCompletedTime string `pulumi:"targetCompletedTime"`
+	// String that represents the failed date time.
+	TargetFailedTime string `pulumi:"targetFailedTime"`
+}
+
+// Model that represents the Experiment action target details properties model.
+type ExperimentExecutionActionTargetDetailsPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ExperimentExecutionActionTargetDetailsPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentExecutionActionTargetDetailsPropertiesResponse)(nil)).Elem()
+}
+
+func (o ExperimentExecutionActionTargetDetailsPropertiesResponseOutput) ToExperimentExecutionActionTargetDetailsPropertiesResponseOutput() ExperimentExecutionActionTargetDetailsPropertiesResponseOutput {
+	return o
+}
+
+func (o ExperimentExecutionActionTargetDetailsPropertiesResponseOutput) ToExperimentExecutionActionTargetDetailsPropertiesResponseOutputWithContext(ctx context.Context) ExperimentExecutionActionTargetDetailsPropertiesResponseOutput {
+	return o
+}
+
+func (o ExperimentExecutionActionTargetDetailsPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExperimentExecutionActionTargetDetailsPropertiesResponse] {
+	return pulumix.Output[ExperimentExecutionActionTargetDetailsPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The error of the action.
+func (o ExperimentExecutionActionTargetDetailsPropertiesResponseOutput) Error() ExperimentExecutionActionTargetDetailsErrorResponseOutput {
+	return o.ApplyT(func(v ExperimentExecutionActionTargetDetailsPropertiesResponse) ExperimentExecutionActionTargetDetailsErrorResponse {
+		return v.Error
+	}).(ExperimentExecutionActionTargetDetailsErrorResponseOutput)
+}
+
+// The status of the execution.
+func (o ExperimentExecutionActionTargetDetailsPropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentExecutionActionTargetDetailsPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The target for the action.
+func (o ExperimentExecutionActionTargetDetailsPropertiesResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentExecutionActionTargetDetailsPropertiesResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// String that represents the completed date time.
+func (o ExperimentExecutionActionTargetDetailsPropertiesResponseOutput) TargetCompletedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentExecutionActionTargetDetailsPropertiesResponse) string { return v.TargetCompletedTime }).(pulumi.StringOutput)
+}
+
+// String that represents the failed date time.
+func (o ExperimentExecutionActionTargetDetailsPropertiesResponseOutput) TargetFailedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentExecutionActionTargetDetailsPropertiesResponse) string { return v.TargetFailedTime }).(pulumi.StringOutput)
+}
+
+type ExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExperimentExecutionActionTargetDetailsPropertiesResponse)(nil)).Elem()
+}
+
+func (o ExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutput) ToExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutput() ExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o ExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutput) ToExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutputWithContext(ctx context.Context) ExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o ExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExperimentExecutionActionTargetDetailsPropertiesResponse] {
+	return pulumix.Output[[]ExperimentExecutionActionTargetDetailsPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutput) Index(i pulumi.IntInput) ExperimentExecutionActionTargetDetailsPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExperimentExecutionActionTargetDetailsPropertiesResponse {
+		return vs[0].([]ExperimentExecutionActionTargetDetailsPropertiesResponse)[vs[1].(int)]
+	}).(ExperimentExecutionActionTargetDetailsPropertiesResponseOutput)
+}
+
+// The information of the experiment run.
+type ExperimentExecutionDetailsPropertiesResponseRunInformation struct {
+	// The steps of the experiment run.
+	Steps []StepStatusResponse `pulumi:"steps"`
+}
+
+// The information of the experiment run.
+type ExperimentExecutionDetailsPropertiesResponseRunInformationOutput struct{ *pulumi.OutputState }
+
+func (ExperimentExecutionDetailsPropertiesResponseRunInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentExecutionDetailsPropertiesResponseRunInformation)(nil)).Elem()
+}
+
+func (o ExperimentExecutionDetailsPropertiesResponseRunInformationOutput) ToExperimentExecutionDetailsPropertiesResponseRunInformationOutput() ExperimentExecutionDetailsPropertiesResponseRunInformationOutput {
+	return o
+}
+
+func (o ExperimentExecutionDetailsPropertiesResponseRunInformationOutput) ToExperimentExecutionDetailsPropertiesResponseRunInformationOutputWithContext(ctx context.Context) ExperimentExecutionDetailsPropertiesResponseRunInformationOutput {
+	return o
+}
+
+func (o ExperimentExecutionDetailsPropertiesResponseRunInformationOutput) ToOutput(ctx context.Context) pulumix.Output[ExperimentExecutionDetailsPropertiesResponseRunInformation] {
+	return pulumix.Output[ExperimentExecutionDetailsPropertiesResponseRunInformation]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The steps of the experiment run.
+func (o ExperimentExecutionDetailsPropertiesResponseRunInformationOutput) Steps() StepStatusResponseArrayOutput {
+	return o.ApplyT(func(v ExperimentExecutionDetailsPropertiesResponseRunInformation) []StepStatusResponse {
+		return v.Steps
+	}).(StepStatusResponseArrayOutput)
 }
 
 // Model that represents the Experiment properties model.
@@ -521,6 +856,233 @@ type ListSelectorResponse struct {
 	// Enum of the selector type.
 	// Expected value is 'List'.
 	Type string `pulumi:"type"`
+}
+
+// The private endpoint connection resource.
+type PrivateEndpointConnectionResponse struct {
+	// The group ids for the private endpoint resource.
+	GroupIds []string `pulumi:"groupIds"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The private endpoint resource.
+	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// A collection of information about the state of the connection between service consumer and provider.
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	// The provisioning state of the private endpoint connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// The private endpoint connection resource.
+type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutput() PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
+	return pulumix.Output[PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The group ids for the private endpoint resource.
+func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The private endpoint resource.
+func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
+}
+
+// The provisioning state of the private endpoint connection resource.
+func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutput() PrivateEndpointConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
+	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
+		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
+	}).(PrivateEndpointConnectionResponseOutput)
+}
+
+// The private endpoint resource.
+type PrivateEndpointResponse struct {
+	// The ARM identifier for private endpoint.
+	Id string `pulumi:"id"`
+}
+
+// The private endpoint resource.
+type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
+	return pulumix.Output[PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ARM identifier for private endpoint.
+func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
+	return pulumix.Output[*PrivateEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointResponse
+		return ret
+	}).(PrivateEndpointResponseOutput)
+}
+
+// The ARM identifier for private endpoint.
+func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionStateResponse struct {
+	// A message indicating if changes on the service provider require any updates on the consumer.
+	ActionsRequired *string `pulumi:"actionsRequired"`
+	// The reason for approval/rejection of the connection.
+	Description *string `pulumi:"description"`
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	Status *string `pulumi:"status"`
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutput() PrivateLinkServiceConnectionStateResponseOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
+	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A message indicating if changes on the service provider require any updates on the consumer.
+func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
+}
+
+// The reason for approval/rejection of the connection.
+func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // Model that represents a query selector.
@@ -1089,6 +1651,85 @@ func (o StepResponseArrayOutput) Index(i pulumi.IntInput) StepResponseOutput {
 	}).(StepResponseOutput)
 }
 
+// Model that represents the a list of branches and branch statuses.
+type StepStatusResponse struct {
+	// The array of branches.
+	Branches []BranchStatusResponse `pulumi:"branches"`
+	// The value of the status of the step.
+	Status string `pulumi:"status"`
+	// The id of the step.
+	StepId string `pulumi:"stepId"`
+	// The name of the step.
+	StepName string `pulumi:"stepName"`
+}
+
+// Model that represents the a list of branches and branch statuses.
+type StepStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StepStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StepStatusResponse)(nil)).Elem()
+}
+
+func (o StepStatusResponseOutput) ToStepStatusResponseOutput() StepStatusResponseOutput {
+	return o
+}
+
+func (o StepStatusResponseOutput) ToStepStatusResponseOutputWithContext(ctx context.Context) StepStatusResponseOutput {
+	return o
+}
+
+func (o StepStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StepStatusResponse] {
+	return pulumix.Output[StepStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The array of branches.
+func (o StepStatusResponseOutput) Branches() BranchStatusResponseArrayOutput {
+	return o.ApplyT(func(v StepStatusResponse) []BranchStatusResponse { return v.Branches }).(BranchStatusResponseArrayOutput)
+}
+
+// The value of the status of the step.
+func (o StepStatusResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v StepStatusResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The id of the step.
+func (o StepStatusResponseOutput) StepId() pulumi.StringOutput {
+	return o.ApplyT(func(v StepStatusResponse) string { return v.StepId }).(pulumi.StringOutput)
+}
+
+// The name of the step.
+func (o StepStatusResponseOutput) StepName() pulumi.StringOutput {
+	return o.ApplyT(func(v StepStatusResponse) string { return v.StepName }).(pulumi.StringOutput)
+}
+
+type StepStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StepStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StepStatusResponse)(nil)).Elem()
+}
+
+func (o StepStatusResponseArrayOutput) ToStepStatusResponseArrayOutput() StepStatusResponseArrayOutput {
+	return o
+}
+
+func (o StepStatusResponseArrayOutput) ToStepStatusResponseArrayOutputWithContext(ctx context.Context) StepStatusResponseArrayOutput {
+	return o
+}
+
+func (o StepStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StepStatusResponse] {
+	return pulumix.Output[[]StepStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StepStatusResponseArrayOutput) Index(i pulumi.IntInput) StepStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StepStatusResponse {
+		return vs[0].([]StepStatusResponse)[vs[1].(int)]
+	}).(StepStatusResponseOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -1238,13 +1879,26 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 }
 
 func init() {
+	pulumi.RegisterOutputType(ActionStatusResponseOutput{})
+	pulumi.RegisterOutputType(ActionStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(BranchOutput{})
 	pulumi.RegisterOutputType(BranchArrayOutput{})
 	pulumi.RegisterOutputType(BranchResponseOutput{})
 	pulumi.RegisterOutputType(BranchResponseArrayOutput{})
+	pulumi.RegisterOutputType(BranchStatusResponseOutput{})
+	pulumi.RegisterOutputType(BranchStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(CapabilityPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ExperimentExecutionActionTargetDetailsErrorResponseOutput{})
+	pulumi.RegisterOutputType(ExperimentExecutionActionTargetDetailsPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(ExperimentExecutionDetailsPropertiesResponseRunInformationOutput{})
 	pulumi.RegisterOutputType(ExperimentPropertiesOutput{})
 	pulumi.RegisterOutputType(ExperimentPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponseOutput{})
@@ -1253,6 +1907,8 @@ func init() {
 	pulumi.RegisterOutputType(StepArrayOutput{})
 	pulumi.RegisterOutputType(StepResponseOutput{})
 	pulumi.RegisterOutputType(StepResponseArrayOutput{})
+	pulumi.RegisterOutputType(StepStatusResponseOutput{})
+	pulumi.RegisterOutputType(StepStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})

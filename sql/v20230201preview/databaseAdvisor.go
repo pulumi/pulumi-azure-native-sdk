@@ -104,6 +104,9 @@ func NewDatabaseAdvisor(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20221101preview:DatabaseAdvisor"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:DatabaseAdvisor"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -105,6 +105,9 @@ func NewVirtualMachineImageTemplate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:virtualmachineimages/v20220214:VirtualMachineImageTemplate"),
 		},
+		{
+			Type: pulumi.String("azure-native:virtualmachineimages/v20230701:VirtualMachineImageTemplate"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

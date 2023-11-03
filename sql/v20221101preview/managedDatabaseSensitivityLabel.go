@@ -110,6 +110,9 @@ func NewManagedDatabaseSensitivityLabel(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230201preview:ManagedDatabaseSensitivityLabel"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:ManagedDatabaseSensitivityLabel"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

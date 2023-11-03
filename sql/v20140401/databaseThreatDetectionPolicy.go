@@ -106,6 +106,9 @@ func NewDatabaseThreatDetectionPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230201preview:DatabaseThreatDetectionPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:DatabaseThreatDetectionPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

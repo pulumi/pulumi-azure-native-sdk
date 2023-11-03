@@ -14,6 +14,8 @@ import (
 
 // Retrieve the job schedule identified by job schedule name.
 // Azure REST API version: 2022-08-08.
+//
+// Other available API versions: 2023-05-15-preview.
 func LookupJobSchedule(ctx *pulumi.Context, args *LookupJobScheduleArgs, opts ...pulumi.InvokeOption) (*LookupJobScheduleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobScheduleResult

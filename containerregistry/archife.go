@@ -16,7 +16,7 @@ import (
 // An object that represents a archive for a container registry.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-08-01-preview.
+// Other available API versions: 2023-08-01-preview, 2023-11-01-preview.
 type Archife struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +58,9 @@ func NewArchife(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20230801preview:Archife"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20231101preview:Archife"),
 		},
 	})
 	opts = append(opts, aliases)

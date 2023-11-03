@@ -15,7 +15,7 @@ import (
 // List all the firewall rules in a given server.
 // Azure REST API version: 2022-12-01.
 //
-// Other available API versions: 2017-12-01, 2020-10-05-privatepreview, 2022-11-08, 2023-03-01-preview.
+// Other available API versions: 2017-12-01, 2020-10-05-privatepreview, 2022-11-08, 2023-03-01-preview, 2023-06-01-preview.
 func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallRuleResult

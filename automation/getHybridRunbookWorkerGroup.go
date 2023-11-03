@@ -15,7 +15,7 @@ import (
 // Retrieve a hybrid runbook worker group.
 // Azure REST API version: 2022-08-08.
 //
-// Other available API versions: 2021-06-22.
+// Other available API versions: 2021-06-22, 2023-05-15-preview.
 func LookupHybridRunbookWorkerGroup(ctx *pulumi.Context, args *LookupHybridRunbookWorkerGroupArgs, opts ...pulumi.InvokeOption) (*LookupHybridRunbookWorkerGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridRunbookWorkerGroupResult

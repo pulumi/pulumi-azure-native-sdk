@@ -92,6 +92,9 @@ func NewResourceGuardProxy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230201:ResourceGuardProxy"),
 		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20230601:ResourceGuardProxy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

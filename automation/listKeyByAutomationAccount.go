@@ -14,6 +14,8 @@ import (
 
 // Retrieve the automation keys for an account.
 // Azure REST API version: 2022-08-08.
+//
+// Other available API versions: 2023-05-15-preview.
 func ListKeyByAutomationAccount(ctx *pulumi.Context, args *ListKeyByAutomationAccountArgs, opts ...pulumi.InvokeOption) (*ListKeyByAutomationAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListKeyByAutomationAccountResult

@@ -15,7 +15,7 @@ import (
 
 // Azure REST API version: 2021-04-01. Prior API version in Azure Native 1.x: 2019-01-01-preview.
 //
-// Other available API versions: 2019-01-01-preview, 2023-01-18-preview.
+// Other available API versions: 2019-01-01-preview, 2023-01-18-preview, 2023-05-17-preview.
 type B2CTenant struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +59,9 @@ func NewB2CTenant(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azureactivedirectory/v20230118preview:B2CTenant"),
+		},
+		{
+			Type: pulumi.String("azure-native:azureactivedirectory/v20230517preview:B2CTenant"),
 		},
 	})
 	opts = append(opts, aliases)

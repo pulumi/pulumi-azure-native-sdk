@@ -94,6 +94,9 @@ func NewServerKey(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20221101preview:ServerKey"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:ServerKey"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

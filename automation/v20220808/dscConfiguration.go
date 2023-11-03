@@ -75,6 +75,9 @@ func NewDscConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20190601:DscConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20230515preview:DscConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

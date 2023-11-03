@@ -12264,8 +12264,6 @@ type GoogleAdWordsLinkedService struct {
 	ClientSecret interface{} `pulumi:"clientSecret"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// Properties used to connect to GoogleAds. It is mutually exclusive with any other properties in the linked service. Type: object.
-	ConnectionProperties interface{} `pulumi:"connectionProperties"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The developer token associated with the manager account that you use to grant access to the AdWords API.
@@ -12274,19 +12272,21 @@ type GoogleAdWordsLinkedService struct {
 	Email interface{} `pulumi:"email"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
-	KeyFilePath interface{} `pulumi:"keyFilePath"`
+	// The Google Ads API major version such as v14. The supported major versions could be found on https://developers.google.com/google-ads/api/docs/sunset-dates#timetable. Type: string (or Expression with resultType string).
+	GoogleAdsApiVersion interface{} `pulumi:"googleAdsApiVersion"`
+	// The customer ID of the Google Ads Manager account through which you want to fetch report data of specific Customer. Type: string (or Expression with resultType string).
+	LoginCustomerID interface{} `pulumi:"loginCustomerID"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The private key that is used to authenticate the service account email address and can only be used on self-hosted IR.
+	PrivateKey interface{} `pulumi:"privateKey"`
 	// The refresh token obtained from Google for authorizing access to AdWords for UserAuthentication.
 	RefreshToken interface{} `pulumi:"refreshToken"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Type: string (or Expression with resultType string).
-	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
+	// Specifies whether to use the legacy data type mappings, which maps float, int32 and int64 from Google to string. Do not set this to true unless you want to keep backward compatibility with legacy driver's data type mappings. Type: boolean (or Expression with resultType boolean).
+	SupportLegacyDataTypes interface{} `pulumi:"supportLegacyDataTypes"`
 	// Type of linked service.
 	// Expected value is 'GoogleAdWords'.
 	Type string `pulumi:"type"`
-	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Type: boolean (or Expression with resultType boolean).
-	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 }
 
 // Google AdWords service linked service.
@@ -12303,8 +12303,6 @@ type GoogleAdWordsLinkedServiceResponse struct {
 	ClientSecret interface{} `pulumi:"clientSecret"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// Properties used to connect to GoogleAds. It is mutually exclusive with any other properties in the linked service. Type: object.
-	ConnectionProperties interface{} `pulumi:"connectionProperties"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The developer token associated with the manager account that you use to grant access to the AdWords API.
@@ -12313,19 +12311,21 @@ type GoogleAdWordsLinkedServiceResponse struct {
 	Email interface{} `pulumi:"email"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
-	KeyFilePath interface{} `pulumi:"keyFilePath"`
+	// The Google Ads API major version such as v14. The supported major versions could be found on https://developers.google.com/google-ads/api/docs/sunset-dates#timetable. Type: string (or Expression with resultType string).
+	GoogleAdsApiVersion interface{} `pulumi:"googleAdsApiVersion"`
+	// The customer ID of the Google Ads Manager account through which you want to fetch report data of specific Customer. Type: string (or Expression with resultType string).
+	LoginCustomerID interface{} `pulumi:"loginCustomerID"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The private key that is used to authenticate the service account email address and can only be used on self-hosted IR.
+	PrivateKey interface{} `pulumi:"privateKey"`
 	// The refresh token obtained from Google for authorizing access to AdWords for UserAuthentication.
 	RefreshToken interface{} `pulumi:"refreshToken"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Type: string (or Expression with resultType string).
-	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
+	// Specifies whether to use the legacy data type mappings, which maps float, int32 and int64 from Google to string. Do not set this to true unless you want to keep backward compatibility with legacy driver's data type mappings. Type: boolean (or Expression with resultType boolean).
+	SupportLegacyDataTypes interface{} `pulumi:"supportLegacyDataTypes"`
 	// Type of linked service.
 	// Expected value is 'GoogleAdWords'.
 	Type string `pulumi:"type"`
-	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Type: boolean (or Expression with resultType boolean).
-	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 }
 
 // Google AdWords service dataset.

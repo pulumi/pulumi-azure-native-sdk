@@ -81,6 +81,9 @@ func NewAutomationAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20210622:AutomationAccount"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20230515preview:AutomationAccount"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

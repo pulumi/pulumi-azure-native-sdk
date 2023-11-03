@@ -14,6 +14,8 @@ import (
 
 // Retrieve the configuration identified by configuration name.
 // Azure REST API version: 2022-08-08.
+//
+// Other available API versions: 2023-05-15-preview.
 func LookupDscConfiguration(ctx *pulumi.Context, args *LookupDscConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDscConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDscConfigurationResult

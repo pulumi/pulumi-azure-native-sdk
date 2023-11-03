@@ -103,6 +103,9 @@ func NewManagedClusterSnapshot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230702preview:ManagedClusterSnapshot"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230902preview:ManagedClusterSnapshot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

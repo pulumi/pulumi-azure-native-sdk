@@ -360,6 +360,940 @@ func (o AgentUpdatePropertiesResponsePtrOutput) UseSessionHostLocalTime() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Schema for Import Package Information properties.
+type AppAttachPackageInfoProperties struct {
+	// Date certificate expires, found in the appxmanifest.xml.
+	CertificateExpiry *string `pulumi:"certificateExpiry"`
+	// Certificate name found in the appxmanifest.xml.
+	CertificateName *string `pulumi:"certificateName"`
+	// User friendly Name to be displayed in the portal.
+	DisplayName *string `pulumi:"displayName"`
+	// VHD/CIM image path on Network Share.
+	ImagePath *string `pulumi:"imagePath"`
+	// Make this version of the package the active one across the hostpool.
+	IsActive *bool `pulumi:"isActive"`
+	// Is package timestamped so it can ignore the certificate expiry date
+	IsPackageTimestamped *string `pulumi:"isPackageTimestamped"`
+	// Specifies how to register Package in feed.
+	IsRegularRegistration *bool `pulumi:"isRegularRegistration"`
+	// Date Package was last updated, found in the appxmanifest.xml.
+	LastUpdated *string `pulumi:"lastUpdated"`
+	// Alias of App Attach Package. Assigned at import time
+	PackageAlias *string `pulumi:"packageAlias"`
+	// List of package applications.
+	PackageApplications []MsixPackageApplications `pulumi:"packageApplications"`
+	// List of package dependencies.
+	PackageDependencies []MsixPackageDependencies `pulumi:"packageDependencies"`
+	// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
+	PackageFamilyName *string `pulumi:"packageFamilyName"`
+	// Package Full Name from appxmanifest.xml.
+	PackageFullName *string `pulumi:"packageFullName"`
+	// Package Name from appxmanifest.xml.
+	PackageName *string `pulumi:"packageName"`
+	// Relative Path to the package inside the image.
+	PackageRelativePath *string `pulumi:"packageRelativePath"`
+	// Package Version found in the appxmanifest.xml.
+	Version *string `pulumi:"version"`
+}
+
+// AppAttachPackageInfoPropertiesInput is an input type that accepts AppAttachPackageInfoPropertiesArgs and AppAttachPackageInfoPropertiesOutput values.
+// You can construct a concrete instance of `AppAttachPackageInfoPropertiesInput` via:
+//
+//	AppAttachPackageInfoPropertiesArgs{...}
+type AppAttachPackageInfoPropertiesInput interface {
+	pulumi.Input
+
+	ToAppAttachPackageInfoPropertiesOutput() AppAttachPackageInfoPropertiesOutput
+	ToAppAttachPackageInfoPropertiesOutputWithContext(context.Context) AppAttachPackageInfoPropertiesOutput
+}
+
+// Schema for Import Package Information properties.
+type AppAttachPackageInfoPropertiesArgs struct {
+	// Date certificate expires, found in the appxmanifest.xml.
+	CertificateExpiry pulumi.StringPtrInput `pulumi:"certificateExpiry"`
+	// Certificate name found in the appxmanifest.xml.
+	CertificateName pulumi.StringPtrInput `pulumi:"certificateName"`
+	// User friendly Name to be displayed in the portal.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// VHD/CIM image path on Network Share.
+	ImagePath pulumi.StringPtrInput `pulumi:"imagePath"`
+	// Make this version of the package the active one across the hostpool.
+	IsActive pulumi.BoolPtrInput `pulumi:"isActive"`
+	// Is package timestamped so it can ignore the certificate expiry date
+	IsPackageTimestamped pulumi.StringPtrInput `pulumi:"isPackageTimestamped"`
+	// Specifies how to register Package in feed.
+	IsRegularRegistration pulumi.BoolPtrInput `pulumi:"isRegularRegistration"`
+	// Date Package was last updated, found in the appxmanifest.xml.
+	LastUpdated pulumi.StringPtrInput `pulumi:"lastUpdated"`
+	// Alias of App Attach Package. Assigned at import time
+	PackageAlias pulumi.StringPtrInput `pulumi:"packageAlias"`
+	// List of package applications.
+	PackageApplications MsixPackageApplicationsArrayInput `pulumi:"packageApplications"`
+	// List of package dependencies.
+	PackageDependencies MsixPackageDependenciesArrayInput `pulumi:"packageDependencies"`
+	// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
+	PackageFamilyName pulumi.StringPtrInput `pulumi:"packageFamilyName"`
+	// Package Full Name from appxmanifest.xml.
+	PackageFullName pulumi.StringPtrInput `pulumi:"packageFullName"`
+	// Package Name from appxmanifest.xml.
+	PackageName pulumi.StringPtrInput `pulumi:"packageName"`
+	// Relative Path to the package inside the image.
+	PackageRelativePath pulumi.StringPtrInput `pulumi:"packageRelativePath"`
+	// Package Version found in the appxmanifest.xml.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (AppAttachPackageInfoPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppAttachPackageInfoProperties)(nil)).Elem()
+}
+
+func (i AppAttachPackageInfoPropertiesArgs) ToAppAttachPackageInfoPropertiesOutput() AppAttachPackageInfoPropertiesOutput {
+	return i.ToAppAttachPackageInfoPropertiesOutputWithContext(context.Background())
+}
+
+func (i AppAttachPackageInfoPropertiesArgs) ToAppAttachPackageInfoPropertiesOutputWithContext(ctx context.Context) AppAttachPackageInfoPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppAttachPackageInfoPropertiesOutput)
+}
+
+func (i AppAttachPackageInfoPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AppAttachPackageInfoProperties] {
+	return pulumix.Output[AppAttachPackageInfoProperties]{
+		OutputState: i.ToAppAttachPackageInfoPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AppAttachPackageInfoPropertiesArgs) ToAppAttachPackageInfoPropertiesPtrOutput() AppAttachPackageInfoPropertiesPtrOutput {
+	return i.ToAppAttachPackageInfoPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i AppAttachPackageInfoPropertiesArgs) ToAppAttachPackageInfoPropertiesPtrOutputWithContext(ctx context.Context) AppAttachPackageInfoPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppAttachPackageInfoPropertiesOutput).ToAppAttachPackageInfoPropertiesPtrOutputWithContext(ctx)
+}
+
+// AppAttachPackageInfoPropertiesPtrInput is an input type that accepts AppAttachPackageInfoPropertiesArgs, AppAttachPackageInfoPropertiesPtr and AppAttachPackageInfoPropertiesPtrOutput values.
+// You can construct a concrete instance of `AppAttachPackageInfoPropertiesPtrInput` via:
+//
+//	        AppAttachPackageInfoPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppAttachPackageInfoPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToAppAttachPackageInfoPropertiesPtrOutput() AppAttachPackageInfoPropertiesPtrOutput
+	ToAppAttachPackageInfoPropertiesPtrOutputWithContext(context.Context) AppAttachPackageInfoPropertiesPtrOutput
+}
+
+type appAttachPackageInfoPropertiesPtrType AppAttachPackageInfoPropertiesArgs
+
+func AppAttachPackageInfoPropertiesPtr(v *AppAttachPackageInfoPropertiesArgs) AppAttachPackageInfoPropertiesPtrInput {
+	return (*appAttachPackageInfoPropertiesPtrType)(v)
+}
+
+func (*appAttachPackageInfoPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppAttachPackageInfoProperties)(nil)).Elem()
+}
+
+func (i *appAttachPackageInfoPropertiesPtrType) ToAppAttachPackageInfoPropertiesPtrOutput() AppAttachPackageInfoPropertiesPtrOutput {
+	return i.ToAppAttachPackageInfoPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *appAttachPackageInfoPropertiesPtrType) ToAppAttachPackageInfoPropertiesPtrOutputWithContext(ctx context.Context) AppAttachPackageInfoPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppAttachPackageInfoPropertiesPtrOutput)
+}
+
+func (i *appAttachPackageInfoPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppAttachPackageInfoProperties] {
+	return pulumix.Output[*AppAttachPackageInfoProperties]{
+		OutputState: i.ToAppAttachPackageInfoPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Schema for Import Package Information properties.
+type AppAttachPackageInfoPropertiesOutput struct{ *pulumi.OutputState }
+
+func (AppAttachPackageInfoPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppAttachPackageInfoProperties)(nil)).Elem()
+}
+
+func (o AppAttachPackageInfoPropertiesOutput) ToAppAttachPackageInfoPropertiesOutput() AppAttachPackageInfoPropertiesOutput {
+	return o
+}
+
+func (o AppAttachPackageInfoPropertiesOutput) ToAppAttachPackageInfoPropertiesOutputWithContext(ctx context.Context) AppAttachPackageInfoPropertiesOutput {
+	return o
+}
+
+func (o AppAttachPackageInfoPropertiesOutput) ToAppAttachPackageInfoPropertiesPtrOutput() AppAttachPackageInfoPropertiesPtrOutput {
+	return o.ToAppAttachPackageInfoPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o AppAttachPackageInfoPropertiesOutput) ToAppAttachPackageInfoPropertiesPtrOutputWithContext(ctx context.Context) AppAttachPackageInfoPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppAttachPackageInfoProperties) *AppAttachPackageInfoProperties {
+		return &v
+	}).(AppAttachPackageInfoPropertiesPtrOutput)
+}
+
+func (o AppAttachPackageInfoPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AppAttachPackageInfoProperties] {
+	return pulumix.Output[AppAttachPackageInfoProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Date certificate expires, found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesOutput) CertificateExpiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.CertificateExpiry }).(pulumi.StringPtrOutput)
+}
+
+// Certificate name found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesOutput) CertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.CertificateName }).(pulumi.StringPtrOutput)
+}
+
+// User friendly Name to be displayed in the portal.
+func (o AppAttachPackageInfoPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// VHD/CIM image path on Network Share.
+func (o AppAttachPackageInfoPropertiesOutput) ImagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.ImagePath }).(pulumi.StringPtrOutput)
+}
+
+// Make this version of the package the active one across the hostpool.
+func (o AppAttachPackageInfoPropertiesOutput) IsActive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *bool { return v.IsActive }).(pulumi.BoolPtrOutput)
+}
+
+// Is package timestamped so it can ignore the certificate expiry date
+func (o AppAttachPackageInfoPropertiesOutput) IsPackageTimestamped() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.IsPackageTimestamped }).(pulumi.StringPtrOutput)
+}
+
+// Specifies how to register Package in feed.
+func (o AppAttachPackageInfoPropertiesOutput) IsRegularRegistration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *bool { return v.IsRegularRegistration }).(pulumi.BoolPtrOutput)
+}
+
+// Date Package was last updated, found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesOutput) LastUpdated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.LastUpdated }).(pulumi.StringPtrOutput)
+}
+
+// Alias of App Attach Package. Assigned at import time
+func (o AppAttachPackageInfoPropertiesOutput) PackageAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.PackageAlias }).(pulumi.StringPtrOutput)
+}
+
+// List of package applications.
+func (o AppAttachPackageInfoPropertiesOutput) PackageApplications() MsixPackageApplicationsArrayOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) []MsixPackageApplications { return v.PackageApplications }).(MsixPackageApplicationsArrayOutput)
+}
+
+// List of package dependencies.
+func (o AppAttachPackageInfoPropertiesOutput) PackageDependencies() MsixPackageDependenciesArrayOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) []MsixPackageDependencies { return v.PackageDependencies }).(MsixPackageDependenciesArrayOutput)
+}
+
+// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
+func (o AppAttachPackageInfoPropertiesOutput) PackageFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.PackageFamilyName }).(pulumi.StringPtrOutput)
+}
+
+// Package Full Name from appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesOutput) PackageFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.PackageFullName }).(pulumi.StringPtrOutput)
+}
+
+// Package Name from appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesOutput) PackageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.PackageName }).(pulumi.StringPtrOutput)
+}
+
+// Relative Path to the package inside the image.
+func (o AppAttachPackageInfoPropertiesOutput) PackageRelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.PackageRelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Package Version found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type AppAttachPackageInfoPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (AppAttachPackageInfoPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppAttachPackageInfoProperties)(nil)).Elem()
+}
+
+func (o AppAttachPackageInfoPropertiesPtrOutput) ToAppAttachPackageInfoPropertiesPtrOutput() AppAttachPackageInfoPropertiesPtrOutput {
+	return o
+}
+
+func (o AppAttachPackageInfoPropertiesPtrOutput) ToAppAttachPackageInfoPropertiesPtrOutputWithContext(ctx context.Context) AppAttachPackageInfoPropertiesPtrOutput {
+	return o
+}
+
+func (o AppAttachPackageInfoPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppAttachPackageInfoProperties] {
+	return pulumix.Output[*AppAttachPackageInfoProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AppAttachPackageInfoPropertiesPtrOutput) Elem() AppAttachPackageInfoPropertiesOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) AppAttachPackageInfoProperties {
+		if v != nil {
+			return *v
+		}
+		var ret AppAttachPackageInfoProperties
+		return ret
+	}).(AppAttachPackageInfoPropertiesOutput)
+}
+
+// Date certificate expires, found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesPtrOutput) CertificateExpiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateExpiry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate name found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesPtrOutput) CertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// User friendly Name to be displayed in the portal.
+func (o AppAttachPackageInfoPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// VHD/CIM image path on Network Share.
+func (o AppAttachPackageInfoPropertiesPtrOutput) ImagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImagePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Make this version of the package the active one across the hostpool.
+func (o AppAttachPackageInfoPropertiesPtrOutput) IsActive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsActive
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Is package timestamped so it can ignore the certificate expiry date
+func (o AppAttachPackageInfoPropertiesPtrOutput) IsPackageTimestamped() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IsPackageTimestamped
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies how to register Package in feed.
+func (o AppAttachPackageInfoPropertiesPtrOutput) IsRegularRegistration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsRegularRegistration
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Date Package was last updated, found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesPtrOutput) LastUpdated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastUpdated
+	}).(pulumi.StringPtrOutput)
+}
+
+// Alias of App Attach Package. Assigned at import time
+func (o AppAttachPackageInfoPropertiesPtrOutput) PackageAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageAlias
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of package applications.
+func (o AppAttachPackageInfoPropertiesPtrOutput) PackageApplications() MsixPackageApplicationsArrayOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) []MsixPackageApplications {
+		if v == nil {
+			return nil
+		}
+		return v.PackageApplications
+	}).(MsixPackageApplicationsArrayOutput)
+}
+
+// List of package dependencies.
+func (o AppAttachPackageInfoPropertiesPtrOutput) PackageDependencies() MsixPackageDependenciesArrayOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) []MsixPackageDependencies {
+		if v == nil {
+			return nil
+		}
+		return v.PackageDependencies
+	}).(MsixPackageDependenciesArrayOutput)
+}
+
+// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
+func (o AppAttachPackageInfoPropertiesPtrOutput) PackageFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageFamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Package Full Name from appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesPtrOutput) PackageFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Package Name from appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesPtrOutput) PackageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Relative Path to the package inside the image.
+func (o AppAttachPackageInfoPropertiesPtrOutput) PackageRelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageRelativePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Package Version found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schema for Import Package Information properties.
+type AppAttachPackageInfoPropertiesResponse struct {
+	// Date certificate expires, found in the appxmanifest.xml.
+	CertificateExpiry *string `pulumi:"certificateExpiry"`
+	// Certificate name found in the appxmanifest.xml.
+	CertificateName *string `pulumi:"certificateName"`
+	// User friendly Name to be displayed in the portal.
+	DisplayName *string `pulumi:"displayName"`
+	// VHD/CIM image path on Network Share.
+	ImagePath *string `pulumi:"imagePath"`
+	// Make this version of the package the active one across the hostpool.
+	IsActive *bool `pulumi:"isActive"`
+	// Is package timestamped so it can ignore the certificate expiry date
+	IsPackageTimestamped *string `pulumi:"isPackageTimestamped"`
+	// Specifies how to register Package in feed.
+	IsRegularRegistration *bool `pulumi:"isRegularRegistration"`
+	// Date Package was last updated, found in the appxmanifest.xml.
+	LastUpdated *string `pulumi:"lastUpdated"`
+	// Alias of App Attach Package. Assigned at import time
+	PackageAlias *string `pulumi:"packageAlias"`
+	// List of package applications.
+	PackageApplications []MsixPackageApplicationsResponse `pulumi:"packageApplications"`
+	// List of package dependencies.
+	PackageDependencies []MsixPackageDependenciesResponse `pulumi:"packageDependencies"`
+	// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
+	PackageFamilyName *string `pulumi:"packageFamilyName"`
+	// Package Full Name from appxmanifest.xml.
+	PackageFullName *string `pulumi:"packageFullName"`
+	// Package Name from appxmanifest.xml.
+	PackageName *string `pulumi:"packageName"`
+	// Relative Path to the package inside the image.
+	PackageRelativePath *string `pulumi:"packageRelativePath"`
+	// Package Version found in the appxmanifest.xml.
+	Version *string `pulumi:"version"`
+}
+
+// Schema for Import Package Information properties.
+type AppAttachPackageInfoPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AppAttachPackageInfoPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppAttachPackageInfoPropertiesResponse)(nil)).Elem()
+}
+
+func (o AppAttachPackageInfoPropertiesResponseOutput) ToAppAttachPackageInfoPropertiesResponseOutput() AppAttachPackageInfoPropertiesResponseOutput {
+	return o
+}
+
+func (o AppAttachPackageInfoPropertiesResponseOutput) ToAppAttachPackageInfoPropertiesResponseOutputWithContext(ctx context.Context) AppAttachPackageInfoPropertiesResponseOutput {
+	return o
+}
+
+func (o AppAttachPackageInfoPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppAttachPackageInfoPropertiesResponse] {
+	return pulumix.Output[AppAttachPackageInfoPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Date certificate expires, found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesResponseOutput) CertificateExpiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.CertificateExpiry }).(pulumi.StringPtrOutput)
+}
+
+// Certificate name found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesResponseOutput) CertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.CertificateName }).(pulumi.StringPtrOutput)
+}
+
+// User friendly Name to be displayed in the portal.
+func (o AppAttachPackageInfoPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// VHD/CIM image path on Network Share.
+func (o AppAttachPackageInfoPropertiesResponseOutput) ImagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.ImagePath }).(pulumi.StringPtrOutput)
+}
+
+// Make this version of the package the active one across the hostpool.
+func (o AppAttachPackageInfoPropertiesResponseOutput) IsActive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *bool { return v.IsActive }).(pulumi.BoolPtrOutput)
+}
+
+// Is package timestamped so it can ignore the certificate expiry date
+func (o AppAttachPackageInfoPropertiesResponseOutput) IsPackageTimestamped() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.IsPackageTimestamped }).(pulumi.StringPtrOutput)
+}
+
+// Specifies how to register Package in feed.
+func (o AppAttachPackageInfoPropertiesResponseOutput) IsRegularRegistration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *bool { return v.IsRegularRegistration }).(pulumi.BoolPtrOutput)
+}
+
+// Date Package was last updated, found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesResponseOutput) LastUpdated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.LastUpdated }).(pulumi.StringPtrOutput)
+}
+
+// Alias of App Attach Package. Assigned at import time
+func (o AppAttachPackageInfoPropertiesResponseOutput) PackageAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.PackageAlias }).(pulumi.StringPtrOutput)
+}
+
+// List of package applications.
+func (o AppAttachPackageInfoPropertiesResponseOutput) PackageApplications() MsixPackageApplicationsResponseArrayOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) []MsixPackageApplicationsResponse {
+		return v.PackageApplications
+	}).(MsixPackageApplicationsResponseArrayOutput)
+}
+
+// List of package dependencies.
+func (o AppAttachPackageInfoPropertiesResponseOutput) PackageDependencies() MsixPackageDependenciesResponseArrayOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) []MsixPackageDependenciesResponse {
+		return v.PackageDependencies
+	}).(MsixPackageDependenciesResponseArrayOutput)
+}
+
+// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
+func (o AppAttachPackageInfoPropertiesResponseOutput) PackageFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.PackageFamilyName }).(pulumi.StringPtrOutput)
+}
+
+// Package Full Name from appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesResponseOutput) PackageFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.PackageFullName }).(pulumi.StringPtrOutput)
+}
+
+// Package Name from appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesResponseOutput) PackageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.PackageName }).(pulumi.StringPtrOutput)
+}
+
+// Relative Path to the package inside the image.
+func (o AppAttachPackageInfoPropertiesResponseOutput) PackageRelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.PackageRelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Package Version found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type AppAttachPackageInfoPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AppAttachPackageInfoPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppAttachPackageInfoPropertiesResponse)(nil)).Elem()
+}
+
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) ToAppAttachPackageInfoPropertiesResponsePtrOutput() AppAttachPackageInfoPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) ToAppAttachPackageInfoPropertiesResponsePtrOutputWithContext(ctx context.Context) AppAttachPackageInfoPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppAttachPackageInfoPropertiesResponse] {
+	return pulumix.Output[*AppAttachPackageInfoPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) Elem() AppAttachPackageInfoPropertiesResponseOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) AppAttachPackageInfoPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppAttachPackageInfoPropertiesResponse
+		return ret
+	}).(AppAttachPackageInfoPropertiesResponseOutput)
+}
+
+// Date certificate expires, found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) CertificateExpiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateExpiry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate name found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) CertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// User friendly Name to be displayed in the portal.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// VHD/CIM image path on Network Share.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) ImagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImagePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Make this version of the package the active one across the hostpool.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) IsActive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsActive
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Is package timestamped so it can ignore the certificate expiry date
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) IsPackageTimestamped() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IsPackageTimestamped
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies how to register Package in feed.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) IsRegularRegistration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsRegularRegistration
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Date Package was last updated, found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) LastUpdated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastUpdated
+	}).(pulumi.StringPtrOutput)
+}
+
+// Alias of App Attach Package. Assigned at import time
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) PackageAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageAlias
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of package applications.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) PackageApplications() MsixPackageApplicationsResponseArrayOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) []MsixPackageApplicationsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PackageApplications
+	}).(MsixPackageApplicationsResponseArrayOutput)
+}
+
+// List of package dependencies.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) PackageDependencies() MsixPackageDependenciesResponseArrayOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) []MsixPackageDependenciesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PackageDependencies
+	}).(MsixPackageDependenciesResponseArrayOutput)
+}
+
+// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) PackageFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageFamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Package Full Name from appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) PackageFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Package Name from appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) PackageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Relative Path to the package inside the image.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) PackageRelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageRelativePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Package Version found in the appxmanifest.xml.
+func (o AppAttachPackageInfoPropertiesResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schema for App Attach Package properties.
+type AppAttachPackageProperties struct {
+	// Parameter indicating how the health check should behave if this package fails staging
+	FailHealthCheckOnStagingFailure *string `pulumi:"failHealthCheckOnStagingFailure"`
+	// List of Hostpool resource Ids.
+	HostPoolReferences []string `pulumi:"hostPoolReferences"`
+	// Detailed properties for App Attach Package
+	Image *AppAttachPackageInfoProperties `pulumi:"image"`
+	// URL of keyvault location to store certificate
+	KeyVaultURL *string `pulumi:"keyVaultURL"`
+}
+
+// AppAttachPackagePropertiesInput is an input type that accepts AppAttachPackagePropertiesArgs and AppAttachPackagePropertiesOutput values.
+// You can construct a concrete instance of `AppAttachPackagePropertiesInput` via:
+//
+//	AppAttachPackagePropertiesArgs{...}
+type AppAttachPackagePropertiesInput interface {
+	pulumi.Input
+
+	ToAppAttachPackagePropertiesOutput() AppAttachPackagePropertiesOutput
+	ToAppAttachPackagePropertiesOutputWithContext(context.Context) AppAttachPackagePropertiesOutput
+}
+
+// Schema for App Attach Package properties.
+type AppAttachPackagePropertiesArgs struct {
+	// Parameter indicating how the health check should behave if this package fails staging
+	FailHealthCheckOnStagingFailure pulumi.StringPtrInput `pulumi:"failHealthCheckOnStagingFailure"`
+	// List of Hostpool resource Ids.
+	HostPoolReferences pulumi.StringArrayInput `pulumi:"hostPoolReferences"`
+	// Detailed properties for App Attach Package
+	Image AppAttachPackageInfoPropertiesPtrInput `pulumi:"image"`
+	// URL of keyvault location to store certificate
+	KeyVaultURL pulumi.StringPtrInput `pulumi:"keyVaultURL"`
+}
+
+func (AppAttachPackagePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppAttachPackageProperties)(nil)).Elem()
+}
+
+func (i AppAttachPackagePropertiesArgs) ToAppAttachPackagePropertiesOutput() AppAttachPackagePropertiesOutput {
+	return i.ToAppAttachPackagePropertiesOutputWithContext(context.Background())
+}
+
+func (i AppAttachPackagePropertiesArgs) ToAppAttachPackagePropertiesOutputWithContext(ctx context.Context) AppAttachPackagePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppAttachPackagePropertiesOutput)
+}
+
+func (i AppAttachPackagePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AppAttachPackageProperties] {
+	return pulumix.Output[AppAttachPackageProperties]{
+		OutputState: i.ToAppAttachPackagePropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Schema for App Attach Package properties.
+type AppAttachPackagePropertiesOutput struct{ *pulumi.OutputState }
+
+func (AppAttachPackagePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppAttachPackageProperties)(nil)).Elem()
+}
+
+func (o AppAttachPackagePropertiesOutput) ToAppAttachPackagePropertiesOutput() AppAttachPackagePropertiesOutput {
+	return o
+}
+
+func (o AppAttachPackagePropertiesOutput) ToAppAttachPackagePropertiesOutputWithContext(ctx context.Context) AppAttachPackagePropertiesOutput {
+	return o
+}
+
+func (o AppAttachPackagePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AppAttachPackageProperties] {
+	return pulumix.Output[AppAttachPackageProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Parameter indicating how the health check should behave if this package fails staging
+func (o AppAttachPackagePropertiesOutput) FailHealthCheckOnStagingFailure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageProperties) *string { return v.FailHealthCheckOnStagingFailure }).(pulumi.StringPtrOutput)
+}
+
+// List of Hostpool resource Ids.
+func (o AppAttachPackagePropertiesOutput) HostPoolReferences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppAttachPackageProperties) []string { return v.HostPoolReferences }).(pulumi.StringArrayOutput)
+}
+
+// Detailed properties for App Attach Package
+func (o AppAttachPackagePropertiesOutput) Image() AppAttachPackageInfoPropertiesPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageProperties) *AppAttachPackageInfoProperties { return v.Image }).(AppAttachPackageInfoPropertiesPtrOutput)
+}
+
+// URL of keyvault location to store certificate
+func (o AppAttachPackagePropertiesOutput) KeyVaultURL() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackageProperties) *string { return v.KeyVaultURL }).(pulumi.StringPtrOutput)
+}
+
+// Schema for App Attach Package properties.
+type AppAttachPackagePropertiesResponse struct {
+	// Parameter indicating how the health check should behave if this package fails staging
+	FailHealthCheckOnStagingFailure *string `pulumi:"failHealthCheckOnStagingFailure"`
+	// List of Hostpool resource Ids.
+	HostPoolReferences []string `pulumi:"hostPoolReferences"`
+	// Detailed properties for App Attach Package
+	Image *AppAttachPackageInfoPropertiesResponse `pulumi:"image"`
+	// URL of keyvault location to store certificate
+	KeyVaultURL *string `pulumi:"keyVaultURL"`
+	// The provisioning state of the App Attach Package.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Schema for App Attach Package properties.
+type AppAttachPackagePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AppAttachPackagePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppAttachPackagePropertiesResponse)(nil)).Elem()
+}
+
+func (o AppAttachPackagePropertiesResponseOutput) ToAppAttachPackagePropertiesResponseOutput() AppAttachPackagePropertiesResponseOutput {
+	return o
+}
+
+func (o AppAttachPackagePropertiesResponseOutput) ToAppAttachPackagePropertiesResponseOutputWithContext(ctx context.Context) AppAttachPackagePropertiesResponseOutput {
+	return o
+}
+
+func (o AppAttachPackagePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppAttachPackagePropertiesResponse] {
+	return pulumix.Output[AppAttachPackagePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Parameter indicating how the health check should behave if this package fails staging
+func (o AppAttachPackagePropertiesResponseOutput) FailHealthCheckOnStagingFailure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) *string { return v.FailHealthCheckOnStagingFailure }).(pulumi.StringPtrOutput)
+}
+
+// List of Hostpool resource Ids.
+func (o AppAttachPackagePropertiesResponseOutput) HostPoolReferences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) []string { return v.HostPoolReferences }).(pulumi.StringArrayOutput)
+}
+
+// Detailed properties for App Attach Package
+func (o AppAttachPackagePropertiesResponseOutput) Image() AppAttachPackageInfoPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) *AppAttachPackageInfoPropertiesResponse { return v.Image }).(AppAttachPackageInfoPropertiesResponsePtrOutput)
+}
+
+// URL of keyvault location to store certificate
+func (o AppAttachPackagePropertiesResponseOutput) KeyVaultURL() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) *string { return v.KeyVaultURL }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the App Attach Package.
+func (o AppAttachPackagePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // Maintenance window starting hour and day of week.
 type MaintenanceWindowProperties struct {
 	// Day of the week.
@@ -3572,6 +4506,12 @@ func init() {
 	pulumi.RegisterOutputType(AgentUpdatePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AgentUpdatePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(AgentUpdatePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(AppAttachPackageInfoPropertiesOutput{})
+	pulumi.RegisterOutputType(AppAttachPackageInfoPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(AppAttachPackageInfoPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AppAttachPackageInfoPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(AppAttachPackagePropertiesOutput{})
+	pulumi.RegisterOutputType(AppAttachPackagePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowPropertiesOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowPropertiesResponseOutput{})

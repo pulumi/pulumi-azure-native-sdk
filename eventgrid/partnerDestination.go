@@ -16,7 +16,7 @@ import (
 // Event Grid Partner Destination.
 // Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 1.x: 2021-10-15-preview.
 //
-// Other available API versions: 2021-10-15-preview.
+// Other available API versions: 2021-10-15-preview, 2023-12-15-preview.
 type PartnerDestination struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +63,9 @@ func NewPartnerDestination(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20230601preview:PartnerDestination"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20231215preview:PartnerDestination"),
 		},
 	})
 	opts = append(opts, aliases)

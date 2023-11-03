@@ -16,7 +16,7 @@ import (
 // The security connector resource.
 // Azure REST API version: 2023-03-01-preview. Prior API version in Azure Native 1.x: 2021-07-01-preview.
 //
-// Other available API versions: 2021-07-01-preview.
+// Other available API versions: 2021-07-01-preview, 2023-10-01-preview.
 type SecurityConnector struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +71,9 @@ func NewSecurityConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:security/v20230301preview:SecurityConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:security/v20231001preview:SecurityConnector"),
 		},
 	})
 	opts = append(opts, aliases)

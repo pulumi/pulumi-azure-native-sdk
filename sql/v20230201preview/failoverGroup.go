@@ -101,6 +101,9 @@ func NewFailoverGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20221101preview:FailoverGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:FailoverGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

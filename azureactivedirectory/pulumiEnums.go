@@ -23,5 +23,14 @@ const (
 	B2CResourceSKUTierA0 = B2CResourceSKUTier("A0")
 )
 
+// The name of the SKU for the tenant.
+type CIAMResourceSKUName string
+
+const (
+	CIAMResourceSKUNameStandard  = CIAMResourceSKUName("Standard")
+	CIAMResourceSKUNamePremiumP1 = CIAMResourceSKUName("PremiumP1")
+	CIAMResourceSKUNamePremiumP2 = CIAMResourceSKUName("PremiumP2")
+)
+
 func init() {
 }

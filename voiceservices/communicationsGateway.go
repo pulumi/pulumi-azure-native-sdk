@@ -15,6 +15,8 @@ import (
 
 // A CommunicationsGateway resource
 // Azure REST API version: 2023-04-03. Prior API version in Azure Native 1.x: 2022-12-01-preview.
+//
+// Other available API versions: 2023-09-01.
 type CommunicationsGateway struct {
 	pulumi.CustomResourceState
 
@@ -103,6 +105,9 @@ func NewCommunicationsGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:voiceservices/v20230403:CommunicationsGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:voiceservices/v20230901:CommunicationsGateway"),
 		},
 	})
 	opts = append(opts, aliases)

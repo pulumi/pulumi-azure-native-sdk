@@ -61,6 +61,9 @@ func NewChannel(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20230601preview:Channel"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20231215preview:Channel"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

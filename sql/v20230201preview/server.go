@@ -120,6 +120,9 @@ func NewServer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20221101preview:Server"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:Server"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -16,7 +16,7 @@ import (
 // An object that represents a private endpoint connection for a container registry.
 // Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
 //
-// Other available API versions: 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview.
+// Other available API versions: 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -83,6 +83,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20230801preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20231101preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

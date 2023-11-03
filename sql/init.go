@@ -73,6 +73,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &JobAgent{}
 	case "azure-native:sql:JobCredential":
 		r = &JobCredential{}
+	case "azure-native:sql:JobPrivateEndpoint":
+		r = &JobPrivateEndpoint{}
 	case "azure-native:sql:JobStep":
 		r = &JobStep{}
 	case "azure-native:sql:JobTargetGroup":
@@ -107,6 +109,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OutboundFirewallRule{}
 	case "azure-native:sql:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:sql:ReplicationLink":
+		r = &ReplicationLink{}
 	case "azure-native:sql:SensitivityLabel":
 		r = &SensitivityLabel{}
 	case "azure-native:sql:Server":

@@ -76,6 +76,9 @@ func NewCommunicationService(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:communication/v20230301preview:CommunicationService"),
 		},
 		{
+			Type: pulumi.String("azure-native:communication/v20230401:CommunicationService"),
+		},
+		{
 			Type: pulumi.String("azure-native:communication/v20230401preview:CommunicationService"),
 		},
 		{

@@ -20,6 +20,15 @@ const (
 	LedgerRoleNameAdministrator = LedgerRoleName("Administrator")
 )
 
+// SKU associated with the ledger
+type LedgerSku string
+
+const (
+	LedgerSkuStandard = LedgerSku("Standard")
+	LedgerSkuBasic    = LedgerSku("Basic")
+	LedgerSkuUnknown  = LedgerSku("Unknown")
+)
+
 // Type of Confidential Ledger
 type LedgerType string
 

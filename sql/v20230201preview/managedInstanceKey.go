@@ -90,6 +90,9 @@ func NewManagedInstanceKey(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20221101preview:ManagedInstanceKey"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:ManagedInstanceKey"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -127,6 +127,9 @@ func NewApplication(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:Application"),
 		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20231004preview:Application"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

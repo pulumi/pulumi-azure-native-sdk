@@ -14,6 +14,8 @@ import (
 
 // Get properties of a topic space.
 // Azure REST API version: 2023-06-01-preview.
+//
+// Other available API versions: 2023-12-15-preview.
 func LookupTopicSpace(ctx *pulumi.Context, args *LookupTopicSpaceArgs, opts ...pulumi.InvokeOption) (*LookupTopicSpaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTopicSpaceResult

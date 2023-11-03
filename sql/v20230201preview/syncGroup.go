@@ -109,6 +109,9 @@ func NewSyncGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20221101preview:SyncGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:SyncGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

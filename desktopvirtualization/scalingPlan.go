@@ -16,7 +16,7 @@ import (
 // Represents a scaling plan definition.
 // Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2021-02-01-preview.
 //
-// Other available API versions: 2020-11-10-preview, 2021-02-01-preview, 2022-02-10-preview, 2022-10-14-preview, 2023-07-07-preview, 2023-09-05.
+// Other available API versions: 2020-11-10-preview, 2021-02-01-preview, 2022-02-10-preview, 2022-10-14-preview, 2023-07-07-preview, 2023-09-05, 2023-10-04-preview.
 type ScalingPlan struct {
 	pulumi.CustomResourceState
 
@@ -112,6 +112,9 @@ func NewScalingPlan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:ScalingPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20231004preview:ScalingPlan"),
 		},
 	})
 	opts = append(opts, aliases)

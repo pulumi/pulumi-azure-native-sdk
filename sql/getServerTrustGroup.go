@@ -15,7 +15,7 @@ import (
 // Gets a server trust group.
 // Azure REST API version: 2021-11-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview.
 func LookupServerTrustGroup(ctx *pulumi.Context, args *LookupServerTrustGroupArgs, opts ...pulumi.InvokeOption) (*LookupServerTrustGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerTrustGroupResult

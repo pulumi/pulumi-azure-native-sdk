@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Role{}
 	case "azure-native:dbforpostgresql:Server":
 		r = &Server{}
+	case "azure-native:dbforpostgresql:VirtualEndpoint":
+		r = &VirtualEndpoint{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

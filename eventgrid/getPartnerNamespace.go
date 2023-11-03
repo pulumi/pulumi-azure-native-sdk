@@ -15,7 +15,7 @@ import (
 // Get properties of a partner namespace.
 // Azure REST API version: 2022-06-15.
 //
-// Other available API versions: 2023-06-01-preview.
+// Other available API versions: 2023-06-01-preview, 2023-12-15-preview.
 func LookupPartnerNamespace(ctx *pulumi.Context, args *LookupPartnerNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupPartnerNamespaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerNamespaceResult

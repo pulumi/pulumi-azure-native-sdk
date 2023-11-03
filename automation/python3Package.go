@@ -15,6 +15,8 @@ import (
 
 // Definition of the module type.
 // Azure REST API version: 2022-08-08.
+//
+// Other available API versions: 2023-05-15-preview.
 type Python3Package struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +73,9 @@ func NewPython3Package(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:automation/v20220808:Python3Package"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation/v20230515preview:Python3Package"),
 		},
 	})
 	opts = append(opts, aliases)

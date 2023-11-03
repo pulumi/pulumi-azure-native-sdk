@@ -51,6 +51,9 @@ func NewTrigger(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:virtualmachineimages:Trigger"),
 		},
+		{
+			Type: pulumi.String("azure-native:virtualmachineimages/v20230701:Trigger"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -14,6 +14,8 @@ import (
 
 // Gets details of the specific container registered to your Recovery Services Vault.
 // Azure REST API version: 2023-04-01.
+//
+// Other available API versions: 2023-06-01.
 func LookupProtectionContainer(ctx *pulumi.Context, args *LookupProtectionContainerArgs, opts ...pulumi.InvokeOption) (*LookupProtectionContainerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProtectionContainerResult

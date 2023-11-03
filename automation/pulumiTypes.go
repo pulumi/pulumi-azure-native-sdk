@@ -1672,6 +1672,120 @@ func (o ContentSourceResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Definition of deleted runbook.
+type DeletedRunbookResponse struct {
+	// Gets or sets the creation time.
+	CreationTime *string `pulumi:"creationTime"`
+	// Gets or sets the last modified time.
+	DeletionTime *string `pulumi:"deletionTime"`
+	// The resource id.
+	Id *string `pulumi:"id"`
+	// Gets or sets the location of the resource.
+	Location *string `pulumi:"location"`
+	// Gets or sets name of the resource.
+	Name *string `pulumi:"name"`
+	// Gets or sets the Runbook Id.
+	RunbookId *string `pulumi:"runbookId"`
+	// Type of the runbook.
+	RunbookType *string `pulumi:"runbookType"`
+	// Gets or sets runtime of the runbook.
+	Runtime *string `pulumi:"runtime"`
+	// Environment of the runbook.
+	RuntimeEnvironment *string `pulumi:"runtimeEnvironment"`
+}
+
+// Definition of deleted runbook.
+type DeletedRunbookResponseOutput struct{ *pulumi.OutputState }
+
+func (DeletedRunbookResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeletedRunbookResponse)(nil)).Elem()
+}
+
+func (o DeletedRunbookResponseOutput) ToDeletedRunbookResponseOutput() DeletedRunbookResponseOutput {
+	return o
+}
+
+func (o DeletedRunbookResponseOutput) ToDeletedRunbookResponseOutputWithContext(ctx context.Context) DeletedRunbookResponseOutput {
+	return o
+}
+
+func (o DeletedRunbookResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeletedRunbookResponse] {
+	return pulumix.Output[DeletedRunbookResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Gets or sets the creation time.
+func (o DeletedRunbookResponseOutput) CreationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeletedRunbookResponse) *string { return v.CreationTime }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the last modified time.
+func (o DeletedRunbookResponseOutput) DeletionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeletedRunbookResponse) *string { return v.DeletionTime }).(pulumi.StringPtrOutput)
+}
+
+// The resource id.
+func (o DeletedRunbookResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeletedRunbookResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the location of the resource.
+func (o DeletedRunbookResponseOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeletedRunbookResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets name of the resource.
+func (o DeletedRunbookResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeletedRunbookResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Runbook Id.
+func (o DeletedRunbookResponseOutput) RunbookId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeletedRunbookResponse) *string { return v.RunbookId }).(pulumi.StringPtrOutput)
+}
+
+// Type of the runbook.
+func (o DeletedRunbookResponseOutput) RunbookType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeletedRunbookResponse) *string { return v.RunbookType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets runtime of the runbook.
+func (o DeletedRunbookResponseOutput) Runtime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeletedRunbookResponse) *string { return v.Runtime }).(pulumi.StringPtrOutput)
+}
+
+// Environment of the runbook.
+func (o DeletedRunbookResponseOutput) RuntimeEnvironment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeletedRunbookResponse) *string { return v.RuntimeEnvironment }).(pulumi.StringPtrOutput)
+}
+
+type DeletedRunbookResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DeletedRunbookResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeletedRunbookResponse)(nil)).Elem()
+}
+
+func (o DeletedRunbookResponseArrayOutput) ToDeletedRunbookResponseArrayOutput() DeletedRunbookResponseArrayOutput {
+	return o
+}
+
+func (o DeletedRunbookResponseArrayOutput) ToDeletedRunbookResponseArrayOutputWithContext(ctx context.Context) DeletedRunbookResponseArrayOutput {
+	return o
+}
+
+func (o DeletedRunbookResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeletedRunbookResponse] {
+	return pulumix.Output[[]DeletedRunbookResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DeletedRunbookResponseArrayOutput) Index(i pulumi.IntInput) DeletedRunbookResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeletedRunbookResponse {
+		return vs[0].([]DeletedRunbookResponse)[vs[1].(int)]
+	}).(DeletedRunbookResponseOutput)
+}
+
 // The Dsc configuration property associated with the entity.
 type DscConfigurationAssociationProperty struct {
 	// Gets or sets the name of the Dsc configuration.
@@ -4388,6 +4502,95 @@ func (o NonAzureQueryPropertiesResponseArrayOutput) Index(i pulumi.IntInput) Non
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NonAzureQueryPropertiesResponse {
 		return vs[0].([]NonAzureQueryPropertiesResponse)[vs[1].(int)]
 	}).(NonAzureQueryPropertiesResponseOutput)
+}
+
+// Definition of the package error info type.
+type PackageErrorInfoResponse struct {
+	// Package import error code.
+	Code *string `pulumi:"code"`
+	// Package import error message.
+	Message *string `pulumi:"message"`
+}
+
+// Definition of the package error info type.
+type PackageErrorInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (PackageErrorInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageErrorInfoResponse)(nil)).Elem()
+}
+
+func (o PackageErrorInfoResponseOutput) ToPackageErrorInfoResponseOutput() PackageErrorInfoResponseOutput {
+	return o
+}
+
+func (o PackageErrorInfoResponseOutput) ToPackageErrorInfoResponseOutputWithContext(ctx context.Context) PackageErrorInfoResponseOutput {
+	return o
+}
+
+func (o PackageErrorInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PackageErrorInfoResponse] {
+	return pulumix.Output[PackageErrorInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Package import error code.
+func (o PackageErrorInfoResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageErrorInfoResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Package import error message.
+func (o PackageErrorInfoResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageErrorInfoResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type PackageErrorInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageErrorInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageErrorInfoResponse)(nil)).Elem()
+}
+
+func (o PackageErrorInfoResponsePtrOutput) ToPackageErrorInfoResponsePtrOutput() PackageErrorInfoResponsePtrOutput {
+	return o
+}
+
+func (o PackageErrorInfoResponsePtrOutput) ToPackageErrorInfoResponsePtrOutputWithContext(ctx context.Context) PackageErrorInfoResponsePtrOutput {
+	return o
+}
+
+func (o PackageErrorInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PackageErrorInfoResponse] {
+	return pulumix.Output[*PackageErrorInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PackageErrorInfoResponsePtrOutput) Elem() PackageErrorInfoResponseOutput {
+	return o.ApplyT(func(v *PackageErrorInfoResponse) PackageErrorInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PackageErrorInfoResponse
+		return ret
+	}).(PackageErrorInfoResponseOutput)
+}
+
+// Package import error code.
+func (o PackageErrorInfoResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageErrorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Package import error message.
+func (o PackageErrorInfoResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageErrorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
 }
 
 // A private endpoint connection
@@ -8259,6 +8462,189 @@ func (o TaskPropertiesResponsePtrOutput) Source() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+type TrackedResource struct {
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// TrackedResourceInput is an input type that accepts TrackedResourceArgs and TrackedResourceOutput values.
+// You can construct a concrete instance of `TrackedResourceInput` via:
+//
+//	TrackedResourceArgs{...}
+type TrackedResourceInput interface {
+	pulumi.Input
+
+	ToTrackedResourceOutput() TrackedResourceOutput
+	ToTrackedResourceOutputWithContext(context.Context) TrackedResourceOutput
+}
+
+// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+type TrackedResourceArgs struct {
+	// The geo-location where the resource lives
+	Location pulumi.StringInput `pulumi:"location"`
+	// Resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (TrackedResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrackedResource)(nil)).Elem()
+}
+
+func (i TrackedResourceArgs) ToTrackedResourceOutput() TrackedResourceOutput {
+	return i.ToTrackedResourceOutputWithContext(context.Background())
+}
+
+func (i TrackedResourceArgs) ToTrackedResourceOutputWithContext(ctx context.Context) TrackedResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrackedResourceOutput)
+}
+
+func (i TrackedResourceArgs) ToOutput(ctx context.Context) pulumix.Output[TrackedResource] {
+	return pulumix.Output[TrackedResource]{
+		OutputState: i.ToTrackedResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TrackedResourceArgs) ToTrackedResourcePtrOutput() TrackedResourcePtrOutput {
+	return i.ToTrackedResourcePtrOutputWithContext(context.Background())
+}
+
+func (i TrackedResourceArgs) ToTrackedResourcePtrOutputWithContext(ctx context.Context) TrackedResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrackedResourceOutput).ToTrackedResourcePtrOutputWithContext(ctx)
+}
+
+// TrackedResourcePtrInput is an input type that accepts TrackedResourceArgs, TrackedResourcePtr and TrackedResourcePtrOutput values.
+// You can construct a concrete instance of `TrackedResourcePtrInput` via:
+//
+//	        TrackedResourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type TrackedResourcePtrInput interface {
+	pulumi.Input
+
+	ToTrackedResourcePtrOutput() TrackedResourcePtrOutput
+	ToTrackedResourcePtrOutputWithContext(context.Context) TrackedResourcePtrOutput
+}
+
+type trackedResourcePtrType TrackedResourceArgs
+
+func TrackedResourcePtr(v *TrackedResourceArgs) TrackedResourcePtrInput {
+	return (*trackedResourcePtrType)(v)
+}
+
+func (*trackedResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrackedResource)(nil)).Elem()
+}
+
+func (i *trackedResourcePtrType) ToTrackedResourcePtrOutput() TrackedResourcePtrOutput {
+	return i.ToTrackedResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *trackedResourcePtrType) ToTrackedResourcePtrOutputWithContext(ctx context.Context) TrackedResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrackedResourcePtrOutput)
+}
+
+func (i *trackedResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*TrackedResource] {
+	return pulumix.Output[*TrackedResource]{
+		OutputState: i.ToTrackedResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+type TrackedResourceOutput struct{ *pulumi.OutputState }
+
+func (TrackedResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrackedResource)(nil)).Elem()
+}
+
+func (o TrackedResourceOutput) ToTrackedResourceOutput() TrackedResourceOutput {
+	return o
+}
+
+func (o TrackedResourceOutput) ToTrackedResourceOutputWithContext(ctx context.Context) TrackedResourceOutput {
+	return o
+}
+
+func (o TrackedResourceOutput) ToTrackedResourcePtrOutput() TrackedResourcePtrOutput {
+	return o.ToTrackedResourcePtrOutputWithContext(context.Background())
+}
+
+func (o TrackedResourceOutput) ToTrackedResourcePtrOutputWithContext(ctx context.Context) TrackedResourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrackedResource) *TrackedResource {
+		return &v
+	}).(TrackedResourcePtrOutput)
+}
+
+func (o TrackedResourceOutput) ToOutput(ctx context.Context) pulumix.Output[TrackedResource] {
+	return pulumix.Output[TrackedResource]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The geo-location where the resource lives
+func (o TrackedResourceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v TrackedResource) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Resource tags.
+func (o TrackedResourceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TrackedResource) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type TrackedResourcePtrOutput struct{ *pulumi.OutputState }
+
+func (TrackedResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrackedResource)(nil)).Elem()
+}
+
+func (o TrackedResourcePtrOutput) ToTrackedResourcePtrOutput() TrackedResourcePtrOutput {
+	return o
+}
+
+func (o TrackedResourcePtrOutput) ToTrackedResourcePtrOutputWithContext(ctx context.Context) TrackedResourcePtrOutput {
+	return o
+}
+
+func (o TrackedResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrackedResource] {
+	return pulumix.Output[*TrackedResource]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TrackedResourcePtrOutput) Elem() TrackedResourceOutput {
+	return o.ApplyT(func(v *TrackedResource) TrackedResource {
+		if v != nil {
+			return *v
+		}
+		var ret TrackedResource
+		return ret
+	}).(TrackedResourceOutput)
+}
+
+// The geo-location where the resource lives
+func (o TrackedResourcePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrackedResource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource tags.
+func (o TrackedResourcePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TrackedResource) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 // Update specific properties of the software update configuration.
 type UpdateConfiguration struct {
 	// List of azure resource Ids for azure virtual machines targeted by the software update configuration.
@@ -8888,6 +9274,8 @@ func init() {
 	pulumi.RegisterOutputType(ContentSourceOutput{})
 	pulumi.RegisterOutputType(ContentSourceResponseOutput{})
 	pulumi.RegisterOutputType(ContentSourceResponsePtrOutput{})
+	pulumi.RegisterOutputType(DeletedRunbookResponseOutput{})
+	pulumi.RegisterOutputType(DeletedRunbookResponseArrayOutput{})
 	pulumi.RegisterOutputType(DscConfigurationAssociationPropertyOutput{})
 	pulumi.RegisterOutputType(DscConfigurationAssociationPropertyResponseOutput{})
 	pulumi.RegisterOutputType(DscConfigurationAssociationPropertyResponsePtrOutput{})
@@ -8931,6 +9319,8 @@ func init() {
 	pulumi.RegisterOutputType(NonAzureQueryPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(NonAzureQueryPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(NonAzureQueryPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(PackageErrorInfoResponseOutput{})
+	pulumi.RegisterOutputType(PackageErrorInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointPropertyOutput{})
@@ -8985,6 +9375,8 @@ func init() {
 	pulumi.RegisterOutputType(TaskPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(TaskPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(TaskPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(TrackedResourceOutput{})
+	pulumi.RegisterOutputType(TrackedResourcePtrOutput{})
 	pulumi.RegisterOutputType(UpdateConfigurationOutput{})
 	pulumi.RegisterOutputType(UpdateConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentitiesPropertiesResponseOutput{})

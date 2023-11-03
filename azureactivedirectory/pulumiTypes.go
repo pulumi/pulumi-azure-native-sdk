@@ -218,6 +218,220 @@ func (o B2CTenantResourcePropertiesResponseBillingConfigPtrOutput) EffectiveStar
 	}).(pulumi.StringPtrOutput)
 }
 
+// SKU properties of the Azure AD for customers tenant. Learn more about Azure AD for customers billing at [https://aka.ms/ciambilling](https://aka.ms/ciambilling).
+type CIAMResourceSKU struct {
+	// The name of the SKU for the tenant.
+	Name string `pulumi:"name"`
+}
+
+// CIAMResourceSKUInput is an input type that accepts CIAMResourceSKUArgs and CIAMResourceSKUOutput values.
+// You can construct a concrete instance of `CIAMResourceSKUInput` via:
+//
+//	CIAMResourceSKUArgs{...}
+type CIAMResourceSKUInput interface {
+	pulumi.Input
+
+	ToCIAMResourceSKUOutput() CIAMResourceSKUOutput
+	ToCIAMResourceSKUOutputWithContext(context.Context) CIAMResourceSKUOutput
+}
+
+// SKU properties of the Azure AD for customers tenant. Learn more about Azure AD for customers billing at [https://aka.ms/ciambilling](https://aka.ms/ciambilling).
+type CIAMResourceSKUArgs struct {
+	// The name of the SKU for the tenant.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (CIAMResourceSKUArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CIAMResourceSKU)(nil)).Elem()
+}
+
+func (i CIAMResourceSKUArgs) ToCIAMResourceSKUOutput() CIAMResourceSKUOutput {
+	return i.ToCIAMResourceSKUOutputWithContext(context.Background())
+}
+
+func (i CIAMResourceSKUArgs) ToCIAMResourceSKUOutputWithContext(ctx context.Context) CIAMResourceSKUOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CIAMResourceSKUOutput)
+}
+
+func (i CIAMResourceSKUArgs) ToOutput(ctx context.Context) pulumix.Output[CIAMResourceSKU] {
+	return pulumix.Output[CIAMResourceSKU]{
+		OutputState: i.ToCIAMResourceSKUOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SKU properties of the Azure AD for customers tenant. Learn more about Azure AD for customers billing at [https://aka.ms/ciambilling](https://aka.ms/ciambilling).
+type CIAMResourceSKUOutput struct{ *pulumi.OutputState }
+
+func (CIAMResourceSKUOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CIAMResourceSKU)(nil)).Elem()
+}
+
+func (o CIAMResourceSKUOutput) ToCIAMResourceSKUOutput() CIAMResourceSKUOutput {
+	return o
+}
+
+func (o CIAMResourceSKUOutput) ToCIAMResourceSKUOutputWithContext(ctx context.Context) CIAMResourceSKUOutput {
+	return o
+}
+
+func (o CIAMResourceSKUOutput) ToOutput(ctx context.Context) pulumix.Output[CIAMResourceSKU] {
+	return pulumix.Output[CIAMResourceSKU]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the SKU for the tenant.
+func (o CIAMResourceSKUOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CIAMResourceSKU) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// SKU properties of the Azure AD for customers tenant. Learn more about Azure AD for customers billing at [https://aka.ms/ciambilling](https://aka.ms/ciambilling).
+type CIAMResourceSKUResponse struct {
+	// The name of the SKU for the tenant.
+	Name string `pulumi:"name"`
+}
+
+// SKU properties of the Azure AD for customers tenant. Learn more about Azure AD for customers billing at [https://aka.ms/ciambilling](https://aka.ms/ciambilling).
+type CIAMResourceSKUResponseOutput struct{ *pulumi.OutputState }
+
+func (CIAMResourceSKUResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CIAMResourceSKUResponse)(nil)).Elem()
+}
+
+func (o CIAMResourceSKUResponseOutput) ToCIAMResourceSKUResponseOutput() CIAMResourceSKUResponseOutput {
+	return o
+}
+
+func (o CIAMResourceSKUResponseOutput) ToCIAMResourceSKUResponseOutputWithContext(ctx context.Context) CIAMResourceSKUResponseOutput {
+	return o
+}
+
+func (o CIAMResourceSKUResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CIAMResourceSKUResponse] {
+	return pulumix.Output[CIAMResourceSKUResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the SKU for the tenant.
+func (o CIAMResourceSKUResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CIAMResourceSKUResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// These properties are used to create the Azure AD for customers tenant. These properties are not part of the Azure resource.
+type CreateCIAMTenantProperties struct {
+	// Country code of Azure tenant (e.g. 'US'). Refer to [https://aka.ms/ciam-data-location](https://aka.ms/ciam-data-location) to see valid country codes and corresponding data residency locations. If you do not see a country code in an valid data residency location, choose one from the list.
+	CountryCode string `pulumi:"countryCode"`
+	// The display name of the Azure AD for customers tenant.
+	DisplayName string `pulumi:"displayName"`
+}
+
+// CreateCIAMTenantPropertiesInput is an input type that accepts CreateCIAMTenantPropertiesArgs and CreateCIAMTenantPropertiesOutput values.
+// You can construct a concrete instance of `CreateCIAMTenantPropertiesInput` via:
+//
+//	CreateCIAMTenantPropertiesArgs{...}
+type CreateCIAMTenantPropertiesInput interface {
+	pulumi.Input
+
+	ToCreateCIAMTenantPropertiesOutput() CreateCIAMTenantPropertiesOutput
+	ToCreateCIAMTenantPropertiesOutputWithContext(context.Context) CreateCIAMTenantPropertiesOutput
+}
+
+// These properties are used to create the Azure AD for customers tenant. These properties are not part of the Azure resource.
+type CreateCIAMTenantPropertiesArgs struct {
+	// Country code of Azure tenant (e.g. 'US'). Refer to [https://aka.ms/ciam-data-location](https://aka.ms/ciam-data-location) to see valid country codes and corresponding data residency locations. If you do not see a country code in an valid data residency location, choose one from the list.
+	CountryCode pulumi.StringInput `pulumi:"countryCode"`
+	// The display name of the Azure AD for customers tenant.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+}
+
+func (CreateCIAMTenantPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreateCIAMTenantProperties)(nil)).Elem()
+}
+
+func (i CreateCIAMTenantPropertiesArgs) ToCreateCIAMTenantPropertiesOutput() CreateCIAMTenantPropertiesOutput {
+	return i.ToCreateCIAMTenantPropertiesOutputWithContext(context.Background())
+}
+
+func (i CreateCIAMTenantPropertiesArgs) ToCreateCIAMTenantPropertiesOutputWithContext(ctx context.Context) CreateCIAMTenantPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreateCIAMTenantPropertiesOutput)
+}
+
+func (i CreateCIAMTenantPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[CreateCIAMTenantProperties] {
+	return pulumix.Output[CreateCIAMTenantProperties]{
+		OutputState: i.ToCreateCIAMTenantPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
+// These properties are used to create the Azure AD for customers tenant. These properties are not part of the Azure resource.
+type CreateCIAMTenantPropertiesOutput struct{ *pulumi.OutputState }
+
+func (CreateCIAMTenantPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreateCIAMTenantProperties)(nil)).Elem()
+}
+
+func (o CreateCIAMTenantPropertiesOutput) ToCreateCIAMTenantPropertiesOutput() CreateCIAMTenantPropertiesOutput {
+	return o
+}
+
+func (o CreateCIAMTenantPropertiesOutput) ToCreateCIAMTenantPropertiesOutputWithContext(ctx context.Context) CreateCIAMTenantPropertiesOutput {
+	return o
+}
+
+func (o CreateCIAMTenantPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[CreateCIAMTenantProperties] {
+	return pulumix.Output[CreateCIAMTenantProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Country code of Azure tenant (e.g. 'US'). Refer to [https://aka.ms/ciam-data-location](https://aka.ms/ciam-data-location) to see valid country codes and corresponding data residency locations. If you do not see a country code in an valid data residency location, choose one from the list.
+func (o CreateCIAMTenantPropertiesOutput) CountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v CreateCIAMTenantProperties) string { return v.CountryCode }).(pulumi.StringOutput)
+}
+
+// The display name of the Azure AD for customers tenant.
+func (o CreateCIAMTenantPropertiesOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v CreateCIAMTenantProperties) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// These properties are used to create the Azure AD for customers tenant. These properties are not part of the Azure resource.
+type CreateCIAMTenantPropertiesResponse struct {
+	// Country code of Azure tenant (e.g. 'US'). Refer to [https://aka.ms/ciam-data-location](https://aka.ms/ciam-data-location) to see valid country codes and corresponding data residency locations. If you do not see a country code in an valid data residency location, choose one from the list.
+	CountryCode string `pulumi:"countryCode"`
+	// The display name of the Azure AD for customers tenant.
+	DisplayName string `pulumi:"displayName"`
+}
+
+// These properties are used to create the Azure AD for customers tenant. These properties are not part of the Azure resource.
+type CreateCIAMTenantPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (CreateCIAMTenantPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreateCIAMTenantPropertiesResponse)(nil)).Elem()
+}
+
+func (o CreateCIAMTenantPropertiesResponseOutput) ToCreateCIAMTenantPropertiesResponseOutput() CreateCIAMTenantPropertiesResponseOutput {
+	return o
+}
+
+func (o CreateCIAMTenantPropertiesResponseOutput) ToCreateCIAMTenantPropertiesResponseOutputWithContext(ctx context.Context) CreateCIAMTenantPropertiesResponseOutput {
+	return o
+}
+
+func (o CreateCIAMTenantPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CreateCIAMTenantPropertiesResponse] {
+	return pulumix.Output[CreateCIAMTenantPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Country code of Azure tenant (e.g. 'US'). Refer to [https://aka.ms/ciam-data-location](https://aka.ms/ciam-data-location) to see valid country codes and corresponding data residency locations. If you do not see a country code in an valid data residency location, choose one from the list.
+func (o CreateCIAMTenantPropertiesResponseOutput) CountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v CreateCIAMTenantPropertiesResponse) string { return v.CountryCode }).(pulumi.StringOutput)
+}
+
+// The display name of the Azure AD for customers tenant.
+func (o CreateCIAMTenantPropertiesResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v CreateCIAMTenantPropertiesResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -290,5 +504,9 @@ func init() {
 	pulumi.RegisterOutputType(B2CResourceSKUResponseOutput{})
 	pulumi.RegisterOutputType(B2CTenantResourcePropertiesResponseBillingConfigOutput{})
 	pulumi.RegisterOutputType(B2CTenantResourcePropertiesResponseBillingConfigPtrOutput{})
+	pulumi.RegisterOutputType(CIAMResourceSKUOutput{})
+	pulumi.RegisterOutputType(CIAMResourceSKUResponseOutput{})
+	pulumi.RegisterOutputType(CreateCIAMTenantPropertiesOutput{})
+	pulumi.RegisterOutputType(CreateCIAMTenantPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

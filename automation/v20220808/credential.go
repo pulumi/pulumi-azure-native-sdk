@@ -66,6 +66,9 @@ func NewCredential(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20200113preview:Credential"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20230515preview:Credential"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

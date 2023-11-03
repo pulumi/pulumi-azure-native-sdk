@@ -53,6 +53,9 @@ func NewNamespaceTopicEventSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid:NamespaceTopicEventSubscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20231215preview:NamespaceTopicEventSubscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

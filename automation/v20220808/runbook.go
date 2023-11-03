@@ -88,6 +88,9 @@ func NewRunbook(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20190601:Runbook"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20230515preview:Runbook"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -21,10 +21,32 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:hybridnetwork:ArtifactManifest":
+		r = &ArtifactManifest{}
+	case "azure-native:hybridnetwork:ArtifactStore":
+		r = &ArtifactStore{}
+	case "azure-native:hybridnetwork:ConfigurationGroupSchema":
+		r = &ConfigurationGroupSchema{}
+	case "azure-native:hybridnetwork:ConfigurationGroupValue":
+		r = &ConfigurationGroupValue{}
 	case "azure-native:hybridnetwork:Device":
 		r = &Device{}
 	case "azure-native:hybridnetwork:NetworkFunction":
 		r = &NetworkFunction{}
+	case "azure-native:hybridnetwork:NetworkFunctionDefinitionGroup":
+		r = &NetworkFunctionDefinitionGroup{}
+	case "azure-native:hybridnetwork:NetworkFunctionDefinitionVersion":
+		r = &NetworkFunctionDefinitionVersion{}
+	case "azure-native:hybridnetwork:NetworkServiceDesignGroup":
+		r = &NetworkServiceDesignGroup{}
+	case "azure-native:hybridnetwork:NetworkServiceDesignVersion":
+		r = &NetworkServiceDesignVersion{}
+	case "azure-native:hybridnetwork:Publisher":
+		r = &Publisher{}
+	case "azure-native:hybridnetwork:Site":
+		r = &Site{}
+	case "azure-native:hybridnetwork:SiteNetworkService":
+		r = &SiteNetworkService{}
 	case "azure-native:hybridnetwork:Vendor":
 		r = &Vendor{}
 	case "azure-native:hybridnetwork:VendorSkuPreview":

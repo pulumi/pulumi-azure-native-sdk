@@ -60,6 +60,9 @@ func NewEmailService(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:communication/v20230301preview:EmailService"),
 		},
 		{
+			Type: pulumi.String("azure-native:communication/v20230401:EmailService"),
+		},
+		{
 			Type: pulumi.String("azure-native:communication/v20230401preview:EmailService"),
 		},
 		{

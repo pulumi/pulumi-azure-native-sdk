@@ -87,6 +87,9 @@ func NewJobTargetGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20221101preview:JobTargetGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:JobTargetGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

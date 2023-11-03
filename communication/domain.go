@@ -16,7 +16,7 @@ import (
 // A class representing a Domains resource.
 // Azure REST API version: 2023-03-31. Prior API version in Azure Native 1.x: 2021-10-01-preview.
 //
-// Other available API versions: 2022-07-01-preview, 2023-04-01-preview, 2023-06-01-preview.
+// Other available API versions: 2022-07-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview.
 type Domain struct {
 	pulumi.CustomResourceState
 
@@ -76,6 +76,9 @@ func NewDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20230331:Domain"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20230401:Domain"),
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20230401preview:Domain"),

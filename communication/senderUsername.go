@@ -16,7 +16,7 @@ import (
 // A class representing a SenderUsername resource.
 // Azure REST API version: 2023-03-31.
 //
-// Other available API versions: 2023-04-01-preview, 2023-06-01-preview.
+// Other available API versions: 2023-04-01, 2023-04-01-preview, 2023-06-01-preview.
 type SenderUsername struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,9 @@ func NewSenderUsername(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20230331:SenderUsername"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20230401:SenderUsername"),
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20230401preview:SenderUsername"),

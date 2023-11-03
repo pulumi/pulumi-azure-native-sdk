@@ -15,6 +15,8 @@ import (
 
 // Definition of the automation account type.
 // Azure REST API version: 2022-08-08. Prior API version in Azure Native 1.x: 2021-06-22.
+//
+// Other available API versions: 2023-05-15-preview.
 type AutomationAccount struct {
 	pulumi.CustomResourceState
 
@@ -81,6 +83,9 @@ func NewAutomationAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20220808:AutomationAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation/v20230515preview:AutomationAccount"),
 		},
 	})
 	opts = append(opts, aliases)

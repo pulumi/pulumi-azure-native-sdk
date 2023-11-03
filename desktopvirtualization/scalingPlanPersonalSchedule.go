@@ -16,7 +16,7 @@ import (
 // Represents a ScalingPlanPersonalSchedule definition.
 // Azure REST API version: 2023-07-07-preview.
 //
-// Other available API versions: 2023-09-05.
+// Other available API versions: 2023-09-05, 2023-10-04-preview.
 type ScalingPlanPersonalSchedule struct {
 	pulumi.CustomResourceState
 
@@ -111,6 +111,9 @@ func NewScalingPlanPersonalSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:ScalingPlanPersonalSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20231004preview:ScalingPlanPersonalSchedule"),
 		},
 	})
 	opts = append(opts, aliases)

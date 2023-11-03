@@ -16,7 +16,7 @@ import (
 // A server trust group.
 // Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
 //
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview.
 type ServerTrustGroup struct {
 	pulumi.CustomResourceState
 
@@ -88,6 +88,9 @@ func NewServerTrustGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230201preview:ServerTrustGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:ServerTrustGroup"),
 		},
 	})
 	opts = append(opts, aliases)

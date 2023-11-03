@@ -215,6 +215,15 @@ func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek]
 	}
 }
 
+// Parameter indicating how the health check should behave if this package fails staging
+type FailHealthCheckOnStagingFailure string
+
+const (
+	FailHealthCheckOnStagingFailureUnhealthy       = FailHealthCheckOnStagingFailure("Unhealthy")
+	FailHealthCheckOnStagingFailureNeedsAssistance = FailHealthCheckOnStagingFailure("NeedsAssistance")
+	FailHealthCheckOnStagingFailureDoNotFail       = FailHealthCheckOnStagingFailure("DoNotFail")
+)
+
 // HostPool type for desktop.
 type HostPoolType string
 
@@ -234,6 +243,14 @@ const (
 	LoadBalancerTypeBreadthFirst = LoadBalancerType("BreadthFirst")
 	LoadBalancerTypeDepthFirst   = LoadBalancerType("DepthFirst")
 	LoadBalancerTypePersistent   = LoadBalancerType("Persistent")
+)
+
+// Is package timestamped so it can ignore the certificate expiry date
+type PackageTimestamped string
+
+const (
+	PackageTimestampedTimestamped    = PackageTimestamped("Timestamped")
+	PackageTimestampedNotTimestamped = PackageTimestamped("NotTimestamped")
 )
 
 // PersonalDesktopAssignment type for HostPool.

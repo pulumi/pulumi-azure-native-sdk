@@ -14,6 +14,44 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// A copy activity source for sharePoint online list source.
+type SharePointOnlineListSource struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The wait time to get a response from SharePoint Online. Default value is 5 minutes (00:05:00). Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	HttpRequestTimeout interface{} `pulumi:"httpRequestTimeout"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The OData query to filter the data in SharePoint Online list. For example, "$top=1". Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SharePointOnlineListSource'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity source for sharePoint online list source.
+type SharePointOnlineListSourceResponse struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The wait time to get a response from SharePoint Online. Default value is 5 minutes (00:05:00). Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	HttpRequestTimeout interface{} `pulumi:"httpRequestTimeout"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The OData query to filter the data in SharePoint Online list. For example, "$top=1". Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SharePointOnlineListSource'.
+	Type string `pulumi:"type"`
+}
+
 // Shopify Service linked service.
 type ShopifyLinkedService struct {
 	// The API access token that can be used to access Shopify’s data. The token won't expire if it is offline mode.

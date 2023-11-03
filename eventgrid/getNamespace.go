@@ -14,6 +14,8 @@ import (
 
 // Get properties of a namespace.
 // Azure REST API version: 2023-06-01-preview.
+//
+// Other available API versions: 2023-12-15-preview.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceResult

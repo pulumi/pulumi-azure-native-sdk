@@ -15,6 +15,8 @@ import (
 
 // Definition of the configuration type.
 // Azure REST API version: 2022-08-08. Prior API version in Azure Native 1.x: 2019-06-01.
+//
+// Other available API versions: 2023-05-15-preview.
 type DscConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -75,6 +77,9 @@ func NewDscConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20220808:DscConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation/v20230515preview:DscConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

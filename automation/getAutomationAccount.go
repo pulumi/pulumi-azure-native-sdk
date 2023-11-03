@@ -14,6 +14,8 @@ import (
 
 // Get information about an Automation Account.
 // Azure REST API version: 2022-08-08.
+//
+// Other available API versions: 2023-05-15-preview.
 func LookupAutomationAccount(ctx *pulumi.Context, args *LookupAutomationAccountArgs, opts ...pulumi.InvokeOption) (*LookupAutomationAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutomationAccountResult

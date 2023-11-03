@@ -15,6 +15,8 @@ import (
 
 // Event Subscription.
 // Azure REST API version: 2023-06-01-preview.
+//
+// Other available API versions: 2023-12-15-preview.
 type NamespaceTopicEventSubscription struct {
 	pulumi.CustomResourceState
 
@@ -53,6 +55,9 @@ func NewNamespaceTopicEventSubscription(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20230601preview:NamespaceTopicEventSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20231215preview:NamespaceTopicEventSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

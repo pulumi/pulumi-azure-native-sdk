@@ -62,6 +62,9 @@ func NewCacheRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20230701:CacheRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20231101preview:CacheRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -160,5 +160,12 @@ const (
 	TriggerCutoverEnumFalse = TriggerCutoverEnum("False")
 )
 
+// The endpoint type for the virtual endpoint.
+type VirtualEndpointType string
+
+const (
+	VirtualEndpointTypeReadWrite = VirtualEndpointType("ReadWrite")
+)
+
 func init() {
 }

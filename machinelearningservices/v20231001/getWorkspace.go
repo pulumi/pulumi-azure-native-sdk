@@ -58,6 +58,7 @@ type LookupWorkspaceResult struct {
 	ImageBuildCompute *string `pulumi:"imageBuildCompute"`
 	// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
 	KeyVault *string `pulumi:"keyVault"`
+	Kind     *string `pulumi:"kind"`
 	// Specifies the location of the resource.
 	Location *string `pulumi:"location"`
 	// Managed Network settings for a machine learning workspace.
@@ -235,6 +236,10 @@ func (o LookupWorkspaceResultOutput) ImageBuildCompute() pulumi.StringPtrOutput 
 // ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
 func (o LookupWorkspaceResultOutput) KeyVault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.KeyVault }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupWorkspaceResultOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the location of the resource.

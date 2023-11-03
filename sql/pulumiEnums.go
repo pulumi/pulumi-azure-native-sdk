@@ -1344,6 +1344,15 @@ const (
 	ReadWriteEndpointFailoverPolicyAutomatic = ReadWriteEndpointFailoverPolicy("Automatic")
 )
 
+// Link type (GEO, NAMED, STANDBY). Update operation does not support NAMED.
+type ReplicationLinkType string
+
+const (
+	ReplicationLinkTypeGEO     = ReplicationLinkType("GEO")
+	ReplicationLinkTypeNAMED   = ReplicationLinkType("NAMED")
+	ReplicationLinkTypeSTANDBY = ReplicationLinkType("STANDBY")
+)
+
 // The replication mode of a distributed availability group. Parameter will be ignored during link creation.
 type ReplicationMode string
 

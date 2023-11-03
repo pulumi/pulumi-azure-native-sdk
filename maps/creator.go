@@ -16,7 +16,7 @@ import (
 // An Azure resource which represents Maps Creator product and provides ability to manage private location data.
 // Azure REST API version: 2021-02-01. Prior API version in Azure Native 1.x: 2020-02-01-preview.
 //
-// Other available API versions: 2020-02-01-preview, 2021-12-01-preview, 2023-06-01.
+// Other available API versions: 2020-02-01-preview, 2021-12-01-preview, 2023-06-01, 2023-08-01-preview.
 type Creator struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +63,9 @@ func NewCreator(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:maps/v20230601:Creator"),
+		},
+		{
+			Type: pulumi.String("azure-native:maps/v20230801preview:Creator"),
 		},
 	})
 	opts = append(opts, aliases)

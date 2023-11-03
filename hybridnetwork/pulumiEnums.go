@@ -3,6 +3,86 @@
 
 package hybridnetwork
 
+// The application enablement.
+type ApplicationEnablement string
+
+const (
+	ApplicationEnablementUnknown  = ApplicationEnablement("Unknown")
+	ApplicationEnablementEnabled  = ApplicationEnablement("Enabled")
+	ApplicationEnablementDisabled = ApplicationEnablement("Disabled")
+)
+
+// The replication strategy.
+type ArtifactReplicationStrategy string
+
+const (
+	ArtifactReplicationStrategyUnknown           = ArtifactReplicationStrategy("Unknown")
+	ArtifactReplicationStrategySingleReplication = ArtifactReplicationStrategy("SingleReplication")
+)
+
+// The artifact store type.
+type ArtifactStoreType string
+
+const (
+	ArtifactStoreTypeUnknown                = ArtifactStoreType("Unknown")
+	ArtifactStoreTypeAzureContainerRegistry = ArtifactStoreType("AzureContainerRegistry")
+	ArtifactStoreTypeAzureStorageAccount    = ArtifactStoreType("AzureStorageAccount")
+)
+
+// The artifact type.
+type ArtifactType string
+
+const (
+	ArtifactTypeUnknown      = ArtifactType("Unknown")
+	ArtifactTypeOCIArtifact  = ArtifactType("OCIArtifact")
+	ArtifactTypeVhdImageFile = ArtifactType("VhdImageFile")
+	ArtifactTypeArmTemplate  = ArtifactType("ArmTemplate")
+	ArtifactTypeImageFile    = ArtifactType("ImageFile")
+)
+
+// The artifact type.
+type AzureArcKubernetesArtifactType string
+
+const (
+	AzureArcKubernetesArtifactTypeUnknown     = AzureArcKubernetesArtifactType("Unknown")
+	AzureArcKubernetesArtifactTypeHelmPackage = AzureArcKubernetesArtifactType("HelmPackage")
+)
+
+// The artifact type.
+type AzureCoreArtifactType string
+
+const (
+	AzureCoreArtifactTypeUnknown      = AzureCoreArtifactType("Unknown")
+	AzureCoreArtifactTypeVhdImageFile = AzureCoreArtifactType("VhdImageFile")
+	AzureCoreArtifactTypeArmTemplate  = AzureCoreArtifactType("ArmTemplate")
+)
+
+// The artifact type.
+type AzureOperatorNexusArtifactType string
+
+const (
+	AzureOperatorNexusArtifactTypeUnknown     = AzureOperatorNexusArtifactType("Unknown")
+	AzureOperatorNexusArtifactTypeImageFile   = AzureOperatorNexusArtifactType("ImageFile")
+	AzureOperatorNexusArtifactTypeArmTemplate = AzureOperatorNexusArtifactType("ArmTemplate")
+)
+
+// The value which indicates if configuration values are secrets
+type ConfigurationGroupValueConfigurationType string
+
+const (
+	ConfigurationGroupValueConfigurationTypeUnknown = ConfigurationGroupValueConfigurationType("Unknown")
+	ConfigurationGroupValueConfigurationTypeSecret  = ConfigurationGroupValueConfigurationType("Secret")
+	ConfigurationGroupValueConfigurationTypeOpen    = ConfigurationGroupValueConfigurationType("Open")
+)
+
+// The network function type.
+type ContainerizedNetworkFunctionNFVIType string
+
+const (
+	ContainerizedNetworkFunctionNFVITypeUnknown            = ContainerizedNetworkFunctionNFVIType("Unknown")
+	ContainerizedNetworkFunctionNFVITypeAzureArcKubernetes = ContainerizedNetworkFunctionNFVIType("AzureArcKubernetes")
+)
+
 // The type of the device.
 type DeviceType string
 
@@ -36,6 +116,35 @@ const (
 	IPVersionIPv4    = IPVersion("IPv4")
 )
 
+// The resource reference arm id type.
+type IdType string
+
+const (
+	IdTypeUnknown = IdType("Unknown")
+	IdTypeOpen    = IdType("Open")
+	IdTypeSecret  = IdType("Secret")
+)
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+type ManagedServiceIdentityType string
+
+const (
+	ManagedServiceIdentityTypeNone                         = ManagedServiceIdentityType("None")
+	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
+	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
+	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned,UserAssigned")
+)
+
+// The NFVI type.
+type NFVIType string
+
+const (
+	NFVITypeUnknown            = NFVIType("Unknown")
+	NFVITypeAzureArcKubernetes = NFVIType("AzureArcKubernetes")
+	NFVITypeAzureCore          = NFVIType("AzureCore")
+	NFVITypeAzureOperatorNexus = NFVIType("AzureOperatorNexus")
+)
+
 // Role type.
 type NetworkFunctionRoleConfigurationType string
 
@@ -62,6 +171,14 @@ const (
 	OperatingSystemTypesLinux   = OperatingSystemTypes("Linux")
 )
 
+// The publisher scope.
+type PublisherScope string
+
+const (
+	PublisherScopeUnknown = PublisherScope("Unknown")
+	PublisherScopePrivate = PublisherScope("Private")
+)
+
 // The sku deployment mode.
 type SkuDeploymentMode string
 
@@ -69,6 +186,14 @@ const (
 	SkuDeploymentModeUnknown         = SkuDeploymentMode("Unknown")
 	SkuDeploymentModeAzure           = SkuDeploymentMode("Azure")
 	SkuDeploymentModePrivateEdgeZone = SkuDeploymentMode("PrivateEdgeZone")
+)
+
+// Name of this Sku
+type SkuName string
+
+const (
+	SkuNameBasic    = SkuName("Basic")
+	SkuNameStandard = SkuName("Standard")
 )
 
 // The sku type.
@@ -79,6 +204,23 @@ const (
 	SkuTypeEvolvedPacketCore = SkuType("EvolvedPacketCore")
 	SkuTypeSDWAN             = SkuType("SDWAN")
 	SkuTypeFirewall          = SkuType("Firewall")
+)
+
+// The template type.
+type TemplateType string
+
+const (
+	TemplateTypeUnknown     = TemplateType("Unknown")
+	TemplateTypeArmTemplate = TemplateType("ArmTemplate")
+)
+
+// The resource element template type.
+type Type string
+
+const (
+	TypeUnknown                   = Type("Unknown")
+	TypeArmResourceDefinition     = Type("ArmResourceDefinition")
+	TypeNetworkFunctionDefinition = Type("NetworkFunctionDefinition")
 )
 
 // The type of the VM switch.
@@ -122,6 +264,15 @@ const (
 	VirtualMachineSizeTypes_Standard_F4s     = VirtualMachineSizeTypes("Standard_F4s")
 	VirtualMachineSizeTypes_Standard_F8s     = VirtualMachineSizeTypes("Standard_F8s")
 	VirtualMachineSizeTypes_Standard_F16s    = VirtualMachineSizeTypes("Standard_F16s")
+)
+
+// The network function type.
+type VirtualNetworkFunctionNFVIType string
+
+const (
+	VirtualNetworkFunctionNFVITypeUnknown            = VirtualNetworkFunctionNFVIType("Unknown")
+	VirtualNetworkFunctionNFVITypeAzureCore          = VirtualNetworkFunctionNFVIType("AzureCore")
+	VirtualNetworkFunctionNFVITypeAzureOperatorNexus = VirtualNetworkFunctionNFVIType("AzureOperatorNexus")
 )
 
 func init() {

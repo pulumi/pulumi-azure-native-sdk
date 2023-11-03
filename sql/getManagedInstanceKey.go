@@ -15,7 +15,7 @@ import (
 // Gets a managed instance key.
 // Azure REST API version: 2021-11-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview.
 func LookupManagedInstanceKey(ctx *pulumi.Context, args *LookupManagedInstanceKeyArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedInstanceKeyResult

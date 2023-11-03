@@ -61,6 +61,9 @@ func NewClient(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid:Client"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20231215preview:Client"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

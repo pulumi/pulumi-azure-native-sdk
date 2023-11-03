@@ -55,6 +55,9 @@ func NewArchiveVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20230601preview:ArchiveVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20231101preview:ArchiveVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

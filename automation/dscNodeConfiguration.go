@@ -15,6 +15,8 @@ import (
 
 // Definition of the dsc node configuration.
 // Azure REST API version: 2022-08-08. Prior API version in Azure Native 1.x: 2019-06-01.
+//
+// Other available API versions: 2023-05-15-preview.
 type DscNodeConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +72,9 @@ func NewDscNodeConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20220808:DscNodeConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation/v20230515preview:DscNodeConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

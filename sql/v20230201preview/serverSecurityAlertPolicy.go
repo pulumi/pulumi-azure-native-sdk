@@ -100,6 +100,9 @@ func NewServerSecurityAlertPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20221101preview:ServerSecurityAlertPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:ServerSecurityAlertPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

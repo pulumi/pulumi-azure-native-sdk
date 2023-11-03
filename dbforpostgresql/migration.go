@@ -16,7 +16,7 @@ import (
 // Represents a migration resource.
 // Azure REST API version: 2023-03-01-preview.
 //
-// Other available API versions: 2021-06-15-privatepreview, 2022-05-01-preview.
+// Other available API versions: 2021-06-15-privatepreview, 2022-05-01-preview, 2023-06-01-preview.
 type Migration struct {
 	pulumi.CustomResourceState
 
@@ -92,6 +92,9 @@ func NewMigration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20230301preview:Migration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230601preview:Migration"),
 		},
 	})
 	opts = append(opts, aliases)

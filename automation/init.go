@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &JobSchedule{}
 	case "azure-native:automation:Module":
 		r = &Module{}
+	case "azure-native:automation:Package":
+		r = &Package{}
 	case "azure-native:automation:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	case "azure-native:automation:Python2Package":
@@ -51,6 +53,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Python3Package{}
 	case "azure-native:automation:Runbook":
 		r = &Runbook{}
+	case "azure-native:automation:RuntimeEnvironment":
+		r = &RuntimeEnvironment{}
 	case "azure-native:automation:Schedule":
 		r = &Schedule{}
 	case "azure-native:automation:SoftwareUpdateConfigurationByName":

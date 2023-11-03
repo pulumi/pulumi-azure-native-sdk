@@ -16,7 +16,7 @@ import (
 // An Azure resource which represents access to a suite of Maps REST APIs.
 // Azure REST API version: 2021-02-01. Prior API version in Azure Native 1.x: 2018-05-01.
 //
-// Other available API versions: 2018-05-01, 2021-12-01-preview, 2023-06-01.
+// Other available API versions: 2018-05-01, 2021-12-01-preview, 2023-06-01, 2023-08-01-preview.
 type Account struct {
 	pulumi.CustomResourceState
 
@@ -75,6 +75,9 @@ func NewAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:maps/v20230601:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:maps/v20230801preview:Account"),
 		},
 	})
 	opts = append(opts, aliases)

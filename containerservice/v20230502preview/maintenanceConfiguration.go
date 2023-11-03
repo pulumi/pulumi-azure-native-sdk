@@ -186,6 +186,9 @@ func NewMaintenanceConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230901:MaintenanceConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20230902preview:MaintenanceConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
