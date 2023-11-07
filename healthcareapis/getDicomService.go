@@ -14,6 +14,8 @@ import (
 
 // Gets the properties of the specified DICOM Service.
 // Azure REST API version: 2023-02-28.
+//
+// Other available API versions: 2023-09-06.
 func LookupDicomService(ctx *pulumi.Context, args *LookupDicomServiceArgs, opts ...pulumi.InvokeOption) (*LookupDicomServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDicomServiceResult

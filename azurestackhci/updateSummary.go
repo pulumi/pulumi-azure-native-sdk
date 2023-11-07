@@ -16,7 +16,7 @@ import (
 // Get the update summaries for the cluster
 // Azure REST API version: 2023-03-01.
 //
-// Other available API versions: 2022-12-15-preview, 2023-06-01, 2023-08-01.
+// Other available API versions: 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview.
 type UpdateSummary struct {
 	pulumi.CustomResourceState
 
@@ -77,6 +77,9 @@ func NewUpdateSummary(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230801:UpdateSummary"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230801preview:UpdateSummary"),
 		},
 	})
 	opts = append(opts, aliases)

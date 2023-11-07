@@ -16,7 +16,7 @@ import (
 // The description of the service.
 // Azure REST API version: 2023-02-28. Prior API version in Azure Native 1.x: 2022-05-15.
 //
-// Other available API versions: 2020-03-15.
+// Other available API versions: 2020-03-15, 2023-09-06.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -92,6 +92,9 @@ func NewService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20230228:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230906:Service"),
 		},
 	})
 	opts = append(opts, aliases)

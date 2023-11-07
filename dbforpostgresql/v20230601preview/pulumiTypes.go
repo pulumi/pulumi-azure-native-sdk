@@ -3506,8 +3506,8 @@ func (o ReplicaPtrOutput) Role() pulumi.StringPtrOutput {
 type ReplicaResponse struct {
 	// Replicas allowed for a server.
 	Capacity int `pulumi:"capacity"`
-	// Gets the link state of a replica server. This property is returned only for replicas api call. Supported values are Active, Catchup, Provisioning, Updating, Broken, Reconfiguring
-	LinkState string `pulumi:"linkState"`
+	// Gets the replication state of a replica server. This property is returned only for replicas api call. Supported values are Active, Catchup, Provisioning, Updating, Broken, Reconfiguring
+	ReplicationState string `pulumi:"replicationState"`
 	// Used to indicate role of the server in replication set.
 	Role *string `pulumi:"role"`
 }
@@ -3538,9 +3538,9 @@ func (o ReplicaResponseOutput) Capacity() pulumi.IntOutput {
 	return o.ApplyT(func(v ReplicaResponse) int { return v.Capacity }).(pulumi.IntOutput)
 }
 
-// Gets the link state of a replica server. This property is returned only for replicas api call. Supported values are Active, Catchup, Provisioning, Updating, Broken, Reconfiguring
-func (o ReplicaResponseOutput) LinkState() pulumi.StringOutput {
-	return o.ApplyT(func(v ReplicaResponse) string { return v.LinkState }).(pulumi.StringOutput)
+// Gets the replication state of a replica server. This property is returned only for replicas api call. Supported values are Active, Catchup, Provisioning, Updating, Broken, Reconfiguring
+func (o ReplicaResponseOutput) ReplicationState() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicaResponse) string { return v.ReplicationState }).(pulumi.StringOutput)
 }
 
 // Used to indicate role of the server in replication set.
@@ -3588,13 +3588,13 @@ func (o ReplicaResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Gets the link state of a replica server. This property is returned only for replicas api call. Supported values are Active, Catchup, Provisioning, Updating, Broken, Reconfiguring
-func (o ReplicaResponsePtrOutput) LinkState() pulumi.StringPtrOutput {
+// Gets the replication state of a replica server. This property is returned only for replicas api call. Supported values are Active, Catchup, Provisioning, Updating, Broken, Reconfiguring
+func (o ReplicaResponsePtrOutput) ReplicationState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReplicaResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.LinkState
+		return &v.ReplicationState
 	}).(pulumi.StringPtrOutput)
 }
 

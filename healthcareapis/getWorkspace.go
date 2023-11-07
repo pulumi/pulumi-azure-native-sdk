@@ -14,6 +14,8 @@ import (
 
 // Gets the properties of the specified workspace.
 // Azure REST API version: 2023-02-28.
+//
+// Other available API versions: 2023-09-06.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceResult

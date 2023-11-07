@@ -113,6 +113,9 @@ func NewArcSetting(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230801:ArcSetting"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230801preview:ArcSetting"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

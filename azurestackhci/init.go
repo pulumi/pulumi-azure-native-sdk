@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ArcSetting{}
 	case "azure-native:azurestackhci:Cluster":
 		r = &Cluster{}
+	case "azure-native:azurestackhci:DeploymentSetting":
+		r = &DeploymentSetting{}
+	case "azure-native:azurestackhci:EdgeDevice":
+		r = &EdgeDevice{}
 	case "azure-native:azurestackhci:Extension":
 		r = &Extension{}
 	case "azure-native:azurestackhci:GalleryImage":

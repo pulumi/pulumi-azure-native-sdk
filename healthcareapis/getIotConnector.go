@@ -14,6 +14,8 @@ import (
 
 // Gets the properties of the specified IoT Connector.
 // Azure REST API version: 2023-02-28.
+//
+// Other available API versions: 2023-09-06.
 func LookupIotConnector(ctx *pulumi.Context, args *LookupIotConnectorArgs, opts ...pulumi.InvokeOption) (*LookupIotConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIotConnectorResult

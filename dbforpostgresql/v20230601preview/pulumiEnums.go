@@ -154,11 +154,11 @@ const (
 )
 
 // Sets the promote mode for a replica server. This is a write only property.
-type ReplicationPromoteMode string
+type ReadReplicaPromoteMode string
 
 const (
-	ReplicationPromoteModeStandalone = ReplicationPromoteMode("standalone")
-	ReplicationPromoteModeSiteswap   = ReplicationPromoteMode("siteswap")
+	ReadReplicaPromoteModeStandalone = ReadReplicaPromoteMode("standalone")
+	ReadReplicaPromoteModeSwitchover = ReadReplicaPromoteMode("switchover")
 )
 
 // Sets the promote options for a replica server. This is a write only property.
