@@ -14,6 +14,314 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// The AdapterPropertyOverrides of a cluster.
+type AdapterPropertyOverrides struct {
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	JumboPacket *string `pulumi:"jumboPacket"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	NetworkDirect *string `pulumi:"networkDirect"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+	NetworkDirectTechnology *string `pulumi:"networkDirectTechnology"`
+}
+
+// AdapterPropertyOverridesInput is an input type that accepts AdapterPropertyOverridesArgs and AdapterPropertyOverridesOutput values.
+// You can construct a concrete instance of `AdapterPropertyOverridesInput` via:
+//
+//	AdapterPropertyOverridesArgs{...}
+type AdapterPropertyOverridesInput interface {
+	pulumi.Input
+
+	ToAdapterPropertyOverridesOutput() AdapterPropertyOverridesOutput
+	ToAdapterPropertyOverridesOutputWithContext(context.Context) AdapterPropertyOverridesOutput
+}
+
+// The AdapterPropertyOverrides of a cluster.
+type AdapterPropertyOverridesArgs struct {
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	JumboPacket pulumi.StringPtrInput `pulumi:"jumboPacket"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	NetworkDirect pulumi.StringPtrInput `pulumi:"networkDirect"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+	NetworkDirectTechnology pulumi.StringPtrInput `pulumi:"networkDirectTechnology"`
+}
+
+func (AdapterPropertyOverridesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdapterPropertyOverrides)(nil)).Elem()
+}
+
+func (i AdapterPropertyOverridesArgs) ToAdapterPropertyOverridesOutput() AdapterPropertyOverridesOutput {
+	return i.ToAdapterPropertyOverridesOutputWithContext(context.Background())
+}
+
+func (i AdapterPropertyOverridesArgs) ToAdapterPropertyOverridesOutputWithContext(ctx context.Context) AdapterPropertyOverridesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdapterPropertyOverridesOutput)
+}
+
+func (i AdapterPropertyOverridesArgs) ToOutput(ctx context.Context) pulumix.Output[AdapterPropertyOverrides] {
+	return pulumix.Output[AdapterPropertyOverrides]{
+		OutputState: i.ToAdapterPropertyOverridesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AdapterPropertyOverridesArgs) ToAdapterPropertyOverridesPtrOutput() AdapterPropertyOverridesPtrOutput {
+	return i.ToAdapterPropertyOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i AdapterPropertyOverridesArgs) ToAdapterPropertyOverridesPtrOutputWithContext(ctx context.Context) AdapterPropertyOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdapterPropertyOverridesOutput).ToAdapterPropertyOverridesPtrOutputWithContext(ctx)
+}
+
+// AdapterPropertyOverridesPtrInput is an input type that accepts AdapterPropertyOverridesArgs, AdapterPropertyOverridesPtr and AdapterPropertyOverridesPtrOutput values.
+// You can construct a concrete instance of `AdapterPropertyOverridesPtrInput` via:
+//
+//	        AdapterPropertyOverridesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AdapterPropertyOverridesPtrInput interface {
+	pulumi.Input
+
+	ToAdapterPropertyOverridesPtrOutput() AdapterPropertyOverridesPtrOutput
+	ToAdapterPropertyOverridesPtrOutputWithContext(context.Context) AdapterPropertyOverridesPtrOutput
+}
+
+type adapterPropertyOverridesPtrType AdapterPropertyOverridesArgs
+
+func AdapterPropertyOverridesPtr(v *AdapterPropertyOverridesArgs) AdapterPropertyOverridesPtrInput {
+	return (*adapterPropertyOverridesPtrType)(v)
+}
+
+func (*adapterPropertyOverridesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdapterPropertyOverrides)(nil)).Elem()
+}
+
+func (i *adapterPropertyOverridesPtrType) ToAdapterPropertyOverridesPtrOutput() AdapterPropertyOverridesPtrOutput {
+	return i.ToAdapterPropertyOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i *adapterPropertyOverridesPtrType) ToAdapterPropertyOverridesPtrOutputWithContext(ctx context.Context) AdapterPropertyOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdapterPropertyOverridesPtrOutput)
+}
+
+func (i *adapterPropertyOverridesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AdapterPropertyOverrides] {
+	return pulumix.Output[*AdapterPropertyOverrides]{
+		OutputState: i.ToAdapterPropertyOverridesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The AdapterPropertyOverrides of a cluster.
+type AdapterPropertyOverridesOutput struct{ *pulumi.OutputState }
+
+func (AdapterPropertyOverridesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdapterPropertyOverrides)(nil)).Elem()
+}
+
+func (o AdapterPropertyOverridesOutput) ToAdapterPropertyOverridesOutput() AdapterPropertyOverridesOutput {
+	return o
+}
+
+func (o AdapterPropertyOverridesOutput) ToAdapterPropertyOverridesOutputWithContext(ctx context.Context) AdapterPropertyOverridesOutput {
+	return o
+}
+
+func (o AdapterPropertyOverridesOutput) ToAdapterPropertyOverridesPtrOutput() AdapterPropertyOverridesPtrOutput {
+	return o.ToAdapterPropertyOverridesPtrOutputWithContext(context.Background())
+}
+
+func (o AdapterPropertyOverridesOutput) ToAdapterPropertyOverridesPtrOutputWithContext(ctx context.Context) AdapterPropertyOverridesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdapterPropertyOverrides) *AdapterPropertyOverrides {
+		return &v
+	}).(AdapterPropertyOverridesPtrOutput)
+}
+
+func (o AdapterPropertyOverridesOutput) ToOutput(ctx context.Context) pulumix.Output[AdapterPropertyOverrides] {
+	return pulumix.Output[AdapterPropertyOverrides]{
+		OutputState: o.OutputState,
+	}
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesOutput) JumboPacket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdapterPropertyOverrides) *string { return v.JumboPacket }).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesOutput) NetworkDirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdapterPropertyOverrides) *string { return v.NetworkDirect }).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+func (o AdapterPropertyOverridesOutput) NetworkDirectTechnology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdapterPropertyOverrides) *string { return v.NetworkDirectTechnology }).(pulumi.StringPtrOutput)
+}
+
+type AdapterPropertyOverridesPtrOutput struct{ *pulumi.OutputState }
+
+func (AdapterPropertyOverridesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdapterPropertyOverrides)(nil)).Elem()
+}
+
+func (o AdapterPropertyOverridesPtrOutput) ToAdapterPropertyOverridesPtrOutput() AdapterPropertyOverridesPtrOutput {
+	return o
+}
+
+func (o AdapterPropertyOverridesPtrOutput) ToAdapterPropertyOverridesPtrOutputWithContext(ctx context.Context) AdapterPropertyOverridesPtrOutput {
+	return o
+}
+
+func (o AdapterPropertyOverridesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdapterPropertyOverrides] {
+	return pulumix.Output[*AdapterPropertyOverrides]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AdapterPropertyOverridesPtrOutput) Elem() AdapterPropertyOverridesOutput {
+	return o.ApplyT(func(v *AdapterPropertyOverrides) AdapterPropertyOverrides {
+		if v != nil {
+			return *v
+		}
+		var ret AdapterPropertyOverrides
+		return ret
+	}).(AdapterPropertyOverridesOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesPtrOutput) JumboPacket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdapterPropertyOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JumboPacket
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesPtrOutput) NetworkDirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdapterPropertyOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkDirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+func (o AdapterPropertyOverridesPtrOutput) NetworkDirectTechnology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdapterPropertyOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkDirectTechnology
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AdapterPropertyOverrides of a cluster.
+type AdapterPropertyOverridesResponse struct {
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	JumboPacket *string `pulumi:"jumboPacket"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	NetworkDirect *string `pulumi:"networkDirect"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+	NetworkDirectTechnology *string `pulumi:"networkDirectTechnology"`
+}
+
+// The AdapterPropertyOverrides of a cluster.
+type AdapterPropertyOverridesResponseOutput struct{ *pulumi.OutputState }
+
+func (AdapterPropertyOverridesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdapterPropertyOverridesResponse)(nil)).Elem()
+}
+
+func (o AdapterPropertyOverridesResponseOutput) ToAdapterPropertyOverridesResponseOutput() AdapterPropertyOverridesResponseOutput {
+	return o
+}
+
+func (o AdapterPropertyOverridesResponseOutput) ToAdapterPropertyOverridesResponseOutputWithContext(ctx context.Context) AdapterPropertyOverridesResponseOutput {
+	return o
+}
+
+func (o AdapterPropertyOverridesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdapterPropertyOverridesResponse] {
+	return pulumix.Output[AdapterPropertyOverridesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesResponseOutput) JumboPacket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdapterPropertyOverridesResponse) *string { return v.JumboPacket }).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesResponseOutput) NetworkDirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdapterPropertyOverridesResponse) *string { return v.NetworkDirect }).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+func (o AdapterPropertyOverridesResponseOutput) NetworkDirectTechnology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdapterPropertyOverridesResponse) *string { return v.NetworkDirectTechnology }).(pulumi.StringPtrOutput)
+}
+
+type AdapterPropertyOverridesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AdapterPropertyOverridesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdapterPropertyOverridesResponse)(nil)).Elem()
+}
+
+func (o AdapterPropertyOverridesResponsePtrOutput) ToAdapterPropertyOverridesResponsePtrOutput() AdapterPropertyOverridesResponsePtrOutput {
+	return o
+}
+
+func (o AdapterPropertyOverridesResponsePtrOutput) ToAdapterPropertyOverridesResponsePtrOutputWithContext(ctx context.Context) AdapterPropertyOverridesResponsePtrOutput {
+	return o
+}
+
+func (o AdapterPropertyOverridesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdapterPropertyOverridesResponse] {
+	return pulumix.Output[*AdapterPropertyOverridesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AdapterPropertyOverridesResponsePtrOutput) Elem() AdapterPropertyOverridesResponseOutput {
+	return o.ApplyT(func(v *AdapterPropertyOverridesResponse) AdapterPropertyOverridesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AdapterPropertyOverridesResponse
+		return ret
+	}).(AdapterPropertyOverridesResponseOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesResponsePtrOutput) JumboPacket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdapterPropertyOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JumboPacket
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesResponsePtrOutput) NetworkDirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdapterPropertyOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkDirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+func (o AdapterPropertyOverridesResponsePtrOutput) NetworkDirectTechnology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdapterPropertyOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkDirectTechnology
+	}).(pulumi.StringPtrOutput)
+}
+
 // Connectivity related configuration required by arc server.
 type ArcConnectivityProperties struct {
 	// True indicates ARC connectivity is enabled
@@ -194,6 +502,246 @@ func (o ArcConnectivityPropertiesResponseArrayOutput) Index(i pulumi.IntInput) A
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ArcConnectivityPropertiesResponse {
 		return vs[0].([]ArcConnectivityPropertiesResponse)[vs[1].(int)]
 	}).(ArcConnectivityPropertiesResponseOutput)
+}
+
+// AzureStackHCI Cluster deployment properties.
+type ClusterType struct {
+	// For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net.
+	AzureServiceEndpoint *string `pulumi:"azureServiceEndpoint"`
+	// Specify the Azure Storage account name for cloud witness for your Azure Stack HCI cluster.
+	CloudAccountName *string `pulumi:"cloudAccountName"`
+	// The cluster name provided when preparing Active Directory.
+	Name *string `pulumi:"name"`
+	// Specify the fileshare path for the local witness for your Azure Stack HCI cluster.
+	WitnessPath *string `pulumi:"witnessPath"`
+	// Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'.
+	WitnessType *string `pulumi:"witnessType"`
+}
+
+// ClusterTypeInput is an input type that accepts ClusterTypeArgs and ClusterTypeOutput values.
+// You can construct a concrete instance of `ClusterTypeInput` via:
+//
+//	ClusterTypeArgs{...}
+type ClusterTypeInput interface {
+	pulumi.Input
+
+	ToClusterTypeOutput() ClusterTypeOutput
+	ToClusterTypeOutputWithContext(context.Context) ClusterTypeOutput
+}
+
+// AzureStackHCI Cluster deployment properties.
+type ClusterTypeArgs struct {
+	// For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net.
+	AzureServiceEndpoint pulumi.StringPtrInput `pulumi:"azureServiceEndpoint"`
+	// Specify the Azure Storage account name for cloud witness for your Azure Stack HCI cluster.
+	CloudAccountName pulumi.StringPtrInput `pulumi:"cloudAccountName"`
+	// The cluster name provided when preparing Active Directory.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Specify the fileshare path for the local witness for your Azure Stack HCI cluster.
+	WitnessPath pulumi.StringPtrInput `pulumi:"witnessPath"`
+	// Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'.
+	WitnessType pulumi.StringPtrInput `pulumi:"witnessType"`
+}
+
+func (ClusterTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterType)(nil)).Elem()
+}
+
+func (i ClusterTypeArgs) ToClusterTypeOutput() ClusterTypeOutput {
+	return i.ToClusterTypeOutputWithContext(context.Background())
+}
+
+func (i ClusterTypeArgs) ToClusterTypeOutputWithContext(ctx context.Context) ClusterTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTypeOutput)
+}
+
+func (i ClusterTypeArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterType] {
+	return pulumix.Output[ClusterType]{
+		OutputState: i.ToClusterTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClusterTypeArgs) ToClusterTypePtrOutput() ClusterTypePtrOutput {
+	return i.ToClusterTypePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTypeArgs) ToClusterTypePtrOutputWithContext(ctx context.Context) ClusterTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTypeOutput).ToClusterTypePtrOutputWithContext(ctx)
+}
+
+// ClusterTypePtrInput is an input type that accepts ClusterTypeArgs, ClusterTypePtr and ClusterTypePtrOutput values.
+// You can construct a concrete instance of `ClusterTypePtrInput` via:
+//
+//	        ClusterTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterTypePtrInput interface {
+	pulumi.Input
+
+	ToClusterTypePtrOutput() ClusterTypePtrOutput
+	ToClusterTypePtrOutputWithContext(context.Context) ClusterTypePtrOutput
+}
+
+type clusterTypePtrType ClusterTypeArgs
+
+func ClusterTypePtr(v *ClusterTypeArgs) ClusterTypePtrInput {
+	return (*clusterTypePtrType)(v)
+}
+
+func (*clusterTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterType)(nil)).Elem()
+}
+
+func (i *clusterTypePtrType) ToClusterTypePtrOutput() ClusterTypePtrOutput {
+	return i.ToClusterTypePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTypePtrType) ToClusterTypePtrOutputWithContext(ctx context.Context) ClusterTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTypePtrOutput)
+}
+
+func (i *clusterTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterType] {
+	return pulumix.Output[*ClusterType]{
+		OutputState: i.ToClusterTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// AzureStackHCI Cluster deployment properties.
+type ClusterTypeOutput struct{ *pulumi.OutputState }
+
+func (ClusterTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterType)(nil)).Elem()
+}
+
+func (o ClusterTypeOutput) ToClusterTypeOutput() ClusterTypeOutput {
+	return o
+}
+
+func (o ClusterTypeOutput) ToClusterTypeOutputWithContext(ctx context.Context) ClusterTypeOutput {
+	return o
+}
+
+func (o ClusterTypeOutput) ToClusterTypePtrOutput() ClusterTypePtrOutput {
+	return o.ToClusterTypePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTypeOutput) ToClusterTypePtrOutputWithContext(ctx context.Context) ClusterTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterType) *ClusterType {
+		return &v
+	}).(ClusterTypePtrOutput)
+}
+
+func (o ClusterTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterType] {
+	return pulumix.Output[ClusterType]{
+		OutputState: o.OutputState,
+	}
+}
+
+// For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net.
+func (o ClusterTypeOutput) AzureServiceEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterType) *string { return v.AzureServiceEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Specify the Azure Storage account name for cloud witness for your Azure Stack HCI cluster.
+func (o ClusterTypeOutput) CloudAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterType) *string { return v.CloudAccountName }).(pulumi.StringPtrOutput)
+}
+
+// The cluster name provided when preparing Active Directory.
+func (o ClusterTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Specify the fileshare path for the local witness for your Azure Stack HCI cluster.
+func (o ClusterTypeOutput) WitnessPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterType) *string { return v.WitnessPath }).(pulumi.StringPtrOutput)
+}
+
+// Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'.
+func (o ClusterTypeOutput) WitnessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterType) *string { return v.WitnessType }).(pulumi.StringPtrOutput)
+}
+
+type ClusterTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterType)(nil)).Elem()
+}
+
+func (o ClusterTypePtrOutput) ToClusterTypePtrOutput() ClusterTypePtrOutput {
+	return o
+}
+
+func (o ClusterTypePtrOutput) ToClusterTypePtrOutputWithContext(ctx context.Context) ClusterTypePtrOutput {
+	return o
+}
+
+func (o ClusterTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterType] {
+	return pulumix.Output[*ClusterType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterTypePtrOutput) Elem() ClusterTypeOutput {
+	return o.ApplyT(func(v *ClusterType) ClusterType {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterType
+		return ret
+	}).(ClusterTypeOutput)
+}
+
+// For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net.
+func (o ClusterTypePtrOutput) AzureServiceEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureServiceEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the Azure Storage account name for cloud witness for your Azure Stack HCI cluster.
+func (o ClusterTypePtrOutput) CloudAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cluster name provided when preparing Active Directory.
+func (o ClusterTypePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the fileshare path for the local witness for your Azure Stack HCI cluster.
+func (o ClusterTypePtrOutput) WitnessPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WitnessPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'.
+func (o ClusterTypePtrOutput) WitnessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WitnessType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Desired properties of the cluster.
@@ -712,6 +1260,146 @@ func (o ClusterReportedPropertiesResponseOutput) SupportedCapabilities() pulumi.
 	return o.ApplyT(func(v ClusterReportedPropertiesResponse) []string { return v.SupportedCapabilities }).(pulumi.StringArrayOutput)
 }
 
+// AzureStackHCI Cluster deployment properties.
+type ClusterResponse struct {
+	// For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net.
+	AzureServiceEndpoint *string `pulumi:"azureServiceEndpoint"`
+	// Specify the Azure Storage account name for cloud witness for your Azure Stack HCI cluster.
+	CloudAccountName *string `pulumi:"cloudAccountName"`
+	// The cluster name provided when preparing Active Directory.
+	Name *string `pulumi:"name"`
+	// Specify the fileshare path for the local witness for your Azure Stack HCI cluster.
+	WitnessPath *string `pulumi:"witnessPath"`
+	// Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'.
+	WitnessType *string `pulumi:"witnessType"`
+}
+
+// AzureStackHCI Cluster deployment properties.
+type ClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterResponse)(nil)).Elem()
+}
+
+func (o ClusterResponseOutput) ToClusterResponseOutput() ClusterResponseOutput {
+	return o
+}
+
+func (o ClusterResponseOutput) ToClusterResponseOutputWithContext(ctx context.Context) ClusterResponseOutput {
+	return o
+}
+
+func (o ClusterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterResponse] {
+	return pulumix.Output[ClusterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net.
+func (o ClusterResponseOutput) AzureServiceEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResponse) *string { return v.AzureServiceEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Specify the Azure Storage account name for cloud witness for your Azure Stack HCI cluster.
+func (o ClusterResponseOutput) CloudAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResponse) *string { return v.CloudAccountName }).(pulumi.StringPtrOutput)
+}
+
+// The cluster name provided when preparing Active Directory.
+func (o ClusterResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Specify the fileshare path for the local witness for your Azure Stack HCI cluster.
+func (o ClusterResponseOutput) WitnessPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResponse) *string { return v.WitnessPath }).(pulumi.StringPtrOutput)
+}
+
+// Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'.
+func (o ClusterResponseOutput) WitnessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResponse) *string { return v.WitnessType }).(pulumi.StringPtrOutput)
+}
+
+type ClusterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterResponse)(nil)).Elem()
+}
+
+func (o ClusterResponsePtrOutput) ToClusterResponsePtrOutput() ClusterResponsePtrOutput {
+	return o
+}
+
+func (o ClusterResponsePtrOutput) ToClusterResponsePtrOutputWithContext(ctx context.Context) ClusterResponsePtrOutput {
+	return o
+}
+
+func (o ClusterResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterResponse] {
+	return pulumix.Output[*ClusterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterResponsePtrOutput) Elem() ClusterResponseOutput {
+	return o.ApplyT(func(v *ClusterResponse) ClusterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterResponse
+		return ret
+	}).(ClusterResponseOutput)
+}
+
+// For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net.
+func (o ClusterResponsePtrOutput) AzureServiceEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureServiceEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the Azure Storage account name for cloud witness for your Azure Stack HCI cluster.
+func (o ClusterResponsePtrOutput) CloudAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cluster name provided when preparing Active Directory.
+func (o ClusterResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the fileshare path for the local witness for your Azure Stack HCI cluster.
+func (o ClusterResponsePtrOutput) WitnessPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WitnessPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'.
+func (o ClusterResponsePtrOutput) WitnessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WitnessType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties for a particular default extension category.
 type DefaultExtensionDetailsResponse struct {
 	// Default extension category
@@ -775,6 +1463,593 @@ func (o DefaultExtensionDetailsResponseArrayOutput) Index(i pulumi.IntInput) Def
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefaultExtensionDetailsResponse {
 		return vs[0].([]DefaultExtensionDetailsResponse)[vs[1].(int)]
 	}).(DefaultExtensionDetailsResponseOutput)
+}
+
+// Deployment Configuration
+type DeploymentConfiguration struct {
+	// Scale units will contains list of deployment data
+	ScaleUnits []ScaleUnits `pulumi:"scaleUnits"`
+	// deployment template version
+	Version *string `pulumi:"version"`
+}
+
+// DeploymentConfigurationInput is an input type that accepts DeploymentConfigurationArgs and DeploymentConfigurationOutput values.
+// You can construct a concrete instance of `DeploymentConfigurationInput` via:
+//
+//	DeploymentConfigurationArgs{...}
+type DeploymentConfigurationInput interface {
+	pulumi.Input
+
+	ToDeploymentConfigurationOutput() DeploymentConfigurationOutput
+	ToDeploymentConfigurationOutputWithContext(context.Context) DeploymentConfigurationOutput
+}
+
+// Deployment Configuration
+type DeploymentConfigurationArgs struct {
+	// Scale units will contains list of deployment data
+	ScaleUnits ScaleUnitsArrayInput `pulumi:"scaleUnits"`
+	// deployment template version
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (DeploymentConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentConfiguration)(nil)).Elem()
+}
+
+func (i DeploymentConfigurationArgs) ToDeploymentConfigurationOutput() DeploymentConfigurationOutput {
+	return i.ToDeploymentConfigurationOutputWithContext(context.Background())
+}
+
+func (i DeploymentConfigurationArgs) ToDeploymentConfigurationOutputWithContext(ctx context.Context) DeploymentConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigurationOutput)
+}
+
+func (i DeploymentConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[DeploymentConfiguration] {
+	return pulumix.Output[DeploymentConfiguration]{
+		OutputState: i.ToDeploymentConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Deployment Configuration
+type DeploymentConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DeploymentConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentConfiguration)(nil)).Elem()
+}
+
+func (o DeploymentConfigurationOutput) ToDeploymentConfigurationOutput() DeploymentConfigurationOutput {
+	return o
+}
+
+func (o DeploymentConfigurationOutput) ToDeploymentConfigurationOutputWithContext(ctx context.Context) DeploymentConfigurationOutput {
+	return o
+}
+
+func (o DeploymentConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentConfiguration] {
+	return pulumix.Output[DeploymentConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Scale units will contains list of deployment data
+func (o DeploymentConfigurationOutput) ScaleUnits() ScaleUnitsArrayOutput {
+	return o.ApplyT(func(v DeploymentConfiguration) []ScaleUnits { return v.ScaleUnits }).(ScaleUnitsArrayOutput)
+}
+
+// deployment template version
+func (o DeploymentConfigurationOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentConfiguration) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// Deployment Configuration
+type DeploymentConfigurationResponse struct {
+	// Scale units will contains list of deployment data
+	ScaleUnits []ScaleUnitsResponse `pulumi:"scaleUnits"`
+	// deployment template version
+	Version *string `pulumi:"version"`
+}
+
+// Deployment Configuration
+type DeploymentConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentConfigurationResponse)(nil)).Elem()
+}
+
+func (o DeploymentConfigurationResponseOutput) ToDeploymentConfigurationResponseOutput() DeploymentConfigurationResponseOutput {
+	return o
+}
+
+func (o DeploymentConfigurationResponseOutput) ToDeploymentConfigurationResponseOutputWithContext(ctx context.Context) DeploymentConfigurationResponseOutput {
+	return o
+}
+
+func (o DeploymentConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentConfigurationResponse] {
+	return pulumix.Output[DeploymentConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Scale units will contains list of deployment data
+func (o DeploymentConfigurationResponseOutput) ScaleUnits() ScaleUnitsResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentConfigurationResponse) []ScaleUnitsResponse { return v.ScaleUnits }).(ScaleUnitsResponseArrayOutput)
+}
+
+// deployment template version
+func (o DeploymentConfigurationResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentConfigurationResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// The Deployment data of AzureStackHCI Cluster.
+type DeploymentData struct {
+	// The path to the Active Directory Organizational Unit container object prepared for the deployment.
+	AdouPath *string `pulumi:"adouPath"`
+	// Observability config to deploy AzureStackHCI Cluster.
+	Cluster *ClusterType `pulumi:"cluster"`
+	// FQDN to deploy cluster
+	DomainFqdn *string `pulumi:"domainFqdn"`
+	// HostNetwork config to deploy AzureStackHCI Cluster.
+	HostNetwork *HostNetwork `pulumi:"hostNetwork"`
+	// InfrastructureNetwork config to deploy AzureStackHCI Cluster.
+	InfrastructureNetwork []InfrastructureNetwork `pulumi:"infrastructureNetwork"`
+	// naming prefix to deploy cluster.
+	NamingPrefix *string `pulumi:"namingPrefix"`
+	// Observability config to deploy AzureStackHCI Cluster.
+	Observability *Observability `pulumi:"observability"`
+	// OptionalServices config to deploy AzureStackHCI Cluster.
+	OptionalServices *OptionalServices `pulumi:"optionalServices"`
+	// list of physical nodes config to deploy AzureStackHCI Cluster.
+	PhysicalNodes []PhysicalNodes `pulumi:"physicalNodes"`
+	// The URI to the keyvault / secret store.
+	SecretsLocation *string `pulumi:"secretsLocation"`
+	// SecuritySettings to deploy AzureStackHCI Cluster.
+	SecuritySettings *SecuritySettings `pulumi:"securitySettings"`
+	// Storage config to deploy AzureStackHCI Cluster.
+	Storage *Storage `pulumi:"storage"`
+}
+
+// Defaults sets the appropriate defaults for DeploymentData
+func (val *DeploymentData) Defaults() *DeploymentData {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.HostNetwork = tmp.HostNetwork.Defaults()
+
+	tmp.Observability = tmp.Observability.Defaults()
+
+	tmp.SecuritySettings = tmp.SecuritySettings.Defaults()
+
+	tmp.Storage = tmp.Storage.Defaults()
+
+	return &tmp
+}
+
+// DeploymentDataInput is an input type that accepts DeploymentDataArgs and DeploymentDataOutput values.
+// You can construct a concrete instance of `DeploymentDataInput` via:
+//
+//	DeploymentDataArgs{...}
+type DeploymentDataInput interface {
+	pulumi.Input
+
+	ToDeploymentDataOutput() DeploymentDataOutput
+	ToDeploymentDataOutputWithContext(context.Context) DeploymentDataOutput
+}
+
+// The Deployment data of AzureStackHCI Cluster.
+type DeploymentDataArgs struct {
+	// The path to the Active Directory Organizational Unit container object prepared for the deployment.
+	AdouPath pulumi.StringPtrInput `pulumi:"adouPath"`
+	// Observability config to deploy AzureStackHCI Cluster.
+	Cluster ClusterTypePtrInput `pulumi:"cluster"`
+	// FQDN to deploy cluster
+	DomainFqdn pulumi.StringPtrInput `pulumi:"domainFqdn"`
+	// HostNetwork config to deploy AzureStackHCI Cluster.
+	HostNetwork HostNetworkPtrInput `pulumi:"hostNetwork"`
+	// InfrastructureNetwork config to deploy AzureStackHCI Cluster.
+	InfrastructureNetwork InfrastructureNetworkArrayInput `pulumi:"infrastructureNetwork"`
+	// naming prefix to deploy cluster.
+	NamingPrefix pulumi.StringPtrInput `pulumi:"namingPrefix"`
+	// Observability config to deploy AzureStackHCI Cluster.
+	Observability ObservabilityPtrInput `pulumi:"observability"`
+	// OptionalServices config to deploy AzureStackHCI Cluster.
+	OptionalServices OptionalServicesPtrInput `pulumi:"optionalServices"`
+	// list of physical nodes config to deploy AzureStackHCI Cluster.
+	PhysicalNodes PhysicalNodesArrayInput `pulumi:"physicalNodes"`
+	// The URI to the keyvault / secret store.
+	SecretsLocation pulumi.StringPtrInput `pulumi:"secretsLocation"`
+	// SecuritySettings to deploy AzureStackHCI Cluster.
+	SecuritySettings SecuritySettingsPtrInput `pulumi:"securitySettings"`
+	// Storage config to deploy AzureStackHCI Cluster.
+	Storage StoragePtrInput `pulumi:"storage"`
+}
+
+// Defaults sets the appropriate defaults for DeploymentDataArgs
+func (val *DeploymentDataArgs) Defaults() *DeploymentDataArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (DeploymentDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentData)(nil)).Elem()
+}
+
+func (i DeploymentDataArgs) ToDeploymentDataOutput() DeploymentDataOutput {
+	return i.ToDeploymentDataOutputWithContext(context.Background())
+}
+
+func (i DeploymentDataArgs) ToDeploymentDataOutputWithContext(ctx context.Context) DeploymentDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentDataOutput)
+}
+
+func (i DeploymentDataArgs) ToOutput(ctx context.Context) pulumix.Output[DeploymentData] {
+	return pulumix.Output[DeploymentData]{
+		OutputState: i.ToDeploymentDataOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The Deployment data of AzureStackHCI Cluster.
+type DeploymentDataOutput struct{ *pulumi.OutputState }
+
+func (DeploymentDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentData)(nil)).Elem()
+}
+
+func (o DeploymentDataOutput) ToDeploymentDataOutput() DeploymentDataOutput {
+	return o
+}
+
+func (o DeploymentDataOutput) ToDeploymentDataOutputWithContext(ctx context.Context) DeploymentDataOutput {
+	return o
+}
+
+func (o DeploymentDataOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentData] {
+	return pulumix.Output[DeploymentData]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The path to the Active Directory Organizational Unit container object prepared for the deployment.
+func (o DeploymentDataOutput) AdouPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentData) *string { return v.AdouPath }).(pulumi.StringPtrOutput)
+}
+
+// Observability config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataOutput) Cluster() ClusterTypePtrOutput {
+	return o.ApplyT(func(v DeploymentData) *ClusterType { return v.Cluster }).(ClusterTypePtrOutput)
+}
+
+// FQDN to deploy cluster
+func (o DeploymentDataOutput) DomainFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentData) *string { return v.DomainFqdn }).(pulumi.StringPtrOutput)
+}
+
+// HostNetwork config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataOutput) HostNetwork() HostNetworkPtrOutput {
+	return o.ApplyT(func(v DeploymentData) *HostNetwork { return v.HostNetwork }).(HostNetworkPtrOutput)
+}
+
+// InfrastructureNetwork config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataOutput) InfrastructureNetwork() InfrastructureNetworkArrayOutput {
+	return o.ApplyT(func(v DeploymentData) []InfrastructureNetwork { return v.InfrastructureNetwork }).(InfrastructureNetworkArrayOutput)
+}
+
+// naming prefix to deploy cluster.
+func (o DeploymentDataOutput) NamingPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentData) *string { return v.NamingPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Observability config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataOutput) Observability() ObservabilityPtrOutput {
+	return o.ApplyT(func(v DeploymentData) *Observability { return v.Observability }).(ObservabilityPtrOutput)
+}
+
+// OptionalServices config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataOutput) OptionalServices() OptionalServicesPtrOutput {
+	return o.ApplyT(func(v DeploymentData) *OptionalServices { return v.OptionalServices }).(OptionalServicesPtrOutput)
+}
+
+// list of physical nodes config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataOutput) PhysicalNodes() PhysicalNodesArrayOutput {
+	return o.ApplyT(func(v DeploymentData) []PhysicalNodes { return v.PhysicalNodes }).(PhysicalNodesArrayOutput)
+}
+
+// The URI to the keyvault / secret store.
+func (o DeploymentDataOutput) SecretsLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentData) *string { return v.SecretsLocation }).(pulumi.StringPtrOutput)
+}
+
+// SecuritySettings to deploy AzureStackHCI Cluster.
+func (o DeploymentDataOutput) SecuritySettings() SecuritySettingsPtrOutput {
+	return o.ApplyT(func(v DeploymentData) *SecuritySettings { return v.SecuritySettings }).(SecuritySettingsPtrOutput)
+}
+
+// Storage config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataOutput) Storage() StoragePtrOutput {
+	return o.ApplyT(func(v DeploymentData) *Storage { return v.Storage }).(StoragePtrOutput)
+}
+
+// The Deployment data of AzureStackHCI Cluster.
+type DeploymentDataResponse struct {
+	// The path to the Active Directory Organizational Unit container object prepared for the deployment.
+	AdouPath *string `pulumi:"adouPath"`
+	// Observability config to deploy AzureStackHCI Cluster.
+	Cluster *ClusterResponse `pulumi:"cluster"`
+	// FQDN to deploy cluster
+	DomainFqdn *string `pulumi:"domainFqdn"`
+	// HostNetwork config to deploy AzureStackHCI Cluster.
+	HostNetwork *HostNetworkResponse `pulumi:"hostNetwork"`
+	// InfrastructureNetwork config to deploy AzureStackHCI Cluster.
+	InfrastructureNetwork []InfrastructureNetworkResponse `pulumi:"infrastructureNetwork"`
+	// naming prefix to deploy cluster.
+	NamingPrefix *string `pulumi:"namingPrefix"`
+	// Observability config to deploy AzureStackHCI Cluster.
+	Observability *ObservabilityResponse `pulumi:"observability"`
+	// OptionalServices config to deploy AzureStackHCI Cluster.
+	OptionalServices *OptionalServicesResponse `pulumi:"optionalServices"`
+	// list of physical nodes config to deploy AzureStackHCI Cluster.
+	PhysicalNodes []PhysicalNodesResponse `pulumi:"physicalNodes"`
+	// The URI to the keyvault / secret store.
+	SecretsLocation *string `pulumi:"secretsLocation"`
+	// SecuritySettings to deploy AzureStackHCI Cluster.
+	SecuritySettings *SecuritySettingsResponse `pulumi:"securitySettings"`
+	// Storage config to deploy AzureStackHCI Cluster.
+	Storage *StorageResponse `pulumi:"storage"`
+}
+
+// Defaults sets the appropriate defaults for DeploymentDataResponse
+func (val *DeploymentDataResponse) Defaults() *DeploymentDataResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.HostNetwork = tmp.HostNetwork.Defaults()
+
+	tmp.Observability = tmp.Observability.Defaults()
+
+	tmp.SecuritySettings = tmp.SecuritySettings.Defaults()
+
+	tmp.Storage = tmp.Storage.Defaults()
+
+	return &tmp
+}
+
+// The Deployment data of AzureStackHCI Cluster.
+type DeploymentDataResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentDataResponse)(nil)).Elem()
+}
+
+func (o DeploymentDataResponseOutput) ToDeploymentDataResponseOutput() DeploymentDataResponseOutput {
+	return o
+}
+
+func (o DeploymentDataResponseOutput) ToDeploymentDataResponseOutputWithContext(ctx context.Context) DeploymentDataResponseOutput {
+	return o
+}
+
+func (o DeploymentDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentDataResponse] {
+	return pulumix.Output[DeploymentDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The path to the Active Directory Organizational Unit container object prepared for the deployment.
+func (o DeploymentDataResponseOutput) AdouPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentDataResponse) *string { return v.AdouPath }).(pulumi.StringPtrOutput)
+}
+
+// Observability config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataResponseOutput) Cluster() ClusterResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentDataResponse) *ClusterResponse { return v.Cluster }).(ClusterResponsePtrOutput)
+}
+
+// FQDN to deploy cluster
+func (o DeploymentDataResponseOutput) DomainFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentDataResponse) *string { return v.DomainFqdn }).(pulumi.StringPtrOutput)
+}
+
+// HostNetwork config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataResponseOutput) HostNetwork() HostNetworkResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentDataResponse) *HostNetworkResponse { return v.HostNetwork }).(HostNetworkResponsePtrOutput)
+}
+
+// InfrastructureNetwork config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataResponseOutput) InfrastructureNetwork() InfrastructureNetworkResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentDataResponse) []InfrastructureNetworkResponse { return v.InfrastructureNetwork }).(InfrastructureNetworkResponseArrayOutput)
+}
+
+// naming prefix to deploy cluster.
+func (o DeploymentDataResponseOutput) NamingPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentDataResponse) *string { return v.NamingPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Observability config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataResponseOutput) Observability() ObservabilityResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentDataResponse) *ObservabilityResponse { return v.Observability }).(ObservabilityResponsePtrOutput)
+}
+
+// OptionalServices config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataResponseOutput) OptionalServices() OptionalServicesResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentDataResponse) *OptionalServicesResponse { return v.OptionalServices }).(OptionalServicesResponsePtrOutput)
+}
+
+// list of physical nodes config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataResponseOutput) PhysicalNodes() PhysicalNodesResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentDataResponse) []PhysicalNodesResponse { return v.PhysicalNodes }).(PhysicalNodesResponseArrayOutput)
+}
+
+// The URI to the keyvault / secret store.
+func (o DeploymentDataResponseOutput) SecretsLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentDataResponse) *string { return v.SecretsLocation }).(pulumi.StringPtrOutput)
+}
+
+// SecuritySettings to deploy AzureStackHCI Cluster.
+func (o DeploymentDataResponseOutput) SecuritySettings() SecuritySettingsResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentDataResponse) *SecuritySettingsResponse { return v.SecuritySettings }).(SecuritySettingsResponsePtrOutput)
+}
+
+// Storage config to deploy AzureStackHCI Cluster.
+func (o DeploymentDataResponseOutput) Storage() StorageResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentDataResponse) *StorageResponse { return v.Storage }).(StorageResponsePtrOutput)
+}
+
+// The DeploymentStatus of AzureStackHCI Cluster.
+type DeploymentStatusResponse struct {
+	// Status of AzureStackHCI Cluster Deployment.
+	Status string `pulumi:"status"`
+	// List of steps of AzureStackHCI Cluster Deployment.
+	Steps []StepResponse `pulumi:"steps"`
+}
+
+// The DeploymentStatus of AzureStackHCI Cluster.
+type DeploymentStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStatusResponse)(nil)).Elem()
+}
+
+func (o DeploymentStatusResponseOutput) ToDeploymentStatusResponseOutput() DeploymentStatusResponseOutput {
+	return o
+}
+
+func (o DeploymentStatusResponseOutput) ToDeploymentStatusResponseOutputWithContext(ctx context.Context) DeploymentStatusResponseOutput {
+	return o
+}
+
+func (o DeploymentStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentStatusResponse] {
+	return pulumix.Output[DeploymentStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Status of AzureStackHCI Cluster Deployment.
+func (o DeploymentStatusResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStatusResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// List of steps of AzureStackHCI Cluster Deployment.
+func (o DeploymentStatusResponseOutput) Steps() StepResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentStatusResponse) []StepResponse { return v.Steps }).(StepResponseArrayOutput)
+}
+
+// The device Configuration of a device.
+type DeviceConfiguration struct {
+	// device metadata details.
+	DeviceMetadata *string `pulumi:"deviceMetadata"`
+	// NIC Details of device
+	NicDetails []NicDetail `pulumi:"nicDetails"`
+}
+
+// DeviceConfigurationInput is an input type that accepts DeviceConfigurationArgs and DeviceConfigurationOutput values.
+// You can construct a concrete instance of `DeviceConfigurationInput` via:
+//
+//	DeviceConfigurationArgs{...}
+type DeviceConfigurationInput interface {
+	pulumi.Input
+
+	ToDeviceConfigurationOutput() DeviceConfigurationOutput
+	ToDeviceConfigurationOutputWithContext(context.Context) DeviceConfigurationOutput
+}
+
+// The device Configuration of a device.
+type DeviceConfigurationArgs struct {
+	// device metadata details.
+	DeviceMetadata pulumi.StringPtrInput `pulumi:"deviceMetadata"`
+	// NIC Details of device
+	NicDetails NicDetailArrayInput `pulumi:"nicDetails"`
+}
+
+func (DeviceConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceConfiguration)(nil)).Elem()
+}
+
+func (i DeviceConfigurationArgs) ToDeviceConfigurationOutput() DeviceConfigurationOutput {
+	return i.ToDeviceConfigurationOutputWithContext(context.Background())
+}
+
+func (i DeviceConfigurationArgs) ToDeviceConfigurationOutputWithContext(ctx context.Context) DeviceConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceConfigurationOutput)
+}
+
+func (i DeviceConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceConfiguration] {
+	return pulumix.Output[DeviceConfiguration]{
+		OutputState: i.ToDeviceConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The device Configuration of a device.
+type DeviceConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DeviceConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceConfiguration)(nil)).Elem()
+}
+
+func (o DeviceConfigurationOutput) ToDeviceConfigurationOutput() DeviceConfigurationOutput {
+	return o
+}
+
+func (o DeviceConfigurationOutput) ToDeviceConfigurationOutputWithContext(ctx context.Context) DeviceConfigurationOutput {
+	return o
+}
+
+func (o DeviceConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceConfiguration] {
+	return pulumix.Output[DeviceConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// device metadata details.
+func (o DeviceConfigurationOutput) DeviceMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceConfiguration) *string { return v.DeviceMetadata }).(pulumi.StringPtrOutput)
+}
+
+// NIC Details of device
+func (o DeviceConfigurationOutput) NicDetails() NicDetailArrayOutput {
+	return o.ApplyT(func(v DeviceConfiguration) []NicDetail { return v.NicDetails }).(NicDetailArrayOutput)
+}
+
+// The device Configuration of a device.
+type DeviceConfigurationResponse struct {
+	// device metadata details.
+	DeviceMetadata *string `pulumi:"deviceMetadata"`
+	// NIC Details of device
+	NicDetails []NicDetailResponse `pulumi:"nicDetails"`
+}
+
+// The device Configuration of a device.
+type DeviceConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DeviceConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceConfigurationResponse)(nil)).Elem()
+}
+
+func (o DeviceConfigurationResponseOutput) ToDeviceConfigurationResponseOutput() DeviceConfigurationResponseOutput {
+	return o
+}
+
+func (o DeviceConfigurationResponseOutput) ToDeviceConfigurationResponseOutputWithContext(ctx context.Context) DeviceConfigurationResponseOutput {
+	return o
+}
+
+func (o DeviceConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceConfigurationResponse] {
+	return pulumix.Output[DeviceConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// device metadata details.
+func (o DeviceConfigurationResponseOutput) DeviceMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceConfigurationResponse) *string { return v.DeviceMetadata }).(pulumi.StringPtrOutput)
+}
+
+// NIC Details of device
+func (o DeviceConfigurationResponseOutput) NicDetails() NicDetailResponseArrayOutput {
+	return o.ApplyT(func(v DeviceConfigurationResponse) []NicDetailResponse { return v.NicDetails }).(NicDetailResponseArrayOutput)
 }
 
 // The resource management error additional info.
@@ -2852,6 +4127,398 @@ func (o GuestCredentialResponsePtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The HostNetwork of a cluster.
+type HostNetwork struct {
+	// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+	EnableStorageAutoIp *bool `pulumi:"enableStorageAutoIp"`
+	// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+	Intents []Intents `pulumi:"intents"`
+	// Defines how the storage adapters between nodes are connected either switch or switch less..
+	StorageConnectivitySwitchless *bool `pulumi:"storageConnectivitySwitchless"`
+	// List of StorageNetworks config to deploy AzureStackHCI Cluster.
+	StorageNetworks []StorageNetworks `pulumi:"storageNetworks"`
+}
+
+// Defaults sets the appropriate defaults for HostNetwork
+func (val *HostNetwork) Defaults() *HostNetwork {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableStorageAutoIp == nil {
+		enableStorageAutoIp_ := false
+		tmp.EnableStorageAutoIp = &enableStorageAutoIp_
+	}
+	if tmp.StorageConnectivitySwitchless == nil {
+		storageConnectivitySwitchless_ := false
+		tmp.StorageConnectivitySwitchless = &storageConnectivitySwitchless_
+	}
+	return &tmp
+}
+
+// HostNetworkInput is an input type that accepts HostNetworkArgs and HostNetworkOutput values.
+// You can construct a concrete instance of `HostNetworkInput` via:
+//
+//	HostNetworkArgs{...}
+type HostNetworkInput interface {
+	pulumi.Input
+
+	ToHostNetworkOutput() HostNetworkOutput
+	ToHostNetworkOutputWithContext(context.Context) HostNetworkOutput
+}
+
+// The HostNetwork of a cluster.
+type HostNetworkArgs struct {
+	// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+	EnableStorageAutoIp pulumi.BoolPtrInput `pulumi:"enableStorageAutoIp"`
+	// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+	Intents IntentsArrayInput `pulumi:"intents"`
+	// Defines how the storage adapters between nodes are connected either switch or switch less..
+	StorageConnectivitySwitchless pulumi.BoolPtrInput `pulumi:"storageConnectivitySwitchless"`
+	// List of StorageNetworks config to deploy AzureStackHCI Cluster.
+	StorageNetworks StorageNetworksArrayInput `pulumi:"storageNetworks"`
+}
+
+// Defaults sets the appropriate defaults for HostNetworkArgs
+func (val *HostNetworkArgs) Defaults() *HostNetworkArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableStorageAutoIp == nil {
+		tmp.EnableStorageAutoIp = pulumi.BoolPtr(false)
+	}
+	if tmp.StorageConnectivitySwitchless == nil {
+		tmp.StorageConnectivitySwitchless = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (HostNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostNetwork)(nil)).Elem()
+}
+
+func (i HostNetworkArgs) ToHostNetworkOutput() HostNetworkOutput {
+	return i.ToHostNetworkOutputWithContext(context.Background())
+}
+
+func (i HostNetworkArgs) ToHostNetworkOutputWithContext(ctx context.Context) HostNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostNetworkOutput)
+}
+
+func (i HostNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[HostNetwork] {
+	return pulumix.Output[HostNetwork]{
+		OutputState: i.ToHostNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i HostNetworkArgs) ToHostNetworkPtrOutput() HostNetworkPtrOutput {
+	return i.ToHostNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i HostNetworkArgs) ToHostNetworkPtrOutputWithContext(ctx context.Context) HostNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostNetworkOutput).ToHostNetworkPtrOutputWithContext(ctx)
+}
+
+// HostNetworkPtrInput is an input type that accepts HostNetworkArgs, HostNetworkPtr and HostNetworkPtrOutput values.
+// You can construct a concrete instance of `HostNetworkPtrInput` via:
+//
+//	        HostNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type HostNetworkPtrInput interface {
+	pulumi.Input
+
+	ToHostNetworkPtrOutput() HostNetworkPtrOutput
+	ToHostNetworkPtrOutputWithContext(context.Context) HostNetworkPtrOutput
+}
+
+type hostNetworkPtrType HostNetworkArgs
+
+func HostNetworkPtr(v *HostNetworkArgs) HostNetworkPtrInput {
+	return (*hostNetworkPtrType)(v)
+}
+
+func (*hostNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostNetwork)(nil)).Elem()
+}
+
+func (i *hostNetworkPtrType) ToHostNetworkPtrOutput() HostNetworkPtrOutput {
+	return i.ToHostNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *hostNetworkPtrType) ToHostNetworkPtrOutputWithContext(ctx context.Context) HostNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostNetworkPtrOutput)
+}
+
+func (i *hostNetworkPtrType) ToOutput(ctx context.Context) pulumix.Output[*HostNetwork] {
+	return pulumix.Output[*HostNetwork]{
+		OutputState: i.ToHostNetworkPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The HostNetwork of a cluster.
+type HostNetworkOutput struct{ *pulumi.OutputState }
+
+func (HostNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostNetwork)(nil)).Elem()
+}
+
+func (o HostNetworkOutput) ToHostNetworkOutput() HostNetworkOutput {
+	return o
+}
+
+func (o HostNetworkOutput) ToHostNetworkOutputWithContext(ctx context.Context) HostNetworkOutput {
+	return o
+}
+
+func (o HostNetworkOutput) ToHostNetworkPtrOutput() HostNetworkPtrOutput {
+	return o.ToHostNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o HostNetworkOutput) ToHostNetworkPtrOutputWithContext(ctx context.Context) HostNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostNetwork) *HostNetwork {
+		return &v
+	}).(HostNetworkPtrOutput)
+}
+
+func (o HostNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[HostNetwork] {
+	return pulumix.Output[HostNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+func (o HostNetworkOutput) EnableStorageAutoIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HostNetwork) *bool { return v.EnableStorageAutoIp }).(pulumi.BoolPtrOutput)
+}
+
+// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+func (o HostNetworkOutput) Intents() IntentsArrayOutput {
+	return o.ApplyT(func(v HostNetwork) []Intents { return v.Intents }).(IntentsArrayOutput)
+}
+
+// Defines how the storage adapters between nodes are connected either switch or switch less..
+func (o HostNetworkOutput) StorageConnectivitySwitchless() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HostNetwork) *bool { return v.StorageConnectivitySwitchless }).(pulumi.BoolPtrOutput)
+}
+
+// List of StorageNetworks config to deploy AzureStackHCI Cluster.
+func (o HostNetworkOutput) StorageNetworks() StorageNetworksArrayOutput {
+	return o.ApplyT(func(v HostNetwork) []StorageNetworks { return v.StorageNetworks }).(StorageNetworksArrayOutput)
+}
+
+type HostNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (HostNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostNetwork)(nil)).Elem()
+}
+
+func (o HostNetworkPtrOutput) ToHostNetworkPtrOutput() HostNetworkPtrOutput {
+	return o
+}
+
+func (o HostNetworkPtrOutput) ToHostNetworkPtrOutputWithContext(ctx context.Context) HostNetworkPtrOutput {
+	return o
+}
+
+func (o HostNetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostNetwork] {
+	return pulumix.Output[*HostNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HostNetworkPtrOutput) Elem() HostNetworkOutput {
+	return o.ApplyT(func(v *HostNetwork) HostNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret HostNetwork
+		return ret
+	}).(HostNetworkOutput)
+}
+
+// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+func (o HostNetworkPtrOutput) EnableStorageAutoIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostNetwork) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStorageAutoIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+func (o HostNetworkPtrOutput) Intents() IntentsArrayOutput {
+	return o.ApplyT(func(v *HostNetwork) []Intents {
+		if v == nil {
+			return nil
+		}
+		return v.Intents
+	}).(IntentsArrayOutput)
+}
+
+// Defines how the storage adapters between nodes are connected either switch or switch less..
+func (o HostNetworkPtrOutput) StorageConnectivitySwitchless() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostNetwork) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StorageConnectivitySwitchless
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of StorageNetworks config to deploy AzureStackHCI Cluster.
+func (o HostNetworkPtrOutput) StorageNetworks() StorageNetworksArrayOutput {
+	return o.ApplyT(func(v *HostNetwork) []StorageNetworks {
+		if v == nil {
+			return nil
+		}
+		return v.StorageNetworks
+	}).(StorageNetworksArrayOutput)
+}
+
+// The HostNetwork of a cluster.
+type HostNetworkResponse struct {
+	// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+	EnableStorageAutoIp *bool `pulumi:"enableStorageAutoIp"`
+	// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+	Intents []IntentsResponse `pulumi:"intents"`
+	// Defines how the storage adapters between nodes are connected either switch or switch less..
+	StorageConnectivitySwitchless *bool `pulumi:"storageConnectivitySwitchless"`
+	// List of StorageNetworks config to deploy AzureStackHCI Cluster.
+	StorageNetworks []StorageNetworksResponse `pulumi:"storageNetworks"`
+}
+
+// Defaults sets the appropriate defaults for HostNetworkResponse
+func (val *HostNetworkResponse) Defaults() *HostNetworkResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableStorageAutoIp == nil {
+		enableStorageAutoIp_ := false
+		tmp.EnableStorageAutoIp = &enableStorageAutoIp_
+	}
+	if tmp.StorageConnectivitySwitchless == nil {
+		storageConnectivitySwitchless_ := false
+		tmp.StorageConnectivitySwitchless = &storageConnectivitySwitchless_
+	}
+	return &tmp
+}
+
+// The HostNetwork of a cluster.
+type HostNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (HostNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostNetworkResponse)(nil)).Elem()
+}
+
+func (o HostNetworkResponseOutput) ToHostNetworkResponseOutput() HostNetworkResponseOutput {
+	return o
+}
+
+func (o HostNetworkResponseOutput) ToHostNetworkResponseOutputWithContext(ctx context.Context) HostNetworkResponseOutput {
+	return o
+}
+
+func (o HostNetworkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HostNetworkResponse] {
+	return pulumix.Output[HostNetworkResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+func (o HostNetworkResponseOutput) EnableStorageAutoIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HostNetworkResponse) *bool { return v.EnableStorageAutoIp }).(pulumi.BoolPtrOutput)
+}
+
+// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+func (o HostNetworkResponseOutput) Intents() IntentsResponseArrayOutput {
+	return o.ApplyT(func(v HostNetworkResponse) []IntentsResponse { return v.Intents }).(IntentsResponseArrayOutput)
+}
+
+// Defines how the storage adapters between nodes are connected either switch or switch less..
+func (o HostNetworkResponseOutput) StorageConnectivitySwitchless() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HostNetworkResponse) *bool { return v.StorageConnectivitySwitchless }).(pulumi.BoolPtrOutput)
+}
+
+// List of StorageNetworks config to deploy AzureStackHCI Cluster.
+func (o HostNetworkResponseOutput) StorageNetworks() StorageNetworksResponseArrayOutput {
+	return o.ApplyT(func(v HostNetworkResponse) []StorageNetworksResponse { return v.StorageNetworks }).(StorageNetworksResponseArrayOutput)
+}
+
+type HostNetworkResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HostNetworkResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostNetworkResponse)(nil)).Elem()
+}
+
+func (o HostNetworkResponsePtrOutput) ToHostNetworkResponsePtrOutput() HostNetworkResponsePtrOutput {
+	return o
+}
+
+func (o HostNetworkResponsePtrOutput) ToHostNetworkResponsePtrOutputWithContext(ctx context.Context) HostNetworkResponsePtrOutput {
+	return o
+}
+
+func (o HostNetworkResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostNetworkResponse] {
+	return pulumix.Output[*HostNetworkResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HostNetworkResponsePtrOutput) Elem() HostNetworkResponseOutput {
+	return o.ApplyT(func(v *HostNetworkResponse) HostNetworkResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HostNetworkResponse
+		return ret
+	}).(HostNetworkResponseOutput)
+}
+
+// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+func (o HostNetworkResponsePtrOutput) EnableStorageAutoIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostNetworkResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStorageAutoIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+func (o HostNetworkResponsePtrOutput) Intents() IntentsResponseArrayOutput {
+	return o.ApplyT(func(v *HostNetworkResponse) []IntentsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Intents
+	}).(IntentsResponseArrayOutput)
+}
+
+// Defines how the storage adapters between nodes are connected either switch or switch less..
+func (o HostNetworkResponsePtrOutput) StorageConnectivitySwitchless() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostNetworkResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StorageConnectivitySwitchless
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of StorageNetworks config to deploy AzureStackHCI Cluster.
+func (o HostNetworkResponsePtrOutput) StorageNetworks() StorageNetworksResponseArrayOutput {
+	return o.ApplyT(func(v *HostNetworkResponse) []StorageNetworksResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StorageNetworks
+	}).(StorageNetworksResponseArrayOutput)
+}
+
 // HTTP Proxy configuration for the VM.
 type HttpProxyConfiguration struct {
 	// The httpsProxy url.
@@ -4453,6 +6120,252 @@ func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The InfrastructureNetwork of a AzureStackHCI Cluster.
+type InfrastructureNetwork struct {
+	// IPv4 address of the DNS servers in your environment.
+	DnsServers []string `pulumi:"dnsServers"`
+	// Default gateway that should be used for the provided IP address space.
+	Gateway *string `pulumi:"gateway"`
+	// Range of IP addresses from which addresses are allocated for nodes within a subnet.
+	IpPools []IpPools `pulumi:"ipPools"`
+	// Subnet mask that matches the provided IP address space.
+	SubnetMask *string `pulumi:"subnetMask"`
+	// Allows customers to use DHCP for Hosts and Cluster IPs. If not declared, the deployment will default to static IPs. When true, GW and DNS servers are not required
+	UseDhcp *bool `pulumi:"useDhcp"`
+}
+
+// InfrastructureNetworkInput is an input type that accepts InfrastructureNetworkArgs and InfrastructureNetworkOutput values.
+// You can construct a concrete instance of `InfrastructureNetworkInput` via:
+//
+//	InfrastructureNetworkArgs{...}
+type InfrastructureNetworkInput interface {
+	pulumi.Input
+
+	ToInfrastructureNetworkOutput() InfrastructureNetworkOutput
+	ToInfrastructureNetworkOutputWithContext(context.Context) InfrastructureNetworkOutput
+}
+
+// The InfrastructureNetwork of a AzureStackHCI Cluster.
+type InfrastructureNetworkArgs struct {
+	// IPv4 address of the DNS servers in your environment.
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
+	// Default gateway that should be used for the provided IP address space.
+	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
+	// Range of IP addresses from which addresses are allocated for nodes within a subnet.
+	IpPools IpPoolsArrayInput `pulumi:"ipPools"`
+	// Subnet mask that matches the provided IP address space.
+	SubnetMask pulumi.StringPtrInput `pulumi:"subnetMask"`
+	// Allows customers to use DHCP for Hosts and Cluster IPs. If not declared, the deployment will default to static IPs. When true, GW and DNS servers are not required
+	UseDhcp pulumi.BoolPtrInput `pulumi:"useDhcp"`
+}
+
+func (InfrastructureNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureNetwork)(nil)).Elem()
+}
+
+func (i InfrastructureNetworkArgs) ToInfrastructureNetworkOutput() InfrastructureNetworkOutput {
+	return i.ToInfrastructureNetworkOutputWithContext(context.Background())
+}
+
+func (i InfrastructureNetworkArgs) ToInfrastructureNetworkOutputWithContext(ctx context.Context) InfrastructureNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureNetworkOutput)
+}
+
+func (i InfrastructureNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[InfrastructureNetwork] {
+	return pulumix.Output[InfrastructureNetwork]{
+		OutputState: i.ToInfrastructureNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
+// InfrastructureNetworkArrayInput is an input type that accepts InfrastructureNetworkArray and InfrastructureNetworkArrayOutput values.
+// You can construct a concrete instance of `InfrastructureNetworkArrayInput` via:
+//
+//	InfrastructureNetworkArray{ InfrastructureNetworkArgs{...} }
+type InfrastructureNetworkArrayInput interface {
+	pulumi.Input
+
+	ToInfrastructureNetworkArrayOutput() InfrastructureNetworkArrayOutput
+	ToInfrastructureNetworkArrayOutputWithContext(context.Context) InfrastructureNetworkArrayOutput
+}
+
+type InfrastructureNetworkArray []InfrastructureNetworkInput
+
+func (InfrastructureNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureNetwork)(nil)).Elem()
+}
+
+func (i InfrastructureNetworkArray) ToInfrastructureNetworkArrayOutput() InfrastructureNetworkArrayOutput {
+	return i.ToInfrastructureNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i InfrastructureNetworkArray) ToInfrastructureNetworkArrayOutputWithContext(ctx context.Context) InfrastructureNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureNetworkArrayOutput)
+}
+
+func (i InfrastructureNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]InfrastructureNetwork] {
+	return pulumix.Output[[]InfrastructureNetwork]{
+		OutputState: i.ToInfrastructureNetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The InfrastructureNetwork of a AzureStackHCI Cluster.
+type InfrastructureNetworkOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureNetwork)(nil)).Elem()
+}
+
+func (o InfrastructureNetworkOutput) ToInfrastructureNetworkOutput() InfrastructureNetworkOutput {
+	return o
+}
+
+func (o InfrastructureNetworkOutput) ToInfrastructureNetworkOutputWithContext(ctx context.Context) InfrastructureNetworkOutput {
+	return o
+}
+
+func (o InfrastructureNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[InfrastructureNetwork] {
+	return pulumix.Output[InfrastructureNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
+// IPv4 address of the DNS servers in your environment.
+func (o InfrastructureNetworkOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InfrastructureNetwork) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// Default gateway that should be used for the provided IP address space.
+func (o InfrastructureNetworkOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureNetwork) *string { return v.Gateway }).(pulumi.StringPtrOutput)
+}
+
+// Range of IP addresses from which addresses are allocated for nodes within a subnet.
+func (o InfrastructureNetworkOutput) IpPools() IpPoolsArrayOutput {
+	return o.ApplyT(func(v InfrastructureNetwork) []IpPools { return v.IpPools }).(IpPoolsArrayOutput)
+}
+
+// Subnet mask that matches the provided IP address space.
+func (o InfrastructureNetworkOutput) SubnetMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureNetwork) *string { return v.SubnetMask }).(pulumi.StringPtrOutput)
+}
+
+// Allows customers to use DHCP for Hosts and Cluster IPs. If not declared, the deployment will default to static IPs. When true, GW and DNS servers are not required
+func (o InfrastructureNetworkOutput) UseDhcp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InfrastructureNetwork) *bool { return v.UseDhcp }).(pulumi.BoolPtrOutput)
+}
+
+type InfrastructureNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureNetwork)(nil)).Elem()
+}
+
+func (o InfrastructureNetworkArrayOutput) ToInfrastructureNetworkArrayOutput() InfrastructureNetworkArrayOutput {
+	return o
+}
+
+func (o InfrastructureNetworkArrayOutput) ToInfrastructureNetworkArrayOutputWithContext(ctx context.Context) InfrastructureNetworkArrayOutput {
+	return o
+}
+
+func (o InfrastructureNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InfrastructureNetwork] {
+	return pulumix.Output[[]InfrastructureNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InfrastructureNetworkArrayOutput) Index(i pulumi.IntInput) InfrastructureNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfrastructureNetwork {
+		return vs[0].([]InfrastructureNetwork)[vs[1].(int)]
+	}).(InfrastructureNetworkOutput)
+}
+
+// The InfrastructureNetwork of a AzureStackHCI Cluster.
+type InfrastructureNetworkResponse struct {
+	// IPv4 address of the DNS servers in your environment.
+	DnsServers []string `pulumi:"dnsServers"`
+	// Default gateway that should be used for the provided IP address space.
+	Gateway *string `pulumi:"gateway"`
+	// Range of IP addresses from which addresses are allocated for nodes within a subnet.
+	IpPools []IpPoolsResponse `pulumi:"ipPools"`
+	// Subnet mask that matches the provided IP address space.
+	SubnetMask *string `pulumi:"subnetMask"`
+	// Allows customers to use DHCP for Hosts and Cluster IPs. If not declared, the deployment will default to static IPs. When true, GW and DNS servers are not required
+	UseDhcp *bool `pulumi:"useDhcp"`
+}
+
+// The InfrastructureNetwork of a AzureStackHCI Cluster.
+type InfrastructureNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureNetworkResponse)(nil)).Elem()
+}
+
+func (o InfrastructureNetworkResponseOutput) ToInfrastructureNetworkResponseOutput() InfrastructureNetworkResponseOutput {
+	return o
+}
+
+func (o InfrastructureNetworkResponseOutput) ToInfrastructureNetworkResponseOutputWithContext(ctx context.Context) InfrastructureNetworkResponseOutput {
+	return o
+}
+
+func (o InfrastructureNetworkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InfrastructureNetworkResponse] {
+	return pulumix.Output[InfrastructureNetworkResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// IPv4 address of the DNS servers in your environment.
+func (o InfrastructureNetworkResponseOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InfrastructureNetworkResponse) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// Default gateway that should be used for the provided IP address space.
+func (o InfrastructureNetworkResponseOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureNetworkResponse) *string { return v.Gateway }).(pulumi.StringPtrOutput)
+}
+
+// Range of IP addresses from which addresses are allocated for nodes within a subnet.
+func (o InfrastructureNetworkResponseOutput) IpPools() IpPoolsResponseArrayOutput {
+	return o.ApplyT(func(v InfrastructureNetworkResponse) []IpPoolsResponse { return v.IpPools }).(IpPoolsResponseArrayOutput)
+}
+
+// Subnet mask that matches the provided IP address space.
+func (o InfrastructureNetworkResponseOutput) SubnetMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureNetworkResponse) *string { return v.SubnetMask }).(pulumi.StringPtrOutput)
+}
+
+// Allows customers to use DHCP for Hosts and Cluster IPs. If not declared, the deployment will default to static IPs. When true, GW and DNS servers are not required
+func (o InfrastructureNetworkResponseOutput) UseDhcp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InfrastructureNetworkResponse) *bool { return v.UseDhcp }).(pulumi.BoolPtrOutput)
+}
+
+type InfrastructureNetworkResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureNetworkResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureNetworkResponse)(nil)).Elem()
+}
+
+func (o InfrastructureNetworkResponseArrayOutput) ToInfrastructureNetworkResponseArrayOutput() InfrastructureNetworkResponseArrayOutput {
+	return o
+}
+
+func (o InfrastructureNetworkResponseArrayOutput) ToInfrastructureNetworkResponseArrayOutputWithContext(ctx context.Context) InfrastructureNetworkResponseArrayOutput {
+	return o
+}
+
+func (o InfrastructureNetworkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InfrastructureNetworkResponse] {
+	return pulumix.Output[[]InfrastructureNetworkResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InfrastructureNetworkResponseArrayOutput) Index(i pulumi.IntInput) InfrastructureNetworkResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfrastructureNetworkResponse {
+		return vs[0].([]InfrastructureNetworkResponse)[vs[1].(int)]
+	}).(InfrastructureNetworkResponseOutput)
+}
+
 // Instance view status.
 type InstanceViewStatusResponse struct {
 	// The status code.
@@ -4537,6 +6450,377 @@ func (o InstanceViewStatusResponseArrayOutput) Index(i pulumi.IntInput) Instance
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceViewStatusResponse {
 		return vs[0].([]InstanceViewStatusResponse)[vs[1].(int)]
 	}).(InstanceViewStatusResponseOutput)
+}
+
+// The Intents of a cluster.
+type Intents struct {
+	// Array of network interfaces used for the network intent.
+	Adapter []string `pulumi:"adapter"`
+	// Set Adapter PropertyOverrides for cluster.
+	AdapterPropertyOverrides *AdapterPropertyOverrides `pulumi:"adapterPropertyOverrides"`
+	// Name of the network intent you wish to create.
+	Name *string `pulumi:"name"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideAdapterProperty *bool `pulumi:"overrideAdapterProperty"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideQosPolicy *bool `pulumi:"overrideQosPolicy"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideVirtualSwitchConfiguration *bool `pulumi:"overrideVirtualSwitchConfiguration"`
+	// Set QoS PolicyOverrides for cluster.
+	QosPolicyOverrides *QosPolicyOverrides `pulumi:"qosPolicyOverrides"`
+	// List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
+	TrafficType []string `pulumi:"trafficType"`
+	// Set virtualSwitch ConfigurationOverrides for cluster.
+	VirtualSwitchConfigurationOverrides *VirtualSwitchConfigurationOverrides `pulumi:"virtualSwitchConfigurationOverrides"`
+}
+
+// Defaults sets the appropriate defaults for Intents
+func (val *Intents) Defaults() *Intents {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.OverrideAdapterProperty == nil {
+		overrideAdapterProperty_ := false
+		tmp.OverrideAdapterProperty = &overrideAdapterProperty_
+	}
+	if tmp.OverrideQosPolicy == nil {
+		overrideQosPolicy_ := false
+		tmp.OverrideQosPolicy = &overrideQosPolicy_
+	}
+	if tmp.OverrideVirtualSwitchConfiguration == nil {
+		overrideVirtualSwitchConfiguration_ := false
+		tmp.OverrideVirtualSwitchConfiguration = &overrideVirtualSwitchConfiguration_
+	}
+	return &tmp
+}
+
+// IntentsInput is an input type that accepts IntentsArgs and IntentsOutput values.
+// You can construct a concrete instance of `IntentsInput` via:
+//
+//	IntentsArgs{...}
+type IntentsInput interface {
+	pulumi.Input
+
+	ToIntentsOutput() IntentsOutput
+	ToIntentsOutputWithContext(context.Context) IntentsOutput
+}
+
+// The Intents of a cluster.
+type IntentsArgs struct {
+	// Array of network interfaces used for the network intent.
+	Adapter pulumi.StringArrayInput `pulumi:"adapter"`
+	// Set Adapter PropertyOverrides for cluster.
+	AdapterPropertyOverrides AdapterPropertyOverridesPtrInput `pulumi:"adapterPropertyOverrides"`
+	// Name of the network intent you wish to create.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideAdapterProperty pulumi.BoolPtrInput `pulumi:"overrideAdapterProperty"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideQosPolicy pulumi.BoolPtrInput `pulumi:"overrideQosPolicy"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideVirtualSwitchConfiguration pulumi.BoolPtrInput `pulumi:"overrideVirtualSwitchConfiguration"`
+	// Set QoS PolicyOverrides for cluster.
+	QosPolicyOverrides QosPolicyOverridesPtrInput `pulumi:"qosPolicyOverrides"`
+	// List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
+	TrafficType pulumi.StringArrayInput `pulumi:"trafficType"`
+	// Set virtualSwitch ConfigurationOverrides for cluster.
+	VirtualSwitchConfigurationOverrides VirtualSwitchConfigurationOverridesPtrInput `pulumi:"virtualSwitchConfigurationOverrides"`
+}
+
+// Defaults sets the appropriate defaults for IntentsArgs
+func (val *IntentsArgs) Defaults() *IntentsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.OverrideAdapterProperty == nil {
+		tmp.OverrideAdapterProperty = pulumi.BoolPtr(false)
+	}
+	if tmp.OverrideQosPolicy == nil {
+		tmp.OverrideQosPolicy = pulumi.BoolPtr(false)
+	}
+	if tmp.OverrideVirtualSwitchConfiguration == nil {
+		tmp.OverrideVirtualSwitchConfiguration = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (IntentsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Intents)(nil)).Elem()
+}
+
+func (i IntentsArgs) ToIntentsOutput() IntentsOutput {
+	return i.ToIntentsOutputWithContext(context.Background())
+}
+
+func (i IntentsArgs) ToIntentsOutputWithContext(ctx context.Context) IntentsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntentsOutput)
+}
+
+func (i IntentsArgs) ToOutput(ctx context.Context) pulumix.Output[Intents] {
+	return pulumix.Output[Intents]{
+		OutputState: i.ToIntentsOutputWithContext(ctx).OutputState,
+	}
+}
+
+// IntentsArrayInput is an input type that accepts IntentsArray and IntentsArrayOutput values.
+// You can construct a concrete instance of `IntentsArrayInput` via:
+//
+//	IntentsArray{ IntentsArgs{...} }
+type IntentsArrayInput interface {
+	pulumi.Input
+
+	ToIntentsArrayOutput() IntentsArrayOutput
+	ToIntentsArrayOutputWithContext(context.Context) IntentsArrayOutput
+}
+
+type IntentsArray []IntentsInput
+
+func (IntentsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Intents)(nil)).Elem()
+}
+
+func (i IntentsArray) ToIntentsArrayOutput() IntentsArrayOutput {
+	return i.ToIntentsArrayOutputWithContext(context.Background())
+}
+
+func (i IntentsArray) ToIntentsArrayOutputWithContext(ctx context.Context) IntentsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntentsArrayOutput)
+}
+
+func (i IntentsArray) ToOutput(ctx context.Context) pulumix.Output[[]Intents] {
+	return pulumix.Output[[]Intents]{
+		OutputState: i.ToIntentsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The Intents of a cluster.
+type IntentsOutput struct{ *pulumi.OutputState }
+
+func (IntentsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Intents)(nil)).Elem()
+}
+
+func (o IntentsOutput) ToIntentsOutput() IntentsOutput {
+	return o
+}
+
+func (o IntentsOutput) ToIntentsOutputWithContext(ctx context.Context) IntentsOutput {
+	return o
+}
+
+func (o IntentsOutput) ToOutput(ctx context.Context) pulumix.Output[Intents] {
+	return pulumix.Output[Intents]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Array of network interfaces used for the network intent.
+func (o IntentsOutput) Adapter() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Intents) []string { return v.Adapter }).(pulumi.StringArrayOutput)
+}
+
+// Set Adapter PropertyOverrides for cluster.
+func (o IntentsOutput) AdapterPropertyOverrides() AdapterPropertyOverridesPtrOutput {
+	return o.ApplyT(func(v Intents) *AdapterPropertyOverrides { return v.AdapterPropertyOverrides }).(AdapterPropertyOverridesPtrOutput)
+}
+
+// Name of the network intent you wish to create.
+func (o IntentsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Intents) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o IntentsOutput) OverrideAdapterProperty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Intents) *bool { return v.OverrideAdapterProperty }).(pulumi.BoolPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o IntentsOutput) OverrideQosPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Intents) *bool { return v.OverrideQosPolicy }).(pulumi.BoolPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o IntentsOutput) OverrideVirtualSwitchConfiguration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Intents) *bool { return v.OverrideVirtualSwitchConfiguration }).(pulumi.BoolPtrOutput)
+}
+
+// Set QoS PolicyOverrides for cluster.
+func (o IntentsOutput) QosPolicyOverrides() QosPolicyOverridesPtrOutput {
+	return o.ApplyT(func(v Intents) *QosPolicyOverrides { return v.QosPolicyOverrides }).(QosPolicyOverridesPtrOutput)
+}
+
+// List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
+func (o IntentsOutput) TrafficType() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Intents) []string { return v.TrafficType }).(pulumi.StringArrayOutput)
+}
+
+// Set virtualSwitch ConfigurationOverrides for cluster.
+func (o IntentsOutput) VirtualSwitchConfigurationOverrides() VirtualSwitchConfigurationOverridesPtrOutput {
+	return o.ApplyT(func(v Intents) *VirtualSwitchConfigurationOverrides { return v.VirtualSwitchConfigurationOverrides }).(VirtualSwitchConfigurationOverridesPtrOutput)
+}
+
+type IntentsArrayOutput struct{ *pulumi.OutputState }
+
+func (IntentsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Intents)(nil)).Elem()
+}
+
+func (o IntentsArrayOutput) ToIntentsArrayOutput() IntentsArrayOutput {
+	return o
+}
+
+func (o IntentsArrayOutput) ToIntentsArrayOutputWithContext(ctx context.Context) IntentsArrayOutput {
+	return o
+}
+
+func (o IntentsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Intents] {
+	return pulumix.Output[[]Intents]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IntentsArrayOutput) Index(i pulumi.IntInput) IntentsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Intents {
+		return vs[0].([]Intents)[vs[1].(int)]
+	}).(IntentsOutput)
+}
+
+// The Intents of a cluster.
+type IntentsResponse struct {
+	// Array of network interfaces used for the network intent.
+	Adapter []string `pulumi:"adapter"`
+	// Set Adapter PropertyOverrides for cluster.
+	AdapterPropertyOverrides *AdapterPropertyOverridesResponse `pulumi:"adapterPropertyOverrides"`
+	// Name of the network intent you wish to create.
+	Name *string `pulumi:"name"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideAdapterProperty *bool `pulumi:"overrideAdapterProperty"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideQosPolicy *bool `pulumi:"overrideQosPolicy"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideVirtualSwitchConfiguration *bool `pulumi:"overrideVirtualSwitchConfiguration"`
+	// Set QoS PolicyOverrides for cluster.
+	QosPolicyOverrides *QosPolicyOverridesResponse `pulumi:"qosPolicyOverrides"`
+	// List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
+	TrafficType []string `pulumi:"trafficType"`
+	// Set virtualSwitch ConfigurationOverrides for cluster.
+	VirtualSwitchConfigurationOverrides *VirtualSwitchConfigurationOverridesResponse `pulumi:"virtualSwitchConfigurationOverrides"`
+}
+
+// Defaults sets the appropriate defaults for IntentsResponse
+func (val *IntentsResponse) Defaults() *IntentsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.OverrideAdapterProperty == nil {
+		overrideAdapterProperty_ := false
+		tmp.OverrideAdapterProperty = &overrideAdapterProperty_
+	}
+	if tmp.OverrideQosPolicy == nil {
+		overrideQosPolicy_ := false
+		tmp.OverrideQosPolicy = &overrideQosPolicy_
+	}
+	if tmp.OverrideVirtualSwitchConfiguration == nil {
+		overrideVirtualSwitchConfiguration_ := false
+		tmp.OverrideVirtualSwitchConfiguration = &overrideVirtualSwitchConfiguration_
+	}
+	return &tmp
+}
+
+// The Intents of a cluster.
+type IntentsResponseOutput struct{ *pulumi.OutputState }
+
+func (IntentsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntentsResponse)(nil)).Elem()
+}
+
+func (o IntentsResponseOutput) ToIntentsResponseOutput() IntentsResponseOutput {
+	return o
+}
+
+func (o IntentsResponseOutput) ToIntentsResponseOutputWithContext(ctx context.Context) IntentsResponseOutput {
+	return o
+}
+
+func (o IntentsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IntentsResponse] {
+	return pulumix.Output[IntentsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Array of network interfaces used for the network intent.
+func (o IntentsResponseOutput) Adapter() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntentsResponse) []string { return v.Adapter }).(pulumi.StringArrayOutput)
+}
+
+// Set Adapter PropertyOverrides for cluster.
+func (o IntentsResponseOutput) AdapterPropertyOverrides() AdapterPropertyOverridesResponsePtrOutput {
+	return o.ApplyT(func(v IntentsResponse) *AdapterPropertyOverridesResponse { return v.AdapterPropertyOverrides }).(AdapterPropertyOverridesResponsePtrOutput)
+}
+
+// Name of the network intent you wish to create.
+func (o IntentsResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntentsResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o IntentsResponseOutput) OverrideAdapterProperty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IntentsResponse) *bool { return v.OverrideAdapterProperty }).(pulumi.BoolPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o IntentsResponseOutput) OverrideQosPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IntentsResponse) *bool { return v.OverrideQosPolicy }).(pulumi.BoolPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o IntentsResponseOutput) OverrideVirtualSwitchConfiguration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IntentsResponse) *bool { return v.OverrideVirtualSwitchConfiguration }).(pulumi.BoolPtrOutput)
+}
+
+// Set QoS PolicyOverrides for cluster.
+func (o IntentsResponseOutput) QosPolicyOverrides() QosPolicyOverridesResponsePtrOutput {
+	return o.ApplyT(func(v IntentsResponse) *QosPolicyOverridesResponse { return v.QosPolicyOverrides }).(QosPolicyOverridesResponsePtrOutput)
+}
+
+// List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
+func (o IntentsResponseOutput) TrafficType() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntentsResponse) []string { return v.TrafficType }).(pulumi.StringArrayOutput)
+}
+
+// Set virtualSwitch ConfigurationOverrides for cluster.
+func (o IntentsResponseOutput) VirtualSwitchConfigurationOverrides() VirtualSwitchConfigurationOverridesResponsePtrOutput {
+	return o.ApplyT(func(v IntentsResponse) *VirtualSwitchConfigurationOverridesResponse {
+		return v.VirtualSwitchConfigurationOverrides
+	}).(VirtualSwitchConfigurationOverridesResponsePtrOutput)
+}
+
+type IntentsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IntentsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntentsResponse)(nil)).Elem()
+}
+
+func (o IntentsResponseArrayOutput) ToIntentsResponseArrayOutput() IntentsResponseArrayOutput {
+	return o
+}
+
+func (o IntentsResponseArrayOutput) ToIntentsResponseArrayOutputWithContext(ctx context.Context) IntentsResponseArrayOutput {
+	return o
+}
+
+func (o IntentsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntentsResponse] {
+	return pulumix.Output[[]IntentsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IntentsResponseArrayOutput) Index(i pulumi.IntInput) IntentsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntentsResponse {
+		return vs[0].([]IntentsResponse)[vs[1].(int)]
+	}).(IntentsResponseOutput)
 }
 
 type InterfaceDNSSettings struct {
@@ -4768,6 +7052,204 @@ func (o InterfaceDNSSettingsResponsePtrOutput) DnsServers() pulumi.StringArrayOu
 		}
 		return v.DnsServers
 	}).(pulumi.StringArrayOutput)
+}
+
+// The dnsServers of a device.
+type IpPools struct {
+	// Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
+	EndingAddress *string `pulumi:"endingAddress"`
+	// Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
+	StartingAddress *string `pulumi:"startingAddress"`
+}
+
+// IpPoolsInput is an input type that accepts IpPoolsArgs and IpPoolsOutput values.
+// You can construct a concrete instance of `IpPoolsInput` via:
+//
+//	IpPoolsArgs{...}
+type IpPoolsInput interface {
+	pulumi.Input
+
+	ToIpPoolsOutput() IpPoolsOutput
+	ToIpPoolsOutputWithContext(context.Context) IpPoolsOutput
+}
+
+// The dnsServers of a device.
+type IpPoolsArgs struct {
+	// Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
+	EndingAddress pulumi.StringPtrInput `pulumi:"endingAddress"`
+	// Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
+	StartingAddress pulumi.StringPtrInput `pulumi:"startingAddress"`
+}
+
+func (IpPoolsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpPools)(nil)).Elem()
+}
+
+func (i IpPoolsArgs) ToIpPoolsOutput() IpPoolsOutput {
+	return i.ToIpPoolsOutputWithContext(context.Background())
+}
+
+func (i IpPoolsArgs) ToIpPoolsOutputWithContext(ctx context.Context) IpPoolsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpPoolsOutput)
+}
+
+func (i IpPoolsArgs) ToOutput(ctx context.Context) pulumix.Output[IpPools] {
+	return pulumix.Output[IpPools]{
+		OutputState: i.ToIpPoolsOutputWithContext(ctx).OutputState,
+	}
+}
+
+// IpPoolsArrayInput is an input type that accepts IpPoolsArray and IpPoolsArrayOutput values.
+// You can construct a concrete instance of `IpPoolsArrayInput` via:
+//
+//	IpPoolsArray{ IpPoolsArgs{...} }
+type IpPoolsArrayInput interface {
+	pulumi.Input
+
+	ToIpPoolsArrayOutput() IpPoolsArrayOutput
+	ToIpPoolsArrayOutputWithContext(context.Context) IpPoolsArrayOutput
+}
+
+type IpPoolsArray []IpPoolsInput
+
+func (IpPoolsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpPools)(nil)).Elem()
+}
+
+func (i IpPoolsArray) ToIpPoolsArrayOutput() IpPoolsArrayOutput {
+	return i.ToIpPoolsArrayOutputWithContext(context.Background())
+}
+
+func (i IpPoolsArray) ToIpPoolsArrayOutputWithContext(ctx context.Context) IpPoolsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpPoolsArrayOutput)
+}
+
+func (i IpPoolsArray) ToOutput(ctx context.Context) pulumix.Output[[]IpPools] {
+	return pulumix.Output[[]IpPools]{
+		OutputState: i.ToIpPoolsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The dnsServers of a device.
+type IpPoolsOutput struct{ *pulumi.OutputState }
+
+func (IpPoolsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpPools)(nil)).Elem()
+}
+
+func (o IpPoolsOutput) ToIpPoolsOutput() IpPoolsOutput {
+	return o
+}
+
+func (o IpPoolsOutput) ToIpPoolsOutputWithContext(ctx context.Context) IpPoolsOutput {
+	return o
+}
+
+func (o IpPoolsOutput) ToOutput(ctx context.Context) pulumix.Output[IpPools] {
+	return pulumix.Output[IpPools]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
+func (o IpPoolsOutput) EndingAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpPools) *string { return v.EndingAddress }).(pulumi.StringPtrOutput)
+}
+
+// Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
+func (o IpPoolsOutput) StartingAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpPools) *string { return v.StartingAddress }).(pulumi.StringPtrOutput)
+}
+
+type IpPoolsArrayOutput struct{ *pulumi.OutputState }
+
+func (IpPoolsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpPools)(nil)).Elem()
+}
+
+func (o IpPoolsArrayOutput) ToIpPoolsArrayOutput() IpPoolsArrayOutput {
+	return o
+}
+
+func (o IpPoolsArrayOutput) ToIpPoolsArrayOutputWithContext(ctx context.Context) IpPoolsArrayOutput {
+	return o
+}
+
+func (o IpPoolsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpPools] {
+	return pulumix.Output[[]IpPools]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IpPoolsArrayOutput) Index(i pulumi.IntInput) IpPoolsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpPools {
+		return vs[0].([]IpPools)[vs[1].(int)]
+	}).(IpPoolsOutput)
+}
+
+// The dnsServers of a device.
+type IpPoolsResponse struct {
+	// Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
+	EndingAddress *string `pulumi:"endingAddress"`
+	// Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
+	StartingAddress *string `pulumi:"startingAddress"`
+}
+
+// The dnsServers of a device.
+type IpPoolsResponseOutput struct{ *pulumi.OutputState }
+
+func (IpPoolsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpPoolsResponse)(nil)).Elem()
+}
+
+func (o IpPoolsResponseOutput) ToIpPoolsResponseOutput() IpPoolsResponseOutput {
+	return o
+}
+
+func (o IpPoolsResponseOutput) ToIpPoolsResponseOutputWithContext(ctx context.Context) IpPoolsResponseOutput {
+	return o
+}
+
+func (o IpPoolsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IpPoolsResponse] {
+	return pulumix.Output[IpPoolsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
+func (o IpPoolsResponseOutput) EndingAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpPoolsResponse) *string { return v.EndingAddress }).(pulumi.StringPtrOutput)
+}
+
+// Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
+func (o IpPoolsResponseOutput) StartingAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpPoolsResponse) *string { return v.StartingAddress }).(pulumi.StringPtrOutput)
+}
+
+type IpPoolsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IpPoolsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpPoolsResponse)(nil)).Elem()
+}
+
+func (o IpPoolsResponseArrayOutput) ToIpPoolsResponseArrayOutput() IpPoolsResponseArrayOutput {
+	return o
+}
+
+func (o IpPoolsResponseArrayOutput) ToIpPoolsResponseArrayOutputWithContext(ctx context.Context) IpPoolsResponseArrayOutput {
+	return o
+}
+
+func (o IpPoolsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpPoolsResponse] {
+	return pulumix.Output[[]IpPoolsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IpPoolsResponseArrayOutput) Index(i pulumi.IntInput) IpPoolsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpPoolsResponse {
+		return vs[0].([]IpPoolsResponse)[vs[1].(int)]
+	}).(IpPoolsResponseOutput)
 }
 
 // DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
@@ -5758,6 +8240,919 @@ func (o NetworkInterfaceStatusResponseProvisioningStatusPtrOutput) Status() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The NIC Detail of a device.
+type NicDetail struct {
+	// Adapter Name of NIC
+	AdapterName string `pulumi:"adapterName"`
+	// Component Id of NIC
+	ComponentId *string `pulumi:"componentId"`
+	// Default Gateway of NIC
+	DefaultGateway *string `pulumi:"defaultGateway"`
+	// Default Isolation of Management NIC
+	DefaultIsolationId *string `pulumi:"defaultIsolationId"`
+	// DNS Servers for NIC
+	DnsServers []string `pulumi:"dnsServers"`
+	// Driver Version of NIC
+	DriverVersion *string `pulumi:"driverVersion"`
+	// Interface Description of NIC
+	InterfaceDescription *string `pulumi:"interfaceDescription"`
+	// Subnet Mask of NIC
+	Ip4Address *string `pulumi:"ip4Address"`
+	// Subnet Mask of NIC
+	SubnetMask *string `pulumi:"subnetMask"`
+}
+
+// NicDetailInput is an input type that accepts NicDetailArgs and NicDetailOutput values.
+// You can construct a concrete instance of `NicDetailInput` via:
+//
+//	NicDetailArgs{...}
+type NicDetailInput interface {
+	pulumi.Input
+
+	ToNicDetailOutput() NicDetailOutput
+	ToNicDetailOutputWithContext(context.Context) NicDetailOutput
+}
+
+// The NIC Detail of a device.
+type NicDetailArgs struct {
+	// Adapter Name of NIC
+	AdapterName pulumi.StringInput `pulumi:"adapterName"`
+	// Component Id of NIC
+	ComponentId pulumi.StringPtrInput `pulumi:"componentId"`
+	// Default Gateway of NIC
+	DefaultGateway pulumi.StringPtrInput `pulumi:"defaultGateway"`
+	// Default Isolation of Management NIC
+	DefaultIsolationId pulumi.StringPtrInput `pulumi:"defaultIsolationId"`
+	// DNS Servers for NIC
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
+	// Driver Version of NIC
+	DriverVersion pulumi.StringPtrInput `pulumi:"driverVersion"`
+	// Interface Description of NIC
+	InterfaceDescription pulumi.StringPtrInput `pulumi:"interfaceDescription"`
+	// Subnet Mask of NIC
+	Ip4Address pulumi.StringPtrInput `pulumi:"ip4Address"`
+	// Subnet Mask of NIC
+	SubnetMask pulumi.StringPtrInput `pulumi:"subnetMask"`
+}
+
+func (NicDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NicDetail)(nil)).Elem()
+}
+
+func (i NicDetailArgs) ToNicDetailOutput() NicDetailOutput {
+	return i.ToNicDetailOutputWithContext(context.Background())
+}
+
+func (i NicDetailArgs) ToNicDetailOutputWithContext(ctx context.Context) NicDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NicDetailOutput)
+}
+
+func (i NicDetailArgs) ToOutput(ctx context.Context) pulumix.Output[NicDetail] {
+	return pulumix.Output[NicDetail]{
+		OutputState: i.ToNicDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
+// NicDetailArrayInput is an input type that accepts NicDetailArray and NicDetailArrayOutput values.
+// You can construct a concrete instance of `NicDetailArrayInput` via:
+//
+//	NicDetailArray{ NicDetailArgs{...} }
+type NicDetailArrayInput interface {
+	pulumi.Input
+
+	ToNicDetailArrayOutput() NicDetailArrayOutput
+	ToNicDetailArrayOutputWithContext(context.Context) NicDetailArrayOutput
+}
+
+type NicDetailArray []NicDetailInput
+
+func (NicDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NicDetail)(nil)).Elem()
+}
+
+func (i NicDetailArray) ToNicDetailArrayOutput() NicDetailArrayOutput {
+	return i.ToNicDetailArrayOutputWithContext(context.Background())
+}
+
+func (i NicDetailArray) ToNicDetailArrayOutputWithContext(ctx context.Context) NicDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NicDetailArrayOutput)
+}
+
+func (i NicDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]NicDetail] {
+	return pulumix.Output[[]NicDetail]{
+		OutputState: i.ToNicDetailArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The NIC Detail of a device.
+type NicDetailOutput struct{ *pulumi.OutputState }
+
+func (NicDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NicDetail)(nil)).Elem()
+}
+
+func (o NicDetailOutput) ToNicDetailOutput() NicDetailOutput {
+	return o
+}
+
+func (o NicDetailOutput) ToNicDetailOutputWithContext(ctx context.Context) NicDetailOutput {
+	return o
+}
+
+func (o NicDetailOutput) ToOutput(ctx context.Context) pulumix.Output[NicDetail] {
+	return pulumix.Output[NicDetail]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Adapter Name of NIC
+func (o NicDetailOutput) AdapterName() pulumi.StringOutput {
+	return o.ApplyT(func(v NicDetail) string { return v.AdapterName }).(pulumi.StringOutput)
+}
+
+// Component Id of NIC
+func (o NicDetailOutput) ComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetail) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
+}
+
+// Default Gateway of NIC
+func (o NicDetailOutput) DefaultGateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetail) *string { return v.DefaultGateway }).(pulumi.StringPtrOutput)
+}
+
+// Default Isolation of Management NIC
+func (o NicDetailOutput) DefaultIsolationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetail) *string { return v.DefaultIsolationId }).(pulumi.StringPtrOutput)
+}
+
+// DNS Servers for NIC
+func (o NicDetailOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NicDetail) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// Driver Version of NIC
+func (o NicDetailOutput) DriverVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetail) *string { return v.DriverVersion }).(pulumi.StringPtrOutput)
+}
+
+// Interface Description of NIC
+func (o NicDetailOutput) InterfaceDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetail) *string { return v.InterfaceDescription }).(pulumi.StringPtrOutput)
+}
+
+// Subnet Mask of NIC
+func (o NicDetailOutput) Ip4Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetail) *string { return v.Ip4Address }).(pulumi.StringPtrOutput)
+}
+
+// Subnet Mask of NIC
+func (o NicDetailOutput) SubnetMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetail) *string { return v.SubnetMask }).(pulumi.StringPtrOutput)
+}
+
+type NicDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (NicDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NicDetail)(nil)).Elem()
+}
+
+func (o NicDetailArrayOutput) ToNicDetailArrayOutput() NicDetailArrayOutput {
+	return o
+}
+
+func (o NicDetailArrayOutput) ToNicDetailArrayOutputWithContext(ctx context.Context) NicDetailArrayOutput {
+	return o
+}
+
+func (o NicDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NicDetail] {
+	return pulumix.Output[[]NicDetail]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NicDetailArrayOutput) Index(i pulumi.IntInput) NicDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NicDetail {
+		return vs[0].([]NicDetail)[vs[1].(int)]
+	}).(NicDetailOutput)
+}
+
+// The NIC Detail of a device.
+type NicDetailResponse struct {
+	// Adapter Name of NIC
+	AdapterName string `pulumi:"adapterName"`
+	// Component Id of NIC
+	ComponentId *string `pulumi:"componentId"`
+	// Default Gateway of NIC
+	DefaultGateway *string `pulumi:"defaultGateway"`
+	// Default Isolation of Management NIC
+	DefaultIsolationId *string `pulumi:"defaultIsolationId"`
+	// DNS Servers for NIC
+	DnsServers []string `pulumi:"dnsServers"`
+	// Driver Version of NIC
+	DriverVersion *string `pulumi:"driverVersion"`
+	// Interface Description of NIC
+	InterfaceDescription *string `pulumi:"interfaceDescription"`
+	// Subnet Mask of NIC
+	Ip4Address *string `pulumi:"ip4Address"`
+	// Subnet Mask of NIC
+	SubnetMask *string `pulumi:"subnetMask"`
+}
+
+// The NIC Detail of a device.
+type NicDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (NicDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NicDetailResponse)(nil)).Elem()
+}
+
+func (o NicDetailResponseOutput) ToNicDetailResponseOutput() NicDetailResponseOutput {
+	return o
+}
+
+func (o NicDetailResponseOutput) ToNicDetailResponseOutputWithContext(ctx context.Context) NicDetailResponseOutput {
+	return o
+}
+
+func (o NicDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NicDetailResponse] {
+	return pulumix.Output[NicDetailResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Adapter Name of NIC
+func (o NicDetailResponseOutput) AdapterName() pulumi.StringOutput {
+	return o.ApplyT(func(v NicDetailResponse) string { return v.AdapterName }).(pulumi.StringOutput)
+}
+
+// Component Id of NIC
+func (o NicDetailResponseOutput) ComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetailResponse) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
+}
+
+// Default Gateway of NIC
+func (o NicDetailResponseOutput) DefaultGateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetailResponse) *string { return v.DefaultGateway }).(pulumi.StringPtrOutput)
+}
+
+// Default Isolation of Management NIC
+func (o NicDetailResponseOutput) DefaultIsolationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetailResponse) *string { return v.DefaultIsolationId }).(pulumi.StringPtrOutput)
+}
+
+// DNS Servers for NIC
+func (o NicDetailResponseOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NicDetailResponse) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// Driver Version of NIC
+func (o NicDetailResponseOutput) DriverVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetailResponse) *string { return v.DriverVersion }).(pulumi.StringPtrOutput)
+}
+
+// Interface Description of NIC
+func (o NicDetailResponseOutput) InterfaceDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetailResponse) *string { return v.InterfaceDescription }).(pulumi.StringPtrOutput)
+}
+
+// Subnet Mask of NIC
+func (o NicDetailResponseOutput) Ip4Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetailResponse) *string { return v.Ip4Address }).(pulumi.StringPtrOutput)
+}
+
+// Subnet Mask of NIC
+func (o NicDetailResponseOutput) SubnetMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicDetailResponse) *string { return v.SubnetMask }).(pulumi.StringPtrOutput)
+}
+
+type NicDetailResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NicDetailResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NicDetailResponse)(nil)).Elem()
+}
+
+func (o NicDetailResponseArrayOutput) ToNicDetailResponseArrayOutput() NicDetailResponseArrayOutput {
+	return o
+}
+
+func (o NicDetailResponseArrayOutput) ToNicDetailResponseArrayOutputWithContext(ctx context.Context) NicDetailResponseArrayOutput {
+	return o
+}
+
+func (o NicDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NicDetailResponse] {
+	return pulumix.Output[[]NicDetailResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NicDetailResponseArrayOutput) Index(i pulumi.IntInput) NicDetailResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NicDetailResponse {
+		return vs[0].([]NicDetailResponse)[vs[1].(int)]
+	}).(NicDetailResponseOutput)
+}
+
+// The Observability of AzureStackHCI Cluster.
+type Observability struct {
+	// When set to true, collects log data to facilitate quicker issue resolution.
+	EpisodicDataUpload *bool `pulumi:"episodicDataUpload"`
+	// Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to false results in all data sent to Microsoft to be stored outside of the EU.
+	EuLocation *bool `pulumi:"euLocation"`
+	// Enables telemetry data to be sent to Microsoft
+	StreamingDataClient *bool `pulumi:"streamingDataClient"`
+}
+
+// Defaults sets the appropriate defaults for Observability
+func (val *Observability) Defaults() *Observability {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EpisodicDataUpload == nil {
+		episodicDataUpload_ := true
+		tmp.EpisodicDataUpload = &episodicDataUpload_
+	}
+	if tmp.EuLocation == nil {
+		euLocation_ := false
+		tmp.EuLocation = &euLocation_
+	}
+	if tmp.StreamingDataClient == nil {
+		streamingDataClient_ := true
+		tmp.StreamingDataClient = &streamingDataClient_
+	}
+	return &tmp
+}
+
+// ObservabilityInput is an input type that accepts ObservabilityArgs and ObservabilityOutput values.
+// You can construct a concrete instance of `ObservabilityInput` via:
+//
+//	ObservabilityArgs{...}
+type ObservabilityInput interface {
+	pulumi.Input
+
+	ToObservabilityOutput() ObservabilityOutput
+	ToObservabilityOutputWithContext(context.Context) ObservabilityOutput
+}
+
+// The Observability of AzureStackHCI Cluster.
+type ObservabilityArgs struct {
+	// When set to true, collects log data to facilitate quicker issue resolution.
+	EpisodicDataUpload pulumi.BoolPtrInput `pulumi:"episodicDataUpload"`
+	// Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to false results in all data sent to Microsoft to be stored outside of the EU.
+	EuLocation pulumi.BoolPtrInput `pulumi:"euLocation"`
+	// Enables telemetry data to be sent to Microsoft
+	StreamingDataClient pulumi.BoolPtrInput `pulumi:"streamingDataClient"`
+}
+
+// Defaults sets the appropriate defaults for ObservabilityArgs
+func (val *ObservabilityArgs) Defaults() *ObservabilityArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EpisodicDataUpload == nil {
+		tmp.EpisodicDataUpload = pulumi.BoolPtr(true)
+	}
+	if tmp.EuLocation == nil {
+		tmp.EuLocation = pulumi.BoolPtr(false)
+	}
+	if tmp.StreamingDataClient == nil {
+		tmp.StreamingDataClient = pulumi.BoolPtr(true)
+	}
+	return &tmp
+}
+func (ObservabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Observability)(nil)).Elem()
+}
+
+func (i ObservabilityArgs) ToObservabilityOutput() ObservabilityOutput {
+	return i.ToObservabilityOutputWithContext(context.Background())
+}
+
+func (i ObservabilityArgs) ToObservabilityOutputWithContext(ctx context.Context) ObservabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObservabilityOutput)
+}
+
+func (i ObservabilityArgs) ToOutput(ctx context.Context) pulumix.Output[Observability] {
+	return pulumix.Output[Observability]{
+		OutputState: i.ToObservabilityOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ObservabilityArgs) ToObservabilityPtrOutput() ObservabilityPtrOutput {
+	return i.ToObservabilityPtrOutputWithContext(context.Background())
+}
+
+func (i ObservabilityArgs) ToObservabilityPtrOutputWithContext(ctx context.Context) ObservabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObservabilityOutput).ToObservabilityPtrOutputWithContext(ctx)
+}
+
+// ObservabilityPtrInput is an input type that accepts ObservabilityArgs, ObservabilityPtr and ObservabilityPtrOutput values.
+// You can construct a concrete instance of `ObservabilityPtrInput` via:
+//
+//	        ObservabilityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ObservabilityPtrInput interface {
+	pulumi.Input
+
+	ToObservabilityPtrOutput() ObservabilityPtrOutput
+	ToObservabilityPtrOutputWithContext(context.Context) ObservabilityPtrOutput
+}
+
+type observabilityPtrType ObservabilityArgs
+
+func ObservabilityPtr(v *ObservabilityArgs) ObservabilityPtrInput {
+	return (*observabilityPtrType)(v)
+}
+
+func (*observabilityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Observability)(nil)).Elem()
+}
+
+func (i *observabilityPtrType) ToObservabilityPtrOutput() ObservabilityPtrOutput {
+	return i.ToObservabilityPtrOutputWithContext(context.Background())
+}
+
+func (i *observabilityPtrType) ToObservabilityPtrOutputWithContext(ctx context.Context) ObservabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObservabilityPtrOutput)
+}
+
+func (i *observabilityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Observability] {
+	return pulumix.Output[*Observability]{
+		OutputState: i.ToObservabilityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The Observability of AzureStackHCI Cluster.
+type ObservabilityOutput struct{ *pulumi.OutputState }
+
+func (ObservabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Observability)(nil)).Elem()
+}
+
+func (o ObservabilityOutput) ToObservabilityOutput() ObservabilityOutput {
+	return o
+}
+
+func (o ObservabilityOutput) ToObservabilityOutputWithContext(ctx context.Context) ObservabilityOutput {
+	return o
+}
+
+func (o ObservabilityOutput) ToObservabilityPtrOutput() ObservabilityPtrOutput {
+	return o.ToObservabilityPtrOutputWithContext(context.Background())
+}
+
+func (o ObservabilityOutput) ToObservabilityPtrOutputWithContext(ctx context.Context) ObservabilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Observability) *Observability {
+		return &v
+	}).(ObservabilityPtrOutput)
+}
+
+func (o ObservabilityOutput) ToOutput(ctx context.Context) pulumix.Output[Observability] {
+	return pulumix.Output[Observability]{
+		OutputState: o.OutputState,
+	}
+}
+
+// When set to true, collects log data to facilitate quicker issue resolution.
+func (o ObservabilityOutput) EpisodicDataUpload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Observability) *bool { return v.EpisodicDataUpload }).(pulumi.BoolPtrOutput)
+}
+
+// Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to false results in all data sent to Microsoft to be stored outside of the EU.
+func (o ObservabilityOutput) EuLocation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Observability) *bool { return v.EuLocation }).(pulumi.BoolPtrOutput)
+}
+
+// Enables telemetry data to be sent to Microsoft
+func (o ObservabilityOutput) StreamingDataClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Observability) *bool { return v.StreamingDataClient }).(pulumi.BoolPtrOutput)
+}
+
+type ObservabilityPtrOutput struct{ *pulumi.OutputState }
+
+func (ObservabilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Observability)(nil)).Elem()
+}
+
+func (o ObservabilityPtrOutput) ToObservabilityPtrOutput() ObservabilityPtrOutput {
+	return o
+}
+
+func (o ObservabilityPtrOutput) ToObservabilityPtrOutputWithContext(ctx context.Context) ObservabilityPtrOutput {
+	return o
+}
+
+func (o ObservabilityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Observability] {
+	return pulumix.Output[*Observability]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ObservabilityPtrOutput) Elem() ObservabilityOutput {
+	return o.ApplyT(func(v *Observability) Observability {
+		if v != nil {
+			return *v
+		}
+		var ret Observability
+		return ret
+	}).(ObservabilityOutput)
+}
+
+// When set to true, collects log data to facilitate quicker issue resolution.
+func (o ObservabilityPtrOutput) EpisodicDataUpload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Observability) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EpisodicDataUpload
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to false results in all data sent to Microsoft to be stored outside of the EU.
+func (o ObservabilityPtrOutput) EuLocation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Observability) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EuLocation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables telemetry data to be sent to Microsoft
+func (o ObservabilityPtrOutput) StreamingDataClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Observability) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StreamingDataClient
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Observability of AzureStackHCI Cluster.
+type ObservabilityResponse struct {
+	// When set to true, collects log data to facilitate quicker issue resolution.
+	EpisodicDataUpload *bool `pulumi:"episodicDataUpload"`
+	// Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to false results in all data sent to Microsoft to be stored outside of the EU.
+	EuLocation *bool `pulumi:"euLocation"`
+	// Enables telemetry data to be sent to Microsoft
+	StreamingDataClient *bool `pulumi:"streamingDataClient"`
+}
+
+// Defaults sets the appropriate defaults for ObservabilityResponse
+func (val *ObservabilityResponse) Defaults() *ObservabilityResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EpisodicDataUpload == nil {
+		episodicDataUpload_ := true
+		tmp.EpisodicDataUpload = &episodicDataUpload_
+	}
+	if tmp.EuLocation == nil {
+		euLocation_ := false
+		tmp.EuLocation = &euLocation_
+	}
+	if tmp.StreamingDataClient == nil {
+		streamingDataClient_ := true
+		tmp.StreamingDataClient = &streamingDataClient_
+	}
+	return &tmp
+}
+
+// The Observability of AzureStackHCI Cluster.
+type ObservabilityResponseOutput struct{ *pulumi.OutputState }
+
+func (ObservabilityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObservabilityResponse)(nil)).Elem()
+}
+
+func (o ObservabilityResponseOutput) ToObservabilityResponseOutput() ObservabilityResponseOutput {
+	return o
+}
+
+func (o ObservabilityResponseOutput) ToObservabilityResponseOutputWithContext(ctx context.Context) ObservabilityResponseOutput {
+	return o
+}
+
+func (o ObservabilityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ObservabilityResponse] {
+	return pulumix.Output[ObservabilityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// When set to true, collects log data to facilitate quicker issue resolution.
+func (o ObservabilityResponseOutput) EpisodicDataUpload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ObservabilityResponse) *bool { return v.EpisodicDataUpload }).(pulumi.BoolPtrOutput)
+}
+
+// Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to false results in all data sent to Microsoft to be stored outside of the EU.
+func (o ObservabilityResponseOutput) EuLocation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ObservabilityResponse) *bool { return v.EuLocation }).(pulumi.BoolPtrOutput)
+}
+
+// Enables telemetry data to be sent to Microsoft
+func (o ObservabilityResponseOutput) StreamingDataClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ObservabilityResponse) *bool { return v.StreamingDataClient }).(pulumi.BoolPtrOutput)
+}
+
+type ObservabilityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ObservabilityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObservabilityResponse)(nil)).Elem()
+}
+
+func (o ObservabilityResponsePtrOutput) ToObservabilityResponsePtrOutput() ObservabilityResponsePtrOutput {
+	return o
+}
+
+func (o ObservabilityResponsePtrOutput) ToObservabilityResponsePtrOutputWithContext(ctx context.Context) ObservabilityResponsePtrOutput {
+	return o
+}
+
+func (o ObservabilityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ObservabilityResponse] {
+	return pulumix.Output[*ObservabilityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ObservabilityResponsePtrOutput) Elem() ObservabilityResponseOutput {
+	return o.ApplyT(func(v *ObservabilityResponse) ObservabilityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ObservabilityResponse
+		return ret
+	}).(ObservabilityResponseOutput)
+}
+
+// When set to true, collects log data to facilitate quicker issue resolution.
+func (o ObservabilityResponsePtrOutput) EpisodicDataUpload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ObservabilityResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EpisodicDataUpload
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to false results in all data sent to Microsoft to be stored outside of the EU.
+func (o ObservabilityResponsePtrOutput) EuLocation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ObservabilityResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EuLocation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables telemetry data to be sent to Microsoft
+func (o ObservabilityResponsePtrOutput) StreamingDataClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ObservabilityResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StreamingDataClient
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The OptionalServices of AzureStackHCI Cluster.
+type OptionalServices struct {
+	// The name of custom location.
+	CustomLocation *string `pulumi:"customLocation"`
+}
+
+// OptionalServicesInput is an input type that accepts OptionalServicesArgs and OptionalServicesOutput values.
+// You can construct a concrete instance of `OptionalServicesInput` via:
+//
+//	OptionalServicesArgs{...}
+type OptionalServicesInput interface {
+	pulumi.Input
+
+	ToOptionalServicesOutput() OptionalServicesOutput
+	ToOptionalServicesOutputWithContext(context.Context) OptionalServicesOutput
+}
+
+// The OptionalServices of AzureStackHCI Cluster.
+type OptionalServicesArgs struct {
+	// The name of custom location.
+	CustomLocation pulumi.StringPtrInput `pulumi:"customLocation"`
+}
+
+func (OptionalServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionalServices)(nil)).Elem()
+}
+
+func (i OptionalServicesArgs) ToOptionalServicesOutput() OptionalServicesOutput {
+	return i.ToOptionalServicesOutputWithContext(context.Background())
+}
+
+func (i OptionalServicesArgs) ToOptionalServicesOutputWithContext(ctx context.Context) OptionalServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionalServicesOutput)
+}
+
+func (i OptionalServicesArgs) ToOutput(ctx context.Context) pulumix.Output[OptionalServices] {
+	return pulumix.Output[OptionalServices]{
+		OutputState: i.ToOptionalServicesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i OptionalServicesArgs) ToOptionalServicesPtrOutput() OptionalServicesPtrOutput {
+	return i.ToOptionalServicesPtrOutputWithContext(context.Background())
+}
+
+func (i OptionalServicesArgs) ToOptionalServicesPtrOutputWithContext(ctx context.Context) OptionalServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionalServicesOutput).ToOptionalServicesPtrOutputWithContext(ctx)
+}
+
+// OptionalServicesPtrInput is an input type that accepts OptionalServicesArgs, OptionalServicesPtr and OptionalServicesPtrOutput values.
+// You can construct a concrete instance of `OptionalServicesPtrInput` via:
+//
+//	        OptionalServicesArgs{...}
+//
+//	or:
+//
+//	        nil
+type OptionalServicesPtrInput interface {
+	pulumi.Input
+
+	ToOptionalServicesPtrOutput() OptionalServicesPtrOutput
+	ToOptionalServicesPtrOutputWithContext(context.Context) OptionalServicesPtrOutput
+}
+
+type optionalServicesPtrType OptionalServicesArgs
+
+func OptionalServicesPtr(v *OptionalServicesArgs) OptionalServicesPtrInput {
+	return (*optionalServicesPtrType)(v)
+}
+
+func (*optionalServicesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OptionalServices)(nil)).Elem()
+}
+
+func (i *optionalServicesPtrType) ToOptionalServicesPtrOutput() OptionalServicesPtrOutput {
+	return i.ToOptionalServicesPtrOutputWithContext(context.Background())
+}
+
+func (i *optionalServicesPtrType) ToOptionalServicesPtrOutputWithContext(ctx context.Context) OptionalServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionalServicesPtrOutput)
+}
+
+func (i *optionalServicesPtrType) ToOutput(ctx context.Context) pulumix.Output[*OptionalServices] {
+	return pulumix.Output[*OptionalServices]{
+		OutputState: i.ToOptionalServicesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The OptionalServices of AzureStackHCI Cluster.
+type OptionalServicesOutput struct{ *pulumi.OutputState }
+
+func (OptionalServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionalServices)(nil)).Elem()
+}
+
+func (o OptionalServicesOutput) ToOptionalServicesOutput() OptionalServicesOutput {
+	return o
+}
+
+func (o OptionalServicesOutput) ToOptionalServicesOutputWithContext(ctx context.Context) OptionalServicesOutput {
+	return o
+}
+
+func (o OptionalServicesOutput) ToOptionalServicesPtrOutput() OptionalServicesPtrOutput {
+	return o.ToOptionalServicesPtrOutputWithContext(context.Background())
+}
+
+func (o OptionalServicesOutput) ToOptionalServicesPtrOutputWithContext(ctx context.Context) OptionalServicesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OptionalServices) *OptionalServices {
+		return &v
+	}).(OptionalServicesPtrOutput)
+}
+
+func (o OptionalServicesOutput) ToOutput(ctx context.Context) pulumix.Output[OptionalServices] {
+	return pulumix.Output[OptionalServices]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of custom location.
+func (o OptionalServicesOutput) CustomLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OptionalServices) *string { return v.CustomLocation }).(pulumi.StringPtrOutput)
+}
+
+type OptionalServicesPtrOutput struct{ *pulumi.OutputState }
+
+func (OptionalServicesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OptionalServices)(nil)).Elem()
+}
+
+func (o OptionalServicesPtrOutput) ToOptionalServicesPtrOutput() OptionalServicesPtrOutput {
+	return o
+}
+
+func (o OptionalServicesPtrOutput) ToOptionalServicesPtrOutputWithContext(ctx context.Context) OptionalServicesPtrOutput {
+	return o
+}
+
+func (o OptionalServicesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OptionalServices] {
+	return pulumix.Output[*OptionalServices]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OptionalServicesPtrOutput) Elem() OptionalServicesOutput {
+	return o.ApplyT(func(v *OptionalServices) OptionalServices {
+		if v != nil {
+			return *v
+		}
+		var ret OptionalServices
+		return ret
+	}).(OptionalServicesOutput)
+}
+
+// The name of custom location.
+func (o OptionalServicesPtrOutput) CustomLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OptionalServices) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OptionalServices of AzureStackHCI Cluster.
+type OptionalServicesResponse struct {
+	// The name of custom location.
+	CustomLocation *string `pulumi:"customLocation"`
+}
+
+// The OptionalServices of AzureStackHCI Cluster.
+type OptionalServicesResponseOutput struct{ *pulumi.OutputState }
+
+func (OptionalServicesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionalServicesResponse)(nil)).Elem()
+}
+
+func (o OptionalServicesResponseOutput) ToOptionalServicesResponseOutput() OptionalServicesResponseOutput {
+	return o
+}
+
+func (o OptionalServicesResponseOutput) ToOptionalServicesResponseOutputWithContext(ctx context.Context) OptionalServicesResponseOutput {
+	return o
+}
+
+func (o OptionalServicesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OptionalServicesResponse] {
+	return pulumix.Output[OptionalServicesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of custom location.
+func (o OptionalServicesResponseOutput) CustomLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OptionalServicesResponse) *string { return v.CustomLocation }).(pulumi.StringPtrOutput)
+}
+
+type OptionalServicesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OptionalServicesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OptionalServicesResponse)(nil)).Elem()
+}
+
+func (o OptionalServicesResponsePtrOutput) ToOptionalServicesResponsePtrOutput() OptionalServicesResponsePtrOutput {
+	return o
+}
+
+func (o OptionalServicesResponsePtrOutput) ToOptionalServicesResponsePtrOutputWithContext(ctx context.Context) OptionalServicesResponsePtrOutput {
+	return o
+}
+
+func (o OptionalServicesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OptionalServicesResponse] {
+	return pulumix.Output[*OptionalServicesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OptionalServicesResponsePtrOutput) Elem() OptionalServicesResponseOutput {
+	return o.ApplyT(func(v *OptionalServicesResponse) OptionalServicesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OptionalServicesResponse
+		return ret
+	}).(OptionalServicesResponseOutput)
+}
+
+// The name of custom location.
+func (o OptionalServicesResponsePtrOutput) CustomLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OptionalServicesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomLocation
+	}).(pulumi.StringPtrOutput)
+}
+
 // Status of Arc Extension for a particular node in HCI Cluster.
 type PerNodeExtensionStateResponse struct {
 	// Fully qualified resource ID for the particular Arc Extension on this node.
@@ -5914,6 +9309,551 @@ func (o PerNodeStateResponseArrayOutput) Index(i pulumi.IntInput) PerNodeStateRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PerNodeStateResponse {
 		return vs[0].([]PerNodeStateResponse)[vs[1].(int)]
 	}).(PerNodeStateResponseOutput)
+}
+
+// The PhysicalNodes of a cluster.
+type PhysicalNodes struct {
+	// The IPv4 address assigned to each physical server on your Azure Stack HCI cluster.
+	Ipv4Address *string `pulumi:"ipv4Address"`
+	// NETBIOS name of each physical server on your Azure Stack HCI cluster.
+	Name *string `pulumi:"name"`
+}
+
+// PhysicalNodesInput is an input type that accepts PhysicalNodesArgs and PhysicalNodesOutput values.
+// You can construct a concrete instance of `PhysicalNodesInput` via:
+//
+//	PhysicalNodesArgs{...}
+type PhysicalNodesInput interface {
+	pulumi.Input
+
+	ToPhysicalNodesOutput() PhysicalNodesOutput
+	ToPhysicalNodesOutputWithContext(context.Context) PhysicalNodesOutput
+}
+
+// The PhysicalNodes of a cluster.
+type PhysicalNodesArgs struct {
+	// The IPv4 address assigned to each physical server on your Azure Stack HCI cluster.
+	Ipv4Address pulumi.StringPtrInput `pulumi:"ipv4Address"`
+	// NETBIOS name of each physical server on your Azure Stack HCI cluster.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (PhysicalNodesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhysicalNodes)(nil)).Elem()
+}
+
+func (i PhysicalNodesArgs) ToPhysicalNodesOutput() PhysicalNodesOutput {
+	return i.ToPhysicalNodesOutputWithContext(context.Background())
+}
+
+func (i PhysicalNodesArgs) ToPhysicalNodesOutputWithContext(ctx context.Context) PhysicalNodesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhysicalNodesOutput)
+}
+
+func (i PhysicalNodesArgs) ToOutput(ctx context.Context) pulumix.Output[PhysicalNodes] {
+	return pulumix.Output[PhysicalNodes]{
+		OutputState: i.ToPhysicalNodesOutputWithContext(ctx).OutputState,
+	}
+}
+
+// PhysicalNodesArrayInput is an input type that accepts PhysicalNodesArray and PhysicalNodesArrayOutput values.
+// You can construct a concrete instance of `PhysicalNodesArrayInput` via:
+//
+//	PhysicalNodesArray{ PhysicalNodesArgs{...} }
+type PhysicalNodesArrayInput interface {
+	pulumi.Input
+
+	ToPhysicalNodesArrayOutput() PhysicalNodesArrayOutput
+	ToPhysicalNodesArrayOutputWithContext(context.Context) PhysicalNodesArrayOutput
+}
+
+type PhysicalNodesArray []PhysicalNodesInput
+
+func (PhysicalNodesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PhysicalNodes)(nil)).Elem()
+}
+
+func (i PhysicalNodesArray) ToPhysicalNodesArrayOutput() PhysicalNodesArrayOutput {
+	return i.ToPhysicalNodesArrayOutputWithContext(context.Background())
+}
+
+func (i PhysicalNodesArray) ToPhysicalNodesArrayOutputWithContext(ctx context.Context) PhysicalNodesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhysicalNodesArrayOutput)
+}
+
+func (i PhysicalNodesArray) ToOutput(ctx context.Context) pulumix.Output[[]PhysicalNodes] {
+	return pulumix.Output[[]PhysicalNodes]{
+		OutputState: i.ToPhysicalNodesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The PhysicalNodes of a cluster.
+type PhysicalNodesOutput struct{ *pulumi.OutputState }
+
+func (PhysicalNodesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhysicalNodes)(nil)).Elem()
+}
+
+func (o PhysicalNodesOutput) ToPhysicalNodesOutput() PhysicalNodesOutput {
+	return o
+}
+
+func (o PhysicalNodesOutput) ToPhysicalNodesOutputWithContext(ctx context.Context) PhysicalNodesOutput {
+	return o
+}
+
+func (o PhysicalNodesOutput) ToOutput(ctx context.Context) pulumix.Output[PhysicalNodes] {
+	return pulumix.Output[PhysicalNodes]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The IPv4 address assigned to each physical server on your Azure Stack HCI cluster.
+func (o PhysicalNodesOutput) Ipv4Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhysicalNodes) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
+}
+
+// NETBIOS name of each physical server on your Azure Stack HCI cluster.
+func (o PhysicalNodesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhysicalNodes) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type PhysicalNodesArrayOutput struct{ *pulumi.OutputState }
+
+func (PhysicalNodesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PhysicalNodes)(nil)).Elem()
+}
+
+func (o PhysicalNodesArrayOutput) ToPhysicalNodesArrayOutput() PhysicalNodesArrayOutput {
+	return o
+}
+
+func (o PhysicalNodesArrayOutput) ToPhysicalNodesArrayOutputWithContext(ctx context.Context) PhysicalNodesArrayOutput {
+	return o
+}
+
+func (o PhysicalNodesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PhysicalNodes] {
+	return pulumix.Output[[]PhysicalNodes]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PhysicalNodesArrayOutput) Index(i pulumi.IntInput) PhysicalNodesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PhysicalNodes {
+		return vs[0].([]PhysicalNodes)[vs[1].(int)]
+	}).(PhysicalNodesOutput)
+}
+
+// The PhysicalNodes of a cluster.
+type PhysicalNodesResponse struct {
+	// The IPv4 address assigned to each physical server on your Azure Stack HCI cluster.
+	Ipv4Address *string `pulumi:"ipv4Address"`
+	// NETBIOS name of each physical server on your Azure Stack HCI cluster.
+	Name *string `pulumi:"name"`
+}
+
+// The PhysicalNodes of a cluster.
+type PhysicalNodesResponseOutput struct{ *pulumi.OutputState }
+
+func (PhysicalNodesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhysicalNodesResponse)(nil)).Elem()
+}
+
+func (o PhysicalNodesResponseOutput) ToPhysicalNodesResponseOutput() PhysicalNodesResponseOutput {
+	return o
+}
+
+func (o PhysicalNodesResponseOutput) ToPhysicalNodesResponseOutputWithContext(ctx context.Context) PhysicalNodesResponseOutput {
+	return o
+}
+
+func (o PhysicalNodesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PhysicalNodesResponse] {
+	return pulumix.Output[PhysicalNodesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The IPv4 address assigned to each physical server on your Azure Stack HCI cluster.
+func (o PhysicalNodesResponseOutput) Ipv4Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhysicalNodesResponse) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
+}
+
+// NETBIOS name of each physical server on your Azure Stack HCI cluster.
+func (o PhysicalNodesResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhysicalNodesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type PhysicalNodesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PhysicalNodesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PhysicalNodesResponse)(nil)).Elem()
+}
+
+func (o PhysicalNodesResponseArrayOutput) ToPhysicalNodesResponseArrayOutput() PhysicalNodesResponseArrayOutput {
+	return o
+}
+
+func (o PhysicalNodesResponseArrayOutput) ToPhysicalNodesResponseArrayOutputWithContext(ctx context.Context) PhysicalNodesResponseArrayOutput {
+	return o
+}
+
+func (o PhysicalNodesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PhysicalNodesResponse] {
+	return pulumix.Output[[]PhysicalNodesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PhysicalNodesResponseArrayOutput) Index(i pulumi.IntInput) PhysicalNodesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PhysicalNodesResponse {
+		return vs[0].([]PhysicalNodesResponse)[vs[1].(int)]
+	}).(PhysicalNodesResponseOutput)
+}
+
+// The QoSPolicyOverrides of a cluster.
+type QosPolicyOverrides struct {
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	BandwidthPercentageSMB *string `pulumi:"bandwidthPercentageSMB"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	PriorityValue8021ActionCluster *string `pulumi:"priorityValue8021ActionCluster"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	PriorityValue8021ActionSMB *string `pulumi:"priorityValue8021ActionSMB"`
+}
+
+// QosPolicyOverridesInput is an input type that accepts QosPolicyOverridesArgs and QosPolicyOverridesOutput values.
+// You can construct a concrete instance of `QosPolicyOverridesInput` via:
+//
+//	QosPolicyOverridesArgs{...}
+type QosPolicyOverridesInput interface {
+	pulumi.Input
+
+	ToQosPolicyOverridesOutput() QosPolicyOverridesOutput
+	ToQosPolicyOverridesOutputWithContext(context.Context) QosPolicyOverridesOutput
+}
+
+// The QoSPolicyOverrides of a cluster.
+type QosPolicyOverridesArgs struct {
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	BandwidthPercentageSMB pulumi.StringPtrInput `pulumi:"bandwidthPercentageSMB"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	PriorityValue8021ActionCluster pulumi.StringPtrInput `pulumi:"priorityValue8021ActionCluster"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	PriorityValue8021ActionSMB pulumi.StringPtrInput `pulumi:"priorityValue8021ActionSMB"`
+}
+
+func (QosPolicyOverridesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosPolicyOverrides)(nil)).Elem()
+}
+
+func (i QosPolicyOverridesArgs) ToQosPolicyOverridesOutput() QosPolicyOverridesOutput {
+	return i.ToQosPolicyOverridesOutputWithContext(context.Background())
+}
+
+func (i QosPolicyOverridesArgs) ToQosPolicyOverridesOutputWithContext(ctx context.Context) QosPolicyOverridesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyOverridesOutput)
+}
+
+func (i QosPolicyOverridesArgs) ToOutput(ctx context.Context) pulumix.Output[QosPolicyOverrides] {
+	return pulumix.Output[QosPolicyOverrides]{
+		OutputState: i.ToQosPolicyOverridesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i QosPolicyOverridesArgs) ToQosPolicyOverridesPtrOutput() QosPolicyOverridesPtrOutput {
+	return i.ToQosPolicyOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i QosPolicyOverridesArgs) ToQosPolicyOverridesPtrOutputWithContext(ctx context.Context) QosPolicyOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyOverridesOutput).ToQosPolicyOverridesPtrOutputWithContext(ctx)
+}
+
+// QosPolicyOverridesPtrInput is an input type that accepts QosPolicyOverridesArgs, QosPolicyOverridesPtr and QosPolicyOverridesPtrOutput values.
+// You can construct a concrete instance of `QosPolicyOverridesPtrInput` via:
+//
+//	        QosPolicyOverridesArgs{...}
+//
+//	or:
+//
+//	        nil
+type QosPolicyOverridesPtrInput interface {
+	pulumi.Input
+
+	ToQosPolicyOverridesPtrOutput() QosPolicyOverridesPtrOutput
+	ToQosPolicyOverridesPtrOutputWithContext(context.Context) QosPolicyOverridesPtrOutput
+}
+
+type qosPolicyOverridesPtrType QosPolicyOverridesArgs
+
+func QosPolicyOverridesPtr(v *QosPolicyOverridesArgs) QosPolicyOverridesPtrInput {
+	return (*qosPolicyOverridesPtrType)(v)
+}
+
+func (*qosPolicyOverridesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QosPolicyOverrides)(nil)).Elem()
+}
+
+func (i *qosPolicyOverridesPtrType) ToQosPolicyOverridesPtrOutput() QosPolicyOverridesPtrOutput {
+	return i.ToQosPolicyOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i *qosPolicyOverridesPtrType) ToQosPolicyOverridesPtrOutputWithContext(ctx context.Context) QosPolicyOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyOverridesPtrOutput)
+}
+
+func (i *qosPolicyOverridesPtrType) ToOutput(ctx context.Context) pulumix.Output[*QosPolicyOverrides] {
+	return pulumix.Output[*QosPolicyOverrides]{
+		OutputState: i.ToQosPolicyOverridesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The QoSPolicyOverrides of a cluster.
+type QosPolicyOverridesOutput struct{ *pulumi.OutputState }
+
+func (QosPolicyOverridesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosPolicyOverrides)(nil)).Elem()
+}
+
+func (o QosPolicyOverridesOutput) ToQosPolicyOverridesOutput() QosPolicyOverridesOutput {
+	return o
+}
+
+func (o QosPolicyOverridesOutput) ToQosPolicyOverridesOutputWithContext(ctx context.Context) QosPolicyOverridesOutput {
+	return o
+}
+
+func (o QosPolicyOverridesOutput) ToQosPolicyOverridesPtrOutput() QosPolicyOverridesPtrOutput {
+	return o.ToQosPolicyOverridesPtrOutputWithContext(context.Background())
+}
+
+func (o QosPolicyOverridesOutput) ToQosPolicyOverridesPtrOutputWithContext(ctx context.Context) QosPolicyOverridesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QosPolicyOverrides) *QosPolicyOverrides {
+		return &v
+	}).(QosPolicyOverridesPtrOutput)
+}
+
+func (o QosPolicyOverridesOutput) ToOutput(ctx context.Context) pulumix.Output[QosPolicyOverrides] {
+	return pulumix.Output[QosPolicyOverrides]{
+		OutputState: o.OutputState,
+	}
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesOutput) BandwidthPercentageSMB() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QosPolicyOverrides) *string { return v.BandwidthPercentageSMB }).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesOutput) PriorityValue8021ActionCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QosPolicyOverrides) *string { return v.PriorityValue8021ActionCluster }).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesOutput) PriorityValue8021ActionSMB() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QosPolicyOverrides) *string { return v.PriorityValue8021ActionSMB }).(pulumi.StringPtrOutput)
+}
+
+type QosPolicyOverridesPtrOutput struct{ *pulumi.OutputState }
+
+func (QosPolicyOverridesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QosPolicyOverrides)(nil)).Elem()
+}
+
+func (o QosPolicyOverridesPtrOutput) ToQosPolicyOverridesPtrOutput() QosPolicyOverridesPtrOutput {
+	return o
+}
+
+func (o QosPolicyOverridesPtrOutput) ToQosPolicyOverridesPtrOutputWithContext(ctx context.Context) QosPolicyOverridesPtrOutput {
+	return o
+}
+
+func (o QosPolicyOverridesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QosPolicyOverrides] {
+	return pulumix.Output[*QosPolicyOverrides]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o QosPolicyOverridesPtrOutput) Elem() QosPolicyOverridesOutput {
+	return o.ApplyT(func(v *QosPolicyOverrides) QosPolicyOverrides {
+		if v != nil {
+			return *v
+		}
+		var ret QosPolicyOverrides
+		return ret
+	}).(QosPolicyOverridesOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesPtrOutput) BandwidthPercentageSMB() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosPolicyOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BandwidthPercentageSMB
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesPtrOutput) PriorityValue8021ActionCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosPolicyOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PriorityValue8021ActionCluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesPtrOutput) PriorityValue8021ActionSMB() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosPolicyOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PriorityValue8021ActionSMB
+	}).(pulumi.StringPtrOutput)
+}
+
+// The QoSPolicyOverrides of a cluster.
+type QosPolicyOverridesResponse struct {
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	BandwidthPercentageSMB *string `pulumi:"bandwidthPercentageSMB"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	PriorityValue8021ActionCluster *string `pulumi:"priorityValue8021ActionCluster"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	PriorityValue8021ActionSMB *string `pulumi:"priorityValue8021ActionSMB"`
+}
+
+// The QoSPolicyOverrides of a cluster.
+type QosPolicyOverridesResponseOutput struct{ *pulumi.OutputState }
+
+func (QosPolicyOverridesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosPolicyOverridesResponse)(nil)).Elem()
+}
+
+func (o QosPolicyOverridesResponseOutput) ToQosPolicyOverridesResponseOutput() QosPolicyOverridesResponseOutput {
+	return o
+}
+
+func (o QosPolicyOverridesResponseOutput) ToQosPolicyOverridesResponseOutputWithContext(ctx context.Context) QosPolicyOverridesResponseOutput {
+	return o
+}
+
+func (o QosPolicyOverridesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QosPolicyOverridesResponse] {
+	return pulumix.Output[QosPolicyOverridesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesResponseOutput) BandwidthPercentageSMB() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QosPolicyOverridesResponse) *string { return v.BandwidthPercentageSMB }).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesResponseOutput) PriorityValue8021ActionCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QosPolicyOverridesResponse) *string { return v.PriorityValue8021ActionCluster }).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesResponseOutput) PriorityValue8021ActionSMB() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QosPolicyOverridesResponse) *string { return v.PriorityValue8021ActionSMB }).(pulumi.StringPtrOutput)
+}
+
+type QosPolicyOverridesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (QosPolicyOverridesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QosPolicyOverridesResponse)(nil)).Elem()
+}
+
+func (o QosPolicyOverridesResponsePtrOutput) ToQosPolicyOverridesResponsePtrOutput() QosPolicyOverridesResponsePtrOutput {
+	return o
+}
+
+func (o QosPolicyOverridesResponsePtrOutput) ToQosPolicyOverridesResponsePtrOutputWithContext(ctx context.Context) QosPolicyOverridesResponsePtrOutput {
+	return o
+}
+
+func (o QosPolicyOverridesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QosPolicyOverridesResponse] {
+	return pulumix.Output[*QosPolicyOverridesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o QosPolicyOverridesResponsePtrOutput) Elem() QosPolicyOverridesResponseOutput {
+	return o.ApplyT(func(v *QosPolicyOverridesResponse) QosPolicyOverridesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret QosPolicyOverridesResponse
+		return ret
+	}).(QosPolicyOverridesResponseOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesResponsePtrOutput) BandwidthPercentageSMB() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosPolicyOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BandwidthPercentageSMB
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesResponsePtrOutput) PriorityValue8021ActionCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosPolicyOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PriorityValue8021ActionCluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesResponsePtrOutput) PriorityValue8021ActionSMB() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosPolicyOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PriorityValue8021ActionSMB
+	}).(pulumi.StringPtrOutput)
+}
+
+// The DeploymentStatus of AzureStackHCI Cluster.
+type ReportedPropertiesResponse struct {
+	// Deployment status of AzureStackHCI Cluster Deployment.
+	DeploymentStatus DeploymentStatusResponse `pulumi:"deploymentStatus"`
+	// validation status of AzureStackHCI Cluster Deployment.
+	ValidationStatus ValidationStatusResponse `pulumi:"validationStatus"`
+}
+
+// The DeploymentStatus of AzureStackHCI Cluster.
+type ReportedPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ReportedPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportedPropertiesResponse)(nil)).Elem()
+}
+
+func (o ReportedPropertiesResponseOutput) ToReportedPropertiesResponseOutput() ReportedPropertiesResponseOutput {
+	return o
+}
+
+func (o ReportedPropertiesResponseOutput) ToReportedPropertiesResponseOutputWithContext(ctx context.Context) ReportedPropertiesResponseOutput {
+	return o
+}
+
+func (o ReportedPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportedPropertiesResponse] {
+	return pulumix.Output[ReportedPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Deployment status of AzureStackHCI Cluster Deployment.
+func (o ReportedPropertiesResponseOutput) DeploymentStatus() DeploymentStatusResponseOutput {
+	return o.ApplyT(func(v ReportedPropertiesResponse) DeploymentStatusResponse { return v.DeploymentStatus }).(DeploymentStatusResponseOutput)
+}
+
+// validation status of AzureStackHCI Cluster Deployment.
+func (o ReportedPropertiesResponseOutput) ValidationStatus() ValidationStatusResponseOutput {
+	return o.ApplyT(func(v ReportedPropertiesResponse) ValidationStatusResponse { return v.ValidationStatus }).(ValidationStatusResponseOutput)
 }
 
 // Route - Route resource.
@@ -6415,6 +10355,915 @@ func (o RouteTableResponsePtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// Scale units will contains list of deployment data
+type ScaleUnits struct {
+	// Deployment Data to deploy AzureStackHCI Cluster.
+	DeploymentData DeploymentData `pulumi:"deploymentData"`
+}
+
+// Defaults sets the appropriate defaults for ScaleUnits
+func (val *ScaleUnits) Defaults() *ScaleUnits {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.DeploymentData = *tmp.DeploymentData.Defaults()
+
+	return &tmp
+}
+
+// ScaleUnitsInput is an input type that accepts ScaleUnitsArgs and ScaleUnitsOutput values.
+// You can construct a concrete instance of `ScaleUnitsInput` via:
+//
+//	ScaleUnitsArgs{...}
+type ScaleUnitsInput interface {
+	pulumi.Input
+
+	ToScaleUnitsOutput() ScaleUnitsOutput
+	ToScaleUnitsOutputWithContext(context.Context) ScaleUnitsOutput
+}
+
+// Scale units will contains list of deployment data
+type ScaleUnitsArgs struct {
+	// Deployment Data to deploy AzureStackHCI Cluster.
+	DeploymentData DeploymentDataInput `pulumi:"deploymentData"`
+}
+
+// Defaults sets the appropriate defaults for ScaleUnitsArgs
+func (val *ScaleUnitsArgs) Defaults() *ScaleUnitsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (ScaleUnitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleUnits)(nil)).Elem()
+}
+
+func (i ScaleUnitsArgs) ToScaleUnitsOutput() ScaleUnitsOutput {
+	return i.ToScaleUnitsOutputWithContext(context.Background())
+}
+
+func (i ScaleUnitsArgs) ToScaleUnitsOutputWithContext(ctx context.Context) ScaleUnitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleUnitsOutput)
+}
+
+func (i ScaleUnitsArgs) ToOutput(ctx context.Context) pulumix.Output[ScaleUnits] {
+	return pulumix.Output[ScaleUnits]{
+		OutputState: i.ToScaleUnitsOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ScaleUnitsArrayInput is an input type that accepts ScaleUnitsArray and ScaleUnitsArrayOutput values.
+// You can construct a concrete instance of `ScaleUnitsArrayInput` via:
+//
+//	ScaleUnitsArray{ ScaleUnitsArgs{...} }
+type ScaleUnitsArrayInput interface {
+	pulumi.Input
+
+	ToScaleUnitsArrayOutput() ScaleUnitsArrayOutput
+	ToScaleUnitsArrayOutputWithContext(context.Context) ScaleUnitsArrayOutput
+}
+
+type ScaleUnitsArray []ScaleUnitsInput
+
+func (ScaleUnitsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScaleUnits)(nil)).Elem()
+}
+
+func (i ScaleUnitsArray) ToScaleUnitsArrayOutput() ScaleUnitsArrayOutput {
+	return i.ToScaleUnitsArrayOutputWithContext(context.Background())
+}
+
+func (i ScaleUnitsArray) ToScaleUnitsArrayOutputWithContext(ctx context.Context) ScaleUnitsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleUnitsArrayOutput)
+}
+
+func (i ScaleUnitsArray) ToOutput(ctx context.Context) pulumix.Output[[]ScaleUnits] {
+	return pulumix.Output[[]ScaleUnits]{
+		OutputState: i.ToScaleUnitsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Scale units will contains list of deployment data
+type ScaleUnitsOutput struct{ *pulumi.OutputState }
+
+func (ScaleUnitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleUnits)(nil)).Elem()
+}
+
+func (o ScaleUnitsOutput) ToScaleUnitsOutput() ScaleUnitsOutput {
+	return o
+}
+
+func (o ScaleUnitsOutput) ToScaleUnitsOutputWithContext(ctx context.Context) ScaleUnitsOutput {
+	return o
+}
+
+func (o ScaleUnitsOutput) ToOutput(ctx context.Context) pulumix.Output[ScaleUnits] {
+	return pulumix.Output[ScaleUnits]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Deployment Data to deploy AzureStackHCI Cluster.
+func (o ScaleUnitsOutput) DeploymentData() DeploymentDataOutput {
+	return o.ApplyT(func(v ScaleUnits) DeploymentData { return v.DeploymentData }).(DeploymentDataOutput)
+}
+
+type ScaleUnitsArrayOutput struct{ *pulumi.OutputState }
+
+func (ScaleUnitsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScaleUnits)(nil)).Elem()
+}
+
+func (o ScaleUnitsArrayOutput) ToScaleUnitsArrayOutput() ScaleUnitsArrayOutput {
+	return o
+}
+
+func (o ScaleUnitsArrayOutput) ToScaleUnitsArrayOutputWithContext(ctx context.Context) ScaleUnitsArrayOutput {
+	return o
+}
+
+func (o ScaleUnitsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScaleUnits] {
+	return pulumix.Output[[]ScaleUnits]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ScaleUnitsArrayOutput) Index(i pulumi.IntInput) ScaleUnitsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScaleUnits {
+		return vs[0].([]ScaleUnits)[vs[1].(int)]
+	}).(ScaleUnitsOutput)
+}
+
+// Scale units will contains list of deployment data
+type ScaleUnitsResponse struct {
+	// Deployment Data to deploy AzureStackHCI Cluster.
+	DeploymentData DeploymentDataResponse `pulumi:"deploymentData"`
+}
+
+// Defaults sets the appropriate defaults for ScaleUnitsResponse
+func (val *ScaleUnitsResponse) Defaults() *ScaleUnitsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.DeploymentData = *tmp.DeploymentData.Defaults()
+
+	return &tmp
+}
+
+// Scale units will contains list of deployment data
+type ScaleUnitsResponseOutput struct{ *pulumi.OutputState }
+
+func (ScaleUnitsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleUnitsResponse)(nil)).Elem()
+}
+
+func (o ScaleUnitsResponseOutput) ToScaleUnitsResponseOutput() ScaleUnitsResponseOutput {
+	return o
+}
+
+func (o ScaleUnitsResponseOutput) ToScaleUnitsResponseOutputWithContext(ctx context.Context) ScaleUnitsResponseOutput {
+	return o
+}
+
+func (o ScaleUnitsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScaleUnitsResponse] {
+	return pulumix.Output[ScaleUnitsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Deployment Data to deploy AzureStackHCI Cluster.
+func (o ScaleUnitsResponseOutput) DeploymentData() DeploymentDataResponseOutput {
+	return o.ApplyT(func(v ScaleUnitsResponse) DeploymentDataResponse { return v.DeploymentData }).(DeploymentDataResponseOutput)
+}
+
+type ScaleUnitsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ScaleUnitsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScaleUnitsResponse)(nil)).Elem()
+}
+
+func (o ScaleUnitsResponseArrayOutput) ToScaleUnitsResponseArrayOutput() ScaleUnitsResponseArrayOutput {
+	return o
+}
+
+func (o ScaleUnitsResponseArrayOutput) ToScaleUnitsResponseArrayOutputWithContext(ctx context.Context) ScaleUnitsResponseArrayOutput {
+	return o
+}
+
+func (o ScaleUnitsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScaleUnitsResponse] {
+	return pulumix.Output[[]ScaleUnitsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ScaleUnitsResponseArrayOutput) Index(i pulumi.IntInput) ScaleUnitsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScaleUnitsResponse {
+		return vs[0].([]ScaleUnitsResponse)[vs[1].(int)]
+	}).(ScaleUnitsResponseOutput)
+}
+
+// The SecuritySettings of AzureStackHCI Cluster.
+type SecuritySettings struct {
+	// When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent.
+	BitlockerBootVolume *bool `pulumi:"bitlockerBootVolume"`
+	// When set to true, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes.
+	BitlockerDataVolumes *bool `pulumi:"bitlockerDataVolumes"`
+	// When set to true, Credential Guard is enabled.
+	CredentialGuardEnforced *bool `pulumi:"credentialGuardEnforced"`
+	// When set to true, the security baseline is re-applied regularly.
+	DriftControlEnforced *bool `pulumi:"driftControlEnforced"`
+	// By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent.
+	DrtmProtection *bool `pulumi:"drtmProtection"`
+	// By default, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster.
+	HvciProtection *bool `pulumi:"hvciProtection"`
+	// When set to true, all the side channel mitigations are enabled
+	SideChannelMitigationEnforced *bool `pulumi:"sideChannelMitigationEnforced"`
+	// When set to true, cluster east-west traffic is encrypted.
+	SmbClusterEncryption *bool `pulumi:"smbClusterEncryption"`
+	// When set to true, the SMB default instance requires sign in for the client and server services.
+	SmbSigningEnforced *bool `pulumi:"smbSigningEnforced"`
+	// WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster.
+	WdacEnforced *bool `pulumi:"wdacEnforced"`
+}
+
+// Defaults sets the appropriate defaults for SecuritySettings
+func (val *SecuritySettings) Defaults() *SecuritySettings {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.BitlockerBootVolume == nil {
+		bitlockerBootVolume_ := true
+		tmp.BitlockerBootVolume = &bitlockerBootVolume_
+	}
+	if tmp.BitlockerDataVolumes == nil {
+		bitlockerDataVolumes_ := true
+		tmp.BitlockerDataVolumes = &bitlockerDataVolumes_
+	}
+	if tmp.CredentialGuardEnforced == nil {
+		credentialGuardEnforced_ := false
+		tmp.CredentialGuardEnforced = &credentialGuardEnforced_
+	}
+	if tmp.DriftControlEnforced == nil {
+		driftControlEnforced_ := true
+		tmp.DriftControlEnforced = &driftControlEnforced_
+	}
+	if tmp.DrtmProtection == nil {
+		drtmProtection_ := true
+		tmp.DrtmProtection = &drtmProtection_
+	}
+	if tmp.HvciProtection == nil {
+		hvciProtection_ := true
+		tmp.HvciProtection = &hvciProtection_
+	}
+	if tmp.SideChannelMitigationEnforced == nil {
+		sideChannelMitigationEnforced_ := true
+		tmp.SideChannelMitigationEnforced = &sideChannelMitigationEnforced_
+	}
+	if tmp.SmbClusterEncryption == nil {
+		smbClusterEncryption_ := false
+		tmp.SmbClusterEncryption = &smbClusterEncryption_
+	}
+	if tmp.SmbSigningEnforced == nil {
+		smbSigningEnforced_ := true
+		tmp.SmbSigningEnforced = &smbSigningEnforced_
+	}
+	if tmp.WdacEnforced == nil {
+		wdacEnforced_ := true
+		tmp.WdacEnforced = &wdacEnforced_
+	}
+	return &tmp
+}
+
+// SecuritySettingsInput is an input type that accepts SecuritySettingsArgs and SecuritySettingsOutput values.
+// You can construct a concrete instance of `SecuritySettingsInput` via:
+//
+//	SecuritySettingsArgs{...}
+type SecuritySettingsInput interface {
+	pulumi.Input
+
+	ToSecuritySettingsOutput() SecuritySettingsOutput
+	ToSecuritySettingsOutputWithContext(context.Context) SecuritySettingsOutput
+}
+
+// The SecuritySettings of AzureStackHCI Cluster.
+type SecuritySettingsArgs struct {
+	// When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent.
+	BitlockerBootVolume pulumi.BoolPtrInput `pulumi:"bitlockerBootVolume"`
+	// When set to true, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes.
+	BitlockerDataVolumes pulumi.BoolPtrInput `pulumi:"bitlockerDataVolumes"`
+	// When set to true, Credential Guard is enabled.
+	CredentialGuardEnforced pulumi.BoolPtrInput `pulumi:"credentialGuardEnforced"`
+	// When set to true, the security baseline is re-applied regularly.
+	DriftControlEnforced pulumi.BoolPtrInput `pulumi:"driftControlEnforced"`
+	// By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent.
+	DrtmProtection pulumi.BoolPtrInput `pulumi:"drtmProtection"`
+	// By default, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster.
+	HvciProtection pulumi.BoolPtrInput `pulumi:"hvciProtection"`
+	// When set to true, all the side channel mitigations are enabled
+	SideChannelMitigationEnforced pulumi.BoolPtrInput `pulumi:"sideChannelMitigationEnforced"`
+	// When set to true, cluster east-west traffic is encrypted.
+	SmbClusterEncryption pulumi.BoolPtrInput `pulumi:"smbClusterEncryption"`
+	// When set to true, the SMB default instance requires sign in for the client and server services.
+	SmbSigningEnforced pulumi.BoolPtrInput `pulumi:"smbSigningEnforced"`
+	// WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster.
+	WdacEnforced pulumi.BoolPtrInput `pulumi:"wdacEnforced"`
+}
+
+// Defaults sets the appropriate defaults for SecuritySettingsArgs
+func (val *SecuritySettingsArgs) Defaults() *SecuritySettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.BitlockerBootVolume == nil {
+		tmp.BitlockerBootVolume = pulumi.BoolPtr(true)
+	}
+	if tmp.BitlockerDataVolumes == nil {
+		tmp.BitlockerDataVolumes = pulumi.BoolPtr(true)
+	}
+	if tmp.CredentialGuardEnforced == nil {
+		tmp.CredentialGuardEnforced = pulumi.BoolPtr(false)
+	}
+	if tmp.DriftControlEnforced == nil {
+		tmp.DriftControlEnforced = pulumi.BoolPtr(true)
+	}
+	if tmp.DrtmProtection == nil {
+		tmp.DrtmProtection = pulumi.BoolPtr(true)
+	}
+	if tmp.HvciProtection == nil {
+		tmp.HvciProtection = pulumi.BoolPtr(true)
+	}
+	if tmp.SideChannelMitigationEnforced == nil {
+		tmp.SideChannelMitigationEnforced = pulumi.BoolPtr(true)
+	}
+	if tmp.SmbClusterEncryption == nil {
+		tmp.SmbClusterEncryption = pulumi.BoolPtr(false)
+	}
+	if tmp.SmbSigningEnforced == nil {
+		tmp.SmbSigningEnforced = pulumi.BoolPtr(true)
+	}
+	if tmp.WdacEnforced == nil {
+		tmp.WdacEnforced = pulumi.BoolPtr(true)
+	}
+	return &tmp
+}
+func (SecuritySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettings)(nil)).Elem()
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsOutput() SecuritySettingsOutput {
+	return i.ToSecuritySettingsOutputWithContext(context.Background())
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsOutputWithContext(ctx context.Context) SecuritySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsOutput)
+}
+
+func (i SecuritySettingsArgs) ToOutput(ctx context.Context) pulumix.Output[SecuritySettings] {
+	return pulumix.Output[SecuritySettings]{
+		OutputState: i.ToSecuritySettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return i.ToSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsOutput).ToSecuritySettingsPtrOutputWithContext(ctx)
+}
+
+// SecuritySettingsPtrInput is an input type that accepts SecuritySettingsArgs, SecuritySettingsPtr and SecuritySettingsPtrOutput values.
+// You can construct a concrete instance of `SecuritySettingsPtrInput` via:
+//
+//	        SecuritySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecuritySettingsPtrInput interface {
+	pulumi.Input
+
+	ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput
+	ToSecuritySettingsPtrOutputWithContext(context.Context) SecuritySettingsPtrOutput
+}
+
+type securitySettingsPtrType SecuritySettingsArgs
+
+func SecuritySettingsPtr(v *SecuritySettingsArgs) SecuritySettingsPtrInput {
+	return (*securitySettingsPtrType)(v)
+}
+
+func (*securitySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecuritySettings)(nil)).Elem()
+}
+
+func (i *securitySettingsPtrType) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return i.ToSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *securitySettingsPtrType) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsPtrOutput)
+}
+
+func (i *securitySettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecuritySettings] {
+	return pulumix.Output[*SecuritySettings]{
+		OutputState: i.ToSecuritySettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The SecuritySettings of AzureStackHCI Cluster.
+type SecuritySettingsOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettings)(nil)).Elem()
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsOutput() SecuritySettingsOutput {
+	return o
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsOutputWithContext(ctx context.Context) SecuritySettingsOutput {
+	return o
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return o.ToSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecuritySettings) *SecuritySettings {
+		return &v
+	}).(SecuritySettingsPtrOutput)
+}
+
+func (o SecuritySettingsOutput) ToOutput(ctx context.Context) pulumix.Output[SecuritySettings] {
+	return pulumix.Output[SecuritySettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+// When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent.
+func (o SecuritySettingsOutput) BitlockerBootVolume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *bool { return v.BitlockerBootVolume }).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes.
+func (o SecuritySettingsOutput) BitlockerDataVolumes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *bool { return v.BitlockerDataVolumes }).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, Credential Guard is enabled.
+func (o SecuritySettingsOutput) CredentialGuardEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *bool { return v.CredentialGuardEnforced }).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, the security baseline is re-applied regularly.
+func (o SecuritySettingsOutput) DriftControlEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *bool { return v.DriftControlEnforced }).(pulumi.BoolPtrOutput)
+}
+
+// By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent.
+func (o SecuritySettingsOutput) DrtmProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *bool { return v.DrtmProtection }).(pulumi.BoolPtrOutput)
+}
+
+// By default, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster.
+func (o SecuritySettingsOutput) HvciProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *bool { return v.HvciProtection }).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, all the side channel mitigations are enabled
+func (o SecuritySettingsOutput) SideChannelMitigationEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *bool { return v.SideChannelMitigationEnforced }).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, cluster east-west traffic is encrypted.
+func (o SecuritySettingsOutput) SmbClusterEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *bool { return v.SmbClusterEncryption }).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, the SMB default instance requires sign in for the client and server services.
+func (o SecuritySettingsOutput) SmbSigningEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *bool { return v.SmbSigningEnforced }).(pulumi.BoolPtrOutput)
+}
+
+// WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster.
+func (o SecuritySettingsOutput) WdacEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *bool { return v.WdacEnforced }).(pulumi.BoolPtrOutput)
+}
+
+type SecuritySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecuritySettings)(nil)).Elem()
+}
+
+func (o SecuritySettingsPtrOutput) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return o
+}
+
+func (o SecuritySettingsPtrOutput) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return o
+}
+
+func (o SecuritySettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecuritySettings] {
+	return pulumix.Output[*SecuritySettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecuritySettingsPtrOutput) Elem() SecuritySettingsOutput {
+	return o.ApplyT(func(v *SecuritySettings) SecuritySettings {
+		if v != nil {
+			return *v
+		}
+		var ret SecuritySettings
+		return ret
+	}).(SecuritySettingsOutput)
+}
+
+// When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent.
+func (o SecuritySettingsPtrOutput) BitlockerBootVolume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BitlockerBootVolume
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes.
+func (o SecuritySettingsPtrOutput) BitlockerDataVolumes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BitlockerDataVolumes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, Credential Guard is enabled.
+func (o SecuritySettingsPtrOutput) CredentialGuardEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialGuardEnforced
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, the security baseline is re-applied regularly.
+func (o SecuritySettingsPtrOutput) DriftControlEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DriftControlEnforced
+	}).(pulumi.BoolPtrOutput)
+}
+
+// By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent.
+func (o SecuritySettingsPtrOutput) DrtmProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DrtmProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// By default, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster.
+func (o SecuritySettingsPtrOutput) HvciProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HvciProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, all the side channel mitigations are enabled
+func (o SecuritySettingsPtrOutput) SideChannelMitigationEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SideChannelMitigationEnforced
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, cluster east-west traffic is encrypted.
+func (o SecuritySettingsPtrOutput) SmbClusterEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SmbClusterEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, the SMB default instance requires sign in for the client and server services.
+func (o SecuritySettingsPtrOutput) SmbSigningEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SmbSigningEnforced
+	}).(pulumi.BoolPtrOutput)
+}
+
+// WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster.
+func (o SecuritySettingsPtrOutput) WdacEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WdacEnforced
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SecuritySettings of AzureStackHCI Cluster.
+type SecuritySettingsResponse struct {
+	// When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent.
+	BitlockerBootVolume *bool `pulumi:"bitlockerBootVolume"`
+	// When set to true, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes.
+	BitlockerDataVolumes *bool `pulumi:"bitlockerDataVolumes"`
+	// When set to true, Credential Guard is enabled.
+	CredentialGuardEnforced *bool `pulumi:"credentialGuardEnforced"`
+	// When set to true, the security baseline is re-applied regularly.
+	DriftControlEnforced *bool `pulumi:"driftControlEnforced"`
+	// By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent.
+	DrtmProtection *bool `pulumi:"drtmProtection"`
+	// By default, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster.
+	HvciProtection *bool `pulumi:"hvciProtection"`
+	// When set to true, all the side channel mitigations are enabled
+	SideChannelMitigationEnforced *bool `pulumi:"sideChannelMitigationEnforced"`
+	// When set to true, cluster east-west traffic is encrypted.
+	SmbClusterEncryption *bool `pulumi:"smbClusterEncryption"`
+	// When set to true, the SMB default instance requires sign in for the client and server services.
+	SmbSigningEnforced *bool `pulumi:"smbSigningEnforced"`
+	// WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster.
+	WdacEnforced *bool `pulumi:"wdacEnforced"`
+}
+
+// Defaults sets the appropriate defaults for SecuritySettingsResponse
+func (val *SecuritySettingsResponse) Defaults() *SecuritySettingsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.BitlockerBootVolume == nil {
+		bitlockerBootVolume_ := true
+		tmp.BitlockerBootVolume = &bitlockerBootVolume_
+	}
+	if tmp.BitlockerDataVolumes == nil {
+		bitlockerDataVolumes_ := true
+		tmp.BitlockerDataVolumes = &bitlockerDataVolumes_
+	}
+	if tmp.CredentialGuardEnforced == nil {
+		credentialGuardEnforced_ := false
+		tmp.CredentialGuardEnforced = &credentialGuardEnforced_
+	}
+	if tmp.DriftControlEnforced == nil {
+		driftControlEnforced_ := true
+		tmp.DriftControlEnforced = &driftControlEnforced_
+	}
+	if tmp.DrtmProtection == nil {
+		drtmProtection_ := true
+		tmp.DrtmProtection = &drtmProtection_
+	}
+	if tmp.HvciProtection == nil {
+		hvciProtection_ := true
+		tmp.HvciProtection = &hvciProtection_
+	}
+	if tmp.SideChannelMitigationEnforced == nil {
+		sideChannelMitigationEnforced_ := true
+		tmp.SideChannelMitigationEnforced = &sideChannelMitigationEnforced_
+	}
+	if tmp.SmbClusterEncryption == nil {
+		smbClusterEncryption_ := false
+		tmp.SmbClusterEncryption = &smbClusterEncryption_
+	}
+	if tmp.SmbSigningEnforced == nil {
+		smbSigningEnforced_ := true
+		tmp.SmbSigningEnforced = &smbSigningEnforced_
+	}
+	if tmp.WdacEnforced == nil {
+		wdacEnforced_ := true
+		tmp.WdacEnforced = &wdacEnforced_
+	}
+	return &tmp
+}
+
+// The SecuritySettings of AzureStackHCI Cluster.
+type SecuritySettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettingsResponse)(nil)).Elem()
+}
+
+func (o SecuritySettingsResponseOutput) ToSecuritySettingsResponseOutput() SecuritySettingsResponseOutput {
+	return o
+}
+
+func (o SecuritySettingsResponseOutput) ToSecuritySettingsResponseOutputWithContext(ctx context.Context) SecuritySettingsResponseOutput {
+	return o
+}
+
+func (o SecuritySettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecuritySettingsResponse] {
+	return pulumix.Output[SecuritySettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent.
+func (o SecuritySettingsResponseOutput) BitlockerBootVolume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) *bool { return v.BitlockerBootVolume }).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes.
+func (o SecuritySettingsResponseOutput) BitlockerDataVolumes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) *bool { return v.BitlockerDataVolumes }).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, Credential Guard is enabled.
+func (o SecuritySettingsResponseOutput) CredentialGuardEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) *bool { return v.CredentialGuardEnforced }).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, the security baseline is re-applied regularly.
+func (o SecuritySettingsResponseOutput) DriftControlEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) *bool { return v.DriftControlEnforced }).(pulumi.BoolPtrOutput)
+}
+
+// By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent.
+func (o SecuritySettingsResponseOutput) DrtmProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) *bool { return v.DrtmProtection }).(pulumi.BoolPtrOutput)
+}
+
+// By default, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster.
+func (o SecuritySettingsResponseOutput) HvciProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) *bool { return v.HvciProtection }).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, all the side channel mitigations are enabled
+func (o SecuritySettingsResponseOutput) SideChannelMitigationEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) *bool { return v.SideChannelMitigationEnforced }).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, cluster east-west traffic is encrypted.
+func (o SecuritySettingsResponseOutput) SmbClusterEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) *bool { return v.SmbClusterEncryption }).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, the SMB default instance requires sign in for the client and server services.
+func (o SecuritySettingsResponseOutput) SmbSigningEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) *bool { return v.SmbSigningEnforced }).(pulumi.BoolPtrOutput)
+}
+
+// WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster.
+func (o SecuritySettingsResponseOutput) WdacEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) *bool { return v.WdacEnforced }).(pulumi.BoolPtrOutput)
+}
+
+type SecuritySettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecuritySettingsResponse)(nil)).Elem()
+}
+
+func (o SecuritySettingsResponsePtrOutput) ToSecuritySettingsResponsePtrOutput() SecuritySettingsResponsePtrOutput {
+	return o
+}
+
+func (o SecuritySettingsResponsePtrOutput) ToSecuritySettingsResponsePtrOutputWithContext(ctx context.Context) SecuritySettingsResponsePtrOutput {
+	return o
+}
+
+func (o SecuritySettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecuritySettingsResponse] {
+	return pulumix.Output[*SecuritySettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecuritySettingsResponsePtrOutput) Elem() SecuritySettingsResponseOutput {
+	return o.ApplyT(func(v *SecuritySettingsResponse) SecuritySettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecuritySettingsResponse
+		return ret
+	}).(SecuritySettingsResponseOutput)
+}
+
+// When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent.
+func (o SecuritySettingsResponsePtrOutput) BitlockerBootVolume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BitlockerBootVolume
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes.
+func (o SecuritySettingsResponsePtrOutput) BitlockerDataVolumes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BitlockerDataVolumes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, Credential Guard is enabled.
+func (o SecuritySettingsResponsePtrOutput) CredentialGuardEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialGuardEnforced
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, the security baseline is re-applied regularly.
+func (o SecuritySettingsResponsePtrOutput) DriftControlEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DriftControlEnforced
+	}).(pulumi.BoolPtrOutput)
+}
+
+// By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent.
+func (o SecuritySettingsResponsePtrOutput) DrtmProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DrtmProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// By default, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster.
+func (o SecuritySettingsResponsePtrOutput) HvciProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HvciProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, all the side channel mitigations are enabled
+func (o SecuritySettingsResponsePtrOutput) SideChannelMitigationEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SideChannelMitigationEnforced
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, cluster east-west traffic is encrypted.
+func (o SecuritySettingsResponsePtrOutput) SmbClusterEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SmbClusterEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, the SMB default instance requires sign in for the client and server services.
+func (o SecuritySettingsResponsePtrOutput) SmbSigningEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SmbSigningEnforced
+	}).(pulumi.BoolPtrOutput)
+}
+
+// WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster.
+func (o SecuritySettingsResponsePtrOutput) WdacEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecuritySettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WdacEnforced
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Software Assurance properties of the cluster.
@@ -7335,6 +12184,10 @@ type StepResponse struct {
 	EndTimeUtc *string `pulumi:"endTimeUtc"`
 	// Error message, specified if the step is in a failed state.
 	ErrorMessage *string `pulumi:"errorMessage"`
+	// List of exceptions in AzureStackHCI Cluster Deployment.
+	Exception []string `pulumi:"exception"`
+	// FullStepIndex of step.
+	FullStepIndex *string `pulumi:"fullStepIndex"`
 	// Completion time of this step or the last completed sub-step.
 	LastUpdatedTimeUtc *string `pulumi:"lastUpdatedTimeUtc"`
 	// Name of the step.
@@ -7381,6 +12234,16 @@ func (o StepResponseOutput) EndTimeUtc() pulumi.StringPtrOutput {
 // Error message, specified if the step is in a failed state.
 func (o StepResponseOutput) ErrorMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StepResponse) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+// List of exceptions in AzureStackHCI Cluster Deployment.
+func (o StepResponseOutput) Exception() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StepResponse) []string { return v.Exception }).(pulumi.StringArrayOutput)
+}
+
+// FullStepIndex of step.
+func (o StepResponseOutput) FullStepIndex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StepResponse) *string { return v.FullStepIndex }).(pulumi.StringPtrOutput)
 }
 
 // Completion time of this step or the last completed sub-step.
@@ -7432,6 +12295,194 @@ func (o StepResponseArrayOutput) Index(i pulumi.IntInput) StepResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StepResponse {
 		return vs[0].([]StepResponse)[vs[1].(int)]
 	}).(StepResponseOutput)
+}
+
+// The Storage config of AzureStackHCI Cluster.
+type Storage struct {
+	// By default, this mode is set to Express and your storage is configured as per best practices based on the number of nodes in the cluster. Allowed values are 'Express','InfraOnly', 'KeepStorage'
+	ConfigurationMode *string `pulumi:"configurationMode"`
+}
+
+// Defaults sets the appropriate defaults for Storage
+func (val *Storage) Defaults() *Storage {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConfigurationMode == nil {
+		configurationMode_ := "Express"
+		tmp.ConfigurationMode = &configurationMode_
+	}
+	return &tmp
+}
+
+// StorageInput is an input type that accepts StorageArgs and StorageOutput values.
+// You can construct a concrete instance of `StorageInput` via:
+//
+//	StorageArgs{...}
+type StorageInput interface {
+	pulumi.Input
+
+	ToStorageOutput() StorageOutput
+	ToStorageOutputWithContext(context.Context) StorageOutput
+}
+
+// The Storage config of AzureStackHCI Cluster.
+type StorageArgs struct {
+	// By default, this mode is set to Express and your storage is configured as per best practices based on the number of nodes in the cluster. Allowed values are 'Express','InfraOnly', 'KeepStorage'
+	ConfigurationMode pulumi.StringPtrInput `pulumi:"configurationMode"`
+}
+
+// Defaults sets the appropriate defaults for StorageArgs
+func (val *StorageArgs) Defaults() *StorageArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConfigurationMode == nil {
+		tmp.ConfigurationMode = pulumi.StringPtr("Express")
+	}
+	return &tmp
+}
+func (StorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Storage)(nil)).Elem()
+}
+
+func (i StorageArgs) ToStorageOutput() StorageOutput {
+	return i.ToStorageOutputWithContext(context.Background())
+}
+
+func (i StorageArgs) ToStorageOutputWithContext(ctx context.Context) StorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageOutput)
+}
+
+func (i StorageArgs) ToOutput(ctx context.Context) pulumix.Output[Storage] {
+	return pulumix.Output[Storage]{
+		OutputState: i.ToStorageOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i StorageArgs) ToStoragePtrOutput() StoragePtrOutput {
+	return i.ToStoragePtrOutputWithContext(context.Background())
+}
+
+func (i StorageArgs) ToStoragePtrOutputWithContext(ctx context.Context) StoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageOutput).ToStoragePtrOutputWithContext(ctx)
+}
+
+// StoragePtrInput is an input type that accepts StorageArgs, StoragePtr and StoragePtrOutput values.
+// You can construct a concrete instance of `StoragePtrInput` via:
+//
+//	        StorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type StoragePtrInput interface {
+	pulumi.Input
+
+	ToStoragePtrOutput() StoragePtrOutput
+	ToStoragePtrOutputWithContext(context.Context) StoragePtrOutput
+}
+
+type storagePtrType StorageArgs
+
+func StoragePtr(v *StorageArgs) StoragePtrInput {
+	return (*storagePtrType)(v)
+}
+
+func (*storagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Storage)(nil)).Elem()
+}
+
+func (i *storagePtrType) ToStoragePtrOutput() StoragePtrOutput {
+	return i.ToStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *storagePtrType) ToStoragePtrOutputWithContext(ctx context.Context) StoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoragePtrOutput)
+}
+
+func (i *storagePtrType) ToOutput(ctx context.Context) pulumix.Output[*Storage] {
+	return pulumix.Output[*Storage]{
+		OutputState: i.ToStoragePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The Storage config of AzureStackHCI Cluster.
+type StorageOutput struct{ *pulumi.OutputState }
+
+func (StorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Storage)(nil)).Elem()
+}
+
+func (o StorageOutput) ToStorageOutput() StorageOutput {
+	return o
+}
+
+func (o StorageOutput) ToStorageOutputWithContext(ctx context.Context) StorageOutput {
+	return o
+}
+
+func (o StorageOutput) ToStoragePtrOutput() StoragePtrOutput {
+	return o.ToStoragePtrOutputWithContext(context.Background())
+}
+
+func (o StorageOutput) ToStoragePtrOutputWithContext(ctx context.Context) StoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Storage) *Storage {
+		return &v
+	}).(StoragePtrOutput)
+}
+
+func (o StorageOutput) ToOutput(ctx context.Context) pulumix.Output[Storage] {
+	return pulumix.Output[Storage]{
+		OutputState: o.OutputState,
+	}
+}
+
+// By default, this mode is set to Express and your storage is configured as per best practices based on the number of nodes in the cluster. Allowed values are 'Express','InfraOnly', 'KeepStorage'
+func (o StorageOutput) ConfigurationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Storage) *string { return v.ConfigurationMode }).(pulumi.StringPtrOutput)
+}
+
+type StoragePtrOutput struct{ *pulumi.OutputState }
+
+func (StoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Storage)(nil)).Elem()
+}
+
+func (o StoragePtrOutput) ToStoragePtrOutput() StoragePtrOutput {
+	return o
+}
+
+func (o StoragePtrOutput) ToStoragePtrOutputWithContext(ctx context.Context) StoragePtrOutput {
+	return o
+}
+
+func (o StoragePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Storage] {
+	return pulumix.Output[*Storage]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StoragePtrOutput) Elem() StorageOutput {
+	return o.ApplyT(func(v *Storage) Storage {
+		if v != nil {
+			return *v
+		}
+		var ret Storage
+		return ret
+	}).(StorageOutput)
+}
+
+// By default, this mode is set to Express and your storage is configured as per best practices based on the number of nodes in the cluster. Allowed values are 'Express','InfraOnly', 'KeepStorage'
+func (o StoragePtrOutput) ConfigurationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Storage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigurationMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The observed state of storage containers
@@ -7578,6 +12629,305 @@ func (o StorageContainerStatusResponseProvisioningStatusPtrOutput) Status() pulu
 			return nil
 		}
 		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// The StorageNetworks of a cluster.
+type StorageNetworks struct {
+	// Name of the storage network.
+	Name *string `pulumi:"name"`
+	// Name of the storage network adapter.
+	NetworkAdapterName *string `pulumi:"networkAdapterName"`
+	// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
+	VlanId *string `pulumi:"vlanId"`
+}
+
+// StorageNetworksInput is an input type that accepts StorageNetworksArgs and StorageNetworksOutput values.
+// You can construct a concrete instance of `StorageNetworksInput` via:
+//
+//	StorageNetworksArgs{...}
+type StorageNetworksInput interface {
+	pulumi.Input
+
+	ToStorageNetworksOutput() StorageNetworksOutput
+	ToStorageNetworksOutputWithContext(context.Context) StorageNetworksOutput
+}
+
+// The StorageNetworks of a cluster.
+type StorageNetworksArgs struct {
+	// Name of the storage network.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the storage network adapter.
+	NetworkAdapterName pulumi.StringPtrInput `pulumi:"networkAdapterName"`
+	// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
+	VlanId pulumi.StringPtrInput `pulumi:"vlanId"`
+}
+
+func (StorageNetworksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageNetworks)(nil)).Elem()
+}
+
+func (i StorageNetworksArgs) ToStorageNetworksOutput() StorageNetworksOutput {
+	return i.ToStorageNetworksOutputWithContext(context.Background())
+}
+
+func (i StorageNetworksArgs) ToStorageNetworksOutputWithContext(ctx context.Context) StorageNetworksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageNetworksOutput)
+}
+
+func (i StorageNetworksArgs) ToOutput(ctx context.Context) pulumix.Output[StorageNetworks] {
+	return pulumix.Output[StorageNetworks]{
+		OutputState: i.ToStorageNetworksOutputWithContext(ctx).OutputState,
+	}
+}
+
+// StorageNetworksArrayInput is an input type that accepts StorageNetworksArray and StorageNetworksArrayOutput values.
+// You can construct a concrete instance of `StorageNetworksArrayInput` via:
+//
+//	StorageNetworksArray{ StorageNetworksArgs{...} }
+type StorageNetworksArrayInput interface {
+	pulumi.Input
+
+	ToStorageNetworksArrayOutput() StorageNetworksArrayOutput
+	ToStorageNetworksArrayOutputWithContext(context.Context) StorageNetworksArrayOutput
+}
+
+type StorageNetworksArray []StorageNetworksInput
+
+func (StorageNetworksArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageNetworks)(nil)).Elem()
+}
+
+func (i StorageNetworksArray) ToStorageNetworksArrayOutput() StorageNetworksArrayOutput {
+	return i.ToStorageNetworksArrayOutputWithContext(context.Background())
+}
+
+func (i StorageNetworksArray) ToStorageNetworksArrayOutputWithContext(ctx context.Context) StorageNetworksArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageNetworksArrayOutput)
+}
+
+func (i StorageNetworksArray) ToOutput(ctx context.Context) pulumix.Output[[]StorageNetworks] {
+	return pulumix.Output[[]StorageNetworks]{
+		OutputState: i.ToStorageNetworksArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The StorageNetworks of a cluster.
+type StorageNetworksOutput struct{ *pulumi.OutputState }
+
+func (StorageNetworksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageNetworks)(nil)).Elem()
+}
+
+func (o StorageNetworksOutput) ToStorageNetworksOutput() StorageNetworksOutput {
+	return o
+}
+
+func (o StorageNetworksOutput) ToStorageNetworksOutputWithContext(ctx context.Context) StorageNetworksOutput {
+	return o
+}
+
+func (o StorageNetworksOutput) ToOutput(ctx context.Context) pulumix.Output[StorageNetworks] {
+	return pulumix.Output[StorageNetworks]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the storage network.
+func (o StorageNetworksOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageNetworks) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Name of the storage network adapter.
+func (o StorageNetworksOutput) NetworkAdapterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageNetworks) *string { return v.NetworkAdapterName }).(pulumi.StringPtrOutput)
+}
+
+// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
+func (o StorageNetworksOutput) VlanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageNetworks) *string { return v.VlanId }).(pulumi.StringPtrOutput)
+}
+
+type StorageNetworksArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageNetworksArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageNetworks)(nil)).Elem()
+}
+
+func (o StorageNetworksArrayOutput) ToStorageNetworksArrayOutput() StorageNetworksArrayOutput {
+	return o
+}
+
+func (o StorageNetworksArrayOutput) ToStorageNetworksArrayOutputWithContext(ctx context.Context) StorageNetworksArrayOutput {
+	return o
+}
+
+func (o StorageNetworksArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageNetworks] {
+	return pulumix.Output[[]StorageNetworks]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StorageNetworksArrayOutput) Index(i pulumi.IntInput) StorageNetworksOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageNetworks {
+		return vs[0].([]StorageNetworks)[vs[1].(int)]
+	}).(StorageNetworksOutput)
+}
+
+// The StorageNetworks of a cluster.
+type StorageNetworksResponse struct {
+	// Name of the storage network.
+	Name *string `pulumi:"name"`
+	// Name of the storage network adapter.
+	NetworkAdapterName *string `pulumi:"networkAdapterName"`
+	// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
+	VlanId *string `pulumi:"vlanId"`
+}
+
+// The StorageNetworks of a cluster.
+type StorageNetworksResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageNetworksResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageNetworksResponse)(nil)).Elem()
+}
+
+func (o StorageNetworksResponseOutput) ToStorageNetworksResponseOutput() StorageNetworksResponseOutput {
+	return o
+}
+
+func (o StorageNetworksResponseOutput) ToStorageNetworksResponseOutputWithContext(ctx context.Context) StorageNetworksResponseOutput {
+	return o
+}
+
+func (o StorageNetworksResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageNetworksResponse] {
+	return pulumix.Output[StorageNetworksResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the storage network.
+func (o StorageNetworksResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageNetworksResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Name of the storage network adapter.
+func (o StorageNetworksResponseOutput) NetworkAdapterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageNetworksResponse) *string { return v.NetworkAdapterName }).(pulumi.StringPtrOutput)
+}
+
+// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
+func (o StorageNetworksResponseOutput) VlanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageNetworksResponse) *string { return v.VlanId }).(pulumi.StringPtrOutput)
+}
+
+type StorageNetworksResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageNetworksResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageNetworksResponse)(nil)).Elem()
+}
+
+func (o StorageNetworksResponseArrayOutput) ToStorageNetworksResponseArrayOutput() StorageNetworksResponseArrayOutput {
+	return o
+}
+
+func (o StorageNetworksResponseArrayOutput) ToStorageNetworksResponseArrayOutputWithContext(ctx context.Context) StorageNetworksResponseArrayOutput {
+	return o
+}
+
+func (o StorageNetworksResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageNetworksResponse] {
+	return pulumix.Output[[]StorageNetworksResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StorageNetworksResponseArrayOutput) Index(i pulumi.IntInput) StorageNetworksResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageNetworksResponse {
+		return vs[0].([]StorageNetworksResponse)[vs[1].(int)]
+	}).(StorageNetworksResponseOutput)
+}
+
+// The Storage config of AzureStackHCI Cluster.
+type StorageResponse struct {
+	// By default, this mode is set to Express and your storage is configured as per best practices based on the number of nodes in the cluster. Allowed values are 'Express','InfraOnly', 'KeepStorage'
+	ConfigurationMode *string `pulumi:"configurationMode"`
+}
+
+// Defaults sets the appropriate defaults for StorageResponse
+func (val *StorageResponse) Defaults() *StorageResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConfigurationMode == nil {
+		configurationMode_ := "Express"
+		tmp.ConfigurationMode = &configurationMode_
+	}
+	return &tmp
+}
+
+// The Storage config of AzureStackHCI Cluster.
+type StorageResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageResponse)(nil)).Elem()
+}
+
+func (o StorageResponseOutput) ToStorageResponseOutput() StorageResponseOutput {
+	return o
+}
+
+func (o StorageResponseOutput) ToStorageResponseOutputWithContext(ctx context.Context) StorageResponseOutput {
+	return o
+}
+
+func (o StorageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageResponse] {
+	return pulumix.Output[StorageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// By default, this mode is set to Express and your storage is configured as per best practices based on the number of nodes in the cluster. Allowed values are 'Express','InfraOnly', 'KeepStorage'
+func (o StorageResponseOutput) ConfigurationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageResponse) *string { return v.ConfigurationMode }).(pulumi.StringPtrOutput)
+}
+
+type StorageResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageResponse)(nil)).Elem()
+}
+
+func (o StorageResponsePtrOutput) ToStorageResponsePtrOutput() StorageResponsePtrOutput {
+	return o
+}
+
+func (o StorageResponsePtrOutput) ToStorageResponsePtrOutputWithContext(ctx context.Context) StorageResponsePtrOutput {
+	return o
+}
+
+func (o StorageResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageResponse] {
+	return pulumix.Output[*StorageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StorageResponsePtrOutput) Elem() StorageResponseOutput {
+	return o.ApplyT(func(v *StorageResponse) StorageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StorageResponse
+		return ret
+	}).(StorageResponseOutput)
+}
+
+// By default, this mode is set to Express and your storage is configured as per best practices based on the number of nodes in the cluster. Allowed values are 'Express','InfraOnly', 'KeepStorage'
+func (o StorageResponsePtrOutput) ConfigurationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigurationMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8398,6 +13748,45 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
 		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
 	}).(UserAssignedIdentityResponseOutput)
+}
+
+// The ValidationStatus of AzureStackHCI Cluster.
+type ValidationStatusResponse struct {
+	// Status of AzureStackHCI Cluster Deployment.
+	Status string `pulumi:"status"`
+	// List of steps of AzureStackHCI Cluster Deployment.
+	Steps []StepResponse `pulumi:"steps"`
+}
+
+// The ValidationStatus of AzureStackHCI Cluster.
+type ValidationStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (ValidationStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValidationStatusResponse)(nil)).Elem()
+}
+
+func (o ValidationStatusResponseOutput) ToValidationStatusResponseOutput() ValidationStatusResponseOutput {
+	return o
+}
+
+func (o ValidationStatusResponseOutput) ToValidationStatusResponseOutputWithContext(ctx context.Context) ValidationStatusResponseOutput {
+	return o
+}
+
+func (o ValidationStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ValidationStatusResponse] {
+	return pulumix.Output[ValidationStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Status of AzureStackHCI Cluster Deployment.
+func (o ValidationStatusResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ValidationStatusResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// List of steps of AzureStackHCI Cluster Deployment.
+func (o ValidationStatusResponseOutput) Steps() StepResponseArrayOutput {
+	return o.ApplyT(func(v ValidationStatusResponse) []StepResponse { return v.Steps }).(StepResponseArrayOutput)
 }
 
 // The observed state of virtual hard disks
@@ -18894,11 +24283,289 @@ func (o VirtualNetworkStatusResponseProvisioningStatusPtrOutput) Status() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The VirtualSwitchConfigurationOverrides of a cluster.
+type VirtualSwitchConfigurationOverrides struct {
+	// Enable IoV for Virtual Switch
+	EnableIov *string `pulumi:"enableIov"`
+	// Load Balancing Algorithm for Virtual Switch
+	LoadBalancingAlgorithm *string `pulumi:"loadBalancingAlgorithm"`
+}
+
+// VirtualSwitchConfigurationOverridesInput is an input type that accepts VirtualSwitchConfigurationOverridesArgs and VirtualSwitchConfigurationOverridesOutput values.
+// You can construct a concrete instance of `VirtualSwitchConfigurationOverridesInput` via:
+//
+//	VirtualSwitchConfigurationOverridesArgs{...}
+type VirtualSwitchConfigurationOverridesInput interface {
+	pulumi.Input
+
+	ToVirtualSwitchConfigurationOverridesOutput() VirtualSwitchConfigurationOverridesOutput
+	ToVirtualSwitchConfigurationOverridesOutputWithContext(context.Context) VirtualSwitchConfigurationOverridesOutput
+}
+
+// The VirtualSwitchConfigurationOverrides of a cluster.
+type VirtualSwitchConfigurationOverridesArgs struct {
+	// Enable IoV for Virtual Switch
+	EnableIov pulumi.StringPtrInput `pulumi:"enableIov"`
+	// Load Balancing Algorithm for Virtual Switch
+	LoadBalancingAlgorithm pulumi.StringPtrInput `pulumi:"loadBalancingAlgorithm"`
+}
+
+func (VirtualSwitchConfigurationOverridesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualSwitchConfigurationOverrides)(nil)).Elem()
+}
+
+func (i VirtualSwitchConfigurationOverridesArgs) ToVirtualSwitchConfigurationOverridesOutput() VirtualSwitchConfigurationOverridesOutput {
+	return i.ToVirtualSwitchConfigurationOverridesOutputWithContext(context.Background())
+}
+
+func (i VirtualSwitchConfigurationOverridesArgs) ToVirtualSwitchConfigurationOverridesOutputWithContext(ctx context.Context) VirtualSwitchConfigurationOverridesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualSwitchConfigurationOverridesOutput)
+}
+
+func (i VirtualSwitchConfigurationOverridesArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualSwitchConfigurationOverrides] {
+	return pulumix.Output[VirtualSwitchConfigurationOverrides]{
+		OutputState: i.ToVirtualSwitchConfigurationOverridesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i VirtualSwitchConfigurationOverridesArgs) ToVirtualSwitchConfigurationOverridesPtrOutput() VirtualSwitchConfigurationOverridesPtrOutput {
+	return i.ToVirtualSwitchConfigurationOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualSwitchConfigurationOverridesArgs) ToVirtualSwitchConfigurationOverridesPtrOutputWithContext(ctx context.Context) VirtualSwitchConfigurationOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualSwitchConfigurationOverridesOutput).ToVirtualSwitchConfigurationOverridesPtrOutputWithContext(ctx)
+}
+
+// VirtualSwitchConfigurationOverridesPtrInput is an input type that accepts VirtualSwitchConfigurationOverridesArgs, VirtualSwitchConfigurationOverridesPtr and VirtualSwitchConfigurationOverridesPtrOutput values.
+// You can construct a concrete instance of `VirtualSwitchConfigurationOverridesPtrInput` via:
+//
+//	        VirtualSwitchConfigurationOverridesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualSwitchConfigurationOverridesPtrInput interface {
+	pulumi.Input
+
+	ToVirtualSwitchConfigurationOverridesPtrOutput() VirtualSwitchConfigurationOverridesPtrOutput
+	ToVirtualSwitchConfigurationOverridesPtrOutputWithContext(context.Context) VirtualSwitchConfigurationOverridesPtrOutput
+}
+
+type virtualSwitchConfigurationOverridesPtrType VirtualSwitchConfigurationOverridesArgs
+
+func VirtualSwitchConfigurationOverridesPtr(v *VirtualSwitchConfigurationOverridesArgs) VirtualSwitchConfigurationOverridesPtrInput {
+	return (*virtualSwitchConfigurationOverridesPtrType)(v)
+}
+
+func (*virtualSwitchConfigurationOverridesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualSwitchConfigurationOverrides)(nil)).Elem()
+}
+
+func (i *virtualSwitchConfigurationOverridesPtrType) ToVirtualSwitchConfigurationOverridesPtrOutput() VirtualSwitchConfigurationOverridesPtrOutput {
+	return i.ToVirtualSwitchConfigurationOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualSwitchConfigurationOverridesPtrType) ToVirtualSwitchConfigurationOverridesPtrOutputWithContext(ctx context.Context) VirtualSwitchConfigurationOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualSwitchConfigurationOverridesPtrOutput)
+}
+
+func (i *virtualSwitchConfigurationOverridesPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualSwitchConfigurationOverrides] {
+	return pulumix.Output[*VirtualSwitchConfigurationOverrides]{
+		OutputState: i.ToVirtualSwitchConfigurationOverridesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The VirtualSwitchConfigurationOverrides of a cluster.
+type VirtualSwitchConfigurationOverridesOutput struct{ *pulumi.OutputState }
+
+func (VirtualSwitchConfigurationOverridesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualSwitchConfigurationOverrides)(nil)).Elem()
+}
+
+func (o VirtualSwitchConfigurationOverridesOutput) ToVirtualSwitchConfigurationOverridesOutput() VirtualSwitchConfigurationOverridesOutput {
+	return o
+}
+
+func (o VirtualSwitchConfigurationOverridesOutput) ToVirtualSwitchConfigurationOverridesOutputWithContext(ctx context.Context) VirtualSwitchConfigurationOverridesOutput {
+	return o
+}
+
+func (o VirtualSwitchConfigurationOverridesOutput) ToVirtualSwitchConfigurationOverridesPtrOutput() VirtualSwitchConfigurationOverridesPtrOutput {
+	return o.ToVirtualSwitchConfigurationOverridesPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualSwitchConfigurationOverridesOutput) ToVirtualSwitchConfigurationOverridesPtrOutputWithContext(ctx context.Context) VirtualSwitchConfigurationOverridesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualSwitchConfigurationOverrides) *VirtualSwitchConfigurationOverrides {
+		return &v
+	}).(VirtualSwitchConfigurationOverridesPtrOutput)
+}
+
+func (o VirtualSwitchConfigurationOverridesOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualSwitchConfigurationOverrides] {
+	return pulumix.Output[VirtualSwitchConfigurationOverrides]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enable IoV for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesOutput) EnableIov() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualSwitchConfigurationOverrides) *string { return v.EnableIov }).(pulumi.StringPtrOutput)
+}
+
+// Load Balancing Algorithm for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesOutput) LoadBalancingAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualSwitchConfigurationOverrides) *string { return v.LoadBalancingAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+type VirtualSwitchConfigurationOverridesPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualSwitchConfigurationOverridesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualSwitchConfigurationOverrides)(nil)).Elem()
+}
+
+func (o VirtualSwitchConfigurationOverridesPtrOutput) ToVirtualSwitchConfigurationOverridesPtrOutput() VirtualSwitchConfigurationOverridesPtrOutput {
+	return o
+}
+
+func (o VirtualSwitchConfigurationOverridesPtrOutput) ToVirtualSwitchConfigurationOverridesPtrOutputWithContext(ctx context.Context) VirtualSwitchConfigurationOverridesPtrOutput {
+	return o
+}
+
+func (o VirtualSwitchConfigurationOverridesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualSwitchConfigurationOverrides] {
+	return pulumix.Output[*VirtualSwitchConfigurationOverrides]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualSwitchConfigurationOverridesPtrOutput) Elem() VirtualSwitchConfigurationOverridesOutput {
+	return o.ApplyT(func(v *VirtualSwitchConfigurationOverrides) VirtualSwitchConfigurationOverrides {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualSwitchConfigurationOverrides
+		return ret
+	}).(VirtualSwitchConfigurationOverridesOutput)
+}
+
+// Enable IoV for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesPtrOutput) EnableIov() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualSwitchConfigurationOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIov
+	}).(pulumi.StringPtrOutput)
+}
+
+// Load Balancing Algorithm for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesPtrOutput) LoadBalancingAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualSwitchConfigurationOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancingAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VirtualSwitchConfigurationOverrides of a cluster.
+type VirtualSwitchConfigurationOverridesResponse struct {
+	// Enable IoV for Virtual Switch
+	EnableIov *string `pulumi:"enableIov"`
+	// Load Balancing Algorithm for Virtual Switch
+	LoadBalancingAlgorithm *string `pulumi:"loadBalancingAlgorithm"`
+}
+
+// The VirtualSwitchConfigurationOverrides of a cluster.
+type VirtualSwitchConfigurationOverridesResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualSwitchConfigurationOverridesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualSwitchConfigurationOverridesResponse)(nil)).Elem()
+}
+
+func (o VirtualSwitchConfigurationOverridesResponseOutput) ToVirtualSwitchConfigurationOverridesResponseOutput() VirtualSwitchConfigurationOverridesResponseOutput {
+	return o
+}
+
+func (o VirtualSwitchConfigurationOverridesResponseOutput) ToVirtualSwitchConfigurationOverridesResponseOutputWithContext(ctx context.Context) VirtualSwitchConfigurationOverridesResponseOutput {
+	return o
+}
+
+func (o VirtualSwitchConfigurationOverridesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualSwitchConfigurationOverridesResponse] {
+	return pulumix.Output[VirtualSwitchConfigurationOverridesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enable IoV for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesResponseOutput) EnableIov() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualSwitchConfigurationOverridesResponse) *string { return v.EnableIov }).(pulumi.StringPtrOutput)
+}
+
+// Load Balancing Algorithm for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesResponseOutput) LoadBalancingAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualSwitchConfigurationOverridesResponse) *string { return v.LoadBalancingAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+type VirtualSwitchConfigurationOverridesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualSwitchConfigurationOverridesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualSwitchConfigurationOverridesResponse)(nil)).Elem()
+}
+
+func (o VirtualSwitchConfigurationOverridesResponsePtrOutput) ToVirtualSwitchConfigurationOverridesResponsePtrOutput() VirtualSwitchConfigurationOverridesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualSwitchConfigurationOverridesResponsePtrOutput) ToVirtualSwitchConfigurationOverridesResponsePtrOutputWithContext(ctx context.Context) VirtualSwitchConfigurationOverridesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualSwitchConfigurationOverridesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualSwitchConfigurationOverridesResponse] {
+	return pulumix.Output[*VirtualSwitchConfigurationOverridesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualSwitchConfigurationOverridesResponsePtrOutput) Elem() VirtualSwitchConfigurationOverridesResponseOutput {
+	return o.ApplyT(func(v *VirtualSwitchConfigurationOverridesResponse) VirtualSwitchConfigurationOverridesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualSwitchConfigurationOverridesResponse
+		return ret
+	}).(VirtualSwitchConfigurationOverridesResponseOutput)
+}
+
+// Enable IoV for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesResponsePtrOutput) EnableIov() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualSwitchConfigurationOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIov
+	}).(pulumi.StringPtrOutput)
+}
+
+// Load Balancing Algorithm for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesResponsePtrOutput) LoadBalancingAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualSwitchConfigurationOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancingAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(AdapterPropertyOverridesOutput{})
+	pulumi.RegisterOutputType(AdapterPropertyOverridesPtrOutput{})
+	pulumi.RegisterOutputType(AdapterPropertyOverridesResponseOutput{})
+	pulumi.RegisterOutputType(AdapterPropertyOverridesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ArcConnectivityPropertiesOutput{})
 	pulumi.RegisterOutputType(ArcConnectivityPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(ArcConnectivityPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ArcConnectivityPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(ClusterTypeOutput{})
+	pulumi.RegisterOutputType(ClusterTypePtrOutput{})
 	pulumi.RegisterOutputType(ClusterDesiredPropertiesOutput{})
 	pulumi.RegisterOutputType(ClusterDesiredPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDesiredPropertiesResponseOutput{})
@@ -18906,8 +24573,17 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeResponseOutput{})
 	pulumi.RegisterOutputType(ClusterNodeResponseArrayOutput{})
 	pulumi.RegisterOutputType(ClusterReportedPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ClusterResponseOutput{})
+	pulumi.RegisterOutputType(ClusterResponsePtrOutput{})
 	pulumi.RegisterOutputType(DefaultExtensionDetailsResponseOutput{})
 	pulumi.RegisterOutputType(DefaultExtensionDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentConfigurationOutput{})
+	pulumi.RegisterOutputType(DeploymentConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentDataOutput{})
+	pulumi.RegisterOutputType(DeploymentDataResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentStatusResponseOutput{})
+	pulumi.RegisterOutputType(DeviceConfigurationOutput{})
+	pulumi.RegisterOutputType(DeviceConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
@@ -18944,6 +24620,10 @@ func init() {
 	pulumi.RegisterOutputType(GuestCredentialPtrOutput{})
 	pulumi.RegisterOutputType(GuestCredentialResponseOutput{})
 	pulumi.RegisterOutputType(GuestCredentialResponsePtrOutput{})
+	pulumi.RegisterOutputType(HostNetworkOutput{})
+	pulumi.RegisterOutputType(HostNetworkPtrOutput{})
+	pulumi.RegisterOutputType(HostNetworkResponseOutput{})
+	pulumi.RegisterOutputType(HostNetworkResponsePtrOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigurationOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigurationResponseOutput{})
@@ -18970,12 +24650,24 @@ func init() {
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureNetworkOutput{})
+	pulumi.RegisterOutputType(InfrastructureNetworkArrayOutput{})
+	pulumi.RegisterOutputType(InfrastructureNetworkResponseOutput{})
+	pulumi.RegisterOutputType(InfrastructureNetworkResponseArrayOutput{})
 	pulumi.RegisterOutputType(InstanceViewStatusResponseOutput{})
 	pulumi.RegisterOutputType(InstanceViewStatusResponseArrayOutput{})
+	pulumi.RegisterOutputType(IntentsOutput{})
+	pulumi.RegisterOutputType(IntentsArrayOutput{})
+	pulumi.RegisterOutputType(IntentsResponseOutput{})
+	pulumi.RegisterOutputType(IntentsResponseArrayOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsPtrOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsResponseOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(IpPoolsOutput{})
+	pulumi.RegisterOutputType(IpPoolsArrayOutput{})
+	pulumi.RegisterOutputType(IpPoolsResponseOutput{})
+	pulumi.RegisterOutputType(IpPoolsResponseArrayOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkPropertiesDhcpOptionsOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkPropertiesDhcpOptionsPtrOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkPropertiesResponseDhcpOptionsOutput{})
@@ -18995,10 +24687,31 @@ func init() {
 	pulumi.RegisterOutputType(NetworkInterfaceStatusResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceStatusResponseProvisioningStatusOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceStatusResponseProvisioningStatusPtrOutput{})
+	pulumi.RegisterOutputType(NicDetailOutput{})
+	pulumi.RegisterOutputType(NicDetailArrayOutput{})
+	pulumi.RegisterOutputType(NicDetailResponseOutput{})
+	pulumi.RegisterOutputType(NicDetailResponseArrayOutput{})
+	pulumi.RegisterOutputType(ObservabilityOutput{})
+	pulumi.RegisterOutputType(ObservabilityPtrOutput{})
+	pulumi.RegisterOutputType(ObservabilityResponseOutput{})
+	pulumi.RegisterOutputType(ObservabilityResponsePtrOutput{})
+	pulumi.RegisterOutputType(OptionalServicesOutput{})
+	pulumi.RegisterOutputType(OptionalServicesPtrOutput{})
+	pulumi.RegisterOutputType(OptionalServicesResponseOutput{})
+	pulumi.RegisterOutputType(OptionalServicesResponsePtrOutput{})
 	pulumi.RegisterOutputType(PerNodeExtensionStateResponseOutput{})
 	pulumi.RegisterOutputType(PerNodeExtensionStateResponseArrayOutput{})
 	pulumi.RegisterOutputType(PerNodeStateResponseOutput{})
 	pulumi.RegisterOutputType(PerNodeStateResponseArrayOutput{})
+	pulumi.RegisterOutputType(PhysicalNodesOutput{})
+	pulumi.RegisterOutputType(PhysicalNodesArrayOutput{})
+	pulumi.RegisterOutputType(PhysicalNodesResponseOutput{})
+	pulumi.RegisterOutputType(PhysicalNodesResponseArrayOutput{})
+	pulumi.RegisterOutputType(QosPolicyOverridesOutput{})
+	pulumi.RegisterOutputType(QosPolicyOverridesPtrOutput{})
+	pulumi.RegisterOutputType(QosPolicyOverridesResponseOutput{})
+	pulumi.RegisterOutputType(QosPolicyOverridesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ReportedPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RouteOutput{})
 	pulumi.RegisterOutputType(RouteArrayOutput{})
 	pulumi.RegisterOutputType(RouteResponseOutput{})
@@ -19007,6 +24720,14 @@ func init() {
 	pulumi.RegisterOutputType(RouteTablePtrOutput{})
 	pulumi.RegisterOutputType(RouteTableResponseOutput{})
 	pulumi.RegisterOutputType(RouteTableResponsePtrOutput{})
+	pulumi.RegisterOutputType(ScaleUnitsOutput{})
+	pulumi.RegisterOutputType(ScaleUnitsArrayOutput{})
+	pulumi.RegisterOutputType(ScaleUnitsResponseOutput{})
+	pulumi.RegisterOutputType(ScaleUnitsResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecuritySettingsOutput{})
+	pulumi.RegisterOutputType(SecuritySettingsPtrOutput{})
+	pulumi.RegisterOutputType(SecuritySettingsResponseOutput{})
+	pulumi.RegisterOutputType(SecuritySettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SoftwareAssurancePropertiesOutput{})
 	pulumi.RegisterOutputType(SoftwareAssurancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SoftwareAssurancePropertiesResponseOutput{})
@@ -19023,9 +24744,17 @@ func init() {
 	pulumi.RegisterOutputType(StepArrayOutput{})
 	pulumi.RegisterOutputType(StepResponseOutput{})
 	pulumi.RegisterOutputType(StepResponseArrayOutput{})
+	pulumi.RegisterOutputType(StorageOutput{})
+	pulumi.RegisterOutputType(StoragePtrOutput{})
 	pulumi.RegisterOutputType(StorageContainerStatusResponseOutput{})
 	pulumi.RegisterOutputType(StorageContainerStatusResponseProvisioningStatusOutput{})
 	pulumi.RegisterOutputType(StorageContainerStatusResponseProvisioningStatusPtrOutput{})
+	pulumi.RegisterOutputType(StorageNetworksOutput{})
+	pulumi.RegisterOutputType(StorageNetworksArrayOutput{})
+	pulumi.RegisterOutputType(StorageNetworksResponseOutput{})
+	pulumi.RegisterOutputType(StorageNetworksResponseArrayOutput{})
+	pulumi.RegisterOutputType(StorageResponseOutput{})
+	pulumi.RegisterOutputType(StorageResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubnetOutput{})
 	pulumi.RegisterOutputType(SubnetArrayOutput{})
 	pulumi.RegisterOutputType(SubnetPropertiesFormatIpConfigurationReferencesOutput{})
@@ -19041,6 +24770,7 @@ func init() {
 	pulumi.RegisterOutputType(UpdatePrerequisiteResponseArrayOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
+	pulumi.RegisterOutputType(ValidationStatusResponseOutput{})
 	pulumi.RegisterOutputType(VirtualHardDiskStatusResponseOutput{})
 	pulumi.RegisterOutputType(VirtualHardDiskStatusResponseProvisioningStatusOutput{})
 	pulumi.RegisterOutputType(VirtualHardDiskStatusResponseProvisioningStatusPtrOutput{})
@@ -19196,4 +24926,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualNetworkStatusResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkStatusResponseProvisioningStatusOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkStatusResponseProvisioningStatusPtrOutput{})
+	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesOutput{})
+	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesPtrOutput{})
+	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesResponseOutput{})
+	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesResponsePtrOutput{})
 }

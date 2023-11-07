@@ -90,6 +90,9 @@ func NewService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20221201:Service"),
 		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230906:Service"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

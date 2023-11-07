@@ -14,6 +14,8 @@ import (
 
 // Gets the properties of the specified FHIR Service.
 // Azure REST API version: 2023-02-28.
+//
+// Other available API versions: 2023-09-06.
 func LookupFhirService(ctx *pulumi.Context, args *LookupFhirServiceArgs, opts ...pulumi.InvokeOption) (*LookupFhirServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFhirServiceResult

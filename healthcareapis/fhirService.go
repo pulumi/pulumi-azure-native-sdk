@@ -15,6 +15,8 @@ import (
 
 // The description of Fhir Service
 // Azure REST API version: 2023-02-28. Prior API version in Azure Native 1.x: 2022-05-15.
+//
+// Other available API versions: 2023-09-06.
 type FhirService struct {
 	pulumi.CustomResourceState
 
@@ -97,6 +99,9 @@ func NewFhirService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20230228:FhirService"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230906:FhirService"),
 		},
 	})
 	opts = append(opts, aliases)

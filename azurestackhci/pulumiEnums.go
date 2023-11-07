@@ -28,6 +28,16 @@ const (
 	CloudInitDataSourceAzure   = CloudInitDataSource("Azure")
 )
 
+// The deployment mode for cluster deployment.
+type DeploymentMode string
+
+const (
+	// Validate deployment settings for cluster.
+	DeploymentModeValidate = DeploymentMode("Validate")
+	// Deploy cluster using deployment settings.
+	DeploymentModeDeploy = DeploymentMode("Deploy")
+)
+
 // Desired level of diagnostic data emitted by the cluster.
 type DiagnosticLevel string
 

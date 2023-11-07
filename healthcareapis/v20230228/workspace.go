@@ -68,6 +68,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20221201:Workspace"),
 		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20230906:Workspace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
