@@ -50,6 +50,16 @@ func GetMsiEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azure-native:msiEndpoint")
 }
 
+// Your cloud service or provider’s token to exchange for an Azure token.
+func GetOidcRequestToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azure-native:oidcRequestToken")
+}
+
+// The URL to initiate the OIDC token exchange.
+func GetOidcRequestUrl(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azure-native:oidcRequestUrl")
+}
+
 // A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 func GetPartnerId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azure-native:partnerId")
@@ -68,6 +78,17 @@ func GetTenantId(ctx *pulumi.Context) string {
 // Allowed Managed Service Identity be used for Authentication.
 func GetUseMsi(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "azure-native:useMsi")
+	if err == nil {
+		return v
+	}
+	var value bool
+	value = false
+	return value
+}
+
+// Allowed OpenID Connect (OIDC) to be used for Authentication.
+func GetUseOidc(ctx *pulumi.Context) bool {
+	v, err := config.TryBool(ctx, "azure-native:useOidc")
 	if err == nil {
 		return v
 	}
