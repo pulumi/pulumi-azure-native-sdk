@@ -16,7 +16,7 @@ import (
 // Defines binding between a resource and role
 // Azure REST API version: 2023-05-02-preview. Prior API version in Azure Native 1.x: 2022-04-02-preview.
 //
-// Other available API versions: 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview.
+// Other available API versions: 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01.
 type TrustedAccessRoleBinding struct {
 	pulumi.CustomResourceState
 
@@ -110,6 +110,9 @@ func NewTrustedAccessRoleBinding(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230902preview:TrustedAccessRoleBinding"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20231001:TrustedAccessRoleBinding"),
 		},
 	})
 	opts = append(opts, aliases)

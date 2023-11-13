@@ -16,7 +16,7 @@ import (
 // BackupInstance Resource
 // Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2021-01-01.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview.
+// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01, 2023-08-01-preview.
 type BackupInstance struct {
 	pulumi.CustomResourceState
 
@@ -105,6 +105,9 @@ func NewBackupInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20230601preview:BackupInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20230801:BackupInstance"),
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20230801preview:BackupInstance"),

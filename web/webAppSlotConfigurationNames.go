@@ -16,7 +16,7 @@ import (
 // Slot Config names azure resource.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2020-10-01.
+// Other available API versions: 2020-10-01, 2023-01-01.
 type WebAppSlotConfigurationNames struct {
 	pulumi.CustomResourceState
 
@@ -92,6 +92,9 @@ func NewWebAppSlotConfigurationNames(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20220901:WebAppSlotConfigurationNames"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20230101:WebAppSlotConfigurationNames"),
 		},
 	})
 	opts = append(opts, aliases)

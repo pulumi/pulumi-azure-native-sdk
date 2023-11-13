@@ -129,6 +129,9 @@ func NewDomain(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:domainregistration/v20220901:Domain"),
 		},
+		{
+			Type: pulumi.String("azure-native:domainregistration/v20230101:Domain"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

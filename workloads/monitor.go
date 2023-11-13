@@ -84,6 +84,12 @@ func NewMonitor(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:workloads/v20230401:monitor"),
 		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20231001preview:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20231001preview:monitor"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

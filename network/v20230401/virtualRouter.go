@@ -124,6 +124,9 @@ func NewVirtualRouter(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230501:VirtualRouter"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230601:VirtualRouter"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

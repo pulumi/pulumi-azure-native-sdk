@@ -15,7 +15,7 @@ import (
 // Retrieve the Dsc node configurations by node configuration.
 // Azure REST API version: 2022-08-08.
 //
-// Other available API versions: 2023-05-15-preview.
+// Other available API versions: 2023-05-15-preview, 2023-11-01.
 func LookupDscNodeConfiguration(ctx *pulumi.Context, args *LookupDscNodeConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDscNodeConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDscNodeConfigurationResult

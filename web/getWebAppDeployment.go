@@ -15,7 +15,7 @@ import (
 // Description for Get a deployment by its ID for an app, or a deployment slot.
 // Azure REST API version: 2022-09-01.
 //
-// Other available API versions: 2020-10-01.
+// Other available API versions: 2020-10-01, 2023-01-01.
 func LookupWebAppDeployment(ctx *pulumi.Context, args *LookupWebAppDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppDeploymentResult

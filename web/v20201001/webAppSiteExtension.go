@@ -122,6 +122,9 @@ func NewWebAppSiteExtension(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20220901:WebAppSiteExtension"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20230101:WebAppSiteExtension"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

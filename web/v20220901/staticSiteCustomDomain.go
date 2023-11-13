@@ -72,6 +72,9 @@ func NewStaticSiteCustomDomain(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20220301:StaticSiteCustomDomain"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20230101:StaticSiteCustomDomain"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

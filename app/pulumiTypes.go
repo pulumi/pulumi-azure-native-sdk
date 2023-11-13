@@ -4540,6 +4540,386 @@ func (o AzureStaticWebAppsResponsePtrOutput) Registration() AzureStaticWebAppsRe
 	}).(AzureStaticWebAppsRegistrationResponsePtrOutput)
 }
 
+// Configuration of the build.
+type BuildConfiguration struct {
+	// Base OS used to build and run the app.
+	BaseOs *string `pulumi:"baseOs"`
+	// List of environment variables to be passed to the build and application runtime.
+	EnvironmentVariables []EnvironmentVariable `pulumi:"environmentVariables"`
+	// Platform to be used to build and run the app.
+	Platform *string `pulumi:"platform"`
+	// Platform version to be used to build and run the app.
+	PlatformVersion *string `pulumi:"platformVersion"`
+	// List of steps to perform before the build.
+	PreBuildSteps []PreBuildStep `pulumi:"preBuildSteps"`
+}
+
+// BuildConfigurationInput is an input type that accepts BuildConfigurationArgs and BuildConfigurationOutput values.
+// You can construct a concrete instance of `BuildConfigurationInput` via:
+//
+//	BuildConfigurationArgs{...}
+type BuildConfigurationInput interface {
+	pulumi.Input
+
+	ToBuildConfigurationOutput() BuildConfigurationOutput
+	ToBuildConfigurationOutputWithContext(context.Context) BuildConfigurationOutput
+}
+
+// Configuration of the build.
+type BuildConfigurationArgs struct {
+	// Base OS used to build and run the app.
+	BaseOs pulumi.StringPtrInput `pulumi:"baseOs"`
+	// List of environment variables to be passed to the build and application runtime.
+	EnvironmentVariables EnvironmentVariableArrayInput `pulumi:"environmentVariables"`
+	// Platform to be used to build and run the app.
+	Platform pulumi.StringPtrInput `pulumi:"platform"`
+	// Platform version to be used to build and run the app.
+	PlatformVersion pulumi.StringPtrInput `pulumi:"platformVersion"`
+	// List of steps to perform before the build.
+	PreBuildSteps PreBuildStepArrayInput `pulumi:"preBuildSteps"`
+}
+
+func (BuildConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildConfiguration)(nil)).Elem()
+}
+
+func (i BuildConfigurationArgs) ToBuildConfigurationOutput() BuildConfigurationOutput {
+	return i.ToBuildConfigurationOutputWithContext(context.Background())
+}
+
+func (i BuildConfigurationArgs) ToBuildConfigurationOutputWithContext(ctx context.Context) BuildConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildConfigurationOutput)
+}
+
+func (i BuildConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[BuildConfiguration] {
+	return pulumix.Output[BuildConfiguration]{
+		OutputState: i.ToBuildConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BuildConfigurationArgs) ToBuildConfigurationPtrOutput() BuildConfigurationPtrOutput {
+	return i.ToBuildConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i BuildConfigurationArgs) ToBuildConfigurationPtrOutputWithContext(ctx context.Context) BuildConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildConfigurationOutput).ToBuildConfigurationPtrOutputWithContext(ctx)
+}
+
+// BuildConfigurationPtrInput is an input type that accepts BuildConfigurationArgs, BuildConfigurationPtr and BuildConfigurationPtrOutput values.
+// You can construct a concrete instance of `BuildConfigurationPtrInput` via:
+//
+//	        BuildConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BuildConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToBuildConfigurationPtrOutput() BuildConfigurationPtrOutput
+	ToBuildConfigurationPtrOutputWithContext(context.Context) BuildConfigurationPtrOutput
+}
+
+type buildConfigurationPtrType BuildConfigurationArgs
+
+func BuildConfigurationPtr(v *BuildConfigurationArgs) BuildConfigurationPtrInput {
+	return (*buildConfigurationPtrType)(v)
+}
+
+func (*buildConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildConfiguration)(nil)).Elem()
+}
+
+func (i *buildConfigurationPtrType) ToBuildConfigurationPtrOutput() BuildConfigurationPtrOutput {
+	return i.ToBuildConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *buildConfigurationPtrType) ToBuildConfigurationPtrOutputWithContext(ctx context.Context) BuildConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildConfigurationPtrOutput)
+}
+
+func (i *buildConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*BuildConfiguration] {
+	return pulumix.Output[*BuildConfiguration]{
+		OutputState: i.ToBuildConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration of the build.
+type BuildConfigurationOutput struct{ *pulumi.OutputState }
+
+func (BuildConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildConfiguration)(nil)).Elem()
+}
+
+func (o BuildConfigurationOutput) ToBuildConfigurationOutput() BuildConfigurationOutput {
+	return o
+}
+
+func (o BuildConfigurationOutput) ToBuildConfigurationOutputWithContext(ctx context.Context) BuildConfigurationOutput {
+	return o
+}
+
+func (o BuildConfigurationOutput) ToBuildConfigurationPtrOutput() BuildConfigurationPtrOutput {
+	return o.ToBuildConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o BuildConfigurationOutput) ToBuildConfigurationPtrOutputWithContext(ctx context.Context) BuildConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildConfiguration) *BuildConfiguration {
+		return &v
+	}).(BuildConfigurationPtrOutput)
+}
+
+func (o BuildConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[BuildConfiguration] {
+	return pulumix.Output[BuildConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Base OS used to build and run the app.
+func (o BuildConfigurationOutput) BaseOs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildConfiguration) *string { return v.BaseOs }).(pulumi.StringPtrOutput)
+}
+
+// List of environment variables to be passed to the build and application runtime.
+func (o BuildConfigurationOutput) EnvironmentVariables() EnvironmentVariableArrayOutput {
+	return o.ApplyT(func(v BuildConfiguration) []EnvironmentVariable { return v.EnvironmentVariables }).(EnvironmentVariableArrayOutput)
+}
+
+// Platform to be used to build and run the app.
+func (o BuildConfigurationOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildConfiguration) *string { return v.Platform }).(pulumi.StringPtrOutput)
+}
+
+// Platform version to be used to build and run the app.
+func (o BuildConfigurationOutput) PlatformVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildConfiguration) *string { return v.PlatformVersion }).(pulumi.StringPtrOutput)
+}
+
+// List of steps to perform before the build.
+func (o BuildConfigurationOutput) PreBuildSteps() PreBuildStepArrayOutput {
+	return o.ApplyT(func(v BuildConfiguration) []PreBuildStep { return v.PreBuildSteps }).(PreBuildStepArrayOutput)
+}
+
+type BuildConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (BuildConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildConfiguration)(nil)).Elem()
+}
+
+func (o BuildConfigurationPtrOutput) ToBuildConfigurationPtrOutput() BuildConfigurationPtrOutput {
+	return o
+}
+
+func (o BuildConfigurationPtrOutput) ToBuildConfigurationPtrOutputWithContext(ctx context.Context) BuildConfigurationPtrOutput {
+	return o
+}
+
+func (o BuildConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildConfiguration] {
+	return pulumix.Output[*BuildConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BuildConfigurationPtrOutput) Elem() BuildConfigurationOutput {
+	return o.ApplyT(func(v *BuildConfiguration) BuildConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret BuildConfiguration
+		return ret
+	}).(BuildConfigurationOutput)
+}
+
+// Base OS used to build and run the app.
+func (o BuildConfigurationPtrOutput) BaseOs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BaseOs
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of environment variables to be passed to the build and application runtime.
+func (o BuildConfigurationPtrOutput) EnvironmentVariables() EnvironmentVariableArrayOutput {
+	return o.ApplyT(func(v *BuildConfiguration) []EnvironmentVariable {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentVariables
+	}).(EnvironmentVariableArrayOutput)
+}
+
+// Platform to be used to build and run the app.
+func (o BuildConfigurationPtrOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Platform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Platform version to be used to build and run the app.
+func (o BuildConfigurationPtrOutput) PlatformVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlatformVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of steps to perform before the build.
+func (o BuildConfigurationPtrOutput) PreBuildSteps() PreBuildStepArrayOutput {
+	return o.ApplyT(func(v *BuildConfiguration) []PreBuildStep {
+		if v == nil {
+			return nil
+		}
+		return v.PreBuildSteps
+	}).(PreBuildStepArrayOutput)
+}
+
+// Configuration of the build.
+type BuildConfigurationResponse struct {
+	// Base OS used to build and run the app.
+	BaseOs *string `pulumi:"baseOs"`
+	// List of environment variables to be passed to the build and application runtime.
+	EnvironmentVariables []EnvironmentVariableResponse `pulumi:"environmentVariables"`
+	// Platform to be used to build and run the app.
+	Platform *string `pulumi:"platform"`
+	// Platform version to be used to build and run the app.
+	PlatformVersion *string `pulumi:"platformVersion"`
+	// List of steps to perform before the build.
+	PreBuildSteps []PreBuildStepResponse `pulumi:"preBuildSteps"`
+}
+
+// Configuration of the build.
+type BuildConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (BuildConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildConfigurationResponse)(nil)).Elem()
+}
+
+func (o BuildConfigurationResponseOutput) ToBuildConfigurationResponseOutput() BuildConfigurationResponseOutput {
+	return o
+}
+
+func (o BuildConfigurationResponseOutput) ToBuildConfigurationResponseOutputWithContext(ctx context.Context) BuildConfigurationResponseOutput {
+	return o
+}
+
+func (o BuildConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BuildConfigurationResponse] {
+	return pulumix.Output[BuildConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Base OS used to build and run the app.
+func (o BuildConfigurationResponseOutput) BaseOs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildConfigurationResponse) *string { return v.BaseOs }).(pulumi.StringPtrOutput)
+}
+
+// List of environment variables to be passed to the build and application runtime.
+func (o BuildConfigurationResponseOutput) EnvironmentVariables() EnvironmentVariableResponseArrayOutput {
+	return o.ApplyT(func(v BuildConfigurationResponse) []EnvironmentVariableResponse { return v.EnvironmentVariables }).(EnvironmentVariableResponseArrayOutput)
+}
+
+// Platform to be used to build and run the app.
+func (o BuildConfigurationResponseOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildConfigurationResponse) *string { return v.Platform }).(pulumi.StringPtrOutput)
+}
+
+// Platform version to be used to build and run the app.
+func (o BuildConfigurationResponseOutput) PlatformVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildConfigurationResponse) *string { return v.PlatformVersion }).(pulumi.StringPtrOutput)
+}
+
+// List of steps to perform before the build.
+func (o BuildConfigurationResponseOutput) PreBuildSteps() PreBuildStepResponseArrayOutput {
+	return o.ApplyT(func(v BuildConfigurationResponse) []PreBuildStepResponse { return v.PreBuildSteps }).(PreBuildStepResponseArrayOutput)
+}
+
+type BuildConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BuildConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildConfigurationResponse)(nil)).Elem()
+}
+
+func (o BuildConfigurationResponsePtrOutput) ToBuildConfigurationResponsePtrOutput() BuildConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o BuildConfigurationResponsePtrOutput) ToBuildConfigurationResponsePtrOutputWithContext(ctx context.Context) BuildConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o BuildConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildConfigurationResponse] {
+	return pulumix.Output[*BuildConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BuildConfigurationResponsePtrOutput) Elem() BuildConfigurationResponseOutput {
+	return o.ApplyT(func(v *BuildConfigurationResponse) BuildConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuildConfigurationResponse
+		return ret
+	}).(BuildConfigurationResponseOutput)
+}
+
+// Base OS used to build and run the app.
+func (o BuildConfigurationResponsePtrOutput) BaseOs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BaseOs
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of environment variables to be passed to the build and application runtime.
+func (o BuildConfigurationResponsePtrOutput) EnvironmentVariables() EnvironmentVariableResponseArrayOutput {
+	return o.ApplyT(func(v *BuildConfigurationResponse) []EnvironmentVariableResponse {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentVariables
+	}).(EnvironmentVariableResponseArrayOutput)
+}
+
+// Platform to be used to build and run the app.
+func (o BuildConfigurationResponsePtrOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Platform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Platform version to be used to build and run the app.
+func (o BuildConfigurationResponsePtrOutput) PlatformVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlatformVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of steps to perform before the build.
+func (o BuildConfigurationResponsePtrOutput) PreBuildSteps() PreBuildStepResponseArrayOutput {
+	return o.ApplyT(func(v *BuildConfigurationResponse) []PreBuildStepResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PreBuildSteps
+	}).(PreBuildStepResponseArrayOutput)
+}
+
 // Certificate resource specific properties
 type CertificateProperties struct {
 	// Certificate password.
@@ -4809,6 +5189,314 @@ func (o CertificateResponsePropertiesOutput) Thumbprint() pulumi.StringOutput {
 // Is the certificate valid?.
 func (o CertificateResponsePropertiesOutput) Valid() pulumi.BoolOutput {
 	return o.ApplyT(func(v CertificateResponseProperties) bool { return v.Valid }).(pulumi.BoolOutput)
+}
+
+// Policy that defines circuit breaker conditions
+type CircuitBreakerPolicy struct {
+	// Number of consecutive errors before the circuit breaker opens
+	ConsecutiveErrors *int `pulumi:"consecutiveErrors"`
+	// The time interval, in seconds, between endpoint checks. This can result in opening the circuit breaker if the check fails as well as closing the circuit breaker if the check succeeds. Defaults to 10s.
+	IntervalInSeconds *int `pulumi:"intervalInSeconds"`
+	// Maximum percentage of hosts that will be ejected after failure threshold has been met
+	MaxEjectionPercent *int `pulumi:"maxEjectionPercent"`
+}
+
+// CircuitBreakerPolicyInput is an input type that accepts CircuitBreakerPolicyArgs and CircuitBreakerPolicyOutput values.
+// You can construct a concrete instance of `CircuitBreakerPolicyInput` via:
+//
+//	CircuitBreakerPolicyArgs{...}
+type CircuitBreakerPolicyInput interface {
+	pulumi.Input
+
+	ToCircuitBreakerPolicyOutput() CircuitBreakerPolicyOutput
+	ToCircuitBreakerPolicyOutputWithContext(context.Context) CircuitBreakerPolicyOutput
+}
+
+// Policy that defines circuit breaker conditions
+type CircuitBreakerPolicyArgs struct {
+	// Number of consecutive errors before the circuit breaker opens
+	ConsecutiveErrors pulumi.IntPtrInput `pulumi:"consecutiveErrors"`
+	// The time interval, in seconds, between endpoint checks. This can result in opening the circuit breaker if the check fails as well as closing the circuit breaker if the check succeeds. Defaults to 10s.
+	IntervalInSeconds pulumi.IntPtrInput `pulumi:"intervalInSeconds"`
+	// Maximum percentage of hosts that will be ejected after failure threshold has been met
+	MaxEjectionPercent pulumi.IntPtrInput `pulumi:"maxEjectionPercent"`
+}
+
+func (CircuitBreakerPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CircuitBreakerPolicy)(nil)).Elem()
+}
+
+func (i CircuitBreakerPolicyArgs) ToCircuitBreakerPolicyOutput() CircuitBreakerPolicyOutput {
+	return i.ToCircuitBreakerPolicyOutputWithContext(context.Background())
+}
+
+func (i CircuitBreakerPolicyArgs) ToCircuitBreakerPolicyOutputWithContext(ctx context.Context) CircuitBreakerPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CircuitBreakerPolicyOutput)
+}
+
+func (i CircuitBreakerPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[CircuitBreakerPolicy] {
+	return pulumix.Output[CircuitBreakerPolicy]{
+		OutputState: i.ToCircuitBreakerPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CircuitBreakerPolicyArgs) ToCircuitBreakerPolicyPtrOutput() CircuitBreakerPolicyPtrOutput {
+	return i.ToCircuitBreakerPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i CircuitBreakerPolicyArgs) ToCircuitBreakerPolicyPtrOutputWithContext(ctx context.Context) CircuitBreakerPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CircuitBreakerPolicyOutput).ToCircuitBreakerPolicyPtrOutputWithContext(ctx)
+}
+
+// CircuitBreakerPolicyPtrInput is an input type that accepts CircuitBreakerPolicyArgs, CircuitBreakerPolicyPtr and CircuitBreakerPolicyPtrOutput values.
+// You can construct a concrete instance of `CircuitBreakerPolicyPtrInput` via:
+//
+//	        CircuitBreakerPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type CircuitBreakerPolicyPtrInput interface {
+	pulumi.Input
+
+	ToCircuitBreakerPolicyPtrOutput() CircuitBreakerPolicyPtrOutput
+	ToCircuitBreakerPolicyPtrOutputWithContext(context.Context) CircuitBreakerPolicyPtrOutput
+}
+
+type circuitBreakerPolicyPtrType CircuitBreakerPolicyArgs
+
+func CircuitBreakerPolicyPtr(v *CircuitBreakerPolicyArgs) CircuitBreakerPolicyPtrInput {
+	return (*circuitBreakerPolicyPtrType)(v)
+}
+
+func (*circuitBreakerPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CircuitBreakerPolicy)(nil)).Elem()
+}
+
+func (i *circuitBreakerPolicyPtrType) ToCircuitBreakerPolicyPtrOutput() CircuitBreakerPolicyPtrOutput {
+	return i.ToCircuitBreakerPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *circuitBreakerPolicyPtrType) ToCircuitBreakerPolicyPtrOutputWithContext(ctx context.Context) CircuitBreakerPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CircuitBreakerPolicyPtrOutput)
+}
+
+func (i *circuitBreakerPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*CircuitBreakerPolicy] {
+	return pulumix.Output[*CircuitBreakerPolicy]{
+		OutputState: i.ToCircuitBreakerPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Policy that defines circuit breaker conditions
+type CircuitBreakerPolicyOutput struct{ *pulumi.OutputState }
+
+func (CircuitBreakerPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CircuitBreakerPolicy)(nil)).Elem()
+}
+
+func (o CircuitBreakerPolicyOutput) ToCircuitBreakerPolicyOutput() CircuitBreakerPolicyOutput {
+	return o
+}
+
+func (o CircuitBreakerPolicyOutput) ToCircuitBreakerPolicyOutputWithContext(ctx context.Context) CircuitBreakerPolicyOutput {
+	return o
+}
+
+func (o CircuitBreakerPolicyOutput) ToCircuitBreakerPolicyPtrOutput() CircuitBreakerPolicyPtrOutput {
+	return o.ToCircuitBreakerPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o CircuitBreakerPolicyOutput) ToCircuitBreakerPolicyPtrOutputWithContext(ctx context.Context) CircuitBreakerPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CircuitBreakerPolicy) *CircuitBreakerPolicy {
+		return &v
+	}).(CircuitBreakerPolicyPtrOutput)
+}
+
+func (o CircuitBreakerPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[CircuitBreakerPolicy] {
+	return pulumix.Output[CircuitBreakerPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Number of consecutive errors before the circuit breaker opens
+func (o CircuitBreakerPolicyOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerPolicy) *int { return v.ConsecutiveErrors }).(pulumi.IntPtrOutput)
+}
+
+// The time interval, in seconds, between endpoint checks. This can result in opening the circuit breaker if the check fails as well as closing the circuit breaker if the check succeeds. Defaults to 10s.
+func (o CircuitBreakerPolicyOutput) IntervalInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerPolicy) *int { return v.IntervalInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Maximum percentage of hosts that will be ejected after failure threshold has been met
+func (o CircuitBreakerPolicyOutput) MaxEjectionPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerPolicy) *int { return v.MaxEjectionPercent }).(pulumi.IntPtrOutput)
+}
+
+type CircuitBreakerPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (CircuitBreakerPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CircuitBreakerPolicy)(nil)).Elem()
+}
+
+func (o CircuitBreakerPolicyPtrOutput) ToCircuitBreakerPolicyPtrOutput() CircuitBreakerPolicyPtrOutput {
+	return o
+}
+
+func (o CircuitBreakerPolicyPtrOutput) ToCircuitBreakerPolicyPtrOutputWithContext(ctx context.Context) CircuitBreakerPolicyPtrOutput {
+	return o
+}
+
+func (o CircuitBreakerPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CircuitBreakerPolicy] {
+	return pulumix.Output[*CircuitBreakerPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CircuitBreakerPolicyPtrOutput) Elem() CircuitBreakerPolicyOutput {
+	return o.ApplyT(func(v *CircuitBreakerPolicy) CircuitBreakerPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret CircuitBreakerPolicy
+		return ret
+	}).(CircuitBreakerPolicyOutput)
+}
+
+// Number of consecutive errors before the circuit breaker opens
+func (o CircuitBreakerPolicyPtrOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CircuitBreakerPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsecutiveErrors
+	}).(pulumi.IntPtrOutput)
+}
+
+// The time interval, in seconds, between endpoint checks. This can result in opening the circuit breaker if the check fails as well as closing the circuit breaker if the check succeeds. Defaults to 10s.
+func (o CircuitBreakerPolicyPtrOutput) IntervalInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CircuitBreakerPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IntervalInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum percentage of hosts that will be ejected after failure threshold has been met
+func (o CircuitBreakerPolicyPtrOutput) MaxEjectionPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CircuitBreakerPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxEjectionPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Policy that defines circuit breaker conditions
+type CircuitBreakerPolicyResponse struct {
+	// Number of consecutive errors before the circuit breaker opens
+	ConsecutiveErrors *int `pulumi:"consecutiveErrors"`
+	// The time interval, in seconds, between endpoint checks. This can result in opening the circuit breaker if the check fails as well as closing the circuit breaker if the check succeeds. Defaults to 10s.
+	IntervalInSeconds *int `pulumi:"intervalInSeconds"`
+	// Maximum percentage of hosts that will be ejected after failure threshold has been met
+	MaxEjectionPercent *int `pulumi:"maxEjectionPercent"`
+}
+
+// Policy that defines circuit breaker conditions
+type CircuitBreakerPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (CircuitBreakerPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CircuitBreakerPolicyResponse)(nil)).Elem()
+}
+
+func (o CircuitBreakerPolicyResponseOutput) ToCircuitBreakerPolicyResponseOutput() CircuitBreakerPolicyResponseOutput {
+	return o
+}
+
+func (o CircuitBreakerPolicyResponseOutput) ToCircuitBreakerPolicyResponseOutputWithContext(ctx context.Context) CircuitBreakerPolicyResponseOutput {
+	return o
+}
+
+func (o CircuitBreakerPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CircuitBreakerPolicyResponse] {
+	return pulumix.Output[CircuitBreakerPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Number of consecutive errors before the circuit breaker opens
+func (o CircuitBreakerPolicyResponseOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerPolicyResponse) *int { return v.ConsecutiveErrors }).(pulumi.IntPtrOutput)
+}
+
+// The time interval, in seconds, between endpoint checks. This can result in opening the circuit breaker if the check fails as well as closing the circuit breaker if the check succeeds. Defaults to 10s.
+func (o CircuitBreakerPolicyResponseOutput) IntervalInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerPolicyResponse) *int { return v.IntervalInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Maximum percentage of hosts that will be ejected after failure threshold has been met
+func (o CircuitBreakerPolicyResponseOutput) MaxEjectionPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerPolicyResponse) *int { return v.MaxEjectionPercent }).(pulumi.IntPtrOutput)
+}
+
+type CircuitBreakerPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CircuitBreakerPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CircuitBreakerPolicyResponse)(nil)).Elem()
+}
+
+func (o CircuitBreakerPolicyResponsePtrOutput) ToCircuitBreakerPolicyResponsePtrOutput() CircuitBreakerPolicyResponsePtrOutput {
+	return o
+}
+
+func (o CircuitBreakerPolicyResponsePtrOutput) ToCircuitBreakerPolicyResponsePtrOutputWithContext(ctx context.Context) CircuitBreakerPolicyResponsePtrOutput {
+	return o
+}
+
+func (o CircuitBreakerPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CircuitBreakerPolicyResponse] {
+	return pulumix.Output[*CircuitBreakerPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CircuitBreakerPolicyResponsePtrOutput) Elem() CircuitBreakerPolicyResponseOutput {
+	return o.ApplyT(func(v *CircuitBreakerPolicyResponse) CircuitBreakerPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CircuitBreakerPolicyResponse
+		return ret
+	}).(CircuitBreakerPolicyResponseOutput)
+}
+
+// Number of consecutive errors before the circuit breaker opens
+func (o CircuitBreakerPolicyResponsePtrOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CircuitBreakerPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsecutiveErrors
+	}).(pulumi.IntPtrOutput)
+}
+
+// The time interval, in seconds, between endpoint checks. This can result in opening the circuit breaker if the check fails as well as closing the circuit breaker if the check succeeds. Defaults to 10s.
+func (o CircuitBreakerPolicyResponsePtrOutput) IntervalInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CircuitBreakerPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IntervalInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum percentage of hosts that will be ejected after failure threshold has been met
+func (o CircuitBreakerPolicyResponsePtrOutput) MaxEjectionPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CircuitBreakerPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxEjectionPercent
+	}).(pulumi.IntPtrOutput)
 }
 
 // The configuration settings of the app registration for providers that have client ids and client secrets
@@ -7158,6 +7846,476 @@ func (o ContainerAppSecretResponseArrayOutput) Index(i pulumi.IntInput) Containe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerAppSecretResponse {
 		return vs[0].([]ContainerAppSecretResponse)[vs[1].(int)]
 	}).(ContainerAppSecretResponseOutput)
+}
+
+// Model representing a mapping from a container registry to the identity used to connect to it.
+type ContainerRegistry struct {
+	// Login server of the container registry.
+	ContainerRegistryServer string `pulumi:"containerRegistryServer"`
+	// Resource ID of the managed identity.
+	IdentityResourceId string `pulumi:"identityResourceId"`
+}
+
+// ContainerRegistryInput is an input type that accepts ContainerRegistryArgs and ContainerRegistryOutput values.
+// You can construct a concrete instance of `ContainerRegistryInput` via:
+//
+//	ContainerRegistryArgs{...}
+type ContainerRegistryInput interface {
+	pulumi.Input
+
+	ToContainerRegistryOutput() ContainerRegistryOutput
+	ToContainerRegistryOutputWithContext(context.Context) ContainerRegistryOutput
+}
+
+// Model representing a mapping from a container registry to the identity used to connect to it.
+type ContainerRegistryArgs struct {
+	// Login server of the container registry.
+	ContainerRegistryServer pulumi.StringInput `pulumi:"containerRegistryServer"`
+	// Resource ID of the managed identity.
+	IdentityResourceId pulumi.StringInput `pulumi:"identityResourceId"`
+}
+
+func (ContainerRegistryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerRegistry)(nil)).Elem()
+}
+
+func (i ContainerRegistryArgs) ToContainerRegistryOutput() ContainerRegistryOutput {
+	return i.ToContainerRegistryOutputWithContext(context.Background())
+}
+
+func (i ContainerRegistryArgs) ToContainerRegistryOutputWithContext(ctx context.Context) ContainerRegistryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryOutput)
+}
+
+func (i ContainerRegistryArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerRegistry] {
+	return pulumix.Output[ContainerRegistry]{
+		OutputState: i.ToContainerRegistryOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ContainerRegistryArrayInput is an input type that accepts ContainerRegistryArray and ContainerRegistryArrayOutput values.
+// You can construct a concrete instance of `ContainerRegistryArrayInput` via:
+//
+//	ContainerRegistryArray{ ContainerRegistryArgs{...} }
+type ContainerRegistryArrayInput interface {
+	pulumi.Input
+
+	ToContainerRegistryArrayOutput() ContainerRegistryArrayOutput
+	ToContainerRegistryArrayOutputWithContext(context.Context) ContainerRegistryArrayOutput
+}
+
+type ContainerRegistryArray []ContainerRegistryInput
+
+func (ContainerRegistryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerRegistry)(nil)).Elem()
+}
+
+func (i ContainerRegistryArray) ToContainerRegistryArrayOutput() ContainerRegistryArrayOutput {
+	return i.ToContainerRegistryArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerRegistryArray) ToContainerRegistryArrayOutputWithContext(ctx context.Context) ContainerRegistryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryArrayOutput)
+}
+
+func (i ContainerRegistryArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerRegistry] {
+	return pulumix.Output[[]ContainerRegistry]{
+		OutputState: i.ToContainerRegistryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Model representing a mapping from a container registry to the identity used to connect to it.
+type ContainerRegistryOutput struct{ *pulumi.OutputState }
+
+func (ContainerRegistryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerRegistry)(nil)).Elem()
+}
+
+func (o ContainerRegistryOutput) ToContainerRegistryOutput() ContainerRegistryOutput {
+	return o
+}
+
+func (o ContainerRegistryOutput) ToContainerRegistryOutputWithContext(ctx context.Context) ContainerRegistryOutput {
+	return o
+}
+
+func (o ContainerRegistryOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerRegistry] {
+	return pulumix.Output[ContainerRegistry]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Login server of the container registry.
+func (o ContainerRegistryOutput) ContainerRegistryServer() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerRegistry) string { return v.ContainerRegistryServer }).(pulumi.StringOutput)
+}
+
+// Resource ID of the managed identity.
+func (o ContainerRegistryOutput) IdentityResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerRegistry) string { return v.IdentityResourceId }).(pulumi.StringOutput)
+}
+
+type ContainerRegistryArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerRegistryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerRegistry)(nil)).Elem()
+}
+
+func (o ContainerRegistryArrayOutput) ToContainerRegistryArrayOutput() ContainerRegistryArrayOutput {
+	return o
+}
+
+func (o ContainerRegistryArrayOutput) ToContainerRegistryArrayOutputWithContext(ctx context.Context) ContainerRegistryArrayOutput {
+	return o
+}
+
+func (o ContainerRegistryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerRegistry] {
+	return pulumix.Output[[]ContainerRegistry]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ContainerRegistryArrayOutput) Index(i pulumi.IntInput) ContainerRegistryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerRegistry {
+		return vs[0].([]ContainerRegistry)[vs[1].(int)]
+	}).(ContainerRegistryOutput)
+}
+
+// Model representing a mapping from a container registry to the identity used to connect to it.
+type ContainerRegistryResponse struct {
+	// Login server of the container registry.
+	ContainerRegistryServer string `pulumi:"containerRegistryServer"`
+	// Resource ID of the managed identity.
+	IdentityResourceId string `pulumi:"identityResourceId"`
+}
+
+// Model representing a mapping from a container registry to the identity used to connect to it.
+type ContainerRegistryResponseOutput struct{ *pulumi.OutputState }
+
+func (ContainerRegistryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerRegistryResponse)(nil)).Elem()
+}
+
+func (o ContainerRegistryResponseOutput) ToContainerRegistryResponseOutput() ContainerRegistryResponseOutput {
+	return o
+}
+
+func (o ContainerRegistryResponseOutput) ToContainerRegistryResponseOutputWithContext(ctx context.Context) ContainerRegistryResponseOutput {
+	return o
+}
+
+func (o ContainerRegistryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerRegistryResponse] {
+	return pulumix.Output[ContainerRegistryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Login server of the container registry.
+func (o ContainerRegistryResponseOutput) ContainerRegistryServer() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerRegistryResponse) string { return v.ContainerRegistryServer }).(pulumi.StringOutput)
+}
+
+// Resource ID of the managed identity.
+func (o ContainerRegistryResponseOutput) IdentityResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerRegistryResponse) string { return v.IdentityResourceId }).(pulumi.StringOutput)
+}
+
+type ContainerRegistryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerRegistryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerRegistryResponse)(nil)).Elem()
+}
+
+func (o ContainerRegistryResponseArrayOutput) ToContainerRegistryResponseArrayOutput() ContainerRegistryResponseArrayOutput {
+	return o
+}
+
+func (o ContainerRegistryResponseArrayOutput) ToContainerRegistryResponseArrayOutputWithContext(ctx context.Context) ContainerRegistryResponseArrayOutput {
+	return o
+}
+
+func (o ContainerRegistryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerRegistryResponse] {
+	return pulumix.Output[[]ContainerRegistryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ContainerRegistryResponseArrayOutput) Index(i pulumi.IntInput) ContainerRegistryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerRegistryResponse {
+		return vs[0].([]ContainerRegistryResponse)[vs[1].(int)]
+	}).(ContainerRegistryResponseOutput)
+}
+
+// Container registry that the final image will be uploaded to.
+type ContainerRegistryWithCustomImage struct {
+	// Full name that the final image should be uploaded as, including both image name and tag.
+	Image *string `pulumi:"image"`
+	// Login server of the container registry that the final image should be uploaded to. Builder resource needs to have this container registry defined along with an identity to use to access it.
+	Server string `pulumi:"server"`
+}
+
+// ContainerRegistryWithCustomImageInput is an input type that accepts ContainerRegistryWithCustomImageArgs and ContainerRegistryWithCustomImageOutput values.
+// You can construct a concrete instance of `ContainerRegistryWithCustomImageInput` via:
+//
+//	ContainerRegistryWithCustomImageArgs{...}
+type ContainerRegistryWithCustomImageInput interface {
+	pulumi.Input
+
+	ToContainerRegistryWithCustomImageOutput() ContainerRegistryWithCustomImageOutput
+	ToContainerRegistryWithCustomImageOutputWithContext(context.Context) ContainerRegistryWithCustomImageOutput
+}
+
+// Container registry that the final image will be uploaded to.
+type ContainerRegistryWithCustomImageArgs struct {
+	// Full name that the final image should be uploaded as, including both image name and tag.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// Login server of the container registry that the final image should be uploaded to. Builder resource needs to have this container registry defined along with an identity to use to access it.
+	Server pulumi.StringInput `pulumi:"server"`
+}
+
+func (ContainerRegistryWithCustomImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerRegistryWithCustomImage)(nil)).Elem()
+}
+
+func (i ContainerRegistryWithCustomImageArgs) ToContainerRegistryWithCustomImageOutput() ContainerRegistryWithCustomImageOutput {
+	return i.ToContainerRegistryWithCustomImageOutputWithContext(context.Background())
+}
+
+func (i ContainerRegistryWithCustomImageArgs) ToContainerRegistryWithCustomImageOutputWithContext(ctx context.Context) ContainerRegistryWithCustomImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryWithCustomImageOutput)
+}
+
+func (i ContainerRegistryWithCustomImageArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerRegistryWithCustomImage] {
+	return pulumix.Output[ContainerRegistryWithCustomImage]{
+		OutputState: i.ToContainerRegistryWithCustomImageOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ContainerRegistryWithCustomImageArgs) ToContainerRegistryWithCustomImagePtrOutput() ContainerRegistryWithCustomImagePtrOutput {
+	return i.ToContainerRegistryWithCustomImagePtrOutputWithContext(context.Background())
+}
+
+func (i ContainerRegistryWithCustomImageArgs) ToContainerRegistryWithCustomImagePtrOutputWithContext(ctx context.Context) ContainerRegistryWithCustomImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryWithCustomImageOutput).ToContainerRegistryWithCustomImagePtrOutputWithContext(ctx)
+}
+
+// ContainerRegistryWithCustomImagePtrInput is an input type that accepts ContainerRegistryWithCustomImageArgs, ContainerRegistryWithCustomImagePtr and ContainerRegistryWithCustomImagePtrOutput values.
+// You can construct a concrete instance of `ContainerRegistryWithCustomImagePtrInput` via:
+//
+//	        ContainerRegistryWithCustomImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerRegistryWithCustomImagePtrInput interface {
+	pulumi.Input
+
+	ToContainerRegistryWithCustomImagePtrOutput() ContainerRegistryWithCustomImagePtrOutput
+	ToContainerRegistryWithCustomImagePtrOutputWithContext(context.Context) ContainerRegistryWithCustomImagePtrOutput
+}
+
+type containerRegistryWithCustomImagePtrType ContainerRegistryWithCustomImageArgs
+
+func ContainerRegistryWithCustomImagePtr(v *ContainerRegistryWithCustomImageArgs) ContainerRegistryWithCustomImagePtrInput {
+	return (*containerRegistryWithCustomImagePtrType)(v)
+}
+
+func (*containerRegistryWithCustomImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerRegistryWithCustomImage)(nil)).Elem()
+}
+
+func (i *containerRegistryWithCustomImagePtrType) ToContainerRegistryWithCustomImagePtrOutput() ContainerRegistryWithCustomImagePtrOutput {
+	return i.ToContainerRegistryWithCustomImagePtrOutputWithContext(context.Background())
+}
+
+func (i *containerRegistryWithCustomImagePtrType) ToContainerRegistryWithCustomImagePtrOutputWithContext(ctx context.Context) ContainerRegistryWithCustomImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryWithCustomImagePtrOutput)
+}
+
+func (i *containerRegistryWithCustomImagePtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistryWithCustomImage] {
+	return pulumix.Output[*ContainerRegistryWithCustomImage]{
+		OutputState: i.ToContainerRegistryWithCustomImagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Container registry that the final image will be uploaded to.
+type ContainerRegistryWithCustomImageOutput struct{ *pulumi.OutputState }
+
+func (ContainerRegistryWithCustomImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerRegistryWithCustomImage)(nil)).Elem()
+}
+
+func (o ContainerRegistryWithCustomImageOutput) ToContainerRegistryWithCustomImageOutput() ContainerRegistryWithCustomImageOutput {
+	return o
+}
+
+func (o ContainerRegistryWithCustomImageOutput) ToContainerRegistryWithCustomImageOutputWithContext(ctx context.Context) ContainerRegistryWithCustomImageOutput {
+	return o
+}
+
+func (o ContainerRegistryWithCustomImageOutput) ToContainerRegistryWithCustomImagePtrOutput() ContainerRegistryWithCustomImagePtrOutput {
+	return o.ToContainerRegistryWithCustomImagePtrOutputWithContext(context.Background())
+}
+
+func (o ContainerRegistryWithCustomImageOutput) ToContainerRegistryWithCustomImagePtrOutputWithContext(ctx context.Context) ContainerRegistryWithCustomImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerRegistryWithCustomImage) *ContainerRegistryWithCustomImage {
+		return &v
+	}).(ContainerRegistryWithCustomImagePtrOutput)
+}
+
+func (o ContainerRegistryWithCustomImageOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerRegistryWithCustomImage] {
+	return pulumix.Output[ContainerRegistryWithCustomImage]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Full name that the final image should be uploaded as, including both image name and tag.
+func (o ContainerRegistryWithCustomImageOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerRegistryWithCustomImage) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// Login server of the container registry that the final image should be uploaded to. Builder resource needs to have this container registry defined along with an identity to use to access it.
+func (o ContainerRegistryWithCustomImageOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerRegistryWithCustomImage) string { return v.Server }).(pulumi.StringOutput)
+}
+
+type ContainerRegistryWithCustomImagePtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerRegistryWithCustomImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerRegistryWithCustomImage)(nil)).Elem()
+}
+
+func (o ContainerRegistryWithCustomImagePtrOutput) ToContainerRegistryWithCustomImagePtrOutput() ContainerRegistryWithCustomImagePtrOutput {
+	return o
+}
+
+func (o ContainerRegistryWithCustomImagePtrOutput) ToContainerRegistryWithCustomImagePtrOutputWithContext(ctx context.Context) ContainerRegistryWithCustomImagePtrOutput {
+	return o
+}
+
+func (o ContainerRegistryWithCustomImagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistryWithCustomImage] {
+	return pulumix.Output[*ContainerRegistryWithCustomImage]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ContainerRegistryWithCustomImagePtrOutput) Elem() ContainerRegistryWithCustomImageOutput {
+	return o.ApplyT(func(v *ContainerRegistryWithCustomImage) ContainerRegistryWithCustomImage {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerRegistryWithCustomImage
+		return ret
+	}).(ContainerRegistryWithCustomImageOutput)
+}
+
+// Full name that the final image should be uploaded as, including both image name and tag.
+func (o ContainerRegistryWithCustomImagePtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerRegistryWithCustomImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// Login server of the container registry that the final image should be uploaded to. Builder resource needs to have this container registry defined along with an identity to use to access it.
+func (o ContainerRegistryWithCustomImagePtrOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerRegistryWithCustomImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Server
+	}).(pulumi.StringPtrOutput)
+}
+
+// Container registry that the final image will be uploaded to.
+type ContainerRegistryWithCustomImageResponse struct {
+	// Full name that the final image should be uploaded as, including both image name and tag.
+	Image *string `pulumi:"image"`
+	// Login server of the container registry that the final image should be uploaded to. Builder resource needs to have this container registry defined along with an identity to use to access it.
+	Server string `pulumi:"server"`
+}
+
+// Container registry that the final image will be uploaded to.
+type ContainerRegistryWithCustomImageResponseOutput struct{ *pulumi.OutputState }
+
+func (ContainerRegistryWithCustomImageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerRegistryWithCustomImageResponse)(nil)).Elem()
+}
+
+func (o ContainerRegistryWithCustomImageResponseOutput) ToContainerRegistryWithCustomImageResponseOutput() ContainerRegistryWithCustomImageResponseOutput {
+	return o
+}
+
+func (o ContainerRegistryWithCustomImageResponseOutput) ToContainerRegistryWithCustomImageResponseOutputWithContext(ctx context.Context) ContainerRegistryWithCustomImageResponseOutput {
+	return o
+}
+
+func (o ContainerRegistryWithCustomImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerRegistryWithCustomImageResponse] {
+	return pulumix.Output[ContainerRegistryWithCustomImageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Full name that the final image should be uploaded as, including both image name and tag.
+func (o ContainerRegistryWithCustomImageResponseOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerRegistryWithCustomImageResponse) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// Login server of the container registry that the final image should be uploaded to. Builder resource needs to have this container registry defined along with an identity to use to access it.
+func (o ContainerRegistryWithCustomImageResponseOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerRegistryWithCustomImageResponse) string { return v.Server }).(pulumi.StringOutput)
+}
+
+type ContainerRegistryWithCustomImageResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerRegistryWithCustomImageResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerRegistryWithCustomImageResponse)(nil)).Elem()
+}
+
+func (o ContainerRegistryWithCustomImageResponsePtrOutput) ToContainerRegistryWithCustomImageResponsePtrOutput() ContainerRegistryWithCustomImageResponsePtrOutput {
+	return o
+}
+
+func (o ContainerRegistryWithCustomImageResponsePtrOutput) ToContainerRegistryWithCustomImageResponsePtrOutputWithContext(ctx context.Context) ContainerRegistryWithCustomImageResponsePtrOutput {
+	return o
+}
+
+func (o ContainerRegistryWithCustomImageResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistryWithCustomImageResponse] {
+	return pulumix.Output[*ContainerRegistryWithCustomImageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ContainerRegistryWithCustomImageResponsePtrOutput) Elem() ContainerRegistryWithCustomImageResponseOutput {
+	return o.ApplyT(func(v *ContainerRegistryWithCustomImageResponse) ContainerRegistryWithCustomImageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerRegistryWithCustomImageResponse
+		return ret
+	}).(ContainerRegistryWithCustomImageResponseOutput)
+}
+
+// Full name that the final image should be uploaded as, including both image name and tag.
+func (o ContainerRegistryWithCustomImageResponsePtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerRegistryWithCustomImageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// Login server of the container registry that the final image should be uploaded to. Builder resource needs to have this container registry defined along with an identity to use to access it.
+func (o ContainerRegistryWithCustomImageResponsePtrOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerRegistryWithCustomImageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Server
+	}).(pulumi.StringPtrOutput)
 }
 
 // Container App container resource requirements.
@@ -9822,6 +10980,1082 @@ func (o DaprPtrOutput) LogLevel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Dapr Component Resiliency Policy Configuration.
+type DaprComponentResiliencyPolicyConfiguration struct {
+	// The optional HTTP retry policy configuration
+	HttpRetryPolicy *DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration `pulumi:"httpRetryPolicy"`
+	// The optional timeout policy configuration
+	TimeoutPolicy *DaprComponentResiliencyPolicyTimeoutPolicyConfiguration `pulumi:"timeoutPolicy"`
+}
+
+// DaprComponentResiliencyPolicyConfigurationInput is an input type that accepts DaprComponentResiliencyPolicyConfigurationArgs and DaprComponentResiliencyPolicyConfigurationOutput values.
+// You can construct a concrete instance of `DaprComponentResiliencyPolicyConfigurationInput` via:
+//
+//	DaprComponentResiliencyPolicyConfigurationArgs{...}
+type DaprComponentResiliencyPolicyConfigurationInput interface {
+	pulumi.Input
+
+	ToDaprComponentResiliencyPolicyConfigurationOutput() DaprComponentResiliencyPolicyConfigurationOutput
+	ToDaprComponentResiliencyPolicyConfigurationOutputWithContext(context.Context) DaprComponentResiliencyPolicyConfigurationOutput
+}
+
+// Dapr Component Resiliency Policy Configuration.
+type DaprComponentResiliencyPolicyConfigurationArgs struct {
+	// The optional HTTP retry policy configuration
+	HttpRetryPolicy DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrInput `pulumi:"httpRetryPolicy"`
+	// The optional timeout policy configuration
+	TimeoutPolicy DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrInput `pulumi:"timeoutPolicy"`
+}
+
+func (DaprComponentResiliencyPolicyConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyConfiguration)(nil)).Elem()
+}
+
+func (i DaprComponentResiliencyPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyConfigurationOutput() DaprComponentResiliencyPolicyConfigurationOutput {
+	return i.ToDaprComponentResiliencyPolicyConfigurationOutputWithContext(context.Background())
+}
+
+func (i DaprComponentResiliencyPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyConfigurationOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyConfigurationOutput)
+}
+
+func (i DaprComponentResiliencyPolicyConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[DaprComponentResiliencyPolicyConfiguration] {
+	return pulumix.Output[DaprComponentResiliencyPolicyConfiguration]{
+		OutputState: i.ToDaprComponentResiliencyPolicyConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DaprComponentResiliencyPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyConfigurationPtrOutput {
+	return i.ToDaprComponentResiliencyPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DaprComponentResiliencyPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyConfigurationOutput).ToDaprComponentResiliencyPolicyConfigurationPtrOutputWithContext(ctx)
+}
+
+// DaprComponentResiliencyPolicyConfigurationPtrInput is an input type that accepts DaprComponentResiliencyPolicyConfigurationArgs, DaprComponentResiliencyPolicyConfigurationPtr and DaprComponentResiliencyPolicyConfigurationPtrOutput values.
+// You can construct a concrete instance of `DaprComponentResiliencyPolicyConfigurationPtrInput` via:
+//
+//	        DaprComponentResiliencyPolicyConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DaprComponentResiliencyPolicyConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDaprComponentResiliencyPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyConfigurationPtrOutput
+	ToDaprComponentResiliencyPolicyConfigurationPtrOutputWithContext(context.Context) DaprComponentResiliencyPolicyConfigurationPtrOutput
+}
+
+type daprComponentResiliencyPolicyConfigurationPtrType DaprComponentResiliencyPolicyConfigurationArgs
+
+func DaprComponentResiliencyPolicyConfigurationPtr(v *DaprComponentResiliencyPolicyConfigurationArgs) DaprComponentResiliencyPolicyConfigurationPtrInput {
+	return (*daprComponentResiliencyPolicyConfigurationPtrType)(v)
+}
+
+func (*daprComponentResiliencyPolicyConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyConfiguration)(nil)).Elem()
+}
+
+func (i *daprComponentResiliencyPolicyConfigurationPtrType) ToDaprComponentResiliencyPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyConfigurationPtrOutput {
+	return i.ToDaprComponentResiliencyPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *daprComponentResiliencyPolicyConfigurationPtrType) ToDaprComponentResiliencyPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyConfigurationPtrOutput)
+}
+
+func (i *daprComponentResiliencyPolicyConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicyConfiguration] {
+	return pulumix.Output[*DaprComponentResiliencyPolicyConfiguration]{
+		OutputState: i.ToDaprComponentResiliencyPolicyConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Dapr Component Resiliency Policy Configuration.
+type DaprComponentResiliencyPolicyConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyConfiguration)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyConfigurationOutput() DaprComponentResiliencyPolicyConfigurationOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyConfigurationOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyConfigurationOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyConfigurationPtrOutput {
+	return o.ToDaprComponentResiliencyPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DaprComponentResiliencyPolicyConfiguration) *DaprComponentResiliencyPolicyConfiguration {
+		return &v
+	}).(DaprComponentResiliencyPolicyConfigurationPtrOutput)
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[DaprComponentResiliencyPolicyConfiguration] {
+	return pulumix.Output[DaprComponentResiliencyPolicyConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The optional HTTP retry policy configuration
+func (o DaprComponentResiliencyPolicyConfigurationOutput) HttpRetryPolicy() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyConfiguration) *DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration {
+		return v.HttpRetryPolicy
+	}).(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput)
+}
+
+// The optional timeout policy configuration
+func (o DaprComponentResiliencyPolicyConfigurationOutput) TimeoutPolicy() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyConfiguration) *DaprComponentResiliencyPolicyTimeoutPolicyConfiguration {
+		return v.TimeoutPolicy
+	}).(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput)
+}
+
+type DaprComponentResiliencyPolicyConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyConfiguration)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationPtrOutput) ToDaprComponentResiliencyPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyConfigurationPtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationPtrOutput) ToDaprComponentResiliencyPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyConfigurationPtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicyConfiguration] {
+	return pulumix.Output[*DaprComponentResiliencyPolicyConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationPtrOutput) Elem() DaprComponentResiliencyPolicyConfigurationOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyConfiguration) DaprComponentResiliencyPolicyConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DaprComponentResiliencyPolicyConfiguration
+		return ret
+	}).(DaprComponentResiliencyPolicyConfigurationOutput)
+}
+
+// The optional HTTP retry policy configuration
+func (o DaprComponentResiliencyPolicyConfigurationPtrOutput) HttpRetryPolicy() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyConfiguration) *DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.HttpRetryPolicy
+	}).(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput)
+}
+
+// The optional timeout policy configuration
+func (o DaprComponentResiliencyPolicyConfigurationPtrOutput) TimeoutPolicy() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyConfiguration) *DaprComponentResiliencyPolicyTimeoutPolicyConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutPolicy
+	}).(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput)
+}
+
+// Dapr Component Resiliency Policy Configuration.
+type DaprComponentResiliencyPolicyConfigurationResponse struct {
+	// The optional HTTP retry policy configuration
+	HttpRetryPolicy *DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse `pulumi:"httpRetryPolicy"`
+	// The optional timeout policy configuration
+	TimeoutPolicy *DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse `pulumi:"timeoutPolicy"`
+}
+
+// Dapr Component Resiliency Policy Configuration.
+type DaprComponentResiliencyPolicyConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationResponseOutput) ToDaprComponentResiliencyPolicyConfigurationResponseOutput() DaprComponentResiliencyPolicyConfigurationResponseOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationResponseOutput) ToDaprComponentResiliencyPolicyConfigurationResponseOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyConfigurationResponseOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DaprComponentResiliencyPolicyConfigurationResponse] {
+	return pulumix.Output[DaprComponentResiliencyPolicyConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The optional HTTP retry policy configuration
+func (o DaprComponentResiliencyPolicyConfigurationResponseOutput) HttpRetryPolicy() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyConfigurationResponse) *DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse {
+		return v.HttpRetryPolicy
+	}).(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput)
+}
+
+// The optional timeout policy configuration
+func (o DaprComponentResiliencyPolicyConfigurationResponseOutput) TimeoutPolicy() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyConfigurationResponse) *DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse {
+		return v.TimeoutPolicy
+	}).(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput)
+}
+
+type DaprComponentResiliencyPolicyConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationResponsePtrOutput) ToDaprComponentResiliencyPolicyConfigurationResponsePtrOutput() DaprComponentResiliencyPolicyConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationResponsePtrOutput) ToDaprComponentResiliencyPolicyConfigurationResponsePtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicyConfigurationResponse] {
+	return pulumix.Output[*DaprComponentResiliencyPolicyConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprComponentResiliencyPolicyConfigurationResponsePtrOutput) Elem() DaprComponentResiliencyPolicyConfigurationResponseOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyConfigurationResponse) DaprComponentResiliencyPolicyConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DaprComponentResiliencyPolicyConfigurationResponse
+		return ret
+	}).(DaprComponentResiliencyPolicyConfigurationResponseOutput)
+}
+
+// The optional HTTP retry policy configuration
+func (o DaprComponentResiliencyPolicyConfigurationResponsePtrOutput) HttpRetryPolicy() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyConfigurationResponse) *DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.HttpRetryPolicy
+	}).(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput)
+}
+
+// The optional timeout policy configuration
+func (o DaprComponentResiliencyPolicyConfigurationResponsePtrOutput) TimeoutPolicy() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyConfigurationResponse) *DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutPolicy
+	}).(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput)
+}
+
+// Dapr Component Resiliency Policy HTTP Retry Backoff Configuration.
+type DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration struct {
+	// The optional initial delay in milliseconds before an operation is retried
+	InitialDelayInMilliseconds *int `pulumi:"initialDelayInMilliseconds"`
+	// The optional maximum time interval in milliseconds between retry attempts
+	MaxIntervalInMilliseconds *int `pulumi:"maxIntervalInMilliseconds"`
+}
+
+// DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationInput is an input type that accepts DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs and DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput values.
+// You can construct a concrete instance of `DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationInput` via:
+//
+//	DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs{...}
+type DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationInput interface {
+	pulumi.Input
+
+	ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput
+	ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutputWithContext(context.Context) DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput
+}
+
+// Dapr Component Resiliency Policy HTTP Retry Backoff Configuration.
+type DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs struct {
+	// The optional initial delay in milliseconds before an operation is retried
+	InitialDelayInMilliseconds pulumi.IntPtrInput `pulumi:"initialDelayInMilliseconds"`
+	// The optional maximum time interval in milliseconds between retry attempts
+	MaxIntervalInMilliseconds pulumi.IntPtrInput `pulumi:"maxIntervalInMilliseconds"`
+}
+
+func (DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration)(nil)).Elem()
+}
+
+func (i DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput {
+	return i.ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutputWithContext(context.Background())
+}
+
+func (i DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput)
+}
+
+func (i DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration] {
+	return pulumix.Output[DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration]{
+		OutputState: i.ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput {
+	return i.ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput).ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutputWithContext(ctx)
+}
+
+// DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrInput is an input type that accepts DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs, DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtr and DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput values.
+// You can construct a concrete instance of `DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrInput` via:
+//
+//	        DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput
+	ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutputWithContext(context.Context) DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput
+}
+
+type daprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrType DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs
+
+func DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtr(v *DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs) DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrInput {
+	return (*daprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrType)(v)
+}
+
+func (*daprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration)(nil)).Elem()
+}
+
+func (i *daprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrType) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput {
+	return i.ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *daprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrType) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput)
+}
+
+func (i *daprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration] {
+	return pulumix.Output[*DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration]{
+		OutputState: i.ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Dapr Component Resiliency Policy HTTP Retry Backoff Configuration.
+type DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput {
+	return o.ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration) *DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration {
+		return &v
+	}).(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput)
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration] {
+	return pulumix.Output[DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The optional initial delay in milliseconds before an operation is retried
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput) InitialDelayInMilliseconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration) *int {
+		return v.InitialDelayInMilliseconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The optional maximum time interval in milliseconds between retry attempts
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput) MaxIntervalInMilliseconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration) *int {
+		return v.MaxIntervalInMilliseconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration] {
+	return pulumix.Output[*DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput) Elem() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration) DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration
+		return ret
+	}).(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput)
+}
+
+// The optional initial delay in milliseconds before an operation is retried
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput) InitialDelayInMilliseconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelayInMilliseconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The optional maximum time interval in milliseconds between retry attempts
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput) MaxIntervalInMilliseconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxIntervalInMilliseconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Dapr Component Resiliency Policy HTTP Retry Backoff Configuration.
+type DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse struct {
+	// The optional initial delay in milliseconds before an operation is retried
+	InitialDelayInMilliseconds *int `pulumi:"initialDelayInMilliseconds"`
+	// The optional maximum time interval in milliseconds between retry attempts
+	MaxIntervalInMilliseconds *int `pulumi:"maxIntervalInMilliseconds"`
+}
+
+// Dapr Component Resiliency Policy HTTP Retry Backoff Configuration.
+type DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutput) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutput() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutput) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse] {
+	return pulumix.Output[DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The optional initial delay in milliseconds before an operation is retried
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutput) InitialDelayInMilliseconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse) *int {
+		return v.InitialDelayInMilliseconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The optional maximum time interval in milliseconds between retry attempts
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutput) MaxIntervalInMilliseconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse) *int {
+		return v.MaxIntervalInMilliseconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput) ToDaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse] {
+	return pulumix.Output[*DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput) Elem() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse) DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse
+		return ret
+	}).(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutput)
+}
+
+// The optional initial delay in milliseconds before an operation is retried
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput) InitialDelayInMilliseconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelayInMilliseconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The optional maximum time interval in milliseconds between retry attempts
+func (o DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput) MaxIntervalInMilliseconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxIntervalInMilliseconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Dapr Component Resiliency Policy HTTP Retry Policy Configuration.
+type DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration struct {
+	// The optional maximum number of retries
+	MaxRetries *int `pulumi:"maxRetries"`
+	// The optional retry backoff configuration
+	RetryBackOff *DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration `pulumi:"retryBackOff"`
+}
+
+// DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationInput is an input type that accepts DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs and DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput values.
+// You can construct a concrete instance of `DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationInput` via:
+//
+//	DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs{...}
+type DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationInput interface {
+	pulumi.Input
+
+	ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput
+	ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutputWithContext(context.Context) DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput
+}
+
+// Dapr Component Resiliency Policy HTTP Retry Policy Configuration.
+type DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs struct {
+	// The optional maximum number of retries
+	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
+	// The optional retry backoff configuration
+	RetryBackOff DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrInput `pulumi:"retryBackOff"`
+}
+
+func (DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration)(nil)).Elem()
+}
+
+func (i DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput {
+	return i.ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutputWithContext(context.Background())
+}
+
+func (i DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput)
+}
+
+func (i DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration] {
+	return pulumix.Output[DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration]{
+		OutputState: i.ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput {
+	return i.ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput).ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutputWithContext(ctx)
+}
+
+// DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrInput is an input type that accepts DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs, DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtr and DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput values.
+// You can construct a concrete instance of `DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrInput` via:
+//
+//	        DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput
+	ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutputWithContext(context.Context) DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput
+}
+
+type daprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrType DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs
+
+func DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtr(v *DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs) DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrInput {
+	return (*daprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrType)(v)
+}
+
+func (*daprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration)(nil)).Elem()
+}
+
+func (i *daprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrType) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput {
+	return i.ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *daprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrType) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput)
+}
+
+func (i *daprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration] {
+	return pulumix.Output[*DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration]{
+		OutputState: i.ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Dapr Component Resiliency Policy HTTP Retry Policy Configuration.
+type DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput {
+	return o.ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration) *DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration {
+		return &v
+	}).(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput)
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration] {
+	return pulumix.Output[DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The optional maximum number of retries
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
+}
+
+// The optional retry backoff configuration
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput) RetryBackOff() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration) *DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration {
+		return v.RetryBackOff
+	}).(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput)
+}
+
+type DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration] {
+	return pulumix.Output[*DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput) Elem() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration) DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration
+		return ret
+	}).(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput)
+}
+
+// The optional maximum number of retries
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// The optional retry backoff configuration
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput) RetryBackOff() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration) *DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.RetryBackOff
+	}).(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput)
+}
+
+// Dapr Component Resiliency Policy HTTP Retry Policy Configuration.
+type DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse struct {
+	// The optional maximum number of retries
+	MaxRetries *int `pulumi:"maxRetries"`
+	// The optional retry backoff configuration
+	RetryBackOff *DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse `pulumi:"retryBackOff"`
+}
+
+// Dapr Component Resiliency Policy HTTP Retry Policy Configuration.
+type DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutput) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutput() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutput) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse] {
+	return pulumix.Output[DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The optional maximum number of retries
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
+}
+
+// The optional retry backoff configuration
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutput) RetryBackOff() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse) *DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse {
+		return v.RetryBackOff
+	}).(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput)
+}
+
+type DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput) ToDaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse] {
+	return pulumix.Output[*DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput) Elem() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse) DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse
+		return ret
+	}).(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutput)
+}
+
+// The optional maximum number of retries
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// The optional retry backoff configuration
+func (o DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput) RetryBackOff() DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse) *DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.RetryBackOff
+	}).(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput)
+}
+
+// Dapr Component Resiliency Policy Timeout Policy Configuration.
+type DaprComponentResiliencyPolicyTimeoutPolicyConfiguration struct {
+	// The optional response timeout in seconds
+	ResponseTimeoutInSeconds *int `pulumi:"responseTimeoutInSeconds"`
+}
+
+// DaprComponentResiliencyPolicyTimeoutPolicyConfigurationInput is an input type that accepts DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs and DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput values.
+// You can construct a concrete instance of `DaprComponentResiliencyPolicyTimeoutPolicyConfigurationInput` via:
+//
+//	DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs{...}
+type DaprComponentResiliencyPolicyTimeoutPolicyConfigurationInput interface {
+	pulumi.Input
+
+	ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput
+	ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutputWithContext(context.Context) DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput
+}
+
+// Dapr Component Resiliency Policy Timeout Policy Configuration.
+type DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs struct {
+	// The optional response timeout in seconds
+	ResponseTimeoutInSeconds pulumi.IntPtrInput `pulumi:"responseTimeoutInSeconds"`
+}
+
+func (DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyTimeoutPolicyConfiguration)(nil)).Elem()
+}
+
+func (i DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput {
+	return i.ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutputWithContext(context.Background())
+}
+
+func (i DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput)
+}
+
+func (i DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[DaprComponentResiliencyPolicyTimeoutPolicyConfiguration] {
+	return pulumix.Output[DaprComponentResiliencyPolicyTimeoutPolicyConfiguration]{
+		OutputState: i.ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput {
+	return i.ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput).ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutputWithContext(ctx)
+}
+
+// DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrInput is an input type that accepts DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs, DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtr and DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput values.
+// You can construct a concrete instance of `DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrInput` via:
+//
+//	        DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput
+	ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutputWithContext(context.Context) DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput
+}
+
+type daprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrType DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs
+
+func DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtr(v *DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs) DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrInput {
+	return (*daprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrType)(v)
+}
+
+func (*daprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyTimeoutPolicyConfiguration)(nil)).Elem()
+}
+
+func (i *daprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrType) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput {
+	return i.ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *daprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrType) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput)
+}
+
+func (i *daprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicyTimeoutPolicyConfiguration] {
+	return pulumix.Output[*DaprComponentResiliencyPolicyTimeoutPolicyConfiguration]{
+		OutputState: i.ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Dapr Component Resiliency Policy Timeout Policy Configuration.
+type DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyTimeoutPolicyConfiguration)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput {
+	return o.ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DaprComponentResiliencyPolicyTimeoutPolicyConfiguration) *DaprComponentResiliencyPolicyTimeoutPolicyConfiguration {
+		return &v
+	}).(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput)
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[DaprComponentResiliencyPolicyTimeoutPolicyConfiguration] {
+	return pulumix.Output[DaprComponentResiliencyPolicyTimeoutPolicyConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The optional response timeout in seconds
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput) ResponseTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyTimeoutPolicyConfiguration) *int {
+		return v.ResponseTimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyTimeoutPolicyConfiguration)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicyTimeoutPolicyConfiguration] {
+	return pulumix.Output[*DaprComponentResiliencyPolicyTimeoutPolicyConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput) Elem() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyTimeoutPolicyConfiguration) DaprComponentResiliencyPolicyTimeoutPolicyConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DaprComponentResiliencyPolicyTimeoutPolicyConfiguration
+		return ret
+	}).(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput)
+}
+
+// The optional response timeout in seconds
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput) ResponseTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyTimeoutPolicyConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseTimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Dapr Component Resiliency Policy Timeout Policy Configuration.
+type DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse struct {
+	// The optional response timeout in seconds
+	ResponseTimeoutInSeconds *int `pulumi:"responseTimeoutInSeconds"`
+}
+
+// Dapr Component Resiliency Policy Timeout Policy Configuration.
+type DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutput) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutput() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutput) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse] {
+	return pulumix.Output[DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The optional response timeout in seconds
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutput) ResponseTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse) *int {
+		return v.ResponseTimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput) ToDaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse] {
+	return pulumix.Output[*DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput) Elem() DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse) DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse
+		return ret
+	}).(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutput)
+}
+
+// The optional response timeout in seconds
+func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput) ResponseTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseTimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
 // Dapr component metadata.
 type DaprMetadata struct {
 	// Metadata property name.
@@ -10307,6 +12541,821 @@ func (o DaprSecretResponseArrayOutput) Index(i pulumi.IntInput) DaprSecretRespon
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DaprSecretResponse {
 		return vs[0].([]DaprSecretResponse)[vs[1].(int)]
 	}).(DaprSecretResponseOutput)
+}
+
+// Dapr PubSub Bulk Subscription Options.
+type DaprSubscriptionBulkSubscribeOptions struct {
+	// Enable bulk subscription
+	Enabled *bool `pulumi:"enabled"`
+	// Maximum duration in milliseconds to wait before a bulk message is sent to the app.
+	MaxAwaitDurationMs *int `pulumi:"maxAwaitDurationMs"`
+	// Maximum number of messages to deliver in a bulk message.
+	MaxMessagesCount *int `pulumi:"maxMessagesCount"`
+}
+
+// Defaults sets the appropriate defaults for DaprSubscriptionBulkSubscribeOptions
+func (val *DaprSubscriptionBulkSubscribeOptions) Defaults() *DaprSubscriptionBulkSubscribeOptions {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Enabled == nil {
+		enabled_ := false
+		tmp.Enabled = &enabled_
+	}
+	return &tmp
+}
+
+// DaprSubscriptionBulkSubscribeOptionsInput is an input type that accepts DaprSubscriptionBulkSubscribeOptionsArgs and DaprSubscriptionBulkSubscribeOptionsOutput values.
+// You can construct a concrete instance of `DaprSubscriptionBulkSubscribeOptionsInput` via:
+//
+//	DaprSubscriptionBulkSubscribeOptionsArgs{...}
+type DaprSubscriptionBulkSubscribeOptionsInput interface {
+	pulumi.Input
+
+	ToDaprSubscriptionBulkSubscribeOptionsOutput() DaprSubscriptionBulkSubscribeOptionsOutput
+	ToDaprSubscriptionBulkSubscribeOptionsOutputWithContext(context.Context) DaprSubscriptionBulkSubscribeOptionsOutput
+}
+
+// Dapr PubSub Bulk Subscription Options.
+type DaprSubscriptionBulkSubscribeOptionsArgs struct {
+	// Enable bulk subscription
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Maximum duration in milliseconds to wait before a bulk message is sent to the app.
+	MaxAwaitDurationMs pulumi.IntPtrInput `pulumi:"maxAwaitDurationMs"`
+	// Maximum number of messages to deliver in a bulk message.
+	MaxMessagesCount pulumi.IntPtrInput `pulumi:"maxMessagesCount"`
+}
+
+// Defaults sets the appropriate defaults for DaprSubscriptionBulkSubscribeOptionsArgs
+func (val *DaprSubscriptionBulkSubscribeOptionsArgs) Defaults() *DaprSubscriptionBulkSubscribeOptionsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Enabled == nil {
+		tmp.Enabled = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (DaprSubscriptionBulkSubscribeOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprSubscriptionBulkSubscribeOptions)(nil)).Elem()
+}
+
+func (i DaprSubscriptionBulkSubscribeOptionsArgs) ToDaprSubscriptionBulkSubscribeOptionsOutput() DaprSubscriptionBulkSubscribeOptionsOutput {
+	return i.ToDaprSubscriptionBulkSubscribeOptionsOutputWithContext(context.Background())
+}
+
+func (i DaprSubscriptionBulkSubscribeOptionsArgs) ToDaprSubscriptionBulkSubscribeOptionsOutputWithContext(ctx context.Context) DaprSubscriptionBulkSubscribeOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprSubscriptionBulkSubscribeOptionsOutput)
+}
+
+func (i DaprSubscriptionBulkSubscribeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DaprSubscriptionBulkSubscribeOptions] {
+	return pulumix.Output[DaprSubscriptionBulkSubscribeOptions]{
+		OutputState: i.ToDaprSubscriptionBulkSubscribeOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DaprSubscriptionBulkSubscribeOptionsArgs) ToDaprSubscriptionBulkSubscribeOptionsPtrOutput() DaprSubscriptionBulkSubscribeOptionsPtrOutput {
+	return i.ToDaprSubscriptionBulkSubscribeOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i DaprSubscriptionBulkSubscribeOptionsArgs) ToDaprSubscriptionBulkSubscribeOptionsPtrOutputWithContext(ctx context.Context) DaprSubscriptionBulkSubscribeOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprSubscriptionBulkSubscribeOptionsOutput).ToDaprSubscriptionBulkSubscribeOptionsPtrOutputWithContext(ctx)
+}
+
+// DaprSubscriptionBulkSubscribeOptionsPtrInput is an input type that accepts DaprSubscriptionBulkSubscribeOptionsArgs, DaprSubscriptionBulkSubscribeOptionsPtr and DaprSubscriptionBulkSubscribeOptionsPtrOutput values.
+// You can construct a concrete instance of `DaprSubscriptionBulkSubscribeOptionsPtrInput` via:
+//
+//	        DaprSubscriptionBulkSubscribeOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DaprSubscriptionBulkSubscribeOptionsPtrInput interface {
+	pulumi.Input
+
+	ToDaprSubscriptionBulkSubscribeOptionsPtrOutput() DaprSubscriptionBulkSubscribeOptionsPtrOutput
+	ToDaprSubscriptionBulkSubscribeOptionsPtrOutputWithContext(context.Context) DaprSubscriptionBulkSubscribeOptionsPtrOutput
+}
+
+type daprSubscriptionBulkSubscribeOptionsPtrType DaprSubscriptionBulkSubscribeOptionsArgs
+
+func DaprSubscriptionBulkSubscribeOptionsPtr(v *DaprSubscriptionBulkSubscribeOptionsArgs) DaprSubscriptionBulkSubscribeOptionsPtrInput {
+	return (*daprSubscriptionBulkSubscribeOptionsPtrType)(v)
+}
+
+func (*daprSubscriptionBulkSubscribeOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprSubscriptionBulkSubscribeOptions)(nil)).Elem()
+}
+
+func (i *daprSubscriptionBulkSubscribeOptionsPtrType) ToDaprSubscriptionBulkSubscribeOptionsPtrOutput() DaprSubscriptionBulkSubscribeOptionsPtrOutput {
+	return i.ToDaprSubscriptionBulkSubscribeOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *daprSubscriptionBulkSubscribeOptionsPtrType) ToDaprSubscriptionBulkSubscribeOptionsPtrOutputWithContext(ctx context.Context) DaprSubscriptionBulkSubscribeOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprSubscriptionBulkSubscribeOptionsPtrOutput)
+}
+
+func (i *daprSubscriptionBulkSubscribeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DaprSubscriptionBulkSubscribeOptions] {
+	return pulumix.Output[*DaprSubscriptionBulkSubscribeOptions]{
+		OutputState: i.ToDaprSubscriptionBulkSubscribeOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Dapr PubSub Bulk Subscription Options.
+type DaprSubscriptionBulkSubscribeOptionsOutput struct{ *pulumi.OutputState }
+
+func (DaprSubscriptionBulkSubscribeOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprSubscriptionBulkSubscribeOptions)(nil)).Elem()
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsOutput) ToDaprSubscriptionBulkSubscribeOptionsOutput() DaprSubscriptionBulkSubscribeOptionsOutput {
+	return o
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsOutput) ToDaprSubscriptionBulkSubscribeOptionsOutputWithContext(ctx context.Context) DaprSubscriptionBulkSubscribeOptionsOutput {
+	return o
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsOutput) ToDaprSubscriptionBulkSubscribeOptionsPtrOutput() DaprSubscriptionBulkSubscribeOptionsPtrOutput {
+	return o.ToDaprSubscriptionBulkSubscribeOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsOutput) ToDaprSubscriptionBulkSubscribeOptionsPtrOutputWithContext(ctx context.Context) DaprSubscriptionBulkSubscribeOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DaprSubscriptionBulkSubscribeOptions) *DaprSubscriptionBulkSubscribeOptions {
+		return &v
+	}).(DaprSubscriptionBulkSubscribeOptionsPtrOutput)
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DaprSubscriptionBulkSubscribeOptions] {
+	return pulumix.Output[DaprSubscriptionBulkSubscribeOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enable bulk subscription
+func (o DaprSubscriptionBulkSubscribeOptionsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DaprSubscriptionBulkSubscribeOptions) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum duration in milliseconds to wait before a bulk message is sent to the app.
+func (o DaprSubscriptionBulkSubscribeOptionsOutput) MaxAwaitDurationMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprSubscriptionBulkSubscribeOptions) *int { return v.MaxAwaitDurationMs }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of messages to deliver in a bulk message.
+func (o DaprSubscriptionBulkSubscribeOptionsOutput) MaxMessagesCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprSubscriptionBulkSubscribeOptions) *int { return v.MaxMessagesCount }).(pulumi.IntPtrOutput)
+}
+
+type DaprSubscriptionBulkSubscribeOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DaprSubscriptionBulkSubscribeOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprSubscriptionBulkSubscribeOptions)(nil)).Elem()
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsPtrOutput) ToDaprSubscriptionBulkSubscribeOptionsPtrOutput() DaprSubscriptionBulkSubscribeOptionsPtrOutput {
+	return o
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsPtrOutput) ToDaprSubscriptionBulkSubscribeOptionsPtrOutputWithContext(ctx context.Context) DaprSubscriptionBulkSubscribeOptionsPtrOutput {
+	return o
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprSubscriptionBulkSubscribeOptions] {
+	return pulumix.Output[*DaprSubscriptionBulkSubscribeOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsPtrOutput) Elem() DaprSubscriptionBulkSubscribeOptionsOutput {
+	return o.ApplyT(func(v *DaprSubscriptionBulkSubscribeOptions) DaprSubscriptionBulkSubscribeOptions {
+		if v != nil {
+			return *v
+		}
+		var ret DaprSubscriptionBulkSubscribeOptions
+		return ret
+	}).(DaprSubscriptionBulkSubscribeOptionsOutput)
+}
+
+// Enable bulk subscription
+func (o DaprSubscriptionBulkSubscribeOptionsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DaprSubscriptionBulkSubscribeOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum duration in milliseconds to wait before a bulk message is sent to the app.
+func (o DaprSubscriptionBulkSubscribeOptionsPtrOutput) MaxAwaitDurationMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprSubscriptionBulkSubscribeOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAwaitDurationMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of messages to deliver in a bulk message.
+func (o DaprSubscriptionBulkSubscribeOptionsPtrOutput) MaxMessagesCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprSubscriptionBulkSubscribeOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMessagesCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Dapr PubSub Bulk Subscription Options.
+type DaprSubscriptionBulkSubscribeOptionsResponse struct {
+	// Enable bulk subscription
+	Enabled *bool `pulumi:"enabled"`
+	// Maximum duration in milliseconds to wait before a bulk message is sent to the app.
+	MaxAwaitDurationMs *int `pulumi:"maxAwaitDurationMs"`
+	// Maximum number of messages to deliver in a bulk message.
+	MaxMessagesCount *int `pulumi:"maxMessagesCount"`
+}
+
+// Defaults sets the appropriate defaults for DaprSubscriptionBulkSubscribeOptionsResponse
+func (val *DaprSubscriptionBulkSubscribeOptionsResponse) Defaults() *DaprSubscriptionBulkSubscribeOptionsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Enabled == nil {
+		enabled_ := false
+		tmp.Enabled = &enabled_
+	}
+	return &tmp
+}
+
+// Dapr PubSub Bulk Subscription Options.
+type DaprSubscriptionBulkSubscribeOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprSubscriptionBulkSubscribeOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprSubscriptionBulkSubscribeOptionsResponse)(nil)).Elem()
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsResponseOutput) ToDaprSubscriptionBulkSubscribeOptionsResponseOutput() DaprSubscriptionBulkSubscribeOptionsResponseOutput {
+	return o
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsResponseOutput) ToDaprSubscriptionBulkSubscribeOptionsResponseOutputWithContext(ctx context.Context) DaprSubscriptionBulkSubscribeOptionsResponseOutput {
+	return o
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DaprSubscriptionBulkSubscribeOptionsResponse] {
+	return pulumix.Output[DaprSubscriptionBulkSubscribeOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enable bulk subscription
+func (o DaprSubscriptionBulkSubscribeOptionsResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DaprSubscriptionBulkSubscribeOptionsResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum duration in milliseconds to wait before a bulk message is sent to the app.
+func (o DaprSubscriptionBulkSubscribeOptionsResponseOutput) MaxAwaitDurationMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprSubscriptionBulkSubscribeOptionsResponse) *int { return v.MaxAwaitDurationMs }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of messages to deliver in a bulk message.
+func (o DaprSubscriptionBulkSubscribeOptionsResponseOutput) MaxMessagesCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprSubscriptionBulkSubscribeOptionsResponse) *int { return v.MaxMessagesCount }).(pulumi.IntPtrOutput)
+}
+
+type DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprSubscriptionBulkSubscribeOptionsResponse)(nil)).Elem()
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput) ToDaprSubscriptionBulkSubscribeOptionsResponsePtrOutput() DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput {
+	return o
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput) ToDaprSubscriptionBulkSubscribeOptionsResponsePtrOutputWithContext(ctx context.Context) DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput {
+	return o
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprSubscriptionBulkSubscribeOptionsResponse] {
+	return pulumix.Output[*DaprSubscriptionBulkSubscribeOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput) Elem() DaprSubscriptionBulkSubscribeOptionsResponseOutput {
+	return o.ApplyT(func(v *DaprSubscriptionBulkSubscribeOptionsResponse) DaprSubscriptionBulkSubscribeOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DaprSubscriptionBulkSubscribeOptionsResponse
+		return ret
+	}).(DaprSubscriptionBulkSubscribeOptionsResponseOutput)
+}
+
+// Enable bulk subscription
+func (o DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DaprSubscriptionBulkSubscribeOptionsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum duration in milliseconds to wait before a bulk message is sent to the app.
+func (o DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput) MaxAwaitDurationMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprSubscriptionBulkSubscribeOptionsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAwaitDurationMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of messages to deliver in a bulk message.
+func (o DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput) MaxMessagesCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprSubscriptionBulkSubscribeOptionsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMessagesCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Dapr Pubsub Event Subscription Route Rule is used to specify the condition for sending a message to a specific path.
+type DaprSubscriptionRouteRule struct {
+	// The optional CEL expression used to match the event. If the match is not specified, then the route is considered the default. The rules are tested in the order specified, so they should be define from most-to-least specific. The default route should appear last in the list.
+	Match *string `pulumi:"match"`
+	// The path for events that match this rule
+	Path *string `pulumi:"path"`
+}
+
+// DaprSubscriptionRouteRuleInput is an input type that accepts DaprSubscriptionRouteRuleArgs and DaprSubscriptionRouteRuleOutput values.
+// You can construct a concrete instance of `DaprSubscriptionRouteRuleInput` via:
+//
+//	DaprSubscriptionRouteRuleArgs{...}
+type DaprSubscriptionRouteRuleInput interface {
+	pulumi.Input
+
+	ToDaprSubscriptionRouteRuleOutput() DaprSubscriptionRouteRuleOutput
+	ToDaprSubscriptionRouteRuleOutputWithContext(context.Context) DaprSubscriptionRouteRuleOutput
+}
+
+// Dapr Pubsub Event Subscription Route Rule is used to specify the condition for sending a message to a specific path.
+type DaprSubscriptionRouteRuleArgs struct {
+	// The optional CEL expression used to match the event. If the match is not specified, then the route is considered the default. The rules are tested in the order specified, so they should be define from most-to-least specific. The default route should appear last in the list.
+	Match pulumi.StringPtrInput `pulumi:"match"`
+	// The path for events that match this rule
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (DaprSubscriptionRouteRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprSubscriptionRouteRule)(nil)).Elem()
+}
+
+func (i DaprSubscriptionRouteRuleArgs) ToDaprSubscriptionRouteRuleOutput() DaprSubscriptionRouteRuleOutput {
+	return i.ToDaprSubscriptionRouteRuleOutputWithContext(context.Background())
+}
+
+func (i DaprSubscriptionRouteRuleArgs) ToDaprSubscriptionRouteRuleOutputWithContext(ctx context.Context) DaprSubscriptionRouteRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprSubscriptionRouteRuleOutput)
+}
+
+func (i DaprSubscriptionRouteRuleArgs) ToOutput(ctx context.Context) pulumix.Output[DaprSubscriptionRouteRule] {
+	return pulumix.Output[DaprSubscriptionRouteRule]{
+		OutputState: i.ToDaprSubscriptionRouteRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// DaprSubscriptionRouteRuleArrayInput is an input type that accepts DaprSubscriptionRouteRuleArray and DaprSubscriptionRouteRuleArrayOutput values.
+// You can construct a concrete instance of `DaprSubscriptionRouteRuleArrayInput` via:
+//
+//	DaprSubscriptionRouteRuleArray{ DaprSubscriptionRouteRuleArgs{...} }
+type DaprSubscriptionRouteRuleArrayInput interface {
+	pulumi.Input
+
+	ToDaprSubscriptionRouteRuleArrayOutput() DaprSubscriptionRouteRuleArrayOutput
+	ToDaprSubscriptionRouteRuleArrayOutputWithContext(context.Context) DaprSubscriptionRouteRuleArrayOutput
+}
+
+type DaprSubscriptionRouteRuleArray []DaprSubscriptionRouteRuleInput
+
+func (DaprSubscriptionRouteRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DaprSubscriptionRouteRule)(nil)).Elem()
+}
+
+func (i DaprSubscriptionRouteRuleArray) ToDaprSubscriptionRouteRuleArrayOutput() DaprSubscriptionRouteRuleArrayOutput {
+	return i.ToDaprSubscriptionRouteRuleArrayOutputWithContext(context.Background())
+}
+
+func (i DaprSubscriptionRouteRuleArray) ToDaprSubscriptionRouteRuleArrayOutputWithContext(ctx context.Context) DaprSubscriptionRouteRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprSubscriptionRouteRuleArrayOutput)
+}
+
+func (i DaprSubscriptionRouteRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]DaprSubscriptionRouteRule] {
+	return pulumix.Output[[]DaprSubscriptionRouteRule]{
+		OutputState: i.ToDaprSubscriptionRouteRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Dapr Pubsub Event Subscription Route Rule is used to specify the condition for sending a message to a specific path.
+type DaprSubscriptionRouteRuleOutput struct{ *pulumi.OutputState }
+
+func (DaprSubscriptionRouteRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprSubscriptionRouteRule)(nil)).Elem()
+}
+
+func (o DaprSubscriptionRouteRuleOutput) ToDaprSubscriptionRouteRuleOutput() DaprSubscriptionRouteRuleOutput {
+	return o
+}
+
+func (o DaprSubscriptionRouteRuleOutput) ToDaprSubscriptionRouteRuleOutputWithContext(ctx context.Context) DaprSubscriptionRouteRuleOutput {
+	return o
+}
+
+func (o DaprSubscriptionRouteRuleOutput) ToOutput(ctx context.Context) pulumix.Output[DaprSubscriptionRouteRule] {
+	return pulumix.Output[DaprSubscriptionRouteRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The optional CEL expression used to match the event. If the match is not specified, then the route is considered the default. The rules are tested in the order specified, so they should be define from most-to-least specific. The default route should appear last in the list.
+func (o DaprSubscriptionRouteRuleOutput) Match() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprSubscriptionRouteRule) *string { return v.Match }).(pulumi.StringPtrOutput)
+}
+
+// The path for events that match this rule
+func (o DaprSubscriptionRouteRuleOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprSubscriptionRouteRule) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type DaprSubscriptionRouteRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (DaprSubscriptionRouteRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DaprSubscriptionRouteRule)(nil)).Elem()
+}
+
+func (o DaprSubscriptionRouteRuleArrayOutput) ToDaprSubscriptionRouteRuleArrayOutput() DaprSubscriptionRouteRuleArrayOutput {
+	return o
+}
+
+func (o DaprSubscriptionRouteRuleArrayOutput) ToDaprSubscriptionRouteRuleArrayOutputWithContext(ctx context.Context) DaprSubscriptionRouteRuleArrayOutput {
+	return o
+}
+
+func (o DaprSubscriptionRouteRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DaprSubscriptionRouteRule] {
+	return pulumix.Output[[]DaprSubscriptionRouteRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprSubscriptionRouteRuleArrayOutput) Index(i pulumi.IntInput) DaprSubscriptionRouteRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DaprSubscriptionRouteRule {
+		return vs[0].([]DaprSubscriptionRouteRule)[vs[1].(int)]
+	}).(DaprSubscriptionRouteRuleOutput)
+}
+
+// Dapr Pubsub Event Subscription Route Rule is used to specify the condition for sending a message to a specific path.
+type DaprSubscriptionRouteRuleResponse struct {
+	// The optional CEL expression used to match the event. If the match is not specified, then the route is considered the default. The rules are tested in the order specified, so they should be define from most-to-least specific. The default route should appear last in the list.
+	Match *string `pulumi:"match"`
+	// The path for events that match this rule
+	Path *string `pulumi:"path"`
+}
+
+// Dapr Pubsub Event Subscription Route Rule is used to specify the condition for sending a message to a specific path.
+type DaprSubscriptionRouteRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprSubscriptionRouteRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprSubscriptionRouteRuleResponse)(nil)).Elem()
+}
+
+func (o DaprSubscriptionRouteRuleResponseOutput) ToDaprSubscriptionRouteRuleResponseOutput() DaprSubscriptionRouteRuleResponseOutput {
+	return o
+}
+
+func (o DaprSubscriptionRouteRuleResponseOutput) ToDaprSubscriptionRouteRuleResponseOutputWithContext(ctx context.Context) DaprSubscriptionRouteRuleResponseOutput {
+	return o
+}
+
+func (o DaprSubscriptionRouteRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DaprSubscriptionRouteRuleResponse] {
+	return pulumix.Output[DaprSubscriptionRouteRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The optional CEL expression used to match the event. If the match is not specified, then the route is considered the default. The rules are tested in the order specified, so they should be define from most-to-least specific. The default route should appear last in the list.
+func (o DaprSubscriptionRouteRuleResponseOutput) Match() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprSubscriptionRouteRuleResponse) *string { return v.Match }).(pulumi.StringPtrOutput)
+}
+
+// The path for events that match this rule
+func (o DaprSubscriptionRouteRuleResponseOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprSubscriptionRouteRuleResponse) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type DaprSubscriptionRouteRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DaprSubscriptionRouteRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DaprSubscriptionRouteRuleResponse)(nil)).Elem()
+}
+
+func (o DaprSubscriptionRouteRuleResponseArrayOutput) ToDaprSubscriptionRouteRuleResponseArrayOutput() DaprSubscriptionRouteRuleResponseArrayOutput {
+	return o
+}
+
+func (o DaprSubscriptionRouteRuleResponseArrayOutput) ToDaprSubscriptionRouteRuleResponseArrayOutputWithContext(ctx context.Context) DaprSubscriptionRouteRuleResponseArrayOutput {
+	return o
+}
+
+func (o DaprSubscriptionRouteRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DaprSubscriptionRouteRuleResponse] {
+	return pulumix.Output[[]DaprSubscriptionRouteRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprSubscriptionRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) DaprSubscriptionRouteRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DaprSubscriptionRouteRuleResponse {
+		return vs[0].([]DaprSubscriptionRouteRuleResponse)[vs[1].(int)]
+	}).(DaprSubscriptionRouteRuleResponseOutput)
+}
+
+// Dapr PubSub Event Subscription Routes configuration.
+type DaprSubscriptionRoutes struct {
+	// The default path to deliver events that do not match any of the rules.
+	Default *string `pulumi:"default"`
+	// The list of Dapr PubSub Event Subscription Route Rules.
+	Rules []DaprSubscriptionRouteRule `pulumi:"rules"`
+}
+
+// DaprSubscriptionRoutesInput is an input type that accepts DaprSubscriptionRoutesArgs and DaprSubscriptionRoutesOutput values.
+// You can construct a concrete instance of `DaprSubscriptionRoutesInput` via:
+//
+//	DaprSubscriptionRoutesArgs{...}
+type DaprSubscriptionRoutesInput interface {
+	pulumi.Input
+
+	ToDaprSubscriptionRoutesOutput() DaprSubscriptionRoutesOutput
+	ToDaprSubscriptionRoutesOutputWithContext(context.Context) DaprSubscriptionRoutesOutput
+}
+
+// Dapr PubSub Event Subscription Routes configuration.
+type DaprSubscriptionRoutesArgs struct {
+	// The default path to deliver events that do not match any of the rules.
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// The list of Dapr PubSub Event Subscription Route Rules.
+	Rules DaprSubscriptionRouteRuleArrayInput `pulumi:"rules"`
+}
+
+func (DaprSubscriptionRoutesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprSubscriptionRoutes)(nil)).Elem()
+}
+
+func (i DaprSubscriptionRoutesArgs) ToDaprSubscriptionRoutesOutput() DaprSubscriptionRoutesOutput {
+	return i.ToDaprSubscriptionRoutesOutputWithContext(context.Background())
+}
+
+func (i DaprSubscriptionRoutesArgs) ToDaprSubscriptionRoutesOutputWithContext(ctx context.Context) DaprSubscriptionRoutesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprSubscriptionRoutesOutput)
+}
+
+func (i DaprSubscriptionRoutesArgs) ToOutput(ctx context.Context) pulumix.Output[DaprSubscriptionRoutes] {
+	return pulumix.Output[DaprSubscriptionRoutes]{
+		OutputState: i.ToDaprSubscriptionRoutesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DaprSubscriptionRoutesArgs) ToDaprSubscriptionRoutesPtrOutput() DaprSubscriptionRoutesPtrOutput {
+	return i.ToDaprSubscriptionRoutesPtrOutputWithContext(context.Background())
+}
+
+func (i DaprSubscriptionRoutesArgs) ToDaprSubscriptionRoutesPtrOutputWithContext(ctx context.Context) DaprSubscriptionRoutesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprSubscriptionRoutesOutput).ToDaprSubscriptionRoutesPtrOutputWithContext(ctx)
+}
+
+// DaprSubscriptionRoutesPtrInput is an input type that accepts DaprSubscriptionRoutesArgs, DaprSubscriptionRoutesPtr and DaprSubscriptionRoutesPtrOutput values.
+// You can construct a concrete instance of `DaprSubscriptionRoutesPtrInput` via:
+//
+//	        DaprSubscriptionRoutesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DaprSubscriptionRoutesPtrInput interface {
+	pulumi.Input
+
+	ToDaprSubscriptionRoutesPtrOutput() DaprSubscriptionRoutesPtrOutput
+	ToDaprSubscriptionRoutesPtrOutputWithContext(context.Context) DaprSubscriptionRoutesPtrOutput
+}
+
+type daprSubscriptionRoutesPtrType DaprSubscriptionRoutesArgs
+
+func DaprSubscriptionRoutesPtr(v *DaprSubscriptionRoutesArgs) DaprSubscriptionRoutesPtrInput {
+	return (*daprSubscriptionRoutesPtrType)(v)
+}
+
+func (*daprSubscriptionRoutesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprSubscriptionRoutes)(nil)).Elem()
+}
+
+func (i *daprSubscriptionRoutesPtrType) ToDaprSubscriptionRoutesPtrOutput() DaprSubscriptionRoutesPtrOutput {
+	return i.ToDaprSubscriptionRoutesPtrOutputWithContext(context.Background())
+}
+
+func (i *daprSubscriptionRoutesPtrType) ToDaprSubscriptionRoutesPtrOutputWithContext(ctx context.Context) DaprSubscriptionRoutesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprSubscriptionRoutesPtrOutput)
+}
+
+func (i *daprSubscriptionRoutesPtrType) ToOutput(ctx context.Context) pulumix.Output[*DaprSubscriptionRoutes] {
+	return pulumix.Output[*DaprSubscriptionRoutes]{
+		OutputState: i.ToDaprSubscriptionRoutesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Dapr PubSub Event Subscription Routes configuration.
+type DaprSubscriptionRoutesOutput struct{ *pulumi.OutputState }
+
+func (DaprSubscriptionRoutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprSubscriptionRoutes)(nil)).Elem()
+}
+
+func (o DaprSubscriptionRoutesOutput) ToDaprSubscriptionRoutesOutput() DaprSubscriptionRoutesOutput {
+	return o
+}
+
+func (o DaprSubscriptionRoutesOutput) ToDaprSubscriptionRoutesOutputWithContext(ctx context.Context) DaprSubscriptionRoutesOutput {
+	return o
+}
+
+func (o DaprSubscriptionRoutesOutput) ToDaprSubscriptionRoutesPtrOutput() DaprSubscriptionRoutesPtrOutput {
+	return o.ToDaprSubscriptionRoutesPtrOutputWithContext(context.Background())
+}
+
+func (o DaprSubscriptionRoutesOutput) ToDaprSubscriptionRoutesPtrOutputWithContext(ctx context.Context) DaprSubscriptionRoutesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DaprSubscriptionRoutes) *DaprSubscriptionRoutes {
+		return &v
+	}).(DaprSubscriptionRoutesPtrOutput)
+}
+
+func (o DaprSubscriptionRoutesOutput) ToOutput(ctx context.Context) pulumix.Output[DaprSubscriptionRoutes] {
+	return pulumix.Output[DaprSubscriptionRoutes]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The default path to deliver events that do not match any of the rules.
+func (o DaprSubscriptionRoutesOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprSubscriptionRoutes) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// The list of Dapr PubSub Event Subscription Route Rules.
+func (o DaprSubscriptionRoutesOutput) Rules() DaprSubscriptionRouteRuleArrayOutput {
+	return o.ApplyT(func(v DaprSubscriptionRoutes) []DaprSubscriptionRouteRule { return v.Rules }).(DaprSubscriptionRouteRuleArrayOutput)
+}
+
+type DaprSubscriptionRoutesPtrOutput struct{ *pulumi.OutputState }
+
+func (DaprSubscriptionRoutesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprSubscriptionRoutes)(nil)).Elem()
+}
+
+func (o DaprSubscriptionRoutesPtrOutput) ToDaprSubscriptionRoutesPtrOutput() DaprSubscriptionRoutesPtrOutput {
+	return o
+}
+
+func (o DaprSubscriptionRoutesPtrOutput) ToDaprSubscriptionRoutesPtrOutputWithContext(ctx context.Context) DaprSubscriptionRoutesPtrOutput {
+	return o
+}
+
+func (o DaprSubscriptionRoutesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprSubscriptionRoutes] {
+	return pulumix.Output[*DaprSubscriptionRoutes]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprSubscriptionRoutesPtrOutput) Elem() DaprSubscriptionRoutesOutput {
+	return o.ApplyT(func(v *DaprSubscriptionRoutes) DaprSubscriptionRoutes {
+		if v != nil {
+			return *v
+		}
+		var ret DaprSubscriptionRoutes
+		return ret
+	}).(DaprSubscriptionRoutesOutput)
+}
+
+// The default path to deliver events that do not match any of the rules.
+func (o DaprSubscriptionRoutesPtrOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprSubscriptionRoutes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of Dapr PubSub Event Subscription Route Rules.
+func (o DaprSubscriptionRoutesPtrOutput) Rules() DaprSubscriptionRouteRuleArrayOutput {
+	return o.ApplyT(func(v *DaprSubscriptionRoutes) []DaprSubscriptionRouteRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(DaprSubscriptionRouteRuleArrayOutput)
+}
+
+// Dapr PubSub Event Subscription Routes configuration.
+type DaprSubscriptionRoutesResponse struct {
+	// The default path to deliver events that do not match any of the rules.
+	Default *string `pulumi:"default"`
+	// The list of Dapr PubSub Event Subscription Route Rules.
+	Rules []DaprSubscriptionRouteRuleResponse `pulumi:"rules"`
+}
+
+// Dapr PubSub Event Subscription Routes configuration.
+type DaprSubscriptionRoutesResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprSubscriptionRoutesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprSubscriptionRoutesResponse)(nil)).Elem()
+}
+
+func (o DaprSubscriptionRoutesResponseOutput) ToDaprSubscriptionRoutesResponseOutput() DaprSubscriptionRoutesResponseOutput {
+	return o
+}
+
+func (o DaprSubscriptionRoutesResponseOutput) ToDaprSubscriptionRoutesResponseOutputWithContext(ctx context.Context) DaprSubscriptionRoutesResponseOutput {
+	return o
+}
+
+func (o DaprSubscriptionRoutesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DaprSubscriptionRoutesResponse] {
+	return pulumix.Output[DaprSubscriptionRoutesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The default path to deliver events that do not match any of the rules.
+func (o DaprSubscriptionRoutesResponseOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprSubscriptionRoutesResponse) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// The list of Dapr PubSub Event Subscription Route Rules.
+func (o DaprSubscriptionRoutesResponseOutput) Rules() DaprSubscriptionRouteRuleResponseArrayOutput {
+	return o.ApplyT(func(v DaprSubscriptionRoutesResponse) []DaprSubscriptionRouteRuleResponse { return v.Rules }).(DaprSubscriptionRouteRuleResponseArrayOutput)
+}
+
+type DaprSubscriptionRoutesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DaprSubscriptionRoutesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprSubscriptionRoutesResponse)(nil)).Elem()
+}
+
+func (o DaprSubscriptionRoutesResponsePtrOutput) ToDaprSubscriptionRoutesResponsePtrOutput() DaprSubscriptionRoutesResponsePtrOutput {
+	return o
+}
+
+func (o DaprSubscriptionRoutesResponsePtrOutput) ToDaprSubscriptionRoutesResponsePtrOutputWithContext(ctx context.Context) DaprSubscriptionRoutesResponsePtrOutput {
+	return o
+}
+
+func (o DaprSubscriptionRoutesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprSubscriptionRoutesResponse] {
+	return pulumix.Output[*DaprSubscriptionRoutesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DaprSubscriptionRoutesResponsePtrOutput) Elem() DaprSubscriptionRoutesResponseOutput {
+	return o.ApplyT(func(v *DaprSubscriptionRoutesResponse) DaprSubscriptionRoutesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DaprSubscriptionRoutesResponse
+		return ret
+	}).(DaprSubscriptionRoutesResponseOutput)
+}
+
+// The default path to deliver events that do not match any of the rules.
+func (o DaprSubscriptionRoutesResponsePtrOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprSubscriptionRoutesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of Dapr PubSub Event Subscription Route Rules.
+func (o DaprSubscriptionRoutesResponsePtrOutput) Rules() DaprSubscriptionRouteRuleResponseArrayOutput {
+	return o.ApplyT(func(v *DaprSubscriptionRoutesResponse) []DaprSubscriptionRouteRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(DaprSubscriptionRouteRuleResponseArrayOutput)
 }
 
 // The configuration settings of the Azure Active Directory default authorization policy.
@@ -11029,6 +14078,204 @@ func (o EnvironmentVarResponseArrayOutput) Index(i pulumi.IntInput) EnvironmentV
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentVarResponse {
 		return vs[0].([]EnvironmentVarResponse)[vs[1].(int)]
 	}).(EnvironmentVarResponseOutput)
+}
+
+// Model representing an environment variable.
+type EnvironmentVariable struct {
+	// Environment variable name.
+	Name string `pulumi:"name"`
+	// Environment variable value.
+	Value string `pulumi:"value"`
+}
+
+// EnvironmentVariableInput is an input type that accepts EnvironmentVariableArgs and EnvironmentVariableOutput values.
+// You can construct a concrete instance of `EnvironmentVariableInput` via:
+//
+//	EnvironmentVariableArgs{...}
+type EnvironmentVariableInput interface {
+	pulumi.Input
+
+	ToEnvironmentVariableOutput() EnvironmentVariableOutput
+	ToEnvironmentVariableOutputWithContext(context.Context) EnvironmentVariableOutput
+}
+
+// Model representing an environment variable.
+type EnvironmentVariableArgs struct {
+	// Environment variable name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Environment variable value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (EnvironmentVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentVariable)(nil)).Elem()
+}
+
+func (i EnvironmentVariableArgs) ToEnvironmentVariableOutput() EnvironmentVariableOutput {
+	return i.ToEnvironmentVariableOutputWithContext(context.Background())
+}
+
+func (i EnvironmentVariableArgs) ToEnvironmentVariableOutputWithContext(ctx context.Context) EnvironmentVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentVariableOutput)
+}
+
+func (i EnvironmentVariableArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentVariable] {
+	return pulumix.Output[EnvironmentVariable]{
+		OutputState: i.ToEnvironmentVariableOutputWithContext(ctx).OutputState,
+	}
+}
+
+// EnvironmentVariableArrayInput is an input type that accepts EnvironmentVariableArray and EnvironmentVariableArrayOutput values.
+// You can construct a concrete instance of `EnvironmentVariableArrayInput` via:
+//
+//	EnvironmentVariableArray{ EnvironmentVariableArgs{...} }
+type EnvironmentVariableArrayInput interface {
+	pulumi.Input
+
+	ToEnvironmentVariableArrayOutput() EnvironmentVariableArrayOutput
+	ToEnvironmentVariableArrayOutputWithContext(context.Context) EnvironmentVariableArrayOutput
+}
+
+type EnvironmentVariableArray []EnvironmentVariableInput
+
+func (EnvironmentVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentVariable)(nil)).Elem()
+}
+
+func (i EnvironmentVariableArray) ToEnvironmentVariableArrayOutput() EnvironmentVariableArrayOutput {
+	return i.ToEnvironmentVariableArrayOutputWithContext(context.Background())
+}
+
+func (i EnvironmentVariableArray) ToEnvironmentVariableArrayOutputWithContext(ctx context.Context) EnvironmentVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentVariableArrayOutput)
+}
+
+func (i EnvironmentVariableArray) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentVariable] {
+	return pulumix.Output[[]EnvironmentVariable]{
+		OutputState: i.ToEnvironmentVariableArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Model representing an environment variable.
+type EnvironmentVariableOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentVariable)(nil)).Elem()
+}
+
+func (o EnvironmentVariableOutput) ToEnvironmentVariableOutput() EnvironmentVariableOutput {
+	return o
+}
+
+func (o EnvironmentVariableOutput) ToEnvironmentVariableOutputWithContext(ctx context.Context) EnvironmentVariableOutput {
+	return o
+}
+
+func (o EnvironmentVariableOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentVariable] {
+	return pulumix.Output[EnvironmentVariable]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Environment variable name.
+func (o EnvironmentVariableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Environment variable value.
+func (o EnvironmentVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariable) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type EnvironmentVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentVariable)(nil)).Elem()
+}
+
+func (o EnvironmentVariableArrayOutput) ToEnvironmentVariableArrayOutput() EnvironmentVariableArrayOutput {
+	return o
+}
+
+func (o EnvironmentVariableArrayOutput) ToEnvironmentVariableArrayOutputWithContext(ctx context.Context) EnvironmentVariableArrayOutput {
+	return o
+}
+
+func (o EnvironmentVariableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentVariable] {
+	return pulumix.Output[[]EnvironmentVariable]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EnvironmentVariableArrayOutput) Index(i pulumi.IntInput) EnvironmentVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentVariable {
+		return vs[0].([]EnvironmentVariable)[vs[1].(int)]
+	}).(EnvironmentVariableOutput)
+}
+
+// Model representing an environment variable.
+type EnvironmentVariableResponse struct {
+	// Environment variable name.
+	Name string `pulumi:"name"`
+	// Environment variable value.
+	Value string `pulumi:"value"`
+}
+
+// Model representing an environment variable.
+type EnvironmentVariableResponseOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentVariableResponse)(nil)).Elem()
+}
+
+func (o EnvironmentVariableResponseOutput) ToEnvironmentVariableResponseOutput() EnvironmentVariableResponseOutput {
+	return o
+}
+
+func (o EnvironmentVariableResponseOutput) ToEnvironmentVariableResponseOutputWithContext(ctx context.Context) EnvironmentVariableResponseOutput {
+	return o
+}
+
+func (o EnvironmentVariableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentVariableResponse] {
+	return pulumix.Output[EnvironmentVariableResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Environment variable name.
+func (o EnvironmentVariableResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariableResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Environment variable value.
+func (o EnvironmentVariableResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariableResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type EnvironmentVariableResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentVariableResponse)(nil)).Elem()
+}
+
+func (o EnvironmentVariableResponseArrayOutput) ToEnvironmentVariableResponseArrayOutput() EnvironmentVariableResponseArrayOutput {
+	return o
+}
+
+func (o EnvironmentVariableResponseArrayOutput) ToEnvironmentVariableResponseArrayOutputWithContext(ctx context.Context) EnvironmentVariableResponseArrayOutput {
+	return o
+}
+
+func (o EnvironmentVariableResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentVariableResponse] {
+	return pulumix.Output[[]EnvironmentVariableResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EnvironmentVariableResponseArrayOutput) Index(i pulumi.IntInput) EnvironmentVariableResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentVariableResponse {
+		return vs[0].([]EnvironmentVariableResponse)[vs[1].(int)]
+	}).(EnvironmentVariableResponseOutput)
 }
 
 // The complex type of the extended location.
@@ -13415,6 +16662,1248 @@ func (o GoogleResponsePtrOutput) Validation() AllowedAudiencesValidationResponse
 		}
 		return v.Validation
 	}).(AllowedAudiencesValidationResponsePtrOutput)
+}
+
+// Conditions required to match a header
+type HeaderMatch struct {
+	// Exact value of the header
+	ExactMatch *string `pulumi:"exactMatch"`
+	// Name of the header
+	Header *string `pulumi:"header"`
+	// Prefix value of the header
+	PrefixMatch *string `pulumi:"prefixMatch"`
+	// Regex value of the header
+	RegexMatch *string `pulumi:"regexMatch"`
+	// Suffix value of the header
+	SuffixMatch *string `pulumi:"suffixMatch"`
+}
+
+// HeaderMatchInput is an input type that accepts HeaderMatchArgs and HeaderMatchOutput values.
+// You can construct a concrete instance of `HeaderMatchInput` via:
+//
+//	HeaderMatchArgs{...}
+type HeaderMatchInput interface {
+	pulumi.Input
+
+	ToHeaderMatchOutput() HeaderMatchOutput
+	ToHeaderMatchOutputWithContext(context.Context) HeaderMatchOutput
+}
+
+// Conditions required to match a header
+type HeaderMatchArgs struct {
+	// Exact value of the header
+	ExactMatch pulumi.StringPtrInput `pulumi:"exactMatch"`
+	// Name of the header
+	Header pulumi.StringPtrInput `pulumi:"header"`
+	// Prefix value of the header
+	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
+	// Regex value of the header
+	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
+	// Suffix value of the header
+	SuffixMatch pulumi.StringPtrInput `pulumi:"suffixMatch"`
+}
+
+func (HeaderMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeaderMatch)(nil)).Elem()
+}
+
+func (i HeaderMatchArgs) ToHeaderMatchOutput() HeaderMatchOutput {
+	return i.ToHeaderMatchOutputWithContext(context.Background())
+}
+
+func (i HeaderMatchArgs) ToHeaderMatchOutputWithContext(ctx context.Context) HeaderMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderMatchOutput)
+}
+
+func (i HeaderMatchArgs) ToOutput(ctx context.Context) pulumix.Output[HeaderMatch] {
+	return pulumix.Output[HeaderMatch]{
+		OutputState: i.ToHeaderMatchOutputWithContext(ctx).OutputState,
+	}
+}
+
+// HeaderMatchArrayInput is an input type that accepts HeaderMatchArray and HeaderMatchArrayOutput values.
+// You can construct a concrete instance of `HeaderMatchArrayInput` via:
+//
+//	HeaderMatchArray{ HeaderMatchArgs{...} }
+type HeaderMatchArrayInput interface {
+	pulumi.Input
+
+	ToHeaderMatchArrayOutput() HeaderMatchArrayOutput
+	ToHeaderMatchArrayOutputWithContext(context.Context) HeaderMatchArrayOutput
+}
+
+type HeaderMatchArray []HeaderMatchInput
+
+func (HeaderMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HeaderMatch)(nil)).Elem()
+}
+
+func (i HeaderMatchArray) ToHeaderMatchArrayOutput() HeaderMatchArrayOutput {
+	return i.ToHeaderMatchArrayOutputWithContext(context.Background())
+}
+
+func (i HeaderMatchArray) ToHeaderMatchArrayOutputWithContext(ctx context.Context) HeaderMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderMatchArrayOutput)
+}
+
+func (i HeaderMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]HeaderMatch] {
+	return pulumix.Output[[]HeaderMatch]{
+		OutputState: i.ToHeaderMatchArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Conditions required to match a header
+type HeaderMatchOutput struct{ *pulumi.OutputState }
+
+func (HeaderMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeaderMatch)(nil)).Elem()
+}
+
+func (o HeaderMatchOutput) ToHeaderMatchOutput() HeaderMatchOutput {
+	return o
+}
+
+func (o HeaderMatchOutput) ToHeaderMatchOutputWithContext(ctx context.Context) HeaderMatchOutput {
+	return o
+}
+
+func (o HeaderMatchOutput) ToOutput(ctx context.Context) pulumix.Output[HeaderMatch] {
+	return pulumix.Output[HeaderMatch]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Exact value of the header
+func (o HeaderMatchOutput) ExactMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HeaderMatch) *string { return v.ExactMatch }).(pulumi.StringPtrOutput)
+}
+
+// Name of the header
+func (o HeaderMatchOutput) Header() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HeaderMatch) *string { return v.Header }).(pulumi.StringPtrOutput)
+}
+
+// Prefix value of the header
+func (o HeaderMatchOutput) PrefixMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HeaderMatch) *string { return v.PrefixMatch }).(pulumi.StringPtrOutput)
+}
+
+// Regex value of the header
+func (o HeaderMatchOutput) RegexMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HeaderMatch) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
+}
+
+// Suffix value of the header
+func (o HeaderMatchOutput) SuffixMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HeaderMatch) *string { return v.SuffixMatch }).(pulumi.StringPtrOutput)
+}
+
+type HeaderMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (HeaderMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HeaderMatch)(nil)).Elem()
+}
+
+func (o HeaderMatchArrayOutput) ToHeaderMatchArrayOutput() HeaderMatchArrayOutput {
+	return o
+}
+
+func (o HeaderMatchArrayOutput) ToHeaderMatchArrayOutputWithContext(ctx context.Context) HeaderMatchArrayOutput {
+	return o
+}
+
+func (o HeaderMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HeaderMatch] {
+	return pulumix.Output[[]HeaderMatch]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HeaderMatchArrayOutput) Index(i pulumi.IntInput) HeaderMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HeaderMatch {
+		return vs[0].([]HeaderMatch)[vs[1].(int)]
+	}).(HeaderMatchOutput)
+}
+
+// Conditions required to match a header
+type HeaderMatchResponse struct {
+	// Exact value of the header
+	ExactMatch *string `pulumi:"exactMatch"`
+	// Name of the header
+	Header *string `pulumi:"header"`
+	// Prefix value of the header
+	PrefixMatch *string `pulumi:"prefixMatch"`
+	// Regex value of the header
+	RegexMatch *string `pulumi:"regexMatch"`
+	// Suffix value of the header
+	SuffixMatch *string `pulumi:"suffixMatch"`
+}
+
+// Conditions required to match a header
+type HeaderMatchResponseOutput struct{ *pulumi.OutputState }
+
+func (HeaderMatchResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeaderMatchResponse)(nil)).Elem()
+}
+
+func (o HeaderMatchResponseOutput) ToHeaderMatchResponseOutput() HeaderMatchResponseOutput {
+	return o
+}
+
+func (o HeaderMatchResponseOutput) ToHeaderMatchResponseOutputWithContext(ctx context.Context) HeaderMatchResponseOutput {
+	return o
+}
+
+func (o HeaderMatchResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HeaderMatchResponse] {
+	return pulumix.Output[HeaderMatchResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Exact value of the header
+func (o HeaderMatchResponseOutput) ExactMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HeaderMatchResponse) *string { return v.ExactMatch }).(pulumi.StringPtrOutput)
+}
+
+// Name of the header
+func (o HeaderMatchResponseOutput) Header() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HeaderMatchResponse) *string { return v.Header }).(pulumi.StringPtrOutput)
+}
+
+// Prefix value of the header
+func (o HeaderMatchResponseOutput) PrefixMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HeaderMatchResponse) *string { return v.PrefixMatch }).(pulumi.StringPtrOutput)
+}
+
+// Regex value of the header
+func (o HeaderMatchResponseOutput) RegexMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HeaderMatchResponse) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
+}
+
+// Suffix value of the header
+func (o HeaderMatchResponseOutput) SuffixMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HeaderMatchResponse) *string { return v.SuffixMatch }).(pulumi.StringPtrOutput)
+}
+
+type HeaderMatchResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HeaderMatchResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HeaderMatchResponse)(nil)).Elem()
+}
+
+func (o HeaderMatchResponseArrayOutput) ToHeaderMatchResponseArrayOutput() HeaderMatchResponseArrayOutput {
+	return o
+}
+
+func (o HeaderMatchResponseArrayOutput) ToHeaderMatchResponseArrayOutputWithContext(ctx context.Context) HeaderMatchResponseArrayOutput {
+	return o
+}
+
+func (o HeaderMatchResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HeaderMatchResponse] {
+	return pulumix.Output[[]HeaderMatchResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HeaderMatchResponseArrayOutput) Index(i pulumi.IntInput) HeaderMatchResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HeaderMatchResponse {
+		return vs[0].([]HeaderMatchResponse)[vs[1].(int)]
+	}).(HeaderMatchResponseOutput)
+}
+
+// Defines parameters for http connection pooling
+type HttpConnectionPool struct {
+	// Maximum number of pending http1 requests allowed
+	Http1MaxPendingRequests *int `pulumi:"http1MaxPendingRequests"`
+	// Maximum number of http2 requests allowed
+	Http2MaxRequests *int `pulumi:"http2MaxRequests"`
+}
+
+// HttpConnectionPoolInput is an input type that accepts HttpConnectionPoolArgs and HttpConnectionPoolOutput values.
+// You can construct a concrete instance of `HttpConnectionPoolInput` via:
+//
+//	HttpConnectionPoolArgs{...}
+type HttpConnectionPoolInput interface {
+	pulumi.Input
+
+	ToHttpConnectionPoolOutput() HttpConnectionPoolOutput
+	ToHttpConnectionPoolOutputWithContext(context.Context) HttpConnectionPoolOutput
+}
+
+// Defines parameters for http connection pooling
+type HttpConnectionPoolArgs struct {
+	// Maximum number of pending http1 requests allowed
+	Http1MaxPendingRequests pulumi.IntPtrInput `pulumi:"http1MaxPendingRequests"`
+	// Maximum number of http2 requests allowed
+	Http2MaxRequests pulumi.IntPtrInput `pulumi:"http2MaxRequests"`
+}
+
+func (HttpConnectionPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpConnectionPool)(nil)).Elem()
+}
+
+func (i HttpConnectionPoolArgs) ToHttpConnectionPoolOutput() HttpConnectionPoolOutput {
+	return i.ToHttpConnectionPoolOutputWithContext(context.Background())
+}
+
+func (i HttpConnectionPoolArgs) ToHttpConnectionPoolOutputWithContext(ctx context.Context) HttpConnectionPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpConnectionPoolOutput)
+}
+
+func (i HttpConnectionPoolArgs) ToOutput(ctx context.Context) pulumix.Output[HttpConnectionPool] {
+	return pulumix.Output[HttpConnectionPool]{
+		OutputState: i.ToHttpConnectionPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i HttpConnectionPoolArgs) ToHttpConnectionPoolPtrOutput() HttpConnectionPoolPtrOutput {
+	return i.ToHttpConnectionPoolPtrOutputWithContext(context.Background())
+}
+
+func (i HttpConnectionPoolArgs) ToHttpConnectionPoolPtrOutputWithContext(ctx context.Context) HttpConnectionPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpConnectionPoolOutput).ToHttpConnectionPoolPtrOutputWithContext(ctx)
+}
+
+// HttpConnectionPoolPtrInput is an input type that accepts HttpConnectionPoolArgs, HttpConnectionPoolPtr and HttpConnectionPoolPtrOutput values.
+// You can construct a concrete instance of `HttpConnectionPoolPtrInput` via:
+//
+//	        HttpConnectionPoolArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpConnectionPoolPtrInput interface {
+	pulumi.Input
+
+	ToHttpConnectionPoolPtrOutput() HttpConnectionPoolPtrOutput
+	ToHttpConnectionPoolPtrOutputWithContext(context.Context) HttpConnectionPoolPtrOutput
+}
+
+type httpConnectionPoolPtrType HttpConnectionPoolArgs
+
+func HttpConnectionPoolPtr(v *HttpConnectionPoolArgs) HttpConnectionPoolPtrInput {
+	return (*httpConnectionPoolPtrType)(v)
+}
+
+func (*httpConnectionPoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpConnectionPool)(nil)).Elem()
+}
+
+func (i *httpConnectionPoolPtrType) ToHttpConnectionPoolPtrOutput() HttpConnectionPoolPtrOutput {
+	return i.ToHttpConnectionPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *httpConnectionPoolPtrType) ToHttpConnectionPoolPtrOutputWithContext(ctx context.Context) HttpConnectionPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpConnectionPoolPtrOutput)
+}
+
+func (i *httpConnectionPoolPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpConnectionPool] {
+	return pulumix.Output[*HttpConnectionPool]{
+		OutputState: i.ToHttpConnectionPoolPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Defines parameters for http connection pooling
+type HttpConnectionPoolOutput struct{ *pulumi.OutputState }
+
+func (HttpConnectionPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpConnectionPool)(nil)).Elem()
+}
+
+func (o HttpConnectionPoolOutput) ToHttpConnectionPoolOutput() HttpConnectionPoolOutput {
+	return o
+}
+
+func (o HttpConnectionPoolOutput) ToHttpConnectionPoolOutputWithContext(ctx context.Context) HttpConnectionPoolOutput {
+	return o
+}
+
+func (o HttpConnectionPoolOutput) ToHttpConnectionPoolPtrOutput() HttpConnectionPoolPtrOutput {
+	return o.ToHttpConnectionPoolPtrOutputWithContext(context.Background())
+}
+
+func (o HttpConnectionPoolOutput) ToHttpConnectionPoolPtrOutputWithContext(ctx context.Context) HttpConnectionPoolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpConnectionPool) *HttpConnectionPool {
+		return &v
+	}).(HttpConnectionPoolPtrOutput)
+}
+
+func (o HttpConnectionPoolOutput) ToOutput(ctx context.Context) pulumix.Output[HttpConnectionPool] {
+	return pulumix.Output[HttpConnectionPool]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Maximum number of pending http1 requests allowed
+func (o HttpConnectionPoolOutput) Http1MaxPendingRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpConnectionPool) *int { return v.Http1MaxPendingRequests }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of http2 requests allowed
+func (o HttpConnectionPoolOutput) Http2MaxRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpConnectionPool) *int { return v.Http2MaxRequests }).(pulumi.IntPtrOutput)
+}
+
+type HttpConnectionPoolPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpConnectionPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpConnectionPool)(nil)).Elem()
+}
+
+func (o HttpConnectionPoolPtrOutput) ToHttpConnectionPoolPtrOutput() HttpConnectionPoolPtrOutput {
+	return o
+}
+
+func (o HttpConnectionPoolPtrOutput) ToHttpConnectionPoolPtrOutputWithContext(ctx context.Context) HttpConnectionPoolPtrOutput {
+	return o
+}
+
+func (o HttpConnectionPoolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpConnectionPool] {
+	return pulumix.Output[*HttpConnectionPool]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HttpConnectionPoolPtrOutput) Elem() HttpConnectionPoolOutput {
+	return o.ApplyT(func(v *HttpConnectionPool) HttpConnectionPool {
+		if v != nil {
+			return *v
+		}
+		var ret HttpConnectionPool
+		return ret
+	}).(HttpConnectionPoolOutput)
+}
+
+// Maximum number of pending http1 requests allowed
+func (o HttpConnectionPoolPtrOutput) Http1MaxPendingRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpConnectionPool) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Http1MaxPendingRequests
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of http2 requests allowed
+func (o HttpConnectionPoolPtrOutput) Http2MaxRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpConnectionPool) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Http2MaxRequests
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines parameters for http connection pooling
+type HttpConnectionPoolResponse struct {
+	// Maximum number of pending http1 requests allowed
+	Http1MaxPendingRequests *int `pulumi:"http1MaxPendingRequests"`
+	// Maximum number of http2 requests allowed
+	Http2MaxRequests *int `pulumi:"http2MaxRequests"`
+}
+
+// Defines parameters for http connection pooling
+type HttpConnectionPoolResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpConnectionPoolResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpConnectionPoolResponse)(nil)).Elem()
+}
+
+func (o HttpConnectionPoolResponseOutput) ToHttpConnectionPoolResponseOutput() HttpConnectionPoolResponseOutput {
+	return o
+}
+
+func (o HttpConnectionPoolResponseOutput) ToHttpConnectionPoolResponseOutputWithContext(ctx context.Context) HttpConnectionPoolResponseOutput {
+	return o
+}
+
+func (o HttpConnectionPoolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpConnectionPoolResponse] {
+	return pulumix.Output[HttpConnectionPoolResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Maximum number of pending http1 requests allowed
+func (o HttpConnectionPoolResponseOutput) Http1MaxPendingRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpConnectionPoolResponse) *int { return v.Http1MaxPendingRequests }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of http2 requests allowed
+func (o HttpConnectionPoolResponseOutput) Http2MaxRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpConnectionPoolResponse) *int { return v.Http2MaxRequests }).(pulumi.IntPtrOutput)
+}
+
+type HttpConnectionPoolResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpConnectionPoolResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpConnectionPoolResponse)(nil)).Elem()
+}
+
+func (o HttpConnectionPoolResponsePtrOutput) ToHttpConnectionPoolResponsePtrOutput() HttpConnectionPoolResponsePtrOutput {
+	return o
+}
+
+func (o HttpConnectionPoolResponsePtrOutput) ToHttpConnectionPoolResponsePtrOutputWithContext(ctx context.Context) HttpConnectionPoolResponsePtrOutput {
+	return o
+}
+
+func (o HttpConnectionPoolResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpConnectionPoolResponse] {
+	return pulumix.Output[*HttpConnectionPoolResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HttpConnectionPoolResponsePtrOutput) Elem() HttpConnectionPoolResponseOutput {
+	return o.ApplyT(func(v *HttpConnectionPoolResponse) HttpConnectionPoolResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpConnectionPoolResponse
+		return ret
+	}).(HttpConnectionPoolResponseOutput)
+}
+
+// Maximum number of pending http1 requests allowed
+func (o HttpConnectionPoolResponsePtrOutput) Http1MaxPendingRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpConnectionPoolResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Http1MaxPendingRequests
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of http2 requests allowed
+func (o HttpConnectionPoolResponsePtrOutput) Http2MaxRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpConnectionPoolResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Http2MaxRequests
+	}).(pulumi.IntPtrOutput)
+}
+
+// Model representing a http get request.
+type HttpGet struct {
+	// Name of the file that the request should be saved to.
+	FileName *string `pulumi:"fileName"`
+	// List of headers to send with the request.
+	Headers []string `pulumi:"headers"`
+	// URL to make HTTP GET request against.
+	Url string `pulumi:"url"`
+}
+
+// HttpGetInput is an input type that accepts HttpGetArgs and HttpGetOutput values.
+// You can construct a concrete instance of `HttpGetInput` via:
+//
+//	HttpGetArgs{...}
+type HttpGetInput interface {
+	pulumi.Input
+
+	ToHttpGetOutput() HttpGetOutput
+	ToHttpGetOutputWithContext(context.Context) HttpGetOutput
+}
+
+// Model representing a http get request.
+type HttpGetArgs struct {
+	// Name of the file that the request should be saved to.
+	FileName pulumi.StringPtrInput `pulumi:"fileName"`
+	// List of headers to send with the request.
+	Headers pulumi.StringArrayInput `pulumi:"headers"`
+	// URL to make HTTP GET request against.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (HttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpGet)(nil)).Elem()
+}
+
+func (i HttpGetArgs) ToHttpGetOutput() HttpGetOutput {
+	return i.ToHttpGetOutputWithContext(context.Background())
+}
+
+func (i HttpGetArgs) ToHttpGetOutputWithContext(ctx context.Context) HttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpGetOutput)
+}
+
+func (i HttpGetArgs) ToOutput(ctx context.Context) pulumix.Output[HttpGet] {
+	return pulumix.Output[HttpGet]{
+		OutputState: i.ToHttpGetOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i HttpGetArgs) ToHttpGetPtrOutput() HttpGetPtrOutput {
+	return i.ToHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i HttpGetArgs) ToHttpGetPtrOutputWithContext(ctx context.Context) HttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpGetOutput).ToHttpGetPtrOutputWithContext(ctx)
+}
+
+// HttpGetPtrInput is an input type that accepts HttpGetArgs, HttpGetPtr and HttpGetPtrOutput values.
+// You can construct a concrete instance of `HttpGetPtrInput` via:
+//
+//	        HttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpGetPtrInput interface {
+	pulumi.Input
+
+	ToHttpGetPtrOutput() HttpGetPtrOutput
+	ToHttpGetPtrOutputWithContext(context.Context) HttpGetPtrOutput
+}
+
+type httpGetPtrType HttpGetArgs
+
+func HttpGetPtr(v *HttpGetArgs) HttpGetPtrInput {
+	return (*httpGetPtrType)(v)
+}
+
+func (*httpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpGet)(nil)).Elem()
+}
+
+func (i *httpGetPtrType) ToHttpGetPtrOutput() HttpGetPtrOutput {
+	return i.ToHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *httpGetPtrType) ToHttpGetPtrOutputWithContext(ctx context.Context) HttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpGetPtrOutput)
+}
+
+func (i *httpGetPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpGet] {
+	return pulumix.Output[*HttpGet]{
+		OutputState: i.ToHttpGetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Model representing a http get request.
+type HttpGetOutput struct{ *pulumi.OutputState }
+
+func (HttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpGet)(nil)).Elem()
+}
+
+func (o HttpGetOutput) ToHttpGetOutput() HttpGetOutput {
+	return o
+}
+
+func (o HttpGetOutput) ToHttpGetOutputWithContext(ctx context.Context) HttpGetOutput {
+	return o
+}
+
+func (o HttpGetOutput) ToHttpGetPtrOutput() HttpGetPtrOutput {
+	return o.ToHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o HttpGetOutput) ToHttpGetPtrOutputWithContext(ctx context.Context) HttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpGet) *HttpGet {
+		return &v
+	}).(HttpGetPtrOutput)
+}
+
+func (o HttpGetOutput) ToOutput(ctx context.Context) pulumix.Output[HttpGet] {
+	return pulumix.Output[HttpGet]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the file that the request should be saved to.
+func (o HttpGetOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpGet) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// List of headers to send with the request.
+func (o HttpGetOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HttpGet) []string { return v.Headers }).(pulumi.StringArrayOutput)
+}
+
+// URL to make HTTP GET request against.
+func (o HttpGetOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpGet) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type HttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpGet)(nil)).Elem()
+}
+
+func (o HttpGetPtrOutput) ToHttpGetPtrOutput() HttpGetPtrOutput {
+	return o
+}
+
+func (o HttpGetPtrOutput) ToHttpGetPtrOutputWithContext(ctx context.Context) HttpGetPtrOutput {
+	return o
+}
+
+func (o HttpGetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpGet] {
+	return pulumix.Output[*HttpGet]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HttpGetPtrOutput) Elem() HttpGetOutput {
+	return o.ApplyT(func(v *HttpGet) HttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret HttpGet
+		return ret
+	}).(HttpGetOutput)
+}
+
+// Name of the file that the request should be saved to.
+func (o HttpGetPtrOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileName
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of headers to send with the request.
+func (o HttpGetPtrOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpGet) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(pulumi.StringArrayOutput)
+}
+
+// URL to make HTTP GET request against.
+func (o HttpGetPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// Model representing a http get request.
+type HttpGetResponse struct {
+	// Name of the file that the request should be saved to.
+	FileName *string `pulumi:"fileName"`
+	// List of headers to send with the request.
+	Headers []string `pulumi:"headers"`
+	// URL to make HTTP GET request against.
+	Url string `pulumi:"url"`
+}
+
+// Model representing a http get request.
+type HttpGetResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpGetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpGetResponse)(nil)).Elem()
+}
+
+func (o HttpGetResponseOutput) ToHttpGetResponseOutput() HttpGetResponseOutput {
+	return o
+}
+
+func (o HttpGetResponseOutput) ToHttpGetResponseOutputWithContext(ctx context.Context) HttpGetResponseOutput {
+	return o
+}
+
+func (o HttpGetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpGetResponse] {
+	return pulumix.Output[HttpGetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the file that the request should be saved to.
+func (o HttpGetResponseOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpGetResponse) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// List of headers to send with the request.
+func (o HttpGetResponseOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HttpGetResponse) []string { return v.Headers }).(pulumi.StringArrayOutput)
+}
+
+// URL to make HTTP GET request against.
+func (o HttpGetResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpGetResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type HttpGetResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpGetResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpGetResponse)(nil)).Elem()
+}
+
+func (o HttpGetResponsePtrOutput) ToHttpGetResponsePtrOutput() HttpGetResponsePtrOutput {
+	return o
+}
+
+func (o HttpGetResponsePtrOutput) ToHttpGetResponsePtrOutputWithContext(ctx context.Context) HttpGetResponsePtrOutput {
+	return o
+}
+
+func (o HttpGetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpGetResponse] {
+	return pulumix.Output[*HttpGetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HttpGetResponsePtrOutput) Elem() HttpGetResponseOutput {
+	return o.ApplyT(func(v *HttpGetResponse) HttpGetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpGetResponse
+		return ret
+	}).(HttpGetResponseOutput)
+}
+
+// Name of the file that the request should be saved to.
+func (o HttpGetResponsePtrOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpGetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileName
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of headers to send with the request.
+func (o HttpGetResponsePtrOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpGetResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(pulumi.StringArrayOutput)
+}
+
+// URL to make HTTP GET request against.
+func (o HttpGetResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpGetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// Policy that defines http request retry conditions
+type HttpRetryPolicy struct {
+	// Errors that can trigger a retry
+	Errors []string `pulumi:"errors"`
+	// Headers that must be present for a request to be retried
+	Headers []HeaderMatch `pulumi:"headers"`
+	// Additional http status codes that can trigger a retry
+	HttpStatusCodes []int `pulumi:"httpStatusCodes"`
+	// Initial delay, in milliseconds, before retrying a request
+	InitialDelayInMilliseconds *float64 `pulumi:"initialDelayInMilliseconds"`
+	// Maximum interval, in milliseconds, between retries
+	MaxIntervalInMilliseconds *float64 `pulumi:"maxIntervalInMilliseconds"`
+	// Maximum number of times a request will retry
+	MaxRetries *int `pulumi:"maxRetries"`
+}
+
+// HttpRetryPolicyInput is an input type that accepts HttpRetryPolicyArgs and HttpRetryPolicyOutput values.
+// You can construct a concrete instance of `HttpRetryPolicyInput` via:
+//
+//	HttpRetryPolicyArgs{...}
+type HttpRetryPolicyInput interface {
+	pulumi.Input
+
+	ToHttpRetryPolicyOutput() HttpRetryPolicyOutput
+	ToHttpRetryPolicyOutputWithContext(context.Context) HttpRetryPolicyOutput
+}
+
+// Policy that defines http request retry conditions
+type HttpRetryPolicyArgs struct {
+	// Errors that can trigger a retry
+	Errors pulumi.StringArrayInput `pulumi:"errors"`
+	// Headers that must be present for a request to be retried
+	Headers HeaderMatchArrayInput `pulumi:"headers"`
+	// Additional http status codes that can trigger a retry
+	HttpStatusCodes pulumi.IntArrayInput `pulumi:"httpStatusCodes"`
+	// Initial delay, in milliseconds, before retrying a request
+	InitialDelayInMilliseconds pulumi.Float64PtrInput `pulumi:"initialDelayInMilliseconds"`
+	// Maximum interval, in milliseconds, between retries
+	MaxIntervalInMilliseconds pulumi.Float64PtrInput `pulumi:"maxIntervalInMilliseconds"`
+	// Maximum number of times a request will retry
+	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
+}
+
+func (HttpRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRetryPolicy)(nil)).Elem()
+}
+
+func (i HttpRetryPolicyArgs) ToHttpRetryPolicyOutput() HttpRetryPolicyOutput {
+	return i.ToHttpRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i HttpRetryPolicyArgs) ToHttpRetryPolicyOutputWithContext(ctx context.Context) HttpRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRetryPolicyOutput)
+}
+
+func (i HttpRetryPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRetryPolicy] {
+	return pulumix.Output[HttpRetryPolicy]{
+		OutputState: i.ToHttpRetryPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i HttpRetryPolicyArgs) ToHttpRetryPolicyPtrOutput() HttpRetryPolicyPtrOutput {
+	return i.ToHttpRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRetryPolicyArgs) ToHttpRetryPolicyPtrOutputWithContext(ctx context.Context) HttpRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRetryPolicyOutput).ToHttpRetryPolicyPtrOutputWithContext(ctx)
+}
+
+// HttpRetryPolicyPtrInput is an input type that accepts HttpRetryPolicyArgs, HttpRetryPolicyPtr and HttpRetryPolicyPtrOutput values.
+// You can construct a concrete instance of `HttpRetryPolicyPtrInput` via:
+//
+//	        HttpRetryPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRetryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToHttpRetryPolicyPtrOutput() HttpRetryPolicyPtrOutput
+	ToHttpRetryPolicyPtrOutputWithContext(context.Context) HttpRetryPolicyPtrOutput
+}
+
+type httpRetryPolicyPtrType HttpRetryPolicyArgs
+
+func HttpRetryPolicyPtr(v *HttpRetryPolicyArgs) HttpRetryPolicyPtrInput {
+	return (*httpRetryPolicyPtrType)(v)
+}
+
+func (*httpRetryPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRetryPolicy)(nil)).Elem()
+}
+
+func (i *httpRetryPolicyPtrType) ToHttpRetryPolicyPtrOutput() HttpRetryPolicyPtrOutput {
+	return i.ToHttpRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRetryPolicyPtrType) ToHttpRetryPolicyPtrOutputWithContext(ctx context.Context) HttpRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRetryPolicyPtrOutput)
+}
+
+func (i *httpRetryPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRetryPolicy] {
+	return pulumix.Output[*HttpRetryPolicy]{
+		OutputState: i.ToHttpRetryPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Policy that defines http request retry conditions
+type HttpRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (HttpRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRetryPolicy)(nil)).Elem()
+}
+
+func (o HttpRetryPolicyOutput) ToHttpRetryPolicyOutput() HttpRetryPolicyOutput {
+	return o
+}
+
+func (o HttpRetryPolicyOutput) ToHttpRetryPolicyOutputWithContext(ctx context.Context) HttpRetryPolicyOutput {
+	return o
+}
+
+func (o HttpRetryPolicyOutput) ToHttpRetryPolicyPtrOutput() HttpRetryPolicyPtrOutput {
+	return o.ToHttpRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRetryPolicyOutput) ToHttpRetryPolicyPtrOutputWithContext(ctx context.Context) HttpRetryPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRetryPolicy) *HttpRetryPolicy {
+		return &v
+	}).(HttpRetryPolicyPtrOutput)
+}
+
+func (o HttpRetryPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRetryPolicy] {
+	return pulumix.Output[HttpRetryPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Errors that can trigger a retry
+func (o HttpRetryPolicyOutput) Errors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HttpRetryPolicy) []string { return v.Errors }).(pulumi.StringArrayOutput)
+}
+
+// Headers that must be present for a request to be retried
+func (o HttpRetryPolicyOutput) Headers() HeaderMatchArrayOutput {
+	return o.ApplyT(func(v HttpRetryPolicy) []HeaderMatch { return v.Headers }).(HeaderMatchArrayOutput)
+}
+
+// Additional http status codes that can trigger a retry
+func (o HttpRetryPolicyOutput) HttpStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v HttpRetryPolicy) []int { return v.HttpStatusCodes }).(pulumi.IntArrayOutput)
+}
+
+// Initial delay, in milliseconds, before retrying a request
+func (o HttpRetryPolicyOutput) InitialDelayInMilliseconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v HttpRetryPolicy) *float64 { return v.InitialDelayInMilliseconds }).(pulumi.Float64PtrOutput)
+}
+
+// Maximum interval, in milliseconds, between retries
+func (o HttpRetryPolicyOutput) MaxIntervalInMilliseconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v HttpRetryPolicy) *float64 { return v.MaxIntervalInMilliseconds }).(pulumi.Float64PtrOutput)
+}
+
+// Maximum number of times a request will retry
+func (o HttpRetryPolicyOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpRetryPolicy) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
+}
+
+type HttpRetryPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRetryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRetryPolicy)(nil)).Elem()
+}
+
+func (o HttpRetryPolicyPtrOutput) ToHttpRetryPolicyPtrOutput() HttpRetryPolicyPtrOutput {
+	return o
+}
+
+func (o HttpRetryPolicyPtrOutput) ToHttpRetryPolicyPtrOutputWithContext(ctx context.Context) HttpRetryPolicyPtrOutput {
+	return o
+}
+
+func (o HttpRetryPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRetryPolicy] {
+	return pulumix.Output[*HttpRetryPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HttpRetryPolicyPtrOutput) Elem() HttpRetryPolicyOutput {
+	return o.ApplyT(func(v *HttpRetryPolicy) HttpRetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRetryPolicy
+		return ret
+	}).(HttpRetryPolicyOutput)
+}
+
+// Errors that can trigger a retry
+func (o HttpRetryPolicyPtrOutput) Errors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpRetryPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Errors
+	}).(pulumi.StringArrayOutput)
+}
+
+// Headers that must be present for a request to be retried
+func (o HttpRetryPolicyPtrOutput) Headers() HeaderMatchArrayOutput {
+	return o.ApplyT(func(v *HttpRetryPolicy) []HeaderMatch {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(HeaderMatchArrayOutput)
+}
+
+// Additional http status codes that can trigger a retry
+func (o HttpRetryPolicyPtrOutput) HttpStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *HttpRetryPolicy) []int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpStatusCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// Initial delay, in milliseconds, before retrying a request
+func (o HttpRetryPolicyPtrOutput) InitialDelayInMilliseconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *HttpRetryPolicy) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelayInMilliseconds
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Maximum interval, in milliseconds, between retries
+func (o HttpRetryPolicyPtrOutput) MaxIntervalInMilliseconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *HttpRetryPolicy) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxIntervalInMilliseconds
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Maximum number of times a request will retry
+func (o HttpRetryPolicyPtrOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpRetryPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// Policy that defines http request retry conditions
+type HttpRetryPolicyResponse struct {
+	// Errors that can trigger a retry
+	Errors []string `pulumi:"errors"`
+	// Headers that must be present for a request to be retried
+	Headers []HeaderMatchResponse `pulumi:"headers"`
+	// Additional http status codes that can trigger a retry
+	HttpStatusCodes []int `pulumi:"httpStatusCodes"`
+	// Initial delay, in milliseconds, before retrying a request
+	InitialDelayInMilliseconds *float64 `pulumi:"initialDelayInMilliseconds"`
+	// Maximum interval, in milliseconds, between retries
+	MaxIntervalInMilliseconds *float64 `pulumi:"maxIntervalInMilliseconds"`
+	// Maximum number of times a request will retry
+	MaxRetries *int `pulumi:"maxRetries"`
+}
+
+// Policy that defines http request retry conditions
+type HttpRetryPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpRetryPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRetryPolicyResponse)(nil)).Elem()
+}
+
+func (o HttpRetryPolicyResponseOutput) ToHttpRetryPolicyResponseOutput() HttpRetryPolicyResponseOutput {
+	return o
+}
+
+func (o HttpRetryPolicyResponseOutput) ToHttpRetryPolicyResponseOutputWithContext(ctx context.Context) HttpRetryPolicyResponseOutput {
+	return o
+}
+
+func (o HttpRetryPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRetryPolicyResponse] {
+	return pulumix.Output[HttpRetryPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Errors that can trigger a retry
+func (o HttpRetryPolicyResponseOutput) Errors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HttpRetryPolicyResponse) []string { return v.Errors }).(pulumi.StringArrayOutput)
+}
+
+// Headers that must be present for a request to be retried
+func (o HttpRetryPolicyResponseOutput) Headers() HeaderMatchResponseArrayOutput {
+	return o.ApplyT(func(v HttpRetryPolicyResponse) []HeaderMatchResponse { return v.Headers }).(HeaderMatchResponseArrayOutput)
+}
+
+// Additional http status codes that can trigger a retry
+func (o HttpRetryPolicyResponseOutput) HttpStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v HttpRetryPolicyResponse) []int { return v.HttpStatusCodes }).(pulumi.IntArrayOutput)
+}
+
+// Initial delay, in milliseconds, before retrying a request
+func (o HttpRetryPolicyResponseOutput) InitialDelayInMilliseconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v HttpRetryPolicyResponse) *float64 { return v.InitialDelayInMilliseconds }).(pulumi.Float64PtrOutput)
+}
+
+// Maximum interval, in milliseconds, between retries
+func (o HttpRetryPolicyResponseOutput) MaxIntervalInMilliseconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v HttpRetryPolicyResponse) *float64 { return v.MaxIntervalInMilliseconds }).(pulumi.Float64PtrOutput)
+}
+
+// Maximum number of times a request will retry
+func (o HttpRetryPolicyResponseOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpRetryPolicyResponse) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
+}
+
+type HttpRetryPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRetryPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRetryPolicyResponse)(nil)).Elem()
+}
+
+func (o HttpRetryPolicyResponsePtrOutput) ToHttpRetryPolicyResponsePtrOutput() HttpRetryPolicyResponsePtrOutput {
+	return o
+}
+
+func (o HttpRetryPolicyResponsePtrOutput) ToHttpRetryPolicyResponsePtrOutputWithContext(ctx context.Context) HttpRetryPolicyResponsePtrOutput {
+	return o
+}
+
+func (o HttpRetryPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRetryPolicyResponse] {
+	return pulumix.Output[*HttpRetryPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HttpRetryPolicyResponsePtrOutput) Elem() HttpRetryPolicyResponseOutput {
+	return o.ApplyT(func(v *HttpRetryPolicyResponse) HttpRetryPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRetryPolicyResponse
+		return ret
+	}).(HttpRetryPolicyResponseOutput)
+}
+
+// Errors that can trigger a retry
+func (o HttpRetryPolicyResponsePtrOutput) Errors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpRetryPolicyResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Errors
+	}).(pulumi.StringArrayOutput)
+}
+
+// Headers that must be present for a request to be retried
+func (o HttpRetryPolicyResponsePtrOutput) Headers() HeaderMatchResponseArrayOutput {
+	return o.ApplyT(func(v *HttpRetryPolicyResponse) []HeaderMatchResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(HeaderMatchResponseArrayOutput)
+}
+
+// Additional http status codes that can trigger a retry
+func (o HttpRetryPolicyResponsePtrOutput) HttpStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *HttpRetryPolicyResponse) []int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpStatusCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// Initial delay, in milliseconds, before retrying a request
+func (o HttpRetryPolicyResponsePtrOutput) InitialDelayInMilliseconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *HttpRetryPolicyResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelayInMilliseconds
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Maximum interval, in milliseconds, between retries
+func (o HttpRetryPolicyResponsePtrOutput) MaxIntervalInMilliseconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *HttpRetryPolicyResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxIntervalInMilliseconds
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Maximum number of times a request will retry
+func (o HttpRetryPolicyResponsePtrOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpRetryPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetries
+	}).(pulumi.IntPtrOutput)
 }
 
 // Container App container Http scaling rule.
@@ -22184,6 +26673,220 @@ func (o OpenIdConnectRegistrationResponsePtrOutput) OpenIdConnectConfiguration()
 	}).(OpenIdConnectConfigResponsePtrOutput)
 }
 
+// Model representing a pre-build step.
+type PreBuildStep struct {
+	// Description of the pre-build step.
+	Description *string `pulumi:"description"`
+	// Http get request to send before the build.
+	HttpGet *HttpGet `pulumi:"httpGet"`
+	// List of custom commands to run.
+	Scripts []string `pulumi:"scripts"`
+}
+
+// PreBuildStepInput is an input type that accepts PreBuildStepArgs and PreBuildStepOutput values.
+// You can construct a concrete instance of `PreBuildStepInput` via:
+//
+//	PreBuildStepArgs{...}
+type PreBuildStepInput interface {
+	pulumi.Input
+
+	ToPreBuildStepOutput() PreBuildStepOutput
+	ToPreBuildStepOutputWithContext(context.Context) PreBuildStepOutput
+}
+
+// Model representing a pre-build step.
+type PreBuildStepArgs struct {
+	// Description of the pre-build step.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Http get request to send before the build.
+	HttpGet HttpGetPtrInput `pulumi:"httpGet"`
+	// List of custom commands to run.
+	Scripts pulumi.StringArrayInput `pulumi:"scripts"`
+}
+
+func (PreBuildStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreBuildStep)(nil)).Elem()
+}
+
+func (i PreBuildStepArgs) ToPreBuildStepOutput() PreBuildStepOutput {
+	return i.ToPreBuildStepOutputWithContext(context.Background())
+}
+
+func (i PreBuildStepArgs) ToPreBuildStepOutputWithContext(ctx context.Context) PreBuildStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreBuildStepOutput)
+}
+
+func (i PreBuildStepArgs) ToOutput(ctx context.Context) pulumix.Output[PreBuildStep] {
+	return pulumix.Output[PreBuildStep]{
+		OutputState: i.ToPreBuildStepOutputWithContext(ctx).OutputState,
+	}
+}
+
+// PreBuildStepArrayInput is an input type that accepts PreBuildStepArray and PreBuildStepArrayOutput values.
+// You can construct a concrete instance of `PreBuildStepArrayInput` via:
+//
+//	PreBuildStepArray{ PreBuildStepArgs{...} }
+type PreBuildStepArrayInput interface {
+	pulumi.Input
+
+	ToPreBuildStepArrayOutput() PreBuildStepArrayOutput
+	ToPreBuildStepArrayOutputWithContext(context.Context) PreBuildStepArrayOutput
+}
+
+type PreBuildStepArray []PreBuildStepInput
+
+func (PreBuildStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreBuildStep)(nil)).Elem()
+}
+
+func (i PreBuildStepArray) ToPreBuildStepArrayOutput() PreBuildStepArrayOutput {
+	return i.ToPreBuildStepArrayOutputWithContext(context.Background())
+}
+
+func (i PreBuildStepArray) ToPreBuildStepArrayOutputWithContext(ctx context.Context) PreBuildStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreBuildStepArrayOutput)
+}
+
+func (i PreBuildStepArray) ToOutput(ctx context.Context) pulumix.Output[[]PreBuildStep] {
+	return pulumix.Output[[]PreBuildStep]{
+		OutputState: i.ToPreBuildStepArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Model representing a pre-build step.
+type PreBuildStepOutput struct{ *pulumi.OutputState }
+
+func (PreBuildStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreBuildStep)(nil)).Elem()
+}
+
+func (o PreBuildStepOutput) ToPreBuildStepOutput() PreBuildStepOutput {
+	return o
+}
+
+func (o PreBuildStepOutput) ToPreBuildStepOutputWithContext(ctx context.Context) PreBuildStepOutput {
+	return o
+}
+
+func (o PreBuildStepOutput) ToOutput(ctx context.Context) pulumix.Output[PreBuildStep] {
+	return pulumix.Output[PreBuildStep]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Description of the pre-build step.
+func (o PreBuildStepOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreBuildStep) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Http get request to send before the build.
+func (o PreBuildStepOutput) HttpGet() HttpGetPtrOutput {
+	return o.ApplyT(func(v PreBuildStep) *HttpGet { return v.HttpGet }).(HttpGetPtrOutput)
+}
+
+// List of custom commands to run.
+func (o PreBuildStepOutput) Scripts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PreBuildStep) []string { return v.Scripts }).(pulumi.StringArrayOutput)
+}
+
+type PreBuildStepArrayOutput struct{ *pulumi.OutputState }
+
+func (PreBuildStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreBuildStep)(nil)).Elem()
+}
+
+func (o PreBuildStepArrayOutput) ToPreBuildStepArrayOutput() PreBuildStepArrayOutput {
+	return o
+}
+
+func (o PreBuildStepArrayOutput) ToPreBuildStepArrayOutputWithContext(ctx context.Context) PreBuildStepArrayOutput {
+	return o
+}
+
+func (o PreBuildStepArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PreBuildStep] {
+	return pulumix.Output[[]PreBuildStep]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PreBuildStepArrayOutput) Index(i pulumi.IntInput) PreBuildStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreBuildStep {
+		return vs[0].([]PreBuildStep)[vs[1].(int)]
+	}).(PreBuildStepOutput)
+}
+
+// Model representing a pre-build step.
+type PreBuildStepResponse struct {
+	// Description of the pre-build step.
+	Description *string `pulumi:"description"`
+	// Http get request to send before the build.
+	HttpGet *HttpGetResponse `pulumi:"httpGet"`
+	// List of custom commands to run.
+	Scripts []string `pulumi:"scripts"`
+}
+
+// Model representing a pre-build step.
+type PreBuildStepResponseOutput struct{ *pulumi.OutputState }
+
+func (PreBuildStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreBuildStepResponse)(nil)).Elem()
+}
+
+func (o PreBuildStepResponseOutput) ToPreBuildStepResponseOutput() PreBuildStepResponseOutput {
+	return o
+}
+
+func (o PreBuildStepResponseOutput) ToPreBuildStepResponseOutputWithContext(ctx context.Context) PreBuildStepResponseOutput {
+	return o
+}
+
+func (o PreBuildStepResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PreBuildStepResponse] {
+	return pulumix.Output[PreBuildStepResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Description of the pre-build step.
+func (o PreBuildStepResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreBuildStepResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Http get request to send before the build.
+func (o PreBuildStepResponseOutput) HttpGet() HttpGetResponsePtrOutput {
+	return o.ApplyT(func(v PreBuildStepResponse) *HttpGetResponse { return v.HttpGet }).(HttpGetResponsePtrOutput)
+}
+
+// List of custom commands to run.
+func (o PreBuildStepResponseOutput) Scripts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PreBuildStepResponse) []string { return v.Scripts }).(pulumi.StringArrayOutput)
+}
+
+type PreBuildStepResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PreBuildStepResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreBuildStepResponse)(nil)).Elem()
+}
+
+func (o PreBuildStepResponseArrayOutput) ToPreBuildStepResponseArrayOutput() PreBuildStepResponseArrayOutput {
+	return o
+}
+
+func (o PreBuildStepResponseArrayOutput) ToPreBuildStepResponseArrayOutputWithContext(ctx context.Context) PreBuildStepResponseArrayOutput {
+	return o
+}
+
+func (o PreBuildStepResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PreBuildStepResponse] {
+	return pulumix.Output[[]PreBuildStepResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PreBuildStepResponseArrayOutput) Index(i pulumi.IntInput) PreBuildStepResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreBuildStepResponse {
+		return vs[0].([]PreBuildStepResponse)[vs[1].(int)]
+	}).(PreBuildStepResponseOutput)
+}
+
 // Container App container Azure Queue based scaling rule.
 type QueueScaleRule struct {
 	// Authentication secrets for the queue scale rule.
@@ -24290,6 +28993,478 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// Defines parameters for tcp connection pooling
+type TcpConnectionPool struct {
+	// Maximum number of tcp connections allowed
+	MaxConnections *int `pulumi:"maxConnections"`
+}
+
+// TcpConnectionPoolInput is an input type that accepts TcpConnectionPoolArgs and TcpConnectionPoolOutput values.
+// You can construct a concrete instance of `TcpConnectionPoolInput` via:
+//
+//	TcpConnectionPoolArgs{...}
+type TcpConnectionPoolInput interface {
+	pulumi.Input
+
+	ToTcpConnectionPoolOutput() TcpConnectionPoolOutput
+	ToTcpConnectionPoolOutputWithContext(context.Context) TcpConnectionPoolOutput
+}
+
+// Defines parameters for tcp connection pooling
+type TcpConnectionPoolArgs struct {
+	// Maximum number of tcp connections allowed
+	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
+}
+
+func (TcpConnectionPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpConnectionPool)(nil)).Elem()
+}
+
+func (i TcpConnectionPoolArgs) ToTcpConnectionPoolOutput() TcpConnectionPoolOutput {
+	return i.ToTcpConnectionPoolOutputWithContext(context.Background())
+}
+
+func (i TcpConnectionPoolArgs) ToTcpConnectionPoolOutputWithContext(ctx context.Context) TcpConnectionPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpConnectionPoolOutput)
+}
+
+func (i TcpConnectionPoolArgs) ToOutput(ctx context.Context) pulumix.Output[TcpConnectionPool] {
+	return pulumix.Output[TcpConnectionPool]{
+		OutputState: i.ToTcpConnectionPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TcpConnectionPoolArgs) ToTcpConnectionPoolPtrOutput() TcpConnectionPoolPtrOutput {
+	return i.ToTcpConnectionPoolPtrOutputWithContext(context.Background())
+}
+
+func (i TcpConnectionPoolArgs) ToTcpConnectionPoolPtrOutputWithContext(ctx context.Context) TcpConnectionPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpConnectionPoolOutput).ToTcpConnectionPoolPtrOutputWithContext(ctx)
+}
+
+// TcpConnectionPoolPtrInput is an input type that accepts TcpConnectionPoolArgs, TcpConnectionPoolPtr and TcpConnectionPoolPtrOutput values.
+// You can construct a concrete instance of `TcpConnectionPoolPtrInput` via:
+//
+//	        TcpConnectionPoolArgs{...}
+//
+//	or:
+//
+//	        nil
+type TcpConnectionPoolPtrInput interface {
+	pulumi.Input
+
+	ToTcpConnectionPoolPtrOutput() TcpConnectionPoolPtrOutput
+	ToTcpConnectionPoolPtrOutputWithContext(context.Context) TcpConnectionPoolPtrOutput
+}
+
+type tcpConnectionPoolPtrType TcpConnectionPoolArgs
+
+func TcpConnectionPoolPtr(v *TcpConnectionPoolArgs) TcpConnectionPoolPtrInput {
+	return (*tcpConnectionPoolPtrType)(v)
+}
+
+func (*tcpConnectionPoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TcpConnectionPool)(nil)).Elem()
+}
+
+func (i *tcpConnectionPoolPtrType) ToTcpConnectionPoolPtrOutput() TcpConnectionPoolPtrOutput {
+	return i.ToTcpConnectionPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *tcpConnectionPoolPtrType) ToTcpConnectionPoolPtrOutputWithContext(ctx context.Context) TcpConnectionPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpConnectionPoolPtrOutput)
+}
+
+func (i *tcpConnectionPoolPtrType) ToOutput(ctx context.Context) pulumix.Output[*TcpConnectionPool] {
+	return pulumix.Output[*TcpConnectionPool]{
+		OutputState: i.ToTcpConnectionPoolPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Defines parameters for tcp connection pooling
+type TcpConnectionPoolOutput struct{ *pulumi.OutputState }
+
+func (TcpConnectionPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpConnectionPool)(nil)).Elem()
+}
+
+func (o TcpConnectionPoolOutput) ToTcpConnectionPoolOutput() TcpConnectionPoolOutput {
+	return o
+}
+
+func (o TcpConnectionPoolOutput) ToTcpConnectionPoolOutputWithContext(ctx context.Context) TcpConnectionPoolOutput {
+	return o
+}
+
+func (o TcpConnectionPoolOutput) ToTcpConnectionPoolPtrOutput() TcpConnectionPoolPtrOutput {
+	return o.ToTcpConnectionPoolPtrOutputWithContext(context.Background())
+}
+
+func (o TcpConnectionPoolOutput) ToTcpConnectionPoolPtrOutputWithContext(ctx context.Context) TcpConnectionPoolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TcpConnectionPool) *TcpConnectionPool {
+		return &v
+	}).(TcpConnectionPoolPtrOutput)
+}
+
+func (o TcpConnectionPoolOutput) ToOutput(ctx context.Context) pulumix.Output[TcpConnectionPool] {
+	return pulumix.Output[TcpConnectionPool]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Maximum number of tcp connections allowed
+func (o TcpConnectionPoolOutput) MaxConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TcpConnectionPool) *int { return v.MaxConnections }).(pulumi.IntPtrOutput)
+}
+
+type TcpConnectionPoolPtrOutput struct{ *pulumi.OutputState }
+
+func (TcpConnectionPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TcpConnectionPool)(nil)).Elem()
+}
+
+func (o TcpConnectionPoolPtrOutput) ToTcpConnectionPoolPtrOutput() TcpConnectionPoolPtrOutput {
+	return o
+}
+
+func (o TcpConnectionPoolPtrOutput) ToTcpConnectionPoolPtrOutputWithContext(ctx context.Context) TcpConnectionPoolPtrOutput {
+	return o
+}
+
+func (o TcpConnectionPoolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TcpConnectionPool] {
+	return pulumix.Output[*TcpConnectionPool]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TcpConnectionPoolPtrOutput) Elem() TcpConnectionPoolOutput {
+	return o.ApplyT(func(v *TcpConnectionPool) TcpConnectionPool {
+		if v != nil {
+			return *v
+		}
+		var ret TcpConnectionPool
+		return ret
+	}).(TcpConnectionPoolOutput)
+}
+
+// Maximum number of tcp connections allowed
+func (o TcpConnectionPoolPtrOutput) MaxConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TcpConnectionPool) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConnections
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines parameters for tcp connection pooling
+type TcpConnectionPoolResponse struct {
+	// Maximum number of tcp connections allowed
+	MaxConnections *int `pulumi:"maxConnections"`
+}
+
+// Defines parameters for tcp connection pooling
+type TcpConnectionPoolResponseOutput struct{ *pulumi.OutputState }
+
+func (TcpConnectionPoolResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpConnectionPoolResponse)(nil)).Elem()
+}
+
+func (o TcpConnectionPoolResponseOutput) ToTcpConnectionPoolResponseOutput() TcpConnectionPoolResponseOutput {
+	return o
+}
+
+func (o TcpConnectionPoolResponseOutput) ToTcpConnectionPoolResponseOutputWithContext(ctx context.Context) TcpConnectionPoolResponseOutput {
+	return o
+}
+
+func (o TcpConnectionPoolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TcpConnectionPoolResponse] {
+	return pulumix.Output[TcpConnectionPoolResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Maximum number of tcp connections allowed
+func (o TcpConnectionPoolResponseOutput) MaxConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TcpConnectionPoolResponse) *int { return v.MaxConnections }).(pulumi.IntPtrOutput)
+}
+
+type TcpConnectionPoolResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TcpConnectionPoolResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TcpConnectionPoolResponse)(nil)).Elem()
+}
+
+func (o TcpConnectionPoolResponsePtrOutput) ToTcpConnectionPoolResponsePtrOutput() TcpConnectionPoolResponsePtrOutput {
+	return o
+}
+
+func (o TcpConnectionPoolResponsePtrOutput) ToTcpConnectionPoolResponsePtrOutputWithContext(ctx context.Context) TcpConnectionPoolResponsePtrOutput {
+	return o
+}
+
+func (o TcpConnectionPoolResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TcpConnectionPoolResponse] {
+	return pulumix.Output[*TcpConnectionPoolResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TcpConnectionPoolResponsePtrOutput) Elem() TcpConnectionPoolResponseOutput {
+	return o.ApplyT(func(v *TcpConnectionPoolResponse) TcpConnectionPoolResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TcpConnectionPoolResponse
+		return ret
+	}).(TcpConnectionPoolResponseOutput)
+}
+
+// Maximum number of tcp connections allowed
+func (o TcpConnectionPoolResponsePtrOutput) MaxConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TcpConnectionPoolResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConnections
+	}).(pulumi.IntPtrOutput)
+}
+
+// Policy that defines tcp request retry conditions
+type TcpRetryPolicy struct {
+	// Maximum number of attempts to connect to the tcp service
+	MaxConnectAttempts *int `pulumi:"maxConnectAttempts"`
+}
+
+// TcpRetryPolicyInput is an input type that accepts TcpRetryPolicyArgs and TcpRetryPolicyOutput values.
+// You can construct a concrete instance of `TcpRetryPolicyInput` via:
+//
+//	TcpRetryPolicyArgs{...}
+type TcpRetryPolicyInput interface {
+	pulumi.Input
+
+	ToTcpRetryPolicyOutput() TcpRetryPolicyOutput
+	ToTcpRetryPolicyOutputWithContext(context.Context) TcpRetryPolicyOutput
+}
+
+// Policy that defines tcp request retry conditions
+type TcpRetryPolicyArgs struct {
+	// Maximum number of attempts to connect to the tcp service
+	MaxConnectAttempts pulumi.IntPtrInput `pulumi:"maxConnectAttempts"`
+}
+
+func (TcpRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpRetryPolicy)(nil)).Elem()
+}
+
+func (i TcpRetryPolicyArgs) ToTcpRetryPolicyOutput() TcpRetryPolicyOutput {
+	return i.ToTcpRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i TcpRetryPolicyArgs) ToTcpRetryPolicyOutputWithContext(ctx context.Context) TcpRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpRetryPolicyOutput)
+}
+
+func (i TcpRetryPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[TcpRetryPolicy] {
+	return pulumix.Output[TcpRetryPolicy]{
+		OutputState: i.ToTcpRetryPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TcpRetryPolicyArgs) ToTcpRetryPolicyPtrOutput() TcpRetryPolicyPtrOutput {
+	return i.ToTcpRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i TcpRetryPolicyArgs) ToTcpRetryPolicyPtrOutputWithContext(ctx context.Context) TcpRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpRetryPolicyOutput).ToTcpRetryPolicyPtrOutputWithContext(ctx)
+}
+
+// TcpRetryPolicyPtrInput is an input type that accepts TcpRetryPolicyArgs, TcpRetryPolicyPtr and TcpRetryPolicyPtrOutput values.
+// You can construct a concrete instance of `TcpRetryPolicyPtrInput` via:
+//
+//	        TcpRetryPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type TcpRetryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTcpRetryPolicyPtrOutput() TcpRetryPolicyPtrOutput
+	ToTcpRetryPolicyPtrOutputWithContext(context.Context) TcpRetryPolicyPtrOutput
+}
+
+type tcpRetryPolicyPtrType TcpRetryPolicyArgs
+
+func TcpRetryPolicyPtr(v *TcpRetryPolicyArgs) TcpRetryPolicyPtrInput {
+	return (*tcpRetryPolicyPtrType)(v)
+}
+
+func (*tcpRetryPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TcpRetryPolicy)(nil)).Elem()
+}
+
+func (i *tcpRetryPolicyPtrType) ToTcpRetryPolicyPtrOutput() TcpRetryPolicyPtrOutput {
+	return i.ToTcpRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *tcpRetryPolicyPtrType) ToTcpRetryPolicyPtrOutputWithContext(ctx context.Context) TcpRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpRetryPolicyPtrOutput)
+}
+
+func (i *tcpRetryPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*TcpRetryPolicy] {
+	return pulumix.Output[*TcpRetryPolicy]{
+		OutputState: i.ToTcpRetryPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Policy that defines tcp request retry conditions
+type TcpRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (TcpRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpRetryPolicy)(nil)).Elem()
+}
+
+func (o TcpRetryPolicyOutput) ToTcpRetryPolicyOutput() TcpRetryPolicyOutput {
+	return o
+}
+
+func (o TcpRetryPolicyOutput) ToTcpRetryPolicyOutputWithContext(ctx context.Context) TcpRetryPolicyOutput {
+	return o
+}
+
+func (o TcpRetryPolicyOutput) ToTcpRetryPolicyPtrOutput() TcpRetryPolicyPtrOutput {
+	return o.ToTcpRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o TcpRetryPolicyOutput) ToTcpRetryPolicyPtrOutputWithContext(ctx context.Context) TcpRetryPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TcpRetryPolicy) *TcpRetryPolicy {
+		return &v
+	}).(TcpRetryPolicyPtrOutput)
+}
+
+func (o TcpRetryPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRetryPolicy] {
+	return pulumix.Output[TcpRetryPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Maximum number of attempts to connect to the tcp service
+func (o TcpRetryPolicyOutput) MaxConnectAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TcpRetryPolicy) *int { return v.MaxConnectAttempts }).(pulumi.IntPtrOutput)
+}
+
+type TcpRetryPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (TcpRetryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TcpRetryPolicy)(nil)).Elem()
+}
+
+func (o TcpRetryPolicyPtrOutput) ToTcpRetryPolicyPtrOutput() TcpRetryPolicyPtrOutput {
+	return o
+}
+
+func (o TcpRetryPolicyPtrOutput) ToTcpRetryPolicyPtrOutputWithContext(ctx context.Context) TcpRetryPolicyPtrOutput {
+	return o
+}
+
+func (o TcpRetryPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TcpRetryPolicy] {
+	return pulumix.Output[*TcpRetryPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TcpRetryPolicyPtrOutput) Elem() TcpRetryPolicyOutput {
+	return o.ApplyT(func(v *TcpRetryPolicy) TcpRetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret TcpRetryPolicy
+		return ret
+	}).(TcpRetryPolicyOutput)
+}
+
+// Maximum number of attempts to connect to the tcp service
+func (o TcpRetryPolicyPtrOutput) MaxConnectAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TcpRetryPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConnectAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+// Policy that defines tcp request retry conditions
+type TcpRetryPolicyResponse struct {
+	// Maximum number of attempts to connect to the tcp service
+	MaxConnectAttempts *int `pulumi:"maxConnectAttempts"`
+}
+
+// Policy that defines tcp request retry conditions
+type TcpRetryPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (TcpRetryPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpRetryPolicyResponse)(nil)).Elem()
+}
+
+func (o TcpRetryPolicyResponseOutput) ToTcpRetryPolicyResponseOutput() TcpRetryPolicyResponseOutput {
+	return o
+}
+
+func (o TcpRetryPolicyResponseOutput) ToTcpRetryPolicyResponseOutputWithContext(ctx context.Context) TcpRetryPolicyResponseOutput {
+	return o
+}
+
+func (o TcpRetryPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRetryPolicyResponse] {
+	return pulumix.Output[TcpRetryPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Maximum number of attempts to connect to the tcp service
+func (o TcpRetryPolicyResponseOutput) MaxConnectAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TcpRetryPolicyResponse) *int { return v.MaxConnectAttempts }).(pulumi.IntPtrOutput)
+}
+
+type TcpRetryPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TcpRetryPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TcpRetryPolicyResponse)(nil)).Elem()
+}
+
+func (o TcpRetryPolicyResponsePtrOutput) ToTcpRetryPolicyResponsePtrOutput() TcpRetryPolicyResponsePtrOutput {
+	return o
+}
+
+func (o TcpRetryPolicyResponsePtrOutput) ToTcpRetryPolicyResponsePtrOutputWithContext(ctx context.Context) TcpRetryPolicyResponsePtrOutput {
+	return o
+}
+
+func (o TcpRetryPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TcpRetryPolicyResponse] {
+	return pulumix.Output[*TcpRetryPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TcpRetryPolicyResponsePtrOutput) Elem() TcpRetryPolicyResponseOutput {
+	return o.ApplyT(func(v *TcpRetryPolicyResponse) TcpRetryPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TcpRetryPolicyResponse
+		return ret
+	}).(TcpRetryPolicyResponseOutput)
+}
+
+// Maximum number of attempts to connect to the tcp service
+func (o TcpRetryPolicyResponsePtrOutput) MaxConnectAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TcpRetryPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConnectAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
 // Container App container Tcp scaling rule.
 type TcpScaleRule struct {
 	// Authentication secrets for the tcp scale rule.
@@ -24981,6 +30156,278 @@ func (o TemplateResponsePtrOutput) Volumes() VolumeResponseArrayOutput {
 		}
 		return v.Volumes
 	}).(VolumeResponseArrayOutput)
+}
+
+// Policy to set request timeouts
+type TimeoutPolicy struct {
+	// Timeout, in seconds, for a request to initiate a connection
+	ConnectionTimeoutInSeconds *int `pulumi:"connectionTimeoutInSeconds"`
+	// Timeout, in seconds, for a request to respond
+	ResponseTimeoutInSeconds *int `pulumi:"responseTimeoutInSeconds"`
+}
+
+// TimeoutPolicyInput is an input type that accepts TimeoutPolicyArgs and TimeoutPolicyOutput values.
+// You can construct a concrete instance of `TimeoutPolicyInput` via:
+//
+//	TimeoutPolicyArgs{...}
+type TimeoutPolicyInput interface {
+	pulumi.Input
+
+	ToTimeoutPolicyOutput() TimeoutPolicyOutput
+	ToTimeoutPolicyOutputWithContext(context.Context) TimeoutPolicyOutput
+}
+
+// Policy to set request timeouts
+type TimeoutPolicyArgs struct {
+	// Timeout, in seconds, for a request to initiate a connection
+	ConnectionTimeoutInSeconds pulumi.IntPtrInput `pulumi:"connectionTimeoutInSeconds"`
+	// Timeout, in seconds, for a request to respond
+	ResponseTimeoutInSeconds pulumi.IntPtrInput `pulumi:"responseTimeoutInSeconds"`
+}
+
+func (TimeoutPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeoutPolicy)(nil)).Elem()
+}
+
+func (i TimeoutPolicyArgs) ToTimeoutPolicyOutput() TimeoutPolicyOutput {
+	return i.ToTimeoutPolicyOutputWithContext(context.Background())
+}
+
+func (i TimeoutPolicyArgs) ToTimeoutPolicyOutputWithContext(ctx context.Context) TimeoutPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeoutPolicyOutput)
+}
+
+func (i TimeoutPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[TimeoutPolicy] {
+	return pulumix.Output[TimeoutPolicy]{
+		OutputState: i.ToTimeoutPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TimeoutPolicyArgs) ToTimeoutPolicyPtrOutput() TimeoutPolicyPtrOutput {
+	return i.ToTimeoutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i TimeoutPolicyArgs) ToTimeoutPolicyPtrOutputWithContext(ctx context.Context) TimeoutPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeoutPolicyOutput).ToTimeoutPolicyPtrOutputWithContext(ctx)
+}
+
+// TimeoutPolicyPtrInput is an input type that accepts TimeoutPolicyArgs, TimeoutPolicyPtr and TimeoutPolicyPtrOutput values.
+// You can construct a concrete instance of `TimeoutPolicyPtrInput` via:
+//
+//	        TimeoutPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type TimeoutPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTimeoutPolicyPtrOutput() TimeoutPolicyPtrOutput
+	ToTimeoutPolicyPtrOutputWithContext(context.Context) TimeoutPolicyPtrOutput
+}
+
+type timeoutPolicyPtrType TimeoutPolicyArgs
+
+func TimeoutPolicyPtr(v *TimeoutPolicyArgs) TimeoutPolicyPtrInput {
+	return (*timeoutPolicyPtrType)(v)
+}
+
+func (*timeoutPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeoutPolicy)(nil)).Elem()
+}
+
+func (i *timeoutPolicyPtrType) ToTimeoutPolicyPtrOutput() TimeoutPolicyPtrOutput {
+	return i.ToTimeoutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *timeoutPolicyPtrType) ToTimeoutPolicyPtrOutputWithContext(ctx context.Context) TimeoutPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeoutPolicyPtrOutput)
+}
+
+func (i *timeoutPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*TimeoutPolicy] {
+	return pulumix.Output[*TimeoutPolicy]{
+		OutputState: i.ToTimeoutPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Policy to set request timeouts
+type TimeoutPolicyOutput struct{ *pulumi.OutputState }
+
+func (TimeoutPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeoutPolicy)(nil)).Elem()
+}
+
+func (o TimeoutPolicyOutput) ToTimeoutPolicyOutput() TimeoutPolicyOutput {
+	return o
+}
+
+func (o TimeoutPolicyOutput) ToTimeoutPolicyOutputWithContext(ctx context.Context) TimeoutPolicyOutput {
+	return o
+}
+
+func (o TimeoutPolicyOutput) ToTimeoutPolicyPtrOutput() TimeoutPolicyPtrOutput {
+	return o.ToTimeoutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o TimeoutPolicyOutput) ToTimeoutPolicyPtrOutputWithContext(ctx context.Context) TimeoutPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeoutPolicy) *TimeoutPolicy {
+		return &v
+	}).(TimeoutPolicyPtrOutput)
+}
+
+func (o TimeoutPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[TimeoutPolicy] {
+	return pulumix.Output[TimeoutPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Timeout, in seconds, for a request to initiate a connection
+func (o TimeoutPolicyOutput) ConnectionTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TimeoutPolicy) *int { return v.ConnectionTimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Timeout, in seconds, for a request to respond
+func (o TimeoutPolicyOutput) ResponseTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TimeoutPolicy) *int { return v.ResponseTimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+type TimeoutPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (TimeoutPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeoutPolicy)(nil)).Elem()
+}
+
+func (o TimeoutPolicyPtrOutput) ToTimeoutPolicyPtrOutput() TimeoutPolicyPtrOutput {
+	return o
+}
+
+func (o TimeoutPolicyPtrOutput) ToTimeoutPolicyPtrOutputWithContext(ctx context.Context) TimeoutPolicyPtrOutput {
+	return o
+}
+
+func (o TimeoutPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeoutPolicy] {
+	return pulumix.Output[*TimeoutPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TimeoutPolicyPtrOutput) Elem() TimeoutPolicyOutput {
+	return o.ApplyT(func(v *TimeoutPolicy) TimeoutPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret TimeoutPolicy
+		return ret
+	}).(TimeoutPolicyOutput)
+}
+
+// Timeout, in seconds, for a request to initiate a connection
+func (o TimeoutPolicyPtrOutput) ConnectionTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeoutPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionTimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Timeout, in seconds, for a request to respond
+func (o TimeoutPolicyPtrOutput) ResponseTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeoutPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseTimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Policy to set request timeouts
+type TimeoutPolicyResponse struct {
+	// Timeout, in seconds, for a request to initiate a connection
+	ConnectionTimeoutInSeconds *int `pulumi:"connectionTimeoutInSeconds"`
+	// Timeout, in seconds, for a request to respond
+	ResponseTimeoutInSeconds *int `pulumi:"responseTimeoutInSeconds"`
+}
+
+// Policy to set request timeouts
+type TimeoutPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (TimeoutPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeoutPolicyResponse)(nil)).Elem()
+}
+
+func (o TimeoutPolicyResponseOutput) ToTimeoutPolicyResponseOutput() TimeoutPolicyResponseOutput {
+	return o
+}
+
+func (o TimeoutPolicyResponseOutput) ToTimeoutPolicyResponseOutputWithContext(ctx context.Context) TimeoutPolicyResponseOutput {
+	return o
+}
+
+func (o TimeoutPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeoutPolicyResponse] {
+	return pulumix.Output[TimeoutPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Timeout, in seconds, for a request to initiate a connection
+func (o TimeoutPolicyResponseOutput) ConnectionTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TimeoutPolicyResponse) *int { return v.ConnectionTimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Timeout, in seconds, for a request to respond
+func (o TimeoutPolicyResponseOutput) ResponseTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TimeoutPolicyResponse) *int { return v.ResponseTimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+type TimeoutPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TimeoutPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeoutPolicyResponse)(nil)).Elem()
+}
+
+func (o TimeoutPolicyResponsePtrOutput) ToTimeoutPolicyResponsePtrOutput() TimeoutPolicyResponsePtrOutput {
+	return o
+}
+
+func (o TimeoutPolicyResponsePtrOutput) ToTimeoutPolicyResponsePtrOutputWithContext(ctx context.Context) TimeoutPolicyResponsePtrOutput {
+	return o
+}
+
+func (o TimeoutPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeoutPolicyResponse] {
+	return pulumix.Output[*TimeoutPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TimeoutPolicyResponsePtrOutput) Elem() TimeoutPolicyResponseOutput {
+	return o.ApplyT(func(v *TimeoutPolicyResponse) TimeoutPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TimeoutPolicyResponse
+		return ret
+	}).(TimeoutPolicyResponseOutput)
+}
+
+// Timeout, in seconds, for a request to initiate a connection
+func (o TimeoutPolicyResponsePtrOutput) ConnectionTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeoutPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionTimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Timeout, in seconds, for a request to respond
+func (o TimeoutPolicyResponsePtrOutput) ResponseTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeoutPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseTimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 // Traffic weight assigned to a revision
@@ -27069,9 +32516,17 @@ func init() {
 	pulumi.RegisterOutputType(AzureStaticWebAppsRegistrationResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureStaticWebAppsResponseOutput{})
 	pulumi.RegisterOutputType(AzureStaticWebAppsResponsePtrOutput{})
+	pulumi.RegisterOutputType(BuildConfigurationOutput{})
+	pulumi.RegisterOutputType(BuildConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(BuildConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(BuildConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(CertificatePropertiesOutput{})
 	pulumi.RegisterOutputType(CertificatePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(CertificateResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(CircuitBreakerPolicyOutput{})
+	pulumi.RegisterOutputType(CircuitBreakerPolicyPtrOutput{})
+	pulumi.RegisterOutputType(CircuitBreakerPolicyResponseOutput{})
+	pulumi.RegisterOutputType(CircuitBreakerPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(ClientRegistrationOutput{})
 	pulumi.RegisterOutputType(ClientRegistrationPtrOutput{})
 	pulumi.RegisterOutputType(ClientRegistrationResponseOutput{})
@@ -27103,6 +32558,14 @@ func init() {
 	pulumi.RegisterOutputType(ContainerAppProbeTcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(ContainerAppSecretResponseOutput{})
 	pulumi.RegisterOutputType(ContainerAppSecretResponseArrayOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryArrayOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryResponseOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryResponseArrayOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryWithCustomImageOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryWithCustomImagePtrOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryWithCustomImageResponseOutput{})
+	pulumi.RegisterOutputType(ContainerRegistryWithCustomImageResponsePtrOutput{})
 	pulumi.RegisterOutputType(ContainerResourcesOutput{})
 	pulumi.RegisterOutputType(ContainerResourcesPtrOutput{})
 	pulumi.RegisterOutputType(ContainerResourcesResponseOutput{})
@@ -27138,6 +32601,22 @@ func init() {
 	pulumi.RegisterOutputType(CustomScaleRuleResponsePtrOutput{})
 	pulumi.RegisterOutputType(DaprOutput{})
 	pulumi.RegisterOutputType(DaprPtrOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyConfigurationOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(DaprMetadataOutput{})
 	pulumi.RegisterOutputType(DaprMetadataArrayOutput{})
 	pulumi.RegisterOutputType(DaprMetadataResponseOutput{})
@@ -27146,6 +32625,18 @@ func init() {
 	pulumi.RegisterOutputType(DaprResponsePtrOutput{})
 	pulumi.RegisterOutputType(DaprSecretResponseOutput{})
 	pulumi.RegisterOutputType(DaprSecretResponseArrayOutput{})
+	pulumi.RegisterOutputType(DaprSubscriptionBulkSubscribeOptionsOutput{})
+	pulumi.RegisterOutputType(DaprSubscriptionBulkSubscribeOptionsPtrOutput{})
+	pulumi.RegisterOutputType(DaprSubscriptionBulkSubscribeOptionsResponseOutput{})
+	pulumi.RegisterOutputType(DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(DaprSubscriptionRouteRuleOutput{})
+	pulumi.RegisterOutputType(DaprSubscriptionRouteRuleArrayOutput{})
+	pulumi.RegisterOutputType(DaprSubscriptionRouteRuleResponseOutput{})
+	pulumi.RegisterOutputType(DaprSubscriptionRouteRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(DaprSubscriptionRoutesOutput{})
+	pulumi.RegisterOutputType(DaprSubscriptionRoutesPtrOutput{})
+	pulumi.RegisterOutputType(DaprSubscriptionRoutesResponseOutput{})
+	pulumi.RegisterOutputType(DaprSubscriptionRoutesResponsePtrOutput{})
 	pulumi.RegisterOutputType(DefaultAuthorizationPolicyOutput{})
 	pulumi.RegisterOutputType(DefaultAuthorizationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DefaultAuthorizationPolicyResponseOutput{})
@@ -27158,6 +32649,10 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentVarArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentVarResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentVarResponseArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentVariableOutput{})
+	pulumi.RegisterOutputType(EnvironmentVariableArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentVariableResponseOutput{})
+	pulumi.RegisterOutputType(EnvironmentVariableResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
@@ -27186,6 +32681,22 @@ func init() {
 	pulumi.RegisterOutputType(GooglePtrOutput{})
 	pulumi.RegisterOutputType(GoogleResponseOutput{})
 	pulumi.RegisterOutputType(GoogleResponsePtrOutput{})
+	pulumi.RegisterOutputType(HeaderMatchOutput{})
+	pulumi.RegisterOutputType(HeaderMatchArrayOutput{})
+	pulumi.RegisterOutputType(HeaderMatchResponseOutput{})
+	pulumi.RegisterOutputType(HeaderMatchResponseArrayOutput{})
+	pulumi.RegisterOutputType(HttpConnectionPoolOutput{})
+	pulumi.RegisterOutputType(HttpConnectionPoolPtrOutput{})
+	pulumi.RegisterOutputType(HttpConnectionPoolResponseOutput{})
+	pulumi.RegisterOutputType(HttpConnectionPoolResponsePtrOutput{})
+	pulumi.RegisterOutputType(HttpGetOutput{})
+	pulumi.RegisterOutputType(HttpGetPtrOutput{})
+	pulumi.RegisterOutputType(HttpGetResponseOutput{})
+	pulumi.RegisterOutputType(HttpGetResponsePtrOutput{})
+	pulumi.RegisterOutputType(HttpRetryPolicyOutput{})
+	pulumi.RegisterOutputType(HttpRetryPolicyPtrOutput{})
+	pulumi.RegisterOutputType(HttpRetryPolicyResponseOutput{})
+	pulumi.RegisterOutputType(HttpRetryPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(HttpScaleRuleOutput{})
 	pulumi.RegisterOutputType(HttpScaleRulePtrOutput{})
 	pulumi.RegisterOutputType(HttpScaleRuleResponseOutput{})
@@ -27296,6 +32807,10 @@ func init() {
 	pulumi.RegisterOutputType(OpenIdConnectRegistrationPtrOutput{})
 	pulumi.RegisterOutputType(OpenIdConnectRegistrationResponseOutput{})
 	pulumi.RegisterOutputType(OpenIdConnectRegistrationResponsePtrOutput{})
+	pulumi.RegisterOutputType(PreBuildStepOutput{})
+	pulumi.RegisterOutputType(PreBuildStepArrayOutput{})
+	pulumi.RegisterOutputType(PreBuildStepResponseOutput{})
+	pulumi.RegisterOutputType(PreBuildStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(QueueScaleRuleOutput{})
 	pulumi.RegisterOutputType(QueueScaleRulePtrOutput{})
 	pulumi.RegisterOutputType(QueueScaleRuleResponseOutput{})
@@ -27329,6 +32844,14 @@ func init() {
 	pulumi.RegisterOutputType(SecretVolumeItemResponseOutput{})
 	pulumi.RegisterOutputType(SecretVolumeItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TcpConnectionPoolOutput{})
+	pulumi.RegisterOutputType(TcpConnectionPoolPtrOutput{})
+	pulumi.RegisterOutputType(TcpConnectionPoolResponseOutput{})
+	pulumi.RegisterOutputType(TcpConnectionPoolResponsePtrOutput{})
+	pulumi.RegisterOutputType(TcpRetryPolicyOutput{})
+	pulumi.RegisterOutputType(TcpRetryPolicyPtrOutput{})
+	pulumi.RegisterOutputType(TcpRetryPolicyResponseOutput{})
+	pulumi.RegisterOutputType(TcpRetryPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(TcpScaleRuleOutput{})
 	pulumi.RegisterOutputType(TcpScaleRulePtrOutput{})
 	pulumi.RegisterOutputType(TcpScaleRuleResponseOutput{})
@@ -27337,6 +32860,10 @@ func init() {
 	pulumi.RegisterOutputType(TemplatePtrOutput{})
 	pulumi.RegisterOutputType(TemplateResponseOutput{})
 	pulumi.RegisterOutputType(TemplateResponsePtrOutput{})
+	pulumi.RegisterOutputType(TimeoutPolicyOutput{})
+	pulumi.RegisterOutputType(TimeoutPolicyPtrOutput{})
+	pulumi.RegisterOutputType(TimeoutPolicyResponseOutput{})
+	pulumi.RegisterOutputType(TimeoutPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(TrafficWeightOutput{})
 	pulumi.RegisterOutputType(TrafficWeightArrayOutput{})
 	pulumi.RegisterOutputType(TrafficWeightResponseOutput{})

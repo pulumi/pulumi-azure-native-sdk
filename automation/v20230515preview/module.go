@@ -85,6 +85,9 @@ func NewModule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20220808:Module"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20231101:Module"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

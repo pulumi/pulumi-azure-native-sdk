@@ -63,12 +63,13 @@ const (
 	ManagedResourcesNetworkAccessTypePrivate = ManagedResourcesNetworkAccessType("Private")
 )
 
-// Type of manage identity
+// The managed service identity for all identities.
 type ManagedServiceIdentityType string
 
 const (
-	ManagedServiceIdentityTypeNone         = ManagedServiceIdentityType("None")
-	ManagedServiceIdentityTypeUserAssigned = ManagedServiceIdentityType("UserAssigned")
+	ManagedServiceIdentityTypeNone           = ManagedServiceIdentityType("None")
+	ManagedServiceIdentityTypeUserAssigned   = ManagedServiceIdentityType("UserAssigned")
+	ManagedServiceIdentityTypeSystemAssigned = ManagedServiceIdentityType("SystemAssigned")
 )
 
 type MonthOfYear string
@@ -137,6 +138,14 @@ const (
 	RetentionScheduleFormatInvalid = RetentionScheduleFormat("Invalid")
 	RetentionScheduleFormatDaily   = RetentionScheduleFormat("Daily")
 	RetentionScheduleFormatWeekly  = RetentionScheduleFormat("Weekly")
+)
+
+// Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.
+type RoutingPreference string
+
+const (
+	RoutingPreferenceDefault  = RoutingPreference("Default")
+	RoutingPreferenceRouteAll = RoutingPreference("RouteAll")
 )
 
 // The configuration Type.
@@ -221,6 +230,15 @@ type SslCryptoProvider string
 const (
 	SslCryptoProviderCommoncrypto = SslCryptoProvider("commoncrypto")
 	SslCryptoProviderOpenssl      = SslCryptoProvider("openssl")
+)
+
+// Gets or sets certificate preference if secure communication is enabled.
+type SslPreference string
+
+const (
+	SslPreferenceDisabled          = SslPreference("Disabled")
+	SslPreferenceRootCertificate   = SslPreference("RootCertificate")
+	SslPreferenceServerCertificate = SslPreference("ServerCertificate")
 )
 
 // Tiering Mode to control automatic tiering of recovery points. Supported values are:

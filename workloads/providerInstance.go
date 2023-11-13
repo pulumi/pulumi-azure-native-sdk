@@ -15,6 +15,8 @@ import (
 
 // A provider instance associated with SAP monitor.
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-12-01-preview.
+//
+// Other available API versions: 2023-10-01-preview.
 type ProviderInstance struct {
 	pulumi.CustomResourceState
 
@@ -56,6 +58,9 @@ func NewProviderInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:workloads/v20230401:ProviderInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20231001preview:ProviderInstance"),
 		},
 	})
 	opts = append(opts, aliases)

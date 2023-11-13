@@ -15,7 +15,7 @@ import (
 // Description for Get a domain.
 // Azure REST API version: 2022-09-01.
 //
-// Other available API versions: 2020-10-01.
+// Other available API versions: 2020-10-01, 2023-01-01.
 func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.InvokeOption) (*LookupDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainResult

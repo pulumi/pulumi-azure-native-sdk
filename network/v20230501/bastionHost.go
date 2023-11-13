@@ -164,6 +164,9 @@ func NewBastionHost(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230401:BastionHost"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230601:BastionHost"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -15,6 +15,8 @@ import (
 
 // Static Site Database Connection resource.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2023-01-01.
 type StaticSiteBuildDatabaseConnection struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +63,9 @@ func NewStaticSiteBuildDatabaseConnection(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:web/v20220901:StaticSiteBuildDatabaseConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20230101:StaticSiteBuildDatabaseConnection"),
 		},
 	})
 	opts = append(opts, aliases)

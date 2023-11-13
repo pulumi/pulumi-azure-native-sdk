@@ -15,7 +15,7 @@ import (
 // Description for Gets the Push settings associated with web app.
 // Azure REST API version: 2022-09-01.
 //
-// Other available API versions: 2020-10-01.
+// Other available API versions: 2020-10-01, 2023-01-01.
 func ListWebAppSitePushSettings(ctx *pulumi.Context, args *ListWebAppSitePushSettingsArgs, opts ...pulumi.InvokeOption) (*ListWebAppSitePushSettingsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppSitePushSettingsResult

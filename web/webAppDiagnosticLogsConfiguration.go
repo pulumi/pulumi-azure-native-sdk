@@ -16,7 +16,7 @@ import (
 // Configuration of App Service site logs.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2020-10-01.
+// Other available API versions: 2020-10-01, 2023-01-01.
 type WebAppDiagnosticLogsConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -97,6 +97,9 @@ func NewWebAppDiagnosticLogsConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20220901:WebAppDiagnosticLogsConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20230101:WebAppDiagnosticLogsConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

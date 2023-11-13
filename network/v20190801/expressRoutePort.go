@@ -157,6 +157,9 @@ func NewExpressRoutePort(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230501:ExpressRoutePort"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230601:ExpressRoutePort"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

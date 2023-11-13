@@ -218,6 +218,9 @@ func NewExpressRouteCircuit(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230401:ExpressRouteCircuit"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230601:ExpressRouteCircuit"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

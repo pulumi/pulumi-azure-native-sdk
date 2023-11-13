@@ -16,7 +16,7 @@ import (
 // Dapr Component.
 // Azure REST API version: 2022-10-01.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview.
+// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview.
 type ConnectedEnvironmentsDaprComponent struct {
 	pulumi.CustomResourceState
 
@@ -78,6 +78,9 @@ func NewConnectedEnvironmentsDaprComponent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20230502preview:ConnectedEnvironmentsDaprComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20230801preview:ConnectedEnvironmentsDaprComponent"),
 		},
 	})
 	opts = append(opts, aliases)

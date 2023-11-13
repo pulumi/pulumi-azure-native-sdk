@@ -15,7 +15,7 @@ import (
 // Action to get Maintenance Window Status of the Service Fabric Managed Clusters.
 // Azure REST API version: 2023-07-01-preview.
 //
-// Other available API versions: 2023-09-01-preview.
+// Other available API versions: 2023-09-01-preview, 2023-11-01-preview.
 func GetmanagedMaintenanceWindowStatus(ctx *pulumi.Context, args *GetmanagedMaintenanceWindowStatusArgs, opts ...pulumi.InvokeOption) (*GetmanagedMaintenanceWindowStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetmanagedMaintenanceWindowStatusResult

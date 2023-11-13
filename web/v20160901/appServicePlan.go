@@ -123,6 +123,9 @@ func NewAppServicePlan(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20220901:AppServicePlan"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20230101:AppServicePlan"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

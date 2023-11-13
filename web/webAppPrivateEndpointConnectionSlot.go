@@ -15,6 +15,8 @@ import (
 
 // Remote Private Endpoint Connection ARM resource.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
+//
+// Other available API versions: 2023-01-01.
 type WebAppPrivateEndpointConnectionSlot struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +72,9 @@ func NewWebAppPrivateEndpointConnectionSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20220901:WebAppPrivateEndpointConnectionSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20230101:WebAppPrivateEndpointConnectionSlot"),
 		},
 	})
 	opts = append(opts, aliases)

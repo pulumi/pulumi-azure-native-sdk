@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ACSSBackupConnection{}
 	case "azure-native:workloads/v20231001preview:Connector":
 		r = &Connector{}
+	case "azure-native:workloads/v20231001preview:Monitor":
+		r = &Monitor{}
+	case "azure-native:workloads/v20231001preview:ProviderInstance":
+		r = &ProviderInstance{}
 	case "azure-native:workloads/v20231001preview:SAPApplicationServerInstance":
 		r = &SAPApplicationServerInstance{}
 	case "azure-native:workloads/v20231001preview:SAPCentralInstance":
@@ -33,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SAPDatabaseInstance{}
 	case "azure-native:workloads/v20231001preview:SAPVirtualInstance":
 		r = &SAPVirtualInstance{}
+	case "azure-native:workloads/v20231001preview:SapLandscapeMonitor":
+		r = &SapLandscapeMonitor{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

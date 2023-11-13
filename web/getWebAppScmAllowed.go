@@ -15,7 +15,7 @@ import (
 // Description for Returns whether Scm basic auth is allowed on the site or not.
 // Azure REST API version: 2022-09-01.
 //
-// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01.
+// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2023-01-01.
 func LookupWebAppScmAllowed(ctx *pulumi.Context, args *LookupWebAppScmAllowedArgs, opts ...pulumi.InvokeOption) (*LookupWebAppScmAllowedResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppScmAllowedResult

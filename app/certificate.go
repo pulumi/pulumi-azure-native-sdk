@@ -16,7 +16,7 @@ import (
 // Certificate used for Custom Domain bindings of Container Apps in a Managed Environment
 // Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2022-03-01.
 //
-// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview.
+// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview.
 type Certificate struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +71,9 @@ func NewCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20230502preview:Certificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20230801preview:Certificate"),
 		},
 	})
 	opts = append(opts, aliases)

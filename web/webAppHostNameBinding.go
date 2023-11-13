@@ -16,7 +16,7 @@ import (
 // A hostname binding object.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2020-10-01.
+// Other available API versions: 2020-10-01, 2023-01-01.
 type WebAppHostNameBinding struct {
 	pulumi.CustomResourceState
 
@@ -104,6 +104,9 @@ func NewWebAppHostNameBinding(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20220901:WebAppHostNameBinding"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20230101:WebAppHostNameBinding"),
 		},
 	})
 	opts = append(opts, aliases)

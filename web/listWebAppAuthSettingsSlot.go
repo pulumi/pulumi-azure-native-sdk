@@ -15,7 +15,7 @@ import (
 // Description for Gets the Authentication/Authorization settings of an app.
 // Azure REST API version: 2022-09-01.
 //
-// Other available API versions: 2020-10-01.
+// Other available API versions: 2020-10-01, 2023-01-01.
 func ListWebAppAuthSettingsSlot(ctx *pulumi.Context, args *ListWebAppAuthSettingsSlotArgs, opts ...pulumi.InvokeOption) (*ListWebAppAuthSettingsSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppAuthSettingsSlotResult

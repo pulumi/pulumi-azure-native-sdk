@@ -2262,6 +2262,312 @@ type JsonWriteSettingsResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Microsoft Fabric LakeHouse linked service.
+type LakeHouseLinkedService struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The ID of Microsoft Fabric LakeHouse artifact. Type: string (or Expression with resultType string).
+	ArtifactId interface{} `pulumi:"artifactId"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
+	// The ID of the application used to authenticate against Microsoft Fabric LakeHouse. Type: string (or Expression with resultType string).
+	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
+	// The Key of the application used to authenticate against Microsoft Fabric LakeHouse.
+	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
+	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+	Tenant interface{} `pulumi:"tenant"`
+	// Type of linked service.
+	// Expected value is 'LakeHouse'.
+	Type string `pulumi:"type"`
+	// The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
+	WorkspaceId interface{} `pulumi:"workspaceId"`
+}
+
+// Microsoft Fabric LakeHouse linked service.
+type LakeHouseLinkedServiceResponse struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The ID of Microsoft Fabric LakeHouse artifact. Type: string (or Expression with resultType string).
+	ArtifactId interface{} `pulumi:"artifactId"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
+	// The ID of the application used to authenticate against Microsoft Fabric LakeHouse. Type: string (or Expression with resultType string).
+	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
+	// The Key of the application used to authenticate against Microsoft Fabric LakeHouse.
+	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
+	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+	Tenant interface{} `pulumi:"tenant"`
+	// Type of linked service.
+	// Expected value is 'LakeHouse'.
+	Type string `pulumi:"type"`
+	// The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
+	WorkspaceId interface{} `pulumi:"workspaceId"`
+}
+
+// The location of Microsoft Fabric LakeHouse Files dataset.
+type LakeHouseLocation struct {
+	// Specify the file name of dataset. Type: string (or Expression with resultType string).
+	FileName interface{} `pulumi:"fileName"`
+	// Specify the folder path of dataset. Type: string (or Expression with resultType string)
+	FolderPath interface{} `pulumi:"folderPath"`
+	// Type of dataset storage location.
+	// Expected value is 'LakeHouseLocation'.
+	Type string `pulumi:"type"`
+}
+
+// The location of Microsoft Fabric LakeHouse Files dataset.
+type LakeHouseLocationResponse struct {
+	// Specify the file name of dataset. Type: string (or Expression with resultType string).
+	FileName interface{} `pulumi:"fileName"`
+	// Specify the folder path of dataset. Type: string (or Expression with resultType string)
+	FolderPath interface{} `pulumi:"folderPath"`
+	// Type of dataset storage location.
+	// Expected value is 'LakeHouseLocation'.
+	Type string `pulumi:"type"`
+}
+
+// Microsoft Fabric LakeHouse Files read settings.
+type LakeHouseReadSettings struct {
+	// Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
+	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
+	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
+	FileListPath interface{} `pulumi:"fileListPath"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The end of file's modified datetime. Type: string (or Expression with resultType string).
+	ModifiedDatetimeEnd interface{} `pulumi:"modifiedDatetimeEnd"`
+	// The start of file's modified datetime. Type: string (or Expression with resultType string).
+	ModifiedDatetimeStart interface{} `pulumi:"modifiedDatetimeStart"`
+	// Specify the root path where partition discovery starts from. Type: string (or Expression with resultType string).
+	PartitionRootPath interface{} `pulumi:"partitionRootPath"`
+	// If true, files under the folder path will be read recursively. Default is true. Type: boolean (or Expression with resultType boolean).
+	Recursive interface{} `pulumi:"recursive"`
+	// The read setting type.
+	// Expected value is 'LakeHouseReadSettings'.
+	Type string `pulumi:"type"`
+	// Microsoft Fabric LakeHouse Files wildcardFileName. Type: string (or Expression with resultType string).
+	WildcardFileName interface{} `pulumi:"wildcardFileName"`
+	// Microsoft Fabric LakeHouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
+	WildcardFolderPath interface{} `pulumi:"wildcardFolderPath"`
+}
+
+// Microsoft Fabric LakeHouse Files read settings.
+type LakeHouseReadSettingsResponse struct {
+	// Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
+	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
+	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
+	FileListPath interface{} `pulumi:"fileListPath"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The end of file's modified datetime. Type: string (or Expression with resultType string).
+	ModifiedDatetimeEnd interface{} `pulumi:"modifiedDatetimeEnd"`
+	// The start of file's modified datetime. Type: string (or Expression with resultType string).
+	ModifiedDatetimeStart interface{} `pulumi:"modifiedDatetimeStart"`
+	// Specify the root path where partition discovery starts from. Type: string (or Expression with resultType string).
+	PartitionRootPath interface{} `pulumi:"partitionRootPath"`
+	// If true, files under the folder path will be read recursively. Default is true. Type: boolean (or Expression with resultType boolean).
+	Recursive interface{} `pulumi:"recursive"`
+	// The read setting type.
+	// Expected value is 'LakeHouseReadSettings'.
+	Type string `pulumi:"type"`
+	// Microsoft Fabric LakeHouse Files wildcardFileName. Type: string (or Expression with resultType string).
+	WildcardFileName interface{} `pulumi:"wildcardFileName"`
+	// Microsoft Fabric LakeHouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
+	WildcardFolderPath interface{} `pulumi:"wildcardFolderPath"`
+}
+
+// Microsoft Fabric LakeHouse Table.
+type LakeHouseTableDataset struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The name of Microsoft Fabric LakeHouse Table. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'LakeHouseTable'.
+	Type string `pulumi:"type"`
+}
+
+// Microsoft Fabric LakeHouse Table.
+type LakeHouseTableDatasetResponse struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetResponseFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The name of Microsoft Fabric LakeHouse Table. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'LakeHouseTable'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity for Microsoft Fabric LakeHouse Table sink.
+type LakeHouseTableSink struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the partition column names from sink columns. Type: array of objects (or Expression with resultType array of objects).
+	PartitionNameList interface{} `pulumi:"partitionNameList"`
+	// Create partitions in folder structure based on one or multiple columns. Each distinct column value (pair) will be a new partition. Possible values include: "None", "PartitionByKey".
+	PartitionOption interface{} `pulumi:"partitionOption"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// The type of table action for LakeHouse Table sink. Possible values include: "None", "Append", "Overwrite".
+	TableActionOption interface{} `pulumi:"tableActionOption"`
+	// Copy sink type.
+	// Expected value is 'LakeHouseTableSink'.
+	Type string `pulumi:"type"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+}
+
+// A copy activity for Microsoft Fabric LakeHouse Table sink.
+type LakeHouseTableSinkResponse struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the partition column names from sink columns. Type: array of objects (or Expression with resultType array of objects).
+	PartitionNameList interface{} `pulumi:"partitionNameList"`
+	// Create partitions in folder structure based on one or multiple columns. Each distinct column value (pair) will be a new partition. Possible values include: "None", "PartitionByKey".
+	PartitionOption interface{} `pulumi:"partitionOption"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// The type of table action for LakeHouse Table sink. Possible values include: "None", "Append", "Overwrite".
+	TableActionOption interface{} `pulumi:"tableActionOption"`
+	// Copy sink type.
+	// Expected value is 'LakeHouseTableSink'.
+	Type string `pulumi:"type"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+}
+
+// A copy activity source for Microsoft Fabric LakeHouse Table.
+type LakeHouseTableSource struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Query an older snapshot by timestamp. Type: string (or Expression with resultType string).
+	TimestampAsOf interface{} `pulumi:"timestampAsOf"`
+	// Copy source type.
+	// Expected value is 'LakeHouseTableSource'.
+	Type string `pulumi:"type"`
+	// Query an older snapshot by version. Type: integer (or Expression with resultType integer).
+	VersionAsOf interface{} `pulumi:"versionAsOf"`
+}
+
+// A copy activity source for Microsoft Fabric LakeHouse Table.
+type LakeHouseTableSourceResponse struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Query an older snapshot by timestamp. Type: string (or Expression with resultType string).
+	TimestampAsOf interface{} `pulumi:"timestampAsOf"`
+	// Copy source type.
+	// Expected value is 'LakeHouseTableSource'.
+	Type string `pulumi:"type"`
+	// Query an older snapshot by version. Type: integer (or Expression with resultType integer).
+	VersionAsOf interface{} `pulumi:"versionAsOf"`
+}
+
+// Microsoft Fabric LakeHouse Files write settings.
+type LakeHouseWriteSettings struct {
+	// The type of copy behavior for copy sink.
+	CopyBehavior interface{} `pulumi:"copyBehavior"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The write setting type.
+	// Expected value is 'LakeHouseWriteSettings'.
+	Type string `pulumi:"type"`
+}
+
+// Microsoft Fabric LakeHouse Files write settings.
+type LakeHouseWriteSettingsResponse struct {
+	// The type of copy behavior for copy sink.
+	CopyBehavior interface{} `pulumi:"copyBehavior"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The write setting type.
+	// Expected value is 'LakeHouseWriteSettings'.
+	Type string `pulumi:"type"`
+}
+
 // The key authorization type integration runtime.
 type LinkedIntegrationRuntimeKeyAuthorization struct {
 	// The authorization type for integration runtime sharing.
@@ -15008,348 +15314,6 @@ type ServiceNowSourceResponse struct {
 	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
 	// Copy source type.
 	// Expected value is 'ServiceNowSource'.
-	Type string `pulumi:"type"`
-}
-
-// Set value for a Variable.
-type SetVariableActivity struct {
-	// Activity depends on condition.
-	DependsOn []ActivityDependency `pulumi:"dependsOn"`
-	// Activity description.
-	Description *string `pulumi:"description"`
-	// Activity name.
-	Name string `pulumi:"name"`
-	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
-	// Activity policy.
-	Policy *SecureInputOutputPolicy `pulumi:"policy"`
-	// If set to true, it sets the pipeline run return value.
-	SetSystemVariable *bool `pulumi:"setSystemVariable"`
-	// Activity state. This is an optional property and if not provided, the state will be Active by default.
-	State *string `pulumi:"state"`
-	// Type of activity.
-	// Expected value is 'SetVariable'.
-	Type string `pulumi:"type"`
-	// Activity user properties.
-	UserProperties []UserProperty `pulumi:"userProperties"`
-	// Value to be set. Could be a static value or Expression.
-	Value interface{} `pulumi:"value"`
-	// Name of the variable whose value needs to be set.
-	VariableName *string `pulumi:"variableName"`
-}
-
-// Set value for a Variable.
-type SetVariableActivityResponse struct {
-	// Activity depends on condition.
-	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
-	// Activity description.
-	Description *string `pulumi:"description"`
-	// Activity name.
-	Name string `pulumi:"name"`
-	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
-	// Activity policy.
-	Policy *SecureInputOutputPolicyResponse `pulumi:"policy"`
-	// If set to true, it sets the pipeline run return value.
-	SetSystemVariable *bool `pulumi:"setSystemVariable"`
-	// Activity state. This is an optional property and if not provided, the state will be Active by default.
-	State *string `pulumi:"state"`
-	// Type of activity.
-	// Expected value is 'SetVariable'.
-	Type string `pulumi:"type"`
-	// Activity user properties.
-	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
-	// Value to be set. Could be a static value or Expression.
-	Value interface{} `pulumi:"value"`
-	// Name of the variable whose value needs to be set.
-	VariableName *string `pulumi:"variableName"`
-}
-
-// The location of SFTP dataset.
-type SftpLocation struct {
-	// Specify the file name of dataset. Type: string (or Expression with resultType string).
-	FileName interface{} `pulumi:"fileName"`
-	// Specify the folder path of dataset. Type: string (or Expression with resultType string)
-	FolderPath interface{} `pulumi:"folderPath"`
-	// Type of dataset storage location.
-	// Expected value is 'SftpLocation'.
-	Type string `pulumi:"type"`
-}
-
-// The location of SFTP dataset.
-type SftpLocationResponse struct {
-	// Specify the file name of dataset. Type: string (or Expression with resultType string).
-	FileName interface{} `pulumi:"fileName"`
-	// Specify the folder path of dataset. Type: string (or Expression with resultType string)
-	FolderPath interface{} `pulumi:"folderPath"`
-	// Type of dataset storage location.
-	// Expected value is 'SftpLocation'.
-	Type string `pulumi:"type"`
-}
-
-// Sftp read settings.
-type SftpReadSettings struct {
-	// Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
-	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
-	// If true, disable parallel reading within each file. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableChunking interface{} `pulumi:"disableChunking"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
-	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
-	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
-	FileListPath interface{} `pulumi:"fileListPath"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The end of file's modified datetime. Type: string (or Expression with resultType string).
-	ModifiedDatetimeEnd interface{} `pulumi:"modifiedDatetimeEnd"`
-	// The start of file's modified datetime. Type: string (or Expression with resultType string).
-	ModifiedDatetimeStart interface{} `pulumi:"modifiedDatetimeStart"`
-	// Specify the root path where partition discovery starts from. Type: string (or Expression with resultType string).
-	PartitionRootPath interface{} `pulumi:"partitionRootPath"`
-	// If true, files under the folder path will be read recursively. Default is true. Type: boolean (or Expression with resultType boolean).
-	Recursive interface{} `pulumi:"recursive"`
-	// The read setting type.
-	// Expected value is 'SftpReadSettings'.
-	Type string `pulumi:"type"`
-	// Sftp wildcardFileName. Type: string (or Expression with resultType string).
-	WildcardFileName interface{} `pulumi:"wildcardFileName"`
-	// Sftp wildcardFolderPath. Type: string (or Expression with resultType string).
-	WildcardFolderPath interface{} `pulumi:"wildcardFolderPath"`
-}
-
-// Sftp read settings.
-type SftpReadSettingsResponse struct {
-	// Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
-	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
-	// If true, disable parallel reading within each file. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableChunking interface{} `pulumi:"disableChunking"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
-	EnablePartitionDiscovery interface{} `pulumi:"enablePartitionDiscovery"`
-	// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
-	FileListPath interface{} `pulumi:"fileListPath"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The end of file's modified datetime. Type: string (or Expression with resultType string).
-	ModifiedDatetimeEnd interface{} `pulumi:"modifiedDatetimeEnd"`
-	// The start of file's modified datetime. Type: string (or Expression with resultType string).
-	ModifiedDatetimeStart interface{} `pulumi:"modifiedDatetimeStart"`
-	// Specify the root path where partition discovery starts from. Type: string (or Expression with resultType string).
-	PartitionRootPath interface{} `pulumi:"partitionRootPath"`
-	// If true, files under the folder path will be read recursively. Default is true. Type: boolean (or Expression with resultType boolean).
-	Recursive interface{} `pulumi:"recursive"`
-	// The read setting type.
-	// Expected value is 'SftpReadSettings'.
-	Type string `pulumi:"type"`
-	// Sftp wildcardFileName. Type: string (or Expression with resultType string).
-	WildcardFileName interface{} `pulumi:"wildcardFileName"`
-	// Sftp wildcardFolderPath. Type: string (or Expression with resultType string).
-	WildcardFolderPath interface{} `pulumi:"wildcardFolderPath"`
-}
-
-// A linked service for an SSH File Transfer Protocol (SFTP) server.
-type SftpServerLinkedService struct {
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The authentication type to be used to connect to the FTP server.
-	AuthenticationType *string `pulumi:"authenticationType"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// The SFTP server host name. Type: string (or Expression with resultType string).
-	Host interface{} `pulumi:"host"`
-	// The host key finger-print of the SFTP server. When SkipHostKeyValidation is false, HostKeyFingerprint should be specified. Type: string (or Expression with resultType string).
-	HostKeyFingerprint interface{} `pulumi:"hostKeyFingerprint"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// The password to decrypt the SSH private key if the SSH private key is encrypted.
-	PassPhrase interface{} `pulumi:"passPhrase"`
-	// Password to logon the SFTP server for Basic authentication.
-	Password interface{} `pulumi:"password"`
-	// The TCP port number that the SFTP server uses to listen for client connections. Default value is 22. Type: integer (or Expression with resultType integer), minimum: 0.
-	Port interface{} `pulumi:"port"`
-	// Base64 encoded SSH private key content for SshPublicKey authentication. For on-premises copy with SshPublicKey authentication, either PrivateKeyPath or PrivateKeyContent should be specified. SSH private key should be OpenSSH format.
-	PrivateKeyContent interface{} `pulumi:"privateKeyContent"`
-	// The SSH private key file path for SshPublicKey authentication. Only valid for on-premises copy. For on-premises copy with SshPublicKey authentication, either PrivateKeyPath or PrivateKeyContent should be specified. SSH private key should be OpenSSH format. Type: string (or Expression with resultType string).
-	PrivateKeyPath interface{} `pulumi:"privateKeyPath"`
-	// If true, skip the SSH host key validation. Default value is false. Type: boolean (or Expression with resultType boolean).
-	SkipHostKeyValidation interface{} `pulumi:"skipHostKeyValidation"`
-	// Type of linked service.
-	// Expected value is 'Sftp'.
-	Type string `pulumi:"type"`
-	// The username used to log on to the SFTP server. Type: string (or Expression with resultType string).
-	UserName interface{} `pulumi:"userName"`
-}
-
-// A linked service for an SSH File Transfer Protocol (SFTP) server.
-type SftpServerLinkedServiceResponse struct {
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The authentication type to be used to connect to the FTP server.
-	AuthenticationType *string `pulumi:"authenticationType"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// The SFTP server host name. Type: string (or Expression with resultType string).
-	Host interface{} `pulumi:"host"`
-	// The host key finger-print of the SFTP server. When SkipHostKeyValidation is false, HostKeyFingerprint should be specified. Type: string (or Expression with resultType string).
-	HostKeyFingerprint interface{} `pulumi:"hostKeyFingerprint"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// The password to decrypt the SSH private key if the SSH private key is encrypted.
-	PassPhrase interface{} `pulumi:"passPhrase"`
-	// Password to logon the SFTP server for Basic authentication.
-	Password interface{} `pulumi:"password"`
-	// The TCP port number that the SFTP server uses to listen for client connections. Default value is 22. Type: integer (or Expression with resultType integer), minimum: 0.
-	Port interface{} `pulumi:"port"`
-	// Base64 encoded SSH private key content for SshPublicKey authentication. For on-premises copy with SshPublicKey authentication, either PrivateKeyPath or PrivateKeyContent should be specified. SSH private key should be OpenSSH format.
-	PrivateKeyContent interface{} `pulumi:"privateKeyContent"`
-	// The SSH private key file path for SshPublicKey authentication. Only valid for on-premises copy. For on-premises copy with SshPublicKey authentication, either PrivateKeyPath or PrivateKeyContent should be specified. SSH private key should be OpenSSH format. Type: string (or Expression with resultType string).
-	PrivateKeyPath interface{} `pulumi:"privateKeyPath"`
-	// If true, skip the SSH host key validation. Default value is false. Type: boolean (or Expression with resultType boolean).
-	SkipHostKeyValidation interface{} `pulumi:"skipHostKeyValidation"`
-	// Type of linked service.
-	// Expected value is 'Sftp'.
-	Type string `pulumi:"type"`
-	// The username used to log on to the SFTP server. Type: string (or Expression with resultType string).
-	UserName interface{} `pulumi:"userName"`
-}
-
-// Sftp write settings.
-type SftpWriteSettings struct {
-	// The type of copy behavior for copy sink.
-	CopyBehavior interface{} `pulumi:"copyBehavior"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// Specifies the timeout for writing each chunk to SFTP server. Default value: 01:00:00 (one hour). Type: string (or Expression with resultType string).
-	OperationTimeout interface{} `pulumi:"operationTimeout"`
-	// The write setting type.
-	// Expected value is 'SftpWriteSettings'.
-	Type string `pulumi:"type"`
-	// Upload to temporary file(s) and rename. Disable this option if your SFTP server doesn't support rename operation. Type: boolean (or Expression with resultType boolean).
-	UseTempFileRename interface{} `pulumi:"useTempFileRename"`
-}
-
-// Sftp write settings.
-type SftpWriteSettingsResponse struct {
-	// The type of copy behavior for copy sink.
-	CopyBehavior interface{} `pulumi:"copyBehavior"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// Specifies the timeout for writing each chunk to SFTP server. Default value: 01:00:00 (one hour). Type: string (or Expression with resultType string).
-	OperationTimeout interface{} `pulumi:"operationTimeout"`
-	// The write setting type.
-	// Expected value is 'SftpWriteSettings'.
-	Type string `pulumi:"type"`
-	// Upload to temporary file(s) and rename. Disable this option if your SFTP server doesn't support rename operation. Type: boolean (or Expression with resultType boolean).
-	UseTempFileRename interface{} `pulumi:"useTempFileRename"`
-}
-
-// SharePoint Online List linked service.
-type SharePointOnlineListLinkedService struct {
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// The application (client) ID of your application registered in Azure Active Directory. Make sure to grant SharePoint site permission to this application. Type: string (or Expression with resultType string).
-	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
-	// The client secret of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
-	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
-	// The URL of the SharePoint Online site. For example, https://contoso.sharepoint.com/sites/siteName. Type: string (or Expression with resultType string).
-	SiteUrl interface{} `pulumi:"siteUrl"`
-	// The tenant ID under which your application resides. You can find it from Azure portal Active Directory overview page. Type: string (or Expression with resultType string).
-	TenantId interface{} `pulumi:"tenantId"`
-	// Type of linked service.
-	// Expected value is 'SharePointOnlineList'.
-	Type string `pulumi:"type"`
-}
-
-// SharePoint Online List linked service.
-type SharePointOnlineListLinkedServiceResponse struct {
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// The application (client) ID of your application registered in Azure Active Directory. Make sure to grant SharePoint site permission to this application. Type: string (or Expression with resultType string).
-	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
-	// The client secret of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
-	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
-	// The URL of the SharePoint Online site. For example, https://contoso.sharepoint.com/sites/siteName. Type: string (or Expression with resultType string).
-	SiteUrl interface{} `pulumi:"siteUrl"`
-	// The tenant ID under which your application resides. You can find it from Azure portal Active Directory overview page. Type: string (or Expression with resultType string).
-	TenantId interface{} `pulumi:"tenantId"`
-	// Type of linked service.
-	// Expected value is 'SharePointOnlineList'.
-	Type string `pulumi:"type"`
-}
-
-// The sharepoint online list resource dataset.
-type SharePointOnlineListResourceDataset struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
-	// The name of the SharePoint Online list. Type: string (or Expression with resultType string).
-	ListName interface{} `pulumi:"listName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// Type of dataset.
-	// Expected value is 'SharePointOnlineListResource'.
-	Type string `pulumi:"type"`
-}
-
-// The sharepoint online list resource dataset.
-type SharePointOnlineListResourceDatasetResponse struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// The name of the SharePoint Online list. Type: string (or Expression with resultType string).
-	ListName interface{} `pulumi:"listName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// Type of dataset.
-	// Expected value is 'SharePointOnlineListResource'.
 	Type string `pulumi:"type"`
 }
 

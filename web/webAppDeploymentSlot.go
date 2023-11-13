@@ -16,7 +16,7 @@ import (
 // User credentials used for publishing activity.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2020-10-01.
+// Other available API versions: 2020-10-01, 2023-01-01.
 type WebAppDeploymentSlot struct {
 	pulumi.CustomResourceState
 
@@ -107,6 +107,9 @@ func NewWebAppDeploymentSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20220901:WebAppDeploymentSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20230101:WebAppDeploymentSlot"),
 		},
 	})
 	opts = append(opts, aliases)

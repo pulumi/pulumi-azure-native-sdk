@@ -68,6 +68,9 @@ func NewConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20230515preview:Connection"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20231101:Connection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

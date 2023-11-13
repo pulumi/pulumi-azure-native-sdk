@@ -14,6 +14,8 @@ import (
 
 // Static Site Linked Backend ARM resource.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2023-01-01.
 func LookupStaticSiteLinkedBackend(ctx *pulumi.Context, args *LookupStaticSiteLinkedBackendArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteLinkedBackendResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteLinkedBackendResult

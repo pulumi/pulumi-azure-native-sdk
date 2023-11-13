@@ -91,6 +91,9 @@ func NewAdminRuleCollection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230501:AdminRuleCollection"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230601:AdminRuleCollection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

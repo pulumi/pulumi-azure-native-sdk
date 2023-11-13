@@ -14,6 +14,8 @@ import (
 
 // Description for Get the properties of a Kubernetes Environment.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2023-01-01.
 func LookupKubeEnvironment(ctx *pulumi.Context, args *LookupKubeEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupKubeEnvironmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubeEnvironmentResult

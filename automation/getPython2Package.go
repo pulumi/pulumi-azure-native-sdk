@@ -15,7 +15,7 @@ import (
 // Retrieve the python 2 package identified by package name.
 // Azure REST API version: 2022-08-08.
 //
-// Other available API versions: 2023-05-15-preview.
+// Other available API versions: 2023-05-15-preview, 2023-11-01.
 func LookupPython2Package(ctx *pulumi.Context, args *LookupPython2PackageArgs, opts ...pulumi.InvokeOption) (*LookupPython2PackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPython2PackageResult

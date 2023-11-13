@@ -51,6 +51,9 @@ func NewSapLandscapeMonitor(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:workloads/v20221101preview:SapLandscapeMonitor"),
 		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20231001preview:SapLandscapeMonitor"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

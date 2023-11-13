@@ -131,6 +131,9 @@ func NewAppServiceCertificateOrder(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:certificateregistration/v20220901:AppServiceCertificateOrder"),
 		},
+		{
+			Type: pulumi.String("azure-native:certificateregistration/v20230101:AppServiceCertificateOrder"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

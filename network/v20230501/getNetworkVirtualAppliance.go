@@ -74,8 +74,6 @@ type LookupNetworkVirtualApplianceResult struct {
 	Type string `pulumi:"type"`
 	// VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
 	VirtualApplianceAsn *float64 `pulumi:"virtualApplianceAsn"`
-	// List of references to VirtualApplianceConnections.
-	VirtualApplianceConnections []SubResourceResponse `pulumi:"virtualApplianceConnections"`
 	// List of Virtual Appliance Network Interfaces.
 	VirtualApplianceNics []VirtualApplianceNicPropertiesResponse `pulumi:"virtualApplianceNics"`
 	// List of references to VirtualApplianceSite.
@@ -233,13 +231,6 @@ func (o LookupNetworkVirtualApplianceResultOutput) Type() pulumi.StringOutput {
 // VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
 func (o LookupNetworkVirtualApplianceResultOutput) VirtualApplianceAsn() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) *float64 { return v.VirtualApplianceAsn }).(pulumi.Float64PtrOutput)
-}
-
-// List of references to VirtualApplianceConnections.
-func (o LookupNetworkVirtualApplianceResultOutput) VirtualApplianceConnections() SubResourceResponseArrayOutput {
-	return o.ApplyT(func(v LookupNetworkVirtualApplianceResult) []SubResourceResponse {
-		return v.VirtualApplianceConnections
-	}).(SubResourceResponseArrayOutput)
 }
 
 // List of Virtual Appliance Network Interfaces.

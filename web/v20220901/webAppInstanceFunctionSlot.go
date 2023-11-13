@@ -110,6 +110,9 @@ func NewWebAppInstanceFunctionSlot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20220301:WebAppInstanceFunctionSlot"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20230101:WebAppInstanceFunctionSlot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

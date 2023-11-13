@@ -15,7 +15,7 @@ import (
 // Description for Get host secrets for a function app.
 // Azure REST API version: 2022-09-01.
 //
-// Other available API versions: 2020-10-01.
+// Other available API versions: 2020-10-01, 2023-01-01.
 func ListWebAppHostKeys(ctx *pulumi.Context, args *ListWebAppHostKeysArgs, opts ...pulumi.InvokeOption) (*ListWebAppHostKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppHostKeysResult

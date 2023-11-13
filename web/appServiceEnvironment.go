@@ -16,7 +16,7 @@ import (
 // App Service Environment ARM resource.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2019-08-01, 2020-10-01, 2021-01-15.
+// Other available API versions: 2019-08-01, 2020-10-01, 2021-01-15, 2023-01-01.
 type AppServiceEnvironment struct {
 	pulumi.CustomResourceState
 
@@ -131,6 +131,9 @@ func NewAppServiceEnvironment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20220901:AppServiceEnvironment"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20230101:AppServiceEnvironment"),
 		},
 	})
 	opts = append(opts, aliases)

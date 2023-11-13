@@ -9700,8 +9700,8 @@ func (o RetryPolicyResponsePtrOutput) MaxDeliveryAttempts() pulumi.IntPtrOutput 
 }
 
 type RoutingEnrichments struct {
-	Dynamic []DynamicRoutingEnrichment `pulumi:"dynamic"`
-	Static  []StaticRoutingEnrichment  `pulumi:"static"`
+	Dynamic []DynamicRoutingEnrichment      `pulumi:"dynamic"`
+	Static  []StaticStringRoutingEnrichment `pulumi:"static"`
 }
 
 // RoutingEnrichmentsInput is an input type that accepts RoutingEnrichmentsArgs and RoutingEnrichmentsOutput values.
@@ -9716,8 +9716,8 @@ type RoutingEnrichmentsInput interface {
 }
 
 type RoutingEnrichmentsArgs struct {
-	Dynamic DynamicRoutingEnrichmentArrayInput `pulumi:"dynamic"`
-	Static  StaticRoutingEnrichmentArrayInput  `pulumi:"static"`
+	Dynamic DynamicRoutingEnrichmentArrayInput      `pulumi:"dynamic"`
+	Static  StaticStringRoutingEnrichmentArrayInput `pulumi:"static"`
 }
 
 func (RoutingEnrichmentsArgs) ElementType() reflect.Type {
@@ -9819,8 +9819,8 @@ func (o RoutingEnrichmentsOutput) Dynamic() DynamicRoutingEnrichmentArrayOutput 
 	return o.ApplyT(func(v RoutingEnrichments) []DynamicRoutingEnrichment { return v.Dynamic }).(DynamicRoutingEnrichmentArrayOutput)
 }
 
-func (o RoutingEnrichmentsOutput) Static() StaticRoutingEnrichmentArrayOutput {
-	return o.ApplyT(func(v RoutingEnrichments) []StaticRoutingEnrichment { return v.Static }).(StaticRoutingEnrichmentArrayOutput)
+func (o RoutingEnrichmentsOutput) Static() StaticStringRoutingEnrichmentArrayOutput {
+	return o.ApplyT(func(v RoutingEnrichments) []StaticStringRoutingEnrichment { return v.Static }).(StaticStringRoutingEnrichmentArrayOutput)
 }
 
 type RoutingEnrichmentsPtrOutput struct{ *pulumi.OutputState }
@@ -9862,18 +9862,18 @@ func (o RoutingEnrichmentsPtrOutput) Dynamic() DynamicRoutingEnrichmentArrayOutp
 	}).(DynamicRoutingEnrichmentArrayOutput)
 }
 
-func (o RoutingEnrichmentsPtrOutput) Static() StaticRoutingEnrichmentArrayOutput {
-	return o.ApplyT(func(v *RoutingEnrichments) []StaticRoutingEnrichment {
+func (o RoutingEnrichmentsPtrOutput) Static() StaticStringRoutingEnrichmentArrayOutput {
+	return o.ApplyT(func(v *RoutingEnrichments) []StaticStringRoutingEnrichment {
 		if v == nil {
 			return nil
 		}
 		return v.Static
-	}).(StaticRoutingEnrichmentArrayOutput)
+	}).(StaticStringRoutingEnrichmentArrayOutput)
 }
 
 type RoutingEnrichmentsResponse struct {
-	Dynamic []DynamicRoutingEnrichmentResponse `pulumi:"dynamic"`
-	Static  []StaticRoutingEnrichmentResponse  `pulumi:"static"`
+	Dynamic []DynamicRoutingEnrichmentResponse      `pulumi:"dynamic"`
+	Static  []StaticStringRoutingEnrichmentResponse `pulumi:"static"`
 }
 
 type RoutingEnrichmentsResponseOutput struct{ *pulumi.OutputState }
@@ -9900,8 +9900,8 @@ func (o RoutingEnrichmentsResponseOutput) Dynamic() DynamicRoutingEnrichmentResp
 	return o.ApplyT(func(v RoutingEnrichmentsResponse) []DynamicRoutingEnrichmentResponse { return v.Dynamic }).(DynamicRoutingEnrichmentResponseArrayOutput)
 }
 
-func (o RoutingEnrichmentsResponseOutput) Static() StaticRoutingEnrichmentResponseArrayOutput {
-	return o.ApplyT(func(v RoutingEnrichmentsResponse) []StaticRoutingEnrichmentResponse { return v.Static }).(StaticRoutingEnrichmentResponseArrayOutput)
+func (o RoutingEnrichmentsResponseOutput) Static() StaticStringRoutingEnrichmentResponseArrayOutput {
+	return o.ApplyT(func(v RoutingEnrichmentsResponse) []StaticStringRoutingEnrichmentResponse { return v.Static }).(StaticStringRoutingEnrichmentResponseArrayOutput)
 }
 
 type RoutingEnrichmentsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -9943,13 +9943,13 @@ func (o RoutingEnrichmentsResponsePtrOutput) Dynamic() DynamicRoutingEnrichmentR
 	}).(DynamicRoutingEnrichmentResponseArrayOutput)
 }
 
-func (o RoutingEnrichmentsResponsePtrOutput) Static() StaticRoutingEnrichmentResponseArrayOutput {
-	return o.ApplyT(func(v *RoutingEnrichmentsResponse) []StaticRoutingEnrichmentResponse {
+func (o RoutingEnrichmentsResponsePtrOutput) Static() StaticStringRoutingEnrichmentResponseArrayOutput {
+	return o.ApplyT(func(v *RoutingEnrichmentsResponse) []StaticStringRoutingEnrichmentResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Static
-	}).(StaticRoutingEnrichmentResponseArrayOutput)
+	}).(StaticStringRoutingEnrichmentResponseArrayOutput)
 }
 
 // Routing identity info for topic spaces configuration.
@@ -10306,197 +10306,218 @@ func (val *StaticDeliveryAttributeMappingResponse) Defaults() *StaticDeliveryAtt
 	return &tmp
 }
 
-type StaticRoutingEnrichment struct {
+type StaticStringRoutingEnrichment struct {
 	// Static routing enrichment key.
 	Key *string `pulumi:"key"`
+	// String type routing enrichment value.
+	Value *string `pulumi:"value"`
 	// Static routing enrichment value type. For e.g. this property value can be 'String'.
-	ValueType *string `pulumi:"valueType"`
+	// Expected value is 'String'.
+	ValueType string `pulumi:"valueType"`
 }
 
-// StaticRoutingEnrichmentInput is an input type that accepts StaticRoutingEnrichmentArgs and StaticRoutingEnrichmentOutput values.
-// You can construct a concrete instance of `StaticRoutingEnrichmentInput` via:
+// StaticStringRoutingEnrichmentInput is an input type that accepts StaticStringRoutingEnrichmentArgs and StaticStringRoutingEnrichmentOutput values.
+// You can construct a concrete instance of `StaticStringRoutingEnrichmentInput` via:
 //
-//	StaticRoutingEnrichmentArgs{...}
-type StaticRoutingEnrichmentInput interface {
+//	StaticStringRoutingEnrichmentArgs{...}
+type StaticStringRoutingEnrichmentInput interface {
 	pulumi.Input
 
-	ToStaticRoutingEnrichmentOutput() StaticRoutingEnrichmentOutput
-	ToStaticRoutingEnrichmentOutputWithContext(context.Context) StaticRoutingEnrichmentOutput
+	ToStaticStringRoutingEnrichmentOutput() StaticStringRoutingEnrichmentOutput
+	ToStaticStringRoutingEnrichmentOutputWithContext(context.Context) StaticStringRoutingEnrichmentOutput
 }
 
-type StaticRoutingEnrichmentArgs struct {
+type StaticStringRoutingEnrichmentArgs struct {
 	// Static routing enrichment key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
+	// String type routing enrichment value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
 	// Static routing enrichment value type. For e.g. this property value can be 'String'.
-	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
+	// Expected value is 'String'.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
 }
 
-func (StaticRoutingEnrichmentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticRoutingEnrichment)(nil)).Elem()
+func (StaticStringRoutingEnrichmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticStringRoutingEnrichment)(nil)).Elem()
 }
 
-func (i StaticRoutingEnrichmentArgs) ToStaticRoutingEnrichmentOutput() StaticRoutingEnrichmentOutput {
-	return i.ToStaticRoutingEnrichmentOutputWithContext(context.Background())
+func (i StaticStringRoutingEnrichmentArgs) ToStaticStringRoutingEnrichmentOutput() StaticStringRoutingEnrichmentOutput {
+	return i.ToStaticStringRoutingEnrichmentOutputWithContext(context.Background())
 }
 
-func (i StaticRoutingEnrichmentArgs) ToStaticRoutingEnrichmentOutputWithContext(ctx context.Context) StaticRoutingEnrichmentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticRoutingEnrichmentOutput)
+func (i StaticStringRoutingEnrichmentArgs) ToStaticStringRoutingEnrichmentOutputWithContext(ctx context.Context) StaticStringRoutingEnrichmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticStringRoutingEnrichmentOutput)
 }
 
-func (i StaticRoutingEnrichmentArgs) ToOutput(ctx context.Context) pulumix.Output[StaticRoutingEnrichment] {
-	return pulumix.Output[StaticRoutingEnrichment]{
-		OutputState: i.ToStaticRoutingEnrichmentOutputWithContext(ctx).OutputState,
+func (i StaticStringRoutingEnrichmentArgs) ToOutput(ctx context.Context) pulumix.Output[StaticStringRoutingEnrichment] {
+	return pulumix.Output[StaticStringRoutingEnrichment]{
+		OutputState: i.ToStaticStringRoutingEnrichmentOutputWithContext(ctx).OutputState,
 	}
 }
 
-// StaticRoutingEnrichmentArrayInput is an input type that accepts StaticRoutingEnrichmentArray and StaticRoutingEnrichmentArrayOutput values.
-// You can construct a concrete instance of `StaticRoutingEnrichmentArrayInput` via:
+// StaticStringRoutingEnrichmentArrayInput is an input type that accepts StaticStringRoutingEnrichmentArray and StaticStringRoutingEnrichmentArrayOutput values.
+// You can construct a concrete instance of `StaticStringRoutingEnrichmentArrayInput` via:
 //
-//	StaticRoutingEnrichmentArray{ StaticRoutingEnrichmentArgs{...} }
-type StaticRoutingEnrichmentArrayInput interface {
+//	StaticStringRoutingEnrichmentArray{ StaticStringRoutingEnrichmentArgs{...} }
+type StaticStringRoutingEnrichmentArrayInput interface {
 	pulumi.Input
 
-	ToStaticRoutingEnrichmentArrayOutput() StaticRoutingEnrichmentArrayOutput
-	ToStaticRoutingEnrichmentArrayOutputWithContext(context.Context) StaticRoutingEnrichmentArrayOutput
+	ToStaticStringRoutingEnrichmentArrayOutput() StaticStringRoutingEnrichmentArrayOutput
+	ToStaticStringRoutingEnrichmentArrayOutputWithContext(context.Context) StaticStringRoutingEnrichmentArrayOutput
 }
 
-type StaticRoutingEnrichmentArray []StaticRoutingEnrichmentInput
+type StaticStringRoutingEnrichmentArray []StaticStringRoutingEnrichmentInput
 
-func (StaticRoutingEnrichmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StaticRoutingEnrichment)(nil)).Elem()
+func (StaticStringRoutingEnrichmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StaticStringRoutingEnrichment)(nil)).Elem()
 }
 
-func (i StaticRoutingEnrichmentArray) ToStaticRoutingEnrichmentArrayOutput() StaticRoutingEnrichmentArrayOutput {
-	return i.ToStaticRoutingEnrichmentArrayOutputWithContext(context.Background())
+func (i StaticStringRoutingEnrichmentArray) ToStaticStringRoutingEnrichmentArrayOutput() StaticStringRoutingEnrichmentArrayOutput {
+	return i.ToStaticStringRoutingEnrichmentArrayOutputWithContext(context.Background())
 }
 
-func (i StaticRoutingEnrichmentArray) ToStaticRoutingEnrichmentArrayOutputWithContext(ctx context.Context) StaticRoutingEnrichmentArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticRoutingEnrichmentArrayOutput)
+func (i StaticStringRoutingEnrichmentArray) ToStaticStringRoutingEnrichmentArrayOutputWithContext(ctx context.Context) StaticStringRoutingEnrichmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticStringRoutingEnrichmentArrayOutput)
 }
 
-func (i StaticRoutingEnrichmentArray) ToOutput(ctx context.Context) pulumix.Output[[]StaticRoutingEnrichment] {
-	return pulumix.Output[[]StaticRoutingEnrichment]{
-		OutputState: i.ToStaticRoutingEnrichmentArrayOutputWithContext(ctx).OutputState,
+func (i StaticStringRoutingEnrichmentArray) ToOutput(ctx context.Context) pulumix.Output[[]StaticStringRoutingEnrichment] {
+	return pulumix.Output[[]StaticStringRoutingEnrichment]{
+		OutputState: i.ToStaticStringRoutingEnrichmentArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type StaticRoutingEnrichmentOutput struct{ *pulumi.OutputState }
+type StaticStringRoutingEnrichmentOutput struct{ *pulumi.OutputState }
 
-func (StaticRoutingEnrichmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticRoutingEnrichment)(nil)).Elem()
+func (StaticStringRoutingEnrichmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticStringRoutingEnrichment)(nil)).Elem()
 }
 
-func (o StaticRoutingEnrichmentOutput) ToStaticRoutingEnrichmentOutput() StaticRoutingEnrichmentOutput {
+func (o StaticStringRoutingEnrichmentOutput) ToStaticStringRoutingEnrichmentOutput() StaticStringRoutingEnrichmentOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentOutput) ToStaticRoutingEnrichmentOutputWithContext(ctx context.Context) StaticRoutingEnrichmentOutput {
+func (o StaticStringRoutingEnrichmentOutput) ToStaticStringRoutingEnrichmentOutputWithContext(ctx context.Context) StaticStringRoutingEnrichmentOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentOutput) ToOutput(ctx context.Context) pulumix.Output[StaticRoutingEnrichment] {
-	return pulumix.Output[StaticRoutingEnrichment]{
+func (o StaticStringRoutingEnrichmentOutput) ToOutput(ctx context.Context) pulumix.Output[StaticStringRoutingEnrichment] {
+	return pulumix.Output[StaticStringRoutingEnrichment]{
 		OutputState: o.OutputState,
 	}
 }
 
 // Static routing enrichment key.
-func (o StaticRoutingEnrichmentOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StaticRoutingEnrichment) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o StaticStringRoutingEnrichmentOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticStringRoutingEnrichment) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// String type routing enrichment value.
+func (o StaticStringRoutingEnrichmentOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticStringRoutingEnrichment) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 // Static routing enrichment value type. For e.g. this property value can be 'String'.
-func (o StaticRoutingEnrichmentOutput) ValueType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StaticRoutingEnrichment) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+// Expected value is 'String'.
+func (o StaticStringRoutingEnrichmentOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticStringRoutingEnrichment) string { return v.ValueType }).(pulumi.StringOutput)
 }
 
-type StaticRoutingEnrichmentArrayOutput struct{ *pulumi.OutputState }
+type StaticStringRoutingEnrichmentArrayOutput struct{ *pulumi.OutputState }
 
-func (StaticRoutingEnrichmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StaticRoutingEnrichment)(nil)).Elem()
+func (StaticStringRoutingEnrichmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StaticStringRoutingEnrichment)(nil)).Elem()
 }
 
-func (o StaticRoutingEnrichmentArrayOutput) ToStaticRoutingEnrichmentArrayOutput() StaticRoutingEnrichmentArrayOutput {
+func (o StaticStringRoutingEnrichmentArrayOutput) ToStaticStringRoutingEnrichmentArrayOutput() StaticStringRoutingEnrichmentArrayOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentArrayOutput) ToStaticRoutingEnrichmentArrayOutputWithContext(ctx context.Context) StaticRoutingEnrichmentArrayOutput {
+func (o StaticStringRoutingEnrichmentArrayOutput) ToStaticStringRoutingEnrichmentArrayOutputWithContext(ctx context.Context) StaticStringRoutingEnrichmentArrayOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StaticRoutingEnrichment] {
-	return pulumix.Output[[]StaticRoutingEnrichment]{
+func (o StaticStringRoutingEnrichmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StaticStringRoutingEnrichment] {
+	return pulumix.Output[[]StaticStringRoutingEnrichment]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o StaticRoutingEnrichmentArrayOutput) Index(i pulumi.IntInput) StaticRoutingEnrichmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticRoutingEnrichment {
-		return vs[0].([]StaticRoutingEnrichment)[vs[1].(int)]
-	}).(StaticRoutingEnrichmentOutput)
+func (o StaticStringRoutingEnrichmentArrayOutput) Index(i pulumi.IntInput) StaticStringRoutingEnrichmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticStringRoutingEnrichment {
+		return vs[0].([]StaticStringRoutingEnrichment)[vs[1].(int)]
+	}).(StaticStringRoutingEnrichmentOutput)
 }
 
-type StaticRoutingEnrichmentResponse struct {
+type StaticStringRoutingEnrichmentResponse struct {
 	// Static routing enrichment key.
 	Key *string `pulumi:"key"`
+	// String type routing enrichment value.
+	Value *string `pulumi:"value"`
 	// Static routing enrichment value type. For e.g. this property value can be 'String'.
-	ValueType *string `pulumi:"valueType"`
+	// Expected value is 'String'.
+	ValueType string `pulumi:"valueType"`
 }
 
-type StaticRoutingEnrichmentResponseOutput struct{ *pulumi.OutputState }
+type StaticStringRoutingEnrichmentResponseOutput struct{ *pulumi.OutputState }
 
-func (StaticRoutingEnrichmentResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticRoutingEnrichmentResponse)(nil)).Elem()
+func (StaticStringRoutingEnrichmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticStringRoutingEnrichmentResponse)(nil)).Elem()
 }
 
-func (o StaticRoutingEnrichmentResponseOutput) ToStaticRoutingEnrichmentResponseOutput() StaticRoutingEnrichmentResponseOutput {
+func (o StaticStringRoutingEnrichmentResponseOutput) ToStaticStringRoutingEnrichmentResponseOutput() StaticStringRoutingEnrichmentResponseOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentResponseOutput) ToStaticRoutingEnrichmentResponseOutputWithContext(ctx context.Context) StaticRoutingEnrichmentResponseOutput {
+func (o StaticStringRoutingEnrichmentResponseOutput) ToStaticStringRoutingEnrichmentResponseOutputWithContext(ctx context.Context) StaticStringRoutingEnrichmentResponseOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StaticRoutingEnrichmentResponse] {
-	return pulumix.Output[StaticRoutingEnrichmentResponse]{
+func (o StaticStringRoutingEnrichmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StaticStringRoutingEnrichmentResponse] {
+	return pulumix.Output[StaticStringRoutingEnrichmentResponse]{
 		OutputState: o.OutputState,
 	}
 }
 
 // Static routing enrichment key.
-func (o StaticRoutingEnrichmentResponseOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StaticRoutingEnrichmentResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o StaticStringRoutingEnrichmentResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticStringRoutingEnrichmentResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// String type routing enrichment value.
+func (o StaticStringRoutingEnrichmentResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticStringRoutingEnrichmentResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 // Static routing enrichment value type. For e.g. this property value can be 'String'.
-func (o StaticRoutingEnrichmentResponseOutput) ValueType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StaticRoutingEnrichmentResponse) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+// Expected value is 'String'.
+func (o StaticStringRoutingEnrichmentResponseOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticStringRoutingEnrichmentResponse) string { return v.ValueType }).(pulumi.StringOutput)
 }
 
-type StaticRoutingEnrichmentResponseArrayOutput struct{ *pulumi.OutputState }
+type StaticStringRoutingEnrichmentResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (StaticRoutingEnrichmentResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StaticRoutingEnrichmentResponse)(nil)).Elem()
+func (StaticStringRoutingEnrichmentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StaticStringRoutingEnrichmentResponse)(nil)).Elem()
 }
 
-func (o StaticRoutingEnrichmentResponseArrayOutput) ToStaticRoutingEnrichmentResponseArrayOutput() StaticRoutingEnrichmentResponseArrayOutput {
+func (o StaticStringRoutingEnrichmentResponseArrayOutput) ToStaticStringRoutingEnrichmentResponseArrayOutput() StaticStringRoutingEnrichmentResponseArrayOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentResponseArrayOutput) ToStaticRoutingEnrichmentResponseArrayOutputWithContext(ctx context.Context) StaticRoutingEnrichmentResponseArrayOutput {
+func (o StaticStringRoutingEnrichmentResponseArrayOutput) ToStaticStringRoutingEnrichmentResponseArrayOutputWithContext(ctx context.Context) StaticStringRoutingEnrichmentResponseArrayOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StaticRoutingEnrichmentResponse] {
-	return pulumix.Output[[]StaticRoutingEnrichmentResponse]{
+func (o StaticStringRoutingEnrichmentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StaticStringRoutingEnrichmentResponse] {
+	return pulumix.Output[[]StaticStringRoutingEnrichmentResponse]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o StaticRoutingEnrichmentResponseArrayOutput) Index(i pulumi.IntInput) StaticRoutingEnrichmentResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticRoutingEnrichmentResponse {
-		return vs[0].([]StaticRoutingEnrichmentResponse)[vs[1].(int)]
-	}).(StaticRoutingEnrichmentResponseOutput)
+func (o StaticStringRoutingEnrichmentResponseArrayOutput) Index(i pulumi.IntInput) StaticStringRoutingEnrichmentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticStringRoutingEnrichmentResponse {
+		return vs[0].([]StaticStringRoutingEnrichmentResponse)[vs[1].(int)]
+	}).(StaticStringRoutingEnrichmentResponseOutput)
 }
 
 // Information about the storage blob based dead letter destination.
@@ -12863,10 +12884,10 @@ func init() {
 	pulumi.RegisterOutputType(RoutingIdentityInfoPtrOutput{})
 	pulumi.RegisterOutputType(RoutingIdentityInfoResponseOutput{})
 	pulumi.RegisterOutputType(RoutingIdentityInfoResponsePtrOutput{})
-	pulumi.RegisterOutputType(StaticRoutingEnrichmentOutput{})
-	pulumi.RegisterOutputType(StaticRoutingEnrichmentArrayOutput{})
-	pulumi.RegisterOutputType(StaticRoutingEnrichmentResponseOutput{})
-	pulumi.RegisterOutputType(StaticRoutingEnrichmentResponseArrayOutput{})
+	pulumi.RegisterOutputType(StaticStringRoutingEnrichmentOutput{})
+	pulumi.RegisterOutputType(StaticStringRoutingEnrichmentArrayOutput{})
+	pulumi.RegisterOutputType(StaticStringRoutingEnrichmentResponseOutput{})
+	pulumi.RegisterOutputType(StaticStringRoutingEnrichmentResponseArrayOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationPtrOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationResponseOutput{})

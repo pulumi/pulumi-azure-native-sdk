@@ -110,6 +110,9 @@ func NewDscpConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230501:DscpConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230601:DscpConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

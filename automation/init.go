@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Module{}
 	case "azure-native:automation:Package":
 		r = &Package{}
+	case "azure-native:automation:PowerShell72Module":
+		r = &PowerShell72Module{}
 	case "azure-native:automation:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	case "azure-native:automation:Python2Package":

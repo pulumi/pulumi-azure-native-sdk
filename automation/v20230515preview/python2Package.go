@@ -85,6 +85,9 @@ func NewPython2Package(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20220808:Python2Package"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20231101:Python2Package"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

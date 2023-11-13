@@ -15,6 +15,8 @@ import (
 
 // A Kubernetes cluster specialized for web workloads by Azure App Service
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-01-01.
+//
+// Other available API versions: 2023-01-01.
 type KubeEnvironment struct {
 	pulumi.CustomResourceState
 
@@ -83,6 +85,9 @@ func NewKubeEnvironment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20220901:KubeEnvironment"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20230101:KubeEnvironment"),
 		},
 	})
 	opts = append(opts, aliases)

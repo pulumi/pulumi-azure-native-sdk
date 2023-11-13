@@ -111,8 +111,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkSecurityGroup{}
 	case "azure-native:network/v20230401:NetworkVirtualAppliance":
 		r = &NetworkVirtualAppliance{}
-	case "azure-native:network/v20230401:NetworkVirtualApplianceConnection":
-		r = &NetworkVirtualApplianceConnection{}
 	case "azure-native:network/v20230401:NetworkWatcher":
 		r = &NetworkWatcher{}
 	case "azure-native:network/v20230401:P2sVpnGateway":

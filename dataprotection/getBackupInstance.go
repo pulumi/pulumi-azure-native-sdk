@@ -15,7 +15,7 @@ import (
 // Gets a backup instance with name in a backup vault
 // Azure REST API version: 2023-01-01.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview.
+// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01, 2023-08-01-preview.
 func LookupBackupInstance(ctx *pulumi.Context, args *LookupBackupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupBackupInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupInstanceResult

@@ -16,7 +16,7 @@ import (
 // Key Vault container ARM resource for a certificate that is purchased through Azure.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-10-01.
 //
-// Other available API versions: 2020-10-01.
+// Other available API versions: 2020-10-01, 2023-01-01.
 type AppServiceCertificateOrderCertificate struct {
 	pulumi.CustomResourceState
 
@@ -90,6 +90,9 @@ func NewAppServiceCertificateOrderCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:certificateregistration/v20220901:AppServiceCertificateOrderCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:certificateregistration/v20230101:AppServiceCertificateOrderCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

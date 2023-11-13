@@ -80,6 +80,9 @@ func NewDomainOwnershipIdentifier(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:domainregistration/v20220301:DomainOwnershipIdentifier"),
 		},
+		{
+			Type: pulumi.String("azure-native:domainregistration/v20230101:DomainOwnershipIdentifier"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

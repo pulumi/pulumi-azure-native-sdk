@@ -16,7 +16,7 @@ import (
 // Definition of the runbook type.
 // Azure REST API version: 2022-08-08. Prior API version in Azure Native 1.x: 2019-06-01.
 //
-// Other available API versions: 2023-05-15-preview.
+// Other available API versions: 2023-05-15-preview, 2023-11-01.
 type Runbook struct {
 	pulumi.CustomResourceState
 
@@ -93,6 +93,9 @@ func NewRunbook(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20230515preview:Runbook"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation/v20231101:Runbook"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -14,6 +14,8 @@ import (
 
 // Static Site Database Connection resource.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2023-01-01.
 func LookupStaticSiteBuildDatabaseConnection(ctx *pulumi.Context, args *LookupStaticSiteBuildDatabaseConnectionArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteBuildDatabaseConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteBuildDatabaseConnectionResult

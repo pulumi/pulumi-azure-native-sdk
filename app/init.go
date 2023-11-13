@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:app:AppResiliency":
+		r = &AppResiliency{}
+	case "azure-native:app:Build":
+		r = &Build{}
+	case "azure-native:app:Builder":
+		r = &Builder{}
 	case "azure-native:app:Certificate":
 		r = &Certificate{}
 	case "azure-native:app:ConnectedEnvironment":
@@ -39,6 +45,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ContainerAppsSourceControl{}
 	case "azure-native:app:DaprComponent":
 		r = &DaprComponent{}
+	case "azure-native:app:DaprComponentResiliencyPolicy":
+		r = &DaprComponentResiliencyPolicy{}
+	case "azure-native:app:DaprSubscription":
+		r = &DaprSubscription{}
 	case "azure-native:app:Job":
 		r = &Job{}
 	case "azure-native:app:ManagedCertificate":

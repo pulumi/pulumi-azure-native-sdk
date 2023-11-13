@@ -212,6 +212,9 @@ func NewWebAppAuthSettings(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20220301:WebAppAuthSettings"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20230101:WebAppAuthSettings"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

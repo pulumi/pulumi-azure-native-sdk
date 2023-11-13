@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ActiveRevisionsMode controls how active revisions are handled for the Container app:
+// <list><item>Multiple: multiple revisions can be active. If no value if provided, this is the default</item><item>Single: Only one revision can be active at a time. Revision weights can not be used in this mode</item></list>
+type ActiveRevisionsMode string
+
+const (
+	ActiveRevisionsModeMultiple = ActiveRevisionsMode("multiple")
+	ActiveRevisionsModeSingle   = ActiveRevisionsMode("single")
+)
+
 // The API type
 type ApiType string
 
@@ -2827,6 +2836,15 @@ func (in *hostTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HostType] {
 		OutputState: in.ToHostTypePtrOutputWithContext(ctx).OutputState,
 	}
 }
+
+// Ingress transport protocol
+type IngressTransportMethod string
+
+const (
+	IngressTransportMethodAuto  = IngressTransportMethod("auto")
+	IngressTransportMethodHttp  = IngressTransportMethod("http")
+	IngressTransportMethodHttp2 = IngressTransportMethod("http2")
+)
 
 // Defines what this IP filter will be used for. This is to support IP filtering on proxies.
 type IpFilterTag string

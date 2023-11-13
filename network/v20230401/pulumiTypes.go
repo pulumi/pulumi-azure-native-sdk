@@ -55564,278 +55564,6 @@ func (o PropagatedRouteTablePtrOutput) Labels() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Nfv version of the list of RouteTables to advertise the routes to.
-type PropagatedRouteTableNfv struct {
-	// The list of resource ids of all the RouteTables.
-	Ids []RoutingConfigurationNfvSubResource `pulumi:"ids"`
-	// The list of labels.
-	Labels []string `pulumi:"labels"`
-}
-
-// PropagatedRouteTableNfvInput is an input type that accepts PropagatedRouteTableNfvArgs and PropagatedRouteTableNfvOutput values.
-// You can construct a concrete instance of `PropagatedRouteTableNfvInput` via:
-//
-//	PropagatedRouteTableNfvArgs{...}
-type PropagatedRouteTableNfvInput interface {
-	pulumi.Input
-
-	ToPropagatedRouteTableNfvOutput() PropagatedRouteTableNfvOutput
-	ToPropagatedRouteTableNfvOutputWithContext(context.Context) PropagatedRouteTableNfvOutput
-}
-
-// Nfv version of the list of RouteTables to advertise the routes to.
-type PropagatedRouteTableNfvArgs struct {
-	// The list of resource ids of all the RouteTables.
-	Ids RoutingConfigurationNfvSubResourceArrayInput `pulumi:"ids"`
-	// The list of labels.
-	Labels pulumi.StringArrayInput `pulumi:"labels"`
-}
-
-func (PropagatedRouteTableNfvArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PropagatedRouteTableNfv)(nil)).Elem()
-}
-
-func (i PropagatedRouteTableNfvArgs) ToPropagatedRouteTableNfvOutput() PropagatedRouteTableNfvOutput {
-	return i.ToPropagatedRouteTableNfvOutputWithContext(context.Background())
-}
-
-func (i PropagatedRouteTableNfvArgs) ToPropagatedRouteTableNfvOutputWithContext(ctx context.Context) PropagatedRouteTableNfvOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PropagatedRouteTableNfvOutput)
-}
-
-func (i PropagatedRouteTableNfvArgs) ToOutput(ctx context.Context) pulumix.Output[PropagatedRouteTableNfv] {
-	return pulumix.Output[PropagatedRouteTableNfv]{
-		OutputState: i.ToPropagatedRouteTableNfvOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i PropagatedRouteTableNfvArgs) ToPropagatedRouteTableNfvPtrOutput() PropagatedRouteTableNfvPtrOutput {
-	return i.ToPropagatedRouteTableNfvPtrOutputWithContext(context.Background())
-}
-
-func (i PropagatedRouteTableNfvArgs) ToPropagatedRouteTableNfvPtrOutputWithContext(ctx context.Context) PropagatedRouteTableNfvPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PropagatedRouteTableNfvOutput).ToPropagatedRouteTableNfvPtrOutputWithContext(ctx)
-}
-
-// PropagatedRouteTableNfvPtrInput is an input type that accepts PropagatedRouteTableNfvArgs, PropagatedRouteTableNfvPtr and PropagatedRouteTableNfvPtrOutput values.
-// You can construct a concrete instance of `PropagatedRouteTableNfvPtrInput` via:
-//
-//	        PropagatedRouteTableNfvArgs{...}
-//
-//	or:
-//
-//	        nil
-type PropagatedRouteTableNfvPtrInput interface {
-	pulumi.Input
-
-	ToPropagatedRouteTableNfvPtrOutput() PropagatedRouteTableNfvPtrOutput
-	ToPropagatedRouteTableNfvPtrOutputWithContext(context.Context) PropagatedRouteTableNfvPtrOutput
-}
-
-type propagatedRouteTableNfvPtrType PropagatedRouteTableNfvArgs
-
-func PropagatedRouteTableNfvPtr(v *PropagatedRouteTableNfvArgs) PropagatedRouteTableNfvPtrInput {
-	return (*propagatedRouteTableNfvPtrType)(v)
-}
-
-func (*propagatedRouteTableNfvPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PropagatedRouteTableNfv)(nil)).Elem()
-}
-
-func (i *propagatedRouteTableNfvPtrType) ToPropagatedRouteTableNfvPtrOutput() PropagatedRouteTableNfvPtrOutput {
-	return i.ToPropagatedRouteTableNfvPtrOutputWithContext(context.Background())
-}
-
-func (i *propagatedRouteTableNfvPtrType) ToPropagatedRouteTableNfvPtrOutputWithContext(ctx context.Context) PropagatedRouteTableNfvPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PropagatedRouteTableNfvPtrOutput)
-}
-
-func (i *propagatedRouteTableNfvPtrType) ToOutput(ctx context.Context) pulumix.Output[*PropagatedRouteTableNfv] {
-	return pulumix.Output[*PropagatedRouteTableNfv]{
-		OutputState: i.ToPropagatedRouteTableNfvPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-// Nfv version of the list of RouteTables to advertise the routes to.
-type PropagatedRouteTableNfvOutput struct{ *pulumi.OutputState }
-
-func (PropagatedRouteTableNfvOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PropagatedRouteTableNfv)(nil)).Elem()
-}
-
-func (o PropagatedRouteTableNfvOutput) ToPropagatedRouteTableNfvOutput() PropagatedRouteTableNfvOutput {
-	return o
-}
-
-func (o PropagatedRouteTableNfvOutput) ToPropagatedRouteTableNfvOutputWithContext(ctx context.Context) PropagatedRouteTableNfvOutput {
-	return o
-}
-
-func (o PropagatedRouteTableNfvOutput) ToPropagatedRouteTableNfvPtrOutput() PropagatedRouteTableNfvPtrOutput {
-	return o.ToPropagatedRouteTableNfvPtrOutputWithContext(context.Background())
-}
-
-func (o PropagatedRouteTableNfvOutput) ToPropagatedRouteTableNfvPtrOutputWithContext(ctx context.Context) PropagatedRouteTableNfvPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PropagatedRouteTableNfv) *PropagatedRouteTableNfv {
-		return &v
-	}).(PropagatedRouteTableNfvPtrOutput)
-}
-
-func (o PropagatedRouteTableNfvOutput) ToOutput(ctx context.Context) pulumix.Output[PropagatedRouteTableNfv] {
-	return pulumix.Output[PropagatedRouteTableNfv]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The list of resource ids of all the RouteTables.
-func (o PropagatedRouteTableNfvOutput) Ids() RoutingConfigurationNfvSubResourceArrayOutput {
-	return o.ApplyT(func(v PropagatedRouteTableNfv) []RoutingConfigurationNfvSubResource { return v.Ids }).(RoutingConfigurationNfvSubResourceArrayOutput)
-}
-
-// The list of labels.
-func (o PropagatedRouteTableNfvOutput) Labels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PropagatedRouteTableNfv) []string { return v.Labels }).(pulumi.StringArrayOutput)
-}
-
-type PropagatedRouteTableNfvPtrOutput struct{ *pulumi.OutputState }
-
-func (PropagatedRouteTableNfvPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PropagatedRouteTableNfv)(nil)).Elem()
-}
-
-func (o PropagatedRouteTableNfvPtrOutput) ToPropagatedRouteTableNfvPtrOutput() PropagatedRouteTableNfvPtrOutput {
-	return o
-}
-
-func (o PropagatedRouteTableNfvPtrOutput) ToPropagatedRouteTableNfvPtrOutputWithContext(ctx context.Context) PropagatedRouteTableNfvPtrOutput {
-	return o
-}
-
-func (o PropagatedRouteTableNfvPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PropagatedRouteTableNfv] {
-	return pulumix.Output[*PropagatedRouteTableNfv]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o PropagatedRouteTableNfvPtrOutput) Elem() PropagatedRouteTableNfvOutput {
-	return o.ApplyT(func(v *PropagatedRouteTableNfv) PropagatedRouteTableNfv {
-		if v != nil {
-			return *v
-		}
-		var ret PropagatedRouteTableNfv
-		return ret
-	}).(PropagatedRouteTableNfvOutput)
-}
-
-// The list of resource ids of all the RouteTables.
-func (o PropagatedRouteTableNfvPtrOutput) Ids() RoutingConfigurationNfvSubResourceArrayOutput {
-	return o.ApplyT(func(v *PropagatedRouteTableNfv) []RoutingConfigurationNfvSubResource {
-		if v == nil {
-			return nil
-		}
-		return v.Ids
-	}).(RoutingConfigurationNfvSubResourceArrayOutput)
-}
-
-// The list of labels.
-func (o PropagatedRouteTableNfvPtrOutput) Labels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PropagatedRouteTableNfv) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringArrayOutput)
-}
-
-// Nfv version of the list of RouteTables to advertise the routes to.
-type PropagatedRouteTableNfvResponse struct {
-	// The list of resource ids of all the RouteTables.
-	Ids []RoutingConfigurationNfvSubResourceResponse `pulumi:"ids"`
-	// The list of labels.
-	Labels []string `pulumi:"labels"`
-}
-
-// Nfv version of the list of RouteTables to advertise the routes to.
-type PropagatedRouteTableNfvResponseOutput struct{ *pulumi.OutputState }
-
-func (PropagatedRouteTableNfvResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PropagatedRouteTableNfvResponse)(nil)).Elem()
-}
-
-func (o PropagatedRouteTableNfvResponseOutput) ToPropagatedRouteTableNfvResponseOutput() PropagatedRouteTableNfvResponseOutput {
-	return o
-}
-
-func (o PropagatedRouteTableNfvResponseOutput) ToPropagatedRouteTableNfvResponseOutputWithContext(ctx context.Context) PropagatedRouteTableNfvResponseOutput {
-	return o
-}
-
-func (o PropagatedRouteTableNfvResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PropagatedRouteTableNfvResponse] {
-	return pulumix.Output[PropagatedRouteTableNfvResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The list of resource ids of all the RouteTables.
-func (o PropagatedRouteTableNfvResponseOutput) Ids() RoutingConfigurationNfvSubResourceResponseArrayOutput {
-	return o.ApplyT(func(v PropagatedRouteTableNfvResponse) []RoutingConfigurationNfvSubResourceResponse { return v.Ids }).(RoutingConfigurationNfvSubResourceResponseArrayOutput)
-}
-
-// The list of labels.
-func (o PropagatedRouteTableNfvResponseOutput) Labels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PropagatedRouteTableNfvResponse) []string { return v.Labels }).(pulumi.StringArrayOutput)
-}
-
-type PropagatedRouteTableNfvResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PropagatedRouteTableNfvResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PropagatedRouteTableNfvResponse)(nil)).Elem()
-}
-
-func (o PropagatedRouteTableNfvResponsePtrOutput) ToPropagatedRouteTableNfvResponsePtrOutput() PropagatedRouteTableNfvResponsePtrOutput {
-	return o
-}
-
-func (o PropagatedRouteTableNfvResponsePtrOutput) ToPropagatedRouteTableNfvResponsePtrOutputWithContext(ctx context.Context) PropagatedRouteTableNfvResponsePtrOutput {
-	return o
-}
-
-func (o PropagatedRouteTableNfvResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PropagatedRouteTableNfvResponse] {
-	return pulumix.Output[*PropagatedRouteTableNfvResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o PropagatedRouteTableNfvResponsePtrOutput) Elem() PropagatedRouteTableNfvResponseOutput {
-	return o.ApplyT(func(v *PropagatedRouteTableNfvResponse) PropagatedRouteTableNfvResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PropagatedRouteTableNfvResponse
-		return ret
-	}).(PropagatedRouteTableNfvResponseOutput)
-}
-
-// The list of resource ids of all the RouteTables.
-func (o PropagatedRouteTableNfvResponsePtrOutput) Ids() RoutingConfigurationNfvSubResourceResponseArrayOutput {
-	return o.ApplyT(func(v *PropagatedRouteTableNfvResponse) []RoutingConfigurationNfvSubResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Ids
-	}).(RoutingConfigurationNfvSubResourceResponseArrayOutput)
-}
-
-// The list of labels.
-func (o PropagatedRouteTableNfvResponsePtrOutput) Labels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PropagatedRouteTableNfvResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringArrayOutput)
-}
-
 // The list of RouteTables to advertise the routes to.
 type PropagatedRouteTableResponse struct {
 	// The list of resource ids of all the RouteTables.
@@ -60777,677 +60505,6 @@ func (o RoutingConfigurationPtrOutput) VnetRoutes() VnetRoutePtrOutput {
 		}
 		return v.VnetRoutes
 	}).(VnetRoutePtrOutput)
-}
-
-// NFV version of Routing Configuration indicating the associated and propagated route tables for this connection.
-type RoutingConfigurationNfv struct {
-	// The resource id RouteTable associated with this RoutingConfiguration.
-	AssociatedRouteTable *RoutingConfigurationNfvSubResource `pulumi:"associatedRouteTable"`
-	// The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-	InboundRouteMap *RoutingConfigurationNfvSubResource `pulumi:"inboundRouteMap"`
-	// The resource id of the RouteMap associated with this RoutingConfiguration for outbound advertised routes.
-	OutboundRouteMap *RoutingConfigurationNfvSubResource `pulumi:"outboundRouteMap"`
-	// The list of RouteTables to advertise the routes to.
-	PropagatedRouteTables *PropagatedRouteTableNfv `pulumi:"propagatedRouteTables"`
-}
-
-// RoutingConfigurationNfvInput is an input type that accepts RoutingConfigurationNfvArgs and RoutingConfigurationNfvOutput values.
-// You can construct a concrete instance of `RoutingConfigurationNfvInput` via:
-//
-//	RoutingConfigurationNfvArgs{...}
-type RoutingConfigurationNfvInput interface {
-	pulumi.Input
-
-	ToRoutingConfigurationNfvOutput() RoutingConfigurationNfvOutput
-	ToRoutingConfigurationNfvOutputWithContext(context.Context) RoutingConfigurationNfvOutput
-}
-
-// NFV version of Routing Configuration indicating the associated and propagated route tables for this connection.
-type RoutingConfigurationNfvArgs struct {
-	// The resource id RouteTable associated with this RoutingConfiguration.
-	AssociatedRouteTable RoutingConfigurationNfvSubResourcePtrInput `pulumi:"associatedRouteTable"`
-	// The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-	InboundRouteMap RoutingConfigurationNfvSubResourcePtrInput `pulumi:"inboundRouteMap"`
-	// The resource id of the RouteMap associated with this RoutingConfiguration for outbound advertised routes.
-	OutboundRouteMap RoutingConfigurationNfvSubResourcePtrInput `pulumi:"outboundRouteMap"`
-	// The list of RouteTables to advertise the routes to.
-	PropagatedRouteTables PropagatedRouteTableNfvPtrInput `pulumi:"propagatedRouteTables"`
-}
-
-func (RoutingConfigurationNfvArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingConfigurationNfv)(nil)).Elem()
-}
-
-func (i RoutingConfigurationNfvArgs) ToRoutingConfigurationNfvOutput() RoutingConfigurationNfvOutput {
-	return i.ToRoutingConfigurationNfvOutputWithContext(context.Background())
-}
-
-func (i RoutingConfigurationNfvArgs) ToRoutingConfigurationNfvOutputWithContext(ctx context.Context) RoutingConfigurationNfvOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingConfigurationNfvOutput)
-}
-
-func (i RoutingConfigurationNfvArgs) ToOutput(ctx context.Context) pulumix.Output[RoutingConfigurationNfv] {
-	return pulumix.Output[RoutingConfigurationNfv]{
-		OutputState: i.ToRoutingConfigurationNfvOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i RoutingConfigurationNfvArgs) ToRoutingConfigurationNfvPtrOutput() RoutingConfigurationNfvPtrOutput {
-	return i.ToRoutingConfigurationNfvPtrOutputWithContext(context.Background())
-}
-
-func (i RoutingConfigurationNfvArgs) ToRoutingConfigurationNfvPtrOutputWithContext(ctx context.Context) RoutingConfigurationNfvPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingConfigurationNfvOutput).ToRoutingConfigurationNfvPtrOutputWithContext(ctx)
-}
-
-// RoutingConfigurationNfvPtrInput is an input type that accepts RoutingConfigurationNfvArgs, RoutingConfigurationNfvPtr and RoutingConfigurationNfvPtrOutput values.
-// You can construct a concrete instance of `RoutingConfigurationNfvPtrInput` via:
-//
-//	        RoutingConfigurationNfvArgs{...}
-//
-//	or:
-//
-//	        nil
-type RoutingConfigurationNfvPtrInput interface {
-	pulumi.Input
-
-	ToRoutingConfigurationNfvPtrOutput() RoutingConfigurationNfvPtrOutput
-	ToRoutingConfigurationNfvPtrOutputWithContext(context.Context) RoutingConfigurationNfvPtrOutput
-}
-
-type routingConfigurationNfvPtrType RoutingConfigurationNfvArgs
-
-func RoutingConfigurationNfvPtr(v *RoutingConfigurationNfvArgs) RoutingConfigurationNfvPtrInput {
-	return (*routingConfigurationNfvPtrType)(v)
-}
-
-func (*routingConfigurationNfvPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoutingConfigurationNfv)(nil)).Elem()
-}
-
-func (i *routingConfigurationNfvPtrType) ToRoutingConfigurationNfvPtrOutput() RoutingConfigurationNfvPtrOutput {
-	return i.ToRoutingConfigurationNfvPtrOutputWithContext(context.Background())
-}
-
-func (i *routingConfigurationNfvPtrType) ToRoutingConfigurationNfvPtrOutputWithContext(ctx context.Context) RoutingConfigurationNfvPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingConfigurationNfvPtrOutput)
-}
-
-func (i *routingConfigurationNfvPtrType) ToOutput(ctx context.Context) pulumix.Output[*RoutingConfigurationNfv] {
-	return pulumix.Output[*RoutingConfigurationNfv]{
-		OutputState: i.ToRoutingConfigurationNfvPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-// NFV version of Routing Configuration indicating the associated and propagated route tables for this connection.
-type RoutingConfigurationNfvOutput struct{ *pulumi.OutputState }
-
-func (RoutingConfigurationNfvOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingConfigurationNfv)(nil)).Elem()
-}
-
-func (o RoutingConfigurationNfvOutput) ToRoutingConfigurationNfvOutput() RoutingConfigurationNfvOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvOutput) ToRoutingConfigurationNfvOutputWithContext(ctx context.Context) RoutingConfigurationNfvOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvOutput) ToRoutingConfigurationNfvPtrOutput() RoutingConfigurationNfvPtrOutput {
-	return o.ToRoutingConfigurationNfvPtrOutputWithContext(context.Background())
-}
-
-func (o RoutingConfigurationNfvOutput) ToRoutingConfigurationNfvPtrOutputWithContext(ctx context.Context) RoutingConfigurationNfvPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutingConfigurationNfv) *RoutingConfigurationNfv {
-		return &v
-	}).(RoutingConfigurationNfvPtrOutput)
-}
-
-func (o RoutingConfigurationNfvOutput) ToOutput(ctx context.Context) pulumix.Output[RoutingConfigurationNfv] {
-	return pulumix.Output[RoutingConfigurationNfv]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The resource id RouteTable associated with this RoutingConfiguration.
-func (o RoutingConfigurationNfvOutput) AssociatedRouteTable() RoutingConfigurationNfvSubResourcePtrOutput {
-	return o.ApplyT(func(v RoutingConfigurationNfv) *RoutingConfigurationNfvSubResource { return v.AssociatedRouteTable }).(RoutingConfigurationNfvSubResourcePtrOutput)
-}
-
-// The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-func (o RoutingConfigurationNfvOutput) InboundRouteMap() RoutingConfigurationNfvSubResourcePtrOutput {
-	return o.ApplyT(func(v RoutingConfigurationNfv) *RoutingConfigurationNfvSubResource { return v.InboundRouteMap }).(RoutingConfigurationNfvSubResourcePtrOutput)
-}
-
-// The resource id of the RouteMap associated with this RoutingConfiguration for outbound advertised routes.
-func (o RoutingConfigurationNfvOutput) OutboundRouteMap() RoutingConfigurationNfvSubResourcePtrOutput {
-	return o.ApplyT(func(v RoutingConfigurationNfv) *RoutingConfigurationNfvSubResource { return v.OutboundRouteMap }).(RoutingConfigurationNfvSubResourcePtrOutput)
-}
-
-// The list of RouteTables to advertise the routes to.
-func (o RoutingConfigurationNfvOutput) PropagatedRouteTables() PropagatedRouteTableNfvPtrOutput {
-	return o.ApplyT(func(v RoutingConfigurationNfv) *PropagatedRouteTableNfv { return v.PropagatedRouteTables }).(PropagatedRouteTableNfvPtrOutput)
-}
-
-type RoutingConfigurationNfvPtrOutput struct{ *pulumi.OutputState }
-
-func (RoutingConfigurationNfvPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoutingConfigurationNfv)(nil)).Elem()
-}
-
-func (o RoutingConfigurationNfvPtrOutput) ToRoutingConfigurationNfvPtrOutput() RoutingConfigurationNfvPtrOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvPtrOutput) ToRoutingConfigurationNfvPtrOutputWithContext(ctx context.Context) RoutingConfigurationNfvPtrOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutingConfigurationNfv] {
-	return pulumix.Output[*RoutingConfigurationNfv]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o RoutingConfigurationNfvPtrOutput) Elem() RoutingConfigurationNfvOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfv) RoutingConfigurationNfv {
-		if v != nil {
-			return *v
-		}
-		var ret RoutingConfigurationNfv
-		return ret
-	}).(RoutingConfigurationNfvOutput)
-}
-
-// The resource id RouteTable associated with this RoutingConfiguration.
-func (o RoutingConfigurationNfvPtrOutput) AssociatedRouteTable() RoutingConfigurationNfvSubResourcePtrOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfv) *RoutingConfigurationNfvSubResource {
-		if v == nil {
-			return nil
-		}
-		return v.AssociatedRouteTable
-	}).(RoutingConfigurationNfvSubResourcePtrOutput)
-}
-
-// The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-func (o RoutingConfigurationNfvPtrOutput) InboundRouteMap() RoutingConfigurationNfvSubResourcePtrOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfv) *RoutingConfigurationNfvSubResource {
-		if v == nil {
-			return nil
-		}
-		return v.InboundRouteMap
-	}).(RoutingConfigurationNfvSubResourcePtrOutput)
-}
-
-// The resource id of the RouteMap associated with this RoutingConfiguration for outbound advertised routes.
-func (o RoutingConfigurationNfvPtrOutput) OutboundRouteMap() RoutingConfigurationNfvSubResourcePtrOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfv) *RoutingConfigurationNfvSubResource {
-		if v == nil {
-			return nil
-		}
-		return v.OutboundRouteMap
-	}).(RoutingConfigurationNfvSubResourcePtrOutput)
-}
-
-// The list of RouteTables to advertise the routes to.
-func (o RoutingConfigurationNfvPtrOutput) PropagatedRouteTables() PropagatedRouteTableNfvPtrOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfv) *PropagatedRouteTableNfv {
-		if v == nil {
-			return nil
-		}
-		return v.PropagatedRouteTables
-	}).(PropagatedRouteTableNfvPtrOutput)
-}
-
-// NFV version of Routing Configuration indicating the associated and propagated route tables for this connection.
-type RoutingConfigurationNfvResponse struct {
-	// The resource id RouteTable associated with this RoutingConfiguration.
-	AssociatedRouteTable *RoutingConfigurationNfvSubResourceResponse `pulumi:"associatedRouteTable"`
-	// The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-	InboundRouteMap *RoutingConfigurationNfvSubResourceResponse `pulumi:"inboundRouteMap"`
-	// The resource id of the RouteMap associated with this RoutingConfiguration for outbound advertised routes.
-	OutboundRouteMap *RoutingConfigurationNfvSubResourceResponse `pulumi:"outboundRouteMap"`
-	// The list of RouteTables to advertise the routes to.
-	PropagatedRouteTables *PropagatedRouteTableNfvResponse `pulumi:"propagatedRouteTables"`
-}
-
-// NFV version of Routing Configuration indicating the associated and propagated route tables for this connection.
-type RoutingConfigurationNfvResponseOutput struct{ *pulumi.OutputState }
-
-func (RoutingConfigurationNfvResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingConfigurationNfvResponse)(nil)).Elem()
-}
-
-func (o RoutingConfigurationNfvResponseOutput) ToRoutingConfigurationNfvResponseOutput() RoutingConfigurationNfvResponseOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvResponseOutput) ToRoutingConfigurationNfvResponseOutputWithContext(ctx context.Context) RoutingConfigurationNfvResponseOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RoutingConfigurationNfvResponse] {
-	return pulumix.Output[RoutingConfigurationNfvResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The resource id RouteTable associated with this RoutingConfiguration.
-func (o RoutingConfigurationNfvResponseOutput) AssociatedRouteTable() RoutingConfigurationNfvSubResourceResponsePtrOutput {
-	return o.ApplyT(func(v RoutingConfigurationNfvResponse) *RoutingConfigurationNfvSubResourceResponse {
-		return v.AssociatedRouteTable
-	}).(RoutingConfigurationNfvSubResourceResponsePtrOutput)
-}
-
-// The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-func (o RoutingConfigurationNfvResponseOutput) InboundRouteMap() RoutingConfigurationNfvSubResourceResponsePtrOutput {
-	return o.ApplyT(func(v RoutingConfigurationNfvResponse) *RoutingConfigurationNfvSubResourceResponse {
-		return v.InboundRouteMap
-	}).(RoutingConfigurationNfvSubResourceResponsePtrOutput)
-}
-
-// The resource id of the RouteMap associated with this RoutingConfiguration for outbound advertised routes.
-func (o RoutingConfigurationNfvResponseOutput) OutboundRouteMap() RoutingConfigurationNfvSubResourceResponsePtrOutput {
-	return o.ApplyT(func(v RoutingConfigurationNfvResponse) *RoutingConfigurationNfvSubResourceResponse {
-		return v.OutboundRouteMap
-	}).(RoutingConfigurationNfvSubResourceResponsePtrOutput)
-}
-
-// The list of RouteTables to advertise the routes to.
-func (o RoutingConfigurationNfvResponseOutput) PropagatedRouteTables() PropagatedRouteTableNfvResponsePtrOutput {
-	return o.ApplyT(func(v RoutingConfigurationNfvResponse) *PropagatedRouteTableNfvResponse {
-		return v.PropagatedRouteTables
-	}).(PropagatedRouteTableNfvResponsePtrOutput)
-}
-
-type RoutingConfigurationNfvResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RoutingConfigurationNfvResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoutingConfigurationNfvResponse)(nil)).Elem()
-}
-
-func (o RoutingConfigurationNfvResponsePtrOutput) ToRoutingConfigurationNfvResponsePtrOutput() RoutingConfigurationNfvResponsePtrOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvResponsePtrOutput) ToRoutingConfigurationNfvResponsePtrOutputWithContext(ctx context.Context) RoutingConfigurationNfvResponsePtrOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutingConfigurationNfvResponse] {
-	return pulumix.Output[*RoutingConfigurationNfvResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o RoutingConfigurationNfvResponsePtrOutput) Elem() RoutingConfigurationNfvResponseOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfvResponse) RoutingConfigurationNfvResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RoutingConfigurationNfvResponse
-		return ret
-	}).(RoutingConfigurationNfvResponseOutput)
-}
-
-// The resource id RouteTable associated with this RoutingConfiguration.
-func (o RoutingConfigurationNfvResponsePtrOutput) AssociatedRouteTable() RoutingConfigurationNfvSubResourceResponsePtrOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfvResponse) *RoutingConfigurationNfvSubResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AssociatedRouteTable
-	}).(RoutingConfigurationNfvSubResourceResponsePtrOutput)
-}
-
-// The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-func (o RoutingConfigurationNfvResponsePtrOutput) InboundRouteMap() RoutingConfigurationNfvSubResourceResponsePtrOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfvResponse) *RoutingConfigurationNfvSubResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.InboundRouteMap
-	}).(RoutingConfigurationNfvSubResourceResponsePtrOutput)
-}
-
-// The resource id of the RouteMap associated with this RoutingConfiguration for outbound advertised routes.
-func (o RoutingConfigurationNfvResponsePtrOutput) OutboundRouteMap() RoutingConfigurationNfvSubResourceResponsePtrOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfvResponse) *RoutingConfigurationNfvSubResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.OutboundRouteMap
-	}).(RoutingConfigurationNfvSubResourceResponsePtrOutput)
-}
-
-// The list of RouteTables to advertise the routes to.
-func (o RoutingConfigurationNfvResponsePtrOutput) PropagatedRouteTables() PropagatedRouteTableNfvResponsePtrOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfvResponse) *PropagatedRouteTableNfvResponse {
-		if v == nil {
-			return nil
-		}
-		return v.PropagatedRouteTables
-	}).(PropagatedRouteTableNfvResponsePtrOutput)
-}
-
-// Reference to RouteTableV3 associated with the connection.
-type RoutingConfigurationNfvSubResource struct {
-	// Resource ID.
-	ResourceUri *string `pulumi:"resourceUri"`
-}
-
-// RoutingConfigurationNfvSubResourceInput is an input type that accepts RoutingConfigurationNfvSubResourceArgs and RoutingConfigurationNfvSubResourceOutput values.
-// You can construct a concrete instance of `RoutingConfigurationNfvSubResourceInput` via:
-//
-//	RoutingConfigurationNfvSubResourceArgs{...}
-type RoutingConfigurationNfvSubResourceInput interface {
-	pulumi.Input
-
-	ToRoutingConfigurationNfvSubResourceOutput() RoutingConfigurationNfvSubResourceOutput
-	ToRoutingConfigurationNfvSubResourceOutputWithContext(context.Context) RoutingConfigurationNfvSubResourceOutput
-}
-
-// Reference to RouteTableV3 associated with the connection.
-type RoutingConfigurationNfvSubResourceArgs struct {
-	// Resource ID.
-	ResourceUri pulumi.StringPtrInput `pulumi:"resourceUri"`
-}
-
-func (RoutingConfigurationNfvSubResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingConfigurationNfvSubResource)(nil)).Elem()
-}
-
-func (i RoutingConfigurationNfvSubResourceArgs) ToRoutingConfigurationNfvSubResourceOutput() RoutingConfigurationNfvSubResourceOutput {
-	return i.ToRoutingConfigurationNfvSubResourceOutputWithContext(context.Background())
-}
-
-func (i RoutingConfigurationNfvSubResourceArgs) ToRoutingConfigurationNfvSubResourceOutputWithContext(ctx context.Context) RoutingConfigurationNfvSubResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingConfigurationNfvSubResourceOutput)
-}
-
-func (i RoutingConfigurationNfvSubResourceArgs) ToOutput(ctx context.Context) pulumix.Output[RoutingConfigurationNfvSubResource] {
-	return pulumix.Output[RoutingConfigurationNfvSubResource]{
-		OutputState: i.ToRoutingConfigurationNfvSubResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i RoutingConfigurationNfvSubResourceArgs) ToRoutingConfigurationNfvSubResourcePtrOutput() RoutingConfigurationNfvSubResourcePtrOutput {
-	return i.ToRoutingConfigurationNfvSubResourcePtrOutputWithContext(context.Background())
-}
-
-func (i RoutingConfigurationNfvSubResourceArgs) ToRoutingConfigurationNfvSubResourcePtrOutputWithContext(ctx context.Context) RoutingConfigurationNfvSubResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingConfigurationNfvSubResourceOutput).ToRoutingConfigurationNfvSubResourcePtrOutputWithContext(ctx)
-}
-
-// RoutingConfigurationNfvSubResourcePtrInput is an input type that accepts RoutingConfigurationNfvSubResourceArgs, RoutingConfigurationNfvSubResourcePtr and RoutingConfigurationNfvSubResourcePtrOutput values.
-// You can construct a concrete instance of `RoutingConfigurationNfvSubResourcePtrInput` via:
-//
-//	        RoutingConfigurationNfvSubResourceArgs{...}
-//
-//	or:
-//
-//	        nil
-type RoutingConfigurationNfvSubResourcePtrInput interface {
-	pulumi.Input
-
-	ToRoutingConfigurationNfvSubResourcePtrOutput() RoutingConfigurationNfvSubResourcePtrOutput
-	ToRoutingConfigurationNfvSubResourcePtrOutputWithContext(context.Context) RoutingConfigurationNfvSubResourcePtrOutput
-}
-
-type routingConfigurationNfvSubResourcePtrType RoutingConfigurationNfvSubResourceArgs
-
-func RoutingConfigurationNfvSubResourcePtr(v *RoutingConfigurationNfvSubResourceArgs) RoutingConfigurationNfvSubResourcePtrInput {
-	return (*routingConfigurationNfvSubResourcePtrType)(v)
-}
-
-func (*routingConfigurationNfvSubResourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoutingConfigurationNfvSubResource)(nil)).Elem()
-}
-
-func (i *routingConfigurationNfvSubResourcePtrType) ToRoutingConfigurationNfvSubResourcePtrOutput() RoutingConfigurationNfvSubResourcePtrOutput {
-	return i.ToRoutingConfigurationNfvSubResourcePtrOutputWithContext(context.Background())
-}
-
-func (i *routingConfigurationNfvSubResourcePtrType) ToRoutingConfigurationNfvSubResourcePtrOutputWithContext(ctx context.Context) RoutingConfigurationNfvSubResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingConfigurationNfvSubResourcePtrOutput)
-}
-
-func (i *routingConfigurationNfvSubResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*RoutingConfigurationNfvSubResource] {
-	return pulumix.Output[*RoutingConfigurationNfvSubResource]{
-		OutputState: i.ToRoutingConfigurationNfvSubResourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-// RoutingConfigurationNfvSubResourceArrayInput is an input type that accepts RoutingConfigurationNfvSubResourceArray and RoutingConfigurationNfvSubResourceArrayOutput values.
-// You can construct a concrete instance of `RoutingConfigurationNfvSubResourceArrayInput` via:
-//
-//	RoutingConfigurationNfvSubResourceArray{ RoutingConfigurationNfvSubResourceArgs{...} }
-type RoutingConfigurationNfvSubResourceArrayInput interface {
-	pulumi.Input
-
-	ToRoutingConfigurationNfvSubResourceArrayOutput() RoutingConfigurationNfvSubResourceArrayOutput
-	ToRoutingConfigurationNfvSubResourceArrayOutputWithContext(context.Context) RoutingConfigurationNfvSubResourceArrayOutput
-}
-
-type RoutingConfigurationNfvSubResourceArray []RoutingConfigurationNfvSubResourceInput
-
-func (RoutingConfigurationNfvSubResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoutingConfigurationNfvSubResource)(nil)).Elem()
-}
-
-func (i RoutingConfigurationNfvSubResourceArray) ToRoutingConfigurationNfvSubResourceArrayOutput() RoutingConfigurationNfvSubResourceArrayOutput {
-	return i.ToRoutingConfigurationNfvSubResourceArrayOutputWithContext(context.Background())
-}
-
-func (i RoutingConfigurationNfvSubResourceArray) ToRoutingConfigurationNfvSubResourceArrayOutputWithContext(ctx context.Context) RoutingConfigurationNfvSubResourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingConfigurationNfvSubResourceArrayOutput)
-}
-
-func (i RoutingConfigurationNfvSubResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]RoutingConfigurationNfvSubResource] {
-	return pulumix.Output[[]RoutingConfigurationNfvSubResource]{
-		OutputState: i.ToRoutingConfigurationNfvSubResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-// Reference to RouteTableV3 associated with the connection.
-type RoutingConfigurationNfvSubResourceOutput struct{ *pulumi.OutputState }
-
-func (RoutingConfigurationNfvSubResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingConfigurationNfvSubResource)(nil)).Elem()
-}
-
-func (o RoutingConfigurationNfvSubResourceOutput) ToRoutingConfigurationNfvSubResourceOutput() RoutingConfigurationNfvSubResourceOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvSubResourceOutput) ToRoutingConfigurationNfvSubResourceOutputWithContext(ctx context.Context) RoutingConfigurationNfvSubResourceOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvSubResourceOutput) ToRoutingConfigurationNfvSubResourcePtrOutput() RoutingConfigurationNfvSubResourcePtrOutput {
-	return o.ToRoutingConfigurationNfvSubResourcePtrOutputWithContext(context.Background())
-}
-
-func (o RoutingConfigurationNfvSubResourceOutput) ToRoutingConfigurationNfvSubResourcePtrOutputWithContext(ctx context.Context) RoutingConfigurationNfvSubResourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutingConfigurationNfvSubResource) *RoutingConfigurationNfvSubResource {
-		return &v
-	}).(RoutingConfigurationNfvSubResourcePtrOutput)
-}
-
-func (o RoutingConfigurationNfvSubResourceOutput) ToOutput(ctx context.Context) pulumix.Output[RoutingConfigurationNfvSubResource] {
-	return pulumix.Output[RoutingConfigurationNfvSubResource]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Resource ID.
-func (o RoutingConfigurationNfvSubResourceOutput) ResourceUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutingConfigurationNfvSubResource) *string { return v.ResourceUri }).(pulumi.StringPtrOutput)
-}
-
-type RoutingConfigurationNfvSubResourcePtrOutput struct{ *pulumi.OutputState }
-
-func (RoutingConfigurationNfvSubResourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoutingConfigurationNfvSubResource)(nil)).Elem()
-}
-
-func (o RoutingConfigurationNfvSubResourcePtrOutput) ToRoutingConfigurationNfvSubResourcePtrOutput() RoutingConfigurationNfvSubResourcePtrOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvSubResourcePtrOutput) ToRoutingConfigurationNfvSubResourcePtrOutputWithContext(ctx context.Context) RoutingConfigurationNfvSubResourcePtrOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvSubResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutingConfigurationNfvSubResource] {
-	return pulumix.Output[*RoutingConfigurationNfvSubResource]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o RoutingConfigurationNfvSubResourcePtrOutput) Elem() RoutingConfigurationNfvSubResourceOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfvSubResource) RoutingConfigurationNfvSubResource {
-		if v != nil {
-			return *v
-		}
-		var ret RoutingConfigurationNfvSubResource
-		return ret
-	}).(RoutingConfigurationNfvSubResourceOutput)
-}
-
-// Resource ID.
-func (o RoutingConfigurationNfvSubResourcePtrOutput) ResourceUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfvSubResource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceUri
-	}).(pulumi.StringPtrOutput)
-}
-
-type RoutingConfigurationNfvSubResourceArrayOutput struct{ *pulumi.OutputState }
-
-func (RoutingConfigurationNfvSubResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoutingConfigurationNfvSubResource)(nil)).Elem()
-}
-
-func (o RoutingConfigurationNfvSubResourceArrayOutput) ToRoutingConfigurationNfvSubResourceArrayOutput() RoutingConfigurationNfvSubResourceArrayOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvSubResourceArrayOutput) ToRoutingConfigurationNfvSubResourceArrayOutputWithContext(ctx context.Context) RoutingConfigurationNfvSubResourceArrayOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvSubResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RoutingConfigurationNfvSubResource] {
-	return pulumix.Output[[]RoutingConfigurationNfvSubResource]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o RoutingConfigurationNfvSubResourceArrayOutput) Index(i pulumi.IntInput) RoutingConfigurationNfvSubResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutingConfigurationNfvSubResource {
-		return vs[0].([]RoutingConfigurationNfvSubResource)[vs[1].(int)]
-	}).(RoutingConfigurationNfvSubResourceOutput)
-}
-
-// Reference to RouteTableV3 associated with the connection.
-type RoutingConfigurationNfvSubResourceResponse struct {
-	// Resource ID.
-	ResourceUri *string `pulumi:"resourceUri"`
-}
-
-// Reference to RouteTableV3 associated with the connection.
-type RoutingConfigurationNfvSubResourceResponseOutput struct{ *pulumi.OutputState }
-
-func (RoutingConfigurationNfvSubResourceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingConfigurationNfvSubResourceResponse)(nil)).Elem()
-}
-
-func (o RoutingConfigurationNfvSubResourceResponseOutput) ToRoutingConfigurationNfvSubResourceResponseOutput() RoutingConfigurationNfvSubResourceResponseOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvSubResourceResponseOutput) ToRoutingConfigurationNfvSubResourceResponseOutputWithContext(ctx context.Context) RoutingConfigurationNfvSubResourceResponseOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvSubResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RoutingConfigurationNfvSubResourceResponse] {
-	return pulumix.Output[RoutingConfigurationNfvSubResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Resource ID.
-func (o RoutingConfigurationNfvSubResourceResponseOutput) ResourceUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutingConfigurationNfvSubResourceResponse) *string { return v.ResourceUri }).(pulumi.StringPtrOutput)
-}
-
-type RoutingConfigurationNfvSubResourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RoutingConfigurationNfvSubResourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoutingConfigurationNfvSubResourceResponse)(nil)).Elem()
-}
-
-func (o RoutingConfigurationNfvSubResourceResponsePtrOutput) ToRoutingConfigurationNfvSubResourceResponsePtrOutput() RoutingConfigurationNfvSubResourceResponsePtrOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvSubResourceResponsePtrOutput) ToRoutingConfigurationNfvSubResourceResponsePtrOutputWithContext(ctx context.Context) RoutingConfigurationNfvSubResourceResponsePtrOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvSubResourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutingConfigurationNfvSubResourceResponse] {
-	return pulumix.Output[*RoutingConfigurationNfvSubResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o RoutingConfigurationNfvSubResourceResponsePtrOutput) Elem() RoutingConfigurationNfvSubResourceResponseOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfvSubResourceResponse) RoutingConfigurationNfvSubResourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RoutingConfigurationNfvSubResourceResponse
-		return ret
-	}).(RoutingConfigurationNfvSubResourceResponseOutput)
-}
-
-// Resource ID.
-func (o RoutingConfigurationNfvSubResourceResponsePtrOutput) ResourceUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutingConfigurationNfvSubResourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceUri
-	}).(pulumi.StringPtrOutput)
-}
-
-type RoutingConfigurationNfvSubResourceResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (RoutingConfigurationNfvSubResourceResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoutingConfigurationNfvSubResourceResponse)(nil)).Elem()
-}
-
-func (o RoutingConfigurationNfvSubResourceResponseArrayOutput) ToRoutingConfigurationNfvSubResourceResponseArrayOutput() RoutingConfigurationNfvSubResourceResponseArrayOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvSubResourceResponseArrayOutput) ToRoutingConfigurationNfvSubResourceResponseArrayOutputWithContext(ctx context.Context) RoutingConfigurationNfvSubResourceResponseArrayOutput {
-	return o
-}
-
-func (o RoutingConfigurationNfvSubResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RoutingConfigurationNfvSubResourceResponse] {
-	return pulumix.Output[[]RoutingConfigurationNfvSubResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o RoutingConfigurationNfvSubResourceResponseArrayOutput) Index(i pulumi.IntInput) RoutingConfigurationNfvSubResourceResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutingConfigurationNfvSubResourceResponse {
-		return vs[0].([]RoutingConfigurationNfvSubResourceResponse)[vs[1].(int)]
-	}).(RoutingConfigurationNfvSubResourceResponseOutput)
 }
 
 // Routing Configuration indicating the associated and propagated route tables for this connection.
@@ -69514,6 +68571,785 @@ func (o VirtualNetworkGatewayIPConfigurationResponseArrayOutput) Index(i pulumi.
 	}).(VirtualNetworkGatewayIPConfigurationResponseOutput)
 }
 
+// VirtualNetworkGatewayNatRule Resource.
+type VirtualNetworkGatewayNatRuleType struct {
+	// The private IP address external mapping for NAT.
+	ExternalMappings []VpnNatRuleMapping `pulumi:"externalMappings"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The private IP address internal mapping for NAT.
+	InternalMappings []VpnNatRuleMapping `pulumi:"internalMappings"`
+	// The IP Configuration ID this NAT rule applies to.
+	IpConfigurationId *string `pulumi:"ipConfigurationId"`
+	// The Source NAT direction of a VPN NAT.
+	Mode *string `pulumi:"mode"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// The type of NAT rule for VPN NAT.
+	Type *string `pulumi:"type"`
+}
+
+// VirtualNetworkGatewayNatRuleTypeInput is an input type that accepts VirtualNetworkGatewayNatRuleTypeArgs and VirtualNetworkGatewayNatRuleTypeOutput values.
+// You can construct a concrete instance of `VirtualNetworkGatewayNatRuleTypeInput` via:
+//
+//	VirtualNetworkGatewayNatRuleTypeArgs{...}
+type VirtualNetworkGatewayNatRuleTypeInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkGatewayNatRuleTypeOutput() VirtualNetworkGatewayNatRuleTypeOutput
+	ToVirtualNetworkGatewayNatRuleTypeOutputWithContext(context.Context) VirtualNetworkGatewayNatRuleTypeOutput
+}
+
+// VirtualNetworkGatewayNatRule Resource.
+type VirtualNetworkGatewayNatRuleTypeArgs struct {
+	// The private IP address external mapping for NAT.
+	ExternalMappings VpnNatRuleMappingArrayInput `pulumi:"externalMappings"`
+	// Resource ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The private IP address internal mapping for NAT.
+	InternalMappings VpnNatRuleMappingArrayInput `pulumi:"internalMappings"`
+	// The IP Configuration ID this NAT rule applies to.
+	IpConfigurationId pulumi.StringPtrInput `pulumi:"ipConfigurationId"`
+	// The Source NAT direction of a VPN NAT.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The type of NAT rule for VPN NAT.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VirtualNetworkGatewayNatRuleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayNatRuleType)(nil)).Elem()
+}
+
+func (i VirtualNetworkGatewayNatRuleTypeArgs) ToVirtualNetworkGatewayNatRuleTypeOutput() VirtualNetworkGatewayNatRuleTypeOutput {
+	return i.ToVirtualNetworkGatewayNatRuleTypeOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkGatewayNatRuleTypeArgs) ToVirtualNetworkGatewayNatRuleTypeOutputWithContext(ctx context.Context) VirtualNetworkGatewayNatRuleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayNatRuleTypeOutput)
+}
+
+func (i VirtualNetworkGatewayNatRuleTypeArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkGatewayNatRuleType] {
+	return pulumix.Output[VirtualNetworkGatewayNatRuleType]{
+		OutputState: i.ToVirtualNetworkGatewayNatRuleTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
+// VirtualNetworkGatewayNatRuleTypeArrayInput is an input type that accepts VirtualNetworkGatewayNatRuleTypeArray and VirtualNetworkGatewayNatRuleTypeArrayOutput values.
+// You can construct a concrete instance of `VirtualNetworkGatewayNatRuleTypeArrayInput` via:
+//
+//	VirtualNetworkGatewayNatRuleTypeArray{ VirtualNetworkGatewayNatRuleTypeArgs{...} }
+type VirtualNetworkGatewayNatRuleTypeArrayInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkGatewayNatRuleTypeArrayOutput() VirtualNetworkGatewayNatRuleTypeArrayOutput
+	ToVirtualNetworkGatewayNatRuleTypeArrayOutputWithContext(context.Context) VirtualNetworkGatewayNatRuleTypeArrayOutput
+}
+
+type VirtualNetworkGatewayNatRuleTypeArray []VirtualNetworkGatewayNatRuleTypeInput
+
+func (VirtualNetworkGatewayNatRuleTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualNetworkGatewayNatRuleType)(nil)).Elem()
+}
+
+func (i VirtualNetworkGatewayNatRuleTypeArray) ToVirtualNetworkGatewayNatRuleTypeArrayOutput() VirtualNetworkGatewayNatRuleTypeArrayOutput {
+	return i.ToVirtualNetworkGatewayNatRuleTypeArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkGatewayNatRuleTypeArray) ToVirtualNetworkGatewayNatRuleTypeArrayOutputWithContext(ctx context.Context) VirtualNetworkGatewayNatRuleTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayNatRuleTypeArrayOutput)
+}
+
+func (i VirtualNetworkGatewayNatRuleTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkGatewayNatRuleType] {
+	return pulumix.Output[[]VirtualNetworkGatewayNatRuleType]{
+		OutputState: i.ToVirtualNetworkGatewayNatRuleTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// VirtualNetworkGatewayNatRule Resource.
+type VirtualNetworkGatewayNatRuleTypeOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayNatRuleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayNatRuleType)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayNatRuleTypeOutput) ToVirtualNetworkGatewayNatRuleTypeOutput() VirtualNetworkGatewayNatRuleTypeOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayNatRuleTypeOutput) ToVirtualNetworkGatewayNatRuleTypeOutputWithContext(ctx context.Context) VirtualNetworkGatewayNatRuleTypeOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayNatRuleTypeOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkGatewayNatRuleType] {
+	return pulumix.Output[VirtualNetworkGatewayNatRuleType]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The private IP address external mapping for NAT.
+func (o VirtualNetworkGatewayNatRuleTypeOutput) ExternalMappings() VpnNatRuleMappingArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleType) []VpnNatRuleMapping { return v.ExternalMappings }).(VpnNatRuleMappingArrayOutput)
+}
+
+// Resource ID.
+func (o VirtualNetworkGatewayNatRuleTypeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleType) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The private IP address internal mapping for NAT.
+func (o VirtualNetworkGatewayNatRuleTypeOutput) InternalMappings() VpnNatRuleMappingArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleType) []VpnNatRuleMapping { return v.InternalMappings }).(VpnNatRuleMappingArrayOutput)
+}
+
+// The IP Configuration ID this NAT rule applies to.
+func (o VirtualNetworkGatewayNatRuleTypeOutput) IpConfigurationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleType) *string { return v.IpConfigurationId }).(pulumi.StringPtrOutput)
+}
+
+// The Source NAT direction of a VPN NAT.
+func (o VirtualNetworkGatewayNatRuleTypeOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleType) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o VirtualNetworkGatewayNatRuleTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The type of NAT rule for VPN NAT.
+func (o VirtualNetworkGatewayNatRuleTypeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleType) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VirtualNetworkGatewayNatRuleTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayNatRuleTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualNetworkGatewayNatRuleType)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayNatRuleTypeArrayOutput) ToVirtualNetworkGatewayNatRuleTypeArrayOutput() VirtualNetworkGatewayNatRuleTypeArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayNatRuleTypeArrayOutput) ToVirtualNetworkGatewayNatRuleTypeArrayOutputWithContext(ctx context.Context) VirtualNetworkGatewayNatRuleTypeArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayNatRuleTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkGatewayNatRuleType] {
+	return pulumix.Output[[]VirtualNetworkGatewayNatRuleType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualNetworkGatewayNatRuleTypeArrayOutput) Index(i pulumi.IntInput) VirtualNetworkGatewayNatRuleTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkGatewayNatRuleType {
+		return vs[0].([]VirtualNetworkGatewayNatRuleType)[vs[1].(int)]
+	}).(VirtualNetworkGatewayNatRuleTypeOutput)
+}
+
+// VirtualNetworkGatewayNatRule Resource.
+type VirtualNetworkGatewayNatRuleResponse struct {
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// The private IP address external mapping for NAT.
+	ExternalMappings []VpnNatRuleMappingResponse `pulumi:"externalMappings"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The private IP address internal mapping for NAT.
+	InternalMappings []VpnNatRuleMappingResponse `pulumi:"internalMappings"`
+	// The IP Configuration ID this NAT rule applies to.
+	IpConfigurationId *string `pulumi:"ipConfigurationId"`
+	// The Source NAT direction of a VPN NAT.
+	Mode *string `pulumi:"mode"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// The provisioning state of the NAT Rule resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource type.
+	Type string `pulumi:"type"`
+}
+
+// VirtualNetworkGatewayNatRule Resource.
+type VirtualNetworkGatewayNatRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayNatRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayNatRuleResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayNatRuleResponseOutput) ToVirtualNetworkGatewayNatRuleResponseOutput() VirtualNetworkGatewayNatRuleResponseOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayNatRuleResponseOutput) ToVirtualNetworkGatewayNatRuleResponseOutputWithContext(ctx context.Context) VirtualNetworkGatewayNatRuleResponseOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayNatRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkGatewayNatRuleResponse] {
+	return pulumix.Output[VirtualNetworkGatewayNatRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o VirtualNetworkGatewayNatRuleResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The private IP address external mapping for NAT.
+func (o VirtualNetworkGatewayNatRuleResponseOutput) ExternalMappings() VpnNatRuleMappingResponseArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleResponse) []VpnNatRuleMappingResponse { return v.ExternalMappings }).(VpnNatRuleMappingResponseArrayOutput)
+}
+
+// Resource ID.
+func (o VirtualNetworkGatewayNatRuleResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The private IP address internal mapping for NAT.
+func (o VirtualNetworkGatewayNatRuleResponseOutput) InternalMappings() VpnNatRuleMappingResponseArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleResponse) []VpnNatRuleMappingResponse { return v.InternalMappings }).(VpnNatRuleMappingResponseArrayOutput)
+}
+
+// The IP Configuration ID this NAT rule applies to.
+func (o VirtualNetworkGatewayNatRuleResponseOutput) IpConfigurationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleResponse) *string { return v.IpConfigurationId }).(pulumi.StringPtrOutput)
+}
+
+// The Source NAT direction of a VPN NAT.
+func (o VirtualNetworkGatewayNatRuleResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o VirtualNetworkGatewayNatRuleResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the NAT Rule resource.
+func (o VirtualNetworkGatewayNatRuleResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Resource type.
+func (o VirtualNetworkGatewayNatRuleResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayNatRuleResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type VirtualNetworkGatewayNatRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayNatRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualNetworkGatewayNatRuleResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayNatRuleResponseArrayOutput) ToVirtualNetworkGatewayNatRuleResponseArrayOutput() VirtualNetworkGatewayNatRuleResponseArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayNatRuleResponseArrayOutput) ToVirtualNetworkGatewayNatRuleResponseArrayOutputWithContext(ctx context.Context) VirtualNetworkGatewayNatRuleResponseArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayNatRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkGatewayNatRuleResponse] {
+	return pulumix.Output[[]VirtualNetworkGatewayNatRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualNetworkGatewayNatRuleResponseArrayOutput) Index(i pulumi.IntInput) VirtualNetworkGatewayNatRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkGatewayNatRuleResponse {
+		return vs[0].([]VirtualNetworkGatewayNatRuleResponse)[vs[1].(int)]
+	}).(VirtualNetworkGatewayNatRuleResponseOutput)
+}
+
+// Parameters for VirtualNetworkGatewayPolicyGroup.
+type VirtualNetworkGatewayPolicyGroup struct {
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Shows if this is a Default VirtualNetworkGatewayPolicyGroup or not.
+	IsDefault bool `pulumi:"isDefault"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// Multiple PolicyMembers for VirtualNetworkGatewayPolicyGroup.
+	PolicyMembers []VirtualNetworkGatewayPolicyGroupMember `pulumi:"policyMembers"`
+	// Priority for VirtualNetworkGatewayPolicyGroup.
+	Priority int `pulumi:"priority"`
+}
+
+// VirtualNetworkGatewayPolicyGroupInput is an input type that accepts VirtualNetworkGatewayPolicyGroupArgs and VirtualNetworkGatewayPolicyGroupOutput values.
+// You can construct a concrete instance of `VirtualNetworkGatewayPolicyGroupInput` via:
+//
+//	VirtualNetworkGatewayPolicyGroupArgs{...}
+type VirtualNetworkGatewayPolicyGroupInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkGatewayPolicyGroupOutput() VirtualNetworkGatewayPolicyGroupOutput
+	ToVirtualNetworkGatewayPolicyGroupOutputWithContext(context.Context) VirtualNetworkGatewayPolicyGroupOutput
+}
+
+// Parameters for VirtualNetworkGatewayPolicyGroup.
+type VirtualNetworkGatewayPolicyGroupArgs struct {
+	// Resource ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Shows if this is a Default VirtualNetworkGatewayPolicyGroup or not.
+	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Multiple PolicyMembers for VirtualNetworkGatewayPolicyGroup.
+	PolicyMembers VirtualNetworkGatewayPolicyGroupMemberArrayInput `pulumi:"policyMembers"`
+	// Priority for VirtualNetworkGatewayPolicyGroup.
+	Priority pulumi.IntInput `pulumi:"priority"`
+}
+
+func (VirtualNetworkGatewayPolicyGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayPolicyGroup)(nil)).Elem()
+}
+
+func (i VirtualNetworkGatewayPolicyGroupArgs) ToVirtualNetworkGatewayPolicyGroupOutput() VirtualNetworkGatewayPolicyGroupOutput {
+	return i.ToVirtualNetworkGatewayPolicyGroupOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkGatewayPolicyGroupArgs) ToVirtualNetworkGatewayPolicyGroupOutputWithContext(ctx context.Context) VirtualNetworkGatewayPolicyGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayPolicyGroupOutput)
+}
+
+func (i VirtualNetworkGatewayPolicyGroupArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkGatewayPolicyGroup] {
+	return pulumix.Output[VirtualNetworkGatewayPolicyGroup]{
+		OutputState: i.ToVirtualNetworkGatewayPolicyGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
+// VirtualNetworkGatewayPolicyGroupArrayInput is an input type that accepts VirtualNetworkGatewayPolicyGroupArray and VirtualNetworkGatewayPolicyGroupArrayOutput values.
+// You can construct a concrete instance of `VirtualNetworkGatewayPolicyGroupArrayInput` via:
+//
+//	VirtualNetworkGatewayPolicyGroupArray{ VirtualNetworkGatewayPolicyGroupArgs{...} }
+type VirtualNetworkGatewayPolicyGroupArrayInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkGatewayPolicyGroupArrayOutput() VirtualNetworkGatewayPolicyGroupArrayOutput
+	ToVirtualNetworkGatewayPolicyGroupArrayOutputWithContext(context.Context) VirtualNetworkGatewayPolicyGroupArrayOutput
+}
+
+type VirtualNetworkGatewayPolicyGroupArray []VirtualNetworkGatewayPolicyGroupInput
+
+func (VirtualNetworkGatewayPolicyGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualNetworkGatewayPolicyGroup)(nil)).Elem()
+}
+
+func (i VirtualNetworkGatewayPolicyGroupArray) ToVirtualNetworkGatewayPolicyGroupArrayOutput() VirtualNetworkGatewayPolicyGroupArrayOutput {
+	return i.ToVirtualNetworkGatewayPolicyGroupArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkGatewayPolicyGroupArray) ToVirtualNetworkGatewayPolicyGroupArrayOutputWithContext(ctx context.Context) VirtualNetworkGatewayPolicyGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayPolicyGroupArrayOutput)
+}
+
+func (i VirtualNetworkGatewayPolicyGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkGatewayPolicyGroup] {
+	return pulumix.Output[[]VirtualNetworkGatewayPolicyGroup]{
+		OutputState: i.ToVirtualNetworkGatewayPolicyGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Parameters for VirtualNetworkGatewayPolicyGroup.
+type VirtualNetworkGatewayPolicyGroupOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayPolicyGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayPolicyGroup)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayPolicyGroupOutput) ToVirtualNetworkGatewayPolicyGroupOutput() VirtualNetworkGatewayPolicyGroupOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupOutput) ToVirtualNetworkGatewayPolicyGroupOutputWithContext(ctx context.Context) VirtualNetworkGatewayPolicyGroupOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkGatewayPolicyGroup] {
+	return pulumix.Output[VirtualNetworkGatewayPolicyGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Resource ID.
+func (o VirtualNetworkGatewayPolicyGroupOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Shows if this is a Default VirtualNetworkGatewayPolicyGroup or not.
+func (o VirtualNetworkGatewayPolicyGroupOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroup) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o VirtualNetworkGatewayPolicyGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Multiple PolicyMembers for VirtualNetworkGatewayPolicyGroup.
+func (o VirtualNetworkGatewayPolicyGroupOutput) PolicyMembers() VirtualNetworkGatewayPolicyGroupMemberArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroup) []VirtualNetworkGatewayPolicyGroupMember {
+		return v.PolicyMembers
+	}).(VirtualNetworkGatewayPolicyGroupMemberArrayOutput)
+}
+
+// Priority for VirtualNetworkGatewayPolicyGroup.
+func (o VirtualNetworkGatewayPolicyGroupOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroup) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+type VirtualNetworkGatewayPolicyGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayPolicyGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualNetworkGatewayPolicyGroup)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayPolicyGroupArrayOutput) ToVirtualNetworkGatewayPolicyGroupArrayOutput() VirtualNetworkGatewayPolicyGroupArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupArrayOutput) ToVirtualNetworkGatewayPolicyGroupArrayOutputWithContext(ctx context.Context) VirtualNetworkGatewayPolicyGroupArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkGatewayPolicyGroup] {
+	return pulumix.Output[[]VirtualNetworkGatewayPolicyGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualNetworkGatewayPolicyGroupArrayOutput) Index(i pulumi.IntInput) VirtualNetworkGatewayPolicyGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkGatewayPolicyGroup {
+		return vs[0].([]VirtualNetworkGatewayPolicyGroup)[vs[1].(int)]
+	}).(VirtualNetworkGatewayPolicyGroupOutput)
+}
+
+// Vpn Client Connection configuration PolicyGroup member
+type VirtualNetworkGatewayPolicyGroupMember struct {
+	// The Vpn Policy member attribute type.
+	AttributeType *string `pulumi:"attributeType"`
+	// The value of Attribute used for this VirtualNetworkGatewayPolicyGroupMember.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// Name of the VirtualNetworkGatewayPolicyGroupMember.
+	Name *string `pulumi:"name"`
+}
+
+// VirtualNetworkGatewayPolicyGroupMemberInput is an input type that accepts VirtualNetworkGatewayPolicyGroupMemberArgs and VirtualNetworkGatewayPolicyGroupMemberOutput values.
+// You can construct a concrete instance of `VirtualNetworkGatewayPolicyGroupMemberInput` via:
+//
+//	VirtualNetworkGatewayPolicyGroupMemberArgs{...}
+type VirtualNetworkGatewayPolicyGroupMemberInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkGatewayPolicyGroupMemberOutput() VirtualNetworkGatewayPolicyGroupMemberOutput
+	ToVirtualNetworkGatewayPolicyGroupMemberOutputWithContext(context.Context) VirtualNetworkGatewayPolicyGroupMemberOutput
+}
+
+// Vpn Client Connection configuration PolicyGroup member
+type VirtualNetworkGatewayPolicyGroupMemberArgs struct {
+	// The Vpn Policy member attribute type.
+	AttributeType pulumi.StringPtrInput `pulumi:"attributeType"`
+	// The value of Attribute used for this VirtualNetworkGatewayPolicyGroupMember.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// Name of the VirtualNetworkGatewayPolicyGroupMember.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (VirtualNetworkGatewayPolicyGroupMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayPolicyGroupMember)(nil)).Elem()
+}
+
+func (i VirtualNetworkGatewayPolicyGroupMemberArgs) ToVirtualNetworkGatewayPolicyGroupMemberOutput() VirtualNetworkGatewayPolicyGroupMemberOutput {
+	return i.ToVirtualNetworkGatewayPolicyGroupMemberOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkGatewayPolicyGroupMemberArgs) ToVirtualNetworkGatewayPolicyGroupMemberOutputWithContext(ctx context.Context) VirtualNetworkGatewayPolicyGroupMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayPolicyGroupMemberOutput)
+}
+
+func (i VirtualNetworkGatewayPolicyGroupMemberArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkGatewayPolicyGroupMember] {
+	return pulumix.Output[VirtualNetworkGatewayPolicyGroupMember]{
+		OutputState: i.ToVirtualNetworkGatewayPolicyGroupMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
+// VirtualNetworkGatewayPolicyGroupMemberArrayInput is an input type that accepts VirtualNetworkGatewayPolicyGroupMemberArray and VirtualNetworkGatewayPolicyGroupMemberArrayOutput values.
+// You can construct a concrete instance of `VirtualNetworkGatewayPolicyGroupMemberArrayInput` via:
+//
+//	VirtualNetworkGatewayPolicyGroupMemberArray{ VirtualNetworkGatewayPolicyGroupMemberArgs{...} }
+type VirtualNetworkGatewayPolicyGroupMemberArrayInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkGatewayPolicyGroupMemberArrayOutput() VirtualNetworkGatewayPolicyGroupMemberArrayOutput
+	ToVirtualNetworkGatewayPolicyGroupMemberArrayOutputWithContext(context.Context) VirtualNetworkGatewayPolicyGroupMemberArrayOutput
+}
+
+type VirtualNetworkGatewayPolicyGroupMemberArray []VirtualNetworkGatewayPolicyGroupMemberInput
+
+func (VirtualNetworkGatewayPolicyGroupMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualNetworkGatewayPolicyGroupMember)(nil)).Elem()
+}
+
+func (i VirtualNetworkGatewayPolicyGroupMemberArray) ToVirtualNetworkGatewayPolicyGroupMemberArrayOutput() VirtualNetworkGatewayPolicyGroupMemberArrayOutput {
+	return i.ToVirtualNetworkGatewayPolicyGroupMemberArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkGatewayPolicyGroupMemberArray) ToVirtualNetworkGatewayPolicyGroupMemberArrayOutputWithContext(ctx context.Context) VirtualNetworkGatewayPolicyGroupMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayPolicyGroupMemberArrayOutput)
+}
+
+func (i VirtualNetworkGatewayPolicyGroupMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkGatewayPolicyGroupMember] {
+	return pulumix.Output[[]VirtualNetworkGatewayPolicyGroupMember]{
+		OutputState: i.ToVirtualNetworkGatewayPolicyGroupMemberArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Vpn Client Connection configuration PolicyGroup member
+type VirtualNetworkGatewayPolicyGroupMemberOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayPolicyGroupMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayPolicyGroupMember)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberOutput) ToVirtualNetworkGatewayPolicyGroupMemberOutput() VirtualNetworkGatewayPolicyGroupMemberOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberOutput) ToVirtualNetworkGatewayPolicyGroupMemberOutputWithContext(ctx context.Context) VirtualNetworkGatewayPolicyGroupMemberOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkGatewayPolicyGroupMember] {
+	return pulumix.Output[VirtualNetworkGatewayPolicyGroupMember]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The Vpn Policy member attribute type.
+func (o VirtualNetworkGatewayPolicyGroupMemberOutput) AttributeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupMember) *string { return v.AttributeType }).(pulumi.StringPtrOutput)
+}
+
+// The value of Attribute used for this VirtualNetworkGatewayPolicyGroupMember.
+func (o VirtualNetworkGatewayPolicyGroupMemberOutput) AttributeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupMember) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
+}
+
+// Name of the VirtualNetworkGatewayPolicyGroupMember.
+func (o VirtualNetworkGatewayPolicyGroupMemberOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupMember) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type VirtualNetworkGatewayPolicyGroupMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayPolicyGroupMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualNetworkGatewayPolicyGroupMember)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberArrayOutput) ToVirtualNetworkGatewayPolicyGroupMemberArrayOutput() VirtualNetworkGatewayPolicyGroupMemberArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberArrayOutput) ToVirtualNetworkGatewayPolicyGroupMemberArrayOutputWithContext(ctx context.Context) VirtualNetworkGatewayPolicyGroupMemberArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkGatewayPolicyGroupMember] {
+	return pulumix.Output[[]VirtualNetworkGatewayPolicyGroupMember]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberArrayOutput) Index(i pulumi.IntInput) VirtualNetworkGatewayPolicyGroupMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkGatewayPolicyGroupMember {
+		return vs[0].([]VirtualNetworkGatewayPolicyGroupMember)[vs[1].(int)]
+	}).(VirtualNetworkGatewayPolicyGroupMemberOutput)
+}
+
+// Vpn Client Connection configuration PolicyGroup member
+type VirtualNetworkGatewayPolicyGroupMemberResponse struct {
+	// The Vpn Policy member attribute type.
+	AttributeType *string `pulumi:"attributeType"`
+	// The value of Attribute used for this VirtualNetworkGatewayPolicyGroupMember.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// Name of the VirtualNetworkGatewayPolicyGroupMember.
+	Name *string `pulumi:"name"`
+}
+
+// Vpn Client Connection configuration PolicyGroup member
+type VirtualNetworkGatewayPolicyGroupMemberResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayPolicyGroupMemberResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayPolicyGroupMemberResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberResponseOutput) ToVirtualNetworkGatewayPolicyGroupMemberResponseOutput() VirtualNetworkGatewayPolicyGroupMemberResponseOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberResponseOutput) ToVirtualNetworkGatewayPolicyGroupMemberResponseOutputWithContext(ctx context.Context) VirtualNetworkGatewayPolicyGroupMemberResponseOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkGatewayPolicyGroupMemberResponse] {
+	return pulumix.Output[VirtualNetworkGatewayPolicyGroupMemberResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The Vpn Policy member attribute type.
+func (o VirtualNetworkGatewayPolicyGroupMemberResponseOutput) AttributeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupMemberResponse) *string { return v.AttributeType }).(pulumi.StringPtrOutput)
+}
+
+// The value of Attribute used for this VirtualNetworkGatewayPolicyGroupMember.
+func (o VirtualNetworkGatewayPolicyGroupMemberResponseOutput) AttributeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupMemberResponse) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
+}
+
+// Name of the VirtualNetworkGatewayPolicyGroupMember.
+func (o VirtualNetworkGatewayPolicyGroupMemberResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupMemberResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type VirtualNetworkGatewayPolicyGroupMemberResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayPolicyGroupMemberResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualNetworkGatewayPolicyGroupMemberResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberResponseArrayOutput) ToVirtualNetworkGatewayPolicyGroupMemberResponseArrayOutput() VirtualNetworkGatewayPolicyGroupMemberResponseArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberResponseArrayOutput) ToVirtualNetworkGatewayPolicyGroupMemberResponseArrayOutputWithContext(ctx context.Context) VirtualNetworkGatewayPolicyGroupMemberResponseArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkGatewayPolicyGroupMemberResponse] {
+	return pulumix.Output[[]VirtualNetworkGatewayPolicyGroupMemberResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualNetworkGatewayPolicyGroupMemberResponseArrayOutput) Index(i pulumi.IntInput) VirtualNetworkGatewayPolicyGroupMemberResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkGatewayPolicyGroupMemberResponse {
+		return vs[0].([]VirtualNetworkGatewayPolicyGroupMemberResponse)[vs[1].(int)]
+	}).(VirtualNetworkGatewayPolicyGroupMemberResponseOutput)
+}
+
+// Parameters for VirtualNetworkGatewayPolicyGroup.
+type VirtualNetworkGatewayPolicyGroupResponse struct {
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Shows if this is a Default VirtualNetworkGatewayPolicyGroup or not.
+	IsDefault bool `pulumi:"isDefault"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// Multiple PolicyMembers for VirtualNetworkGatewayPolicyGroup.
+	PolicyMembers []VirtualNetworkGatewayPolicyGroupMemberResponse `pulumi:"policyMembers"`
+	// Priority for VirtualNetworkGatewayPolicyGroup.
+	Priority int `pulumi:"priority"`
+	// The provisioning state of the VirtualNetworkGatewayPolicyGroup resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// List of references to vngClientConnectionConfigurations.
+	VngClientConnectionConfigurations []SubResourceResponse `pulumi:"vngClientConnectionConfigurations"`
+}
+
+// Parameters for VirtualNetworkGatewayPolicyGroup.
+type VirtualNetworkGatewayPolicyGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayPolicyGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayPolicyGroupResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayPolicyGroupResponseOutput) ToVirtualNetworkGatewayPolicyGroupResponseOutput() VirtualNetworkGatewayPolicyGroupResponseOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupResponseOutput) ToVirtualNetworkGatewayPolicyGroupResponseOutputWithContext(ctx context.Context) VirtualNetworkGatewayPolicyGroupResponseOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkGatewayPolicyGroupResponse] {
+	return pulumix.Output[VirtualNetworkGatewayPolicyGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o VirtualNetworkGatewayPolicyGroupResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Resource ID.
+func (o VirtualNetworkGatewayPolicyGroupResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Shows if this is a Default VirtualNetworkGatewayPolicyGroup or not.
+func (o VirtualNetworkGatewayPolicyGroupResponseOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupResponse) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o VirtualNetworkGatewayPolicyGroupResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Multiple PolicyMembers for VirtualNetworkGatewayPolicyGroup.
+func (o VirtualNetworkGatewayPolicyGroupResponseOutput) PolicyMembers() VirtualNetworkGatewayPolicyGroupMemberResponseArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupResponse) []VirtualNetworkGatewayPolicyGroupMemberResponse {
+		return v.PolicyMembers
+	}).(VirtualNetworkGatewayPolicyGroupMemberResponseArrayOutput)
+}
+
+// Priority for VirtualNetworkGatewayPolicyGroup.
+func (o VirtualNetworkGatewayPolicyGroupResponseOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupResponse) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The provisioning state of the VirtualNetworkGatewayPolicyGroup resource.
+func (o VirtualNetworkGatewayPolicyGroupResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// List of references to vngClientConnectionConfigurations.
+func (o VirtualNetworkGatewayPolicyGroupResponseOutput) VngClientConnectionConfigurations() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayPolicyGroupResponse) []SubResourceResponse {
+		return v.VngClientConnectionConfigurations
+	}).(SubResourceResponseArrayOutput)
+}
+
+type VirtualNetworkGatewayPolicyGroupResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayPolicyGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualNetworkGatewayPolicyGroupResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayPolicyGroupResponseArrayOutput) ToVirtualNetworkGatewayPolicyGroupResponseArrayOutput() VirtualNetworkGatewayPolicyGroupResponseArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupResponseArrayOutput) ToVirtualNetworkGatewayPolicyGroupResponseArrayOutputWithContext(ctx context.Context) VirtualNetworkGatewayPolicyGroupResponseArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayPolicyGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkGatewayPolicyGroupResponse] {
+	return pulumix.Output[[]VirtualNetworkGatewayPolicyGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualNetworkGatewayPolicyGroupResponseArrayOutput) Index(i pulumi.IntInput) VirtualNetworkGatewayPolicyGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkGatewayPolicyGroupResponse {
+		return vs[0].([]VirtualNetworkGatewayPolicyGroupResponse)[vs[1].(int)]
+	}).(VirtualNetworkGatewayPolicyGroupResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AadAuthenticationParametersOutput{})
 	pulumi.RegisterOutputType(AadAuthenticationParametersPtrOutput{})
@@ -70288,10 +70124,6 @@ func init() {
 	pulumi.RegisterOutputType(ProbeResponseArrayOutput{})
 	pulumi.RegisterOutputType(PropagatedRouteTableOutput{})
 	pulumi.RegisterOutputType(PropagatedRouteTablePtrOutput{})
-	pulumi.RegisterOutputType(PropagatedRouteTableNfvOutput{})
-	pulumi.RegisterOutputType(PropagatedRouteTableNfvPtrOutput{})
-	pulumi.RegisterOutputType(PropagatedRouteTableNfvResponseOutput{})
-	pulumi.RegisterOutputType(PropagatedRouteTableNfvResponsePtrOutput{})
 	pulumi.RegisterOutputType(PropagatedRouteTableResponseOutput{})
 	pulumi.RegisterOutputType(PropagatedRouteTableResponsePtrOutput{})
 	pulumi.RegisterOutputType(PublicIPAddressTypeOutput{})
@@ -70354,16 +70186,6 @@ func init() {
 	pulumi.RegisterOutputType(RouteTableResponsePtrOutput{})
 	pulumi.RegisterOutputType(RoutingConfigurationOutput{})
 	pulumi.RegisterOutputType(RoutingConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(RoutingConfigurationNfvOutput{})
-	pulumi.RegisterOutputType(RoutingConfigurationNfvPtrOutput{})
-	pulumi.RegisterOutputType(RoutingConfigurationNfvResponseOutput{})
-	pulumi.RegisterOutputType(RoutingConfigurationNfvResponsePtrOutput{})
-	pulumi.RegisterOutputType(RoutingConfigurationNfvSubResourceOutput{})
-	pulumi.RegisterOutputType(RoutingConfigurationNfvSubResourcePtrOutput{})
-	pulumi.RegisterOutputType(RoutingConfigurationNfvSubResourceArrayOutput{})
-	pulumi.RegisterOutputType(RoutingConfigurationNfvSubResourceResponseOutput{})
-	pulumi.RegisterOutputType(RoutingConfigurationNfvSubResourceResponsePtrOutput{})
-	pulumi.RegisterOutputType(RoutingConfigurationNfvSubResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(RoutingConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(RoutingConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(RoutingPolicyOutput{})
@@ -70473,4 +70295,16 @@ func init() {
 	pulumi.RegisterOutputType(VirtualNetworkGatewayIPConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkGatewayIPConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkGatewayIPConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayNatRuleTypeOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayNatRuleTypeArrayOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayNatRuleResponseOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayNatRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayPolicyGroupOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayPolicyGroupArrayOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayPolicyGroupMemberOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayPolicyGroupMemberArrayOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayPolicyGroupMemberResponseOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayPolicyGroupMemberResponseArrayOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayPolicyGroupResponseOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayPolicyGroupResponseArrayOutput{})
 }

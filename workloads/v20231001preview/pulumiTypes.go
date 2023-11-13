@@ -324,6 +324,56 @@ type CreateAndMountFileShareConfigurationResponse struct {
 	StorageAccountName *string `pulumi:"storageAccountName"`
 }
 
+// Gets or sets the DB2 provider properties.
+type DB2ProviderInstanceProperties struct {
+	// Gets or sets the db2 database name.
+	DbName *string `pulumi:"dbName"`
+	// Gets or sets the db2 database password.
+	DbPassword *string `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri *string `pulumi:"dbPasswordUri"`
+	// Gets or sets the db2 database sql port.
+	DbPort *string `pulumi:"dbPort"`
+	// Gets or sets the db2 database user name.
+	DbUsername *string `pulumi:"dbUsername"`
+	// Gets or sets the target virtual machine name.
+	Hostname *string `pulumi:"hostname"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'Db2'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Gets or sets the DB2 provider properties.
+type DB2ProviderInstancePropertiesResponse struct {
+	// Gets or sets the db2 database name.
+	DbName *string `pulumi:"dbName"`
+	// Gets or sets the db2 database password.
+	DbPassword *string `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri *string `pulumi:"dbPasswordUri"`
+	// Gets or sets the db2 database sql port.
+	DbPort *string `pulumi:"dbPort"`
+	// Gets or sets the db2 database user name.
+	DbUsername *string `pulumi:"dbUsername"`
+	// Gets or sets the target virtual machine name.
+	Hostname *string `pulumi:"hostname"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'Db2'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
 // Defines the policy properties for database backup.
 type DBBackupPolicyProperties struct {
 	// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
@@ -1387,6 +1437,244 @@ func (o ErrorDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ErrorDefini
 	}).(ErrorDefinitionResponseOutput)
 }
 
+// Standard error object.
+type ErrorResponse struct {
+	// Server-defined set of error codes.
+	Code string `pulumi:"code"`
+	// Array of details about specific errors that led to this reported error.
+	Details []ErrorResponse `pulumi:"details"`
+	// Object containing more specific information than  the current object about the error.
+	InnerError ErrorResponseInnerError `pulumi:"innerError"`
+	// Human-readable representation of the error.
+	Message string `pulumi:"message"`
+	// Target of the error.
+	Target string `pulumi:"target"`
+}
+
+// Standard error object.
+type ErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorResponse)(nil)).Elem()
+}
+
+func (o ErrorResponseOutput) ToErrorResponseOutput() ErrorResponseOutput {
+	return o
+}
+
+func (o ErrorResponseOutput) ToErrorResponseOutputWithContext(ctx context.Context) ErrorResponseOutput {
+	return o
+}
+
+func (o ErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorResponse] {
+	return pulumix.Output[ErrorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Server-defined set of error codes.
+func (o ErrorResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Array of details about specific errors that led to this reported error.
+func (o ErrorResponseOutput) Details() ErrorResponseArrayOutput {
+	return o.ApplyT(func(v ErrorResponse) []ErrorResponse { return v.Details }).(ErrorResponseArrayOutput)
+}
+
+// Object containing more specific information than  the current object about the error.
+func (o ErrorResponseOutput) InnerError() ErrorResponseInnerErrorOutput {
+	return o.ApplyT(func(v ErrorResponse) ErrorResponseInnerError { return v.InnerError }).(ErrorResponseInnerErrorOutput)
+}
+
+// Human-readable representation of the error.
+func (o ErrorResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Target of the error.
+func (o ErrorResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type ErrorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ErrorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErrorResponse)(nil)).Elem()
+}
+
+func (o ErrorResponsePtrOutput) ToErrorResponsePtrOutput() ErrorResponsePtrOutput {
+	return o
+}
+
+func (o ErrorResponsePtrOutput) ToErrorResponsePtrOutputWithContext(ctx context.Context) ErrorResponsePtrOutput {
+	return o
+}
+
+func (o ErrorResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorResponse] {
+	return pulumix.Output[*ErrorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ErrorResponsePtrOutput) Elem() ErrorResponseOutput {
+	return o.ApplyT(func(v *ErrorResponse) ErrorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ErrorResponse
+		return ret
+	}).(ErrorResponseOutput)
+}
+
+// Server-defined set of error codes.
+func (o ErrorResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of details about specific errors that led to this reported error.
+func (o ErrorResponsePtrOutput) Details() ErrorResponseArrayOutput {
+	return o.ApplyT(func(v *ErrorResponse) []ErrorResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(ErrorResponseArrayOutput)
+}
+
+// Object containing more specific information than  the current object about the error.
+func (o ErrorResponsePtrOutput) InnerError() ErrorResponseInnerErrorPtrOutput {
+	return o.ApplyT(func(v *ErrorResponse) *ErrorResponseInnerError {
+		if v == nil {
+			return nil
+		}
+		return &v.InnerError
+	}).(ErrorResponseInnerErrorPtrOutput)
+}
+
+// Human-readable representation of the error.
+func (o ErrorResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target of the error.
+func (o ErrorResponsePtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorResponse)(nil)).Elem()
+}
+
+func (o ErrorResponseArrayOutput) ToErrorResponseArrayOutput() ErrorResponseArrayOutput {
+	return o
+}
+
+func (o ErrorResponseArrayOutput) ToErrorResponseArrayOutputWithContext(ctx context.Context) ErrorResponseArrayOutput {
+	return o
+}
+
+func (o ErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorResponse] {
+	return pulumix.Output[[]ErrorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ErrorResponseArrayOutput) Index(i pulumi.IntInput) ErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorResponse {
+		return vs[0].([]ErrorResponse)[vs[1].(int)]
+	}).(ErrorResponseOutput)
+}
+
+// Object containing more specific information than  the current object about the error.
+type ErrorResponseInnerError struct {
+	// Standard error object.
+	InnerError *ErrorResponse `pulumi:"innerError"`
+}
+
+// Object containing more specific information than  the current object about the error.
+type ErrorResponseInnerErrorOutput struct{ *pulumi.OutputState }
+
+func (ErrorResponseInnerErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorResponseInnerError)(nil)).Elem()
+}
+
+func (o ErrorResponseInnerErrorOutput) ToErrorResponseInnerErrorOutput() ErrorResponseInnerErrorOutput {
+	return o
+}
+
+func (o ErrorResponseInnerErrorOutput) ToErrorResponseInnerErrorOutputWithContext(ctx context.Context) ErrorResponseInnerErrorOutput {
+	return o
+}
+
+func (o ErrorResponseInnerErrorOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorResponseInnerError] {
+	return pulumix.Output[ErrorResponseInnerError]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Standard error object.
+func (o ErrorResponseInnerErrorOutput) InnerError() ErrorResponsePtrOutput {
+	return o.ApplyT(func(v ErrorResponseInnerError) *ErrorResponse { return v.InnerError }).(ErrorResponsePtrOutput)
+}
+
+type ErrorResponseInnerErrorPtrOutput struct{ *pulumi.OutputState }
+
+func (ErrorResponseInnerErrorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErrorResponseInnerError)(nil)).Elem()
+}
+
+func (o ErrorResponseInnerErrorPtrOutput) ToErrorResponseInnerErrorPtrOutput() ErrorResponseInnerErrorPtrOutput {
+	return o
+}
+
+func (o ErrorResponseInnerErrorPtrOutput) ToErrorResponseInnerErrorPtrOutputWithContext(ctx context.Context) ErrorResponseInnerErrorPtrOutput {
+	return o
+}
+
+func (o ErrorResponseInnerErrorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorResponseInnerError] {
+	return pulumix.Output[*ErrorResponseInnerError]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ErrorResponseInnerErrorPtrOutput) Elem() ErrorResponseInnerErrorOutput {
+	return o.ApplyT(func(v *ErrorResponseInnerError) ErrorResponseInnerError {
+		if v != nil {
+			return *v
+		}
+		var ret ErrorResponseInnerError
+		return ret
+	}).(ErrorResponseInnerErrorOutput)
+}
+
+// Standard error object.
+func (o ErrorResponseInnerErrorPtrOutput) InnerError() ErrorResponsePtrOutput {
+	return o.ApplyT(func(v *ErrorResponseInnerError) *ErrorResponse {
+		if v == nil {
+			return nil
+		}
+		return v.InnerError
+	}).(ErrorResponsePtrOutput)
+}
+
 // Existing recovery services vault.
 type ExistingRecoveryServicesVault struct {
 	// The resource ID of the recovery services vault that has been created.
@@ -1548,6 +1836,103 @@ type HanaBackupDataResponse struct {
 	RecoveryServicesVault interface{} `pulumi:"recoveryServicesVault"`
 	// Path of the SSL key store.
 	SslConfiguration *SSLConfigurationResponse `pulumi:"sslConfiguration"`
+}
+
+// Gets or sets the provider properties.
+type HanaDbProviderInstanceProperties struct {
+	// Gets or sets the hana database name.
+	DbName *string `pulumi:"dbName"`
+	// Gets or sets the database password.
+	DbPassword *string `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri *string `pulumi:"dbPasswordUri"`
+	// Gets or sets the database user name.
+	DbUsername *string `pulumi:"dbUsername"`
+	// Gets or sets the target virtual machine size.
+	Hostname *string `pulumi:"hostname"`
+	// Gets or sets the database instance number.
+	InstanceNumber *string `pulumi:"instanceNumber"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'SapHana'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier.
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the database sql port.
+	SqlPort *string `pulumi:"sqlPort"`
+	// Gets or sets the blob URI to SSL certificate for the DB.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets the hostname(s) in the SSL certificate.
+	SslHostNameInCertificate *string `pulumi:"sslHostNameInCertificate"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Gets or sets the provider properties.
+type HanaDbProviderInstancePropertiesResponse struct {
+	// Gets or sets the hana database name.
+	DbName *string `pulumi:"dbName"`
+	// Gets or sets the database password.
+	DbPassword *string `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri *string `pulumi:"dbPasswordUri"`
+	// Gets or sets the database user name.
+	DbUsername *string `pulumi:"dbUsername"`
+	// Gets or sets the target virtual machine size.
+	Hostname *string `pulumi:"hostname"`
+	// Gets or sets the database instance number.
+	InstanceNumber *string `pulumi:"instanceNumber"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'SapHana'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier.
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the database sql port.
+	SqlPort *string `pulumi:"sqlPort"`
+	// Gets or sets the blob URI to SSL certificate for the DB.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets the hostname(s) in the SSL certificate.
+	SslHostNameInCertificate *string `pulumi:"sslHostNameInCertificate"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Resource health details
+type HealthResponse struct {
+	// State of health of the provider instance
+	HealthState string `pulumi:"healthState"`
+	// Reasons impacting health state
+	ImpactingReasons string `pulumi:"impactingReasons"`
+}
+
+// Resource health details
+type HealthResponseOutput struct{ *pulumi.OutputState }
+
+func (HealthResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthResponse)(nil)).Elem()
+}
+
+func (o HealthResponseOutput) ToHealthResponseOutput() HealthResponseOutput {
+	return o
+}
+
+func (o HealthResponseOutput) ToHealthResponseOutputWithContext(ctx context.Context) HealthResponseOutput {
+	return o
+}
+
+func (o HealthResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HealthResponse] {
+	return pulumix.Output[HealthResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// State of health of the provider instance
+func (o HealthResponseOutput) HealthState() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthResponse) string { return v.HealthState }).(pulumi.StringOutput)
+}
+
+// Reasons impacting health state
+func (o HealthResponseOutput) ImpactingReasons() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthResponse) string { return v.ImpactingReasons }).(pulumi.StringOutput)
 }
 
 // Gets or sets the high availability configuration.
@@ -2022,6 +2407,314 @@ func (o ManagedRGConfigurationResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Managed service identity.
+type ManagedServiceIdentity struct {
+	// The managed service identity for all identities.
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
+//
+//	ManagedServiceIdentityArgs{...}
+type ManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
+	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
+}
+
+// The Managed service identity.
+type ManagedServiceIdentityArgs struct {
+	// The managed service identity for all identities.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
+}
+
+func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
+}
+
+// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
+//
+//	        ManagedServiceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedServiceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
+	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
+}
+
+type managedServiceIdentityPtrType ManagedServiceIdentityArgs
+
+func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
+	return (*managedServiceIdentityPtrType)(v)
+}
+
+func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
+}
+
+func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The Managed service identity.
+type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
+		return &v
+	}).(ManagedServiceIdentityPtrOutput)
+}
+
+func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
+	return pulumix.Output[ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The managed service identity for all identities.
+func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
+	return pulumix.Output[*ManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentity
+		return ret
+	}).(ManagedServiceIdentityOutput)
+}
+
+// The managed service identity for all identities.
+func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// The Managed service identity.
+type ManagedServiceIdentityResponse struct {
+	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// The managed service identity for all identities.
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// The Managed service identity.
+type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
+	return pulumix.Output[ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The managed service identity for all identities.
+func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
+	return pulumix.Output[*ManagedServiceIdentityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentityResponse
+		return ret
+	}).(ManagedServiceIdentityResponseOutput)
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The managed service identity for all identities.
+func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
 // Defines the SAP message server properties.
 type MessageServerPropertiesResponse struct {
 	// Defines the health of SAP Instances.
@@ -2196,6 +2889,66 @@ func (o MessageServerPropertiesResponsePtrOutput) MsPort() pulumi.Float64PtrOutp
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Defines the SAP monitor errors.
+type MonitorPropertiesResponseErrors struct {
+	// Server-defined set of error codes.
+	Code string `pulumi:"code"`
+	// Array of details about specific errors that led to this reported error.
+	Details []ErrorResponse `pulumi:"details"`
+	// Object containing more specific information than  the current object about the error.
+	InnerError ErrorResponseInnerError `pulumi:"innerError"`
+	// Human-readable representation of the error.
+	Message string `pulumi:"message"`
+	// Target of the error.
+	Target string `pulumi:"target"`
+}
+
+// Defines the SAP monitor errors.
+type MonitorPropertiesResponseErrorsOutput struct{ *pulumi.OutputState }
+
+func (MonitorPropertiesResponseErrorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorPropertiesResponseErrors)(nil)).Elem()
+}
+
+func (o MonitorPropertiesResponseErrorsOutput) ToMonitorPropertiesResponseErrorsOutput() MonitorPropertiesResponseErrorsOutput {
+	return o
+}
+
+func (o MonitorPropertiesResponseErrorsOutput) ToMonitorPropertiesResponseErrorsOutputWithContext(ctx context.Context) MonitorPropertiesResponseErrorsOutput {
+	return o
+}
+
+func (o MonitorPropertiesResponseErrorsOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorPropertiesResponseErrors] {
+	return pulumix.Output[MonitorPropertiesResponseErrors]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Server-defined set of error codes.
+func (o MonitorPropertiesResponseErrorsOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorPropertiesResponseErrors) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Array of details about specific errors that led to this reported error.
+func (o MonitorPropertiesResponseErrorsOutput) Details() ErrorResponseArrayOutput {
+	return o.ApplyT(func(v MonitorPropertiesResponseErrors) []ErrorResponse { return v.Details }).(ErrorResponseArrayOutput)
+}
+
+// Object containing more specific information than  the current object about the error.
+func (o MonitorPropertiesResponseErrorsOutput) InnerError() ErrorResponseInnerErrorOutput {
+	return o.ApplyT(func(v MonitorPropertiesResponseErrors) ErrorResponseInnerError { return v.InnerError }).(ErrorResponseInnerErrorOutput)
+}
+
+// Human-readable representation of the error.
+func (o MonitorPropertiesResponseErrorsOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorPropertiesResponseErrors) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Target of the error.
+func (o MonitorPropertiesResponseErrorsOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorPropertiesResponseErrors) string { return v.Target }).(pulumi.StringOutput)
+}
+
 // Monthly retention schedule.
 type MonthlyRetentionSchedule struct {
 	// Retention duration of retention Policy.
@@ -2244,6 +2997,52 @@ type MountFileShareConfigurationResponse struct {
 	Id string `pulumi:"id"`
 	// The private endpoint resource ID
 	PrivateEndpointId string `pulumi:"privateEndpointId"`
+}
+
+// Gets or sets the SQL server provider properties.
+type MsSqlServerProviderInstanceProperties struct {
+	// Gets or sets the database password.
+	DbPassword *string `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri *string `pulumi:"dbPasswordUri"`
+	// Gets or sets the database sql port.
+	DbPort *string `pulumi:"dbPort"`
+	// Gets or sets the database user name.
+	DbUsername *string `pulumi:"dbUsername"`
+	// Gets or sets the SQL server host name.
+	Hostname *string `pulumi:"hostname"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'MsSqlServer'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the SQL Database.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Gets or sets the SQL server provider properties.
+type MsSqlServerProviderInstancePropertiesResponse struct {
+	// Gets or sets the database password.
+	DbPassword *string `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri *string `pulumi:"dbPasswordUri"`
+	// Gets or sets the database sql port.
+	DbPort *string `pulumi:"dbPort"`
+	// Gets or sets the database user name.
+	DbUsername *string `pulumi:"dbUsername"`
+	// Gets or sets the SQL server host name.
+	Hostname *string `pulumi:"hostname"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'MsSqlServer'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the SQL Database.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // Defines the network configuration type for SAP system infrastructure that is being deployed
@@ -2352,6 +3151,134 @@ type OsSapConfigurationResponse struct {
 	DeployerVmPackages *DeployerVmPackagesResponse `pulumi:"deployerVmPackages"`
 	// The FQDN to set for the SAP system
 	SapFqdn *string `pulumi:"sapFqdn"`
+}
+
+// Gets or sets the PrometheusHaCluster provider properties.
+type PrometheusHaClusterProviderInstanceProperties struct {
+	// Gets or sets the clusterName.
+	ClusterName *string `pulumi:"clusterName"`
+	// Gets or sets the target machine name.
+	Hostname *string `pulumi:"hostname"`
+	// URL of the Node Exporter endpoint.
+	PrometheusUrl *string `pulumi:"prometheusUrl"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'PrometheusHaCluster'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the cluster sid.
+	Sid *string `pulumi:"sid"`
+	// Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Gets or sets the PrometheusHaCluster provider properties.
+type PrometheusHaClusterProviderInstancePropertiesResponse struct {
+	// Gets or sets the clusterName.
+	ClusterName *string `pulumi:"clusterName"`
+	// Gets or sets the target machine name.
+	Hostname *string `pulumi:"hostname"`
+	// URL of the Node Exporter endpoint.
+	PrometheusUrl *string `pulumi:"prometheusUrl"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'PrometheusHaCluster'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the cluster sid.
+	Sid *string `pulumi:"sid"`
+	// Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Gets or sets the PrometheusOS provider properties.
+type PrometheusOSProviderInstanceProperties struct {
+	// URL of the Node Exporter endpoint
+	PrometheusUrl *string `pulumi:"prometheusUrl"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'PrometheusOS'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Gets or sets the PrometheusOS provider properties.
+type PrometheusOSProviderInstancePropertiesResponse struct {
+	// URL of the Node Exporter endpoint
+	PrometheusUrl *string `pulumi:"prometheusUrl"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'PrometheusOS'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Defines the provider instance errors.
+type ProviderInstancePropertiesResponseErrors struct {
+	// Server-defined set of error codes.
+	Code string `pulumi:"code"`
+	// Array of details about specific errors that led to this reported error.
+	Details []ErrorResponse `pulumi:"details"`
+	// Object containing more specific information than  the current object about the error.
+	InnerError ErrorResponseInnerError `pulumi:"innerError"`
+	// Human-readable representation of the error.
+	Message string `pulumi:"message"`
+	// Target of the error.
+	Target string `pulumi:"target"`
+}
+
+// Defines the provider instance errors.
+type ProviderInstancePropertiesResponseErrorsOutput struct{ *pulumi.OutputState }
+
+func (ProviderInstancePropertiesResponseErrorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderInstancePropertiesResponseErrors)(nil)).Elem()
+}
+
+func (o ProviderInstancePropertiesResponseErrorsOutput) ToProviderInstancePropertiesResponseErrorsOutput() ProviderInstancePropertiesResponseErrorsOutput {
+	return o
+}
+
+func (o ProviderInstancePropertiesResponseErrorsOutput) ToProviderInstancePropertiesResponseErrorsOutputWithContext(ctx context.Context) ProviderInstancePropertiesResponseErrorsOutput {
+	return o
+}
+
+func (o ProviderInstancePropertiesResponseErrorsOutput) ToOutput(ctx context.Context) pulumix.Output[ProviderInstancePropertiesResponseErrors] {
+	return pulumix.Output[ProviderInstancePropertiesResponseErrors]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Server-defined set of error codes.
+func (o ProviderInstancePropertiesResponseErrorsOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ProviderInstancePropertiesResponseErrors) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Array of details about specific errors that led to this reported error.
+func (o ProviderInstancePropertiesResponseErrorsOutput) Details() ErrorResponseArrayOutput {
+	return o.ApplyT(func(v ProviderInstancePropertiesResponseErrors) []ErrorResponse { return v.Details }).(ErrorResponseArrayOutput)
+}
+
+// Object containing more specific information than  the current object about the error.
+func (o ProviderInstancePropertiesResponseErrorsOutput) InnerError() ErrorResponseInnerErrorOutput {
+	return o.ApplyT(func(v ProviderInstancePropertiesResponseErrors) ErrorResponseInnerError { return v.InnerError }).(ErrorResponseInnerErrorOutput)
+}
+
+// Human-readable representation of the error.
+func (o ProviderInstancePropertiesResponseErrorsOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ProviderInstancePropertiesResponseErrors) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Target of the error.
+func (o ProviderInstancePropertiesResponseErrorsOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v ProviderInstancePropertiesResponseErrors) string { return v.Target }).(pulumi.StringOutput)
 }
 
 // Retention duration.
@@ -2660,6 +3587,768 @@ type SSLConfigurationResponse struct {
 	SslKeyStore *string `pulumi:"sslKeyStore"`
 	// Specify the name of the trust store file that contains the server’s public certificates (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
 	SslTrustStore *string `pulumi:"sslTrustStore"`
+}
+
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholds struct {
+	// Gets or sets the threshold value for Green.
+	Green *float64 `pulumi:"green"`
+	// Gets or sets the name of the threshold.
+	Name *string `pulumi:"name"`
+	// Gets or sets the threshold value for Red.
+	Red *float64 `pulumi:"red"`
+	// Gets or sets the threshold value for Yellow.
+	Yellow *float64 `pulumi:"yellow"`
+}
+
+// SapLandscapeMonitorMetricThresholdsInput is an input type that accepts SapLandscapeMonitorMetricThresholdsArgs and SapLandscapeMonitorMetricThresholdsOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorMetricThresholdsInput` via:
+//
+//	SapLandscapeMonitorMetricThresholdsArgs{...}
+type SapLandscapeMonitorMetricThresholdsInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorMetricThresholdsOutput() SapLandscapeMonitorMetricThresholdsOutput
+	ToSapLandscapeMonitorMetricThresholdsOutputWithContext(context.Context) SapLandscapeMonitorMetricThresholdsOutput
+}
+
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholdsArgs struct {
+	// Gets or sets the threshold value for Green.
+	Green pulumi.Float64PtrInput `pulumi:"green"`
+	// Gets or sets the name of the threshold.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Gets or sets the threshold value for Red.
+	Red pulumi.Float64PtrInput `pulumi:"red"`
+	// Gets or sets the threshold value for Yellow.
+	Yellow pulumi.Float64PtrInput `pulumi:"yellow"`
+}
+
+func (SapLandscapeMonitorMetricThresholdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorMetricThresholds)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArgs) ToSapLandscapeMonitorMetricThresholdsOutput() SapLandscapeMonitorMetricThresholdsOutput {
+	return i.ToSapLandscapeMonitorMetricThresholdsOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArgs) ToSapLandscapeMonitorMetricThresholdsOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorMetricThresholdsOutput)
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArgs) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorMetricThresholds] {
+	return pulumix.Output[SapLandscapeMonitorMetricThresholds]{
+		OutputState: i.ToSapLandscapeMonitorMetricThresholdsOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SapLandscapeMonitorMetricThresholdsArrayInput is an input type that accepts SapLandscapeMonitorMetricThresholdsArray and SapLandscapeMonitorMetricThresholdsArrayOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorMetricThresholdsArrayInput` via:
+//
+//	SapLandscapeMonitorMetricThresholdsArray{ SapLandscapeMonitorMetricThresholdsArgs{...} }
+type SapLandscapeMonitorMetricThresholdsArrayInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorMetricThresholdsArrayOutput() SapLandscapeMonitorMetricThresholdsArrayOutput
+	ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(context.Context) SapLandscapeMonitorMetricThresholdsArrayOutput
+}
+
+type SapLandscapeMonitorMetricThresholdsArray []SapLandscapeMonitorMetricThresholdsInput
+
+func (SapLandscapeMonitorMetricThresholdsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorMetricThresholds)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArray) ToSapLandscapeMonitorMetricThresholdsArrayOutput() SapLandscapeMonitorMetricThresholdsArrayOutput {
+	return i.ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArray) ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorMetricThresholdsArrayOutput)
+}
+
+func (i SapLandscapeMonitorMetricThresholdsArray) ToOutput(ctx context.Context) pulumix.Output[[]SapLandscapeMonitorMetricThresholds] {
+	return pulumix.Output[[]SapLandscapeMonitorMetricThresholds]{
+		OutputState: i.ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholdsOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorMetricThresholdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorMetricThresholds)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorMetricThresholdsOutput) ToSapLandscapeMonitorMetricThresholdsOutput() SapLandscapeMonitorMetricThresholdsOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsOutput) ToSapLandscapeMonitorMetricThresholdsOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsOutput) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorMetricThresholds] {
+	return pulumix.Output[SapLandscapeMonitorMetricThresholds]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Gets or sets the threshold value for Green.
+func (o SapLandscapeMonitorMetricThresholdsOutput) Green() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholds) *float64 { return v.Green }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets the name of the threshold.
+func (o SapLandscapeMonitorMetricThresholdsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholds) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the threshold value for Red.
+func (o SapLandscapeMonitorMetricThresholdsOutput) Red() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholds) *float64 { return v.Red }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets the threshold value for Yellow.
+func (o SapLandscapeMonitorMetricThresholdsOutput) Yellow() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholds) *float64 { return v.Yellow }).(pulumi.Float64PtrOutput)
+}
+
+type SapLandscapeMonitorMetricThresholdsArrayOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorMetricThresholdsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorMetricThresholds)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorMetricThresholdsArrayOutput) ToSapLandscapeMonitorMetricThresholdsArrayOutput() SapLandscapeMonitorMetricThresholdsArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsArrayOutput) ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SapLandscapeMonitorMetricThresholds] {
+	return pulumix.Output[[]SapLandscapeMonitorMetricThresholds]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SapLandscapeMonitorMetricThresholdsArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorMetricThresholdsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SapLandscapeMonitorMetricThresholds {
+		return vs[0].([]SapLandscapeMonitorMetricThresholds)[vs[1].(int)]
+	}).(SapLandscapeMonitorMetricThresholdsOutput)
+}
+
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholdsResponse struct {
+	// Gets or sets the threshold value for Green.
+	Green *float64 `pulumi:"green"`
+	// Gets or sets the name of the threshold.
+	Name *string `pulumi:"name"`
+	// Gets or sets the threshold value for Red.
+	Red *float64 `pulumi:"red"`
+	// Gets or sets the threshold value for Yellow.
+	Yellow *float64 `pulumi:"yellow"`
+}
+
+// Gets or sets the Threshold Values for Top Metrics Health.
+type SapLandscapeMonitorMetricThresholdsResponseOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorMetricThresholdsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorMetricThresholdsResponse)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) ToSapLandscapeMonitorMetricThresholdsResponseOutput() SapLandscapeMonitorMetricThresholdsResponseOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) ToSapLandscapeMonitorMetricThresholdsResponseOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsResponseOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorMetricThresholdsResponse] {
+	return pulumix.Output[SapLandscapeMonitorMetricThresholdsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Gets or sets the threshold value for Green.
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) Green() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholdsResponse) *float64 { return v.Green }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets the name of the threshold.
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholdsResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the threshold value for Red.
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) Red() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholdsResponse) *float64 { return v.Red }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets the threshold value for Yellow.
+func (o SapLandscapeMonitorMetricThresholdsResponseOutput) Yellow() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorMetricThresholdsResponse) *float64 { return v.Yellow }).(pulumi.Float64PtrOutput)
+}
+
+type SapLandscapeMonitorMetricThresholdsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorMetricThresholdsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorMetricThresholdsResponse)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) ToSapLandscapeMonitorMetricThresholdsResponseArrayOutput() SapLandscapeMonitorMetricThresholdsResponseArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) ToSapLandscapeMonitorMetricThresholdsResponseArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsResponseArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SapLandscapeMonitorMetricThresholdsResponse] {
+	return pulumix.Output[[]SapLandscapeMonitorMetricThresholdsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorMetricThresholdsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SapLandscapeMonitorMetricThresholdsResponse {
+		return vs[0].([]SapLandscapeMonitorMetricThresholdsResponse)[vs[1].(int)]
+	}).(SapLandscapeMonitorMetricThresholdsResponseOutput)
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesGrouping struct {
+	// Gets or sets the list of landscape to SID mappings.
+	Landscape []SapLandscapeMonitorSidMapping `pulumi:"landscape"`
+	// Gets or sets the list of Sap Applications to SID mappings.
+	SapApplication []SapLandscapeMonitorSidMapping `pulumi:"sapApplication"`
+}
+
+// SapLandscapeMonitorPropertiesGroupingInput is an input type that accepts SapLandscapeMonitorPropertiesGroupingArgs and SapLandscapeMonitorPropertiesGroupingOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorPropertiesGroupingInput` via:
+//
+//	SapLandscapeMonitorPropertiesGroupingArgs{...}
+type SapLandscapeMonitorPropertiesGroupingInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorPropertiesGroupingOutput() SapLandscapeMonitorPropertiesGroupingOutput
+	ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(context.Context) SapLandscapeMonitorPropertiesGroupingOutput
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesGroupingArgs struct {
+	// Gets or sets the list of landscape to SID mappings.
+	Landscape SapLandscapeMonitorSidMappingArrayInput `pulumi:"landscape"`
+	// Gets or sets the list of Sap Applications to SID mappings.
+	SapApplication SapLandscapeMonitorSidMappingArrayInput `pulumi:"sapApplication"`
+}
+
+func (SapLandscapeMonitorPropertiesGroupingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorPropertiesGrouping)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorPropertiesGroupingOutput() SapLandscapeMonitorPropertiesGroupingOutput {
+	return i.ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorPropertiesGroupingOutput)
+}
+
+func (i SapLandscapeMonitorPropertiesGroupingArgs) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorPropertiesGrouping] {
+	return pulumix.Output[SapLandscapeMonitorPropertiesGrouping]{
+		OutputState: i.ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return i.ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorPropertiesGroupingOutput).ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx)
+}
+
+// SapLandscapeMonitorPropertiesGroupingPtrInput is an input type that accepts SapLandscapeMonitorPropertiesGroupingArgs, SapLandscapeMonitorPropertiesGroupingPtr and SapLandscapeMonitorPropertiesGroupingPtrOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorPropertiesGroupingPtrInput` via:
+//
+//	        SapLandscapeMonitorPropertiesGroupingArgs{...}
+//
+//	or:
+//
+//	        nil
+type SapLandscapeMonitorPropertiesGroupingPtrInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput
+	ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput
+}
+
+type sapLandscapeMonitorPropertiesGroupingPtrType SapLandscapeMonitorPropertiesGroupingArgs
+
+func SapLandscapeMonitorPropertiesGroupingPtr(v *SapLandscapeMonitorPropertiesGroupingArgs) SapLandscapeMonitorPropertiesGroupingPtrInput {
+	return (*sapLandscapeMonitorPropertiesGroupingPtrType)(v)
+}
+
+func (*sapLandscapeMonitorPropertiesGroupingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapLandscapeMonitorPropertiesGrouping)(nil)).Elem()
+}
+
+func (i *sapLandscapeMonitorPropertiesGroupingPtrType) ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return i.ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(context.Background())
+}
+
+func (i *sapLandscapeMonitorPropertiesGroupingPtrType) ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorPropertiesGroupingPtrOutput)
+}
+
+func (i *sapLandscapeMonitorPropertiesGroupingPtrType) ToOutput(ctx context.Context) pulumix.Output[*SapLandscapeMonitorPropertiesGrouping] {
+	return pulumix.Output[*SapLandscapeMonitorPropertiesGrouping]{
+		OutputState: i.ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesGroupingOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorPropertiesGroupingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorPropertiesGrouping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingOutput) ToSapLandscapeMonitorPropertiesGroupingOutput() SapLandscapeMonitorPropertiesGroupingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingOutput) ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingOutput) ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return o.ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(context.Background())
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingOutput) ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SapLandscapeMonitorPropertiesGrouping) *SapLandscapeMonitorPropertiesGrouping {
+		return &v
+	}).(SapLandscapeMonitorPropertiesGroupingPtrOutput)
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingOutput) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorPropertiesGrouping] {
+	return pulumix.Output[SapLandscapeMonitorPropertiesGrouping]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Gets or sets the list of landscape to SID mappings.
+func (o SapLandscapeMonitorPropertiesGroupingOutput) Landscape() SapLandscapeMonitorSidMappingArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesGrouping) []SapLandscapeMonitorSidMapping { return v.Landscape }).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+// Gets or sets the list of Sap Applications to SID mappings.
+func (o SapLandscapeMonitorPropertiesGroupingOutput) SapApplication() SapLandscapeMonitorSidMappingArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesGrouping) []SapLandscapeMonitorSidMapping { return v.SapApplication }).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+type SapLandscapeMonitorPropertiesGroupingPtrOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorPropertiesGroupingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapLandscapeMonitorPropertiesGrouping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SapLandscapeMonitorPropertiesGrouping] {
+	return pulumix.Output[*SapLandscapeMonitorPropertiesGrouping]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) Elem() SapLandscapeMonitorPropertiesGroupingOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesGrouping) SapLandscapeMonitorPropertiesGrouping {
+		if v != nil {
+			return *v
+		}
+		var ret SapLandscapeMonitorPropertiesGrouping
+		return ret
+	}).(SapLandscapeMonitorPropertiesGroupingOutput)
+}
+
+// Gets or sets the list of landscape to SID mappings.
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) Landscape() SapLandscapeMonitorSidMappingArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesGrouping) []SapLandscapeMonitorSidMapping {
+		if v == nil {
+			return nil
+		}
+		return v.Landscape
+	}).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+// Gets or sets the list of Sap Applications to SID mappings.
+func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) SapApplication() SapLandscapeMonitorSidMappingArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesGrouping) []SapLandscapeMonitorSidMapping {
+		if v == nil {
+			return nil
+		}
+		return v.SapApplication
+	}).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesResponseGrouping struct {
+	// Gets or sets the list of landscape to SID mappings.
+	Landscape []SapLandscapeMonitorSidMappingResponse `pulumi:"landscape"`
+	// Gets or sets the list of Sap Applications to SID mappings.
+	SapApplication []SapLandscapeMonitorSidMappingResponse `pulumi:"sapApplication"`
+}
+
+// Gets or sets the SID groupings by landscape and Environment.
+type SapLandscapeMonitorPropertiesResponseGroupingOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorPropertiesResponseGroupingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorPropertiesResponseGrouping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) ToSapLandscapeMonitorPropertiesResponseGroupingOutput() SapLandscapeMonitorPropertiesResponseGroupingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) ToSapLandscapeMonitorPropertiesResponseGroupingOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesResponseGroupingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorPropertiesResponseGrouping] {
+	return pulumix.Output[SapLandscapeMonitorPropertiesResponseGrouping]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Gets or sets the list of landscape to SID mappings.
+func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) Landscape() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+		return v.Landscape
+	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
+}
+
+// Gets or sets the list of Sap Applications to SID mappings.
+func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) SapApplication() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+		return v.SapApplication
+	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
+}
+
+type SapLandscapeMonitorPropertiesResponseGroupingPtrOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapLandscapeMonitorPropertiesResponseGrouping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ToSapLandscapeMonitorPropertiesResponseGroupingPtrOutput() SapLandscapeMonitorPropertiesResponseGroupingPtrOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ToSapLandscapeMonitorPropertiesResponseGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesResponseGroupingPtrOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SapLandscapeMonitorPropertiesResponseGrouping] {
+	return pulumix.Output[*SapLandscapeMonitorPropertiesResponseGrouping]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) Elem() SapLandscapeMonitorPropertiesResponseGroupingOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesResponseGrouping) SapLandscapeMonitorPropertiesResponseGrouping {
+		if v != nil {
+			return *v
+		}
+		var ret SapLandscapeMonitorPropertiesResponseGrouping
+		return ret
+	}).(SapLandscapeMonitorPropertiesResponseGroupingOutput)
+}
+
+// Gets or sets the list of landscape to SID mappings.
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) Landscape() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Landscape
+	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
+}
+
+// Gets or sets the list of Sap Applications to SID mappings.
+func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) SapApplication() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SapApplication
+	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMapping struct {
+	// Gets or sets the name of the grouping.
+	Name *string `pulumi:"name"`
+	// Gets or sets the list of SID's.
+	TopSid []string `pulumi:"topSid"`
+}
+
+// SapLandscapeMonitorSidMappingInput is an input type that accepts SapLandscapeMonitorSidMappingArgs and SapLandscapeMonitorSidMappingOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorSidMappingInput` via:
+//
+//	SapLandscapeMonitorSidMappingArgs{...}
+type SapLandscapeMonitorSidMappingInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorSidMappingOutput() SapLandscapeMonitorSidMappingOutput
+	ToSapLandscapeMonitorSidMappingOutputWithContext(context.Context) SapLandscapeMonitorSidMappingOutput
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMappingArgs struct {
+	// Gets or sets the name of the grouping.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Gets or sets the list of SID's.
+	TopSid pulumi.StringArrayInput `pulumi:"topSid"`
+}
+
+func (SapLandscapeMonitorSidMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorSidMapping)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorSidMappingArgs) ToSapLandscapeMonitorSidMappingOutput() SapLandscapeMonitorSidMappingOutput {
+	return i.ToSapLandscapeMonitorSidMappingOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorSidMappingArgs) ToSapLandscapeMonitorSidMappingOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorSidMappingOutput)
+}
+
+func (i SapLandscapeMonitorSidMappingArgs) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorSidMapping] {
+	return pulumix.Output[SapLandscapeMonitorSidMapping]{
+		OutputState: i.ToSapLandscapeMonitorSidMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SapLandscapeMonitorSidMappingArrayInput is an input type that accepts SapLandscapeMonitorSidMappingArray and SapLandscapeMonitorSidMappingArrayOutput values.
+// You can construct a concrete instance of `SapLandscapeMonitorSidMappingArrayInput` via:
+//
+//	SapLandscapeMonitorSidMappingArray{ SapLandscapeMonitorSidMappingArgs{...} }
+type SapLandscapeMonitorSidMappingArrayInput interface {
+	pulumi.Input
+
+	ToSapLandscapeMonitorSidMappingArrayOutput() SapLandscapeMonitorSidMappingArrayOutput
+	ToSapLandscapeMonitorSidMappingArrayOutputWithContext(context.Context) SapLandscapeMonitorSidMappingArrayOutput
+}
+
+type SapLandscapeMonitorSidMappingArray []SapLandscapeMonitorSidMappingInput
+
+func (SapLandscapeMonitorSidMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorSidMapping)(nil)).Elem()
+}
+
+func (i SapLandscapeMonitorSidMappingArray) ToSapLandscapeMonitorSidMappingArrayOutput() SapLandscapeMonitorSidMappingArrayOutput {
+	return i.ToSapLandscapeMonitorSidMappingArrayOutputWithContext(context.Background())
+}
+
+func (i SapLandscapeMonitorSidMappingArray) ToSapLandscapeMonitorSidMappingArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorSidMappingArrayOutput)
+}
+
+func (i SapLandscapeMonitorSidMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]SapLandscapeMonitorSidMapping] {
+	return pulumix.Output[[]SapLandscapeMonitorSidMapping]{
+		OutputState: i.ToSapLandscapeMonitorSidMappingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMappingOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorSidMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorSidMapping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorSidMappingOutput) ToSapLandscapeMonitorSidMappingOutput() SapLandscapeMonitorSidMappingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingOutput) ToSapLandscapeMonitorSidMappingOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingOutput) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorSidMapping] {
+	return pulumix.Output[SapLandscapeMonitorSidMapping]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Gets or sets the name of the grouping.
+func (o SapLandscapeMonitorSidMappingOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorSidMapping) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the list of SID's.
+func (o SapLandscapeMonitorSidMappingOutput) TopSid() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorSidMapping) []string { return v.TopSid }).(pulumi.StringArrayOutput)
+}
+
+type SapLandscapeMonitorSidMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorSidMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorSidMapping)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorSidMappingArrayOutput) ToSapLandscapeMonitorSidMappingArrayOutput() SapLandscapeMonitorSidMappingArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingArrayOutput) ToSapLandscapeMonitorSidMappingArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SapLandscapeMonitorSidMapping] {
+	return pulumix.Output[[]SapLandscapeMonitorSidMapping]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SapLandscapeMonitorSidMappingArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorSidMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SapLandscapeMonitorSidMapping {
+		return vs[0].([]SapLandscapeMonitorSidMapping)[vs[1].(int)]
+	}).(SapLandscapeMonitorSidMappingOutput)
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMappingResponse struct {
+	// Gets or sets the name of the grouping.
+	Name *string `pulumi:"name"`
+	// Gets or sets the list of SID's.
+	TopSid []string `pulumi:"topSid"`
+}
+
+// Gets or sets the mapping for SID to Environment/Applications.
+type SapLandscapeMonitorSidMappingResponseOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorSidMappingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorSidMappingResponse)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorSidMappingResponseOutput) ToSapLandscapeMonitorSidMappingResponseOutput() SapLandscapeMonitorSidMappingResponseOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingResponseOutput) ToSapLandscapeMonitorSidMappingResponseOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingResponseOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorSidMappingResponse] {
+	return pulumix.Output[SapLandscapeMonitorSidMappingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Gets or sets the name of the grouping.
+func (o SapLandscapeMonitorSidMappingResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorSidMappingResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the list of SID's.
+func (o SapLandscapeMonitorSidMappingResponseOutput) TopSid() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorSidMappingResponse) []string { return v.TopSid }).(pulumi.StringArrayOutput)
+}
+
+type SapLandscapeMonitorSidMappingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SapLandscapeMonitorSidMappingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SapLandscapeMonitorSidMappingResponse)(nil)).Elem()
+}
+
+func (o SapLandscapeMonitorSidMappingResponseArrayOutput) ToSapLandscapeMonitorSidMappingResponseArrayOutput() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingResponseArrayOutput) ToSapLandscapeMonitorSidMappingResponseArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o
+}
+
+func (o SapLandscapeMonitorSidMappingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SapLandscapeMonitorSidMappingResponse] {
+	return pulumix.Output[[]SapLandscapeMonitorSidMappingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SapLandscapeMonitorSidMappingResponseArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorSidMappingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SapLandscapeMonitorSidMappingResponse {
+		return vs[0].([]SapLandscapeMonitorSidMappingResponse)[vs[1].(int)]
+	}).(SapLandscapeMonitorSidMappingResponseOutput)
+}
+
+// Gets or sets the provider properties.
+type SapNetWeaverProviderInstanceProperties struct {
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'SapNetWeaver'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP Client ID.
+	SapClientId *string `pulumi:"sapClientId"`
+	// Gets or sets the list of HostFile Entries
+	SapHostFileEntries []string `pulumi:"sapHostFileEntries"`
+	// Gets or sets the target virtual machine IP Address/FQDN.
+	SapHostname *string `pulumi:"sapHostname"`
+	// Gets or sets the instance number of SAP NetWeaver.
+	SapInstanceNr *string `pulumi:"sapInstanceNr"`
+	// Sets the SAP password.
+	SapPassword *string `pulumi:"sapPassword"`
+	// Gets or sets the key vault URI to secret with the SAP password.
+	SapPasswordUri *string `pulumi:"sapPasswordUri"`
+	// Gets or sets the SAP HTTP port number.
+	SapPortNumber *string `pulumi:"sapPortNumber"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the SAP user name.
+	SapUsername *string `pulumi:"sapUsername"`
+	// Gets or sets the blob URI to SSL certificate for the SAP system.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Gets or sets the provider properties.
+type SapNetWeaverProviderInstancePropertiesResponse struct {
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'SapNetWeaver'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP Client ID.
+	SapClientId *string `pulumi:"sapClientId"`
+	// Gets or sets the list of HostFile Entries
+	SapHostFileEntries []string `pulumi:"sapHostFileEntries"`
+	// Gets or sets the target virtual machine IP Address/FQDN.
+	SapHostname *string `pulumi:"sapHostname"`
+	// Gets or sets the instance number of SAP NetWeaver.
+	SapInstanceNr *string `pulumi:"sapInstanceNr"`
+	// Sets the SAP password.
+	SapPassword *string `pulumi:"sapPassword"`
+	// Gets or sets the key vault URI to secret with the SAP password.
+	SapPasswordUri *string `pulumi:"sapPasswordUri"`
+	// Gets or sets the SAP HTTP port number.
+	SapPortNumber *string `pulumi:"sapPortNumber"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the SAP user name.
+	SapUsername *string `pulumi:"sapUsername"`
+	// Gets or sets the blob URI to SSL certificate for the SAP system.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
 }
 
 // The SAP Software configuration Input when the software is to be installed by service.
@@ -3914,15 +5603,27 @@ func init() {
 	pulumi.RegisterOutputType(ErrorDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(ErrorDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorDefinitionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorResponseOutput{})
+	pulumi.RegisterOutputType(ErrorResponsePtrOutput{})
+	pulumi.RegisterOutputType(ErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorResponseInnerErrorOutput{})
+	pulumi.RegisterOutputType(ErrorResponseInnerErrorPtrOutput{})
 	pulumi.RegisterOutputType(GatewayServerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GatewayServerPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(HealthResponseOutput{})
 	pulumi.RegisterOutputType(LoadBalancerDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ManagedRGConfigurationOutput{})
 	pulumi.RegisterOutputType(ManagedRGConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ManagedRGConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ManagedRGConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(MessageServerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MessageServerPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(MonitorPropertiesResponseErrorsOutput{})
+	pulumi.RegisterOutputType(ProviderInstancePropertiesResponseErrorsOutput{})
 	pulumi.RegisterOutputType(SAPAvailabilityZonePairResponseOutput{})
 	pulumi.RegisterOutputType(SAPAvailabilityZonePairResponseArrayOutput{})
 	pulumi.RegisterOutputType(SAPDiskConfigurationResponseOutput{})
@@ -3930,6 +5631,18 @@ func init() {
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseOutput{})
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseArrayOutput{})
 	pulumi.RegisterOutputType(SAPVirtualInstanceErrorResponseOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorMetricThresholdsOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorMetricThresholdsArrayOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorMetricThresholdsResponseOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorMetricThresholdsResponseArrayOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesGroupingOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesGroupingPtrOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesResponseGroupingOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesResponseGroupingPtrOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingArrayOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingResponseOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingResponseArrayOutput{})
 	pulumi.RegisterOutputType(StorageInformationResponseOutput{})
 	pulumi.RegisterOutputType(StorageInformationResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})

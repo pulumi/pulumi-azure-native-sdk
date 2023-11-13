@@ -189,6 +189,9 @@ func NewNodeType(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20230901preview:NodeType"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20231101preview:NodeType"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

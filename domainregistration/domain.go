@@ -16,7 +16,7 @@ import (
 // Information about a domain.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-10-01.
 //
-// Other available API versions: 2020-10-01.
+// Other available API versions: 2020-10-01, 2023-01-01.
 type Domain struct {
 	pulumi.CustomResourceState
 
@@ -129,6 +129,9 @@ func NewDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:domainregistration/v20220901:Domain"),
+		},
+		{
+			Type: pulumi.String("azure-native:domainregistration/v20230101:Domain"),
 		},
 	})
 	opts = append(opts, aliases)

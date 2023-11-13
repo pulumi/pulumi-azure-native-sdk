@@ -15,7 +15,7 @@ import (
 // Retrieve the schedule identified by schedule name.
 // Azure REST API version: 2022-08-08.
 //
-// Other available API versions: 2023-05-15-preview.
+// Other available API versions: 2023-05-15-preview, 2023-11-01.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScheduleResult

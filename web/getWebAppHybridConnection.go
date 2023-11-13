@@ -15,7 +15,7 @@ import (
 // Description for Retrieves a specific Service Bus Hybrid Connection used by this Web App.
 // Azure REST API version: 2022-09-01.
 //
-// Other available API versions: 2020-10-01.
+// Other available API versions: 2020-10-01, 2023-01-01.
 func LookupWebAppHybridConnection(ctx *pulumi.Context, args *LookupWebAppHybridConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppHybridConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppHybridConnectionResult

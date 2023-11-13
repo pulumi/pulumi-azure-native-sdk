@@ -98,6 +98,9 @@ func NewApplicationGatewayPrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230501:ApplicationGatewayPrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230601:ApplicationGatewayPrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
