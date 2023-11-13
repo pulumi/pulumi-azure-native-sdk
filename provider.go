@@ -30,6 +30,9 @@ func NewProvider(ctx *pulumi.Context,
 	if args.UseMsi == nil {
 		args.UseMsi = pulumi.BoolPtr(false)
 	}
+	if args.UseOidc == nil {
+		args.UseOidc = pulumi.BoolPtr(false)
+	}
 	if args.ClientCertificatePassword != nil {
 		args.ClientCertificatePassword = pulumi.ToSecret(args.ClientCertificatePassword).(pulumi.StringPtrInput)
 	}
@@ -65,14 +68,20 @@ type providerArgs struct {
 	Environment *string `pulumi:"environment"`
 	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected automatically.
 	MsiEndpoint *string `pulumi:"msiEndpoint"`
+	// Your cloud service or provider’s token to exchange for an Azure token.
+	OidcRequestToken *string `pulumi:"oidcRequestToken"`
+	// The URL to initiate the OIDC token exchange.
+	OidcRequestUrl *string `pulumi:"oidcRequestUrl"`
 	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 	PartnerId *string `pulumi:"partnerId"`
 	// The Subscription ID which should be used.
 	SubscriptionId *string `pulumi:"subscriptionId"`
 	// The Tenant ID which should be used.
 	TenantId *string `pulumi:"tenantId"`
-	// Allowed Managed Service Identity be used for Authentication.
+	// Allow Managed Service Identity to be used for Authentication.
 	UseMsi *bool `pulumi:"useMsi"`
+	// Allow OpenID Connect (OIDC) to be used for Authentication.
+	UseOidc *bool `pulumi:"useOidc"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -93,14 +102,20 @@ type ProviderArgs struct {
 	Environment pulumi.StringPtrInput
 	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected automatically.
 	MsiEndpoint pulumi.StringPtrInput
+	// Your cloud service or provider’s token to exchange for an Azure token.
+	OidcRequestToken pulumi.StringPtrInput
+	// The URL to initiate the OIDC token exchange.
+	OidcRequestUrl pulumi.StringPtrInput
 	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 	PartnerId pulumi.StringPtrInput
 	// The Subscription ID which should be used.
 	SubscriptionId pulumi.StringPtrInput
 	// The Tenant ID which should be used.
 	TenantId pulumi.StringPtrInput
-	// Allowed Managed Service Identity be used for Authentication.
+	// Allow Managed Service Identity to be used for Authentication.
 	UseMsi pulumi.BoolPtrInput
+	// Allow OpenID Connect (OIDC) to be used for Authentication.
+	UseOidc pulumi.BoolPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
