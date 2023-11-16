@@ -68,10 +68,12 @@ type providerArgs struct {
 	Environment *string `pulumi:"environment"`
 	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected automatically.
 	MsiEndpoint *string `pulumi:"msiEndpoint"`
-	// Your cloud service or provider’s token to exchange for an Azure token.
+	// Your provider’s token to exchange for an OIDC token.
 	OidcRequestToken *string `pulumi:"oidcRequestToken"`
-	// The URL to initiate the OIDC token exchange.
+	// The URL to initiate the `oidcRequestToken` OIDC token exchange.
 	OidcRequestUrl *string `pulumi:"oidcRequestUrl"`
+	// The OIDC token to exchange for an Azure token.
+	OidcToken *string `pulumi:"oidcToken"`
 	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 	PartnerId *string `pulumi:"partnerId"`
 	// The Subscription ID which should be used.
@@ -102,10 +104,12 @@ type ProviderArgs struct {
 	Environment pulumi.StringPtrInput
 	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected automatically.
 	MsiEndpoint pulumi.StringPtrInput
-	// Your cloud service or provider’s token to exchange for an Azure token.
+	// Your provider’s token to exchange for an OIDC token.
 	OidcRequestToken pulumi.StringPtrInput
-	// The URL to initiate the OIDC token exchange.
+	// The URL to initiate the `oidcRequestToken` OIDC token exchange.
 	OidcRequestUrl pulumi.StringPtrInput
+	// The OIDC token to exchange for an Azure token.
+	OidcToken pulumi.StringPtrInput
 	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 	PartnerId pulumi.StringPtrInput
 	// The Subscription ID which should be used.
